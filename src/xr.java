@@ -1,86 +1,71 @@
+import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
 import java.util.Optional;
 
-public record xr(xs l, xs m) {
-   public static final Codec<xr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(xs.a.fieldOf("chat").forGetter(xr::a), xs.a.fieldOf("narration").forGetter(xr::b)).apply($$0, xr::new)
-   );
-   public static final zt<xg, xr> b = zt.a(xs.b, xr::a, xs.b, xr::b, xr::new);
-   public static final zt<xg, jq<xr>> c = zr.a(mb.aJ, b);
-   public static final xs d = xs.a("chat.type.text");
-   public static final aly<xr> e = a("chat");
-   public static final aly<xr> f = a("say_command");
-   public static final aly<xr> g = a("msg_command_incoming");
-   public static final aly<xr> h = a("msg_command_outgoing");
-   public static final aly<xr> i = a("team_msg_command_incoming");
-   public static final aly<xr> j = a("team_msg_command_outgoing");
-   public static final aly<xr> k = a("emote_command");
+public record xr(List<xw> d) {
+   public static final Codec<xr> a = xw.a.listOf().xmap(xr::new, xr::a);
+   public static xr b = new xr(List.of());
+   public static final int c = 20;
 
-   private static aly<xr> a(String $$0) {
-      return aly.a(mb.aJ, alz.b($$0));
+   public void a(bag.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
+
+      for (xw $$1 : this.d) {
+         $$0.update($$1.b());
+      }
    }
 
-   public static void a(rk<xr> $$0) {
-      $$0.a(e, new xr(d, xs.a("chat.type.text.narrate")));
-      $$0.a(f, new xr(xs.a("chat.type.announcement"), xs.a("chat.type.text.narrate")));
-      $$0.a(g, new xr(xs.b("commands.message.display.incoming"), xs.a("chat.type.text.narrate")));
-      $$0.a(h, new xr(xs.c("commands.message.display.outgoing"), xs.a("chat.type.text.narrate")));
-      $$0.a(i, new xr(xs.d("chat.type.team.text"), xs.a("chat.type.text.narrate")));
-      $$0.a(j, new xr(xs.d("chat.type.team.sent"), xs.a("chat.type.text.narrate")));
-      $$0.a(k, new xr(xs.a("chat.type.emote"), xs.a("chat.type.emote")));
+   public xr.a a(xx $$0) {
+      return new xr.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public static xr.a a(aly<xr> $$0, bvk $$1) {
-      return a($$0, $$1.dW().K_(), $$1.p_());
+   public List<xw> a() {
+      return this.d;
    }
 
-   public static xr.a a(aly<xr> $$0, ew $$1) {
-      return a($$0, $$1.u(), $$1.b());
-   }
+   public static record a(List<xw.a> b) {
+      public static final xr.a a = new xr.a(List.of());
 
-   public static xr.a a(aly<xr> $$0, ke $$1, xv $$2) {
-      kd<xr> $$3 = $$1.e(mb.aJ);
-      return new xr.a($$3.b($$0), $$2);
-   }
-
-   public xs a() {
-      return this.l;
-   }
-
-   public xs b() {
-      return this.m;
-   }
-
-   public static record a(jq<xr> b, xv c, Optional<xv> d) {
-      public static final zt<xg, xr.a> a = zt.a(xr.c, xr.a::a, xx.d, xr.a::b, xx.e, xr.a::c, xr.a::new);
-
-      a(jq<xr> $$0, xv $$1) {
-         this($$0, $$1, Optional.empty());
+      public a(wh $$0) {
+         this($$0.a(wh.a(ArrayList::new, 20), xw.a::a));
       }
 
-      public xv a(xv $$0) {
-         return this.b.a().a().a($$0, this);
+      public void a(wh $$0) {
+         $$0.a(this.b, xw.a::a);
       }
 
-      public xv b(xv $$0) {
-         return this.b.a().b().a($$0, this);
+      public Optional<xr> a(xx $$0) {
+         List<xw> $$1 = new ArrayList<>(this.b.size());
+
+         for (xw.a $$2 : this.b) {
+            Optional<xw> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
+         }
+
+         return Optional.of(new xr($$1));
       }
 
-      public xr.a c(xv $$0) {
-         return new xr.a(this.b, this.c, Optional.of($$0));
-      }
-
-      public jq<xr> a() {
+      public List<xw.a> a() {
          return this.b;
       }
+   }
 
-      public xv b() {
-         return this.c;
+   public static record b(int a, BitSet b) {
+      public b(wh $$0) {
+         this($$0.l(), $$0.e(20));
       }
 
-      public Optional<xv> c() {
-         return this.d;
+      public void a(wh $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
       }
    }
 }

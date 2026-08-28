@@ -1,72 +1,108 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ye {
-   private final int a;
-   private final ObjectList<yf> b = new ObjectArrayList();
+   static final Logger a = LogUtils.getLogger();
    @Nullable
-   private yh c;
+   yf b;
+   Instant c = Instant.EPOCH;
 
-   public ye(int $$0) {
-      this.a = $$0;
-
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.b.add(null);
-      }
+   public ye(UUID $$0, UUID $$1) {
+      this.b = yf.a($$0, $$1);
    }
 
-   public void a(yh $$0) {
-      if (!$$0.equals(this.c)) {
-         this.b.add(new yf($$0, true));
-         this.c = $$0;
-      }
-   }
-
-   public int a() {
-      return this.b.size();
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = this.b.size() - this.a;
-      if ($$0 >= 0 && $$0 <= $$1) {
-         this.b.removeElements(0, $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public Optional<yc> a(yc.b $$0) {
-      if (!this.a($$0.a())) {
-         return Optional.empty();
-      } else {
-         ObjectList<yh> $$1 = new ObjectArrayList($$0.b().cardinality());
-         if ($$0.b().length() > this.a) {
-            return Optional.empty();
+   public ye.c a(bai $$0) {
+      return $$1 -> {
+         yf $$2 = this.b;
+         if ($$2 == null) {
+            return null;
          } else {
-            for (int $$2 = 0; $$2 < this.a; $$2++) {
-               boolean $$3 = $$0.b().get($$2);
-               yf $$4 = (yf)this.b.get($$2);
-               if ($$3) {
-                  if ($$4 == null) {
-                     return Optional.empty();
-                  }
+            this.b = $$2.a();
+            return new xw($$0.sign($$2x -> ya.a($$2x, $$2, $$1)));
+         }
+      };
+   }
 
-                  this.b.set($$2, $$4.a());
-                  $$1.add($$4.b());
+   public ye.b a(final cpr $$0) {
+      final bah $$1 = $$0.a();
+      return new ye.b() {
+         @Override
+         public ya unpack(@Nullable xw $$0x, yd $$1x) throws ye.a {
+            if ($$0 == null) {
+               throw new ye.a(ye.a.a);
+            } else if ($$0.b().a()) {
+               throw new ye.a(ye.a.c);
+            } else {
+               yf $$2 = ye.this.b;
+               if ($$2 == null) {
+                  throw new ye.a(ye.a.b);
+               } else if ($$1.b().isBefore(ye.this.c)) {
+                  this.setChainBroken();
+                  throw new ye.a(ye.a.e);
                } else {
-                  if ($$4 != null && !$$4.c()) {
-                     return Optional.empty();
-                  }
+                  ye.this.c = $$1.b();
+                  ya $$3 = new ya($$2, $$0, $$1, null, xo.c);
+                  if (!$$3.a($$1)) {
+                     this.setChainBroken();
+                     throw new ye.a(ye.a.d);
+                  } else {
+                     if ($$3.a(Instant.now())) {
+                        ye.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
+                     }
 
-                  this.b.set($$2, null);
+                     ye.this.b = $$2.a();
+                     return $$3;
+                  }
                }
             }
-
-            return Optional.of(new yc($$1));
          }
+
+         @Override
+         public void setChainBroken() {
+            ye.this.b = null;
+         }
+      };
+   }
+
+   public static class a extends yk {
+      static final xk a = xk.c("chat.disabled.missingProfileKey");
+      static final xk b = xk.c("chat.disabled.chain_broken");
+      static final xk c = xk.c("chat.disabled.expiredProfileKey");
+      static final xk d = xk.c("chat.disabled.invalid_signature");
+      static final xk e = xk.c("chat.disabled.out_of_order_chat");
+
+      public a(xk $$0) {
+         super($$0);
       }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      static ye.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new ye.a(ye.a.a);
+            } else {
+               return ya.a($$0, $$3.a());
+            }
+         };
+      }
+
+      ya unpack(@Nullable xw var1, yd var2) throws ye.a;
+
+      default void setChainBroken() {
+      }
+   }
+
+   @FunctionalInterface
+   public interface c {
+      ye.c a = $$0 -> null;
+
+      @Nullable
+      xw pack(yd var1);
    }
 }

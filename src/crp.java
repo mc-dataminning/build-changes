@@ -1,17 +1,12 @@
-public class crp {
-   private final int a;
-   private final float b;
+import java.util.function.Supplier;
 
-   public crp(int $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class crp extends crl {
+   public crp(bvi<? extends crp> $$0, dgz $$1, Supplier<cxc> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
+   @Override
+   protected double b(bve $$0) {
+      return (double)($$0.b() / 3.0F);
    }
 }

@@ -1,61 +1,26 @@
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
+import java.util.function.Function;
 
-public class fej {
-   @Nullable
-   private ByteBuffer a;
-   private final AudioFormat b;
-   private boolean c;
-   private int d;
+public interface fej {
+   float getAdvance();
 
-   public fej(ByteBuffer $$0, AudioFormat $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
    }
 
-   OptionalInt a() {
-      if (!this.c) {
-         if (this.a == null) {
-            return OptionalInt.empty();
-         }
+   default float a() {
+      return 1.0F;
+   }
 
-         int $$0 = fei.a(this.b);
-         int[] $$1 = new int[1];
-         AL10.alGenBuffers($$1);
-         if (fei.a("Creating buffer")) {
-            return OptionalInt.empty();
-         }
+   default float b() {
+      return 1.0F;
+   }
 
-         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
-         if (fei.a("Assigning buffer data")) {
-            return OptionalInt.empty();
-         }
+   fqv bake(Function<fel, fqv> var1);
 
-         this.d = $$1[0];
-         this.c = true;
-         this.a = null;
+   public interface a extends fej {
+      @Override
+      default fqv bake(Function<fel, fqv> $$0) {
+         return fqw.b;
       }
-
-      return OptionalInt.of(this.d);
-   }
-
-   public void b() {
-      if (this.c) {
-         AL10.alDeleteBuffers(new int[]{this.d});
-         if (fei.a("Deleting stream buffers")) {
-            return;
-         }
-      }
-
-      this.c = false;
-   }
-
-   public OptionalInt c() {
-      OptionalInt $$0 = this.a();
-      this.c = false;
-      return $$0;
    }
 }

@@ -1,19 +1,53 @@
-import com.google.common.collect.ImmutableSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cfx extends cgq<bvb> {
+public class cfx<T extends bvx> extends cgh<T> {
+   private final BiPredicate<T, bvx> a;
+   private final Predicate<T> b;
+   private final cfb<Boolean> c;
+   private final int d;
+
+   public cfx(int $$0, BiPredicate<T, bvx> $$1, Predicate<T> $$2, cfb<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+   }
+
    @Override
-   public Set<cfk<?>> a() {
-      return ImmutableSet.of(cfk.K, cfk.h);
+   protected void a(arx $$0, T $$1) {
+      if (!this.b.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   protected void a(ash $$0, bvb $$1) {
-      $$1.ec().c(cfk.h).ifPresent($$1x -> this.a($$1, $$1x));
+   @Override
+   public Set<cfb<?>> a() {
+      return Set.of(cfb.g);
    }
 
-   private void a(bvb $$0, cfm $$1) {
-      Optional<bvb> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.e_()).map(bvb.class::cast);
-      $$0.ec().a(cfk.K, $$2);
+   @Override
+   public void a(T $$0) {
+      Optional<List<bvx>> $$1 = $$0.ec().c(cfb.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.ec().a(this.c, true, (long)this.d);
+   }
+
+   public void c(T $$0) {
+      $$0.ec().b(this.c);
    }
 }

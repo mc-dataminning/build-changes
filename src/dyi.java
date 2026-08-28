@@ -1,20 +1,14 @@
-public enum dyi implements bba {
-   a("head"),
-   b("foot");
-
-   private final String c;
-
-   private dyi(final String $$0) {
-      this.c = $$0;
-   }
+public enum dyi implements baq {
+   a,
+   b;
 
    @Override
    public String toString() {
-      return this.c;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this == a ? "left" : "right";
    }
 }

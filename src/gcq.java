@@ -1,21 +1,30 @@
-public class gcq extends gbz<gzg> {
-   public gcq(geo $$0) {
+public class gcq extends gbh<gxq> {
+   private final gej a;
+   private final gej b;
+
+   public gcq(gej $$0) {
       super($$0);
+      this.a = $$0.b("left_fin");
+      this.b = $$0.b("right_fin");
    }
 
-   public static geu a() {
-      gew $$0 = gbz.a(ges.a, 0.0F);
-      gey $$1 = $$0.a();
-      gey $$2 = $$1.a("head");
-      $$2.a("hat");
-      $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      get $$3 = get.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new ges(1.0F));
-      $$2.a("left_ear", $$3, geq.a(-6.0F, -6.0F, 0.0F));
-      $$2.a("right_ear", $$3, geq.a(6.0F, -6.0F, 0.0F));
-      return geu.a($$0, 64, 64);
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", geo.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), gel.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", geo.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gel.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", geo.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gel.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", geo.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), gel.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", geo.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gel.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", geo.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gel.a(1.5F, 22.0F, -1.5F));
+      return gep.a($$0, 32, 32);
+   }
+
+   @Override
+   public void a(gxq $$0) {
+      super.a($$0);
+      this.b.g = -0.2F + 0.4F * azu.a($$0.p * 0.2F);
+      this.a.g = 0.2F - 0.4F * azu.a($$0.p * 0.2F);
    }
 }

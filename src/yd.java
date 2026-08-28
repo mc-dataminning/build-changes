@@ -1,77 +1,71 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
+import java.util.Optional;
 
-public class yd {
-   private final yf[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private yh d;
+public record yd(String b, Instant c, long d, xr e) {
+   public static final MapCodec<yd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(yd::a),
+               azd.q.fieldOf("time_stamp").forGetter(yd::b),
+               Codec.LONG.fieldOf("salt").forGetter(yd::c),
+               xr.a.optionalFieldOf("last_seen", xr.b).forGetter(yd::d)
+            )
+            .apply($$0, yd::new)
+   );
 
-   public yd(int $$0) {
-      this.a = new yf[$$0];
+   public static yd a(String $$0) {
+      return new yd($$0, Instant.now(), 0L, xr.b);
    }
 
-   public boolean a(yh $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new yf($$0, true) : null);
-         return true;
-      }
+   public void a(bag.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   private void a(@Nullable yf $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   public yd.a a(xx $$0) {
+      return new yd.a(this.b, this.c, this.d, this.e.a($$0));
    }
 
-   public void a(yh $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         yf $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
+   public String a() {
+      return this.b;
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public yd.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<yh> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         yf $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
-      }
-
-      yc $$6 = new yc($$2);
-      yc.b $$7 = new yc.b($$0, $$1);
-      return new yd.a($$6, $$7);
-   }
-
-   public int c() {
+   public Instant b() {
       return this.c;
    }
 
-   public static record a(yc a, yc.b b) {
+   public long c() {
+      return this.d;
+   }
+
+   public xr d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, xr.a d) {
+      public a(wh $$0) {
+         this($$0.d(256), $$0.t(), $$0.readLong(), new xr.a($$0));
+      }
+
+      public void a(wh $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
+      }
+
+      public Optional<yd> a(xx $$0) {
+         return this.d.a($$0).map($$0x -> new yd(this.a, this.b, this.c, $$0x));
+      }
    }
 }

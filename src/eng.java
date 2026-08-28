@@ -1,28 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eng extends env {
-   public static final MapCodec<eng> a = bso.b(0, 256).fieldOf("count").xmap(eng::new, $$0 -> $$0.c);
-   private final bso c;
+public class eng extends eno {
+   public static final MapCodec<eng> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eng::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   private eng(bso $$0) {
+   private eng(double $$0, int $$1, int $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static eng a(bso $$0) {
-      return new eng($$0);
-   }
-
-   public static eng a(int $$0) {
-      return a(bsl.a($$0));
-   }
-
-   @Override
-   protected int a(bam $$0, jh $$1) {
-      return this.c.a($$0);
+   public static eng a(double $$0, int $$1, int $$2) {
+      return new eng($$0, $$1, $$2);
    }
 
    @Override
-   public ens<?> b() {
-      return ens.f;
+   protected int a(bac $$0, jh $$1) {
+      double $$2 = dib.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public enl<?> b() {
+      return enl.h;
    }
 }

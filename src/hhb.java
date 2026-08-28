@@ -1,51 +1,22 @@
 import java.time.Duration;
-import java.time.Instant;
 import javax.annotation.Nullable;
 
-public abstract class hhb {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
+public class hhb {
+   private final boolean a;
    @Nullable
-   private Instant e;
+   private final Duration b;
 
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+   public hhb(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   public void a(hgv $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
-      }
-
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
+   public void a(hgr $$0) {
+      if (this.b != null) {
+         $$0.send(hgs.d, $$0x -> {
+            $$0x.a(hgu.x, (int)this.b.toMillis());
+            $$0x.a(hgu.y, this.a);
+         });
       }
    }
-
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
-   }
-
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(hgv var1);
 }

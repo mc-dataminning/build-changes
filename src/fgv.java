@@ -1,201 +1,71 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import org.slf4j.Logger;
 
-public class fgv implements AutoCloseable {
-   private final fem a;
-   private final fen b;
+public class fgv {
+   private static final Logger a = LogUtils.getLogger();
    @Nullable
-   private fen c = null;
-   private int d;
-   @Nullable
-   private fgx e;
-   @Nullable
-   private RenderSystem.a f;
-   private fgx.b g;
-   private int h;
-   private fgx.c i;
+   private static CompletableFuture<fgv.a> b;
 
-   public fgv(fem $$0) {
-      this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = new fen(fel.a, $$0, 0);
-      this.d = GlStateManager._glGenVertexArrays();
+   public static CompletableFuture<fgv.a> a() {
+      if (b == null || a(b)) {
+         b = b();
+      }
+
+      return b;
    }
 
-   public void a(fgr $$0) {
-      fgr var2 = $$0;
+   private static boolean a(CompletableFuture<fgv.a> $$0) {
+      fgv.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
 
-      label40: {
+   private static CompletableFuture<fgv.a> b() {
+      fml $$0 = flz.Q().X();
+      return $$0.g() != fml.a.c ? CompletableFuture.completedFuture(new fgv.a(fgv.b.d)) : CompletableFuture.supplyAsync(() -> {
+         fhb $$0x = fhb.a();
+
          try {
-            if (this.e()) {
-               break label40;
+            if ($$0x.g() != fhb.a.a) {
+               return new fgv.a(fgv.b.b);
+            } else {
+               return !$$0x.f() ? new fgv.a(fgv.b.c) : new fgv.a(fgv.b.a);
             }
-
-            RenderSystem.assertOnRenderThread();
-            fgr.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.c();
-            this.g = $$1.e();
-            this.i = $$1.d();
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
+         } catch (fix var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new fgv.a(fgv.b.d) : new fgv.a(var2);
          }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
+      }, ae.h());
    }
 
-   public void a(fgp.a $$0) {
-      fgp.a var2 = $$0;
-
-      label46: {
-         try {
-            if (this.e()) {
-               break label46;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            if (this.c != null) {
-               this.c.close();
-            }
-
-            this.c = new fen(fel.b, this.a, $$0.a());
-            this.f = null;
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
+   public static record a(fgv.b a, @Nullable fix b) {
+      public a(fgv.b $$0) {
+         this($$0, null);
       }
 
-      if ($$0 != null) {
-         $$0.close();
+      public a(fix $$0) {
+         this(fgv.b.e, $$0);
+      }
+
+      @Nullable
+      public ftr a(ftr $$0) {
+         return (ftr)(switch (this.a) {
+            case a -> null;
+            case b -> new fjk($$0);
+            case c -> new fju($$0);
+            case d -> new fjp(xk.c("mco.error.invalid.session.title"), xk.c("mco.error.invalid.session.message"), $$0);
+            case e -> new fjp(Objects.requireNonNull(this.b), $$0);
+         });
       }
    }
 
-   private fgx a(fgr.a $$0, @Nullable ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.a().equals(this.e)) {
-         if (this.e != null) {
-            this.e.h();
-         }
-
-         this.b.b();
-         $$0.a().g();
-         $$2 = true;
-      }
-
-      if ($$1 != null) {
-         if (!$$2) {
-            this.b.b();
-         }
-
-         this.b.a($$1.remaining());
-         this.b.a($$1, 0);
-      }
-
-      return $$0.a();
-   }
-
-   @Nullable
-   private RenderSystem.a b(fgr.a $$0, @Nullable ByteBuffer $$1) {
-      if ($$1 != null) {
-         if (this.c != null) {
-            this.c.close();
-         }
-
-         this.c = new fen(fel.b, this.a, $$1);
-         return null;
-      } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
-         if ($$2 != this.f || !$$2.a($$0.c())) {
-            $$2.b($$0.c());
-         }
-
-         return $$2;
-      }
-   }
-
-   public void a() {
-      fgo.b();
-      GlStateManager._glBindVertexArray(this.d);
-   }
-
-   public static void b() {
-      fgo.b();
-      GlStateManager._glBindVertexArray(0);
-   }
-
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
-   }
-
-   private fgx.b f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
-   }
-
-   public void a(Matrix4f $$0, Matrix4f $$1, @Nullable gku $$2) {
-      if ($$2 != null) {
-         RenderSystem.assertOnRenderThread();
-         $$2.a(this.i, $$0, $$1, fmg.Q().aO());
-         $$2.b();
-         this.c();
-         $$2.a();
-      }
-   }
-
-   @Override
-   public void close() {
-      this.b.close();
-      if (this.c != null) {
-         this.c.close();
-         this.c = null;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
-      }
-   }
-
-   public fgx d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.d == -1;
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

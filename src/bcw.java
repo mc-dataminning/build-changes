@@ -1,19 +1,16 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
-public class bcw extends bhs {
+public class bcw extends DataFix {
    public bcw(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityKeepPacked", bix.s, "DUMMY");
+      super($$0, $$1);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("keepPacked", $$0.createBoolean(true));
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bcw::a);
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "BlockStateStructureTemplateFix", this.getInputSchema().getType(bin.u), $$0 -> $$0.update(DSL.remainderFinder(), bcv::a)
+      );
    }
 }

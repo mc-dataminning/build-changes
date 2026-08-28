@@ -1,24 +1,65 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 
-public class etg extends etl<etg.a> {
-   protected etg(ead $$0) {
-      super(dhr.b, $$0, new etg.a(new Long2ObjectOpenHashMap()));
-   }
+public class etg {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
 
-   @Override
-   protected int a(long $$0) {
-      long $$1 = kj.e($$0);
-      dzv $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(kj.b(jh.a($$0)), kj.b(jh.b($$0)), kj.b(jh.c($$0)));
-   }
+   public etg(int $$0, final int $$1) {
+      this.a = $$0;
+      this.b = new LongLinkedOpenHashSet[$$0];
 
-   protected static final class a extends eti<etg.a> {
-      public a(Long2ObjectOpenHashMap<dzv> $$0) {
-         super($$0);
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
       }
 
-      public etg.a a() {
-         return new etg.a(this.a.clone());
+      this.c = $$0;
+   }
+
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
+   }
+
+   public boolean b() {
+      return this.c >= this.a;
+   }
+
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
+   }
+
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
+   }
+
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
+
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
       }
    }
 }

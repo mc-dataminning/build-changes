@@ -1,63 +1,58 @@
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class fwt extends fty {
-   private static final int b = 100;
-   private final xv c;
+public class fwt extends fwv {
+   private static final xk a = xk.c("options.online.title");
    @Nullable
-   private final xv d;
-   private final xv s;
-   @Nullable
-   protected foh a;
-   @Nullable
-   private foq u;
-   private final frs v;
+   private fmc<Unit> u;
 
-   protected fwt(xv $$0, xv $$1, xv $$2) {
-      this($$0, $$1, null, $$2);
+   public fwt(ftr $$0, fmd $$1) {
+      super($$0, $$1, a);
    }
-
-   protected fwt(xv $$0, xv $$1, @Nullable xv $$2, xv $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.s = $$3;
-      this.v = new frs(0, 0, this.n, this.o);
-   }
-
-   protected abstract frv l();
 
    @Override
    protected void aT_() {
-      fry $$0 = this.v.a(fry.d().a(8));
-      $$0.c().b();
-      $$0.a(new fpn(this.m(), this.p));
-      this.u = $$0.a(new foq(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      fry $$1 = $$0.a(fry.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(foh.a(this.d, this.p).a());
-      }
-
-      $$1.a(this.l());
-      this.v.a($$1x -> {
-         fod var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
+      super.aT_();
       if (this.u != null) {
-         this.u.d(this.n - 100);
+         fnw $$0 = this.d.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
+         }
+      }
+   }
+
+   private fmc<?>[] a(fmd $$0, flz $$1) {
+      List<fmc<?>> $$2 = new ArrayList<>();
+      $$2.add($$0.W());
+      $$2.add($$0.X());
+      fmc<Unit> $$3 = x.a(
+         $$1.s,
+         $$0x -> {
+            bsx $$1x = $$0x.am();
+            return new fmc<>(
+               "options.difficulty.online",
+               fmc.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new fmc.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$3 != null) {
+         this.u = $$3;
+         $$2.add($$3);
       }
 
-      this.v.a();
-      frs.a(this.v, this.H());
+      return $$2.toArray(new fmc[0]);
    }
 
    @Override
-   public xv i() {
-      return this.s;
+   protected void l() {
+      this.d.a(this.a(this.c, this.m));
    }
 }

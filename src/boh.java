@@ -1,11 +1,8 @@
-public interface boh {
-   int c();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   int d();
-
-   long a(int var1);
-
-   long a(int var1, int var2);
-
-   void e();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface boh {
 }

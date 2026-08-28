@@ -1,20 +1,12 @@
-public record akp(long b) implements aac<ako> {
-   public static final zt<ws, akp> a = aac.a(akp::a, akp::new);
+public class akp {
+   public static final zt<akl> a = a("status_response");
+   public static final zt<ako> b = b("status_request");
 
-   private akp(ws $$0) {
-      this($$0.readLong());
+   private static <T extends zr<akk>> zt<T> a(String $$0) {
+      return new zt<>(zs.b, alp.b($$0));
    }
 
-   private void a(ws $$0) {
-      $$0.b(this.b);
-   }
-
-   @Override
-   public aae<akp> a() {
-      return akq.a;
-   }
-
-   public void a(ako $$0) {
-      $$0.a(this);
+   private static <T extends zr<akn>> zt<T> b(String $$0) {
+      return new zt<>(zs.a, alp.b($$0));
    }
 }

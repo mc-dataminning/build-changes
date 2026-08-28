@@ -1,17 +1,7 @@
-import com.google.common.collect.ImmutableMap;
-
-public class cbu extends bxz<bwg> {
-   public cbu() {
-      super(ImmutableMap.of());
-   }
-
-   @Override
-   protected boolean a(ash $$0, bwg $$1) {
-      return $$1.bZ();
-   }
-
-   @Override
-   protected void d(ash $$0, bwg $$1, long $$2) {
-      $$1.ao();
+public interface cbu {
+   default float a(float $$0, float $$1, float $$2) {
+      float $$3 = azu.c($$0, $$1);
+      float $$4 = azu.a($$3, -$$2, $$2);
+      return $$0 + $$4;
    }
 }

@@ -1,112 +1,113 @@
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dsl extends dkw implements dkp {
-   public static final MapCodec<dsl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aly.a(mb.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               aly.a(mb.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               aly.a(mb.K).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               t()
-            )
-            .apply($$0, dsl::new)
-   );
-   public static final int b = 7;
-   public static final dyu c = dyl.aw;
-   protected static final float d = 1.0F;
-   protected static final fcs[] e = new fcs[]{
-      dkm.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      dkm.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      dkm.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      dkm.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      dkm.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      dkm.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      dkm.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      dkm.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final aly<dkm> f;
-   private final aly<dkm> g;
-   private final aly<cxl> h;
+public class dsl extends dkn implements dkg {
+   public static final MapCodec<dsl> a = b(dsl::new);
+   private static final float d = 0.003F;
+   public static final int b = 3;
+   public static final dyn c = dye.av;
+   private static final fcl e = dkd.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+   private static final fcl f = dkd.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dsl> a() {
       return a;
    }
 
-   protected dsl(aly<dkm> $$0, aly<dkm> $$1, aly<cxl> $$2, dxu.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public dsl(dxn.d $$0) {
+      super($$0);
       this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return e[$$0.c(c)];
+   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
+      return new cxg(cxk.xv);
    }
 
    @Override
-   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
-      return $$0.a(dko.cK);
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      if ($$0.c(c) == 0) {
+         return e;
+      } else {
+         return $$0.c(c) < 3 ? f : super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = dmj.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.b(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               jm $$6 = jm.c.a.a($$3);
-               jh $$7 = $$2.a($$6);
-               dxv $$8 = $$1.a_($$7.e());
-               if ($$1.a_($$7).l() && ($$8.a(dko.cK) || $$8.a(axu.ah))) {
-                  kd<dkm> $$9 = $$1.K_().e(mb.f);
-                  Optional<dkm> $$10 = $$9.f(this.f);
-                  Optional<dkm> $$11 = $$9.f(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().m());
-                     $$1.b($$2, $$11.get().m().b(dok.aF, $$6));
-                  }
+   protected boolean f(dxo $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(5) == 0 && $$1.b($$2.d(), 0) >= 9) {
+         dxo $$5 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$5, 2);
+         $$1.a(eck.c, $$2, eck.a.a($$5));
+      }
+   }
+
+   @Override
+   protected void a(dxo $$0, dgz $$1, jh $$2, bvb $$3) {
+      if ($$3 instanceof bvx && $$3.aq() != bvi.ab && $$3.aq() != bvi.l) {
+         $$3.a($$0, new fbr(0.8F, 0.75, 0.8F));
+         if ($$1 instanceof arx $$4 && $$0.c(c) != 0) {
+            fbr $$6 = $$3.dj() ? $$3.ah() : $$3.bC().d($$3.du());
+            if ($$6.j() > 0.0) {
+               double $$7 = Math.abs($$6.a());
+               double $$8 = Math.abs($$6.c());
+               if ($$7 >= 0.003F || $$8 >= 0.003F) {
+                  $$3.a($$4, $$1.ak().u(), 1.0F);
                }
             }
+
+            return;
          }
       }
    }
 
    @Override
-   public cxp a(dhl $$0, jh $$1, dxv $$2) {
-      return new cxp((dhh)DataFixUtils.orElse($$0.K_().e(mb.K).f(this.h), this));
+   protected bta a(cxg $$0, dxo $$1, dgz $$2, jh $$3, cpo $$4, bsz $$5, fbn $$6) {
+      int $$7 = $$1.c(c);
+      boolean $$8 = $$7 == 3;
+      return (bta)(!$$8 && $$0.a(cxk.sv) ? bta.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6));
    }
 
    @Override
-   public boolean b(dhl $$0, jh $$1, dxv $$2) {
-      return $$2.c(c) != 7;
-   }
-
-   @Override
-   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + bae.a($$0.A, 2, 5));
-      dxv $$5 = $$3.b(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.A);
+   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
+      int $$5 = $$0.c(c);
+      boolean $$6 = $$5 == 3;
+      if ($$5 > 1) {
+         int $$7 = 1 + $$1.A.a(2);
+         a($$1, $$2, new cxg(cxk.xv, $$7 + ($$6 ? 1 : 0)));
+         $$1.a(null, $$2, awv.Ah, aww.e, 1.0F, 0.8F + $$1.A.i() * 0.4F);
+         dxo $$8 = $$0.b(c, Integer.valueOf(1));
+         $$1.a($$2, $$8, 2);
+         $$1.a(eck.c, $$2, eck.a.a($$3, $$8));
+         return bta.a;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
+   protected void a(dxp.a<dkd, dxo> $$0) {
       $$0.a(c);
+   }
+
+   @Override
+   public boolean b(dhc $$0, jh $$1, dxo $$2) {
+      return $$2.c(c) < 3;
+   }
+
+   @Override
+   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
+      int $$4 = Math.min(3, $$3.c(c) + 1);
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$4)), 2);
    }
 }

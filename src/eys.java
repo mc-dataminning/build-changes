@@ -1,41 +1,39 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public class eys extends eyc {
-   public static final MapCodec<eys> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  eyb.e.a(dae.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
-                  azn.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, eys::new)
-   );
-   public static final daf b = new daf(0, List.of());
-   private final Optional<eyb.e<dae>> c;
-   private final Optional<Integer> d;
+public class eys extends exv {
+   static final MapCodec<eys> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fao.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, eys::new));
+   private final fan b;
 
-   protected eys(List<ezy> $$0, Optional<eyb.e<dae>> $$1, Optional<Integer> $$2) {
+   private eys(List<ezr> $$0, fan $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   protected cxp a(cxp $$0, ewp $$1) {
-      $$0.a(ku.af, b, this::a);
+   public Set<bbd<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public exx<eys> b() {
+      return exy.Q;
+   }
+
+   @Override
+   public cxg a(cxg $$0, ewi $$1) {
+      int $$2 = azu.a(this.b.a($$1), 0, 4);
+      $$0.b(ku.aa, new dae($$2));
       return $$0;
    }
 
-   private daf a(daf $$0) {
-      return new daf(this.d.orElseGet($$0::a), this.c.<List<dae>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
+   public fan c() {
+      return this.b;
    }
 
-   @Override
-   public eye<eys> b() {
-      return eyf.K;
+   public static exv.a<?> a(fan $$0) {
+      return a($$1 -> new eys($$1, $$0));
    }
 }

@@ -1,103 +1,43 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cem extends cde {
-   private static final cgx c = cgx.b().d();
-   private final cgx d;
-   protected final bwo a;
-   private final double e;
-   private double f;
-   private double g;
-   private double h;
-   private double i;
-   private double j;
+public class cem extends cev {
+   private final cia a;
    @Nullable
-   protected cpx b;
-   private int k;
-   private boolean l;
-   private final Predicate<cxp> m;
-   private final boolean n;
+   private bvx b;
+   private final cgo c = cgo.a().a(64.0);
 
-   public cem(bwo $$0, double $$1, Predicate<cxp> $$2, boolean $$3) {
+   public cem(cia $$0) {
+      super($$0, false, true);
       this.a = $$0;
-      this.e = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.a(EnumSet.of(cde.a.a, cde.a.b));
-      this.d = c.c().a(($$0x, $$1x) -> this.a($$0x));
+      this.a(EnumSet.of(ccv.a.d));
    }
 
    @Override
    public boolean b() {
-      if (this.k > 0) {
-         this.k--;
-         return false;
-      } else {
-         this.b = a(this.a).a(this.d.a(this.a.h(bxo.E)), this.a);
-         return this.b != null;
-      }
-   }
+      fbm $$0 = this.a.cR().c(10.0, 8.0, 10.0);
+      arx $$1 = a(this.a);
+      List<? extends bvx> $$2 = $$1.a(cpa.class, this.c, this.a, $$0);
+      List<cpo> $$3 = $$1.a(this.c, this.a, $$0);
 
-   private boolean a(bwg $$0) {
-      return this.m.test($$0.eZ()) || this.m.test($$0.fa());
-   }
+      for (bvx $$4 : $$2) {
+         cpa $$5 = (cpa)$$4;
 
-   @Override
-   public boolean c() {
-      if (this.h()) {
-         if (this.a.g(this.b) < 36.0) {
-            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
-               return false;
+         for (cpo $$6 : $$3) {
+            int $$7 = $$5.g($$6);
+            if ($$7 <= -100) {
+               this.b = $$6;
             }
-
-            if (Math.abs((double)this.b.dO() - this.i) > 5.0 || Math.abs((double)this.b.dM() - this.j) > 5.0) {
-               return false;
-            }
-         } else {
-            this.f = this.b.dB();
-            this.g = this.b.dD();
-            this.h = this.b.dH();
          }
-
-         this.i = (double)this.b.dO();
-         this.j = (double)this.b.dM();
       }
 
-      return this.b();
-   }
-
-   protected boolean h() {
-      return this.n;
+      return this.b == null ? false : !(this.b instanceof cpo) || !this.b.aa_() && !((cpo)this.b).b();
    }
 
    @Override
    public void d() {
-      this.f = this.b.dB();
-      this.g = this.b.dD();
-      this.h = this.b.dH();
-      this.l = true;
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
-      this.a.L().o();
-      this.k = b(100);
-      this.l = false;
-   }
-
-   @Override
-   public void a() {
-      this.a.H().a(this.b, (float)(this.a.aa() + 20), (float)this.a.Z());
-      if (this.a.g(this.b) < 6.25) {
-         this.a.L().o();
-      } else {
-         this.a.L().a(this.b, this.e);
-      }
-   }
-
-   public boolean i() {
-      return this.l;
+      this.a.h(this.b);
+      super.d();
    }
 }

@@ -1,12 +1,29 @@
-public record agq(xv b) implements aac<acr> {
-   public static final zt<xg, agq> a = zt.a(xx.d, agq::b, agq::new);
+public record agq(float b, boolean c) implements zr<acg> {
+   public static final zi<wh, agq> a = zr.a(agq::a, agq::new);
 
-   @Override
-   public aae<agq> a() {
-      return ahk.aT;
+   private agq(wh $$0) {
+      this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public void a(acr $$0) {
+   public static agq a(btj $$0) {
+      return new agq($$0.f(), $$0.l());
+   }
+
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zt<agq> a() {
+      return agz.cn;
+   }
+
+   public void a(acg $$0) {
       $$0.a(this);
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

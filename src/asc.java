@@ -1,61 +1,60 @@
-public abstract class asc extends etj {
-   protected asc(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import java.util.Objects;
+
+public final class asc<T> implements Comparable<asc<?>> {
+   private final asd<T> a;
+   private final int b;
+   private final T c;
+   private long d;
+
+   protected asc(asd<T> $$0, int $$1, T $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  long $$6 = kj.a($$0, $$3, $$4, $$5);
-                  if ($$6 != $$0) {
-                     this.b($$0, $$6, $$1, $$2);
-                  }
-               }
-            }
-         }
+   public int a(asc<?> $$0) {
+      int $$1 = Integer.compare(this.b, $$0.b);
+      if ($$1 != 0) {
+         return $$1;
+      } else {
+         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
+         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
       }
    }
 
    @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               long $$7 = kj.a($$0, $$4, $$5, $$6);
-               if ($$7 == $$0) {
-                  $$7 = Long.MAX_VALUE;
-               }
-
-               if ($$7 != $$1) {
-                  int $$8 = this.b($$7, $$0, this.c($$7));
-                  if ($$3 > $$8) {
-                     $$3 = $$8;
-                  }
-
-                  if ($$3 == 0) {
-                     return $$3;
-                  }
-               }
-            }
-         }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof asc<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
       }
-
-      return $$3;
    }
 
    @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return this.a($$0) ? this.b($$1) : $$2 + 1;
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c);
    }
 
-   protected abstract int b(long var1);
+   @Override
+   public String toString() {
+      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   }
 
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
+   public asd<T> a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   protected void a(long $$0) {
+      this.d = $$0;
+   }
+
+   protected boolean b(long $$0) {
+      long $$1 = this.a.b();
+      return $$1 != 0L && $$0 - this.d > $$1;
    }
 }

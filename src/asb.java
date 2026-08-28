@@ -1,52 +1,40 @@
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import org.jetbrains.annotations.Nullable;
 
-public class asb {
-   @Nullable
-   protected static jh a(ash $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.G_().h();
-      eaa $$4 = $$0.d(kj.a($$1), kj.a($$2));
-      int $$5 = $$3 ? $$0.m().g().a($$0) : $$4.a(edq.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.L_()) {
-         return null;
-      } else {
-         int $$6 = $$4.a(edq.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(edq.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
-         } else {
-            jh.a $$7 = new jh.a();
+public class asb extends are {
+   private final LongSet c = new LongOpenHashSet();
+   private final int d;
+   private final String e;
 
-            for (int $$8 = $$5 + 1; $$8 >= $$0.L_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               dxv $$9 = $$0.a_($$7);
-               if (!$$9.y().c()) {
-                  break;
-               }
+   public asb(brv<Runnable> $$0, Executor $$1, int $$2) {
+      super($$0, $$1);
+      this.d = $$2;
+      this.e = $$0.A_();
+   }
 
-               if (dkm.a($$9.g($$0, $$7), jm.b)) {
-                  return $$7.d().j();
-               }
-            }
-
-            return null;
-         }
-      }
+   @Override
+   protected void a(long $$0) {
+      this.c.remove($$0);
    }
 
    @Nullable
-   public static jh a(ash $$0, dgo $$1) {
-      if (ab.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               jh $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
-               }
-            }
-         }
+   @Override
+   protected arf.a c() {
+      return this.c.size() < this.d ? super.c() : null;
+   }
 
-         return null;
-      }
+   @Override
+   protected void a(arf.a $$0) {
+      this.c.add($$0.a());
+      super.a($$0);
+   }
+
+   @VisibleForTesting
+   public String d() {
+      return this.e + "=[" + this.c.stream().map($$0 -> $$0 + ":" + new dgf($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
    }
 }

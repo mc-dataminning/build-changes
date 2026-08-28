@@ -1,33 +1,47 @@
-import java.util.function.IntSupplier;
+import com.mojang.logging.LogUtils;
+import java.io.File;
 import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bpm {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private bpq c = bpp.a;
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bpg f = bpf.a;
 
-   public bpm(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bpm(LongSupplier $$0, String $$1, long $$2) {
+      this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
    }
 
-   public boolean a() {
-      return this.c != bpp.a;
+   public bpj a() {
+      this.f = new bpb(this.b, () -> this.d, false);
+      this.d++;
+      return this.f;
    }
 
    public void b() {
-      this.c = bpp.a;
+      if (this.f != bpf.a) {
+         bph $$0 = this.f.d();
+         this.f = bpf.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ae.f() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
+      }
    }
 
-   public void c() {
-      this.c = new bpl(this.a, this.b, true);
+   @Nullable
+   public static bpm a(String $$0) {
+      return null;
    }
 
-   public bpt d() {
-      return this.c;
-   }
-
-   public bpr e() {
-      return this.c.d();
+   public static bpj a(bpj $$0, @Nullable bpm $$1) {
+      return $$1 != null ? bpj.a($$1.a(), $$0) : $$0;
    }
 }

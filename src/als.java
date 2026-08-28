@@ -1,33 +1,80 @@
+import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class als {
-   private final String a;
+public class als extends IOException {
+   private final List<als.a> a = Lists.newArrayList();
    private final String b;
 
-   public als(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public als(String $$0) {
+      this.a.add(new als.a());
+      this.b = $$0;
    }
 
-   public static als a(String $$0) {
-      return new als($$0, ".json");
+   public als(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new als.a());
+      this.b = $$0;
    }
 
-   public alz a(alz $$0) {
-      return $$0.e(this.a + "/" + $$0.a() + this.b);
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
    }
 
-   public alz b(alz $$0) {
-      String $$1 = $$0.a();
-      return $$0.e($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new als.a());
    }
 
-   public Map<alz, avt> a(avv $$0) {
-      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   @Override
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
    }
 
-   public Map<alz, List<avt>> b(avv $$0) {
-      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   public static als a(Exception $$0) {
+      if ($$0 instanceof als) {
+         return (als)$$0;
+      } else {
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
+         }
+
+         return new als($$1, $$0);
+      }
+   }
+
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
+
+      a() {
+      }
+
+      void a(String $$0) {
+         this.b.add(0, $$0);
+      }
+
+      @Nullable
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return StringUtils.join(this.b, "->");
+      }
+
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+         } else {
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+         }
+      }
    }
 }

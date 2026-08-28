@@ -1,19 +1,43 @@
-import java.util.UUID;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface ech<T extends eby> {
+public class ech<T extends ecm> {
+   private final T a;
    @Nullable
-   T a(int var1);
+   private kj b;
 
-   @Nullable
-   T a(UUID var1);
+   public ech(T $$0) {
+      this.a = $$0;
+   }
 
-   Iterable<T> a();
+   public void a(arx $$0) {
+      this.c($$0);
+   }
 
-   <U extends T> void a(ecf<T, U> var1, ayq<U> var2);
+   public T a() {
+      return this.a;
+   }
 
-   void a(fbt var1, Consumer<T> var2);
+   public void b(arx $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   }
 
-   <U extends T> void a(ecf<T, U> var1, fbt var2, ayq<U> var3);
+   public void c(arx $$0) {
+      this.a.a().a($$0).map(kj::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
+   }
+
+   private static void a(dhc $$0, @Nullable kj $$1, Consumer<ecn> $$2) {
+      if ($$1 != null) {
+         dzj $$3 = $$0.a($$1.a(), $$1.c(), eak.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
+      }
+   }
 }

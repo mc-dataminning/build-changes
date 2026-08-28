@@ -1,788 +1,425 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public abstract class glv extends glu {
-   private static final int bb = 1048576;
-   public static final int aV = 4194304;
-   public static final int aW = 786432;
-   public static final int aX = 1536;
-   private static final glv bc = a("solid", fgq.b, fgx.c.h, 4194304, true, false, glv.b.a().a(au).a(t).a(ao).a(true));
-   private static final glv bd = a("cutout_mipped", fgq.b, fgx.c.h, 4194304, true, false, glv.b.a().a(au).a(u).a(ao).a(true));
-   private static final glv be = a("cutout", fgq.b, fgx.c.h, 786432, true, false, glv.b.a().a(au).a(v).a(ap).a(true));
-   private static final glv bf = a("translucent", fgq.b, fgx.c.h, 786432, true, true, a(w));
-   private static final glv bg = a("translucent_moving_block", fgq.b, fgx.c.h, 786432, false, true, V());
-   private static final Function<alz, glv> bh = ae.b($$0 -> a("armor_cutout_no_cull", $$0, false));
-   private static final Function<alz, glv> bi = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(z).a(new glu.n($$0, bbi.b, false)).a(h).a(az).a(au).a(aw).a(aJ).a(true);
-      return a("armor_translucent", fgq.c, fgx.c.h, 1536, true, true, $$1);
-   });
-   private static final Function<alz, glv> bj = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(A).a(new glu.n($$0, bbi.b, false)).a(c).a(au).a(aw).a(true);
-      return a("entity_solid", fgq.c, fgx.c.h, 1536, true, false, $$1);
-   });
-   private static final Function<alz, glv> bk = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(A).a(new glu.n($$0, bbi.b, false)).a(c).a(au).a(aw).a(aK).a(true);
-      return a("entity_solid_z_offset_forward", fgq.c, fgx.c.h, 1536, true, false, $$1);
-   });
-   private static final Function<alz, glv> bl = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(B).a(new glu.n($$0, bbi.b, false)).a(c).a(au).a(aw).a(true);
-      return a("entity_cutout", fgq.c, fgx.c.h, 1536, true, false, $$1);
-   });
-   private static final BiFunction<alz, Boolean, glv> bm = ae.a(($$0, $$1) -> {
-      glv.b $$2 = glv.b.a().a(C).a(new glu.n($$0, bbi.b, false)).a(c).a(az).a(au).a(aw).a($$1);
-      return a("entity_cutout_no_cull", fgq.c, fgx.c.h, 1536, true, false, $$2);
-   });
-   private static final BiFunction<alz, Boolean, glv> bn = ae.a(($$0, $$1) -> {
-      glv.b $$2 = glv.b.a().a(D).a(new glu.n($$0, bbi.b, false)).a(c).a(az).a(au).a(aw).a(aJ).a($$1);
-      return a("entity_cutout_no_cull_z_offset", fgq.c, fgx.c.h, 1536, true, false, $$2);
-   });
-   private static final Function<alz, glv> bo = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(E).a(new glu.n($$0, bbi.b, false)).a(h).a(aR).a(au).a(aw).a(aE).a(true);
-      return a("item_entity_translucent_cull", fgq.c, fgx.c.h, 1536, true, true, $$1);
-   });
-   private static final BiFunction<alz, Boolean, glv> bp = ae.a(($$0, $$1) -> {
-      glv.b $$2 = glv.b.a().a(F).a(new glu.n($$0, bbi.b, false)).a(h).a(az).a(au).a(aw).a($$1);
-      return a("entity_translucent", fgq.c, fgx.c.h, 1536, true, true, $$2);
-   });
-   private static final BiFunction<alz, Boolean, glv> bq = ae.a(($$0, $$1) -> {
-      glv.b $$2 = glv.b.a().a(G).a(new glu.n($$0, bbi.b, false)).a(h).a(az).a(aF).a(aw).a($$1);
-      return a("entity_translucent_emissive", fgq.c, fgx.c.h, 1536, true, true, $$2);
-   });
-   private static final Function<alz, glv> br = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(H).a(new glu.n($$0, bbi.b, false)).a(az).a(au).a(true);
-      return a("entity_smooth_cutout", fgq.c, fgx.c.h, 1536, $$1);
-   });
-   private static final BiFunction<alz, Boolean, glv> bs = ae.a(($$0, $$1) -> {
-      glv.b $$2 = glv.b.a().a(I).a(new glu.n($$0, bbi.b, false)).a($$1 ? h : c).a($$1 ? aF : aE).a(false);
-      return a("beacon_beam", fgq.b, fgx.c.h, 1536, false, true, $$2);
-   });
-   private static final Function<alz, glv> bt = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(J).a(new glu.n($$0, bbi.b, false)).a(aB).a(az).a(au).a(aw).a(false);
-      return a("entity_decal", fgq.c, fgx.c.h, 1536, $$1);
-   });
-   private static final Function<alz, glv> bu = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(K).a(new glu.n($$0, bbi.b, false)).a(h).a(az).a(au).a(aw).a(aF).a(false);
-      return a("entity_no_outline", fgq.c, fgx.c.h, 1536, false, true, $$1);
-   });
-   private static final Function<alz, glv> bv = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(L).a(new glu.n($$0, bbi.b, false)).a(h).a(ay).a(au).a(aw).a(aF).a(aC).a(aJ).a(false);
-      return a("entity_shadow", fgq.c, fgx.c.h, 1536, false, false, $$1);
-   });
-   private static final Function<alz, glv> bw = ae.b($$0 -> {
-      glv.b $$1 = glv.b.a().a(M).a(new glu.n($$0, bbi.b, false)).a(az).a(true);
-      return a("entity_alpha", fgq.c, fgx.c.h, 1536, $$1);
-   });
-   private static final BiFunction<alz, glu.p, glv> bx = ae.a(($$0, $$1) -> {
-      glu.n $$2 = new glu.n($$0, bbi.b, false);
-      return a("eyes", fgq.c, fgx.c.h, 1536, false, true, glv.b.a().a(N).a($$2).a($$1).a(aF).a(false));
-   });
-   private static final glv by = a("leash", fgq.h, fgx.c.f, 1536, glv.b.a().a(P).a(aq).a(az).a(au).a(false));
-   private static final glv bz = a("water_mask", fgq.e, fgx.c.h, 1536, glv.b.a().a(Q).a(aq).a(aG).a(false));
-   private static final glv bA = a(
-      "armor_entity_glint", fgq.i, fgx.c.h, 1536, glv.b.a().a(S).a(new glu.n(gso.a, bbi.c, false)).a(aF).a(az).a(aB).a(f).a(at).a(aJ).a(false)
-   );
-   private static final glv bB = a(
-      "glint_translucent", fgq.i, fgx.c.h, 1536, glv.b.a().a(T).a(new glu.n(gso.b, bbi.c, false)).a(aF).a(az).a(aB).a(f).a(as).a(aR).a(false)
-   );
-   private static final glv bC = a("glint", fgq.i, fgx.c.h, 1536, glv.b.a().a(U).a(new glu.n(gso.b, bbi.c, false)).a(aF).a(az).a(aB).a(f).a(as).a(false));
-   private static final glv bD = a("entity_glint", fgq.i, fgx.c.h, 1536, glv.b.a().a(V).a(new glu.n(gso.a, bbi.c, false)).a(aF).a(az).a(aB).a(f).a(at).a(false));
-   private static final Function<alz, glv> bE = ae.b($$0 -> {
-      glu.n $$1 = new glu.n($$0, bbi.b, false);
-      return a("crumbling", fgq.b, fgx.c.h, 1536, false, true, glv.b.a().a(W).a($$1).a(g).a(aF).a(aI).a(false));
-   });
-   private static final Function<alz, glv> bF = ae.b(
-      $$0 -> a("text", fgq.k, fgx.c.h, 786432, false, false, glv.b.a().a(X).a(new glu.n($$0, bbi.b, false)).a(h).a(au).a(false))
-   );
-   private static final glv bG = a("text_background", fgq.h, fgx.c.h, 1536, false, true, glv.b.a().a(Y).a(aq).a(h).a(au).a(false));
-   private static final Function<alz, glv> bH = ae.b(
-      $$0 -> a("text_intensity", fgq.k, fgx.c.h, 786432, false, false, glv.b.a().a(Z).a(new glu.n($$0, bbi.b, false)).a(h).a(au).a(false))
-   );
-   private static final Function<alz, glv> bI = ae.b(
-      $$0 -> a("text_polygon_offset", fgq.k, fgx.c.h, 1536, false, true, glv.b.a().a(X).a(new glu.n($$0, bbi.b, false)).a(h).a(au).a(aI).a(false))
-   );
-   private static final Function<alz, glv> bJ = ae.b(
-      $$0 -> a("text_intensity_polygon_offset", fgq.k, fgx.c.h, 1536, false, true, glv.b.a().a(Z).a(new glu.n($$0, bbi.b, false)).a(h).a(au).a(aI).a(false))
-   );
-   private static final Function<alz, glv> bK = ae.b(
-      $$0 -> a("text_see_through", fgq.k, fgx.c.h, 1536, false, false, glv.b.a().a(aa).a(new glu.n($$0, bbi.b, false)).a(h).a(au).a(aA).a(aF).a(false))
-   );
-   private static final glv bL = a("text_background_see_through", fgq.h, fgx.c.h, 1536, false, true, glv.b.a().a(ab).a(aq).a(h).a(au).a(aA).a(aF).a(false));
-   private static final Function<alz, glv> bM = ae.b(
-      $$0 -> a("text_intensity_see_through", fgq.k, fgx.c.h, 1536, false, true, glv.b.a().a(ac).a(new glu.n($$0, bbi.b, false)).a(h).a(au).a(aA).a(aF).a(false))
-   );
-   private static final glv bN = a("lightning", fgq.f, fgx.c.h, 1536, false, true, glv.b.a().a(ad).a(aE).a(e).a(aP).a(false));
-   private static final glv bO = a("dragon_rays", fgq.f, fgx.c.e, 1536, false, false, glv.b.a().a(ad).a(aF).a(e).a(false));
-   private static final glv bP = a("dragon_rays_depth", fgq.e, fgx.c.e, 1536, false, false, glv.b.a().a(o).a(aG).a(false));
-   private static final glv bQ = a("tripwire", fgq.b, fgx.c.h, 1536, true, true, W());
-   private static final glv bR = a(
-      "end_portal", fgq.e, fgx.c.h, 1536, false, false, glv.b.a().a(af).a(glu.i.d().a(gop.a, false, false).a(gop.b, false, false).a()).a(false)
-   );
-   private static final glv bS = a(
-      "end_gateway", fgq.e, fgx.c.h, 1536, false, false, glv.b.a().a(ag).a(glu.i.d().a(gop.a, false, false).a(gop.b, false, false).a()).a(false)
-   );
-   private static final glv bT = a(false, false);
-   private static final glv bU = a(false, true);
-   private static final glv bV = a(true, true);
-   public static final glv.a aY = a("lines", fgq.g, fgx.c.a, 1536, glv.b.a().a(ai).a(new glu.h(OptionalDouble.empty())).a(aJ).a(h).a(aR).a(aE).a(az).a(false));
-   public static final glv.a aZ = a(
-      "secondary_block_outline", fgq.g, fgx.c.a, 1536, glv.b.a().a(ai).a(new glu.h(OptionalDouble.of(7.0))).a(aJ).a(glu.h).a(aR).a(aF).a(az).a(false)
-   );
-   public static final glv.a ba = a(
-      "line_strip", fgq.g, fgx.c.b, 1536, glv.b.a().a(ai).a(new glu.h(OptionalDouble.empty())).a(aJ).a(h).a(aR).a(aE).a(az).a(false)
-   );
-   private static final Function<Double, glv.a> bW = ae.b(
-      $$0 -> a("debug_line_strip", fgq.f, fgx.c.d, 1536, glv.b.a().a(r).a(new glu.h(OptionalDouble.of($$0))).a(c).a(az).a(false))
-   );
-   private static final glv.a bX = a("debug_filled_box", fgq.f, fgx.c.f, 1536, false, true, glv.b.a().a(r).a(aJ).a(h).a(false));
-   private static final glv.a bY = a("debug_quads", fgq.f, fgx.c.h, 1536, false, true, glv.b.a().a(r).a(h).a(az).a(false));
-   private static final glv.a bZ = a("debug_triangle_fan", fgq.f, fgx.c.g, 1536, false, true, glv.b.a().a(r).a(h).a(az).a(false));
-   private static final glv.a ca = a("debug_structure_quads", fgq.f, fgx.c.h, 1536, false, true, glv.b.a().a(r).a(h).a(az).a(aC).a(aF).a(false));
-   private static final glv.a cb = a("debug_section_quads", fgq.f, fgx.c.h, 1536, false, true, glv.b.a().a(r).a(aJ).a(h).a(ay).a(false));
-   private static final glv.a cc = a("gui", fgq.f, fgx.c.h, 786432, glv.b.a().a(aj).a(h).a(aC).a(false));
-   private static final glv.a cd = a("gui_overlay", fgq.f, fgx.c.h, 1536, glv.b.a().a(ak).a(h).a(aA).a(aF).a(false));
-   private static final Function<alz, glv> ce = ae.b(
-      $$0 -> a("gui_textured_overlay", fgq.j, fgx.c.h, 1536, glv.b.a().a(new glu.n($$0, bbi.c, false)).a(s).a(h).a(aA).a(aF).a(false))
-   );
-   private static final Function<alz, glv> cf = ae.b(
-      $$0 -> a("gui_opaque_textured_background", fgq.j, fgx.c.h, 786432, glv.b.a().a(new glu.n($$0, bbi.b, false)).a(s).a(c).a(aC).a(false))
-   );
-   private static final glv.a cg = a("gui_nausea_overlay", fgq.j, fgx.c.h, 1536, glv.b.a().a(new glu.n(fnr.a, bbi.c, false)).a(s).a(l).a(aA).a(aF).a(false));
-   private static final glv.a ch = a("gui_text_highlight", fgq.f, fgx.c.h, 1536, glv.b.a().a(al).a(h).a(aA).a(aU).a(false));
-   private static final glv.a ci = a("gui_ghost_recipe_overlay", fgq.f, fgx.c.h, 1536, glv.b.a().a(am).a(h).a(aD).a(aF).a(false));
-   private static final Function<alz, glv> cj = ae.b(
-      $$0 -> a("gui_textured", fgq.j, fgx.c.h, 786432, glv.b.a().a(new glu.n($$0, bbi.b, false)).a(s).a(h).a(aC).a(false))
-   );
-   private static final Function<alz, glv> ck = ae.b(
-      $$0 -> a("vignette", fgq.j, fgx.c.h, 786432, glv.b.a().a(new glu.n($$0, bbi.c, false)).a(s).a(i).a(aA).a(aF).a(false))
-   );
-   private static final Function<alz, glv> cl = ae.b(
-      $$0 -> a("crosshair", fgq.j, fgx.c.h, 786432, glv.b.a().a(new glu.n($$0, bbi.b, false)).a(s).a(j).a(false))
-   );
-   private static final glv.a cm = a("mojang_logo", fgq.j, fgx.c.h, 786432, glv.b.a().a(new glu.n(fto.a, bbi.c, false)).a(s).a(k).a(aA).a(aF).a(false));
-   private static final ImmutableList<glv> cn = ImmutableList.of(c(), d(), e(), f(), s());
-   private final fgx co;
-   private final fgx.c cp;
-   private final int cq;
-   private final boolean cr;
-   private final boolean cs;
-
-   public static glv c() {
-      return bc;
-   }
-
-   public static glv d() {
-      return bd;
-   }
-
-   public static glv e() {
-      return be;
-   }
-
-   private static glv.b a(glu.m $$0) {
-      return glv.b.a().a(au).a($$0).a(ao).a(h).a(aN).a(true);
-   }
-
-   public static glv f() {
-      return bf;
-   }
-
-   private static glv.b V() {
-      return glv.b.a().a(au).a(x).a(ao).a(h).a(aR).a(true);
-   }
-
-   public static glv g() {
-      return bg;
-   }
-
-   private static glv.a a(String $$0, alz $$1, boolean $$2) {
-      glv.b $$3 = glv.b.a().a(y).a(new glu.n($$1, bbi.b, false)).a(c).a(az).a(au).a(aw).a(aJ).a($$2 ? aB : aC).a(true);
-      return a($$0, fgq.c, fgx.c.h, 1536, true, false, $$3);
-   }
-
-   public static glv a(alz $$0) {
-      return bh.apply($$0);
-   }
-
-   public static glv b(alz $$0) {
-      return a("armor_decal_cutout_no_cull", $$0, true);
-   }
-
-   public static glv c(alz $$0) {
-      return bi.apply($$0);
-   }
-
-   public static glv d(alz $$0) {
-      return bj.apply($$0);
-   }
-
-   public static glv e(alz $$0) {
-      return bk.apply($$0);
-   }
-
-   public static glv f(alz $$0) {
-      return bl.apply($$0);
-   }
-
-   public static glv a(alz $$0, boolean $$1) {
-      return bm.apply($$0, $$1);
-   }
-
-   public static glv g(alz $$0) {
-      return a($$0, true);
-   }
-
-   public static glv b(alz $$0, boolean $$1) {
-      return bn.apply($$0, $$1);
-   }
-
-   public static glv h(alz $$0) {
-      return b($$0, true);
-   }
-
-   public static glv i(alz $$0) {
-      return bo.apply($$0);
-   }
-
-   public static glv c(alz $$0, boolean $$1) {
-      return bp.apply($$0, $$1);
-   }
-
-   public static glv j(alz $$0) {
-      return c($$0, true);
-   }
-
-   public static glv d(alz $$0, boolean $$1) {
-      return bq.apply($$0, $$1);
-   }
-
-   public static glv k(alz $$0) {
-      return d($$0, true);
-   }
-
-   public static glv l(alz $$0) {
-      return br.apply($$0);
-   }
-
-   public static glv e(alz $$0, boolean $$1) {
-      return bs.apply($$0, $$1);
-   }
-
-   public static glv m(alz $$0) {
-      return bt.apply($$0);
-   }
-
-   public static glv n(alz $$0) {
-      return bu.apply($$0);
-   }
-
-   public static glv o(alz $$0) {
-      return bv.apply($$0);
-   }
-
-   public static glv p(alz $$0) {
-      return bw.apply($$0);
-   }
-
-   public static glv q(alz $$0) {
-      return bx.apply($$0, h);
-   }
-
-   public static glv r(alz $$0) {
-      return bq.apply($$0, false);
-   }
-
-   public static glv a(alz $$0, float $$1, float $$2) {
-      return a(
-         "breeze_wind",
-         fgq.c,
-         fgx.c.h,
-         1536,
-         false,
-         true,
-         glv.b.a().a(an).a(new glu.n($$0, bbi.b, false)).a(new glu.j($$1, $$2)).a(h).a(az).a(au).a(ax).a(false)
-      );
-   }
-
-   public static glv b(alz $$0, float $$1, float $$2) {
-      return a(
-         "energy_swirl",
-         fgq.c,
-         fgx.c.h,
-         1536,
-         false,
-         true,
-         glv.b.a().a(O).a(new glu.n($$0, bbi.b, false)).a(new glu.j($$1, $$2)).a(d).a(az).a(au).a(aw).a(false)
-      );
-   }
-
-   public static glv h() {
-      return by;
-   }
-
-   public static glv i() {
-      return bz;
-   }
-
-   public static glv s(alz $$0) {
-      return glv.a.bb.apply($$0, az);
-   }
-
-   public static glv j() {
-      return bA;
-   }
-
-   public static glv k() {
-      return bB;
-   }
-
-   public static glv l() {
-      return bC;
-   }
-
-   public static glv m() {
-      return bD;
-   }
-
-   public static glv t(alz $$0) {
-      return bE.apply($$0);
-   }
-
-   public static glv u(alz $$0) {
-      return bF.apply($$0);
-   }
-
-   public static glv n() {
-      return bG;
-   }
-
-   public static glv v(alz $$0) {
-      return bH.apply($$0);
-   }
-
-   public static glv w(alz $$0) {
-      return bI.apply($$0);
-   }
-
-   public static glv x(alz $$0) {
-      return bJ.apply($$0);
-   }
-
-   public static glv y(alz $$0) {
-      return bK.apply($$0);
-   }
-
-   public static glv o() {
-      return bL;
-   }
-
-   public static glv z(alz $$0) {
-      return bM.apply($$0);
-   }
-
-   public static glv p() {
-      return bN;
-   }
-
-   public static glv q() {
-      return bO;
-   }
-
-   public static glv r() {
-      return bP;
-   }
-
-   private static glv.b W() {
-      return glv.b.a().a(au).a(ae).a(ao).a(h).a(aP).a(true);
-   }
-
-   public static glv s() {
-      return bQ;
-   }
-
-   public static glv t() {
-      return bR;
-   }
-
-   public static glv u() {
-      return bS;
-   }
-
-   private static glv.a a(boolean $$0, boolean $$1) {
-      return a("clouds", fgq.f, fgx.c.h, 786432, false, false, glv.b.a().a(ah).a(h).a($$1 ? ay : az).a($$0 ? aG : aE).a(aQ).a(true));
-   }
-
-   public static glv v() {
-      return bT;
-   }
-
-   public static glv w() {
-      return bU;
-   }
-
-   public static glv x() {
-      return bV;
-   }
-
-   public static glv y() {
-      return aY;
-   }
-
-   public static glv z() {
-      return aZ;
-   }
-
-   public static glv A() {
-      return ba;
-   }
-
-   public static glv a(double $$0) {
-      return bW.apply($$0);
-   }
-
-   public static glv B() {
-      return bX;
-   }
-
-   public static glv C() {
-      return bY;
-   }
-
-   public static glv D() {
-      return bZ;
-   }
-
-   public static glv E() {
-      return ca;
-   }
-
-   public static glv F() {
-      return cb;
-   }
-
-   public static glv G() {
-      return cc;
-   }
-
-   public static glv H() {
-      return cd;
-   }
-
-   public static glv A(alz $$0) {
-      return ce.apply($$0);
-   }
-
-   public static glv B(alz $$0) {
-      return cf.apply($$0);
-   }
-
-   public static glv I() {
-      return cg;
-   }
-
-   public static glv J() {
-      return ch;
-   }
-
-   public static glv K() {
-      return ci;
-   }
-
-   public static glv C(alz $$0) {
-      return cj.apply($$0);
-   }
-
-   public static glv D(alz $$0) {
-      return ck.apply($$0);
-   }
-
-   public static glv E(alz $$0) {
-      return cl.apply($$0);
-   }
-
-   public static glv L() {
-      return cm;
-   }
-
-   public glv(String $$0, fgx $$1, fgx.c $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
-      super($$0, $$6, $$7);
-      this.co = $$1;
-      this.cp = $$2;
-      this.cq = $$3;
-      this.cr = $$4;
-      this.cs = $$5;
-   }
-
-   static glv.a a(String $$0, fgx $$1, fgx.c $$2, int $$3, glv.b $$4) {
-      return a($$0, $$1, $$2, $$3, false, false, $$4);
-   }
-
-   private static glv.a a(String $$0, fgx $$1, fgx.c $$2, int $$3, boolean $$4, boolean $$5, glv.b $$6) {
-      return new glv.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(fgr $$0) {
-      this.a();
-      fgo.a($$0);
-      this.b();
-   }
-
-   @Override
-   public String toString() {
-      return this.b;
-   }
-
-   public static List<glv> M() {
-      return cn;
-   }
-
-   public int N() {
-      return this.cq;
-   }
-
-   public fgx O() {
-      return this.co;
-   }
-
-   public fgx.c P() {
-      return this.cp;
-   }
-
-   public Optional<glv> Q() {
-      return Optional.empty();
-   }
-
-   public boolean R() {
-      return false;
-   }
-
-   public boolean S() {
-      return this.cr;
-   }
-
-   public boolean T() {
-      return !this.cp.l;
-   }
-
-   public boolean U() {
-      return this.cs;
-   }
-
-   static final class a extends glv {
-      static final BiFunction<alz, glu.c, glv> bb = ae.a(
-         ($$0, $$1) -> glv.a("outline", fgq.j, fgx.c.h, 1536, glv.b.a().a(R).a(new glu.n($$0, bbi.b, false)).a($$1).a(aA).a(aM).a(glv.c.b))
-      );
-      private final glv.b bc;
-      private final Optional<glv> bd;
-      private final boolean be;
-
-      a(String $$0, fgx $$1, fgx.c $$2, int $$3, boolean $$4, boolean $$5, glv.b $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(glu::a), () -> $$6.o.forEach(glu::b));
-         this.bc = $$6;
-         this.bd = $$6.n == glv.c.c ? $$6.a.c().map($$1x -> bb.apply($$1x, $$6.e)) : Optional.empty();
-         this.be = $$6.n == glv.c.b;
+import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class glv {
+   private static final Logger a = LogUtils.getLogger();
+   private static final jm[] b = jm.values();
+   private static final int c = 60;
+   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
+   private boolean e = true;
+   @Nullable
+   private Future<?> f;
+   @Nullable
+   private gme g;
+   private final AtomicReference<glv.b> h = new AtomicReference<>();
+   private final AtomicReference<glv.a> i = new AtomicReference<>();
+   private final AtomicBoolean j = new AtomicBoolean(false);
+
+   public void a(@Nullable gme $$0) {
+      if (this.f != null) {
+         try {
+            this.f.get();
+            this.f = null;
+         } catch (Exception var3) {
+            a.warn("Full update failed", var3);
+         }
       }
 
-      @Override
-      public Optional<glv> Q() {
-         return this.bd;
-      }
-
-      @Override
-      public boolean R() {
-         return this.be;
-      }
-
-      protected final glv.b V() {
-         return this.bc;
-      }
-
-      @Override
-      public String toString() {
-         return "RenderType[" + this.b + ":" + this.bc + "]";
+      this.g = $$0;
+      if ($$0 != null) {
+         this.h.set(new glv.b($$0));
+         this.a();
+      } else {
+         this.h.set(null);
       }
    }
 
-   protected static final class b {
-      final glu.e a;
-      private final glu.m b;
-      private final glu.p c;
-      private final glu.d d;
-      final glu.c e;
-      private final glu.g f;
-      private final glu.l g;
-      private final glu.f h;
-      private final glu.k i;
-      private final glu.o j;
-      private final glu.q k;
-      private final glu.h l;
-      private final glu.b m;
-      final glv.c n;
-      final ImmutableList<glu> o;
+   public void a() {
+      this.e = true;
+   }
 
-      b(
-         glu.e $$0,
-         glu.m $$1,
-         glu.p $$2,
-         glu.d $$3,
-         glu.c $$4,
-         glu.g $$5,
-         glu.l $$6,
-         glu.f $$7,
-         glu.k $$8,
-         glu.o $$9,
-         glu.q $$10,
-         glu.h $$11,
-         glu.b $$12,
-         glv.c $$13
-      ) {
+   public void a(gox $$0, List<got.b> $$1, List<got.b> $$2) {
+      this.h.get().a().b.a(($$2x, $$3, $$4, $$5) -> {
+         got.b $$6 = $$2x.a();
+         if ($$6 != null) {
+            $$1.add($$6);
+            if ($$5) {
+               $$2.add($$6);
+            }
+         }
+      }, $$0, 32);
+   }
+
+   public boolean b() {
+      return this.j.compareAndSet(true, false);
+   }
+
+   public void a(dgf $$0) {
+      glv.a $$1 = this.i.get();
+      if ($$1 != null) {
+         this.a($$1, $$0);
+      }
+
+      glv.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         this.a($$2, $$0);
+      }
+   }
+
+   public void a(got.b $$0) {
+      glv.a $$1 = this.i.get();
+      if ($$1 != null) {
+         $$1.b.add($$0);
+      }
+
+      glv.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         $$2.b.add($$0);
+      }
+   }
+
+   public void a(boolean $$0, fli $$1, gox $$2, List<got.b> $$3, LongOpenHashSet $$4) {
+      fbr $$5 = $$1.b();
+      if (this.e && (this.f == null || this.f.isDone())) {
+         this.a($$0, $$1, $$5, $$4);
+      }
+
+      this.a($$0, $$2, $$3, $$5, $$4);
+   }
+
+   private void a(boolean $$0, fli $$1, fbr $$2, LongOpenHashSet $$3) {
+      this.e = false;
+      LongOpenHashSet $$4 = $$3.clone();
+      this.f = CompletableFuture.runAsync(() -> {
+         glv.b $$4x = new glv.b(this.g);
+         this.i.set($$4x.b);
+         Queue<glv.d> $$5 = Queues.newArrayDeque();
+         this.a($$1, $$5);
+         $$5.forEach($$1xx -> $$4x.a.a.a($$1xx.a, $$1xx));
+         this.a($$4x.a, $$2, $$5, $$0, $$0xx -> {
+         }, $$4);
+         this.h.set($$4x);
+         this.i.set(null);
+         this.j.set(true);
+      }, ae.g());
+   }
+
+   private void a(boolean $$0, gox $$1, List<got.b> $$2, fbr $$3, LongOpenHashSet $$4) {
+      glv.b $$5 = this.h.get();
+      this.a($$5);
+      if (!$$5.b.b.isEmpty()) {
+         Queue<glv.d> $$6 = Queues.newArrayDeque();
+
+         while (!$$5.b.b.isEmpty()) {
+            got.b $$7 = $$5.b.b.poll();
+            glv.d $$8 = $$5.a.a.a($$7);
+            if ($$8 != null && $$8.a == $$7) {
+               $$6.add($$8);
+            }
+         }
+
+         gox $$9 = glc.a($$1);
+         Consumer<got.b> $$10 = $$1x -> {
+            if ($$9.a($$1x.b())) {
+               this.j.set(true);
+            }
+         };
+         this.a($$5.a, $$3, $$6, $$0, $$10, $$4);
+      }
+   }
+
+   private void a(glv.b $$0) {
+      LongIterator $$1 = $$0.b.a.iterator();
+
+      while ($$1.hasNext()) {
+         long $$2 = $$1.nextLong();
+         List<got.b> $$3 = (List<got.b>)$$0.a.c.get($$2);
+         if ($$3 != null && $$3.get(0).a()) {
+            $$0.b.b.addAll($$3);
+            $$0.a.c.remove($$2);
+         }
+      }
+
+      $$0.b.a.clear();
+   }
+
+   private void a(glv.a $$0, dgf $$1) {
+      $$0.a.add(dgf.c($$1.h - 1, $$1.i));
+      $$0.a.add(dgf.c($$1.h, $$1.i - 1));
+      $$0.a.add(dgf.c($$1.h + 1, $$1.i));
+      $$0.a.add(dgf.c($$1.h, $$1.i + 1));
+      $$0.a.add(dgf.c($$1.h - 1, $$1.i - 1));
+      $$0.a.add(dgf.c($$1.h - 1, $$1.i + 1));
+      $$0.a.add(dgf.c($$1.h + 1, $$1.i - 1));
+      $$0.a.add(dgf.c($$1.h + 1, $$1.i + 1));
+   }
+
+   private void a(fli $$0, Queue<glv.d> $$1) {
+      jh $$2 = $$0.c();
+      long $$3 = kj.c($$2);
+      int $$4 = kj.c($$3);
+      got.b $$5 = this.g.a($$3);
+      if ($$5 == null) {
+         dhb $$6 = this.g.c();
+         boolean $$7 = $$4 < $$6.ap();
+         int $$8 = $$7 ? $$6.ap() : $$6.aq();
+         int $$9 = this.g.b();
+         List<glv.d> $$10 = Lists.newArrayList();
+         int $$11 = kj.b($$3);
+         int $$12 = kj.d($$3);
+
+         for (int $$13 = -$$9; $$13 <= $$9; $$13++) {
+            for (int $$14 = -$$9; $$14 <= $$9; $$14++) {
+               got.b $$15 = this.g.a(kj.b($$13 + $$11, $$8, $$14 + $$12));
+               if ($$15 != null && this.a($$3, $$15.g())) {
+                  jm $$16 = $$7 ? jm.b : jm.a;
+                  glv.d $$17 = new glv.d($$15, $$16, 0);
+                  $$17.a($$17.d, $$16);
+                  if ($$13 > 0) {
+                     $$17.a($$17.d, jm.f);
+                  } else if ($$13 < 0) {
+                     $$17.a($$17.d, jm.e);
+                  }
+
+                  if ($$14 > 0) {
+                     $$17.a($$17.d, jm.d);
+                  } else if ($$14 < 0) {
+                     $$17.a($$17.d, jm.c);
+                  }
+
+                  $$10.add($$17);
+               }
+            }
+         }
+
+         $$10.sort(Comparator.comparingDouble($$1x -> $$2.j($$1x.a.f().b(8, 8, 8))));
+         $$1.addAll($$10);
+      } else {
+         $$1.add(new glv.d($$5, null, 0));
+      }
+   }
+
+   private void a(glv.c $$0, fbr $$1, Queue<glv.d> $$2, boolean $$3, Consumer<got.b> $$4, LongOpenHashSet $$5) {
+      int $$6 = 16;
+      jh $$7 = new jh(azu.a($$1.d / 16.0) * 16, azu.a($$1.e / 16.0) * 16, azu.a($$1.f / 16.0) * 16);
+      long $$8 = kj.c($$7);
+      jh $$9 = $$7.b(8, 8, 8);
+
+      while (!$$2.isEmpty()) {
+         glv.d $$10 = $$2.poll();
+         got.b $$11 = $$10.a;
+         if (!$$5.contains($$10.a.g())) {
+            if ($$0.b.a($$10.a)) {
+               $$4.accept($$10.a);
+            }
+         } else {
+            $$10.a.c.compareAndSet(got.a.a, got.a.b);
+         }
+
+         boolean $$12 = Math.abs($$11.f().u() - $$7.u()) > 60 || Math.abs($$11.f().v() - $$7.v()) > 60 || Math.abs($$11.f().w() - $$7.w()) > 60;
+
+         for (jm $$13 : b) {
+            got.b $$14 = this.a($$8, $$11, $$13);
+            if ($$14 != null && (!$$3 || !$$10.a($$13.g()))) {
+               if ($$3 && $$10.a()) {
+                  got.a $$15 = $$11.d();
+                  boolean $$16 = false;
+
+                  for (int $$17 = 0; $$17 < b.length; $$17++) {
+                     if ($$10.a($$17) && $$15.a(b[$$17].g(), $$13)) {
+                        $$16 = true;
+                        break;
+                     }
+                  }
+
+                  if (!$$16) {
+                     continue;
+                  }
+               }
+
+               if ($$3 && $$12) {
+                  jh $$18 = $$14.f();
+                  jh $$19 = $$18.b(
+                     ($$13.o() == jm.a.a ? $$9.u() <= $$18.u() : $$9.u() >= $$18.u()) ? 0 : 16,
+                     ($$13.o() == jm.a.b ? $$9.v() <= $$18.v() : $$9.v() >= $$18.v()) ? 0 : 16,
+                     ($$13.o() == jm.a.c ? $$9.w() <= $$18.w() : $$9.w() >= $$18.w()) ? 0 : 16
+                  );
+                  fbr $$20 = new fbr((double)$$19.u(), (double)$$19.v(), (double)$$19.w());
+                  fbr $$21 = $$1.d($$20).d().c(d);
+                  boolean $$22 = true;
+
+                  while ($$1.d($$20).h() > 3600.0) {
+                     $$20 = $$20.e($$21);
+                     dhb $$23 = this.g.c();
+                     if ($$20.e > (double)$$23.an() || $$20.e < (double)$$23.L_()) {
+                        break;
+                     }
+
+                     got.b $$24 = this.g.a(jh.a($$20.d, $$20.e, $$20.f));
+                     if ($$24 == null || $$0.a.a($$24) == null) {
+                        $$22 = false;
+                        break;
+                     }
+                  }
+
+                  if (!$$22) {
+                     continue;
+                  }
+               }
+
+               glv.d $$25 = $$0.a.a($$14);
+               if ($$25 != null) {
+                  $$25.b($$13);
+               } else {
+                  glv.d $$26 = new glv.d($$14, $$13, $$10.b + 1);
+                  $$26.a($$10.d, $$13);
+                  if ($$14.a()) {
+                     $$2.add($$26);
+                     $$0.a.a($$14, $$26);
+                  } else if (this.a($$8, $$14.g())) {
+                     $$0.a.a($$14, $$26);
+                     ((List)$$0.c.computeIfAbsent(dgf.a($$14.f()), $$0x -> new ArrayList())).add($$14);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private boolean a(long $$0, long $$1) {
+      return arh.a(kj.b($$0), kj.d($$0), this.g.b(), kj.b($$1), kj.d($$1));
+   }
+
+   @Nullable
+   private got.b a(long $$0, got.b $$1, jm $$2) {
+      long $$3 = $$1.a($$2);
+      if (!this.a($$0, $$3)) {
+         return null;
+      } else {
+         return azu.a(kj.c($$0) - kj.c($$3)) > this.g.b() ? null : this.g.a($$3);
+      }
+   }
+
+   @Nullable
+   @bbb
+   public glv.d b(got.b $$0) {
+      return this.h.get().a.a.a($$0);
+   }
+
+   public glh c() {
+      return this.h.get().a.b;
+   }
+
+   static record a(LongSet a, BlockingQueue<got.b> b) {
+
+      a() {
+         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
+      }
+   }
+
+   static record b(glv.c a, glv.a b) {
+
+      b(gme $$0) {
+         this(new glv.c($$0), new glv.a());
+      }
+   }
+
+   static class c {
+      public final glv.e a;
+      public final glh b;
+      public final Long2ObjectMap<List<got.b>> c;
+
+      public c(gme $$0) {
+         this.a = new glv.e($$0.f.length);
+         this.b = new glh($$0.d(), $$0.b(), $$0.c, $$0.b.L_());
+         this.c = new Long2ObjectOpenHashMap();
+      }
+   }
+
+   @bbb
+   public static class d {
+      @bbb
+      protected final got.b a;
+      private byte c;
+      byte d;
+      @bbb
+      public final int b;
+
+      d(got.b $$0, @Nullable jm $$1, int $$2) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
-         this.j = $$9;
-         this.k = $$10;
-         this.l = $$11;
-         this.m = $$12;
-         this.n = $$13;
-         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new glu[]{this.l});
+         if ($$1 != null) {
+            this.b($$1);
+         }
+
+         this.b = $$2;
+      }
+
+      void a(byte $$0, jm $$1) {
+         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
+      }
+
+      boolean a(jm $$0) {
+         return (this.d & 1 << $$0.ordinal()) > 0;
+      }
+
+      void b(jm $$0) {
+         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
+      }
+
+      @bbb
+      public boolean a(int $$0) {
+         return (this.c & 1 << $$0) > 0;
+      }
+
+      boolean a() {
+         return this.c != 0;
       }
 
       @Override
-      public String toString() {
-         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
+      public int hashCode() {
+         return Long.hashCode(this.a.g());
       }
 
-      public static glv.b.a a() {
-         return new glv.b.a();
-      }
-
-      public static class a {
-         private glu.e a = glu.aq;
-         private glu.m b = glu.m;
-         private glu.p c;
-         private glu.d d;
-         private glu.c e;
-         private glu.g f;
-         private glu.l g;
-         private glu.f h;
-         private glu.k i;
-         private glu.o j;
-         private glu.q k;
-         private glu.h l;
-         private glu.b m;
-
-         a() {
-            this.c = glu.c;
-            this.d = glu.aC;
-            this.e = glu.ay;
-            this.f = glu.av;
-            this.g = glu.ax;
-            this.h = glu.aH;
-            this.i = glu.aL;
-            this.j = glu.ar;
-            this.k = glu.aE;
-            this.l = glu.aS;
-            this.m = glu.aT;
-         }
-
-         public glv.b.a a(glu.e $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.m $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.p $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.d $$0) {
-            this.d = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.c $$0) {
-            this.e = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.g $$0) {
-            this.f = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.l $$0) {
-            this.g = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.f $$0) {
-            this.h = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.k $$0) {
-            this.i = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.o $$0) {
-            this.j = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.q $$0) {
-            this.k = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.h $$0) {
-            this.l = $$0;
-            return this;
-         }
-
-         public glv.b.a a(glu.b $$0) {
-            this.m = $$0;
-            return this;
-         }
-
-         public glv.b a(boolean $$0) {
-            return this.a($$0 ? glv.c.c : glv.c.a);
-         }
-
-         public glv.b a(glv.c $$0) {
-            return new glv.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
-         }
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof glv.d $$1) ? false : this.a.g() == $$1.a.g();
       }
    }
 
-   static enum c {
-      a("none"),
-      b("is_outline"),
-      c("affects_outline");
+   static class e {
+      private final glv.d[] a;
 
-      private final String d;
-
-      private c(final String $$0) {
-         this.d = $$0;
+      e(int $$0) {
+         this.a = new glv.d[$$0];
       }
 
-      @Override
-      public String toString() {
-         return this.d;
+      public void a(got.b $$0, glv.d $$1) {
+         this.a[$$0.b] = $$1;
+      }
+
+      @Nullable
+      public glv.d a(got.b $$0) {
+         int $$1 = $$0.b;
+         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
       }
    }
 }

@@ -1,29 +1,26 @@
-import java.util.function.Function;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.logging.LogListeners;
+import org.slf4j.event.Level;
 
-public class fdv<T> implements fdm<T> {
-   private final Function<jh, fdt<T>> a;
+public class fdv {
+   private static boolean a;
 
-   public fdv(Function<jh, fdt<T>> $$0) {
-      this.a = $$0;
+   public static void a() {
+      if (!a) {
+         TracyClient.load();
+         if (TracyClient.isAvailable()) {
+            LogListeners.addListener("Tracy", ($$0, $$1) -> TracyClient.message($$0, a($$1)));
+            a = true;
+         }
+      }
    }
 
-   @Override
-   public boolean a(jh $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
-   }
-
-   @Override
-   public void a(fdq<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(jh $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   private static int a(Level $$0) {
+      return switch ($$0) {
+         case DEBUG -> 11184810;
+         case WARN -> 16777130;
+         case ERROR -> 16755370;
+         default -> 16777215;
+      };
    }
 }

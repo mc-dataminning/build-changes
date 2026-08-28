@@ -1,61 +1,22 @@
-import com.google.common.collect.Sets;
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.OptionalBox.Mu;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.function.Predicate;
 
 public class byx {
-   private static final int a = 20;
-   private static final double b = 3.0;
-   private static final double c = 2.0;
+   public static <T extends bvz> bzb<T> a(int $$0) {
+      return a($$0x -> true, $$0);
+   }
 
-   public static bya<bwg> a() {
-      MutableObject<euj> $$0 = new MutableObject(null);
-      MutableInt $$1 = new MutableInt(0);
-      return cbm.a(
-         (Function<cbm.b<bwg>, ? extends App<cbm.c<bwg>, cbp<bwg>>>)($$2 -> $$2.group($$2.b(cfk.t), $$2.a(cfk.v), $$2.a(cfk.g))
-               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     eul $$9 = $$2.b($$3);
-                     Optional<Set<jp>> $$10 = $$2.a($$4);
-                     if (!$$9.b() && !$$9.c()) {
-                        if (Objects.equals($$0.getValue(), $$9.h())) {
-                           $$1.setValue(20);
-                        } else if ($$1.decrementAndGet() > 0) {
-                           return false;
-                        }
-
-                        $$0.setValue($$9.h());
-                        euj $$11 = $$9.i();
-                        euj $$12 = $$9.h();
-                        jh $$13 = $$11.a();
-                        dxv $$14 = $$6.a_($$13);
-                        if ($$14.a(axu.i, $$0xxxx -> $$0xxxx.b() instanceof dmu)) {
-                           dmu $$15 = (dmu)$$14.b();
-                           if (!$$15.n($$14)) {
-                              $$15.a($$7, $$6, $$14, $$13, true);
-                           }
-
-                           $$10 = a($$4, $$10, $$6, $$13);
-                        }
-
-                        jh $$16 = $$12.a();
-                        dxv $$17 = $$6.a_($$16);
-                        if ($$17.a(axu.i, $$0xxxx -> $$0xxxx.b() instanceof dmu)) {
-                           dmu $$18 = (dmu)$$17.b();
-                           if (!$$18.n($$17)) {
-                              $$18.a($$7, $$6, $$17, $$16, true);
-                              $$10 = a($$4, $$10, $$6, $$16);
-                           }
-                        }
-
-                        $$10.ifPresent($$6x -> a($$6, $$7, $$11, $$12, $$6x, $$2.a($$5)));
+   public static <T extends bvz> bzb<T> a(Predicate<T> $$0, int $$1) {
+      return cbd.a(
+         (Function<cbd.b<T>, ? extends App<cbd.c<T>, cbg<T>>>)($$2 -> $$2.group($$2.a(cfb.n), $$2.b(cfb.o), $$2.c(cfb.p), $$2.b(cfb.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bvx $$10 = $$2.b($$4);
+                     if ($$0.test((T)$$8) && !a($$8) && $$8.i($$10) && $$2.<cfd>b($$6).a($$10)) {
+                        $$3.a(new byb($$10, true));
+                        $$8.a(bsz.a);
+                        $$8.c($$7, $$10);
+                        $$5.a(true, (long)$$1);
                         return true;
                      } else {
                         return false;
@@ -64,73 +25,10 @@ public class byx {
       );
    }
 
-   public static void a(ash $$0, bwg $$1, @Nullable euj $$2, @Nullable euj $$3, Set<jp> $$4, Optional<List<bwg>> $$5) {
-      Iterator<jp> $$6 = $$4.iterator();
-
-      while ($$6.hasNext()) {
-         jp $$7 = $$6.next();
-         jh $$8 = $$7.b();
-         if (($$2 == null || !$$2.a().equals($$8)) && ($$3 == null || !$$3.a().equals($$8))) {
-            if (a($$0, $$1, $$7)) {
-               $$6.remove();
-            } else {
-               dxv $$9 = $$0.a_($$8);
-               if (!$$9.a(axu.i, $$0x -> $$0x.b() instanceof dmu)) {
-                  $$6.remove();
-               } else {
-                  dmu $$10 = (dmu)$$9.b();
-                  if (!$$10.n($$9)) {
-                     $$6.remove();
-                  } else if (a($$1, $$8, $$5)) {
-                     $$6.remove();
-                  } else {
-                     $$10.a($$1, $$0, $$9, $$8, false);
-                     $$6.remove();
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static boolean a(bwg $$0, jh $$1, Optional<List<bwg>> $$2) {
-      return $$2.isEmpty()
-         ? false
-         : $$2.get().stream().filter($$1x -> $$1x.aq() == $$0.aq()).filter($$1x -> $$1.a($$1x.du(), 2.0)).anyMatch($$1x -> a($$1x.ec(), $$1));
-   }
-
-   private static boolean a(bxi<?> $$0, jh $$1) {
-      if (!$$0.a(cfk.t)) {
-         return false;
-      } else {
-         eul $$2 = $$0.c(cfk.t).get();
-         if ($$2.c()) {
-            return false;
-         } else {
-            euj $$3 = $$2.i();
-            if ($$3 == null) {
-               return false;
-            } else {
-               euj $$4 = $$2.h();
-               return $$1.equals($$3.a()) || $$1.equals($$4.a());
-            }
-         }
-      }
-   }
-
-   private static boolean a(ash $$0, bwg $$1, jp $$2) {
-      return $$2.a() != $$0.ah() || !$$2.b().a($$1.du(), 3.0);
-   }
-
-   private static Optional<Set<jp>> a(cbn<Mu, Set<jp>> $$0, Optional<Set<jp>> $$1, ash $$2, jh $$3) {
-      jp $$4 = jp.a($$2.ah(), $$3);
-      return Optional.of($$1.<Set<jp>>map($$1x -> {
-         $$1x.add($$4);
-         return $$1x;
-      }).orElseGet(() -> {
-         Set<jp> $$2x = Sets.newHashSet(new jp[]{$$4});
-         $$0.a($$2x);
-         return $$2x;
-      }));
+   private static boolean a(bvz $$0) {
+      return $$0.b($$1 -> {
+         cxc $$2 = $$1.h();
+         return $$2 instanceof cyc && $$0.a((cyc)$$2);
+      });
    }
 }

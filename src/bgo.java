@@ -1,62 +1,35 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
 
-public class bgo extends DataFix {
-   public static final String[] a = new String[]{
-      "minecraft:white_shulker_box",
-      "minecraft:orange_shulker_box",
-      "minecraft:magenta_shulker_box",
-      "minecraft:light_blue_shulker_box",
-      "minecraft:yellow_shulker_box",
-      "minecraft:lime_shulker_box",
-      "minecraft:pink_shulker_box",
-      "minecraft:gray_shulker_box",
-      "minecraft:silver_shulker_box",
-      "minecraft:cyan_shulker_box",
-      "minecraft:purple_shulker_box",
-      "minecraft:blue_shulker_box",
-      "minecraft:brown_shulker_box",
-      "minecraft:green_shulker_box",
-      "minecraft:red_shulker_box",
-      "minecraft:black_shulker_box"
-   };
-
-   public bgo(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bgo extends bbp {
+   public bgo(Schema $$0) {
+      super($$0, bin.t);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bix.D.typeName(), bkl.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
-         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
-         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:shulker_box")) {
-            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
-            if ($$5.isPresent()) {
-               Typed<?> $$6 = (Typed<?>)$$5.get();
-               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
-               if ($$7.isPresent()) {
-                  Typed<?> $$8 = (Typed<?>)$$7.get();
-                  Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
-                  int $$10 = $$9.get("Color").asInt(0);
-                  $$9.remove("Color");
-                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(bix.D.typeName(), a[$$10 % 16]));
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bin.D.typeName(), bkb.a()));
+      return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.a), $$1 -> {
+         OpticFinder<?> $$2 = $$1.getType().findField("tag");
+         return $$1.updateTyped($$2, $$2x -> $$2x.update(DSL.remainderFinder(), $$2xx -> {
+               $$2xx = this.b($$2xx);
+               if ($$1.getOptional($$0).map($$0xxxx -> "minecraft:player_head".equals($$0xxxx.getSecond())).orElse(false)) {
+                  $$2xx = this.c($$2xx);
                }
-            }
-         }
 
-         return $$3x;
+               return $$2xx;
+            }));
       });
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("AttributeModifiers", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)c($$0xx, "UUID", "UUID").orElse($$0xx))));
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update("SkullOwner", $$0x -> a($$0x, "Id", "Id").orElse($$0x));
    }
 }

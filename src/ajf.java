@@ -1,85 +1,49 @@
-public class ajf implements aac<ahm> {
-   public static final zt<ws, ajf> a = aac.a(ajf::a, ajf::new);
-   private final jh b;
-   private final alz c;
-   private final alz d;
-   private final alz e;
-   private final String f;
-   private final dwa.a g;
-   private final int h;
-   private final int i;
+public record ajf(int b, String c, int d, aje e) implements zr<aji> {
+   public static final zi<wh, ajf> a = zr.a(ajf::a, ajf::new);
+   private static final int f = 255;
 
-   public ajf(jh $$0, alz $$1, alz $$2, alz $$3, String $$4, dwa.a $$5, int $$6, int $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   @Deprecated
+   public ajf(int b, String c, int d, aje e) {
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
-   private ajf(ws $$0) {
-      this.b = $$0.e();
-      this.c = $$0.q();
-      this.d = $$0.q();
-      this.e = $$0.q();
-      this.f = $$0.p();
-      this.g = dwa.a.c.a($$0.p(), dwa.a.b);
-      this.h = $$0.l();
-      this.i = $$0.l();
+   private ajf(wh $$0) {
+      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), aje.a($$0.l()));
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
+   private void a(wh $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g.c());
-      $$0.c(this.h);
-      $$0.c(this.i);
+      $$0.m(this.d);
+      $$0.c(this.e.a());
    }
 
    @Override
-   public aae<ajf> a() {
-      return ahk.ce;
+   public zt<ajf> a() {
+      return ajg.a;
    }
 
-   public void a(ahm $$0) {
+   public void a(aji $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 
-   public alz e() {
+   public String e() {
       return this.c;
    }
 
-   public alz f() {
+   public int f() {
       return this.d;
    }
 
-   public alz g() {
+   public aje g() {
       return this.e;
-   }
-
-   public String h() {
-      return this.f;
-   }
-
-   public dwa.a i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.h;
-   }
-
-   public int k() {
-      return this.i;
    }
 }

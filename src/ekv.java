@@ -1,20 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record ekv(elb b, float c) {
-   public static final Codec<ekv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               elb.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, ekv::new)
-   );
+public class ekv<P extends eku> {
+   public static final ekv<eld> a = a("simple_state_provider", eld.b);
+   public static final ekv<ele> b = a("weighted_state_provider", ele.b);
+   public static final ekv<ekz> c = a("noise_threshold_provider", ekz.b);
+   public static final ekv<eky> d = a("noise_provider", eky.g);
+   public static final ekv<ekw> e = a("dual_noise_provider", ekw.b);
+   public static final ekv<elb> f = a("rotated_block_provider", elb.b);
+   public static final ekv<ela> g = a("randomized_int_state_provider", ela.b);
+   private final MapCodec<P> h;
 
-   public elb a() {
-      return this.b;
+   private static <P extends eku> ekv<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.T, $$0, new ekv<>($$1));
    }
 
-   public float b() {
-      return this.c;
+   private ekv(MapCodec<P> $$0) {
+      this.h = $$0;
+   }
+
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

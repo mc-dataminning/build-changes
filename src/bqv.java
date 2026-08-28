@@ -1,7 +1,6 @@
-import jdk.jfr.consumer.RecordedEvent;
+import java.util.Set;
+import java.util.function.Supplier;
 
-public record bqv(String a, String b, String c) {
-   public static bqv a(RecordedEvent $$0) {
-      return new bqv($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
-   }
+public interface bqv {
+   Set<bqt> a(Supplier<bpg> var1);
 }

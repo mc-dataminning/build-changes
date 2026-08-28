@@ -1,3 +1,8 @@
-interface eah<T> {
-   int onResize(int var1, T var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eah {
 }

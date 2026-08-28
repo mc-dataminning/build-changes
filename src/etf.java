@@ -1,113 +1,160 @@
-import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public final class etf extends eto<etg.a, etg> {
-   private final jh.a g = new jh.a();
+public class etf implements eti {
+   public static final int b = 1;
+   public static final etf c = new etf();
+   protected final dhb d;
+   @Nullable
+   private final eth<?, ?> a;
+   @Nullable
+   private final eth<?, ?> e;
 
-   public etf(ead $$0) {
-      this($$0, new etg($$0));
+   public etf(dzw $$0, boolean $$1, boolean $$2) {
+      this.d = $$0.q();
+      this.a = $$1 ? new esy($$0) : null;
+      this.e = $$2 ? new etj($$0) : null;
    }
 
-   @VisibleForTesting
-   public etf(ead $$0, etg $$1) {
-      super($$0, $$1);
+   private etf() {
+      this.d = dhb.e(0, 0);
+      this.a = null;
+      this.e = null;
    }
 
    @Override
-   protected void a(long $$0) {
-      long $$1 = kj.e($$0);
-      if (this.f.b($$1)) {
-         dxv $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, eto.a.a($$4));
-         } else {
-            this.b($$0, c);
-         }
+   public void a(jh $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
 
-         if ($$3 > 0) {
-            this.c($$0, eto.a.a($$3, a($$2)));
-         }
+      if (this.e != null) {
+         this.e.a($$0);
       }
    }
 
    @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dxv $$3 = null;
+   public boolean N_() {
+      return this.e != null && this.e.N_() ? true : this.a != null && this.a.N_();
+   }
 
-      for (jm $$4 : d) {
-         if (eto.a.a($$1, $$4)) {
-            long $$5 = jh.a($$0, $$4);
-            if (this.f.b(kj.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  dxv $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.b($$8);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = eto.a.b($$1) ? dko.a.m() : this.c(this.g.f($$0));
-                     }
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
 
-                     if (!this.a($$3, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, eto.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
+      if (this.e != null) {
+         $$0 += this.e.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(kj $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
       }
    }
 
    @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = eto.a.a($$1);
-
-      for (jm $$3 : d) {
-         if (eto.a.a($$1, $$3)) {
-            long $$4 = jh.a($$0, $$3);
-            if (this.f.b(kj.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     dxv $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, eto.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, eto.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, eto.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
+   public void a(dgf $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
       }
-   }
 
-   private int a(long $$0, dxv $$1) {
-      int $$2 = $$1.k();
-      return $$2 > 0 && this.f.j(kj.e($$0)) ? $$2 : 0;
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
    }
 
    @Override
-   public void b(dgo $$0) {
-      this.a($$0, true);
-      eac $$1 = this.e.c($$0.h, $$0.i);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.k();
-            this.c($$0x.a(), eto.a.a($$2, a($$1x)));
-         });
+   public void b(dgf $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
       }
+
+      if (this.e != null) {
+         this.e.b($$0);
+      }
+   }
+
+   public etd a(dhi $$0) {
+      if ($$0 == dhi.b) {
+         return (etd)(this.a == null ? etd.a.a : this.a);
+      } else {
+         return (etd)(this.e == null ? etd.a.a : this.e);
+      }
+   }
+
+   public String a(dhi $$0, kj $$1) {
+      if ($$0 == dhi.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.b($$1.s());
+      }
+
+      return "n/a";
+   }
+
+   public ete.b b(dhi $$0, kj $$1) {
+      if ($$0 == dhi.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.c($$1.s());
+      }
+
+      return ete.b.a;
+   }
+
+   public void a(dhi $$0, kj $$1, @Nullable dzo $$2) {
+      if ($$0 == dhi.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.e != null) {
+         this.e.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(dgf $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0, $$1);
+      }
+   }
+
+   public int a(jh $$0, int $$1) {
+      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(long $$0) {
+      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
+   }
+
+   public int c() {
+      return this.d.ao() + 2;
+   }
+
+   public int d() {
+      return this.d.ap() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

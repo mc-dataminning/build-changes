@@ -9,8 +9,8 @@ public class bp extends dy<bp.a> {
       return bp.a.a;
    }
 
-   public void a(asi $$0, @Nullable bvk $$1) {
-      ewp $$2 = $$1 != null ? bw.b($$0, $$1) : null;
+   public void a(ary $$0, @Nullable bvb $$1) {
+      ewi $$2 = $$1 != null ? bw.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -32,8 +32,8 @@ public class bp extends dy<bp.a> {
          return ao.B.a(new bp.a(Optional.empty(), Optional.empty(), Optional.of(bw.a($$0.b()))));
       }
 
-      public boolean a(asi $$0, @Nullable ewp $$1) {
-         return this.c.isPresent() && !this.c.get().a((bwg)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(ary $$0, @Nullable ewi $$1) {
+         return this.c.isPresent() && !this.c.get().a((bvx)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override

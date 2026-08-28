@@ -1,65 +1,116 @@
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.Set;
 
 public class aps {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.setblock.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.tag.remove.failed"));
 
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("setblock").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("tag").requires($$0x -> $$0x.c(2)))
             .then(
-               ex.a("pos", gs.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("block", gp.a($$1))
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "pos"), gp.a($$0x, "block"), aps.b.a, null)))
-                              .then(ex.a("destroy").executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "pos"), gp.a($$0x, "block"), aps.b.b, null))))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("targets", fj.b())
+                        .then(
+                           ex.a("add")
+                              .then(
+                                 ex.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        ex.a("remove")
                            .then(
-                              ex.a("keep")
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "pos"), gp.a($$0x, "block"), aps.b.a, $$0xx -> $$0xx.c().u($$0xx.d())))
-                           ))
-                        .then(ex.a("replace").executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "pos"), gp.a($$0x, "block"), aps.b.a, null)))
-                  )
+                              ex.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> fb.b(a(fj.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((ew)$$0x.getSource(), fj.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(ex.a("list").executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"))))
             )
       );
    }
 
-   private static int a(ew $$0, jh $$1, gn $$2, aps.b $$3, @Nullable Predicate<dxz> $$4) throws CommandSyntaxException {
-      ash $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dxz($$5, $$1, true))) {
+   private static Collection<String> a(Collection<? extends bvb> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
+
+      for (bvb $$2 : $$0) {
+         $$1.addAll($$2.as());
+      }
+
+      return $$1;
+   }
+
+   private static int a(ew $$0, Collection<? extends bvb> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bvb $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
          throw a.create();
       } else {
-         boolean $$6;
-         if ($$3 == aps.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().l() || !$$5.a_($$1).l();
+         if ($$1.size() == 1) {
+            $$0.a(() -> xk.a("commands.tag.add.success.single", $$2, $$1.iterator().next().p_()), true);
          } else {
-            dux $$7 = $$5.c_($$1);
-            bta.a($$7);
-            $$6 = true;
+            $$0.a(() -> xk.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
          }
 
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> xv.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
+         return $$3;
       }
    }
 
-   public interface a {
-      @Nullable
-      gn filter(eoc var1, jh var2, gn var3, ash var4);
+   private static int b(ew $$0, Collection<? extends bvb> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bvb $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xk.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().p_()), true);
+         } else {
+            $$0.a(() -> xk.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 
-   public static enum b {
-      a,
-      b;
+   private static int a(ew $$0, Collection<? extends bvb> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (bvb $$3 : $$1) {
+         $$2.addAll($$3.as());
+      }
+
+      if ($$1.size() == 1) {
+         bvb $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> xk.a("commands.tag.list.single.empty", $$4.p_()), false);
+         } else {
+            $$0.a(() -> xk.a("commands.tag.list.single.success", $$4.p_(), $$2.size(), xn.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> xk.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> xk.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xn.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 }

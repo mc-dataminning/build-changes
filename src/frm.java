@@ -1,108 +1,218 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.List;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FreeType;
+import java.util.function.Consumer;
 
-public record frm(alz c, float d, float e, frm.a f, String g) implements frj {
-   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
-   public static final MapCodec<frm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alz.a.fieldOf("file").forGetter(frm::c),
-               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(frm::d),
-               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(frm::e),
-               frm.a.b.optionalFieldOf("shift", frm.a.a).forGetter(frm::f),
-               h.optionalFieldOf("skip", "").forGetter(frm::g)
-            )
-            .apply($$0, frm::new)
-   );
+public class frm extends fri {
+   private final List<frp> c = new ArrayList<>();
+   private final List<frm.a> d = new ArrayList<>();
+   private final frq e = frq.i();
+   private int f = 0;
+   private int g = 0;
 
-   @Override
-   public frk a() {
-      return frk.b;
+   public frm() {
+      this(0, 0);
+   }
+
+   public frm(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
    @Override
-   public Either<frj.b, frj.c> b() {
-      return Either.left(this::a);
+   public void a() {
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
+
+      for (frm.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
+      }
+
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
+
+      for (frm.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
+
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+         }
+
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
+
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
+         }
+      }
+
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (frm.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
+         }
+
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.D() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.E() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
    }
 
-   private fer a(avv $$0) throws IOException {
-      FT_Face $$1 = null;
-      ByteBuffer $$2 = null;
+   public <T extends frp> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
+   }
 
-      try {
-         feu var20;
-         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
-            $$2 = TextureUtil.readResource($$3);
-            $$2.flip();
-            synchronized (fri.a) {
-               MemoryStack $$4 = MemoryStack.stackPush();
+   public <T extends frp> T a(T $$0, int $$1, int $$2, frq $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   }
 
-               try {
-                  PointerBuffer $$5 = $$4.mallocPointer(1);
-                  fri.a(FreeType.FT_New_Memory_Face(fri.a(), $$2, 0L, $$5), "Initializing font face");
-                  $$1 = FT_Face.create($$5.get());
-               } catch (Throwable var14) {
-                  if ($$4 != null) {
-                     try {
-                        $$4.close();
-                     } catch (Throwable var12) {
-                        var14.addSuppressed(var12);
-                     }
-                  }
+   public <T extends frp> T a(T $$0, int $$1, int $$2, Consumer<frq> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, ae.a(this.b(), $$3));
+   }
 
-                  throw var14;
-               }
+   public <T extends frp> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
+   }
 
-               if ($$4 != null) {
-                  $$4.close();
-               }
-
-               String $$6 = FreeType.FT_Get_Font_Format($$1);
-               if (!"TrueType".equals($$6)) {
-                  throw new IOException("Font is not in TTF format, was " + $$6);
-               }
-
-               fri.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
-               var20 = new feu($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
-            }
-         }
-
-         return var20;
-      } catch (Exception var17) {
-         synchronized (fri.a) {
-            if ($$1 != null) {
-               FreeType.FT_Done_Face($$1);
-            }
-         }
-
-         MemoryUtil.memFree($$2);
-         throw var17;
+   public <T extends frp> T a(T $$0, int $$1, int $$2, int $$3, int $$4, frq $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
+      } else {
+         this.d.add(new frm.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
       }
    }
 
-   public static record a(float c, float d) {
-      public static final frm.a a = new frm.a(0.0F, 0.0F);
-      public static final Codec<frm.a> b = Codec.floatRange(-512.0F, 512.0F)
-         .listOf()
-         .comapFlatMap($$0 -> ae.a($$0, 2).map($$0x -> new frm.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+   public <T extends frp> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<frq> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, ae.a(this.b(), $$5));
+   }
 
-      public float a() {
-         return this.c;
+   public frm a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public frm b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public frm c(int $$0) {
+      return this.a($$0).b($$0);
+   }
+
+   @Override
+   public void b(Consumer<frp> $$0) {
+      this.c.forEach($$0);
+   }
+
+   public frq b() {
+      return this.e.g();
+   }
+
+   public frq c() {
+      return this.e;
+   }
+
+   public frm.b d(int $$0) {
+      return new frm.b($$0);
+   }
+
+   static class a extends fri.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(frp $$0, int $$1, int $$2, int $$3, int $$4, frq $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
 
-      public float b() {
-         return this.d;
+      public int c() {
+         return this.c + this.e - 1;
+      }
+
+      public int d() {
+         return this.d + this.f - 1;
+      }
+   }
+
+   public final class b {
+      private final int b;
+      private int c;
+
+      b(final int $$1) {
+         this.b = $$1;
+      }
+
+      public <T extends frp> T a(T $$0) {
+         return this.a($$0, 1);
+      }
+
+      public <T extends frp> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
+      }
+
+      public <T extends frp> T a(T $$0, frq $$1) {
+         return this.a($$0, 1, $$1);
+      }
+
+      public <T extends frp> T a(T $$0, int $$1, frq $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = azu.d(this.c, this.b);
+         }
+
+         this.c += $$1;
+         return frm.this.a($$0, $$3, $$4, 1, $$1, $$2);
+      }
+
+      public frm a() {
+         return frm.this;
+      }
+
+      public frq b() {
+         return frm.this.b();
+      }
+
+      public frq c() {
+         return frm.this.c();
       }
    }
 }

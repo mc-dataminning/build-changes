@@ -1,28 +1,31 @@
-import javax.annotation.Nullable;
+public class acp implements zr<acg> {
+   public static final zi<wv, acp> a = zi.a(jh.b, acp::e, zg.a(dkd.q), acp::b, acp::new);
+   private final jh b;
+   private final dxo c;
 
-public record acp(alz b, @Nullable byte[] c) implements aac<aco> {
-   public static final zt<ws, acp> a = aac.a(acp::a, acp::new);
-
-   private acp(ws $$0) {
-      this($$0.q(), $$0.c(aar.b));
+   public acp(jh $$0, dxo $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, aar.b);
+   public acp(dge $$0, jh $$1) {
+      this($$1, $$0.a_($$1));
    }
 
    @Override
-   public aae<acp> a() {
-      return acn.b;
+   public zt<acp> a() {
+      return agz.k;
    }
 
-   public void a(aco $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public byte[] e() {
+   public dxo b() {
       return this.c;
+   }
+
+   public jh e() {
+      return this.b;
    }
 }

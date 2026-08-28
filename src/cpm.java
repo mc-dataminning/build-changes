@@ -1,68 +1,63 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public record cpm(boolean c, boolean d, boolean e, boolean f, boolean g, boolean h, boolean i) {
+   private static final byte j = 1;
+   private static final byte k = 2;
+   private static final byte l = 4;
+   private static final byte m = 8;
+   private static final byte n = 16;
+   private static final byte o = 32;
+   private static final byte p = 64;
+   public static final zi<wh, cpm> a = new zi<wh, cpm>() {
+      public void a(wh $$0, cpm $$1) {
+         byte $$2 = 0;
+         $$2 = (byte)($$2 | ($$1.a() ? 1 : 0));
+         $$2 = (byte)($$2 | ($$1.b() ? 2 : 0));
+         $$2 = (byte)($$2 | ($$1.c() ? 4 : 0));
+         $$2 = (byte)($$2 | ($$1.d() ? 8 : 0));
+         $$2 = (byte)($$2 | ($$1.e() ? 16 : 0));
+         $$2 = (byte)($$2 | ($$1.f() ? 32 : 0));
+         $$2 = (byte)($$2 | ($$1.g() ? 64 : 0));
+         $$0.l($$2);
+      }
 
-public record cpm(String q, Predicate<jq<chn>> r, Predicate<jq<chn>> s, ImmutableSet<cxl> t, ImmutableSet<dkm> u, @Nullable axe v) {
-   public static final Predicate<jq<chn>> a = $$0 -> $$0.a(ayf.a);
-   public static final cpm b = a("none", chn.a, a, null);
-   public static final cpm c = a("armorer", cho.a, axf.By);
-   public static final cpm d = a("butcher", cho.b, axf.Bz);
-   public static final cpm e = a("cartographer", cho.c, axf.BA);
-   public static final cpm f = a("cleric", cho.d, axf.BB);
-   public static final cpm g = a("farmer", cho.e, ImmutableSet.of(cxt.pS, cxt.pR, cxt.wb, cxt.sm), ImmutableSet.of(dko.cK), axf.BC);
-   public static final cpm h = a("fisherman", cho.f, axf.BD);
-   public static final cpm i = a("fletcher", cho.g, axf.BE);
-   public static final cpm j = a("leatherworker", cho.h, axf.BF);
-   public static final cpm k = a("librarian", cho.i, axf.BG);
-   public static final cpm l = a("mason", cho.j, axf.BH);
-   public static final cpm m = a("nitwit", chn.a, chn.a, null);
-   public static final cpm n = a("shepherd", cho.k, axf.BI);
-   public static final cpm o = a("toolsmith", cho.l, axf.BJ);
-   public static final cpm p = a("weaponsmith", cho.m, axf.BK);
+      public cpm a(wh $$0) {
+         byte $$1 = $$0.readByte();
+         boolean $$2 = ($$1 & 1) != 0;
+         boolean $$3 = ($$1 & 2) != 0;
+         boolean $$4 = ($$1 & 4) != 0;
+         boolean $$5 = ($$1 & 8) != 0;
+         boolean $$6 = ($$1 & 16) != 0;
+         boolean $$7 = ($$1 & 32) != 0;
+         boolean $$8 = ($$1 & 64) != 0;
+         return new cpm($$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      }
+   };
+   public static cpm b = new cpm(false, false, false, false, false, false, false);
 
-   @Override
-   public String toString() {
-      return this.q;
+   public boolean a() {
+      return this.c;
    }
 
-   private static cpm a(String $$0, aly<chn> $$1, @Nullable axe $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   public boolean b() {
+      return this.d;
    }
 
-   private static cpm a(String $$0, Predicate<jq<chn>> $$1, Predicate<jq<chn>> $$2, @Nullable axe $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   public boolean c() {
+      return this.e;
    }
 
-   private static cpm a(String $$0, aly<chn> $$1, ImmutableSet<cxl> $$2, ImmutableSet<dkm> $$3, @Nullable axe $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   public boolean d() {
+      return this.f;
    }
 
-   private static cpm a(String $$0, Predicate<jq<chn>> $$1, Predicate<jq<chn>> $$2, ImmutableSet<cxl> $$3, ImmutableSet<dkm> $$4, @Nullable axe $$5) {
-      return kd.a(ma.x, alz.b($$0), new cpm($$0, $$1, $$2, $$3, $$4, $$5));
+   public boolean e() {
+      return this.g;
    }
 
-   public String a() {
-      return this.q;
+   public boolean f() {
+      return this.h;
    }
 
-   public Predicate<jq<chn>> b() {
-      return this.r;
-   }
-
-   public Predicate<jq<chn>> c() {
-      return this.s;
-   }
-
-   public ImmutableSet<cxl> d() {
-      return this.t;
-   }
-
-   public ImmutableSet<dkm> e() {
-      return this.u;
-   }
-
-   @Nullable
-   public axe f() {
-      return this.v;
+   public boolean g() {
+      return this.i;
    }
 }

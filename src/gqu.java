@@ -1,22 +1,21 @@
-public class gqu extends gqi<cmh, gxi> {
-   private static final alz a = alz.b("textures/entity/skeleton/bogged.png");
-   private static final alz b = alz.b("textures/entity/skeleton/bogged_overlay.png");
+public class gqu extends gqf<cht, gxh, gav> {
+   private static final alp a = alp.b("textures/entity/chicken.png");
 
-   public gqu(grq.a $$0) {
-      super($$0, gen.D, gen.E, new gau($$0.a(gen.C)));
-      this.a(new gwi<>(this, $$0.f(), gen.F, b));
+   public gqu(grl.a $$0) {
+      super($$0, new gav($$0.a(gei.X)), new gav($$0.a(gei.Y)), 0.3F);
    }
 
-   public alz a(gxi $$0) {
+   public alp a(gxh $$0) {
       return a;
    }
 
-   public gxi a() {
-      return new gxi();
+   public gxh a() {
+      return new gxh();
    }
 
-   public void a(cmh $$0, gxi $$1, float $$2) {
+   public void a(cht $$0, gxh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gr();
+      $$1.a = azu.h($$2, $$0.cd, $$0.bZ);
+      $$1.b = azu.h($$2, $$0.cb, $$0.ca);
    }
 }

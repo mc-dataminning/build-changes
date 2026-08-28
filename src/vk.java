@@ -1,208 +1,280 @@
-import java.io.BufferedOutputStream;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UTFDataFormatException;
-import java.nio.file.Files;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class vk {
-   private static final OpenOption[] a = new OpenOption[]{
-      StandardOpenOption.SYNC, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING
-   };
-
-   public static ux a(Path $$0, vg $$1) throws IOException {
-      ux var4;
-      try (
-         InputStream $$2 = Files.newInputStream($$0);
-         InputStream $$3 = new azo($$2);
-      ) {
-         var4 = a($$3, $$1);
-      }
-
-      return var4;
-   }
-
-   private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new azo(new GZIPInputStream($$0)));
-   }
-
-   private static DataOutputStream a(OutputStream $$0) throws IOException {
-      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$0)));
-   }
-
-   public static ux a(InputStream $$0, vg $$1) throws IOException {
-      ux var3;
-      try (DataInputStream $$2 = a($$0)) {
-         var3 = a((DataInput)$$2, $$1);
-      }
-
-      return var3;
-   }
-
-   public static void a(Path $$0, vr $$1, vg $$2) throws IOException {
-      try (
-         InputStream $$3 = Files.newInputStream($$0);
-         InputStream $$4 = new azo($$3);
-      ) {
-         a($$4, $$1, $$2);
-      }
-   }
-
-   public static void a(InputStream $$0, vr $$1, vg $$2) throws IOException {
-      try (DataInputStream $$3 = a($$0)) {
-         a((DataInput)$$3, $$1, $$2);
-      }
-   }
-
-   public static void a(ux $$0, Path $$1) throws IOException {
-      try (
-         OutputStream $$2 = Files.newOutputStream($$1, a);
-         OutputStream $$3 = new BufferedOutputStream($$2);
-      ) {
-         a($$0, $$3);
-      }
-   }
-
-   public static void a(ux $$0, OutputStream $$1) throws IOException {
-      try (DataOutputStream $$2 = a($$1)) {
-         a($$0, (DataOutput)$$2);
-      }
-   }
-
-   public static void b(ux $$0, Path $$1) throws IOException {
-      try (
-         OutputStream $$2 = Files.newOutputStream($$1, a);
-         OutputStream $$3 = new BufferedOutputStream($$2);
-         DataOutputStream $$4 = new DataOutputStream($$3);
-      ) {
-         a($$0, (DataOutput)$$4);
-      }
-   }
-
-   @Nullable
-   public static ux a(Path $$0) throws IOException {
-      if (!Files.exists($$0)) {
-         return null;
-      } else {
-         ux var3;
-         try (
-            InputStream $$1 = Files.newInputStream($$0);
-            DataInputStream $$2 = new DataInputStream($$1);
-         ) {
-            var3 = a((DataInput)$$2, vg.a());
-         }
-
-         return var3;
-      }
-   }
-
-   public static ux a(DataInput $$0) throws IOException {
-      return a($$0, vg.a());
-   }
-
-   public static ux a(DataInput $$0, vg $$1) throws IOException {
-      vu $$2 = c($$0, $$1);
-      if ($$2 instanceof ux) {
-         return (ux)$$2;
-      } else {
-         throw new IOException("Root tag must be a named compound tag");
-      }
-   }
-
-   public static void a(ux $$0, DataOutput $$1) throws IOException {
-      c($$0, $$1);
-   }
-
-   public static void a(DataInput $$0, vr $$1, vg $$2) throws IOException {
-      vw<?> $$3 = vx.a($$0.readByte());
-      if ($$3 == uz.a) {
-         if ($$1.b(uz.a) == vr.b.a) {
-            $$1.a();
-         }
-      } else {
-         switch ($$1.b($$3)) {
-            case c:
-            default:
-               break;
-            case b:
-               vs.a($$0);
-               $$3.b($$0, $$2);
-               break;
-            case a:
-               vs.a($$0);
-               $$3.a($$0, $$1, $$2);
-         }
-      }
-   }
-
-   public static vu b(DataInput $$0, vg $$1) throws IOException {
-      byte $$2 = $$0.readByte();
-      return (vu)($$2 == 0 ? uz.b : a($$0, $$1, $$2));
-   }
-
-   public static void a(vu $$0, DataOutput $$1) throws IOException {
-      $$1.writeByte($$0.b());
-      if ($$0.b() != 0) {
-         $$0.a($$1);
-      }
-   }
-
-   public static void b(vu $$0, DataOutput $$1) throws IOException {
-      $$1.writeByte($$0.b());
-      if ($$0.b() != 0) {
-         $$1.writeUTF("");
-         $$0.a($$1);
-      }
-   }
-
-   public static void c(vu $$0, DataOutput $$1) throws IOException {
-      b($$0, new vk.a($$1));
-   }
-
-   private static vu c(DataInput $$0, vg $$1) throws IOException {
-      byte $$2 = $$0.readByte();
-      if ($$2 == 0) {
-         return uz.b;
-      } else {
-         vs.a($$0);
-         return a($$0, $$1, $$2);
-      }
-   }
-
-   private static vu a(DataInput $$0, vg $$1, byte $$2) {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("argument.nbt.trailing"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("argument.nbt.expected.key"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xk.c("argument.nbt.expected.value"));
+   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> xk.b("argument.nbt.list.mixed", $$0, $$1));
+   public static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> xk.b("argument.nbt.array.mixed", $$0, $$1));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xk.b("argument.nbt.array.invalid", $$0));
+   public static final char g = ',';
+   public static final char h = ':';
+   private static final char k = '[';
+   private static final char l = ']';
+   private static final char m = '}';
+   private static final char n = '{';
+   private static final Pattern o = Pattern.compile("[-+]?(?:[0-9]+[.]|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?", 2);
+   private static final Pattern p = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?d", 2);
+   private static final Pattern q = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?f", 2);
+   private static final Pattern r = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)b", 2);
+   private static final Pattern s = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)l", 2);
+   private static final Pattern t = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)s", 2);
+   private static final Pattern u = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)");
+   public static final Codec<um> i = Codec.STRING.comapFlatMap($$0 -> {
       try {
-         return vx.a($$2).c($$0, $$1);
-      } catch (IOException var6) {
-         o $$4 = o.a(var6, "Loading NBT data");
-         p $$5 = $$4.a("NBT Tag");
-         $$5.a("Tag type", $$2);
-         throw new vo($$4);
+         return DataResult.success(new vk(new StringReader($$0)).a(), Lifecycle.stable());
+      } catch (CommandSyntaxException var2) {
+         return DataResult.error(var2::getMessage);
+      }
+   }, um::toString);
+   public static final Codec<um> j = Codec.withAlternative(i, um.a);
+   private final StringReader v;
+
+   public static um a(String $$0) throws CommandSyntaxException {
+      return new vk(new StringReader($$0)).a();
+   }
+
+   @VisibleForTesting
+   um a() throws CommandSyntaxException {
+      um $$0 = this.f();
+      this.v.skipWhitespace();
+      if (this.v.canRead()) {
+         throw a.createWithContext(this.v);
+      } else {
+         return $$0;
       }
    }
 
-   public static class a extends azi {
-      public a(DataOutput $$0) {
-         super($$0);
-      }
+   public vk(StringReader $$0) {
+      this.v = $$0;
+   }
 
-      @Override
-      public void writeUTF(String $$0) throws IOException {
-         try {
-            super.writeUTF($$0);
-         } catch (UTFDataFormatException var3) {
-            ae.a("Failed to write NBT String", var3);
-            super.writeUTF("");
+   protected String b() throws CommandSyntaxException {
+      this.v.skipWhitespace();
+      if (!this.v.canRead()) {
+         throw b.createWithContext(this.v);
+      } else {
+         return this.v.readString();
+      }
+   }
+
+   protected vj c() throws CommandSyntaxException {
+      this.v.skipWhitespace();
+      int $$0 = this.v.getCursor();
+      if (StringReader.isQuotedStringStart(this.v.peek())) {
+         return vh.a(this.v.readQuotedString());
+      } else {
+         String $$1 = this.v.readUnquotedString();
+         if ($$1.isEmpty()) {
+            this.v.setCursor($$0);
+            throw c.createWithContext(this.v);
+         } else {
+            return this.b($$1);
          }
       }
+   }
+
+   private vj b(String $$0) {
+      try {
+         if (q.matcher($$0).matches()) {
+            return up.a(Float.parseFloat($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (r.matcher($$0).matches()) {
+            return uk.a(Byte.parseByte($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (s.matcher($$0).matches()) {
+            return uu.a(Long.parseLong($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (t.matcher($$0).matches()) {
+            return ve.a(Short.parseShort($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (u.matcher($$0).matches()) {
+            return ur.a(Integer.parseInt($$0));
+         }
+
+         if (p.matcher($$0).matches()) {
+            return un.a(Double.parseDouble($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (o.matcher($$0).matches()) {
+            return un.a(Double.parseDouble($$0));
+         }
+
+         if ("true".equalsIgnoreCase($$0)) {
+            return uk.c;
+         }
+
+         if ("false".equalsIgnoreCase($$0)) {
+            return uk.b;
+         }
+      } catch (NumberFormatException var3) {
+      }
+
+      return vh.a($$0);
+   }
+
+   public vj d() throws CommandSyntaxException {
+      this.v.skipWhitespace();
+      if (!this.v.canRead()) {
+         throw c.createWithContext(this.v);
+      } else {
+         char $$0 = this.v.peek();
+         if ($$0 == '{') {
+            return this.f();
+         } else {
+            return $$0 == '[' ? this.e() : this.c();
+         }
+      }
+   }
+
+   protected vj e() throws CommandSyntaxException {
+      return this.v.canRead(3) && !StringReader.isQuotedStringStart(this.v.peek(1)) && this.v.peek(2) == ';' ? this.h() : this.g();
+   }
+
+   public um f() throws CommandSyntaxException {
+      this.a('{');
+      um $$0 = new um();
+      this.v.skipWhitespace();
+
+      while (this.v.canRead() && this.v.peek() != '}') {
+         int $$1 = this.v.getCursor();
+         String $$2 = this.b();
+         if ($$2.isEmpty()) {
+            this.v.setCursor($$1);
+            throw b.createWithContext(this.v);
+         }
+
+         this.a(':');
+         $$0.a($$2, this.d());
+         if (!this.i()) {
+            break;
+         }
+
+         if (!this.v.canRead()) {
+            throw b.createWithContext(this.v);
+         }
+      }
+
+      this.a('}');
+      return $$0;
+   }
+
+   private vj g() throws CommandSyntaxException {
+      this.a('[');
+      this.v.skipWhitespace();
+      if (!this.v.canRead()) {
+         throw c.createWithContext(this.v);
+      } else {
+         us $$0 = new us();
+         vl<?> $$1 = null;
+
+         while (this.v.peek() != ']') {
+            int $$2 = this.v.getCursor();
+            vj $$3 = this.d();
+            vl<?> $$4 = $$3.c();
+            if ($$1 == null) {
+               $$1 = $$4;
+            } else if ($$4 != $$1) {
+               this.v.setCursor($$2);
+               throw d.createWithContext(this.v, $$4.b(), $$1.b());
+            }
+
+            $$0.add($$3);
+            if (!this.i()) {
+               break;
+            }
+
+            if (!this.v.canRead()) {
+               throw c.createWithContext(this.v);
+            }
+         }
+
+         this.a(']');
+         return $$0;
+      }
+   }
+
+   private vj h() throws CommandSyntaxException {
+      this.a('[');
+      int $$0 = this.v.getCursor();
+      char $$1 = this.v.read();
+      this.v.read();
+      this.v.skipWhitespace();
+      if (!this.v.canRead()) {
+         throw c.createWithContext(this.v);
+      } else if ($$1 == 'B') {
+         return new uj(this.a(uj.a, uk.a));
+      } else if ($$1 == 'L') {
+         return new ut(this.a(ut.a, uu.a));
+      } else if ($$1 == 'I') {
+         return new uq(this.a(uq.a, ur.a));
+      } else {
+         this.v.setCursor($$0);
+         throw f.createWithContext(this.v, String.valueOf($$1));
+      }
+   }
+
+   private <T extends Number> List<T> a(vl<?> $$0, vl<?> $$1) throws CommandSyntaxException {
+      List<T> $$2 = Lists.newArrayList();
+
+      while (this.v.peek() != ']') {
+         int $$3 = this.v.getCursor();
+         vj $$4 = this.d();
+         vl<?> $$5 = $$4.c();
+         if ($$5 != $$1) {
+            this.v.setCursor($$3);
+            throw e.createWithContext(this.v, $$5.b(), $$0.b());
+         }
+
+         if ($$1 == uk.a) {
+            $$2.add((T)((vc)$$4).i());
+         } else if ($$1 == uu.a) {
+            $$2.add((T)((vc)$$4).f());
+         } else {
+            $$2.add((T)((vc)$$4).g());
+         }
+
+         if (!this.i()) {
+            break;
+         }
+
+         if (!this.v.canRead()) {
+            throw c.createWithContext(this.v);
+         }
+      }
+
+      this.a(']');
+      return $$2;
+   }
+
+   private boolean i() {
+      this.v.skipWhitespace();
+      if (this.v.canRead() && this.v.peek() == ',') {
+         this.v.skip();
+         this.v.skipWhitespace();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(char $$0) throws CommandSyntaxException {
+      this.v.skipWhitespace();
+      this.v.expect($$0);
    }
 }

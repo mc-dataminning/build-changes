@@ -1,19 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class aac implements zr<zx> {
+   public static final zi<wh, aac> a = zr.a(aac::a, aac::new);
+   private final int b;
 
-public interface aac<T extends xb> {
-   aae<? extends aac<T>> a();
-
-   void a(T var1);
-
-   default boolean c() {
-      return false;
+   public aac(int $$0) {
+      this.b = $$0;
    }
 
-   default boolean d() {
-      return false;
+   private aac(wh $$0) {
+      this.b = $$0.readInt();
    }
 
-   static <B extends ByteBuf, T extends aac<?>> zt<B, T> a(zw<B, T> $$0, zu<B, T> $$1) {
-      return zt.a($$0, $$1);
+   private void a(wh $$0) {
+      $$0.q(this.b);
+   }
+
+   @Override
+   public zt<aac> a() {
+      return aaj.e;
+   }
+
+   public void a(zx $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

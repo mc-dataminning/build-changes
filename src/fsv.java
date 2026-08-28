@@ -1,109 +1,156 @@
+import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fsv extends fsw {
-   private static final xv d = xv.c("chat.copy");
-   private static final xv s = xv.c("chat.link.warning");
-   private final String u;
-   private final boolean v;
+public class fsv extends ftr {
+   private static final alp a = alp.b("icon/draft_report");
+   private int b;
+   private final xk c;
+   private final boolean d;
+   private xk s;
+   private final List<fny> u = Lists.newArrayList();
+   @Nullable
+   private fny v;
 
-   public fsv(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), xv.b($$1), $$1, $$2 ? xu.e : xu.g, $$2);
-   }
-
-   public fsv(BooleanConsumer $$0, xv $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xu.e : xu.g, $$3);
-   }
-
-   public fsv(BooleanConsumer $$0, xv $$1, URI $$2, boolean $$3) {
-      this($$0, $$1, $$2.toString(), $$3);
-   }
-
-   public fsv(BooleanConsumer $$0, xv $$1, xv $$2, URI $$3, xv $$4, boolean $$5) {
-      this($$0, $$1, $$2, $$3.toString(), $$4, true);
-   }
-
-   public fsv(BooleanConsumer $$0, xv $$1, xv $$2, String $$3, xv $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (xv)($$5 ? xv.c("chat.link.open") : xu.f);
-      this.b = $$4;
-      this.v = !$$5;
-      this.u = $$3;
-   }
-
-   protected static yj a(boolean $$0, String $$1) {
-      return c($$0).b(xu.v).b(xv.b($$1));
-   }
-
-   protected static yj c(boolean $$0) {
-      return xv.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public fsv(@Nullable xk $$0, boolean $$1) {
+      super(xk.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.c(fof.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fof.a(d, $$0x -> {
-         this.k();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(fof.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void k() {
-      this.m.p.a(this.u);
+   protected void aT_() {
+      this.b = 0;
+      this.u.clear();
+      xk $$0 = this.d ? xk.c("deathScreen.spectate") : xk.c("deathScreen.respawn");
+      this.u.add(this.c(fny.a($$0, $$0x -> {
+         this.m.t.gg();
+         $$0x.j = false;
+      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
+      this.v = this.c(
+         fny.a(xk.c("deathScreen.titleScreen"), $$0x -> this.m.bb().a(this.m, this, this::l, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
+      );
+      this.u.add(this.v);
+      this.c(false);
+      this.s = xk.a("deathScreen.score.value", xk.b(Integer.toString(this.m.t.gd())).a(n.o));
    }
 
    @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.v) {
-         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+   public boolean aH_() {
+      return false;
+   }
+
+   private void l() {
+      if (this.d) {
+         this.E();
+      } else {
+         fsp $$0 = new fsv.a($$0x -> {
+            if ($$0x) {
+               this.E();
+            } else {
+               this.m.t.gg();
+               this.m.a(null);
+            }
+         }, xk.c("deathScreen.quit.confirm"), xj.a, xk.c("deathScreen.titleScreen"), xk.c("deathScreen.respawn"));
+         this.m.a($$0);
+         $$0.b(20);
       }
    }
 
-   public static void a(fty $$0, String $$1, boolean $$2) {
-      fmg $$3 = fmg.Q();
-      $$3.a(new fsv($$3x -> {
-         if ($$3x) {
-            ae.m().a($$1);
+   private void E() {
+      if (this.m.s != null) {
+         this.m.s.ac();
+      }
+
+      this.m.b(new ftc(xk.c("menu.savingLevel")));
+      this.m.a(new ftt());
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
+      }
+
+      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         yh $$4 = this.a($$1);
+         $$0.a(this.p, $$4, $$1, $$2);
+      }
+
+      if (this.v != null && this.m.bb().c()) {
+         $$0.a(glq::H, a, this.v.D() + this.v.y() - 17, this.v.E() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      a($$0, this.n, this.o);
+   }
+
+   static void a(fnl $$0, int $$1, int $$2) {
+      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
+   }
+
+   @Nullable
+   private yh a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.m.h.a(this.c);
+         int $$2 = this.n / 2 - $$1 / 2;
+         int $$3 = this.n / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         yh $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.i() != null && $$3.i().a() == xi.a.a) {
+            this.a($$3);
+            return false;
          }
+      }
 
-         $$3.a($$0);
-      }, $$1, $$2));
+      return super.a($$0, $$1, $$2);
    }
 
-   public static void a(fty $$0, URI $$1, boolean $$2) {
-      fmg $$3 = fmg.Q();
-      $$3.a(new fsv($$3x -> {
-         if ($$3x) {
-            ae.m().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1.toString(), $$2));
+   @Override
+   public boolean j() {
+      return false;
    }
 
-   public static void a(fty $$0, URI $$1) {
-      a($$0, $$1, true);
+   @Override
+   public void e() {
+      super.e();
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
+      }
    }
 
-   public static void a(fty $$0, String $$1) {
-      a($$0, $$1, true);
+   private void c(boolean $$0) {
+      for (fny $$1 : this.u) {
+         $$1.j = $$0;
+      }
    }
 
-   public static fof.c b(fty $$0, String $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
+   public static class a extends fsp {
+      public a(BooleanConsumer $$0, xk $$1, xk $$2, xk $$3, xk $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+      }
 
-   public static fof.c b(fty $$0, URI $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fof.c b(fty $$0, String $$1) {
-      return b($$0, $$1, true);
-   }
-
-   public static fof.c b(fty $$0, URI $$1) {
-      return b($$0, $$1, true);
+      @Override
+      public void b(fnl $$0, int $$1, int $$2, float $$3) {
+         fsv.a($$0, this.n, this.o);
+      }
    }
 }

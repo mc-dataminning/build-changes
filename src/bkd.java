@@ -1,22 +1,40 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bkd extends bhs {
-   public bkd(Schema $$0, boolean $$1) {
-      super($$0, $$1, "WeaponSmithChestLootTableFix", bix.s, "minecraft:chest");
+public class bkd extends Schema {
+   public bkd(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            String $$1 = $$0x.get("LootTable").asString("");
-            return $$1.equals("minecraft:chests/village_blacksmith")
-               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
-               : $$0x;
-         }
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         bin.t,
+         () -> DSL.hook(
+               DSL.optionalFields(
+                  "id",
+                  bin.D.in($$0),
+                  "tag",
+                  DSL.optionalFields(
+                     new Pair[]{
+                        Pair.of("EntityTag", bin.A.in($$0)),
+                        Pair.of("BlockEntityTag", bin.s.in($$0)),
+                        Pair.of("CanDestroy", DSL.list(bin.C.in($$0))),
+                        Pair.of("CanPlaceOn", DSL.list(bin.C.in($$0))),
+                        Pair.of("Items", DSL.list(bin.t.in($$0))),
+                        Pair.of("ChargedProjectiles", DSL.list(bin.t.in($$0)))
+                     }
+                  )
+               ),
+               bnp.b,
+               HookFunction.IDENTITY
+            )
       );
    }
 }

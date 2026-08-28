@@ -1,122 +1,77 @@
-import com.google.common.collect.Lists;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
-public class px implements mh {
-   private static final Logger d = LogUtils.getLogger();
-   private final mj e;
-   private final Iterable<Path> f;
-   private final List<px.a> g = Lists.newArrayList();
-
-   public px(mj $$0, Iterable<Path> $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public px a(px.a $$0) {
-      this.g.add($$0);
-      return this;
-   }
-
-   private ux a(String $$0, ux $$1) {
-      ux $$2 = $$1;
-
-      for (px.a $$3 : this.g) {
-         $$2 = $$3.apply($$0, $$2);
-      }
-
-      return $$2;
+public class px extends qj<btt> {
+   public px(mj $$0, CompletableFuture<js.a> $$1) {
+      super($$0, mb.s, $$1);
    }
 
    @Override
-   public CompletableFuture<?> a(mf $$0) {
-      Path $$1 = this.e.a();
-      List<CompletableFuture<?>> $$2 = Lists.newArrayList();
-
-      for (Path $$3 : this.f) {
-         $$2.add(CompletableFuture.<CompletableFuture>supplyAsync(() -> {
-            try {
-               CompletableFuture var5x;
-               try (Stream<Path> $$3x = Files.walk($$3)) {
-                  var5x = CompletableFuture.allOf($$3x.filter($$0xx -> $$0xx.toString().endsWith(".snbt")).map($$3xx -> CompletableFuture.runAsync(() -> {
-                        px.c $$4 = this.a($$3xx, this.a($$3, $$3xx));
-                        this.a($$0, $$4, $$1);
-                     }, ae.g().a("SnbtToNbt"))).toArray(CompletableFuture[]::new));
-               }
-
-               return var5x;
-            } catch (Exception var9) {
-               throw new RuntimeException("Failed to read structure input directory, aborting", var9);
-            }
-         }, ae.g().a("SnbtToNbt")).thenCompose($$0x -> $$0x));
-      }
-
-      return ae.e($$2);
-   }
-
-   @Override
-   public final String a() {
-      return "SNBT -> NBT";
-   }
-
-   private String a(Path $$0, Path $$1) {
-      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
-      return $$2.substring(0, $$2.length() - ".snbt".length());
-   }
-
-   private px.c a(Path $$0, String $$1) {
-      try {
-         px.c var10;
-         try (BufferedReader $$2 = Files.newBufferedReader($$0)) {
-            String $$3 = IOUtils.toString($$2);
-            ux $$4 = this.a($$1, vm.a($$3));
-            ByteArrayOutputStream $$5 = new ByteArrayOutputStream();
-            HashingOutputStream $$6 = new HashingOutputStream(Hashing.sha1(), $$5);
-            vk.a($$4, $$6);
-            byte[] $$7 = $$5.toByteArray();
-            HashCode $$8 = $$6.hash();
-            var10 = new px.c($$1, $$7, $$8);
-         }
-
-         return var10;
-      } catch (Throwable var13) {
-         throw new px.b($$0, var13);
-      }
-   }
-
-   private void a(mf $$0, px.c $$1, Path $$2) {
-      Path $$3 = $$2.resolve($$1.a + ".nbt");
-
-      try {
-         $$0.writeIfNeeded($$3, $$1.b, $$1.c);
-      } catch (IOException var6) {
-         d.error("Couldn't write structure {} at {}", new Object[]{$$1.a, $$3, var6});
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      ux apply(String var1, ux var2);
-   }
-
-   static class b extends RuntimeException {
-      public b(Path $$0, Throwable $$1) {
-         super($$0.toAbsolutePath().toString(), $$1);
-      }
-   }
-
-   static record c(String a, byte[] b, HashCode c) {
+   protected void a(js.a $$0) {
+      this.b(axm.a).a(btu.y, btu.x, btu.z);
+      this.b(axm.b).a(btu.d, btu.g, btu.h, btu.i, btu.n, btu.p, btu.r, btu.s, btu.j, btu.l, btu.m, btu.v, btu.w, btu.q, btu.O, btu.o, btu.V, btu.S, btu.U);
+      this.b(axm.c).b(axm.b).a(btu.y, btu.z);
+      this.b(axm.d).a(btu.o, btu.V);
+      this.b(axm.f).a(btu.j);
+      this.b(axm.g).a(btu.o, btu.V);
+      this.b(axm.h).a(btu.S);
+      this.b(axm.i).a(btu.a, btu.b, btu.d, btu.e, btu.f, btu.L, btu.K);
+      this.b(axm.j).a(btu.E, btu.F, btu.G, btu.L, btu.K, btu.M, btu.N, btu.I);
+      this.b(axm.k).a(btu.q, btu.O, btu.S, btu.P);
+      this.b(axm.l).a(btu.J, btu.Q, btu.R, btu.T);
+      this.b(axm.m).a(btu.l, btu.m, btu.w);
+      this.b(axm.n).a(btu.i);
+      this.b(axm.o).a(btu.v);
+      this.b(axm.p).a(btu.c);
+      this.b(axm.q).a(btu.C);
+      this.b(axm.r).a(btu.i);
+      this.b(axm.s).a(btu.o);
+      this.b(axm.t).a(btu.i);
+      this.b(axm.u).a(btu.a, btu.b);
+      this.b(axm.v).a(btu.d);
+      this.b(axm.w).a(btu.q, btu.P).b(axm.l);
+      this.b(axm.x).a(btu.q);
+      this.b(axm.y).b(axm.l);
+      this.b(axm.z)
+         .a(
+            btu.Q,
+            btu.R,
+            btu.T,
+            btu.a,
+            btu.c,
+            btu.d,
+            btu.e,
+            btu.f,
+            btu.g,
+            btu.h,
+            btu.i,
+            btu.j,
+            btu.k,
+            btu.l,
+            btu.m,
+            btu.n,
+            btu.o,
+            btu.p,
+            btu.q,
+            btu.r,
+            btu.s,
+            btu.t,
+            btu.u,
+            btu.v,
+            btu.w,
+            btu.U,
+            btu.V,
+            btu.b
+         );
+      this.b(axm.A).a(btu.E, btu.F, btu.K, btu.M, btu.I);
+      this.b(axm.B).a(btu.R).b(axm.D);
+      this.b(axm.C).b(axm.d).a(btu.h, btu.i, btu.t, btu.v, btu.g, btu.O, btu.q, btu.U, btu.j, btu.P, btu.r);
+      this.b(axm.D).a(btu.D, btu.W);
+      this.b(axm.E).a(btu.b, btu.f);
+      this.b(axm.G).a(btu.k, btu.v, btu.f, btu.a, btu.e, btu.c, btu.d);
+      this.b(axm.F)
+         .b(axm.G)
+         .a(btu.E, btu.s, btu.Q, btu.K, btu.J, btu.O, btu.q, btu.B, btu.G, btu.R, btu.S, btu.A, btu.N, btu.F, btu.L, btu.I, btu.r, btu.M)
+         .b(axm.D);
+      this.b(axm.H).a(btu.W);
    }
 }

@@ -1,85 +1,60 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record aej(int b, boolean c, Set<aly<dhi>> d, int e, int f, int g, boolean h, boolean i, boolean j, ahh k, boolean l) implements aac<acr> {
-   public static final zt<xg, aej> a = aac.a(aej::a, aej::new);
+public record aej(UUID b, int c, @Nullable xw d, yd.a e, @Nullable xk f, xo g, xg.a h) implements zr<acg> {
+   public static final zi<wv, aej> a = zr.a(aej::a, aej::new);
 
-   private aej(xg $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(mb.be)),
-         $$0.l(),
-         $$0.l(),
-         $$0.l(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new ahh($$0),
-         $$0.readBoolean()
-      );
+   private aej(wv $$0) {
+      this($$0.n(), $$0.l(), $$0.c(xw::a), new yd.a($$0), wh.a($$0, xm.d), xo.a($$0), xg.a.a.decode($$0));
    }
 
-   private void a(xg $$0) {
-      $$0.q(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, ws::b);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.c(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.j);
-      this.k.a($$0);
-      $$0.a(this.l);
+   private void a(wv $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, xw::a);
+      this.e.a($$0);
+      wh.a($$0, this.f, xm.d);
+      xo.a($$0, this.g);
+      xg.a.a.encode($$0, this.h);
    }
 
    @Override
-   public aae<aej> a() {
-      return ahk.O;
+   public zt<aej> a() {
+      return agz.ab;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public Set<aly<dhi>> f() {
+   @Nullable
+   public xw f() {
       return this.d;
    }
 
-   public int g() {
+   public yd.a g() {
       return this.e;
    }
 
-   public int h() {
+   @Nullable
+   public xk h() {
       return this.f;
    }
 
-   public int i() {
+   public xo i() {
       return this.g;
    }
 
-   public boolean j() {
+   public xg.a j() {
       return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public boolean l() {
-      return this.j;
-   }
-
-   public ahh m() {
-      return this.k;
-   }
-
-   public boolean n() {
-      return this.l;
    }
 }

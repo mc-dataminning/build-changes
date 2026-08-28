@@ -1,38 +1,18 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Predicate;
 
 public class bxv {
-   public static bya<cpj> a() {
-      return cbm.a(
-         (Function<cbm.b<cpj>, ? extends App<cbm.c<cpj>, cbp<cpj>>>)($$0 -> $$0.group($$0.b(cfk.d), $$0.a(cfk.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jp $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.du(), 2.0) && !$$4.gz()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.gy().b() != cpm.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.p();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.z().c($$6.b()))
-                                 .flatMap($$0xxx -> ma.x.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gy().a($$2xx));
-                                    $$4.g($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
+   public static <E extends bvx, T> bxr<E> a(Predicate<E> $$0, cfb<? extends T> $$1, cfb<T> $$2, bsl $$3) {
+      return cbd.a(
+         (Function<cbd.b<E>, ? extends App<cbd.c<E>, cbg<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
+                     return true;
+                  }
+               }))
       );
    }
 }

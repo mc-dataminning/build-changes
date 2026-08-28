@@ -1,61 +1,31 @@
-import java.util.UUID;
+public record abe(jh c, String d, int e) implements aau {
+   public static final zi<wh, abe> a = aau.a(abe::a, abe::new);
+   public static final aau.b<abe> b = aau.a("debug/poi_added");
 
-public record abe(abe.a c) implements abf {
-   public static final zt<ws, abe> a = abf.a(abe::a, abe::new);
-   public static final abf.b<abe> b = abf.a("debug/breeze");
-
-   private abe(ws $$0) {
-      this(new abe.a($$0));
+   private abe(wh $$0) {
+      this($$0.e(), $$0.p(), $$0.readInt());
    }
 
-   private void a(ws $$0) {
-      this.c.a($$0);
+   private void a(wh $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.q(this.e);
    }
 
    @Override
-   public abf.b<abe> a() {
+   public aau.b<abe> a() {
       return b;
    }
 
-   public abe.a b() {
+   public jh b() {
       return this.c;
    }
 
-   public static record a(UUID a, int b, Integer c, jh d) {
-      public a(ws $$0) {
-         this($$0.n(), $$0.readInt(), $$0.c(ws::readInt), $$0.c(jh.b));
-      }
+   public String c() {
+      return this.d;
+   }
 
-      public void a(ws $$0) {
-         $$0.a(this.a);
-         $$0.q(this.b);
-         $$0.a(this.c, ws::q);
-         $$0.a(this.d, jh.b);
-      }
-
-      public String a() {
-         return ahi.a(this.a);
-      }
-
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public Integer d() {
-         return this.c;
-      }
-
-      public jh e() {
-         return this.d;
-      }
+   public int d() {
+      return this.e;
    }
 }

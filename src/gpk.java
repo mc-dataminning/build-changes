@@ -1,29 +1,64 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class gpk implements gpl.a {
-   private final fmg a;
-   private double b = Double.MIN_VALUE;
-   private List<fcs> c = Collections.emptyList();
+public class gpk implements gpg.a {
+   private final flz a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   public gpk(fmg $$0) {
+   public gpk(flz $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fgs $$0, gll $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ae.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bvk $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dW().d($$6, $$6.cR().g(6.0)));
-      }
+   public void a(fgl $$0, glg $$1, double $$2, double $$3, double $$4) {
+      dha $$5 = this.a.s;
+      fgp $$6 = $$1.getBuffer(glq.B());
+      jh $$7 = jh.a($$2, 0.0, $$4);
 
-      fgw $$7 = $$1.getBuffer(glv.y());
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dzj $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
 
-      for (fcs $$8 : this.c) {
-         gpl.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+            for (Entry<edj.a, edj> $$11 : $$10.e()) {
+               edj.a $$12 = $$11.getKey();
+               dgf $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = kj.a($$13.h, $$15);
+                     int $$18 = kj.a($$13.i, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gma.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
+         }
       }
+   }
+
+   private Vector3f a(edj.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

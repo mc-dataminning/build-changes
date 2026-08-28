@@ -1,57 +1,70 @@
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class fkw {
-   private static final Map<String, fkw.a> a = Maps.newHashMap();
+public class fkw extends fky {
    private static final Logger b = LogUtils.getLogger();
-   private static final alz c = alz.b("textures/gui/presets/isles.png");
+   private static final xk c = xk.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final ftr f;
+   private final String g;
 
-   public static alz a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+   public fkw(long $$0, int $$1, String $$2, ftr $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
    }
 
-   private static alz b(String $$0, String $$1) {
-      fkw.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         ffs $$3 = a($$1);
-         if ($$3 == null) {
-            alz $$4 = hbb.b();
-            a.put($$0, new fkw.a($$1, $$4));
-            return $$4;
-         } else {
-            alz $$5 = alz.a("realms", "dynamic/" + $$0);
-            fmg.Q().aa().a($$5, new hay($$3));
-            a.put($$0, new fkw.a($$1, $$5));
-            return $$5;
+   @Override
+   public void run() {
+      fhb $$0 = fhb.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            fir $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(new fjo(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (fiy var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (fix var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var5);
+            a(new fjp(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
          }
       }
    }
 
-   @Nullable
-   private static ffs a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
-
-      try {
-         return ffs.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
-   }
-
-   public static record a(String a, alz b) {
+   @Override
+   public xk a() {
+      return c;
    }
 }

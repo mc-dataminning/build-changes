@@ -1,93 +1,125 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class exo extends eyc {
-   public static final MapCodec<exo> a = RecordCodecBuilder.mapCodec(
+public class exo extends exv {
+   public static final aya<eod> a = axw.l;
+   public static final jq<evf> b = evg.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final MapCodec<exo> f = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  ma.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dyx::f).toList())
+                  aya.a(mb.aU).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
+                  evf.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
+                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
+                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
                )
             )
             .apply($$0, exo::new)
    );
-   private final jq<dkm> b;
-   private final Set<dyx<?>> c;
+   private final aya<eod> h;
+   private final jq<evf> i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   exo(List<ezy> $$0, jq<dkm> $$1, Set<dyx<?>> $$2) {
+   exo(List<ezr> $$0, aya<eod> $$1, jq<evf> $$2, byte $$3, int $$4, boolean $$5) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   private exo(List<ezy> $$0, jq<dkm> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
-   }
-
-   @Override
-   public eye<exo> b() {
-      return eyf.D;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
 
    @Override
-   public Set<bbn<?>> a() {
-      return Set.of(ezj.g);
+   public exx<exo> b() {
+      return exy.q;
    }
 
    @Override
-   protected cxp a(cxp $$0, ewp $$1) {
-      dxv $$2 = $$1.c(ezj.g);
-      if ($$2 != null) {
-         $$0.a(ku.am, czr.a, $$1x -> {
-            for (dyx<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
+   public Set<bbd<?>> a() {
+      return Set.of(ezc.f);
+   }
+
+   @Override
+   public cxg a(cxg $$0, ewi $$1) {
+      if (!$$0.a(cxk.vi)) {
+         return $$0;
+      } else {
+         fbr $$2 = $$1.c(ezc.f);
+         if ($$2 != null) {
+            arx $$3 = $$1.d();
+            jh $$4 = $$3.a(this.h, jh.a((ka)$$2), this.k, this.l);
+            if ($$4 != null) {
+               cxg $$5 = cxt.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               cxt.a($$3, $$5);
+               evk.a($$5, $$4, "+", this.i);
+               return $$5;
             }
-
-            return $$1x;
-         });
-      }
-
-      return $$0;
-   }
-
-   public static exo.a a(dkm $$0) {
-      return new exo.a($$0);
-   }
-
-   public static class a extends eyc.a<exo.a> {
-      private final jq<dkm> a;
-      private final Builder<dyx<?>> b = ImmutableSet.builder();
-
-      a(dkm $$0) {
-         this.a = $$0.p();
-      }
-
-      public exo.a a(dyx<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
          }
+
+         return $$0;
+      }
+   }
+
+   public static exo.a c() {
+      return new exo.a();
+   }
+
+   public static class a extends exv.a<exo.a> {
+      private aya<eod> a;
+      private jq<evf> b;
+      private byte c;
+      private int d;
+      private boolean e;
+
+      public a() {
+         this.a = exo.a;
+         this.b = exo.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
       }
 
       protected exo.a a() {
          return this;
       }
 
+      public exo.a a(aya<eod> $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public exo.a a(jq<evf> $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public exo.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public exo.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public exo.a a(boolean $$0) {
+         this.e = $$0;
+         return this;
+      }
+
       @Override
-      public eyd b() {
-         return new exo(this.g(), this.a, this.b.build());
+      public exw b() {
+         return new exo(this.g(), this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

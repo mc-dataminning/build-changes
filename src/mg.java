@@ -55,7 +55,7 @@ public class mg {
    }
 
    static {
-      amb.a();
+      alr.a();
    }
 
    public class a {

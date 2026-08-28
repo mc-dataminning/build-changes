@@ -1,32 +1,59 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efs extends efp {
-   public static final Codec<efs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               efp.d.forGetter($$0x -> $$0x),
-               bsm.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bsm.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bsm.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, efs::new)
-   );
-   public final bsm b;
-   public final bsm c;
-   final bsm j;
+public class efs extends egp<ejd> {
+   private static final dxo a = dkf.nB.m().b(djh.h, Integer.valueOf(1)).b(djh.i, dya.a).b(djh.j, Integer.valueOf(0));
+   private static final dxo b = a.b(djh.i, dya.c).b(djh.j, Integer.valueOf(1));
+   private static final dxo c = a.b(djh.i, dya.c);
+   private static final dxo d = a.b(djh.i, dya.b);
 
-   public efs(float $$0, emr $$1, bsm $$2, eek $$3, efq $$4, ju<dkm> $$5, bsm $$6, bsm $$7, bsm $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   public efs(Codec<ejd> $$0) {
+      super($$0);
    }
 
-   public efs(float $$0, emr $$1, bsm $$2, eek $$3, ju<dkm> $$4, bsm $$5, bsm $$6, bsm $$7) {
-      this($$0, $$1, $$2, $$3, efq.a, $$4, $$5, $$6, $$7);
-   }
+   @Override
+   public boolean a(egr<ejd> $$0) {
+      int $$1 = 0;
+      jh $$2 = $$0.e();
+      dhx $$3 = $$0.b();
+      bac $$4 = $$0.d();
+      ejd $$5 = $$0.f();
+      jh.a $$6 = $$2.k();
+      jh.a $$7 = $$2.k();
+      if ($$3.u($$6)) {
+         if (dkf.nB.m().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-   public efs(efp $$0, bsm $$1, bsm $$2, bsm $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(edj.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dkf.l.m(), 2);
+                        }
+                     }
+                  }
+               }
+            }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jm.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jm.a, 1), c, 2);
+               $$3.a($$6.c(jm.a, 1), d, 2);
+            }
+         }
+
+         $$1++;
+      }
+
+      return $$1 > 0;
    }
 }

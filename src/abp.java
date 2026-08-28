@@ -1,31 +1,23 @@
-public record abp(jh c, String d, int e) implements abf {
-   public static final zt<ws, abp> a = abf.a(abp::a, abp::new);
-   public static final abf.b<abp> b = abf.a("debug/poi_added");
+import io.netty.buffer.ByteBuf;
 
-   private abp(ws $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
-   }
+public class abp implements zr<abo> {
+   public static final abp a = new abp();
+   public static final zi<ByteBuf, abp> b = zi.a(a);
 
-   private void a(ws $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
+   private abp() {
    }
 
    @Override
-   public abf.b<abp> a() {
-      return b;
+   public zt<abp> a() {
+      return abu.a;
    }
 
-   public jh b() {
-      return this.c;
+   public void a(abo $$0) {
+      $$0.a(this);
    }
 
-   public String c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

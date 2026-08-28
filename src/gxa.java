@@ -1,6 +1,7 @@
-public class gxa extends gyt {
-   public boolean a;
-   public final bvc b = new bvc();
-   public final bvc c = new bvc();
-   public final bvc d = new bvc();
+public class gxa extends gyo {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

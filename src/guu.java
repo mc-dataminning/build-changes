@@ -1,46 +1,21 @@
-public class guu extends grp<cre, hai> {
-   private static final alz a = alz.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alz b = alz.b("textures/entity/wither/wither.png");
-   private final gdi h;
+public class guu extends gsc<cnj, hah, geb> {
+   private static final alp a = alp.b("textures/entity/piglin/zombified_piglin.png");
 
-   public guu(grq.a $$0) {
-      super($$0);
-      this.h = new gdi($$0.a(gen.dA));
+   public guu(grl.a $$0, geh $$1, geh $$2, geh $$3, geh $$4, geh $$5, geh $$6) {
+      super($$0, new geb($$0.a($$1)), new geb($$0.a($$2)), 0.5F, gtb.a);
+      this.a(new gvp<>(this, new gbt($$0.a($$3)), new gbt($$0.a($$4)), new gbt($$0.a($$5)), new gbt($$0.a($$5)), $$0.h()));
    }
 
-   public static geu a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      $$1.a("head", get.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), geq.a);
-      return geu.a($$0, 64, 64);
+   public alp a(hah $$0) {
+      return a;
    }
 
-   protected int a(cre $$0, jh $$1) {
-      return 15;
+   public hah b() {
+      return new hah();
    }
 
-   public void a(hai $$0, fgs $$1, gll $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      fgw $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$0.c, $$0.b);
-      this.h.a($$1, $$4, $$3, hbc.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private alz a(hai $$0) {
-      return $$0.a ? a : b;
-   }
-
-   public hai b() {
-      return new hai();
-   }
-
-   public void a(cre $$0, hai $$1, float $$2) {
+   public void a(cnj $$0, hah $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.v();
-      $$1.c = $$0.k($$2);
-      $$1.b = $$0.j($$2);
+      $$1.a = $$0.gd();
    }
 }

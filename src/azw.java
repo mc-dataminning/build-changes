@@ -1,65 +1,192 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public record azw<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<azw<Integer>> a = a(Codec.INT);
+public class azw implements DynamicOps<bba> {
+   public static final azw a = new azw();
 
-   public azw(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-      } else {
-         this.b = b;
-         this.c = c;
-      }
+   private azw() {
    }
 
-   public azw(T $$0) {
-      this($$0, $$0);
+   public <U> U a(DynamicOps<U> $$0, bba $$1) {
+      return (U)$$0.empty();
    }
 
-   public static <T extends Comparable<T>> Codec<azw<T>> a(Codec<T> $$0) {
-      return azn.a($$0, "min_inclusive", "max_inclusive", azw::a, azw::a, azw::b);
+   public bba a() {
+      return bba.a;
    }
 
-   public static <T extends Comparable<T>> Codec<azw<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return a($$0)
-         .validate(
-            $$2x -> {
-               if ($$2x.a().compareTo($$1) < 0) {
-                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-               } else {
-                  return $$2x.b().compareTo($$2) > 0
-                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                     : DataResult.success($$2x);
-               }
-            }
-         );
+   public bba b() {
+      return bba.a;
    }
 
-   public static <T extends Comparable<T>> DataResult<azw<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new azw($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   public bba c() {
+      return bba.a;
    }
 
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   public bba a(Number $$0) {
+      return bba.a;
    }
 
-   public boolean a(azw<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   public bba a(byte $$0) {
+      return bba.a;
+   }
+
+   public bba a(short $$0) {
+      return bba.a;
+   }
+
+   public bba a(int $$0) {
+      return bba.a;
+   }
+
+   public bba a(long $$0) {
+      return bba.a;
+   }
+
+   public bba a(float $$0) {
+      return bba.a;
+   }
+
+   public bba a(double $$0) {
+      return bba.a;
+   }
+
+   public bba a(boolean $$0) {
+      return bba.a;
+   }
+
+   public bba a(String $$0) {
+      return bba.a;
+   }
+
+   public DataResult<Number> a(bba $$0) {
+      return DataResult.error(() -> "Not a number");
+   }
+
+   public DataResult<Boolean> b(bba $$0) {
+      return DataResult.error(() -> "Not a boolean");
+   }
+
+   public DataResult<String> c(bba $$0) {
+      return DataResult.error(() -> "Not a string");
+   }
+
+   public DataResult<bba> a(bba $$0, bba $$1) {
+      return DataResult.success(bba.a);
+   }
+
+   public DataResult<bba> a(bba $$0, List<bba> $$1) {
+      return DataResult.success(bba.a);
+   }
+
+   public DataResult<bba> a(bba $$0, bba $$1, bba $$2) {
+      return DataResult.success(bba.a);
+   }
+
+   public DataResult<bba> a(bba $$0, Map<bba, bba> $$1) {
+      return DataResult.success(bba.a);
+   }
+
+   public DataResult<bba> a(bba $$0, MapLike<bba> $$1) {
+      return DataResult.success(bba.a);
+   }
+
+   public DataResult<Stream<Pair<bba, bba>>> d(bba $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Consumer<BiConsumer<bba, bba>>> e(bba $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<MapLike<bba>> f(bba $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Stream<bba>> g(bba $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<Consumer<Consumer<bba>>> h(bba $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<ByteBuffer> i(bba $$0) {
+      return DataResult.error(() -> "Not a byte list");
+   }
+
+   public DataResult<IntStream> j(bba $$0) {
+      return DataResult.error(() -> "Not an int list");
+   }
+
+   public DataResult<LongStream> k(bba $$0) {
+      return DataResult.error(() -> "Not a long list");
+   }
+
+   public bba a(Stream<Pair<bba, bba>> $$0) {
+      return bba.a;
+   }
+
+   public bba a(Map<bba, bba> $$0) {
+      return bba.a;
+   }
+
+   public bba b(Stream<bba> $$0) {
+      return bba.a;
+   }
+
+   public bba a(ByteBuffer $$0) {
+      return bba.a;
+   }
+
+   public bba a(IntStream $$0) {
+      return bba.a;
+   }
+
+   public bba a(LongStream $$0) {
+      return bba.a;
+   }
+
+   public bba a(bba $$0, String $$1) {
+      return $$0;
+   }
+
+   public RecordBuilder<bba> mapBuilder() {
+      return new azw.a(this);
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
+      return "Null";
    }
 
-   public T a() {
-      return this.b;
-   }
+   static final class a extends AbstractUniversalBuilder<bba, bba> {
+      public a(DynamicOps<bba> $$0) {
+         super($$0);
+      }
 
-   public T b() {
-      return this.c;
+      protected bba a() {
+         return bba.a;
+      }
+
+      protected bba a(bba $$0, bba $$1, bba $$2) {
+         return $$2;
+      }
+
+      protected DataResult<bba> a(bba $$0, bba $$1) {
+         return DataResult.success($$1);
+      }
    }
 }

@@ -1,3 +1,8 @@
-public interface akr extends xb {
-   void a(aks var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface akr {
 }

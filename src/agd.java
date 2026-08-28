@@ -1,61 +1,12 @@
-public class agd implements aac<acr> {
-   public static final zt<ws, agd> a = aac.a(agd::a, agd::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-
-   public agd(bvk $$0) {
-      this($$0.ar(), $$0.dz());
-   }
-
-   public agd(int $$0, fby $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = bae.a($$1.d, -3.9, 3.9);
-      double $$4 = bae.a($$1.e, -3.9, 3.9);
-      double $$5 = bae.a($$1.f, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
-   }
-
-   private agd(ws $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
-   }
-
-   private void a(ws $$0) {
-      $$0.c(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
-      $$0.m(this.e);
-   }
+public record agd(xk b) implements zr<acg> {
+   public static final zi<wv, agd> a = zi.a(xm.d, agd::b, agd::new);
 
    @Override
-   public aae<agd> a() {
-      return ahk.aH;
+   public zt<agd> a() {
+      return agz.aR;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public double e() {
-      return (double)this.c / 8000.0;
-   }
-
-   public double f() {
-      return (double)this.d / 8000.0;
-   }
-
-   public double g() {
-      return (double)this.e / 8000.0;
    }
 }

@@ -1,80 +1,108 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class gjf extends gjn {
+   private static final bac a = bac.a();
+   private final gji b;
+   private float F = 1.0F;
 
-public abstract class gjf extends gis {
-   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-
-   protected gjf(gfk $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected gjf(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public gjf.a p() {
-      return gjf.a.a;
-   }
-
-   @Override
-   public void a(fgw $$0, flp $$1, float $$2) {
-      Quaternionf $$3 = new Quaternionf();
-      this.p().setRotation($$3, $$1, $$2);
-      if (this.z != 0.0F) {
-         $$3.rotateZ(bae.h($$2, this.A, this.z));
+   gjf(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gji $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
       }
 
-      this.a($$0, $$1, $$3, $$2);
-   }
-
-   protected void a(fgw $$0, flp $$1, Quaternionf $$2, float $$3) {
-      fby $$4 = $$1.b();
-      float $$5 = (float)(bae.d((double)$$3, this.d, this.g) - $$4.a());
-      float $$6 = (float)(bae.d((double)$$3, this.e, this.h) - $$4.b());
-      float $$7 = (float)(bae.d((double)$$3, this.f, this.i) - $$4.c());
-      this.a($$0, $$2, $$5, $$6, $$7, $$3);
-   }
-
-   protected void a(fgw $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = this.b($$5);
-      float $$7 = this.c();
-      float $$8 = this.d();
-      float $$9 = this.e();
-      float $$10 = this.f();
-      int $$11 = this.a($$5);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
-   }
-
-   private void a(fgw $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
-      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
-      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
-   }
-
-   public float b(float $$0) {
-      return this.D;
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
+      }
    }
 
    @Override
-   public gis d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   public gir b() {
+      return gir.c;
    }
 
-   protected abstract float c();
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.y = 0.0F;
+      } else {
+         this.y = azu.h(0.05F, this.y, this.F);
+      }
+   }
 
-   protected abstract float d();
+   @Override
+   protected void e(float $$0) {
+      super.e($$0);
+      this.F = $$0;
+   }
 
-   protected abstract float e();
+   private boolean g() {
+      flz $$0 = flz.Q();
+      gkc $$1 = $$0.t;
+      return $$1 != null && $$1.bF().c(this.g, this.h, this.i) <= 9.0 && $$0.n.aE().a() && $$1.gH();
+   }
 
-   protected abstract float f();
+   public static class a implements giq<lw> {
+      private final gji a;
 
-   public interface a {
-      gjf.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      gjf.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+      public a(gji $$0) {
+         this.a = $$0;
+      }
 
-      void setRotation(Quaternionf var1, flp var2, float var3);
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class b implements giq<ll> {
+      private final gji a;
+
+      public b(gji $$0) {
+         this.a = $$0;
+      }
+
+      public gin a(ll $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gin $$8 = new gjf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a($$0.b(), $$0.c(), $$0.d());
+         $$8.e($$0.e());
+         return $$8;
+      }
+   }
+
+   public static class c implements giq<lw> {
+      private final gji a;
+
+      public c(gji $$0) {
+         this.a = $$0;
+      }
+
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class d implements giq<lw> {
+      private final gji a;
+
+      public d(gji $$0) {
+         this.a = $$0;
+      }
+
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjf $$8 = new gjf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.A.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
+      }
    }
 }

@@ -146,10 +146,14 @@ public class f {
    }
 
    public static boolean a(Matrix4f $$0) {
-      return ($$0.properties() & 8) != 0;
+      return ($$0.properties() & 4) != 0;
    }
 
    public static boolean b(Matrix4f $$0) {
+      return ($$0.properties() & 8) != 0;
+   }
+
+   public static boolean c(Matrix4f $$0) {
       return ($$0.properties() & 16) != 0;
    }
 }

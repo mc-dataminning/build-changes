@@ -1,30 +1,68 @@
-public class ceo extends cde {
-   private final bwo a;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public ceo(bwo $$0) {
-      this.a = $$0;
+public class ceo<T extends bvx> extends cev {
+   private static final int i = 10;
+   protected final Class<T> a;
+   protected final int b;
+   @Nullable
+   protected bvx c;
+   protected cgo d;
+
+   public ceo(bvz $$0, Class<T> $$1, boolean $$2) {
+      this($$0, $$1, 10, $$2, false, null);
+   }
+
+   public ceo(bvz $$0, Class<T> $$1, boolean $$2, cgo.a $$3) {
+      this($$0, $$1, 10, $$2, false, $$3);
+   }
+
+   public ceo(bvz $$0, Class<T> $$1, boolean $$2, boolean $$3) {
+      this($$0, $$1, 10, $$2, $$3, null);
+   }
+
+   public ceo(bvz $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cgo.a $$5) {
+      super($$0, $$3, $$4);
+      this.a = $$1;
+      this.b = b($$2);
+      this.a(EnumSet.of(ccv.a.d));
+      this.d = cgo.a().a(this.l()).a($$5);
    }
 
    @Override
    public boolean b() {
-      return this.a.aJ() && !this.a.dW().b_(this.a.dw()).a(aya.a);
+      if (this.b > 0 && this.e.dZ().a(this.b) != 0) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   protected fbm a(double $$0) {
+      return this.e.cR().c($$0, $$0, $$0);
+   }
+
+   protected void h() {
+      arx $$0 = a(this.e);
+      if (this.a != cpo.class && this.a != ary.class) {
+         this.c = $$0.a(this.e.dW().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dB(), this.e.dF(), this.e.dH());
+      } else {
+         this.c = $$0.a(this.i(), this.e, this.e.dB(), this.e.dF(), this.e.dH());
+      }
    }
 
    @Override
    public void d() {
-      jh $$0 = null;
+      this.e.h(this.c);
+      super.d();
+   }
 
-      for (jh $$2 : jh.b(
-         bae.a(this.a.dB() - 2.0), bae.a(this.a.dD() - 2.0), bae.a(this.a.dH() - 2.0), bae.a(this.a.dB() + 2.0), this.a.dC(), bae.a(this.a.dH() + 2.0)
-      )) {
-         if (this.a.dW().b_($$2).a(aya.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   public void a(@Nullable bvx $$0) {
+      this.c = $$0;
+   }
 
-      if ($$0 != null) {
-         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   private cgo i() {
+      return this.d.a(this.l());
    }
 }

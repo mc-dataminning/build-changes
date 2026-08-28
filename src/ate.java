@@ -1,30 +1,36 @@
-import net.minecraft.server.MinecraftServer;
+public class ate implements akn {
+   private static final xk b = xk.c("multiplayer.status.request_handled");
+   private final akm c;
+   private final we d;
+   private boolean e;
 
-public class ate implements ajs {
-   private final MinecraftServer b;
-   private final wp c;
-
-   public ate(MinecraftServer $$0, wp $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ate(akm $$0, we $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(ajp $$0) {
-      if ($$0.g() != ajo.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      } else {
-         this.c.a(akb.b, new atm(this.b, this.c, false));
-         this.c.a(akb.d);
-      }
-   }
-
-   @Override
-   public void a(wr $$0) {
+   public void a(wg $$0) {
    }
 
    @Override
    public boolean c() {
-      return this.c.i();
+      return this.d.i();
+   }
+
+   @Override
+   public void a(ako $$0) {
+      if (this.e) {
+         this.d.a(b);
+      } else {
+         this.e = true;
+         this.d.a(new akl(this.c));
+      }
+   }
+
+   @Override
+   public void a(aki $$0) {
+      this.d.a(new akf($$0.b()));
+      this.d.a(b);
    }
 }

@@ -1,40 +1,55 @@
-public class gtj extends gsw<ciq, gzi, gbm<gxv>> {
-   private static final alz a = alz.b("textures/entity/fish/pufferfish.png");
-   private final gbm<gxv> b;
-   private final gbm<gxv> k;
-   private final gbm<gxv> l = this.c();
+public class gtj extends gsr<cij, gzh, gcv> {
+   private static final alp a = alp.b("textures/entity/fish/salmon.png");
+   private final gcv b;
+   private final gcv k;
+   private final gcv l;
 
-   public gtj(grq.a $$0) {
-      super($$0, new gct($$0.a(gen.cn)), 0.2F);
-      this.k = new gcu($$0.a(gen.co));
-      this.b = new gcv($$0.a(gen.cp));
+   public gtj(grl.a $$0) {
+      super($$0, new gcv($$0.a(gei.cw)), 0.4F);
+      this.b = new gcv($$0.a(gei.cy));
+      this.k = new gcv($$0.a(gei.cw));
+      this.l = new gcv($$0.a(gei.cx));
    }
 
-   public alz a(gzi $$0) {
+   public void a(cij $$0, gzh $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gw();
+   }
+
+   public alp a(gzh $$0) {
       return a;
    }
 
-   public gzi b() {
-      return new gzi();
+   public gzh b() {
+      return new gzh();
    }
 
-   public void a(gzi $$0, fgs $$1, gll $$2, int $$3) {
-      this.h = switch ($$0.a) {
-         case 0 -> this.b;
-         case 1 -> this.k;
-         default -> this.l;
-      };
-      this.f = 0.1F + 0.1F * (float)$$0.a;
+   protected void a(gzh $$0, fgl $$1, float $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
+      float $$4 = 1.0F;
+      float $$5 = 1.0F;
+      if (!$$0.af) {
+         $$4 = 1.3F;
+         $$5 = 1.7F;
+      }
+
+      float $$6 = $$4 * 4.3F * azu.a($$5 * 0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.af) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 
-   public void a(ciq $$0, gzi $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gp();
-   }
+   public void a(gzh $$0, fgl $$1, glg $$2, int $$3) {
+      if ($$0.a == cij.a.a) {
+         this.h = this.b;
+      } else if ($$0.a == cij.a.c) {
+         this.h = this.l;
+      } else {
+         this.h = this.k;
+      }
 
-   protected void a(gzi $$0, fgs $$1, float $$2, float $$3) {
-      $$1.a(0.0F, bae.b($$0.p * 0.05F) * 0.08F, 0.0F);
       super.a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,85 +1,21 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
 import java.util.function.Function;
 
 public class bzl {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
+   public static bxr<bvx> a() {
+      return cbd.a((Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$0 -> $$0.a((cbg<bvx>)(($$0x, $$1, $$2) -> {
+            if ($$0x.A.a(20) != 0) {
+               return false;
+            } else {
+               bwz<?> $$3 = $$1.ec();
+               crb $$4 = $$0x.d($$1.dw());
+               if ($$4 == null || $$4.d() || $$4.f()) {
+                  $$3.b(crf.b);
+                  $$3.a($$0x.ae(), $$0x.ad());
+               }
 
-   public static bya<bwo> a() {
-      return cbm.a(
-         (Function<cbm.b<bwo>, ? extends App<cbm.c<bwo>, cbp<bwo>>>)($$0 -> $$0.group($$0.b(cfk.i), $$0.c(cfk.m), $$0.a(cfk.n), $$0.a(cfk.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.H_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<bwg> $$8 = $$0.b($$1);
-                        Optional<bwg> $$9 = $$8.stream().filter($$1xx -> a((bwg)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<bwg> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              fby $$11 = che.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(jh.a((ka)$$11))) {
-                                 $$2.a(new cfn($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-                  }))
-      );
-   }
-
-   private static void a(cbn<?, bwg> $$0, cbn<?, bzn> $$1, cbn<?, cfn> $$2, bwg $$3) {
-      $$0.a($$3);
-      $$1.a(new byk($$3, true));
-      $$2.a(new cfn(new byk($$3, false), 0.6F, 1));
-   }
-
-   private static Optional<bwg> a(List<bwg> $$0) {
-      Map<bwg, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
-   }
-
-   private static Map<bwg, Integer> b(List<bwg> $$0) {
-      Map<bwg, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bzl::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
-   }
-
-   private static bwg a(bwg $$0) {
-      return $$0.ec().c(cfk.q).get();
-   }
-
-   private static boolean b(bwg $$0) {
-      return $$0.ec().c(cfk.q).isPresent();
-   }
-
-   private static boolean a(bwg $$0, bwg $$1) {
-      return $$1.ec().c(cfk.q).filter($$1x -> $$1x == $$0).isPresent();
+               return true;
+            }
+         }))));
    }
 }

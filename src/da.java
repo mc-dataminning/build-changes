@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record da(Optional<be<asz<xv>, da.a>> c, Optional<String> d, Optional<String> e, dj.d f, Optional<Boolean> g) implements dz<dax> {
+public record da(Optional<be<asp<xk>, da.a>> c, Optional<String> d, Optional<String> e, dj.d f, Optional<Boolean> g) implements dz<dao> {
    public static final Codec<da> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                be.a(da.a.a).optionalFieldOf("pages").forGetter(da::b),
@@ -16,11 +16,11 @@ public record da(Optional<be<asz<xv>, da.a>> c, Optional<String> d, Optional<Str
    );
 
    @Override
-   public kt<dax> a() {
+   public kt<dao> a() {
       return ku.T;
    }
 
-   public boolean a(cxp $$0, dax $$1) {
+   public boolean a(cxg $$0, dao $$1) {
       if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
          return false;
       } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {
@@ -32,7 +32,7 @@ public record da(Optional<be<asz<xv>, da.a>> c, Optional<String> d, Optional<Str
       }
    }
 
-   public Optional<be<asz<xv>, da.a>> b() {
+   public Optional<be<asp<xk>, da.a>> b() {
       return this.c;
    }
 
@@ -52,14 +52,14 @@ public record da(Optional<be<asz<xv>, da.a>> c, Optional<String> d, Optional<Str
       return this.g;
    }
 
-   public static record a(xv b) implements Predicate<asz<xv>> {
-      public static final Codec<da.a> a = xx.a.xmap(da.a::new, da.a::a);
+   public static record a(xk b) implements Predicate<asp<xk>> {
+      public static final Codec<da.a> a = xm.a.xmap(da.a::new, da.a::a);
 
-      public boolean a(asz<xv> $$0) {
+      public boolean a(asp<xk> $$0) {
          return $$0.a().equals(this.b);
       }
 
-      public xv a() {
+      public xk a() {
          return this.b;
       }
    }

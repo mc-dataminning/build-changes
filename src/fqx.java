@@ -1,48 +1,73 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public enum fqx implements bba {
-   a("uniform"),
-   b("jp");
+public enum fqx implements fej {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   public static final Codec<fqx> c = bba.a(fqx::values);
-   private final String d;
+   final ffl c;
 
-   private fqx(final String $$0) {
-      this.d = $$0;
+   private static ffl a(int $$0, int $$1, fqx.a $$2) {
+      ffl $$3 = new ffl(ffl.a.a, $$0, $$1, false);
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
+      }
+
+      $$3.i();
+      return $$3;
+   }
+
+   private fqx(final Supplier<ffl> $$0) {
+      this.c = $$0.get();
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
    }
 
-   public static class a {
-      private final Map<fqx, Boolean> c;
-      public static final Codec<fqx.a> a = Codec.unboundedMap(fqx.c, Codec.BOOL).xmap(fqx.a::new, $$0 -> $$0.c);
-      public static final fqx.a b = new fqx.a(Map.of());
-
-      public a(Map<fqx, Boolean> $$0) {
-         this.c = $$0;
-      }
-
-      public boolean a(Set<fqx> $$0) {
-         for (Entry<fqx, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
-            }
+   @Override
+   public fqv bake(Function<fel, fqv> $$0) {
+      return $$0.apply(new fel() {
+         @Override
+         public int a() {
+            return fqx.this.c.a();
          }
 
-         return true;
-      }
+         @Override
+         public int b() {
+            return fqx.this.c.b();
+         }
 
-      public fqx.a a(fqx.a $$0) {
-         Map<fqx, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new fqx.a(Map.copyOf($$1));
-      }
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            fqx.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

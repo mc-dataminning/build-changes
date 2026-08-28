@@ -1,61 +1,41 @@
-import com.mojang.datafixers.Products.P3;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import java.util.List;
 
-public abstract class eky {
-   public static final Codec<eky> d = ma.W.q().dispatch(eky::a, ekz::a);
-   protected final bso e;
-   protected final elb f;
-   protected final Optional<ekv> g;
+public class eky extends ekx {
+   public static final MapCodec<eky> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eky::new));
+   protected final List<dxo> h;
 
-   protected static <P extends eky> P3<Mu<P>, bso, elb, Optional<ekv>> a(Instance<P> $$0) {
-      return $$0.group(
-         bso.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         elb.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         ekv.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   protected static <P extends eky> P4<Mu<P>, Long, est.a, Float, List<dxo>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dxo.a).fieldOf("states").forGetter($$0x -> $$0x.h));
    }
 
-   public eky(bso $$0, elb $$1, Optional<ekv> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public eky(long $$0, est.a $$1, float $$2, List<dxo> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
-   protected abstract ekz<?> a();
-
-   public abstract boolean a(dho var1, BiConsumer<jh, dxv> var2, bam var3, jh var4, jh var5, ejw var6);
-
-   protected boolean a(dho $$0, jh $$1) {
-      return eii.c($$0, $$1);
+   @Override
+   protected ekv<?> a() {
+      return ekv.d;
    }
 
-   protected void a(dho $$0, BiConsumer<jh, dxv> $$1, bam $$2, jh $$3, ejw $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            ekv $$5 = this.g.get();
-            jh $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dxu.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
-      }
+   @Override
+   public dxo a(bac $$0, jh $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   protected dxv a(dho $$0, jh $$1, dxv $$2) {
-      if ($$2.b(dyl.D)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(aya.a));
-         return $$2.b(dyl.D, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
+   protected dxo a(List<dxo> $$0, jh $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
    }
 
-   public jh a(jh $$0, bam $$1) {
-      return $$0.b(this.e.a($$1));
+   protected dxo a(List<dxo> $$0, double $$1) {
+      double $$2 = azu.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

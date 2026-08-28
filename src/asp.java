@@ -1,417 +1,47 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class asp implements dig {
-   private static final Logger a = LogUtils.getLogger();
-   private final bay<ary> b;
-   private final dzq c;
-   private final ash d;
-   private final long e;
-   private final evz f;
-   private final bam h;
-   private final ebq i;
-   private final fdv<dkm> j = new fdv<>($$0x -> this.y($$0x).q());
-   private final fdv<etw> k = new fdv<>($$0x -> this.y($$0x).r());
-   private final dim l;
-   private final eau m;
-   @Nullable
-   private Supplier<String> n;
-   private final AtomicLong o = new AtomicLong();
-   private static final alz p = alz.b("worldgen_region_random");
-
-   public asp(ash $$0, bay<ary> $$1, eau $$2, dzq $$3) {
-      this.m = $$2;
-      this.b = $$1;
-      this.c = $$3;
-      this.d = $$0;
-      this.e = $$0.D();
-      this.f = $$0.D_();
-      this.h = $$0.m().i().a(p).a(this.c.f().l());
-      this.i = $$0.G_();
-      this.l = new dim(this, dim.a(this.e));
+public record asp<T>(T a, Optional<T> b) {
+   public static <T> Codec<asp<T>> a(Codec<T> $$0) {
+      Codec<asp<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(asp::a), $$0.optionalFieldOf("filtered").forGetter(asp::b)).apply($$1x, asp::new)
+      );
+      Codec<asp<T>> $$2 = $$0.xmap(asp::a, asp::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   public boolean a(dgo $$0, int $$1) {
-      return this.d.m().a.b($$0, $$1);
+   public static <B extends ByteBuf, T> zi<B, asp<T>> a(zi<B, T> $$0) {
+      return zi.a($$0, asp::a, $$0.a(zg::a), asp::b, asp::new);
    }
 
-   public dgo b() {
-      return this.c.f();
+   public static <T> asp<T> a(T $$0) {
+      return new asp<>($$0, Optional.empty());
    }
 
-   @Override
-   public void a(@Nullable Supplier<String> $$0) {
-      this.n = $$0;
+   public static asp<String> a(asq $$0) {
+      return new asp<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
    }
 
-   @Override
-   public dzq a(int $$0, int $$1) {
-      return this.a($$0, $$1, ear.c);
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
    }
 
-   @Nullable
-   @Override
-   public dzq a(int $$0, int $$1, ear $$2, boolean $$3) {
-      int $$4 = this.c.f().e($$0, $$1);
-      ear $$5 = $$4 >= this.m.b().b() ? null : this.m.b().a($$4);
-      ary $$6;
-      if ($$5 != null) {
-         $$6 = this.b.a($$0, $$1);
-         if ($$2.c($$5)) {
-            dzq $$7 = $$6.a($$5);
-            if ($$7 != null) {
-               return $$7;
-            }
-         }
+   public <U> asp<U> a(Function<T, U> $$0) {
+      return new asp<>($$0.apply(this.a), this.b.map($$0));
+   }
+
+   public <U> Optional<asp<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new asp<>($$1.get(), $$2));
       } else {
-         $$6 = null;
+         return Optional.of(new asp<>($$1.get(), Optional.empty()));
       }
-
-      o $$9 = o.a(new IllegalStateException("Requested chunk unavailable during world generation"), "Exception generating new chunk");
-      p $$10 = $$9.a("Chunk request details");
-      $$10.a("Requested chunk", String.format(Locale.ROOT, "%d, %d", $$0, $$1));
-      $$10.a("Generating status", () -> this.m.a().f());
-      $$10.a("Requested status", $$2::f);
-      $$10.a("Actual status", () -> $$6 == null ? "[out of cache bounds]" : $$6.q().f());
-      $$10.a("Maximum allowed status", () -> $$5 == null ? "null" : $$5.f());
-      $$10.a("Dependencies", this.m.b()::toString);
-      $$10.a("Requested distance", $$4);
-      $$10.a("Generating chunk", this.c.f()::toString);
-      throw new z($$9);
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1) {
-      int $$2 = this.c.f().e($$0, $$1);
-      return $$2 < this.m.b().b();
-   }
-
-   @Override
-   public dxv a_(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w())).a_($$0);
-   }
-
-   @Override
-   public etx b_(jh $$0) {
-      return this.y($$0).b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public cpx a(double $$0, double $$1, double $$2, double $$3, Predicate<bvk> $$4) {
-      return null;
-   }
-
-   @Override
-   public int E_() {
-      return 0;
-   }
-
-   @Override
-   public dim I_() {
-      return this.l;
-   }
-
-   @Override
-   public jq<dik> a(int $$0, int $$1, int $$2) {
-      return this.d.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public float a(jm $$0, boolean $$1) {
-      return 1.0F;
-   }
-
-   @Override
-   public etm C_() {
-      return this.d.C_();
-   }
-
-   @Override
-   public boolean a(jh $$0, boolean $$1, @Nullable bvk $$2, int $$3) {
-      dxv $$4 = this.a_($$0);
-      if ($$4.l()) {
-         return false;
-      } else {
-         if ($$1) {
-            dux $$5 = $$4.x() ? this.c_($$0) : null;
-            dkm.a($$4, (dhi)this.d, $$0, $$5, $$2, cxp.j);
-         }
-
-         return this.a($$0, dko.a.m(), 3, $$3);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dux c_(jh $$0) {
-      dzq $$1 = this.y($$0);
-      dux $$2 = $$1.c_($$0);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         ux $$3 = $$1.f($$0);
-         dxv $$4 = $$1.a_($$0);
-         if ($$3 != null) {
-            if ("DUMMY".equals($$3.l("id"))) {
-               if (!$$4.x()) {
-                  return null;
-               }
-
-               $$2 = ((dng)$$4.b()).a($$0, $$4);
-            } else {
-               $$2 = dux.a($$0, $$4, $$3, this.d.K_());
-            }
-
-            if ($$2 != null) {
-               $$1.a($$2);
-               return $$2;
-            }
-         }
-
-         if ($$4.x()) {
-            a.warn("Tried to access a block entity before it was created. {}", $$0);
-         }
-
-         return null;
-      }
-   }
-
-   @Override
-   public boolean f_(jh $$0) {
-      int $$1 = kj.a($$0.u());
-      int $$2 = kj.a($$0.w());
-      dgo $$3 = this.b();
-      int $$4 = Math.abs($$3.h - $$1);
-      int $$5 = Math.abs($$3.i - $$2);
-      if ($$4 <= this.m.d() && $$5 <= this.m.d()) {
-         if (this.c.A()) {
-            dhk $$6 = this.c.B();
-            if ($$6.e($$0.v())) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         ae.b(
-            "Detected setBlock in a far chunk ["
-               + $$1
-               + ", "
-               + $$2
-               + "], pos: "
-               + $$0
-               + ", status: "
-               + this.m.a()
-               + (this.n == null ? "" : ", currently generating: " + this.n.get())
-         );
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(jh $$0, dxv $$1, int $$2, int $$3) {
-      if (!this.f_($$0)) {
-         return false;
-      } else {
-         dzq $$4 = this.y($$0);
-         dxv $$5 = $$4.a($$0, $$1, false);
-         if ($$5 != null) {
-            this.d.a($$0, $$5, $$1);
-         }
-
-         if ($$1.x()) {
-            if ($$4.n().d() == eav.b) {
-               dux $$6 = ((dng)$$1.b()).a($$0, $$1);
-               if ($$6 != null) {
-                  $$4.a($$6);
-               } else {
-                  $$4.d($$0);
-               }
-            } else {
-               ux $$7 = new ux();
-               $$7.a("x", $$0.u());
-               $$7.a("y", $$0.v());
-               $$7.a("z", $$0.w());
-               $$7.a("id", "DUMMY");
-               $$4.a($$7);
-            }
-         } else if ($$5 != null && $$5.x()) {
-            $$4.d($$0);
-         }
-
-         if ($$1.l(this, $$0)) {
-            this.f($$0);
-         }
-
-         return true;
-      }
-   }
-
-   private void f(jh $$0) {
-      this.y($$0).e($$0);
-   }
-
-   @Override
-   public boolean b(bvk $$0) {
-      int $$1 = kj.a($$0.dA());
-      int $$2 = kj.a($$0.dG());
-      this.a($$1, $$2).a($$0);
-      return true;
-   }
-
-   @Override
-   public boolean a(jh $$0, boolean $$1) {
-      return this.a($$0, dko.a.m(), 3);
-   }
-
-   @Override
-   public dzl F_() {
-      return this.d.F_();
-   }
-
-   @Override
-   public boolean B_() {
-      return false;
-   }
-
-   @Deprecated
-   @Override
-   public ash a() {
-      return this.d;
-   }
-
-   @Override
-   public ke K_() {
-      return this.d.K_();
-   }
-
-   @Override
-   public cst J() {
-      return this.d.J();
-   }
-
-   @Override
-   public evz D_() {
-      return this.f;
-   }
-
-   @Override
-   public bth d_(jh $$0) {
-      if (!this.b(kj.a($$0.u()), kj.a($$0.w()))) {
-         throw new RuntimeException("We are asking a region for a chunk out of bound");
-      } else {
-         return new bth(this.d.al(), this.d.ad(), 0L, this.d.aq());
-      }
-   }
-
-   @Nullable
-   @Override
-   public MinecraftServer p() {
-      return this.d.p();
-   }
-
-   @Override
-   public dzu R() {
-      return this.d.m();
-   }
-
-   @Override
-   public long D() {
-      return this.e;
-   }
-
-   @Override
-   public fdm<dkm> T() {
-      return this.j;
-   }
-
-   @Override
-   public fdm<etw> S() {
-      return this.k;
-   }
-
-   @Override
-   public int O() {
-      return this.d.O();
-   }
-
-   @Override
-   public bam H_() {
-      return this.h;
-   }
-
-   @Override
-   public int a(edq.a $$0, int $$1, int $$2) {
-      return this.a(kj.a($$1), kj.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
-   }
-
-   @Override
-   public void a(@Nullable cpx $$0, jh $$1, axe $$2, axg $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public void a(lq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-   }
-
-   @Override
-   public void a(@Nullable cpx $$0, int $$1, jh $$2, int $$3) {
-   }
-
-   @Override
-   public void a(jq<ecr> $$0, fby $$1, ecr.a $$2) {
-   }
-
-   @Override
-   public ebq G_() {
-      return this.i;
-   }
-
-   @Override
-   public boolean a(jh $$0, Predicate<dxv> $$1) {
-      return $$1.test(this.a_($$0));
-   }
-
-   @Override
-   public boolean b(jh $$0, Predicate<etx> $$1) {
-      return $$1.test(this.b_($$0));
-   }
-
-   @Override
-   public <T extends bvk> List<T> a(ecf<bvk, T> $$0, fbt $$1, Predicate<? super T> $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public List<bvk> a(@Nullable bvk $$0, fbt $$1, @Nullable Predicate<? super bvk> $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public List<cpx> y() {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public int L_() {
-      return this.d.L_();
-   }
-
-   @Override
-   public int M_() {
-      return this.d.M_();
-   }
-
-   @Override
-   public long J_() {
-      return this.o.getAndIncrement();
    }
 }

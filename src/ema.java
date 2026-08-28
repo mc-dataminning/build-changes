@@ -1,72 +1,26 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class ema extends emg {
-   public static final MapCodec<ema> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ema::new));
+public class ema<P extends elz> {
+   public static final ema<ely> a = a("straight_trunk_placer", ely.a);
+   public static final ema<elv> b = a("forking_trunk_placer", elv.a);
+   public static final ema<elw> c = a("giant_trunk_placer", elw.a);
+   public static final ema<elx> d = a("mega_jungle_trunk_placer", elx.b);
+   public static final ema<elt> e = a("dark_oak_trunk_placer", elt.a);
+   public static final ema<elu> f = a("fancy_trunk_placer", elu.a);
+   public static final ema<elr> g = a("bending_trunk_placer", elr.a);
+   public static final ema<emb> h = a("upwards_branching_trunk_placer", emb.a);
+   public static final ema<els> i = a("cherry_trunk_placer", els.a);
+   private final MapCodec<P> j;
 
-   public ema(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends elz> ema<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.V, $$0, new ema<>($$1));
    }
 
-   @Override
-   protected emh<?> a() {
-      return emh.e;
+   private ema(MapCodec<P> $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public List<ekm.a> a(dho $$0, BiConsumer<jh, dxv> $$1, bam $$2, int $$3, jh $$4, ejw $$5) {
-      List<ekm.a> $$6 = Lists.newArrayList();
-      jh $$7 = $$4.e();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.i(), $$5);
-      a($$0, $$1, $$2, $$7.g(), $$5);
-      a($$0, $$1, $$2, $$7.g().i(), $$5);
-      jm $$8 = jm.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
-
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         jh $$19 = new jh($$14, $$18, $$15);
-         if (eii.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.i(), $$5);
-            this.b($$0, $$1, $$2, $$19.g(), $$5);
-            this.b($$0, $$1, $$2, $$19.i().g(), $$5);
-         }
-      }
-
-      $$6.add(new ekm.a(new jh($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new jh($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new ekm.a(new jh($$14 + $$20, $$16, $$15 + $$21), 0, false));
-            }
-         }
-      }
-
-      return $$6;
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

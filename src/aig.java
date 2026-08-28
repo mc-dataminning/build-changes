@@ -1,30 +1,36 @@
-import java.util.List;
-import java.util.Optional;
+public class aig implements zr<ahb> {
+   public static final zi<wh, aig> a = zr.a(aig::a, aig::new);
+   private static final int b = 2;
+   private final boolean c;
 
-public record aig(int b, List<String> c, Optional<String> d) implements aac<ahm> {
-   public static final zt<ws, aig> a = zt.a(zr.h, aig::b, zr.b(1024).a(zr.c(100)), aig::e, zr.b(32).a(zr::a), aig::f, aig::new);
+   public aig(cpk $$0) {
+      this.c = $$0.b;
+   }
 
-   public aig(int b, List<String> c, Optional<String> d) {
-      c = List.copyOf(c);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private aig(wh $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
+   }
+
+   private void a(wh $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.l($$1);
    }
 
    @Override
-   public aae<aig> a() {
-      return ahk.bD;
+   public zt<aig> a() {
+      return agz.bR;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public boolean b() {
       return this.c;
-   }
-
-   public Optional<String> f() {
-      return this.d;
    }
 }

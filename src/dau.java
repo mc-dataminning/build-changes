@@ -1,32 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record dau(float c, Optional<alz> d) {
-   public static final Codec<dau> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(azn.o.fieldOf("seconds").forGetter(dau::b), alz.a.optionalFieldOf("cooldown_group").forGetter(dau::c)).apply($$0, dau::new)
-   );
-   public static final zt<xg, dau> b = zt.a(zr.l, dau::b, alz.b.a(zr::a), dau::c, dau::new);
+public record dau(ju<bue> c) implements das {
+   public static final MapCodec<dau> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.a(mb.W).fieldOf("effects").forGetter(dau::b)).apply($$0, dau::new));
+   public static final zi<wv, dau> b = zi.a(zg.c(mb.W), dau::b, dau::new);
 
-   public dau(float $$0) {
-      this($$0, Optional.empty());
+   public dau(jq<bue> $$0) {
+      this(ju.a($$0));
    }
 
-   public int a() {
-      return (int)(this.c * 20.0F);
+   @Override
+   public das.a<dau> a() {
+      return das.a.b;
    }
 
-   public void a(cxp $$0, bwg $$1) {
-      if ($$1 instanceof cpx $$2) {
-         $$2.gE().a($$0, this.a());
+   @Override
+   public boolean a(dgz $$0, cxg $$1, bvx $$2) {
+      boolean $$3 = false;
+
+      for (jq<bue> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
       }
+
+      return $$3;
    }
 
-   public float b() {
+   public ju<bue> b() {
       return this.c;
-   }
-
-   public Optional<alz> c() {
-      return this.d;
    }
 }

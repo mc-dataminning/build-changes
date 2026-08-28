@@ -1,67 +1,30 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class ewv {
-   private final bak a;
-   private final bbo b;
-   private final Optional<jr.a> c;
-   private final Set<aly<?>> d;
+public class ewv extends exa {
+   public static final MapCodec<ewv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(cxc.e.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ewv::new)
+   );
+   private final jq<cxc> j;
 
-   public ewv(bak $$0, bbo $$1, jr.a $$2) {
-      this($$0, $$1, Optional.of($$2), Set.of());
+   private ewv(jq<cxc> $$0, int $$1, int $$2, List<ezr> $$3, List<exw> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
-   public ewv(bak $$0, bbo $$1) {
-      this($$0, $$1, Optional.empty(), Set.of());
+   @Override
+   public ewz a() {
+      return eww.c;
    }
 
-   private ewv(bak $$0, bbo $$1, Optional<jr.a> $$2, Set<aly<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   @Override
+   public void a(Consumer<cxg> $$0, ewi $$1) {
+      $$0.accept(new cxg(this.j));
    }
 
-   public ewv a(String $$0) {
-      return new ewv(this.a.a($$0), this.b, this.c, this.d);
-   }
-
-   public ewv a(String $$0, aly<?> $$1) {
-      Set<aly<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new ewv(this.a.a($$0), this.b, this.c, $$2);
-   }
-
-   public boolean a(aly<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.b($$0);
-   }
-
-   public void a(ewq $$0) {
-      Set<bbn<?>> $$1 = $$0.a();
-      Set<bbn<?>> $$2 = Sets.difference($$1, this.b.b());
-      if (!$$2.isEmpty()) {
-         this.a.b("Parameters " + $$2 + " are not provided in this context");
-      }
-   }
-
-   public jr.a a() {
-      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
-   }
-
-   public boolean b() {
-      return this.c.isPresent();
-   }
-
-   public ewv a(bbo $$0) {
-      return new ewv(this.a, $$0, this.c, this.d);
-   }
-
-   public bak c() {
-      return this.a;
+   public static exa.a<?> a(dgy $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ewv($$0.j().f(), $$1, $$2, $$3, $$4));
    }
 }

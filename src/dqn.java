@@ -1,37 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dqn extends dkm {
-   public static final MapCodec<dqn> a = b(dqn::new);
+public class dqn extends dqm {
+   public static final MapCodec<dqn> h = b(dqn::new);
+   public static final dyl<jm> i = dob.aF;
+   public static final dyf j = dqm.d;
 
    @Override
    public MapCodec<dqn> a() {
-      return a;
+      return h;
    }
 
-   protected dqn(dxu.d $$0) {
+   protected dqn(dxn.d $$0) {
       super($$0);
+      this.l(this.F.b().b(i, jm.c).b(j, Boolean.valueOf(true)));
    }
 
    @Override
-   protected btj a(cxp $$0, dxv $$1, dhi $$2, jh $$3, cpx $$4, bti $$5, fbu $$6) {
-      if (!$$0.a(cxt.sJ)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.C) {
-         return btj.a;
-      } else {
-         jm $$7 = $$6.c();
-         jm $$8 = $$7.o() == jm.a.b ? $$4.cO().g() : $$7;
-         $$2.a(null, $$3, axf.vq, axg.e, 1.0F, 1.0F);
-         $$2.a($$3, dko.er.m().b(dlh.b, $$8), 11);
-         cmb $$9 = new cmb(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cxp(cxt.sM, 4)
-         );
-         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, bwg.d($$5));
-         $$2.a($$4, ecr.M, $$3);
-         $$4.b(axp.c.b(cxt.sJ));
-         return btj.a;
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return dtk.o($$0);
+   }
+
+   @Override
+   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
+      return dtk.b($$1, $$2, $$0.c(i));
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      return $$4.g() == $$0.c(i) && !$$0.a($$1, $$3) ? dkf.a.m() : $$0;
+   }
+
+   @Nullable
+   @Override
+   public dxo a(dax $$0) {
+      dxo $$1 = dkf.cx.a($$0);
+      return $$1 == null ? null : this.m().b(i, $$1.c(i));
+   }
+
+   @Override
+   public void a(dxo $$0, dgz $$1, jh $$2, bac $$3) {
+      if ($$0.c(j)) {
+         jm $$4 = $$0.c(i).g();
+         double $$5 = 0.27;
+         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
+         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
+         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
+         $$1.a(ln.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected boolean a(dgz $$0, jh $$1, dxo $$2) {
+      jm $$3 = $$2.c(i).g();
+      return $$0.b($$1.a($$3), $$3);
+   }
+
+   @Override
+   protected int a(dxo $$0, dge $$1, jh $$2, jm $$3) {
+      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dqv $$1) {
+      return $$0.b(i, $$1.a($$0.c(i)));
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dpc $$1) {
+      return $$0.a($$1.a($$0.c(i)));
+   }
+
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(i, j);
+   }
+
+   @Nullable
+   @Override
+   protected euy a(dgz $$0, dxo $$1) {
+      return euu.a($$0, $$1.c(i).g(), jm.b);
    }
 }

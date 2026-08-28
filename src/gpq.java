@@ -1,41 +1,44 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-public class gpq implements gpl.a {
-   private final fmg a;
-   private static final int b = 10;
+public class gpq implements gpg.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final flz c;
+   private Collection<jh> d = Lists.newArrayList();
 
-   public gpq(fmg $$0) {
-      this.a = $$0;
+   public gpq(flz $$0) {
+      this.c = $$0;
+   }
+
+   public void a(Collection<jh> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a(fgs $$0, gll $$1, double $$2, double $$3, double $$4) {
-      dhi $$5 = this.a.s;
-      jh $$6 = jh.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public void a(fgl $$0, glg $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = this.b().c();
 
-      for (jh $$8 : jh.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(dhr.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = bae.g($$10, 0.9F, 0.9F);
-         long $$12 = kj.e($$8.a());
-         if ($$7.add($$12)) {
-            gpl.a(
-               $$0,
-               $$1,
-               $$5.R().p().a(dhr.a, kj.a($$12)),
-               (double)kj.a(kj.b($$12), 8),
-               (double)kj.a(kj.c($$12), 8),
-               (double)kj.a(kj.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
-
-         if ($$9 != 15) {
-            gpl.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+      for (jh $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
          }
       }
+   }
+
+   private static void a(fgl $$0, glg $$1, jh $$2) {
+      gpg.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(fgl $$0, glg $$1, String $$2, jh $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gpg.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private fli b() {
+      return this.c.j.k();
    }
 }

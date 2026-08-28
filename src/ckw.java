@@ -1,57 +1,30 @@
-import javax.annotation.Nullable;
+public class ckw extends cko {
+   private static final int b = 40;
+   private int c;
 
-public abstract class ckw implements cle {
-   protected final cku a;
-
-   public ckw(cku $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean a() {
-      return false;
+   public ckw(ckl $$0) {
+      super($$0);
    }
 
    @Override
    public void b() {
+      this.a.dW().a(this.a.dB(), this.a.dD(), this.a.dH(), awv.iz, this.a.dn(), 2.5F, 0.8F + this.a.dZ().i() * 0.3F, false);
    }
 
    @Override
-   public void a(ash $$0) {
-   }
-
-   @Override
-   public void a(ckt $$0, jh $$1, bua $$2, @Nullable cpx $$3) {
+   public void a(arx $$0) {
+      if (this.c++ >= 40) {
+         this.a.gk().a(clb.f);
+      }
    }
 
    @Override
    public void c() {
+      this.c = 0;
    }
 
    @Override
-   public void d() {
-   }
-
-   @Override
-   public float e() {
-      return 0.6F;
-   }
-
-   @Nullable
-   @Override
-   public fby f() {
-      return null;
-   }
-
-   @Override
-   public float a(bua $$0, float $$1) {
-      return $$1;
-   }
-
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dz().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+   public clb<ckw> h() {
+      return clb.h;
    }
 }

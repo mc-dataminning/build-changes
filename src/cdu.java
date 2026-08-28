@@ -1,39 +1,59 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdu extends cde {
-   private final bwi a;
-   private bwg b;
-   private int c;
+public class cdu extends ccv {
+   private final bvz a;
+   private final cms b;
+   @Nullable
+   private bvx c;
+   private int d = -1;
+   private final double e;
+   private int f;
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
 
-   public cdu(bwi $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(cde.a.a, cde.a.b));
+   public cdu(cms $$0, double $$1, int $$2, float $$3) {
+      this($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public cdu(cms $$0, double $$1, int $$2, int $$3, float $$4) {
+      if (!($$0 instanceof bvx)) {
+         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+      } else {
+         this.b = $$0;
+         this.a = (bvz)$$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$4 * $$4;
+         this.a(EnumSet.of(ccv.a.a, ccv.a.b));
+      }
    }
 
    @Override
    public boolean b() {
-      bwg $$0 = this.a.O_();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0;
+      bvx $$0 = this.a.O_();
+      if ($$0 != null && $$0.bL()) {
+         this.c = $$0;
          return true;
+      } else {
+         return false;
       }
    }
 
    @Override
    public boolean c() {
-      if (!this.b.bL()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > 225.0 ? false : !this.a.L().m() || this.b();
-      }
+      return this.b() || this.c.bL() && !this.a.L().m();
    }
 
    @Override
    public void e() {
-      this.b = null;
-      this.a.L().o();
+      this.c = null;
+      this.f = 0;
+      this.d = -1;
    }
 
    @Override
@@ -43,23 +63,32 @@ public class cdu extends cde {
 
    @Override
    public void a() {
-      this.a.H().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dr() * 2.0F * this.a.dr() * 2.0F);
-      double $$1 = this.a.i(this.b.dB(), this.b.dD(), this.b.dH());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
+      double $$0 = this.a.i(this.c.dB(), this.c.dD(), this.c.dH());
+      boolean $$1 = this.a.N().a(this.c);
+      if ($$1) {
+         this.f++;
+      } else {
+         this.f = 0;
       }
 
-      this.a.L().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.c(a(this.a), this.b);
+      if (!($$0 > (double)this.j) && this.f >= 5) {
+         this.a.L().o();
+      } else {
+         this.a.L().a(this.c, this.e);
+      }
+
+      this.a.H().a(this.c, 30.0F, 30.0F);
+      if (--this.d == 0) {
+         if (!$$1) {
+            return;
          }
+
+         float $$2 = (float)Math.sqrt($$0) / this.i;
+         float $$3 = azu.a($$2, 0.1F, 1.0F);
+         this.b.a(this.c, $$3);
+         this.d = azu.d($$2 * (float)(this.h - this.g) + (float)this.g);
+      } else if (this.d < 0) {
+         this.d = azu.a(azu.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
       }
    }
 }

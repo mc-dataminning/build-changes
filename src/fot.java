@@ -1,66 +1,69 @@
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public abstract class fot extends fod {
-   fot(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, xu.a);
+public class fot extends fnv {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final bak<fot.a, fos> c;
+   private boolean d = false;
+
+   public fot(xk $$0, fnj $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public static fot a(int $$0, int $$1, alz $$2, int $$3, int $$4) {
-      return new fot.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   public fot(int $$0, int $$1, xk $$2, fnj $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ae.a($$1x -> $$1x.c.isPresent() ? fos.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fos.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
    }
 
-   public static fot a(int $$0, int $$1, alz $$2) {
-      return new fot.a(0, 0, $$0, $$1, $$2);
+   public fot c(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public fot d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fot e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fot b(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
    @Override
-   protected void a(fsd $$0) {
+   public int y() {
+      return this.c.a(this.c()).b();
    }
 
    @Override
-   public void a(hgn $$0) {
+   public int w() {
+      return this.c.a(this.c()).a() * 9;
    }
 
    @Override
-   public boolean C() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fnp a(fsj $$0) {
-      return null;
-   }
-
-   static class a extends fot {
-      private final alz a;
-
-      public a(int $$0, int $$1, int $$2, int $$3, alz $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-      }
-
-      @Override
-      public void b(fns $$0, int $$1, int $$2, float $$3) {
-         $$0.a(glv::C, this.a, this.D(), this.E(), this.y(), this.w());
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      fos $$4 = this.c.a(this.c());
+      int $$5 = this.D();
+      int $$6 = this.E();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.y() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   static class b extends fot {
-      private final alz a;
-      private final int b;
-      private final int c;
+   private fot.a c() {
+      return new fot.a(this.z(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
 
-      public b(int $$0, int $$1, int $$2, int $$3, alz $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
-      }
-
-      @Override
-      protected void b(fns $$0, int $$1, int $$2, float $$3) {
-         $$0.a(glv::C, this.a, this.D(), this.E(), 0.0F, 0.0F, this.y(), this.w(), this.b, this.c);
-      }
+   static record a(xk a, int b, OptionalInt c) {
    }
 }

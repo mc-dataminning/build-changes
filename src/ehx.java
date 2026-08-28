@@ -1,23 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public class ehx extends egw<ejo> {
-   public ehx(Codec<ejo> $$0) {
+public class ehx extends egp<ejm> {
+   public ehx(Codec<ejm> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<ejo> $$0) {
-      dig $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      ejo $$3 = $$0.f();
-
-      for (eji.a $$4 : $$3.b) {
-         if ($$4.b.a($$1.a_($$2), $$0.d())) {
-            $$1.a($$2, $$4.c, 2);
-            break;
-         }
-      }
-
-      return true;
+   public boolean a(egr<ejm> $$0) {
+      bac $$1 = $$0.d();
+      ejm $$2 = $$0.f();
+      dhx $$3 = $$0.b();
+      jh $$4 = $$0.e();
+      dzk $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      enh $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

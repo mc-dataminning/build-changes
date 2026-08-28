@@ -1,24 +1,24 @@
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class bau {
+   private final int a;
+   private final int b;
+   private int c;
 
-public class bau<K, V> {
-   private final Function<K, V> a;
-   @Nullable
-   private K b = (K)null;
-   @Nullable
-   private V c;
-
-   public bau(Function<K, V> $$0) {
+   public bau(int $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public V a(K $$0) {
-      if (this.c == null || !Objects.equals(this.b, $$0)) {
-         this.c = this.a.apply($$0);
-         this.b = $$0;
-      }
+   public void a() {
+      this.c = this.c + this.a;
+   }
 
-      return this.c;
+   public void b() {
+      if (this.c > 0) {
+         this.c--;
+      }
+   }
+
+   public boolean c() {
+      return this.c < this.b;
    }
 }

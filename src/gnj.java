@@ -1,9 +1,8 @@
-import java.util.function.Predicate;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@FunctionalInterface
-public interface gnj {
-   gnj b = $$0 -> $$0x -> true;
-   gnj c = $$0 -> $$0x -> false;
-
-   Predicate<dxv> getPredicate(dxw<dkm, dxv> var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gnj {
 }

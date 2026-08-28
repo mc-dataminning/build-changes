@@ -1,58 +1,48 @@
+import java.util.Objects;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface fqd extends fpq {
-   long t = 250L;
+public class fqd {
+   private final Consumer<fnw> a;
+   private final Consumer<fnw> b;
+   @Nullable
+   private fqc c;
+   @Nullable
+   private fsg d;
 
-   default void f(double $$0, double $$1) {
+   public fqd(Consumer<fnw> $$0, Consumer<fnw> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
+   public void a(fsg $$0) {
+      this.d = $$0;
+      fqc $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
+      }
    }
 
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
-   }
+   public void a(fqc $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
 
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
-   }
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
 
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
-   }
-
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean c(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(char $$0, int $$1) {
-      return false;
+         if ($$1) {
+            flz.Q().ak().a(hey.a(awv.Bg, 1.0F));
+         }
+      }
    }
 
    @Nullable
-   default fnp a(fsj $$0) {
-      return null;
-   }
-
-   default boolean c(double $$0, double $$1) {
-      return false;
-   }
-
-   void a(boolean var1);
-
-   boolean aN_();
-
-   @Nullable
-   default fnp aO_() {
-      return this.aN_() ? fnp.a(this) : null;
-   }
-
-   default fsn H() {
-      return fsn.a();
+   public fqc a() {
+      return this.c;
    }
 }

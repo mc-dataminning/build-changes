@@ -1,15 +1,30 @@
-public interface gnw<T extends dux> {
-   void a(T var1, float var2, fgs var3, gll var4, int var5, int var6);
+public class gnw implements gnr<duw> {
+   private static final float a = 0.375F;
+   private final gsj b;
 
-   default boolean a(T $$0) {
-      return false;
+   public gnw(gns.a $$0) {
+      this.b = $$0.d();
    }
 
-   default int aW_() {
-      return 64;
-   }
+   public void a(duw $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
+      jm $$6 = $$0.m().c(dks.f);
+      jz<cxg> $$7 = $$0.b();
+      int $$8 = (int)$$0.aB_().a();
 
-   default boolean a(T $$0, fby $$1) {
-      return fby.b($$0.aB_()).a((ka)$$1, (double)this.aW_());
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         cxg $$10 = $$7.get($$9);
+         if ($$10 != cxg.j) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            jm $$11 = jm.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cxe.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
+            $$2.b();
+         }
+      }
    }
 }

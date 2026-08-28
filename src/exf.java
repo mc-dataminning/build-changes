@@ -1,66 +1,145 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class exf implements ewx {
-   protected final List<ezy> e;
-   private final Predicate<ewp> a;
+public class exf extends exv {
+   private static final Map<alp, exf.c> b = Stream.of(exf.a.a, exf.d.b, exf.e.b).collect(Collectors.toMap(exf.c::a, Function.identity()));
+   private static final Codec<exf.c> c = alp.a.comapFlatMap($$0 -> {
+      exf.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, exf.c::a);
+   private static final MapCodec<exf.b> d = azd.a("formula", "parameters", c, exf.b::a, exf.c::b);
+   public static final MapCodec<exf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(ddq.c.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, exf::new)
+   );
+   private final jq<ddq> e;
+   private final exf.b f;
 
-   protected exf(List<ezy> $$0) {
-      this.e = $$0;
-      this.a = ae.a($$0);
+   private exf(List<ezr> $$0, jq<ddq> $$1, exf.b $$2) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   protected static <T extends exf> P1<Mu<T>, List<ezy>> a(Instance<T> $$0) {
-      return $$0.group(ezy.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   @Override
+   public exx<exf> b() {
+      return exy.x;
    }
 
-   public void a(ewv $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+   @Override
+   public Set<bbd<?>> a() {
+      return Set.of(ezc.i);
+   }
+
+   @Override
+   public cxg a(cxg $$0, ewi $$1) {
+      cxg $$2 = $$1.c(ezc.i);
+      if ($$2 != null) {
+         int $$3 = dds.a(this.e, $$2);
+         int $$4 = this.f.a($$1.b(), $$0.M(), $$3);
+         $$0.e($$4);
+      }
+
+      return $$0;
+   }
+
+   public static exv.a<?> a(jq<ddq> $$0, float $$1, int $$2) {
+      return a($$3 -> new exf($$3, $$0, new exf.a($$2, $$1)));
+   }
+
+   public static exv.a<?> a(jq<ddq> $$0) {
+      return a($$1 -> new exf($$1, $$0, new exf.d()));
+   }
+
+   public static exv.a<?> b(jq<ddq> $$0) {
+      return a($$1 -> new exf($$1, $$0, new exf.e(1)));
+   }
+
+   public static exv.a<?> a(jq<ddq> $$0, int $$1) {
+      return a($$2 -> new exf($$2, $$0, new exf.e($$1)));
+   }
+
+   static record a(int b, float c) implements exf.b {
+      private static final Codec<exf.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(exf.a::b), Codec.FLOAT.fieldOf("probability").forGetter(exf.a::c)).apply($$0, exf.a::new)
+      );
+      public static final exf.c a = new exf.c(alp.b("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(bac $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
+         }
+
+         return $$1;
+      }
+
+      @Override
+      public exf.c a() {
+         return a;
       }
    }
 
-   protected final boolean a(ewp $$0) {
-      return this.a.test($$0);
+   interface b {
+      int a(bac var1, int var2, int var3);
+
+      exf.c a();
    }
 
-   public abstract exg a();
+   static record c(alp a, Codec<? extends exf.b> b) {
+   }
 
-   public abstract static class a<T extends exf.a<T>> implements ezq<T> {
-      private final Builder<ezy> a = ImmutableList.builder();
+   static record d() implements exf.b {
+      public static final Codec<exf.d> a = Codec.unit(exf.d::new);
+      public static final exf.c b = new exf.c(alp.b("ore_drops"), a);
 
-      protected abstract T aF_();
+      @Override
+      public int a(bac $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
 
-      public T a(ezy.a $$0) {
-         this.a.add($$0.build());
-         return this.aF_();
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
       }
 
-      public final T e() {
-         return this.aF_();
+      @Override
+      public exf.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements exf.b {
+      public static final Codec<exf.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(exf.e::b)).apply($$0, exf.e::new)
+      );
+      public static final exf.c b = new exf.c(alp.b("uniform_bonus_count"), a);
+
+      @Override
+      public int a(bac $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
       }
 
-      protected List<ezy> f() {
-         return this.a.build();
+      @Override
+      public exf.c a() {
+         return b;
       }
 
-      public eww.a a(exf.a<?> $$0) {
-         return new eww.a(this, $$0);
+      public int b() {
+         return this.c;
       }
-
-      public exb.a b(exf.a<?> $$0) {
-         return new exb.a(this, $$0);
-      }
-
-      public exj.a c(exf.a<?> $$0) {
-         return new exj.a(this, $$0);
-      }
-
-      public abstract exf b();
    }
 }

@@ -1,36 +1,57 @@
-public record abj(jh c, int d, String e, int f) implements abf {
-   public static final zt<ws, abj> a = abf.a(abj::a, abj::new);
-   public static final abf.b<abj> b = abf.a("debug/game_test_add_marker");
+import java.util.List;
 
-   private abj(ws $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
+public record abj(alo<dgz> c, env d, List<abj.a> e) implements aau {
+   public static final zi<wh, abj> a = aau.a(abj::a, abj::new);
+   public static final aau.b<abj> b = aau.a("debug/structures");
+
+   private abj(wh $$0) {
+      this($$0.a(mb.be), b($$0), $$0.a(abj.a::new));
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.c);
-      $$0.q(this.d);
-      $$0.a(this.e);
-      $$0.q(this.f);
+   private void a(wh $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
    }
 
    @Override
-   public abf.b<abj> a() {
+   public aau.b<abj> a() {
       return b;
    }
 
-   public jh b() {
+   static env b(wh $$0) {
+      return new env($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   }
+
+   static void a(wh $$0, env $$1) {
+      $$0.q($$1.h());
+      $$0.q($$1.i());
+      $$0.q($$1.j());
+      $$0.q($$1.k());
+      $$0.q($$1.l());
+      $$0.q($$1.m());
+   }
+
+   public alo<dgz> b() {
       return this.c;
    }
 
-   public int c() {
+   public env c() {
       return this.d;
    }
 
-   public String d() {
+   public List<abj.a> d() {
       return this.e;
    }
 
-   public int e() {
-      return this.f;
+   public static record a(env a, boolean b) {
+      public a(wh $$0) {
+         this(abj.b($$0), $$0.readBoolean());
+      }
+
+      public void a(wh $$0) {
+         abj.a($$0, this.a);
+         $$0.a(this.b);
+      }
    }
 }

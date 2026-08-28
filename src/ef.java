@@ -8,8 +8,8 @@ public class ef extends dy<ef.a> {
       return ef.a.a;
    }
 
-   public void a(asi $$0, bvk $$1) {
-      ewp $$2 = bw.b($$0, $$1);
+   public void a(ary $$0, bvb $$1) {
+      ewi $$2 = bw.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -22,7 +22,7 @@ public class ef extends dy<ef.a> {
          return ao.o.a(new ef.a(Optional.empty(), Optional.of(bw.a($$0))));
       }
 
-      public boolean a(ewp $$0) {
+      public boolean a(ewi $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

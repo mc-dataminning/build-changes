@@ -1,72 +1,58 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public class epf extends eph {
+public class epf extends epl {
    public static final MapCodec<epf> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(epf::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(epf::b),
-                     epg.c.optionalFieldOf("spread_type", epg.a).forGetter(epf::c)
-                  )
-               )
-               .apply($$0, epf::new)
-      )
-      .validate(epf::a);
-   private final int c;
-   private final int d;
-   private final epg e;
+      $$0 -> $$0.group(enh.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, epf::new)
+   );
+   private final jq<enh> b;
+   private final um c;
 
-   private static DataResult<epf> a(epf $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   protected epf(jq<enh> $$0, epn.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
    }
 
-   public epf(kl $$0, eph.c $$1, float $$2, int $$3, Optional<eph.a> $$4, int $$5, int $$6, epg $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-   }
-
-   public epf(int $$0, int $$1, epg $$2, int $$3) {
-      this(kl.h, eph.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public epg c() {
-      return this.e;
-   }
-
-   public dgo a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      eep $$5 = new eep(new edr(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dgo($$3 * this.c + $$7, $$4 * this.c + $$8);
+   private um b() {
+      um $$0 = new um();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dvt.a.a.c());
+      return $$0;
    }
 
    @Override
-   protected boolean a(dzs $$0, int $$1, int $$2) {
-      dgo $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.h == $$1 && $$3.i == $$2;
+   public kl a(esg $$0, dqv $$1) {
+      return kl.h;
    }
 
    @Override
-   public epi<?> e() {
-      return epi.a;
+   public List<esf.a> a(esg $$0, jh $$1, dqv $$2, bac $$3) {
+      return List.of(esf.a.a(new esf.d($$1, dkf.pD.m().b(doh.b, jo.a(jm.a, jm.d)), this.c)));
+   }
+
+   @Override
+   public env a(esg $$0, jh $$1, dqv $$2) {
+      kl $$3 = this.a($$0, $$2);
+      return new env($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   }
+
+   @Override
+   public boolean a(esg $$0, dhx $$1, dhv $$2, dzk $$3, jh $$4, jh $$5, dqv $$6, env $$7, bac $$8, erp $$9, boolean $$10) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
+   }
+
+   @Override
+   public epm<?> a() {
+      return epm.c;
+   }
+
+   @Override
+   public String toString() {
+      return "Feature[" + this.b + "]";
    }
 }

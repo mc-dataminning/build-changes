@@ -1,84 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 
 public class aoz {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xv.c("commands.perf.alreadyRunning"));
-
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(ex.a("start").executes($$0x -> a((ew)$$0x.getSource()))))
-            .then(ex.a("stop").executes($$0x -> b((ew)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("rotate").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("target", fj.a())
+                     .then(ex.a("rotation", gw.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), gw.a($$0x, "rotation")))))
+                  .then(
+                     ((LiteralArgumentBuilder)ex.a("facing")
+                           .then(
+                              ex.a("entity")
+                                 .then(
+                                    ((RequiredArgumentBuilder)ex.a("facingEntity", fj.a())
+                                          .executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), new aoi.a(fj.a($$0x, "facingEntity"), fi.a.a))))
+                                       .then(
+                                          ex.a("facingAnchor", fi.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ew)$$0x.getSource(),
+                                                      fj.a($$0x, "target"),
+                                                      new aoi.a(fj.a($$0x, "facingEntity"), fi.a($$0x, "facingAnchor"))
+                                                   )
+                                             )
+                                       )
+                                 )
+                           ))
+                        .then(
+                           ex.a("facingLocation", gz.a())
+                              .executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), new aoi.b(gz.a($$0x, "facingLocation"))))
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ew $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aT()) {
-         throw c.create();
-      } else {
-         Consumer<bpr> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> xv.c("commands.perf.started"), false);
-         return 0;
-      }
+   private static int a(ew $$0, bvb $$1, gu $$2) {
+      fbq $$3 = $$2.b($$0);
+      $$1.a($$3.j, $$3.i);
+      $$0.a(() -> xk.a("commands.rotate.success", $$1.p_()), true);
+      return 1;
    }
 
-   private static int b(ew $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aT()) {
-         throw b.create();
-      } else {
-         $$1.aV();
-         return 0;
-      }
-   }
-
-   private static void a(ew $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ae.f(), $$2.aZ().e(), ab.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(brn.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(xv.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (azp $$7 = new azp(brn.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ac()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> xv.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(ew $$0, bpr $$1) {
-      if ($$1 != bpn.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)bbg.a;
-         $$0.a(() -> xv.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
-      }
+   private static int a(ew $$0, bvb $$1, aoi $$2) {
+      $$2.perform($$0, $$1);
+      $$0.a(() -> xk.a("commands.rotate.success", $$1.p_()), true);
+      return 1;
    }
 }

@@ -1,11 +1,7 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.Nonnull;
-import javax.annotation.meta.TypeQualifierDefault;
+public record fea(fbr b, fbr c, fbr d) {
+   public static final fea a = new fea(fbr.c, new fbr(0.0, 0.0, -1.0), new fbr(0.0, 1.0, 0.0));
 
-@Nonnull
-@TypeQualifierDefault({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface fea {
+   public fbr a() {
+      return this.c.c(this.d);
+   }
 }

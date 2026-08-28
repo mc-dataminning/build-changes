@@ -31,14 +31,14 @@ public interface mh {
 
    String a();
 
-   static <T> CompletableFuture<?> a(mf $$0, Codec<T> $$1, mj.a $$2, Map<alz, T> $$3) {
+   static <T> CompletableFuture<?> a(mf $$0, Codec<T> $$1, mj.a $$2, Map<alp, T> $$3) {
       return CompletableFuture.allOf(
-         $$3.entrySet().stream().map($$3x -> a($$0, $$1, $$3x.getValue(), $$2.a((alz)$$3x.getKey()))).toArray(CompletableFuture[]::new)
+         $$3.entrySet().stream().map($$3x -> a($$0, $$1, $$3x.getValue(), $$2.a((alp)$$3x.getKey()))).toArray(CompletableFuture[]::new)
       );
    }
 
    static <T> CompletableFuture<?> a(mf $$0, js.a $$1, Codec<T> $$2, T $$3, Path $$4) {
-      alx<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
+      aln<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
       return a($$0, $$5, $$2, $$3, $$4);
    }
 
@@ -61,7 +61,7 @@ public interface mh {
             try {
                $$5.setSerializeNulls(false);
                $$5.setIndent("  ");
-               azu.a($$5, $$1, b);
+               azk.a($$5, $$1, b);
             } catch (Throwable var9) {
                try {
                   $$5.close();

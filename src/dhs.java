@@ -1,50 +1,50 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
-public class dhs {
-   private final Long2ObjectMap<List<asi>> a = new Long2ObjectOpenHashMap();
-   private final Map<asi, dhs.a> b = Maps.newHashMap();
-   private final arm c;
+public class dhs extends dgs {
+   private final boolean a;
+   private final boolean b;
+   private final Optional<Float> c;
+   private final Optional<ju<dkd>> d;
 
-   public dhs(arm $$0) {
-      this.c = $$0;
+   public dhs(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<ju<dkd>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private List<asi> a(dgo $$0) {
-      return (List<asi>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
-   }
-
-   public void a(dgo $$0, bwj $$1) {
-      for (asi $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new dhs.a()).a($$1);
+   @Override
+   public Optional<Float> a(dgr $$0, dge $$1, jh $$2, dxo $$3, etq $$4) {
+      if (this.d.isPresent()) {
+         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   public boolean a(bwj $$0, dgo $$1) {
-      for (asi $$2 : this.a($$1)) {
-         dhs.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
+   @Override
+   public boolean a(dgr $$0, dge $$1, jh $$2, dxo $$3, float $$4) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(dgr $$0, bvb $$1) {
+      return this.b;
+   }
+
+   @Override
+   public float a(bvb $$0) {
+      boolean var10000;
+      label17: {
+         if ($$0 instanceof cpo $$1 && $$1.gj().b) {
+            var10000 = true;
+            break label17;
          }
+
+         var10000 = false;
       }
 
-      return false;
-   }
-
-   static class a {
-      private final Object2IntMap<bwj> a = new Object2IntOpenHashMap(bwj.values().length);
-
-      public void a(bwj $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
-      }
-
-      public boolean b(bwj $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
-      }
+      boolean $$2 = var10000;
+      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

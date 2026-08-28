@@ -1,80 +1,57 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class amc extends IOException {
-   private final List<amc.a> a = Lists.newArrayList();
-   private final String b;
+public class amc extends avp<ag> {
+   private static final Logger a = LogUtils.getLogger();
+   private Map<alp, ah> b = Map.of();
+   private am c = new am();
+   private final js.a d;
 
-   public amc(String $$0) {
-      this.a.add(new amc.a());
-      this.b = $$0;
+   public amc(js.a $$0) {
+      super($$0, ag.a, mb.c(mb.bj));
+      this.d = $$0;
    }
 
-   public amc(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new amc.a());
-      this.b = $$0;
-   }
+   protected void a(Map<alp, ag> $$0, avl $$1, bpj $$2) {
+      Builder<alp, ah> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         this.a($$1x, $$2x);
+         $$3.put($$1x, new ah($$1x, $$2x));
+      });
+      this.b = $$3.buildOrThrow();
+      am $$4 = new am();
+      $$4.a(this.b.values());
 
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new amc.a());
-   }
-
-   @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
-   }
-
-   public static amc a(Exception $$0) {
-      if ($$0 instanceof amc) {
-         return (amc)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new amc($$1, $$0);
-      }
-   }
-
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
-
-      a() {
-      }
-
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+      for (ai $$5 : $$4.b()) {
+         if ($$5.b().b().c().isPresent()) {
+            au.a($$5);
          }
       }
+
+      this.c = $$4;
+   }
+
+   private void a(alp $$0, ag $$1) {
+      baa.a $$2 = new baa.a();
+      $$1.a($$2, this.d);
+      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
+   }
+
+   @Nullable
+   public ah a(alp $$0) {
+      return this.b.get($$0);
+   }
+
+   public am a() {
+      return this.c;
+   }
+
+   public Collection<ah> b() {
+      return this.b.values();
    }
 }

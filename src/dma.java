@@ -1,71 +1,148 @@
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class dma extends djy implements drq {
-   public static final MapCodec<dma> a = b(dma::new);
-   public static final dym b = dyl.D;
-   private static final int d = 3;
-   protected static final fcs c = dkm.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public abstract class dma extends dkd implements drj {
+   public static final dyf a = dpv.b;
+   public static final dyf b = dpv.c;
+   public static final dyf c = dpv.d;
+   public static final dyf d = dpv.e;
+   public static final dyf e = dye.J;
+   protected static final Map<jm, dyf> f = dpv.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ae.a());
+   protected final fcl[] g;
+   protected final fcl[] h;
+   private final Object2IntMap<dxo> i = new Object2IntOpenHashMap();
 
-   @Override
-   public MapCodec<dma> a() {
-      return a;
-   }
+   protected dma(float $$0, float $$1, float $$2, float $$3, float $$4, dxn.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.F.a().iterator();
 
-   public dma(dxu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(true)));
-   }
-
-   @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public dux a(jh $$0, dxv $$1) {
-      return new dvj($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dux> duy<T> a(dhi $$0, dxv $$1, duz<T> $$2) {
-      return a($$2, duz.A, $$0.C ? dvj::a : dvj::b);
+      while (var7.hasNext()) {
+         dxo $$6 = (dxo)var7.next();
+         this.h($$6);
+      }
    }
 
    @Override
-   protected dqv a_(dxv $$0) {
-      return dqv.b;
-   }
+   protected abstract MapCodec<? extends dma> a();
 
-   @Override
-   protected etx b_(dxv $$0) {
-      return $$0.c(b) ? ety.c.a(false) : super.b_($$0);
-   }
+   protected fcl[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      fcl $$9 = dkd.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      fcl $$10 = dkd.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      fcl $$11 = dkd.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      fcl $$12 = dkd.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      fcl $$13 = dkd.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      fcl $$14 = fci.a($$10, $$13);
+      fcl $$15 = fci.a($$11, $$12);
+      fcl[] $$16 = new fcl[]{
+         fci.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         fci.a($$11, $$10),
+         fci.a($$12, $$10),
+         fci.a($$15, $$10),
+         $$13,
+         fci.a($$11, $$13),
+         fci.a($$12, $$13),
+         fci.a($$15, $$13),
+         $$14,
+         fci.a($$11, $$14),
+         fci.a($$12, $$14),
+         fci.a($$15, $$14)
+      };
 
-   @Override
-   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, ety.c, ety.c.a($$1));
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = fci.a($$9, $$16[$$17]);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return $$16;
    }
 
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return c;
-   }
-
-   @Nullable
-   @Override
-   public dxv a(dbg $$0) {
-      etx $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(aya.a) && $$1.e() == 8));
+   protected boolean e_(dxo $$0) {
+      return !$$0.c(e);
    }
 
    @Override
-   protected boolean a(dxv $$0, eum $$1) {
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return this.h[this.h($$0)];
+   }
+
+   @Override
+   protected fcl b(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return this.g[this.h($$0)];
+   }
+
+   private static int a(jm $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int h(dxo $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(jm.c);
+         }
+
+         if ($$0x.c(b)) {
+            $$1 |= a(jm.f);
+         }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(jm.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(jm.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   protected etq b_(dxo $$0) {
+      return $$0.c(e) ? etr.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dxo $$0, euf $$1) {
       return false;
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dqv $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
+         case d:
+            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
+         case b:
+            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dpc $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
+         case c:
+            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

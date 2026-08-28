@@ -1,54 +1,40 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fio {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final String[] d;
+public class fio extends fiq {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public fio.a c = fio.a.a;
 
-   private fio(String $$0, @Nullable String[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static fio a(String $$0) {
+      fio $$1 = new fio();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fkm.a("startDate", $$3, 0L);
+         $$1.b = fkm.a("daysLeft", $$3, 0);
+         $$1.c = b(fkm.b("subscriptionType", $$3, fio.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 
-   public xv a(xv $$0) {
-      return Objects.requireNonNullElse(this.a(), $$0);
-   }
-
-   @Nullable
-   public xv a() {
-      if (!hcs.a(this.c)) {
-         return null;
-      } else {
-         return this.d == null ? xv.c(this.c) : xv.a(this.c, this.d);
+   private static fio.a b(String $$0) {
+      try {
+         return fio.a.valueOf($$0);
+      } catch (Exception var2) {
+         return fio.a.a;
       }
    }
 
-   public static fio a(JsonObject $$0) {
-      String $$1 = fkt.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
-
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
-         }
-      } else {
-         $$5 = null;
-      }
-
-      return new fio($$1, $$5);
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
+   public static enum a {
+      a,
+      b;
    }
 }

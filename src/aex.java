@@ -1,21 +1,23 @@
-public record aex(int b, xv c) implements aac<acr> {
-   public static final zt<xg, aex> a = zt.a(zr.h, aex::b, xx.d, aex::e, aex::new);
+import javax.annotation.Nullable;
+
+public record aex(int b, jq<bue> c) implements zr<acg> {
+   public static final zi<wv, aex> a = zi.a(zg.h, aex::b, bue.b, aex::e, aex::new);
 
    @Override
-   public aae<aex> a() {
-      return ahk.ae;
+   public zt<aex> a() {
+      return agz.ao;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   @Nullable
+   public bvb a(dgz $$0) {
+      return $$0.a(this.b);
    }
 
-   public xv e() {
+   public jq<bue> e() {
       return this.c;
    }
 }

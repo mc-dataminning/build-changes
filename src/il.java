@@ -54,7 +54,7 @@ class il<T extends ey<T>> {
       this.b.add(new in.b<>($$3, this.a($$3.b()), $$2));
    }
 
-   public ik<T> a(alz $$0) {
+   public ik<T> a(alp $$0) {
       return (ik<T>)(this.b != null ? new in<>($$0, this.b, this.c) : new io<>($$0, this.a));
    }
 }

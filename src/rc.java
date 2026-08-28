@@ -2,136 +2,217 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class rc {
-   public static void a(rk<epu> $$0) {
-      jr<eno> $$1 = $$0.a(mb.aT);
-      jq<eno> $$2 = $$1.b(sw.s);
-      jr<esk> $$3 = $$0.a(mb.aV);
-      jq<esk> $$4 = $$3.b(rs.H);
-      jq<esk> $$5 = $$3.b(rs.I);
-      jr<epu> $$6 = $$0.a(mb.aX);
-      jq<epu> $$7 = $$6.b(rr.a);
-      rr.a(
-         $$0,
-         "ancient_city/structures",
-         new epu(
-            $$7,
+   public static final alo<epn> a = rh.a("village/desert/town_centers");
+   private static final alo<epn> b = rh.a("village/desert/terminators");
+   private static final alo<epn> c = rh.a("village/desert/zombie/terminators");
+
+   public static void a(ra<epn> $$0) {
+      jr<enh> $$1 = $$0.a(mb.aT);
+      jq<enh> $$2 = $$1.b(st.j);
+      jq<enh> $$3 = $$1.b(st.a);
+      jr<esd> $$4 = $$0.a(mb.aV);
+      jq<esd> $$5 = $$4.b(ri.e);
+      jq<esd> $$6 = $$4.b(ri.p);
+      jr<epn> $$7 = $$0.a(mb.aX);
+      jq<epn> $$8 = $$7.b(rh.a);
+      jq<epn> $$9 = $$7.b(b);
+      jq<epn> $$10 = $$7.b(c);
+      $$0.a(
+         a,
+         new epn(
+            $$8,
             ImmutableList.of(
-               Pair.of(eps.h(), 7),
-               Pair.of(eps.b("ancient_city/structures/barracks", $$4), 4),
-               Pair.of(eps.b("ancient_city/structures/chamber_1", $$4), 4),
-               Pair.of(eps.b("ancient_city/structures/chamber_2", $$4), 4),
-               Pair.of(eps.b("ancient_city/structures/chamber_3", $$4), 4),
-               Pair.of(eps.b("ancient_city/structures/sauna_1", $$4), 4),
-               Pair.of(eps.b("ancient_city/structures/small_statue", $$4), 4),
-               Pair.of(eps.b("ancient_city/structures/large_ruin_1", $$4), 1),
-               Pair.of(eps.b("ancient_city/structures/tall_ruin_1", $$4), 1),
-               Pair.of(eps.b("ancient_city/structures/tall_ruin_2", $$4), 1),
-               Pair.of(eps.b("ancient_city/structures/tall_ruin_3", $$4), 2),
-               Pair.of(eps.b("ancient_city/structures/tall_ruin_4", $$4), 2),
+               Pair.of(epl.a("village/desert/town_centers/desert_meeting_point_1"), 98),
+               Pair.of(epl.a("village/desert/town_centers/desert_meeting_point_2"), 98),
+               Pair.of(epl.a("village/desert/town_centers/desert_meeting_point_3"), 49),
+               Pair.of(epl.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
+            ),
+            epn.a.b
+         )
+      );
+      rh.a(
+         $$0,
+         "village/desert/streets",
+         new epn(
+            $$9,
+            ImmutableList.of(
+               Pair.of(epl.a("village/desert/streets/corner_01"), 3),
+               Pair.of(epl.a("village/desert/streets/corner_02"), 3),
+               Pair.of(epl.a("village/desert/streets/straight_01"), 4),
+               Pair.of(epl.a("village/desert/streets/straight_02"), 4),
+               Pair.of(epl.a("village/desert/streets/straight_03"), 3),
+               Pair.of(epl.a("village/desert/streets/crossroad_01"), 3),
+               Pair.of(epl.a("village/desert/streets/crossroad_02"), 3),
+               Pair.of(epl.a("village/desert/streets/crossroad_03"), 3),
+               Pair.of(epl.a("village/desert/streets/square_01"), 3),
+               Pair.of(epl.a("village/desert/streets/square_02"), 3),
+               Pair.of(epl.a("village/desert/streets/turn_01"), 3)
+            ),
+            epn.a.a
+         )
+      );
+      rh.a(
+         $$0,
+         "village/desert/zombie/streets",
+         new epn(
+            $$10,
+            ImmutableList.of(
+               Pair.of(epl.a("village/desert/zombie/streets/corner_01"), 3),
+               Pair.of(epl.a("village/desert/zombie/streets/corner_02"), 3),
+               Pair.of(epl.a("village/desert/zombie/streets/straight_01"), 4),
+               Pair.of(epl.a("village/desert/zombie/streets/straight_02"), 4),
+               Pair.of(epl.a("village/desert/zombie/streets/straight_03"), 3),
+               Pair.of(epl.a("village/desert/zombie/streets/crossroad_01"), 3),
+               Pair.of(epl.a("village/desert/zombie/streets/crossroad_02"), 3),
+               Pair.of(epl.a("village/desert/zombie/streets/crossroad_03"), 3),
+               Pair.of(epl.a("village/desert/zombie/streets/square_01"), 3),
+               Pair.of(epl.a("village/desert/zombie/streets/square_02"), 3),
+               Pair.of(epl.a("village/desert/zombie/streets/turn_01"), 3)
+            ),
+            epn.a.a
+         )
+      );
+      rh.a(
+         $$0,
+         "village/desert/houses",
+         new epn(
+            $$9,
+            ImmutableList.of(
+               Pair.of(epl.a("village/desert/houses/desert_small_house_1"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_small_house_2"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_small_house_3"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_small_house_4"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_small_house_5"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_small_house_6"), 1),
+               Pair.of(epl.a("village/desert/houses/desert_small_house_7"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_small_house_8"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_medium_house_1"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_medium_house_2"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_butcher_shop_1"), 2),
+               Pair.of(epl.a("village/desert/houses/desert_tool_smith_1"), 2),
                new Pair[]{
-                  Pair.of(
-                     eps.b(
-                        ImmutableList.of(
-                           eps.b("ancient_city/structures/camp_1", $$4),
-                           eps.b("ancient_city/structures/camp_2", $$4),
-                           eps.b("ancient_city/structures/camp_3", $$4)
-                        )
-                     ),
-                     1
-                  ),
-                  Pair.of(eps.b("ancient_city/structures/medium_ruin_1", $$4), 1),
-                  Pair.of(eps.b("ancient_city/structures/medium_ruin_2", $$4), 1),
-                  Pair.of(eps.b("ancient_city/structures/small_ruin_1", $$4), 1),
-                  Pair.of(eps.b("ancient_city/structures/small_ruin_2", $$4), 1),
-                  Pair.of(eps.b("ancient_city/structures/large_pillar_1", $$4), 1),
-                  Pair.of(eps.b("ancient_city/structures/medium_pillar_1", $$4), 1),
-                  Pair.of(eps.b(ImmutableList.of(eps.b("ancient_city/structures/ice_box_1"))), 1)
+                  Pair.of(epl.a("village/desert/houses/desert_fletcher_house_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_shepherd_house_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_armorer_1"), 1),
+                  Pair.of(epl.a("village/desert/houses/desert_fisher_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_tannery_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_cartographer_house_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_library_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_mason_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_weaponsmith_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_temple_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_temple_2"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_large_farm_1", $$6), 11),
+                  Pair.of(epl.a("village/desert/houses/desert_farm_1", $$6), 4),
+                  Pair.of(epl.a("village/desert/houses/desert_farm_2", $$6), 4),
+                  Pair.of(epl.a("village/desert/houses/desert_animal_pen_1"), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_animal_pen_2"), 2),
+                  Pair.of(epl.h(), 5)
                }
             ),
-            epu.a.b
+            epn.a.b
          )
       );
-      rr.a($$0, "ancient_city/sculk", new epu($$7, ImmutableList.of(Pair.of(eps.a($$2), 6), Pair.of(eps.h(), 1)), epu.a.b));
-      rr.a(
+      rh.a(
          $$0,
-         "ancient_city/walls",
-         new epu(
-            $$7,
+         "village/desert/zombie/houses",
+         new epn(
+            $$10,
             ImmutableList.of(
-               Pair.of(eps.b("ancient_city/walls/intact_corner_wall_1", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_intersection_wall_1", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_lshape_wall_1", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 4),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_passage_1", $$5), 3),
-               Pair.of(eps.b("ancient_city/walls/ruined_corner_wall_1", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/ruined_corner_wall_2", $$5), 1),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
+               Pair.of(epl.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
+               Pair.of(epl.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
+               Pair.of(epl.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
                new Pair[]{
-                  Pair.of(eps.b("ancient_city/walls/ruined_horizontal_wall_stairs_1", $$5), 2),
-                  Pair.of(eps.b("ancient_city/walls/ruined_horizontal_wall_stairs_2", $$5), 2),
-                  Pair.of(eps.b("ancient_city/walls/ruined_horizontal_wall_stairs_3", $$5), 3),
-                  Pair.of(eps.b("ancient_city/walls/ruined_horizontal_wall_stairs_4", $$5), 3)
+                  Pair.of(epl.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_armorer_1", $$5), 1),
+                  Pair.of(epl.a("village/desert/houses/desert_fisher_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_tannery_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_library_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_mason_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_temple_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_temple_2", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_large_farm_1", $$5), 7),
+                  Pair.of(epl.a("village/desert/houses/desert_farm_1", $$5), 4),
+                  Pair.of(epl.a("village/desert/houses/desert_farm_2", $$5), 4),
+                  Pair.of(epl.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
+                  Pair.of(epl.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
+                  Pair.of(epl.h(), 5)
                }
             ),
-            epu.a.b
+            epn.a.b
          )
       );
-      rr.a(
-         $$0,
-         "ancient_city/walls/no_corners",
-         new epu(
-            $$7,
-            ImmutableList.of(
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_stairs_5", $$5), 1),
-               Pair.of(eps.b("ancient_city/walls/intact_horizontal_wall_bridge", $$5), 1)
-            ),
-            epu.a.b
+      $$0.a(
+         b,
+         new epn(
+            $$8,
+            ImmutableList.of(Pair.of(epl.a("village/desert/terminators/terminator_01"), 1), Pair.of(epl.a("village/desert/terminators/terminator_02"), 1)),
+            epn.a.a
          )
       );
-      rr.a(
-         $$0,
-         "ancient_city/city_center/walls",
-         new epu(
-            $$7,
+      $$0.a(
+         c,
+         new epn(
+            $$8,
             ImmutableList.of(
-               Pair.of(eps.b("ancient_city/city_center/walls/bottom_1", $$4), 1),
-               Pair.of(eps.b("ancient_city/city_center/walls/bottom_2", $$4), 1),
-               Pair.of(eps.b("ancient_city/city_center/walls/bottom_left_corner", $$4), 1),
-               Pair.of(eps.b("ancient_city/city_center/walls/bottom_right_corner_1", $$4), 1),
-               Pair.of(eps.b("ancient_city/city_center/walls/bottom_right_corner_2", $$4), 1),
-               Pair.of(eps.b("ancient_city/city_center/walls/left", $$4), 1),
-               Pair.of(eps.b("ancient_city/city_center/walls/right", $$4), 1),
-               Pair.of(eps.b("ancient_city/city_center/walls/top", $$4), 1),
-               Pair.of(eps.b("ancient_city/city_center/walls/top_right_corner", $$4), 1),
-               Pair.of(eps.b("ancient_city/city_center/walls/top_left_corner", $$4), 1)
+               Pair.of(epl.a("village/desert/terminators/terminator_01"), 1), Pair.of(epl.a("village/desert/zombie/terminators/terminator_02"), 1)
             ),
-            epu.a.b
+            epn.a.a
          )
       );
-      rr.a(
+      rh.a(
          $$0,
-         "ancient_city/city/entrance",
-         new epu(
-            $$7,
+         "village/desert/decor",
+         new epn(
+            $$8,
+            ImmutableList.of(Pair.of(epl.a("village/desert/desert_lamp_1"), 10), Pair.of(epl.a($$2), 4), Pair.of(epl.a($$3), 4), Pair.of(epl.h(), 10)),
+            epn.a.b
+         )
+      );
+      rh.a(
+         $$0,
+         "village/desert/zombie/decor",
+         new epn(
+            $$8,
+            ImmutableList.of(Pair.of(epl.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(epl.a($$2), 4), Pair.of(epl.a($$3), 4), Pair.of(epl.h(), 10)),
+            epn.a.b
+         )
+      );
+      rh.a(
+         $$0,
+         "village/desert/villagers",
+         new epn(
+            $$8,
             ImmutableList.of(
-               Pair.of(eps.b("ancient_city/city/entrance/entrance_connector", $$4), 1),
-               Pair.of(eps.b("ancient_city/city/entrance/entrance_path_1", $$4), 1),
-               Pair.of(eps.b("ancient_city/city/entrance/entrance_path_2", $$4), 1),
-               Pair.of(eps.b("ancient_city/city/entrance/entrance_path_3", $$4), 1),
-               Pair.of(eps.b("ancient_city/city/entrance/entrance_path_4", $$4), 1),
-               Pair.of(eps.b("ancient_city/city/entrance/entrance_path_5", $$4), 1)
+               Pair.of(epl.a("village/desert/villagers/nitwit"), 1),
+               Pair.of(epl.a("village/desert/villagers/baby"), 1),
+               Pair.of(epl.a("village/desert/villagers/unemployed"), 10)
             ),
-            epu.a.b
+            epn.a.b
+         )
+      );
+      rh.a($$0, "village/desert/camel", new epn($$8, ImmutableList.of(Pair.of(epl.a("village/desert/camel_spawn"), 1)), epn.a.b));
+      rh.a(
+         $$0,
+         "village/desert/zombie/villagers",
+         new epn(
+            $$8,
+            ImmutableList.of(Pair.of(epl.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(epl.a("village/desert/zombie/villagers/unemployed"), 10)),
+            epn.a.b
          )
       );
    }

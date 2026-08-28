@@ -1,65 +1,10 @@
-public class sw {
-   public static final aly<eno> a = tb.a("monster_room");
-   public static final aly<eno> b = tb.a("monster_room_deep");
-   public static final aly<eno> c = tb.a("fossil_upper");
-   public static final aly<eno> d = tb.a("fossil_lower");
-   public static final aly<eno> e = tb.a("dripstone_cluster");
-   public static final aly<eno> f = tb.a("large_dripstone");
-   public static final aly<eno> g = tb.a("pointed_dripstone");
-   public static final aly<eno> h = tb.a("underwater_magma");
-   public static final aly<eno> i = tb.a("glow_lichen");
-   public static final aly<eno> j = tb.a("rooted_azalea_tree");
-   public static final aly<eno> k = tb.a("cave_vines");
-   public static final aly<eno> l = tb.a("lush_caves_vegetation");
-   public static final aly<eno> m = tb.a("lush_caves_clay");
-   public static final aly<eno> n = tb.a("lush_caves_ceiling_vegetation");
-   public static final aly<eno> o = tb.a("spore_blossom");
-   public static final aly<eno> p = tb.a("classic_vines_cave_feature");
-   public static final aly<eno> q = tb.a("amethyst_geode");
-   public static final aly<eno> r = tb.a("sculk_patch_deep_dark");
-   public static final aly<eno> s = tb.a("sculk_patch_ancient_city");
-   public static final aly<eno> t = tb.a("sculk_vein");
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-   public static void a(rk<eno> $$0) {
-      jr<egi<?, ?>> $$1 = $$0.a(mb.aL);
-      jq<egi<?, ?>> $$2 = $$1.b(sk.a);
-      jq<egi<?, ?>> $$3 = $$1.b(sk.b);
-      jq<egi<?, ?>> $$4 = $$1.b(sk.c);
-      jq<egi<?, ?>> $$5 = $$1.b(sk.d);
-      jq<egi<?, ?>> $$6 = $$1.b(sk.e);
-      jq<egi<?, ?>> $$7 = $$1.b(sk.f);
-      jq<egi<?, ?>> $$8 = $$1.b(sk.g);
-      jq<egi<?, ?>> $$9 = $$1.b(sk.h);
-      jq<egi<?, ?>> $$10 = $$1.b(sk.i);
-      jq<egi<?, ?>> $$11 = $$1.b(sk.j);
-      jq<egi<?, ?>> $$12 = $$1.b(sk.m);
-      jq<egi<?, ?>> $$13 = $$1.b(sk.r);
-      jq<egi<?, ?>> $$14 = $$1.b(sk.s);
-      jq<egi<?, ?>> $$15 = $$1.b(sk.t);
-      jq<egi<?, ?>> $$16 = $$1.b(ss.c);
-      jq<egi<?, ?>> $$17 = $$1.b(sk.u);
-      jq<egi<?, ?>> $$18 = $$1.b(sk.v);
-      jq<egi<?, ?>> $$19 = $$1.b(sk.w);
-      jq<egi<?, ?>> $$20 = $$1.b(sk.x);
-      tb.a($$0, a, $$2, eng.a(10), enl.a(), enj.a(eek.a(0), eek.b()), enc.a());
-      tb.a($$0, b, $$2, eng.a(4), enl.a(), enj.a(eek.b(6), eek.a(-1)), enc.a());
-      tb.a($$0, c, $$3, enu.a(64), enl.a(), enj.a(eek.a(0), eek.b()), enc.a());
-      tb.a($$0, d, $$4, enu.a(64), enl.a(), enj.a(eek.a(), eek.a(-8)), enc.a());
-      tb.a($$0, e, $$5, eng.a(bsu.a(48, 96)), enl.a(), tb.i, enc.a());
-      tb.a($$0, f, $$6, eng.a(bsu.a(10, 48)), enl.a(), tb.i, enc.a());
-      tb.a($$0, g, $$7, eng.a(bsu.a(192, 256)), enl.a(), tb.i, eng.a(bsu.a(1, 5)), ent.a(bsj.a(0.0F, 3.0F, -10, 10), bsj.a(0.0F, 0.6F, -2, 2)), enc.a());
-      tb.a($$0, h, $$8, eng.a(bsu.a(44, 52)), enl.a(), tb.i, enw.a(edq.a.c, Integer.MIN_VALUE, -2), enc.a());
-      tb.a($$0, i, $$9, eng.a(bsu.a(104, 157)), tb.i, enl.a(), enw.a(edq.a.c, Integer.MIN_VALUE, -13), enc.a());
-      tb.a($$0, j, $$10, eng.a(bsu.a(1, 2)), enl.a(), tb.i, enh.a(jm.b, eex.c(), eex.c, 12), ent.a(bsl.a(-1)), enc.a());
-      tb.a($$0, k, $$11, eng.a(188), enl.a(), tb.i, enh.a(jm.b, eex.a(jm.a), eex.c, 12), ent.a(bsl.a(-1)), enc.a());
-      tb.a($$0, l, $$12, eng.a(125), enl.a(), tb.i, enh.a(jm.a, eex.c(), eex.c, 12), ent.a(bsl.a(1)), enc.a());
-      tb.a($$0, m, $$13, eng.a(62), enl.a(), tb.i, enh.a(jm.a, eex.c(), eex.c, 12), ent.a(bsl.a(1)), enc.a());
-      tb.a($$0, n, $$14, eng.a(125), enl.a(), tb.i, enh.a(jm.b, eex.c(), eex.c, 12), ent.a(bsl.a(-1)), enc.a());
-      tb.a($$0, o, $$15, eng.a(25), enl.a(), tb.i, enh.a(jm.b, eex.c(), eex.c, 12), ent.a(bsl.a(-1)), enc.a());
-      tb.a($$0, p, $$16, eng.a(256), enl.a(), tb.i, enc.a());
-      tb.a($$0, q, $$17, enu.a(24), enl.a(), enj.a(eek.b(6), eek.a(30)), enc.a());
-      tb.a($$0, r, $$18, eng.a(bsl.a(256)), enl.a(), tb.i, enc.a());
-      tb.a($$0, s, $$19);
-      tb.a($$0, t, $$20, eng.a(bsu.a(204, 250)), enl.a(), tb.i, enc.a());
-   }
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sw {
+   String a();
 }

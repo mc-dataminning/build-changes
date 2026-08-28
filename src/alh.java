@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+@FunctionalInterface
+public interface alh<T, V> {
+   V get(alo<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface alh {
+   static <T, V> alh<T, V> fixed(V $$0) {
+      return $$1 -> $$0;
+   }
 }

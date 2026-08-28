@@ -1,20 +1,30 @@
-public record agp(long b, long c, boolean d) implements aac<acr> {
-   public static final zt<ws, agp> a = zt.a(zr.j, agp::b, zr.j, agp::e, zr.b, agp::f, agp::new);
+import java.util.Set;
 
-   @Override
-   public aae<agp> a() {
-      return ahk.aS;
+public record agp(int b, bwk c, Set<bwl> d, boolean e) implements zr<acg> {
+   public static final zi<wh, agp> a = zi.a(zg.h, agp::b, bwk.a, agp::e, bwl.m, agp::f, zg.b, agp::g, agp::new);
+
+   public static agp a(int $$0, bwk $$1, Set<bwl> $$2, boolean $$3) {
+      return new agp($$0, $$1, $$2, $$3);
    }
 
-   public void a(acr $$0) {
+   @Override
+   public zt<agp> a() {
+      return agz.bd;
+   }
+
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public long e() {
+   public bwk e() {
       return this.c;
    }
 
-   public boolean f() {
+   public Set<bwl> f() {
       return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

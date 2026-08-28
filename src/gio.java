@@ -1,57 +1,27 @@
-public class gio extends gjs {
-   gio(gfk $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
+
+public class gio {
+   private final List<alp> a;
+
+   private gio(List<alp> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public giw b() {
-      return giw.b;
+   public List<alp> a() {
+      return this.a;
    }
 
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(ls.af, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
-      }
-   }
-
-   public static class a implements giv<lw> {
-      private final gjn a;
-
-      public a(gjn $$0) {
-         this.a = $$0;
-      }
-
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gio $$8 = new gio($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+   public static gio a(JsonObject $$0) {
+      JsonArray $$1 = azk.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new gio(List.of());
+      } else {
+         List<alp> $$2 = Streams.stream($$1).map($$0x -> azk.a($$0x, "texture")).map(alp::a).collect(ImmutableList.toImmutableList());
+         return new gio($$2);
       }
    }
 }

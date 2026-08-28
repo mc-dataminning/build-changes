@@ -1,544 +1,109 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class ewh implements ewi, ewj {
-   private static final Logger f = LogUtils.getLogger();
-   public static final String a = "LevelName";
-   protected static final String b = "Player";
-   protected static final String c = "WorldGenSettings";
-   private dhm g;
-   private final eeo h;
-   private final ewh.a i;
-   private final Lifecycle j;
-   private jh k;
-   private float l;
-   private long m;
-   private long n;
+public class ewh {
+   private static final Codec<ewh> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               fao.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               fao.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, ewh::new)
+   );
+   public static final Codec<ewh> a = Codec.either(Codec.INT, b).xmap($$0 -> (ewh)$$0.map(ewh::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
    @Nullable
-   private final ux o;
-   private final int p;
-   private int q;
-   private boolean r;
-   private int s;
-   private boolean t;
-   private int u;
-   private boolean v;
-   private boolean w;
-   private dzl.c x;
-   private ebt.a y;
+   private final fan c;
    @Nullable
-   private ux z;
-   private int A;
-   private int B;
-   @Nullable
-   private UUID C;
-   private final Set<String> D;
-   private boolean E;
-   private final Set<String> F;
-   private final fbl<MinecraftServer> G;
+   private final fan d;
+   private final ewh.b e;
+   private final ewh.a f;
 
-   private ewh(
-      @Nullable ux $$0,
-      boolean $$1,
-      jh $$2,
-      float $$3,
-      long $$4,
-      long $$5,
-      int $$6,
-      int $$7,
-      int $$8,
-      boolean $$9,
-      int $$10,
-      boolean $$11,
-      boolean $$12,
-      boolean $$13,
-      dzl.c $$14,
-      int $$15,
-      int $$16,
-      @Nullable UUID $$17,
-      Set<String> $$18,
-      Set<String> $$19,
-      fbl<MinecraftServer> $$20,
-      @Nullable ux $$21,
-      ebt.a $$22,
-      dhm $$23,
-      eeo $$24,
-      ewh.a $$25,
-      Lifecycle $$26
-   ) {
-      this.E = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.p = $$6;
-      this.q = $$7;
-      this.s = $$8;
-      this.r = $$9;
-      this.u = $$10;
-      this.t = $$11;
-      this.v = $$12;
-      this.w = $$13;
-      this.x = $$14;
-      this.A = $$15;
-      this.B = $$16;
-      this.C = $$17;
-      this.D = $$18;
-      this.F = $$19;
-      this.o = $$0;
-      this.G = $$20;
-      this.z = $$21;
-      this.y = $$22;
-      this.g = $$23;
-      this.h = $$24;
-      this.i = $$25;
-      this.j = $$26;
-   }
-
-   public ewh(dhm $$0, eeo $$1, ewh.a $$2, Lifecycle $$3) {
-      this(
-         null,
-         false,
-         jh.c,
-         0.0F,
-         0L,
-         0L,
-         19133,
-         0,
-         0,
-         false,
-         0,
-         false,
-         false,
-         false,
-         dzl.d,
-         0,
-         0,
-         null,
-         Sets.newLinkedHashSet(),
-         new HashSet<>(),
-         new fbl<>(fbk.a),
-         null,
-         ebt.a.b,
-         $$0.h(),
-         $$1,
-         $$2,
-         $$3
-      );
-   }
-
-   public static <T> ewh a(Dynamic<T> $$0, dhm $$1, ewh.a $$2, eeo $$3, Lifecycle $$4) {
-      long $$5 = $$0.get("Time").asLong(0L);
-      return new ewh(
-         (ux)$$0.get("Player").flatMap(ux.a::parse).result().orElse(null),
-         $$0.get("WasModded").asBoolean(false),
-         new jh($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
-         $$0.get("SpawnAngle").asFloat(0.0F),
-         $$5,
-         $$0.get("DayTime").asLong($$5),
-         ewf.a($$0).a(),
-         $$0.get("clearWeatherTime").asInt(0),
-         $$0.get("rainTime").asInt(0),
-         $$0.get("raining").asBoolean(false),
-         $$0.get("thunderTime").asInt(0),
-         $$0.get("thundering").asBoolean(false),
-         $$0.get("initialized").asBoolean(true),
-         $$0.get("DifficultyLocked").asBoolean(false),
-         dzl.c.a($$0, dzl.d),
-         $$0.get("WanderingTraderSpawnDelay").asInt(0),
-         $$0.get("WanderingTraderSpawnChance").asInt(0),
-         (UUID)$$0.get("WanderingTraderId").read(kk.a).result().orElse(null),
-         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
-         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
-         new fbl<>(fbk.a, $$0.get("ScheduledEvents").asStream()),
-         (ux)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
-         $$0.get("DragonFight").read(ebt.a.a).resultOrPartial(f::error).orElse(ebt.a.b),
-         $$1,
-         $$3,
-         $$2,
-         $$4
-      );
-   }
-
-   @Override
-   public ux a(ke $$0, @Nullable ux $$1) {
-      if ($$1 == null) {
-         $$1 = this.o;
+   public Set<bbd<?>> a() {
+      Builder<bbd<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
 
-      ux $$2 = new ux();
-      this.a($$0, $$2, $$1);
-      return $$2;
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   private void a(ke $$0, ux $$1, @Nullable ux $$2) {
-      $$1.a("ServerBrands", a(this.D));
-      $$1.a("WasModded", this.E);
-      if (!this.F.isEmpty()) {
-         $$1.a("removed_features", a(this.F));
-      }
+   private ewh(Optional<fan> $$0, Optional<fan> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
 
-      ux $$3 = new ux();
-      $$3.a("Name", ab.b().c());
-      $$3.a("Id", ab.b().d().c());
-      $$3.a("Snapshot", !ab.b().g());
-      $$3.a("Series", ab.b().d().b());
-      $$1.a("Version", $$3);
-      vm.e($$1);
-      DynamicOps<vu> $$4 = $$0.a(vl.a);
-      eem.a($$4, this.h, $$0).resultOrPartial(ae.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
-      $$1.a("GameType", this.g.b().a());
-      $$1.a("SpawnX", this.k.u());
-      $$1.a("SpawnY", this.k.v());
-      $$1.a("SpawnZ", this.k.w());
-      $$1.a("SpawnAngle", this.l);
-      $$1.a("Time", this.m);
-      $$1.a("DayTime", this.n);
-      $$1.a("LastPlayed", ae.e());
-      $$1.a("LevelName", this.g.a());
-      $$1.a("version", 19133);
-      $$1.a("clearWeatherTime", this.q);
-      $$1.a("rainTime", this.s);
-      $$1.a("raining", this.r);
-      $$1.a("thunderTime", this.u);
-      $$1.a("thundering", this.t);
-      $$1.a("hardcore", this.g.c());
-      $$1.a("allowCommands", this.g.e());
-      $$1.a("initialized", this.v);
-      this.x.a($$1);
-      $$1.a("Difficulty", (byte)this.g.d().a());
-      $$1.a("DifficultyLocked", this.w);
-      $$1.a("GameRules", this.g.f().a());
-      $$1.a("DragonFight", (vu)ebt.a.a.encodeStart(vl.a, this.y).getOrThrow());
-      if ($$2 != null) {
-         $$1.a("Player", $$2);
-      }
-
-      dif.b.encodeStart(vl.a, this.g.g()).ifSuccess($$1x -> $$1.a((ux)$$1x)).ifError($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
-      if (this.z != null) {
-         $$1.a("CustomBossEvents", this.z);
-      }
-
-      $$1.a("ScheduledEvents", this.G.b());
-      $$1.a("WanderingTraderSpawnDelay", this.A);
-      $$1.a("WanderingTraderSpawnChance", this.B);
-      if (this.C != null) {
-         $$1.a("WanderingTraderId", this.C);
+   private ewh(@Nullable fan $$0, @Nullable fan $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> azu.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   private static vd a(Set<String> $$0) {
-      vd $$1 = new vd();
-      $$0.stream().map(vs::a).forEach($$1::add);
-      return $$1;
+   public static ewh a(int $$0) {
+      fak $$1 = fak.a((float)$$0);
+      return new ewh(Optional.of($$1), Optional.of($$1));
    }
 
-   @Override
-   public jh a() {
-      return this.k;
+   public static ewh a(int $$0, int $$1) {
+      return new ewh(Optional.of(fak.a((float)$$0)), Optional.of(fak.a((float)$$1)));
    }
 
-   @Override
-   public float b() {
-      return this.l;
+   public static ewh b(int $$0) {
+      return new ewh(Optional.of(fak.a((float)$$0)), Optional.empty());
    }
 
-   @Override
-   public long c() {
-      return this.m;
+   public static ewh c(int $$0) {
+      return new ewh(Optional.empty(), Optional.of(fak.a((float)$$0)));
    }
 
-   @Override
-   public long d() {
-      return this.n;
+   public int a(ewi $$0, int $$1) {
+      return this.e.apply($$0, $$1);
    }
 
-   @Nullable
-   @Override
-   public ux w() {
-      return this.o;
+   public boolean b(ewi $$0, int $$1) {
+      return this.f.test($$0, $$1);
    }
 
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof fak $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
    }
 
-   @Override
-   public void b(long $$0) {
-      this.n = $$0;
+   @FunctionalInterface
+   interface a {
+      boolean test(ewi var1, int var2);
    }
 
-   @Override
-   public void a(jh $$0, float $$1) {
-      this.k = $$0.j();
-      this.l = $$1;
-   }
-
-   @Override
-   public String e() {
-      return this.g.a();
-   }
-
-   @Override
-   public int x() {
-      return this.p;
-   }
-
-   @Override
-   public int f() {
-      return this.q;
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public boolean g() {
-      return this.t;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.t = $$0;
-   }
-
-   @Override
-   public int h() {
-      return this.u;
-   }
-
-   @Override
-   public void b(int $$0) {
-      this.u = $$0;
-   }
-
-   @Override
-   public boolean i() {
-      return this.r;
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.r = $$0;
-   }
-
-   @Override
-   public int j() {
-      return this.s;
-   }
-
-   @Override
-   public void c(int $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public dhf k() {
-      return this.g.b();
-   }
-
-   @Override
-   public void a(dhf $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Override
-   public boolean l() {
-      return this.g.c();
-   }
-
-   @Override
-   public boolean m() {
-      return this.g.e();
-   }
-
-   @Override
-   public boolean n() {
-      return this.v;
-   }
-
-   @Override
-   public void c(boolean $$0) {
-      this.v = $$0;
-   }
-
-   @Override
-   public dhe o() {
-      return this.g.f();
-   }
-
-   @Override
-   public dzl.c p() {
-      return this.x;
-   }
-
-   @Override
-   public void a(dzl.c $$0) {
-      this.x = $$0;
-   }
-
-   @Override
-   public btg q() {
-      return this.g.d();
-   }
-
-   @Override
-   public void a(btg $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Override
-   public boolean r() {
-      return this.w;
-   }
-
-   @Override
-   public void d(boolean $$0) {
-      this.w = $$0;
-   }
-
-   @Override
-   public fbl<MinecraftServer> s() {
-      return this.G;
-   }
-
-   @Override
-   public void a(p $$0, dhk $$1) {
-      ewi.super.a($$0, $$1);
-      ewj.super.a($$0);
-   }
-
-   @Override
-   public eeo y() {
-      return this.h;
-   }
-
-   @Override
-   public boolean z() {
-      return this.i == ewh.a.b;
-   }
-
-   @Override
-   public boolean A() {
-      return this.i == ewh.a.c;
-   }
-
-   @Override
-   public Lifecycle B() {
-      return this.j;
-   }
-
-   @Override
-   public ebt.a C() {
-      return this.y;
-   }
-
-   @Override
-   public void a(ebt.a $$0) {
-      this.y = $$0;
-   }
-
-   @Override
-   public dif D() {
-      return this.g.g();
-   }
-
-   @Override
-   public void a(dif $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public ux E() {
-      return this.z;
-   }
-
-   @Override
-   public void a(@Nullable ux $$0) {
-      this.z = $$0;
-   }
-
-   @Override
-   public int t() {
-      return this.A;
-   }
-
-   @Override
-   public void d(int $$0) {
-      this.A = $$0;
-   }
-
-   @Override
-   public int u() {
-      return this.B;
-   }
-
-   @Override
-   public void e(int $$0) {
-      this.B = $$0;
-   }
-
-   @Nullable
-   @Override
-   public UUID v() {
-      return this.C;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-      this.C = $$0;
-   }
-
-   @Override
-   public void a(String $$0, boolean $$1) {
-      this.D.add($$0);
-      this.E |= $$1;
-   }
-
-   @Override
-   public boolean F() {
-      return this.E;
-   }
-
-   @Override
-   public Set<String> G() {
-      return ImmutableSet.copyOf(this.D);
-   }
-
-   @Override
-   public Set<String> H() {
-      return Set.copyOf(this.F);
-   }
-
-   @Override
-   public ewi I() {
-      return this;
-   }
-
-   @Override
-   public dhm J() {
-      return this.g.h();
-   }
-
-   @Deprecated
-   public static enum a {
-      a,
-      b,
-      c;
+   @FunctionalInterface
+   interface b {
+      int apply(ewi var1, int var2);
    }
 }

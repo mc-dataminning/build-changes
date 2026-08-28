@@ -1,7 +1,8 @@
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface exe {
-   int a(float var1);
-
-   void a(Consumer<cxp> var1, ewp var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface exe {
 }

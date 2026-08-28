@@ -1,30 +1,57 @@
-public class gor implements gnw<dxd> {
-   private final gso a;
-   private final bam b = bam.a();
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-   public gor(gnx.a $$0) {
-      this.a = $$0.d();
-   }
+public class gor {
+   private final Long2ObjectMap<gor.a> a = new Long2ObjectOpenHashMap();
 
-   public void a(dxd $$0, float $$1, fgs $$2, gll $$3, int $$4, int $$5) {
-      if (dxd.a.a($$0.c())) {
-         dhi $$6 = $$0.i();
-         if ($$6 != null) {
-            cxp $$7 = $$0.c().a();
-            if (!$$7.f()) {
-               this.b.b((long)gsm.a($$7));
-               dxe $$8 = $$0.d();
-               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
+   @Nullable
+   public goq a(dgz $$0, kj $$1) {
+      gor.a $$2 = this.a($$0, $$1.a(), $$1.c());
+      if ($$2.a().c($$1.b())) {
+         return null;
+      } else {
+         int $$3 = $$1.a() - 1;
+         int $$4 = $$1.c() - 1;
+         int $$5 = $$1.a() + 1;
+         int $$6 = $$1.c() + 1;
+         gop[] $$7 = new gop[9];
+
+         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
+            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
+               int $$10 = goq.a($$3, $$4, $$9, $$8);
+               gor.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
+               $$7[$$10] = $$11.b();
             }
          }
+
+         return new goq($$0, $$3, $$4, $$7);
       }
    }
 
-   public static void a(float $$0, dhi $$1, fgs $$2, gll $$3, int $$4, cxp $$5, gso $$6, float $$7, float $$8, bam $$9) {
-      $$2.a();
-      $$2.a(0.5F, 0.4F, 0.5F);
-      $$2.a(a.d.rotationDegrees(bae.i($$0, $$7, $$8)));
-      gsm.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
-      $$2.b();
+   private gor.a a(dgz $$0, int $$1, int $$2) {
+      return (gor.a)this.a.computeIfAbsent(dgf.c($$1, $$2), $$1x -> new gor.a($$0.d(dgf.a($$1x), dgf.b($$1x))));
+   }
+
+   static final class a {
+      private final dzt a;
+      @Nullable
+      private gop b;
+
+      a(dzt $$0) {
+         this.a = $$0;
+      }
+
+      public dzt a() {
+         return this.a;
+      }
+
+      public gop b() {
+         if (this.b == null) {
+            this.b = new gop(this.a);
+         }
+
+         return this.b;
+      }
    }
 }

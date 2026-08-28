@@ -1,146 +1,149 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.Locale;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.function.UnaryOperator;
 
-public class awz extends awx {
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = 3;
-   private static final int f = 2;
-   private static final int g = 0;
-   private static final int h = 2;
-   private static final int i = -1;
-   private boolean j;
-   private final Socket k;
-   private final byte[] l = new byte[1460];
-   private final String m;
-   private final amq n;
+public final class awz {
+   public static final zi<wh, awz> a = zi.a(awz::b, awz::a);
+   private static final Map<cuj, Pair<String, String>> b = ImmutableMap.of(
+      cuj.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      cuj.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      cuj.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      cuj.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<cuj, awz.a> c;
 
-   awz(amq $$0, String $$1, Socket $$2) {
-      super("RCON Client " + $$2.getInetAddress());
-      this.n = $$0;
-      this.k = $$2;
-
-      try {
-         this.k.setSoTimeout(0);
-      } catch (Exception var5) {
-         this.a = false;
-      }
-
-      this.m = $$1;
+   private awz(Map<cuj, awz.a> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void run() {
-      try {
-         try {
-            while (this.a) {
-               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
-               int $$1 = $$0.read(this.l, 0, 1460);
-               if (10 > $$1) {
-                  return;
-               }
+   public awz() {
+      this(new EnumMap<>(cuj.class));
+   }
 
-               int $$2 = 0;
-               int $$3 = awu.b(this.l, 0, $$1);
-               if ($$3 != $$1 - 4) {
-                  return;
-               }
+   private awz.a c(cuj $$0) {
+      return this.c.getOrDefault($$0, awz.a.a);
+   }
 
-               $$2 += 4;
-               int $$4 = awu.b(this.l, $$2, $$1);
-               $$2 += 4;
-               int $$5 = awu.a(this.l, $$2);
-               $$2 += 4;
-               switch ($$5) {
-                  case 2:
-                     if (this.j) {
-                        String $$7 = awu.a(this.l, $$2, $$1);
-
-                        try {
-                           this.a($$4, this.n.a($$7));
-                        } catch (Exception var15) {
-                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
-                        }
-                        break;
-                     }
-
-                     this.d();
-                     break;
-                  case 3:
-                     String $$6 = awu.a(this.l, $$2, $$1);
-                     $$2 += $$6.length();
-                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
-                        this.j = true;
-                        this.a($$4, 2, "");
-                        break;
-                     }
-
-                     this.j = false;
-                     this.d();
-                     break;
-                  default:
-                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
-               }
-            }
-
-            return;
-         } catch (IOException var16) {
-         } catch (Exception var17) {
-            d.error("Exception whilst parsing RCON input", var17);
+   private void a(cuj $$0, UnaryOperator<awz.a> $$1) {
+      this.c.compute($$0, ($$1x, $$2) -> {
+         if ($$2 == null) {
+            $$2 = awz.a.a;
          }
-      } finally {
-         this.e();
-         d.info("Thread {} shutting down", this.b);
-         this.a = false;
+
+         $$2 = $$1.apply($$2);
+         if ($$2.equals(awz.a.a)) {
+            $$2 = null;
+         }
+
+         return $$2;
+      });
+   }
+
+   public boolean a(cuj $$0) {
+      return this.c($$0).b;
+   }
+
+   public void a(cuj $$0, boolean $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public boolean b(cuj $$0) {
+      return this.c($$0).c;
+   }
+
+   public void b(cuj $$0, boolean $$1) {
+      this.a($$0, $$1x -> $$1x.b($$1));
+   }
+
+   private static awz a(wh $$0) {
+      Map<cuj, awz.a> $$1 = new EnumMap<>(cuj.class);
+
+      for (cuj $$2 : cuj.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         if ($$3 || $$4) {
+            $$1.put($$2, new awz.a($$3, $$4));
+         }
+      }
+
+      return new awz($$1);
+   }
+
+   private void b(wh $$0) {
+      for (cuj $$1 : cuj.values()) {
+         awz.a $$2 = this.c.getOrDefault($$1, awz.a.a);
+         $$0.a($$2.b);
+         $$0.a($$2.c);
       }
    }
 
-   private void a(int $$0, int $$1, String $$2) throws IOException {
-      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
-      DataOutputStream $$4 = new DataOutputStream($$3);
-      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
-      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
-      $$4.writeInt(Integer.reverseBytes($$0));
-      $$4.writeInt(Integer.reverseBytes($$1));
-      $$4.write($$5);
-      $$4.write(0);
-      $$4.write(0);
-      this.k.getOutputStream().write($$3.toByteArray());
+   public static awz a(um $$0) {
+      Map<cuj, awz.a> $$1 = new EnumMap<>(cuj.class);
+      b.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         if ($$4 || $$5) {
+            $$1.put($$2, new awz.a($$4, $$5));
+         }
+      });
+      return new awz($$1);
    }
 
-   private void d() throws IOException {
-      this.a(-1, 2, "");
+   public void b(um $$0) {
+      b.forEach(($$1, $$2) -> {
+         awz.a $$3 = this.c.getOrDefault($$1, awz.a.a);
+         $$0.a((String)$$2.getFirst(), $$3.b);
+         $$0.a((String)$$2.getSecond(), $$3.c);
+      });
    }
 
-   private void a(int $$0, String $$1) throws IOException {
-      int $$2 = $$1.length();
+   public awz a() {
+      return new awz(new EnumMap<>(this.c));
+   }
 
-      do {
-         int $$3 = 4096 <= $$2 ? 4096 : $$2;
-         this.a($$0, 0, $$1.substring(0, $$3));
-         $$1 = $$1.substring($$3);
-         $$2 = $$1.length();
-      } while (0 != $$2);
+   public void a(awz $$0) {
+      this.c.clear();
+      this.c.putAll($$0.c);
    }
 
    @Override
-   public void b() {
-      this.a = false;
-      this.e();
-      super.b();
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awz && this.c.equals(((awz)$$0).c);
    }
 
-   private void e() {
-      try {
-         this.k.close();
-      } catch (IOException var2) {
-         d.warn("Failed to close socket", var2);
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   static record a(boolean b, boolean c) {
+      public static final awz.a a = new awz.a(false, false);
+
+      @Override
+      public String toString() {
+         return "[open=" + this.b + ", filtering=" + this.c + "]";
+      }
+
+      public awz.a a(boolean $$0) {
+         return new awz.a($$0, this.c);
+      }
+
+      public awz.a b(boolean $$0) {
+         return new awz.a(this.b, $$0);
+      }
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public boolean b() {
+         return this.c;
       }
    }
 }

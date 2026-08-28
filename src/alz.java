@@ -1,270 +1,89 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public final class alz implements Comparable<alz> {
-   public static final Codec<alz> a = Codec.STRING.comapFlatMap(alz::d, alz::toString).stable();
-   public static final zt<ByteBuf, alz> b = zr.o.a(alz::a, alz::toString);
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xv.c("argument.id.invalid"));
-   public static final char d = ':';
-   public static final String e = "minecraft";
-   public static final String f = "realms";
-   private final String h;
-   private final String i;
+public class alz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final kc b = new kc(Optional.empty(), Lifecycle.experimental());
 
-   private alz(String $$0, String $$1) {
-      assert j($$0);
-
-      assert i($$1);
-
-      this.h = $$0;
-      this.i = $$1;
+   public static CompletableFuture<alz.b> a(jx<aly> $$0, List<kd.a<?>> $$1, avl $$2, Executor $$3) {
+      List<js.b<?>> $$4 = ayb.a($$0.b(aly.d), $$1);
+      js.a $$5 = js.a.a($$4.stream());
+      aln<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
+      List<CompletableFuture<km<?>>> $$7 = ewk.a().map($$3x -> a($$3x, $$6, $$2, $$3)).toList();
+      CompletableFuture<List<km<?>>> $$8 = ae.d($$7);
+      return $$8.thenApplyAsync($$2x -> a($$0, $$5, $$2x), $$3);
    }
 
-   private static alz d(String $$0, String $$1) {
-      return new alz(e($$0, $$1), f($$0, $$1));
+   private static <T> CompletableFuture<km<?>> a(ewk<T> $$0, aln<JsonElement> $$1, avl $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         km<T> $$3x = new jy<>($$0.b(), Lifecycle.experimental());
+         Map<alp, T> $$4 = new HashMap<>();
+         String $$5 = mb.c($$0.b());
+         avp.a($$2, $$5, $$1, $$0.c(), $$4);
+         $$4.forEach(($$2xx, $$3xx) -> $$3x.a(alo.a($$0.b(), $$2xx), (T)$$3xx, b));
+         ayb.a($$2, $$3x);
+         return $$3x;
+      }, $$3);
    }
 
-   public static alz a(String $$0, String $$1) {
-      return d($$0, $$1);
+   private static alz.b a(jx<aly> $$0, js.a $$1, List<km<?>> $$2) {
+      jx<aly> $$3 = a($$0, $$2);
+      js.a $$4 = a($$1, $$3.a(aly.d));
+      a($$4);
+      return new alz.b($$3, $$4);
    }
 
-   public static alz a(String $$0) {
-      return a($$0, ':');
+   private static js.a a(js.a $$0, js.a $$1) {
+      return js.a.a(Stream.concat($$0.c(), $$1.c()));
    }
 
-   public static alz b(String $$0) {
-      return new alz("minecraft", f("minecraft", $$0));
+   private static void a(js.a $$0) {
+      baa.a $$1 = new baa.a();
+      ewo $$2 = new ewo($$1, ezb.q, $$0);
+      ewk.a().forEach($$2x -> a($$2, $$2x, $$0));
+      $$1.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
    }
 
-   @Nullable
-   public static alz c(String $$0) {
-      return b($$0, ':');
+   private static jx<aly> a(jx<aly> $$0, List<km<?>> $$1) {
+      return $$0.a(aly.d, new ke.c($$1).e());
    }
 
-   @Nullable
-   public static alz b(String $$0, String $$1) {
-      return j($$0) && i($$1) ? new alz($$0, $$1) : null;
+   private static <T> void a(ewo $$0, ewk<T> $$1, js.a $$2) {
+      js<T> $$3 = $$2.d($$1.b());
+      $$3.c().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
    }
 
-   public static alz a(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return d($$4, $$3);
-         } else {
-            return b($$3);
-         }
-      } else {
-         return b($$0);
+   public static class a {
+      private final js.a a;
+
+      public a(js.a $$0) {
+         this.a = $$0;
+      }
+
+      public jr.a a() {
+         return this.a;
+      }
+
+      public Collection<alp> a(alo<? extends kd<?>> $$0) {
+         return this.a.d($$0).c_().map(alo::a).toList();
+      }
+
+      public ewn b(alo<ewn> $$0) {
+         return this.a.a(mb.bg).flatMap($$1 -> $$1.a($$0)).map(jq::a).orElse(ewn.a);
       }
    }
 
-   @Nullable
-   public static alz b(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if (!i($$3)) {
-            return null;
-         } else if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return j($$4) ? new alz($$4, $$3) : null;
-         } else {
-            return new alz("minecraft", $$3);
-         }
-      } else {
-         return i($$0) ? new alz("minecraft", $$0) : null;
-      }
-   }
-
-   public static DataResult<alz> d(String $$0) {
-      try {
-         return DataResult.success(a($$0));
-      } catch (aa var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
-   }
-
-   public String a() {
-      return this.i;
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   public alz e(String $$0) {
-      return new alz(this.h, f(this.h, $$0));
-   }
-
-   public alz a(UnaryOperator<String> $$0) {
-      return this.e($$0.apply(this.i));
-   }
-
-   public alz f(String $$0) {
-      return this.e($$0 + this.i);
-   }
-
-   public alz g(String $$0) {
-      return this.e(this.i + $$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.h + ":" + this.i;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof alz $$1) ? false : this.h.equals($$1.h) && this.i.equals($$1.i);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.h.hashCode() + this.i.hashCode();
-   }
-
-   public int a(alz $$0) {
-      int $$1 = this.i.compareTo($$0.i);
-      if ($$1 == 0) {
-         $$1 = this.h.compareTo($$0.h);
-      }
-
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.h + "." + this.i;
-   }
-
-   public String e() {
-      return this.h.equals("minecraft") ? this.i : this.d();
-   }
-
-   public String h(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String c(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   private static String c(StringReader $$0) {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      return $$0.getString().substring($$1, $$0.getCursor());
-   }
-
-   public static alz a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-
-      try {
-         return a($$2);
-      } catch (aa var4) {
-         $$0.setCursor($$1);
-         throw c.createWithContext($$0);
-      }
-   }
-
-   public static alz b(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-      if ($$2.isEmpty()) {
-         throw c.createWithContext($$0);
-      } else {
-         try {
-            return a($$2);
-         } catch (aa var4) {
-            $$0.setCursor($$1);
-            throw c.createWithContext($$0);
-         }
-      }
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean i(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean j(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static String e(String $$0, String $$1) {
-      if (!j($$0)) {
-         throw new aa("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
-      }
-   }
-
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   private static String f(String $$0, String $$1) {
-      if (!i($$1)) {
-         throw new aa("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
-   }
-
-   public static class a implements JsonDeserializer<alz>, JsonSerializer<alz> {
-      public alz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return alz.a(azu.a($$0, "location"));
-      }
-
-      public JsonElement a(alz $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
-      }
+   public static record b(jx<aly> a, js.a b) {
    }
 }

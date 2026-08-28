@@ -1,56 +1,27 @@
-import com.mojang.jtracy.TracyClient;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.google.common.math.Quantiles;
+import com.google.common.math.Quantiles.ScaleAndIndexes;
+import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
+import java.util.Comparator;
+import java.util.Map;
 
-public final class bps {
-   private static final ThreadLocal<bpx> a = ThreadLocal.withInitial(bpx::new);
-   private static final ThreadLocal<bpt> b = new ThreadLocal<>();
-   private static final AtomicInteger c = new AtomicInteger();
+public class bps {
+   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
 
    private bps() {
    }
 
-   public static bps.a a(bpt $$0) {
-      b($$0);
-      return bps::b;
+   public static Map<Integer, Double> a(long[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
    }
 
-   private static void b(bpt $$0) {
-      if (b.get() != null) {
-         throw new IllegalStateException("Profiler is already active");
-      } else {
-         bpt $$1 = c($$0);
-         b.set($$1);
-         c.incrementAndGet();
-         $$1.a();
-      }
+   public static Map<Integer, Double> a(double[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
    }
 
-   private static void b() {
-      bpt $$0 = b.get();
-      if ($$0 == null) {
-         throw new IllegalStateException("Profiler was not active");
-      } else {
-         b.remove();
-         c.decrementAndGet();
-         $$0.b();
-      }
-   }
-
-   private static bpt c(bpt $$0) {
-      return bpt.a(c(), $$0);
-   }
-
-   public static bpt a() {
-      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bps::c);
-   }
-
-   private static bpt c() {
-      return (bpt)(TracyClient.isAvailable() ? a.get() : bpp.a);
-   }
-
-   public interface a extends AutoCloseable {
-      @Override
-      void close();
+   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
+      Int2DoubleSortedMap $$1 = ae.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
+      return Int2DoubleSortedMaps.unmodifiable($$1);
    }
 }

@@ -1,73 +1,49 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.concurrent.Executor;
+import com.google.common.collect.ImmutableList;
+import javax.annotation.Nullable;
 
-public abstract class haw implements AutoCloseable {
-   public static final int a = -1;
-   protected int b = -1;
-   protected boolean c;
+public final class haw {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final alp d = alp.b("missingno");
+   private static final avn e = new avn.a().a(hcs.a, new hcs(ImmutableList.of(new hcr(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static hat f;
 
-   public void a(boolean $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      int $$2;
-      int $$3;
-      if ($$0) {
-         $$2 = $$1 ? 9987 : 9729;
-         $$3 = 9729;
-      } else {
-         $$2 = $$1 ? 9986 : 9728;
-         $$3 = 9728;
-      }
+   private static ffl a(int $$0, int $$1) {
+      ffl $$2 = new ffl($$0, $$1, false);
+      int $$3 = -524040;
 
-      this.d();
-      GlStateManager._texParameter(3553, 10241, $$2);
-      GlStateManager._texParameter(3553, 10240, $$3);
-   }
-
-   public int a() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (this.b == -1) {
-         this.b = TextureUtil.generateTextureId();
-      }
-
-      return this.b;
-   }
-
-   public void b() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            if (this.b != -1) {
-               TextureUtil.releaseTextureId(this.b);
-               this.b = -1;
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
+               $$2.a($$5, $$4, -524040);
+            } else {
+               $$2.a($$5, $$4, -16777216);
             }
-         });
-      } else if (this.b != -1) {
-         TextureUtil.releaseTextureId(this.b);
-         this.b = -1;
+         }
       }
+
+      return $$2;
    }
 
-   public boolean c() {
-      return this.c;
+   public static hba a() {
+      ffl $$0 = a(16, 16);
+      return new hba(d, new hcu(16, 16), $$0, e);
    }
 
-   public abstract void a(avv var1) throws IOException;
+   public static alp b() {
+      return d;
+   }
 
-   public void d() {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
-      } else {
-         GlStateManager._bindTexture(this.a());
+   public static hat c() {
+      if (f == null) {
+         ffl $$0 = a(16, 16);
+         $$0.i();
+         f = new hat($$0);
+         flz.Q().aa().a(d, f);
       }
-   }
 
-   public void a(hbm $$0, avv $$1, alz $$2, Executor $$3) {
-      $$0.a($$2, this);
-   }
-
-   @Override
-   public void close() {
+      return f;
    }
 }

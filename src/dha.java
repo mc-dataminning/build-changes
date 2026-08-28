@@ -1,52 +1,80 @@
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface dha {
-   static bua a(dhi $$0, @Nullable bvk $$1) {
-      return $$0.aj().d($$1, a($$1));
+public interface dha extends dgk, dhg, dho {
+   @Override
+   default long al() {
+      return this.D_().d();
    }
 
-   @Nullable
-   static bwg a(@Nullable bvk $$0) {
-      return switch ($$0) {
-         case null, default -> null;
-         case cmc $$1 -> $$1.l();
-         case bwg $$2 -> $$2;
-         case cqq $$3 when $$3.p() instanceof bwg $$4 -> $$4;
-      };
+   long J_();
+
+   @Override
+   default <T> fdj<T> a(jh $$0, T $$1, int $$2, fdn $$3) {
+      return new fdj<>($$1, $$0, this.D_().c() + (long)$$2, $$3, this.J_());
    }
 
-   ash a();
+   @Override
+   default <T> fdj<T> a(jh $$0, T $$1, int $$2) {
+      return new fdj<>($$1, $$0, this.D_().c() + (long)$$2, this.J_());
+   }
 
-   dha.a b();
+   evs D_();
+
+   bsy d_(jh var1);
 
    @Nullable
-   bwg c();
+   MinecraftServer p();
 
-   @Nullable
-   bvk d();
+   default bsx am() {
+      return this.D_().q();
+   }
 
-   float e();
+   dzn S();
 
-   fby f();
+   @Override
+   default boolean b(int $$0, int $$1) {
+      return this.S().b($$0, $$1);
+   }
 
-   boolean g();
+   bac H_();
 
-   boolean h();
+   default void b(jh $$0, dkd $$1) {
+   }
 
-   public static enum a {
-      a(false),
-      b(true),
-      c(true),
-      d(false);
+   default void a(jm $$0, jh $$1, jh $$2, dxo $$3, int $$4, int $$5) {
+      eux.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   }
 
-      private final boolean e;
+   default void a(@Nullable cpo $$0, jh $$1, awu $$2, aww $$3) {
+      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
+   }
 
-      private a(final boolean $$0) {
-         this.e = $$0;
-      }
+   void a(@Nullable cpo var1, jh var2, awu var3, aww var4, float var5, float var6);
 
-      public boolean a() {
-         return this.e;
-      }
+   void a(lq var1, double var2, double var4, double var6, double var8, double var10, double var12);
+
+   void a(@Nullable cpo var1, int var2, jh var3, int var4);
+
+   default void c(int $$0, jh $$1, int $$2) {
+      this.a(null, $$0, $$1, $$2);
+   }
+
+   void a(jq<eck> var1, fbr var2, eck.a var3);
+
+   default void a(@Nullable bvb $$0, jq<eck> $$1, fbr $$2) {
+      this.a($$1, $$2, new eck.a($$0, null));
+   }
+
+   default void a(@Nullable bvb $$0, jq<eck> $$1, jh $$2) {
+      this.a($$1, $$2, new eck.a($$0, null));
+   }
+
+   default void a(jq<eck> $$0, jh $$1, eck.a $$2) {
+      this.a($$0, fbr.b($$1), $$2);
+   }
+
+   default void a(alo<eck> $$0, jh $$1, eck.a $$2) {
+      this.a(this.K_().e(mb.G).b($$0), $$1, $$2);
    }
 }

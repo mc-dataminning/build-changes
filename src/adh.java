@@ -1,79 +1,25 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
+public record adh(long[] b, bnu c) implements zr<acg> {
+   public static final zi<wh, adh> a = zr.a(adh::a, adh::new);
 
-public record adh(List<adh.a> b) implements aac<acr> {
-   public static final zt<ws, adh> a = aac.a(adh::a, adh::new);
-   private static final int c = 2097152;
-
-   private adh(ws $$0) {
-      this($$0.a(adh.a::new));
+   private adh(wh $$0) {
+      this($$0.d(), $$0.b(bnu.class));
    }
 
-   public static adh a(List<eaa> $$0) {
-      return new adh($$0.stream().map(adh.a::new).toList());
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aae<adh> a() {
-      return ahk.p;
+   public zt<adh> a() {
+      return agz.A;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public static record a(dgo a, byte[] b) {
-      public a(eaa $$0) {
-         this($$0.f(), new byte[a($$0)]);
-         a(new ws(this.d()), $$0);
-      }
-
-      public a(ws $$0) {
-         this($$0.f(), $$0.a(2097152));
-      }
-
-      private static int a(eaa $$0) {
-         int $$1 = 0;
-
-         for (eab $$2 : $$0.d()) {
-            $$1 += $$2.i().c();
-         }
-
-         return $$1;
-      }
-
-      public ws a() {
-         return new ws(Unpooled.wrappedBuffer(this.b));
-      }
-
-      private ByteBuf d() {
-         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
-         $$0.writerIndex(0);
-         return $$0;
-      }
-
-      public static void a(ws $$0, eaa $$1) {
-         for (eab $$2 : $$1.d()) {
-            $$2.i().b($$0);
-         }
-      }
-
-      public void a(ws $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
-
-      public dgo b() {
-         return this.a;
-      }
-
-      public byte[] c() {
-         return this.b;
-      }
+   public bnu e() {
+      return this.c;
    }
 }

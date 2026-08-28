@@ -1,13 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class qh extends qk<etw> {
+public class qh extends qj<che> {
    public qh(mj $$0, CompletableFuture<js.a> $$1) {
-      super($$0, mb.D, $$1, $$0x -> $$0x.k().h());
+      super($$0, mb.aa, $$1);
    }
 
    @Override
    protected void a(js.a $$0) {
-      this.a(aya.a).a(ety.c, ety.b);
-      this.a(aya.b).a(ety.e, ety.d);
+      this.b(axv.a).a(chf.a, chf.b, chf.c, chf.d, chf.e, chf.f, chf.g, chf.h, chf.i, chf.j, chf.k, chf.l, chf.m);
+      this.b(axv.b).b(axv.a).a(chf.n, chf.o);
+      this.b(axv.c).a(chf.p, chf.q);
    }
 }

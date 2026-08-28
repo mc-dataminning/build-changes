@@ -1,80 +1,64 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.io.Serializable;
+import java.util.Deque;
 import java.util.List;
+import java.util.RandomAccess;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface azq {
-   azq a = $$0 -> true;
+public interface azq<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
+   azq<T> b();
 
-   boolean accept(azr var1);
+   @Override
+   T getFirst();
 
-   static azq codepoint(int $$0, ys $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
+   @Override
+   T getLast();
+
+   @Override
+   void addFirst(T var1);
+
+   @Override
+   void addLast(T var1);
+
+   @Override
+   T removeFirst();
+
+   @Override
+   T removeLast();
+
+   @Override
+   default boolean offer(T $$0) {
+      return this.offerLast($$0);
    }
 
-   static azq forward(String $$0, ys $$1) {
-      return $$0.isEmpty() ? a : $$2 -> baz.a($$0, $$1, $$2);
+   @Override
+   default T remove() {
+      return this.removeFirst();
    }
 
-   static azq forward(String $$0, ys $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> baz.a($$0, $$1, decorateOutput($$3, $$2));
+   @Nullable
+   @Override
+   default T poll() {
+      return this.pollFirst();
    }
 
-   static azq backward(String $$0, ys $$1) {
-      return $$0.isEmpty() ? a : $$2 -> baz.b($$0, $$1, $$2);
+   @Override
+   default T element() {
+      return this.getFirst();
    }
 
-   static azq backward(String $$0, ys $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> baz.b($$0, $$1, decorateOutput($$3, $$2));
+   @Nullable
+   @Override
+   default T peek() {
+      return this.peekFirst();
    }
 
-   static azr decorateOutput(azr $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
+   @Override
+   default void push(T $$0) {
+      this.addFirst($$0);
    }
 
-   static azq composite() {
-      return a;
-   }
-
-   static azq composite(azq $$0) {
-      return $$0;
-   }
-
-   static azq composite(azq $$0, azq $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static azq composite(azq... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static azq composite(List<azq> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
-      }
-   }
-
-   static azq fromPair(azq $$0, azq $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
-   }
-
-   static azq fromList(List<azq> $$0) {
-      return $$1 -> {
-         for (azq $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+   @Override
+   default T pop() {
+      return this.removeFirst();
    }
 }

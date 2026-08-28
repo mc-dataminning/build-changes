@@ -1,75 +1,60 @@
-import javax.annotation.Nullable;
+public class btj {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = baw.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
 
-public sealed interface btj permits btj.d, btj.a, btj.c, btj.f {
-   btj.d a = new btj.d(btj.e.b, btj.b.b);
-   btj.d b = new btj.d(btj.e.c, btj.b.b);
-   btj.d c = new btj.d(btj.e.a, btj.b.b);
-   btj.a d = new btj.a();
-   btj.c e = new btj.c();
-   btj.f f = new btj.f();
-
-   default boolean a() {
-      return false;
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)baw.a / (double)this.b);
    }
 
-   public static record a() implements btj {
+   public float f() {
+      return this.b;
    }
 
-   public static record b(boolean c, @Nullable cxp d) {
-      static btj.b a = new btj.b(false, null);
-      static btj.b b = new btj.b(true, null);
-
-      public boolean a() {
-         return this.c;
-      }
-
-      @Nullable
-      public cxp b() {
-         return this.d;
-      }
+   public float g() {
+      return (float)this.c / (float)baw.b;
    }
 
-   public static record c() implements btj {
+   public long h() {
+      return this.c;
    }
 
-   public static record d(btj.e g, btj.b h) implements btj {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   public boolean i() {
+      return this.e;
+   }
 
-      public btj.d a(cxp $$0) {
-         return new btj.d(this.g, new btj.b(true, $$0));
-      }
+   public boolean j() {
+      return this.d > 0;
+   }
 
-      public btj.d b() {
-         return new btj.d(this.g, btj.b.a);
-      }
+   public void c(int $$0) {
+      this.d = $$0;
+   }
 
-      public boolean c() {
-         return this.h.c;
-      }
+   public int k() {
+      return this.d;
+   }
 
-      @Nullable
-      public cxp d() {
-         return this.h.d;
-      }
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
 
-      public btj.e e() {
-         return this.g;
-      }
+   public boolean l() {
+      return this.f;
+   }
 
-      public btj.b f() {
-         return this.h;
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
       }
    }
 
-   public static enum e {
-      a,
-      b,
-      c;
-   }
-
-   public static record f() implements btj {
+   public boolean a(bvb $$0) {
+      return !this.i() && !($$0 instanceof cpo) && $$0.de() <= 0;
    }
 }

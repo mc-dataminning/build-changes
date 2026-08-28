@@ -1,25 +1,31 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class dgt {
+   private static int[] a = new int[65536];
 
-public interface dgt extends dgz, dhl, dhn {
-   @Override
-   default <T extends dux> Optional<T> a(jh $$0, duz<T> $$1) {
-      return dhl.super.a($$0, $$1);
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   @Override
-   default List<fcs> c(@Nullable bvk $$0, fbt $$1) {
-      return dgz.super.c($$0, $$1);
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   @Override
-   default boolean a(@Nullable bvk $$0, fcs $$1) {
-      return dgz.super.a($$0, $$1);
+   public static int a() {
+      return -10380959;
    }
 
-   @Override
-   default jh a(edq.a $$0, jh $$1) {
-      return dhl.super.a($$0, $$1);
+   public static int b() {
+      return -8345771;
+   }
+
+   public static int c() {
+      return -12012264;
+   }
+
+   public static int d() {
+      return -7158200;
    }
 }

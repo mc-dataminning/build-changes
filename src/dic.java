@@ -1,76 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public record dic(ux d, Optional<dic.a> e, Optional<bvu> f) {
-   public static final String a = "entity";
-   public static final Codec<dic> b = RecordCodecBuilder.create(
+public class dic {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dic a = new dic(ju.a(), List.of());
+   public static final MapCodec<dic> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               ux.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dic.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               bvu.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
+               efn.c.promotePartial(ae.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               enh.d.promotePartial(ae.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dic::new)
    );
-   public static final Codec<brr<dic>> c = brr.a(b);
+   private final ju<efn<?>> d;
+   private final List<ju<enh>> e;
+   private final Supplier<List<egb<?, ?>>> f;
+   private final Supplier<Set<enh>> g;
 
-   public dic() {
-      this(new ux(), Optional.empty(), Optional.empty());
+   dic(ju<efn<?>> $$0, List<ju<enh>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(ju::a).map(jq::a).flatMap(enh::a).filter($$0xx -> $$0xx.b() == egp.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ju::a).map(jq::a).collect(Collectors.toSet()));
    }
 
-   public dic(ux d, Optional<dic.a> e, Optional<bvu> f) {
-      if (d.e("id")) {
-         alz $$3 = alz.c(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
-         } else {
-            d.r("id");
-         }
-      }
-
-      this.d = d;
-      this.e = e;
-      this.f = f;
-   }
-
-   public ux a() {
+   public Iterable<jq<efn<?>>> a() {
       return this.d;
    }
 
-   public Optional<dic.a> b() {
+   public List<egb<?, ?>> b() {
+      return this.f.get();
+   }
+
+   public List<ju<enh>> c() {
       return this.e;
    }
 
-   public Optional<bvu> c() {
-      return this.f;
+   public boolean a(enh $$0) {
+      return this.g.get().contains($$0);
    }
 
-   public static record a(azw<Integer> b, azw<Integer> c) {
-      private static final azw<Integer> d = new azw<>(0, 15);
-      public static final Codec<dic.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dic.a::new)
-      );
+   public static class a extends dic.b {
+      private final jr<enh> a;
+      private final jr<efn<?>> b;
 
-      private static DataResult<azw<Integer>> a(azw<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      public a(jr<enh> $$0, jr<efn<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      private static MapCodec<azw<Integer>> a(String $$0) {
-         return azw.a.lenientOptionalFieldOf($$0, d).validate(dic.a::a);
+      public dic.a a(edf.a $$0, alo<enh> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
       }
 
-      public boolean a(jh $$0, ash $$1) {
-         return this.b.a($$1.a(dhr.b, $$0)) && this.c.a($$1.a(dhr.a, $$0));
+      public dic.a a(alo<efn<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final List<jq<efn<?>>> a = new ArrayList<>();
+      private final List<List<jq<enh>>> b = new ArrayList<>();
+
+      public dic.b a(edf.a $$0, jq<enh> $$1) {
+         return this.a($$0.ordinal(), $$1);
       }
 
-      public azw<Integer> a() {
-         return this.b;
+      public dic.b a(int $$0, jq<enh> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
       }
 
-      public azw<Integer> b() {
-         return this.c;
+      public dic.b a(jq<efn<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public dic a() {
+         return new dic(ju.a(this.a), this.b.stream().map(ju::a).collect(ImmutableList.toImmutableList()));
       }
    }
 }

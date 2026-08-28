@@ -1,7 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface alf {
-   void a(alc<?> var1);
-
-   void a(List<alg.c<?>> var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface alf {
 }

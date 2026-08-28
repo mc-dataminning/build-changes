@@ -1,24 +1,46 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fcq extends fcs {
-   private final fcs b;
-   private final jm.a c;
-   private static final DoubleList d = new fce(1);
+class fcq {
+   private final Reference2ObjectOpenHashMap<fco, fct> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
-   public fcq(fcs $$0, jm.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
+   @Nullable
+   public fct a(fco $$0) {
+      return (fct)this.a.get($$0);
    }
 
-   private static fch a(fch $$0, jm.a $$1, int $$2) {
-      return new fcr(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   public fct a(fco $$0, Consumer<fct> $$1) {
+      return (fct)this.a.computeIfAbsent($$0, $$1x -> {
+         fct $$2 = new fct();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   @Override
-   public DoubleList a(jm.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public boolean b(fco $$0) {
+      return this.a.remove($$0) != null;
+   }
+
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<fco> b() {
+      Object2IntMap<fco> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(fco $$0, fct $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<fco, fct> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

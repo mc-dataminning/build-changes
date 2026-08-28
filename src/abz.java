@@ -1,16 +1,8 @@
-public interface abz extends aai {
-   @Override
-   default wq b() {
-      return wq.e;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aca var1);
-
-   void a(acb var1);
-
-   void a(ace var1);
-
-   void a(acd var1);
-
-   void a(acc var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface abz {
 }

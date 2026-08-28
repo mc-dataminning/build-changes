@@ -2,122 +2,43 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Collection;
 
 public class aoe {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xv.b("commands.fillbiome.toobig", $$0, $$1));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.kick.owner.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.kick.singleplayer.failed"));
 
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("fillbiome").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("kick").requires($$0x -> $$0x.c(3)))
             .then(
-               ex.a("from", gs.a())
-                  .then(
-                     ex.a("to", gs.a())
-                        .then(
-                           ((RequiredArgumentBuilder)ex.a("biome", fv.a($$1, mb.aI))
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "to"), fv.a($$0x, "biome", mb.aI), $$0xx -> true)))
-                              .then(
-                                 ex.a("replace")
-                                    .then(
-                                       ex.a("filter", fz.a($$1, mb.aI))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ew)$$0x.getSource(),
-                                                   gs.a($$0x, "from"),
-                                                   gs.a($$0x, "to"),
-                                                   fv.a($$0x, "biome", mb.aI),
-                                                   fz.a($$0x, "filter", mb.aI)::test
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+               ((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                     .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), xk.c("multiplayer.disconnect.kicked"))))
+                  .then(ex.a("reason", fn.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), fn.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(int $$0) {
-      return kb.c(kb.a($$0));
-   }
-
-   private static jh a(jh $$0) {
-      return new jh(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
-
-   private static din a(MutableInt $$0, dzq $$1, eoc $$2, jq<dik> $$3, Predicate<jq<dik>> $$4) {
-      return ($$5, $$6, $$7, $$8) -> {
-         int $$9 = kb.c($$5);
-         int $$10 = kb.c($$6);
-         int $$11 = kb.c($$7);
-         jq<dik> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
-         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
-            $$0.increment();
-            return $$3;
-         } else {
-            return $$12;
-         }
-      };
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(ash $$0, jh $$1, jh $$2, jq<dik> $$3) {
-      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
-      });
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(ash $$0, jh $$1, jh $$2, jq<dik> $$3, Predicate<jq<dik>> $$4, Consumer<Supplier<xv>> $$5) {
-      jh $$6 = a($$1);
-      jh $$7 = a($$2);
-      eoc $$8 = eoc.a($$6, $$7);
-      int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.N().c(dhe.A);
-      if ($$9 > $$10) {
-         return Either.right(b.create($$10, $$9));
+   private static int a(ew $$0, Collection<ary> $$1, xk $$2) throws CommandSyntaxException {
+      if (!$$0.l().r()) {
+         throw b.create();
       } else {
-         List<dzq> $$11 = new ArrayList<>();
+         int $$3 = 0;
 
-         for (int $$12 = kj.a($$8.j()); $$12 <= kj.a($$8.m()); $$12++) {
-            for (int $$13 = kj.a($$8.h()); $$13 <= kj.a($$8.k()); $$13++) {
-               dzq $$14 = $$0.a($$13, $$12, ear.n, false);
-               if ($$14 == null) {
-                  return Either.right(a.create());
-               }
-
-               $$11.add($$14);
+         for (ary $$4 : $$1) {
+            if (!$$0.l().a($$4.gh())) {
+               $$4.f.a($$2);
+               $$0.a(() -> xk.a("commands.kick.success", $$4.p_(), $$2), true);
+               $$3++;
             }
          }
 
-         MutableInt $$15 = new MutableInt(0);
-
-         for (dzq $$16 : $$11) {
-            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.m().i().b());
-            $$16.i();
+         if ($$3 == 0) {
+            throw a.create();
+         } else {
+            return $$3;
          }
-
-         $$0.m().a.a($$11);
-         $$5.accept(() -> xv.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
-         return Either.left($$15.getValue());
-      }
-   }
-
-   private static int a(ew $$0, jh $$1, jh $$2, jq.c<dik> $$3, Predicate<jq<dik>> $$4) throws CommandSyntaxException {
-      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
-      Optional<CommandSyntaxException> $$6 = $$5.right();
-      if ($$6.isPresent()) {
-         throw (CommandSyntaxException)$$6.get();
-      } else {
-         return (Integer)$$5.left().get();
       }
    }
 }

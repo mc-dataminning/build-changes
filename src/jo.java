@@ -1,4 +1,4 @@
-public enum jo implements bba {
+public enum jo implements baq {
    a("down_east", jm.a, jm.f),
    b("down_north", jm.a, jm.c),
    c("down_south", jm.a, jm.d),

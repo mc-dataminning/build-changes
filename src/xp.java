@@ -1,22 +1,99 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.handler.codec.EncoderException;
-import io.netty.handler.codec.MessageToByteEncoder;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-@Sharable
-public class xp extends MessageToByteEncoder<ByteBuf> {
-   public static final int a = 3;
-
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      int $$4 = xm.a($$3);
-      if ($$4 > 3) {
-         throw new EncoderException("Packet too large: size " + $$3 + " is over 8");
-      } else {
-         $$2.ensureWritable($$4 + $$3);
-         xm.a($$2, $$3);
-         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
+public interface xp {
+   Optional<bba> a = Optional.of(bba.a);
+   xp b = new xp() {
+      @Override
+      public <T> Optional<T> a(xp.a<T> $$0) {
+         return Optional.empty();
       }
+
+      @Override
+      public <T> Optional<T> a(xp.b<T> $$0, yh $$1) {
+         return Optional.empty();
+      }
+   };
+
+   <T> Optional<T> a(xp.a<T> var1);
+
+   <T> Optional<T> a(xp.b<T> var1, yh var2);
+
+   static xp e(final String $$0) {
+      return new xp() {
+         @Override
+         public <T> Optional<T> a(xp.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(xp.b<T> $$0x, yh $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
+   }
+
+   static xp a(final String $$0, final yh $$1) {
+      return new xp() {
+         @Override
+         public <T> Optional<T> a(xp.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(xp.b<T> $$0x, yh $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static xp a(xp... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static xp a(final List<? extends xp> $$0) {
+      return new xp() {
+         @Override
+         public <T> Optional<T> a(xp.a<T> $$0x) {
+            for (xp $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(xp.b<T> $$0x, yh $$1) {
+            for (xp $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(yh var1, String var2);
    }
 }

@@ -1,38 +1,26 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bfs extends bhs {
-   private static final int a = 6;
+public class bfs extends bgm {
+   private static final String[] a = new String[]{
+      "minecraft:ponder_goat_horn",
+      "minecraft:sing_goat_horn",
+      "minecraft:seek_goat_horn",
+      "minecraft:feel_goat_horn",
+      "minecraft:admire_goat_horn",
+      "minecraft:call_goat_horn",
+      "minecraft:yearn_goat_horn",
+      "minecraft:dream_goat_horn"
+   };
 
-   public bfs(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityZombieVillagerTypeFix", bix.B, "Zombie");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("IsVillager").asBoolean(false)) {
-         if ($$0.get("ZombieType").result().isEmpty()) {
-            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
-            if ($$1 == -1) {
-               $$1 = this.a(bam.a().a(6));
-            }
-
-            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
-         }
-
-         $$0 = $$0.remove("IsVillager");
-      }
-
-      return $$0;
-   }
-
-   private int a(int $$0) {
-      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
+   public bfs(Schema $$0) {
+      super($$0, "GoatHornIdFix", $$0x -> $$0x.equals("minecraft:goat_horn"));
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      int $$1 = $$0.get("SoundVariant").asInt(0);
+      String $$2 = a[$$1 >= 0 && $$1 < a.length ? $$1 : 0];
+      return $$0.remove("SoundVariant").set("instrument", $$0.createString($$2));
    }
 }

@@ -1,83 +1,69 @@
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class cxd extends cxl {
-   private static final xv a = xv.c("painting.random").a(n.h);
-   private final bvr<? extends clt> b;
+public class cxd {
+   private final Map<alp, cxd.a> a = Maps.newHashMap();
+   private int b;
 
-   public cxd(bvr<? extends clt> $$0, cxl.a $$1) {
-      super($$1);
-      this.b = $$0;
+   public boolean a(cxg $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public btj a(dbi $$0) {
-      jh $$1 = $$0.a();
-      jm $$2 = $$0.k();
-      jh $$3 = $$1.a($$2);
-      cpx $$4 = $$0.o();
-      cxp $$5 = $$0.n();
-      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
-         return btj.d;
+   public float a(cxg $$0, float $$1) {
+      alp $$2 = this.b($$0);
+      cxd.a $$3 = this.a.get($$2);
+      if ($$3 != null) {
+         float $$4 = (float)($$3.b - $$3.a);
+         float $$5 = (float)$$3.b - ((float)this.b + $$1);
+         return azu.a($$5 / $$4, 0.0F, 1.0F);
       } else {
-         dhi $$6 = $$0.q();
-         clt $$8;
-         if (this.b == bvr.aL) {
-            Optional<clw> $$7 = clw.a($$6, $$3, $$2);
-            if ($$7.isEmpty()) {
-               return btj.c;
+         return 0.0F;
+      }
+   }
+
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<alp, cxd.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<alp, cxd.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.b($$1.getKey());
             }
-
-            $$8 = $$7.get();
-         } else if (this.b == bvr.at) {
-            $$8 = new clu($$6, $$3, $$2);
-         } else {
-            if (this.b != bvr.ag) {
-               return btj.a;
-            }
-
-            $$8 = new cls($$6, $$3, $$2);
-         }
-
-         czy $$12 = $$5.a(ku.W, czy.a);
-         if (!$$12.b()) {
-            bvr.a($$6, $$4, $$8, $$12);
-         }
-
-         if ($$8.m()) {
-            if (!$$6.C) {
-               $$8.z();
-               $$6.a($$4, ecr.t, $$8.du());
-               $$6.b($$8);
-            }
-
-            $$5.h(1);
-            return btj.a;
-         } else {
-            return btj.c;
          }
       }
    }
 
-   protected boolean a(cpx $$0, jm $$1, cxp $$2, jh $$3) {
-      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   public alp b(cxg $$0) {
+      dal $$1 = $$0.a(ku.z);
+      alp $$2 = ma.g.b($$0.h());
+      return $$1 == null ? $$2 : $$1.c().orElse($$2);
    }
 
-   @Override
-   public void a(cxp $$0, cxl.b $$1, List<xv> $$2, czh $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      js.a $$4 = $$1.a();
-      if ($$4 != null && this.b == bvr.aL) {
-         czy $$5 = $$0.a(ku.W, czy.a);
-         if (!$$5.b()) {
-            $$5.a($$4.a(vl.a), clw.d).result().ifPresentOrElse($$1x -> {
-               ((clx)$$1x.a()).e().ifPresent($$2::add);
-               ((clx)$$1x.a()).f().ifPresent($$2::add);
-               $$2.add(xv.a("painting.dimensions", ((clx)$$1x.a()).b(), ((clx)$$1x.a()).c()));
-            }, () -> $$2.add(a));
-         } else if ($$3.b()) {
-            $$2.add(a);
-         }
-      }
+   public void a(cxg $$0, int $$1) {
+      this.a(this.b($$0), $$1);
+   }
+
+   public void a(alp $$0, int $$1) {
+      this.a.put($$0, new cxd.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void a(alp $$0) {
+      this.a.remove($$0);
+      this.b($$0);
+   }
+
+   protected void b(alp $$0, int $$1) {
+   }
+
+   protected void b(alp $$0) {
+   }
+
+   static record a(int a, int b) {
    }
 }

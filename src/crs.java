@@ -1,59 +1,145 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class crs {
-   private final List<crp> a = Lists.newArrayList();
-   private int b;
+public interface crs extends bst, btc {
+   fbr du();
 
-   public ImmutableList<crp> a() {
-      return ImmutableList.copyOf(this.a);
+   fbm cR();
+
+   @Nullable
+   alo<ewn> v();
+
+   void a(@Nullable alo<ewn> var1);
+
+   long x();
+
+   void a(long var1);
+
+   jz<cxg> B();
+
+   void C();
+
+   dgz dW();
+
+   boolean dR();
+
+   @Override
+   default boolean c() {
+      return this.g();
    }
 
-   public crs a(int $$0, float $$1) {
-      this.a.add(new crp($$0, $$1));
-      this.b();
-      return this;
-   }
-
-   public crs a(Collection<crp> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
-   }
-
-   private void b() {
-      Int2ObjectSortedMap<crp> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
+   default void a(um $$0, js.a $$1) {
+      if (this.v() != null) {
+         $$0.a("LootTable", this.v().a().toString());
+         if (this.x() != 0L) {
+            $$0.a("LootTableSeed", this.x());
+         }
       } else {
-         crp $$1 = this.a.get(this.b);
-         crp $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+         bsu.a($$0, this.B(), $$1);
+      }
+   }
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            crp $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
+   default void b(um $$0, js.a $$1) {
+      this.C();
+      if ($$0.b("LootTable", 8)) {
+         this.a(alo.a(mb.bg, alp.a($$0.l("LootTable"))));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         bsu.b($$0, this.B(), $$1);
+      }
+   }
 
-            this.b = $$6;
-            $$5 = $$7.b();
+   default void a(btr $$0, arx $$1, bvb $$2) {
+      if ($$1.O().b(dgv.i)) {
+         bsw.a($$1, $$2, this);
+         bvb $$3 = $$0.c();
+         if ($$3 != null && $$3.aq() == bvi.bS) {
+            cod.a($$1, (cpo)$$3, true);
+         }
+      }
+   }
+
+   default bta b_(cpo $$0) {
+      $$0.a(this);
+      return bta.a;
+   }
+
+   default void f(@Nullable cpo $$0) {
+      MinecraftServer $$1 = this.dW().p();
+      if (this.v() != null && $$1 != null) {
+         ewn $$2 = $$1.bc().b(this.v());
+         if ($$0 != null) {
+            ao.Q.a((ary)$$0, this.v());
          }
 
-         return $$5;
+         this.a(null);
+         ewl.a $$3 = new ewl.a((arx)this.dW()).a(ezc.f, this.du());
+         if ($$0 != null) {
+            $$3.a($$0.gF()).a(ezc.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(ezb.c), this.x());
       }
+   }
+
+   default void f() {
+      this.f(null);
+      this.B().clear();
+   }
+
+   default boolean g() {
+      for (cxg $$0 : this.B()) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   default cxg f_(int $$0) {
+      this.f(null);
+      cxg $$1 = this.B().get($$0);
+      if ($$1.f()) {
+         return cxg.j;
+      } else {
+         this.B().set($$0, cxg.j);
+         return $$1;
+      }
+   }
+
+   default cxg g_(int $$0) {
+      this.f(null);
+      return this.B().get($$0);
+   }
+
+   default cxg b(int $$0, int $$1) {
+      this.f(null);
+      return bsu.a(this.B(), $$0, $$1);
+   }
+
+   default void c(int $$0, cxg $$1) {
+      this.f(null);
+      this.B().set($$0, $$1);
+      $$1.f(this.e_($$1));
+   }
+
+   default bwp h_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bwp() {
+         @Override
+         public cxg a() {
+            return crs.this.g_($$0);
+         }
+
+         @Override
+         public boolean a(cxg $$0x) {
+            crs.this.c($$0, $$0);
+            return true;
+         }
+      } : bwp.a;
+   }
+
+   default boolean g(cpo $$0) {
+      return !this.dR() && $$0.a(this.cR(), 4.0);
    }
 }

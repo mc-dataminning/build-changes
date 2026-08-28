@@ -1,33 +1,119 @@
-public enum ave {
-   a("old"),
-   b("new"),
-   c("compatible");
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private final xv d;
-   private final xv e;
+public class ave implements avb {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, avc> c;
+   private final List<atw> d;
 
-   private ave(final String $$0) {
-      this.d = xv.c("pack.incompatible." + $$0).a(n.h);
-      this.e = xv.c("pack.incompatible.confirm." + $$0);
+   public ave(aty $$0, List<atw> $$1) {
+      this.d = List.copyOf($$1);
+      Map<String, avc> $$2 = new HashMap<>();
+      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
+
+      for (atw $$4 : $$1) {
+         avk $$5 = this.a($$4);
+         Set<String> $$6 = $$4.a($$0);
+         Predicate<alp> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
+
+         for (String $$8 : $$3) {
+            boolean $$9 = $$6.contains($$8);
+            boolean $$10 = $$5 != null && $$5.a($$8);
+            if ($$9 || $$10) {
+               avc $$11 = $$2.get($$8);
+               if ($$11 == null) {
+                  $$11 = new avc($$0, $$8);
+                  $$2.put($$8, $$11);
+               }
+
+               if ($$9 && $$10) {
+                  $$11.a($$4, $$7);
+               } else if ($$9) {
+                  $$11.a($$4);
+               } else {
+                  $$11.a($$4.b(), $$7);
+               }
+            }
+         }
+      }
+
+      this.c = $$2;
    }
 
-   public boolean a() {
-      return this == c;
-   }
-
-   public static ave a(azw<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
+   @Nullable
+   private avk a(atw $$0) {
+      try {
+         return $$0.a(avk.a);
+      } catch (IOException var3) {
+         a.error("Failed to get filter section from pack {}", $$0.b());
+         return null;
       }
    }
 
-   public xv b() {
-      return this.d;
+   @Override
+   public Set<String> a() {
+      return this.c.keySet();
    }
 
-   public xv c() {
-      return this.e;
+   @Override
+   public Optional<avj> getResource(alp $$0) {
+      avl $$1 = this.c.get($$0.b());
+      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
+   }
+
+   @Override
+   public List<avj> a(alp $$0) {
+      avl $$1 = this.c.get($$0.b());
+      return $$1 != null ? $$1.a($$0) : List.of();
+   }
+
+   @Override
+   public Map<alp, avj> b(String $$0, Predicate<alp> $$1) {
+      a($$0);
+      Map<alp, avj> $$2 = new TreeMap<>();
+
+      for (avc $$3 : this.c.values()) {
+         $$2.putAll($$3.b($$0, $$1));
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public Map<alp, List<avj>> c(String $$0, Predicate<alp> $$1) {
+      a($$0);
+      Map<alp, List<avj>> $$2 = new TreeMap<>();
+
+      for (avc $$3 : this.c.values()) {
+         $$2.putAll($$3.c($$0, $$1));
+      }
+
+      return $$2;
+   }
+
+   private static void a(String $$0) {
+      if ($$0.endsWith("/")) {
+         throw new IllegalArgumentException("Trailing slash in path " + $$0);
+      }
+   }
+
+   @Override
+   public Stream<atw> b() {
+      return this.d.stream();
+   }
+
+   @Override
+   public void close() {
+      this.d.forEach(atw::close);
    }
 }

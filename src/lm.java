@@ -7,11 +7,11 @@ public class lm extends lt {
    public static final lm b = new lm(3790560, 16711680, 1.0F);
    public static final MapCodec<lm> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               azn.i.fieldOf("from_color").forGetter($$0x -> $$0x.h), azn.i.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(lt::d)
+               azd.i.fieldOf("from_color").forGetter($$0x -> $$0x.h), azd.i.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(lt::d)
             )
             .apply($$0, lm::new)
    );
-   public static final zt<xg, lm> d = zt.a(zr.g, $$0 -> $$0.h, zr.g, $$0 -> $$0.i, zr.l, lt::d, lm::new);
+   public static final zi<wv, lm> d = zi.a(zg.g, $$0 -> $$0.h, zg.g, $$0 -> $$0.i, zg.l, lt::d, lm::new);
    private final int h;
    private final int i;
 
@@ -22,11 +22,11 @@ public class lm extends lt {
    }
 
    public Vector3f b() {
-      return ayp.h(this.h);
+      return ayf.h(this.h);
    }
 
    public Vector3f c() {
-      return ayp.h(this.i);
+      return ayf.h(this.i);
    }
 
    @Override

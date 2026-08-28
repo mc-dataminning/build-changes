@@ -1,166 +1,61 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
-
-public class aii implements aac<ahm> {
-   public static final zt<ws, aii> a = aac.a(aii::a, aii::new);
+public class aii implements zr<ahb> {
+   public static final zi<wh, aii> a = zr.a(aii::a, aii::new);
    private final int b;
    private final aii.a c;
-   private final boolean d;
-   static final aii.a e = new aii.a() {
-      @Override
-      public aii.b a() {
-         return aii.b.b;
-      }
+   private final int d;
 
-      @Override
-      public void a(aii.c $$0) {
-         $$0.a();
-      }
-
-      @Override
-      public void a(ws $$0) {
-      }
-   };
-
-   private aii(int $$0, boolean $$1, aii.a $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
+   public aii(bvb $$0, aii.a $$1) {
+      this($$0, $$1, 0);
    }
 
-   public static aii a(bvk $$0, boolean $$1) {
-      return new aii($$0.ar(), $$1, e);
+   public aii(bvb $$0, aii.a $$1, int $$2) {
+      this.b = $$0.ar();
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static aii a(bvk $$0, boolean $$1, bti $$2) {
-      return new aii($$0.ar(), $$1, new aii.d($$2));
-   }
-
-   public static aii a(bvk $$0, boolean $$1, bti $$2, fby $$3) {
-      return new aii($$0.ar(), $$1, new aii.e($$2, $$3));
-   }
-
-   private aii(ws $$0) {
+   private aii(wh $$0) {
       this.b = $$0.l();
-      aii.b $$1 = $$0.b(aii.b.class);
-      this.c = $$1.d.apply($$0);
-      this.d = $$0.readBoolean();
+      this.c = $$0.b(aii.a.class);
+      this.d = $$0.l();
    }
 
-   private void a(ws $$0) {
+   private void a(wh $$0) {
       $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
-      $$0.a(this.d);
+      $$0.a(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public aae<aii> a() {
-      return ahk.bF;
+   public zt<aii> a() {
+      return agz.bT;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bvk a(ash $$0) {
-      return $$0.b(this.b);
+   public int b() {
+      return this.b;
    }
 
-   public boolean b() {
+   public aii.a e() {
+      return this.c;
+   }
+
+   public int f() {
       return this.d;
    }
 
-   public void a(aii.c $$0) {
-      this.c.a($$0);
-   }
-
-   interface a {
-      aii.b a();
-
-      void a(aii.c var1);
-
-      void a(ws var1);
-   }
-
-   static enum b {
-      a(aii.d::new),
-      b($$0 -> aii.e),
-      c(aii.e::new);
-
-      final Function<ws, aii.a> d;
-
-      private b(final Function<ws, aii.a> $$0) {
-         this.d = $$0;
-      }
-   }
-
-   public interface c {
-      void a(bti var1);
-
-      void a(bti var1, fby var2);
-
-      void a();
-   }
-
-   static class d implements aii.a {
-      private final bti a;
-
-      d(bti $$0) {
-         this.a = $$0;
-      }
-
-      private d(ws $$0) {
-         this.a = $$0.b(bti.class);
-      }
-
-      @Override
-      public aii.b a() {
-         return aii.b.a;
-      }
-
-      @Override
-      public void a(aii.c $$0) {
-         $$0.a(this.a);
-      }
-
-      @Override
-      public void a(ws $$0) {
-         $$0.a(this.a);
-      }
-   }
-
-   static class e implements aii.a {
-      private final bti a;
-      private final fby b;
-
-      e(bti $$0, fby $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private e(ws $$0) {
-         this.b = new fby((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bti.class);
-      }
-
-      @Override
-      public aii.b a() {
-         return aii.b.c;
-      }
-
-      @Override
-      public void a(aii.c $$0) {
-         $$0.a(this.a, this.b);
-      }
-
-      @Override
-      public void a(ws $$0) {
-         $$0.a((float)this.b.d);
-         $$0.a((float)this.b.e);
-         $$0.a((float)this.b.f);
-         $$0.a(this.a);
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

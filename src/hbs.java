@@ -1,35 +1,35 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class hbs {
-   private static final BiMap<alz, hbr> i = HashBiMap.create();
-   public static final hbr a = a("single", hbx.b);
-   public static final hbr b = a("directory", hbu.b);
-   public static final hbr c = a("filter", hby.b);
-   public static final hbr d = a("unstitch", hbz.b);
-   public static final hbr e = a("paletted_permutations", hbw.b);
-   public static Codec<hbr> f = alz.a.flatXmap($$0 -> {
-      hbr $$1 = (hbr)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      alz $$1 = (alz)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<hbp> g = f.dispatch(hbp::a, hbr::a);
-   public static Codec<List<hbp>> h = g.listOf().fieldOf("sources").codec();
+public class hbs implements hbk {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<hbs> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alp.a.fieldOf("resource").forGetter($$0x -> $$0x.d), alp.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, hbs::new)
+   );
+   private final alp d;
+   private final Optional<alp> e;
 
-   private static hbr a(String $$0, MapCodec<? extends hbp> $$1) {
-      hbr $$2 = new hbr($$1);
-      alz $$3 = alz.b($$0);
-      hbr $$4 = (hbr)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
+   public hbs(alp $$0, Optional<alp> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Override
+   public void a(avl $$0, hbk.a $$1) {
+      alp $$2 = a.a(this.d);
+      Optional<avj> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
       } else {
-         return $$2;
+         c.warn("Missing sprite: {}", $$2);
       }
+   }
+
+   @Override
+   public hbm a() {
+      return hbn.a;
    }
 }

@@ -1,44 +1,60 @@
-import java.util.function.BiFunction;
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
+import java.util.List;
+import java.util.Optional;
 
-public class acy implements aac<acr> {
-   public static final zt<xg, acy> a = zt.a(jh.b, acy::b, zr.a(mb.h), acy::e, zr.s, acy::f, acy::new);
-   private final jh b;
-   private final duz<?> c;
-   private final ux d;
+public record acy(int b, int c, int d, List<acy.a> e) implements zr<acg> {
+   public static final zi<wv, acy> a = zi.a(zg.h, acy::e, zg.h, acy::f, zg.h, acy::g, acy.a.a.a(zg.a()), acy::h, acy::new);
 
-   public static acy a(dux $$0, BiFunction<dux, ke, ux> $$1) {
-      ke $$2 = $$0.i().K_();
-      return new acy($$0.aB_(), $$0.q(), $$1.apply($$0, $$2));
-   }
-
-   public static acy a(dux $$0) {
-      return a($$0, dux::a);
-   }
-
-   private acy(jh $$0, duz<?> $$1, ux $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public acy(int $$0, Suggestions $$1) {
+      this(
+         $$0,
+         $$1.getRange().getStart(),
+         $$1.getRange().getLength(),
+         $$1.getList().stream().map($$0x -> new acy.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xn::a))).toList()
+      );
    }
 
    @Override
-   public aae<acy> a() {
-      return ahk.i;
+   public zt<acy> a() {
+      return agz.r;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
+   public Suggestions b() {
+      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
+      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
+   }
+
+   public int e() {
       return this.b;
    }
 
-   public duz<?> e() {
+   public int f() {
       return this.c;
    }
 
-   public ux f() {
+   public int g() {
       return this.d;
+   }
+
+   public List<acy.a> h() {
+      return this.e;
+   }
+
+   public static record a(String b, Optional<xk> c) {
+      public static final zi<wv, acy.a> a = zi.a(zg.o, acy.a::a, xm.e, acy.a::b, acy.a::new);
+
+      public String a() {
+         return this.b;
+      }
+
+      public Optional<xk> b() {
+         return this.c;
+      }
    }
 }

@@ -1,69 +1,35 @@
-public abstract class arq extends etj {
-   protected arq(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.Set;
+
+public final class arq {
+   private final Object2BooleanMap<ary> a = new Object2BooleanOpenHashMap();
+
+   public Set<ary> a() {
+      return this.a.keySet();
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == dgo.c;
+   public void a(ary $$0, boolean $$1) {
+      this.a.put($$0, $$1);
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         dgo $$3 = new dgo($$0);
-         int $$4 = $$3.h;
-         int $$5 = $$3.i;
-
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = dgo.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
-            }
-         }
-      }
+   public void a(ary $$0) {
+      this.a.removeBoolean($$0);
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      dgo $$4 = new dgo($$0);
-      int $$5 = $$4.h;
-      int $$6 = $$4.i;
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = dgo.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = dgo.c;
-            }
-
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
-            }
-         }
-      }
-
-      return $$3;
+   public void b(ary $$0) {
+      this.a.replace($$0, true);
    }
 
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == dgo.c ? this.b($$1) : $$2 + 1;
+   public void c(ary $$0) {
+      this.a.replace($$0, false);
    }
 
-   protected abstract int b(long var1);
+   public boolean d(ary $$0) {
+      return this.a.getOrDefault($$0, true);
+   }
 
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(dgo.c, $$0, $$1, $$2);
+   public boolean e(ary $$0) {
+      return this.a.getBoolean($$0);
    }
 }

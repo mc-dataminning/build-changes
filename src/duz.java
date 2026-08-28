@@ -1,213 +1,139 @@
 import com.mojang.logging.LogUtils;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class duz<T extends dux> {
-   private static final Logger T = LogUtils.getLogger();
-   public static final duz<dvw> a = a("furnace", dvw::new, dko.cL);
-   public static final duz<dve> b = a("chest", dve::new, dko.cD);
-   public static final duz<dwt> c = a("trapped_chest", dwt::new, dko.hl);
-   public static final duz<dvu> d = a("ender_chest", dvu::new, dko.fU);
-   public static final duz<dwb> e = a("jukebox", dwb::new, dko.eg);
-   public static final duz<dvr> f = a("dispenser", dvr::new, dko.bb);
-   public static final duz<dvs> g = a("dropper", dvs::new, dko.hy);
-   public static final duz<dwk> h = a(
-      "sign",
-      dwk::new,
-      dko.cM,
-      dko.cN,
-      dko.cO,
-      dko.cP,
-      dko.cQ,
-      dko.cR,
-      dko.cS,
-      dko.cT,
-      dko.da,
-      dko.db,
-      dko.dc,
-      dko.dd,
-      dko.de,
-      dko.df,
-      dko.dg,
-      dko.dh,
-      dko.pr,
-      dko.pt,
-      dko.ps,
-      dko.pu,
-      dko.cU,
-      dko.di,
-      dko.cV,
-      dko.dj
-   );
-   public static final duz<dvx> i = a(
-      "hanging_sign",
-      dvx::new,
-      dko.dk,
-      dko.dl,
-      dko.dm,
-      dko.dn,
-      dko.do,
-      dko.dp,
-      dko.dq,
-      dko.dr,
-      dko.ds,
-      dko.dt,
-      dko.du,
-      dko.dv,
-      dko.dw,
-      dko.dx,
-      dko.dy,
-      dko.dz,
-      dko.dA,
-      dko.dB,
-      dko.dC,
-      dko.dD,
-      dko.dF,
-      dko.dG,
-      dko.dE,
-      dko.dH
-   );
-   public static final duz<dwo> j = a("mob_spawner", dwo::new, dko.cA);
-   public static final duz<dvm> k = a("creaking_heart", dvm::new, dko.cB);
-   public static final duz<dxr> l = a("piston", dxr::new, dko.bX);
-   public static final duz<dva> m = a("brewing_stand", dva::new, dko.fG);
-   public static final duz<dvt> n = a("enchanting_table", dvt::new, dko.fF);
-   public static final duz<dwr> o = a("end_portal", dwr::new, dko.fL);
-   public static final duz<dus> p = a("beacon", dus::new, dko.gc);
-   public static final duz<dwm> q = a(
-      "skull", dwm::new, dko.gU, dko.gV, dko.hc, dko.hd, dko.he, dko.hf, dko.gY, dko.gZ, dko.gW, dko.gX, dko.ha, dko.hb, dko.hg, dko.hh
-   );
-   public static final duz<dvn> r = a("daylight_detector", dvn::new, dko.hp);
-   public static final duz<dvz> s = a("hopper", dvz::new, dko.hs);
-   public static final duz<dvi> t = a("comparator", dvi::new, dko.ho);
-   public static final duz<dum> u = a(
-      "banner",
-      dum::new,
-      dko.ja,
-      dko.jb,
-      dko.jc,
-      dko.jd,
-      dko.je,
-      dko.jf,
-      dko.jg,
-      dko.jh,
-      dko.ji,
-      dko.jj,
-      dko.jk,
-      dko.jl,
-      dko.jm,
-      dko.jn,
-      dko.jo,
-      dko.jp,
-      dko.jq,
-      dko.jr,
-      dko.js,
-      dko.jt,
-      dko.ju,
-      dko.jv,
-      dko.jw,
-      dko.jx,
-      dko.jy,
-      dko.jz,
-      dko.jA,
-      dko.jB,
-      dko.jC,
-      dko.jD,
-      dko.jE,
-      dko.jF
-   );
-   public static final duz<dwp> v = a("structure_block", dwp::new, dko.pv);
-   public static final duz<dwq> w = a("end_gateway", dwq::new, dko.la);
-   public static final duz<dvh> x = a("command_block", dvh::new, dko.gb, dko.lc, dko.lb);
-   public static final duz<dwj> y = a(
-      "shulker_box",
-      dwj::new,
-      dko.lk,
-      dko.lA,
-      dko.lw,
-      dko.lx,
-      dko.lu,
-      dko.ls,
-      dko.ly,
-      dko.lo,
-      dko.lt,
-      dko.lq,
-      dko.ln,
-      dko.lm,
-      dko.lr,
-      dko.lv,
-      dko.lz,
-      dko.ll,
-      dko.lp
-   );
-   public static final duz<dut> z = a(
-      "bed", dut::new, dko.bu, dko.bv, dko.br, dko.bs, dko.bp, dko.bn, dko.bt, dko.bj, dko.bo, dko.bl, dko.bi, dko.bh, dko.bm, dko.bq, dko.bg, dko.bk
-   );
-   public static final duz<dvj> A = a("conduit", dvj::new, dko.ns);
-   public static final duz<duq> B = a("barrel", duq::new, dko.op);
-   public static final duz<dwn> C = a("smoker", dwn::new, dko.oq);
-   public static final duz<duw> D = a("blast_furnace", duw::new, dko.or);
-   public static final duz<dwc> E = a("lectern", dwc::new, dko.ov);
-   public static final duz<duv> F = a("bell", duv::new, dko.oy);
-   public static final duz<dwa> G = a("jigsaw", dwa::new, dko.pw);
-   public static final duz<dvd> H = a("campfire", dvd::new, dko.oB, dko.oC);
-   public static final duz<duu> I = a("beehive", duu::new, dko.pz, dko.pA);
-   public static final duz<dwh> J = a("sculk_sensor", dwh::new, dko.rl);
-   public static final duz<dvc> K = a("calibrated_sculk_sensor", dvc::new, dko.rm);
-   public static final duz<dwg> L = a("sculk_catalyst", dwg::new, dko.rp);
-   public static final duz<dwi> M = a("sculk_shrieker", dwi::new, dko.rq);
-   public static final duz<dvg> N = a("chiseled_bookshelf", dvg::new, dko.ct);
-   public static final duz<dvb> O = a("brushable_block", dvb::new, dko.M, dko.P);
-   public static final duz<dvo> P = a("decorated_pot", dvo::new, dko.tK);
-   public static final duz<dvl> Q = a("crafter", dvl::new, dko.tL);
-   public static final duz<dwu> R = a("trial_spawner", dwu::new, dko.tM);
-   public static final duz<dxd> S = a("vault", dxd::new, dko.tN);
-   private final duz.a<? extends T> U;
-   private final Set<dkm> V;
-   private final jq.c<duz<?>> W = ma.j.f(this);
+public class duz extends duq implements bst {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jz<cxg> d = jz.a(6, cxg.j);
+   private int e = -1;
 
-   @Nullable
-   public static alz a(duz<?> $$0) {
-      return ma.j.b($$0);
+   public duz(jh $$0, dxo $$1) {
+      super(dus.N, $$0, $$1);
    }
 
-   private static <T extends dux> duz<T> a(String $$0, duz.a<? extends T> $$1, dkm... $$2) {
-      if ($$2.length == 0) {
-         T.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         dxo $$1 = this.m();
+
+         for (int $$2 = 0; $$2 < dlh.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            dyf $$4 = dlh.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(eck.c, this.p, eck.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
+      }
+   }
+
+   @Override
+   protected void a(um $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.d.clear();
+      bsu.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
+   }
+
+   @Override
+   protected void b(um $$0, js.a $$1) {
+      super.b($$0, $$1);
+      bsu.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
+
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cxg::f)).count();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.stream().allMatch(cxg::f);
+   }
+
+   @Override
+   public cxg a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cxg a(int $$0, int $$1) {
+      cxg $$2 = Objects.requireNonNullElse(this.d.get($$0), cxg.j);
+      this.d.set($$0, cxg.j);
+      if (!$$2.f()) {
+         this.c($$0);
       }
 
-      ae.a(bix.s, $$0);
-      return kd.a(ma.j, $$0, new duz<>($$1, Set.of($$2)));
+      return $$2;
    }
 
-   private duz(duz.a<? extends T> $$0, Set<dkm> $$1) {
-      this.U = $$0;
-      this.V = $$1;
+   @Override
+   public cxg b(int $$0) {
+      return this.a($$0, 1);
    }
 
-   @Nullable
-   public T a(jh $$0, dxv $$1) {
-      return (T)this.U.create($$0, $$1);
+   @Override
+   public void a(int $$0, cxg $$1) {
+      if ($$1.a(axt.bb)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
+      }
    }
 
-   public boolean a(dxv $$0) {
-      return this.V.contains($$0.b());
+   @Override
+   public boolean a(bst $$0, int $$1, cxg $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : cxg.c($$2, $$2x) && $$2x.M() + $$2.M() <= $$0.e_($$2x));
    }
 
-   @Deprecated
-   public jq.c<duz<?>> a() {
-      return this.W;
+   @Override
+   public int ao_() {
+      return 1;
    }
 
-   @Nullable
-   public T a(dgn $$0, jh $$1) {
-      dux $$2 = $$0.c_($$1);
-      return (T)($$2 != null && $$2.q() == this ? $$2 : null);
+   @Override
+   public boolean a(cpo $$0) {
+      return bst.a(this, $$0);
    }
 
-   @FunctionalInterface
-   interface a<T extends dux> {
-      T create(jh var1, dxv var2);
+   @Override
+   public boolean b(int $$0, cxg $$1) {
+      return $$1.a(axt.bb) && this.a($$0).f() && $$1.M() == this.ao_();
+   }
+
+   public int j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(duq.b $$0) {
+      super.a($$0);
+      $$0.a(ku.al, czy.a).a(this.d);
+   }
+
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.al, czy.a(this.d));
+   }
+
+   @Override
+   public void a(um $$0) {
+      $$0.r("Items");
    }
 }

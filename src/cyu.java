@@ -1,21 +1,20 @@
-import javax.annotation.Nullable;
-
-public class cyu extends czc {
-   public cyu(dkm $$0, dkm $$1, cxl.a $$2) {
-      super($$0, $$1, jm.a, $$2);
-   }
-
-   public cyu(cxl.a $$0, dkm $$1, dkm $$2, jm $$3) {
-      super($$1, $$2, $$3, $$0);
+public class cyu extends cxc {
+   public cyu(cyx $$0, float $$1, float $$2, cxc.a $$3) {
+      super($$0.a($$3, $$1, $$2));
    }
 
    @Override
-   protected boolean a(jh $$0, dhi $$1, @Nullable cpx $$2, cxp $$3, dxv $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dwk $$6 && $$1.a_($$0).b() instanceof drp $$7) {
-         $$7.a($$2, $$6, true);
-      }
+   public boolean a(dxo $$0, dgz $$1, jh $$2, cpo $$3) {
+      return !$$3.b();
+   }
 
-      return $$5;
+   @Override
+   public boolean a(cxg $$0, bvx $$1, bvx $$2) {
+      return true;
+   }
+
+   @Override
+   public void b(cxg $$0, bvx $$1, bvx $$2) {
+      $$0.a(1, $$2, bvj.a);
    }
 }

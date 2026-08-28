@@ -1,94 +1,166 @@
-import com.mojang.datafixers.util.Either;
-import io.netty.buffer.ByteBuf;
-import java.net.URI;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.IntFunction;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Set;
+import java.util.UUID;
 
-public record amr(List<amr.a> d) {
-   public static final amr a = new amr(List.of());
-   public static final zt<ByteBuf, Either<amr.b, xv>> b = zr.a(amr.b.k, xx.f);
-   public static final zt<ByteBuf, List<amr.c>> c = amr.c.a.a(zr.a());
+public class amr extends art {
+   private final alp h;
+   private final Set<UUID> i = Sets.newHashSet();
+   private int j;
+   private int k = 100;
 
-   public boolean a() {
-      return this.d.isEmpty();
+   public amr(alp $$0, xk $$1) {
+      super($$1, bsq.a.g, bsq.b.a);
+      this.h = $$0;
+      this.a(0.0F);
    }
 
-   public Optional<amr.a> a(amr.b $$0) {
-      return this.d.stream().filter($$1 -> (Boolean)$$1.a.map($$1x -> $$1x == $$0, $$0xx -> false)).findFirst();
+   public alp a() {
+      return this.h;
    }
 
-   public List<amr.c> b() {
-      return this.d.stream().map($$0 -> new amr.c($$0.a, $$0.b.toString())).toList();
+   @Override
+   public void a(ary $$0) {
+      super.a($$0);
+      this.i.add($$0.cG());
    }
 
-   public List<amr.a> c() {
-      return this.d;
+   public void a(UUID $$0) {
+      this.i.add($$0);
    }
 
-   public static record a(Either<amr.b, xv> a, URI b) {
+   @Override
+   public void b(ary $$0) {
+      super.b($$0);
+      this.i.remove($$0.cG());
+   }
 
-      public static amr.a a(amr.b $$0, URI $$1) {
-         return new amr.a(Either.left($$0), $$1);
+   @Override
+   public void b() {
+      super.b();
+      this.i.clear();
+   }
+
+   public int c() {
+      return this.j;
+   }
+
+   public int d() {
+      return this.k;
+   }
+
+   public void a(int $$0) {
+      this.j = $$0;
+      this.a(azu.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+   }
+
+   public void b(int $$0) {
+      this.k = $$0;
+      this.a(azu.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+   }
+
+   public final xk e() {
+      return xn.a(this.i()).a($$0 -> $$0.a(this.k().a()).a(new xq(xq.a.a, xk.b(this.a().toString()))).a(this.a().toString()));
+   }
+
+   public boolean a(Collection<ary> $$0) {
+      Set<UUID> $$1 = Sets.newHashSet();
+      Set<ary> $$2 = Sets.newHashSet();
+
+      for (UUID $$3 : this.i) {
+         boolean $$4 = false;
+
+         for (ary $$5 : $$0) {
+            if ($$5.cG().equals($$3)) {
+               $$4 = true;
+               break;
+            }
+         }
+
+         if (!$$4) {
+            $$1.add($$3);
+         }
       }
 
-      public static amr.a a(xv $$0, URI $$1) {
-         return new amr.a(Either.right($$0), $$1);
+      for (ary $$6 : $$0) {
+         boolean $$7 = false;
+
+         for (UUID $$8 : this.i) {
+            if ($$6.cG().equals($$8)) {
+               $$7 = true;
+               break;
+            }
+         }
+
+         if (!$$7) {
+            $$2.add($$6);
+         }
       }
 
-      public xv a() {
-         return (xv)this.a.map(amr.b::a, $$0 -> $$0);
+      for (UUID $$9 : $$1) {
+         for (ary $$10 : this.g()) {
+            if ($$10.cG().equals($$9)) {
+               this.b($$10);
+               break;
+            }
+         }
+
+         this.i.remove($$9);
       }
 
-      public Either<amr.b, xv> b() {
-         return this.a;
+      for (ary $$11 : $$2) {
+         this.a($$11);
       }
 
-      public URI c() {
-         return this.b;
+      return !$$1.isEmpty() || !$$2.isEmpty();
+   }
+
+   public um a(js.a $$0) {
+      um $$1 = new um();
+      $$1.a("Name", xk.a.a(this.a, $$0));
+      $$1.a("Visible", this.f());
+      $$1.a("Value", this.j);
+      $$1.a("Max", this.k);
+      $$1.a("Color", this.k().b());
+      $$1.a("Overlay", this.l().a());
+      $$1.a("DarkenScreen", this.m());
+      $$1.a("PlayBossMusic", this.n());
+      $$1.a("CreateWorldFog", this.o());
+      us $$2 = new us();
+
+      for (UUID $$3 : this.i) {
+         $$2.add(vb.a($$3));
+      }
+
+      $$1.a("Players", $$2);
+      return $$1;
+   }
+
+   public static amr a(um $$0, alp $$1, js.a $$2) {
+      amr $$3 = new amr($$1, xk.a.a($$0.l("Name"), $$2));
+      $$3.d($$0.q("Visible"));
+      $$3.a($$0.h("Value"));
+      $$3.b($$0.h("Max"));
+      $$3.a(bsq.a.a($$0.l("Color")));
+      $$3.a(bsq.b.a($$0.l("Overlay")));
+      $$3.a($$0.q("DarkenScreen"));
+      $$3.b($$0.q("PlayBossMusic"));
+      $$3.c($$0.q("CreateWorldFog"));
+
+      for (vj $$5 : $$0.c("Players", 11)) {
+         $$3.a(vb.a($$5));
+      }
+
+      return $$3;
+   }
+
+   public void c(ary $$0) {
+      if (this.i.contains($$0.cG())) {
+         this.a($$0);
       }
    }
 
-   public static enum b {
-      a(0, "report_bug"),
-      b(1, "community_guidelines"),
-      c(2, "support"),
-      d(3, "status"),
-      e(4, "feedback"),
-      f(5, "community"),
-      g(6, "website"),
-      h(7, "forums"),
-      i(8, "news"),
-      j(9, "announcements");
-
-      private static final IntFunction<amr.b> l = ayv.a($$0 -> $$0.m, values(), ayv.a.a);
-      public static final zt<ByteBuf, amr.b> k = zr.a(l, $$0 -> $$0.m);
-      private final int m;
-      private final String n;
-
-      private b(final int $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-
-      private xv a() {
-         return xv.c("known_server_link." + this.n);
-      }
-
-      public amr.a a(URI $$0) {
-         return amr.a.a(this, $$0);
-      }
-   }
-
-   public static record c(Either<amr.b, xv> b, String c) {
-      public static final zt<ByteBuf, amr.c> a = zt.a(amr.b, amr.c::a, zr.o, amr.c::b, amr.c::new);
-
-      public Either<amr.b, xv> a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
+   public void d(ary $$0) {
+      super.b($$0);
    }
 }

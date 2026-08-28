@@ -1,49 +1,140 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public interface etk extends etp {
-   @Nullable
-   dzv a(kj var1);
+public class etk extends ete<etk.a> {
+   protected etk(dzw $$0) {
+      super(dhi.a, $$0, new etk.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+   }
 
-   int b(jh var1);
+   @Override
+   protected int a(long $$0) {
+      return this.e($$0, false);
+   }
 
-   public static enum a implements etk {
-      a;
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = kj.e($$0);
+      int $$3 = kj.c($$2);
+      etk.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(kj.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dzo $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = jh.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
 
-      @Nullable
-      @Override
-      public dzv a(kj $$0) {
-         return null;
+               $$2 = kj.a($$2, jm.b);
+            }
+         }
+
+         return $$6.a(kj.b(jh.a($$0)), kj.b(jh.b($$0)), kj.b(jh.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
+   }
+
+   @Override
+   protected void h(long $$0) {
+      int $$1 = kj.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
       }
 
-      @Override
-      public int b(jh $$0) {
-         return 0;
+      long $$2 = kj.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
+   }
+
+   @Override
+   protected void i(long $$0) {
+      long $$1 = kj.f($$0);
+      int $$2 = kj.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = kj.a($$3, jm.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
+   }
+
+   @Override
+   protected dzo g(long $$0) {
+      dzo $$1 = (dzo)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(kj.f($$0));
+         if ($$2 != this.d.b && kj.c($$0) < $$2) {
+            long $$3 = kj.a($$0, jm.b);
+
+            dzo $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = kj.a($$3, jm.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dzo(15) : new dzo();
+         }
+      }
+   }
+
+   private static dzo a(dzo $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dzo($$2);
+      }
+   }
+
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean m(long $$0) {
+      long $$1 = kj.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || kj.c($$0) >= $$2;
+   }
+
+   protected int n(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends etb<etk.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<dzo> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
       }
 
-      @Override
-      public void a(jh $$0) {
-      }
-
-      @Override
-      public boolean N_() {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public void a(kj $$0, boolean $$1) {
-      }
-
-      @Override
-      public void a(dgo $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(dgo $$0) {
+      public etk.a a() {
+         return new etk.a(this.a.clone(), this.c.clone(), this.b);
       }
    }
 }

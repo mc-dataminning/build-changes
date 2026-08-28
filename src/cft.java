@@ -1,50 +1,41 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cft extends cfr {
-   @Nullable
-   private jh p;
+public class cft extends cgh<bvx> {
+   private static final int a = 200;
+   private static final int b = 599;
 
-   public cft(bwi $$0, dhi $$1) {
-      super($$0, $$1);
+   public cft() {
+      this(200);
+   }
+
+   public cft(int $$0) {
+      super($$0);
    }
 
    @Override
-   public eul a(jh $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
+   protected void a(arx $$0, bvx $$1) {
+      a($$1);
    }
 
    @Override
-   public eul a(bvk $$0, int $$1) {
-      this.p = $$0.dw();
-      return super.a($$0, $$1);
+   public Set<cfb<?>> a() {
+      return ImmutableSet.of(cfb.g);
    }
 
-   @Override
-   public boolean a(bvk $$0, double $$1) {
-      eul $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dw();
-         this.d = $$1;
-         return true;
-      }
-   }
-
-   @Override
-   public void c() {
-      if (!this.m()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.du(), (double)this.a.dr())
-               && (!(this.a.dD() > (double)this.p.v()) || !jh.a((double)this.p.u(), this.a.dD(), (double)this.p.w()).a(this.a.du(), (double)this.a.dr()))) {
-               this.a.I().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
+   public static void a(bvx $$0) {
+      Optional<List<bvx>> $$1 = $$0.ec().c(cfb.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bvi.aq));
+         if ($$2) {
+            b($$0);
          }
       }
+   }
+
+   public static void b(bvx $$0) {
+      $$0.ec().a(cfb.F, true, 599L);
    }
 }

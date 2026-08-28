@@ -1,58 +1,21 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fxa extends fwv {
+   private static final xk a = xk.c("controls.title");
 
-public class fxa extends fxc {
-   private static final xv a = xv.c("options.online.title");
-   @Nullable
-   private fmj<Unit> u;
+   private static fmc<?>[] a(fmd $$0) {
+      return new fmc[]{$$0.af(), $$0.ag(), $$0.J(), $$0.L()};
+   }
 
-   public fxa(fty $$0, fmk $$1) {
+   public fxa(ftr $$0, fmd $$1) {
       super($$0, $$1, a);
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      if (this.u != null) {
-         fod $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private fmj<?>[] a(fmk $$0, fmg $$1) {
-      List<fmj<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.W());
-      $$2.add($$0.X());
-      fmj<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            btg $$1x = $$0x.al();
-            return new fmj<>(
-               "options.difficulty.online",
-               fmj.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fmj.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
-      }
-
-      return $$2.toArray(new fmj[0]);
-   }
-
-   @Override
    protected void l() {
-      this.d.a(this.a(this.c, this.m));
+      this.d
+         .a(
+            fny.a(xk.c("options.mouse_settings"), $$0 -> this.m.a(new fws(this, this.c))).a(),
+            fny.a(xk.c("controls.keybinds"), $$0 -> this.m.a(new fxc(this, this.c))).a()
+         );
+      this.d.a(a(this.c));
    }
 }

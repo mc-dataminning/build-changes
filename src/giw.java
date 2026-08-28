@@ -1,80 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class giw extends gjn {
+   private final gji a;
 
-public interface giw {
-   giw a = new giw() {
-      @Override
-      public fgn a(fgu $$0, hbm $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gkv.c);
-         RenderSystem.setShaderTexture(0, hbk.d);
-         return $$0.a(fgx.c.h, fgq.d);
-      }
+   giw(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gji $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
+   }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   giw b = new giw() {
-      @Override
-      public fgn a(fgu $$0, hbm $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gkv.c);
-         RenderSystem.setShaderTexture(0, hbk.e);
-         return $$0.a(fgx.c.h, fgq.d);
-      }
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   giw c = new giw() {
-      @Override
-      public fgn a(fgu $$0, hbm $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gkv.c);
-         RenderSystem.setShaderTexture(0, hbk.e);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         return $$0.a(fgx.c.h, fgq.d);
-      }
+   @Override
+   public gir b() {
+      return gir.c;
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   giw d = new giw() {
-      @Override
-      public fgn a(fgu $$0, hbm $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-         return $$0.a(fgx.c.h, fgq.d);
-      }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
 
-      @Override
-      public String toString() {
-         return "CUSTOM";
+   public static record a(gji a) implements giq<lu> {
+      public gin a(lu $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         giw $$8 = new giw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.A.a(12) + 8);
+         return $$8;
       }
-   };
-   giw e = new giw() {
-      @Nullable
-      @Override
-      public fgn a(fgu $$0, hbm $$1) {
-         return null;
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   @Nullable
-   fgn a(fgu var1, hbm var2);
+   }
 }

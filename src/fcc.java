@@ -1,20 +1,32 @@
-public interface fcc {
-   fcc a = ($$0, $$1) -> false;
-   fcc b = ($$0, $$1) -> !$$0 && !$$1;
-   fcc c = ($$0, $$1) -> $$1 && !$$0;
-   fcc d = ($$0, $$1) -> !$$0;
-   fcc e = ($$0, $$1) -> $$0 && !$$1;
-   fcc f = ($$0, $$1) -> !$$1;
-   fcc g = ($$0, $$1) -> $$0 != $$1;
-   fcc h = ($$0, $$1) -> !$$0 || !$$1;
-   fcc i = ($$0, $$1) -> $$0 && $$1;
-   fcc j = ($$0, $$1) -> $$0 == $$1;
-   fcc k = ($$0, $$1) -> $$1;
-   fcc l = ($$0, $$1) -> !$$0 || $$1;
-   fcc m = ($$0, $$1) -> $$0;
-   fcc n = ($$0, $$1) -> $$0 || !$$1;
-   fcc o = ($$0, $$1) -> $$0 || $$1;
-   fcc p = ($$0, $$1) -> true;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   boolean apply(boolean var1, boolean var2);
+public class fcc implements fcd {
+   private final DoubleList a;
+
+   public fcc(DoubleList $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a(fcd.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
+   }
 }

@@ -3,40 +3,48 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class caf {
-   public static bzk<cpj> a(cfk<jp> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return cbm.a(
-         (Function<cbm.b<cpj>, ? extends App<cbm.c<cpj>, cbp<cpj>>>)($$5 -> $$5.group($$5.a(cfk.E), $$5.c(cfk.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     jp $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ah() && (!$$13.isPresent() || $$9.ac() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dw()) > $$3) {
-                           fby $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   private static final int a = 200;
 
-                           while ($$14 == null || jh.a((ka)$$14).k($$10.dw()) > $$3) {
-                              $$14 = chb.a($$10, 15, 7, fby.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
+   public static <E extends bvz> bxr<E> a(caf.b<E> $$0) {
+      return a(($$0x, $$1) -> false, $$0, true);
+   }
 
-                           $$7.a(new cfn($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dw()) > $$2) {
-                           $$7.a(new cfn($$12.b(), $$1, $$2));
-                        }
-                     } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
+   public static <E extends bvz> bxr<E> a(caf.a $$0) {
+      return a($$0, ($$0x, $$1, $$2) -> {
+      }, true);
+   }
 
+   public static <E extends bvz> bxr<E> a() {
+      return a(($$0, $$1) -> false, ($$0, $$1, $$2) -> {
+      }, true);
+   }
+
+   public static <E extends bvz> bxr<E> a(caf.a $$0, caf.b<E> $$1, boolean $$2) {
+      return cbd.a(
+         (Function<cbd.b<E>, ? extends App<cbd.c<E>, cbg<E>>>)($$3 -> $$3.group($$3.b(cfb.o), $$3.a(cfb.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  bvx $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bL() && $$9.dW() == $$7.dW() && !$$0.test($$6, $$9)) {
                      return true;
-                  }))
+                  } else {
+                     $$1.accept($$6, (E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
       );
+   }
+
+   private static boolean a(bvx $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dW().ad() - $$1.get() > 200L;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      boolean test(arx var1, bvx var2);
+   }
+
+   @FunctionalInterface
+   public interface b<E> {
+      void accept(arx var1, E var2, bvx var3);
    }
 }

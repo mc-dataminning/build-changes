@@ -1,51 +1,136 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public class dye implements Predicate<dxv> {
-   public static final Predicate<dxv> a = $$0 -> true;
-   private final dxw<dkm, dxv> b;
-   private final Map<dyx<?>, Predicate<Object>> c = Maps.newHashMap();
-
-   private dye(dxw<dkm, dxv> $$0) {
-      this.b = $$0;
-   }
-
-   public static dye a(dkm $$0) {
-      return new dye($$0.l());
-   }
-
-   public boolean a(@Nullable dxv $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<dyx<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   protected <T extends Comparable<T>> boolean a(dxv $$0, dyx<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
-   }
-
-   public <V extends Comparable<V>> dye a(dyx<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
-      }
-   }
+public class dye {
+   public static final dyf a = dyf.a("active");
+   public static final dyf b = dyf.a("attached");
+   public static final dyf c = dyf.a("berries");
+   public static final dyf d = dyf.a("bloom");
+   public static final dyf e = dyf.a("bottom");
+   public static final dyf f = dyf.a("can_summon");
+   public static final dyf g = dyf.a("conditional");
+   public static final dyf h = dyf.a("disarmed");
+   public static final dyf i = dyf.a("drag");
+   public static final dyf j = dyf.a("enabled");
+   public static final dyf k = dyf.a("extended");
+   public static final dyf l = dyf.a("eye");
+   public static final dyf m = dyf.a("falling");
+   public static final dyf n = dyf.a("hanging");
+   public static final dyf o = dyf.a("has_bottle_0");
+   public static final dyf p = dyf.a("has_bottle_1");
+   public static final dyf q = dyf.a("has_bottle_2");
+   public static final dyf r = dyf.a("has_record");
+   public static final dyf s = dyf.a("has_book");
+   public static final dyf t = dyf.a("inverted");
+   public static final dyf u = dyf.a("in_wall");
+   public static final dyf v = dyf.a("lit");
+   public static final dyf w = dyf.a("locked");
+   public static final dyf x = dyf.a("natural");
+   public static final dyf y = dyf.a("occupied");
+   public static final dyf z = dyf.a("open");
+   public static final dyf A = dyf.a("persistent");
+   public static final dyf B = dyf.a("powered");
+   public static final dyf C = dyf.a("short");
+   public static final dyf D = dyf.a("shrieking");
+   public static final dyf E = dyf.a("signal_fire");
+   public static final dyf F = dyf.a("snowy");
+   public static final dyf G = dyf.a("tip");
+   public static final dyf H = dyf.a("triggered");
+   public static final dyf I = dyf.a("unstable");
+   public static final dyf J = dyf.a("waterlogged");
+   public static final dyl<jm.a> K = dyl.a("axis", jm.a.class, jm.a.a, jm.a.c);
+   public static final dyl<jm.a> L = dyl.a("axis", jm.a.class);
+   public static final dyf M = dyf.a("up");
+   public static final dyf N = dyf.a("down");
+   public static final dyf O = dyf.a("north");
+   public static final dyf P = dyf.a("east");
+   public static final dyf Q = dyf.a("south");
+   public static final dyf R = dyf.a("west");
+   public static final dyl<jm> S = dyl.a("facing", jm.class, jm.c, jm.f, jm.d, jm.e, jm.b, jm.a);
+   public static final dyl<jm> T = dyl.a("facing", jm.class, $$0 -> $$0 != jm.b);
+   public static final dyl<jm> U = dyl.a("facing", jm.class, jm.c.a);
+   public static final dyn V = dyn.a("flower_amount", 1, 4);
+   public static final dyl<jo> W = dyl.a("orientation", jo.class);
+   public static final dyl<dxz> X = dyl.a("face", dxz.class);
+   public static final dyl<dyc> Y = dyl.a("attachment", dyc.class);
+   public static final dyl<dyz> Z = dyl.a("east", dyz.class);
+   public static final dyl<dyz> aa = dyl.a("north", dyz.class);
+   public static final dyl<dyz> ab = dyl.a("south", dyz.class);
+   public static final dyl<dyz> ac = dyl.a("west", dyz.class);
+   public static final dyl<dys> ad = dyl.a("east", dys.class);
+   public static final dyl<dys> ae = dyl.a("north", dys.class);
+   public static final dyl<dys> af = dyl.a("south", dys.class);
+   public static final dyl<dys> ag = dyl.a("west", dys.class);
+   public static final dyl<dyj> ah = dyl.a("half", dyj.class);
+   public static final dyl<dym> ai = dyl.a("half", dym.class);
+   public static final dyl<dyr> aj = dyl.a("shape", dyr.class);
+   public static final dyl<dyr> ak = dyl.a("shape", dyr.class, $$0 -> $$0 != dyr.j && $$0 != dyr.i && $$0 != dyr.g && $$0 != dyr.h);
+   public static final int al = 1;
+   public static final int am = 2;
+   public static final int an = 3;
+   public static final int ao = 4;
+   public static final int ap = 5;
+   public static final int aq = 7;
+   public static final int ar = 15;
+   public static final int as = 25;
+   public static final dyn at = dyn.a("age", 0, 1);
+   public static final dyn au = dyn.a("age", 0, 2);
+   public static final dyn av = dyn.a("age", 0, 3);
+   public static final dyn aw = dyn.a("age", 0, 4);
+   public static final dyn ax = dyn.a("age", 0, 5);
+   public static final dyn ay = dyn.a("age", 0, 7);
+   public static final dyn az = dyn.a("age", 0, 15);
+   public static final dyn aA = dyn.a("age", 0, 25);
+   public static final dyn aB = dyn.a("bites", 0, 6);
+   public static final dyn aC = dyn.a("candles", 1, 4);
+   public static final dyn aD = dyn.a("delay", 1, 4);
+   public static final int aE = 7;
+   public static final dyn aF = dyn.a("distance", 1, 7);
+   public static final dyn aG = dyn.a("eggs", 1, 4);
+   public static final dyn aH = dyn.a("hatch", 0, 2);
+   public static final dyn aI = dyn.a("layers", 1, 8);
+   public static final int aJ = 0;
+   public static final int aK = 1;
+   public static final int aL = 3;
+   public static final int aM = 8;
+   public static final dyn aN = dyn.a("level", 1, 3);
+   public static final dyn aO = dyn.a("level", 0, 8);
+   public static final dyn aP = dyn.a("level", 1, 8);
+   public static final dyn aQ = dyn.a("honey_level", 0, 5);
+   public static final int aR = 15;
+   public static final dyn aS = dyn.a("level", 0, 15);
+   public static final dyn aT = dyn.a("moisture", 0, 7);
+   public static final dyn aU = dyn.a("note", 0, 24);
+   public static final dyn aV = dyn.a("pickles", 1, 4);
+   public static final dyn aW = dyn.a("power", 0, 15);
+   public static final dyn aX = dyn.a("stage", 0, 1);
+   public static final int aY = 7;
+   public static final dyn aZ = dyn.a("distance", 0, 7);
+   public static final int ba = 0;
+   public static final int bb = 4;
+   public static final dyn bc = dyn.a("charges", 0, 4);
+   public static final dyn bd = dyn.a("rotation", 0, dyt.a());
+   public static final dyl<dyb> be = dyl.a("part", dyb.class);
+   public static final dyl<dyg> bf = dyl.a("type", dyg.class);
+   public static final dyl<dyh> bg = dyl.a("mode", dyh.class);
+   public static final dyl<dyi> bh = dyl.a("hinge", dyi.class);
+   public static final dyl<dyo> bi = dyl.a("instrument", dyo.class);
+   public static final dyl<dyp> bj = dyl.a("type", dyp.class);
+   public static final dyl<dyv> bk = dyl.a("type", dyv.class);
+   public static final dyl<dyw> bl = dyl.a("shape", dyw.class);
+   public static final dyl<dyx> bm = dyl.a("mode", dyx.class);
+   public static final dyl<dya> bn = dyl.a("leaves", dya.class);
+   public static final dyl<dyy> bo = dyl.a("tilt", dyy.class);
+   public static final dyl<jm> bp = dyl.a("vertical_direction", jm.class, jm.b, jm.a);
+   public static final dyl<dyk> bq = dyl.a("thickness", dyk.class);
+   public static final dyl<dyu> br = dyl.a("sculk_sensor_phase", dyu.class);
+   public static final dyf bs = dyf.a("slot_0_occupied");
+   public static final dyf bt = dyf.a("slot_1_occupied");
+   public static final dyf bu = dyf.a("slot_2_occupied");
+   public static final dyf bv = dyf.a("slot_3_occupied");
+   public static final dyf bw = dyf.a("slot_4_occupied");
+   public static final dyf bx = dyf.a("slot_5_occupied");
+   public static final dyn by = dyn.a("dusted", 0, 3);
+   public static final dyf bz = dyf.a("cracked");
+   public static final dyf bA = dyf.a("crafting");
+   public static final dyl<dwu> bB = dyl.a("trial_spawner_state", dwu.class);
+   public static final dyl<dxb> bC = dyl.a("vault_state", dxb.class);
+   public static final dyf bD = dyf.a("ominous");
 }

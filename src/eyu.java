@@ -1,46 +1,97 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class eyu extends eyc {
+public class eyu extends exv {
+   private static final Codec<List<eyu.b>> b = eyu.b.a.listOf().validate($$0 -> {
+      Set<jq<bue>> $$1 = new ObjectOpenHashSet();
+
+      for (eyu.b $$2 : $$0) {
+         if (!$$1.add($$2.a())) {
+            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
+         }
+      }
+
+      return DataResult.success($$0);
+   });
    public static final MapCodec<eyu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(fav.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, eyu::new)
+      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, eyu::new)
    );
-   private final fau b;
-   private final boolean c;
+   private final List<eyu.b> c;
 
-   private eyu(List<ezy> $$0, fau $$1, boolean $$2) {
+   eyu(List<ezr> $$0, List<eyu.b> $$1) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
+      this.c = $$1;
    }
 
    @Override
-   public eye<eyu> b() {
-      return eyf.e;
+   public exx<eyu> b() {
+      return exy.r;
    }
 
    @Override
-   public Set<bbn<?>> a() {
-      return this.b.a();
+   public Set<bbd<?>> a() {
+      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
    }
 
    @Override
-   public cxp a(cxp $$0, ewp $$1) {
-      int $$2 = this.c ? $$0.L() : 0;
-      $$0.e($$2 + this.b.a($$1));
-      return $$0;
+   public cxg a(cxg $$0, ewi $$1) {
+      if ($$0.a(cxk.wW) && !this.c.isEmpty()) {
+         eyu.b $$2 = ae.a(this.c, $$1.b());
+         jq<bue> $$3 = $$2.a();
+         int $$4 = $$2.b().a($$1);
+         if (!$$3.a().a()) {
+            $$4 *= 20;
+         }
+
+         dah.a $$5 = new dah.a($$3, $$4);
+         $$0.a(ku.R, dah.a, $$5, dah::a);
+         return $$0;
+      } else {
+         return $$0;
+      }
    }
 
-   public static eyc.a<?> a(fau $$0) {
-      return a($$1 -> new eyu($$1, $$0, false));
+   public static eyu.a c() {
+      return new eyu.a();
    }
 
-   public static eyc.a<?> a(fau $$0, boolean $$1) {
-      return a($$2 -> new eyu($$2, $$0, $$1));
+   public static class a extends exv.a<eyu.a> {
+      private final Builder<eyu.b> a = ImmutableList.builder();
+
+      protected eyu.a a() {
+         return this;
+      }
+
+      public eyu.a a(jq<bue> $$0, fan $$1) {
+         this.a.add(new eyu.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public exw b() {
+         return new eyu(this.g(), this.a.build());
+      }
+   }
+
+   static record b(jq<bue> b, fan c) {
+      public static final Codec<eyu.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bue.a.fieldOf("type").forGetter(eyu.b::a), fao.a.fieldOf("duration").forGetter(eyu.b::b)).apply($$0, eyu.b::new)
+      );
+
+      public jq<bue> a() {
+         return this.b;
+      }
+
+      public fan b() {
+         return this.c;
+      }
    }
 }

@@ -1,121 +1,81 @@
-import javax.annotation.Nullable;
-
-public class cqg extends cqe {
-   private static final int e = 600;
-   private static final int f = -1;
-   private static final alc<Integer> g = alg.a(cqg.class, ale.b);
-   private static final byte h = 0;
-
-   public cqg(bvr<? extends cqg> $$0, dhi $$1) {
+public class cqg extends cqh {
+   public cqg(bvi<? extends cqg> $$0, dgz $$1) {
       super($$0, $$1);
    }
 
-   public cqg(dhi $$0, double $$1, double $$2, double $$3, cxp $$4, @Nullable cxp $$5) {
-      super(bvr.g, $$1, $$2, $$3, $$0, $$4, $$5);
-      this.H();
-   }
-
-   public cqg(dhi $$0, bwg $$1, cxp $$2, @Nullable cxp $$3) {
-      super(bvr.g, $$1, $$0, $$2, $$3);
-      this.H();
-   }
-
-   private czo G() {
-      return this.w().a(ku.Q, czo.a);
-   }
-
-   private void a(czo $$0) {
-      this.w().b(ku.Q, $$0);
-      this.H();
+   public cqg(dgz $$0, cjv $$1) {
+      this(bvi.az, $$0);
+      this.c($$1);
+      this.a_(
+         $$1.dB() - (double)($$1.dr() + 1.0F) * 0.5 * (double)azu.a($$1.aX * (float) (Math.PI / 180.0)),
+         $$1.dF() - 0.1F,
+         $$1.dH() + (double)($$1.dr() + 1.0F) * 0.5 * (double)azu.b($$1.aX * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
-   protected void a(cxp $$0) {
-      super.a($$0);
-      this.H();
-   }
-
-   private void H() {
-      czo $$0 = this.G();
-      this.al.a(g, $$0.equals(czo.a) ? -1 : $$0.b());
-   }
-
-   public void a(bup $$0) {
-      this.a(this.G().a($$0));
-   }
-
-   @Override
-   protected void a(alg.a $$0) {
-      super.a($$0);
-      $$0.a(g, -1);
+   protected double bd() {
+      return 0.06;
    }
 
    @Override
    public void h() {
       super.h();
-      if (this.dW().C) {
-         if (this.l()) {
-            if (this.b % 5 == 0) {
-               this.b(1);
-            }
-         } else {
-            this.b(2);
-         }
-      } else if (this.l() && this.b != 0 && !this.G().equals(czo.a) && this.b >= 600) {
-         this.dW().a(this, (byte)0);
-         this.a(new cxp(cxt.oS));
-      }
-   }
-
-   private void b(int $$0) {
-      int $$1 = this.D();
-      if ($$1 != -1 && $$0 > 0) {
-         for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dW().a(ll.a(ls.u, $$1), this.d(0.5), this.dE(), this.g(0.5), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   public int D() {
-      return this.al.a(g);
-   }
-
-   @Override
-   protected void a(bwg $$0) {
-      super.a($$0);
-      bvk $$1 = this.E();
-      czo $$2 = this.G();
-      if ($$2.e().isPresent()) {
-         for (bup $$3 : $$2.e().get().a().a()) {
-            $$0.b(new bup($$3.c(), Math.max($$3.a($$0x -> $$0x / 8), 1), $$3.e(), $$3.f(), $$3.g()), $$1);
-         }
-      }
-
-      for (bup $$4 : $$2.d()) {
-         $$0.b($$4, $$1);
-      }
-   }
-
-   @Override
-   protected cxp v() {
-      return new cxp(cxt.oS);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.D();
-         if ($$1 != -1) {
-            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
-            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
-            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
-
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dW().a(ll.a(ls.u, $$2, $$3, $$4), this.d(0.5), this.dE(), this.g(0.5), 0.0, 0.0, 0.0);
-            }
-         }
+      fbr $$0 = this.dz();
+      fbp $$1 = cqj.a(this, this::b);
+      this.b($$1);
+      double $$2 = this.dB() + $$0.d;
+      double $$3 = this.dD() + $$0.e;
+      double $$4 = this.dH() + $$0.f;
+      this.F();
+      float $$5 = 0.99F;
+      if (this.dW().a(this.cR()).noneMatch(dxn.a::l)) {
+         this.at();
+      } else if (this.bm()) {
+         this.at();
       } else {
-         super.b($$0);
+         this.h($$0.c(0.99F));
+         this.bf();
+         this.a_($$2, $$3, $$4);
       }
+   }
+
+   @Override
+   protected void a(fbo $$0) {
+      super.a($$0);
+      if (this.p() instanceof bvx $$1) {
+         bvb $$2 = $$0.a();
+         btr $$3 = this.dX().b(this, $$1);
+         if (this.dW() instanceof arx $$4 && $$2.a($$4, $$3, 1.0F)) {
+            dds.a($$4, $$2, $$3);
+         }
+      }
+   }
+
+   @Override
+   protected void a(fbn $$0) {
+      super.a($$0);
+      if (!this.dW().C) {
+         this.at();
+      }
+   }
+
+   @Override
+   protected void a(akw.a $$0) {
+   }
+
+   @Override
+   public void a(ach $$0) {
+      super.a($$0);
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dW().a(ls.aj, this.dB(), this.dD(), this.dH(), $$1 * $$5, $$2, $$3 * $$5);
+      }
+
+      this.n($$1, $$2, $$3);
    }
 }

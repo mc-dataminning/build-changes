@@ -1,12 +1,45 @@
-public record ago(xv b) implements aac<acr> {
-   public static final zt<xg, ago> a = zt.a(xx.d, ago::b, ago::new);
+public class ago implements zr<acg> {
+   public static final zi<wh, ago> a = zr.a(ago::a, ago::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   @Override
-   public aae<ago> a() {
-      return ahk.aR;
+   public ago(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(acr $$0) {
+   private ago(wh $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
+   }
+
+   private void a(wh $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
+   }
+
+   @Override
+   public zt<ago> a() {
+      return agz.bc;
+   }
+
+   public void a(acg $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

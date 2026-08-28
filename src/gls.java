@@ -1,70 +1,118 @@
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+
 public class gls {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+   private static final alp a = alp.b("textures/misc/underwater.png");
 
-   public gls(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static void a(flz $$0, fgl $$1, glg $$2) {
+      cpo $$3 = $$0.t;
+      if (!$$3.ad) {
+         dxo $$4 = a($$3);
+         if ($$4 != null) {
+            a($$0.ap().a().a($$4), $$1, $$2);
+         }
+      }
+
+      if (!$$0.t.aa_()) {
+         if ($$0.t.a(axq.a)) {
+            b($$0, $$1, $$2);
+         }
+
+         if ($$0.t.bY()) {
+            a($$1, $$2);
+         }
+      }
    }
 
-   public gls a(gls $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   @Nullable
+   private static dxo a(cpo $$0) {
+      jh.a $$1 = new jh.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dB() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dr() * 0.8F);
+         double $$4 = $$0.dF() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.ek());
+         double $$5 = $$0.dH() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dr() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dxo $$6 = $$0.dW().a_($$1);
+         if ($$6.o() != dqo.a && $$6.k($$0.dW(), $$1)) {
+            return $$6;
+         }
+      }
+
+      return null;
    }
 
-   public int a() {
-      return this.a;
+   private static void a(hbg $$0, fgl $$1, glg $$2) {
+      float $$3 = 0.1F;
+      int $$4 = ayf.a(1.0F, 0.1F, 0.1F, 0.1F);
+      float $$5 = -1.0F;
+      float $$6 = 1.0F;
+      float $$7 = -1.0F;
+      float $$8 = 1.0F;
+      float $$9 = -0.5F;
+      float $$10 = $$0.c();
+      float $$11 = $$0.d();
+      float $$12 = $$0.g();
+      float $$13 = $$0.h();
+      Matrix4f $$14 = $$1.c().a();
+      fgp $$15 = $$2.getBuffer(glq.D($$0.i()));
+      $$15.a($$14, -1.0F, -1.0F, -0.5F).a($$11, $$13).a($$4);
+      $$15.a($$14, 1.0F, -1.0F, -0.5F).a($$10, $$13).a($$4);
+      $$15.a($$14, 1.0F, 1.0F, -0.5F).a($$10, $$12).a($$4);
+      $$15.a($$14, -1.0F, 1.0F, -0.5F).a($$11, $$12).a($$4);
    }
 
-   public int b() {
-      return this.b;
+   private static void b(flz $$0, fgl $$1, glg $$2) {
+      jh $$3 = jh.a($$0.t.dB(), $$0.t.dF(), $$0.t.dH());
+      float $$4 = gle.a($$0.t.dW().G_(), $$0.t.dW().A($$3));
+      int $$5 = ayf.a(0.1F, $$4, $$4, $$4);
+      float $$6 = 4.0F;
+      float $$7 = -1.0F;
+      float $$8 = 1.0F;
+      float $$9 = -1.0F;
+      float $$10 = 1.0F;
+      float $$11 = -0.5F;
+      float $$12 = -$$0.t.dM() / 64.0F;
+      float $$13 = $$0.t.dO() / 64.0F;
+      Matrix4f $$14 = $$1.c().a();
+      fgp $$15 = $$2.getBuffer(glq.D(a));
+      $$15.a($$14, -1.0F, -1.0F, -0.5F).a(4.0F + $$12, 4.0F + $$13).a($$5);
+      $$15.a($$14, 1.0F, -1.0F, -0.5F).a(0.0F + $$12, 4.0F + $$13).a($$5);
+      $$15.a($$14, 1.0F, 1.0F, -0.5F).a(0.0F + $$12, 0.0F + $$13).a($$5);
+      $$15.a($$14, -1.0F, 1.0F, -0.5F).a(4.0F + $$12, 0.0F + $$13).a($$5);
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
-   }
+   private static void a(fgl $$0, glg $$1) {
+      hbg $$2 = hds.b.c();
+      fgp $$3 = $$1.getBuffer(glq.E($$2.i()));
+      float $$4 = $$2.c();
+      float $$5 = $$2.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$2.g();
+      float $$8 = $$2.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$2.k();
+      float $$11 = azu.h($$10, $$4, $$6);
+      float $$12 = azu.h($$10, $$5, $$6);
+      float $$13 = azu.h($$10, $$7, $$9);
+      float $$14 = azu.h($$10, $$8, $$9);
+      float $$15 = 1.0F;
 
-   public void b(int $$0) {
-      this.b = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public void d(int $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$0.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$0.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$0.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$0.c().a();
+         $$3.a($$22, -0.5F, -0.5F, -0.5F).a($$12, $$14).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$3.a($$22, 0.5F, -0.5F, -0.5F).a($$11, $$14).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$3.a($$22, 0.5F, 0.5F, -0.5F).a($$11, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$3.a($$22, -0.5F, 0.5F, -0.5F).a($$12, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$0.b();
+      }
    }
 }

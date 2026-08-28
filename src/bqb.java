@@ -1,91 +1,105 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public interface bqb {
-   bqb f = (bqb)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bqa.a() : new bqb.a());
+public record bqb(
+   Instant a,
+   Instant b,
+   Duration c,
+   @Nullable Duration d,
+   List<bqo> e,
+   List<bqh> f,
+   bqj.a g,
+   bqn.a h,
+   bqk<bql> i,
+   bqk<bql> j,
+   bqk<bqg> k,
+   bqk<bqg> l,
+   bqi.a m,
+   bqi.a n,
+   List<bqf> o,
+   List<bqm> p
+) {
+   public List<Pair<eak, bqq<bqf>>> a() {
+      Map<eak, List<bqf>> $$0 = this.o.stream().collect(Collectors.groupingBy(bqf::d));
+      return $$0.entrySet()
+         .stream()
+         .map($$0x -> Pair.of((eak)$$0x.getKey(), bqq.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<eak, bqq<bqf>>, Duration>comparing($$0x -> ((bqq)$$0x.getSecond()).f()).reversed())
+         .toList();
+   }
 
-   boolean a(bpz var1);
+   public String b() {
+      return new bqd().a(this);
+   }
 
-   Path b();
+   public Instant c() {
+      return this.a;
+   }
 
-   boolean c();
+   public Instant d() {
+      return this.b;
+   }
 
-   boolean d();
-
-   void a(float var1);
-
-   void a(wq var1, aae<?> var2, SocketAddress var3, int var4);
-
-   void b(wq var1, aae<?> var2, SocketAddress var3, int var4);
-
-   void a(ebj var1, dgo var2, ebi var3, int var4);
-
-   void b(ebj var1, dgo var2, ebi var3, int var4);
+   public Duration e() {
+      return this.c;
+   }
 
    @Nullable
-   bqe e();
+   public Duration f() {
+      return this.d;
+   }
 
-   @Nullable
-   bqe a(dgo var1, aly<dhi> var2, String var3);
+   public List<bqo> g() {
+      return this.e;
+   }
 
-   public static class a implements bqb {
-      private static final Logger b = LogUtils.getLogger();
-      static final bqe a = () -> {
-      };
+   public List<bqh> h() {
+      return this.f;
+   }
 
-      @Override
-      public boolean a(bpz $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
+   public bqj.a i() {
+      return this.g;
+   }
 
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
+   public bqn.a j() {
+      return this.h;
+   }
 
-      @Override
-      public boolean c() {
-         return false;
-      }
+   public bqk<bql> k() {
+      return this.i;
+   }
 
-      @Override
-      public boolean d() {
-         return false;
-      }
+   public bqk<bql> l() {
+      return this.j;
+   }
 
-      @Override
-      public void a(wq $$0, aae<?> $$1, SocketAddress $$2, int $$3) {
-      }
+   public bqk<bqg> m() {
+      return this.k;
+   }
 
-      @Override
-      public void b(wq $$0, aae<?> $$1, SocketAddress $$2, int $$3) {
-      }
+   public bqk<bqg> n() {
+      return this.l;
+   }
 
-      @Override
-      public void a(ebj $$0, dgo $$1, ebi $$2, int $$3) {
-      }
+   public bqi.a o() {
+      return this.m;
+   }
 
-      @Override
-      public void b(ebj $$0, dgo $$1, ebi $$2, int $$3) {
-      }
+   public bqi.a p() {
+      return this.n;
+   }
 
-      @Override
-      public void a(float $$0) {
-      }
+   public List<bqf> q() {
+      return this.o;
+   }
 
-      @Override
-      public bqe e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bqe a(dgo $$0, aly<dhi> $$1, String $$2) {
-         return null;
-      }
+   public List<bqm> r() {
+      return this.p;
    }
 }

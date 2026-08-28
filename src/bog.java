@@ -1,7 +1,8 @@
-public interface bog {
-   void a(long[] var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(long var1);
-
-   void a(long var1, int var3);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bog {
 }

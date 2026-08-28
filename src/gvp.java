@@ -1,65 +1,82 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class gvp<S extends gyg, M extends gbu<S>, A extends gbu<S>> extends gwa<S, M> {
+   private final A a;
+   private final A b;
+   private final A c;
+   private final A d;
+   private final gvk e;
 
-public class gvp {
-   private static final int a = 0;
-   private final hds b;
-   private final Function<gvp.a, alz> c;
-   private final Function<gvp.b, hbl> d;
-
-   public gvp(hds $$0, hbk $$1) {
-      this.b = $$0;
-      this.c = ae.b($$0x -> $$0x.b.a($$0x.a));
-      this.d = ae.b($$1x -> {
-         alz $$2 = $$1x.a.a($$1x.b, $$1x.c);
-         return $$1.a($$2);
-      });
+   public gvp(gti<S, M> $$0, A $$1, A $$2, gvk $$3) {
+      this($$0, $$1, $$2, $$1, $$2, $$3);
    }
 
-   public void a(dfs.d $$0, alz $$1, gch $$2, cxp $$3, fgs $$4, gll $$5, int $$6) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, null);
+   public gvp(gti<S, M> $$0, A $$1, A $$2, A $$3, A $$4, gvk $$5) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
    }
 
-   public void a(dfs.d $$0, alz $$1, gch $$2, cxp $$3, fgs $$4, gll $$5, int $$6, @Nullable alz $$7) {
-      List<dfs.c> $$8 = this.b.a($$1).a($$0);
-      if (!$$8.isEmpty()) {
-         int $$9 = $$3.a(ayd.bR) ? dad.a($$3, 0) : 0;
-         boolean $$10 = $$3.B();
+   public static boolean a(cxg $$0, bvj $$1) {
+      dfl $$2 = $$0.a(ku.D);
+      return $$2 != null && a($$2, $$1);
+   }
 
-         for (dfs.c $$11 : $$8) {
-            int $$12 = a($$11, $$9);
-            if ($$12 != 0) {
-               alz $$13 = $$11.c() && $$7 != null ? $$7 : this.c.apply(new gvp.a($$0, $$11));
-               fgw $$14 = gso.a($$5, glv.a($$13), $$10);
-               $$2.a($$4, $$14, $$6, hbc.d, $$12);
-               $$10 = false;
-            }
-         }
+   private static boolean a(dfl $$0, bvj $$1) {
+      return $$0.c().isPresent() && $$0.a() == $$1;
+   }
 
-         dfw $$15 = $$3.a(ku.U);
-         if ($$15 != null) {
-            hbl $$16 = this.d.apply(new gvp.b($$15, $$0, $$1));
-            fgw $$17 = $$16.a($$5.getBuffer(gmg.a($$15.b().a().d())));
-            $$2.a($$4, $$17, $$6, hbc.d);
-         }
+   public void a(fgl $$0, glg $$1, int $$2, S $$3, float $$4, float $$5) {
+      this.a($$0, $$1, $$3.Q, bvj.e, $$2, this.a($$3, bvj.e));
+      this.a($$0, $$1, $$3.R, bvj.d, $$2, this.a($$3, bvj.d));
+      this.a($$0, $$1, $$3.S, bvj.c, $$2, this.a($$3, bvj.c));
+      this.a($$0, $$1, $$3.ao, bvj.f, $$2, this.a($$3, bvj.f));
+   }
+
+   private void a(fgl $$0, glg $$1, cxg $$2, bvj $$3, int $$4, A $$5) {
+      dfl $$6 = $$2.a(ku.D);
+      if ($$6 != null && a($$6, $$3)) {
+         this.d().a($$5);
+         this.a($$5, $$3);
+         alp $$7 = $$6.c().orElseThrow();
+         dfj.d $$8 = this.a($$3) ? dfj.d.b : dfj.d.a;
+         this.e.a($$8, $$7, $$5, $$2, $$0, $$1, $$4);
       }
    }
 
-   private static int a(dfs.c $$0, int $$1) {
-      Optional<dfs.b> $$2 = $$0.b();
-      if ($$2.isPresent()) {
-         int $$3 = $$2.get().a().map(ayp::f).orElse(0);
-         return $$1 != 0 ? $$1 : $$3;
+   protected void a(A $$0, bvj $$1) {
+      $$0.c_(false);
+      switch ($$1) {
+         case f:
+            $$0.o.k = true;
+            $$0.p.k = true;
+            break;
+         case e:
+            $$0.q.k = true;
+            $$0.r.k = true;
+            $$0.s.k = true;
+            break;
+         case d:
+            $$0.q.k = true;
+            $$0.t.k = true;
+            $$0.u.k = true;
+            break;
+         case c:
+            $$0.t.k = true;
+            $$0.u.k = true;
+      }
+   }
+
+   private A a(S $$0, bvj $$1) {
+      if (this.a($$1)) {
+         return $$0.ae ? this.c : this.a;
       } else {
-         return -1;
+         return $$0.ae ? this.d : this.b;
       }
    }
 
-   static record a(dfs.d a, dfs.c b) {
-   }
-
-   static record b(dfw a, dfs.d b, alz c) {
+   private boolean a(bvj $$0) {
+      return $$0 == bvj.d;
    }
 }

@@ -1,22 +1,56 @@
-@FunctionalInterface
-public interface aos {
-   void perform(ew var1, bvk var2);
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import javax.annotation.Nullable;
 
-   public static record a(bvk a, fi.a b) implements aos {
-      @Override
-      public void perform(ew $$0, bvk $$1) {
-         if ($$1 instanceof asi $$2) {
-            $$2.a($$0.m(), this.a, this.b);
-         } else {
-            $$1.a($$0.m(), this.b.a(this.a));
-         }
+public class aos {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.publish.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xk.b("commands.publish.alreadyPublished", $$0));
+
+   public static void a(CommandDispatcher<ew> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("publish").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ew)$$0x.getSource(), azl.a(), false, null)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("allowCommands", BoolArgumentType.bool())
+                     .executes($$0x -> a((ew)$$0x.getSource(), azl.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
+                  .then(
+                     ((RequiredArgumentBuilder)ex.a("gamemode", fk.a())
+                           .executes($$0x -> a((ew)$$0x.getSource(), azl.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fk.a($$0x, "gamemode"))))
+                        .then(
+                           ex.a("port", IntegerArgumentType.integer(0, 65535))
+                              .executes(
+                                 $$0x -> a(
+                                       (ew)$$0x.getSource(),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       BoolArgumentType.getBool($$0x, "allowCommands"),
+                                       fk.a($$0x, "gamemode")
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
+   }
+
+   private static int a(ew $$0, int $$1, boolean $$2, @Nullable dgw $$3) throws CommandSyntaxException {
+      if ($$0.l().r()) {
+         throw b.create($$0.l().S());
+      } else if (!$$0.l().a($$3, $$2, $$1)) {
+         throw a.create();
+      } else {
+         $$0.a(() -> a($$1), true);
+         return $$1;
       }
    }
 
-   public static record b(fby a) implements aos {
-      @Override
-      public void perform(ew $$0, bvk $$1) {
-         $$1.a($$0.m(), this.a);
-      }
+   public static xy a(int $$0) {
+      xk $$1 = xn.a(String.valueOf($$0));
+      return xk.a("commands.publish.started", $$1);
    }
 }

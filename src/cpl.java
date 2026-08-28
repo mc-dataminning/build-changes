@@ -1,13 +1,30 @@
-public interface cpl extends bxg<cpo> {
-   cpk gy();
+import java.util.function.IntFunction;
 
-   void a(cpk var1);
+public enum cpl implements azx {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
 
-   default cpo a() {
-      return this.gy().a();
+   private static final IntFunction<cpl> d = ayl.a(cpl::b, values(), ayl.a.b);
+   private final int e;
+   private final String f;
+
+   private cpl(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   default void a(cpo $$0) {
-      this.a(this.gy().a($$0));
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.f;
+   }
+
+   public static cpl a(int $$0) {
+      return d.apply($$0);
    }
 }

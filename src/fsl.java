@@ -1,45 +1,66 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+public class fsl extends ftr {
+   private static final xk s = xk.c("selectWorld.backupJoinSkipButton");
+   public static final xk a = xk.c("selectWorld.backupJoinConfirmButton");
+   private final Runnable u;
+   protected final fsl.a b;
+   private final xk v;
+   private final boolean w;
+   private fos x = fos.a;
+   final xk c;
+   protected int d;
+   private foa y;
 
-public enum fsl {
-   a,
-   b,
-   c,
-   d;
-
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public fsk a() {
-      return switch (this) {
-         case a, b -> fsk.b;
-         case c, d -> fsk.a;
-      };
+   public fsl(Runnable $$0, fsl.a $$1, xk $$2, xk $$3, boolean $$4) {
+      this($$0, $$1, $$2, $$3, a, $$4);
    }
 
-   public fsl b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   public fsl(Runnable $$0, fsl.a $$1, xk $$2, xk $$3, xk $$4, boolean $$5) {
+      super($$2);
+      this.u = $$0;
+      this.b = $$1;
+      this.v = $$3;
+      this.w = $$5;
+      this.c = $$4;
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
+   @Override
+   protected void aT_() {
+      super.aT_();
+      this.x = fos.a(this.p, this.v, this.n - 50);
+      int $$0 = (this.x.a() + 1) * 9;
+      this.y = foa.a(xk.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
+      if (this.w) {
+         this.c(this.y);
+      }
+
+      this.c(fny.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fny.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fny.a(xj.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      this.x.a($$0, this.n / 2, 70);
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
+   @Override
+   public boolean aH_() {
+      return false;
    }
 
-   public IntComparator d() {
-      return this.e;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.u.run();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

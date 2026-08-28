@@ -1,1485 +1,334 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedHashMultiset;
+import com.google.common.collect.Multiset;
+import com.google.common.collect.Multisets;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class cxt {
-   public static final cxl a = a(dko.a, cvm::new);
-   public static final cxl b = a(dko.b);
-   public static final cxl c = a(dko.c);
-   public static final cxl d = a(dko.d);
-   public static final cxl e = a(dko.e);
-   public static final cxl f = a(dko.f);
-   public static final cxl g = a(dko.g);
-   public static final cxl h = a(dko.h);
-   public static final cxl i = a(dko.te);
-   public static final cxl j = a(dko.tf);
-   public static final cxl k = a(dko.tj);
-   public static final cxl l = a(dko.ri);
-   public static final cxl m = a(dko.qU);
-   public static final cxl n = a(dko.qV);
-   public static final cxl o = a(dko.qW);
-   public static final cxl p = a(dko.qX);
-   public static final cxl q = a(dko.rc);
-   public static final cxl r = a(dko.qY);
-   public static final cxl s = a(dko.qZ);
-   public static final cxl t = a(dko.ra);
-   public static final cxl u = a(dko.rb);
-   public static final cxl v = a(dko.rd);
-   public static final cxl w = a(dko.re);
-   public static final cxl x = a(dko.rf);
-   public static final cxl y = a(dko.rg);
-   public static final cxl z = a(dko.rh);
-   public static final cxl A = a(dko.sP);
-   public static final cxl B = a(dko.i);
-   public static final cxl C = a(dko.j);
-   public static final cxl D = a(dko.k);
-   public static final cxl E = a(dko.l);
-   public static final cxl F = a(dko.tc);
-   public static final cxl G = a(dko.td);
-   public static final cxl H = a(dko.oR);
-   public static final cxl I = a(dko.oI);
-   public static final cxl J = a(dko.m);
-   public static final cxl K = a(dko.n);
-   public static final cxl L = a(dko.o);
-   public static final cxl M = a(dko.p);
-   public static final cxl N = a(dko.q);
-   public static final cxl O = a(dko.r);
-   public static final cxl P = a(dko.s);
-   public static final cxl Q = a(dko.t);
-   public static final cxl R = a(dko.v);
-   public static final cxl S = a(dko.w);
-   public static final cxl T = a(dko.x);
-   public static final cxl U = a(dko.oZ);
-   public static final cxl V = a(dko.pa);
-   public static final cxl W = a(dko.y);
-   public static final cxl X = a(dko.z);
-   public static final cxl Y = a(dko.A);
-   public static final cxl Z = a(dko.B);
-   public static final cxl aa = a(dko.C);
-   public static final cxl ab = a(dko.D);
-   public static final cxl ac = a(dko.E);
-   public static final cxl ad = a(dko.F);
-   public static final cxl ae = a(dko.G);
-   public static final cxl af = a(dko.H);
-   public static final cxl ag = a(dko.I);
-   public static final cxl ah = a(dko.L);
-   public static final cxl ai = a(dko.M);
-   public static final cxl aj = a(dko.P);
-   public static final cxl ak = a(dko.N);
-   public static final cxl al = a(dko.O);
-   public static final cxl am = a(dko.U);
-   public static final cxl an = a(dko.V);
-   public static final cxl ao = a(dko.S);
-   public static final cxl ap = a(dko.T);
-   public static final cxl aq = a(dko.rv);
-   public static final cxl ar = a(dko.rw);
-   public static final cxl as = a(dko.Q);
-   public static final cxl at = a(dko.R);
-   public static final cxl au = a(dko.dV);
-   public static final cxl av = a(dko.dW);
-   public static final cxl aw = a(dko.fS);
-   public static final cxl ax = a(dko.fT);
-   public static final cxl ay = a(dko.aY);
-   public static final cxl az = a(dko.aZ);
-   public static final cxl aA = a(dko.cF);
-   public static final cxl aB = a(dko.cG);
-   public static final cxl aC = a(dko.W);
-   public static final cxl aD = a(dko.hr);
-   public static final cxl aE = a(dko.pE, new cxl.a().a());
-   public static final cxl aF = a(dko.iS);
-   public static final cxl aG = a(dko.tA);
-   public static final cxl aH = a(dko.tB);
-   public static final cxl aI = a(dko.tC);
-   public static final cxl aJ = a(dko.tO, new cxl.a().a(cym.d));
-   public static final cxl aK = a(dko.qO);
-   public static final cxl aL = a(dko.qP);
-   public static final cxl aM = a(dko.cp);
-   public static final cxl aN = a(dko.rr);
-   public static final cxl aO = a(dko.co);
-   public static final cxl aP = a(dko.cH);
-   public static final cxl aQ = a(dko.pD, new cxl.a().a());
-   public static final cxl aR = a(dko.rs);
-   public static final cxl aS = a(dko.rt);
-   public static final cxl aT = a(dko.ru);
-   public static final cxl aU = a(dko.rE);
-   public static final cxl aV = a(dko.rD);
-   public static final cxl aW = a(dko.rC);
-   public static final cxl aX = a(dko.rB);
-   public static final cxl aY = a(dko.rA);
-   public static final cxl aZ = a(dko.rz);
-   public static final cxl ba = a(dko.ry);
-   public static final cxl bb = a(dko.rx);
-   public static final cxl bc = a(dko.rM);
-   public static final cxl bd = a(dko.rL);
-   public static final cxl be = a(dko.rK);
-   public static final cxl bf = a(dko.rJ);
-   public static final cxl bg = a(dko.rQ);
-   public static final cxl bh = a(dko.rP);
-   public static final cxl bi = a(dko.rO);
-   public static final cxl bj = a(dko.rN);
-   public static final cxl bk = a(dko.rR);
-   public static final cxl bl = a(dko.rT);
-   public static final cxl bm = a(dko.rS);
-   public static final cxl bn = a(dko.rU);
-   public static final cxl bo = a(dko.rI);
-   public static final cxl bp = a(dko.rH);
-   public static final cxl bq = a(dko.rG);
-   public static final cxl br = a(dko.rF);
-   public static final cxl bs = a(dko.rY);
-   public static final cxl bt = a(dko.rX);
-   public static final cxl bu = a(dko.rW);
-   public static final cxl bv = a(dko.rV);
-   public static final cxl bw = a(dko.sc);
-   public static final cxl bx = a(dko.sb);
-   public static final cxl by = a(dko.sa);
-   public static final cxl bz = a(dko.rZ);
-   public static final cxl bA = a(dko.sg);
-   public static final cxl bB = a(dko.sf);
-   public static final cxl bC = a(dko.se);
-   public static final cxl bD = a(dko.sd);
-   public static final cxl bE = a(dko.X);
-   public static final cxl bF = a(dko.Y);
-   public static final cxl bG = a(dko.Z);
-   public static final cxl bH = a(dko.aa);
-   public static final cxl bI = a(dko.ab);
-   public static final cxl bJ = a(dko.ac);
-   public static final cxl bK = a(dko.ae);
-   public static final cxl bL = a(dko.ad);
-   public static final cxl bM = a(dko.af);
-   public static final cxl bN = a(dko.ag);
-   public static final cxl bO = a(dko.ah);
-   public static final cxl bP = a(dko.oN);
-   public static final cxl bQ = a(dko.oE);
-   public static final cxl bR = a(dko.ai);
-   public static final cxl bS = a(dko.aq);
-   public static final cxl bT = a(dko.aj);
-   public static final cxl bU = a(dko.ak);
-   public static final cxl bV = a(dko.al);
-   public static final cxl bW = a(dko.am);
-   public static final cxl bX = a(dko.an);
-   public static final cxl bY = a(dko.ao);
-   public static final cxl bZ = a(dko.ap);
-   public static final cxl ca = a(dko.ar);
-   public static final cxl cb = a(dko.oO);
-   public static final cxl cc = a(dko.oF);
-   public static final cxl cd = a(dko.aB);
-   public static final cxl ce = a(dko.aC);
-   public static final cxl cf = a(dko.aD);
-   public static final cxl cg = a(dko.aE);
-   public static final cxl ch = a(dko.aF);
-   public static final cxl ci = a(dko.aG);
-   public static final cxl cj = a(dko.aH);
-   public static final cxl ck = a(dko.aI);
-   public static final cxl cl = a(dko.aJ);
-   public static final cxl cm = a(dko.oQ);
-   public static final cxl cn = a(dko.oH);
-   public static final cxl co = a(dko.as);
-   public static final cxl cp = a(dko.at);
-   public static final cxl cq = a(dko.au);
-   public static final cxl cr = a(dko.av);
-   public static final cxl cs = a(dko.aw);
-   public static final cxl ct = a(dko.ax);
-   public static final cxl cu = a(dko.ay);
-   public static final cxl cv = a(dko.u);
-   public static final cxl cw = a(dko.az);
-   public static final cxl cx = a(dko.aA);
-   public static final cxl cy = a(dko.oP);
-   public static final cxl cz = a(dko.oG);
-   public static final cxl cA = a(dko.aK);
-   public static final cxl cB = a(dko.aL);
-   public static final cxl cC = a(dko.aM);
-   public static final cxl cD = a(dko.aN);
-   public static final cxl cE = a(dko.aO);
-   public static final cxl cF = a(dko.aP);
-   public static final cxl cG = a(dko.aQ);
-   public static final cxl cH = a(dko.aR);
-   public static final cxl cI = a(dko.aS);
-   public static final cxl cJ = a(dko.aT);
-   public static final cxl cK = a(dko.aU);
-   public static final cxl cL = a(dko.aV);
-   public static final cxl cM = a(dko.aW);
-   public static final cxl cN = a(dko.aX);
-   public static final cxl cO = a(dko.rj);
-   public static final cxl cP = a(dko.ba);
-   public static final cxl cQ = a(dko.bc);
-   public static final cxl cR = a(dko.bd);
-   public static final cxl cS = a(dko.be);
-   public static final cxl cT = a(dko.bz);
-   public static final cxl cU = a(dko.bA);
-   public static final cxl cV = a(dko.bB);
-   public static final cxl cW = a(dko.sT);
-   public static final cxl cX = a(dko.sU);
-   public static final cxl cY = a(dko.bC);
-   public static final cxl cZ = a(dko.bD);
-   public static final cxl da = a(dko.nq);
-   public static final cxl db = a(dko.bH);
-   public static final cxl dc = a(dko.bI);
-   public static final cxl dd = a(dko.bJ);
-   public static final cxl de = a(dko.bK);
-   public static final cxl df = a(dko.bL);
-   public static final cxl dg = a(dko.bM);
-   public static final cxl dh = a(dko.bN);
-   public static final cxl di = a(dko.bO);
-   public static final cxl dj = a(dko.bP);
-   public static final cxl dk = a(dko.bQ);
-   public static final cxl dl = a(dko.bR);
-   public static final cxl dm = a(dko.bS);
-   public static final cxl dn = a(dko.bT);
-   public static final cxl do = a(dko.bU);
-   public static final cxl dp = a(dko.bV);
-   public static final cxl dq = a(dko.bW);
-   public static final cxl dr = a(dko.bY);
-   public static final cxl ds = a(dko.ca);
-   public static final cxl dt = a(dko.cb);
-   public static final cxl du = a(dko.cc);
-   public static final cxl dv = a(dko.cd);
-   public static final cxl dw = a(dko.ce);
-   public static final cxl dx = a(dko.cf);
-   public static final cxl dy = a(dko.cg);
-   public static final cxl dz = a(dko.ch);
-   public static final cxl dA = a(dko.ci);
-   public static final cxl dB = a(dko.cj);
-   public static final cxl dC = a(dko.cl);
-   public static final cxl dD = a(dko.ck);
-   public static final cxl dE = a(dko.bZ);
-   public static final cxl dF = a(dko.kX);
-   public static final cxl dG = a(dko.sS);
-   public static final cxl dH = a(dko.cm);
-   public static final cxl dI = a(dko.cn);
-   public static final cxl dJ = a(dko.oS);
-   public static final cxl dK = a(dko.oJ);
-   public static final cxl dL = a(dko.oY);
-   public static final cxl dM = a(dko.oL);
-   public static final cxl dN = a(dko.oM);
-   public static final cxl dO = a(dko.oU);
-   public static final cxl dP = a(dko.oW);
-   public static final cxl dQ = a(dko.ef);
-   public static final cxl dR = a(dko.mx);
-   public static final cxl dS = a(dko.sW);
-   public static final cxl dT = a(dko.sV);
-   public static final cxl dU = a(dko.sX);
-   public static final cxl dV = a(dko.tQ);
-   public static final cxl dW = a(dko.tR);
-   public static final cxl dX = a(dko.tP);
-   public static final cxl dY = a(dko.tb);
-   public static final cxl dZ = a(dko.sY, dko.sZ);
-   public static final cxl ea = a(dko.ta, cwl::new);
-   public static final cxl eb = a(dko.nu);
-   public static final cxl ec = a(dko.jK);
-   public static final cxl ed = a(dko.jL);
-   public static final cxl ee = a(dko.jM);
-   public static final cxl ef = a(dko.jN);
-   public static final cxl eg = a(dko.jO);
-   public static final cxl eh = a(dko.jP);
-   public static final cxl ei = a(dko.jQ);
-   public static final cxl ej = a(dko.jR);
-   public static final cxl ek = a(dko.jS);
-   public static final cxl el = a(dko.jT);
-   public static final cxl em = a(dko.jU);
-   public static final cxl en = a(dko.pb);
-   public static final cxl eo = a(dko.pc);
-   public static final cxl ep = a(dko.jV);
-   public static final cxl eq = a(dko.jW);
-   public static final cxl er = a(dko.jX);
-   public static final cxl es = a(dko.jY);
-   public static final cxl et = a(dko.jZ);
-   public static final cxl eu = a(dko.ka);
-   public static final cxl ev = a(dko.kb);
-   public static final cxl ew = a(dko.kc);
-   public static final cxl ex = a(dko.kd);
-   public static final cxl ey = a(dko.ke);
-   public static final cxl ez = a(dko.kf);
-   public static final cxl eA = a(dko.kg);
-   public static final cxl eB = a(dko.kh);
-   public static final cxl eC = a(dko.ki);
-   public static final cxl eD = a(dko.iw);
-   public static final cxl eE = a(dko.ix);
-   public static final cxl eF = a(dko.iy);
-   public static final cxl eG = a(dko.kl);
-   public static final cxl eH = a(dko.km);
-   public static final cxl eI = a(dko.kk);
-   public static final cxl eJ = a(dko.kj);
-   public static final cxl eK = a(dko.cq);
-   public static final cxl eL = a(dko.cs);
-   public static final cxl eM = a(dko.ct, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl eN = a(dko.tK, new cxl.a().a(ku.ak, dwe.a));
-   public static final cxl eO = a(dko.cu);
-   public static final cxl eP = a(dko.cv);
-   public static final cxl eQ = a(dko.cw, ($$0, $$1) -> new czc($$0, dko.cx, jm.a, $$1));
-   public static final cxl eR = a(dko.kO);
-   public static final cxl eS = a(dko.kP);
-   public static final cxl eT = a(dko.kQ);
-   public static final cxl eU = a(dko.kR);
-   public static final cxl eV = a(dko.kS);
-   public static final cxl eW = a(dko.kT);
-   public static final cxl eX = a(dko.cA);
-   public static final cxl eY = a(dko.cB);
-   public static final cxl eZ = a(dko.cD, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl fa = a(dko.cI);
-   public static final cxl fb = a(dko.cK);
-   public static final cxl fc = a(dko.cL, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl fd = a(dko.cX);
-   public static final cxl fe = a(dko.cZ);
-   public static final cxl ff = a(dko.ea);
-   public static final cxl fg = a(dko.eb);
-   public static final cxl fh = a(dko.ec);
-   public static final cxl fi = a(dko.ed);
-   public static final cxl fj = a(dko.ee);
-   public static final cxl fk = a(dko.eg);
-   public static final cxl fl = a(dko.eh);
-   public static final cxl fm = a(dko.kw);
-   public static final cxl fn = a(dko.kx);
-   public static final cxl fo = a(dko.ky);
-   public static final cxl fp = a(dko.kz);
-   public static final cxl fq = a(dko.kA);
-   public static final cxl fr = a(dko.kB);
-   public static final cxl fs = a(dko.kC);
-   public static final cxl ft = a(dko.kD);
-   public static final cxl fu = a(dko.kE);
-   public static final cxl fv = a(dko.pf);
-   public static final cxl fw = a(dko.pg);
-   public static final cxl fx = a(dko.fn);
-   public static final cxl fy = a(dko.er, $$0 -> $$0.a(ku.D, dfu.a(bvs.f).b(false).b(alz.b("misc/pumpkinblur")).a()));
-   public static final cxl fz = a(dko.es);
-   public static final cxl fA = a(dko.ei);
-   public static final cxl fB = a(dko.ej);
-   public static final cxl fC = a(dko.ek);
-   public static final cxl fD = a(dko.el);
-   public static final cxl fE = a(dko.em);
-   public static final cxl fF = a(dko.tz);
-   public static final cxl fG = a(dko.en, ($$0, $$1) -> new czc($$0, dko.eo, jm.a, $$1));
-   public static final cxl fH = a(dko.ep);
-   public static final cxl fI = a(dko.fb);
-   public static final cxl fJ = a(dko.fc);
-   public static final cxl fK = a(dko.fd);
-   public static final cxl fL = a(dko.fe);
-   public static final cxl fM = a(dko.ff);
-   public static final cxl fN = a(dko.fg);
-   public static final cxl fO = a(dko.ty);
-   public static final cxl fP = a(dko.eV);
-   public static final cxl fQ = a(dko.eW);
-   public static final cxl fR = a(dko.eX);
-   public static final cxl fS = a(dko.eY);
-   public static final cxl fT = a(dko.eZ);
-   public static final cxl fU = a(dko.fa);
-   public static final cxl fV = a(dko.tr);
-   public static final cxl fW = a(dko.tw);
-   public static final cxl fX = a(dko.tn);
-   public static final cxl fY = a(dko.tx);
-   public static final cxl fZ = a(dko.tv);
-   public static final cxl ga = a(dko.tJ);
-   public static final cxl gb = a(dko.fh);
-   public static final cxl gc = a(dko.fi);
-   public static final cxl gd = a(dko.fj);
-   public static final cxl ge = a(dko.fk);
-   public static final cxl gf = a(dko.fl);
-   public static final cxl gg = a(dko.fm);
-   public static final cxl gh = a(dko.fo);
-   public static final cxl gi = a(dko.ft);
-   public static final cxl gj = a(dko.fu);
-   public static final cxl gk = a(dko.fw);
-   public static final cxl gl = a(dko.fx);
-   public static final cxl gm = a(dko.fy);
-   public static final cxl gn = a(dko.fz);
-   public static final cxl go = a(dko.fA, cyh::new);
-   public static final cxl gp = a(dko.fB);
-   public static final cxl gq = a(dko.qe);
-   public static final cxl gr = a(dko.qd);
-   public static final cxl gs = a(dko.fC);
-   public static final cxl gt = a(dko.fD);
-   public static final cxl gu = a(dko.rn);
-   public static final cxl gv = a(dko.ro);
-   public static final cxl gw = a(dko.rp);
-   public static final cxl gx = a(dko.rq);
-   public static final cxl gy = a(dko.fF);
-   public static final cxl gz = a(dko.fM);
-   public static final cxl gA = a(dko.fN);
-   public static final cxl gB = a(dko.kU);
-   public static final cxl gC = a(dko.fO, new cxl.a().a(cym.d));
-   public static final cxl gD = a(dko.fR);
-   public static final cxl gE = a(dko.fU);
-   public static final cxl gF = a(dko.fX);
-   public static final cxl gG = a(dko.cC);
-   public static final cxl gH = a(dko.fY);
-   public static final cxl gI = a(dko.fZ);
-   public static final cxl gJ = a(dko.ga);
-   public static final cxl gK = a(dko.if);
-   public static final cxl gL = a(dko.ig);
-   public static final cxl gM = a(dko.ih);
-   public static final cxl gN = a(dko.ii);
-   public static final cxl gO = a(dko.ij);
-   public static final cxl gP = a(dko.ik);
-   public static final cxl gQ = a(dko.il);
-   public static final cxl gR = a(dko.pl);
-   public static final cxl gS = a(dko.pm);
-   public static final cxl gT = a(dko.gb, cxb::new, new cxl.a().a(cym.d));
-   public static final cxl gU = a(dko.gc, new cxl.a().a(cym.c));
-   public static final cxl gV = a(dko.gd);
-   public static final cxl gW = a(dko.ge);
-   public static final cxl gX = a(dko.oa);
-   public static final cxl gY = a(dko.ob);
-   public static final cxl gZ = a(dko.oc);
-   public static final cxl ha = a(dko.od);
-   public static final cxl hb = a(dko.oe);
-   public static final cxl hc = a(dko.of);
-   public static final cxl hd = a(dko.og);
-   public static final cxl he = a(dko.oh);
-   public static final cxl hf = a(dko.oi);
-   public static final cxl hg = a(dko.oj);
-   public static final cxl hh = a(dko.ok);
-   public static final cxl hi = a(dko.ol);
-   public static final cxl hj = a(dko.om);
-   public static final cxl hk = a(dko.pO);
-   public static final cxl hl = a(dko.qc);
-   public static final cxl hm = a(dko.pW);
-   public static final cxl hn = a(dko.ti);
-   public static final cxl ho = a(dko.tm);
-   public static final cxl hp = a(dko.tu);
-   public static final cxl hq = a(dko.tq);
-   public static final cxl hr = a(dko.hi);
-   public static final cxl hs = a(dko.hj);
-   public static final cxl ht = a(dko.hk);
-   public static final cxl hu = a(dko.hu);
-   public static final cxl hv = a(dko.ht);
-   public static final cxl hw = a(dko.qf);
-   public static final cxl hx = a(dko.hv);
-   public static final cxl hy = a(dko.hw);
-   public static final cxl hz = a(dko.hz);
-   public static final cxl hA = a(dko.hA);
-   public static final cxl hB = a(dko.hB);
-   public static final cxl hC = a(dko.hC);
-   public static final cxl hD = a(dko.hD);
-   public static final cxl hE = a(dko.hE);
-   public static final cxl hF = a(dko.hF);
-   public static final cxl hG = a(dko.hG);
-   public static final cxl hH = a(dko.hH);
-   public static final cxl hI = a(dko.hI);
-   public static final cxl hJ = a(dko.hJ);
-   public static final cxl hK = a(dko.hK);
-   public static final cxl hL = a(dko.hL);
-   public static final cxl hM = a(dko.hM);
-   public static final cxl hN = a(dko.hN);
-   public static final cxl hO = a(dko.hO);
-   public static final cxl hP = a(dko.in, new cxl.a().a(cym.d));
-   public static final cxl hQ = a(dko.io, new cxl.a().a(cym.d));
-   public static final cxl hR = a(dko.iA);
-   public static final cxl hS = a(dko.iB, $$0 -> $$0.a(ku.D, dfu.a(cwm.a)));
-   public static final cxl hT = a(dko.iC, $$0 -> $$0.a(ku.D, dfu.a(cwm.b)));
-   public static final cxl hU = a(dko.iD, $$0 -> $$0.a(ku.D, dfu.a(cwm.c)));
-   public static final cxl hV = a(dko.iE, $$0 -> $$0.a(ku.D, dfu.a(cwm.d)));
-   public static final cxl hW = a(dko.iF, $$0 -> $$0.a(ku.D, dfu.a(cwm.e)));
-   public static final cxl hX = a(dko.iG, $$0 -> $$0.a(ku.D, dfu.a(cwm.f)));
-   public static final cxl hY = a(dko.iH, $$0 -> $$0.a(ku.D, dfu.a(cwm.g)));
-   public static final cxl hZ = a(dko.iI, $$0 -> $$0.a(ku.D, dfu.a(cwm.h)));
-   public static final cxl ia = a(dko.iJ, $$0 -> $$0.a(ku.D, dfu.a(cwm.i)));
-   public static final cxl ib = a(dko.iK, $$0 -> $$0.a(ku.D, dfu.a(cwm.j)));
-   public static final cxl ic = a(dko.iL, $$0 -> $$0.a(ku.D, dfu.a(cwm.k)));
-   public static final cxl id = a(dko.iM, $$0 -> $$0.a(ku.D, dfu.a(cwm.l)));
-   public static final cxl ie = a(dko.iN, $$0 -> $$0.a(ku.D, dfu.a(cwm.m)));
-   public static final cxl if = a(dko.iO, $$0 -> $$0.a(ku.D, dfu.a(cwm.n)));
-   public static final cxl ig = a(dko.iP, $$0 -> $$0.a(ku.D, dfu.a(cwm.o)));
-   public static final cxl ih = a(dko.iQ, $$0 -> $$0.a(ku.D, dfu.a(cwm.p)));
-   public static final cxl ii = a(dko.iR);
-   public static final cxl ij = a(dko.iT);
-   public static final cxl ik = a(dko.kZ);
-   public static final cxl il = a(dko.iU, cwl::new);
-   public static final cxl im = a(dko.iV, cwl::new);
-   public static final cxl in = a(dko.iW, cwl::new);
-   public static final cxl io = a(dko.iX, cwl::new);
-   public static final cxl ip = a(dko.iY, cwl::new);
-   public static final cxl iq = a(dko.iZ, cwl::new);
-   public static final cxl ir = a(dko.ev);
-   public static final cxl is = a(dko.ew);
-   public static final cxl it = a(dko.ex);
-   public static final cxl iu = a(dko.ey);
-   public static final cxl iv = a(dko.ez);
-   public static final cxl iw = a(dko.eA);
-   public static final cxl ix = a(dko.eB);
-   public static final cxl iy = a(dko.eC);
-   public static final cxl iz = a(dko.eD);
-   public static final cxl iA = a(dko.eE);
-   public static final cxl iB = a(dko.eF);
-   public static final cxl iC = a(dko.eG);
-   public static final cxl iD = a(dko.eH);
-   public static final cxl iE = a(dko.eI);
-   public static final cxl iF = a(dko.eJ);
-   public static final cxl iG = a(dko.eK);
-   public static final cxl iH = a(dko.hP);
-   public static final cxl iI = a(dko.hQ);
-   public static final cxl iJ = a(dko.hR);
-   public static final cxl iK = a(dko.hS);
-   public static final cxl iL = a(dko.hT);
-   public static final cxl iM = a(dko.hU);
-   public static final cxl iN = a(dko.hV);
-   public static final cxl iO = a(dko.hW);
-   public static final cxl iP = a(dko.hX);
-   public static final cxl iQ = a(dko.hY);
-   public static final cxl iR = a(dko.hZ);
-   public static final cxl iS = a(dko.ia);
-   public static final cxl iT = a(dko.ib);
-   public static final cxl iU = a(dko.ic);
-   public static final cxl iV = a(dko.id);
-   public static final cxl iW = a(dko.ie);
-   public static final cxl iX = a(dko.iq);
-   public static final cxl iY = a(dko.ir);
-   public static final cxl iZ = a(dko.is);
-   public static final cxl ja = a(dko.it);
-   public static final cxl jb = a(dko.iu);
-   public static final cxl jc = a(dko.iv);
-   public static final cxl jd = a(dko.iz);
-   public static final cxl je = a(dko.jG);
-   public static final cxl jf = a(dko.jH);
-   public static final cxl jg = a(dko.jI);
-   public static final cxl jh = a(dko.jJ);
-   public static final cxl ji = a(dko.lb, cxb::new, new cxl.a().a(cym.d));
-   public static final cxl jj = a(dko.lc, cxb::new, new cxl.a().a(cym.d));
-   public static final cxl jk = a(dko.le);
-   public static final cxl jl = a(dko.lf);
-   public static final cxl jm = a(dko.oK);
-   public static final cxl jn = a(dko.lg);
-   public static final cxl jo = a(dko.lh);
-   public static final cxl jp = a(dko.li, new cxl.a().a(cym.d));
-   public static final cxl jq = a(dko.lk, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jr = a(dko.ll, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl js = a(dko.lm, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jt = a(dko.ln, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl ju = a(dko.lo, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jv = a(dko.lp, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jw = a(dko.lq, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jx = a(dko.lr, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jy = a(dko.ls, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jz = a(dko.lt, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jA = a(dko.lu, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jB = a(dko.lv, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jC = a(dko.lw, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jD = a(dko.lx, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jE = a(dko.ly, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jF = a(dko.lz, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jG = a(dko.lA, new cxl.a().a(1).a(ku.al, dah.a));
-   public static final cxl jH = a(dko.lB);
-   public static final cxl jI = a(dko.lC);
-   public static final cxl jJ = a(dko.lD);
-   public static final cxl jK = a(dko.lE);
-   public static final cxl jL = a(dko.lF);
-   public static final cxl jM = a(dko.lG);
-   public static final cxl jN = a(dko.lH);
-   public static final cxl jO = a(dko.lI);
-   public static final cxl jP = a(dko.lJ);
-   public static final cxl jQ = a(dko.lK);
-   public static final cxl jR = a(dko.lL);
-   public static final cxl jS = a(dko.lM);
-   public static final cxl jT = a(dko.lN);
-   public static final cxl jU = a(dko.lO);
-   public static final cxl jV = a(dko.lP);
-   public static final cxl jW = a(dko.lQ);
-   public static final cxl jX = a(dko.lR);
-   public static final cxl jY = a(dko.lS);
-   public static final cxl jZ = a(dko.lT);
-   public static final cxl ka = a(dko.lU);
-   public static final cxl kb = a(dko.lV);
-   public static final cxl kc = a(dko.lW);
-   public static final cxl kd = a(dko.lX);
-   public static final cxl ke = a(dko.lY);
-   public static final cxl kf = a(dko.lZ);
-   public static final cxl kg = a(dko.ma);
-   public static final cxl kh = a(dko.mb);
-   public static final cxl ki = a(dko.mc);
-   public static final cxl kj = a(dko.md);
-   public static final cxl kk = a(dko.me);
-   public static final cxl kl = a(dko.mf);
-   public static final cxl km = a(dko.mg);
-   public static final cxl kn = a(dko.mh);
-   public static final cxl ko = a(dko.mi);
-   public static final cxl kp = a(dko.mj);
-   public static final cxl kq = a(dko.mk);
-   public static final cxl kr = a(dko.ml);
-   public static final cxl ks = a(dko.mm);
-   public static final cxl kt = a(dko.mn);
-   public static final cxl ku = a(dko.mo);
-   public static final cxl kv = a(dko.mp);
-   public static final cxl kw = a(dko.mq);
-   public static final cxl kx = a(dko.mr);
-   public static final cxl ky = a(dko.ms);
-   public static final cxl kz = a(dko.mt);
-   public static final cxl kA = a(dko.mu);
-   public static final cxl kB = a(dko.mv);
-   public static final cxl kC = a(dko.mw);
-   public static final cxl kD = a(dko.mA);
-   public static final cxl kE = a(dko.mB, $$0 -> $$0.a(cym.b));
-   public static final cxl kF = a(dko.mC);
-   public static final cxl kG = a(dko.mD);
-   public static final cxl kH = a(dko.mE);
-   public static final cxl kI = a(dko.mF);
-   public static final cxl kJ = a(dko.mG);
-   public static final cxl kK = a(dko.mH);
-   public static final cxl kL = a(dko.mI);
-   public static final cxl kM = a(dko.mJ);
-   public static final cxl kN = a(dko.mK);
-   public static final cxl kO = a(dko.mL);
-   public static final cxl kP = a(dko.mR);
-   public static final cxl kQ = a(dko.mS);
-   public static final cxl kR = a(dko.mT);
-   public static final cxl kS = a(dko.mU);
-   public static final cxl kT = a(dko.mV);
-   public static final cxl kU = a(dko.mN);
-   public static final cxl kV = a(dko.mO);
-   public static final cxl kW = a(dko.mP);
-   public static final cxl kX = a(dko.mQ);
-   public static final cxl kY = a(dko.mM);
-   public static final cxl kZ = a(dko.nb, ($$0, $$1) -> new czc($$0, dko.nl, jm.a, $$1));
-   public static final cxl la = a(dko.nc, ($$0, $$1) -> new czc($$0, dko.nm, jm.a, $$1));
-   public static final cxl lb = a(dko.nd, ($$0, $$1) -> new czc($$0, dko.nn, jm.a, $$1));
-   public static final cxl lc = a(dko.ne, ($$0, $$1) -> new czc($$0, dko.no, jm.a, $$1));
-   public static final cxl ld = a(dko.nf, ($$0, $$1) -> new czc($$0, dko.np, jm.a, $$1));
-   public static final cxl le = a(dko.mW, ($$0, $$1) -> new czc($$0, dko.ng, jm.a, $$1));
-   public static final cxl lf = a(dko.mX, ($$0, $$1) -> new czc($$0, dko.nh, jm.a, $$1));
-   public static final cxl lg = a(dko.mY, ($$0, $$1) -> new czc($$0, dko.ni, jm.a, $$1));
-   public static final cxl lh = a(dko.mZ, ($$0, $$1) -> new czc($$0, dko.nj, jm.a, $$1));
-   public static final cxl li = a(dko.na, ($$0, $$1) -> new czc($$0, dko.nk, jm.a, $$1));
-   public static final cxl lj = a(dko.nr);
-   public static final cxl lk = a(dko.ns, new cxl.a().a(cym.b));
-   public static final cxl ll = a(dko.nz);
-   public static final cxl lm = a(dko.nA);
-   public static final cxl ln = a(dko.nB);
-   public static final cxl lo = a(dko.nC);
-   public static final cxl lp = a(dko.nD);
-   public static final cxl lq = a(dko.nE);
-   public static final cxl lr = a(dko.nF);
-   public static final cxl ls = a(dko.nG);
-   public static final cxl lt = a(dko.nH);
-   public static final cxl lu = a(dko.nI);
-   public static final cxl lv = a(dko.nJ);
-   public static final cxl lw = a(dko.nK);
-   public static final cxl lx = a(dko.nL);
-   public static final cxl ly = a(dko.nM);
-   public static final cxl lz = a(dko.tg);
-   public static final cxl lA = a(dko.tk);
-   public static final cxl lB = a(dko.ts);
-   public static final cxl lC = a(dko.to);
-   public static final cxl lD = a(dko.nN);
-   public static final cxl lE = a(dko.nO);
-   public static final cxl lF = a(dko.nP);
-   public static final cxl lG = a(dko.nQ);
-   public static final cxl lH = a(dko.nR);
-   public static final cxl lI = a(dko.nS);
-   public static final cxl lJ = a(dko.nT);
-   public static final cxl lK = a(dko.nU);
-   public static final cxl lL = a(dko.nV);
-   public static final cxl lM = a(dko.nW);
-   public static final cxl lN = a(dko.nX);
-   public static final cxl lO = a(dko.nY);
-   public static final cxl lP = a(dko.nZ);
-   public static final cxl lQ = a(dko.th);
-   public static final cxl lR = a(dko.tl);
-   public static final cxl lS = a(dko.tt);
-   public static final cxl lT = a(dko.tp);
-   public static final cxl lU = a(dko.on, cyo::new);
-   public static final cxl lV = a("redstone", b(dko.cE));
-   public static final cxl lW = a(dko.dX, ($$0, $$1) -> new czc($$0, dko.dY, jm.a, $$1));
-   public static final cxl lX = a(dko.hq);
-   public static final cxl lY = a(dko.eu);
-   public static final cxl lZ = a(dko.ho);
-   public static final cxl ma = a(dko.bF);
-   public static final cxl mb = a(dko.by);
-   public static final cxl mc = a(dko.im);
-   public static final cxl md = a(dko.pB);
-   public static final cxl me = a(dko.lj);
-   public static final cxl mf = a(dko.hs, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl mg = a(dko.bb, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl mh = a(dko.hy, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl mi = a(dko.ov);
-   public static final cxl mj = a(dko.py);
-   public static final cxl mk = a(dko.dI);
-   public static final cxl ml = a(dko.sN);
-   public static final cxl mm = a(dko.hp);
-   public static final cxl mn = a(dko.rl);
-   public static final cxl mo = a(dko.rm);
-   public static final cxl mp = a(dko.fV);
-   public static final cxl mq = a(dko.hl, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl mr = a(dko.cr);
-   public static final cxl ms = a(dko.fP);
-   public static final cxl mt = a(dko.bf);
-   public static final cxl mu = a(dko.dZ);
-   public static final cxl mv = a(dko.qb);
-   public static final cxl mw = a(dko.gK);
-   public static final cxl mx = a(dko.gL);
-   public static final cxl my = a(dko.gM);
-   public static final cxl mz = a(dko.gN);
-   public static final cxl mA = a(dko.gO);
-   public static final cxl mB = a(dko.gP);
-   public static final cxl mC = a(dko.gQ);
-   public static final cxl mD = a(dko.gR);
-   public static final cxl mE = a(dko.gS);
-   public static final cxl mF = a(dko.gT);
-   public static final cxl mG = a(dko.pn);
-   public static final cxl mH = a(dko.po);
-   public static final cxl mI = a(dko.dJ);
-   public static final cxl mJ = a(dko.qa);
-   public static final cxl mK = a(dko.hm);
-   public static final cxl mL = a(dko.hn);
-   public static final cxl mM = a(dko.dL);
-   public static final cxl mN = a(dko.dM);
-   public static final cxl mO = a(dko.dN);
-   public static final cxl mP = a(dko.dO);
-   public static final cxl mQ = a(dko.dP);
-   public static final cxl mR = a(dko.dQ);
-   public static final cxl mS = a(dko.dR);
-   public static final cxl mT = a(dko.dS);
-   public static final cxl mU = a(dko.dT);
-   public static final cxl mV = a(dko.dU);
-   public static final cxl mW = a(dko.pd);
-   public static final cxl mX = a(dko.pe);
-   public static final cxl mY = a(dko.dK, cwl::new);
-   public static final cxl mZ = a(dko.cW, cwl::new);
-   public static final cxl na = a(dko.kF, cwl::new);
-   public static final cxl nb = a(dko.kG, cwl::new);
-   public static final cxl nc = a(dko.kH, cwl::new);
-   public static final cxl nd = a(dko.kI, cwl::new);
-   public static final cxl ne = a(dko.kJ, cwl::new);
-   public static final cxl nf = a(dko.kK, cwl::new);
-   public static final cxl ng = a(dko.kL, cwl::new);
-   public static final cxl nh = a(dko.kM, cwl::new);
-   public static final cxl ni = a(dko.kN, cwl::new);
-   public static final cxl nj = a(dko.pp, cwl::new);
-   public static final cxl nk = a(dko.pq, cwl::new);
-   public static final cxl nl = a(dko.sh, cwl::new);
-   public static final cxl nm = a(dko.si, cwl::new);
-   public static final cxl nn = a(dko.sk, cwl::new);
-   public static final cxl no = a(dko.sj, cwl::new);
-   public static final cxl np = a(dko.sl, cwl::new);
-   public static final cxl nq = a(dko.sm, cwl::new);
-   public static final cxl nr = a(dko.so, cwl::new);
-   public static final cxl ns = a(dko.sn, cwl::new);
-   public static final cxl nt = a(dko.ip);
-   public static final cxl nu = a(dko.eL);
-   public static final cxl nv = a(dko.eM);
-   public static final cxl nw = a(dko.eN);
-   public static final cxl nx = a(dko.eO);
-   public static final cxl ny = a(dko.eP);
-   public static final cxl nz = a(dko.eQ);
-   public static final cxl nA = a(dko.eR);
-   public static final cxl nB = a(dko.eS);
-   public static final cxl nC = a(dko.eT);
-   public static final cxl nD = a(dko.eU);
-   public static final cxl nE = a(dko.ph);
-   public static final cxl nF = a(dko.pi);
-   public static final cxl nG = a(dko.sp);
-   public static final cxl nH = a(dko.sq);
-   public static final cxl nI = a(dko.ss);
-   public static final cxl nJ = a(dko.sr);
-   public static final cxl nK = a(dko.st);
-   public static final cxl nL = a(dko.su);
-   public static final cxl nM = a(dko.sw);
-   public static final cxl nN = a(dko.sv);
-   public static final cxl nO = a(dko.fv);
-   public static final cxl nP = a(dko.kn);
-   public static final cxl nQ = a(dko.ko);
-   public static final cxl nR = a(dko.kp);
-   public static final cxl nS = a(dko.kq);
-   public static final cxl nT = a(dko.kr);
-   public static final cxl nU = a(dko.ks);
-   public static final cxl nV = a(dko.kt);
-   public static final cxl nW = a(dko.ku);
-   public static final cxl nX = a(dko.kv);
-   public static final cxl nY = a(dko.pj);
-   public static final cxl nZ = a(dko.pk);
-   public static final cxl oa = a(dko.bw);
-   public static final cxl ob = a(dko.bx);
-   public static final cxl oc = a(dko.cY);
-   public static final cxl od = a(dko.hx);
-   public static final cxl oe = a("saddle", cyn::new, new cxl.a().a(1));
-   public static final cxl of = a("minecart", $$0 -> new cyd(bvr.aE, $$0), new cxl.a().a(1));
-   public static final cxl og = a("chest_minecart", $$0 -> new cyd(bvr.y, $$0), new cxl.a().a(1));
-   public static final cxl oh = a("furnace_minecart", $$0 -> new cyd(bvr.ad, $$0), new cxl.a().a(1));
-   public static final cxl oi = a("tnt_minecart", $$0 -> new cyd(bvr.bx, $$0), new cxl.a().a(1));
-   public static final cxl oj = a("hopper_minecart", $$0 -> new cyd(bvr.al, $$0), new cxl.a().a(1));
-   public static final cxl ok = a("carrot_on_a_stick", $$0 -> new cxa<>(bvr.aR, 7, $$0), new cxl.a().b(25));
-   public static final cxl ol = a("warped_fungus_on_a_stick", $$0 -> new cxa<>(bvr.bt, 1, $$0), new cxl.a().b(100));
-   public static final cxl om = a("phantom_membrane");
-   public static final cxl on = a("elytra", new cxl.a().b(432).a(cym.d).a(ku.F, bbk.a).a(ku.D, dfu.a(bvs.e).a(axf.ar).a(dft.i).c(false).a()).c(om));
-   public static final cxl oo = a("oak_boat", $$0 -> new cvw(bvr.aH, $$0), new cxl.a().a(1));
-   public static final cxl op = a("oak_chest_boat", $$0 -> new cvw(bvr.aI, $$0), new cxl.a().a(1));
-   public static final cxl oq = a("spruce_boat", $$0 -> new cvw(bvr.bp, $$0), new cxl.a().a(1));
-   public static final cxl or = a("spruce_chest_boat", $$0 -> new cvw(bvr.bq, $$0), new cxl.a().a(1));
-   public static final cxl os = a("birch_boat", $$0 -> new cvw(bvr.m, $$0), new cxl.a().a(1));
-   public static final cxl ot = a("birch_chest_boat", $$0 -> new cvw(bvr.n, $$0), new cxl.a().a(1));
-   public static final cxl ou = a("jungle_boat", $$0 -> new cvw(bvr.au, $$0), new cxl.a().a(1));
-   public static final cxl ov = a("jungle_chest_boat", $$0 -> new cvw(bvr.av, $$0), new cxl.a().a(1));
-   public static final cxl ow = a("acacia_boat", $$0 -> new cvw(bvr.a, $$0), new cxl.a().a(1));
-   public static final cxl ox = a("acacia_chest_boat", $$0 -> new cvw(bvr.b, $$0), new cxl.a().a(1));
-   public static final cxl oy = a("cherry_boat", $$0 -> new cvw(bvr.w, $$0), new cxl.a().a(1));
-   public static final cxl oz = a("cherry_chest_boat", $$0 -> new cvw(bvr.x, $$0), new cxl.a().a(1));
-   public static final cxl oA = a("dark_oak_boat", $$0 -> new cvw(bvr.G, $$0), new cxl.a().a(1));
-   public static final cxl oB = a("dark_oak_chest_boat", $$0 -> new cvw(bvr.H, $$0), new cxl.a().a(1));
-   public static final cxl oC = a("pale_oak_boat", $$0 -> new cvw(bvr.aM, $$0), new cxl.a().a(1).a(csv.b));
-   public static final cxl oD = a("pale_oak_chest_boat", $$0 -> new cvw(bvr.aN, $$0), new cxl.a().a(1).a(csv.b));
-   public static final cxl oE = a("mangrove_boat", $$0 -> new cvw(bvr.aB, $$0), new cxl.a().a(1));
-   public static final cxl oF = a("mangrove_chest_boat", $$0 -> new cvw(bvr.aC, $$0), new cxl.a().a(1));
-   public static final cxl oG = a("bamboo_raft", $$0 -> new cvw(bvr.j, $$0), new cxl.a().a(1));
-   public static final cxl oH = a("bamboo_chest_raft", $$0 -> new cvw(bvr.i, $$0), new cxl.a().a(1));
-   public static final cxl oI = a(dko.pv, cxb::new, new cxl.a().a(cym.d));
-   public static final cxl oJ = a(dko.pw, cxb::new, new cxl.a().a(cym.d));
-   public static final cxl oK = a("turtle_helmet", $$0 -> new cvo(dfq.f, dfr.a, $$0));
-   public static final cxl oL = a("turtle_scute");
-   public static final cxl oM = a("armadillo_scute");
-   public static final cxl oN = a("wolf_armor", $$0 -> new cvn(dfq.h, cvn.a.b, $$0));
-   public static final cxl oO = a("flint_and_steel", cwz::new, new cxl.a().b(64));
-   public static final cxl oP = a("bowl");
-   public static final cxl oQ = a("apple", new cxl.a().a(cta.a));
-   public static final cxl oR = a("bow", cvz::new, new cxl.a().b(384).c(1));
-   public static final cxl oS = a("arrow", cvq::new);
-   public static final cxl oT = a("coal");
-   public static final cxl oU = a("charcoal");
-   public static final cxl oV = a("diamond");
-   public static final cxl oW = a("emerald");
-   public static final cxl oX = a("lapis_lazuli");
-   public static final cxl oY = a("quartz");
-   public static final cxl oZ = a("amethyst_shard");
-   public static final cxl pa = a("raw_iron");
-   public static final cxl pb = a("iron_ingot");
-   public static final cxl pc = a("raw_copper");
-   public static final cxl pd = a("copper_ingot");
-   public static final cxl pe = a("raw_gold");
-   public static final cxl pf = a("gold_ingot");
-   public static final cxl pg = a("netherite_ingot", new cxl.a().a());
-   public static final cxl ph = a("netherite_scrap", new cxl.a().a());
-   public static final cxl pi = a("wooden_sword", $$0 -> new czd(czg.a, 3.0F, -2.4F, $$0));
-   public static final cxl pj = a("wooden_shovel", $$0 -> new cys(czg.a, 1.5F, -3.0F, $$0));
-   public static final cxl pk = a("wooden_pickaxe", $$0 -> new cyg(czg.a, 1.0F, -2.8F, $$0));
-   public static final cxl pl = a("wooden_axe", $$0 -> new cvr(czg.a, 6.0F, -3.2F, $$0));
-   public static final cxl pm = a("wooden_hoe", $$0 -> new cxf(czg.a, 0.0F, -3.0F, $$0));
-   public static final cxl pn = a("stone_sword", $$0 -> new czd(czg.b, 3.0F, -2.4F, $$0));
-   public static final cxl po = a("stone_shovel", $$0 -> new cys(czg.b, 1.5F, -3.0F, $$0));
-   public static final cxl pp = a("stone_pickaxe", $$0 -> new cyg(czg.b, 1.0F, -2.8F, $$0));
-   public static final cxl pq = a("stone_axe", $$0 -> new cvr(czg.b, 7.0F, -3.2F, $$0));
-   public static final cxl pr = a("stone_hoe", $$0 -> new cxf(czg.b, -1.0F, -2.0F, $$0));
-   public static final cxl ps = a("golden_sword", $$0 -> new czd(czg.e, 3.0F, -2.4F, $$0));
-   public static final cxl pt = a("golden_shovel", $$0 -> new cys(czg.e, 1.5F, -3.0F, $$0));
-   public static final cxl pu = a("golden_pickaxe", $$0 -> new cyg(czg.e, 1.0F, -2.8F, $$0));
-   public static final cxl pv = a("golden_axe", $$0 -> new cvr(czg.e, 6.0F, -3.0F, $$0));
-   public static final cxl pw = a("golden_hoe", $$0 -> new cxf(czg.e, 0.0F, -3.0F, $$0));
-   public static final cxl px = a("iron_sword", $$0 -> new czd(czg.c, 3.0F, -2.4F, $$0));
-   public static final cxl py = a("iron_shovel", $$0 -> new cys(czg.c, 1.5F, -3.0F, $$0));
-   public static final cxl pz = a("iron_pickaxe", $$0 -> new cyg(czg.c, 1.0F, -2.8F, $$0));
-   public static final cxl pA = a("iron_axe", $$0 -> new cvr(czg.c, 6.0F, -3.1F, $$0));
-   public static final cxl pB = a("iron_hoe", $$0 -> new cxf(czg.c, -2.0F, -1.0F, $$0));
-   public static final cxl pC = a("diamond_sword", $$0 -> new czd(czg.d, 3.0F, -2.4F, $$0));
-   public static final cxl pD = a("diamond_shovel", $$0 -> new cys(czg.d, 1.5F, -3.0F, $$0));
-   public static final cxl pE = a("diamond_pickaxe", $$0 -> new cyg(czg.d, 1.0F, -2.8F, $$0));
-   public static final cxl pF = a("diamond_axe", $$0 -> new cvr(czg.d, 5.0F, -3.0F, $$0));
-   public static final cxl pG = a("diamond_hoe", $$0 -> new cxf(czg.d, -3.0F, 0.0F, $$0));
-   public static final cxl pH = a("netherite_sword", $$0 -> new czd(czg.f, 3.0F, -2.4F, $$0), new cxl.a().a());
-   public static final cxl pI = a("netherite_shovel", $$0 -> new cys(czg.f, 1.5F, -3.0F, $$0), new cxl.a().a());
-   public static final cxl pJ = a("netherite_pickaxe", $$0 -> new cyg(czg.f, 1.0F, -2.8F, $$0), new cxl.a().a());
-   public static final cxl pK = a("netherite_axe", $$0 -> new cvr(czg.f, 5.0F, -3.0F, $$0), new cxl.a().a());
-   public static final cxl pL = a("netherite_hoe", $$0 -> new cxf(czg.f, -4.0F, 0.0F, $$0), new cxl.a().a());
-   public static final cxl pM = a("stick");
-   public static final cxl pN = a("mushroom_stew", new cxl.a().a(1).a(cta.y).a(oP));
-   public static final cxl pO = a("string", b(dko.fW));
-   public static final cxl pP = a("feather");
-   public static final cxl pQ = a("gunpowder");
-   public static final cxl pR = a("wheat_seeds", b(dko.cJ));
-   public static final cxl pS = a("wheat");
-   public static final cxl pT = a("bread", new cxl.a().a(cta.f));
-   public static final cxl pU = a("leather_helmet", $$0 -> new cvo(dfq.a, dfr.a, $$0));
-   public static final cxl pV = a("leather_chestplate", $$0 -> new cvo(dfq.a, dfr.b, $$0));
-   public static final cxl pW = a("leather_leggings", $$0 -> new cvo(dfq.a, dfr.c, $$0));
-   public static final cxl pX = a("leather_boots", $$0 -> new cvo(dfq.a, dfr.d, $$0));
-   public static final cxl pY = a("chainmail_helmet", $$0 -> new cvo(dfq.b, dfr.a, $$0), new cxl.a().a(cym.b));
-   public static final cxl pZ = a("chainmail_chestplate", $$0 -> new cvo(dfq.b, dfr.b, $$0), new cxl.a().a(cym.b));
-   public static final cxl qa = a("chainmail_leggings", $$0 -> new cvo(dfq.b, dfr.c, $$0), new cxl.a().a(cym.b));
-   public static final cxl qb = a("chainmail_boots", $$0 -> new cvo(dfq.b, dfr.d, $$0), new cxl.a().a(cym.b));
-   public static final cxl qc = a("iron_helmet", $$0 -> new cvo(dfq.c, dfr.a, $$0));
-   public static final cxl qd = a("iron_chestplate", $$0 -> new cvo(dfq.c, dfr.b, $$0));
-   public static final cxl qe = a("iron_leggings", $$0 -> new cvo(dfq.c, dfr.c, $$0));
-   public static final cxl qf = a("iron_boots", $$0 -> new cvo(dfq.c, dfr.d, $$0));
-   public static final cxl qg = a("diamond_helmet", $$0 -> new cvo(dfq.e, dfr.a, $$0));
-   public static final cxl qh = a("diamond_chestplate", $$0 -> new cvo(dfq.e, dfr.b, $$0));
-   public static final cxl qi = a("diamond_leggings", $$0 -> new cvo(dfq.e, dfr.c, $$0));
-   public static final cxl qj = a("diamond_boots", $$0 -> new cvo(dfq.e, dfr.d, $$0));
-   public static final cxl qk = a("golden_helmet", $$0 -> new cvo(dfq.d, dfr.a, $$0));
-   public static final cxl ql = a("golden_chestplate", $$0 -> new cvo(dfq.d, dfr.b, $$0));
-   public static final cxl qm = a("golden_leggings", $$0 -> new cvo(dfq.d, dfr.c, $$0));
-   public static final cxl qn = a("golden_boots", $$0 -> new cvo(dfq.d, dfr.d, $$0));
-   public static final cxl qo = a("netherite_helmet", $$0 -> new cvo(dfq.g, dfr.a, $$0), new cxl.a().a());
-   public static final cxl qp = a("netherite_chestplate", $$0 -> new cvo(dfq.g, dfr.b, $$0), new cxl.a().a());
-   public static final cxl qq = a("netherite_leggings", $$0 -> new cvo(dfq.g, dfr.c, $$0), new cxl.a().a());
-   public static final cxl qr = a("netherite_boots", $$0 -> new cvo(dfq.g, dfr.d, $$0), new cxl.a().a());
-   public static final cxl qs = a("flint");
-   public static final cxl qt = a("porkchop", new cxl.a().a(cta.B));
-   public static final cxl qu = a("cooked_porkchop", new cxl.a().a(cta.o));
-   public static final cxl qv = a("painting", $$0 -> new cxd(bvr.aL, $$0));
-   public static final cxl qw = a("golden_apple", new cxl.a().a(cta.u, czx.h));
-   public static final cxl qx = a("enchanted_golden_apple", new cxl.a().a(cym.c).a(cta.t, czx.g).a(ku.u, true));
-   public static final cxl qy = a(dko.cM, ($$0, $$1) -> new cyu($$0, dko.da, $$1), new cxl.a().a(16));
-   public static final cxl qz = a(dko.cN, ($$0, $$1) -> new cyu($$0, dko.db, $$1), new cxl.a().a(16));
-   public static final cxl qA = a(dko.cO, ($$0, $$1) -> new cyu($$0, dko.dc, $$1), new cxl.a().a(16));
-   public static final cxl qB = a(dko.cR, ($$0, $$1) -> new cyu($$0, dko.df, $$1), new cxl.a().a(16));
-   public static final cxl qC = a(dko.cP, ($$0, $$1) -> new cyu($$0, dko.dd, $$1), new cxl.a().a(16));
-   public static final cxl qD = a(dko.cQ, ($$0, $$1) -> new cyu($$0, dko.de, $$1), new cxl.a().a(16));
-   public static final cxl qE = a(dko.cS, ($$0, $$1) -> new cyu($$0, dko.dg, $$1), new cxl.a().a(16));
-   public static final cxl qF = a(dko.cT, ($$0, $$1) -> new cyu($$0, dko.dh, $$1), new cxl.a().a(16));
-   public static final cxl qG = a(dko.cU, ($$0, $$1) -> new cyu($$0, dko.di, $$1), new cxl.a().a(16));
-   public static final cxl qH = a(dko.cV, ($$0, $$1) -> new cyu($$0, dko.dj, $$1), new cxl.a().a(16));
-   public static final cxl qI = a(dko.pr, ($$0, $$1) -> new cyu($$0, dko.pt, $$1), new cxl.a().a(16));
-   public static final cxl qJ = a(dko.ps, ($$0, $$1) -> new cyu($$0, dko.pu, $$1), new cxl.a().a(16));
-   public static final cxl qK = a(dko.dk, ($$0, $$1) -> new cxe($$0, dko.dw, $$1), new cxl.a().a(16));
-   public static final cxl qL = a(dko.dl, ($$0, $$1) -> new cxe($$0, dko.dx, $$1), new cxl.a().a(16));
-   public static final cxl qM = a(dko.dm, ($$0, $$1) -> new cxe($$0, dko.dy, $$1), new cxl.a().a(16));
-   public static final cxl qN = a(dko.dp, ($$0, $$1) -> new cxe($$0, dko.dB, $$1), new cxl.a().a(16));
-   public static final cxl qO = a(dko.dn, ($$0, $$1) -> new cxe($$0, dko.dz, $$1), new cxl.a().a(16));
-   public static final cxl qP = a(dko.do, ($$0, $$1) -> new cxe($$0, dko.dA, $$1), new cxl.a().a(16));
-   public static final cxl qQ = a(dko.dq, ($$0, $$1) -> new cxe($$0, dko.dC, $$1), new cxl.a().a(16));
-   public static final cxl qR = a(dko.dr, ($$0, $$1) -> new cxe($$0, dko.dD, $$1), new cxl.a().a(16));
-   public static final cxl qS = a(dko.du, ($$0, $$1) -> new cxe($$0, dko.dE, $$1), new cxl.a().a(16));
-   public static final cxl qT = a(dko.dv, ($$0, $$1) -> new cxe($$0, dko.dH, $$1), new cxl.a().a(16));
-   public static final cxl qU = a(dko.ds, ($$0, $$1) -> new cxe($$0, dko.dF, $$1), new cxl.a().a(16));
-   public static final cxl qV = a(dko.dt, ($$0, $$1) -> new cxe($$0, dko.dG, $$1), new cxl.a().a(16));
-   public static final cxl qW = a("bucket", $$0 -> new cwb(ety.a, $$0), new cxl.a().a(16));
-   public static final cxl qX = a("water_bucket", $$0 -> new cwb(ety.c, $$0), new cxl.a().b(qW).a(1));
-   public static final cxl qY = a("lava_bucket", $$0 -> new cwb(ety.e, $$0), new cxl.a().b(qW).a(1));
-   public static final cxl qZ = a("powder_snow_bucket", $$0 -> new cyx(dko.rk, axf.dh, $$0), new cxl.a().a(1).c());
-   public static final cxl ra = a("snowball", cyw::new, new cxl.a().a(16));
-   public static final cxl rb = a("leather");
-   public static final cxl rc = a("milk_bucket", new cxl.a().b(qW).a(ku.x, czx.m).a(qW).a(1));
-   public static final cxl rd = a("pufferfish_bucket", $$0 -> new cye(bvr.aX, ety.c, axf.df, $$0), new cxl.a().a(1).a(ku.X, czy.a));
-   public static final cxl re = a("salmon_bucket", $$0 -> new cye(bvr.ba, ety.c, axf.df, $$0), new cxl.a().a(1).a(ku.X, czy.a));
-   public static final cxl rf = a("cod_bucket", $$0 -> new cye(bvr.A, ety.c, axf.df, $$0), new cxl.a().a(1).a(ku.X, czy.a));
-   public static final cxl rg = a("tropical_fish_bucket", $$0 -> new cye(bvr.bA, ety.c, axf.df, $$0), new cxl.a().a(1).a(ku.X, czy.a));
-   public static final cxl rh = a("axolotl_bucket", $$0 -> new cye(bvr.h, ety.c, axf.de, $$0), new cxl.a().a(1).a(ku.X, czy.a));
-   public static final cxl ri = a("tadpole_bucket", $$0 -> new cye(bvr.bu, ety.c, axf.di, $$0), new cxl.a().a(1).a(ku.X, czy.a));
-   public static final cxl rj = a("brick");
-   public static final cxl rk = a("clay_ball");
-   public static final cxl rl = a(dko.mz);
-   public static final cxl rm = a("paper");
-   public static final cxl rn = a("book", new cxl.a().c(1));
-   public static final cxl ro = a("slime_ball");
-   public static final cxl rp = a("egg", cwo::new, new cxl.a().a(16));
-   public static final cxl rq = a("compass", cwd::new);
-   public static final cxl rr = a("recovery_compass", new cxl.a().a(cym.b));
-   public static final cxl rs = a("bundle", $$0 -> new cwc(alz.b("bundle_open_front"), alz.b("bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a));
-   public static final cxl rt = a(
-      "white_bundle", $$0 -> new cwc(alz.b("white_bundle_open_front"), alz.b("white_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl ru = a(
-      "orange_bundle", $$0 -> new cwc(alz.b("orange_bundle_open_front"), alz.b("orange_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rv = a(
-      "magenta_bundle", $$0 -> new cwc(alz.b("magenta_bundle_open_front"), alz.b("magenta_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rw = a(
-      "light_blue_bundle", $$0 -> new cwc(alz.b("light_blue_bundle_open_front"), alz.b("light_blue_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rx = a(
-      "yellow_bundle", $$0 -> new cwc(alz.b("yellow_bundle_open_front"), alz.b("yellow_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl ry = a(
-      "lime_bundle", $$0 -> new cwc(alz.b("lime_bundle_open_front"), alz.b("lime_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rz = a(
-      "pink_bundle", $$0 -> new cwc(alz.b("pink_bundle_open_front"), alz.b("pink_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rA = a(
-      "gray_bundle", $$0 -> new cwc(alz.b("gray_bundle_open_front"), alz.b("gray_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rB = a(
-      "light_gray_bundle", $$0 -> new cwc(alz.b("light_gray_bundle_open_front"), alz.b("light_gray_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rC = a(
-      "cyan_bundle", $$0 -> new cwc(alz.b("cyan_bundle_open_front"), alz.b("cyan_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rD = a(
-      "purple_bundle", $$0 -> new cwc(alz.b("purple_bundle_open_front"), alz.b("purple_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rE = a(
-      "blue_bundle", $$0 -> new cwc(alz.b("blue_bundle_open_front"), alz.b("blue_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rF = a(
-      "brown_bundle", $$0 -> new cwc(alz.b("brown_bundle_open_front"), alz.b("brown_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rG = a(
-      "green_bundle", $$0 -> new cwc(alz.b("green_bundle_open_front"), alz.b("green_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rH = a(
-      "red_bundle", $$0 -> new cwc(alz.b("red_bundle_open_front"), alz.b("red_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rI = a(
-      "black_bundle", $$0 -> new cwc(alz.b("black_bundle_open_front"), alz.b("black_bundle_open_back"), $$0), new cxl.a().a(1).a(ku.P, czt.a)
-   );
-   public static final cxl rJ = a("fishing_rod", cwy::new, new cxl.a().b(64).c(1));
-   public static final cxl rK = a("clock");
-   public static final cxl rL = a("spyglass", czb::new, new cxl.a().a(1).a(alz.b("spyglass_in_hand")));
-   public static final cxl rM = a("glowstone_dust");
-   public static final cxl rN = a("cod", new cxl.a().a(cta.j));
-   public static final cxl rO = a("salmon", new cxl.a().a(cta.I));
-   public static final cxl rP = a("tropical_fish", new cxl.a().a(cta.N));
-   public static final cxl rQ = a("pufferfish", new cxl.a().a(cta.D, czx.j));
-   public static final cxl rR = a("cooked_cod", new cxl.a().a(cta.m));
-   public static final cxl rS = a("cooked_salmon", new cxl.a().a(cta.q));
-   public static final cxl rT = a("ink_sac", cxh::new);
-   public static final cxl rU = a("glow_ink_sac", cxc::new);
-   public static final cxl rV = a("cocoa_beans", b(dko.fQ));
-   public static final cxl rW = a("white_dye", $$0 -> new cwn(cwm.a, $$0));
-   public static final cxl rX = a("orange_dye", $$0 -> new cwn(cwm.b, $$0));
-   public static final cxl rY = a("magenta_dye", $$0 -> new cwn(cwm.c, $$0));
-   public static final cxl rZ = a("light_blue_dye", $$0 -> new cwn(cwm.d, $$0));
-   public static final cxl sa = a("yellow_dye", $$0 -> new cwn(cwm.e, $$0));
-   public static final cxl sb = a("lime_dye", $$0 -> new cwn(cwm.f, $$0));
-   public static final cxl sc = a("pink_dye", $$0 -> new cwn(cwm.g, $$0));
-   public static final cxl sd = a("gray_dye", $$0 -> new cwn(cwm.h, $$0));
-   public static final cxl se = a("light_gray_dye", $$0 -> new cwn(cwm.i, $$0));
-   public static final cxl sf = a("cyan_dye", $$0 -> new cwn(cwm.j, $$0));
-   public static final cxl sg = a("purple_dye", $$0 -> new cwn(cwm.k, $$0));
-   public static final cxl sh = a("blue_dye", $$0 -> new cwn(cwm.l, $$0));
-   public static final cxl si = a("brown_dye", $$0 -> new cwn(cwm.m, $$0));
-   public static final cxl sj = a("green_dye", $$0 -> new cwn(cwm.n, $$0));
-   public static final cxl sk = a("red_dye", $$0 -> new cwn(cwm.o, $$0));
-   public static final cxl sl = a("black_dye", $$0 -> new cwn(cwm.p, $$0));
-   public static final cxl sm = a("bone_meal", cvx::new);
-   public static final cxl sn = a("bone");
-   public static final cxl so = a("sugar");
-   public static final cxl sp = a(dko.et, new cxl.a().a(1));
-   public static final cxl sq = a(dko.bg, cvu::new, new cxl.a().a(1));
-   public static final cxl sr = a(dko.bh, cvu::new, new cxl.a().a(1));
-   public static final cxl ss = a(dko.bi, cvu::new, new cxl.a().a(1));
-   public static final cxl st = a(dko.bj, cvu::new, new cxl.a().a(1));
-   public static final cxl su = a(dko.bk, cvu::new, new cxl.a().a(1));
-   public static final cxl sv = a(dko.bl, cvu::new, new cxl.a().a(1));
-   public static final cxl sw = a(dko.bm, cvu::new, new cxl.a().a(1));
-   public static final cxl sx = a(dko.bn, cvu::new, new cxl.a().a(1));
-   public static final cxl sy = a(dko.bo, cvu::new, new cxl.a().a(1));
-   public static final cxl sz = a(dko.bp, cvu::new, new cxl.a().a(1));
-   public static final cxl sA = a(dko.bq, cvu::new, new cxl.a().a(1));
-   public static final cxl sB = a(dko.br, cvu::new, new cxl.a().a(1));
-   public static final cxl sC = a(dko.bs, cvu::new, new cxl.a().a(1));
-   public static final cxl sD = a(dko.bt, cvu::new, new cxl.a().a(1));
-   public static final cxl sE = a(dko.bu, cvu::new, new cxl.a().a(1));
-   public static final cxl sF = a(dko.bv, cvu::new, new cxl.a().a(1));
-   public static final cxl sG = a("cookie", new cxl.a().a(cta.r));
-   public static final cxl sH = a(dko.tL, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl sI = a("filled_map", cyc::new, new cxl.a().a(ku.K, dal.c).a(ku.M, dak.a));
-   public static final cxl sJ = a("shears", cyq::new, new cxl.a().b(238).a(ku.B, cyq.b()));
-   public static final cxl sK = a("melon_slice", new cxl.a().a(cta.x));
-   public static final cxl sL = a("dried_kelp", new cxl.a().a(cta.s, czx.e));
-   public static final cxl sM = a(alo.a, b(dko.fr));
-   public static final cxl sN = a(alo.b, b(dko.fs));
-   public static final cxl sO = a("beef", new cxl.a().a(cta.c));
-   public static final cxl sP = a("cooked_beef", new cxl.a().a(cta.k));
-   public static final cxl sQ = a("chicken", new cxl.a().a(cta.h, czx.f));
-   public static final cxl sR = a("cooked_chicken", new cxl.a().a(cta.l));
-   public static final cxl sS = a("rotten_flesh", new cxl.a().a(cta.H, czx.k));
-   public static final cxl sT = a("ender_pearl", cwt::new, new cxl.a().a(16).a(1.0F));
-   public static final cxl sU = a("blaze_rod");
-   public static final cxl sV = a("ghast_tear");
-   public static final cxl sW = a("gold_nugget");
-   public static final cxl sX = a("nether_wart", b(dko.fE));
-   public static final cxl sY = a("glass_bottle", cvy::new);
-   public static final cxl sZ = a("potion", cyj::new, new cxl.a().a(1).a(ku.Q, czo.a).a(ku.x, czx.b).a(sY));
-   public static final cxl ta = a("spider_eye", new cxl.a().a(cta.J, czx.l));
-   public static final cxl tb = a("fermented_spider_eye");
-   public static final cxl tc = a("blaze_powder");
-   public static final cxl td = a("magma_cream");
-   public static final cxl te = a(dko.fG, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl tf = a(dko.fH, dko.fI, dko.fJ, dko.fK);
-   public static final cxl tg = a("ender_eye", cws::new);
-   public static final cxl th = a("glistering_melon_slice");
-   public static final cxl ti = a("armadillo_spawn_egg", $$0 -> new cyy(bvr.e, 11366765, 8538184, $$0));
-   public static final cxl tj = a("allay_spawn_egg", $$0 -> new cyy(bvr.c, 56063, 44543, $$0));
-   public static final cxl tk = a("axolotl_spawn_egg", $$0 -> new cyy(bvr.h, 16499171, 10890612, $$0));
-   public static final cxl tl = a("bat_spawn_egg", $$0 -> new cyy(bvr.k, 4996656, 986895, $$0));
-   public static final cxl tm = a("bee_spawn_egg", $$0 -> new cyy(bvr.l, 15582019, 4400155, $$0));
-   public static final cxl tn = a("blaze_spawn_egg", $$0 -> new cyy(bvr.o, 16167425, 16775294, $$0));
-   public static final cxl to = a("bogged_spawn_egg", $$0 -> new cyy(bvr.q, 9084018, 3231003, $$0));
-   public static final cxl tp = a("breeze_spawn_egg", $$0 -> new cyy(bvr.r, 11506911, 9529055, $$0));
-   public static final cxl tq = a("cat_spawn_egg", $$0 -> new cyy(bvr.u, 15714446, 9794134, $$0));
-   public static final cxl tr = a("camel_spawn_egg", $$0 -> new cyy(bvr.t, 16565097, 13341495, $$0));
-   public static final cxl ts = a("cave_spider_spawn_egg", $$0 -> new cyy(bvr.v, 803406, 11013646, $$0));
-   public static final cxl tt = a("chicken_spawn_egg", $$0 -> new cyy(bvr.z, 10592673, 16711680, $$0));
-   public static final cxl tu = a("cod_spawn_egg", $$0 -> new cyy(bvr.A, 12691306, 15058059, $$0));
-   public static final cxl tv = a("cow_spawn_egg", $$0 -> new cyy(bvr.C, 4470310, 10592673, $$0));
-   public static final cxl tw = a("creeper_spawn_egg", $$0 -> new cyy(bvr.F, 894731, 0, $$0));
-   public static final cxl tx = a("dolphin_spawn_egg", $$0 -> new cyy(bvr.I, 2243405, 16382457, $$0));
-   public static final cxl ty = a("donkey_spawn_egg", $$0 -> new cyy(bvr.J, 5457209, 8811878, $$0));
-   public static final cxl tz = a("drowned_spawn_egg", $$0 -> new cyy(bvr.L, 9433559, 7969893, $$0));
-   public static final cxl tA = a("elder_guardian_spawn_egg", $$0 -> new cyy(bvr.N, 13552826, 7632531, $$0));
-   public static final cxl tB = a("ender_dragon_spawn_egg", $$0 -> new cyy(bvr.Q, 1842204, 14711290, $$0));
-   public static final cxl tC = a("enderman_spawn_egg", $$0 -> new cyy(bvr.O, 1447446, 0, $$0));
-   public static final cxl tD = a("endermite_spawn_egg", $$0 -> new cyy(bvr.P, 1447446, 7237230, $$0));
-   public static final cxl tE = a("evoker_spawn_egg", $$0 -> new cyy(bvr.T, 9804699, 1973274, $$0));
-   public static final cxl tF = a("fox_spawn_egg", $$0 -> new cyy(bvr.ab, 14005919, 13396256, $$0));
-   public static final cxl tG = a("frog_spawn_egg", $$0 -> new cyy(bvr.ac, 13661252, 16762748, $$0));
-   public static final cxl tH = a("ghast_spawn_egg", $$0 -> new cyy(bvr.ae, 16382457, 12369084, $$0));
-   public static final cxl tI = a("glow_squid_spawn_egg", $$0 -> new cyy(bvr.ah, 611926, 8778172, $$0));
-   public static final cxl tJ = a("goat_spawn_egg", $$0 -> new cyy(bvr.ai, 10851452, 5589310, $$0));
-   public static final cxl tK = a("guardian_spawn_egg", $$0 -> new cyy(bvr.aj, 5931634, 15826224, $$0));
-   public static final cxl tL = a("hoglin_spawn_egg", $$0 -> new cyy(bvr.ak, 13004373, 6251620, $$0));
-   public static final cxl tM = a("horse_spawn_egg", $$0 -> new cyy(bvr.am, 12623485, 15656192, $$0));
-   public static final cxl tN = a("husk_spawn_egg", $$0 -> new cyy(bvr.an, 7958625, 15125652, $$0));
-   public static final cxl tO = a("iron_golem_spawn_egg", $$0 -> new cyy(bvr.aq, 14405058, 7643954, $$0));
-   public static final cxl tP = a("llama_spawn_egg", $$0 -> new cyy(bvr.ay, 12623485, 10051392, $$0));
-   public static final cxl tQ = a("magma_cube_spawn_egg", $$0 -> new cyy(bvr.aA, 3407872, 16579584, $$0));
-   public static final cxl tR = a("mooshroom_spawn_egg", $$0 -> new cyy(bvr.aF, 10489616, 12040119, $$0));
-   public static final cxl tS = a("mule_spawn_egg", $$0 -> new cyy(bvr.aG, 1769984, 5321501, $$0));
-   public static final cxl tT = a("ocelot_spawn_egg", $$0 -> new cyy(bvr.aJ, 15720061, 5653556, $$0));
-   public static final cxl tU = a("panda_spawn_egg", $$0 -> new cyy(bvr.aO, 15198183, 1776418, $$0));
-   public static final cxl tV = a("parrot_spawn_egg", $$0 -> new cyy(bvr.aP, 894731, 16711680, $$0));
-   public static final cxl tW = a("phantom_spawn_egg", $$0 -> new cyy(bvr.aQ, 4411786, 8978176, $$0));
-   public static final cxl tX = a("pig_spawn_egg", $$0 -> new cyy(bvr.aR, 15771042, 14377823, $$0));
-   public static final cxl tY = a("piglin_spawn_egg", $$0 -> new cyy(bvr.aS, 10051392, 16380836, $$0));
-   public static final cxl tZ = a("piglin_brute_spawn_egg", $$0 -> new cyy(bvr.aT, 5843472, 16380836, $$0));
-   public static final cxl ua = a("pillager_spawn_egg", $$0 -> new cyy(bvr.aU, 5451574, 9804699, $$0));
-   public static final cxl ub = a("polar_bear_spawn_egg", $$0 -> new cyy(bvr.aV, 15658718, 14014157, $$0));
-   public static final cxl uc = a("pufferfish_spawn_egg", $$0 -> new cyy(bvr.aX, 16167425, 3654642, $$0));
-   public static final cxl ud = a("rabbit_spawn_egg", $$0 -> new cyy(bvr.aY, 10051392, 7555121, $$0));
-   public static final cxl ue = a("ravager_spawn_egg", $$0 -> new cyy(bvr.aZ, 7697520, 5984329, $$0));
-   public static final cxl uf = a("salmon_spawn_egg", $$0 -> new cyy(bvr.ba, 10489616, 951412, $$0));
-   public static final cxl ug = a("sheep_spawn_egg", $$0 -> new cyy(bvr.bb, 15198183, 16758197, $$0));
-   public static final cxl uh = a("shulker_spawn_egg", $$0 -> new cyy(bvr.bc, 9725844, 5060690, $$0));
-   public static final cxl ui = a("silverfish_spawn_egg", $$0 -> new cyy(bvr.be, 7237230, 3158064, $$0));
-   public static final cxl uj = a("skeleton_spawn_egg", $$0 -> new cyy(bvr.bf, 12698049, 4802889, $$0));
-   public static final cxl uk = a("skeleton_horse_spawn_egg", $$0 -> new cyy(bvr.bg, 6842447, 15066584, $$0));
-   public static final cxl ul = a("slime_spawn_egg", $$0 -> new cyy(bvr.bh, 5349438, 8306542, $$0));
-   public static final cxl um = a("sniffer_spawn_egg", $$0 -> new cyy(bvr.bj, 8855049, 2468720, $$0));
-   public static final cxl un = a("snow_golem_spawn_egg", $$0 -> new cyy(bvr.bl, 14283506, 8496292, $$0));
-   public static final cxl uo = a("spider_spawn_egg", $$0 -> new cyy(bvr.bo, 3419431, 11013646, $$0));
-   public static final cxl up = a("squid_spawn_egg", $$0 -> new cyy(bvr.br, 2243405, 7375001, $$0));
-   public static final cxl uq = a("stray_spawn_egg", $$0 -> new cyy(bvr.bs, 6387319, 14543594, $$0));
-   public static final cxl ur = a("strider_spawn_egg", $$0 -> new cyy(bvr.bt, 10236982, 5065037, $$0));
-   public static final cxl us = a("tadpole_spawn_egg", $$0 -> new cyy(bvr.bu, 7164733, 1444352, $$0));
-   public static final cxl ut = a("trader_llama_spawn_egg", $$0 -> new cyy(bvr.by, 15377456, 4547222, $$0));
-   public static final cxl uu = a("tropical_fish_spawn_egg", $$0 -> new cyy(bvr.bA, 15690005, 16775663, $$0));
-   public static final cxl uv = a("turtle_spawn_egg", $$0 -> new cyy(bvr.bB, 15198183, 44975, $$0));
-   public static final cxl uw = a("vex_spawn_egg", $$0 -> new cyy(bvr.bC, 8032420, 15265265, $$0));
-   public static final cxl ux = a("villager_spawn_egg", $$0 -> new cyy(bvr.bD, 5651507, 12422002, $$0));
-   public static final cxl uy = a("vindicator_spawn_egg", $$0 -> new cyy(bvr.bE, 9804699, 2580065, $$0));
-   public static final cxl uz = a("wandering_trader_spawn_egg", $$0 -> new cyy(bvr.bF, 4547222, 15377456, $$0));
-   public static final cxl uA = a("warden_spawn_egg", $$0 -> new cyy(bvr.bG, 1001033, 3790560, $$0));
-   public static final cxl uB = a("witch_spawn_egg", $$0 -> new cyy(bvr.bI, 3407872, 5349438, $$0));
-   public static final cxl uC = a("wither_spawn_egg", $$0 -> new cyy(bvr.bJ, 1315860, 5075616, $$0));
-   public static final cxl uD = a("wither_skeleton_spawn_egg", $$0 -> new cyy(bvr.bK, 1315860, 4672845, $$0));
-   public static final cxl uE = a("wolf_spawn_egg", $$0 -> new cyy(bvr.bM, 14144467, 13545366, $$0));
-   public static final cxl uF = a("zoglin_spawn_egg", $$0 -> new cyy(bvr.bN, 13004373, 15132390, $$0));
-   public static final cxl uG = a("creaking_spawn_egg", $$0 -> new cyy(bvr.D, 6250335, 16545810, $$0));
-   public static final cxl uH = a("zombie_spawn_egg", $$0 -> new cyy(bvr.bO, 44975, 7969893, $$0));
-   public static final cxl uI = a("zombie_horse_spawn_egg", $$0 -> new cyy(bvr.bP, 3232308, 9945732, $$0));
-   public static final cxl uJ = a("zombie_villager_spawn_egg", $$0 -> new cyy(bvr.bQ, 5651507, 7969893, $$0));
-   public static final cxl uK = a("zombified_piglin_spawn_egg", $$0 -> new cyy(bvr.bR, 15373203, 5009705, $$0));
-   public static final cxl uL = a("experience_bottle", cwu::new, new cxl.a().a(cym.b).a(ku.u, true));
-   public static final cxl uM = a("fire_charge", cwv::new);
-   public static final cxl uN = a("wind_charge", czj::new, new cxl.a().a(0.5F));
-   public static final cxl uO = a("writable_book", czk::new, new cxl.a().a(1).a(ku.S, daw.a));
-   public static final cxl uP = a("written_book", czl::new, new cxl.a().a(16).a(ku.u, true));
-   public static final cxl uQ = a("breeze_rod");
-   public static final cxl uR = a("mace", cyb::new, new cxl.a().a(cym.d).b(500).a(ku.B, cyb.c()).c(uQ).a(cyb.b()).c(15));
-   public static final cxl uS = a("item_frame", $$0 -> new cxo(bvr.at, $$0));
-   public static final cxl uT = a("glow_item_frame", $$0 -> new cxo(bvr.ag, $$0));
-   public static final cxl uU = a(dko.gf);
-   public static final cxl uV = a("carrot", b(dko.gI), new cxl.a().a(cta.g));
-   public static final cxl uW = a("potato", b(dko.gJ), new cxl.a().a(cta.C));
-   public static final cxl uX = a("baked_potato", new cxl.a().a(cta.b));
-   public static final cxl uY = a("poisonous_potato", new cxl.a().a(cta.A, czx.i));
-   public static final cxl uZ = a("map", cwq::new);
-   public static final cxl va = a("golden_carrot", new cxl.a().a(cta.v));
-   public static final cxl vb = a(dko.gU, ($$0, $$1) -> new czc($$0, dko.gV, jm.a, $$1), new cxl.a().a(cym.b).b(bvs.f));
-   public static final cxl vc = a(dko.gW, ($$0, $$1) -> new czc($$0, dko.gX, jm.a, $$1), new cxl.a().a(cym.c).b(bvs.f));
-   public static final cxl vd = a(dko.ha, ($$0, $$1) -> new cyi($$0, dko.hb, $$1), new cxl.a().a(cym.b).b(bvs.f));
-   public static final cxl ve = a(dko.gY, ($$0, $$1) -> new czc($$0, dko.gZ, jm.a, $$1), new cxl.a().a(cym.b).b(bvs.f));
-   public static final cxl vf = a(dko.hc, ($$0, $$1) -> new czc($$0, dko.hd, jm.a, $$1), new cxl.a().a(cym.b).b(bvs.f));
-   public static final cxl vg = a(dko.he, ($$0, $$1) -> new czc($$0, dko.hf, jm.a, $$1), new cxl.a().a(cym.d).b(bvs.f));
-   public static final cxl vh = a(dko.hg, ($$0, $$1) -> new czc($$0, dko.hh, jm.a, $$1), new cxl.a().a(cym.b).b(bvs.f));
-   public static final cxl vi = a("nether_star", new cxl.a().a(cym.c).a(ku.u, true).a(ku.A, new daa(axw.l)));
-   public static final cxl vj = a("pumpkin_pie", new cxl.a().a(cta.E));
-   public static final cxl vk = a("firework_rocket", cww::new, new cxl.a().a(ku.af, new daf(1, List.of())));
-   public static final cxl vl = a("firework_star", cwx::new);
-   public static final cxl vm = a("enchanted_book", new cxl.a().a(1).a(cym.b).a(ku.I, def.a).a(ku.u, true));
-   public static final cxl vn = a("nether_brick");
-   public static final cxl vo = a("prismarine_shard");
-   public static final cxl vp = a("prismarine_crystals");
-   public static final cxl vq = a("rabbit", new cxl.a().a(cta.F));
-   public static final cxl vr = a("cooked_rabbit", new cxl.a().a(cta.p));
-   public static final cxl vs = a("rabbit_stew", new cxl.a().a(1).a(cta.G).a(oP));
-   public static final cxl vt = a("rabbit_foot");
-   public static final cxl vu = a("rabbit_hide");
-   public static final cxl vv = a("armor_stand", cvp::new, new cxl.a().a(16));
-   public static final cxl vw = a("iron_horse_armor", $$0 -> new cvn(dfq.c, cvn.a.a, axf.na, false, $$0), new cxl.a().a(1));
-   public static final cxl vx = a("golden_horse_armor", $$0 -> new cvn(dfq.d, cvn.a.a, axf.na, false, $$0), new cxl.a().a(1));
-   public static final cxl vy = a("diamond_horse_armor", $$0 -> new cvn(dfq.e, cvn.a.a, axf.na, false, $$0), new cxl.a().a(1));
-   public static final cxl vz = a("leather_horse_armor", $$0 -> new cvn(dfq.a, cvn.a.a, axf.na, false, $$0), new cxl.a().a(1));
-   public static final cxl vA = a("lead", cxz::new);
-   public static final cxl vB = a("name_tag", cyf::new);
-   public static final cxl vC = a("command_block_minecart", $$0 -> new cyd(bvr.B, $$0), new cxl.a().a(1).a(cym.d));
-   public static final cxl vD = a("mutton", new cxl.a().a(cta.z));
-   public static final cxl vE = a("cooked_mutton", new cxl.a().a(cta.n));
-   public static final cxl vF = a(dko.ja, ($$0, $$1) -> new cvs($$0, dko.jq, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vG = a(dko.jb, ($$0, $$1) -> new cvs($$0, dko.jr, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vH = a(dko.jc, ($$0, $$1) -> new cvs($$0, dko.js, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vI = a(dko.jd, ($$0, $$1) -> new cvs($$0, dko.jt, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vJ = a(dko.je, ($$0, $$1) -> new cvs($$0, dko.ju, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vK = a(dko.jf, ($$0, $$1) -> new cvs($$0, dko.jv, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vL = a(dko.jg, ($$0, $$1) -> new cvs($$0, dko.jw, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vM = a(dko.jh, ($$0, $$1) -> new cvs($$0, dko.jx, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vN = a(dko.ji, ($$0, $$1) -> new cvs($$0, dko.jy, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vO = a(dko.jj, ($$0, $$1) -> new cvs($$0, dko.jz, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vP = a(dko.jk, ($$0, $$1) -> new cvs($$0, dko.jA, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vQ = a(dko.jl, ($$0, $$1) -> new cvs($$0, dko.jB, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vR = a(dko.jm, ($$0, $$1) -> new cvs($$0, dko.jC, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vS = a(dko.jn, ($$0, $$1) -> new cvs($$0, dko.jD, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vT = a(dko.jo, ($$0, $$1) -> new cvs($$0, dko.jE, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vU = a(dko.jp, ($$0, $$1) -> new cvs($$0, dko.jF, $$1), new cxl.a().a(16).a(ku.ai, duo.a));
-   public static final cxl vV = a("end_crystal", cwr::new, new cxl.a().a(ku.u, true));
-   public static final cxl vW = a("chorus_fruit", new cxl.a().a(cta.i, czx.n).a(1.0F));
-   public static final cxl vX = a("popped_chorus_fruit");
-   public static final cxl vY = a("torchflower_seeds", b(dko.kV));
-   public static final cxl vZ = a("pitcher_pod", b(dko.kW));
-   public static final cxl wa = a("beetroot", new cxl.a().a(cta.d));
-   public static final cxl wb = a("beetroot_seeds", b(dko.kY));
-   public static final cxl wc = a("beetroot_soup", new cxl.a().a(1).a(cta.e).a(oP));
-   public static final cxl wd = a("dragon_breath", new cxl.a().b(sY).a(cym.b));
-   public static final cxl we = a("splash_potion", cza::new, new cxl.a().a(1).a(ku.Q, czo.a));
-   public static final cxl wf = a("spectral_arrow", cyz::new);
-   public static final cxl wg = a("tipped_arrow", czf::new, new cxl.a().a(ku.Q, czo.a));
-   public static final cxl wh = a("lingering_potion", cya::new, new cxl.a().a(1).a(ku.Q, czo.a));
-   public static final cxl wi = a("shield", cyr::new, new cxl.a().b(336).a(ku.ai, duo.a).a(ayd.bd).b(bvs.b));
-   public static final cxl wj = a("totem_of_undying", new cxl.a().a(1).a(cym.b).a(ku.H, dab.c));
-   public static final cxl wk = a("shulker_shell");
-   public static final cxl wl = a("iron_nugget");
-   public static final cxl wm = a("knowledge_book", cxy::new, new cxl.a().a(1).a(cym.d).a(ku.ac, List.of()));
-   public static final cxl wn = a("debug_stick", cwh::new, new cxl.a().a(1).a(cym.d).a(ku.V, dac.a).a(ku.u, true));
-   public static final cxl wo = a("music_disc_13", new cxl.a().a(1).a(cym.b).a(cxx.a));
-   public static final cxl wp = a("music_disc_cat", new cxl.a().a(1).a(cym.b).a(cxx.b));
-   public static final cxl wq = a("music_disc_blocks", new cxl.a().a(1).a(cym.b).a(cxx.c));
-   public static final cxl wr = a("music_disc_chirp", new cxl.a().a(1).a(cym.b).a(cxx.d));
-   public static final cxl ws = a("music_disc_creator", new cxl.a().a(1).a(cym.c).a(cxx.r));
-   public static final cxl wt = a("music_disc_creator_music_box", new cxl.a().a(1).a(cym.b).a(cxx.s));
-   public static final cxl wu = a("music_disc_far", new cxl.a().a(1).a(cym.b).a(cxx.e));
-   public static final cxl wv = a("music_disc_mall", new cxl.a().a(1).a(cym.b).a(cxx.f));
-   public static final cxl ww = a("music_disc_mellohi", new cxl.a().a(1).a(cym.b).a(cxx.g));
-   public static final cxl wx = a("music_disc_stal", new cxl.a().a(1).a(cym.b).a(cxx.h));
-   public static final cxl wy = a("music_disc_strad", new cxl.a().a(1).a(cym.b).a(cxx.i));
-   public static final cxl wz = a("music_disc_ward", new cxl.a().a(1).a(cym.b).a(cxx.j));
-   public static final cxl wA = a("music_disc_11", new cxl.a().a(1).a(cym.b).a(cxx.k));
-   public static final cxl wB = a("music_disc_wait", new cxl.a().a(1).a(cym.b).a(cxx.l));
-   public static final cxl wC = a("music_disc_otherside", new cxl.a().a(1).a(cym.c).a(cxx.n));
-   public static final cxl wD = a("music_disc_relic", new cxl.a().a(1).a(cym.b).a(cxx.p));
-   public static final cxl wE = a("music_disc_5", new cxl.a().a(1).a(cym.b).a(cxx.o));
-   public static final cxl wF = a("music_disc_pigstep", new cxl.a().a(1).a(cym.c).a(cxx.m));
-   public static final cxl wG = a("music_disc_precipice", new cxl.a().a(1).a(cym.b).a(cxx.q));
-   public static final cxl wH = a("disc_fragment_5", cwj::new, new cxl.a().a(cym.b));
-   public static final cxl wI = a("trident", czi::new, new cxl.a().a(cym.c).b(250).a(czi.c()).a(ku.B, czi.d()).c(1).a(alz.b("trident_in_hand")));
-   public static final cxl wJ = a("nautilus_shell", new cxl.a().a(cym.b));
-   public static final cxl wK = a("heart_of_the_sea", new cxl.a().a(cym.b));
-   public static final cxl wL = a("crossbow", cwg::new, new cxl.a().a(1).b(465).a(ku.O, czu.a).c(1));
-   public static final cxl wM = a("suspicious_stew", new cxl.a().a(1).a(cta.K).a(ku.R, daq.a).a(oP));
-   public static final cxl wN = a(dko.oo);
-   public static final cxl wO = a("flower_banner_pattern", $$0 -> new cvt(axs.b, $$0), new cxl.a().a(1));
-   public static final cxl wP = a("creeper_banner_pattern", $$0 -> new cvt(axs.c, $$0), new cxl.a().a(1).a(cym.b));
-   public static final cxl wQ = a("skull_banner_pattern", $$0 -> new cvt(axs.d, $$0), new cxl.a().a(1).a(cym.c));
-   public static final cxl wR = a("mojang_banner_pattern", $$0 -> new cvt(axs.e, $$0), new cxl.a().a(1).a(cym.c));
-   public static final cxl wS = a("globe_banner_pattern", $$0 -> new cvt(axs.f, $$0), new cxl.a().a(1));
-   public static final cxl wT = a("piglin_banner_pattern", $$0 -> new cvt(axs.g, $$0), new cxl.a().a(1).a(cym.b));
-   public static final cxl wU = a("flow_banner_pattern", $$0 -> new cvt(axs.h, $$0), new cxl.a().a(1).a(cym.c));
-   public static final cxl wV = a("guster_banner_pattern", $$0 -> new cvt(axs.i, $$0), new cxl.a().a(1).a(cym.c));
-   public static final cxl wW = a("field_masoned_banner_pattern", $$0 -> new cvt(axs.j, $$0), new cxl.a().a(1));
-   public static final cxl wX = a("bordure_indented_banner_pattern", $$0 -> new cvt(axs.k, $$0), new cxl.a().a(1));
-   public static final cxl wY = a("goat_horn", $$0 -> new cxj(ayc.c, $$0), new cxl.a().a(cym.b).a(1));
-   public static final cxl wZ = a(dko.px);
-   public static final cxl xa = a(dko.op, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl xb = a(dko.oq, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl xc = a(dko.or, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl xd = a(dko.os);
-   public static final cxl xe = a(dko.ot);
-   public static final cxl xf = a(dko.ou);
-   public static final cxl xg = a(dko.ow);
-   public static final cxl xh = a(dko.ox);
-   public static final cxl xi = a(dko.oy);
-   public static final cxl xj = a(dko.oz);
-   public static final cxl xk = a(dko.oA);
-   public static final cxl xl = a("sweet_berries", b(dko.oD), new cxl.a().a(cta.L));
-   public static final cxl xm = a("glow_berries", b(dko.sQ), new cxl.a().a(cta.M));
-   public static final cxl xn = a(dko.oB, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl xo = a(dko.oC, $$0 -> $$0.a(ku.al, dah.a));
-   public static final cxl xp = a(dko.oT);
-   public static final cxl xq = a("honeycomb", cxg::new);
-   public static final cxl xr = a(dko.pz, new cxl.a().a(ku.an, List.of()));
-   public static final cxl xs = a(dko.pA, new cxl.a().a(ku.an, List.of()));
-   public static final cxl xt = a("honey_bottle", new cxl.a().b(sY).a(cta.w, czx.c).a(sY).a(16));
-   public static final cxl xu = a(dko.pC);
-   public static final cxl xv = a(dko.pL);
-   public static final cxl xw = a(dko.pF);
-   public static final cxl xx = a(dko.pM);
-   public static final cxl xy = a(dko.pP);
-   public static final cxl xz = a(dko.pN);
-   public static final cxl xA = a(dko.pX);
-   public static final cxl xB = a(dko.pQ);
-   public static final cxl xC = a(dko.pZ);
-   public static final cxl xD = a(dko.pY);
-   public static final cxl xE = a(dko.pT);
-   public static final cxl xF = a(dko.pR);
-   public static final cxl xG = a(dko.pU);
-   public static final cxl xH = a(dko.pV);
-   public static final cxl xI = a(dko.pS);
-   public static final cxl xJ = a(dko.pG);
-   public static final cxl xK = a(dko.qg);
-   public static final cxl xL = a(dko.qh);
-   public static final cxl xM = a(dko.qi);
-   public static final cxl xN = a(dko.qj);
-   public static final cxl xO = a(dko.qk);
-   public static final cxl xP = a(dko.ql);
-   public static final cxl xQ = a(dko.qm);
-   public static final cxl xR = a(dko.qn);
-   public static final cxl xS = a(dko.qo);
-   public static final cxl xT = a(dko.qp);
-   public static final cxl xU = a(dko.qq);
-   public static final cxl xV = a(dko.qr);
-   public static final cxl xW = a(dko.qs);
-   public static final cxl xX = a(dko.qt);
-   public static final cxl xY = a(dko.qu);
-   public static final cxl xZ = a(dko.qv);
-   public static final cxl ya = a(dko.qw);
-   public static final cxl yb = a(dko.qT);
-   public static final cxl yc = a(dko.qS);
-   public static final cxl yd = a(dko.qR);
-   public static final cxl ye = a(dko.qQ);
-   public static final cxl yf = a(dko.sO);
-   public static final cxl yg = a(dko.tF);
-   public static final cxl yh = a(dko.tG);
-   public static final cxl yi = a(dko.tH);
-   public static final cxl yj = a(dko.tI, cyh::new);
-   public static final cxl yk = a("echo_shard", new cxl.a().a(cym.b));
-   public static final cxl yl = a("brush", cwa::new, new cxl.a().b(64));
-   public static final cxl ym = a("netherite_upgrade_smithing_template", cyv::b, new cxl.a().a(cym.b));
-   public static final cxl yn = a("sentry_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yo = a("dune_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yp = a("coast_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yq = a("wild_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yr = a("ward_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.c));
-   public static final cxl ys = a("eye_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.c));
-   public static final cxl yt = a("vex_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.c));
-   public static final cxl yu = a("tide_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yv = a("snout_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yw = a("rib_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yx = a("spire_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.c));
-   public static final cxl yy = a("wayfinder_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yz = a("shaper_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yA = a("silence_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.d));
-   public static final cxl yB = a("raiser_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yC = a("host_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yD = a("flow_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yE = a("bolt_armor_trim_smithing_template", cyv::a, new cxl.a().a(cym.b));
-   public static final cxl yF = a("angler_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yG = a("archer_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yH = a("arms_up_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yI = a("blade_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yJ = a("brewer_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yK = a("burn_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yL = a("danger_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yM = a("explorer_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yN = a("flow_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yO = a("friend_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yP = a("guster_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yQ = a("heart_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yR = a("heartbreak_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yS = a("howl_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yT = a("miner_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yU = a("mourner_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yV = a("plenty_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yW = a("prize_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yX = a("scrape_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yY = a("sheaf_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl yZ = a("shelter_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl za = a("skull_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl zb = a("snort_pottery_sherd", new cxl.a().a(cym.b));
-   public static final cxl zc = a(dko.sx);
-   public static final cxl zd = a(dko.sy);
-   public static final cxl ze = a(dko.sz);
-   public static final cxl zf = a(dko.sA);
-   public static final cxl zg = a(dko.sB);
-   public static final cxl zh = a(dko.sC);
-   public static final cxl zi = a(dko.sD);
-   public static final cxl zj = a(dko.sE);
-   public static final cxl zk = a(dko.sF);
-   public static final cxl zl = a(dko.sG);
-   public static final cxl zm = a(dko.sH);
-   public static final cxl zn = a(dko.sI);
-   public static final cxl zo = a(dko.sJ);
-   public static final cxl zp = a(dko.sK);
-   public static final cxl zq = a(dko.sL);
-   public static final cxl zr = a(dko.sM);
-   public static final cxl zs = a(dko.tM);
-   public static final cxl zt = a("trial_key");
-   public static final cxl zu = a("ominous_trial_key");
-   public static final cxl zv = a(dko.tN);
-   public static final cxl zw = a("ominous_bottle", new cxl.a().a(cym.b).a(ku.x, czx.d).a(ku.aa, new dan(0)));
+public class cxt extends cxc {
+   public static final int a = 128;
+   public static final int b = 128;
 
-   private static Function<cxl.a, cxl> b(dkm $$0) {
-      return $$1 -> new cvv($$0, $$1.c());
+   public cxt(cxc.a $$0) {
+      super($$0);
    }
 
-   private static aly<cxl> b(String $$0) {
-      return aly.a(mb.K, alz.b($$0));
+   public static cxg a(dgz $$0, int $$1, int $$2, byte $$3, boolean $$4, boolean $$5) {
+      cxg $$6 = new cxg(cxk.sR);
+      evi $$7 = a($$0, $$1, $$2, $$3, $$4, $$5, $$0.ai());
+      $$6.b(ku.L, $$7);
+      return $$6;
    }
 
-   private static aly<cxl> a(aly<dkm> $$0) {
-      return aly.a(mb.K, $$0.a());
+   @Nullable
+   public static evk a(@Nullable evi $$0, dgz $$1) {
+      return $$0 == null ? null : $$1.a($$0);
    }
 
-   public static cxl a(dkm $$0) {
-      return a($$0, cvv::new);
+   @Nullable
+   public static evk b(cxg $$0, dgz $$1) {
+      evi $$2 = $$0.a(ku.L);
+      return a($$2, $$1);
    }
 
-   public static cxl a(dkm $$0, cxl.a $$1) {
-      return a($$0, cvv::new, $$1);
+   private static evi a(dgz $$0, int $$1, int $$2, int $$3, boolean $$4, boolean $$5, alo<dgz> $$6) {
+      evk $$7 = evk.a((double)$$1, (double)$$2, (byte)$$3, $$4, $$5, $$6);
+      evi $$8 = $$0.x();
+      $$0.a($$8, $$7);
+      return $$8;
    }
 
-   public static cxl a(dkm $$0, UnaryOperator<cxl.a> $$1) {
-      return a($$0, ($$1x, $$2) -> new cvv($$1x, $$1.apply($$2)));
+   public void a(dgz $$0, bvb $$1, evk $$2) {
+      if ($$0.ai() == $$2.e && $$1 instanceof cpo) {
+         int $$3 = 1 << $$2.f;
+         int $$4 = $$2.c;
+         int $$5 = $$2.d;
+         int $$6 = azu.a($$1.dB() - (double)$$4) / $$3 + 64;
+         int $$7 = azu.a($$1.dH() - (double)$$5) / $$3 + 64;
+         int $$8 = 128 / $$3;
+         if ($$0.G_().h()) {
+            $$8 /= 2;
+         }
+
+         evk.a $$9 = $$2.a((cpo)$$1);
+         $$9.b++;
+         jh.a $$10 = new jh.a();
+         jh.a $$11 = new jh.a();
+         boolean $$12 = false;
+
+         for (int $$13 = $$6 - $$8 + 1; $$13 < $$6 + $$8; $$13++) {
+            if (($$13 & 15) == ($$9.b & 15) || $$12) {
+               $$12 = false;
+               double $$14 = 0.0;
+
+               for (int $$15 = $$7 - $$8 - 1; $$15 < $$7 + $$8; $$15++) {
+                  if ($$13 >= 0 && $$15 >= -1 && $$13 < 128 && $$15 < 128) {
+                     int $$16 = azu.h($$13 - $$6) + azu.h($$15 - $$7);
+                     boolean $$17 = $$16 > ($$8 - 2) * ($$8 - 2);
+                     int $$18 = ($$4 / $$3 + $$13 - 64) * $$3;
+                     int $$19 = ($$5 / $$3 + $$15 - 64) * $$3;
+                     Multiset<etu> $$20 = LinkedHashMultiset.create();
+                     dzt $$21 = $$0.d(kj.a($$18), kj.a($$19));
+                     if (!$$21.E()) {
+                        int $$22 = 0;
+                        double $$23 = 0.0;
+                        if ($$0.G_().h()) {
+                           int $$24 = $$18 + $$19 * 231871;
+                           $$24 = $$24 * $$24 * 31287121 + $$24 * 11;
+                           if (($$24 >> 20 & 1) == 0) {
+                              $$20.add(dkf.j.m().a((dge)$$0, jh.c), 10);
+                           } else {
+                              $$20.add(dkf.b.m().a((dge)$$0, jh.c), 100);
+                           }
+
+                           $$23 = 100.0;
+                        } else {
+                           for (int $$25 = 0; $$25 < $$3; $$25++) {
+                              for (int $$26 = 0; $$26 < $$3; $$26++) {
+                                 $$10.d($$18 + $$25, 0, $$19 + $$26);
+                                 int $$27 = $$21.a(edj.a.b, $$10.u(), $$10.w()) + 1;
+                                 dxo $$31;
+                                 if ($$27 <= $$0.L_()) {
+                                    $$31 = dkf.I.m();
+                                 } else {
+                                    do {
+                                       $$10.q(--$$27);
+                                       $$31 = $$21.a_($$10);
+                                    } while ($$31.a($$0, $$10) == etu.a && $$27 > $$0.L_());
+
+                                    if ($$27 > $$0.L_() && !$$31.y().c()) {
+                                       int $$29 = $$27 - 1;
+                                       $$11.g($$10);
+
+                                       dxo $$30;
+                                       do {
+                                          $$11.q($$29--);
+                                          $$30 = $$21.a_($$11);
+                                          $$22++;
+                                       } while ($$29 > $$0.L_() && !$$30.y().c());
+
+                                       $$31 = this.a($$0, $$31, $$10);
+                                    }
+                                 }
+
+                                 $$2.a($$0, $$10.u(), $$10.w());
+                                 $$23 += (double)$$27 / (double)($$3 * $$3);
+                                 $$20.add($$31.a($$0, $$10));
+                              }
+                           }
+                        }
+
+                        $$22 /= $$3 * $$3;
+                        etu $$32 = (etu)Iterables.getFirst(Multisets.copyHighestCountFirst($$20), etu.a);
+                        etu.a $$34;
+                        if ($$32 == etu.m) {
+                           double $$33 = (double)$$22 * 0.1 + (double)($$13 + $$15 & 1) * 0.2;
+                           if ($$33 < 0.5) {
+                              $$34 = etu.a.c;
+                           } else if ($$33 > 0.9) {
+                              $$34 = etu.a.a;
+                           } else {
+                              $$34 = etu.a.b;
+                           }
+                        } else {
+                           double $$37 = ($$23 - $$14) * 4.0 / (double)($$3 + 4) + ((double)($$13 + $$15 & 1) - 0.5) * 0.4;
+                           if ($$37 > 0.6) {
+                              $$34 = etu.a.c;
+                           } else if ($$37 < -0.6) {
+                              $$34 = etu.a.a;
+                           } else {
+                              $$34 = etu.a.b;
+                           }
+                        }
+
+                        $$14 = $$23;
+                        if ($$15 >= 0 && $$16 < $$8 * $$8 && (!$$17 || ($$13 + $$15 & 1) != 0)) {
+                           $$12 |= $$2.a($$13, $$15, $$32.b($$34));
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public static cxl a(dkm $$0, dkm... $$1) {
-      cxl $$2 = a($$0);
+   private dxo a(dgz $$0, dxo $$1, jh $$2) {
+      etq $$3 = $$1.y();
+      return !$$3.c() && !$$1.c($$0, $$2, jm.b) ? $$3.g() : $$1;
+   }
 
-      for (dkm $$3 : $$1) {
-         cxl.f.put($$3, $$2);
+   private static boolean a(boolean[] $$0, int $$1, int $$2) {
+      return $$0[$$2 * 128 + $$1];
+   }
+
+   public static void a(arx $$0, cxg $$1) {
+      evk $$2 = b($$1, $$0);
+      if ($$2 != null) {
+         if ($$0.ai() == $$2.e) {
+            int $$3 = 1 << $$2.f;
+            int $$4 = $$2.c;
+            int $$5 = $$2.d;
+            boolean[] $$6 = new boolean[16384];
+            int $$7 = $$4 / $$3 - 64;
+            int $$8 = $$5 / $$3 - 64;
+            jh.a $$9 = new jh.a();
+
+            for (int $$10 = 0; $$10 < 128; $$10++) {
+               for (int $$11 = 0; $$11 < 128; $$11++) {
+                  jq<dib> $$12 = $$0.t($$9.d(($$7 + $$11) * $$3, 0, ($$8 + $$10) * $$3));
+                  $$6[$$10 * 128 + $$11] = $$12.a(axj.ab);
+               }
+            }
+
+            for (int $$13 = 1; $$13 < 127; $$13++) {
+               for (int $$14 = 1; $$14 < 127; $$14++) {
+                  int $$15 = 0;
+
+                  for (int $$16 = -1; $$16 < 2; $$16++) {
+                     for (int $$17 = -1; $$17 < 2; $$17++) {
+                        if (($$16 != 0 || $$17 != 0) && a($$6, $$13 + $$16, $$14 + $$17)) {
+                           $$15++;
+                        }
+                     }
+                  }
+
+                  etu.a $$18 = etu.a.d;
+                  etu $$19 = etu.a;
+                  if (a($$6, $$13, $$14)) {
+                     $$19 = etu.p;
+                     if ($$15 > 7 && $$14 % 2 == 0) {
+                        switch (($$13 + (int)(azu.a((float)$$14 + 0.0F) * 7.0F)) / 8 % 5) {
+                           case 0:
+                           case 4:
+                              $$18 = etu.a.a;
+                              break;
+                           case 1:
+                           case 3:
+                              $$18 = etu.a.b;
+                              break;
+                           case 2:
+                              $$18 = etu.a.c;
+                        }
+                     } else if ($$15 > 7) {
+                        $$19 = etu.a;
+                     } else if ($$15 > 5) {
+                        $$18 = etu.a.b;
+                     } else if ($$15 > 3) {
+                        $$18 = etu.a.a;
+                     } else if ($$15 > 1) {
+                        $$18 = etu.a.a;
+                     }
+                  } else if ($$15 > 0) {
+                     $$19 = etu.A;
+                     if ($$15 > 3) {
+                        $$18 = etu.a.b;
+                     } else {
+                        $$18 = etu.a.d;
+                     }
+                  }
+
+                  if ($$19 != etu.a) {
+                     $$2.b($$13, $$14, $$19.b($$18));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public void a(cxg $$0, dgz $$1, bvb $$2, int $$3, boolean $$4) {
+      if (!$$1.C) {
+         evk $$5 = b($$0, $$1);
+         if ($$5 != null) {
+            if ($$2 instanceof cpo $$6) {
+               $$5.a($$6, $$0);
+            }
+
+            if (!$$5.h && ($$4 || $$2 instanceof cpo && ((cpo)$$2).fa() == $$0)) {
+               this.a($$1, $$2, $$5);
+            }
+         }
+      }
+   }
+
+   @Override
+   public void a(cxg $$0, dgz $$1) {
+      dad $$2 = $$0.c(ku.N);
+      if ($$2 != null) {
+         switch ($$2) {
+            case a:
+               a($$1, $$0);
+               break;
+            case b:
+               c($$0, $$1);
+         }
+      }
+   }
+
+   private static void c(cxg $$0, dgz $$1) {
+      evk $$2 = b($$0, $$1);
+      if ($$2 != null) {
+         evi $$3 = $$1.x();
+         $$1.a($$3, $$2.e());
+         $$0.b(ku.L, $$3);
+      }
+   }
+
+   public static void a(dgz $$0, cxg $$1) {
+      evk $$2 = b($$1, $$0);
+      if ($$2 != null) {
+         evi $$3 = $$0.x();
+         evk $$4 = $$2.b();
+         $$0.a($$3, $$4);
+         $$1.b(ku.L, $$3);
+      }
+   }
+
+   @Override
+   public void a(cxg $$0, cxc.b $$1, List<xk> $$2, cyy $$3) {
+      evi $$4 = $$0.a(ku.L);
+      evk $$5 = $$4 != null ? $$1.a($$4) : null;
+      dad $$6 = $$0.a(ku.N);
+      if ($$5 != null && ($$5.h || $$6 == dad.a)) {
+         $$2.add(xk.a("filled_map.locked", $$4.b()).a(n.h));
       }
 
-      return $$2;
-   }
+      if ($$3.a()) {
+         if ($$5 != null) {
+            if ($$6 == null) {
+               $$2.add(a($$4));
+            }
 
-   public static cxl a(dkm $$0, BiFunction<dkm, cxl.a, cxl> $$1) {
-      return a($$0, $$1, new cxl.a());
-   }
-
-   public static cxl a(dkm $$0, BiFunction<dkm, cxl.a, cxl> $$1, cxl.a $$2) {
-      return a(a($$0.p().h()), $$2x -> $$1.apply($$0, $$2x), $$2.b());
-   }
-
-   public static cxl a(String $$0, Function<cxl.a, cxl> $$1) {
-      return a(b($$0), $$1, new cxl.a());
-   }
-
-   public static cxl a(String $$0, Function<cxl.a, cxl> $$1, cxl.a $$2) {
-      return a(b($$0), $$1, $$2);
-   }
-
-   public static cxl a(String $$0, cxl.a $$1) {
-      return a(b($$0), cxl::new, $$1);
-   }
-
-   public static cxl a(String $$0) {
-      return a(b($$0), cxl::new, new cxl.a());
-   }
-
-   public static cxl a(aly<cxl> $$0, Function<cxl.a, cxl> $$1) {
-      return a($$0, $$1, new cxl.a());
-   }
-
-   public static cxl a(aly<cxl> $$0, Function<cxl.a, cxl> $$1, cxl.a $$2) {
-      cxl $$3 = $$1.apply($$2.b($$0));
-      if ($$3 instanceof cvv $$4) {
-         $$4.a(cxl.f, $$3);
+            int $$7 = $$6 == dad.b ? 1 : 0;
+            int $$8 = Math.min($$5.f + $$7, 4);
+            $$2.add(xk.a("filled_map.scale", 1 << $$8).a(n.h));
+            $$2.add(xk.a("filled_map.level", $$8, 4).a(n.h));
+         } else {
+            $$2.add(xk.c("filled_map.unknown").a(n.h));
+         }
       }
+   }
 
-      return kd.a(ma.g, $$0, $$3);
+   public static xk a(evi $$0) {
+      return xk.a("filled_map.id", $$0.b()).a(n.h);
+   }
+
+   @Override
+   public bta a(daz $$0) {
+      dxo $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(axk.I)) {
+         if (!$$0.q().C) {
+            evk $$2 = b($$0.n(), $$0.q());
+            if ($$2 != null && !$$2.a($$0.q(), $$0.a())) {
+               return bta.d;
+            }
+         }
+
+         return bta.a;
+      } else {
+         return super.a($$0);
+      }
    }
 }

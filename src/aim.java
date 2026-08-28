@@ -1,61 +1,29 @@
-public class aim implements aac<ahm> {
-   public static final zt<ws, aim> a = aac.a(aim::a, aim::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+public class aim implements zr<ahb> {
+   public static final zi<wh, aim> a = zr.a(aim::a, aim::new);
+   private final String b;
 
-   public aim(bvk $$0) {
-      this.b = $$0.R_();
-      this.c = $$0.S_();
-      this.d = $$0.g_();
-      this.e = $$0.dM();
-      this.f = $$0.dO();
+   public aim(String $$0) {
+      this.b = $$0;
    }
 
-   private aim(ws $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   private aim(wh $$0) {
+      this.b = $$0.p();
    }
 
-   private void a(ws $$0) {
+   private void a(wh $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
    }
 
    @Override
-   public aae<aim> a() {
-      return ahk.bM;
+   public zt<aim> a() {
+      return agz.bX;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public String b() {
       return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
    }
 }

@@ -33,11 +33,11 @@ public record dl(dj.c b, dj.c c, dj.c d, dj.c e, dj.c f, dj.c g, dj.c h) {
 
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
       if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
-         double $$4 = bae.f($$0, $$1, $$2);
+         double $$4 = azu.f($$0, $$1, $$2);
          if (!this.e.e($$4)) {
             return false;
          } else {
-            double $$5 = bae.e($$0, $$2);
+            double $$5 = azu.e($$0, $$2);
             if (!this.f.e($$5)) {
                return false;
             } else {

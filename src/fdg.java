@@ -1,136 +1,265 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongMaps;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.LongSummaryStatistics;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.LongPredicate;
+import java.util.function.Predicate;
 
-public class fdg {
-   private static final Map<String, fdg> a = Maps.newHashMap();
-   private static final Map<String, fdg> o = Maps.newHashMap();
-   public static final fdg b = b("dummy");
-   public static final fdg c = b("trigger");
-   public static final fdg d = b("deathCount");
-   public static final fdg e = b("playerKillCount");
-   public static final fdg f = b("totalKillCount");
-   public static final fdg g = a("health", true, fdg.a.b);
-   public static final fdg h = a("food", true, fdg.a.a);
-   public static final fdg i = a("air", true, fdg.a.a);
-   public static final fdg j = a("armor", true, fdg.a.a);
-   public static final fdg k = a("xp", true, fdg.a.a);
-   public static final fdg l = a("level", true, fdg.a.a);
-   public static final fdg[] m = new fdg[]{
-      b("teamkill." + n.a.g()),
-      b("teamkill." + n.b.g()),
-      b("teamkill." + n.c.g()),
-      b("teamkill." + n.d.g()),
-      b("teamkill." + n.e.g()),
-      b("teamkill." + n.f.g()),
-      b("teamkill." + n.g.g()),
-      b("teamkill." + n.h.g()),
-      b("teamkill." + n.i.g()),
-      b("teamkill." + n.j.g()),
-      b("teamkill." + n.k.g()),
-      b("teamkill." + n.l.g()),
-      b("teamkill." + n.m.g()),
-      b("teamkill." + n.n.g()),
-      b("teamkill." + n.o.g()),
-      b("teamkill." + n.p.g())
+public class fdg<T> implements fdf<T> {
+   private static final Comparator<fde<?>> a = ($$0, $$1) -> fdj.b.compare($$0.b(), $$1.b());
+   private final LongPredicate b;
+   private final Long2ObjectMap<fde<T>> c = new Long2ObjectOpenHashMap();
+   private final Long2LongMap d = ae.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
+   private final Queue<fde<T>> e = new PriorityQueue<>(a);
+   private final Queue<fdj<T>> f = new ArrayDeque<>();
+   private final List<fdj<T>> g = new ArrayList<>();
+   private final Set<fdj<?>> h = new ObjectOpenCustomHashSet(fdj.c);
+   private final BiConsumer<fde<T>, fdj<T>> i = ($$0x, $$1) -> {
+      if ($$1.equals($$0x.b())) {
+         this.b($$1);
+      }
    };
-   public static final fdg[] n = new fdg[]{
-      b("killedByTeam." + n.a.g()),
-      b("killedByTeam." + n.b.g()),
-      b("killedByTeam." + n.c.g()),
-      b("killedByTeam." + n.d.g()),
-      b("killedByTeam." + n.e.g()),
-      b("killedByTeam." + n.f.g()),
-      b("killedByTeam." + n.g.g()),
-      b("killedByTeam." + n.h.g()),
-      b("killedByTeam." + n.i.g()),
-      b("killedByTeam." + n.j.g()),
-      b("killedByTeam." + n.k.g()),
-      b("killedByTeam." + n.l.g()),
-      b("killedByTeam." + n.m.g()),
-      b("killedByTeam." + n.n.g()),
-      b("killedByTeam." + n.o.g()),
-      b("killedByTeam." + n.p.g())
-   };
-   private final String p;
-   private final boolean q;
-   private final fdg.a r;
 
-   private static fdg a(String $$0, boolean $$1, fdg.a $$2) {
-      fdg $$3 = new fdg($$0, $$1, $$2);
-      a.put($$0, $$3);
-      return $$3;
+   public fdg(LongPredicate $$0) {
+      this.b = $$0;
    }
 
-   private static fdg b(String $$0) {
-      return a($$0, false, fdg.a.a);
+   public void a(dgf $$0, fde<T> $$1) {
+      long $$2 = $$0.a();
+      this.c.put($$2, $$1);
+      fdj<T> $$3 = $$1.b();
+      if ($$3 != null) {
+         this.d.put($$2, $$3.c());
+      }
+
+      $$1.a(this.i);
    }
 
-   protected fdg(String $$0) {
-      this($$0, false, fdg.a.a);
+   public void a(dgf $$0) {
+      long $$1 = $$0.a();
+      fde<T> $$2 = (fde<T>)this.c.remove($$1);
+      this.d.remove($$1);
+      if ($$2 != null) {
+         $$2.a(null);
+      }
    }
 
-   protected fdg(String $$0, boolean $$1, fdg.a $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      o.put($$0, this);
-   }
-
-   public static Set<String> c() {
-      return ImmutableSet.copyOf(a.keySet());
-   }
-
-   public static Optional<fdg> a(String $$0) {
-      fdg $$1 = o.get($$0);
-      if ($$1 != null) {
-         return Optional.of($$1);
+   @Override
+   public void a(fdj<T> $$0) {
+      long $$1 = dgf.a($$0.b());
+      fde<T> $$2 = (fde<T>)this.c.get($$1);
+      if ($$2 == null) {
+         ae.b("Trying to schedule tick in not loaded position " + $$0.b());
       } else {
-         int $$2 = $$0.indexOf(58);
-         return $$2 < 0 ? Optional.empty() : ma.v.b(alz.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, alz.a($$0.substring($$2 + 1), '.')));
+         $$2.a($$0);
       }
    }
 
-   private static <T> Optional<fdg> a(axo<T> $$0, alz $$1) {
-      return $$0.b().b($$1).map($$0::b);
+   public void a(long $$0, int $$1, BiConsumer<jh, T> $$2) {
+      bpj $$3 = bpi.a();
+      $$3.a("collect");
+      this.a($$0, $$1, $$3);
+      $$3.b("run");
+      $$3.a("ticksToRun", this.f.size());
+      this.a($$2);
+      $$3.b("cleanup");
+      this.c();
+      $$3.c();
    }
 
-   public String d() {
-      return this.p;
+   private void a(long $$0, int $$1, bpj $$2) {
+      this.a($$0);
+      $$2.a("containersToTick", this.e.size());
+      this.a($$0, $$1);
+      this.b();
    }
 
-   public boolean e() {
-      return this.q;
+   private void a(long $$0) {
+      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.d);
+
+      while ($$1.hasNext()) {
+         Entry $$2 = (Entry)$$1.next();
+         long $$3 = $$2.getLongKey();
+         long $$4 = $$2.getLongValue();
+         if ($$4 <= $$0) {
+            fde<T> $$5 = (fde<T>)this.c.get($$3);
+            if ($$5 == null) {
+               $$1.remove();
+            } else {
+               fdj<T> $$6 = $$5.b();
+               if ($$6 == null) {
+                  $$1.remove();
+               } else if ($$6.c() > $$0) {
+                  $$2.setValue($$6.c());
+               } else if (this.b.test($$3)) {
+                  $$1.remove();
+                  this.e.add($$5);
+               }
+            }
+         }
+      }
    }
 
-   public fdg.a f() {
-      return this.r;
+   private void a(long $$0, int $$1) {
+      fde<T> $$2;
+      while (this.a($$1) && ($$2 = this.e.poll()) != null) {
+         fdj<T> $$3 = $$2.c();
+         this.c($$3);
+         this.a(this.e, $$2, $$0, $$1);
+         fdj<T> $$4 = $$2.b();
+         if ($$4 != null) {
+            if ($$4.c() <= $$0 && this.a($$1)) {
+               this.e.add($$2);
+            } else {
+               this.b($$4);
+            }
+         }
+      }
    }
 
-   public static enum a implements bba {
-      a("integer"),
-      b("hearts");
-
-      private final String d;
-      public static final bba.a<fdg.a> c = bba.a(fdg.a::values);
-
-      private a(final String $$0) {
-         this.d = $$0;
+   private void b() {
+      for (fde<T> $$0 : this.e) {
+         this.b($$0.b());
       }
+   }
 
-      public String a() {
-         return this.d;
-      }
+   private void b(fdj<T> $$0) {
+      this.d.put(dgf.a($$0.b()), $$0.c());
+   }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+   private void a(Queue<fde<T>> $$0, fde<T> $$1, long $$2, int $$3) {
+      if (this.a($$3)) {
+         fde<T> $$4 = $$0.peek();
+         fdj<T> $$5 = $$4 != null ? $$4.b() : null;
 
-      public static fdg.a a(String $$0) {
-         return c.a($$0, a);
+         while (this.a($$3)) {
+            fdj<T> $$6 = $$1.b();
+            if ($$6 == null || $$6.c() > $$2 || $$5 != null && fdj.b.compare($$6, $$5) > 0) {
+               break;
+            }
+
+            $$1.c();
+            this.c($$6);
+         }
       }
+   }
+
+   private void c(fdj<T> $$0) {
+      this.f.add($$0);
+   }
+
+   private boolean a(int $$0) {
+      return this.f.size() < $$0;
+   }
+
+   private void a(BiConsumer<jh, T> $$0) {
+      while (!this.f.isEmpty()) {
+         fdj<T> $$1 = this.f.poll();
+         if (!this.h.isEmpty()) {
+            this.h.remove($$1);
+         }
+
+         this.g.add($$1);
+         $$0.accept($$1.b(), $$1.a());
+      }
+   }
+
+   private void c() {
+      this.f.clear();
+      this.e.clear();
+      this.g.clear();
+      this.h.clear();
+   }
+
+   @Override
+   public boolean a(jh $$0, T $$1) {
+      fde<T> $$2 = (fde<T>)this.c.get(dgf.a($$0));
+      return $$2 != null && $$2.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(jh $$0, T $$1) {
+      this.d();
+      return this.h.contains(fdj.a($$1, $$0));
+   }
+
+   private void d() {
+      if (this.h.isEmpty() && !this.f.isEmpty()) {
+         this.h.addAll(this.f);
+      }
+   }
+
+   private void a(env $$0, fdg.a<T> $$1) {
+      int $$2 = kj.a((double)$$0.h());
+      int $$3 = kj.a((double)$$0.j());
+      int $$4 = kj.a((double)$$0.k());
+      int $$5 = kj.a((double)$$0.m());
+
+      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
+         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
+            long $$8 = dgf.c($$6, $$7);
+            fde<T> $$9 = (fde<T>)this.c.get($$8);
+            if ($$9 != null) {
+               $$1.accept($$8, $$9);
+            }
+         }
+      }
+   }
+
+   public void a(env $$0) {
+      Predicate<fdj<T>> $$1 = $$1x -> $$0.b($$1x.b());
+      this.a($$0, ($$1x, $$2) -> {
+         fdj<T> $$3 = $$2.b();
+         $$2.a($$1);
+         fdj<T> $$4 = $$2.b();
+         if ($$4 != $$3) {
+            if ($$4 != null) {
+               this.b($$4);
+            } else {
+               this.d.remove($$1x);
+            }
+         }
+      });
+      this.g.removeIf($$1);
+      this.f.removeIf($$1);
+   }
+
+   public void a(env $$0, kl $$1) {
+      this.a(this, $$0, $$1);
+   }
+
+   public void a(fdg<T> $$0, env $$1, kl $$2) {
+      List<fdj<T>> $$3 = new ArrayList<>();
+      Predicate<fdj<T>> $$4 = $$1x -> $$1.b($$1x.b());
+      $$0.g.stream().filter($$4).forEach($$3::add);
+      $$0.f.stream().filter($$4).forEach($$3::add);
+      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
+      LongSummaryStatistics $$5 = $$3.stream().mapToLong(fdj::e).summaryStatistics();
+      long $$6 = $$5.getMin();
+      long $$7 = $$5.getMax();
+      $$3.forEach($$3x -> this.a(new fdj<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
+   }
+
+   @Override
+   public int a() {
+      return this.c.values().stream().mapToInt(fdl::a).sum();
+   }
+
+   @FunctionalInterface
+   interface a<T> {
+      void accept(long var1, fde<T> var3);
    }
 }

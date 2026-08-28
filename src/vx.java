@@ -1,7 +1,18 @@
-public class vx {
-   private static final vw<?>[] a = new vw[]{uz.a, uv.a, vp.a, vc.a, vf.a, va.b, uy.b, uu.a, vs.a, vd.a, ux.b, vb.a, ve.a};
+import java.util.concurrent.atomic.AtomicInteger;
 
-   public static vw<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < a.length ? a[$$0] : vw.a($$0);
+public class vx {
+   private final AtomicInteger a = new AtomicInteger();
+   private final bnt b;
+
+   public vx(bnt $$0) {
+      this.b = $$0;
+   }
+
+   public void a(int $$0) {
+      this.a.getAndAdd($$0);
+   }
+
+   public void a() {
+      this.b.a((long)this.a.getAndSet(0));
    }
 }

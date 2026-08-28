@@ -1,4 +1,5 @@
-public class gyj extends gyt {
-   public int a;
-   public boolean b;
+public class gyj extends gyo {
+   public float a;
+   public int b;
+   public buy.a c = buy.a.a;
 }

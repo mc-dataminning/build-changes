@@ -1,29 +1,31 @@
-import java.nio.file.Path;
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
 
-interface aur {
-   aur a = new aur() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-   };
-   aur b = new aur() {
-      @Override
-      public String toString() {
-         return "relative";
-      }
-   };
+public record aur(String c, String d, String e) {
+   public static final zi<ByteBuf, aur> a = zi.a(zg.o, aur::b, zg.o, aur::c, zg.o, aur::d, aur::new);
+   public static final String b = "minecraft";
 
-   public static record a(Map<String, auo> c) implements aur {
-      public Map<String, auo> a() {
-         return this.c;
-      }
+   public static aur a(String $$0) {
+      return new aur("minecraft", $$0, ab.b().b());
    }
 
-   public static record b(Path c) implements aur {
-      public Path a() {
-         return this.c;
-      }
+   public boolean a() {
+      return this.c.equals("minecraft");
+   }
+
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.e;
    }
 }

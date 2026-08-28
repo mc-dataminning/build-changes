@@ -1,19 +1,9 @@
-import java.util.List;
+public class ddh {
+   public static final bbd<dvo> a = bbd.a("fuel_values");
+   public static final bbd<js.a> b = bbd.a("registries");
+   public static final bbe c = new bbe.a().b(a).b(b).a();
 
-public interface ddh<T> {
-   public interface a<T> extends ddh<T> {
-      T a(T var1, List<T> var2);
-   }
-
-   public interface b<T> extends ddh<T> {
-      default T a(jq<cxl> $$0) {
-         return this.a(new cxp($$0));
-      }
-
-      default T a(cxl $$0) {
-         return this.a(new cxp($$0));
-      }
-
-      T a(cxp var1);
+   public static bbf a(dgz $$0) {
+      return new bbf.a().a(a, $$0.M()).a(b, $$0.K_()).a(c);
    }
 }

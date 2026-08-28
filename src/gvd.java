@@ -1,19 +1,27 @@
-public class gvd extends gwf<gxj, gaw> {
-   private static final alz a = alz.b("textures/entity/breeze/breeze_wind.png");
-   private final gaw b;
+public class gvd<S extends gyo, M extends gbh<S> & gds> extends gwa<S, M> {
+   private final gsj a;
 
-   public gvd(grq.a $$0, gtn<gxj, gaw> $$1) {
-      super($$1);
-      this.b = new gaw($$0.a(gen.I));
+   public gvd(gti<S, M> $$0, gsj $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, gxj $$3, float $$4, float $$5) {
-      fgw $$6 = $$1.getBuffer(glv.a(a, this.a($$3.p) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gqv.a(this.b, this.b.d()).a($$0, $$6, $$2, hbc.d);
+   public void a(fgl $$0, glg $$1, int $$2, S $$3, float $$4, float $$5) {
+      hdi $$6 = $$3.b();
+      if ($$6 != null) {
+         $$0.a();
+         this.a($$3, $$0);
+         cxg $$7 = $$3.aX_();
+         this.a.a($$7, cxe.h, false, $$0, $$1, $$2, hax.d, $$6);
+         $$0.b();
+      }
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   protected void a(S $$0, fgl $$1) {
+      this.d().a($$1);
+      $$1.a(a.b.rotation(0.75F));
+      $$1.b(1.07F, 1.07F, 1.07F);
+      $$1.a(0.0F, 0.13F, -0.34F);
+      $$1.a(a.b.rotation((float) Math.PI));
    }
 }

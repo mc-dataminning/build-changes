@@ -1,34 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fdb {
-   int a();
-
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
-   }
-
-   default int b() {
-      return this.b(1);
-   }
-
-   default void c() {
-      this.a(0);
-   }
-
-   boolean d();
-
-   void e();
-
-   void f();
-
-   @Nullable
-   xv g();
-
-   void a(@Nullable xv var1);
-
-   void a(@Nullable zl var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fdb {
 }

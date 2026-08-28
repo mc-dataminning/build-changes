@@ -1,35 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dts extends dkw {
-   public static final MapCodec<dts> a = b(dts::new);
-   protected static final fcs b = dkm.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+public class dts extends drl implements dtn {
+   public static final MapCodec<dts> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dtn.a.e.fieldOf("weathering_state").forGetter(dlf::c), t()).apply($$0, dts::new)
+   );
+   private final dtn.a g;
 
    @Override
    public MapCodec<dts> a() {
-      return a;
+      return f;
    }
 
-   protected dts(dxu.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void a(dxv $$0, dhi $$1, jh $$2, bvk $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof ash && $$3 instanceof cru) {
-         $$1.a(new jh($$2), true, $$3);
-      }
+   public dts(dtn.a $$0, dxn.d $$1) {
+      super($$1);
+      this.g = $$0;
    }
 
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return b;
+   protected void b(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
-      etx $$3 = $$1.b_($$2);
-      etx $$4 = $$1.b_($$2.d());
-      return ($$3.a() == ety.c || $$0.b() instanceof dom) && $$4.a() == ety.a;
+   protected boolean f(dxo $$0) {
+      return dtn.c($$0.b()).isPresent();
+   }
+
+   public dtn.a q() {
+      return this.g;
    }
 }

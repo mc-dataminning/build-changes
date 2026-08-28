@@ -2,20 +2,17 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
 
 public class bhm extends DataFix {
-   public bhm(Schema $$0) {
-      super($$0, false);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("banners", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> $$0xx.update("Pos", bbu::a))));
+   public bhm(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bin.H);
       return this.fixTypeEverywhereTyped(
-         "MapBannerBlockPosFormatFix", this.getInputSchema().getType(bix.j), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bhm::a))
+         "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", bbh::a))
       );
    }
 }

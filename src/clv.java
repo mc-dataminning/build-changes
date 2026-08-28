@@ -1,124 +1,50 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class clv extends clr {
-   public static final double b = 0.375;
-
-   public clv(bvr<? extends clv> $$0, dhi $$1) {
+public abstract class clv extends crc {
+   protected clv(bvi<? extends clv> $$0, dgz $$1) {
       super($$0, $$1);
    }
 
-   public clv(dhi $$0, jh $$1) {
-      super(bvr.aw, $$0, $$1);
-      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+   @Override
+   protected void B() {
+      super.B();
+   }
+
+   public clv.a m() {
+      return clv.a.a;
    }
 
    @Override
-   protected void a(alg.a $$0) {
+   public boolean c(bvx $$0) {
+      return $$0 instanceof cov && $$0.e_() ? false : super.c($$0);
    }
 
    @Override
-   protected void l() {
-      this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
-      double $$0 = (double)this.aq().l() / 2.0;
-      double $$1 = (double)this.aq().m();
-      this.a(new fbt(this.dB() - $$0, this.dD(), this.dH() - $$0, this.dB() + $$0, this.dD() + $$1, this.dH() + $$0));
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return $$0 < 1024.0;
-   }
-
-   @Override
-   public void a(ash $$0, @Nullable bvk $$1) {
-      this.a(axf.ok, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(ux $$0) {
-   }
-
-   @Override
-   public void a(ux $$0) {
-   }
-
-   @Override
-   public btj a(cpx $$0, bti $$1) {
-      if (this.dW().C) {
-         return btj.a;
+   protected boolean t(bvb $$0) {
+      if (super.t($$0)) {
+         return true;
       } else {
-         boolean $$2 = false;
-         List<bwe> $$3 = cxz.a(this.dW(), this.p(), $$1x -> {
-            bvk $$2x = $$1x.A();
-            return $$2x == $$0 || $$2x == this;
-         });
-
-         for (bwe $$4 : $$3) {
-            if ($$4.A() == $$0) {
-               $$4.b(this, true);
-               $$2 = true;
-            }
-         }
-
-         boolean $$5 = false;
-         if (!$$2) {
-            this.at();
-            if ($$0.gj().d) {
-               for (bwe $$6 : $$3) {
-                  if ($$6.P_() && $$6.A() == this) {
-                     $$6.a(true, false);
-                     $$5 = true;
-                  }
-               }
-            }
-         }
-
-         if ($$2 || $$5) {
-            this.a(ecr.b, $$0);
-         }
-
-         return btj.a;
+         return !$$0.aq().a(axo.z) ? false : this.cr() == null && $$0.cr() == null;
       }
    }
 
-   @Override
-   public boolean m() {
-      return this.dW().a_(this.a).a(axu.U);
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
    }
 
-   public static clv a(dhi $$0, jh $$1) {
-      int $$2 = $$1.u();
-      int $$3 = $$1.v();
-      int $$4 = $$1.w();
-
-      for (clv $$6 : $$0.a(clv.class, new fbt((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
-         if ($$6.p().equals($$1)) {
-            return $$6;
-         }
+   protected class b extends cdn {
+      public b(final crc $$1) {
+         super($$1, false);
       }
 
-      clv $$7 = new clv($$0, $$1);
-      $$0.b($$7);
-      return $$7;
-   }
-
-   public void s() {
-      this.a(axf.ol, 1.0F, 1.0F);
-   }
-
-   @Override
-   public aac<acr> a(asf $$0) {
-      return new acs(this, 0, this.p());
-   }
-
-   @Override
-   public fby u(float $$0) {
-      return this.o($$0).b(0.0, 0.2, 0.0);
-   }
-
-   @Override
-   public cxp dJ() {
-      return new cxp(cxt.vA);
+      @Override
+      public boolean b() {
+         return super.b() && clv.this.gE();
+      }
    }
 }

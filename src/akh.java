@@ -1,3 +1,3 @@
-public interface akh {
-   void a(ws var1);
+public interface akh extends wq {
+   void a(aki var1);
 }

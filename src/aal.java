@@ -1,14 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record aal(ari b) implements zr<aak> {
+   public static final zi<wh, aal> a = zr.a(aal::a, aal::new);
 
-public record aal(xv b) implements aac<aai> {
-   public static final zt<ByteBuf, aal> a = xx.f.a(aal::new, aal::b);
-
-   @Override
-   public aae<aal> a() {
-      return aau.c;
+   private aal(wh $$0) {
+      this(new ari($$0));
    }
 
-   public void a(aai $$0) {
+   private void a(wh $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   public zt<aal> a() {
+      return aaj.l;
+   }
+
+   public void a(aak $$0) {
       $$0.a(this);
    }
 }

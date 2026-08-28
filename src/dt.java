@@ -16,8 +16,8 @@ public record dt(boolean d, boolean e) implements bx {
    }
 
    @Override
-   public boolean a(bvk $$0, ash $$1, @Nullable fby $$2) {
-      return !($$0 instanceof crl $$3) ? false : $$3.gD() == this.d && $$3.gC() == this.e;
+   public boolean a(bvb $$0, arx $$1, @Nullable fbr $$2) {
+      return !($$0 instanceof crc $$3) ? false : $$3.gD() == this.d && $$3.gC() == this.e;
    }
 
    public boolean b() {

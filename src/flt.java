@@ -1,54 +1,74 @@
-import com.google.common.base.Charsets;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class flt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 50;
-   private static final String c = "command_history.txt";
-   private final Path d;
-   private final ayr<String> e = new ayr<>(50);
+public record flt(int a, @Nullable flt.a b, @Nullable xk c, @Nullable String d) {
+   private static final xk e = xk.c("chat.tag.system");
+   private static final xk f = xk.c("chat.tag.system_single_player");
+   private static final xk g = xk.c("chat.tag.not_secure");
+   private static final xk h = xk.c("chat.tag.modified");
+   private static final xk i = xk.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final flt l = new flt(13684944, null, e, "System");
+   private static final flt m = new flt(13684944, null, f, "System");
+   private static final flt n = new flt(13684944, null, g, "Not Secure");
+   private static final flt o = new flt(16733525, null, i, "Chat Error");
 
-   public flt(Path $$0) {
-      this.d = $$0.resolve("command_history.txt");
-      if (Files.exists(this.d)) {
-         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
-            this.e.addAll($$1.lines().toList());
-         } catch (Exception var7) {
-            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
-         }
-      }
+   public static flt a() {
+      return l;
    }
 
-   public void a(String $$0) {
-      if (!$$0.equals(this.e.peekLast())) {
-         if (this.e.size() >= 50) {
-            this.e.removeFirst();
-         }
-
-         this.e.addLast($$0);
-         this.b();
-      }
+   public static flt b() {
+      return m;
    }
 
-   private void b() {
-      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
-         for (String $$1 : this.e) {
-            $$0.write($$1);
-            $$0.newLine();
-         }
-      } catch (IOException var6) {
-         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
-      }
+   public static flt c() {
+      return n;
    }
 
-   public Collection<String> a() {
-      return this.e;
+   public static flt a(String $$0) {
+      xk $$1 = xk.b($$0).a(n.h);
+      xk $$2 = xk.i().b(h).b(xj.s).b($$1);
+      return new flt(6316128, flt.a.a, $$2, "Modified");
+   }
+
+   public static flt d() {
+      return o;
+   }
+
+   public int e() {
+      return this.a;
+   }
+
+   @Nullable
+   public flt.a f() {
+      return this.b;
+   }
+
+   @Nullable
+   public xk g() {
+      return this.c;
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(alp.b("icon/chat_modified"), 9, 9);
+
+      public final alp b;
+      public final int c;
+      public final int d;
+
+      private a(final alp $$0, final int $$1, final int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(fnl $$0, int $$1, int $$2) {
+         $$0.a(glq::H, this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

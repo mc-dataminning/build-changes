@@ -1,23 +1,28 @@
-import java.util.HashSet;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public record ace(Set<alz> b) implements aac<abz> {
-   public static final zt<ws, ace> a = aac.a(ace::a, ace::new);
+public record ace(alp b, @Nullable byte[] c) implements zr<acd> {
+   public static final zi<wh, ace> a = zr.a(ace::a, ace::new);
 
-   private ace(ws $$0) {
-      this($$0.a(HashSet::new, ws::q));
+   private ace(wh $$0) {
+      this($$0.q(), $$0.c(aag.b));
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b, ws::a);
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, aag.b);
    }
 
    @Override
-   public aae<ace> a() {
-      return acf.c;
+   public zt<ace> a() {
+      return acc.b;
    }
 
-   public void a(abz $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public byte[] e() {
+      return this.c;
    }
 }

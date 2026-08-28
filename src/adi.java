@@ -1,29 +1,20 @@
-public class adi implements aac<acr> {
-   public static final zt<ws, adi> a = aac.a(adi::a, adi::new);
-   private final boolean b;
+public record adi(xw.a b) implements zr<acg> {
+   public static final zi<wh, adi> a = zr.a(adi::a, adi::new);
 
-   public adi(boolean $$0) {
-      this.b = $$0;
+   private adi(wh $$0) {
+      this(xw.a.a($$0));
    }
 
-   private adi(ws $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.b);
+   private void a(wh $$0) {
+      xw.a.a($$0, this.b);
    }
 
    @Override
-   public aae<adi> a() {
-      return ahk.q;
+   public zt<adi> a() {
+      return agz.B;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

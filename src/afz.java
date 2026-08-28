@@ -1,37 +1,16 @@
-public class afz implements aac<acr> {
-   public static final zt<ws, afz> a = aac.a(afz::a, afz::new);
-   private final jh b;
-   private final float c;
-
-   public afz(jh $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private afz(ws $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record afz(int b, cxg c) implements zr<acg> {
+   public static final zi<wv, afz> a = zi.a(zg.h, afz::b, cxg.g, afz::e, afz::new);
 
    @Override
-   public aae<afz> a() {
-      return ahk.aD;
+   public zt<afz> a() {
+      return agz.cq;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
-      return this.b;
-   }
-
-   public float e() {
+   public cxg e() {
       return this.c;
    }
 }

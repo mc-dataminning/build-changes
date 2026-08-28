@@ -1,54 +1,36 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class ehw extends egw<ejp> {
-   public ehw(Codec<ejp> $$0) {
+public class ehw extends egp<ejl> {
+   public ehw(Codec<ejl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<ejp> $$0) {
-      ejp $$1 = $$0.f();
-      dig $$2 = $$0.b();
-      bam $$3 = $$0.d();
-      dkm $$4 = $$1.b.b();
-      jh $$5 = a($$2, $$0.e().k().a(jm.a.b, $$2.L_() + 1, $$2.am()), $$4);
-      if ($$5 == null) {
-         return false;
+   public boolean a(egr<ejl> $$0) {
+      ejl $$1 = $$0.f();
+      dhx $$2 = $$0.b();
+      jh $$3 = $$0.e();
+      dxo $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dmm) {
+            if (!$$2.u($$3.d())) {
+               return false;
+            }
+
+            dmm.a($$2, $$4, $$3, 2);
+         } else if ($$4.b() instanceof dpd) {
+            dpd.a($$2, $$3, $$2.H_(), 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
+
+         if ($$1.b()) {
+            $$2.a($$3, $$2.a_($$3).b(), 1);
+         }
+
+         return true;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
-
-         for (jh $$11 : jh.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dxv $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
-         }
-
-         return $$10;
+         return false;
       }
-   }
-
-   @Nullable
-   private static jh a(dhj $$0, jh.a $$1, dkm $$2) {
-      while ($$1.v() > $$0.L_() + 1) {
-         dxv $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(jm.a);
-      }
-
-      return null;
    }
 }

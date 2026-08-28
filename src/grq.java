@@ -1,72 +1,38 @@
-@FunctionalInterface
-public interface grq<T extends bvk> {
-   grp<T, ?> create(grq.a var1);
+public class grq extends grk<clr, gxv> {
+   private final gmj a;
 
-   public static class a {
-      private final gro a;
-      private final gso b;
-      private final glk c;
-      private final gmo d;
-      private final avv e;
-      private final gek f;
-      private final hds g;
-      private final fnq h;
-      private final gvp i;
+   public grq(grl.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
+   }
 
-      public a(gro $$0, gso $$1, glk $$2, gmo $$3, avv $$4, gek $$5, hds $$6, fnq $$7) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = new gvp($$6, this.i().a(gmg.g));
+   public boolean a(clr $$0, gox $$1, double $$2, double $$3, double $$4) {
+      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.p() != $$0.dW().a_($$0.dw());
+   }
+
+   public void a(gxv $$0, fgl $$1, glg $$2, int $$3) {
+      dxo $$4 = $$0.c;
+      if ($$4.o() == dqo.c) {
+         $$1.a();
+         $$1.a(-0.5, 0.0, -0.5);
+         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gky.b($$4)), false, bac.a(), $$4.b($$0.a), hax.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
       }
+   }
 
-      public gro a() {
-         return this.a;
-      }
+   public gxv a() {
+      return new gxv();
+   }
 
-      public gso b() {
-         return this.b;
-      }
-
-      public glk c() {
-         return this.c;
-      }
-
-      public gmo d() {
-         return this.d;
-      }
-
-      public avv e() {
-         return this.e;
-      }
-
-      public gek f() {
-         return this.f;
-      }
-
-      public hds g() {
-         return this.g;
-      }
-
-      public gvp h() {
-         return this.i;
-      }
-
-      public hea i() {
-         return this.d.a().a();
-      }
-
-      public geo a(gem $$0) {
-         return this.f.a($$0);
-      }
-
-      public fnq j() {
-         return this.h;
-      }
+   public void a(clr $$0, gxv $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      jh $$3 = jh.a($$0.dB(), $$0.cR().e, $$0.dH());
+      $$1.a = $$0.l();
+      $$1.b = $$3;
+      $$1.c = $$0.p();
+      $$1.d = $$0.dW().t($$3);
+      $$1.e = $$0.dW();
    }
 }

@@ -1,38 +1,48 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
 
-public interface xc {
-   static xc a(final Runnable $$0) {
-      return new xc() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+public class xc {
+   private static final int a = 10;
+   private static final int b = 127;
+   private static final int c = 128;
+   private static final int d = 7;
 
-         @Nullable
-         @Override
-         public aac<?> b() {
-            $$0.run();
-            return null;
+   public static int a(long $$0) {
+      for (int $$1 = 1; $$1 < 10; $$1++) {
+         if (($$0 & -1L << $$1 * 7) == 0L) {
+            return $$1;
          }
-      };
+      }
+
+      return 10;
    }
 
-   static xc a(final Supplier<aac<?>> $$0) {
-      return new xc() {
-         @Nullable
-         @Override
-         public aac<?> b() {
-            return $$0.get();
+   public static boolean a(byte $$0) {
+      return ($$0 & 128) == 128;
+   }
+
+   public static long a(ByteBuf $$0) {
+      long $$1 = 0L;
+      int $$2 = 0;
+
+      byte $$3;
+      do {
+         $$3 = $$0.readByte();
+         $$1 |= (long)($$3 & 127) << $$2++ * 7;
+         if ($$2 > 10) {
+            throw new RuntimeException("VarLong too big");
          }
-      };
+      } while (a($$3));
+
+      return $$1;
    }
 
-   default void a() {
-   }
+   public static ByteBuf a(ByteBuf $$0, long $$1) {
+      while (($$1 & -128L) != 0L) {
+         $$0.writeByte((int)($$1 & 127L) | 128);
+         $$1 >>>= 7;
+      }
 
-   @Nullable
-   default aac<?> b() {
-      return null;
+      $$0.writeByte((int)$$1);
+      return $$0;
    }
 }

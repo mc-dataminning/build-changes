@@ -1,124 +1,69 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dwh extends dux implements ect.b<eda.b>, eda {
-   private static final Logger a = LogUtils.getLogger();
-   private eda.a b;
-   private final eda.b c;
-   private final eda.d d = this.b();
-   private int h;
-
-   protected dwh(duz<?> $$0, jh $$1, dxv $$2) {
-      super($$0, $$1, $$2);
-      this.b = new eda.a();
-      this.c = new eda.b(this);
-   }
-
-   public dwh(jh $$0, dxv $$1) {
-      this(duz.J, $$0, $$1);
-   }
-
-   public eda.d b() {
-      return new dwh.a(this.aB_());
-   }
-
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      alx<vu> $$2 = $$1.a(vl.a);
-      if ($$0.b("listener", 10)) {
-         eda.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
-            .ifPresent($$0x -> this.b = $$0x);
-      }
-   }
-
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      alx<vu> $$2 = $$1.a(vl.a);
-      eda.a.a
-         .encodeStart($$2, this.b)
-         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
-   }
-
-   @Override
-   public eda.a gp() {
-      return this.b;
-   }
-
-   @Override
-   public eda.d gq() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public eda.b f() {
-      return this.c;
-   }
-
-   protected class a implements eda.d {
-      public static final int b = 8;
-      protected final jh c;
-      private final ecv a;
-
-      public a(final jh $$1) {
-         this.c = $$1;
-         this.a = new ecn($$1);
+public class dwh extends duq implements dhu {
+   private final dga a = new dga() {
+      @Override
+      public void a(dgz $$0, jh $$1, int $$2) {
+         $$0.a($$1, dkf.cA, $$2, 0);
       }
 
       @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public ecv b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(ash $$0, jh $$1, jq<ecr> $$2, @Nullable ecr.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(ecr.f) && !$$2.a(ecr.i) ? dri.q(dwh.this.m()) : false;
-      }
-
-      @Override
-      public void a(ash $$0, jh $$1, jq<ecr> $$2, @Nullable bvk $$3, @Nullable bvk $$4, float $$5) {
-         dxv $$6 = dwh.this.m();
-         if (dri.q($$6)) {
-            dwh.this.a(eda.a_($$2));
-            int $$7 = eda.a_($$5, this.a());
-            if ($$6.b() instanceof dri $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dwh.this.d());
-            }
+      public void a(@Nullable dgz $$0, jh $$1, dht $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            dxo $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 4);
          }
       }
+   };
 
-      @Override
-      public void e() {
-         dwh.this.e();
-      }
+   public dwh(jh $$0, dxo $$1) {
+      super(dus.j, $$0, $$1);
+   }
 
-      @Override
-      public boolean f() {
-         return true;
-      }
+   @Override
+   protected void a(um $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.a.a(this.o, this.p, $$0);
+   }
+
+   @Override
+   protected void b(um $$0, js.a $$1) {
+      super.b($$0, $$1);
+      this.a.a($$0);
+   }
+
+   public static void a(dgz $$0, jh $$1, dxo $$2, dwh $$3) {
+      $$3.a.a($$0, $$1);
+   }
+
+   public static void b(dgz $$0, jh $$1, dxo $$2, dwh $$3) {
+      $$3.a.a((arx)$$0, $$1);
+   }
+
+   public acn b() {
+      return acn.a(this);
+   }
+
+   @Override
+   public um a(js.a $$0) {
+      um $$1 = this.e($$0);
+      $$1.r("SpawnPotentials");
+      return $$1;
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.o, $$0) ? true : super.a_($$0, $$1);
+   }
+
+   @Override
+   public void a(bvi<?> $$0, bac $$1) {
+      this.a.a($$0, this.o, $$1, this.p);
+      this.e();
+   }
+
+   public dga c() {
+      return this.a;
    }
 }

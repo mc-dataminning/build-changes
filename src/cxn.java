@@ -1,37 +1,85 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum cxn implements bba {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
+public class cxn {
+   public static final int a = 20;
+   private long b;
+   @Nullable
+   private jq<cxm> c;
+   private final jh d;
+   private final cxn.a e;
 
-   public static final Codec<cxn> j = bba.a(cxn::values);
-   public static final IntFunction<cxn> k = ayv.a(cxn::a, values(), ayv.a.a);
-   private final byte l;
-   private final String m;
-
-   private cxn(final int $$0, final String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+   public cxn(cxn.a $$0, jh $$1) {
+      this.e = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   public boolean a() {
+      return this.c != null;
    }
 
-   public byte a() {
-      return this.l;
+   @Nullable
+   public cxm b() {
+      return this.c == null ? null : this.c.a();
    }
 
-   public boolean b() {
-      return this == d || this == e;
+   public long c() {
+      return this.b;
+   }
+
+   public void a(jq<cxm> $$0, long $$1) {
+      if (!$$0.a().a($$1)) {
+         this.c = $$0;
+         this.b = $$1;
+      }
+   }
+
+   public void a(dha $$0, jq<cxm> $$1) {
+      this.c = $$1;
+      this.b = 0L;
+      int $$2 = $$0.K_().e(mb.L).a(this.c.a());
+      $$0.a(null, 1010, this.d, $$2);
+      this.e.notifyChange();
+   }
+
+   public void a(dha $$0, @Nullable dxo $$1) {
+      if (this.c != null) {
+         this.c = null;
+         this.b = 0L;
+         $$0.a(eck.F, this.d, eck.a.a($$1));
+         $$0.c(1011, this.d, 0);
+         this.e.notifyChange();
+      }
+   }
+
+   public void b(dha $$0, @Nullable dxo $$1) {
+      if (this.c != null) {
+         if (this.c.a().a(this.b)) {
+            this.a($$0, $$1);
+         } else {
+            if (this.d()) {
+               $$0.a(eck.E, this.d, eck.a.a($$1));
+               a($$0, this.d);
+            }
+
+            this.b++;
+         }
+      }
+   }
+
+   private boolean d() {
+      return this.b % 20L == 0L;
+   }
+
+   private static void a(dha $$0, jh $$1) {
+      if ($$0 instanceof arx $$2) {
+         fbr $$3 = fbr.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.H_().a(4) / 24.0F;
+         $$2.a(ls.ac, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void notifyChange();
    }
 }

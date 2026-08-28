@@ -1,52 +1,33 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class fll extends flf {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xv c = xv.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final fiz e;
-   private final fjs f;
+public enum fll implements azx, baq {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   public fll(long $$0, fiz $$1, fjs $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static final Codec<fll> d = baq.a(fll::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private fll(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public void run() {
-      fhi $$0 = fhi.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
-            }
-         } catch (fjf var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't start mini game!");
-            this.a(var5);
-         }
-      }
+   public String c() {
+      return this.f;
    }
 
    @Override
-   public xv a() {
-      return c;
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.g;
    }
 }

@@ -1,42 +1,110 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Objects;
 
-public record gnb(alz a, List<gnb.b> b) {
-   public gnb(alz a, List<gnb.b> b) {
-      b = List.copyOf(b);
-      this.a = a;
-      this.b = b;
+public class gnb implements hdx {
+   private final alp a;
+   private final j b;
+   private final boolean c;
+   private final int d;
+
+   public gnb(alp $$0, j $$1, boolean $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   protected static class a implements JsonDeserializer<gnb> {
+   public alp a() {
+      return this.a;
+   }
+
+   @Override
+   public j b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gnb $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
+   }
+
+   public static class a implements JsonDeserializer<gnb> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
       public gnb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         alz $$4 = alz.a(azu.i($$3, "model"));
-         List<gnb.b> $$5 = this.a($$3);
-         return new gnb($$4, $$5);
+         alp $$4 = this.b($$3);
+         hdj $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new gnb($$4, $$5.b(), $$6, $$7);
       }
 
-      protected List<gnb.b> a(JsonObject $$0) {
-         Map<alz, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = azu.u($$0, "predicate");
+      private boolean d(JsonObject $$0) {
+         return azk.a($$0, "uvlock", false);
+      }
 
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(alz.a($$3.getKey()), azu.e($$3.getValue(), $$3.getKey()));
+      protected hdj a(JsonObject $$0) {
+         int $$1 = azk.a($$0, "x", 0);
+         int $$2 = azk.a($$0, "y", 0);
+         hdj $$3 = hdj.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
          }
-
-         return $$1.entrySet().stream().map($$0x -> new gnb.b((alz)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
       }
-   }
 
-   public static record b(alz a, float b) {
+      protected alp b(JsonObject $$0) {
+         return alp.a(azk.i($$0, "model"));
+      }
+
+      protected int c(JsonObject $$0) {
+         int $$1 = azk.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
+      }
    }
 }

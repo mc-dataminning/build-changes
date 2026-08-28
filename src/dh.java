@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record dh(
    Optional<dh.b> b,
-   Optional<ju<dik>> c,
-   Optional<ju<eok>> d,
-   Optional<aly<dhi>> e,
+   Optional<ju<dib>> c,
+   Optional<ju<eod>> d,
+   Optional<alo<dgz>> e,
    Optional<Boolean> f,
    Optional<de> g,
    Optional<ax> h,
@@ -18,7 +18,7 @@ public record dh(
                dh.b.a.optionalFieldOf("position").forGetter(dh::a),
                kf.a(mb.aI).optionalFieldOf("biomes").forGetter(dh::b),
                kf.a(mb.aU).optionalFieldOf("structures").forGetter(dh::c),
-               aly.a(mb.be).optionalFieldOf("dimension").forGetter(dh::d),
+               alo.a(mb.be).optionalFieldOf("dimension").forGetter(dh::d),
                Codec.BOOL.optionalFieldOf("smokey").forGetter(dh::e),
                de.a.optionalFieldOf("light").forGetter(dh::f),
                ax.a.optionalFieldOf("block").forGetter(dh::g),
@@ -28,17 +28,17 @@ public record dh(
             .apply($$0, dh::new)
    );
 
-   public boolean a(ash $$0, double $$1, double $$2, double $$3) {
+   public boolean a(arx $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
-      } else if (this.e.isPresent() && this.e.get() != $$0.ah()) {
+      } else if (this.e.isPresent() && this.e.get() != $$0.ai()) {
          return false;
       } else {
          jh $$4 = jh.a($$1, $$2, $$3);
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.b().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dlb.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dks.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record dh(
       return this.b;
    }
 
-   public Optional<ju<dik>> b() {
+   public Optional<ju<dib>> b() {
       return this.c;
    }
 
-   public Optional<ju<eok>> c() {
+   public Optional<ju<eod>> c() {
       return this.d;
    }
 
-   public Optional<aly<dhi>> d() {
+   public Optional<alo<dgz>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record dh(
       private dj.c a;
       private dj.c b;
       private dj.c c;
-      private Optional<ju<dik>> d;
-      private Optional<ju<eok>> e;
-      private Optional<aly<dhi>> f;
+      private Optional<ju<dib>> d;
+      private Optional<ju<eod>> e;
+      private Optional<alo<dgz>> f;
       private Optional<Boolean> g;
       private Optional<de> h;
       private Optional<ax> i;
@@ -125,15 +125,15 @@ public record dh(
          return new dh.a();
       }
 
-      public static dh.a a(jq<dik> $$0) {
+      public static dh.a a(jq<dib> $$0) {
          return a().a(ju.a($$0));
       }
 
-      public static dh.a a(aly<dhi> $$0) {
+      public static dh.a a(alo<dgz> $$0) {
          return a().b($$0);
       }
 
-      public static dh.a b(jq<eok> $$0) {
+      public static dh.a b(jq<eod> $$0) {
          return a().b(ju.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record dh(
          return this;
       }
 
-      public dh.a a(ju<dik> $$0) {
+      public dh.a a(ju<dib> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public dh.a b(ju<eok> $$0) {
+      public dh.a b(ju<eod> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public dh.a b(aly<dhi> $$0) {
+      public dh.a b(alo<dgz> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

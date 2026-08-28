@@ -1,38 +1,27 @@
-public class grd extends gsw<cmj, gxo, gbe> {
-   private static final alz a = alz.b("textures/entity/creeper/creeper.png");
+public class grd extends gqe<cmc, haf, gbc> {
+   private static final alp a = alp.b("textures/entity/zombie/drowned.png");
 
-   public grd(grq.a $$0) {
-      super($$0, new gbe($$0.a(gen.af)), 0.5F);
+   public grd(grl.a $$0) {
+      super($$0, new gbc($$0.a(gei.aw)), new gbc($$0.a(gei.ax)), new gbc($$0.a(gei.aB)), new gbc($$0.a(gei.aC)), new gbc($$0.a(gei.ay)), new gbc($$0.a(gei.az)));
       this.a(new gvh(this, $$0.f()));
    }
 
-   protected void a(gxo $$0, fgs $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + bae.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = bae.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
+   public haf a() {
+      return new haf();
    }
 
-   protected float a(gxo $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : bae.a($$1, 0.5F, 1.0F);
-   }
-
-   public alz b(gxo $$0) {
+   @Override
+   public alp a(haf $$0) {
       return a;
    }
 
-   public gxo a() {
-      return new gxo();
-   }
-
-   public void a(cmj $$0, gxo $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.p();
+   protected void a(haf $$0, fgl $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = $$0.B;
+      if ($$4 > 0.0F) {
+         float $$5 = -10.0F - $$0.V;
+         float $$6 = azu.h($$4, 0.0F, $$5);
+         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.r / 2.0F / $$3, 0.0F);
+      }
    }
 }

@@ -1,7 +1,39 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fjb {
+   private final fko a;
+   private boolean b;
+   private String c;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-interface fjb {
+   public fjb(fko $$0) {
+      this.a = $$0;
+      fko.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public void a(fia $$0) {
+      fko.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   private fko.a b(fia $$0) {
+      fko.a $$1 = this.a.a();
+      if ($$0.a != null && !$$0.a.equals($$1.a)) {
+         fko.a $$2 = new fko.a();
+         $$2.a = $$0.a;
+         $$2.b = true;
+         this.a.a($$2);
+         return $$2;
+      } else {
+         return $$1;
+      }
+   }
 }

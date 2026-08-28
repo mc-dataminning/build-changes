@@ -1,50 +1,49 @@
-public class gav extends gch {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final geo e;
-   private final geo f;
-   private final geo g;
-   private final geo h;
-   private final geo i;
-   private final geo j;
+import java.util.Set;
 
-   public gav(geo $$0) {
-      super($$0, glv::d);
-      this.e = $$0.b("left_lid");
-      this.f = $$0.b("right_lid");
-      this.g = $$0.b("left_pages");
-      this.h = $$0.b("right_pages");
-      this.i = $$0.b("flip_page1");
-      this.j = $$0.b("flip_page2");
+public class gav extends gbh<gxh> {
+   public static final String a = "red_thing";
+   public static final ges b = new gag(Set.of("head", "beak", "red_thing"));
+   private final gej c;
+   private final gej d;
+   private final gej e;
+   private final gej f;
+   private final gej g;
+
+   public gav(gej $$0) {
+      super($$0);
+      this.c = $$0.b("head");
+      this.d = $$0.b("right_leg");
+      this.e = $$0.b("left_leg");
+      this.f = $$0.b("right_wing");
+      this.g = $$0.b("left_wing");
    }
 
-   public static geu a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      $$1.a("left_lid", get.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), geq.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", get.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), geq.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", get.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), geq.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", get.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), geq.a);
-      $$1.a("right_pages", get.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), geq.a);
-      get $$2 = get.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, geq.a);
-      $$1.a("flip_page2", $$2, geq.a);
-      return geu.a($$0, 64, 32);
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      int $$2 = 16;
+      get $$3 = $$1.a("head", geo.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), gel.a(0.0F, 15.0F, -4.0F));
+      $$3.a("beak", geo.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), gel.a);
+      $$3.a("red_thing", geo.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), gel.a);
+      $$1.a("body", geo.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), gel.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      geo $$4 = geo.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$4, gel.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$4, gel.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", geo.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gel.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", geo.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gel.a(4.0F, 13.0F, 0.0F));
+      return gep.a($$0, 64, 32);
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (bae.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.e.f = (float) Math.PI + $$4;
-      this.f.f = -$$4;
-      this.g.f = $$4;
-      this.h.f = -$$4;
-      this.i.f = $$4 - $$4 * 2.0F * $$1;
-      this.j.f = $$4 - $$4 * 2.0F * $$2;
-      this.g.b = bae.a($$4);
-      this.h.b = bae.a($$4);
-      this.i.b = bae.a($$4);
-      this.j.b = bae.a($$4);
+   public void a(gxh $$0) {
+      super.a($$0);
+      float $$1 = (azu.a($$0.a) + 1.0F) * $$0.b;
+      this.c.e = $$0.V * (float) (Math.PI / 180.0);
+      this.c.f = $$0.U * (float) (Math.PI / 180.0);
+      float $$2 = $$0.Y;
+      float $$3 = $$0.X;
+      this.d.e = azu.b($$3 * 0.6662F) * 1.4F * $$2;
+      this.e.e = azu.b($$3 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.g = $$1;
+      this.g.g = -$$1;
    }
 }

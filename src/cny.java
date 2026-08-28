@@ -1,19 +1,43 @@
-import java.util.Map;
+public interface cny {
+   int m_ = 10;
+   float n_ = 0.2F;
 
-public class cny extends bxz<cnt> {
-   public cny() {
-      super(Map.of(cfk.o, cfl.a, cfk.aZ, cfl.b, cfk.ba, cfl.b, cfk.m, cfl.b, cfk.aV, cfl.b));
+   int x();
+
+   static boolean a(arx $$0, bvx $$1, bvx $$2) {
+      float $$3 = (float)$$1.h(bxf.c);
+      float $$4;
+      if (!$$1.e_() && (int)$$3 > 0) {
+         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
+      } else {
+         $$4 = $$3;
+      }
+
+      btr $$6 = $$1.dX().b($$1);
+      boolean $$7 = $$2.a($$0, $$6, $$4);
+      if ($$7) {
+         dds.a($$0, (bvb)$$2, $$6);
+         if (!$$1.e_()) {
+            a($$1, $$2);
+         }
+      }
+
+      return $$7;
    }
 
-   protected boolean a(ash $$0, cnt $$1) {
-      return $$1.bZ() || $$1.bj() || $$1.c(bur.y) != null;
-   }
-
-   protected boolean a(ash $$0, cnt $$1, long $$2) {
-      return false;
-   }
-
-   protected void b(ash $$0, cnt $$1, long $$2) {
-      $$1.ec().a(cfk.aV, bbk.a, 60L);
+   static void a(bvx $$0, bvx $$1) {
+      double $$2 = $$0.h(bxf.d);
+      double $$3 = $$1.h(bxf.p);
+      double $$4 = $$2 - $$3;
+      if (!($$4 <= 0.0)) {
+         double $$5 = $$1.dB() - $$0.dB();
+         double $$6 = $$1.dH() - $$0.dH();
+         float $$7 = (float)($$0.dW().A.a(21) - 10);
+         double $$8 = $$4 * (double)($$0.dW().A.i() * 0.5F + 0.2F);
+         fbr $$9 = new fbr($$5, 0.0, $$6).d().c($$8).b($$7);
+         double $$10 = $$4 * (double)$$0.dW().A.i() * 0.5;
+         $$1.j($$9.d, $$10, $$9.f);
+         $$1.T = true;
+      }
    }
 }

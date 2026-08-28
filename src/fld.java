@@ -1,24 +1,22 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fld extends flf {
+public class fld extends fky {
    private static final Logger b = LogUtils.getLogger();
-   private static final xv c = xv.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fty f;
-   private final String g;
+   private static final xk c = xk.c("mco.backup.restoring");
+   private final fhr d;
+   private final long e;
+   private final fjl f;
 
-   public fld(long $$0, int $$1, String $$2, fty $$3) {
+   public fld(fhr $$0, long $$1, fjl $$2) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+      this.f = $$2;
    }
 
    @Override
    public void run() {
-      fhi $$0 = fhi.a();
+      fhb $$0 = fhb.a();
       int $$1 = 0;
 
       while ($$1 < 25) {
@@ -27,36 +25,35 @@ public class fld extends flf {
                return;
             }
 
-            fiy $$2 = $$0.b(this.d, this.e);
+            $$0.b(this.e, this.d.a);
             a(1L);
             if (this.d()) {
                return;
             }
 
-            a(new fjv(this.f, $$2, this.g, $$0x -> {
-            }));
+            a(this.f.g());
             return;
-         } catch (fjf var4) {
+         } catch (fiy var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
             $$1++;
-         } catch (fje var5) {
+         } catch (fix var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't download world data", var5);
-            a(new fjw(var5, this.f));
+            b.error("Couldn't restore backup", var5);
+            a(new fjp(var5, this.f));
             return;
          } catch (Exception var6) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't download world data", var6);
+            b.error("Couldn't restore backup", var6);
             this.a(var6);
             return;
          }
@@ -64,7 +61,7 @@ public class fld extends flf {
    }
 
    @Override
-   public xv a() {
+   public xk a() {
       return c;
    }
 }

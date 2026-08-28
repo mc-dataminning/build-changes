@@ -1,284 +1,181 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class bjl extends DataFix {
-   private static final Set<String> a = Set.of(
-      "dummy",
-      "trigger",
-      "deathCount",
-      "playerKillCount",
-      "totalKillCount",
-      "health",
-      "food",
-      "air",
-      "armor",
-      "xp",
-      "level",
-      "killedByTeam.aqua",
-      "killedByTeam.black",
-      "killedByTeam.blue",
-      "killedByTeam.dark_aqua",
-      "killedByTeam.dark_blue",
-      "killedByTeam.dark_gray",
-      "killedByTeam.dark_green",
-      "killedByTeam.dark_purple",
-      "killedByTeam.dark_red",
-      "killedByTeam.gold",
-      "killedByTeam.gray",
-      "killedByTeam.green",
-      "killedByTeam.light_purple",
-      "killedByTeam.red",
-      "killedByTeam.white",
-      "killedByTeam.yellow",
-      "teamkill.aqua",
-      "teamkill.black",
-      "teamkill.blue",
-      "teamkill.dark_aqua",
-      "teamkill.dark_blue",
-      "teamkill.dark_gray",
-      "teamkill.dark_green",
-      "teamkill.dark_purple",
-      "teamkill.dark_red",
-      "teamkill.gold",
-      "teamkill.gray",
-      "teamkill.green",
-      "teamkill.light_purple",
-      "teamkill.red",
-      "teamkill.white",
-      "teamkill.yellow"
-   );
-   private static final Set<String> b = ImmutableSet.builder()
-      .add("stat.craftItem.minecraft.spawn_egg")
-      .add("stat.useItem.minecraft.spawn_egg")
-      .add("stat.breakItem.minecraft.spawn_egg")
-      .add("stat.pickup.minecraft.spawn_egg")
-      .add("stat.drop.minecraft.spawn_egg")
-      .build();
-   private static final Map<String, String> c = ImmutableMap.builder()
-      .put("stat.leaveGame", "minecraft:leave_game")
-      .put("stat.playOneMinute", "minecraft:play_one_minute")
-      .put("stat.timeSinceDeath", "minecraft:time_since_death")
-      .put("stat.sneakTime", "minecraft:sneak_time")
-      .put("stat.walkOneCm", "minecraft:walk_one_cm")
-      .put("stat.crouchOneCm", "minecraft:crouch_one_cm")
-      .put("stat.sprintOneCm", "minecraft:sprint_one_cm")
-      .put("stat.swimOneCm", "minecraft:swim_one_cm")
-      .put("stat.fallOneCm", "minecraft:fall_one_cm")
-      .put("stat.climbOneCm", "minecraft:climb_one_cm")
-      .put("stat.flyOneCm", "minecraft:fly_one_cm")
-      .put("stat.diveOneCm", "minecraft:dive_one_cm")
-      .put("stat.minecartOneCm", "minecraft:minecart_one_cm")
-      .put("stat.boatOneCm", "minecraft:boat_one_cm")
-      .put("stat.pigOneCm", "minecraft:pig_one_cm")
-      .put("stat.horseOneCm", "minecraft:horse_one_cm")
-      .put("stat.aviateOneCm", "minecraft:aviate_one_cm")
-      .put("stat.jump", "minecraft:jump")
-      .put("stat.drop", "minecraft:drop")
-      .put("stat.damageDealt", "minecraft:damage_dealt")
-      .put("stat.damageTaken", "minecraft:damage_taken")
-      .put("stat.deaths", "minecraft:deaths")
-      .put("stat.mobKills", "minecraft:mob_kills")
-      .put("stat.animalsBred", "minecraft:animals_bred")
-      .put("stat.playerKills", "minecraft:player_kills")
-      .put("stat.fishCaught", "minecraft:fish_caught")
-      .put("stat.talkedToVillager", "minecraft:talked_to_villager")
-      .put("stat.tradedWithVillager", "minecraft:traded_with_villager")
-      .put("stat.cakeSlicesEaten", "minecraft:eat_cake_slice")
-      .put("stat.cauldronFilled", "minecraft:fill_cauldron")
-      .put("stat.cauldronUsed", "minecraft:use_cauldron")
-      .put("stat.armorCleaned", "minecraft:clean_armor")
-      .put("stat.bannerCleaned", "minecraft:clean_banner")
-      .put("stat.brewingstandInteraction", "minecraft:interact_with_brewingstand")
-      .put("stat.beaconInteraction", "minecraft:interact_with_beacon")
-      .put("stat.dropperInspected", "minecraft:inspect_dropper")
-      .put("stat.hopperInspected", "minecraft:inspect_hopper")
-      .put("stat.dispenserInspected", "minecraft:inspect_dispenser")
-      .put("stat.noteblockPlayed", "minecraft:play_noteblock")
-      .put("stat.noteblockTuned", "minecraft:tune_noteblock")
-      .put("stat.flowerPotted", "minecraft:pot_flower")
-      .put("stat.trappedChestTriggered", "minecraft:trigger_trapped_chest")
-      .put("stat.enderchestOpened", "minecraft:open_enderchest")
-      .put("stat.itemEnchanted", "minecraft:enchant_item")
-      .put("stat.recordPlayed", "minecraft:play_record")
-      .put("stat.furnaceInteraction", "minecraft:interact_with_furnace")
-      .put("stat.craftingTableInteraction", "minecraft:interact_with_crafting_table")
-      .put("stat.chestOpened", "minecraft:open_chest")
-      .put("stat.sleepInBed", "minecraft:sleep_in_bed")
-      .put("stat.shulkerBoxOpened", "minecraft:open_shulker_box")
-      .build();
-   private static final String d = "stat.mineBlock";
-   private static final String e = "minecraft:mined";
-   private static final Map<String, String> f = ImmutableMap.builder()
-      .put("stat.craftItem", "minecraft:crafted")
-      .put("stat.useItem", "minecraft:used")
-      .put("stat.breakItem", "minecraft:broken")
-      .put("stat.pickup", "minecraft:picked_up")
-      .put("stat.drop", "minecraft:dropped")
-      .build();
-   private static final Map<String, String> g = ImmutableMap.builder()
-      .put("stat.entityKilledBy", "minecraft:killed_by")
-      .put("stat.killEntity", "minecraft:killed")
-      .build();
-   private static final Map<String, String> h = ImmutableMap.builder()
-      .put("Bat", "minecraft:bat")
-      .put("Blaze", "minecraft:blaze")
-      .put("CaveSpider", "minecraft:cave_spider")
-      .put("Chicken", "minecraft:chicken")
-      .put("Cow", "minecraft:cow")
-      .put("Creeper", "minecraft:creeper")
-      .put("Donkey", "minecraft:donkey")
-      .put("ElderGuardian", "minecraft:elder_guardian")
-      .put("Enderman", "minecraft:enderman")
-      .put("Endermite", "minecraft:endermite")
-      .put("EvocationIllager", "minecraft:evocation_illager")
-      .put("Ghast", "minecraft:ghast")
-      .put("Guardian", "minecraft:guardian")
-      .put("Horse", "minecraft:horse")
-      .put("Husk", "minecraft:husk")
-      .put("Llama", "minecraft:llama")
-      .put("LavaSlime", "minecraft:magma_cube")
-      .put("MushroomCow", "minecraft:mooshroom")
-      .put("Mule", "minecraft:mule")
-      .put("Ozelot", "minecraft:ocelot")
-      .put("Parrot", "minecraft:parrot")
-      .put("Pig", "minecraft:pig")
-      .put("PolarBear", "minecraft:polar_bear")
-      .put("Rabbit", "minecraft:rabbit")
-      .put("Sheep", "minecraft:sheep")
-      .put("Shulker", "minecraft:shulker")
-      .put("Silverfish", "minecraft:silverfish")
-      .put("SkeletonHorse", "minecraft:skeleton_horse")
-      .put("Skeleton", "minecraft:skeleton")
-      .put("Slime", "minecraft:slime")
-      .put("Spider", "minecraft:spider")
-      .put("Squid", "minecraft:squid")
-      .put("Stray", "minecraft:stray")
-      .put("Vex", "minecraft:vex")
-      .put("Villager", "minecraft:villager")
-      .put("VindicationIllager", "minecraft:vindication_illager")
-      .put("Witch", "minecraft:witch")
-      .put("WitherSkeleton", "minecraft:wither_skeleton")
-      .put("Wolf", "minecraft:wolf")
-      .put("ZombieHorse", "minecraft:zombie_horse")
-      .put("PigZombie", "minecraft:zombie_pigman")
-      .put("ZombieVillager", "minecraft:zombie_villager")
-      .put("Zombie", "minecraft:zombie")
-      .build();
-   private static final String i = "minecraft:custom";
+public class bjl extends bhi {
+   private static final Logger a = LogUtils.getLogger();
 
-   public bjl(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bjl(Schema $$0) {
+      super($$0, false, "TrialSpawnerConfigInRegistryFix", bin.s, "minecraft:trial_spawner");
    }
 
-   @Nullable
-   private static bjl.a a(String $$0) {
-      if (b.contains($$0)) {
-         return null;
+   public Dynamic<?> a(Dynamic<vj> $$0) {
+      Optional<Dynamic<vj>> $$1 = $$0.get("normal_config").result();
+      if ($$1.isEmpty()) {
+         return $$0;
       } else {
-         String $$1 = c.get($$0);
-         if ($$1 != null) {
-            return new bjl.a("minecraft:custom", $$1);
+         Optional<Dynamic<vj>> $$2 = $$0.get("ominous_config").result();
+         if ($$2.isEmpty()) {
+            return $$0;
          } else {
-            int $$2 = StringUtils.ordinalIndexOf($$0, ".", 2);
-            if ($$2 < 0) {
-               return null;
-            } else {
-               String $$3 = $$0.substring(0, $$2);
-               if ("stat.mineBlock".equals($$3)) {
-                  String $$4 = c($$0.substring($$2 + 1).replace('.', ':'));
-                  return new bjl.a("minecraft:mined", $$4);
-               } else {
-                  String $$5 = f.get($$3);
-                  if ($$5 != null) {
-                     String $$6 = $$0.substring($$2 + 1).replace('.', ':');
-                     String $$7 = b($$6);
-                     String $$8 = $$7 == null ? $$6 : $$7;
-                     return new bjl.a($$5, $$8);
-                  } else {
-                     String $$9 = g.get($$3);
-                     if ($$9 != null) {
-                        String $$10 = $$0.substring($$2 + 1).replace('.', ':');
-                        String $$11 = h.getOrDefault($$10, $$10);
-                        return new bjl.a($$9, $$11);
-                     } else {
-                        return null;
-                     }
-                  }
-               }
-            }
+            alp $$3 = bjl.a.a.get(Pair.of($$1.get(), $$2.get()));
+            return $$3 == null
+               ? $$0
+               : $$0.set("normal_config", $$0.createString($$3.g("/normal").toString())).set("ominous_config", $$0.createString($$3.g("/ominous").toString()));
          }
       }
    }
 
-   public TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.a(), this.b());
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         DynamicOps<?> $$1 = $$0x.getOps();
+         Dynamic<?> $$2 = this.a($$0x.convert(va.a));
+         return $$2.convert($$1);
+      });
    }
 
-   private TypeRewriteRule a() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.g);
-      Type<?> $$1 = this.getOutputSchema().getType(bix.g);
-      return this.fixTypeEverywhereTyped("StatsCounterFix", $$0, $$1, $$1x -> {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1x.get(DSL.remainderFinder());
-         Map<Dynamic<?>, Dynamic<?>> $$3 = Maps.newHashMap();
-         Optional<? extends Map<? extends Dynamic<?>, ? extends Dynamic<?>>> $$4 = $$2.getMapValues().result();
-         if ($$4.isPresent()) {
-            for (Entry<? extends Dynamic<?>, ? extends Dynamic<?>> $$5 : $$4.get().entrySet()) {
-               if ($$5.getValue().asNumber().result().isPresent()) {
-                  String $$6 = $$5.getKey().asString("");
-                  bjl.a $$7 = a($$6);
-                  if ($$7 != null) {
-                     Dynamic<?> $$8 = $$2.createString($$7.a());
-                     Dynamic<?> $$9 = $$3.computeIfAbsent($$8, $$1xx -> $$2.emptyMap());
-                     $$3.put($$8, $$9.set($$7.b(), $$5.getValue()));
-                  }
-               }
-            }
+   static final class a {
+      public static final Map<Pair<Dynamic<vj>, Dynamic<vj>>, alp> a = new HashMap<>();
+
+      private a() {
+      }
+
+      private static void a(alp $$0, String $$1, String $$2) {
+         try {
+            um $$3 = a($$1);
+            um $$4 = a($$2);
+            um $$5 = $$3.i().a($$4);
+            um $$6 = b($$5.i());
+            Dynamic<vj> $$7 = a($$3);
+            a.put(Pair.of($$7, a($$4)), $$0);
+            a.put(Pair.of($$7, a($$5)), $$0);
+            a.put(Pair.of($$7, a($$6)), $$0);
+         } catch (RuntimeException var8) {
+            throw new IllegalStateException("Failed to parse NBT for " + $$0, var8);
+         }
+      }
+
+      private static Dynamic<vj> a(um $$0) {
+         return new Dynamic(va.a, $$0);
+      }
+
+      private static um a(String $$0) {
+         try {
+            return vk.a($$0);
+         } catch (CommandSyntaxException var2) {
+            throw new IllegalArgumentException("Failed to parse Trial Spawner NBT config: " + $$0, var2);
+         }
+      }
+
+      private static um b(um $$0) {
+         if ($$0.h("spawn_range") == 4) {
+            $$0.r("spawn_range");
          }
 
-         return ae.a($$1, $$2.emptyMap().set("stats", $$2.createMap($$3)));
-      });
-   }
+         if ($$0.j("total_mobs") == 6.0F) {
+            $$0.r("total_mobs");
+         }
 
-   private TypeRewriteRule b() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.H);
-      Type<?> $$1 = this.getOutputSchema().getType(bix.H);
-      return this.fixTypeEverywhereTyped("ObjectiveStatFix", $$0, $$1, $$1x -> {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1x.get(DSL.remainderFinder());
-         Dynamic<?> $$3 = $$2.update("CriteriaName", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map($$0xxx -> {
-               if (a.contains($$0xxx)) {
-                  return $$0xxx;
-               } else {
-                  bjl.a $$1xx = a($$0xxx);
-                  return $$1xx == null ? "dummy" : bla.b($$1xx.a) + ":" + bla.b($$1xx.b);
-               }
-            }).map($$0xx::createString), $$0xx));
-         return ae.a($$1, $$3);
-      });
-   }
+         if ($$0.j("simultaneous_mobs") == 2.0F) {
+            $$0.r("simultaneous_mobs");
+         }
 
-   @Nullable
-   private static String b(String $$0) {
-      return bgx.a($$0, 0);
-   }
+         if ($$0.j("total_mobs_added_per_player") == 2.0F) {
+            $$0.r("total_mobs_added_per_player");
+         }
 
-   private static String c(String $$0) {
-      return bdf.a($$0);
-   }
+         if ($$0.j("simultaneous_mobs_added_per_player") == 1.0F) {
+            $$0.r("simultaneous_mobs_added_per_player");
+         }
 
-   static record a(String a, String b) {
+         if ($$0.h("ticks_between_spawn") == 40) {
+            $$0.r("ticks_between_spawn");
+         }
+
+         return $$0;
+      }
+
+      static {
+         a(
+            alp.b("trial_chamber/breeze"),
+            "{simultaneous_mobs: 1.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:breeze\"}}, weight: 1}], ticks_between_spawn: 20, total_mobs: 2.0f, total_mobs_added_per_player: 1.0f}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 2.0f, total_mobs: 4.0f}"
+         );
+         a(
+            alp.b("trial_chamber/melee/husk"),
+            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:husk\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:husk\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
+         );
+         a(
+            alp.b("trial_chamber/melee/spider"),
+            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:spider\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
+         );
+         a(
+            alp.b("trial_chamber/melee/zombie"),
+            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:zombie\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:zombie\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
+         );
+         a(
+            alp.b("trial_chamber/ranged/poison_skeleton"),
+            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
+         );
+         a(
+            alp.b("trial_chamber/ranged/skeleton"),
+            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
+         );
+         a(
+            alp.b("trial_chamber/ranged/stray"),
+            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
+         );
+         a(
+            alp.b("trial_chamber/slow_ranged/poison_skeleton"),
+            "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}}, weight: 1}], ticks_between_spawn: 160}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
+         );
+         a(
+            alp.b("trial_chamber/slow_ranged/skeleton"),
+            "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}}, weight: 1}], ticks_between_spawn: 160}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
+         );
+         a(
+            alp.b("trial_chamber/slow_ranged/stray"),
+            "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}}, weight: 1}], ticks_between_spawn: 160}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
+         );
+         a(
+            alp.b("trial_chamber/small_melee/baby_zombie"),
+            "{simultaneous_mobs: 2.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {IsBaby: 1b, id: \"minecraft:zombie\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {IsBaby: 1b, id: \"minecraft:zombie\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
+         );
+         a(
+            alp.b("trial_chamber/small_melee/cave_spider"),
+            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:cave_spider\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
+         );
+         a(
+            alp.b("trial_chamber/small_melee/silverfish"),
+            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:silverfish\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
+         );
+         a(
+            alp.b("trial_chamber/small_melee/slime"),
+            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {Size: 1, id: \"minecraft:slime\"}}, weight: 3}, {data: {entity: {Size: 2, id: \"minecraft:slime\"}}, weight: 1}], ticks_between_spawn: 20}",
+            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
+         );
+      }
    }
 }

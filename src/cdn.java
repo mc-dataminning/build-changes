@@ -1,18 +1,32 @@
-public class cdn extends cdm {
-   private final cpe h;
+public class cdn extends ccm {
+   private final boolean a;
+   private int b;
 
-   public cdn(cpe $$0) {
-      super($$0, cpx.class, 8.0F);
-      this.h = $$0;
+   public cdn(bvz $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean b() {
-      if (this.h.gp()) {
-         this.c = this.h.go();
-         return true;
-      } else {
-         return false;
-      }
+   public boolean c() {
+      return this.a && this.b > 0 && super.c();
+   }
+
+   @Override
+   public void d() {
+      this.b = 20;
+      this.a(true);
+   }
+
+   @Override
+   public void e() {
+      this.a(false);
+   }
+
+   @Override
+   public void a() {
+      this.b--;
+      super.a();
    }
 }

@@ -1,13 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
 public interface esa<P extends erz> {
-   esa<ery> a = a("always_true", ery.a);
-   esa<erv> b = a("linear_pos", erv.a);
-   esa<erk> c = a("axis_aligned_linear_pos", erk.a);
+   esa<erc> a = a("always_true", erc.a);
+   esa<erh> b = a("block_match", erh.a);
+   esa<erj> c = a("blockstate_match", erj.a);
+   esa<esh> d = a("tag_match", esh.a);
+   esa<erw> e = a("random_block_match", erw.a);
+   esa<erx> f = a("random_blockstate_match", erx.a);
 
    MapCodec<P> codec();
 
    static <P extends erz> esa<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.o, $$0, () -> $$1);
+      return kd.a(ma.m, $$0, () -> $$1);
    }
 }

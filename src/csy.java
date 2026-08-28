@@ -1,101 +1,161 @@
-public class csy {
-   private int a = 20;
-   private float b = 5.0F;
-   private float c;
-   private int d;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private void b(int $$0, float $$1) {
-      this.a = bae.a($$0 + this.a, 0, 20);
-      this.b = bae.a($$1 + this.b, 0.0F, (float)this.a);
-   }
-
-   public void a(int $$0, float $$1) {
-      this.b($$0, csx.a($$0, $$1));
-   }
-
-   public void a(csz $$0) {
-      this.b($$0.a(), $$0.b());
-   }
-
-   public void a(asi $$0) {
-      ash $$1 = $$0.y();
-      btg $$2 = $$1.al();
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$2 != btg.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
+public class csy extends cst {
+   private static final int m = 0;
+   private static final int n = 1;
+   private static final int o = 3;
+   private static final int p = 1;
+   private static final int q = 28;
+   private static final int r = 28;
+   private static final int s = 37;
+   private static final int t = 0;
+   private final bst u = new bth(1) {
+      @Override
+      public boolean b(int $$0, cxg $$1) {
+         return $$1.a(axt.bc);
       }
 
-      boolean $$3 = $$1.N().b(dhe.k);
-      if ($$3 && this.b > 0.0F && $$0.gu() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$4 = Math.min(this.b, 6.0F);
-            $$0.c($$4 / 6.0F);
-            this.a($$4);
-            this.d = 0;
+      @Override
+      public int ao_() {
+         return 1;
+      }
+   };
+   private final csy.a v;
+   private final ctg w;
+   private final ctf x;
+
+   public csy(int $$0, bst $$1) {
+      this($$0, $$1, new cup(3), ctg.a);
+   }
+
+   public csy(int $$0, bst $$1, ctf $$2, ctg $$3) {
+      super(cuc.j, $$0);
+      a($$2, 3);
+      this.x = $$2;
+      this.w = $$3;
+      this.v = new csy.a(this.u, 0, 136, 110);
+      this.a(this.v);
+      this.a($$2);
+      this.c($$1, 36, 137);
+   }
+
+   @Override
+   public void a(cpo $$0) {
+      super.a($$0);
+      if (!$$0.dW().C) {
+         cxg $$1 = this.v.a(this.v.a());
+         if (!$$1.f()) {
+            $$0.a($$1, false);
          }
-      } else if ($$3 && this.a >= 18 && $$0.gu()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.c(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.eE() > 10.0F || $$2 == btg.d || $$0.eE() > 1.0F && $$2 == btg.c) {
-               $$0.a($$1, $$0.dX().j(), 1.0F);
+      }
+   }
+
+   @Override
+   public boolean b(cpo $$0) {
+      return a(this.w, $$0, dkf.gj);
+   }
+
+   @Override
+   public void b(int $$0, int $$1) {
+      super.b($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public cxg b(cpo $$0, int $$1) {
+      cxg $$2 = cxg.j;
+      cuq $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxg $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 == 0) {
+            if (!this.a($$4, 1, 37, true)) {
+               return cxg.j;
             }
 
-            this.d = 0;
+            $$3.b($$4, $$2);
+         } else if (!this.v.h() && this.v.a($$4) && $$4.M() == 1) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cxg.j;
+            }
+         } else if ($$1 >= 1 && $$1 < 28) {
+            if (!this.a($$4, 28, 37, false)) {
+               return cxg.j;
+            }
+         } else if ($$1 >= 28 && $$1 < 37) {
+            if (!this.a($$4, 1, 28, false)) {
+               return cxg.j;
+            }
+         } else if (!this.a($$4, 1, 37, false)) {
+            return cxg.j;
          }
-      } else {
-         this.d = 0;
+
+         if ($$4.f()) {
+            $$3.e(cxg.j);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cxg.j;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   public int l() {
+      return this.x.a(0);
+   }
+
+   public static int a(@Nullable jq<bue> $$0) {
+      return $$0 == null ? 0 : ma.d.t().a($$0) + 1;
+   }
+
+   @Nullable
+   public static jq<bue> e(int $$0) {
+      return $$0 == 0 ? null : ma.d.t().a($$0 - 1);
+   }
+
+   @Nullable
+   public jq<bue> m() {
+      return e(this.x.a(1));
+   }
+
+   @Nullable
+   public jq<bue> n() {
+      return e(this.x.a(2));
+   }
+
+   public void a(Optional<jq<bue>> $$0, Optional<jq<bue>> $$1) {
+      if (this.v.h()) {
+         this.x.a(1, a($$0.orElse(null)));
+         this.x.a(2, a($$1.orElse(null)));
+         this.v.a(1);
+         this.w.a(dgz::q);
       }
    }
 
-   public void a(ux $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
+   public boolean o() {
+      return !this.u.a(0).f();
+   }
+
+   class a extends cuq {
+      public a(final bst $$0, final int $$1, final int $$2, final int $$3) {
+         super($$0, $$1, $$2, $$3);
       }
-   }
 
-   public void b(ux $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
-   }
+      @Override
+      public boolean a(cxg $$0) {
+         return $$0.a(axt.bc);
+      }
 
-   public int a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float c() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(float $$0) {
-      this.b = $$0;
+      @Override
+      public int a() {
+         return 1;
+      }
    }
 }

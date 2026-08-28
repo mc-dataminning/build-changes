@@ -1,49 +1,47 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class drw extends djh {
-   public static final MapCodec<drw> c = b(drw::new);
+public class drw extends djp {
+   public static final MapCodec<drw> a = b(drw::new);
 
    @Override
    public MapCodec<drw> a() {
-      return c;
+      return a;
    }
 
-   protected drw(dxu.d $$0) {
+   protected drw(dxn.d $$0) {
       super($$0);
    }
 
    @Override
-   public dux a(jh $$0, dxv $$1) {
-      return new dwn($$0, $$1);
+   public duq a(jh $$0, dxo $$1) {
+      return new dwh($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dux> duy<T> a(dhi $$0, dxv $$1, duz<T> $$2) {
-      return a($$0, $$2, duz.C);
+   public <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
+      return a($$2, dus.j, $$0.C ? dwh::a : dwh::b);
    }
 
    @Override
-   protected void a(dhi $$0, jh $$1, cpx $$2) {
-      dux $$3 = $$0.c_($$1);
-      if ($$3 instanceof dwn) {
-         $$2.a((btl)$$3);
-         $$2.a(axp.at);
+   protected void a(dxo $$0, arx $$1, jh $$2, cxg $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
+         this.a($$1, $$2, $$5);
       }
    }
 
    @Override
-   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, axf.yJ, axg.e, 1.0F, 1.0F, false);
-         }
+   protected dqo a_(dxo $$0) {
+      return dqo.c;
+   }
 
-         $$1.a(ls.af, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public void a(cxg $$0, cxc.b $$1, List<xk> $$2, cyy $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dhu.a($$0, $$2, "SpawnData");
    }
 }

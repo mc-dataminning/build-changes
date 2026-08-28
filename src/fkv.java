@@ -1,58 +1,38 @@
-import com.google.gson.annotations.SerializedName;
-import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+public class fkv extends fky {
+   private static final xk b = xk.c("mco.connect.connecting");
+   private final hhq c;
+   private final fic d;
+   private final fid e;
 
-public class fkv {
-   private static final String a = "realms_persistence.json";
-   private static final fia b = new fia();
-   private static final Logger c = LogUtils.getLogger();
-
-   public fkv.a a() {
-      return b();
+   public fkv(ftr $$0, fic $$1, fid $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new hhq($$0);
    }
 
-   public void a(fkv.a $$0) {
-      b($$0);
-   }
-
-   public static fkv.a b() {
-      Path $$0 = c();
-
-      try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         fkv.a $$2 = b.a($$1, fkv.a.class);
-         if ($$2 != null) {
-            return $$2;
-         }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
-      }
-
-      return new fkv.a();
-   }
-
-   public static void b(fkv.a $$0) {
-      Path $$1 = c();
-
-      try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
+   @Override
+   public void run() {
+      if (this.e.a != null) {
+         this.c.a(this.d, ggx.a(this.e.a));
+      } else {
+         this.b();
       }
    }
 
-   private static Path c() {
-      return fmg.Q().q.toPath().resolve("realms_persistence.json");
+   @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      flz.Q().af().i();
    }
 
-   public static class a implements fir {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public xk a() {
+      return b;
    }
 }

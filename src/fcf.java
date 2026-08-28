@@ -1,18 +1,37 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import javax.annotation.Nullable;
 
-public final class fcf extends fcs {
-   protected fcf(fch $$0) {
-      super($$0);
+public class fcf extends fcb {
+   @Nullable
+   private jh b;
+   @Nullable
+   private jh c;
+
+   protected fcf(crn $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
+   }
+
+   private void a(crn $$0) {
+      jh $$1 = $$0.p();
+      dxo $$2 = $$0.dW().a_($$1);
+      boolean $$3 = djs.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         dyr $$4 = $$2.c(((djs)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
    }
 
    @Override
-   public DoubleList a(jm.a $$0) {
-      return new fce(this.a.c($$0));
-   }
-
-   @Override
-   protected int a(jm.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return bae.a(bae.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public fcl a(dxo $$0, dgi $$1, jh $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fci.a();
    }
 }

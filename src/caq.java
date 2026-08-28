@@ -1,29 +1,34 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class caq {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
+   public static bxr<bvx> a(dkd $$0) {
+      return cbd.a(
+         (Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$1 -> $$1.group($$1.c(cfb.o), $$1.b(cfb.m), $$1.b(cfb.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bj() && $$3x.aJ()) {
+                        jh $$5 = $$3x.dw().e();
 
-   public static bzk<bwo> a(cfk<jp> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return cbm.a(
-         (Function<cbm.b<bwo>, ? extends App<cbm.c<bwo>, cbp<bwo>>>)($$4 -> $$4.group($$4.a(cfk.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  jp $$9 = $$4.b($$5);
-                  if ($$6.ah() != $$9.a() || !$$9.b().a($$7.du(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
-                  } else {
-                     Optional<fby> $$10 = Optional.ofNullable(che.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new cfn($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+                        for (jm $$6 : jm.c.a) {
+                           jh $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).g($$2x, $$7).a(jm.b).c() && $$2x.b_($$7).b(etr.c)) {
+                              jh $$8 = $$7.d();
+                              if ($$2x.a_($$8).l()) {
+                                 dxo $$9 = $$0.m();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(eck.i, $$8, eck.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, awv.kp, aww.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
+
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
       );
    }
 }

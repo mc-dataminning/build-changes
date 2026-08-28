@@ -1,11 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import javax.annotation.Nullable;
 
-public record auc(cst b) {
-   private static final Codec<auc> c = RecordCodecBuilder.create($$0 -> $$0.group(csv.g.fieldOf("enabled").forGetter(auc::a)).apply($$0, auc::new));
-   public static final auu<auc> a = auu.a("features", c);
+abstract class auc implements BasicFileAttributes {
+   private static final FileTime a = FileTime.fromMillis(0L);
 
-   public cst a() {
-      return this.b;
+   @Override
+   public FileTime lastModifiedTime() {
+      return a;
+   }
+
+   @Override
+   public FileTime lastAccessTime() {
+      return a;
+   }
+
+   @Override
+   public FileTime creationTime() {
+      return a;
+   }
+
+   @Override
+   public boolean isSymbolicLink() {
+      return false;
+   }
+
+   @Override
+   public boolean isOther() {
+      return false;
+   }
+
+   @Override
+   public long size() {
+      return 0L;
+   }
+
+   @Nullable
+   @Override
+   public Object fileKey() {
+      return null;
    }
 }

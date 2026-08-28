@@ -1,13 +1,28 @@
-import org.joml.Matrix4f;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class frd extends frc {
-   public static final frd a = new frd();
+public enum frd implements baq {
+   a("bitmap", fra.a.a),
+   b("ttf", frf.a),
+   c("space", fem.a.a),
+   d("unihex", frg.b.a),
+   e("reference", fre.a);
 
-   public frd() {
-      super(fra.b(alz.b("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   public static final Codec<frd> f = baq.a(frd::values);
+   private final String g;
+   private final MapCodec<? extends frc> h;
+
+   private frd(final String $$0, final MapCodec<? extends frc> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public void a(frc.b $$0, Matrix4f $$1, fgw $$2, int $$3) {
+   public String c() {
+      return this.g;
+   }
+
+   public MapCodec<? extends frc> a() {
+      return this.h;
    }
 }

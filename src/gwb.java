@@ -1,26 +1,25 @@
-public class gwb extends gwf<gzb, gcj> {
-   private final gso a;
+public class gwb<S extends gyo & gzg, M extends gbh<? super S>> extends gwa<S, M> {
+   private final alp a;
+   private final M b;
+   private final M c;
 
-   public gwb(gtn<gzb, gcj> $$0, gso $$1) {
+   public gwb(gti<S, M> $$0, M $$1, M $$2, alp $$3) {
       super($$0);
-      this.a = $$1;
+      this.b = $$1;
+      this.c = $$2;
+      this.a = $$3;
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, gzb $$3, float $$4, float $$5) {
-      hdn $$6 = $$3.b();
-      if ($$6 != null && $$3.g && !$$3.f) {
-         float $$7 = -0.6F;
-         float $$8 = 1.4F;
-         if ($$3.e) {
-            $$7 -= 0.2F * bae.a($$3.p * 0.6F) + 0.2F;
-            $$8 -= 0.09F * bae.a($$3.p * 0.6F);
-         }
+   public gwb(gti<S, M> $$0, M $$1, alp $$2) {
+      this($$0, $$1, $$1, $$2);
+   }
 
-         $$0.a();
-         $$0.a(0.1F, $$8, $$7);
-         cxp $$9 = $$3.aY_();
-         this.a.a($$9, cxn.h, false, $$0, $$1, $$2, hbc.d, $$6);
-         $$0.b();
+   public void a(fgl $$0, glg $$1, int $$2, S $$3, float $$4, float $$5) {
+      if ($$3.c()) {
+         M $$6 = $$3.ae ? this.c : this.b;
+         $$6.a($$3);
+         fgp $$7 = $$1.getBuffer(glq.g(this.a));
+         $$6.a($$0, $$7, $$2, hax.d);
       }
    }
 }

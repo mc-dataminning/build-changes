@@ -1,19 +1,25 @@
-public interface dgk extends dgn {
-   float a(jm var1, boolean var2);
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   etm C_();
-
-   int a(jh var1, dgs var2);
-
-   default int a(dhr $$0, jh $$1) {
-      return this.C_().a($$0).b($$1);
+public interface dgk extends dgq, dhc, dhe {
+   @Override
+   default <T extends duq> Optional<T> a(jh $$0, dus<T> $$1) {
+      return dhc.super.a($$0, $$1);
    }
 
-   default int b(jh $$0, int $$1) {
-      return this.C_().a($$0, $$1);
+   @Override
+   default List<fcl> c(@Nullable bvb $$0, fbm $$1) {
+      return dgq.super.c($$0, $$1);
    }
 
-   default boolean h(jh $$0) {
-      return this.a(dhr.a, $$0) >= 15;
+   @Override
+   default boolean a(@Nullable bvb $$0, fcl $$1) {
+      return dgq.super.a($$0, $$1);
+   }
+
+   @Override
+   default jh a(edj.a $$0, jh $$1) {
+      return dhc.super.a($$0, $$1);
    }
 }

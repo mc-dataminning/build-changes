@@ -1,19 +1,48 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import com.mojang.serialization.Codec;
 
-public enum dam {
-   a(0),
-   b(1);
+public record dam(cxg c) {
+   public static final Codec<dam> a = cxg.a.xmap(dam::new, dam::a);
+   public static final zi<wv, dam> b = zi.a(cxg.h, dam::a, dam::new);
 
-   public static final IntFunction<dam> c = ayv.a(dam::a, values(), ayv.a.a);
-   public static final zt<ByteBuf, dam> d = zr.a(c, dam::a);
-   private final int e;
-
-   private dam(final int $$0) {
-      this.e = $$0;
+   public cxg a(cxg $$0, int $$1, boolean $$2, dam.a $$3) {
+      if ($$2) {
+         return $$0;
+      } else if ($$0.M() >= $$1) {
+         return $$0;
+      } else {
+         cxg $$4 = this.c.v();
+         if ($$0.f()) {
+            return $$4;
+         } else {
+            $$3.apply($$4);
+            return $$0;
+         }
+      }
    }
 
-   public int a() {
-      return this.e;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         dam $$1 = (dam)$$0;
+         return cxg.a(this.c, $$1.c);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return cxg.a(this.c);
+   }
+
+   public cxg a() {
+      return this.c;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(cxg var1);
    }
 }

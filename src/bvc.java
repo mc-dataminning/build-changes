@@ -1,53 +1,27 @@
-import java.util.function.Consumer;
+import java.util.List;
 
-public class bvc {
-   private static final int a = Integer.MIN_VALUE;
-   private int b = Integer.MIN_VALUE;
+public enum bvc {
+   a(bvc.a.c),
+   b(bvc.a.b),
+   c(bvc.a.c),
+   d(bvc.a.d);
 
-   public void a(int $$0) {
-      this.b = $$0;
+   private final bvc.a e;
+
+   private bvc(final bvc.a $$0) {
+      this.e = $$0;
    }
 
-   public void b(int $$0) {
-      if (!this.b()) {
-         this.a($$0);
-      }
+   public List<fbr> a(float $$0, float $$1) {
+      return this.e.create($$0, $$1);
    }
 
-   public void a(boolean $$0, int $$1) {
-      if ($$0) {
-         this.b($$1);
-      } else {
-         this.a();
-      }
-   }
+   public interface a {
+      List<fbr> a = List.of(fbr.c);
+      bvc.a b = ($$0, $$1) -> a;
+      bvc.a c = ($$0, $$1) -> List.of(new fbr(0.0, (double)$$1, 0.0));
+      bvc.a d = ($$0, $$1) -> List.of(new fbr(0.0, (double)$$1 / 2.0, 0.0));
 
-   public void a() {
-      this.b = Integer.MIN_VALUE;
-   }
-
-   public void a(Consumer<bvc> $$0) {
-      if (this.b()) {
-         $$0.accept(this);
-      }
-   }
-
-   public void a(int $$0, float $$1) {
-      if (this.b()) {
-         this.b -= (int)((float)$$0 * $$1);
-      }
-   }
-
-   public long a(float $$0) {
-      float $$1 = $$0 - (float)this.b;
-      return (long)($$1 * 50.0F);
-   }
-
-   public boolean b() {
-      return this.b != Integer.MIN_VALUE;
-   }
-
-   public void a(bvc $$0) {
-      this.b = $$0.b;
+      List<fbr> create(float var1, float var2);
    }
 }

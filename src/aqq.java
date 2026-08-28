@@ -1,62 +1,25 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import java.nio.file.Path;
+import java.util.function.UnaryOperator;
 
-public class aqq implements aqr {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("commands.data.block.invalid"));
-   public static final Function<String, aqs.c> a = $$0 -> new aqs.c() {
-         @Override
-         public aqr a(CommandContext<ew> $$0x) throws CommandSyntaxException {
-            jh $$1 = gs.a($$0, $$0 + "Pos");
-            dux $$2 = ((ew)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw aqq.b.create();
-            } else {
-               return new aqq($$2, $$1);
-            }
-         }
+public class aqq {
+   private final Path a;
+   private aqp b;
 
-         @Override
-         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
-            return $$0.then(ex.a("block").then($$1.apply(ex.a($$0 + "Pos", gs.a()))));
-         }
-      };
-   private final dux c;
-   private final jh d;
-
-   public aqq(dux $$0, jh $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public aqq(Path $$0) {
+      this.a = $$0;
+      this.b = aqp.a($$0);
    }
 
-   @Override
-   public void a(ux $$0) {
-      dxv $$1 = this.c.i().a_(this.d);
-      this.c.c($$0, this.c.i().K_());
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
+   public aqp a() {
+      return this.b;
    }
 
-   @Override
-   public ux a() {
-      return this.c.b(this.c.i().K_());
+   public void b() {
+      this.b.c(this.a);
    }
 
-   @Override
-   public xv b() {
-      return xv.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
-
-   @Override
-   public xv a(vu $$0) {
-      return xv.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), vm.c($$0));
-   }
-
-   @Override
-   public xv a(fo.g $$0, double $$1, int $$2) {
-      return xv.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   public aqq a(UnaryOperator<aqp> $$0) {
+      (this.b = $$0.apply(this.b)).c(this.a);
+      return this;
    }
 }

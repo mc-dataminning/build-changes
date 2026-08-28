@@ -1,36 +1,26 @@
-public class ato implements akx {
-   private static final xv b = xv.c("multiplayer.status.request_handled");
-   private final akw c;
-   private final wp d;
-   private boolean e;
+import java.util.Map;
 
-   public ato(akw $$0, wp $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class ato {
+   private static final ato a = new ato(Map.of());
+   private final Map<auj<?>, ?> b;
+
+   private ato(Map<auj<?>, ?> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a(wr $$0) {
+   public <T> T a(auj<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   @Override
-   public boolean c() {
-      return this.d.i();
+   public static ato a() {
+      return a;
    }
 
-   @Override
-   public void a(aky $$0) {
-      if (this.e) {
-         this.d.a(b);
-      } else {
-         this.e = true;
-         this.d.a(new akv(this.c));
-      }
+   public static <T> ato a(auj<T> $$0, T $$1) {
+      return new ato(Map.of($$0, $$1));
    }
 
-   @Override
-   public void a(aks $$0) {
-      this.d.a(new akp($$0.b()));
-      this.d.a(b);
+   public static <T1, T2> ato a(auj<T1> $$0, T1 $$1, auj<T2> $$2, T2 $$3) {
+      return new ato(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

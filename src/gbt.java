@@ -1,44 +1,13 @@
-import java.util.Set;
-
-public class gbt extends gcw<gyh> {
-   public static final gex a = new gan(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
-
-   public gbt(geo $$0) {
+public class gbt<S extends gyg> extends gbu<S> {
+   public gbt(gej $$0) {
       super($$0);
    }
 
-   public static geu a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      gey $$2 = $$1.a(
-         "head",
-         get.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         geq.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", get.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), geq.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", get.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), geq.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", get.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), geq.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", get.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), geq.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", get.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), geq.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", get.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), geq.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", get.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), geq.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", get.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), geq.a(-3.0F, 14.0F, -6.0F));
-      return geu.a($$0, 64, 64);
-   }
-
-   public void a(gyh $$0) {
-      super.a($$0);
-      this.b.b("left_horn").k = $$0.a;
-      this.b.b("right_horn").k = $$0.b;
-      if ($$0.c != 0.0F) {
-         this.b.e = $$0.c;
-      }
+   public static ger a(gen $$0) {
+      ger $$1 = gbu.a($$0, 0.0F);
+      get $$2 = $$1.a();
+      $$2.a("right_leg", geo.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gel.a(-1.9F, 12.0F, 0.0F));
+      $$2.a("left_leg", geo.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gel.a(1.9F, 12.0F, 0.0F));
+      return $$1;
    }
 }

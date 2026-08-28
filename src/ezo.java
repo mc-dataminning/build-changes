@@ -1,60 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class ezo implements ezy {
-   protected final List<ezy> c;
-   private final Predicate<ewp> a;
+public record ezo(ezr b) implements ezr {
+   public static final MapCodec<ezo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezr.e.fieldOf("term").forGetter(ezo::c)).apply($$0, ezo::new));
 
-   protected ezo(List<ezy> $$0, Predicate<ewp> $$1) {
-      this.c = $$0;
-      this.a = $$1;
+   @Override
+   public ezs b() {
+      return ezt.a;
    }
 
-   protected static <T extends ezo> MapCodec<T> a(Function<List<ezy>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ezy.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends ezo> Codec<T> b(Function<List<ezy>, T> $$0) {
-      return ezy.e.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(ewp $$0) {
-      return this.a.test($$0);
+   public boolean a(ewi $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public void a(ewv $$0) {
-      ezy.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public Set<bbd<?>> a() {
+      return this.b.a();
    }
 
-   public abstract static class a implements ezy.a {
-      private final Builder<ezy> a = ImmutableList.builder();
+   @Override
+   public void a(ewo $$0) {
+      ezr.super.a($$0);
+      this.b.a($$0);
+   }
 
-      protected a(ezy.a... $$0) {
-         for (ezy.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
+   public static ezr.a a(ezr.a $$0) {
+      ezo $$1 = new ezo($$0.build());
+      return () -> $$1;
+   }
 
-      public void a(ezy.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public ezy build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract ezy a(List<ezy> var1);
+   public ezr c() {
+      return this.b;
    }
 }

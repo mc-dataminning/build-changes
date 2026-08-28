@@ -1,20 +1,46 @@
-public record agn(int b) implements aac<acr> {
-   public static final zt<ws, agn> a = aac.a(agn::a, agn::new);
+import javax.annotation.Nullable;
 
-   private agn(ws $$0) {
-      this($$0.l());
+public class agn implements zr<acg> {
+   public static final zi<wh, agn> a = zr.a(agn::a, agn::new);
+   private final int b;
+   @Nullable
+   private final um c;
+
+   public agn(int $$0, @Nullable um $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(ws $$0) {
+   private agn(wh $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
+   }
+
+   private void a(wh $$0) {
       $$0.c(this.b);
+      $$0.a((vj)this.c);
    }
 
    @Override
-   public aae<agn> a() {
-      return ahk.aQ;
+   public zt<agn> a() {
+      return agz.bb;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public um e() {
+      return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

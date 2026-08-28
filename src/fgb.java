@@ -1,17 +1,14 @@
-public interface fgb {
-   fgb a = new fgb() {
-      @Override
-      public <T> T a(fgd<T> $$0) {
-         return $$0.e();
-      }
+public enum fgb {
+   a(0),
+   b(1);
 
-      @Override
-      public <T> void a(fgd<T> $$0, T $$1) {
-         $$0.a($$1);
-      }
-   };
+   private final int c;
 
-   <T> T a(fgd<T> var1);
+   private fgb(final int $$0) {
+      this.c = $$0;
+   }
 
-   <T> void a(fgd<T> var1, T var2);
+   public int a() {
+      return this.c;
+   }
 }

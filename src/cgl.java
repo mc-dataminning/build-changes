@@ -1,30 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.collect.ImmutableMap;
 
-public class cgl extends cgq<bwg> {
+public class cgl extends cgb {
+   private static final ImmutableMap<bvi<?>, Float> a = ImmutableMap.builder()
+      .put(bvi.L, 8.0F)
+      .put(bvi.T, 12.0F)
+      .put(bvi.an, 8.0F)
+      .put(bvi.ao, 12.0F)
+      .put(bvi.aU, 15.0F)
+      .put(bvi.aZ, 12.0F)
+      .put(bvi.bC, 8.0F)
+      .put(bvi.bE, 10.0F)
+      .put(bvi.bN, 10.0F)
+      .put(bvi.bO, 8.0F)
+      .put(bvi.bQ, 8.0F)
+      .build();
+
    @Override
-   public Set<cfk<?>> a() {
-      return ImmutableSet.of(cfk.h, cfk.M, cfk.an);
+   protected boolean a(arx $$0, bvx $$1, bvx $$2) {
+      return this.b($$2) && this.a($$1, $$2);
+   }
+
+   private boolean a(bvx $$0, bvx $$1) {
+      float $$2 = (Float)a.get($$1.aq());
+      return $$1.g((bvb)$$0) <= (double)($$2 * $$2);
    }
 
    @Override
-   protected void a(ash $$0, bwg $$1) {
-      bxi<?> $$2 = $$1.ec();
-      List<cok> $$3 = Lists.newArrayList();
-      cfm $$4 = $$2.c(cfk.h).orElse(cfm.a());
-      Optional<bwi> $$5 = $$4.a($$0x -> $$0x instanceof cno || $$0x instanceof clo).map(bwi.class::cast);
+   protected cfb<bvx> b() {
+      return cfb.A;
+   }
 
-      for (bwg $$7 : $$2.c(cfk.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cok && ((cok)$$7).go()) {
-            $$3.add((cok)$$7);
-         }
-      }
-
-      $$2.a(cfk.M, $$5);
-      $$2.a(cfk.an, $$3);
+   private boolean b(bvx $$0) {
+      return a.containsKey($$0.aq());
    }
 }

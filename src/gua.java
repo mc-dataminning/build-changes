@@ -1,17 +1,21 @@
-public class gua extends gqi<cnj, gzq> {
-   private static final alz a = alz.b("textures/entity/skeleton/stray.png");
-   private static final alz b = alz.b("textures/entity/skeleton/stray_overlay.png");
+public class gua extends gqj<cpx, gzt> {
+   public static final alp a = alp.b("textures/entity/projectiles/arrow.png");
+   public static final alp b = alp.b("textures/entity/projectiles/tipped_arrow.png");
 
-   public gua(grq.a $$0) {
-      super($$0, gen.cW, gen.cX, gen.cY);
-      this.a(new gwi<>(this, $$0.f(), gen.cZ, b));
+   public gua(grl.a $$0) {
+      super($$0);
    }
 
-   public alz b(gzq $$0) {
-      return a;
+   protected alp a(gzt $$0) {
+      return $$0.d ? b : a;
    }
 
-   public gzq b() {
-      return new gzq();
+   public gzt a() {
+      return new gzt();
+   }
+
+   public void a(cpx $$0, gzt $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.d = $$0.D() > 0;
    }
 }

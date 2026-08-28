@@ -1,436 +1,98 @@
-import java.util.List;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dvz extends dwf implements dvy {
-   public static final int d = 8;
-   public static final int e = 5;
-   private static final int[][] f = new int[54][];
-   private jz<cxp> g = jz.a(5, cxp.j);
-   private int h = -1;
-   private long i;
-   private jm j;
+public class dvz extends duq implements ecm.b<dvz.a> {
+   private final dvz.a a;
 
-   public dvz(jh $$0, dxv $$1) {
-      super(duz.s, $$0, $$1);
-      this.j = $$1.c(doj.b);
+   public dvz(jh $$0, dxo $$1) {
+      super(dus.L, $$0, $$1);
+      this.a = new dvz.a($$1, new ecg($$0));
+   }
+
+   public static void a(dgz $$0, jh $$1, dxo $$2, dvz $$3) {
+      $$3.a.d().a($$0, $$1, $$0.H_(), true);
    }
 
    @Override
-   protected void a(ux $$0, js.a $$1) {
+   protected void a(um $$0, js.a $$1) {
       super.a($$0, $$1);
-      this.g = jz.a(this.b(), cxp.j);
-      if (!this.b_($$0)) {
-         btd.b($$0, this.g, $$1);
-      }
-
-      this.h = $$0.h("TransferCooldown");
+      this.a.b.a($$0);
    }
 
    @Override
-   protected void b(ux $$0, js.a $$1) {
+   protected void b(um $$0, js.a $$1) {
+      this.a.b.b($$0);
       super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         btd.a($$0, this.g, $$1);
+   }
+
+   public dvz.a b() {
+      return this.a;
+   }
+
+   public static class a implements ecm {
+      public static final int a = 8;
+      final drd b;
+      private final dxo c;
+      private final eco d;
+
+      public a(dxo $$0, eco $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = drd.a();
       }
 
-      $$0.a("TransferCooldown", this.h);
-   }
-
-   @Override
-   public int b() {
-      return this.g.size();
-   }
-
-   @Override
-   public cxp a(int $$0, int $$1) {
-      this.d_(null);
-      return btd.a(this.f(), $$0, $$1);
-   }
-
-   @Override
-   public void a(int $$0, cxp $$1) {
-      this.d_(null);
-      this.f().set($$0, $$1);
-      $$1.f(this.e_($$1));
-   }
-
-   @Override
-   public void c(dxv $$0) {
-      super.c($$0);
-      this.j = $$0.c(doj.b);
-   }
-
-   @Override
-   protected xv j() {
-      return xv.c("container.hopper");
-   }
-
-   public static void a(dhi $$0, jh $$1, dxv $$2, dvz $$3) {
-      $$3.h--;
-      $$3.i = $$0.ac();
-      if (!$$3.t()) {
-         $$3.d(0);
-         a($$0, $$1, $$2, $$3, () -> a($$0, (dvy)$$3));
-      }
-   }
-
-   private static boolean a(dhi $$0, jh $$1, dxv $$2, dvz $$3, BooleanSupplier $$4) {
-      if ($$0.C) {
-         return false;
-      } else {
-         if (!$$3.t() && $$2.c(doj.c)) {
-            boolean $$5 = false;
-            if (!$$3.c()) {
-               $$5 = a($$0, $$1, $$3);
-            }
-
-            if (!$$3.k()) {
-               $$5 |= $$4.getAsBoolean();
-            }
-
-            if ($$5) {
-               $$3.d(8);
-               a($$0, $$1, $$2);
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private boolean k() {
-      for (cxp $$0 : this.g) {
-         if ($$0.f() || $$0.L() != $$0.k()) {
-            return false;
-         }
+      @Override
+      public eco a() {
+         return this.d;
       }
 
-      return true;
-   }
+      @Override
+      public int b() {
+         return 8;
+      }
 
-   private static boolean a(dhi $$0, jh $$1, dvz $$2) {
-      btc $$3 = b($$0, $$1, $$2);
-      if ($$3 == null) {
-         return false;
-      } else {
-         jm $$4 = $$2.j.g();
-         if (b($$3, $$4)) {
-            return false;
-         } else {
-            for (int $$5 = 0; $$5 < $$2.b(); $$5++) {
-               cxp $$6 = $$2.a($$5);
-               if (!$$6.f()) {
-                  int $$7 = $$6.L();
-                  cxp $$8 = a($$2, $$3, $$2.a($$5, 1), $$4);
-                  if ($$8.f()) {
-                     $$3.e();
-                     return true;
-                  }
+      @Override
+      public ecm.a c() {
+         return ecm.a.b;
+      }
 
-                  $$6.e($$7);
-                  if ($$7 == 1) {
-                     $$2.a($$5, $$6);
-                  }
+      @Override
+      public boolean a(arx $$0, jq<eck> $$1, eck.a $$2, fbr $$3) {
+         if ($$1.a(eck.p) && $$2.a() instanceof bvx $$4) {
+            if (!$$4.eJ()) {
+               btr $$5 = $$4.eG();
+               int $$6 = $$4.a($$0, x.a($$5, btr::d));
+               if ($$4.en() && $$6 > 0) {
+                  this.b.a(jh.a((ka)$$3.a(jm.b, 0.5)), $$6);
+                  this.a($$0, $$4);
                }
+
+               $$4.eI();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, jh.a((ka)$$1x), this.c, $$0.H_()));
             }
 
-            return false;
-         }
-      }
-   }
-
-   private static int[] a(btc $$0, jm $$1) {
-      if ($$0 instanceof btt $$2) {
-         return $$2.a($$1);
-      } else {
-         int $$3 = $$0.b();
-         if ($$3 < f.length) {
-            int[] $$4 = f[$$3];
-            if ($$4 != null) {
-               return $$4;
-            } else {
-               int[] $$5 = c($$3);
-               f[$$3] = $$5;
-               return $$5;
-            }
-         } else {
-            return c($$3);
-         }
-      }
-   }
-
-   private static int[] c(int $$0) {
-      int[] $$1 = new int[$$0];
-      int $$2 = 0;
-
-      while ($$2 < $$1.length) {
-         $$1[$$2] = $$2++;
-      }
-
-      return $$1;
-   }
-
-   private static boolean b(btc $$0, jm $$1) {
-      int[] $$2 = a($$0, $$1);
-
-      for (int $$3 : $$2) {
-         cxp $$4 = $$0.a($$3);
-         if ($$4.L() < $$4.k()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean a(dhi $$0, dvy $$1) {
-      jh $$2 = jh.a($$1.G(), $$1.H() + 1.0, $$1.I());
-      dxv $$3 = $$0.a_($$2);
-      btc $$4 = a($$0, $$1, $$2, $$3);
-      if ($$4 != null) {
-         jm $$5 = jm.a;
-
-         for (int $$6 : a($$4, $$5)) {
-            if (a($$1, $$4, $$6, $$5)) {
-               return true;
-            }
-         }
-
-         return false;
-      } else {
-         boolean $$7 = $$1.J() && $$3.m($$0, $$2) && !$$3.a(axu.cC);
-         if (!$$7) {
-            for (cmb $$8 : b($$0, $$1)) {
-               if (a($$1, $$8)) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private static boolean a(dvy $$0, btc $$1, int $$2, jm $$3) {
-      cxp $$4 = $$1.a($$2);
-      if (!$$4.f() && a($$0, $$1, $$4, $$2, $$3)) {
-         int $$5 = $$4.L();
-         cxp $$6 = a($$1, $$0, $$1.a($$2, 1), null);
-         if ($$6.f()) {
-            $$1.e();
             return true;
-         }
-
-         $$4.e($$5);
-         if ($$5 == 1) {
-            $$1.a($$2, $$4);
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(btc $$0, cmb $$1) {
-      boolean $$2 = false;
-      cxp $$3 = $$1.l().v();
-      cxp $$4 = a(null, $$0, $$3, null);
-      if ($$4.f()) {
-         $$2 = true;
-         $$1.a(cxp.j);
-         $$1.at();
-      } else {
-         $$1.a($$4);
-      }
-
-      return $$2;
-   }
-
-   public static cxp a(@Nullable btc $$0, btc $$1, cxp $$2, @Nullable jm $$3) {
-      if ($$1 instanceof btt $$4 && $$3 != null) {
-         int[] $$5 = $$4.a($$3);
-
-         for (int $$6 = 0; $$6 < $$5.length && !$$2.f(); $$6++) {
-            $$2 = b($$0, $$1, $$2, $$5[$$6], $$3);
-         }
-
-         return $$2;
-      }
-
-      int $$7 = $$1.b();
-
-      for (int $$8 = 0; $$8 < $$7 && !$$2.f(); $$8++) {
-         $$2 = b($$0, $$1, $$2, $$8, $$3);
-      }
-
-      return $$2;
-   }
-
-   private static boolean a(btc $$0, cxp $$1, int $$2, @Nullable jm $$3) {
-      if (!$$0.b($$2, $$1)) {
-         return false;
-      } else {
-         if ($$0 instanceof btt $$4 && !$$4.a($$2, $$1, $$3)) {
+         } else {
             return false;
          }
-
-         return true;
       }
-   }
 
-   private static boolean a(btc $$0, btc $$1, cxp $$2, int $$3, jm $$4) {
-      if (!$$1.a($$0, $$3, $$2)) {
-         return false;
-      } else {
-         if ($$1 instanceof btt $$5 && !$$5.b($$3, $$2, $$4)) {
-            return false;
-         }
-
-         return true;
+      @VisibleForTesting
+      public drd d() {
+         return this.b;
       }
-   }
 
-   private static cxp b(@Nullable btc $$0, btc $$1, cxp $$2, int $$3, @Nullable jm $$4) {
-      cxp $$5 = $$1.a($$3);
-      if (a($$1, $$2, $$3, $$4)) {
-         boolean $$6 = false;
-         boolean $$7 = $$1.c();
-         if ($$5.f()) {
-            $$1.a($$3, $$2);
-            $$2 = cxp.j;
-            $$6 = true;
-         } else if (a($$5, $$2)) {
-            int $$8 = $$2.k() - $$5.L();
-            int $$9 = Math.min($$2.L(), $$8);
-            $$2.h($$9);
-            $$5.g($$9);
-            $$6 = $$9 > 0;
-         }
+      private void a(arx $$0, jh $$1, dxo $$2, bac $$3) {
+         $$0.a($$1, $$2.b(dra.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(ls.J, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, awv.wA, aww.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
 
-         if ($$6) {
-            if ($$7 && $$1 instanceof dvz $$10 && !$$10.u()) {
-               int $$11 = 0;
-               if ($$0 instanceof dvz $$12 && $$10.i >= $$12.i) {
-                  $$11 = 1;
-               }
-
-               $$10.d(8 - $$11);
-            }
-
-            $$1.e();
+      private void a(dgz $$0, bvx $$1) {
+         if ($$1.eq() instanceof ary $$3) {
+            btr $$4 = $$1.eG() == null ? $$0.ak().a((cpo)$$3) : $$1.eG();
+            ao.Z.a($$3, $$1, $$4);
          }
       }
-
-      return $$2;
-   }
-
-   @Nullable
-   private static btc b(dhi $$0, jh $$1, dvz $$2) {
-      return a($$0, $$1.a($$2.j));
-   }
-
-   @Nullable
-   private static btc a(dhi $$0, dvy $$1, jh $$2, dxv $$3) {
-      return a($$0, $$2, $$3, $$1.G(), $$1.H() + 1.0, $$1.I());
-   }
-
-   public static List<cmb> b(dhi $$0, dvy $$1) {
-      fbt $$2 = $$1.am_().d($$1.G() - 0.5, $$1.H() - 0.5, $$1.I() - 0.5);
-      return $$0.a(cmb.class, $$2, bvp.a);
-   }
-
-   @Nullable
-   public static btc a(dhi $$0, jh $$1) {
-      return a($$0, $$1, $$0.a_($$1), (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5);
-   }
-
-   @Nullable
-   private static btc a(dhi $$0, jh $$1, dxv $$2, double $$3, double $$4, double $$5) {
-      btc $$6 = b($$0, $$1, $$2);
-      if ($$6 == null) {
-         $$6 = a($$0, $$3, $$4, $$5);
-      }
-
-      return $$6;
-   }
-
-   @Nullable
-   private static btc b(dhi $$0, jh $$1, dxv $$2) {
-      dkm $$3 = $$2.b();
-      if ($$3 instanceof btu) {
-         return ((btu)$$3).a($$2, $$0, $$1);
-      } else if ($$2.x() && $$0.c_($$1) instanceof btc $$5) {
-         if ($$5 instanceof dve && $$3 instanceof dlq) {
-            $$5 = dlq.a((dlq)$$3, $$2, $$0, $$1, true);
-         }
-
-         return $$5;
-      } else {
-         return null;
-      }
-   }
-
-   @Nullable
-   private static btc a(dhi $$0, double $$1, double $$2, double $$3) {
-      List<bvk> $$4 = $$0.a((bvk)null, new fbt($$1 - 0.5, $$2 - 0.5, $$3 - 0.5, $$1 + 0.5, $$2 + 0.5, $$3 + 0.5), bvp.d);
-      return !$$4.isEmpty() ? (btc)$$4.get($$0.A.a($$4.size())) : null;
-   }
-
-   private static boolean a(cxp $$0, cxp $$1) {
-      return $$0.L() <= $$0.k() && cxp.c($$0, $$1);
-   }
-
-   @Override
-   public double G() {
-      return (double)this.p.u() + 0.5;
-   }
-
-   @Override
-   public double H() {
-      return (double)this.p.v() + 0.5;
-   }
-
-   @Override
-   public double I() {
-      return (double)this.p.w() + 0.5;
-   }
-
-   @Override
-   public boolean J() {
-      return true;
-   }
-
-   private void d(int $$0) {
-      this.h = $$0;
-   }
-
-   private boolean t() {
-      return this.h > 0;
-   }
-
-   private boolean u() {
-      return this.h > 8;
-   }
-
-   @Override
-   protected jz<cxp> f() {
-      return this.g;
-   }
-
-   @Override
-   protected void a(jz<cxp> $$0) {
-      this.g = $$0;
-   }
-
-   public static void a(dhi $$0, jh $$1, dxv $$2, bvk $$3, dvz $$4) {
-      if ($$3 instanceof cmb $$5 && !$$5.l().f() && $$3.cR().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w())).c($$4.am_())) {
-         a($$0, $$1, $$2, $$4, () -> a((btc)$$4, $$5));
-      }
-   }
-
-   @Override
-   protected ctc a(int $$0, cpw $$1) {
-      return new cud($$0, $$1, this);
    }
 }

@@ -1,89 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public final class yu {
-   private static final String b = "#";
-   public static final Codec<yu> a = Codec.STRING.comapFlatMap(yu::a, yu::b);
-   private static final Map<n, yu> c = Stream.of(n.values())
-      .filter(n::e)
-      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new yu($$0.f(), $$0.g())));
-   private static final Map<String, yu> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
-   private final int e;
-   @Nullable
-   private final String f;
+public record yu(alp d) implements ym {
+   public static final MapCodec<yu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alp.a.fieldOf("storage").forGetter(yu::b)).apply($$0, yu::new));
+   public static final ym.a<yu> b = new ym.a<>(a, "storage");
 
-   private yu(int $$0, String $$1) {
-      this.e = $$0 & 16777215;
-      this.f = $$1;
-   }
-
-   private yu(int $$0) {
-      this.e = $$0 & 16777215;
-      this.f = null;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public String b() {
-      return this.f != null ? this.f : this.c();
-   }
-
-   private String c() {
-      return String.format(Locale.ROOT, "#%06X", this.e);
+   @Override
+   public Stream<um> a(ew $$0) {
+      um $$1 = $$0.l().aK().a(this.d);
+      return Stream.of($$1);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         yu $$1 = (yu)$$0;
-         return this.e == $$1.e;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.e, this.f);
+   public ym.a<?> a() {
+      return b;
    }
 
    @Override
    public String toString() {
-      return this.b();
+      return "storage=" + this.d;
    }
 
-   @Nullable
-   public static yu a(n $$0) {
-      return c.get($$0);
-   }
-
-   public static yu a(int $$0) {
-      return new yu($$0);
-   }
-
-   public static DataResult<yu> a(String $$0) {
-      if ($$0.startsWith("#")) {
-         try {
-            int $$1 = Integer.parseInt($$0.substring(1), 16);
-            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Invalid color value: " + $$0);
-         }
-      } else {
-         yu $$3 = d.get($$0);
-         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
-      }
+   public alp b() {
+      return this.d;
    }
 }

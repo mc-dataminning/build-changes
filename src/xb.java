@@ -1,31 +1,48 @@
-public interface xb {
-   aad a();
+import io.netty.buffer.ByteBuf;
 
-   wq b();
+public class xb {
+   private static final int a = 5;
+   private static final int b = 127;
+   private static final int c = 128;
+   private static final int d = 7;
 
-   void a(wr var1);
+   public static int a(int $$0) {
+      for (int $$1 = 1; $$1 < 5; $$1++) {
+         if (($$0 & -1 << $$1 * 7) == 0) {
+            return $$1;
+         }
+      }
 
-   default void a(aac $$0, Exception $$1) throws z {
-      throw aaf.a($$1, $$0, this);
+      return 5;
    }
 
-   default wr a(xv $$0, Throwable $$1) {
-      return new wr($$0);
+   public static boolean a(byte $$0) {
+      return ($$0 & 128) == 128;
    }
 
-   boolean c();
+   public static int a(ByteBuf $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
 
-   default boolean a(aac<?> $$0) {
-      return this.c();
+      byte $$3;
+      do {
+         $$3 = $$0.readByte();
+         $$1 |= ($$3 & 127) << $$2++ * 7;
+         if ($$2 > 5) {
+            throw new RuntimeException("VarInt too big");
+         }
+      } while (a($$3));
+
+      return $$1;
    }
 
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$0, $$1);
-   }
+   public static ByteBuf a(ByteBuf $$0, int $$1) {
+      while (($$1 & -128) != 0) {
+         $$0.writeByte($$1 & 127 | 128);
+         $$1 >>>= 7;
+      }
 
-   default void a(o $$0, p $$1) {
+      $$0.writeByte($$1);
+      return $$0;
    }
 }

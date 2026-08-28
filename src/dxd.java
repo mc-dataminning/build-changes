@@ -1,293 +1,151 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dxd extends dux {
-   private static final Logger a = LogUtils.getLogger();
-   private final dxg b = new dxg();
-   private final dxh c = new dxh();
-   private final dxe d = new dxe();
-   private dxf e = dxf.b;
+public final class dxd {
+   private static final Map<String, dxd> l = new Object2ObjectArrayMap();
+   public static final Codec<dxd> a = Codec.stringResolver($$0 -> $$0.m, l::get);
+   public static final dxd b = new dxd(
+      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(sg.g), Optional.of(sg.q), Optional.of(sg.F), Optional.of(sg.L)
+   );
+   public static final dxd c = new dxd(
+      "spruce", 0.5F, Optional.of(sg.t), Optional.of(sg.u), Optional.of(sg.n), Optional.empty(), Optional.empty(), Optional.empty()
+   );
+   public static final dxd d = new dxd(
+      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(sg.A), Optional.of(sg.B), Optional.empty(), Optional.empty()
+   );
+   public static final dxd e = new dxd("azalea", Optional.empty(), Optional.of(sg.z), Optional.empty());
+   public static final dxd f = new dxd("birch", Optional.empty(), Optional.of(sg.l), Optional.of(sg.I));
+   public static final dxd g = new dxd("jungle", Optional.of(sg.s), Optional.of(sg.r), Optional.empty());
+   public static final dxd h = new dxd("acacia", Optional.empty(), Optional.of(sg.m), Optional.empty());
+   public static final dxd i = new dxd("cherry", Optional.empty(), Optional.of(sg.C), Optional.of(sg.N));
+   public static final dxd j = new dxd("dark_oak", Optional.of(sg.h), Optional.empty(), Optional.empty());
+   public static final dxd k = new dxd("pale_oak", Optional.of(sg.j), Optional.empty(), Optional.empty());
+   private final String m;
+   private final float n;
+   private final Optional<alo<egb<?, ?>>> o;
+   private final Optional<alo<egb<?, ?>>> p;
+   private final Optional<alo<egb<?, ?>>> q;
+   private final Optional<alo<egb<?, ?>>> r;
+   private final Optional<alo<egb<?, ?>>> s;
+   private final Optional<alo<egb<?, ?>>> t;
 
-   public dxd(jh $$0, dxv $$1) {
-      super(duz.S, $$0, $$1);
+   public dxd(String $$0, Optional<alo<egb<?, ?>>> $$1, Optional<alo<egb<?, ?>>> $$2, Optional<alo<egb<?, ?>>> $$3) {
+      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   }
+
+   public dxd(
+      String $$0,
+      float $$1,
+      Optional<alo<egb<?, ?>>> $$2,
+      Optional<alo<egb<?, ?>>> $$3,
+      Optional<alo<egb<?, ?>>> $$4,
+      Optional<alo<egb<?, ?>>> $$5,
+      Optional<alo<egb<?, ?>>> $$6,
+      Optional<alo<egb<?, ?>>> $$7
+   ) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
+      this.s = $$6;
+      this.t = $$7;
+      l.put($$0, this);
    }
 
    @Nullable
-   @Override
-   public aac<acr> ay_() {
-      return acy.a(this);
-   }
+   private alo<egb<?, ?>> a(bac $$0, boolean $$1) {
+      if ($$0.i() < this.n) {
+         if ($$1 && this.t.isPresent()) {
+            return this.t.get();
+         }
 
-   @Override
-   public ux a(js.a $$0) {
-      return ae.a(new ux(), $$1 -> $$1.a("shared_data", a(dxh.b, this.c, $$0)));
-   }
-
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("config", a(dxf.c, this.e, $$1));
-      $$0.a("shared_data", a(dxh.b, this.c, $$1));
-      $$0.a("server_data", a(dxg.b, this.b, $$1));
-   }
-
-   private static <T> vu a(Codec<T> $$0, T $$1, js.a $$2) {
-      return (vu)$$0.encodeStart($$2.a(vl.a), $$1).getOrThrow();
-   }
-
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      DynamicOps<vu> $$2 = $$1.a(vl.a);
-      if ($$0.e("server_data")) {
-         dxg.b.parse($$2, $$0.c("server_data")).resultOrPartial(a::error).ifPresent(this.b::a);
+         if (this.r.isPresent()) {
+            return this.r.get();
+         }
       }
 
-      if ($$0.e("config")) {
-         dxf.c.parse($$2, $$0.c("config")).resultOrPartial(a::error).ifPresent($$0x -> this.e = $$0x);
-      }
-
-      if ($$0.e("shared_data")) {
-         dxh.b.parse($$2, $$0.c("shared_data")).resultOrPartial(a::error).ifPresent(this.c::a);
-      }
+      return $$1 && this.s.isPresent() ? this.s.get() : this.q.orElse(null);
    }
 
    @Nullable
-   public dxg b() {
-      return this.o != null && !this.o.C ? this.b : null;
+   private alo<egb<?, ?>> a(bac $$0) {
+      return this.p.isPresent() && $$0.i() < this.n ? this.p.get() : this.o.orElse(null);
    }
 
-   public dxh c() {
-      return this.c;
-   }
+   public boolean a(arx $$0, dzk $$1, jh $$2, dxo $$3, bac $$4) {
+      alo<egb<?, ?>> $$5 = this.a($$4);
+      if ($$5 != null) {
+         jq<egb<?, ?>> $$6 = $$0.K_().e(mb.aL).a($$5).orElse(null);
+         if ($$6 != null) {
+            for (int $$7 = 0; $$7 >= -1; $$7--) {
+               for (int $$8 = 0; $$8 >= -1; $$8--) {
+                  if (a($$3, $$0, $$2, $$7, $$8)) {
+                     egb<?, ?> $$9 = $$6.a();
+                     dxo $$10 = dkf.a.m();
+                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
+                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
+                        return true;
+                     }
 
-   public dxe d() {
-      return this.d;
-   }
-
-   public dxf f() {
-      return this.e;
-   }
-
-   @VisibleForTesting
-   public void a(dxf $$0) {
-      this.e = $$0;
-   }
-
-   public static final class a {
-      private static final int a = 20;
-      private static final float b = 0.5F;
-      private static final float c = 0.02F;
-      private static final int d = 20;
-      private static final int e = 20;
-
-      public static void a(dhi $$0, jh $$1, dxv $$2, dxe $$3, dxh $$4) {
-         $$3.c();
-         if ($$0.ac() % 20L == 0L) {
-            a($$0, $$1, $$2, $$4);
-         }
-
-         a($$0, $$1, $$4, $$2.c(dtk.d) ? ls.L : ls.aK);
-         a($$0, $$1, $$4);
-      }
-
-      public static void a(dhi $$0, jh $$1, dxv $$2, dxh $$3, lq $$4) {
-         a($$0, $$1, $$2, $$3);
-         bam $$5 = $$0.A;
-
-         for (int $$6 = 0; $$6 < 20; $$6++) {
-            fby $$7 = b($$1, $$5);
-            $$0.a(ls.af, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
-            $$0.a($$4, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
-         }
-      }
-
-      public static void a(dhi $$0, jh $$1, lq $$2) {
-         bam $$3 = $$0.A;
-
-         for (int $$4 = 0; $$4 < 20; $$4++) {
-            fby $$5 = a($$1, $$3);
-            fby $$6 = new fby($$3.k() * 0.02, $$3.k() * 0.02, $$3.k() * 0.02);
-            $$0.a($$2, $$5.a(), $$5.b(), $$5.c(), $$6.a(), $$6.b(), $$6.c());
-         }
-      }
-
-      private static void a(dhi $$0, jh $$1, dxh $$2, lq $$3) {
-         bam $$4 = $$0.H_();
-         if ($$4.i() <= 0.5F) {
-            fby $$5 = b($$1, $$4);
-            $$0.a(ls.af, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
-            if (a($$2)) {
-               $$0.a($$3, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
-            }
-         }
-      }
-
-      private static void a(dhi $$0, fby $$1, cpx $$2) {
-         bam $$3 = $$0.A;
-         fby $$4 = $$1.a($$2.du().b(0.0, (double)($$2.ds() / 2.0F), 0.0));
-         int $$5 = bae.a($$3, 2, 5);
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            fby $$7 = $$4.a($$3, 1.0F);
-            $$0.a(ls.bb, $$1.a(), $$1.b(), $$1.c(), $$7.a(), $$7.b(), $$7.c());
-         }
-      }
-
-      private static void a(dhi $$0, jh $$1, dxv $$2, dxh $$3) {
-         Set<UUID> $$4 = $$3.d();
-         if (!$$4.isEmpty()) {
-            fby $$5 = a($$1, $$2.c(dtk.c));
-
-            for (UUID $$6 : $$4) {
-               cpx $$7 = $$0.b($$6);
-               if ($$7 != null && a($$1, $$3, $$7)) {
-                  a($$0, $$5, $$7);
+                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
+                     return false;
+                  }
                }
             }
          }
       }
 
-      private static boolean a(jh $$0, dxh $$1, cpx $$2) {
-         return $$2.dw().j($$0) <= bae.k($$1.e());
-      }
-
-      private static void a(dhi $$0, jh $$1, dxh $$2) {
-         if (a($$2)) {
-            bam $$3 = $$0.H_();
-            if ($$3.i() <= 0.02F) {
-               $$0.a($$1, axf.Ba, axg.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
-            }
-         }
-      }
-
-      public static boolean a(dxh $$0) {
-         return $$0.b();
-      }
-
-      private static fby a(jh $$0, bam $$1) {
-         return fby.a($$0).b(bae.a($$1, 0.4, 0.6), bae.a($$1, 0.4, 0.6), bae.a($$1, 0.4, 0.6));
-      }
-
-      private static fby b(jh $$0, bam $$1) {
-         return fby.a($$0).b(bae.a($$1, 0.1, 0.9), bae.a($$1, 0.25, 0.75), bae.a($$1, 0.1, 0.9));
-      }
-
-      private static fby a(jh $$0, jm $$1) {
-         return fby.c($$0).b((double)$$1.j() * 0.5, 1.75, (double)$$1.l() * 0.5);
-      }
-   }
-
-   public static final class b {
-      private static final int a = 14;
-      private static final int b = 20;
-      private static final int c = 15;
-
-      public static void a(ash $$0, jh $$1, dxv $$2, dxf $$3, dxg $$4, dxh $$5) {
-         dxi $$6 = $$2.c(dtk.b);
-         if (a($$0.ac(), $$6)) {
-            a($$0, $$6, $$3, $$5, $$1);
-         }
-
-         dxv $$7 = $$2;
-         if ($$0.ac() >= $$4.c()) {
-            $$7 = $$2.b(dtk.b, $$6.a($$0, $$1, $$3, $$4, $$5));
-            if (!$$2.equals($$7)) {
-               a($$0, $$1, $$2, $$7, $$3, $$5);
-            }
-         }
-
-         if ($$4.c || $$5.c) {
-            dxd.a($$0, $$1, $$2);
-            if ($$5.c) {
-               $$0.a($$1, $$2, $$7, 2);
-            }
-
-            $$4.c = false;
-            $$5.c = false;
-         }
-      }
-
-      public static void a(ash $$0, jh $$1, dxv $$2, dxf $$3, dxg $$4, dxh $$5, cpx $$6, cxp $$7) {
-         dxi $$8 = $$2.c(dtk.b);
-         if (a($$3, $$8)) {
-            if (!a($$3, $$7)) {
-               a($$0, $$4, $$1, axf.Bj);
-            } else if ($$4.a($$6)) {
-               a($$0, $$4, $$1, axf.Bf);
-            } else {
-               List<cxp> $$9 = a($$0, $$3, $$1, $$6, $$7);
-               if (!$$9.isEmpty()) {
-                  $$6.b(axp.c.b($$7.h()));
-                  $$7.a($$3.e().L(), (bwg)$$6);
-                  a($$0, $$2, $$1, $$3, $$4, $$5, $$9);
-                  $$4.b($$6);
-                  $$5.a($$0, $$1, $$4, $$3, $$3.d());
-               }
-            }
-         }
-      }
-
-      static void a(ash $$0, jh $$1, dxv $$2, dxv $$3, dxf $$4, dxh $$5) {
-         dxi $$6 = $$2.c(dtk.b);
-         dxi $$7 = $$3.c(dtk.b);
-         $$0.a($$1, $$3, 3);
-         $$6.a($$0, $$1, $$7, $$4, $$5, $$3.c(dtk.d));
-      }
-
-      static void a(ash $$0, dxi $$1, dxf $$2, dxh $$3, jh $$4) {
-         if (!a($$2, $$1)) {
-            $$3.a(cxp.j);
+      alo<egb<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
+      if ($$11 == null) {
+         return false;
+      } else {
+         jq<egb<?, ?>> $$12 = $$0.K_().e(mb.aL).a($$11).orElse(null);
+         if ($$12 == null) {
+            return false;
          } else {
-            cxp $$5 = a($$0, $$4, $$2.f().orElse($$2.b()));
-            $$3.a($$5);
+            egb<?, ?> $$13 = $$12.a();
+            dxo $$14 = $$0.b_($$2).g();
+            $$0.a($$2, $$14, 4);
+            if ($$13.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$14) {
+                  $$0.a($$2, $$3, $$14, 2);
+               }
+
+               return true;
+            } else {
+               $$0.a($$2, $$3, 4);
+               return false;
+            }
+         }
+      }
+   }
+
+   private static boolean a(dxo $$0, dge $$1, jh $$2, int $$3, int $$4) {
+      dkd $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
+   }
+
+   private boolean a(dha $$0, jh $$1) {
+      for (jh $$2 : jh.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
+         if ($$0.a_($$2).a(axk.W)) {
+            return true;
          }
       }
 
-      private static cxp a(ash $$0, jh $$1, aly<ewu> $$2) {
-         ewu $$3 = $$0.p().bc().b($$2);
-         ews $$4 = new ews.a($$0).a(ezj.f, fby.b($$1)).a(ezi.l);
-         List<cxp> $$5 = $$3.a($$4, $$0.H_());
-         return $$5.isEmpty() ? cxp.j : ae.a($$5, $$0.H_());
-      }
-
-      private static void a(ash $$0, dxv $$1, jh $$2, dxf $$3, dxg $$4, dxh $$5, List<cxp> $$6) {
-         $$4.a($$6);
-         $$5.a($$4.f());
-         $$4.b($$0.ac() + 14L);
-         a($$0, $$2, $$1, $$1.b(dtk.b, dxi.c), $$3, $$5);
-      }
-
-      private static List<cxp> a(ash $$0, dxf $$1, jh $$2, cpx $$3, cxp $$4) {
-         ewu $$5 = $$0.p().bc().b($$1.b());
-         ews $$6 = new ews.a($$0).a(ezj.f, fby.b($$2)).a($$3.gF()).a(ezj.a, $$3).a(ezj.i, $$4).a(ezi.l);
-         return $$5.a($$6);
-      }
-
-      private static boolean a(dxf $$0, dxi $$1) {
-         return !$$0.e().f() && $$1 != dxi.a;
-      }
-
-      private static boolean a(dxf $$0, cxp $$1) {
-         return cxp.c($$1, $$0.e()) && $$1.L() >= $$0.e().L();
-      }
-
-      private static boolean a(long $$0, dxi $$1) {
-         return $$0 % 20L == 0L && $$1 == dxi.b;
-      }
-
-      private static void a(ash $$0, dxg $$1, jh $$2, axe $$3) {
-         if ($$0.ac() >= $$1.a() + 15L) {
-            $$0.a(null, $$2, $$3, axg.e);
-            $$1.a($$0.ac());
-         }
-      }
+      return false;
    }
 }

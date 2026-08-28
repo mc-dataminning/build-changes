@@ -1,81 +1,81 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class gli implements glp.a {
-   public static final alz a = glp.a;
-   public static final alz b = alz.b("translucent");
-   public static final alz c = alz.b("item_entity");
-   public static final alz d = alz.b("particles");
-   public static final alz e = alz.b("weather");
-   public static final alz f = alz.b("clouds");
-   public static final alz g = alz.b("entity_outline");
-   public static final Set<alz> h = Set.of(a);
-   public static final Set<alz> i = Set.of(a, g);
-   public static final Set<alz> j = Set.of(a, b, c, d, e, f);
-   public fge<ffc> k = fge.a();
-   @Nullable
-   public fge<ffc> l;
-   @Nullable
-   public fge<ffc> m;
-   @Nullable
-   public fge<ffc> n;
-   @Nullable
-   public fge<ffc> o;
-   @Nullable
-   public fge<ffc> p;
-   @Nullable
-   public fge<ffc> q;
+public class gli implements glg {
+   private final glg.a a;
+   private final glg.a b = glg.a(new fgi(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
+
+   public gli(glg.a $$0) {
+      this.a = $$0;
+   }
 
    @Override
-   public void a(alz $$0, fge<ffc> $$1) {
-      if ($$0.equals(a)) {
-         this.k = $$1;
-      } else if ($$0.equals(b)) {
-         this.l = $$1;
-      } else if ($$0.equals(c)) {
-         this.m = $$1;
-      } else if ($$0.equals(d)) {
-         this.n = $$1;
-      } else if ($$0.equals(e)) {
-         this.o = $$1;
-      } else if ($$0.equals(f)) {
-         this.p = $$1;
+   public fgp getBuffer(glq $$0) {
+      if ($$0.V()) {
+         fgp $$1 = this.b.getBuffer($$0);
+         return new gli.a($$1, this.c, this.d, this.e, this.f);
       } else {
-         if (!$$0.equals(g)) {
-            throw new IllegalArgumentException("No target with id " + $$0);
+         fgp $$2 = this.a.getBuffer($$0);
+         Optional<glq> $$3 = $$0.U();
+         if ($$3.isPresent()) {
+            fgp $$4 = this.b.getBuffer($$3.get());
+            gli.a $$5 = new gli.a($$4, this.c, this.d, this.e, this.f);
+            return fgs.a($$5, $$2);
+         } else {
+            return $$2;
          }
-
-         this.q = $$1;
       }
    }
 
-   @Nullable
-   @Override
-   public fge<ffc> a(alz $$0) {
-      if ($$0.equals(a)) {
-         return this.k;
-      } else if ($$0.equals(b)) {
-         return this.l;
-      } else if ($$0.equals(c)) {
-         return this.m;
-      } else if ($$0.equals(d)) {
-         return this.n;
-      } else if ($$0.equals(e)) {
-         return this.o;
-      } else if ($$0.equals(f)) {
-         return this.p;
-      } else {
-         return $$0.equals(g) ? this.q : null;
-      }
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
    public void a() {
-      this.k = fge.a();
-      this.l = null;
-      this.m = null;
-      this.n = null;
-      this.o = null;
-      this.p = null;
-      this.q = null;
+      this.b.b();
+   }
+
+   static record a(fgp a, int b) implements fgp {
+      public a(fgp $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, ayf.a($$4, $$1, $$2, $$3));
+      }
+
+      @Override
+      public fgp a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
+
+      @Override
+      public fgp a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public fgp a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fgp a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fgp b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fgp b(float $$0, float $$1, float $$2) {
+         return this;
+      }
    }
 }

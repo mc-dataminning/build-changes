@@ -1,38 +1,30 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
+import java.util.Objects;
 
-public class bec extends DataFix {
-   private final String a;
-   private final String b;
-   private final UnaryOperator<String> c;
-
-   public bec(Schema $$0, String $$1, String $$2, UnaryOperator<String> $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class bec extends biy {
+   public bec(Schema $$0, boolean $$1) {
+      super("EntityCatSplitFix", $$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bix.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
-   }
+   @Override
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("minecraft:ocelot", $$0)) {
+         int $$2 = $$1.get("CatType").asInt(0);
+         if ($$2 == 0) {
+            String $$3 = $$1.get("Owner").asString("");
+            String $$4 = $$1.get("OwnerUUID").asString("");
+            if ($$3.length() > 0 || $$4.length() > 0) {
+               $$1.set("Trusting", $$1.createBoolean(true));
+            }
+         } else if ($$2 > 0 && $$2 < 4) {
+            $$1 = $$1.set("CatType", $$1.createInt($$2));
+            $$1 = $$1.set("OwnerUUID", $$1.createString($$1.get("OwnerUUID").asString("")));
+            return Pair.of("minecraft:cat", $$1);
+         }
+      }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         this.b,
-         $$0x -> $$0x.update(
-               "criteria",
-               $$0xx -> $$0xx.updateMapValues(
-                     $$0xxx -> $$0xxx.mapFirst(
-                           $$0xxxx -> (Dynamic)DataFixUtils.orElse($$0xxxx.asString().map($$1 -> $$0xxxx.createString(this.c.apply($$1))).result(), $$0xxxx)
-                        )
-                  )
-            )
-      );
+      return Pair.of($$0, $$1);
    }
 }

@@ -1,97 +1,48 @@
-import java.util.Objects;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fvr extends fuv implements fvt<cui> {
-   private final cui y;
-   private final ctq z = new ctq() {
-      @Override
-      public void a(ctc $$0, int $$1, cxp $$2) {
-         fvr.this.M();
-      }
+public class fvr extends fuj {
+   public static final float c = 62.500004F;
+   public static final float d = 0.9765628F;
+   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private gcc u;
 
-      @Override
-      public void a(ctc $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fvr.this.N();
-         }
-      }
-   };
-
-   public fvr(cui $$0, cpw $$1, xv $$2) {
-      this.y = $$0;
-   }
-
-   public cui L() {
-      return this.y;
+   public fvr(dwd $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    protected void aT_() {
       super.aT_();
-      this.y.a(this.z);
+      boolean $$0 = this.a.m().b() instanceof dsd;
+      this.u = gof.a(this.m.aS(), this.b, $$0);
    }
 
    @Override
-   public void aP_() {
-      this.m.t.p();
-      super.aP_();
-   }
-
-   @Override
-   public void aJ_() {
-      super.aJ_();
-      this.y.b(this.z);
-   }
-
-   @Override
-   protected void l() {
-      if (this.m.t.gv()) {
-         this.c(fof.a(xu.d, $$0 -> this.aP_()).a(this.n / 2 - 100, 196, 98, 20).a());
-         this.c(fof.a(xv.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.l();
+   protected void a(fnl $$0, dxo $$1) {
+      super.a($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dsd;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
       }
    }
 
    @Override
-   protected void G() {
-      this.g(1);
-   }
-
-   @Override
-   protected void J() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.y.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
+   protected void c(fnl $$0) {
+      if (this.u != null) {
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         $$0.a($$1 -> {
+            hdp $$2 = gmb.a(this.b);
+            fgp $$3 = $$2.a($$1, this.u::a);
+            this.u.a($$0.c(), $$3, 15728880, hax.d);
+         });
       }
    }
 
-   private void g(int $$0) {
-      this.m.r.a(this.y.l, $$0);
-   }
-
    @Override
-   public boolean j() {
-      return false;
-   }
-
-   void M() {
-      cxp $$0 = this.y.l();
-      this.a(Objects.requireNonNullElse(fuv.a.a($$0), fuv.d));
-   }
-
-   void N() {
-      this.a(this.y.m());
-   }
-
-   @Override
-   protected void K() {
-      this.m.t.p();
+   protected Vector3f l() {
+      return s;
    }
 }

@@ -1,53 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ejb implements eja {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<ejb> b = RecordCodecBuilder.create(
+public class ejb implements eit {
+   public static final Codec<ejb> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               edn.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               edp.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               edo.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               bso.b(1, 20).fieldOf("outer_wall_distance").orElse(bsu.a(4, 5)).forGetter($$0x -> $$0x.i),
-               bso.b(1, 20).fieldOf("distribution_points").orElse(bsu.a(3, 4)).forGetter($$0x -> $$0x.j),
-               bso.b(0, 10).fieldOf("point_offset").orElse(bsu.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
+               Codec.list(ejb.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, ejb::new)
    );
-   public final edn c;
-   public final edp d;
-   public final edo e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final bso i;
-   public final bso j;
-   public final bso k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+   public final List<ejb.a> b;
+   public final int c;
+   public final float d;
 
-   public ejb(edn $$0, edp $$1, edo $$2, double $$3, double $$4, boolean $$5, bso $$6, bso $$7, bso $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   public ejb(List<ejb.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
+   }
+
+   public ejb(List<ejb.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
+   }
+
+   public ejb(erz $$0, dxo $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new ejb.a($$0, $$1)), $$2, $$3);
+   }
+
+   public ejb(erz $$0, dxo $$1, int $$2) {
+      this(ImmutableList.of(new ejb.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static ejb.a a(erz $$0, dxo $$1) {
+      return new ejb.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<ejb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(erz.c.fieldOf("target").forGetter($$0x -> $$0x.b), dxo.a.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, ejb.a::new)
+      );
+      public final erz b;
+      public final dxo c;
+
+      a(erz $$0, dxo $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

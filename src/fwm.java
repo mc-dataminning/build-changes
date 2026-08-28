@@ -1,34 +1,63 @@
-import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public class fwm {
-   private static final alz f = alz.b("tooltip/background");
-   private static final alz g = alz.b("tooltip/frame");
-   public static final int a = 12;
-   private static final int h = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int i = 9;
+public abstract class fwm extends ftr {
+   private static final int b = 100;
+   private final xk c;
+   @Nullable
+   private final xk d;
+   private final xk s;
+   @Nullable
+   protected foa a;
+   @Nullable
+   private foj u;
+   private final frl v;
 
-   public static void a(fns $$0, int $$1, int $$2, int $$3, int $$4, int $$5, @Nullable alz $$6) {
-      int $$7 = $$1 - 3 - 9;
-      int $$8 = $$2 - 3 - 9;
-      int $$9 = $$3 + 3 + 3 + 18;
-      int $$10 = $$4 + 3 + 3 + 18;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, (float)$$5);
-      $$0.a(glv::C, a($$6), $$7, $$8, $$9, $$10);
-      $$0.a(glv::C, b($$6), $$7, $$8, $$9, $$10);
+   protected fwm(xk $$0, xk $$1, xk $$2) {
+      this($$0, $$1, null, $$2);
+   }
+
+   protected fwm(xk $$0, xk $$1, @Nullable xk $$2, xk $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.s = $$3;
+      this.v = new frl(0, 0, this.n, this.o);
+   }
+
+   protected abstract fro l();
+
+   @Override
+   protected void aT_() {
+      frr $$0 = this.v.a(frr.d().a(8));
       $$0.c().b();
+      $$0.a(new fpg(this.m(), this.p));
+      this.u = $$0.a(new foj(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
+      this.u.b(false);
+      frr $$1 = $$0.a(frr.d().a(8));
+      $$1.c().b();
+      if (this.d != null) {
+         this.a = $$1.a(foa.a(this.d, this.p).a());
+      }
+
+      $$1.a(this.l());
+      this.v.a($$1x -> {
+         fnw var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   private static alz a(@Nullable alz $$0) {
-      return $$0 == null ? f : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_background"));
+   @Override
+   protected void c() {
+      if (this.u != null) {
+         this.u.d(this.n - 100);
+      }
+
+      this.v.a();
+      frl.a(this.v, this.H());
    }
 
-   private static alz b(@Nullable alz $$0) {
-      return $$0 == null ? g : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_frame"));
+   @Override
+   public xk i() {
+      return this.s;
    }
 }

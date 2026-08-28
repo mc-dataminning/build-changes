@@ -1,36 +1,22 @@
-public class gum extends gsw<cpj, hae, gdy> {
-   private static final alz b = alz.b("textures/entity/villager/villager.png");
-   public static final gvj.a a = new gvj.a(-0.1171875F, -0.07421875F, 1.0F);
+public class gum extends gsr<cne, hab, gdw> {
+   private static final alp a = alp.b("textures/entity/witch.png");
 
-   public gum(grq.a $$0) {
-      super($$0, new gdy($$0.a(gen.do)), 0.5F);
-      this.a(new gvj<>(this, $$0.f(), a, $$0.b()));
-      this.a(new gwp<>(this, $$0.e(), "villager"));
-      this.a(new gvi<>(this, $$0.b()));
+   public gum(grl.a $$0) {
+      super($$0, new gdw($$0.a(gei.dz)), 0.5F);
+      this.a(new gwm(this, $$0.b()));
    }
 
-   protected void a(hae $$0, fgs $$1) {
-      super.a($$0, $$1);
-      float $$2 = $$0.ab;
-      $$1.b($$2, $$2, $$2);
+   public alp a(hab $$0) {
+      return a;
    }
 
-   public alz a(hae $$0) {
-      return b;
+   public hab b() {
+      return new hab();
    }
 
-   protected float b(hae $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.5F : $$1;
-   }
-
-   public hae b() {
-      return new hae();
-   }
-
-   public void a(cpj $$0, hae $$1, float $$2) {
+   public void a(cne $$0, hab $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.p() > 0;
-      $$1.b = $$0.gy();
+      $$1.a = $$0.ar();
+      $$1.b = !$$0.eZ().f();
    }
 }

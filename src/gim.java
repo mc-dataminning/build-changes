@@ -1,76 +1,40 @@
-public class gim extends gis {
-   private static final int a = 3;
-   private final glt b;
-   private final bvk D;
-   private final bvk E;
-   private int F;
-   private final gro G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-   private double M;
-
-   public gim(gro $$0, glt $$1, gfk $$2, bvk $$3, bvk $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dz());
-   }
-
-   private gim(gro $$0, glt $$1, gfk $$2, bvk $$3, bvk $$4, fby $$5) {
-      super($$2, $$3.dB(), $$3.dD(), $$3.dH(), $$5.d, $$5.e, $$5.f);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-      this.c();
-      this.d();
-   }
-
-   private bvk a(bvk $$0) {
-      return (bvk)(!($$0 instanceof cmb) ? $$0 : ((cmb)$$0).z());
+public class gim extends gjn {
+   gim(gff $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, azu.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, azu.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, azu.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
    }
 
    @Override
-   public giw b() {
-      return giw.d;
+   public gir b() {
+      return gir.b;
    }
 
    @Override
-   public void a(fgw $$0, flp $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = bae.d((double)$$2, this.K, this.H);
-      double $$5 = bae.d((double)$$2, this.L, this.I);
-      double $$6 = bae.d((double)$$2, this.M, this.J);
-      double $$7 = bae.d((double)$$3, this.D.dB(), $$4);
-      double $$8 = bae.d((double)$$3, this.D.dD(), $$5);
-      double $$9 = bae.d((double)$$3, this.D.dH(), $$6);
-      gll.a $$10 = this.b.c();
-      fby $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), $$2, new fgs(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public float b(float $$0) {
+      return this.D * azu.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public void a() {
-      this.F++;
-      if (this.F == 3) {
-         this.k();
+   public static class a implements giq<lw> {
+      private final gji a;
+
+      public a(gji $$0) {
+         this.a = $$0;
       }
 
-      this.d();
-      this.c();
-   }
-
-   private void c() {
-      this.H = this.E.dB();
-      this.I = (this.E.dD() + this.E.dF()) / 2.0;
-      this.J = this.E.dH();
-   }
-
-   private void d() {
-      this.K = this.H;
-      this.L = this.I;
-      this.M = this.J;
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gim $$8 = new gim($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

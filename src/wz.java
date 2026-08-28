@@ -1,46 +1,101 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import java.io.IOException;
-import java.util.List;
-import org.slf4j.Logger;
+import io.netty.channel.ChannelInboundHandler;
+import io.netty.channel.ChannelOutboundHandler;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import io.netty.util.ReferenceCountUtil;
 
-public class wz<T extends xb> extends ByteToMessageDecoder implements xe {
-   private static final Logger a = LogUtils.getLogger();
-   private final xd<T> b;
-
-   public wz(xd<T> $$0) {
-      this.b = $$0;
+public class wz {
+   public static <T extends wq> wz.b a(ws<T> $$0) {
+      return a(new wo<T>($$0));
    }
 
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      int $$3 = $$1.readableBytes();
-      if ($$3 != 0) {
-         aac<? super T> $$4 = this.b.c().decode($$1);
-         aae<? extends aac<? super T>> $$5 = $$4.a();
-         bqb.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
-         if ($$1.readableBytes() > 0) {
-            throw new IOException(
-               "Packet "
-                  + this.b.a().a()
-                  + "/"
-                  + $$5
-                  + " ("
-                  + $$4.getClass().getSimpleName()
-                  + ") was larger than I expected, found "
-                  + $$1.readableBytes()
-                  + " bytes extra whilst reading packet "
-                  + $$5
-            );
+   private static wz.b a(ChannelInboundHandler $$0) {
+      return $$1 -> {
+         $$1.pipeline().replace($$1.name(), "decoder", $$0);
+         $$1.channel().config().setAutoRead(true);
+      };
+   }
+
+   public static <T extends wq> wz.d b(ws<T> $$0) {
+      return a(new wp<T>($$0));
+   }
+
+   private static wz.d a(ChannelOutboundHandler $$0) {
+      return $$1 -> $$1.pipeline().replace($$1.name(), "encoder", $$0);
+   }
+
+   public static class a extends ChannelDuplexHandler {
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         if (!($$1 instanceof ByteBuf) && !($$1 instanceof zr)) {
+            $$0.fireChannelRead($$1);
          } else {
-            $$2.add($$4);
-            if (a.isDebugEnabled()) {
-               a.debug(wp.c, " IN: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName(), $$3});
+            ReferenceCountUtil.release($$1);
+            throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + $$1);
+         }
+      }
+
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof wz.b $$3) {
+            try {
+               $$3.run($$0);
+            } finally {
+               ReferenceCountUtil.release($$1);
             }
 
-            xe.a($$0, $$4);
+            $$2.setSuccess();
+         } else {
+            $$0.write($$1, $$2);
          }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void run(ChannelHandlerContext var1);
+
+      default wz.b andThen(wz.b $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
+      }
+   }
+
+   public static class c extends ChannelOutboundHandlerAdapter {
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof zr) {
+            ReferenceCountUtil.release($$1);
+            throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + $$1);
+         } else {
+            if ($$1 instanceof wz.d $$3) {
+               try {
+                  $$3.run($$0);
+               } finally {
+                  ReferenceCountUtil.release($$1);
+               }
+
+               $$2.setSuccess();
+            } else {
+               $$0.write($$1, $$2);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void run(ChannelHandlerContext var1);
+
+      default wz.d andThen(wz.d $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
       }
    }
 }

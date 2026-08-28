@@ -1,390 +1,164 @@
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
+
 public class fnc {
-   public static final fmu a = fmu.a.a(3.0F)
-      .a(
-         "croaking_body",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.375F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.4167F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.4583F, fmw.a(0.0F, 1.0F, 0.0F), fmt.b.a),
-            new fmv(2.9583F, fmw.a(0.0F, 1.0F, 0.0F), fmt.b.a),
-            new fmv(3.0F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "croaking_body",
-         new fmt(
-            fmt.d.c,
-            new fmv(0.0F, fmw.a(0.0, 0.0, 0.0), fmt.b.a),
-            new fmv(0.375F, fmw.a(0.0, 0.0, 0.0), fmt.b.a),
-            new fmv(0.4167F, fmw.a(1.0, 1.0, 1.0), fmt.b.a),
-            new fmv(0.4583F, fmw.a(1.0, 1.0, 1.0), fmt.b.a),
-            new fmv(0.5417F, fmw.a(1.3F, 2.1F, 1.6F), fmt.b.a),
-            new fmv(0.625F, fmw.a(1.3F, 2.1F, 1.6F), fmt.b.a),
-            new fmv(0.7083F, fmw.a(1.0, 1.0, 1.0), fmt.b.a),
-            new fmv(2.25F, fmw.a(1.0, 1.0, 1.0), fmt.b.a),
-            new fmv(2.3333F, fmw.a(1.3F, 2.1F, 1.6F), fmt.b.a),
-            new fmv(2.4167F, fmw.a(1.3F, 2.1F, 1.6F), fmt.b.a),
-            new fmv(2.5F, fmw.a(1.0, 1.0, 1.0), fmt.b.a),
-            new fmv(2.5833F, fmw.a(1.0, 1.0, 1.0), fmt.b.a),
-            new fmv(2.6667F, fmw.a(1.3F, 2.1F, 1.6F), fmt.b.a),
-            new fmv(2.875F, fmw.a(1.3F, 2.1F, 1.6F), fmt.b.a),
-            new fmv(2.9583F, fmw.a(1.0, 1.0, 1.0), fmt.b.a),
-            new fmv(3.0F, fmw.a(0.0, 0.0, 0.0), fmt.b.a)
-         )
-      )
-      .b();
-   public static final fmu b = fmu.a.a(1.25F)
-      .a()
-      .a(
-         "left_arm",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, -5.0F, 0.0F), fmt.b.a),
-            new fmv(0.2917F, fmw.b(7.5F, -2.67F, -7.5F), fmt.b.a),
-            new fmv(0.625F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.7917F, fmw.b(22.5F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(1.125F, fmw.b(-45.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(1.25F, fmw.b(0.0F, -5.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "left_arm",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, 0.1F, -2.0F), fmt.b.a),
-            new fmv(0.2917F, fmw.a(-0.5F, -0.25F, -0.13F), fmt.b.a),
-            new fmv(0.625F, fmw.a(-0.5F, 0.1F, 2.0F), fmt.b.a),
-            new fmv(0.9583F, fmw.a(0.5F, 1.0F, -0.11F), fmt.b.a),
-            new fmv(1.25F, fmw.a(0.0F, 0.1F, -2.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "right_arm",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.125F, fmw.b(22.5F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.4583F, fmw.b(-45.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.625F, fmw.b(0.0F, 5.0F, 0.0F), fmt.b.a),
-            new fmv(0.9583F, fmw.b(7.5F, 2.33F, 7.5F), fmt.b.a),
-            new fmv(1.25F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "right_arm",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.5F, 0.1F, 2.0F), fmt.b.a),
-            new fmv(0.2917F, fmw.a(-0.5F, 1.0F, 0.12F), fmt.b.a),
-            new fmv(0.625F, fmw.a(0.0F, 0.1F, -2.0F), fmt.b.a),
-            new fmv(0.9583F, fmw.a(0.5F, -0.25F, -0.13F), fmt.b.a),
-            new fmv(1.25F, fmw.a(0.5F, 0.1F, 2.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "left_leg",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.1667F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.2917F, fmw.b(45.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.625F, fmw.b(-45.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.7917F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(1.25F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "left_leg",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, 0.1F, 1.2F), fmt.b.a),
-            new fmv(0.1667F, fmw.a(0.0F, 0.1F, 2.0F), fmt.b.a),
-            new fmv(0.4583F, fmw.a(0.0F, 2.0F, 1.06F), fmt.b.a),
-            new fmv(0.7917F, fmw.a(0.0F, 0.1F, -1.0F), fmt.b.a),
-            new fmv(1.25F, fmw.a(0.0F, 0.1F, 1.2F), fmt.b.a)
-         )
-      )
-      .a(
-         "right_leg",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(-33.75F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.0417F, fmw.b(-45.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.1667F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.7917F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.9583F, fmw.b(45.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(1.25F, fmw.b(-33.75F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "right_leg",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, 1.14F, 0.11F), fmt.b.a),
-            new fmv(0.1667F, fmw.a(0.0F, 0.1F, -1.0F), fmt.b.a),
-            new fmv(0.7917F, fmw.a(0.0F, 0.1F, 2.0F), fmt.b.a),
-            new fmv(1.125F, fmw.a(0.0F, 2.0F, 0.95F), fmt.b.a),
-            new fmv(1.25F, fmw.a(0.0F, 1.14F, 0.11F), fmt.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 5.0F, 0.0F), fmt.b.a),
-            new fmv(0.2917F, fmw.b(-7.5F, 0.33F, 7.5F), fmt.b.a),
-            new fmv(0.625F, fmw.b(0.0F, -5.0F, 0.0F), fmt.b.a),
-            new fmv(0.9583F, fmw.b(-7.5F, 0.33F, -7.5F), fmt.b.a),
-            new fmv(1.25F, fmw.b(0.0F, 5.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .b();
-   public static final fmu c = fmu.a.a(0.5F)
-      .a("body", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(-22.5F, 0.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.b(-22.5F, 0.0F, 0.0F), fmt.b.a)))
-      .a("body", new fmt(fmt.d.a, new fmv(0.0F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a)))
-      .a("left_arm", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(-56.14F, 0.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.b(-56.14F, 0.0F, 0.0F), fmt.b.a)))
-      .a("left_arm", new fmt(fmt.d.a, new fmv(0.0F, fmw.a(0.0F, 1.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.a(0.0F, 1.0F, 0.0F), fmt.b.a)))
-      .a("right_arm", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(-56.14F, 0.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.b(-56.14F, 0.0F, 0.0F), fmt.b.a)))
-      .a("right_arm", new fmt(fmt.d.a, new fmv(0.0F, fmw.a(0.0F, 1.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.a(0.0F, 1.0F, 0.0F), fmt.b.a)))
-      .a("left_leg", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(45.0F, 0.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.b(45.0F, 0.0F, 0.0F), fmt.b.a)))
-      .a("left_leg", new fmt(fmt.d.a, new fmv(0.0F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a)))
-      .a("right_leg", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(45.0F, 0.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.b(45.0F, 0.0F, 0.0F), fmt.b.a)))
-      .a("right_leg", new fmt(fmt.d.a, new fmv(0.0F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a), new fmv(0.5F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a)))
-      .b();
-   public static final fmu d = fmu.a.a(0.5F)
-      .a(
-         "head",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.0833F, fmw.b(-60.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.4167F, fmw.b(-60.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fmt(
-            fmt.d.c,
-            new fmv(0.0F, fmw.b(1.0F, 1.0F, 1.0F), fmt.b.a),
-            new fmv(0.0833F, fmw.b(0.998F, 1.0F, 1.0F), fmt.b.a),
-            new fmv(0.4167F, fmw.b(0.998F, 1.0F, 1.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(1.0F, 1.0F, 1.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "tongue",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.0833F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.4167F, fmw.b(-18.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "tongue",
-         new fmt(
-            fmt.d.c,
-            new fmv(0.0833F, fmw.a(1.0, 1.0, 1.0), fmt.b.a),
-            new fmv(0.1667F, fmw.a(0.5, 1.0, 5.0), fmt.b.a),
-            new fmv(0.4167F, fmw.a(1.0, 1.0, 1.0), fmt.b.a)
-         )
-      )
-      .b();
-   public static final fmu e = fmu.a.a(1.04167F)
-      .a()
-      .a(
-         "body",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(0.3333F, fmw.b(10.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(0.6667F, fmw.b(-10.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(1.0417F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(90.0F, 22.5F, 0.0F), fmt.b.b),
-            new fmv(0.4583F, fmw.b(45.0F, 22.5F, 0.0F), fmt.b.b),
-            new fmv(0.6667F, fmw.b(-22.5F, -22.5F, -22.5F), fmt.b.b),
-            new fmv(0.875F, fmw.b(-45.0F, -22.5F, 0.0F), fmt.b.b),
-            new fmv(0.9583F, fmw.b(22.5F, 0.0F, 22.5F), fmt.b.b),
-            new fmv(1.0417F, fmw.b(90.0F, 22.5F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, -0.64F, 2.0F), fmt.b.b),
-            new fmv(0.4583F, fmw.a(0.0F, -0.64F, 0.0F), fmt.b.b),
-            new fmv(0.6667F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(0.875F, fmw.a(0.0F, -0.27F, -1.14F), fmt.b.b),
-            new fmv(0.9583F, fmw.a(0.0F, -1.45F, 0.43F), fmt.b.b),
-            new fmv(1.0417F, fmw.a(0.0F, -0.64F, 2.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(90.0F, -22.5F, 0.0F), fmt.b.b),
-            new fmv(0.4583F, fmw.b(45.0F, -22.5F, 0.0F), fmt.b.b),
-            new fmv(0.6667F, fmw.b(-22.5F, 22.5F, 22.5F), fmt.b.b),
-            new fmv(0.875F, fmw.b(-45.0F, 22.5F, 0.0F), fmt.b.b),
-            new fmv(0.9583F, fmw.b(22.5F, 0.0F, -22.5F), fmt.b.b),
-            new fmv(1.0417F, fmw.b(90.0F, -22.5F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, -0.64F, 2.0F), fmt.b.b),
-            new fmv(0.4583F, fmw.a(0.0F, -0.64F, 0.0F), fmt.b.b),
-            new fmv(0.6667F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(0.875F, fmw.a(0.0F, -0.27F, -1.14F), fmt.b.b),
-            new fmv(0.9583F, fmw.a(0.0F, -1.45F, 0.43F), fmt.b.b),
-            new fmv(1.0417F, fmw.a(0.0F, -0.64F, 2.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(90.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(0.25F, fmw.b(90.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(0.4583F, fmw.b(67.5F, -45.0F, 0.0F), fmt.b.b),
-            new fmv(0.7917F, fmw.b(90.0F, 45.0F, 0.0F), fmt.b.b),
-            new fmv(0.9583F, fmw.b(90.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(1.0417F, fmw.b(90.0F, 0.0F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(-2.5F, 0.0F, 1.0F), fmt.b.b),
-            new fmv(0.25F, fmw.a(-2.0F, 0.0F, 1.0F), fmt.b.b),
-            new fmv(0.4583F, fmw.a(1.0F, -2.0F, -1.0F), fmt.b.b),
-            new fmv(0.7917F, fmw.a(0.58F, 0.0F, -2.83F), fmt.b.b),
-            new fmv(0.9583F, fmw.a(-2.5F, 0.0F, 1.0F), fmt.b.b),
-            new fmv(1.0417F, fmw.a(-2.5F, 0.0F, 1.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(90.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(0.25F, fmw.b(90.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(0.4583F, fmw.b(67.5F, 45.0F, 0.0F), fmt.b.b),
-            new fmv(0.7917F, fmw.b(90.0F, -45.0F, 0.0F), fmt.b.b),
-            new fmv(0.9583F, fmw.b(90.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(1.0417F, fmw.b(90.0F, 0.0F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(2.5F, 0.0F, 1.0F), fmt.b.b),
-            new fmv(0.25F, fmw.a(2.0F, 0.0F, 1.0F), fmt.b.b),
-            new fmv(0.4583F, fmw.a(-1.0F, -2.0F, -1.0F), fmt.b.b),
-            new fmv(0.7917F, fmw.a(-0.58F, 0.0F, -2.83F), fmt.b.b),
-            new fmv(0.9583F, fmw.a(2.5F, 0.0F, 1.0F), fmt.b.b),
-            new fmv(1.0417F, fmw.a(2.5F, 0.0F, 1.0F), fmt.b.b)
-         )
-      )
-      .b();
-   public static final fmu f = fmu.a.a(3.0F)
-      .a()
-      .a(
-         "body",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(1.625F, fmw.b(-10.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(3.0F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 0.0F, -22.5F), fmt.b.b),
-            new fmv(2.2083F, fmw.b(0.0F, 0.0F, -45.0F), fmt.b.b),
-            new fmv(3.0F, fmw.b(0.0F, 0.0F, -22.5F), fmt.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(-1.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(2.2083F, fmw.a(-1.0F, -0.5F, 0.0F), fmt.b.b),
-            new fmv(3.0F, fmw.a(-1.0F, 0.0F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 0.0F, 22.5F), fmt.b.b),
-            new fmv(2.2083F, fmw.b(0.0F, 0.0F, 45.0F), fmt.b.b),
-            new fmv(3.0F, fmw.b(0.0F, 0.0F, 22.5F), fmt.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(1.0F, 0.0F, 0.0F), fmt.b.b),
-            new fmv(2.2083F, fmw.a(1.0F, -0.5F, 0.0F), fmt.b.b),
-            new fmv(3.0F, fmw.a(1.0F, 0.0F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(22.5F, -22.5F, 0.0F), fmt.b.b),
-            new fmv(1.0F, fmw.b(22.5F, -22.5F, -45.0F), fmt.b.b),
-            new fmv(3.0F, fmw.b(22.5F, -22.5F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, 0.0F, 1.0F), fmt.b.b),
-            new fmv(1.0F, fmw.a(0.0F, -1.0F, 1.0F), fmt.b.b),
-            new fmv(3.0F, fmw.a(0.0F, 0.0F, 1.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(22.5F, 22.5F, 0.0F), fmt.b.b),
-            new fmv(1.0F, fmw.b(22.5F, 22.5F, 45.0F), fmt.b.b),
-            new fmv(3.0F, fmw.b(22.5F, 22.5F, 0.0F), fmt.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, 0.0F, 1.0F), fmt.b.b),
-            new fmv(1.0F, fmw.a(0.0F, -1.0F, 1.0F), fmt.b.b),
-            new fmv(3.0F, fmw.a(0.0F, 0.0F, 1.0F), fmt.b.b)
-         )
-      )
-      .b();
+   private static final int a = 256;
+   private final ThreadLocal<fnc.b> b = ThreadLocal.withInitial(fnc.b::new);
+   private final Long2ObjectLinkedOpenHashMap<fnc.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<jh> e;
+
+   public fnc(ToIntFunction<jh> $$0) {
+      this.e = $$0;
+   }
+
+   public int a(jh $$0) {
+      int $$1 = kj.a($$0.u());
+      int $$2 = kj.a($$0.w());
+      fnc.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
+      }
+
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
+      } else {
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
+      }
+   }
+
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
+
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = dgf.c($$0 + $$2, $$1 + $$3);
+               fnc.a $$5 = (fnc.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
+               }
+            }
+         }
+      } finally {
+         this.d.writeLock().unlock();
+      }
+   }
+
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(fnc.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
+      }
+   }
+
+   private fnc.a b(int $$0, int $$1) {
+      long $$2 = dgf.c($$0, $$1);
+      this.d.readLock().lock();
+
+      try {
+         fnc.a $$3 = (fnc.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
+         }
+      } finally {
+         this.d.readLock().unlock();
+      }
+
+      this.d.writeLock().lock();
+
+      fnc.a $$5;
+      try {
+         fnc.a $$4 = (fnc.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new fnc.a();
+            if (this.c.size() >= 256) {
+               fnc.a $$6 = (fnc.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
+               }
+            }
+
+            this.c.put($$2, $$5);
+            return $$5;
+         }
+
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
+      }
+
+      return $$5;
+   }
+
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = azu.h(16);
+      private volatile boolean d;
+
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
+         }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
+      }
+
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
+         return $$0;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
+   }
+
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      fnc.a c;
+
+      private b() {
+      }
+   }
 }

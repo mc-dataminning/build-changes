@@ -1,21 +1,34 @@
-public class grn extends gsw<cmo, gyt, gbl> {
-   private static final alz a = alz.b("textures/entity/endermite.png");
+public class grn extends grk<cpz, gxs> {
+   private static final alp a = alp.b("textures/entity/illager/evoker_fangs.png");
+   private final gbi b;
 
-   public grn(grq.a $$0) {
-      super($$0, new gbl($$0.a(gen.aF)), 0.3F);
+   public grn(grl.a $$0) {
+      super($$0);
+      this.b = new gbi($$0.a(gei.aM));
    }
 
-   @Override
-   protected float aX_() {
-      return 180.0F;
+   public void a(gxs $$0, fgl $$1, glg $$2, int $$3) {
+      float $$4 = $$0.b;
+      if ($$4 != 0.0F) {
+         $$1.a();
+         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
+         $$1.b(-1.0F, -1.0F, 1.0F);
+         $$1.a(0.0F, -1.501F, 0.0F);
+         this.b.a($$0);
+         fgp $$5 = $$2.getBuffer(this.b.a(a));
+         this.b.a($$1, $$5, $$3, hax.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   @Override
-   public alz b(gyt $$0) {
-      return a;
+   public gxs a() {
+      return new gxs();
    }
 
-   public gyt b() {
-      return new gyt();
+   public void a(cpz $$0, gxs $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.dM();
+      $$1.b = $$0.a($$2);
    }
 }

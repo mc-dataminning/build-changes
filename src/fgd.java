@@ -1,5 +1,8 @@
-public interface fgd<T> {
-   T e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(T var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fdt
+@fds
+interface fgd {
 }

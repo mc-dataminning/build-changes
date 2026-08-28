@@ -1,130 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicReference;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class brx<T extends Runnable> implements brf, bse<T>, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicReference<brx.a> b = new AtomicReference<>(brx.a.a);
-   private final bsd<T> c;
-   private final Executor d;
-   private final String e;
+public class brx extends bsf {
+   public static final MapCodec<brx> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, brx::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   public brx(bsd<T> $$0, Executor $$1, String $$2) {
-      this.d = $$1;
-      this.c = $$0;
-      this.e = $$2;
-      brd.a.a(this);
+   private brx(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   private boolean e() {
-      return !this.k() && !this.c.b();
-   }
-
-   @Override
-   public void close() {
-      this.b.set(brx.a.c);
-   }
-
-   private boolean f() {
-      if (!this.j()) {
-         return false;
-      } else {
-         Runnable $$0 = this.c.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ae.a($$0, this.e);
-            return true;
-         }
-      }
+   public static brx a(int $$0, int $$1) {
+      return new brx($$0, $$1);
    }
 
    @Override
-   public void run() {
-      try {
-         this.f();
-      } finally {
-         this.i();
-         this.g();
-      }
-   }
-
-   public void a() {
-      try {
-         while (this.f()) {
-         }
-      } finally {
-         this.i();
-         this.g();
-      }
+   public int a(bac $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
    @Override
-   public void a_(T $$0) {
-      this.c.a($$0);
-      this.g();
+   public int a() {
+      return this.b;
    }
 
-   private void g() {
-      if (this.e() && this.h()) {
-         try {
-            this.d.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.d.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Could not schedule ConsecutiveExecutor", var3);
-            }
-         }
-      }
-   }
-
+   @Override
    public int b() {
-      return this.c.c();
+      return this.f;
    }
 
-   public boolean c() {
-      return this.j() && !this.c.b();
+   @Override
+   public bsg<?> c() {
+      return bsg.c;
    }
 
    @Override
    public String toString() {
-      return this.e + " " + this.b.get() + " " + this.c.b();
-   }
-
-   @Override
-   public String A_() {
-      return this.e;
-   }
-
-   @Override
-   public List<brc> bw() {
-      return ImmutableList.of(brc.a(this.e + "-queue-size", brb.c, this::b));
-   }
-
-   private boolean h() {
-      return this.b.compareAndSet(brx.a.a, brx.a.b);
-   }
-
-   private void i() {
-      this.b.compareAndSet(brx.a.b, brx.a.a);
-   }
-
-   private boolean j() {
-      return this.b.get() == brx.a.b;
-   }
-
-   private boolean k() {
-      return this.b.get() == brx.a.c;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

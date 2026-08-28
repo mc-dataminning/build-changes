@@ -1,65 +1,33 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public record bpc<T>(bou<StringReader> a, bos<T> b) {
-   public Optional<T> a(box<StringReader> $$0) {
-      return $$0.a(this.b);
+public class bpc {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bpg c = bpf.a;
+
+   public bpc(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bov.a<StringReader> $$1 = new bov.a<>();
-      bpg $$2 = new bpg(this.a(), $$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
-      } else {
-         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
-            if ($$0x.c() instanceof Exception $$3x) {
-               $$1x.accept($$3x);
-            }
-         }).toList();
-
-         for (Exception $$5 : $$4) {
-            if ($$5 instanceof CommandSyntaxException $$6) {
-               throw $$6;
-            }
-         }
-
-         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
-            throw $$7;
-         } else {
-            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bow::toString).collect(Collectors.joining(", ")));
-         }
-      }
+   public boolean a() {
+      return this.c != bpf.a;
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bov.a<StringReader> $$2 = new bov.a<>();
-      bpg $$3 = new bpg(this.a(), $$2, $$1);
-      this.a($$3);
-      List<bow<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
+   public void b() {
+      this.c = bpf.a;
+   }
 
-         for (bow<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bpf $$7) {
-               fb.a($$7.a(), $$5);
-            } else {
-               fb.b($$6.b().possibleValues($$3), $$5);
-            }
-         }
+   public void c() {
+      this.c = new bpb(this.a, this.b, true);
+   }
 
-         return $$5.buildFuture();
-      }
+   public bpj d() {
+      return this.c;
+   }
+
+   public bph e() {
+      return this.c.d();
    }
 }

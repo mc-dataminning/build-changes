@@ -1,47 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class ehd extends egw<ejh> {
-   public ehd(Codec<ejh> $$0) {
+public class ehd extends egp<eja> {
+   public ehd(Codec<eja> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<ejh> $$0) {
-      dig $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      bam $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dxv $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dko.ei) && !$$4.a(dko.el) && !$$4.a(dko.pM)) {
-            return false;
-         } else {
-            $$1.a($$2, dko.ep.m(), 2);
+   public boolean a(egr<eja> $$0) {
+      int $$1 = 0;
+      dhx $$2 = $$0.b();
+      jh $$3 = $$0.e();
+      bac $$4 = $$0.d();
+      int $$5 = $$2.a(edj.a.d, $$3.u(), $$3.w());
+      jh $$6 = new jh($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(dkf.J)) {
+         dxo $$7 = dkf.mE.m();
+         dxo $$8 = dkf.mF.m();
+         int $$9 = 1 + $$4.a(10);
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               jh $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
-
-                  for (jm $$8 : jm.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dko.ep)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dko.ep.m(), 2);
-                  }
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(dkf.J) && $$2.a_($$6.d()).a(dkf.J) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.b(doj.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
                }
+            } else if ($$10 > 0) {
+               jh $$11 = $$6.e();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dkf.mE)) {
+                  $$2.a($$11, $$7.b(doj.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
+               break;
             }
 
-            return true;
+            $$6 = $$6.d();
          }
       }
+
+      return $$1 > 0;
    }
 }

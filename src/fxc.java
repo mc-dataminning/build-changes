@@ -1,67 +1,88 @@
 import javax.annotation.Nullable;
 
-public abstract class fxc extends fty {
-   protected final fty b;
-   protected final fmk c;
+public class fxc extends fwv {
+   private static final xk v = xk.c("controls.keybinds.title");
    @Nullable
-   protected fpd d;
-   public final fru s = new fru(this);
+   public flx a;
+   public long u;
+   private fxb w;
+   private fny x;
 
-   public fxc(fty $$0, fmk $$1, xv $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   public fxc(ftr $$0, fmd $$1) {
+      super($$0, $$1, v);
    }
 
    @Override
-   protected void aT_() {
-      this.G();
-      this.F();
-      this.E();
-      this.s.a($$1 -> {
-         fod var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   protected void G() {
-      this.s.a(this.l, this.p);
-   }
-
    protected void F() {
-      this.d = this.s.c(new fpd(this.m, this.n, this));
-      this.l();
-      if (this.d.b(this.c.av()) instanceof fom $$0) {
-         this.q = $$0;
-         this.q.j = this.m.aZ().a();
-      }
+      this.w = this.s.c(new fxb(this, this.m));
    }
 
-   protected abstract void l();
+   @Override
+   protected void l() {
+   }
 
+   @Override
    protected void E() {
-      this.s.b(fof.a(xu.d, $$0 -> this.aP_()).a(200).a());
+      this.x = fny.a(xk.c("controls.resetAll"), $$0x -> {
+         for (flx $$1 : this.c.V) {
+            $$1.b($$1.i());
+         }
+
+         this.w.b();
+      }).a();
+      frr $$0 = this.s.b(frr.e().a(8));
+      $$0.a(this.x);
+      $$0.a(fny.a(xj.d, $$0x -> this.aP_()).a());
    }
 
    @Override
    protected void c() {
       this.s.a();
-      if (this.d != null) {
-         this.d.a(this.n, this.s);
+      this.w.a(this.n, this.s);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.a != null) {
+         this.a.b(ffg.b.c.a($$2));
+         this.a = null;
+         this.w.b();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   public void aJ_() {
-      this.m.n.az();
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.a != null) {
+         if ($$0 == 256) {
+            this.a.b(ffg.bv);
+         } else {
+            this.a.b(ffg.a($$0, $$1));
+         }
+
+         this.a = null;
+         this.u = ae.c();
+         this.w.b();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   public void aP_() {
-      if (this.d != null) {
-         this.d.b();
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      boolean $$4 = false;
+
+      for (flx $$5 : this.c.V) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
       }
 
-      this.m.a(this.b);
+      this.x.j = $$4;
    }
 }

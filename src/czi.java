@@ -1,123 +1,52 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class czi extends cxl implements cyk {
-   public static final int a = 10;
-   public static final float b = 8.0F;
-   public static final float c = 2.5F;
+public record czi(Map<String, String> d) {
+   public static final czi a = new czi(Map.of());
+   public static final Codec<czi> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(czi::new, czi::b);
+   private static final zi<ByteBuf, Map<String, String>> e = zg.a(Object2ObjectOpenHashMap::new, zg.o, zg.o);
+   public static final zi<ByteBuf, czi> c = e.a(czi::new, czi::b);
 
-   public czi(cxl.a $$0) {
-      super($$0);
+   public <T extends Comparable<T>> czi a(dyq<T> $$0, T $$1) {
+      return new czi(ae.a(this.d, $$0.f(), $$0.b($$1)));
    }
 
-   public static dag c() {
-      return dag.a().a(bxo.c, new bxm(g, 8.0, bxm.a.a), bvt.b).a(bxo.e, new bxm(h, -2.9F, bxm.a.a), bvt.b).a();
+   public <T extends Comparable<T>> czi a(dyq<T> $$0, dxo $$1) {
+      return this.a($$0, $$1.c($$0));
    }
 
-   public static dar d() {
-      return new dar(List.of(), 1.0F, 2);
+   @Nullable
+   public <T extends Comparable<T>> T a(dyq<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
    }
 
-   @Override
-   public boolean a(dxv $$0, dhi $$1, jh $$2, cpx $$3) {
-      return !$$3.b();
-   }
+   public dxo a(dxo $$0) {
+      dxp<dkd, dxo> $$1 = $$0.b().l();
 
-   @Override
-   public cxr b(cxp $$0) {
-      return cxr.f;
-   }
-
-   @Override
-   public int a(cxp $$0, bwg $$1) {
-      return 72000;
-   }
-
-   @Override
-   public boolean a(cxp $$0, dhi $$1, bwg $$2, int $$3) {
-      if ($$2 instanceof cpx $$4) {
-         int $$6 = this.a($$0, $$2) - $$3;
-         if ($$6 < 10) {
-            return false;
-         } else {
-            float $$7 = deb.a($$0, $$4);
-            if ($$7 > 0.0F && !$$4.bk()) {
-               return false;
-            } else if ($$0.r()) {
-               return false;
-            } else {
-               jq<axe> $$8 = deb.b($$0, dea.C).orElse(axf.Af);
-               if ($$1 instanceof ash $$9) {
-                  $$0.a(1, $$4);
-                  if ($$7 == 0.0F) {
-                     crd $$10 = cqq.a(crd::new, $$9, $$0, $$4, 0.0F, 2.5F, 1.0F);
-                     if ($$4.fV()) {
-                        $$10.c = cqe.a.c;
-                     } else {
-                        $$4.gi().h($$0);
-                     }
-
-                     $$1.a(null, $$10, $$8.a(), axg.h, 1.0F, 1.0F);
-                     return true;
-                  }
-               }
-
-               $$4.b(axp.c.b(this));
-               if ($$7 > 0.0F) {
-                  float $$11 = $$4.dM();
-                  float $$12 = $$4.dO();
-                  float $$13 = -bae.a($$11 * (float) (Math.PI / 180.0)) * bae.b($$12 * (float) (Math.PI / 180.0));
-                  float $$14 = -bae.a($$12 * (float) (Math.PI / 180.0));
-                  float $$15 = bae.b($$11 * (float) (Math.PI / 180.0)) * bae.b($$12 * (float) (Math.PI / 180.0));
-                  float $$16 = bae.c($$13 * $$13 + $$14 * $$14 + $$15 * $$15);
-                  $$13 *= $$7 / $$16;
-                  $$14 *= $$7 / $$16;
-                  $$15 *= $$7 / $$16;
-                  $$4.j((double)$$13, (double)$$14, (double)$$15);
-                  $$4.a(20, 8.0F, $$0);
-                  if ($$4.aJ()) {
-                     float $$17 = 1.1999999F;
-                     $$4.a(bwk.a, new fby(0.0, 1.1999999F, 0.0));
-                  }
-
-                  $$1.a(null, $$4, $$8.a(), axg.h, 1.0F, 1.0F);
-                  return true;
-               } else {
-                  return false;
-               }
-            }
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         dyq<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
          }
-      } else {
-         return false;
       }
+
+      return $$0;
    }
 
-   @Override
-   public btj a(dhi $$0, cpx $$1, bti $$2) {
-      cxp $$3 = $$1.b($$2);
-      if ($$3.r()) {
-         return btj.d;
-      } else if (deb.a($$3, $$1) > 0.0F && !$$1.bk()) {
-         return btj.d;
-      } else {
-         $$1.c($$2);
-         return btj.c;
-      }
+   private static <T extends Comparable<T>> dxo a(dxo $$0, dyq<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
    }
 
-   @Override
-   public boolean a(cxp $$0, bwg $$1, bwg $$2) {
-      return true;
+   public boolean a() {
+      return this.d.isEmpty();
    }
 
-   @Override
-   public void b(cxp $$0, bwg $$1, bwg $$2) {
-      $$0.a(1, $$2, bvs.a);
-   }
-
-   @Override
-   public cqq a(dhi $$0, ka $$1, cxp $$2, jm $$3) {
-      crd $$4 = new crd($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
-      $$4.c = cqe.a.b;
-      return $$4;
+   public Map<String, String> b() {
+      return this.d;
    }
 }

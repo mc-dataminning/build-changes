@@ -1,134 +1,216 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import javax.annotation.Nullable;
 
-public class dvv {
-   private final Object2IntSortedMap<cxl> a;
-
-   dvv(Object2IntSortedMap<cxl> $$0) {
-      this.a = $$0;
-   }
-
-   public boolean a(cxp $$0) {
-      return this.a.containsKey($$0.h());
-   }
-
-   public SequencedSet<cxl> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(cxp $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static dvv a(js.a $$0, cst $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static dvv a(js.a $$0, cst $$1, int $$2) {
-      return new dvv.a($$0, $$1)
-         .a(cxt.qY, $$2 * 100)
-         .a(dko.iS, $$2 * 8 * 10)
-         .a(cxt.sU, $$2 * 12)
-         .a(cxt.oT, $$2 * 8)
-         .a(cxt.oU, $$2 * 8)
-         .a(ayd.r, $$2 * 3 / 2)
-         .a(ayd.D, $$2 * 3 / 2)
-         .a(ayd.b, $$2 * 3 / 2)
-         .a(dko.y, $$2 * 3 / 2)
-         .a(ayd.i, $$2 * 3 / 2)
-         .a(dko.il, $$2 * 3 / 2)
-         .a(ayd.j, $$2 * 3 / 4)
-         .a(dko.jU, $$2 * 3 / 4)
-         .a(ayd.n, $$2 * 3 / 2)
-         .a(ayd.m, $$2 * 3 / 2)
-         .a(ayd.k, $$2 * 3 / 2)
-         .a(ayd.l, $$2 * 3 / 2)
-         .a(dko.bf, $$2 * 3 / 2)
-         .a(dko.cs, $$2 * 3 / 2)
-         .a(dko.ct, $$2 * 3 / 2)
-         .a(dko.ov, $$2 * 3 / 2)
-         .a(dko.eg, $$2 * 3 / 2)
-         .a(dko.cD, $$2 * 3 / 2)
-         .a(dko.hl, $$2 * 3 / 2)
-         .a(dko.cI, $$2 * 3 / 2)
-         .a(dko.hp, $$2 * 3 / 2)
-         .a(ayd.F, $$2 * 3 / 2)
-         .a(cxt.oR, $$2 * 3 / 2)
-         .a(cxt.rJ, $$2 * 3 / 2)
-         .a(dko.cX, $$2 * 3 / 2)
-         .a(ayd.aW, $$2)
-         .a(ayd.bw, $$2 * 4)
-         .a(cxt.pj, $$2)
-         .a(cxt.pi, $$2)
-         .a(cxt.pm, $$2)
-         .a(cxt.pl, $$2)
-         .a(cxt.pk, $$2)
-         .a(ayd.h, $$2)
-         .a(ayd.aT, $$2 * 6)
-         .a(ayd.a, $$2 / 2)
-         .a(ayd.d, $$2 / 2)
-         .a(cxt.pM, $$2 / 2)
-         .a(ayd.p, $$2 / 2)
-         .a(cxt.oP, $$2 / 2)
-         .a(ayd.g, 1 + $$2 / 3)
-         .a(dko.mz, 1 + $$2 * 20)
-         .a(cxt.wL, $$2 * 3 / 2)
-         .a(dko.nu, $$2 / 4)
-         .a(dko.bC, $$2 / 2)
-         .a(dko.on, $$2 / 4)
-         .a(dko.oo, $$2 * 3 / 2)
-         .a(dko.op, $$2 * 3 / 2)
-         .a(dko.os, $$2 * 3 / 2)
-         .a(dko.ot, $$2 * 3 / 2)
-         .a(dko.ow, $$2 * 3 / 2)
-         .a(dko.px, $$2 * 3 / 2)
-         .a(dko.sT, $$2 / 2)
-         .a(dko.sU, $$2 / 2)
-         .a(dko.ag, $$2 * 3 / 2)
-         .a(ayd.aN)
-         .a();
-   }
-
-   public static class a {
-      private final js<cxl> a;
-      private final cst b;
-      private final Object2IntSortedMap<cxl> c = new Object2IntLinkedOpenHashMap();
-
-      public a(js.a $$0, cst $$1) {
-         this.a = $$0.d(mb.K);
-         this.b = $$1;
+public class dvv extends duq implements bsr, btc {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final bst e = new bst() {
+      @Override
+      public int b() {
+         return 1;
       }
 
-      public dvv a() {
-         return new dvv(this.c);
+      @Override
+      public boolean c() {
+         return dvv.this.g.f();
       }
 
-      public dvv.a a(ayk<cxl> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
-         return this;
+      @Override
+      public cxg a(int $$0) {
+         return $$0 == 0 ? dvv.this.g : cxg.j;
       }
 
-      public dvv.a a(ayk<cxl> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (jq<cxl> $$2 : $$1x) {
-               this.a($$1, $$2.a());
+      @Override
+      public cxg a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            cxg $$2 = dvv.this.g.a($$1);
+            if (dvv.this.g.f()) {
+               dvv.this.k();
             }
-         });
-         return this;
-      }
 
-      public dvv.a a(dhh $$0, int $$1) {
-         cxl $$2 = $$0.j();
-         this.a($$1, $$2);
-         return this;
-      }
-
-      private void a(int $$0, cxl $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
+            return $$2;
+         } else {
+            return cxg.j;
          }
+      }
+
+      @Override
+      public cxg b(int $$0) {
+         if ($$0 == 0) {
+            cxg $$1 = dvv.this.g;
+            dvv.this.g = cxg.j;
+            dvv.this.k();
+            return $$1;
+         } else {
+            return cxg.j;
+         }
+      }
+
+      @Override
+      public void a(int $$0, cxg $$1) {
+      }
+
+      @Override
+      public int ao_() {
+         return 1;
+      }
+
+      @Override
+      public void e() {
+         dvv.this.e();
+      }
+
+      @Override
+      public boolean a(cpo $$0) {
+         return bst.a(dvv.this, $$0) && dvv.this.c();
+      }
+
+      @Override
+      public boolean b(int $$0, cxg $$1) {
+         return false;
+      }
+
+      @Override
+      public void a() {
+      }
+   };
+   private final ctf f = new ctf() {
+      @Override
+      public int a(int $$0) {
+         return $$0 == 0 ? dvv.this.h : 0;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            dvv.this.a($$1);
+         }
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+   };
+   cxg g = cxg.j;
+   int h;
+   private int i;
+
+   public dvv(jh $$0, dxo $$1) {
+      super(dus.E, $$0, $$1);
+   }
+
+   public cxg b() {
+      return this.g;
+   }
+
+   public boolean c() {
+      return this.g.b(ku.S) || this.g.b(ku.T);
+   }
+
+   public void b(cxg $$0) {
+      this.a($$0, null);
+   }
+
+   void k() {
+      this.h = 0;
+      this.i = 0;
+      doq.a(null, this.i(), this.aB_(), this.m(), false);
+   }
+
+   public void a(cxg $$0, @Nullable cpo $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = c(this.g);
+      this.e();
+   }
+
+   void a(int $$0) {
+      int $$1 = azu.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         doq.a(this.i(), this.aB_(), this.m());
+      }
+   }
+
+   public int f() {
+      return this.h;
+   }
+
+   public int j() {
+      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
+      return azu.d($$0 * 14.0F) + (this.c() ? 1 : 0);
+   }
+
+   private cxg b(cxg $$0, @Nullable cpo $$1) {
+      if (this.o instanceof arx $$2) {
+         czc.a($$0, this.a($$1, $$2), $$1);
+      }
+
+      return $$0;
+   }
+
+   private ew a(@Nullable cpo $$0, arx $$1) {
+      String $$2;
+      xk $$3;
+      if ($$0 == null) {
+         $$2 = "Lectern";
+         $$3 = xk.b("Lectern");
+      } else {
+         $$2 = $$0.al().getString();
+         $$3 = $$0.p_();
+      }
+
+      fbr $$6 = fbr.b(this.p);
+      return new ew(ev.a, $$6, fbq.a, $$1, 2, $$2, $$3, $$1.p(), $$0);
+   }
+
+   @Override
+   protected void a(um $$0, js.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(cxg.a($$1, (vj)$$0.p("Book")).orElse(cxg.j), null);
+      } else {
+         this.g = cxg.j;
+      }
+
+      this.i = c(this.g);
+      this.h = azu.a($$0.h("Page"), 0, this.i - 1);
+   }
+
+   @Override
+   protected void b(um $$0, js.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b().f()) {
+         $$0.a("Book", this.b().a($$1));
+         $$0.a("Page", this.h);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b(cxg.j);
+   }
+
+   @Override
+   public cst createMenu(int $$0, cpn $$1, cpo $$2) {
+      return new ctz($$0, this.e, this.f);
+   }
+
+   @Override
+   public xk p_() {
+      return xk.c("container.lectern");
+   }
+
+   private static int c(cxg $$0) {
+      dao $$1 = $$0.a(ku.T);
+      if ($$1 != null) {
+         return $$1.a().size();
+      } else {
+         dan $$2 = $$0.a(ku.S);
+         return $$2 != null ? $$2.a().size() : 0;
       }
    }
 }

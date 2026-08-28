@@ -1,28 +1,49 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eki extends ekh {
-   public static final MapCodec<eki> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eki::new));
+public class eki extends ekf {
+   public static final MapCodec<eki> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bsf.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, eki::new)
+   );
+   private final bsf b;
 
-   public eki(bso $$0, bso $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public eki(bsf $$0, bsf $$1, bsf $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected ekn<?> a() {
-      return ekn.e;
+   protected ekg<?> a() {
+      return ekg.h;
    }
 
    @Override
-   protected void a(dho $$0, ekm.b $$1, bam $$2, ejw $$3, int $$4, ekm.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+   protected void a(dhf $$0, ekf.b $$1, bac $$2, ejp $$3, int $$4, ekf.a $$5, int $$6, int $$7, int $$8) {
+      jh $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + azu.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
+
+         this.a($$0, $$1, $$2, $$3, new jh($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
       }
    }
 
    @Override
-   protected boolean a(bam $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public int a(bac $$0, int $$1, ejp $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(bac $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

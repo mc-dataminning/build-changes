@@ -1,10 +1,9 @@
-import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class eit implements eja {
-   public static final Codec<eit> a = dxv.a.fieldOf("state").xmap(eit::new, $$0 -> $$0.b).codec();
-   public final dxv b;
+public interface eit {
+   eja m = eja.b;
 
-   public eit(dxv $$0) {
-      this.b = $$0;
+   default Stream<egb<?, ?>> e() {
+      return Stream.empty();
    }
 }

@@ -1,59 +1,39 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dkh extends dmj {
-   public static final MapCodec<dkh> a = b(dkh::new);
-   public static final int b = 3;
-   public static final dyu c = dyl.at;
-   private static final fcs[] g = new fcs[]{
-      dkm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dkm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dkm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dkm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
+public class dkh extends dkd implements dkg {
+   public static final MapCodec<dkh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alo.a(mb.aL).fieldOf("feature").forGetter($$0x -> $$0x.b), t()).apply($$0, dkh::new)
+   );
+   private final alo<egb<?, ?>> b;
 
    @Override
    public MapCodec<dkh> a() {
       return a;
    }
 
-   public dkh(dxu.d $$0) {
-      super($$0);
+   public dkh(alo<egb<?, ?>> $$0, dxn.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected dyu b() {
-      return c;
+   public boolean b(dhc $$0, jh $$1, dxo $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
    @Override
-   public int c() {
-      return 3;
+   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
+      return true;
    }
 
    @Override
-   protected dhh d() {
-      return cxt.wb;
+   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
+      $$0.K_().a(mb.aL).flatMap($$0x -> $$0x.a(this.b)).ifPresent($$3x -> ((egb)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2.d()));
    }
 
    @Override
-   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(dhi $$0) {
-      return super.a($$0) / 3;
-   }
-
-   @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return g[this.h($$0)];
+   public dkg.a ar_() {
+      return dkg.a.a;
    }
 }

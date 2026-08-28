@@ -12,20 +12,20 @@ import java.util.concurrent.CompletableFuture;
 
 public class gs implements ArgumentType<gu> {
    private static final Collection<String> d = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("argument.pos.unloaded"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("argument.pos.outofworld"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xv.c("argument.pos.outofbounds"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("argument.pos.unloaded"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("argument.pos.outofworld"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xk.c("argument.pos.outofbounds"));
 
    public static gs a() {
       return new gs();
    }
 
    public static jh a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      ash $$2 = ((ew)$$0.getSource()).e();
+      arx $$2 = ((ew)$$0.getSource()).e();
       return a($$0, $$2, $$1);
    }
 
-   public static jh a(CommandContext<ew> $$0, ash $$1, String $$2) throws CommandSyntaxException {
+   public static jh a(CommandContext<ew> $$0, arx $$1, String $$2) throws CommandSyntaxException {
       jh $$3 = b($$0, $$2);
       if (!$$1.B($$3)) {
          throw a.create();
@@ -42,7 +42,7 @@ public class gs implements ArgumentType<gu> {
 
    public static jh c(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
       jh $$2 = b($$0, $$1);
-      if (!dhi.l($$2)) {
+      if (!dgz.l($$2)) {
          throw c.create();
       } else {
          return $$2;

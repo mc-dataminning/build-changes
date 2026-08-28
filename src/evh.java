@@ -1,39 +1,54 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class evh {
-   protected final dqr a;
+public class evh {
+   private final jh a;
+   private final int b;
+   private final int c;
 
-   protected evh(dqr $$0) {
+   public evh(jh $$0, int $$1, int $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public abstract void a(dhi var1, jh var2, dxv var3, @Nullable evf var4, boolean var5);
-
-   protected int a(dhi $$0, jh $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   protected int a(jh $$0, dxv $$1) {
-      return $$1.a(this.a) ? $$1.c(dqr.f) : 0;
-   }
-
-   protected int b(dhi $$0, jh $$1) {
-      int $$2 = 0;
-
-      for (jm $$3 : jm.c.a) {
-         jh $$4 = $$1.a($$3);
-         dxv $$5 = $$0.a_($$4);
-         $$2 = Math.max($$2, this.a($$4, $$5));
-         jh $$6 = $$1.d();
-         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
-            jh $$7 = $$4.d();
-            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
-         } else if (!$$5.d($$0, $$4)) {
-            jh $$8 = $$4.e();
-            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
-         }
+   @Nullable
+   public static evh a(um $$0) {
+      Optional<jh> $$1 = vb.a($$0, "pos");
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = $$0.h("rotation");
+         int $$3 = $$0.h("entity_id");
+         return new evh($$1.get(), $$2, $$3);
       }
+   }
 
-      return Math.max(0, $$2 - 1);
+   public um a() {
+      um $$0 = new um();
+      $$0.a("pos", vb.a(this.a));
+      $$0.a("rotation", this.b);
+      $$0.a("entity_id", this.c);
+      return $$0;
+   }
+
+   public jh b() {
+      return this.a;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.c;
+   }
+
+   public String e() {
+      return a(this.a);
+   }
+
+   public static String a(jh $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

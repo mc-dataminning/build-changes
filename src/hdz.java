@@ -1,63 +1,116 @@
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class hdz {
-   static final int a = -1;
-   private static final int b = 0;
+public class hdz implements hdi {
+   protected final List<gmn> a;
+   protected final Map<jm, List<gmn>> b;
+   protected final boolean c;
+   protected final boolean d;
+   protected final boolean e;
+   protected final hbg f;
+   protected final gmy g;
 
-   public static Object2IntMap<dxv> a(fni $$0, hdp.c $$1) {
-      Map<dkm, List<dyx<?>>> $$2 = new HashMap<>();
-      Map<hdz.a, Set<dxv>> $$3 = new HashMap<>();
-      $$1.a().forEach(($$3x, $$4x) -> {
-         List<dyx<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
-         hdz.a $$6x = hdz.a.a($$4x.a(), $$4x.b(), $$5x);
-         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
-      });
-      int $$4 = 1;
-      Object2IntMap<dxv> $$5 = new Object2IntOpenHashMap();
-      $$5.defaultReturnValue(-1);
-
-      for (Set<dxv> $$6 : $$3.values()) {
-         Iterator<dxv> $$7 = $$6.iterator();
-
-         while ($$7.hasNext()) {
-            dxv $$8 = $$7.next();
-            if ($$8.o() != dqv.c) {
-               $$7.remove();
-               $$5.put($$8, 0);
-            }
-         }
-
-         if ($$6.size() > 1) {
-            int $$9 = $$4++;
-            $$6.forEach($$2x -> $$5.put($$2x, $$9));
-         }
-      }
-
-      return $$5;
+   public hdz(List<gmn> $$0, Map<jm, List<gmn>> $$1, boolean $$2, boolean $$3, boolean $$4, hbg $$5, gmy $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$4;
+      this.e = $$3;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   static record a(Object a, List<Object> b) {
-      public static hdz.a a(dxv $$0, heg $$1, List<dyx<?>> $$2) {
-         List<Object> $$3 = a($$0, $$2);
-         Object $$5 = $$1 instanceof gnf $$4 ? $$4.a($$0) : $$1;
-         return new hdz.a($$5, $$3);
+   @Override
+   public List<gmn> a(@Nullable dxo $$0, @Nullable jm $$1, bac $$2) {
+      return $$1 == null ? this.a : this.b.get($$1);
+   }
+
+   @Override
+   public boolean a() {
+      return this.c;
+   }
+
+   @Override
+   public boolean b() {
+      return this.d;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e;
+   }
+
+   @Override
+   public boolean d() {
+      return false;
+   }
+
+   @Override
+   public hbg e() {
+      return this.f;
+   }
+
+   @Override
+   public gmy f() {
+      return this.g;
+   }
+
+   public static class a {
+      private final Builder<gmn> a = ImmutableList.builder();
+      private final EnumMap<jm, Builder<gmn>> b = Maps.newEnumMap(jm.class);
+      private final boolean c;
+      @Nullable
+      private hbg d;
+      private final boolean e;
+      private final boolean f;
+      private final gmy g;
+
+      public a(gms $$0, boolean $$1) {
+         this($$0.b(), $$0.c().a(), $$1, $$0.g());
       }
 
-      private static List<Object> a(dxv $$0, List<dyx<?>> $$1) {
-         Object[] $$2 = new Object[$$1.size()];
+      private a(boolean $$0, boolean $$1, boolean $$2, gmy $$3) {
+         this.c = $$0;
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
 
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            $$2[$$3] = $$0.c($$1.get($$3));
+         for (jm $$4 : jm.values()) {
+            this.b.put($$4, ImmutableList.builder());
          }
+      }
 
-         return List.of($$2);
+      public hdz.a a(jm $$0, gmn $$1) {
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public hdz.a a(gmn $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public hdz.a a(hbg $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public hdz.a a() {
+         return this;
+      }
+
+      public hdi b() {
+         if (this.d == null) {
+            throw new RuntimeException("Missing particle!");
+         } else {
+            Map<jm, List<gmn>> $$0 = Maps.transformValues(this.b, Builder::build);
+            return new hdz(this.a.build(), new EnumMap<>($$0), this.c, this.e, this.f, this.d, this.g);
+         }
       }
    }
 }

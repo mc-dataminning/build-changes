@@ -1,12 +1,30 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface epi<SP extends eph> {
-   epi<epf> a = a("random_spread", epf.a);
-   epi<epe> b = a("concentric_rings", epe.a);
+public class epi extends epk {
+   public static final MapCodec<epi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, epi::new));
 
-   MapCodec<SP> codec();
+   protected epi(Either<alp, esf> $$0, jq<esd> $$1, epn.a $$2, Optional<erp> $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-   private static <SP extends eph> epi<SP> a(String $$0, MapCodec<SP> $$1) {
-      return kd.a(ma.P, $$0, () -> $$1);
+   @Override
+   protected esb a(dqv $$0, env $$1, erp $$2, boolean $$3) {
+      esb $$4 = super.a($$0, $$1, $$2, $$3);
+      $$4.b(erg.b);
+      $$4.a(erg.d);
+      return $$4;
+   }
+
+   @Override
+   public epm<?> a() {
+      return epm.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

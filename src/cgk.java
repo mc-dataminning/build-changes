@@ -1,27 +1,28 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
 
-public abstract class cgk extends cgq<bwg> {
-   protected abstract boolean a(ash var1, bwg var2, bwg var3);
-
-   protected abstract cfk<bwg> b();
-
+public class cgk extends cgh<bvx> {
    @Override
-   public Set<cfk<?>> a() {
-      return ImmutableSet.of(this.b());
+   public Set<cfb<?>> a() {
+      return ImmutableSet.of(cfb.i);
    }
 
    @Override
-   protected void a(ash $$0, bwg $$1) {
-      $$1.ec().a(this.b(), this.c($$0, $$1));
+   protected void a(arx $$0, bvx $$1) {
+      $$1.ec().a(cfb.i, this.a($$1));
    }
 
-   private Optional<bwg> c(ash $$0, bwg $$1) {
-      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
+   private List<bvx> a(bvx $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
    }
 
-   protected Optional<cfm> a(bwg $$0) {
-      return $$0.ec().c(cfk.h);
+   private boolean b(bvx $$0) {
+      return $$0.aq() == bvi.bD && $$0.e_();
+   }
+
+   private cfd c(bvx $$0) {
+      return $$0.ec().c(cfb.h).orElse(cfd.a());
    }
 }

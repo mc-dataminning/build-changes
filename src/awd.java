@@ -1,80 +1,129 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.io.Files;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class awd<T> extends awm<T> {
-   public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   public static final String b = "forever";
-   protected final Date c;
-   protected final String d;
-   @Nullable
-   protected final Date e;
-   protected final String f;
+public abstract class awd<K, V extends awc<K>> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
+   private final File c;
+   private final Map<String, V> d = Maps.newHashMap();
 
-   public awd(@Nullable T $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0);
-      this.c = $$1 == null ? new Date() : $$1;
-      this.d = $$2 == null ? "(Unknown)" : $$2;
-      this.e = $$3;
-      this.f = $$4 == null ? "Banned by an operator." : $$4;
+   public awd(File $$0) {
+      this.c = $$0;
    }
 
-   protected awd(@Nullable T $$0, JsonObject $$1) {
-      super($$0);
-
-      Date $$2;
-      try {
-         $$2 = $$1.has("created") ? a.parse($$1.get("created").getAsString()) : new Date();
-      } catch (ParseException var7) {
-         $$2 = new Date();
-      }
-
-      this.c = $$2;
-      this.d = $$1.has("source") ? $$1.get("source").getAsString() : "(Unknown)";
-
-      Date $$5;
-      try {
-         $$5 = $$1.has("expires") ? a.parse($$1.get("expires").getAsString()) : null;
-      } catch (ParseException var6) {
-         $$5 = null;
-      }
-
-      this.e = $$5;
-      this.f = $$1.has("reason") ? $$1.get("reason").getAsString() : "Banned by an operator.";
-   }
-
-   public Date a() {
+   public File b() {
       return this.c;
    }
 
-   public String b() {
-      return this.d;
+   public void a(V $$0) {
+      this.d.put(this.a($$0.g()), $$0);
+
+      try {
+         this.e();
+      } catch (IOException var3) {
+         a.warn("Could not save the list after adding a user.", var3);
+      }
    }
 
    @Nullable
-   public Date c() {
-      return this.e;
+   public V b(K $$0) {
+      this.g();
+      return this.d.get(this.a($$0));
    }
 
-   public String d() {
-      return this.f;
+   public void c(K $$0) {
+      this.d.remove(this.a($$0));
+
+      try {
+         this.e();
+      } catch (IOException var3) {
+         a.warn("Could not save the list after removing a user.", var3);
+      }
    }
 
-   public abstract xv e();
-
-   @Override
-   boolean f() {
-      return this.e == null ? false : this.e.before(new Date());
+   public void b(awc<K> $$0) {
+      this.c($$0.g());
    }
 
-   @Override
-   protected void a(JsonObject $$0) {
-      $$0.addProperty("created", a.format(this.c));
-      $$0.addProperty("source", this.d);
-      $$0.addProperty("expires", this.e == null ? "forever" : a.format(this.e));
-      $$0.addProperty("reason", this.f);
+   public String[] a() {
+      return this.d.keySet().toArray(new String[0]);
+   }
+
+   public boolean c() {
+      return this.d.size() < 1;
+   }
+
+   protected String a(K $$0) {
+      return $$0.toString();
+   }
+
+   protected boolean d(K $$0) {
+      return this.d.containsKey(this.a($$0));
+   }
+
+   private void g() {
+      List<K> $$0 = Lists.newArrayList();
+
+      for (V $$1 : this.d.values()) {
+         if ($$1.f()) {
+            $$0.add($$1.g());
+         }
+      }
+
+      for (K $$2 : $$0) {
+         this.d.remove(this.a($$2));
+      }
+   }
+
+   protected abstract awc<K> a(JsonObject var1);
+
+   public Collection<V> d() {
+      return this.d.values();
+   }
+
+   public void e() throws IOException {
+      JsonArray $$0 = new JsonArray();
+      this.d.values().stream().map($$0x -> ae.a(new JsonObject(), $$0x::a)).forEach($$0::add);
+
+      try (BufferedWriter $$1 = Files.newWriter(this.c, StandardCharsets.UTF_8)) {
+         b.toJson($$0, b.newJsonWriter($$1));
+      }
+   }
+
+   public void f() throws IOException {
+      if (this.c.exists()) {
+         try (BufferedReader $$0 = Files.newReader(this.c, StandardCharsets.UTF_8)) {
+            this.d.clear();
+            JsonArray $$1 = (JsonArray)b.fromJson($$0, JsonArray.class);
+            if ($$1 == null) {
+               return;
+            }
+
+            for (JsonElement $$2 : $$1) {
+               JsonObject $$3 = azk.m($$2, "entry");
+               awc<K> $$4 = this.a($$3);
+               if ($$4.g() != null) {
+                  this.d.put(this.a($$4.g()), (V)$$4);
+               }
+            }
+         }
+      }
    }
 }

@@ -1,250 +1,146 @@
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.joml.Matrix4f;
 
 public class glm {
-   private final glm.b a;
-   final jh b;
+   private final String a;
+   private final gkp b;
+   private final alp c;
+   private final List<gll.h> d;
+   private final List<glm.a> e = new ArrayList<>();
 
-   public glm(kj $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$1 * 2 + 1;
-      int $$5 = bae.c($$4);
-      int $$6 = $$1 * 16;
-      jh $$7 = $$0.j();
-      this.b = $$0.k();
-      int $$8 = $$7.u() - $$6;
-      int $$9 = $$8 + $$5 * 16 - 1;
-      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
-      int $$11 = $$10 + $$5 * 16 - 1;
-      int $$12 = $$7.w() - $$6;
-      int $$13 = $$12 + $$5 * 16 - 1;
-      this.a = new glm.b(new eoc($$8, $$10, $$12, $$9, $$11, $$13));
+   public glm(String $$0, gkp $$1, alp $$2, List<gll.h> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public boolean a(goy.b $$0) {
-      return this.a.a($$0);
+   public void a(glm.a $$0) {
+      this.e.add($$0);
    }
 
-   public void a(glm.e $$0, gpc $$1, int $$2) {
-      this.a.a($$0, false, $$1, 0, $$2, true);
-   }
+   public void a(fep $$0, Map<alp, ffx<fev>> $$1, Matrix4f $$2) {
+      feq $$3 = $$0.a(this.a);
 
-   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
-      int $$7 = this.b.u();
-      int $$8 = this.b.v();
-      int $$9 = this.b.w();
-      return (double)$$7 > $$0 - (double)$$6
-         && (double)$$7 < $$3 + (double)$$6
-         && (double)$$8 > $$1 - (double)$$6
-         && (double)$$8 < $$4 + (double)$$6
-         && (double)$$9 > $$2 - (double)$$6
-         && (double)$$9 < $$5 + (double)$$6;
-   }
-
-   static enum a {
-      a(4, 2, 1),
-      b(4, 1, 2),
-      c(2, 4, 1),
-      d(1, 4, 2),
-      e(2, 1, 4),
-      f(1, 2, 4);
-
-      final int g;
-      final int h;
-      final int i;
-
-      private a(final int $$0, final int $$1, final int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
+      for (glm.a $$4 : this.e) {
+         $$4.a($$3, $$1);
       }
 
-      public static glm.a a(int $$0, int $$1, int $$2) {
-         if ($$0 > $$1 && $$0 > $$2) {
-            return $$1 > $$2 ? a : b;
-         } else if ($$1 > $$0 && $$1 > $$2) {
-            return $$0 > $$2 ? c : d;
-         } else {
-            return $$0 > $$1 ? e : f;
-         }
-      }
-   }
+      ffx<fev> $$5 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$3.b($$2x));
+      if ($$5 == null) {
+         throw new IllegalStateException("Missing handle for target " + this.c);
+      } else {
+         $$3.a(() -> {
+            fev $$3x = $$5.get();
+            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
 
-   class b implements glm.d {
-      private final glm.d[] b = new glm.d[8];
-      private final eoc c;
-      private final int d;
-      private final int e;
-      private final int f;
-      private final glm.a g;
-      private final boolean h;
-      private final boolean i;
-      private final boolean j;
+            for (glm.a $$4x : this.e) {
+               $$4x.a(this.b, $$1);
+            }
 
-      public b(final eoc $$0) {
-         this.c = $$0;
-         this.d = this.c.h() + this.c.d() / 2;
-         this.e = this.c.i() + this.c.e() / 2;
-         this.f = this.c.j() + this.c.f() / 2;
-         int $$1 = glm.this.b.u() - this.d;
-         int $$2 = glm.this.b.v() - this.e;
-         int $$3 = glm.this.b.w() - this.f;
-         this.g = glm.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
-         this.h = $$1 < 0;
-         this.i = $$2 < 0;
-         this.j = $$3 < 0;
-      }
+            this.b.c("OutSize").a((float)$$3x.c, (float)$$3x.d);
 
-      public boolean a(goy.b $$0) {
-         boolean $$1 = $$0.f().u() - this.d < 0;
-         boolean $$2 = $$0.f().v() - this.e < 0;
-         boolean $$3 = $$0.f().w() - this.f < 0;
-         boolean $$4 = $$1 != this.h;
-         boolean $$5 = $$2 != this.i;
-         boolean $$6 = $$3 != this.j;
-         int $$7 = a(this.g, $$4, $$5, $$6);
-         if (this.c()) {
-            boolean $$8 = this.b[$$7] != null;
-            this.b[$$7] = glm.this.new c($$0);
-            return !$$8;
-         } else if (this.b[$$7] != null) {
-            glm.b $$9 = (glm.b)this.b[$$7];
-            return $$9.a($$0);
-         } else {
-            eoc $$10 = this.a($$1, $$2, $$3);
-            glm.b $$11 = glm.this.new b($$10);
-            this.b[$$7] = $$11;
-            return $$11.a($$0);
-         }
-      }
-
-      private static int a(glm.a $$0, boolean $$1, boolean $$2, boolean $$3) {
-         int $$4 = 0;
-         if ($$1) {
-            $$4 += $$0.g;
-         }
-
-         if ($$2) {
-            $$4 += $$0.h;
-         }
-
-         if ($$3) {
-            $$4 += $$0.i;
-         }
-
-         return $$4;
-      }
-
-      private boolean c() {
-         return this.c.d() == 32;
-      }
-
-      private eoc a(boolean $$0, boolean $$1, boolean $$2) {
-         int $$3;
-         int $$4;
-         if ($$0) {
-            $$3 = this.c.h();
-            $$4 = this.d - 1;
-         } else {
-            $$3 = this.d;
-            $$4 = this.c.k();
-         }
-
-         int $$7;
-         int $$8;
-         if ($$1) {
-            $$7 = this.c.i();
-            $$8 = this.e - 1;
-         } else {
-            $$7 = this.e;
-            $$8 = this.c.l();
-         }
-
-         int $$11;
-         int $$12;
-         if ($$2) {
-            $$11 = this.c.j();
-            $$12 = this.f - 1;
-         } else {
-            $$11 = this.f;
-            $$12 = this.c.m();
-         }
-
-         return new eoc($$3, $$7, $$11, $$4, $$8, $$12);
-      }
-
-      @Override
-      public void a(glm.e $$0, boolean $$1, gpc $$2, int $$3, int $$4, boolean $$5) {
-         boolean $$6 = $$1;
-         if (!$$1) {
-            int $$7 = $$2.a(this.c);
-            $$1 = $$7 == -2;
-            $$6 = $$7 == -2 || $$7 == -1;
-         }
-
-         if ($$6) {
-            $$5 = $$5
-               && glm.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
-            $$0.visit(this, $$1, $$3, $$5);
-
-            for (glm.d $$8 : this.b) {
-               if ($$8 != null) {
-                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
+            for (gll.h $$5x : this.d) {
+               fgc $$6 = this.b.a($$5x.a());
+               if ($$6 != null) {
+                  $$6.a($$5x.b(), $$5x.b().size());
                }
             }
+
+            $$3x.a(0.0F, 0.0F, 0.0F, 0.0F);
+            $$3x.f();
+            $$3x.a(false);
+            RenderSystem.depthFunc(519);
+            RenderSystem.setShader(this.b);
+            RenderSystem.backupProjectionMatrix();
+            RenderSystem.setProjectionMatrix($$2, fdu.b);
+            fgg $$7 = fgn.b().a(fgq.c.h, fgj.e);
+            $$7.a(0.0F, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, (float)$$3x.d, 500.0F);
+            $$7.a(0.0F, (float)$$3x.d, 500.0F);
+            fgh.a($$7.b());
+            RenderSystem.depthFunc(515);
+            RenderSystem.restoreProjectionMatrix();
+            $$3x.e();
+
+            for (glm.a $$8 : this.e) {
+               $$8.a($$1);
+            }
+
+            this.b();
+         });
+      }
+   }
+
+   private void b() {
+      for (gll.h $$0 : this.d) {
+         String $$1 = $$0.a();
+         fgc $$2 = this.b.a($$1);
+         glz.b $$3 = this.b.b($$1);
+         if ($$2 != null && $$3 != null && !$$0.b().equals($$3.d())) {
+            $$2.a($$3);
+         }
+      }
+   }
+
+   public gkp a() {
+      return this.b;
+   }
+
+   public interface a {
+      void a(feq var1, Map<alp, ffx<fev>> var2);
+
+      void a(gkp var1, Map<alp, ffx<fev>> var2);
+
+      default void a(Map<alp, ffx<fev>> $$0) {
+      }
+   }
+
+   public static record b(String a, alp b, boolean c, boolean d) implements glm.a {
+      private ffx<fev> b(Map<alp, ffx<fev>> $$0) {
+         ffx<fev> $$1 = $$0.get(this.b);
+         if ($$1 == null) {
+            throw new IllegalStateException("Missing handle for target " + this.b);
+         } else {
+            return $$1;
          }
       }
 
-      @Nullable
       @Override
-      public goy.b a() {
-         return null;
+      public void a(feq $$0, Map<alp, ffx<fev>> $$1) {
+         $$0.a(this.b($$1));
       }
 
       @Override
-      public fbt b() {
-         return new fbt(
-            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
-         );
-      }
-   }
-
-   final class c implements glm.d {
-      private final goy.b b;
-
-      c(final goy.b $$0) {
-         this.b = $$0;
+      public void a(gkp $$0, Map<alp, ffx<fev>> $$1) {
+         ffx<fev> $$2 = this.b($$1);
+         fev $$3 = $$2.get();
+         $$3.a(this.d ? 9729 : 9728);
+         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
+         $$0.c(this.a + "Size").a((float)$$3.c, (float)$$3.d);
       }
 
       @Override
-      public void a(glm.e $$0, boolean $$1, gpc $$2, int $$3, int $$4, boolean $$5) {
-         fbt $$6 = this.b.b();
-         if ($$1 || $$2.a(this.a().b())) {
-            $$5 = $$5 && glm.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
-            $$0.visit(this, $$1, $$3, $$5);
+      public void a(Map<alp, ffx<fev>> $$0) {
+         if (this.d) {
+            this.b($$0).get().a(9728);
          }
       }
+   }
 
+   public static record c(String a, har b, int c, int d) implements glm.a {
       @Override
-      public goy.b a() {
-         return this.b;
+      public void a(feq $$0, Map<alp, ffx<fev>> $$1) {
       }
 
       @Override
-      public fbt b() {
-         return this.b.b();
+      public void a(gkp $$0, Map<alp, ffx<fev>> $$1) {
+         $$0.a(this.a + "Sampler", this.b.a());
+         $$0.c(this.a + "Size").a((float)this.c, (float)this.d);
       }
-   }
-
-   public interface d {
-      void a(glm.e var1, boolean var2, gpc var3, int var4, int var5, boolean var6);
-
-      @Nullable
-      goy.b a();
-
-      fbt b();
-   }
-
-   @FunctionalInterface
-   public interface e {
-      void visit(glm.d var1, boolean var2, int var3, boolean var4);
    }
 }

@@ -1,44 +1,24 @@
-import com.google.common.collect.HashMultimap;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dep(alz b, jq<bxj> d, deg e, bxm.a f) implements der {
+public record dep(kl d, Optional<eeq> e, eku f, Optional<jq<eck>> g) implements deh {
    public static final MapCodec<dep> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               alz.a.fieldOf("id").forGetter(dep::b),
-               bxj.a.fieldOf("attribute").forGetter(dep::c),
-               deg.b.fieldOf("amount").forGetter(dep::d),
-               bxm.a.f.fieldOf("operation").forGetter(dep::e)
+               kl.g.optionalFieldOf("offset", kl.h).forGetter(dep::b),
+               eeq.b.optionalFieldOf("predicate").forGetter(dep::c),
+               eku.a.fieldOf("block_state").forGetter(dep::d),
+               eck.aj.optionalFieldOf("trigger_game_event").forGetter(dep::e)
             )
             .apply($$0, dep::new)
    );
 
-   private alz a(bba $$0) {
-      return this.b.g("/" + $$0.c());
-   }
-
-   public bxm a(int $$0, bba $$1) {
-      return new bxm(this.a($$1), (double)this.d().a($$0), this.e());
-   }
-
    @Override
-   public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4, boolean $$5) {
-      if ($$5 && $$3 instanceof bwg $$6) {
-         $$6.eY().a(this.a($$1, $$2.b()));
+   public void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4) {
+      jh $$5 = jh.a((ka)$$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dZ(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
-   }
-
-   @Override
-   public void a(ddy $$0, bvk $$1, fby $$2, int $$3) {
-      if ($$1 instanceof bwg $$4) {
-         $$4.eY().b(this.a($$3, $$0.b()));
-      }
-   }
-
-   private HashMultimap<jq<bxj>, bxm> a(int $$0, bvs $$1) {
-      HashMultimap<jq<bxj>, bxm> $$2 = HashMultimap.create();
-      $$2.put(this.d, this.a($$0, (bba)$$1));
-      return $$2;
    }
 
    @Override
@@ -46,15 +26,19 @@ public record dep(alz b, jq<bxj> d, deg e, bxm.a f) implements der {
       return a;
    }
 
-   public jq<bxj> c() {
+   public kl b() {
       return this.d;
    }
 
-   public deg d() {
+   public Optional<eeq> c() {
       return this.e;
    }
 
-   public bxm.a e() {
+   public eku d() {
       return this.f;
+   }
+
+   public Optional<jq<eck>> e() {
+      return this.g;
    }
 }

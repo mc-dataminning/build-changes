@@ -1,66 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class egd extends egw<eir> {
-   public egd(Codec<eir> $$0) {
+public abstract class egd extends egp<eja> {
+   public egd(Codec<eja> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<eir> $$0) {
-      dig $$1 = $$0.b();
-      eir $$2 = $$0.f();
-      bam $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
+   public boolean a(egr<eja> $$0) {
+      bac $$1 = $$0.d();
+      dhx $$2 = $$0.b();
+      jh $$3 = $$0.e();
+      Optional<dkd> $$4 = ma.e.a(axk.at, $$1).map(jq::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
+   }
 
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
+   protected abstract boolean a(dha var1, bac var2, jh var3, dxo var4);
 
-      if ($$6 == 0) {
-         return false;
-      } else {
-         jh.a $$8 = $$0.e().k();
-         jh.a $$9 = $$8.k().c($$2.b());
-
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
-
-            $$9.c($$2.b());
+   protected boolean b(dha $$0, bac $$1, jh $$2, dxo $$3) {
+      jh $$4 = $$2.d();
+      dxo $$5 = $$0.a_($$2);
+      if (($$5.a(dkf.J) || $$5.a(axk.aw)) && $$0.a_($$4).a(dkf.J)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            ma.e.a(axk.aw, $$1).map(jq::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dkf.nx.m().b(drf.c, Integer.valueOf($$1.a(4) + 1)), 2);
          }
 
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               eir.a $$13 = $$2.a().get($$11);
+         for (jm $$6 : jm.c.a) {
+            if ($$1.i() < 0.2F) {
+               jh $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dkf.J)) {
+                  ma.e.a(axk.au, $$1).map(jq::a).ifPresent($$3x -> {
+                     dxo $$4x = $$3x.m();
+                     if ($$4x.b(djo.c)) {
+                        $$4x = $$4x.b(djo.c, $$6);
+                     }
 
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
+                     $$0.a($$7, $$4x, 2);
+                  });
                }
             }
          }
 
          return true;
-      }
-   }
-
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
-
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
+      } else {
+         return false;
       }
    }
 }

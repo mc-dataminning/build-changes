@@ -1,33 +1,29 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum fls implements bah, bba {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
-
-   public static final Codec<fls> d = bba.a(fls::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private fls(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+public record fls(int a, xk b, @Nullable xw c, @Nullable flt d) {
+   @Nullable
+   public flt.a a() {
+      return this.d != null ? this.d.f() : null;
    }
 
-   @Override
-   public String c() {
-      return this.f;
-   }
-
-   @Override
    public int b() {
-      return this.e;
+      return this.a;
    }
 
-   @Override
-   public String a() {
-      return this.g;
+   public xk c() {
+      return this.b;
+   }
+
+   @Nullable
+   public xw d() {
+      return this.c;
+   }
+
+   @Nullable
+   public flt e() {
+      return this.d;
+   }
+
+   public static record a(int a, azg b, @Nullable flt c, boolean d) {
    }
 }

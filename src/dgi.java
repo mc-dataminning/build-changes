@@ -1,201 +1,144 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.google.common.collect.Iterables;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public abstract class dgi implements ev {
-   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
-   private static final xv c = xv.b("@");
-   private long d = -1L;
-   private boolean e = true;
-   private int f;
-   private boolean g = true;
+public interface dgi extends dge {
+   dze F_();
+
    @Nullable
-   private xv h;
-   private String i = "";
-   @Nullable
-   private xv j;
+   dge c(int var1, int var2);
 
-   public int k() {
-      return this.f;
+   default boolean a(@Nullable bvb $$0, fcl $$1) {
+      return true;
    }
 
-   public void a(int $$0) {
-      this.f = $$0;
+   default boolean a(dxo $$0, jh $$1, fbw $$2) {
+      fcl $$3 = $$0.b(this, $$1, $$2);
+      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
    }
 
-   public xv l() {
-      return this.h == null ? xu.a : this.h;
+   default boolean f(bvb $$0) {
+      return this.a($$0, fci.a($$0.cR()));
    }
 
-   public ux a(ux $$0, js.a $$1) {
-      $$0.a("Command", this.i);
-      $$0.a("SuccessCount", this.f);
-      if (this.j != null) {
-         $$0.a("CustomName", xv.a.a(this.j, $$1));
-      }
-
-      $$0.a("TrackOutput", this.g);
-      if (this.h != null && this.g) {
-         $$0.a("LastOutput", xv.a.a(this.h, $$1));
-      }
-
-      $$0.a("UpdateLastExecution", this.e);
-      if (this.e && this.d > 0L) {
-         $$0.a("LastExecution", this.d);
-      }
-
-      return $$0;
+   default boolean b(fbm $$0) {
+      return this.a(null, $$0);
    }
 
-   public void b(ux $$0, js.a $$1) {
-      this.i = $$0.l("Command");
-      this.f = $$0.h("SuccessCount");
-      if ($$0.b("CustomName", 8)) {
-         this.b(dux.a($$0.l("CustomName"), $$1));
-      } else {
-         this.b(null);
-      }
+   default boolean g(bvb $$0) {
+      return this.a($$0, $$0.cR());
+   }
 
-      if ($$0.b("TrackOutput", 1)) {
-         this.g = $$0.q("TrackOutput");
-      }
+   default boolean a(@Nullable bvb $$0, fbm $$1) {
+      return this.a($$0, $$1, false);
+   }
 
-      if ($$0.b("LastOutput", 8) && this.g) {
-         try {
-            this.h = xv.a.a($$0.l("LastOutput"), $$1);
-         } catch (Throwable var4) {
-            this.h = xv.b(var4.getMessage());
+   default boolean a(@Nullable bvb $$0, fbm $$1, boolean $$2) {
+      for (fcl $$4 : $$2 ? this.f($$0, $$1) : this.e($$0, $$1)) {
+         if (!$$4.c()) {
+            return false;
          }
-      } else {
-         this.h = null;
       }
 
-      if ($$0.e("UpdateLastExecution")) {
-         this.e = $$0.q("UpdateLastExecution");
-      }
-
-      if (this.e && $$0.e("LastExecution")) {
-         this.d = $$0.i("LastExecution");
-      } else {
-         this.d = -1L;
-      }
-   }
-
-   public void a(String $$0) {
-      this.i = $$0;
-      this.f = 0;
-   }
-
-   public String m() {
-      return this.i;
-   }
-
-   public boolean a(dhi $$0) {
-      if ($$0.C || $$0.ac() == this.d) {
+      if (!this.c($$0, $$1).isEmpty()) {
          return false;
-      } else if ("Searge".equalsIgnoreCase(this.i)) {
-         this.h = xv.b("#itzlipofutzli");
-         this.f = 1;
+      } else if ($$0 == null) {
          return true;
       } else {
-         this.f = 0;
-         MinecraftServer $$1 = this.e().p();
-         if ($$1.q() && !bbb.b(this.i)) {
-            try {
-               this.h = null;
-               ew $$2 = this.i().a((et)(($$0x, $$1x) -> {
-                  if ($$0x) {
-                     this.f++;
-                  }
-               }));
-               $$1.aG().a($$2, this.i);
-            } catch (Throwable var6) {
-               o $$4 = o.a(var6, "Executing command block");
-               p $$5 = $$4.a("Command to be executed");
-               $$5.a("Command", this::m);
-               $$5.a("Name", () -> this.n().getString());
-               throw new z($$4);
-            }
-         }
-
-         if (this.e) {
-            this.d = $$0.ac();
-         } else {
-            this.d = -1L;
-         }
-
-         return true;
+         fcl $$5 = this.i($$0, $$1);
+         return $$5 == null || !fci.c($$5, fci.a($$1), fbv.i);
       }
    }
 
-   public xv n() {
-      return this.j != null ? this.j : c;
+   default boolean b(@Nullable bvb $$0, fbm $$1) {
+      for (fcl $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   List<fcl> c(@Nullable bvb var1, fbm var2);
+
+   default Iterable<fcl> d(@Nullable bvb $$0, fbm $$1) {
+      List<fcl> $$2 = this.c($$0, $$1);
+      Iterable<fcl> $$3 = this.e($$0, $$1);
+      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
+   }
+
+   default Iterable<fcl> e(@Nullable bvb $$0, fbm $$1) {
+      return () -> new dgc<fcl>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   }
+
+   default Iterable<fcl> f(@Nullable bvb $$0, fbm $$1) {
+      return () -> new dgc<fcl>(this, fbw.a($$0, true), $$1, false, ($$0xx, $$1xx) -> $$1xx);
    }
 
    @Nullable
-   public xv o() {
-      return this.j;
+   private fcl i(bvb $$0, fbm $$1) {
+      dze $$2 = this.F_();
+      return $$2.a($$0, $$1) ? $$2.c() : null;
    }
 
-   public void b(@Nullable xv $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public void a(xv $$0) {
-      if (this.g) {
-         this.h = xv.b("[" + b.format(new Date()) + "] ").b($$0);
-         this.f();
-      }
-   }
-
-   public abstract ash e();
-
-   public abstract void f();
-
-   public void c(@Nullable xv $$0) {
-      this.h = $$0;
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public boolean p() {
-      return this.g;
-   }
-
-   public btj a(cpx $$0) {
-      if (!$$0.gG()) {
-         return btj.e;
+   default fbn b(dgh $$0) {
+      fbn $$1 = this.a($$0);
+      dze $$2 = this.F_();
+      if ($$2.a($$0.b()) && !$$2.a($$1.g())) {
+         fbr $$3 = $$1.g().d($$0.b());
+         jm $$4 = jm.a($$3.d, $$3.e, $$3.f);
+         fbr $$5 = $$2.c($$1.g());
+         return new fbn($$5, $$4, jh.a((ka)$$5), false, true);
       } else {
-         if ($$0.cU().C) {
-            $$0.a(this);
-         }
-
-         return btj.a;
+         return $$1;
       }
    }
 
-   public abstract fby g();
+   default boolean g(@Nullable bvb $$0, fbm $$1) {
+      dgc<fcl> $$2 = new dgc<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
 
-   public abstract ew i();
+      while ($$2.hasNext()) {
+         if (!((fcl)$$2.next()).c()) {
+            return true;
+         }
+      }
 
-   @Override
-   public boolean y_() {
-      return this.e().N().b(dhe.p) && this.g;
+      return false;
    }
 
-   @Override
-   public boolean z_() {
-      return this.g;
+   default Optional<jh> h(bvb $$0, fbm $$1) {
+      jh $$2 = null;
+      double $$3 = Double.MAX_VALUE;
+      dgc<jh> $$4 = new dgc<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
+
+      while ($$4.hasNext()) {
+         jh $$5 = (jh)$$4.next();
+         double $$6 = $$5.b($$0.du());
+         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
+            $$2 = $$5.j();
+            $$3 = $$6;
+         }
+      }
+
+      return Optional.ofNullable($$2);
    }
 
-   @Override
-   public boolean c() {
-      return this.e().N().b(dhe.j);
+   default Optional<fbr> a(@Nullable bvb $$0, fcl $$1, fbr $$2, double $$3, double $$4, double $$5) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         fbm $$6 = $$1.a().c($$3, $$4, $$5);
+         fcl $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
+            .filter($$0x -> this.F_() == null || this.F_().a($$0x.a()))
+            .flatMap($$0x -> $$0x.e().stream())
+            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
+            .map(fci::a)
+            .reduce(fci.a(), fci::a);
+         fcl $$8 = fci.a($$1, $$7, fbv.e);
+         return $$8.b($$2);
+      }
    }
-
-   public abstract boolean j();
 }

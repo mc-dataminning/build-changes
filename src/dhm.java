@@ -1,78 +1,108 @@
-import com.mojang.serialization.Dynamic;
+import com.google.common.base.Suppliers;
+import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public final class dhm {
-   private final String a;
-   private final dhf b;
-   private final boolean c;
-   private final btg d;
-   private final boolean e;
-   private final dhe f;
-   private final dif g;
+public class dhm implements dgi {
+   protected final int a;
+   protected final int b;
+   protected final dzj[][] c;
+   protected boolean d;
+   protected final dgz e;
+   private final Supplier<jq<dib>> f;
 
-   public dhm(String $$0, dhf $$1, boolean $$2, btg $$3, boolean $$4, dhe $$5, dif $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   public dhm(dgz $$0, jh $$1, jh $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.K_().e(mb.aI).b(dii.b));
+      this.a = kj.a($$1.u());
+      this.b = kj.a($$1.w());
+      int $$3 = kj.a($$2.u());
+      int $$4 = kj.a($$2.w());
+      this.c = new dzj[$$3 - this.a + 1][$$4 - this.b + 1];
+      dzn $$5 = $$0.S();
+      this.d = true;
+
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+         }
+      }
+
+      for (int $$8 = kj.a($$1.u()); $$8 <= kj.a($$2.u()); $$8++) {
+         for (int $$9 = kj.a($$1.w()); $$9 <= kj.a($$2.w()); $$9++) {
+            dzj $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public static dhm a(Dynamic<?> $$0, dif $$1) {
-      dhf $$2 = dhf.a($$0.get("GameType").asInt(0));
-      return new dhm(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> btg.a($$0x.byteValue())).result().orElse(btg.c),
-         $$0.get("allowCommands").asBoolean($$2 == dhf.b),
-         new dhe($$1.b(), $$0.get("GameRules")),
-         $$1
-      );
+   private dzj d(jh $$0) {
+      return this.a(kj.a($$0.u()), kj.a($$0.w()));
    }
 
-   public String a() {
-      return this.a;
+   private dzj a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dzj $$4 = this.c[$$2][$$3];
+         return (dzj)($$4 != null ? $$4 : new dzp(this.e, new dgf($$0, $$1), this.f.get()));
+      } else {
+         return new dzp(this.e, new dgf($$0, $$1), this.f.get());
+      }
    }
 
-   public dhf b() {
-      return this.b;
+   @Override
+   public dze F_() {
+      return this.e.F_();
    }
 
-   public boolean c() {
-      return this.c;
+   @Override
+   public dge c(int $$0, int $$1) {
+      return this.a($$0, $$1);
    }
 
-   public btg d() {
-      return this.d;
+   @Override
+   public List<fcl> c(@Nullable bvb $$0, fbm $$1) {
+      return List.of();
    }
 
-   public boolean e() {
-      return this.e;
+   @Nullable
+   @Override
+   public duq c_(jh $$0) {
+      dzj $$1 = this.d($$0);
+      return $$1.c_($$0);
    }
 
-   public dhe f() {
-      return this.f;
+   @Override
+   public dxo a_(jh $$0) {
+      if (this.s($$0)) {
+         return dkf.a.m();
+      } else {
+         dzj $$1 = this.d($$0);
+         return $$1.a_($$0);
+      }
    }
 
-   public dif g() {
-      return this.g;
+   @Override
+   public etq b_(jh $$0) {
+      if (this.s($$0)) {
+         return etr.a.g();
+      } else {
+         dzj $$1 = this.d($$0);
+         return $$1.b_($$0);
+      }
    }
 
-   public dhm a(dhf $$0) {
-      return new dhm(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   @Override
+   public int L_() {
+      return this.e.L_();
    }
 
-   public dhm a(btg $$0) {
-      return new dhm(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
-   }
-
-   public dhm a(dif $$0) {
-      return new dhm(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
-   }
-
-   public dhm h() {
-      return new dhm(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
+   @Override
+   public int M_() {
+      return this.e.M_();
    }
 }

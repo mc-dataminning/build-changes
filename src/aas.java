@@ -1,25 +1,21 @@
-public record aas(String b, int c) implements aac<aai> {
-   public static final zt<ws, aas> a = aac.a(aas::a, aas::new);
+public record aas(String c) implements aau {
+   public static final zi<wh, aas> a = aau.a(aas::a, aas::new);
+   public static final aau.b<aas> b = aau.a("brand");
 
-   private aas(ws $$0) {
-      this($$0.p(), $$0.l());
+   private aas(wh $$0) {
+      this($$0.p());
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(wh $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public aae<aas> a() {
-      return aau.j;
+   public aau.b<aas> a() {
+      return b;
    }
 
-   public void a(aai $$0) {
-      $$0.a(this);
-   }
-
-   public int e() {
+   public String b() {
       return this.c;
    }
 }

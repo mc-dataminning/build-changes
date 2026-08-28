@@ -1,112 +1,166 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
-
 public class eta {
-   private static final double a = 1.0181268882175227;
-   private static final double b = 0.3333333333333333;
-   private final double c;
-   private final etb d;
-   private final etb e;
-   private final double f;
-   private final eta.a g;
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final ayj d;
+   private final jh.a e = new jh.a();
+   private final jh.a f = new jh.a();
 
-   @Deprecated
-   public static eta a(bam $$0, eta.a $$1) {
-      return new eta($$0, $$1, false);
+   public eta(dhb $$0) {
+      this.c = $$0.L_() - 1;
+      int $$1 = $$0.an() + 1;
+      int $$2 = azu.e($$1 - this.c + 1);
+      this.d = new baj($$2, 256);
    }
 
-   public static eta a(bam $$0, int $$1, double... $$2) {
-      return b($$0, new eta.a($$1, new DoubleArrayList($$2)));
-   }
-
-   public static eta b(bam $$0, eta.a $$1) {
-      return new eta($$0, $$1, true);
-   }
-
-   private eta(bam $$0, eta.a $$1, boolean $$2) {
-      int $$3 = $$1.c;
-      DoubleList $$4 = $$1.d;
-      this.g = $$1;
-      if ($$2) {
-         this.d = etb.b($$0, $$3, $$4);
-         this.e = etb.b($$0, $$3, $$4);
+   public void a(dzj $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
       } else {
-         this.d = etb.a($$0, $$3, $$4);
-         this.e = etb.a($$0, $$3, $$4);
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
+         }
       }
+   }
 
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = Integer.MIN_VALUE;
-      DoubleListIterator $$7 = $$4.iterator();
+   private int a(dzj $$0, int $$1, int $$2, int $$3) {
+      int $$4 = kj.c($$0.h($$1) + 1);
+      jh.a $$5 = this.e.d($$2, $$4, $$3);
+      jh.a $$6 = this.f.a($$5, jm.a);
+      dxo $$7 = dkf.a.m();
 
-      while ($$7.hasNext()) {
-         int $$8 = $$7.nextIndex();
-         double $$9 = $$7.nextDouble();
-         if ($$9 != 0.0) {
-            $$5 = Math.min($$5, $$8);
-            $$6 = Math.max($$6, $$8);
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dzu $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = dkf.a.m();
+            int $$10 = $$0.h($$8);
+            $$5.q(kj.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dxo $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$7, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(jm.a);
+            }
          }
       }
 
-      this.c = 0.16666666666666666 / a($$6 - $$5);
-      this.f = (this.d.a() + this.e.a()) * this.c;
+      return this.c;
    }
 
-   public double a() {
-      return this.f;
+   public boolean a(dge $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         jh $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dxo $$8 = $$0.a_($$7);
+         jh $$9 = this.f.d($$1, $$2, $$3);
+         dxo $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            jh $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dxo $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
+      }
    }
 
-   private static double a(int $$0) {
-      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      double $$3 = $$0 * 1.0181268882175227;
-      double $$4 = $$1 * 1.0181268882175227;
-      double $$5 = $$2 * 1.0181268882175227;
-      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
-   }
-
-   public eta.a b() {
-      return this.g;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("NormalNoise {");
-      $$0.append("first: ");
-      this.d.a($$0);
-      $$0.append(", second: ");
-      this.e.a($$0);
-      $$0.append("}");
-   }
-
-   public static record a(int c, DoubleList d) {
-      public static final Codec<eta.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(eta.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(eta.a::b))
-               .apply($$0, eta.a::new)
-      );
-      public static final Codec<jq<eta.a>> b = alv.a(mb.aS, a);
-
-      public a(int $$0, List<Double> $$1) {
-         this($$0, new DoubleArrayList($$1));
+   private boolean a(dge $$0, int $$1, int $$2, jh $$3, dxo $$4, jh $$5, dxo $$6) {
+      int $$7 = $$3.v();
+      if (a($$4, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
       }
 
-      public a(int $$0, double $$1, double... $$2) {
-         this($$0, ae.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
+      return false;
+   }
+
+   private int a(dge $$0, jh $$1, dxo $$2) {
+      jh.a $$3 = this.e.g($$1);
+      jh.a $$4 = this.f.a($$1, jm.a);
+      dxo $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dxo $$6 = $$0.a_($$4);
+         if (a($$5, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(jm.a);
       }
 
-      public int a() {
-         return this.c;
+      return this.c;
+   }
+
+   private static boolean a(dxo $$0, dxo $$1) {
+      if ($$1.g() != 0) {
+         return true;
+      } else {
+         fcl $$2 = eth.a($$0, jm.a);
+         fcl $$3 = eth.a($$1, jm.b);
+         return fci.b($$2, $$3);
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
+   }
+
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
       }
 
-      public DoubleList b() {
-         return this.d;
+      return this.c($$0 + this.c);
+   }
+
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
       }
+   }
+
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
+   }
+
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

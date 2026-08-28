@@ -1,73 +1,33 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class dtq extends dji {
-   public static final MapCodec<dtq> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(drr.a.b.fieldOf("kind").forGetter(dji::b), t()).apply($$0, dtq::new));
-   public static final dys<jm> d = dok.aF;
-   private static final Map<jm, fcs> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         jm.c,
-         dkm.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         jm.d,
-         dkm.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         jm.f,
-         dkm.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         jm.e,
-         dkm.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
+public class dtq extends dkd implements dtn {
+   public static final MapCodec<dtq> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dtn.a.e.fieldOf("weathering_state").forGetter(dlf::c), t()).apply($$0, dtq::new)
    );
+   private final dtn.a e;
 
    @Override
-   public MapCodec<? extends dtq> a() {
-      return c;
+   public MapCodec<dtq> a() {
+      return d;
    }
 
-   protected dtq(drr.a $$0, dxu.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(d, jm.c));
-   }
-
-   @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return b.get($$0.c(d));
+   public dtq(dtn.a $$0, dxn.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public dxv a(dbg $$0) {
-      dxv $$1 = super.a($$0);
-      dgn $$2 = $$0.q();
-      jh $$3 = $$0.a();
-      jm[] $$4 = $$0.f();
-
-      for (jm $$5 : $$4) {
-         if ($$5.o().d()) {
-            jm $$6 = $$5.g();
-            $$1 = $$1.b(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
-            }
-         }
-      }
-
-      return null;
+   protected void b(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected dxv a(dxv $$0, drc $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   protected boolean f(dxo $$0) {
+      return dtn.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected dxv a(dxv $$0, dpl $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   public dtn.a q() {
+      return this.e;
    }
 }

@@ -1,63 +1,73 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
 public class yi {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final yh[] c;
+   private final String a;
+   private final List<yh> b;
+   private final Int2IntFunction c;
 
-   public yi(int $$0) {
-      this.c = new yh[$$0];
+   private yi(String $$0, List<yh> $$1, Int2IntFunction $$2) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = $$2;
    }
 
-   public static yi a() {
-      return new yi(128);
+   public String a() {
+      return this.a;
    }
 
-   public int a(yh $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
+   public List<azg> a(int $$0, int $$1, boolean $$2) {
+      if ($$1 == 0) {
+         return ImmutableList.of();
+      } else {
+         List<azg> $$3 = Lists.newArrayList();
+         yh $$4 = this.b.get($$0);
+         int $$5 = $$0;
+
+         for (int $$6 = 1; $$6 < $$1; $$6++) {
+            int $$7 = $$0 + $$6;
+            yh $$8 = this.b.get($$7);
+            if (!$$8.equals($$4)) {
+               String $$9 = this.a.substring($$5, $$7);
+               $$3.add($$2 ? azg.backward($$9, $$4, this.c) : azg.forward($$9, $$4));
+               $$4 = $$8;
+               $$5 = $$7;
+            }
          }
-      }
 
-      return -1;
-   }
-
-   @Nullable
-   public yh a(int $$0) {
-      return this.c[$$0];
-   }
-
-   public void a(yo $$0, @Nullable yh $$1) {
-      List<yh> $$2 = $$0.d().a();
-      ArrayDeque<yh> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
-      }
-
-      this.a($$3);
-   }
-
-   @VisibleForTesting
-   void a(List<yh> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<yh> $$0) {
-      Set<yh> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         yh $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
+         if ($$5 < $$0 + $$1) {
+            String $$10 = this.a.substring($$5, $$0 + $$1);
+            $$3.add($$2 ? azg.backward($$10, $$4, this.c) : azg.forward($$10, $$4));
          }
+
+         return $$2 ? Lists.reverse($$3) : $$3;
       }
+   }
+
+   public static yi a(xp $$0) {
+      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   }
+
+   public static yi a(xp $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
+      StringBuilder $$3 = new StringBuilder();
+      List<yh> $$4 = Lists.newArrayList();
+      $$0.a(($$2x, $$3x) -> {
+         bap.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+            $$3.appendCodePoint($$4x);
+            int $$5 = Character.charCount($$4x);
+
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               $$4.add($$3xx);
+            }
+
+            return true;
+         });
+         return Optional.empty();
+      }, yh.a);
+      return new yi($$2.apply($$3.toString()), $$4, $$1);
    }
 }

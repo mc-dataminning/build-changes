@@ -1,25 +1,24 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
 
-public class bcq extends DataFix {
-   public bcq(Schema $$0) {
-      super($$0, false);
+public class bcq extends bhi {
+   public bcq(Schema $$0, boolean $$1) {
+      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bin.s, "Sign");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bix.c);
-      return this.fixTypeEverywhereTyped(
-         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
-      );
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update($$1, bbh::b);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      return $$2 ? $$0 : $$0.remove("blending_data");
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         $$0x = this.a($$0x, "Text1");
+         $$0x = this.a($$0x, "Text2");
+         $$0x = this.a($$0x, "Text3");
+         return this.a($$0x, "Text4");
+      });
    }
 }

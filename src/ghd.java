@@ -1,22 +1,17 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class ghd extends ghf {
+   protected ghd(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gji $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
+   }
 
-@FunctionalInterface
-public interface ghd {
-   Logger a = LogUtils.getLogger();
-   ghd b = $$0 -> {
-      try {
-         InetAddress $$1 = InetAddress.getByName($$0.a());
-         return Optional.of(ghb.a(new InetSocketAddress($$1, $$0.b())));
-      } catch (UnknownHostException var2) {
-         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
-         return Optional.empty();
+   public static class a implements giq<lw> {
+      private final gji a;
+
+      public a(gji $$0) {
+         this.a = $$0;
       }
-   };
 
-   Optional<ghb> resolve(ghc var1);
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghd($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
+      }
+   }
 }

@@ -1,72 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 
 public class aok {
-   public static final int a = 100;
+   public static void a(CommandDispatcher<ew> $$0) {
+      LiteralCommandNode<ew> $$1 = $$0.register(
+         (LiteralArgumentBuilder)ex.a("msg").then(ex.a("targets", fj.d()).then(ex.a("message", fn.a()).executes($$0x -> {
+            Collection<ary> $$1x = fj.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               fn.a($$0x, "message", $$2 -> a((ew)$$0x.getSource(), $$1x, $$2));
+            }
 
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("give").requires($$0x -> $$0x.c(2)))
-            .then(
-               ex.a("targets", fj.d())
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("item", hf.a($$1)).executes($$0x -> a((ew)$$0x.getSource(), hf.a($$0x, "item"), fj.f($$0x, "targets"), 1)))
-                        .then(
-                           ex.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((ew)$$0x.getSource(), hf.a($$0x, "item"), fj.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
-            )
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)ex.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)ex.a("w").redirect($$1));
    }
 
-   private static int a(ew $$0, hg $$1, Collection<asi> $$2, int $$3) throws CommandSyntaxException {
-      cxp $$4 = $$1.a(1, false);
-      int $$5 = $$4.k();
-      int $$6 = $$5 * 100;
-      if ($$3 > $$6) {
-         $$0.b(xv.a("commands.give.failed.toomanyitems", $$6, $$4.J()));
-         return 0;
-      } else {
-         for (asi $$7 : $$2) {
-            int $$8 = $$3;
+   private static void a(ew $$0, Collection<ary> $$1, ya $$2) {
+      xg.a $$3 = xg.a(xg.g, $$0);
+      xz $$4 = xz.a($$2);
+      boolean $$5 = false;
 
-            while ($$8 > 0) {
-               int $$9 = Math.min($$5, $$8);
-               $$8 -= $$9;
-               cxp $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.gi().f($$10);
-               if ($$11 && $$10.f()) {
-                  cmb $$13 = $$7.a($$4, false);
-                  if ($$13 != null) {
-                     $$13.y();
-                  }
+      for (ary $$6 : $$1) {
+         xg.a $$7 = xg.a(xg.h, $$0).c($$6.p_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
+      }
 
-                  $$7.dW().a(null, $$7.dB(), $$7.dD(), $$7.dH(), axf.nU, axg.h, 0.2F, (($$7.dZ().i() - $$7.dZ().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.cd.d();
-               } else {
-                  cmb $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.t();
-                     $$12.b($$7.cG());
-                  }
-               }
-            }
-         }
-
-         if ($$2.size() == 1) {
-            $$0.a(() -> xv.a("commands.give.success.single", $$3, $$4.J(), $$2.iterator().next().p_()), true);
-         } else {
-            $$0.a(() -> xv.a("commands.give.success.single", $$3, $$4.J(), $$2.size()), true);
-         }
-
-         return $$2.size();
+      if ($$5) {
+         $$0.a(avy.e);
       }
    }
 }

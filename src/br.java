@@ -3,23 +3,23 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public record br(Optional<ju<ddz>> b, dj.d c) {
+public record br(Optional<ju<ddq>> b, dj.d c) {
    public static final Codec<br> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(kf.a(mb.aO).optionalFieldOf("enchantments").forGetter(br::a), dj.d.d.optionalFieldOf("levels", dj.d.c).forGetter(br::b))
             .apply($$0, br::new)
    );
 
-   public br(jq<ddz> $$0, dj.d $$1) {
+   public br(jq<ddq> $$0, dj.d $$1) {
       this(Optional.of(ju.a($$0)), $$1);
    }
 
-   public br(ju<ddz> $$0, dj.d $$1) {
+   public br(ju<ddq> $$0, dj.d $$1) {
       this(Optional.of($$0), $$1);
    }
 
-   public boolean a(def $$0) {
+   public boolean a(ddw $$0) {
       if (this.b.isPresent()) {
-         for (jq<ddz> $$1 : this.b.get()) {
+         for (jq<ddq> $$1 : this.b.get()) {
             if (this.a($$0, $$1)) {
                return true;
             }
@@ -27,7 +27,7 @@ public record br(Optional<ju<ddz>> b, dj.d c) {
 
          return false;
       } else if (this.c != dj.d.c) {
-         for (Entry<jq<ddz>> $$2 : $$0.b()) {
+         for (Entry<jq<ddq>> $$2 : $$0.b()) {
             if (this.c.d($$2.getIntValue())) {
                return true;
             }
@@ -39,7 +39,7 @@ public record br(Optional<ju<ddz>> b, dj.d c) {
       }
    }
 
-   private boolean a(def $$0, jq<ddz> $$1) {
+   private boolean a(ddw $$0, jq<ddq> $$1) {
       int $$2 = $$0.a($$1);
       if ($$2 == 0) {
          return false;
@@ -48,7 +48,7 @@ public record br(Optional<ju<ddz>> b, dj.d c) {
       }
    }
 
-   public Optional<ju<ddz>> a() {
+   public Optional<ju<ddq>> a() {
       return this.b;
    }
 

@@ -1,129 +1,76 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class diw {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final brv<diw.c> a = brv.c();
-   public static final diw b = new diw.a().a();
-   public static final MapCodec<diw> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bwj.i, brv.c(diw.c.a).promotePartial(ae.a("Spawn data: ", d::error)), bba.a(bwj.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(ma.f.q(), diw.b.a, ma.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, diw::new)
+public abstract class diw extends dkd {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final fcl h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final fcl b = fci.a(
+      fci.b(), fci.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), fbv.e
    );
-   private final float f;
-   private final Map<bwj, brv<diw.c>> g;
-   private final Map<bvr<?>, diw.b> h;
+   protected final kn.a c;
 
-   diw(float $$0, Map<bwj, brv<diw.c>> $$1, Map<bvr<?>, diw.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   @Override
+   protected abstract MapCodec<? extends diw> a();
+
+   public diw(dxn.d $$0, kn.a $$1) {
+      super($$0);
+      this.c = $$1;
    }
 
-   public brv<diw.c> a(bwj $$0) {
-      return this.g.getOrDefault($$0, a);
+   protected double b(dxo $$0) {
+      return 0.0;
    }
 
-   @Nullable
-   public diw.b a(bvr<?> $$0) {
-      return this.h.get($$0);
+   protected boolean a(dxo $$0, jh $$1, bvb $$2) {
+      return $$2.dD() < (double)$$1.v() + this.b($$0) && $$2.cR().e > (double)$$1.v() + 0.25;
    }
 
-   public float a() {
-      return this.f;
+   @Override
+   protected bta a(cxg $$0, dxo $$1, dgz $$2, jh $$3, cpo $$4, bsz $$5, fbn $$6) {
+      kn $$7 = this.c.b().get($$0.h());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
    }
 
-   public static class a {
-      private final Map<bwj, List<diw.c>> a = Stream.of(bwj.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<bvr<?>, diw.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public diw.a a(bwj $$0, diw.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
-      }
-
-      public diw.a a(bvr<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new diw.b($$2, $$1));
-         return this;
-      }
-
-      public diw.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public diw a() {
-         return new diw(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> brv.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
+   @Override
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return b;
    }
 
-   public static record b(double b, double c) {
-      public static final Codec<diw.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, diw.b::new)
-      );
+   @Override
+   protected fcl a(dxo $$0, dge $$1, jh $$2) {
+      return h;
+   }
 
-      public double a() {
-         return this.b;
-      }
+   @Override
+   protected boolean c_(dxo $$0) {
+      return true;
+   }
 
-      public double b() {
-         return this.c;
+   @Override
+   protected boolean a(dxo $$0, euf $$1) {
+      return false;
+   }
+
+   public abstract boolean d(dxo var1);
+
+   @Override
+   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      jh $$4 = dpz.a((dgz)$$1, $$2);
+      if ($$4 != null) {
+         etp $$5 = dpz.a($$1, $$4);
+         if ($$5 != etr.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
       }
    }
 
-   public static class c extends brt.a {
-      public static final Codec<diw.c> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     ma.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     brs.a.fieldOf("weight").forGetter(brt.a::a),
-                     azn.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     azn.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, diw.c::new)
-         )
-         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
-      public final bvr<?> b;
-      public final int c;
-      public final int d;
+   protected boolean a(etp $$0) {
+      return false;
+   }
 
-      public c(bvr<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, brs.a($$1), $$2, $$3);
-      }
-
-      public c(bvr<?> $$0, brs $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bwj.h ? bvr.aR : $$0;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return bvr.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
-      }
+   protected void a(dxo $$0, dgz $$1, jh $$2, etp $$3) {
    }
 }

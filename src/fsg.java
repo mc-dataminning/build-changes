@@ -1,88 +1,113 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fsg {
-   int a;
-   final Map<fsg.a, fsg.b> b = Maps.newTreeMap(Comparator.<fsg.a, fsc>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public record fsg(fsf a, int b, int c) {
+   private static final fsg d = new fsg(0, 0, 0, 0);
 
-   public void a(Consumer<fsd> $$0) {
-      this.a++;
-      $$0.accept(new fsg.c(0));
+   public fsg(int $$0, int $$1, int $$2, int $$3) {
+      this(new fsf($$0, $$1), $$2, $$3);
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
+   public static fsg a() {
+      return d;
+   }
 
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
-
-            this.b = false;
-            $$1.append($$0);
-         }
+   public static fsg a(fsd $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fsg($$1, $$2, $$3, $$4);
+         case b -> new fsg($$2, $$1, $$4, $$3);
       };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
    }
 
-   static class a {
-      final fsc a;
-      final int b;
-
-      a(fsc $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public fsg a(fse $$0) {
+      return new fsg(this.a.a($$0), this.b, this.c);
    }
 
-   static class b {
-      fsf<?> a;
-      int b;
-      boolean c;
+   public int a(fsd $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
+   }
 
-      b() {
-         this.a = fsf.a;
-         this.b = -1;
-      }
+   public int b(fse $$0) {
+      fsd $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
 
-      public fsg.b a(int $$0, fsf<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
+   public fsg c(fse $$0) {
+      int $$1 = this.b($$0);
+      fsd $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
 
-         this.b = $$0;
+   public boolean a(fsg $$0) {
+      return this.a($$0, fsd.a) && this.a($$0, fsd.b);
+   }
+
+   public boolean a(fsg $$0, fsd $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fsd $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fsg b(fsg $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fsg($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public fsg a(Matrix4f $$0) {
+      if (f.a($$0)) {
          return this;
+      } else {
+         Vector3f $$1 = $$0.transformPosition((float)this.d(), (float)this.b(), 0.0F, new Vector3f());
+         Vector3f $$2 = $$0.transformPosition((float)this.e(), (float)this.c(), 0.0F, new Vector3f());
+         return new fsg(azu.d($$1.x), azu.d($$1.y), azu.d($$2.x - $$1.x), azu.d($$2.y - $$1.y));
       }
    }
 
-   class c implements fsd {
-      private final int b;
+   public fsf f() {
+      return this.a;
+   }
 
-      c(final int $$0) {
-         this.b = $$0;
-      }
+   public int g() {
+      return this.b;
+   }
 
-      @Override
-      public void a(fsc $$0, fsf<?> $$1) {
-         fsg.this.b.computeIfAbsent(new fsg.a($$0, this.b), $$0x -> new fsg.b()).a(fsg.this.a, $$1);
-      }
-
-      @Override
-      public fsd a() {
-         return fsg.this.new c(this.b + 1);
-      }
+   public int h() {
+      return this.c;
    }
 }

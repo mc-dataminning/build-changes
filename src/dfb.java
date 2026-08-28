@@ -1,45 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record dfb(czr d, kl e, Optional<jq<ecr>> f) implements deq {
-   public static final MapCodec<dfb> a = RecordCodecBuilder.mapCodec(
+public record dfb(ju<ddq> d, int e, int f) implements dey {
+   public static final int b = 10000;
+   public static final MapCodec<dfb> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               czr.b.fieldOf("properties").forGetter(dfb::b),
-               kl.g.optionalFieldOf("offset", kl.h).forGetter(dfb::c),
-               ecr.aj.optionalFieldOf("trigger_game_event").forGetter(dfb::d)
+               kf.a(mb.aO).fieldOf("enchantments").forGetter(dfb::b),
+               azd.a(1, 10000).fieldOf("min_cost").forGetter(dfb::c),
+               azd.a(0, 10000).fieldOf("max_cost_span").forGetter(dfb::d)
             )
             .apply($$0, dfb::new)
    );
 
-   public dfb(czr $$0) {
-      this($$0, kl.h, Optional.of(ecr.c));
-   }
-
    @Override
-   public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4) {
-      jh $$5 = jh.a((ka)$$4).a(this.e);
-      dxv $$6 = $$3.dW().a_($$5);
-      dxv $$7 = this.d.a($$6);
-      if (!$$6.equals($$7) && $$3.dW().a($$5, $$7, 3)) {
-         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+   public void a(cxg $$0, ddw.a $$1, bac $$2, bsy $$3) {
+      float $$4 = $$3.d();
+      int $$5 = azu.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
+
+      for (ddt $$7 : dds.b($$2, $$0, $$5, this.d.a())) {
+         $$1.b($$7.a, $$7.b);
       }
    }
 
    @Override
    public MapCodec<dfb> a() {
-      return a;
+      return c;
    }
 
-   public czr b() {
+   public ju<ddq> b() {
       return this.d;
    }
 
-   public kl c() {
+   public int c() {
       return this.e;
    }
 
-   public Optional<jq<ecr>> d() {
+   public int d() {
       return this.f;
    }
 }

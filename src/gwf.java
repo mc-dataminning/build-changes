@@ -1,25 +1,37 @@
-public abstract class gwf<S extends gxv, M extends gbm<? super S>> {
-   private final gtn<S, M> a;
+public class gwf extends gwa<gyo, gdh> {
+   private final gmj a;
+   private final gsj b;
 
-   public gwf(gtn<S, M> $$0) {
-      this.a = $$0;
+   public gwf(gti<gyo, gdh> $$0, gmj $$1, gsj $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   protected static <S extends gyt> void a(gbm<S> $$0, alz $$1, fgs $$2, gll $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.u) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(fgl $$0, glg $$1, int $$2, gyo $$3, float $$4, float $$5) {
+      hdi $$6 = $$3.an;
+      if ($$6 != null) {
+         boolean $$7 = $$3.aj && $$3.u;
+         if (!$$3.u || $$7) {
+            $$0.a();
+            this.d().b().a($$0);
+            float $$8 = 0.625F;
+            $$0.a(0.0F, -0.34375F, 0.0F);
+            $$0.a(a.d.rotationDegrees(180.0F));
+            $$0.b(0.625F, -0.625F, -0.625F);
+            cxg $$9 = $$3.ao;
+            if ($$7 && $$9.h() instanceof cvm $$10) {
+               dxo $$11 = $$10.d().m();
+               hdi $$12 = this.a.a($$11);
+               int $$13 = gsm.a($$3, 0.0F);
+               $$0.a(-0.5F, -0.5F, -0.5F);
+               this.a.b().a($$0.c(), $$1.getBuffer(glq.s(hbf.d)), $$11, $$12, 0.0F, 0.0F, 0.0F, $$2, $$13);
+            } else {
+               this.b.a($$9, cxe.f, false, $$0, $$1, $$2, gsm.a($$3, 0.0F), $$6);
+            }
+
+            $$0.b();
+         }
       }
    }
-
-   protected static void b(gbm<?> $$0, alz $$1, fgs $$2, gll $$3, int $$4, gyt $$5, int $$6) {
-      fgw $$7 = $$3.getBuffer(glv.g($$1));
-      $$0.a($$2, $$7, $$4, gsr.a($$5, 0.0F), $$6);
-   }
-
-   public M d() {
-      return this.a.c();
-   }
-
-   public abstract void a(fgs var1, gll var2, int var3, S var4, float var5, float var6);
 }

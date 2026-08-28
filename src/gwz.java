@@ -1,6 +1,5 @@
-public class gwz extends gyt {
+public class gwz extends gyo {
    public boolean a;
-   public boolean b;
-   public float c;
-   public float d;
+   public final but b = new but();
+   public final but c = new but();
 }

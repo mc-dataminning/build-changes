@@ -1,26 +1,23 @@
-public record abh(aly<ecr> c, fby d) implements abf {
-   public static final zt<ws, abh> a = abf.a(abh::a, abh::new);
-   public static final abf.b<abh> b = abf.a("debug/game_event");
+import java.util.List;
 
-   private abh(ws $$0) {
-      this($$0.a(mb.G), $$0.k());
+public record abh(List<jh> c) implements aau {
+   public static final zi<wh, abh> a = aau.a(abh::a, abh::new);
+   public static final aau.b<abh> b = aau.a("debug/raids");
+
+   private abh(wh $$0) {
+      this($$0.a(jh.b));
    }
 
-   private void a(ws $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
+   private void a(wh $$0) {
+      $$0.a(this.c, jh.b);
    }
 
    @Override
-   public abf.b<abh> a() {
+   public aau.b<abh> a() {
       return b;
    }
 
-   public aly<ecr> b() {
+   public List<jh> b() {
       return this.c;
-   }
-
-   public fby c() {
-      return this.d;
    }
 }

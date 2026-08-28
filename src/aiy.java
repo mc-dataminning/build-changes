@@ -1,25 +1,29 @@
-public record aiy(int b, int c) implements aac<ahm> {
-   public static final zt<ws, aiy> a = aac.a(aiy::a, aiy::new);
+public class aiy implements zr<ahb> {
+   public static final zi<wh, aiy> a = zr.a(aiy::a, aiy::new);
+   private final bsz b;
 
-   private aiy(ws $$0) {
-      this($$0.l(), $$0.l());
+   public aiy(bsz $$0) {
+      this.b = $$0;
    }
 
-   private void a(ws $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private aiy(wh $$0) {
+      this.b = $$0.b(bsz.class);
+   }
+
+   private void a(wh $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public aae<aiy> a() {
-      return ahk.bm;
+   public zt<aiy> a() {
+      return agz.ci;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public bsz b() {
+      return this.b;
    }
 }

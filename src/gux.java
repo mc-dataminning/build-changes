@@ -1,13 +1,13 @@
-public class gux extends gqj<cnq, hak, gee<hak>> {
-   public gux(grq.a $$0) {
-      this($$0, gen.dH, gen.dI, gen.dO, gen.dP, gen.dJ, gen.dK);
+public class gux extends gwa<gxe, gar> {
+   private static final glq a = glq.r(alp.b("textures/entity/breeze/breeze_eyes.png"));
+
+   public gux(gti<gxe, gar> $$0) {
+      super($$0);
    }
 
-   public hak b() {
-      return new hak();
-   }
-
-   public gux(grq.a $$0, gem $$1, gem $$2, gem $$3, gem $$4, gem $$5, gem $$6) {
-      super($$0, new gee<>($$0.a($$1)), new gee<>($$0.a($$2)), new gee<>($$0.a($$3)), new gee<>($$0.a($$4)), new gee<>($$0.a($$5)), new gee<>($$0.a($$6)));
+   public void a(fgl $$0, glg $$1, int $$2, gxe $$3, float $$4, float $$5) {
+      fgp $$6 = $$1.getBuffer(a);
+      gar $$7 = this.d();
+      gqq.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hax.d);
    }
 }

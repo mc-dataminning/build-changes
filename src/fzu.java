@@ -1,49 +1,24 @@
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
+public abstract class fzu extends gbh<gxc> {
+   private final gej a;
+   private final gej b;
 
-public class fzu implements fzq, fzr {
-   private static final alz a = alz.b("spectator/teleport_to_player");
-   private static final Comparator<gfw> b = Comparator.comparing($$0 -> $$0.a().getId());
-   private static final xv c = xv.c("spectatorMenu.teleport");
-   private static final xv d = xv.c("spectatorMenu.teleport.prompt");
-   private final List<fzr> e;
-
-   public fzu() {
-      this(fmg.Q().L().l());
+   public fzu(gej $$0) {
+      super($$0);
+      this.a = $$0.b("left_paddle");
+      this.b = $$0.b("right_paddle");
    }
 
-   public fzu(Collection<gfw> $$0) {
-      this.e = $$0.stream().filter($$0x -> $$0x.e() != dhf.d).sorted(b).map($$0x -> new fzn($$0x.a())).toList();
+   public void a(gxc $$0) {
+      super.a($$0);
+      a($$0.g, 0, this.a);
+      a($$0.h, 1, this.b);
    }
 
-   @Override
-   public List<fzr> a() {
-      return this.e;
-   }
-
-   @Override
-   public xv b() {
-      return d;
-   }
-
-   @Override
-   public void a(fzp $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public xv aU_() {
-      return c;
-   }
-
-   @Override
-   public void a(fns $$0, float $$1, float $$2) {
-      $$0.a(glv::C, a, 0, 0, 16, 16, ayp.a($$2, $$1, $$1, $$1));
-   }
-
-   @Override
-   public boolean aV_() {
-      return !this.e.isEmpty();
+   private static void a(float $$0, int $$1, gej $$2) {
+      $$2.e = azu.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (azu.a(-$$0) + 1.0F) / 2.0F);
+      $$2.f = azu.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (azu.a(-$$0 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

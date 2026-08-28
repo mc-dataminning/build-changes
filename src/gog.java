@@ -1,98 +1,73 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-public class gog extends gok {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final fby k = new fby(0.0, -0.32F, 0.073F);
-   private final Map<dzh, gog.a> l;
+public class gog implements gnr<dwf> {
+   private final Map<drk.a, gde> a;
+   private static final Map<drk.a, alp> b = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(drk.b.c, alp.b("textures/entity/skeleton/skeleton.png"));
+      $$0.put(drk.b.d, alp.b("textures/entity/skeleton/wither_skeleton.png"));
+      $$0.put(drk.b.f, alp.b("textures/entity/zombie/zombie.png"));
+      $$0.put(drk.b.g, alp.b("textures/entity/creeper/creeper.png"));
+      $$0.put(drk.b.i, alp.b("textures/entity/enderdragon/dragon.png"));
+      $$0.put(drk.b.h, alp.b("textures/entity/piglin/piglin.png"));
+      $$0.put(drk.b.e, hby.a());
+   });
 
-   public gog(gnx.a $$0) {
-      super($$0);
-      this.l = dzh.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gog.a($$0.a(gen.c($$1)))));
+   public static Map<drk.a, gde> a(gef $$0) {
+      Builder<drk.a, gde> $$1 = ImmutableMap.builder();
+      $$1.put(drk.b.c, new gdd($$0.a(gei.cN)));
+      $$1.put(drk.b.d, new gdd($$0.a(gei.dF)));
+      $$1.put(drk.b.e, new gdd($$0.a(gei.ch)));
+      $$1.put(drk.b.f, new gdd($$0.a(gei.dR)));
+      $$1.put(drk.b.g, new gdd($$0.a(gei.ak)));
+      $$1.put(drk.b.i, new gec($$0.a(gei.av)));
+      $$1.put(drk.b.h, new gci($$0.a(gei.bX)));
+      return $$1.build();
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
+   public gog(gns.a $$0) {
+      this.a = a($$0.e());
    }
 
-   @Override
-   public float c() {
-      return 0.9F;
+   public void a(dwf $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
+      float $$6 = $$0.a($$1);
+      dxo $$7 = $$0.m();
+      boolean $$8 = $$7.b() instanceof dtj;
+      jm $$9 = $$8 ? $$7.c(dtj.d) : null;
+      int $$10 = $$8 ? dyt.a($$9.g()) : $$7.c(drk.e);
+      float $$11 = dyt.b($$10);
+      drk.a $$12 = ((diz)$$7.b()).b();
+      gde $$13 = this.a.get($$12);
+      glq $$14 = a($$12, $$0.c());
+      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
    }
 
-   @Override
-   public void a(dwk $$0, float $$1, fgs $$2, gll $$3, int $$4, int $$5) {
-      dxv $$6 = $$0.m();
-      drp $$7 = (drp)$$6.b();
-      dzh $$8 = drp.a($$7);
-      gog.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   @Override
-   void a(fgs $$0, float $$1, dxv $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   hdu a(dzh $$0) {
-      return gmg.b($$0);
-   }
-
-   @Override
-   fby d() {
-      return k;
-   }
-
-   public static geu e() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      $$1.a("board", get.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), geq.a);
-      $$1.a("plank", get.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), geq.a);
-      gey $$2 = $$1.a("normalChains", get.c(), geq.a);
-      $$2.a("chainL1", get.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), geq.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", get.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), geq.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", get.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), geq.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", get.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), geq.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", get.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), geq.a);
-      return geu.a($$0, 64, 32);
-   }
-
-   public static final class a extends gch {
-      public final geo a;
-      public final geo b;
-      public final geo c;
-
-      public a(geo $$0) {
-         super($$0, glv::g);
-         this.a = $$0.b("plank");
-         this.c = $$0.b("normalChains");
-         this.b = $$0.b("vChains");
+   public static void a(@Nullable jm $$0, float $$1, float $$2, fgl $$3, glg $$4, int $$5, gde $$6, glq $$7) {
+      $$3.a();
+      if ($$0 == null) {
+         $$3.a(0.5F, 0.0F, 0.5F);
+      } else {
+         float $$8 = 0.25F;
+         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
       }
 
-      public void a(dxv $$0) {
-         boolean $$1 = !($$0.b() instanceof dlm);
-         this.a.k = $$1;
-         this.b.k = false;
-         this.c.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dyl.a);
-            this.c.k = !$$2;
-            this.b.k = $$2;
-         }
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      fgp $$9 = $$4.getBuffer($$7);
+      $$6.a($$2, $$1, 0.0F);
+      $$6.a($$3, $$9, $$5, hax.d);
+      $$3.b();
+   }
+
+   public static glq a(drk.a $$0, @Nullable daf $$1) {
+      alp $$2 = b.get($$0);
+      if ($$0 == drk.b.e && $$1 != null) {
+         hci $$3 = flz.Q().an();
+         return glq.j($$3.b($$1.f()).a());
+      } else {
+         return glq.h($$2);
       }
    }
 }

@@ -1,8 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface evt {
+public record evt(ewc a, eee.b b) {
 }

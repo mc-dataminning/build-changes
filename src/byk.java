@@ -1,44 +1,27 @@
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class byk implements bzn {
-   private final bvk a;
-   private final boolean b;
-
-   public byk(bvk $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class byk {
+   public static bxr<bvx> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   @Override
-   public fby a() {
-      return this.b ? this.a.du().b(0.0, (double)this.a.cS(), 0.0) : this.a.du();
-   }
-
-   @Override
-   public jh b() {
-      return this.a.dw();
-   }
-
-   @Override
-   public boolean a(bwg $$0) {
-      if (this.a instanceof bwg $$1) {
-         if (!$$1.bL()) {
-            return false;
-         } else {
-            Optional<cfm> $$3 = $$0.ec().c(cfk.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public bvk c() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public static <E extends bvx> bxr<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return cbd.a((Function<cbd.b<E>, ? extends App<cbd.c<E>, cbg<E>>>)($$4 -> {
+         cbd<E, ? extends cbe<? extends K1, cfe>> $$5 = $$2 ? $$4.a(cfb.m) : $$4.c(cfb.m);
+         return $$4.group($$4.a(cfb.n), $$5, $$4.b(cfb.L), $$4.a(cfb.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               cls $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dW().F_().a($$11.dw()) && $$9.fN()) {
+                  cfe $$12 = new cfe(new byb($$11, false), $$1, 0);
+                  $$4x.a(new byb($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

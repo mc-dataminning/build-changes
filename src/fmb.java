@@ -1,66 +1,37 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class fmb {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final gkj[] e = new gkj[9];
-   private boolean f;
+public enum fmb {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   public fmb(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
+   private static final IntFunction<fmb> e = ayl.a(fmb::a, values(), ayl.a.b);
+   private final int f;
+   private final xk g;
 
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new gkj();
-      }
+   private fmb(final int $$0, final String $$1) {
+      this.f = $$0;
+      this.g = xk.c($$1);
    }
 
-   private void b() {
-      try {
-         ux $$0 = vk.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = vm.b($$0, 1343);
-         $$0 = bbs.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = gkj.a.parse(vl.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gkj::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
+   public int a() {
+      return this.f;
    }
 
-   public void a() {
-      try {
-         ux $$0 = vm.e(new ux());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            gkj $$2 = this.a($$1);
-            DataResult<vu> $$3 = gkj.a.encodeStart(vl.a, $$2);
-            $$0.a(String.valueOf($$1), (vu)$$3.getOrThrow());
-         }
-
-         vk.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
-      }
+   public xk b() {
+      return this.g;
    }
 
-   public gkj a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
-      }
+   public static fmb a(int $$0) {
+      return e.apply($$0);
+   }
 
-      return this.e[$$0];
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

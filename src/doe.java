@@ -1,105 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class doe extends dkm implements dkp {
-   public static final MapCodec<doe> a = b(doe::new);
-   private static final int c = 1;
-   private static final fcs d = dkm.a(1.0, 2.0, 1.0, 15.0, 16.0, 15.0);
-   private static final fcs e = dkm.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   public static final dym b = dyl.s;
+public class doe extends dkd {
+   public static final MapCodec<doe> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ma.e.q().fieldOf("host").forGetter(doe::b), t()).apply($$0, doe::new));
+   private final dkd b;
+   private static final Map<dkd, dkd> c = Maps.newIdentityHashMap();
+   private static final Map<dxo, dxo> d = Maps.newIdentityHashMap();
+   private static final Map<dxo, dxo> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<doe> a() {
+   public MapCodec<? extends doe> a() {
       return a;
    }
 
-   public doe(dxu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(true)));
+   public doe(dkd $$0, dxn.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
+   }
+
+   public dkd b() {
+      return this.b;
+   }
+
+   public static boolean o(dxo $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(arx $$0, jh $$1) {
+      cmv $$2 = bvi.be.a($$0, bvh.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.S();
+      }
    }
 
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return $$0.c(b) ? d : e;
+   protected void a(dxo $$0, arx $$1, jh $$2, cxg $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.O().b(dgv.h) && !dds.a($$3, axn.t)) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Override
-   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
-      if ($$3.a(500) == 0) {
-         dxv $$4 = $$1.a_($$2.d());
-         if ($$4.a(dko.ae) || $$4.a(dko.aR)) {
-            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), axf.sM, axg.e, 1.0F, 1.0F, false);
+   public static dxo p(dxo $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).m());
+   }
+
+   public dxo q(dxo $$0) {
+      return a(e, $$0, () -> this.b().m());
+   }
+
+   private static dxo a(Map<dxo, dxo> $$0, dxo $$1, Supplier<dxo> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dxo $$2x = $$2.get();
+
+         for (dyq $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
          }
-      }
-   }
 
-   @Override
-   protected boolean e_(dxv $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
-      return this.b($$1, $$2);
-   }
-
-   private boolean b(dgn $$0, jh $$1) {
-      jh $$2 = $$1.a(jm.b);
-      dxv $$3 = $$0.a_($$2);
-      return dpo.a($$0, jm.b, $$2, $$3) || $$3.a(dko.tR);
-   }
-
-   @Override
-   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
-      if (!this.b($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return $$0.b(b, Boolean.valueOf(!$$1.a_($$3.e()).a(this)));
-   }
-
-   @Override
-   protected void a(dxv $$0, ash $$1, jh $$2, bam $$3) {
-      if (!this.b($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean b(dhl $$0, jh $$1, dxv $$2) {
-      return this.o($$0.a_(this.a($$0, $$1).e()));
-   }
-
-   private boolean o(dxv $$0) {
-      return $$0.l();
-   }
-
-   public jh a(dgn $$0, jh $$1) {
-      jh.a $$2 = $$1.k();
-
-      dxv $$3;
-      do {
-         $$2.c(jm.a);
-         $$3 = $$0.a_($$2);
-      } while ($$3.a(this));
-
-      return $$2.a(jm.b).j();
-   }
-
-   @Override
-   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
-      jh $$4 = this.a($$0, $$2).e();
-      if (this.o($$0.a_($$4))) {
-         $$0.b($$4, $$3.b(b, Boolean.valueOf(true)));
-      }
+         return $$2x;
+      });
    }
 }

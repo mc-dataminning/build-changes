@@ -1,5 +1,5 @@
-public interface bwx {
-   void a(ash var1, axg var2, cxp var3);
+public interface bwx<T> {
+   void a(T var1);
 
-   boolean a();
+   T d();
 }

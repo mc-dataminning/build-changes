@@ -1,20 +1,37 @@
-public record ahw(float b) implements aac<ahm> {
-   public static final zt<ws, ahw> a = aac.a(ahw::a, ahw::new);
+public class ahw implements zr<ahb> {
+   public static final zi<wh, ahw> a = zr.a(ahw::a, ahw::new);
+   private final int b;
+   private final int c;
 
-   private ahw(ws $$0) {
-      this($$0.readFloat());
+   public ahw(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
+   private ahw(wh $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+   }
+
+   private void a(wh $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public aae<ahw> a() {
-      return ahk.bt;
+   public zt<ahw> a() {
+      return agz.bE;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

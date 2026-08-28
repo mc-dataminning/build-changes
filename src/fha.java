@@ -1,36 +1,73 @@
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.joml.Vector3f;
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
 
-public interface fha {
-   fha a = a(0.0F, 0.0F, 0.0F);
-   fha b = a((fha.a)($$0 -> -$$0.z()));
+public class fha {
+   public static List<fil> a(fha.a... $$0) {
+      for (fha.a $$1 : $$0) {
+         a($$1.j);
+      }
 
-   static fha a(float $$0, float $$1, float $$2) {
-      return a(new Vector3f($$0, $$1, $$2));
+      List<fil> $$2 = Lists.newArrayList();
+
+      for (fha.a $$3 : $$0) {
+         $$2.add(new fil($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(fil::a));
+      return $$2;
    }
 
-   static fha a(Vector3f $$0) {
-      return a($$0::distanceSquared);
-   }
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
 
-   static fha a(fha.a $$0) {
-      return $$1 -> {
-         float[] $$2 = new float[$$1.length];
-         int[] $$3 = new int[$$1.length];
-
-         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
-            $$2[$$4] = $$0.apply($$1[$$4]);
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
          }
+      }
 
-         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
-         return $$3;
-      };
+      return (int)((double)$$2 / 5.0);
    }
 
-   int[] sort(Vector3f[] var1);
+   private static long b() {
+      return ae.c();
+   }
 
-   public interface a {
-      float apply(Vector3f var1);
+   public static List<fil> a() {
+      return a(fha.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(final String $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
    }
 }

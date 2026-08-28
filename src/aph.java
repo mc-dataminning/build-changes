@@ -1,52 +1,60 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 
 public class aph {
-   public static <T extends ey<T>> void a(CommandDispatcher<T> $$0) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aph.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new aph.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aph.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("serverpack").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ex.a("push")
+                     .then(
+                        ((RequiredArgumentBuilder)ex.a("url", StringArgumentType.string())
+                              .then(
+                                 ((RequiredArgumentBuilder)ex.a("uuid", gm.a())
+                                       .then(
+                                          ex.a("hash", StringArgumentType.word())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ew)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "url"),
+                                                      Optional.of(gm.a($$0x, "uuid")),
+                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
+                                                   )
+                                             )
+                                       ))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gm.a($$0x, "uuid")), Optional.empty()
+                                          )
+                                    )
+                              ))
+                           .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                     )
+               ))
+            .then(ex.a("pop").then(ex.a("uuid", gm.a()).executes($$0x -> a((ew)$$0x.getSource(), gm.a($$0x, "uuid")))))
       );
    }
 
-   static class a<T extends ey<T>> implements ht.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hr $$2, hx<T> $$3) {
-         $$0.p().onFailure();
-         hy $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
+   private static void a(ew $$0, zr<?> $$1) {
+      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
    }
 
-   static class b<T extends ey<T>> implements hu.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hr $$3, hx<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(ih.a());
-            }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new ic.a<>($$6, $$5, $$3.d(), $$0, $$1));
-         }
-      }
+   private static int a(ew $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
+      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
+      String $$5 = $$3.orElse("");
+      aae $$6 = new aae($$4, $$1, $$5, false, null);
+      a($$0, $$6);
+      return 0;
    }
 
-   static class c<T extends ey<T>> implements ht.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hr $$2, hx<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hy $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
-      }
+   private static int a(ew $$0, UUID $$1) {
+      aad $$2 = new aad(Optional.of($$1));
+      a($$0, $$2);
+      return 0;
    }
 }

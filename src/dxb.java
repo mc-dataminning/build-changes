@@ -1,204 +1,49 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public enum dxb implements baq {
+   a("inactive", dxb.a.a) {
+      @Override
+      protected void a(arx $$0, jh $$1, dwy $$2, dxa $$3, boolean $$4) {
+         $$3.a(cxg.j);
+         $$0.c(3016, $$1, $$4 ? 1 : 0);
+      }
+   },
+   b("active", dxb.a.b) {
+      @Override
+      protected void a(arx $$0, jh $$1, dwy $$2, dxa $$3, boolean $$4) {
+         if (!$$3.b()) {
+            dww.b.a($$0, this, $$2, $$3, $$1);
+         }
 
-public enum dxb implements bba {
-   a("inactive", 0, dxb.b.a, -1.0, false),
-   b("waiting_for_players", 4, dxb.b.b, 200.0, true),
-   c("active", 8, dxb.b.c, 1000.0, true),
-   d("waiting_for_reward_ejection", 8, dxb.b.b, -1.0, false),
-   e("ejecting_reward", 8, dxb.b.b, -1.0, false),
-   f("cooldown", 0, dxb.b.d, -1.0, false);
+         $$0.c(3015, $$1, $$4 ? 1 : 0);
+      }
+   },
+   c("unlocking", dxb.a.b) {
+      @Override
+      protected void a(arx $$0, jh $$1, dwy $$2, dxa $$3, boolean $$4) {
+         $$0.a(null, $$1, awv.By, aww.e);
+      }
+   },
+   d("ejecting", dxb.a.b) {
+      @Override
+      protected void a(arx $$0, jh $$1, dwy $$2, dxa $$3, boolean $$4) {
+         $$0.a(null, $$1, awv.BA, aww.e);
+      }
 
-   private static final float g = 40.0F;
-   private static final int h = bae.d(30.0F);
+      @Override
+      protected void a(arx $$0, jh $$1, dwy $$2, dxa $$3) {
+         $$0.a(null, $$1, awv.Bs, aww.e);
+      }
+   };
+
+   private static final int e = 20;
+   private static final int f = 20;
+   private static final int g = 20;
+   private static final int h = 20;
    private final String i;
-   private final int j;
-   private final double k;
-   private final dxb.b l;
-   private final boolean m;
+   private final dxb.a j;
 
-   private dxb(final String $$0, final int $$1, final dxb.b $$2, final double $$3, final boolean $$4) {
+   dxb(final String $$0, final dxb.a $$1) {
       this.i = $$0;
       this.j = $$1;
-      this.l = $$2;
-      this.k = $$3;
-      this.m = $$4;
-   }
-
-   dxb a(jh $$0, dwx $$1, ash $$2) {
-      dxa $$3 = $$1.f();
-      dwy $$4 = $$1.b();
-
-      return switch (this) {
-         case a -> $$3.a($$1, $$2, b) == null ? this : b;
-         case b -> {
-            if (!$$1.a($$2)) {
-               $$3.b();
-               yield this;
-            } else if (!$$3.a($$1, $$2.A)) {
-               yield a;
-            } else {
-               $$3.a($$2, $$0, $$1);
-               yield $$3.c.isEmpty() ? this : c;
-            }
-         }
-         case c -> {
-            if (!$$1.a($$2)) {
-               $$3.b();
-               yield b;
-            } else if (!$$3.a($$1, $$2.A)) {
-               yield a;
-            } else {
-               int $$5 = $$3.a($$0);
-               $$3.a($$2, $$0, $$1);
-               if ($$1.e()) {
-                  this.a($$2, $$0, $$1);
-               }
-
-               if ($$3.a($$4, $$5)) {
-                  if ($$3.c()) {
-                     $$3.e = $$2.ac() + (long)$$1.g();
-                     $$3.g = 0;
-                     $$3.f = 0L;
-                     yield d;
-                  }
-               } else if ($$3.a($$2, $$4, $$5)) {
-                  $$1.c($$2, $$0).ifPresent($$4x -> {
-                     $$3.d.add($$4x);
-                     $$3.g++;
-                     $$3.f = $$2.ac() + (long)$$4.h();
-                     $$4.i().b($$2.H_()).ifPresent($$2xx -> {
-                        $$3.h = Optional.of((dic)$$2xx.b());
-                        $$1.j();
-                     });
-                  });
-               }
-
-               yield this;
-            }
-         }
-         case d -> {
-            if ($$3.a($$2, 40.0F, $$1.g())) {
-               $$2.a(null, $$0, axf.mC, axg.e);
-               yield e;
-            } else {
-               yield this;
-            }
-         }
-         case e -> {
-            if (!$$3.b($$2, (float)h, $$1.g())) {
-               yield this;
-            } else if ($$3.c.isEmpty()) {
-               $$2.a(null, $$0, axf.mD, axg.e);
-               $$3.i = Optional.empty();
-               yield f;
-            } else {
-               if ($$3.i.isEmpty()) {
-                  $$3.i = $$4.j().a($$2.H_());
-               }
-
-               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
-               $$3.c.remove($$3.c.iterator().next());
-               yield this;
-            }
-         }
-         case f -> {
-            $$3.a($$2, $$0, $$1);
-            if (!$$3.c.isEmpty()) {
-               $$3.g = 0;
-               $$3.f = 0L;
-               yield c;
-            } else if ($$3.a($$2)) {
-               $$1.b($$2, $$0);
-               $$3.a();
-               yield b;
-            } else {
-               yield this;
-            }
-         }
-      };
-   }
-
-   private void a(ash $$0, jh $$1, dwx $$2) {
-      dxa $$3 = $$2.f();
-      dwy $$4 = $$2.b();
-      cxp $$5 = $$3.a($$0, $$4, $$1).a($$0.A).orElse(cxp.j);
-      if (!$$5.f()) {
-         if (this.a($$0, $$3)) {
-            a($$0, $$1, $$2, $$3).ifPresent($$4x -> {
-               bwm $$5x = bwm.a($$0, $$5);
-               $$5x.e($$4x);
-               $$0.b($$5x);
-               float $$6 = ($$0.H_().i() - $$0.H_().i()) * 0.2F + 1.0F;
-               $$0.a(null, jh.a((ka)$$4x), axf.mx, axg.e, 1.0F, $$6);
-               $$3.e = $$0.ac() + $$2.d().a();
-            });
-         }
-      }
-   }
-
-   private static Optional<fby> a(ash $$0, jh $$1, dwx $$2, dxa $$3) {
-      List<cpx> $$4 = $$3.c
-         .stream()
-         .map($$0::b)
-         .filter(Objects::nonNull)
-         .filter($$2x -> !$$2x.b() && !$$2x.aa_() && $$2x.bL() && $$2x.f($$1.b()) <= (double)bae.h($$2.h()))
-         .toList();
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         bvk $$5 = a($$4, $$3.d, $$2, $$1, $$0);
-         return $$5 == null ? Optional.empty() : a($$5, $$0);
-      }
-   }
-
-   private static Optional<fby> a(bvk $$0, ash $$1) {
-      fby $$2 = $$0.du();
-      fby $$3 = $$2.a(jm.b, (double)($$0.ds() + 2.0F + (float)$$1.A.a(4)));
-      fbu $$4 = $$1.a(new dgq($$2, $$3, dgq.a.c, dgq.b.a, fcd.a()));
-      fby $$5 = $$4.b().b().a(jm.a, 1.0);
-      jh $$6 = jh.a((ka)$$5);
-      return !$$1.a_($$6).g($$1, $$6).c() ? Optional.empty() : Optional.of($$5);
-   }
-
-   @Nullable
-   private static bvk a(List<cpx> $$0, Set<UUID> $$1, dwx $$2, jh $$3, ash $$4) {
-      Stream<bvk> $$5 = $$1.stream().map($$4::a).filter(Objects::nonNull).filter($$2x -> $$2x.bL() && $$2x.f($$3.b()) <= (double)bae.h($$2.h()));
-      List<? extends bvk> $$6 = $$4.A.h() ? $$5.toList() : $$0;
-      if ($$6.isEmpty()) {
-         return null;
-      } else {
-         return $$6.size() == 1 ? $$6.getFirst() : ae.a($$6, $$4.A);
-      }
-   }
-
-   private boolean a(ash $$0, dxa $$1) {
-      return $$0.ac() >= $$1.e;
-   }
-
-   public int a() {
-      return this.j;
-   }
-
-   public double b() {
-      return this.k;
-   }
-
-   public boolean d() {
-      return this.k >= 0.0;
-   }
-
-   public boolean e() {
-      return this.m;
-   }
-
-   public void a(dhi $$0, jh $$1, boolean $$2) {
-      this.l.emit($$0, $$0.H_(), $$1, $$2);
    }
 
    @Override
@@ -206,58 +51,66 @@ public enum dxb implements bba {
       return this.i;
    }
 
-   static class a {
-      private static final int a = 0;
-      private static final int b = 4;
-      private static final int c = 8;
-
-      private a() {
-      }
+   public int a() {
+      return this.j.c;
    }
 
-   interface b {
-      dxb.b a = ($$0, $$1, $$2, $$3) -> {
-      };
-      dxb.b b = ($$0, $$1, $$2, $$3) -> {
-         if ($$1.a(2) == 0) {
-            fby $$4 = $$2.b().a($$1, 0.9F);
-            a($$3 ? ls.L : ls.aK, $$4, $$0);
+   public dxb a(arx $$0, jh $$1, dwy $$2, dwz $$3, dxa $$4) {
+      return switch (this) {
+         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
+         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
+         case c -> {
+            $$3.b($$0.ad() + 20L);
+            yield d;
          }
-      };
-      dxb.b c = ($$0, $$1, $$2, $$3) -> {
-         fby $$4 = $$2.b().a($$1, 1.0F);
-         a(ls.af, $$4, $$0);
-         a($$3 ? ls.L : ls.F, $$4, $$0);
-      };
-      dxb.b d = ($$0, $$1, $$2, $$3) -> {
-         fby $$4 = $$2.b().a($$1, 0.9F);
-         if ($$1.a(3) == 0) {
-            a(ls.af, $$4, $$0);
-         }
-
-         if ($$0.ac() % 20L == 0L) {
-            fby $$5 = $$2.b().b(0.0, 0.5, 0.0);
-            int $$6 = $$0.H_().a(4) + 20;
-
-            for (int $$7 = 0; $$7 < $$6; $$7++) {
-               a(ls.af, $$5, $$0);
+         case d -> {
+            if ($$3.d().isEmpty()) {
+               $$3.e();
+               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
+            } else {
+               float $$5 = $$3.h();
+               this.a($$0, $$1, $$3.g(), $$5);
+               $$4.a($$3.f());
+               boolean $$6 = $$3.d().isEmpty();
+               int $$7 = $$6 ? 20 : 20;
+               $$3.b($$0.ad() + (long)$$7);
+               yield d;
             }
          }
       };
-
-      private static void a(lw $$0, fby $$1, dhi $$2) {
-         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
-      }
-
-      void emit(dhi var1, bam var2, jh var3, boolean var4);
    }
 
-   static class c {
-      private static final double a = -1.0;
-      private static final double b = 200.0;
-      private static final double c = 1000.0;
+   private static dxb a(arx $$0, jh $$1, dwy $$2, dwz $$3, dxa $$4, double $$5) {
+      $$4.a($$0, $$1, $$3, $$2, $$5);
+      $$3.b($$0.ad() + 20L);
+      return $$4.c() ? b : a;
+   }
 
-      private c() {
+   public void a(arx $$0, jh $$1, dxb $$2, dwy $$3, dxa $$4, boolean $$5) {
+      this.a($$0, $$1, $$3, $$4);
+      $$2.a($$0, $$1, $$3, $$4, $$5);
+   }
+
+   protected void a(arx $$0, jh $$1, dwy $$2, dxa $$3, boolean $$4) {
+   }
+
+   protected void a(arx $$0, jh $$1, dwy $$2, dxa $$3) {
+   }
+
+   private void a(arx $$0, jh $$1, cxg $$2, float $$3) {
+      la.a($$0, $$2, 2, jm.b, fbr.c($$1).a(jm.b, 1.2));
+      $$0.c(3017, $$1, 0);
+      $$0.a(null, $$1, awv.Bu, aww.e, 1.0F, 0.8F + 0.4F * $$3);
+   }
+
+   static enum a {
+      a(6),
+      b(12);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 }

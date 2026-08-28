@@ -1,77 +1,263 @@
-import com.mojang.util.UndashedUuid;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
 public class fms {
-   private final String a;
-   private final UUID b;
-   private final String c;
-   private final Optional<String> d;
-   private final Optional<String> e;
-   private final fms.a f;
-
-   public fms(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fms.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public String a() {
-      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
-   }
-
-   public UUID b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public Optional<String> e() {
-      return this.e;
-   }
-
-   public Optional<String> f() {
-      return this.d;
-   }
-
-   public fms.a g() {
-      return this.f;
-   }
-
-   public static enum a {
-      a("legacy"),
-      b("mojang"),
-      c("msa");
-
-      private static final Map<String, fms.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Nullable
-      public static fms.a a(String $$0) {
-         return d.get($$0.toLowerCase(Locale.ROOT));
-      }
-
-      public String a() {
-         return this.e;
-      }
-   }
+   public static final fmn a = fmn.a.a(2.0F)
+      .a()
+      .a(
+         "wind_top",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.25F, fmp.a(0.5F, 0.0F, -0.5F), fmm.b.a),
+            new fmo(0.75F, fmp.a(-0.5F, 0.0F, -0.5F), fmm.b.a),
+            new fmo(1.25F, fmp.a(-0.5F, 0.0F, 0.5F), fmm.b.a),
+            new fmo(1.75F, fmp.a(0.5F, 0.0F, 0.5F), fmm.b.a),
+            new fmo(2.0F, fmp.a(0.5F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "wind_mid",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.5F, 0.0F, -0.5F), fmm.b.a),
+            new fmo(0.5F, fmp.a(-0.5F, 0.0F, -0.5F), fmm.b.a),
+            new fmo(1.0F, fmp.a(-0.5F, 0.0F, 0.5F), fmm.b.a),
+            new fmo(1.5F, fmp.a(0.5F, 0.0F, 0.5F), fmm.b.a),
+            new fmo(2.0F, fmp.a(0.5F, 0.0F, -0.5F), fmm.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.b),
+            new fmo(1.0F, fmp.a(0.0F, 1.0F, 0.0F), fmm.b.b),
+            new fmo(2.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.b)
+         )
+      )
+      .a("rods", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(2.0F, fmp.b(0.0F, 1080.0F, 0.0F), fmm.b.a)))
+      .a(
+         "rods",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(1.0F, fmp.a(0.0F, -1.0F, 0.0F), fmm.b.a),
+            new fmo(2.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .b();
+   public static final fmn b = fmn.a.a(1.125F)
+      .a(
+         "head",
+         new fmm(
+            fmm.d.b,
+            new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.25F, fmp.b(-12.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.75F, fmp.b(-12.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.9167F, fmp.b(5.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(1.125F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.25F, fmp.a(0.0F, -2.0F, 0.0F), fmm.b.a),
+            new fmo(0.7917F, fmp.a(0.0F, -1.0F, 2.0F), fmm.b.a),
+            new fmo(0.9583F, fmp.a(0.0F, -1.0F, 0.0F), fmm.b.a),
+            new fmo(1.125F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a("wind_bottom", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a)))
+      .a(
+         "wind_mid",
+         new fmm(
+            fmm.d.b,
+            new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.25F, fmp.b(12.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.75F, fmp.b(12.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.9167F, fmp.b(-10.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(1.125F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "wind_mid",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.25F, fmp.a(0.0F, 0.0F, 5.0F), fmm.b.a),
+            new fmo(0.75F, fmp.a(0.0F, 0.0F, 6.0F), fmm.b.a),
+            new fmo(0.9167F, fmp.a(0.0F, 0.0F, -2.0F), fmm.b.a),
+            new fmo(1.125F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "wind_top",
+         new fmm(
+            fmm.d.b,
+            new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.25F, fmp.b(15.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.75F, fmp.b(15.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.9167F, fmp.b(-10.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(1.125F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "wind_top",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.25F, fmp.a(0.0F, 0.0F, 3.0F), fmm.b.a),
+            new fmo(0.8333F, fmp.a(0.0F, 0.0F, 4.0F), fmm.b.a),
+            new fmo(0.9583F, fmp.a(0.0F, 0.0F, -2.0F), fmm.b.a),
+            new fmo(1.125F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fmm(
+            fmm.d.b,
+            new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.25F, fmp.b(12.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.75F, fmp.b(12.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.9167F, fmp.b(-2.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(1.125F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.25F, fmp.a(0.0F, 3.0F, 5.0F), fmm.b.a),
+            new fmo(0.8333F, fmp.a(0.0F, 3.0F, 6.0F), fmm.b.a),
+            new fmo(0.9583F, fmp.a(0.0F, 3.0F, -1.0F), fmm.b.a),
+            new fmo(1.125F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a("rods", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(1.0F, fmp.b(0.0F, 360.0F, 0.0F), fmm.b.a)))
+      .b();
+   public static final fmn c = fmn.a.a(0.5F)
+      .a(
+         "body",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, -10.0F, 0.0F), fmm.b.a),
+            new fmo(0.125F, fmp.a(0.0F, 11.0F, 0.0F), fmm.b.a),
+            new fmo(0.5F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fmm(
+            fmm.d.b,
+            new fmo(0.0F, fmp.b(22.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.2083F, fmp.b(-19.25F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.5F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "wind_body",
+         new fmm(
+            fmm.d.c,
+            new fmo(0.0F, fmp.a(1.0, 1.0, 1.0), fmm.b.a),
+            new fmo(0.125F, fmp.a(1.0, 1.3F, 1.0), fmm.b.a),
+            new fmo(0.5F, fmp.a(1.0, 1.0, 1.0), fmm.b.a)
+         )
+      )
+      .a("wind_bottom", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 90.0F, 0.0F), fmm.b.a), new fmo(0.5F, fmp.b(0.0F, 360.0F, 0.0F), fmm.b.a)))
+      .a(
+         "wind_bottom",
+         new fmm(
+            fmm.d.c,
+            new fmo(0.0F, fmp.a(1.0, 1.0, 1.0), fmm.b.a),
+            new fmo(0.125F, fmp.a(1.0, 1.1F, 1.0), fmm.b.a),
+            new fmo(0.5F, fmp.a(1.0, 1.0, 1.0), fmm.b.a)
+         )
+      )
+      .a("wind_mid", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.5F, fmp.b(0.0F, 180.0F, 0.0F), fmm.b.a)))
+      .a(
+         "wind_mid",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, -6.0F, 0.0F), fmm.b.a),
+            new fmo(0.125F, fmp.a(0.0F, 2.0F, 0.0F), fmm.b.a),
+            new fmo(0.5F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a("wind_top", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.5F, fmp.b(0.0F, 90.0F, 0.0F), fmm.b.a)))
+      .a(
+         "wind_top",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, -5.0F, 0.0F), fmm.b.a),
+            new fmo(0.125F, fmp.a(0.0F, 2.0F, 0.0F), fmm.b.a),
+            new fmo(0.5F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a("rods", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.5F, fmp.b(0.0F, 360.0F, 0.0F), fmm.b.a)))
+      .b();
+   public static final fmn d = fmn.a.a(2.0F)
+      .a(
+         "body",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.5F, fmp.a(0.0F, -10.0F, 0.0F), fmm.b.a),
+            new fmo(0.625F, fmp.a(0.0F, -10.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fmm(
+            fmm.d.b,
+            new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.5F, fmp.b(22.5F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.625F, fmp.b(22.5F, 0.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a(
+         "wind_body",
+         new fmm(
+            fmm.d.c, new fmo(0.0F, fmp.a(1.0, 1.0, 1.0), fmm.b.a), new fmo(0.5F, fmp.a(1.0, 1.0, 1.0), fmm.b.a), new fmo(0.625F, fmp.a(1.0, 1.0, 1.0), fmm.b.a)
+         )
+      )
+      .a("wind_bottom", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.625F, fmp.b(0.0F, 90.0F, 0.0F), fmm.b.a)))
+      .a(
+         "wind_bottom",
+         new fmm(
+            fmm.d.c, new fmo(0.0F, fmp.a(1.0, 1.0, 1.0), fmm.b.a), new fmo(0.5F, fmp.a(1.0, 1.0, 1.0), fmm.b.a), new fmo(0.625F, fmp.a(1.0, 1.0, 1.0), fmm.b.a)
+         )
+      )
+      .a("wind_mid", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.625F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a)))
+      .a(
+         "wind_mid",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.5F, fmp.a(0.0F, -6.0F, 0.0F), fmm.b.a),
+            new fmo(0.625F, fmp.a(0.0F, -6.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a("wind_top", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.625F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a)))
+      .a(
+         "wind_top",
+         new fmm(
+            fmm.d.a,
+            new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a),
+            new fmo(0.5F, fmp.a(0.0F, -5.0F, 0.0F), fmm.b.a),
+            new fmo(0.625F, fmp.a(0.0F, -5.0F, 0.0F), fmm.b.a)
+         )
+      )
+      .a("rods", new fmm(fmm.d.b, new fmo(0.0F, fmp.b(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.625F, fmp.b(0.0F, 360.0F, 0.0F), fmm.b.a)))
+      .b();
+   public static final fmn e = fmn.a.a(0.2F)
+      .a("body", new fmm(fmm.d.a, new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.2F, fmp.a(0.0F, 0.0F, -6.0F), fmm.b.a)))
+      .a("wind_mid", new fmm(fmm.d.a, new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.2F, fmp.a(0.0F, 0.0F, -3.0F), fmm.b.a)))
+      .a("wind_top", new fmm(fmm.d.a, new fmo(0.0F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a), new fmo(0.2F, fmp.a(0.0F, 0.0F, -2.0F), fmm.b.a)))
+      .b();
+   public static final fmn f = fmn.a.a(0.1F)
+      .a("body", new fmm(fmm.d.a, new fmo(0.0F, fmp.a(0.0F, 0.0F, -6.0F), fmm.b.a), new fmo(0.1F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)))
+      .a("wind_mid", new fmm(fmm.d.a, new fmo(0.0F, fmp.a(0.0F, 0.0F, -3.0F), fmm.b.a), new fmo(0.1F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)))
+      .a("wind_top", new fmm(fmm.d.a, new fmo(0.0F, fmp.a(0.0F, 0.0F, -2.0F), fmm.b.a), new fmo(0.1F, fmp.a(0.0F, 0.0F, 0.0F), fmm.b.a)))
+      .b();
 }

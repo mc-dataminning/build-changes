@@ -1,49 +1,65 @@
-public class gao extends gbm<gxe> {
-   private final geo a;
-   private final geo b;
-   private final geo c;
-   private final geo d;
-   private final geo e;
-   private final geo f;
-   private final geo g;
+public class gao extends fzu {
+   private static final int a = 28;
+   private static final int b = 32;
+   private static final int c = 6;
+   private static final int d = 20;
+   private static final int e = 4;
+   private static final String f = "water_patch";
+   private static final String g = "back";
+   private static final String i = "front";
+   private static final String j = "right";
+   private static final String k = "left";
 
-   public gao(geo $$0) {
-      super($$0, glv::f);
-      this.b = $$0.b("body");
-      this.a = $$0.b("head");
-      this.c = this.b.b("right_wing");
-      this.e = this.c.b("right_wing_tip");
-      this.d = this.b.b("left_wing");
-      this.f = this.d.b("left_wing_tip");
-      this.g = this.b.b("feet");
+   public gao(gej $$0) {
+      super($$0);
    }
 
-   public static geu a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      gey $$2 = $$1.a("body", get.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), geq.a(0.0F, 17.0F, 0.0F));
-      gey $$3 = $$1.a("head", get.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), geq.a(0.0F, 17.0F, 0.0F));
-      $$3.a("right_ear", get.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), geq.a(-1.5F, -2.0F, 0.0F));
-      $$3.a("left_ear", get.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), geq.a(1.1F, -3.0F, 0.0F));
-      gey $$4 = $$2.a("right_wing", get.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), geq.a(-1.5F, 0.0F, 0.0F));
-      $$4.a("right_wing_tip", get.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), geq.a(-2.0F, 0.0F, 0.0F));
-      gey $$5 = $$2.a("left_wing", get.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), geq.a(1.5F, 0.0F, 0.0F));
-      $$5.a("left_wing_tip", get.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), geq.a(2.0F, 0.0F, 0.0F));
-      $$2.a("feet", get.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), geq.a(0.0F, 5.0F, 0.0F));
-      return geu.a($$0, 32, 32);
+   private static void a(get $$0) {
+      int $$1 = 16;
+      int $$2 = 14;
+      int $$3 = 10;
+      $$0.a("bottom", geo.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gel.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$0.a("back", geo.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), gel.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$0.a("front", geo.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), gel.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$0.a("right", geo.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gel.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$0.a("left", geo.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gel.a(0.0F, 4.0F, 9.0F));
+      int $$4 = 20;
+      int $$5 = 7;
+      int $$6 = 6;
+      float $$7 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         geo.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gel.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         geo.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gel.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public void a(gxe $$0) {
-      super.a($$0);
-      if ($$0.a) {
-         this.a($$0.U);
-      }
-
-      this.a($$0.b, fmy.b, $$0.p, 1.0F);
-      this.a($$0.c, fmy.a, $$0.p, 1.0F);
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      a($$1);
+      return gep.a($$0, 128, 64);
    }
 
-   private void a(float $$0) {
-      this.a.f = $$0 * (float) (Math.PI / 180.0);
+   public static gep b() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      a($$1);
+      $$1.a("chest_bottom", geo.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gel.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", geo.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gel.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", geo.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gel.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return gep.a($$0, 128, 128);
+   }
+
+   public static gep c() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("water_patch", geo.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gel.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gep.a($$0, 0, 0);
    }
 }

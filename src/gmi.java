@@ -1,44 +1,61 @@
-public class gmi implements fgw {
-   private final fgw a;
-   private final hbl b;
+import java.util.Map;
+import java.util.Map.Entry;
 
-   public gmi(fgw $$0, hbl $$1) {
+public class gmi {
+   private Map<dxo, hdi> a = Map.of();
+   private final hdv b;
+
+   public gmi(hdv $$0) {
+      this.b = $$0;
+   }
+
+   public hbg a(dxo $$0) {
+      return this.b($$0).e();
+   }
+
+   public hdi b(dxo $$0) {
+      hdi $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
+      }
+
+      return $$1;
+   }
+
+   public hdv a() {
+      return this.b;
+   }
+
+   public void a(Map<dxo, hdi> $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Override
-   public fgw a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static hdw c(dxo $$0) {
+      return a(ma.e.b($$0.b()), $$0);
    }
 
-   @Override
-   public fgw a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   public static hdw a(alp $$0, dxo $$1) {
+      return new hdw($$0, b($$1.G()));
    }
 
-   @Override
-   public fgw a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   public static String b(Map<dyq<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<dyq<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
+         }
+
+         dyq<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
+      }
+
+      return $$1.toString();
    }
 
-   @Override
-   public fgw a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public fgw b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public fgw b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+   private static <T extends Comparable<T>> String a(dyq<T> $$0, Comparable<?> $$1) {
+      return $$0.b((T)$$1);
    }
 }

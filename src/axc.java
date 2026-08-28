@@ -1,41 +1,51 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class axc {
-   public static final Codec<axc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axe.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, axc::new)
-   );
-   private final jq<axe> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
+public class axc<T> extends fcz {
+   public static final zi<wv, axc<?>> a = zg.a(mb.am).b(axc::a, axe::a);
+   private final axd o;
+   private final T p;
+   private final axe<T> q;
 
-   public axc(jq<axe> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   protected axc(axe<T> $$0, T $$1, axd $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
    }
 
-   public jq<axe> a() {
-      return this.b;
+   public static <T> String a(axe<T> $$0, T $$1) {
+      return a(ma.v.b($$0)) + ":" + a($$0.b().b($$1));
    }
 
-   public int b() {
-      return this.c;
+   private static <T> String a(@Nullable alp $$0) {
+      return $$0.toString().replace(':', '.');
    }
 
-   public int c() {
-      return this.d;
+   public axe<T> a() {
+      return this.q;
    }
 
-   public boolean d() {
-      return this.e;
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof axc && Objects.equals(this.d(), ((axc)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

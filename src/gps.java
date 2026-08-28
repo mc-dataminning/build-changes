@@ -1,59 +1,81 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import org.joml.Matrix4f;
 
-public class gps implements gpl.a {
-   private final fmg a;
-   private final Map<Long, Map<jh, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class gps implements gpg.a {
+   private final flz a;
 
-   gps(fmg $$0) {
+   public gps(flz $$0) {
       this.a = $$0;
    }
 
-   public void a(long $$0, jh $$1) {
-      Map<jh, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
    @Override
-   public void a(fgs $$0, gll $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.ac();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<jh> $$8 = Sets.newHashSet();
-      Map<jh, Integer> $$9 = Maps.newHashMap();
-      fgw $$10 = $$1.getBuffer(glv.y());
-      Iterator<Entry<Long, Map<jh, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a(fgl $$0, glg $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      dge $$6 = this.a.t.dW();
+      jh $$7 = jh.a($$2, $$3, $$4);
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<jh, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<jh, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<jh, Integer> $$16 : $$14.entrySet()) {
-               jh $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  fbt $$19 = new fbt(jh.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gmf.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
+      for (jh $$8 : jh.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         dxo $$9 = $$6.a_($$8);
+         if (!$$9.a(dkf.a)) {
+            fcl $$10 = $$9.f($$6, $$8);
+
+            for (fbm $$11 : $$10.e()) {
+               fbm $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               int $$19 = -2130771968;
+               if ($$9.c($$6, $$8, jm.e)) {
+                  fgp $$20 = $$1.getBuffer(glq.B());
+                  $$20.a($$5, $$13, $$14, $$15).a(-2130771968);
+                  $$20.a($$5, $$13, $$14, $$18).a(-2130771968);
+                  $$20.a($$5, $$13, $$17, $$15).a(-2130771968);
+                  $$20.a($$5, $$13, $$17, $$18).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jm.d)) {
+                  fgp $$21 = $$1.getBuffer(glq.B());
+                  $$21.a($$5, $$13, $$17, $$18).a(-2130771968);
+                  $$21.a($$5, $$13, $$14, $$18).a(-2130771968);
+                  $$21.a($$5, $$16, $$17, $$18).a(-2130771968);
+                  $$21.a($$5, $$16, $$14, $$18).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jm.f)) {
+                  fgp $$22 = $$1.getBuffer(glq.B());
+                  $$22.a($$5, $$16, $$14, $$18).a(-2130771968);
+                  $$22.a($$5, $$16, $$14, $$15).a(-2130771968);
+                  $$22.a($$5, $$16, $$17, $$18).a(-2130771968);
+                  $$22.a($$5, $$16, $$17, $$15).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jm.c)) {
+                  fgp $$23 = $$1.getBuffer(glq.B());
+                  $$23.a($$5, $$16, $$17, $$15).a(-2130771968);
+                  $$23.a($$5, $$16, $$14, $$15).a(-2130771968);
+                  $$23.a($$5, $$13, $$17, $$15).a(-2130771968);
+                  $$23.a($$5, $$13, $$14, $$15).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jm.a)) {
+                  fgp $$24 = $$1.getBuffer(glq.B());
+                  $$24.a($$5, $$13, $$14, $$15).a(-2130771968);
+                  $$24.a($$5, $$16, $$14, $$15).a(-2130771968);
+                  $$24.a($$5, $$13, $$14, $$18).a(-2130771968);
+                  $$24.a($$5, $$16, $$14, $$18).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jm.b)) {
+                  fgp $$25 = $$1.getBuffer(glq.B());
+                  $$25.a($$5, $$13, $$17, $$15).a(-2130771968);
+                  $$25.a($$5, $$13, $$17, $$18).a(-2130771968);
+                  $$25.a($$5, $$16, $$17, $$15).a(-2130771968);
+                  $$25.a($$5, $$16, $$17, $$18).a(-2130771968);
                }
             }
          }
-      }
-
-      for (Entry<jh, Integer> $$20 : $$9.entrySet()) {
-         jh $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gpl.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
       }
    }
 }

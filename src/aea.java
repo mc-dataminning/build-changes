@@ -1,33 +1,45 @@
-public class aea implements aac<acr> {
-   public static final zt<ws, aea> a = aac.a(aea::a, aea::new);
+public class aea implements zr<acg> {
+   public static final zi<wv, aea> a = zr.a(aea::a, aea::new);
    private final int b;
-   private final int c;
+   private final dfx c;
    private final int d;
+   private final int e;
+   private final boolean f;
+   private final boolean g;
 
-   public aea(int $$0, int $$1, int $$2) {
+   public aea(int $$0, dfx $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.b = $$0;
-      this.c = $$1;
+      this.c = $$1.a();
       this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private aea(ws $$0) {
+   private aea(wv $$0) {
       this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = $$0.readInt();
+      this.c = dfx.b.decode($$0);
+      this.d = $$0.l();
+      this.e = $$0.l();
+      this.f = $$0.readBoolean();
+      this.g = $$0.readBoolean();
    }
 
-   private void a(ws $$0) {
+   private void a(wv $$0) {
       $$0.f(this.b);
-      $$0.c(this.c);
-      $$0.q(this.d);
+      dfx.b.encode($$0, this.c);
+      $$0.c(this.d);
+      $$0.c(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
    }
 
    @Override
-   public aae<aea> a() {
-      return ahk.H;
+   public zt<aea> a() {
+      return agz.Q;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +47,23 @@ public class aea implements aac<acr> {
       return this.b;
    }
 
-   public int e() {
+   public dfx e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

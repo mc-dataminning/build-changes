@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dyc implements baq {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dyc {
+   private final String e;
+
+   private dyc(final String $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
+   }
 }

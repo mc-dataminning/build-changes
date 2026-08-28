@@ -1,88 +1,44 @@
-public class aet implements aac<acr> {
-   public static final zt<ws, aet> a = aac.a(aet::a, aet::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final float j;
-   private final float k;
+import java.util.List;
 
-   public aet(cpt $$0) {
-      this.f = $$0.a;
-      this.g = $$0.b;
-      this.h = $$0.c;
-      this.i = $$0.d;
-      this.j = $$0.a();
-      this.k = $$0.b();
-   }
-
-   private aet(ws $$0) {
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
-      this.i = ($$1 & 8) != 0;
-      this.j = $$0.readFloat();
-      this.k = $$0.readFloat();
-   }
-
-   private void a(ws $$0) {
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      if (this.h) {
-         $$1 = (byte)($$1 | 4);
-      }
-
-      if (this.i) {
-         $$1 = (byte)($$1 | 8);
-      }
-
-      $$0.l($$1);
-      $$0.a(this.j);
-      $$0.a(this.k);
-   }
+public record aet(List<aet.a> b, boolean c) implements zr<acg> {
+   public static final zi<wv, aet> a = zi.a(aet.a.c.a(zg.a()), aet::b, zg.b, aet::e, aet::new);
 
    @Override
-   public aae<aet> a() {
-      return ahk.aa;
+   public zt<aet> a() {
+      return agz.ak;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.f;
-   }
-
    public boolean e() {
-      return this.g;
+      return this.c;
    }
 
-   public boolean f() {
-      return this.h;
-   }
+   public static record a(ddb d, byte e) {
+      public static final byte a = 1;
+      public static final byte b = 2;
+      public static final zi<wv, aet.a> c = zi.a(ddb.a, aet.a::c, zg.c, aet.a::d, aet.a::new);
 
-   public boolean g() {
-      return this.i;
-   }
+      public a(ddb $$0, boolean $$1, boolean $$2) {
+         this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
+      }
 
-   public float h() {
-      return this.j;
-   }
+      public boolean a() {
+         return (this.e & 1) != 0;
+      }
 
-   public float i() {
-      return this.k;
+      public boolean b() {
+         return (this.e & 2) != 0;
+      }
+
+      public ddb c() {
+         return this.d;
+      }
+
+      public byte d() {
+         return this.e;
+      }
    }
 }

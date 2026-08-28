@@ -1,118 +1,97 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 public class chf {
-   private static final int a = 10;
+   public static final alo<che> a = a("armorer");
+   public static final alo<che> b = a("butcher");
+   public static final alo<che> c = a("cartographer");
+   public static final alo<che> d = a("cleric");
+   public static final alo<che> e = a("farmer");
+   public static final alo<che> f = a("fisherman");
+   public static final alo<che> g = a("fletcher");
+   public static final alo<che> h = a("leatherworker");
+   public static final alo<che> i = a("librarian");
+   public static final alo<che> j = a("mason");
+   public static final alo<che> k = a("shepherd");
+   public static final alo<che> l = a("toolsmith");
+   public static final alo<che> m = a("weaponsmith");
+   public static final alo<che> n = a("home");
+   public static final alo<che> o = a("meeting");
+   public static final alo<che> p = a("beehive");
+   public static final alo<che> q = a("bee_nest");
+   public static final alo<che> r = a("nether_portal");
+   public static final alo<che> s = a("lodestone");
+   public static final alo<che> t = a("lightning_rod");
+   private static final Set<dxo> u = ImmutableList.of(
+         dkf.bu, dkf.bv, dkf.br, dkf.bs, dkf.bp, dkf.bn, dkf.bt, dkf.bj, dkf.bo, dkf.bl, dkf.bi, dkf.bh, new dkd[]{dkf.bm, dkf.bq, dkf.bg, dkf.bk}
+      )
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .filter($$0 -> $$0.c(djw.b) == dyb.a)
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Set<dxo> v = ImmutableList.of(dkf.fO, dkf.fQ, dkf.fP, dkf.fR)
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Map<dxo, jq<che>> w = Maps.newHashMap();
 
-   public static jh a(bam $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new jh($$3, $$4, $$5);
+   private static Set<dxo> a(dkd $$0) {
+      return ImmutableSet.copyOf($$0.l().a());
    }
 
-   @Nullable
-   public static jh a(bam $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = bae.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)bae.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return jh.a($$10, (double)$$12, $$11);
-      } else {
-         return null;
-      }
+   private static alo<che> a(String $$0) {
+      return alo.a(mb.aa, alp.b($$0));
    }
 
-   @VisibleForTesting
-   public static jh a(jh $$0, int $$1, Predicate<jh> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         jh.a $$3 = $$0.k().c(jm.b);
-
-         while ($$3.v() <= $$1 && $$2.test($$3)) {
-            $$3.c(jm.b);
-         }
-
-         return $$3.j();
-      }
+   private static che a(kd<che> $$0, alo<che> $$1, Set<dxo> $$2, int $$3, int $$4) {
+      che $$5 = new che($$2, $$3, $$4);
+      kd.a($$0, $$1, $$5);
+      a($$0.b($$1), $$2);
+      return $$5;
    }
 
-   @VisibleForTesting
-   public static jh a(jh $$0, int $$1, int $$2, Predicate<jh> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
-      } else {
-         jh.a $$4 = $$0.k().c(jm.b);
-
-         while ($$4.v() <= $$2 && $$3.test($$4)) {
-            $$4.c(jm.b);
+   private static void a(jq<che> $$0, Set<dxo> $$1) {
+      $$1.forEach($$1x -> {
+         jq<che> $$2 = w.put($$1x, $$0);
+         if ($$2 != null) {
+            throw (IllegalStateException)ae.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
          }
-
-         int $$5 = $$4.v();
-
-         while ($$4.v() <= $$2 && $$4.v() - $$5 < $$1) {
-            $$4.c(jm.b);
-            if ($$3.test($$4)) {
-               $$4.c(jm.a);
-               break;
-            }
-         }
-
-         return $$4.j();
-      }
+      });
    }
 
-   @Nullable
-   public static fby a(bwo $$0, Supplier<jh> $$1) {
-      return a($$1, $$0::c);
+   public static Optional<jq<che>> a(dxo $$0) {
+      return Optional.ofNullable(w.get($$0));
    }
 
-   @Nullable
-   public static fby a(Supplier<jh> $$0, ToDoubleFunction<jh> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      jh $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         jh $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
-            }
-         }
-      }
-
-      return $$3 != null ? fby.c($$3) : null;
+   public static boolean b(dxo $$0) {
+      return w.containsKey($$0);
    }
 
-   public static jh a(bwo $$0, int $$1, bam $$2, jh $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.ga() && $$1 > 1) {
-         jh $$6 = $$0.fX();
-         if ($$0.dB() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
-         } else {
-            $$4 += $$2.a($$1 / 2);
-         }
-
-         if ($$0.dH() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
-
-      return jh.a((double)$$4 + $$0.dB(), (double)$$3.v() + $$0.dD(), (double)$$5 + $$0.dH());
+   public static che a(kd<che> $$0) {
+      a($$0, a, a(dkf.oy), 1, 1);
+      a($$0, b, a(dkf.ox), 1, 1);
+      a($$0, c, a(dkf.oz), 1, 1);
+      a($$0, d, a(dkf.fN), 1, 1);
+      a($$0, e, a(dkf.pE), 1, 1);
+      a($$0, f, a(dkf.ow), 1, 1);
+      a($$0, g, a(dkf.oA), 1, 1);
+      a($$0, h, v, 1, 1);
+      a($$0, i, a(dkf.oC), 1, 1);
+      a($$0, j, a(dkf.oE), 1, 1);
+      a($$0, k, a(dkf.ov), 1, 1);
+      a($$0, l, a(dkf.oD), 1, 1);
+      a($$0, m, a(dkf.oB), 1, 1);
+      a($$0, n, u, 1, 1);
+      a($$0, o, a(dkf.oF), 32, 6);
+      a($$0, p, a(dkf.pH), 0, 1);
+      a($$0, q, a(dkf.pG), 0, 1);
+      a($$0, r, a(dkf.eq), 0, 1);
+      a($$0, s, a(dkf.pS), 0, 1);
+      return a($$0, t, a(dkf.sU), 0, 1);
    }
 }

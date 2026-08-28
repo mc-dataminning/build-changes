@@ -1,14 +1,23 @@
-public class gnu implements gnw<duv> {
-   public static final hdu a = new hdu(hbk.d, alz.b("entity/bell/bell_body"));
-   private final gar b;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public gnu(gnx.a $$0) {
-      this.b = new gar($$0.a(gen.x));
+public class gnu<S extends duq> implements dml.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = glc.a($$0.i(), $$0.aB_());
+         int $$4 = glc.a($$1.i(), $$1.aB_());
+         int $$5 = gle.a($$3);
+         int $$6 = gle.a($$4);
+         int $$7 = gle.b($$3);
+         int $$8 = gle.b($$4);
+         return gle.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public void a(duv $$0, float $$1, fgs $$2, gll $$3, int $$4, int $$5) {
-      fgw $$6 = a.a($$3, glv::d);
-      this.b.a($$0, $$1);
-      this.b.a($$2, $$6, $$4, $$5);
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
+   }
+
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

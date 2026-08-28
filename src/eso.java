@@ -1,20 +1,14 @@
 import com.mojang.serialization.MapCodec;
 
-public class eso extends esg {
-   public static final MapCodec<eso> a = ayk.a(mb.f).fieldOf("tag").xmap(eso::new, $$0 -> $$0.b);
-   private final ayk<dkm> b;
+public interface eso<P extends esn> {
+   eso<esl> a = a("clear", esl.a);
+   eso<esm> b = a("passthrough", esm.b);
+   eso<esk> c = a("append_static", esk.a);
+   eso<esj> d = a("append_loot", esj.a);
 
-   public eso(ayk<dkm> $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(dxv $$0, bam $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected esh<?> a() {
-      return esh.d;
+   private static <P extends esn> eso<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.n, $$0, () -> $$1);
    }
 }

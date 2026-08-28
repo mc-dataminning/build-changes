@@ -1,33 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public record eor(eor.a b, brv<diw.c> c) {
-   public static final Codec<eor> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eor.a.c.fieldOf("bounding_box").forGetter(eor::a), brv.c(diw.c.a).fieldOf("spawns").forGetter(eor::b)).apply($$0, eor::new)
-   );
+@FunctionalInterface
+public interface eor<C extends eit> {
+   Optional<eoq<C>> createGenerator(eor.a<C> var1);
 
-   public eor.a a() {
-      return this.b;
+   static <C extends eit> eor<C> simple(Predicate<eor.a<C>> $$0, eoq<C> $$1) {
+      Optional<eoq<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   public brv<diw.c> b() {
-      return this.c;
+   static <C extends eit> Predicate<eor.a<C>> checkForBiomeOnTop(edj.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   public static enum a implements bba {
-      a("piece"),
-      b("full");
-
-      public static final Codec<eor.a> c = bba.a(eor.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
+   public static record a<C extends eit>(dzk a, dif b, edx c, long d, dgf e, C f, dhb g, Predicate<jq<dib>> h, esg i, ke j) {
+      public boolean a(edj.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         jq<dib> $$4 = this.a.d().getNoiseBiome(kb.a($$1), kb.a($$3), kb.a($$2), this.c.b());
+         return this.h.test($$4);
       }
    }
 }

@@ -1,58 +1,59 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public record dzh(String n, dyk o, dsc p, dsc q, axe r, axe s) {
-   private static final Map<String, dzh> t = new Object2ObjectArrayMap();
-   public static final Codec<dzh> a = Codec.stringResolver(dzh::b, t::get);
-   public static final dzh b = a(new dzh("oak", dyk.g));
-   public static final dzh c = a(new dzh("spruce", dyk.h));
-   public static final dzh d = a(new dzh("birch", dyk.i));
-   public static final dzh e = a(new dzh("acacia", dyk.j));
-   public static final dzh f = a(new dzh("cherry", dyk.k, dsc.aU, dsc.aX, axf.eO, axf.eP));
-   public static final dzh g = a(new dzh("jungle", dyk.l));
-   public static final dzh h = a(new dzh("dark_oak", dyk.m));
-   public static final dzh i = a(new dzh("pale_oak", dyk.n));
-   public static final dzh j = a(new dzh("crimson", dyk.o, dsc.aT, dsc.aQ, axf.ro, axf.rp));
-   public static final dzh k = a(new dzh("warped", dyk.p, dsc.aT, dsc.aQ, axf.ro, axf.rp));
-   public static final dzh l = a(new dzh("mangrove", dyk.q));
-   public static final dzh m = a(new dzh("bamboo", dyk.r, dsc.aS, dsc.aR, axf.bw, axf.bx));
+public class dzh implements AutoCloseable {
+   private final dha a;
+   private final Long2ObjectMap<dzu> b = new Long2ObjectOpenHashMap();
+   @Nullable
+   private dzu c;
+   private long d;
 
-   public dzh(String $$0, dyk $$1) {
-      this($$0, $$1, dsc.b, dsc.aP, axf.jc, axf.jd);
+   public dzh(dha $$0) {
+      this.a = $$0;
    }
 
-   private static dzh a(dzh $$0) {
-      t.put($$0.b(), $$0);
-      return $$0;
+   @Nullable
+   public dzu a(jh $$0) {
+      int $$1 = this.a.f($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.ao()) {
+         long $$2 = kj.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (dzu)this.b.computeIfAbsent($$2, $$2x -> {
+               dzj $$3 = this.a.a(kj.a($$0.u()), kj.a($$0.w()));
+               dzu $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
+         }
+
+         return this.c;
+      } else {
+         return null;
+      }
    }
 
-   public static Stream<dzh> a() {
-      return t.values().stream();
+   public dxo b(jh $$0) {
+      dzu $$1 = this.a($$0);
+      if ($$1 == null) {
+         return dkf.a.m();
+      } else {
+         int $$2 = kj.b($$0.u());
+         int $$3 = kj.b($$0.v());
+         int $$4 = kj.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
+      }
    }
 
-   public String b() {
-      return this.n;
-   }
+   @Override
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
 
-   public dyk c() {
-      return this.o;
-   }
-
-   public dsc d() {
-      return this.p;
-   }
-
-   public dsc e() {
-      return this.q;
-   }
-
-   public axe f() {
-      return this.r;
-   }
-
-   public axe g() {
-      return this.s;
+      while (var1.hasNext()) {
+         dzu $$0 = (dzu)var1.next();
+         $$0.b();
+      }
    }
 }

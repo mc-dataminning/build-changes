@@ -1,29 +1,27 @@
+import org.joml.Matrix4f;
+
 public enum fdu {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+   a(fgt.a, ($$0, $$1) -> $$0.scale(1.0F - $$1 / 4096.0F)),
+   b(fgt.b, ($$0, $$1) -> $$0.translate(0.0F, 0.0F, $$1 / 512.0F));
 
-   private final int h;
+   private final fgt c;
+   private final fdu.a d;
 
-   private fdu(final int $$0) {
-      this.h = $$0;
+   private fdu(final fgt $$0, final fdu.a $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static fdu a(int $$0) {
-      for (fdu $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
-      }
-
-      return $$0 < a.h ? a : g;
+   public fgt a() {
+      return this.c;
    }
 
-   public int a() {
-      return this.h;
+   public void a(Matrix4f $$0, float $$1) {
+      this.d.apply($$0, $$1);
+   }
+
+   @FunctionalInterface
+   interface a {
+      void apply(Matrix4f var1, float var2);
    }
 }

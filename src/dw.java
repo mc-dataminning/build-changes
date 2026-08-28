@@ -4,9 +4,9 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record dw(Optional<Boolean> c, Optional<cwm> d) implements bx {
+public record dw(Optional<Boolean> c, Optional<cwd> d) implements bx {
    public static final MapCodec<dw> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(dw::b), cwm.q.optionalFieldOf("color").forGetter(dw::c)).apply($$0, dw::new)
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(dw::b), cwd.q.optionalFieldOf("color").forGetter(dw::c)).apply($$0, dw::new)
    );
 
    @Override
@@ -15,15 +15,15 @@ public record dw(Optional<Boolean> c, Optional<cwm> d) implements bx {
    }
 
    @Override
-   public boolean a(bvk $$0, ash $$1, @Nullable fby $$2) {
-      if ($$0 instanceof cit $$3) {
+   public boolean a(bvb $$0, arx $$1, @Nullable fbr $$2) {
+      if ($$0 instanceof cik $$3) {
          return this.c.isPresent() && $$3.x() != this.c.get() ? false : !this.d.isPresent() || $$3.t() == this.d.get();
       } else {
          return false;
       }
    }
 
-   public static dw a(cwm $$0) {
+   public static dw a(cwd $$0) {
       return new dw(Optional.of(false), Optional.of($$0));
    }
 
@@ -31,7 +31,7 @@ public record dw(Optional<Boolean> c, Optional<cwm> d) implements bx {
       return this.c;
    }
 
-   public Optional<cwm> c() {
+   public Optional<cwd> c() {
       return this.d;
    }
 }

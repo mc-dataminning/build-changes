@@ -1,23 +1,31 @@
-public interface aai extends acl {
-   void a(aam var1);
+import java.util.Map;
 
-   void a(aan var1);
+public class aai implements zr<zx> {
+   public static final zi<wh, aai> a = zr.a(aai::a, aai::new);
+   private final Map<alo<? extends kd<?>>, ayc.a> b;
 
-   void a(aaj var1);
+   public aai(Map<alo<? extends kd<?>>, ayc.a> $$0) {
+      this.b = $$0;
+   }
 
-   void a(aal var1);
+   private aai(wh $$0) {
+      this.b = $$0.a(wh::r, ayc.a::b);
+   }
 
-   void a(aap var1);
+   private void a(wh $$0) {
+      $$0.a(this.b, wh::b, ($$0x, $$1) -> $$1.a($$0x));
+   }
 
-   void a(aao var1);
+   @Override
+   public zt<aai> a() {
+      return aaj.k;
+   }
 
-   void a(aat var1);
+   public void a(zx $$0) {
+      $$0.a(this);
+   }
 
-   void a(aar var1);
-
-   void a(aas var1);
-
-   void a(aak var1);
-
-   void a(aaq var1);
+   public Map<alo<? extends kd<?>>, ayc.a> b() {
+      return this.b;
+   }
 }

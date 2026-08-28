@@ -1,21 +1,20 @@
-public class gsa extends gsw<cmr, gyg, gbr> {
-   private static final alz a = alz.b("textures/entity/ghast/ghast.png");
-   private static final alz b = alz.b("textures/entity/ghast/ghast_shooting.png");
+public class gsa extends gqa<cnw> {
+   private static final alp a = alp.b("textures/entity/hoglin/hoglin.png");
 
-   public gsa(grq.a $$0) {
-      super($$0, new gbr($$0.a(gen.aO)), 1.5F);
+   public gsa(grl.a $$0) {
+      super($$0, gei.ba, gei.bb, 0.7F);
    }
 
-   public alz a(gyg $$0) {
-      return $$0.a ? b : a;
+   public alp a(gye $$0) {
+      return a;
    }
 
-   public gyg b() {
-      return new gyg();
-   }
-
-   public void a(cmr $$0, gyg $$1, float $$2) {
+   public void a(cnw $$0, gye $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
+      $$1.b = $$0.go();
+   }
+
+   protected boolean b(gye $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

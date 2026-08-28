@@ -1,75 +1,74 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record yn<S>(List<yn.a<S>> a) {
-   public static <S> boolean a(ParseResults<S> $$0) {
-      return !b($$0).a().isEmpty();
-   }
+public record yn(String d, @Nullable hl e) implements ym {
+   public static final MapCodec<yn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(yn::b)).apply($$0, yn::new));
+   public static final ym.a<yn> b = new ym.a<>(a, "entity");
 
-   public static <S> yn<S> b(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<yn.a<S>> $$4 = a($$1, $$2);
-
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new yn<>($$4);
-   }
-
-   private static <S> List<yn.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<yn.a<S>> $$2 = new ArrayList<>();
-
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof gd) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new yn.a<>($$4, $$6));
-               }
-            }
-         }
-      }
-
-      return $$2;
+   public yn(String $$0) {
+      this($$0, a($$0));
    }
 
    @Nullable
-   public yn.a<S> a(String $$0) {
-      for (yn.a<S> $$1 : this.a) {
-         if ($$0.equals($$1.a())) {
-            return $$1;
-         }
+   private static hl a(String $$0) {
+      try {
+         hm $$1 = new hm(new StringReader($$0), true);
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
-
-      return null;
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+   @Override
+   public Stream<um> a(ew $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends bvb> $$1 = this.e.b($$0);
+         return $$1.stream().map(dm::b);
+      } else {
+         return Stream.empty();
       }
+   }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
-      }
+   @Override
+   public ym.a<?> a() {
+      return b;
+   }
 
-      public String c() {
-         return this.b;
+   @Override
+   public String toString() {
+      return "entity=" + this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof yn $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
+
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public hl c() {
+      return this.e;
    }
 }

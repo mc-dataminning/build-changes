@@ -1,51 +1,82 @@
-public class ftd extends fty {
-   private static final alz a = alz.b("textures/gui/demo_background.png");
-   private static final int b = 256;
-   private static final int c = 256;
-   private foz d = foz.a;
-   private foz s = foz.a;
+import javax.annotation.Nullable;
 
-   public ftd() {
-      super(xv.c("demo.help.title"));
+public class ftd extends ftr {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
+   @Nullable
+   private final xk d;
+   private final xk s;
+   private final Runnable u;
+   @Nullable
+   private fos v;
+   private fny w;
+   private int x;
+
+   public static ftd a(xk $$0, xk $$1, Runnable $$2) {
+      return new ftd($$0, null, $$1, $$2, 0);
+   }
+
+   public static ftd a(xk $$0, xk $$1, xk $$2, Runnable $$3) {
+      return new ftd($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected ftd(xk $$0, @Nullable xk $$1, xk $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.d = $$1;
+      this.s = $$2;
+      this.u = $$3;
+      this.x = $$4;
    }
 
    @Override
    protected void aT_() {
-      int $$0 = -16;
-      this.c(fof.a(xv.c("demo.help.buy"), $$0x -> {
-         $$0x.j = false;
-         ae.m().a(aza.f);
-      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
-      this.c(fof.a(xv.c("demo.help.later"), $$0x -> {
-         this.m.a(null);
-         this.m.o.i();
-      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
-      fmk $$1 = this.m.n;
-      this.d = foz.a(
-         this.p,
-         xv.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
-         xv.c("demo.help.movementMouse"),
-         xv.a("demo.help.jump", $$1.z.k()),
-         xv.a("demo.help.inventory", $$1.C.k())
-      );
-      this.s = foz.a(this.p, xv.c("demo.help.fullWrapped"), 218);
+      super.aT_();
+      if (this.d != null) {
+         this.v = fos.a(this.p, this.d, 360);
+      }
+
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.v != null ? this.v.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.o - 40);
+      this.w = this.c(fny.a(this.s, $$0x -> this.aP_()).a((this.n - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
-   public void b(fns $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2;
-      int $$5 = (this.o - 166) / 2;
-      $$0.a(glv::C, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
+   public void e() {
+      if (this.x > 0) {
+         this.x--;
+      }
+
+      this.w.j = this.x == 0;
    }
 
    @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2 + 10;
-      int $$5 = (this.o - 166) / 2 + 8;
-      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
-      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
+      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
+      if (this.v == null) {
+         String $$4 = ftg.a(ae.c());
+         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+      } else {
+         this.v.a($$0, this.n / 2, 120);
+      }
+   }
+
+   @Override
+   public boolean aH_() {
+      return this.v != null && this.w.j;
+   }
+
+   @Override
+   public void aP_() {
+      this.u.run();
+   }
+
+   @Override
+   public xk i() {
+      return xj.a(this.l, this.d != null ? this.d : xj.a);
    }
 }

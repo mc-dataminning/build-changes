@@ -1,36 +1,22 @@
-import java.util.function.Function;
+public class hhr implements fpc {
+   private final xk a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-public enum hhr {
-   a("movement", hhm::new),
-   b("find_tree", hhl::new),
-   c("punch_tree", hho::new),
-   d("open_inventory", hhn::new),
-   e("craft_planks", hhk::new),
-   f("none", hhj::new);
-
-   private final String g;
-   private final Function<hhp, ? extends hhq> h;
-
-   private <T extends hhq> hhr(final String $$0, final Function<hhp, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public hhr(xk $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public hhq a(hhp $$0) {
-      return this.h.apply($$0);
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      $$0.a(flz.Q().h, this.a, this.b, this.c, this.d);
    }
 
-   public String a() {
-      return this.g;
-   }
-
-   public static hhr a(String $$0) {
-      for (hhr $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      return f;
+   public xk a() {
+      return this.a;
    }
 }

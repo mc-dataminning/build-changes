@@ -1,33 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class egu extends egw<ejh> {
-   public egu(Codec<ejh> $$0) {
-      super($$0);
-   }
+public class egu implements eit {
+   public static final Codec<egu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alp.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               alp.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               ese.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               ese.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, egu::new)
+   );
+   public final List<alp> b;
+   public final List<alp> c;
+   public final jq<esd> d;
+   public final jq<esd> e;
+   public final int f;
 
-   @Override
-   public boolean a(egy<ejh> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
-   }
-
-   public static void a(dhz $$0, jh $$1, boolean $$2) {
-      jh.a $$3 = $$1.k();
-
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               jh $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               dkm $$8 = $$6 == -1 ? dko.cv : dko.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
-                  }
-
-                  $$0.a($$7, $$8.m(), 3);
-               }
-            }
-         }
+   public egu(List<alp> $$0, List<alp> $$1, jq<esd> $$2, jq<esd> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
    }
 }

@@ -1,347 +1,205 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.BiConsumer;
+import com.google.common.base.MoreObjects;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.Properties;
 import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aqs {
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xv.c("commands.data.merge.failed"));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> xv.b("commands.data.get.invalid", $$0));
-   private static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xv.b("commands.data.get.unknown", $$0));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xv.c("commands.data.get.multiple"));
-   private static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> xv.b("commands.data.modify.expected_object", $$0));
-   private static final DynamicCommandExceptionType i = new DynamicCommandExceptionType($$0 -> xv.b("commands.data.modify.expected_value", $$0));
-   private static final Dynamic2CommandExceptionType j = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> xv.b("commands.data.modify.invalid_substring", $$0, $$1)
-   );
-   public static final List<Function<String, aqs.c>> a = ImmutableList.of(aqt.a, aqq.a, aqu.a);
-   public static final List<aqs.c> b = a.stream().map($$0 -> $$0.apply("target")).collect(ImmutableList.toImmutableList());
-   public static final List<aqs.c> c = a.stream().map($$0 -> $$0.apply("source")).collect(ImmutableList.toImmutableList());
+public abstract class aqs<T extends aqs<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   protected final Properties ac;
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      LiteralArgumentBuilder<ew> $$1 = (LiteralArgumentBuilder<ew>)ex.a("data").requires($$0x -> $$0x.c(2));
-
-      for (aqs.c $$2 : b) {
-         ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.then(
-                     $$2.a(ex.a("merge"), $$1x -> $$1x.then(ex.a("nbt", fg.a()).executes($$1xx -> a((ew)$$1xx.getSource(), $$2.a($$1xx), fg.a($$1xx, "nbt")))))
-                  ))
-                  .then(
-                     $$2.a(
-                        ex.a("get"),
-                        $$1x -> $$1x.executes($$1xx -> a((ew)$$1xx.getSource(), $$2.a($$1xx)))
-                              .then(
-                                 ((RequiredArgumentBuilder)ex.a("path", fo.a()).executes($$1xx -> b((ew)$$1xx.getSource(), $$2.a($$1xx), fo.a($$1xx, "path"))))
-                                    .then(
-                                       ex.a("scale", DoubleArgumentType.doubleArg())
-                                          .executes(
-                                             $$1xx -> a((ew)$$1xx.getSource(), $$2.a($$1xx), fo.a($$1xx, "path"), DoubleArgumentType.getDouble($$1xx, "scale"))
-                                          )
-                                    )
-                              )
-                     )
-                  ))
-               .then(
-                  $$2.a(ex.a("remove"), $$1x -> $$1x.then(ex.a("path", fo.a()).executes($$1xx -> a((ew)$$1xx.getSource(), $$2.a($$1xx), fo.a($$1xx, "path")))))
-               ))
-            .then(
-               a(
-                  (BiConsumer<ArgumentBuilder<ew, ?>, aqs.b>)(($$0x, $$1x) -> $$0x.then(
-                           ex.a("insert")
-                              .then(
-                                 ex.a("index", IntegerArgumentType.integer())
-                                    .then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(IntegerArgumentType.getInteger($$0xx, "index"), $$1xx, $$3)))
-                              )
-                        )
-                        .then(ex.a("prepend").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(0, $$1xx, $$3))))
-                        .then(ex.a("append").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(-1, $$1xx, $$3))))
-                        .then(ex.a("set").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a($$1xx, (vu)Iterables.getLast($$3)))))
-                        .then(ex.a("merge").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> {
-                           ux $$4 = new ux();
-
-                           for (vu $$5 : $$3) {
-                              if (fo.g.a($$5, 0)) {
-                                 throw fo.b.create();
-                              }
-
-                              if (!($$5 instanceof ux $$6)) {
-                                 throw h.create($$5);
-                              }
-
-                              $$4.a($$6);
-                           }
-
-                           Collection<vu> $$7 = $$2x.a($$1xx, ux::new);
-                           int $$8 = 0;
-
-                           for (vu $$9 : $$7) {
-                              if (!($$9 instanceof ux $$10)) {
-                                 throw h.create($$9);
-                              }
-
-                              ux $$12 = $$10.i();
-                              $$10.a($$4);
-                              $$8 += $$12.equals($$10) ? 0 : 1;
-                           }
-
-                           return $$8;
-                        }))))
-               )
-            );
-      }
-
-      $$0.register($$1);
+   public aqs(Properties $$0) {
+      this.ac = $$0;
    }
 
-   private static String a(vu $$0) throws CommandSyntaxException {
-      if ($$0.c().d()) {
-         return $$0.u_();
-      } else {
-         throw i.create($$0);
-      }
-   }
-
-   private static List<vu> a(List<vu> $$0, aqs.d $$1) throws CommandSyntaxException {
-      List<vu> $$2 = new ArrayList<>($$0.size());
-
-      for (vu $$3 : $$0) {
-         String $$4 = a($$3);
-         $$2.add(vs.a($$1.process($$4)));
-      }
-
-      return $$2;
-   }
-
-   private static ArgumentBuilder<ew, ?> a(BiConsumer<ArgumentBuilder<ew, ?>, aqs.b> $$0) {
-      LiteralArgumentBuilder<ew> $$1 = ex.a("modify");
-
-      for (aqs.c $$2 : b) {
-         $$2.a(
-            $$1,
-            $$2x -> {
-               ArgumentBuilder<ew, ?> $$3 = ex.a("targetPath", fo.a());
-
-               for (aqs.c $$4 : c) {
-                  $$0.accept(
-                     $$3,
-                     $$2xx -> $$4.a(
-                           ex.a("from"),
-                           $$3x -> $$3x.executes($$3xx -> a($$3xx, $$2, $$2xx, a($$3xx, $$4)))
-                                 .then(ex.a("sourcePath", fo.a()).executes($$3xx -> a($$3xx, $$2, $$2xx, b($$3xx, $$4))))
-                        )
-                  );
-                  $$0.accept(
-                     $$3,
-                     $$2xx -> $$4.a(
-                           ex.a("string"),
-                           $$3x -> $$3x.executes($$3xx -> a($$3xx, $$2, $$2xx, a(a($$3xx, $$4), $$0xxxxx -> $$0xxxxx)))
-                                 .then(
-                                    ((RequiredArgumentBuilder)ex.a("sourcePath", fo.a())
-                                          .executes($$3xx -> a($$3xx, $$2, $$2xx, a(b($$3xx, $$4), $$0xxxxx -> $$0xxxxx))))
-                                       .then(
-                                          ((RequiredArgumentBuilder)ex.a("start", IntegerArgumentType.integer())
-                                                .executes(
-                                                   $$3xx -> a(
-                                                         $$3xx,
-                                                         $$2,
-                                                         $$2xx,
-                                                         a(b($$3xx, $$4), $$1xxxxx -> a($$1xxxxx, IntegerArgumentType.getInteger($$3xx, "start")))
-                                                      )
-                                                ))
-                                             .then(
-                                                ex.a("end", IntegerArgumentType.integer())
-                                                   .executes(
-                                                      $$3xx -> a(
-                                                            $$3xx,
-                                                            $$2,
-                                                            $$2xx,
-                                                            a(
-                                                               b($$3xx, $$4),
-                                                               $$1xxxxx -> b(
-                                                                     $$1xxxxx,
-                                                                     IntegerArgumentType.getInteger($$3xx, "start"),
-                                                                     IntegerArgumentType.getInteger($$3xx, "end")
-                                                                  )
-                                                            )
-                                                         )
-                                                   )
-                                             )
-                                       )
-                                 )
-                        )
-                  );
-               }
-
-               $$0.accept($$3, $$1xx -> ex.a("value").then(ex.a("value", fp.a()).executes($$2xx -> {
-                     List<vu> $$3x = Collections.singletonList(fp.a($$2xx, "value"));
-                     return a($$2xx, $$2, $$1xx, $$3x);
-                  })));
-               return $$2x.then($$3);
+   public static Properties b(Path $$0) {
+      try {
+         try {
+            Properties var13;
+            try (InputStream $$1 = Files.newInputStream($$0)) {
+               CharsetDecoder $$2 = StandardCharsets.UTF_8
+                  .newDecoder()
+                  .onMalformedInput(CodingErrorAction.REPORT)
+                  .onUnmappableCharacter(CodingErrorAction.REPORT);
+               Properties $$3 = new Properties();
+               $$3.load(new InputStreamReader($$1, $$2));
+               var13 = $$3;
             }
-         );
-      }
 
-      return $$1;
-   }
+            return var13;
+         } catch (CharacterCodingException var9) {
+            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
 
-   private static String a(String $$0, int $$1, int $$2) throws CommandSyntaxException {
-      if ($$1 >= 0 && $$2 <= $$0.length() && $$1 <= $$2) {
-         return $$0.substring($$1, $$2);
-      } else {
-         throw j.create($$1, $$2);
-      }
-   }
+            Properties var4;
+            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
+               Properties $$6 = new Properties();
+               $$6.load($$5);
+               var4 = $$6;
+            }
 
-   private static String b(String $$0, int $$1, int $$2) throws CommandSyntaxException {
-      int $$3 = $$0.length();
-      int $$4 = a($$1, $$3);
-      int $$5 = a($$2, $$3);
-      return a($$0, $$4, $$5);
-   }
-
-   private static String a(String $$0, int $$1) throws CommandSyntaxException {
-      int $$2 = $$0.length();
-      return a($$0, a($$1, $$2), $$2);
-   }
-
-   private static int a(int $$0, int $$1) {
-      return $$0 >= 0 ? $$0 : $$1 + $$0;
-   }
-
-   private static List<vu> a(CommandContext<ew> $$0, aqs.c $$1) throws CommandSyntaxException {
-      aqr $$2 = $$1.a($$0);
-      return Collections.singletonList($$2.a());
-   }
-
-   private static List<vu> b(CommandContext<ew> $$0, aqs.c $$1) throws CommandSyntaxException {
-      aqr $$2 = $$1.a($$0);
-      fo.g $$3 = fo.a($$0, "sourcePath");
-      return $$3.a($$2.a());
-   }
-
-   private static int a(CommandContext<ew> $$0, aqs.c $$1, aqs.a $$2, List<vu> $$3) throws CommandSyntaxException {
-      aqr $$4 = $$1.a($$0);
-      fo.g $$5 = fo.a($$0, "targetPath");
-      ux $$6 = $$4.a();
-      int $$7 = $$2.modify($$0, $$6, $$5, $$3);
-      if ($$7 == 0) {
-         throw d.create();
-      } else {
-         $$4.a($$6);
-         ((ew)$$0.getSource()).a(() -> $$4.b(), true);
-         return $$7;
-      }
-   }
-
-   private static int a(ew $$0, aqr $$1, fo.g $$2) throws CommandSyntaxException {
-      ux $$3 = $$1.a();
-      int $$4 = $$2.c($$3);
-      if ($$4 == 0) {
-         throw d.create();
-      } else {
-         $$1.a($$3);
-         $$0.a(() -> $$1.b(), true);
-         return $$4;
-      }
-   }
-
-   public static vu a(fo.g $$0, aqr $$1) throws CommandSyntaxException {
-      Collection<vu> $$2 = $$0.a($$1.a());
-      Iterator<vu> $$3 = $$2.iterator();
-      vu $$4 = $$3.next();
-      if ($$3.hasNext()) {
-         throw g.create();
-      } else {
-         return $$4;
-      }
-   }
-
-   private static int b(ew $$0, aqr $$1, fo.g $$2) throws CommandSyntaxException {
-      vu $$3 = a($$2, $$1);
-      int $$4;
-      if ($$3 instanceof vn) {
-         $$4 = bae.a(((vn)$$3).j());
-      } else if ($$3 instanceof uw) {
-         $$4 = ((uw)$$3).size();
-      } else if ($$3 instanceof ux) {
-         $$4 = ((ux)$$3).f();
-      } else {
-         if (!($$3 instanceof vs)) {
-            throw f.create($$2.toString());
+            return var4;
          }
-
-         $$4 = $$3.u_().length();
-      }
-
-      $$0.a(() -> $$1.a($$3), false);
-      return $$4;
-   }
-
-   private static int a(ew $$0, aqr $$1, fo.g $$2, double $$3) throws CommandSyntaxException {
-      vu $$4 = a($$2, $$1);
-      if (!($$4 instanceof vn)) {
-         throw e.create($$2.toString());
-      } else {
-         int $$5 = bae.a(((vn)$$4).j() * $$3);
-         $$0.a(() -> $$1.a($$2, $$3, $$5), false);
-         return $$5;
+      } catch (IOException var10) {
+         a.error("Failed to load properties from file: {}", $$0, var10);
+         return new Properties();
       }
    }
 
-   private static int a(ew $$0, aqr $$1) throws CommandSyntaxException {
-      ux $$2 = $$1.a();
-      $$0.a(() -> $$1.a((vu)$$2), false);
-      return 1;
+   public void c(Path $$0) {
+      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
+         this.ac.store($$1, "Minecraft server properties");
+      } catch (IOException var7) {
+         a.error("Failed to store properties to file: {}", $$0);
+      }
    }
 
-   private static int a(ew $$0, aqr $$1, ux $$2) throws CommandSyntaxException {
-      ux $$3 = $$1.a();
-      if (fo.g.a($$2, 0)) {
-         throw fo.b.create();
-      } else {
-         ux $$4 = $$3.i().a($$2);
-         if ($$3.equals($$4)) {
-            throw d.create();
-         } else {
-            $$1.a($$4);
-            $$0.a(() -> $$1.b(), true);
-            return 1;
+   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
+      return $$1 -> {
+         try {
+            return $$0.apply($$1);
+         } catch (NumberFormatException var3) {
+            return null;
          }
+      };
+   }
+
+   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
+      return $$2 -> {
+         try {
+            return $$0.apply(Integer.parseInt($$2));
+         } catch (NumberFormatException var4) {
+            return $$1.apply($$2);
+         }
+      };
+   }
+
+   @Nullable
+   private String c(String $$0) {
+      return (String)this.ac.get($$0);
+   }
+
+   @Nullable
+   protected <V> V a(String $$0, Function<String, V> $$1) {
+      String $$2 = this.c($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         this.ac.remove($$0);
+         return $$1.apply($$2);
       }
    }
 
-   @FunctionalInterface
-   interface a {
-      int modify(CommandContext<ew> var1, ux var2, fo.g var3, List<vu> var4) throws CommandSyntaxException;
+   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return $$5;
    }
 
-   @FunctionalInterface
-   interface b {
-      ArgumentBuilder<ew, ?> create(aqs.a var1);
+   protected <V> aqs<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return new aqs.a<>($$0, $$5, $$2);
    }
 
-   public interface c {
-      aqr a(CommandContext<ew> var1) throws CommandSyntaxException;
-
-      ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> var1, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> var2);
+   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
+      return this.a($$0, $$2x -> {
+         V $$3x = $$1.apply($$2x);
+         return $$3x != null ? $$2.apply($$3x) : null;
+      }, $$3, $$4);
    }
 
-   @FunctionalInterface
-   interface d {
-      String process(String var1) throws CommandSyntaxException;
+   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
+      return this.a($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected <V> aqs<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
+      return this.b($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected String a(String $$0, String $$1) {
+      return this.a($$0, Function.identity(), Function.identity(), $$1);
+   }
+
+   @Nullable
+   protected String a(String $$0) {
+      return this.a($$0, Function.identity());
+   }
+
+   protected int a(String $$0, int $$1) {
+      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
+   }
+
+   protected aqs<T>.a<Integer> b(String $$0, int $$1) {
+      return this.b($$0, a(Integer::parseInt), $$1);
+   }
+
+   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
+      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
+   }
+
+   protected long a(String $$0, long $$1) {
+      return this.a($$0, a(Long::parseLong), $$1);
+   }
+
+   protected boolean a(String $$0, boolean $$1) {
+      return this.a($$0, Boolean::valueOf, $$1);
+   }
+
+   protected aqs<T>.a<Boolean> b(String $$0, boolean $$1) {
+      return this.b($$0, Boolean::valueOf, $$1);
+   }
+
+   @Nullable
+   protected Boolean b(String $$0) {
+      return this.a($$0, Boolean::valueOf);
+   }
+
+   protected Properties a() {
+      Properties $$0 = new Properties();
+      $$0.putAll(this.ac);
+      return $$0;
+   }
+
+   protected abstract T b(ke var1, Properties var2);
+
+   public class a<V> implements Supplier<V> {
+      private final String b;
+      private final V c;
+      private final Function<V, String> d;
+
+      a(final String $$1, final V $$2, final Function<V, String> $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public V get() {
+         return this.c;
+      }
+
+      public T a(ke $$0, V $$1) {
+         Properties $$2 = aqs.this.a();
+         $$2.put(this.b, this.d.apply($$1));
+         return aqs.this.b($$0, $$2);
+      }
    }
 }

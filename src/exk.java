@@ -2,60 +2,60 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Set;
 
-public class exk extends exh {
+public class exk extends exv {
    public static final MapCodec<exk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayk.a(mb.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, exk::new)
+      $$0 -> a($$0).and(exk.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, exk::new)
    );
-   private final ayk<cxl> j;
-   private final boolean k;
+   private final exk.a b;
 
-   private exk(ayk<cxl> $$0, boolean $$1, int $$2, int $$3, List<ezy> $$4, List<eyd> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   private exk(List<ezr> $$0, exk.a $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public exg a() {
-      return exd.f;
+   public exx<exk> b() {
+      return exy.s;
    }
 
    @Override
-   public void a(Consumer<cxp> $$0, ewp $$1) {
-      ma.g.c(this.j).forEach($$1x -> $$0.accept(new cxp($$1x)));
+   public Set<bbd<?>> a() {
+      return Set.of(this.b.g);
    }
 
-   private boolean a(ewp $$0, Consumer<exe> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jq<cxl> $$2 : ma.g.c(this.j)) {
-            $$1.accept(new exh.c() {
-               @Override
-               public void a(Consumer<cxp> $$0, ewp $$1) {
-                  $$0.accept(new cxp($$2));
-               }
-            });
-         }
-
-         return true;
+   @Override
+   public cxg a(cxg $$0, ewi $$1) {
+      if ($$1.c(this.b.g) instanceof btd $$3) {
+         $$0.b(ku.g, $$3.an());
       }
+
+      return $$0;
    }
 
-   @Override
-   public boolean expand(ewp $$0, Consumer<exe> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public static exv.a<?> a(exk.a $$0) {
+      return a($$1 -> new exk($$1, $$0));
    }
 
-   public static exh.a<?> a(ayk<cxl> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new exk($$0, false, $$1, $$2, $$3, $$4));
-   }
+   public static enum a implements baq {
+      a("this", ezc.a),
+      b("attacking_entity", ezc.d),
+      c("last_damage_player", ezc.b),
+      d("block_entity", ezc.h);
 
-   public static exh.a<?> b(ayk<cxl> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new exk($$0, true, $$1, $$2, $$3, $$4));
+      public static final Codec<exk.a> e = baq.a(exk.a::values);
+      private final String f;
+      final bbd<?> g;
+
+      private a(final String $$0, final bbd<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

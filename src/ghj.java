@@ -1,21 +1,12 @@
-public class ghj extends gjs {
-   private final gjn a;
-
-   ghj(gfk $$0, double $$1, double $$2, double $$3, double $$4, gjn $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+public class ghj extends gjn {
+   ghj(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
@@ -23,27 +14,36 @@ public class ghj extends gjs {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.t-- <= 0) {
          this.k();
       } else {
-         this.b(this.a);
+         this.k += 0.002;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.85F;
+         this.k *= 0.85F;
+         this.l *= 0.85F;
+         if (!this.c.b_(jh.a(this.g, this.h, this.i)).a(axq.a)) {
+            this.k();
+         }
       }
    }
 
    @Override
-   public giw b() {
-      return giw.b;
+   public gir b() {
+      return gir.b;
    }
 
-   public static class a implements giv<lw> {
-      private final gjn a;
+   public static class a implements giq<lw> {
+      private final gji a;
 
-      public a(gjn $$0) {
+      public a(gji $$0) {
          this.a = $$0;
       }
 
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghj($$1, $$2, $$3, $$4, $$5, this.a);
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghj $$8 = new ghj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

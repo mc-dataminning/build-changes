@@ -1,30 +1,21 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dud extends doc {
-   public static final MapCodec<dud> c = b(dud::new);
-   protected static final fcs g = dkm.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dud extends dkv {
+   public static final MapCodec<dud> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwd.q.fieldOf("color").forGetter(dud::b), t()).apply($$0, dud::new));
+   private final cwd d;
 
    @Override
    public MapCodec<dud> a() {
       return c;
    }
 
-   public dud(dxu.d $$0) {
-      super($$0, jm.a, g, false, 0.1);
+   protected dud(cwd $$0, dxn.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
-   @Override
-   protected int a(bam $$0) {
-      return dpu.a($$0);
-   }
-
-   @Override
-   protected dkm b() {
-      return dko.oV;
-   }
-
-   @Override
-   protected boolean h(dxv $$0) {
-      return dpu.a($$0);
+   public cwd b() {
+      return this.d;
    }
 }

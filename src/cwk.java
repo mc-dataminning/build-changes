@@ -1,8 +1,20 @@
-import javax.annotation.Nullable;
+public class cwk extends cxc {
+   public static float a = 1.5F;
 
-public interface cwk {
-   default void a(@Nullable cpx $$0, dhi $$1, cxp $$2, jh $$3) {
+   public cwk(cxc.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable cpx var1, dhi var2, jh var3, @Nullable fbu var4);
+   @Override
+   public bta a(dgz $$0, cpo $$1, bsz $$2) {
+      cxg $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awv.iO, aww.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arx $$4) {
+         cqh.a(cqr::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
+      }
+
+      $$1.b(axf.c.b(this));
+      $$3.a(1, $$1);
+      return bta.a;
+   }
 }

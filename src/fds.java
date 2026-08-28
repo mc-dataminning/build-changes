@@ -1,7 +1,11 @@
-public interface fds<T> {
-   void a(fdq<T> var1);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   boolean a(jh var1, T var2);
-
-   int a();
+@Nonnull
+@TypeQualifierDefault({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface fds {
 }

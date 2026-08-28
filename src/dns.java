@@ -1,88 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dns extends dom {
-   public static final MapCodec<dns> a = b(dns::new);
-   public static final int b = 3;
-   public static final dyu c = dyl.at;
-   private static final int f = 4;
-   private static final int g = 2;
-
-   @Override
-   public MapCodec<dns> a() {
-      return a;
-   }
-
-   public dns(dxu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+public abstract class dns extends dnr implements dkg {
+   protected dns(dxn.d $$0, jm $$1, fcl $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void b(dxv $$0, dhi $$1, jh $$2, dxv $$3, boolean $$4) {
-      $$1.a($$2, this, bae.a($$1.H_(), 60, 120));
+   protected abstract MapCodec<? extends dns> a();
+
+   protected dxo a(dxo $$0, dxo $$1) {
+      return $$1;
    }
 
    @Override
-   protected void a(dxv $$0, ash $$1, jh $$2, bam $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.f($$0, $$1, $$2)) {
-         jh.a $$4 = new jh.a();
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
 
-         for (jm $$5 : jm.values()) {
-            $$4.a($$2, $$5);
-            dxv $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.f($$6, $$1, $$4)) {
-               $$1.a($$4, this, bae.a($$3, 20, 40));
-            }
-         }
+      dnt $$8 = this.c();
+      if ($$4 == this.a && !$$6.a(this) && !$$6.a($$8)) {
+         return this.a($$0, $$8.b($$7));
       } else {
-         $$1.a($$2, this, bae.a($$3, 20, 40));
-      }
-   }
+         if (this.b) {
+            $$2.a($$3, etr.c, etr.c.a($$1));
+         }
 
-   private boolean f(dxv $$0, dhi $$1, jh $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.e($$0, $$1, $$2);
-         return true;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 
    @Override
-   protected void a(dxv $$0, dhi $$1, jh $$2, dkm $$3, @Nullable evf $$4, boolean $$5) {
-      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
-         this.e($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
+      return new cxg(this.c());
    }
 
-   private boolean a(dgn $$0, jh $$1, int $$2) {
-      int $$3 = 0;
-      jh.a $$4 = new jh.a();
+   @Override
+   public boolean b(dhc $$0, jh $$1, dxo $$2) {
+      Optional<jh> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
+   }
 
-      for (jm $$5 : jm.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
-         }
-      }
-
+   @Override
+   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
       return true;
    }
 
    @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      $$0.a(c);
+   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
+      Optional<jh> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dxo $$5 = $$0.a_($$4.get());
+         ((dnt)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<jh> a(dge $$0, jh $$1, dkd $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
    }
 
    @Override
-   public cxp a(dhl $$0, jh $$1, dxv $$2) {
-      return cxp.j;
+   protected boolean a(dxo $$0, dax $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().j()) ? false : $$2;
+   }
+
+   @Override
+   protected dkd b() {
+      return this;
    }
 }

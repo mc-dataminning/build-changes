@@ -1,24 +1,19 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class efd extends efi {
-   private final ju<dkm> e;
-   public static final MapCodec<efd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kf.a(mb.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, efd::new)
-   );
-
-   public efd(kl $$0, ju<dkm> $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+record efd(kl e) implements eeq {
+   public static MapCodec<efd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kl.g.optionalFieldOf("offset", kl.h).forGetter(efd::g)).apply($$0, efd::new));
 
    @Override
-   protected boolean a(dxv $$0) {
-      return $$0.a(this.e);
+   public eer<?> a() {
+      return eer.m;
    }
 
-   @Override
-   public eey<?> a() {
-      return eey.a;
+   public boolean a(dhx $$0, jh $$1) {
+      return $$0.a(null, fci.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   }
+
+   public kl g() {
+      return this.e;
    }
 }

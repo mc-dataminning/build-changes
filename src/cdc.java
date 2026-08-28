@@ -1,81 +1,119 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cdc extends cde {
-   private final bxd a;
-   @Nullable
-   private bwg b;
-   private final double c;
-   private final cfs d;
-   private int e;
-   private final float f;
-   private final float g;
-   private float h;
+public class cdc extends ccv {
+   public final cjv a;
+   private double b;
+   private static final int c = 8;
+   private int d;
 
-   public cdc(bxd $$0, double $$1, float $$2, float $$3) {
+   public cdc(cjv $$0, double $$1) {
       this.a = $$0;
-      this.c = $$1;
-      this.d = $$0.L();
-      this.g = $$2;
-      this.f = $$3;
-      this.a(EnumSet.of(cde.a.a, cde.a.b));
-      if (!($$0.L() instanceof cfr) && !($$0.L() instanceof cfq)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
+      this.b = $$1;
+      this.a(EnumSet.of(ccv.a.a));
    }
 
    @Override
    public boolean b() {
-      bwg $$0 = this.a.ah_();
-      if ($$0 == null) {
-         return false;
-      } else if (this.a.gr()) {
-         return false;
-      } else if (this.a.g((bvk)$$0) < (double)(this.g * this.g)) {
-         return false;
+      if (!this.a.P_() && !this.a.ha()) {
+         List<bvb> $$0 = this.a.dW().a(this.a, this.a.cR().c(9.0, 4.0, 9.0), $$0x -> {
+            bvi<?> $$1x = $$0x.aq();
+            return $$1x == bvi.ay || $$1x == bvi.by;
+         });
+         cjv $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (bvb $$3 : $$0) {
+            cjv $$4 = (cjv)$$3;
+            if ($$4.ha() && !$$4.gE()) {
+               double $$5 = this.a.g($$4);
+               if (!($$5 > $$2)) {
+                  $$2 = $$5;
+                  $$1 = $$4;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            for (bvb $$6 : $$0) {
+               cjv $$7 = (cjv)$$6;
+               if ($$7.P_() && !$$7.gE()) {
+                  double $$8 = this.a.g($$7);
+                  if (!($$8 > $$2)) {
+                     $$2 = $$8;
+                     $$1 = $$7;
+                  }
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 4.0) {
+            return false;
+         } else if (!$$1.P_() && !this.a($$1, 1)) {
+            return false;
+         } else {
+            this.a.a($$1);
+            return true;
+         }
       } else {
-         this.b = $$0;
-         return true;
+         return false;
       }
    }
 
    @Override
    public boolean c() {
-      if (this.d.m()) {
-         return false;
-      } else {
-         return this.a.gr() ? false : !(this.a.g((bvk)this.b) <= (double)(this.f * this.f));
-      }
-   }
+      if (this.a.ha() && this.a.hb().bL() && this.a(this.a, 0)) {
+         double $$0 = this.a.g(this.a.hb());
+         if ($$0 > 676.0) {
+            if (this.b <= 3.0) {
+               this.b *= 1.2;
+               this.d = b(40);
+               return true;
+            }
 
-   @Override
-   public void d() {
-      this.e = 0;
-      this.h = this.a.a(euo.j);
-      this.a.a(euo.j, 0.0F);
+            if (this.d == 0) {
+               return false;
+            }
+         }
+
+         if (this.d > 0) {
+            this.d--;
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void e() {
-      this.b = null;
-      this.d.o();
-      this.a.a(euo.j, this.h);
+      this.a.gD();
+      this.b = 2.1;
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.a.gq();
-      if (!$$0) {
-         this.a.H().a(this.b, 10.0F, (float)this.a.Z());
-      }
-
-      if (--this.e <= 0) {
-         this.e = this.a(10);
-         if ($$0) {
-            this.a.gp();
-         } else {
-            this.d.a(this.b, this.c);
+      if (this.a.ha()) {
+         if (!(this.a.A() instanceof clm)) {
+            cjv $$0 = this.a.hb();
+            double $$1 = (double)this.a.f($$0);
+            float $$2 = 2.0F;
+            fbr $$3 = new fbr($$0.dB() - this.a.dB(), $$0.dD() - this.a.dD(), $$0.dH() - this.a.dH()).d().c(Math.max($$1 - 2.0, 0.0));
+            this.a.L().a(this.a.dB() + $$3.d, this.a.dD() + $$3.e, this.a.dH() + $$3.f, this.b);
          }
+      }
+   }
+
+   private boolean a(cjv $$0, int $$1) {
+      if ($$1 > 8) {
+         return false;
+      } else if ($$0.ha()) {
+         return $$0.hb().P_() ? true : this.a($$0.hb(), ++$$1);
+      } else {
+         return false;
       }
    }
 }

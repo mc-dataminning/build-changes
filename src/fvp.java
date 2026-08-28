@@ -1,51 +1,33 @@
-public abstract class fvp<T extends cug> extends fun<T> implements ctq {
-   private final alz G;
+public class fvp extends fny {
+   private static final alp a = alp.b("widget/page_forward_highlighted");
+   private static final alp b = alp.b("widget/page_forward");
+   private static final alp c = alp.b("widget/page_backward_highlighted");
+   private static final alp d = alp.b("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-   public fvp(T $$0, cpw $$1, xv $$2, alz $$3) {
-      super($$0, $$1, $$2);
-      this.G = $$3;
+   public fvp(int $$0, int $$1, boolean $$2, fny.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, xj.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   protected void G() {
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      alp $$4;
+      if (this.u) {
+         $$4 = this.B() ? a : b;
+      } else {
+         $$4 = this.B() ? c : d;
+      }
+
+      $$0.a(glq::H, $$4, this.D(), this.E(), 23, 13);
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.G();
-      this.z.a(this);
-   }
-
-   @Override
-   public void aJ_() {
-      super.aJ_();
-      this.z.b(this);
-   }
-
-   @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   protected void d(fns $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   protected void a(fns $$0, float $$1, int $$2, int $$3) {
-      $$0.a(glv::C, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      this.c($$0, this.C, this.D);
-   }
-
-   protected abstract void c(fns var1, int var2, int var3);
-
-   @Override
-   public void a(ctc $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(ctc $$0, int $$1, cxp $$2) {
+   public void a(hgj $$0) {
+      if (this.v) {
+         $$0.a(hey.a(awv.cy, 1.0F));
+      }
    }
 }

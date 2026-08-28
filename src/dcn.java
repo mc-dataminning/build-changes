@@ -1,35 +1,86 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dcn {
-   public static final aly<? extends kd<dcn>> a = aly.a(alz.b("recipe_property_set"));
-   public static final aly<dcn> b = a("smithing_base");
-   public static final aly<dcn> c = a("smithing_template");
-   public static final aly<dcn> d = a("smithing_addition");
-   public static final aly<dcn> e = a("furnace_input");
-   public static final aly<dcn> f = a("blast_furnace_input");
-   public static final aly<dcn> g = a("smoker_input");
-   public static final aly<dcn> h = a("campfire_input");
-   public static final zt<xg, dcn> i = zr.b(mb.K).a(zr.a()).a($$0 -> new dcn(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
-   public static final dcn j = new dcn(Set.of());
-   private final Set<jq<cxl>> k;
+public abstract class dcn implements dbv<dco> {
+   private final dbr c;
+   private final cxg d;
+   private final String e;
+   @Nullable
+   private dbu f;
 
-   private dcn(Set<jq<cxl>> $$0) {
-      this.k = $$0;
+   public dcn(String $$0, dbr $$1, cxg $$2) {
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private static aly<dcn> a(String $$0) {
-      return aly.a(a, alz.b($$0));
+   @Override
+   public abstract dcf<? extends dcn> a();
+
+   @Override
+   public abstract dcg<? extends dcn> b();
+
+   public boolean a(dco $$0, dgz $$1) {
+      return this.c.a($$0.c());
    }
 
-   public boolean a(cxp $$0) {
-      return this.k.contains($$0.i());
+   @Override
+   public String j() {
+      return this.e;
    }
 
-   static dcn a(Collection<dca> $$0) {
-      Set<jq<cxl>> $$1 = $$0.stream().flatMap($$0x -> $$0x.a().stream()).collect(Collectors.toUnmodifiableSet());
-      return new dcn($$1);
+   public dbr k() {
+      return this.c;
+   }
+
+   protected cxg l() {
+      return this.d;
+   }
+
+   @Override
+   public dbu ap_() {
+      if (this.f == null) {
+         this.f = dbu.b(this.c);
+      }
+
+      return this.f;
+   }
+
+   public cxg a(dco $$0, js.a $$1) {
+      return this.d.v();
+   }
+
+   @FunctionalInterface
+   public interface a<T extends dcn> {
+      T create(String var1, dbr var2, cxg var3);
+   }
+
+   public static class b<T extends dcn> implements dcf<T> {
+      private final MapCodec<T> w;
+      private final zi<wv, T> x;
+
+      protected b(dcn.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec(
+            $$1 -> $$1.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter(dcn::j),
+                     dbr.d.fieldOf("ingredient").forGetter(dcn::k),
+                     cxg.c.fieldOf("result").forGetter(dcn::l)
+                  )
+                  .apply($$1, $$0::create)
+         );
+         this.x = zi.a(zg.o, dcn::j, dbr.a, dcn::k, cxg.h, dcn::l, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public zi<wv, T> b() {
+         return this.x;
+      }
    }
 }

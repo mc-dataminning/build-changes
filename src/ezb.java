@@ -1,97 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ezb extends eyc {
-   private static final Codec<List<ezb.b>> b = ezb.b.a.listOf().validate($$0 -> {
-      Set<jq<bun>> $$1 = new ObjectOpenHashSet();
-
-      for (ezb.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   });
-   public static final MapCodec<ezb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, ezb::new)
-   );
-   private final List<ezb.b> c;
-
-   ezb(List<ezy> $$0, List<ezb.b> $$1) {
-      super($$0);
-      this.c = $$1;
-   }
-
-   @Override
-   public eye<ezb> b() {
-      return eyf.r;
-   }
-
-   @Override
-   public Set<bbn<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cxp a(cxp $$0, ewp $$1) {
-      if ($$0.a(cxt.wM) && !this.c.isEmpty()) {
-         ezb.b $$2 = ae.a(this.c, $$1.b());
-         jq<bun> $$3 = $$2.a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a().a()) {
-            $$4 *= 20;
-         }
-
-         daq.a $$5 = new daq.a($$3, $$4);
-         $$0.a(ku.R, daq.a, $$5, daq::a);
-         return $$0;
-      } else {
-         return $$0;
-      }
-   }
-
-   public static ezb.a c() {
-      return new ezb.a();
-   }
-
-   public static class a extends eyc.a<ezb.a> {
-      private final Builder<ezb.b> a = ImmutableList.builder();
-
-      protected ezb.a a() {
-         return this;
-      }
-
-      public ezb.a a(jq<bun> $$0, fau $$1) {
-         this.a.add(new ezb.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public eyd b() {
-         return new ezb(this.g(), this.a.build());
-      }
-   }
-
-   static record b(jq<bun> b, fau c) {
-      public static final Codec<ezb.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bun.a.fieldOf("type").forGetter(ezb.b::a), fav.a.fieldOf("duration").forGetter(ezb.b::b)).apply($$0, ezb.b::new)
+public class ezb {
+   private static final BiMap<alp, bbe> y = HashBiMap.create();
+   public static final Codec<bbe> a = alp.a
+      .comapFlatMap(
+         $$0 -> Optional.ofNullable((bbe)y.get($$0))
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
+         y.inverse()::get
       );
+   public static final bbe b = a("empty", $$0 -> {
+   });
+   public static final bbe c = a("chest", $$0 -> $$0.a(ezc.f).b(ezc.a));
+   public static final bbe d = a("command", $$0 -> $$0.a(ezc.f).b(ezc.a));
+   public static final bbe e = a("selector", $$0 -> $$0.a(ezc.f).a(ezc.a));
+   public static final bbe f = a("fishing", $$0 -> $$0.a(ezc.f).a(ezc.i).b(ezc.a));
+   public static final bbe g = a("entity", $$0 -> $$0.a(ezc.a).a(ezc.f).a(ezc.c).b(ezc.d).b(ezc.e).b(ezc.b));
+   public static final bbe h = a("equipment", $$0 -> $$0.a(ezc.f).a(ezc.a));
+   public static final bbe i = a("archaeology", $$0 -> $$0.a(ezc.f).a(ezc.a).a(ezc.i));
+   public static final bbe j = a("gift", $$0 -> $$0.a(ezc.f).a(ezc.a));
+   public static final bbe k = a("barter", $$0 -> $$0.a(ezc.a));
+   public static final bbe l = a("vault", $$0 -> $$0.a(ezc.f).b(ezc.a).b(ezc.i));
+   public static final bbe m = a("advancement_reward", $$0 -> $$0.a(ezc.a).a(ezc.f));
+   public static final bbe n = a("advancement_entity", $$0 -> $$0.a(ezc.a).a(ezc.f));
+   public static final bbe o = a("advancement_location", $$0 -> $$0.a(ezc.a).a(ezc.f).a(ezc.i).a(ezc.g));
+   public static final bbe p = a("block_use", $$0 -> $$0.a(ezc.a).a(ezc.f).a(ezc.g));
+   public static final bbe q = a("generic", $$0 -> $$0.a(ezc.a).a(ezc.b).a(ezc.c).a(ezc.d).a(ezc.e).a(ezc.f).a(ezc.g).a(ezc.h).a(ezc.i).a(ezc.j));
+   public static final bbe r = a("block", $$0 -> $$0.a(ezc.g).a(ezc.f).a(ezc.i).b(ezc.a).b(ezc.h).b(ezc.j));
+   public static final bbe s = a("shearing", $$0 -> $$0.a(ezc.f).a(ezc.a).a(ezc.i));
+   public static final bbe t = a("enchanted_damage", $$0 -> $$0.a(ezc.a).a(ezc.k).a(ezc.f).a(ezc.c).b(ezc.e).b(ezc.d));
+   public static final bbe u = a("enchanted_item", $$0 -> $$0.a(ezc.i).a(ezc.k));
+   public static final bbe v = a("enchanted_location", $$0 -> $$0.a(ezc.a).a(ezc.k).a(ezc.f).a(ezc.l));
+   public static final bbe w = a("enchanted_entity", $$0 -> $$0.a(ezc.a).a(ezc.k).a(ezc.f));
+   public static final bbe x = a("hit_block", $$0 -> $$0.a(ezc.a).a(ezc.k).a(ezc.f).a(ezc.g));
 
-      public jq<bun> a() {
-         return this.b;
-      }
-
-      public fau b() {
-         return this.c;
+   private static bbe a(String $$0, Consumer<bbe.a> $$1) {
+      bbe.a $$2 = new bbe.a();
+      $$1.accept($$2);
+      bbe $$3 = $$2.a();
+      alp $$4 = alp.b($$0);
+      bbe $$5 = (bbe)y.put($$4, $$3);
+      if ($$5 != null) {
+         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+      } else {
+         return $$3;
       }
    }
 }

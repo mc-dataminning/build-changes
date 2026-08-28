@@ -1,72 +1,83 @@
-public class ghm extends gjs {
-   private final float a;
-   private final float b;
-
-   ghm(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cxp $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
+public class ghm extends gjn {
+   ghm(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
+      this.u = 0.5F;
       this.j *= 0.1F;
       this.k *= 0.1F;
       this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+      this.n = false;
+      this.a();
    }
 
    @Override
-   public giw b() {
-      return giw.a;
-   }
-
-   protected ghm(gfk $$0, double $$1, double $$2, double $$3, cxp $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(fmg.Q().as().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
+   public float b(float $$0) {
+      return this.D * azu.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
+   public void a() {
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
    }
 
    @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
+   public gir b() {
+      return gir.b;
    }
 
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
+   public static class a implements giq<lw> {
+      private final gji a;
 
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
+      public a(gji $$0) {
+         this.a = $$0;
+      }
 
-   public static class a implements giv<lw> {
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghm($$1, $$2, $$3, $$4, new cxp(cxt.cT));
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghm $$8 = new ghm($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 
-   public static class b implements giv<lo> {
-      public gis a(lo $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghm($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+   public static class b implements giq<lw> {
+      private final gji a;
+
+      public b(gji $$0) {
+         this.a = $$0;
+      }
+
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghm $$8 = new ghm($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
       }
    }
 
-   public static class c implements giv<lw> {
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghm($$1, $$2, $$3, $$4, new cxp(cxt.ro));
-      }
-   }
+   public static class c implements giq<lw> {
+      private final gji a;
 
-   public static class d implements giv<lw> {
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghm($$1, $$2, $$3, $$4, new cxp(cxt.ra));
+      public c(gji $$0) {
+         this.a = $$0;
+      }
+
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghm $$8 = new ghm($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

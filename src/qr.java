@@ -1,18 +1,26 @@
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public class qr extends qp<eok> {
-   public qr(mj $$0, CompletableFuture<js.a> $$1) {
-      super($$0, mb.aU, $$1);
-   }
+public class qr {
+   public static final alo<epn> a = rh.a("ancient_city/city_center");
 
-   @Override
-   protected void a(js.a $$0) {
-      this.b(ayg.e).a(eoe.v);
-      this.b(ayg.f).a(eoe.u);
-      this.b(ayg.g).a(eoe.t);
-      this.b(ayg.h).a(eoe.x);
-      this.b(ayg.i).a(eoe.w);
-      this.b(ayg.k).a(eoe.j);
-      this.b(ayg.j).a(eoe.e);
+   public static void a(ra<epn> $$0) {
+      jr<esd> $$1 = $$0.a(mb.aV);
+      jq<esd> $$2 = $$1.b(ri.G);
+      jr<epn> $$3 = $$0.a(mb.aX);
+      jq<epn> $$4 = $$3.b(rh.a);
+      $$0.a(
+         a,
+         new epn(
+            $$4,
+            ImmutableList.of(
+               Pair.of(epl.b("ancient_city/city_center/city_center_1", $$2), 1),
+               Pair.of(epl.b("ancient_city/city_center/city_center_2", $$2), 1),
+               Pair.of(epl.b("ancient_city/city_center/city_center_3", $$2), 1)
+            ),
+            epn.a.b
+         )
+      );
+      qs.a($$0);
    }
 }

@@ -1,93 +1,117 @@
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class etw {
-   public static final jw<etx> c = new jw<>();
-   protected final dxw<etw, etx> d;
-   private etx a;
-   private final jq.c<etw> b = ma.c.f(this);
-
-   protected etw() {
-      dxw.a<etw, etx> $$0 = new dxw.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(etw::g, etx::new);
-      this.f(this.d.b());
+public abstract class etw extends eto {
+   @Override
+   public etp d() {
+      return etr.b;
    }
 
-   protected void a(dxw.a<etw, etx> $$0) {
+   @Override
+   public etp e() {
+      return etr.c;
    }
 
-   public dxw<etw, etx> f() {
-      return this.d;
+   @Override
+   public cxc a() {
+      return cxk.rg;
    }
 
-   protected final void f(etx $$0) {
-      this.a = $$0;
-   }
-
-   public final etx g() {
-      return this.a;
-   }
-
-   public abstract cxl a();
-
-   protected void a(dhi $$0, jh $$1, etx $$2, bam $$3) {
-   }
-
-   protected void b(ash $$0, jh $$1, dxv $$2, etx $$3) {
-   }
-
-   protected void a(ash $$0, jh $$1, etx $$2, bam $$3) {
+   @Override
+   public void a(dgz $$0, jh $$1, etq $$2, bac $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awv.CR, aww.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+         }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(ls.an, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
    }
 
    @Nullable
-   protected lq h() {
-      return null;
+   @Override
+   public lq h() {
+      return ls.l;
    }
 
-   protected abstract boolean a(etx var1, dgn var2, jh var3, etw var4, jm var5);
-
-   protected abstract fby a(dgn var1, jh var2, etx var3);
-
-   public abstract int a(dhl var1);
-
-   protected boolean i() {
-      return false;
+   @Override
+   protected boolean a(arx $$0) {
+      return $$0.O().b(dgv.V);
    }
 
-   protected boolean b() {
-      return false;
+   @Override
+   protected void a(dha $$0, jh $$1, dxo $$2) {
+      duq $$3 = $$2.x() ? $$0.c_($$1) : null;
+      dkd.a($$2, $$0, $$1, $$3);
    }
 
-   protected abstract float c();
-
-   public abstract float a(etx var1, dgn var2, jh var3);
-
-   public abstract float a(etx var1);
-
-   protected abstract dxv b(etx var1);
-
-   public abstract boolean c(etx var1);
-
-   public abstract int d(etx var1);
-
-   public boolean a(etw $$0) {
-      return $$0 == this;
+   @Override
+   public int b(dhc $$0) {
+      return 4;
    }
 
-   @Deprecated
-   public boolean a(ayk<etw> $$0) {
-      return this.b.a($$0);
+   @Override
+   public dxo b(etq $$0) {
+      return dkf.J.m().b(dov.b, Integer.valueOf(e($$0)));
    }
 
-   public abstract fcs b(etx var1, dgn var2, jh var3);
-
-   public Optional<axe> j() {
-      return Optional.empty();
+   @Override
+   public boolean a(etp $$0) {
+      return $$0 == etr.c || $$0 == etr.b;
    }
 
-   @Deprecated
-   public jq.c<etw> k() {
-      return this.b;
+   @Override
+   public int c(dhc $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(dhc $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(etq $$0, dge $$1, jh $$2, etp $$3, jm $$4) {
+      return $$4 == jm.a && !$$3.a(axq.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<awu> j() {
+      return Optional.of(awv.dj);
+   }
+
+   public static class a extends etw {
+      @Override
+      protected void a(dxp.a<etp, etq> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(etq $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(etq $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends etw {
+      @Override
+      public int d(etq $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(etq $$0) {
+         return true;
+      }
    }
 }

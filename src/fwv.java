@@ -1,70 +1,67 @@
-public class fwv extends fxc {
-   public static final xv a = xv.c("options.accessibility.title");
+import javax.annotation.Nullable;
 
-   private static fmj<?>[] a(fmk $$0) {
-      return new fmj[]{
-         $$0.av(),
-         $$0.Z(),
-         $$0.u(),
-         $$0.J(),
-         $$0.q(),
-         $$0.s(),
-         $$0.ab(),
-         $$0.o(),
-         $$0.p(),
-         $$0.C(),
-         $$0.D(),
-         $$0.ae(),
-         $$0.af(),
-         $$0.ag(),
-         $$0.am(),
-         $$0.an(),
-         $$0.ao(),
-         $$0.ar(),
-         $$0.ap(),
-         $$0.aq(),
-         $$0.b(),
-         $$0.a(),
-         $$0.t(),
-         $$0.c(),
-         $$0.w(),
-         $$0.K(),
-         $$0.v()
-      };
-   }
+public abstract class fwv extends ftr {
+   protected final ftr b;
+   protected final fmd c;
+   @Nullable
+   protected fow d;
+   public final frn s = new frn(this);
 
-   public fwv(fty $$0, fmk $$1) {
-      super($$0, $$1, a);
+   public fwv(ftr $$0, fmd $$1, xk $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    protected void aT_() {
-      super.aT_();
-      fod $$0 = this.d.b(this.c.u());
-      if ($$0 != null && !this.m.ad().c().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fpr.a(xv.c("options.accessibility.high_contrast.error.tooltip")));
-      }
+      this.G();
+      this.F();
+      this.E();
+      this.s.a($$1 -> {
+         fnw var10000 = this.c($$1);
+      });
+      this.c();
+   }
 
-      fod $$1 = this.d.b(this.c.K());
-      if ($$1 != null) {
-         $$1.j = this.J();
+   protected void G() {
+      this.s.a(this.l, this.p);
+   }
+
+   protected void F() {
+      this.d = this.s.c(new fow(this.m, this.n, this));
+      this.l();
+      if (this.d.b(this.c.av()) instanceof fof $$0) {
+         this.q = $$0;
+         this.q.j = this.m.aZ().a();
       }
    }
 
-   @Override
-   protected void l() {
-      this.d.a(a(this.c));
-   }
+   protected abstract void l();
 
-   @Override
    protected void E() {
-      fry $$0 = this.s.b(fry.e().a(8));
-      $$0.a(fof.a(xv.c("options.accessibility.link"), fsv.b(this, aza.l)).a());
-      $$0.a(fof.a(xu.d, $$0x -> this.m.a(this.b)).a());
+      this.s.b(fny.a(xj.d, $$0 -> this.aP_()).a(200).a());
    }
 
-   private boolean J() {
-      return this.m.s != null && this.m.s.J().b(csv.e);
+   @Override
+   protected void c() {
+      this.s.a();
+      if (this.d != null) {
+         this.d.a(this.n, this.s);
+      }
+   }
+
+   @Override
+   public void aJ_() {
+      this.m.n.az();
+   }
+
+   @Override
+   public void aP_() {
+      if (this.d != null) {
+         this.d.b();
+      }
+
+      this.m.a(this.b);
    }
 }

@@ -1,66 +1,57 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class enh extends enr {
-   private final jm c;
-   private final eex d;
-   private final eex e;
-   private final int f;
-   public static final MapCodec<enh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jm.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               eex.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               eex.b.optionalFieldOf("allowed_search_condition", eex.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, enh::new)
+public record enh(jq<egb<?, ?>> e, List<enk> f) {
+   public static final Codec<enh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(egb.b.fieldOf("feature").forGetter($$0x -> $$0x.e), enk.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, enh::new)
    );
+   public static final Codec<jq<enh>> b = all.a(mb.aT, a);
+   public static final Codec<ju<enh>> c = kf.a(mb.aT, a);
+   public static final Codec<List<ju<enh>>> d = kf.a(mb.aT, a, true).listOf();
 
-   private enh(jm $$0, eex $$1, eex $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public boolean a(dhx $$0, dzk $$1, bac $$2, jh $$3) {
+      return this.a(new eni($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   public static enh a(jm $$0, eex $$1, eex $$2, int $$3) {
-      return new enh($$0, $$1, $$2, $$3);
+   public boolean b(dhx $$0, dzk $$1, bac $$2, jh $$3) {
+      return this.a(new eni($$0, $$1, Optional.of(this)), $$2, $$3);
    }
 
-   public static enh a(jm $$0, eex $$1, int $$2) {
-      return a($$0, $$1, eex.e(), $$2);
-   }
+   private boolean a(eni $$0, bac $$1, jh $$2) {
+      Stream<jh> $$3 = Stream.of($$2);
 
-   @Override
-   public Stream<jh> a_(enp $$0, bam $$1, jh $$2) {
-      jh.a $$3 = $$2.k();
-      dig $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
-      } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
-
-            $$3.c(this.c);
-            if ($$4.e($$3.v())) {
-               return Stream.of();
-            }
-
-            if (!this.e.test($$4, $$3)) {
-               break;
-            }
-         }
-
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      for (enk $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
       }
+
+      egb<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
+   }
+
+   public Stream<egb<?, ?>> a() {
+      return this.e.a().a();
    }
 
    @Override
-   public ens<?> b() {
-      return ens.j;
+   public String toString() {
+      return "Placed " + this.e;
+   }
+
+   public jq<egb<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<enk> c() {
+      return this.f;
    }
 }

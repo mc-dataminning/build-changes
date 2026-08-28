@@ -1,7 +1,8 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface zm<T extends zl> {
-   MapCodec<T> a();
-
-   zt<xg, T> b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface zm {
 }

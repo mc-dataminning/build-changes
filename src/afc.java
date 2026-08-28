@@ -1,16 +1,33 @@
-public record afc(float b, float c) implements aac<acr> {
-   public static final zt<ws, afc> a = zt.a(zr.l, afc::b, zr.l, afc::e, afc::new);
+import javax.annotation.Nullable;
 
-   @Override
-   public aae<afc> a() {
-      return ahk.aj;
+public class afc implements zr<acg> {
+   public static final zi<wh, afc> a = zr.a(afc::a, afc::new);
+   @Nullable
+   private final alp b;
+
+   public afc(@Nullable alp $$0) {
+      this.b = $$0;
    }
 
-   public void a(acr $$0) {
+   private afc(wh $$0) {
+      this.b = $$0.c(wh::q);
+   }
+
+   private void a(wh $$0) {
+      $$0.a(this.b, wh::a);
+   }
+
+   @Override
+   public zt<afc> a() {
+      return agz.as;
+   }
+
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public float e() {
-      return this.c;
+   @Nullable
+   public alp b() {
+      return this.b;
    }
 }

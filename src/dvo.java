@@ -1,174 +1,134 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
+import java.util.Collections;
+import java.util.SequencedSet;
 
-public class dvo extends dux implements btp, fdk.a {
-   public static final String d = "sherds";
-   public static final String e = "item";
-   public static final int f = 1;
-   public long g;
-   @Nullable
-   public dvo.a h;
-   private dwe k;
-   private cxp l = cxp.j;
-   @Nullable
-   protected aly<ewu> i;
-   protected long j;
+public class dvo {
+   private final Object2IntSortedMap<cxc> a;
 
-   public dvo(jh $$0, dxv $$1) {
-      super(duz.P, $$0, $$1);
-      this.k = dwe.a;
+   dvo(Object2IntSortedMap<cxc> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      this.k.a($$0);
-      if (!this.c_($$0) && !this.l.f()) {
-         $$0.a("item", this.l.a($$1));
+   public boolean a(cxg $$0) {
+      return this.a.containsKey($$0.h());
+   }
+
+   public SequencedSet<cxc> a() {
+      return Collections.unmodifiableSequencedSet(this.a.keySet());
+   }
+
+   public int b(cxg $$0) {
+      return $$0.f() ? 0 : this.a.getInt($$0.h());
+   }
+
+   public static dvo a(js.a $$0, csk $$1) {
+      return a($$0, $$1, 200);
+   }
+
+   public static dvo a(js.a $$0, csk $$1, int $$2) {
+      return new dvo.a($$0, $$1)
+         .a(cxk.rh, $$2 * 100)
+         .a(dkf.iZ, $$2 * 8 * 10)
+         .a(cxk.td, $$2 * 12)
+         .a(cxk.pc, $$2 * 8)
+         .a(cxk.pd, $$2 * 8)
+         .a(axt.r, $$2 * 3 / 2)
+         .a(axt.D, $$2 * 3 / 2)
+         .a(axt.b, $$2 * 3 / 2)
+         .a(dkf.y, $$2 * 3 / 2)
+         .a(axt.i, $$2 * 3 / 2)
+         .a(dkf.is, $$2 * 3 / 2)
+         .a(axt.j, $$2 * 3 / 4)
+         .a(dkf.kb, $$2 * 3 / 4)
+         .a(axt.n, $$2 * 3 / 2)
+         .a(axt.m, $$2 * 3 / 2)
+         .a(axt.k, $$2 * 3 / 2)
+         .a(axt.l, $$2 * 3 / 2)
+         .a(dkf.bf, $$2 * 3 / 2)
+         .a(dkf.cs, $$2 * 3 / 2)
+         .a(dkf.ct, $$2 * 3 / 2)
+         .a(dkf.oC, $$2 * 3 / 2)
+         .a(dkf.eg, $$2 * 3 / 2)
+         .a(dkf.cD, $$2 * 3 / 2)
+         .a(dkf.hs, $$2 * 3 / 2)
+         .a(dkf.cI, $$2 * 3 / 2)
+         .a(dkf.hw, $$2 * 3 / 2)
+         .a(axt.F, $$2 * 3 / 2)
+         .a(cxk.pa, $$2 * 3 / 2)
+         .a(cxk.rS, $$2 * 3 / 2)
+         .a(dkf.cX, $$2 * 3 / 2)
+         .a(axt.aW, $$2)
+         .a(axt.bw, $$2 * 4)
+         .a(cxk.ps, $$2)
+         .a(cxk.pr, $$2)
+         .a(cxk.pv, $$2)
+         .a(cxk.pu, $$2)
+         .a(cxk.pt, $$2)
+         .a(axt.h, $$2)
+         .a(axt.aT, $$2 * 6)
+         .a(axt.a, $$2 / 2)
+         .a(axt.d, $$2 / 2)
+         .a(cxk.pV, $$2 / 2)
+         .a(axt.p, $$2 / 2)
+         .a(cxk.oY, $$2 / 2)
+         .a(axt.g, 1 + $$2 / 3)
+         .a(dkf.mG, 1 + $$2 * 20)
+         .a(cxk.wV, $$2 * 3 / 2)
+         .a(dkf.nB, $$2 / 4)
+         .a(dkf.bC, $$2 / 2)
+         .a(dkf.ou, $$2 / 4)
+         .a(dkf.ov, $$2 * 3 / 2)
+         .a(dkf.ow, $$2 * 3 / 2)
+         .a(dkf.oz, $$2 * 3 / 2)
+         .a(dkf.oA, $$2 * 3 / 2)
+         .a(dkf.oD, $$2 * 3 / 2)
+         .a(dkf.pE, $$2 * 3 / 2)
+         .a(dkf.ta, $$2 / 2)
+         .a(dkf.tb, $$2 / 2)
+         .a(dkf.ag, $$2 * 3 / 2)
+         .a(axt.aN)
+         .a();
+   }
+
+   public static class a {
+      private final js<cxc> a;
+      private final csk b;
+      private final Object2IntSortedMap<cxc> c = new Object2IntLinkedOpenHashMap();
+
+      public a(js.a $$0, csk $$1) {
+         this.a = $$0.d(mb.K);
+         this.b = $$1;
       }
-   }
 
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.k = dwe.b($$0);
-      if (!this.b_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.l = cxp.a($$1, (vu)$$0.p("item")).orElse(cxp.j);
-         } else {
-            this.l = cxp.j;
+      public dvo a() {
+         return new dvo(this.c);
+      }
+
+      public dvo.a a(aya<cxc> $$0) {
+         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
+         return this;
+      }
+
+      public dvo.a a(aya<cxc> $$0, int $$1) {
+         this.a.a($$0).ifPresent($$1x -> {
+            for (jq<cxc> $$2 : $$1x) {
+               this.a($$1, $$2.a());
+            }
+         });
+         return this;
+      }
+
+      public dvo.a a(dgy $$0, int $$1) {
+         cxc $$2 = $$0.j();
+         this.a($$1, $$2);
+         return this;
+      }
+
+      private void a(int $$0, cxc $$1) {
+         if ($$1.a(this.b)) {
+            this.c.put($$1, $$0);
          }
-      }
-   }
-
-   public acy j() {
-      return acy.a(this);
-   }
-
-   @Override
-   public ux a(js.a $$0) {
-      return this.e($$0);
-   }
-
-   public jm k() {
-      return this.m().c(dyl.S);
-   }
-
-   public dwe t() {
-      return this.k;
-   }
-
-   public void c(cxp $$0) {
-      this.a($$0);
-   }
-
-   public cxp u() {
-      cxp $$0 = cxt.eN.n();
-      $$0.b(this.r());
-      return $$0;
-   }
-
-   public static cxp a(dwe $$0) {
-      cxp $$1 = cxt.eN.n();
-      $$1.b(ku.ak, $$0);
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public aly<ewu> ax_() {
-      return this.i;
-   }
-
-   @Override
-   public void a(@Nullable aly<ewu> $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public long aA_() {
-      return this.j;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      $$0.a(ku.ak, this.k);
-      $$0.a(ku.al, dah.a(List.of(this.l)));
-   }
-
-   @Override
-   protected void a(dux.b $$0) {
-      super.a($$0);
-      this.k = $$0.a(ku.ak, dwe.a);
-      this.l = $$0.a(ku.al, dah.a).a();
-   }
-
-   @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      $$0.r("sherds");
-      $$0.r("item");
-   }
-
-   @Override
-   public cxp f() {
-      this.d_(null);
-      return this.l;
-   }
-
-   @Override
-   public cxp c(int $$0) {
-      this.d_(null);
-      cxp $$1 = this.l.a($$0);
-      if (this.l.f()) {
-         this.l = cxp.j;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void b(cxp $$0) {
-      this.d_(null);
-      this.l = $$0;
-   }
-
-   @Override
-   public dux v() {
-      return this;
-   }
-
-   public void a(dvo.a $$0) {
-      if (this.o != null && !this.o.B_()) {
-         this.o.a(this.aB_(), this.m().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dvo.a.values().length) {
-         this.g = this.o.ac();
-         this.h = dvo.a.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static enum a {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
       }
    }
 }

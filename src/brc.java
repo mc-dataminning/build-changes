@@ -1,209 +1,88 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import it.unimi.dsi.fastutil.ints.Int2DoubleMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleOpenHashMap;
-import java.util.Locale;
-import java.util.function.Consumer;
-import java.util.function.DoubleSupplier;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public class brc {
-   private final String b;
-   private final brb c;
-   private final DoubleSupplier d;
-   private final ByteBuf e;
-   private final ByteBuf f;
-   private volatile boolean g;
-   @Nullable
-   private final Runnable h;
-   @Nullable
-   final brc.c a;
-   private double i;
+public class brc implements bqv {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<bqt> b = new ObjectOpenHashSet();
+   private final brb c = new brb();
 
-   protected brc(String $$0, brb $$1, DoubleSupplier $$2, @Nullable Runnable $$3, @Nullable brc.c $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.h = $$3;
-      this.d = $$2;
-      this.a = $$4;
-      this.f = ByteBufAllocator.DEFAULT.buffer();
-      this.e = ByteBufAllocator.DEFAULT.buffer();
-      this.g = true;
-   }
-
-   public static brc a(String $$0, brb $$1, DoubleSupplier $$2) {
-      return new brc($$0, $$1, $$2, null, null);
-   }
-
-   public static <T> brc a(String $$0, brb $$1, T $$2, ToDoubleFunction<T> $$3) {
-      return a($$0, $$1, $$3, $$2).a();
-   }
-
-   public static <T> brc.a<T> a(String $$0, brb $$1, ToDoubleFunction<T> $$2, T $$3) {
-      return new brc.a<>($$0, $$1, $$2, $$3);
-   }
-
-   public void a() {
-      if (!this.g) {
-         throw new IllegalStateException("Not running");
-      } else {
-         if (this.h != null) {
-            this.h.run();
-         }
+   public brc(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
       }
    }
 
-   public void a(int $$0) {
-      this.h();
-      this.i = this.d.getAsDouble();
-      this.f.writeDouble(this.i);
-      this.e.writeInt($$0);
-   }
+   public static Set<bqt> a() {
+      Builder<bqt> $$0 = ImmutableSet.builder();
 
-   public void b() {
-      this.h();
-      this.f.release();
-      this.e.release();
-      this.g = false;
-   }
-
-   private void h() {
-      if (!this.g) {
-         throw new IllegalStateException(String.format(Locale.ROOT, "Sampler for metric %s not started!", this.b));
+      try {
+         brc.a $$1 = new brc.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> bqt.a("cpu#" + $$1x, bqs.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
       }
+
+      $$0.add(bqt.a("heap MiB", bqs.e, () -> (double)ac.a(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())));
+      $$0.addAll(bqu.a.a());
+      return $$0.build();
    }
 
-   DoubleSupplier c() {
-      return this.d;
-   }
-
-   public String d() {
+   @Override
+   public Set<bqt> a(Supplier<bpg> $$0) {
+      this.b.addAll(this.c.a($$0));
       return this.b;
    }
 
-   public brb e() {
-      return this.c;
-   }
-
-   public brc.b f() {
-      Int2DoubleMap $$0 = new Int2DoubleOpenHashMap();
-      int $$1 = Integer.MIN_VALUE;
-      int $$2 = Integer.MIN_VALUE;
-
-      while (this.f.isReadable(8)) {
-         int $$3 = this.e.readInt();
-         if ($$1 == Integer.MIN_VALUE) {
-            $$1 = $$3;
+   public static bqt a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
+         }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
          }
 
-         $$0.put($$3, this.f.readDouble());
-         $$2 = $$3;
-      }
-
-      return new brc.b($$1, $$2, $$0);
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      bqt.d $$3 = new bqt.d(2.0F);
+      return bqt.a("ticktime", bqs.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
    }
 
-   public boolean g() {
-      return this.a != null && this.a.test(this.i);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         brc $$1 = (brc)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static class a<T> {
-      private final String a;
-      private final brb b;
-      private final DoubleSupplier c;
-      private final T d;
-      @Nullable
-      private Runnable e;
-      @Nullable
-      private brc.c f;
-
-      public a(String $$0, brb $$1, ToDoubleFunction<T> $$2, T $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = () -> $$2.applyAsDouble($$3);
-         this.d = $$3;
-      }
-
-      public brc.a<T> a(Consumer<T> $$0) {
-         this.e = () -> $$0.accept(this.d);
-         return this;
-      }
-
-      public brc.a<T> a(brc.c $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public brc a() {
-         return new brc(this.a, this.b, this.c, this.e, this.f);
-      }
-   }
-
-   public static class b {
-      private final Int2DoubleMap a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, Int2DoubleMap $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
-      }
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
 
       public double a(int $$0) {
-         return this.a.get($$0);
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   public interface c {
-      boolean test(double var1);
-   }
-
-   public static class d implements brc.c {
-      private final float a;
-      private double b = Double.MIN_VALUE;
-
-      public d(float $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public boolean test(double $$0) {
-         boolean $$2;
-         if (this.b != Double.MIN_VALUE && !($$0 <= this.b)) {
-            $$2 = ($$0 - this.b) / this.b >= (double)this.a;
-         } else {
-            $$2 = false;
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
          }
 
-         this.b = $$0;
-         return $$2;
+         return this.e[$$0] * 100.0;
       }
    }
 }

@@ -1,31 +1,19 @@
-import javax.annotation.Nullable;
+public class dgx {
+   private static int[] a = new int[65536];
 
-public enum dgx implements dgn {
-   a;
-
-   @Nullable
-   @Override
-   public dux c_(jh $$0) {
-      return null;
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   @Override
-   public dxv a_(jh $$0) {
-      return dko.a.m();
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   @Override
-   public etx b_(jh $$0) {
-      return ety.a.g();
-   }
-
-   @Override
-   public int L_() {
-      return 0;
-   }
-
-   @Override
-   public int M_() {
-      return 0;
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

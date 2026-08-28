@@ -1,118 +1,80 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dbz extends dbu {
-   private static final Map<cxl, dae.a> c = Map.of(
-      cxt.uM,
-      dae.a.b,
-      cxt.pP,
-      dae.a.e,
-      cxt.sW,
-      dae.a.c,
-      cxt.vb,
-      dae.a.d,
-      cxt.vc,
-      dae.a.d,
-      cxt.vf,
-      dae.a.d,
-      cxt.vd,
-      dae.a.d,
-      cxt.vg,
-      dae.a.d,
-      cxt.ve,
-      dae.a.d,
-      cxt.vh,
-      dae.a.d
-   );
-   private static final dca d = dca.a(cxt.oV);
-   private static final dca e = dca.a(cxt.rM);
-   private static final dca f = dca.a(cxt.pQ);
+public class dbz {
+   private final dbz.a[] a;
+   private WeakReference<dcc> b = new WeakReference<>(null);
 
-   public dbz(dbr $$0) {
-      super($$0);
+   public dbz(int $$0) {
+      this.a = new dbz.a[$$0];
    }
 
-   public boolean a(dbs $$0, dhi $$1) {
-      if ($$0.e() < 2) {
-         return false;
+   public Optional<dca<dbk>> a(arx $$0, dbj $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
       } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-         boolean $$4 = false;
-         boolean $$5 = false;
-         boolean $$6 = false;
+         this.a($$0);
 
-         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
-            cxp $$8 = $$0.a($$7);
-            if (!$$8.f()) {
-               if (c.containsKey($$8.h())) {
-                  if ($$4) {
-                     return false;
-                  }
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            dbz.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
+            }
+         }
 
-                  $$4 = true;
-               } else if (e.a($$8)) {
-                  if ($$6) {
-                     return false;
-                  }
+         return this.a($$1, $$0);
+      }
+   }
 
-                  $$6 = true;
-               } else if (d.a($$8)) {
-                  if ($$5) {
-                     return false;
-                  }
+   private void a(arx $$0) {
+      dcc $$1 = $$0.t();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
 
-                  $$5 = true;
-               } else if (f.a($$8)) {
-                  if ($$2) {
-                     return false;
-                  }
+   private Optional<dca<dbk>> a(dbj $$0, arx $$1) {
+      Optional<dca<dbk>> $$2 = $$1.t().a(dcg.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
+   }
 
-                  $$2 = true;
-               } else {
-                  if (!($$8.h() instanceof cwn)) {
-                     return false;
-                  }
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         dbz.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
 
-                  $$3 = true;
+   private void a(dbj $$0, @Nullable dca<dbk> $$1) {
+      jz<cxg> $$2 = jz.a($$0.a(), cxg.j);
+
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         $$2.set($$3, $$0.a($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new dbz.a($$2, $$0.f(), $$0.g(), $$1);
+   }
+
+   static record a(jz<cxg> a, int b, int c, @Nullable dca<dbk> d) {
+      public boolean a(dbj $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cxg.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
                }
             }
-         }
 
-         return $$2 && $$3;
-      }
-   }
-
-   public cxp a(dbs $$0, js.a $$1) {
-      dae.a $$2 = dae.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
-
-      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
-         cxp $$7 = $$0.a($$6);
-         if (!$$7.f()) {
-            dae.a $$8 = c.get($$7.h());
-            if ($$8 != null) {
-               $$2 = $$8;
-            } else if (e.a($$7)) {
-               $$3 = true;
-            } else if (d.a($$7)) {
-               $$4 = true;
-            } else if ($$7.h() instanceof cwn $$9) {
-               $$5.add($$9.b().f());
-            }
+            return true;
+         } else {
+            return false;
          }
       }
-
-      cxp $$10 = new cxp(cxt.vl);
-      $$10.b(ku.ae, new dae($$2, $$5, IntList.of(), $$4, $$3));
-      return $$10;
-   }
-
-   @Override
-   public dco<dbz> a() {
-      return dco.h;
    }
 }

@@ -1,20 +1,20 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record acb(alp b) implements zr<aca> {
+   public static final zi<wh, acb> a = zr.a(acb::a, acb::new);
 
-public record acb(aly<? extends kd<?>> b, List<kh.a> c) implements aac<abz> {
-   private static final zt<ByteBuf, aly<? extends kd<?>>> d = alz.b.a(aly::a, aly::a);
-   public static final zt<ws, acb> a = zt.a(d, acb::b, kh.a.a.a(zr.a()), acb::e, acb::new);
+   private acb(wh $$0) {
+      this($$0.q());
+   }
+
+   private void a(wh $$0) {
+      $$0.a(this.b);
+   }
 
    @Override
-   public aae<acb> a() {
-      return acf.b;
+   public zt<acb> a() {
+      return acc.a;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
-   }
-
-   public List<kh.a> e() {
-      return this.c;
    }
 }

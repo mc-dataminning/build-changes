@@ -1,52 +1,16 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bsg extends bso {
-   public static final MapCodec<bsg> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bsg::new)
-      )
-      .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
-      );
-   private final int b;
-   private final int f;
+public interface bsg<P extends bsf> {
+   bsg<bsc> a = a("constant", bsc.b);
+   bsg<bsl> b = a("uniform", bsl.a);
+   bsg<brx> c = a("biased_to_bottom", brx.a);
+   bsg<bry> d = a("clamped", bry.a);
+   bsg<bsm> e = a("weighted_list", bsm.a);
+   bsg<bsa> f = a("clamped_normal", bsa.a);
 
-   private bsg(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
-   }
+   MapCodec<P> codec();
 
-   public static bsg a(int $$0, int $$1) {
-      return new bsg($$0, $$1);
-   }
-
-   @Override
-   public int a(bam $$0) {
-      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
-   }
-
-   @Override
-   public int a() {
-      return this.b;
-   }
-
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bsp<?> c() {
-      return bsp.c;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+   static <P extends bsf> bsg<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.K, $$0, () -> $$1);
    }
 }

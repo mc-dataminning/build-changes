@@ -1,5 +1,4 @@
-public interface zl {
-   yj a(int var1);
-
-   zm<? extends zl> a();
+@FunctionalInterface
+public interface zl<O, T> {
+   void encode(T var1, O var2);
 }

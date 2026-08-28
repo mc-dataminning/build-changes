@@ -1,11 +1,7 @@
-public class gyu extends gyt {
-   public cke.d a;
-   public boolean b;
-   public cxp c;
-   public boolean d;
+import javax.annotation.Nullable;
 
-   public gyu() {
-      this.a = cke.d.a;
-      this.c = cxp.j;
-   }
+public class gyu extends gxq {
+   @Nullable
+   public hdi a;
+   public cxg b = cxg.j;
 }

@@ -1,165 +1,74 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public record hgy<T>(String F, String G, Codec<T> H, hgy.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final hgy<String> a = b("user_id", "userId");
-   public static final hgy<String> b = b("client_id", "clientId");
-   public static final hgy<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final hgy<String> d = b("game_version", "buildDisplayName");
-   public static final hgy<String> e = b("operating_system", "buildPlatform");
-   public static final hgy<String> f = b("platform", "platform");
-   public static final hgy<Boolean> g = a("client_modded", "clientModded");
-   public static final hgy<String> h = b("launcher_name", "launcherName");
-   public static final hgy<UUID> i = e("world_session_id", "worldSessionId");
-   public static final hgy<Boolean> j = a("server_modded", "serverModded");
-   public static final hgy<hgy.c> k = a("server_type", "serverType", hgy.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final hgy<Boolean> l = a("opt_in", "isOptional");
-   public static final hgy<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", azn.q, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final hgy<hgy.b> n = a("game_mode", "playerGameMode", hgy.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final hgy<String> o = b("realms_map_content", "realmsMapContent");
-   public static final hgy<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final hgy<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final hgy<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final hgy<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final hgy<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final hgy<Integer> u = c("number_of_samples", "numSamples");
-   public static final hgy<Integer> v = c("render_distance", "renderDistance");
-   public static final hgy<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final hgy<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final hgy<Boolean> y = a("new_world", "newWorld");
-   public static final hgy<hhc.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final hgy<hhc.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final hgy<hhc.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final hgy<hhc.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final hgy<String> D = b("advancement_id", "advancementId");
-   public static final hgy<Long> E = d("advancement_game_time", "advancementGameTime");
+public class hgy {
+   public static final hgy a = new hgy(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<hgu<hgy.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   public static <T> hgy<T> a(String $$0, String $$1, Codec<T> $$2, hgy.a<T> $$3) {
-      return new hgy<>($$0, $$1, $$2, $$3);
+   protected hgy(Ticker $$0) {
+      this.c = $$0;
    }
 
-   public static hgy<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   public synchronized void a(hgu<hgy.a> $$0) {
+      this.a($$0, (Function<hgu<hgy.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
    }
 
-   public static hgy<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
+   public synchronized void a(hgu<hgy.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<hgu<hgy.a>, Stopwatch>)($$1x -> $$1));
    }
 
-   public static hgy<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
+   private synchronized void a(hgu<hgy.a> $$0, Function<hgu<hgy.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
    }
 
-   public static hgy<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hgy<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, kk.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static hgy<hhc.a> f(String $$0, String $$1) {
-      return a($$0, $$1, hhc.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static hgy<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(hgz $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
+   public synchronized void b(hgu<hgy.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
       } else {
-         $$1.addNullProperty(this.G);
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
       }
    }
 
-   public yj a() {
-      return xv.c("telemetry.property." + this.F + ".title");
+   public void a(hgr $$0) {
+      $$0.send(hgs.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((hgu<hgy.a>)$$1, new hgy.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hgs.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(hgu.B, new hgy.a((int)$$1)));
+            this.d.clear();
+         }
+      });
    }
 
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
    }
 
-   public String b() {
-      return this.F;
-   }
-
-   public String c() {
-      return this.G;
-   }
-
-   public Codec<T> d() {
-      return this.H;
-   }
-
-   public hgy.a<T> e() {
-      return this.I;
-   }
-
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
-
-   public static enum b implements bba {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<hgy.b> f = bba.a(hgy.b::values);
-      private final String g;
-      private final int h;
-
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
+   public static record a(int b) {
+      public static final Codec<hgy.a> a = Codec.INT.xmap(hgy.a::new, $$0 -> $$0.b);
 
       public int a() {
-         return this.h;
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
-   }
-
-   public static enum c implements bba {
-      a("realm"),
-      b("local"),
-      c("server");
-
-      public static final Codec<hgy.c> d = bba.a(hgy.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
+         return this.b;
       }
    }
 }

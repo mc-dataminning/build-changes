@@ -1,8 +1,20 @@
-public class fhp extends fhq {
-   private static final xv a = xv.c("mco.upload.cancelled");
+public interface fhp {
+   fhf b();
 
-   @Override
-   public xv a() {
-      return a;
+   void d();
+
+   static fhp f() {
+      return new fhp() {
+         private final fhf a = new fhf();
+
+         @Override
+         public fhf b() {
+            return this.a;
+         }
+
+         @Override
+         public void d() {
+         }
+      };
    }
 }

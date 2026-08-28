@@ -3,59 +3,65 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bsj extends bso {
+public class bsj extends bsd {
    public static final MapCodec<bsj> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
                )
                .apply($$0, bsj::new)
       )
-      .validate($$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0));
+      .validate(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
+         }
+      );
    private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+   private final float d;
+   private final float e;
 
-   public static bsj a(float $$0, float $$1, int $$2, int $$3) {
-      return new bsj($$0, $$1, $$2, $$3);
+   public static bsj a(float $$0, float $$1, float $$2) {
+      return new bsj($$0, $$1, $$2);
    }
 
-   private bsj(float $$0, float $$1, int $$2, int $$3) {
+   private bsj(float $$0, float $$1, float $$2) {
       this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public int a(bam $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
-   }
-
-   public static int a(bam $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)bae.a(bae.c($$0, $$1, $$2), $$3, $$4);
-   }
-
-   @Override
-   public int a() {
-      return this.g;
+   public float a(bac $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
    }
 
    @Override
-   public int b() {
-      return this.h;
+   public float a() {
+      return this.b;
    }
 
    @Override
-   public bsp<?> c() {
-      return bsp.f;
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bse<?> c() {
+      return bse.d;
    }
 
    @Override
    public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

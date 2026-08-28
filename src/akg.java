@@ -1,23 +1,12 @@
-import io.netty.buffer.ByteBuf;
+public class akg {
+   public static final zt<akf> a = a("pong_response");
+   public static final zt<aki> b = b("ping_request");
 
-public class akg implements aac<akc> {
-   public static final akg a = new akg();
-   public static final zt<ByteBuf, akg> b = zt.a(a);
-
-   private akg() {
+   private static <T extends zr<ake>> zt<T> a(String $$0) {
+      return new zt<>(zs.b, alp.b($$0));
    }
 
-   @Override
-   public aae<akg> a() {
-      return aka.i;
-   }
-
-   public void a(akc $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
+   private static <T extends zr<akh>> zt<T> b(String $$0) {
+      return new zt<>(zs.a, alp.b($$0));
    }
 }

@@ -1,20 +1,27 @@
-public class gvg extends gwf<gxl, gay> {
-   private static final alz a = alz.b("textures/entity/cat/cat_collar.png");
-   private final gay b;
-   private final gay c;
+public class gvg extends gwa<gxl, gba> {
+   private final gsj a;
 
-   public gvg(gtn<gxl, gay> $$0, gek $$1) {
+   public gvg(gti<gxl, gba> $$0, gsj $$1) {
       super($$0);
-      this.b = new gay($$1.a(gen.O));
-      this.c = new gay($$1.a(gen.N));
+      this.a = $$1;
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, gxl $$3, float $$4, float $$5) {
-      cwm $$6 = $$3.c;
-      if ($$6 != null) {
-         int $$7 = $$6.d();
-         gay $$8 = $$3.ae ? this.c : this.b;
-         a($$8, a, $$0, $$1, $$2, $$3, $$7);
+   public void a(fgl $$0, glg $$1, int $$2, gxl $$3, float $$4, float $$5) {
+      cxg $$6 = $$3.aX_();
+      hdi $$7 = $$3.b();
+      if ($$7 != null) {
+         $$0.a();
+         float $$8 = 1.0F;
+         float $$9 = -1.0F;
+         float $$10 = azu.e($$3.V) / 60.0F;
+         if ($$3.V < 0.0F) {
+            $$0.a(0.0F, 1.0F - $$10 * 0.5F, -1.0F + $$10 * 0.5F);
+         } else {
+            $$0.a(0.0F, 1.0F + $$10 * 0.8F, -1.0F + $$10 * 0.2F);
+         }
+
+         this.a.a($$6, cxe.h, false, $$0, $$1, $$2, hax.d, $$7);
+         $$0.b();
       }
    }
 }

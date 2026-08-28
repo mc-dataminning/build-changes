@@ -1,35 +1,30 @@
-import javax.annotation.Nullable;
-
-public abstract class chu extends bwo {
-   protected chu(bvr<? extends chu> $$0, dhi $$1) {
+public class chu extends chm {
+   public chu(bvi<? extends chu> $$0, dgz $$1) {
       super($$0, $$1);
    }
 
-   @Nullable
    @Override
-   protected axe u() {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected axe e(bua $$0) {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected axe o_() {
-      return null;
+   public cxg X_() {
+      return new cxg(cxk.ro);
    }
 
    @Override
-   public int Q() {
-      return 120;
+   protected awu u() {
+      return awv.fp;
    }
 
    @Override
-   public boolean h(double $$0) {
-      return false;
+   protected awu o_() {
+      return awv.fq;
+   }
+
+   @Override
+   protected awu e(btr $$0) {
+      return awv.fs;
+   }
+
+   @Override
+   protected awu go() {
+      return awv.fr;
    }
 }

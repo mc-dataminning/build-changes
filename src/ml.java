@@ -4,6 +4,6 @@ public interface ml {
    void a(js.a var1, Consumer<ah> var2);
 
    static ah a(String $$0) {
-      return ag.a.a().b(alz.a($$0));
+      return ag.a.a().b(alp.a($$0));
    }
 }

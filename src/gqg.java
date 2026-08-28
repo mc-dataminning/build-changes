@@ -1,23 +1,28 @@
-public abstract class gqg<T extends ckb, S extends gxw, M extends gbm<? super S>> extends gqk<T, S, M> {
-   private final float a;
+public class gqg extends gsr<ciu, gwu, fzy> {
+   private static final alp a = alp.b("textures/entity/allay/allay.png");
 
-   public gqg(grq.a $$0, M $$1, M $$2, float $$3) {
-      super($$0, $$1, $$2, 0.75F);
-      this.a = $$3;
+   public gqg(grl.a $$0) {
+      super($$0, new fzy($$0.a(gei.c)), 0.4F);
+      this.a(new gvs<>(this, $$0.b()));
    }
 
-   protected void a(S $$0, fgs $$1) {
-      $$1.b(this.a, this.a, this.a);
-      super.a($$0, $$1);
+   public alp a(gwu $$0) {
+      return a;
    }
 
-   public void a(T $$0, S $$1, float $$2) {
+   public gwu a() {
+      return new gwu();
+   }
+
+   public void a(ciu $$0, gwu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.j();
-      $$1.c = $$0.ca();
-      $$1.e = $$0.J($$2);
-      $$1.f = $$0.K($$2);
-      $$1.g = $$0.L($$2);
-      $$1.d = $$0.cr > 0;
+      $$1.a = $$0.x();
+      $$1.b = $$0.go();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
+
+   protected int a(ciu $$0, jh $$1) {
+      return 15;
    }
 }

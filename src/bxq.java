@@ -1,30 +1,101 @@
-public class bxq extends bxj {
-   private final double c;
-   private final double d;
+import java.util.Map;
+import java.util.Map.Entry;
 
-   public bxq(String $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1);
-      this.c = $$2;
-      this.d = $$3;
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
-      } else if ($$1 < $$2) {
-         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
-      } else if ($$1 > $$3) {
-         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
-      }
+public abstract class bxq<E extends bvx> implements bxr<E> {
+   public static final int a = 60;
+   protected final Map<cfb<?>, cfc> b;
+   private bxq.a c = bxq.a.a;
+   private long d;
+   private final int e;
+   private final int f;
+
+   public bxq(Map<cfb<?>, cfc> $$0) {
+      this($$0, 60);
    }
 
-   public double d() {
-      return this.c;
+   public bxq(Map<cfb<?>, cfc> $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   public double e() {
-      return this.d;
+   public bxq(Map<cfb<?>, cfc> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
    }
 
    @Override
-   public double a(double $$0) {
-      return Double.isNaN($$0) ? this.c : bae.a($$0, this.c, this.d);
+   public bxq.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(arx $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bxq.a.b;
+         int $$3 = this.e + $$0.H_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void d(arx $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void f(arx $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(arx $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(arx $$0, E $$1, long $$2) {
+      this.c = bxq.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(arx $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(arx $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(arx $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<cfb<?>, cfc> $$1 : this.b.entrySet()) {
+         cfb<?> $$2 = $$1.getKey();
+         cfc $$3 = $$1.getValue();
+         if (!$$0.ec().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

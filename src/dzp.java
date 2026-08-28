@@ -1,51 +1,74 @@
-import java.util.BitSet;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dzp {
-   private final int a;
-   private final BitSet b;
-   private dzp.a c = ($$0x, $$1x, $$2) -> false;
+public class dzp extends dzt {
+   private final jq<dib> n;
 
-   public dzp(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
+   public dzp(dgz $$0, dgf $$1, jq<dib> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
-   public void a(dzp.a $$0) {
-      this.c = $$0;
+   @Override
+   public dxo a_(jh $$0) {
+      return dkf.nD.m();
    }
 
-   public dzp(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
+   @Nullable
+   @Override
+   public dxo a(jh $$0, dxo $$1, boolean $$2) {
+      return null;
    }
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
+   @Override
+   public etq b_(jh $$0) {
+      return etr.a.g();
    }
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
+   @Override
+   public int i(jh $$0) {
+      return 0;
    }
 
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
+   @Nullable
+   @Override
+   public duq a(jh $$0, dzt.b $$1) {
+      return null;
    }
 
-   public Stream<jh> a(dgo $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
+   @Override
+   public void b(duq $$0) {
    }
 
-   public long[] a() {
-      return this.b.toLongArray();
+   @Override
+   public void a(duq $$0) {
    }
 
-   public interface a {
-      boolean test(int var1, int var2, int var3);
+   @Override
+   public void d(jh $$0) {
+   }
+
+   @Override
+   public boolean E() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      return true;
+   }
+
+   @Override
+   public arm F() {
+      return arm.b;
+   }
+
+   @Override
+   public jq<dib> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

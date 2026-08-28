@@ -1,6 +1,7 @@
-public class gxn extends gyt {
-   public bvc a = new bvc();
-   public bvc b = new bvc();
-   public boolean c;
-   public boolean d;
+import javax.annotation.Nullable;
+
+public class gxn extends gxq {
+   public boolean a = true;
+   @Nullable
+   public fbr b;
 }

@@ -1,56 +1,76 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BiPredicate;
 
-public class cgh extends cgq<bwi> {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final Long2LongMap d = new Long2LongOpenHashMap();
-   private int e;
-   private long f;
+public abstract class cgh<E extends bvx> {
+   private static final bac a = bac.b();
+   private static final int b = 20;
+   private static final int c = 16;
+   private static final cgo d = cgo.b().a(16.0);
+   private static final cgo e = cgo.b().a(16.0).e();
+   private static final cgo f = cgo.a().a(16.0);
+   private static final cgo g = cgo.a().a(16.0).e();
+   private static final cgo h = cgo.a().a(16.0).d();
+   private static final cgo i = cgo.a().a(16.0).d().e();
+   private final int j;
+   private long k;
+
+   public cgh(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
+   }
 
    public cgh() {
-      super(20);
+      this(20);
    }
 
-   @Override
-   public Set<cfk<?>> a() {
-      return ImmutableSet.of(cfk.w);
-   }
-
-   protected void a(ash $$0, bwi $$1) {
-      if ($$1.e_()) {
-         this.e = 0;
-         this.f = $$0.ac() + (long)$$0.H_().a(20);
-         chk $$2 = $$0.z();
-         Predicate<jh> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.d.containsKey($$1x)) {
-               return false;
-            } else if (++this.e >= 5) {
-               return false;
-            } else {
-               this.d.put($$1x, this.f + 40L);
-               return true;
-            }
-         };
-         Set<Pair<jq<chn>, jh>> $$4 = $$2.b($$0x -> $$0x.a(cho.n), $$3, $$1.dw(), 48, chk.b.c).collect(Collectors.toSet());
-         eul $$5 = bxs.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            jh $$6 = $$5.l();
-            Optional<jq<chn>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.ec().a(cfk.w, $$6);
-            }
-         } else if (this.e < 5) {
-            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
-         }
+   public final void b(arx $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$1);
+         this.a($$0, $$1);
       }
+   }
+
+   private void a(E $$0) {
+      double $$1 = $$0.h(bxf.m);
+      d.a($$1);
+      e.a($$1);
+      f.a($$1);
+      g.a($$1);
+      h.a($$1);
+      i.a($$1);
+   }
+
+   protected abstract void a(arx var1, E var2);
+
+   public abstract Set<cfb<?>> a();
+
+   public static boolean b(arx $$0, bvx $$1, bvx $$2) {
+      return $$1.ec().b(cfb.o, $$2) ? e.a($$0, $$1, $$2) : d.a($$0, $$1, $$2);
+   }
+
+   public static boolean c(arx $$0, bvx $$1, bvx $$2) {
+      return $$1.ec().b(cfb.o, $$2) ? g.a($$0, $$1, $$2) : f.a($$0, $$1, $$2);
+   }
+
+   public static BiPredicate<arx, bvx> a(bvx $$0, int $$1) {
+      return a($$1, ($$1x, $$2) -> c($$1x, $$0, $$2));
+   }
+
+   public static boolean d(arx $$0, bvx $$1, bvx $$2) {
+      return $$1.ec().b(cfb.o, $$2) ? i.a($$0, $$1, $$2) : h.a($$0, $$1, $$2);
+   }
+
+   static <T, U> BiPredicate<T, U> a(int $$0, BiPredicate<T, U> $$1) {
+      AtomicInteger $$2 = new AtomicInteger(0);
+      return ($$3, $$4) -> {
+         if ($$1.test($$3, $$4)) {
+            $$2.set($$0);
+            return true;
+         } else {
+            return $$2.decrementAndGet() >= 0;
+         }
+      };
    }
 }

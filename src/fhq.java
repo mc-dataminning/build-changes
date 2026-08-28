@@ -1,13 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class fhq extends RuntimeException {
-   @Nullable
-   public xv a() {
-      return null;
-   }
-
-   @Nullable
-   public xv[] b() {
-      return null;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fhq {
 }

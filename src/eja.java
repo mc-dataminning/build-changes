@@ -1,9 +1,6 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public interface eja {
-   ejh m = ejh.b;
-
-   default Stream<egi<?, ?>> e() {
-      return Stream.empty();
-   }
+public class eja implements eit {
+   public static final Codec<eja> a = Codec.unit(() -> eja.b);
+   public static final eja b = new eja();
 }

@@ -1,5 +1,8 @@
-public class gee<S extends hak> extends gae<S> {
-   public gee(geo $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gee {
 }

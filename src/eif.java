@@ -1,39 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public class eif extends egw<ejh> {
-   public eif(Codec<ejh> $$0) {
+public class eif extends egp<eja> {
+   public eif(Codec<eja> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<ejh> $$0) {
-      dig $$1 = $$0.b();
+   public boolean a(egr<eja> $$0) {
+      dhx $$1 = $$0.b();
       jh $$2 = $$0.e();
-      jh.a $$3 = new jh.a();
-      jh.a $$4 = new jh.a();
-
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(edq.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(jm.a, 1);
-            dik $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, dko.eb.m(), 2);
-            }
-
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, dko.ea.m(), 2);
-               dxv $$11 = $$1.a_($$4);
-               if ($$11.b(drz.c)) {
-                  $$1.a($$4, $$11.b(drz.c, Boolean.valueOf(true)), 2);
-               }
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (jm $$3 : jm.values()) {
+            if ($$3 != jm.a && dte.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dkf.ft.m().b(dte.a($$3), Boolean.valueOf(true)), 2);
+               return true;
             }
          }
-      }
 
-      return true;
+         return false;
+      }
    }
 }

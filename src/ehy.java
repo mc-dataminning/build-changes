@@ -1,109 +1,39 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
 
-public class ehy extends egw<ejq> {
-   public ehy(Codec<ejq> $$0) {
+public class ehy extends egp<eja> {
+   public ehy(Codec<eja> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<ejq> $$0) {
-      dig $$1 = $$0.b();
+   public boolean a(egr<eja> $$0) {
+      dhx $$1 = $$0.b();
       jh $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
-         return false;
-      } else {
-         bam $$3 = $$0.d();
-         jh $$4 = $$0.e();
-         ejq $$5 = $$0.f();
-         jh.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
+      jh.a $$3 = new jh.a();
+      jh.a $$4 = new jh.a();
 
-         return true;
-      }
-   }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(edj.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(jm.a, 1);
+            dib $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dkf.eb.m(), 2);
+            }
 
-   private static boolean a(dig $$0, ejq $$1, jh $$2) {
-      jh.a $$3 = $$2.k();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jm.b);
-         dxv $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dkf.ea.m(), 2);
+               dxo $$11 = $$1.a_($$4);
+               if ($$11.b(drs.c)) {
+                  $$1.a($$4, $$11.b(drs.c, Boolean.valueOf(true)), 2);
+               }
+            }
          }
       }
 
       return true;
-   }
-
-   private static boolean a(dxv $$0, int $$1, int $$2) {
-      if ($$0.l()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(aya.a);
-      }
-   }
-
-   private static boolean a(dig $$0, dzr $$1, ejq $$2, bam $$3, jh.a $$4, jh $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jm.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            jh $$7 = $$4.e();
-            if ($$0.b_($$7).a(aya.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
-
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(jh $$0, int $$1, dig $$2, ejq $$3, bam $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      jh.a $$7 = $$0.k();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
-
-   private static void a(dig $$0, ejq $$1, bam $$2, int $$3, int $$4, jh.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dxv> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dig $$0, ejq $$1, bam $$2, jh $$3, jh.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dxv $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jm.a)) {
-               $$0.a($$4, $$8, 2);
-            }
-         }
-      }
    }
 }

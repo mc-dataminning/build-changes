@@ -1,108 +1,298 @@
-public class duq extends dwf {
-   private jz<cxp> d = jz.a(27, cxp.j);
-   private final dvk e = new dvk() {
-      @Override
-      protected void a(dhi $$0, jh $$1, dxv $$2) {
-         duq.this.a($$2, axf.bz);
-         duq.this.a($$2, true);
-      }
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-      @Override
-      protected void b(dhi $$0, jh $$1, dxv $$2) {
-         duq.this.a($$2, axf.by);
-         duq.this.a($$2, false);
-      }
+public abstract class duq {
+   private static final Logger d = LogUtils.getLogger();
+   private final dus<?> e;
+   @Nullable
+   protected dgz o;
+   protected final jh p;
+   protected boolean q;
+   private dxo f;
+   private kq g = kq.a;
 
-      @Override
-      protected void a(dhi $$0, jh $$1, dxv $$2, int $$3, int $$4) {
-      }
+   public duq(dus<?> $$0, jh $$1, dxo $$2) {
+      this.e = $$0;
+      this.p = $$1.j();
+      this.a($$2);
+      this.f = $$2;
+   }
 
-      @Override
-      protected boolean a(cpx $$0) {
-         if ($$0.cd instanceof ctl) {
-            btc $$1 = ((ctl)$$0.cd).l();
-            return $$1 == duq.this;
-         } else {
-            return false;
+   private void a(dxo $$0) {
+      if (!this.b($$0)) {
+         throw new IllegalStateException("Invalid block entity " + this.k() + " state at " + this.p + ", got " + $$0);
+      }
+   }
+
+   public boolean b(dxo $$0) {
+      return this.e.a($$0);
+   }
+
+   public static jh b(um $$0) {
+      return new jh($$0.h("x"), $$0.h("y"), $$0.h("z"));
+   }
+
+   @Nullable
+   public dgz i() {
+      return this.o;
+   }
+
+   public void a(dgz $$0) {
+      this.o = $$0;
+   }
+
+   public boolean l() {
+      return this.o != null;
+   }
+
+   protected void a(um $$0, js.a $$1) {
+   }
+
+   public final void c(um $$0, js.a $$1) {
+      this.a($$0, $$1);
+      duq.a.a.parse($$1.a(va.a), $$0).resultOrPartial($$0x -> d.warn("Failed to load components: {}", $$0x)).ifPresent($$0x -> this.g = $$0x);
+   }
+
+   public final void d(um $$0, js.a $$1) {
+      this.a($$0, $$1);
+   }
+
+   protected void b(um $$0, js.a $$1) {
+   }
+
+   public final um b(js.a $$0) {
+      um $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   public final um c(js.a $$0) {
+      um $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
+   }
+
+   public final um d(js.a $$0) {
+      um $$1 = new um();
+      this.b($$1, $$0);
+      duq.a.a.encodeStart($$0.a(va.a), this.g).resultOrPartial($$0x -> d.warn("Failed to save components: {}", $$0x)).ifPresent($$1x -> $$1.a((um)$$1x));
+      return $$1;
+   }
+
+   public final um e(js.a $$0) {
+      um $$1 = new um();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   public final um f(js.a $$0) {
+      um $$1 = this.e($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   private void c(um $$0) {
+      alp $$1 = dus.a(this.p());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
+      } else {
+         $$0.a("id", $$1.toString());
+      }
+   }
+
+   public static void a(um $$0, dus<?> $$1) {
+      $$0.a("id", dus.a($$1).toString());
+   }
+
+   public void a(cxg $$0, js.a $$1) {
+      um $$2 = this.e($$1);
+      this.a($$2);
+      $$0.c();
+      cvm.a($$0, this.p(), $$2);
+      $$0.b(this.q());
+   }
+
+   private void d(um $$0) {
+      this.c($$0);
+      $$0.a("x", this.p.u());
+      $$0.a("y", this.p.v());
+      $$0.a("z", this.p.w());
+   }
+
+   @Nullable
+   public static duq a(jh $$0, dxo $$1, um $$2, js.a $$3) {
+      String $$4 = $$2.l("id");
+      alp $$5 = alp.c($$4);
+      if ($$5 == null) {
+         d.error("Block entity has invalid type: {}", $$4);
+         return null;
+      } else {
+         return ma.j.b($$5).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5x) {
+               d.error("Failed to create block entity {}", $$4, var5x);
+               return null;
+            }
+         }).map($$3x -> {
+            try {
+               $$3x.c($$2, $$3);
+               return $$3x;
+            } catch (Throwable var5x) {
+               d.error("Failed to load data for block entity {}", $$4, var5x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            d.warn("Skipping BlockEntity with id {}", $$4);
+            return null;
+         });
+      }
+   }
+
+   public void e() {
+      if (this.o != null) {
+         a(this.o, this.p, this.f);
+      }
+   }
+
+   protected static void a(dgz $$0, jh $$1, dxo $$2) {
+      $$0.q($$1);
+      if (!$$2.l()) {
+         $$0.c($$1, $$2.b());
+      }
+   }
+
+   public jh aB_() {
+      return this.p;
+   }
+
+   public dxo m() {
+      return this.f;
+   }
+
+   @Nullable
+   public zr<acg> ay_() {
+      return null;
+   }
+
+   public um a(js.a $$0) {
+      return new um();
+   }
+
+   public boolean n() {
+      return this.q;
+   }
+
+   public void aw_() {
+      this.q = true;
+   }
+
+   public void o() {
+      this.q = false;
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", this::k);
+      if (this.o != null) {
+         p.a($$0, this.o, this.p, this.m());
+         p.a($$0, this.o, this.p, this.o.a_(this.p));
+      }
+   }
+
+   private String k() {
+      return ma.j.b(this.p()) + " // " + this.getClass().getCanonicalName();
+   }
+
+   public dus<?> p() {
+      return this.e;
+   }
+
+   @Deprecated
+   public void c(dxo $$0) {
+      this.a($$0);
+      this.f = $$0;
+   }
+
+   protected void a(duq.b $$0) {
+   }
+
+   public final void a(cxg $$0) {
+      this.a($$0.d(), $$0.e());
+   }
+
+   public final void a(kq $$0, kr $$1) {
+      final Set<kt<?>> $$2 = new HashSet<>();
+      $$2.add(ku.Y);
+      final kq $$3 = kv.a($$0, $$1);
+      this.a(new duq.b() {
+         @Nullable
+         @Override
+         public <T> T a(kt<T> $$0) {
+            $$2.add($$0);
+            return $$3.a($$0);
          }
-      }
-   };
 
-   public duq(jh $$0, dxv $$1) {
-      super(duz.B, $$0, $$1);
+         @Override
+         public <T> T a(kt<? extends T> $$0, T $$1) {
+            $$2.add($$0);
+            return $$3.a($$0, $$1);
+         }
+      });
+      kr $$4 = $$1.a($$2::contains);
+      this.g = $$4.e().a();
    }
 
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         btd.a($$0, this.d, $$1);
-      }
+   protected void a(kq.a $$0) {
    }
 
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.d = jz.a(this.b(), cxp.j);
-      if (!this.b_($$0)) {
-         btd.b($$0, this.d, $$1);
-      }
+   @Deprecated
+   public void a(um $$0) {
    }
 
-   @Override
-   public int b() {
-      return 27;
+   public final kq q() {
+      kq.a $$0 = kq.a();
+      $$0.a(this.g);
+      this.a($$0);
+      return $$0.a();
    }
 
-   @Override
-   protected jz<cxp> f() {
-      return this.d;
+   public kq r() {
+      return this.g;
    }
 
-   @Override
-   protected void a(jz<cxp> $$0) {
-      this.d = $$0;
+   public void a(kq $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected xv j() {
-      return xv.c("container.barrel");
-   }
-
-   @Override
-   protected ctc a(int $$0, cpw $$1) {
-      return ctl.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c_(cpx $$0) {
-      if (!this.q && !$$0.aa_()) {
-         this.e.a($$0, this.i(), this.aB_(), this.m());
+   @Nullable
+   public static xk a(String $$0, js.a $$1) {
+      try {
+         return xk.a.a($$0, $$1);
+      } catch (Exception var3) {
+         d.warn("Failed to parse custom name from string '{}', discarding", $$0, var3);
+         return null;
       }
    }
 
-   @Override
-   public void c(cpx $$0) {
-      if (!this.q && !$$0.aa_()) {
-         this.e.b($$0, this.i(), this.aB_(), this.m());
+   static class a {
+      public static final Codec<kq> a = kq.b.optionalFieldOf("components", kq.a).codec();
+
+      private a() {
       }
    }
 
-   public void k() {
-      if (!this.q) {
-         this.e.c(this.i(), this.aB_(), this.m());
-      }
-   }
+   protected interface b {
+      @Nullable
+      <T> T a(kt<T> var1);
 
-   void a(dxv $$0, boolean $$1) {
-      this.o.a(this.aB_(), $$0.b(djs.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dxv $$0, axe $$1) {
-      kl $$2 = $$0.c(djs.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, axg.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
+      <T> T a(kt<? extends T> var1, T var2);
    }
 }

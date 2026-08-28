@@ -1,45 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class djo extends dkw implements dkp {
-   public static final MapCodec<djo> a = b(djo::new);
-   private static final fcs b = fcp.a(dkm.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dkm.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
+public class djo extends djl {
+   public static final MapCodec<djo> b = b(djo::new);
+   public static final dyl<jm> c = dob.aF;
+   private static final Map<jm, fcl> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         jm.c,
+         dkd.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         jm.d,
+         dkd.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         jm.e,
+         dkd.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         jm.f,
+         dkd.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
 
    @Override
-   public MapCodec<djo> a() {
-      return a;
-   }
-
-   protected djo(dxu.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+   public MapCodec<? extends djo> a() {
       return b;
    }
 
-   @Override
-   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
-      return $$0.a(dko.ee) || super.b($$0, $$1, $$2);
+   protected djo(dxn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, jm.c).b(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public boolean b(dhl $$0, jh $$1, dxv $$2) {
-      return $$0.b_($$1.d()).c();
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return e.get($$0.c(c));
    }
 
    @Override
-   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
-      return (double)$$0.A.i() < 0.45;
+   protected dxo a(dxo $$0, dqv $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
    }
 
    @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
-      dxk.e.a($$0, $$0.m().g(), $$2, $$3, $$1);
+   protected dxo a(dxo $$0, dpc $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 
    @Override
-   protected boolean a(dxv $$0, eum $$1) {
-      return false;
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, etr.c, etr.c.a($$1));
+      }
+
+      return $$4.g() == $$0.c(c) && !$$0.a($$1, $$3) ? dkf.a.m() : $$0;
+   }
+
+   @Override
+   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
+      jm $$3 = $$0.c(c);
+      jh $$4 = $$2.a($$3.g());
+      dxo $$5 = $$1.a_($$4);
+      return $$5.c($$1, $$4, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dxo a(dax $$0) {
+      dxo $$1 = super.a($$0);
+      dhc $$2 = $$0.q();
+      jh $$3 = $$0.a();
+      jm[] $$4 = $$0.f();
+
+      for (jm $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.b(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
    }
 }

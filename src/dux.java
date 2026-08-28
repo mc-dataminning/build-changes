@@ -1,302 +1,159 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class dux extends dvy implements dvw {
+   private static final int d = 1;
+   private jz<cxg> e = jz.a(27, cxg.j);
+   private final dvd f = new dvd() {
+      @Override
+      protected void a(dgz $$0, jh $$1, dxo $$2) {
+         dux.a($$0, $$1, $$2, awv.eS);
+      }
 
-public abstract class dux {
-   private static final Logger d = LogUtils.getLogger();
-   private final duz<?> e;
-   @Nullable
-   protected dhi o;
-   protected final jh p;
-   protected boolean q;
-   private dxv f;
-   private kq g = kq.a;
+      @Override
+      protected void b(dgz $$0, jh $$1, dxo $$2) {
+         dux.a($$0, $$1, $$2, awv.eQ);
+      }
 
-   public dux(duz<?> $$0, jh $$1, dxv $$2) {
-      this.e = $$0;
-      this.p = $$1.j();
-      this.a($$2);
-      this.f = $$2;
+      @Override
+      protected void a(dgz $$0, jh $$1, dxo $$2, int $$3, int $$4) {
+         dux.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(cpo $$0) {
+         if (!($$0.cd instanceof ctc)) {
+            return false;
+         } else {
+            bst $$1 = ((ctc)$$0.cd).l();
+            return $$1 == dux.this || $$1 instanceof bss && ((bss)$$1).a(dux.this);
+         }
+      }
+   };
+   private final duy g = new duy();
+
+   protected dux(dus<?> $$0, jh $$1, dxo $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private void a(dxv $$0) {
-      if (!this.b($$0)) {
-         throw new IllegalStateException("Invalid block entity " + this.k() + " state at " + this.p + ", got " + $$0);
+   public dux(jh $$0, dxo $$1) {
+      this(dus.b, $$0, $$1);
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected xk j() {
+      return xk.c("container.chest");
+   }
+
+   @Override
+   protected void a(um $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.e = jz.a(this.b(), cxg.j);
+      if (!this.b_($$0)) {
+         bsu.b($$0, this.e, $$1);
       }
    }
 
-   public boolean b(dxv $$0) {
-      return this.e.a($$0);
-   }
-
-   public static jh b(ux $$0) {
-      return new jh($$0.h("x"), $$0.h("y"), $$0.h("z"));
-   }
-
-   @Nullable
-   public dhi i() {
-      return this.o;
-   }
-
-   public void a(dhi $$0) {
-      this.o = $$0;
-   }
-
-   public boolean l() {
-      return this.o != null;
-   }
-
-   protected void a(ux $$0, js.a $$1) {
-   }
-
-   public final void c(ux $$0, js.a $$1) {
-      this.a($$0, $$1);
-      dux.a.a.parse($$1.a(vl.a), $$0).resultOrPartial($$0x -> d.warn("Failed to load components: {}", $$0x)).ifPresent($$0x -> this.g = $$0x);
-   }
-
-   public final void d(ux $$0, js.a $$1) {
-      this.a($$0, $$1);
-   }
-
-   protected void b(ux $$0, js.a $$1) {
-   }
-
-   public final ux b(js.a $$0) {
-      ux $$1 = this.d($$0);
-      this.d($$1);
-      return $$1;
-   }
-
-   public final ux c(js.a $$0) {
-      ux $$1 = this.d($$0);
-      this.c($$1);
-      return $$1;
-   }
-
-   public final ux d(js.a $$0) {
-      ux $$1 = new ux();
-      this.b($$1, $$0);
-      dux.a.a.encodeStart($$0.a(vl.a), this.g).resultOrPartial($$0x -> d.warn("Failed to save components: {}", $$0x)).ifPresent($$1x -> $$1.a((ux)$$1x));
-      return $$1;
-   }
-
-   public final ux e(js.a $$0) {
-      ux $$1 = new ux();
-      this.b($$1, $$0);
-      return $$1;
-   }
-
-   public final ux f(js.a $$0) {
-      ux $$1 = this.e($$0);
-      this.d($$1);
-      return $$1;
-   }
-
-   private void c(ux $$0) {
-      alz $$1 = duz.a(this.q());
-      if ($$1 == null) {
-         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
-      } else {
-         $$0.a("id", $$1.toString());
+   @Override
+   protected void b(um $$0, js.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         bsu.a($$0, this.e, $$1);
       }
    }
 
-   public static void a(ux $$0, duz<?> $$1) {
-      $$0.a("id", duz.a($$1).toString());
+   public static void a(dgz $$0, jh $$1, dxo $$2, dux $$3) {
+      $$3.g.a();
    }
 
-   public void a(cxp $$0, js.a $$1) {
-      ux $$2 = this.e($$1);
-      this.a($$2);
-      $$0.c();
-      cvv.a($$0, this.q(), $$2);
-      $$0.b(this.r());
-   }
+   static void a(dgz $$0, jh $$1, dxo $$2, awu $$3) {
+      dyg $$4 = $$2.c(dlg.d);
+      if ($$4 != dyg.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dyg.c) {
+            jm $$8 = dlg.i($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
 
-   private void d(ux $$0) {
-      this.c($$0);
-      $$0.a("x", this.p.u());
-      $$0.a("y", this.p.v());
-      $$0.a("z", this.p.w());
-   }
-
-   @Nullable
-   public static dux a(jh $$0, dxv $$1, ux $$2, js.a $$3) {
-      String $$4 = $$2.l("id");
-      alz $$5 = alz.c($$4);
-      if ($$5 == null) {
-         d.error("Block entity has invalid type: {}", $$4);
-         return null;
-      } else {
-         return ma.j.b($$5).map($$3x -> {
-            try {
-               return $$3x.a($$0, $$1);
-            } catch (Throwable var5x) {
-               d.error("Failed to create block entity {}", $$4, var5x);
-               return null;
-            }
-         }).map($$3x -> {
-            try {
-               $$3x.c($$2, $$3);
-               return $$3x;
-            } catch (Throwable var5x) {
-               d.error("Failed to load data for block entity {}", $$4, var5x);
-               return null;
-            }
-         }).orElseGet(() -> {
-            d.warn("Skipping BlockEntity with id {}", $$4);
-            return null;
-         });
+         $$0.a(null, $$5, $$6, $$7, $$3, aww.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
       }
    }
 
-   public void e() {
-      if (this.o != null) {
-         a(this.o, this.p, this.f);
-      }
-   }
-
-   protected static void a(dhi $$0, jh $$1, dxv $$2) {
-      $$0.q($$1);
-      if (!$$2.l()) {
-         $$0.c($$1, $$2.b());
-      }
-   }
-
-   public jh aB_() {
-      return this.p;
-   }
-
-   public dxv m() {
-      return this.f;
-   }
-
-   @Nullable
-   public aac<acr> ay_() {
-      return null;
-   }
-
-   public ux a(js.a $$0) {
-      return new ux();
-   }
-
-   public boolean n() {
-      return this.q;
-   }
-
-   public void aw_() {
-      this.q = true;
-   }
-
-   public void o() {
-      this.q = false;
-   }
-
+   @Override
    public boolean a_(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(p $$0) {
-      $$0.a("Name", this::k);
-      if (this.o != null) {
-         p.a($$0, this.o, this.p, this.m());
-         p.a($$0, this.o, this.p, this.o.a_(this.p));
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
       }
    }
 
-   private String k() {
-      return ma.j.b(this.q()) + " // " + this.getClass().getCanonicalName();
+   @Override
+   public void c_(cpo $$0) {
+      if (!this.q && !$$0.aa_()) {
+         this.f.a($$0, this.i(), this.aB_(), this.m());
+      }
    }
 
-   public boolean p() {
-      return false;
+   @Override
+   public void c(cpo $$0) {
+      if (!this.q && !$$0.aa_()) {
+         this.f.b($$0, this.i(), this.aB_(), this.m());
+      }
    }
 
-   public duz<?> q() {
+   @Override
+   protected jz<cxg> f() {
       return this.e;
    }
 
-   @Deprecated
-   public void c(dxv $$0) {
-      this.a($$0);
-      this.f = $$0;
+   @Override
+   protected void a(jz<cxg> $$0) {
+      this.e = $$0;
    }
 
-   protected void a(dux.b $$0) {
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
    }
 
-   public final void a(cxp $$0) {
-      this.a($$0.d(), $$0.e());
-   }
-
-   public final void a(kq $$0, kr $$1) {
-      final Set<kt<?>> $$2 = new HashSet<>();
-      $$2.add(ku.Y);
-      final kq $$3 = kv.a($$0, $$1);
-      this.a(new dux.b() {
-         @Nullable
-         @Override
-         public <T> T a(kt<T> $$0) {
-            $$2.add($$0);
-            return $$3.a($$0);
+   public static int a(dge $$0, jh $$1) {
+      dxo $$2 = $$0.a_($$1);
+      if ($$2.x()) {
+         duq $$3 = $$0.c_($$1);
+         if ($$3 instanceof dux) {
+            return ((dux)$$3).f.a();
          }
+      }
 
-         @Override
-         public <T> T a(kt<? extends T> $$0, T $$1) {
-            $$2.add($$0);
-            return $$3.a($$0, $$1);
-         }
-      });
-      kr $$4 = $$1.a($$2::contains);
-      this.g = $$4.e().a();
+      return 0;
    }
 
-   protected void a(kq.a $$0) {
+   public static void a(dux $$0, dux $$1) {
+      jz<cxg> $$2 = $$0.f();
+      $$0.a($$1.f());
+      $$1.a($$2);
    }
 
-   @Deprecated
-   public void a(ux $$0) {
+   @Override
+   protected cst a(int $$0, cpn $$1) {
+      return ctc.a($$0, $$1, this);
    }
 
-   public final kq r() {
-      kq.a $$0 = kq.a();
-      $$0.a(this.g);
-      this.a($$0);
-      return $$0.a();
-   }
-
-   public kq s() {
-      return this.g;
-   }
-
-   public void a(kq $$0) {
-      this.g = $$0;
-   }
-
-   @Nullable
-   public static xv a(String $$0, js.a $$1) {
-      try {
-         return xv.a.a($$0, $$1);
-      } catch (Exception var3) {
-         d.warn("Failed to parse custom name from string '{}', discarding", $$0, var3);
-         return null;
+   public void k() {
+      if (!this.q) {
+         this.f.c(this.i(), this.aB_(), this.m());
       }
    }
 
-   static class a {
-      public static final Codec<kq> a = kq.b.optionalFieldOf("components", kq.a).codec();
-
-      private a() {
-      }
-   }
-
-   protected interface b {
-      @Nullable
-      <T> T a(kt<T> var1);
-
-      <T> T a(kt<? extends T> var1, T var2);
+   protected void a(dgz $$0, jh $$1, dxo $$2, int $$3, int $$4) {
+      dkd $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

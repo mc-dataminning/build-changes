@@ -1,10 +1,7 @@
-public class gzu extends gyt implements gzl {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class gzu extends gxq {
+   public float a;
+   @Nullable
+   public dxo b;
 }

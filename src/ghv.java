@@ -1,43 +1,79 @@
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
-public class ghv extends ghx<lm> {
-   private final Vector3f a;
-   private final Vector3f b;
+public class ghv extends gjn {
+   private final float a;
+   private final gji b;
 
-   protected ghv(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lm $$7, gjn $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   ghv(gff $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gji $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public void a(fgw $$0, flp $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public gir b() {
+      return gir.b;
    }
 
-   public static class a implements giv<lm> {
-      private final gjn a;
+   @Override
+   public float b(float $$0) {
+      return this.D * azu.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public a(gjn $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
+      }
+   }
+
+   public static class a implements giq<lk> {
+      private final gji a;
+
+      public a(gji $$0) {
          this.a = $$0;
       }
 
-      public gis a(lm $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghv($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      @Nullable
+      public gin a(lk $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dxo $$8 = $$0.b();
+         if (!$$8.l() && $$8.o() == dqo.a) {
+            return null;
+         } else {
+            jh $$9 = jh.a($$2, $$3, $$4);
+            int $$10 = flz.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dna) {
+               $$10 = ((dna)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new ghv($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

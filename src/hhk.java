@@ -1,15 +1,16 @@
 import javax.annotation.Nullable;
 
-public class hhk implements hhq {
-   private static final int a = 1200;
-   private static final xv b = xv.c("tutorial.craft_planks.title");
-   private static final xv c = xv.c("tutorial.craft_planks.description");
-   private final hhp d;
+public class hhk implements hhm {
+   private static final int a = 600;
+   private static final xk b = xk.c("tutorial.punch_tree.title");
+   private static final xk c = xk.a("tutorial.punch_tree.description", hhl.a("attack"));
+   private final hhl d;
    @Nullable
-   private fqs e;
+   private fql e;
    private int f;
+   private int g;
 
-   public hhk(hhp $$0) {
+   public hhk(hhl $$0) {
       this.d = $$0;
    }
 
@@ -17,26 +18,27 @@ public class hhk implements hhq {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(hhr.f);
+         this.d.a(hhn.f);
       } else {
+         flz $$0 = this.d.e();
          if (this.f == 1) {
-            gkh $$0 = this.d.e().t;
-            if ($$0 != null) {
-               if ($$0.gi().a(ayd.b)) {
-                  this.d.a(hhr.f);
+            gkc $$1 = $$0.t;
+            if ($$1 != null) {
+               if ($$1.gi().a(axt.r)) {
+                  this.d.a(hhn.e);
                   return;
                }
 
-               if (a($$0, ayd.b)) {
-                  this.d.a(hhr.f);
+               if (hhh.a($$1)) {
+                  this.d.a(hhn.e);
                   return;
                }
             }
          }
 
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fqs(fqs.a.e, b, c, false);
-            this.d.e().aA().a(this.e);
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new fql($$0.h, fql.a.c, b, c, true);
+            $$0.aA().a(this.e);
          }
       }
    }
@@ -50,19 +52,27 @@ public class hhk implements hhq {
    }
 
    @Override
-   public void a(cxp $$0) {
-      if ($$0.a(ayd.b)) {
-         this.d.a(hhr.f);
+   public void a(gff $$0, jh $$1, dxo $$2, float $$3) {
+      boolean $$4 = $$2.a(axk.u);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(hhn.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
       }
    }
 
-   public static boolean a(gkh $$0, ayk<cxl> $$1) {
-      for (jq<cxl> $$2 : ma.g.c($$1)) {
-         if ($$0.m().a(axp.b.b($$2.a())) > 0) {
-            return true;
-         }
+   @Override
+   public void a(cxg $$0) {
+      if ($$0.a(axt.r)) {
+         this.d.a(hhn.e);
       }
-
-      return false;
    }
 }

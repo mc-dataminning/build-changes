@@ -1,85 +1,27 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
 
-public record ezt(Map<String, ewo> b, ewp.b c) implements ezy {
-   public static final MapCodec<ezt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, ewo.a).fieldOf("scores").forGetter(ezt::c), ewp.b.e.fieldOf("entity").forGetter(ezt::d))
-            .apply($$0, ezt::new)
-   );
+public class ezt {
+   public static final ezs a = a("inverted", ezo.a);
+   public static final ezs b = a("any_of", ezf.a);
+   public static final ezs c = a("all_of", eze.a);
+   public static final ezs d = a("random_chance", ezw.a);
+   public static final ezs e = a("random_chance_with_enchanted_bonus", ezx.a);
+   public static final ezs f = a("entity_properties", ezu.a);
+   public static final ezs g = a("killed_by_player", ezv.a);
+   public static final ezs h = a("entity_scores", ezm.a);
+   public static final ezs i = a("block_state_property", ezq.a);
+   public static final ezs j = a("match_tool", ezy.a);
+   public static final ezs k = a("table_bonus", ezg.a);
+   public static final ezs l = a("survives_explosion", ezn.a);
+   public static final ezs m = a("damage_source_properties", ezk.a);
+   public static final ezs n = a("location_check", ezp.a);
+   public static final ezs o = a("weather_check", fab.a);
+   public static final ezs p = a("reference", ezi.a);
+   public static final ezs q = a("time_check", ezz.a);
+   public static final ezs r = a("value_check", faa.a);
+   public static final ezs s = a("enchantment_active_check", ezl.a);
 
-   @Override
-   public ezz b() {
-      return faa.h;
-   }
-
-   @Override
-   public Set<bbn<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean a(ewp $$0) {
-      bvk $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         fdd $$2 = $$0.d().g();
-
-         for (Entry<String, ewo> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   protected boolean a(ewp $$0, bvk $$1, fdd $$2, String $$3, ewo $$4) {
-      fcv $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         fcz $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
-   }
-
-   public static ezt.a a(ewp.b $$0) {
-      return new ezt.a($$0);
-   }
-
-   public Map<String, ewo> c() {
-      return this.b;
-   }
-
-   public ewp.b d() {
-      return this.c;
-   }
-
-   public static class a implements ezy.a {
-      private final Builder<String, ewo> a = ImmutableMap.builder();
-      private final ewp.b b;
-
-      public a(ewp.b $$0) {
-         this.b = $$0;
-      }
-
-      public ezt.a a(String $$0, ewo $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public ezy build() {
-         return new ezt(this.a.build(), this.b);
-      }
+   private static ezs a(String $$0, MapCodec<? extends ezr> $$1) {
+      return kd.a(ma.F, alp.b($$0), new ezs($$1));
    }
 }

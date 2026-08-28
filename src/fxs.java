@@ -1,51 +1,95 @@
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class fxs extends fxv<cte> {
-   private static final fpt h = new fpt(
-      alz.b("recipe_book/furnace_filter_enabled"),
-      alz.b("recipe_book/furnace_filter_disabled"),
-      alz.b("recipe_book/furnace_filter_enabled_highlighted"),
-      alz.b("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   private final xv i;
+public class fxs {
+   private final List<ddb> a;
+   private final boolean b;
+   private final Set<ddc> c = new HashSet<>();
+   private final Set<ddc> d = new HashSet<>();
 
-   public fxs(cte $$0, xv $$1, List<fxv.a> $$2) {
-      super($$0, $$2);
-      this.i = $$1;
+   public fxs(List<ddb> $$0) {
+      this.a = $$0;
+      if ($$0.size() <= 1) {
+         this.b = true;
+      } else {
+         this.b = a(this.a);
+      }
    }
 
-   @Override
-   protected void a() {
-      this.e.a(h);
+   private static boolean a(List<ddb> $$0) {
+      int $$1 = $$0.size();
+      ddg $$2 = $$0.getFirst().b().d();
+
+      for (int $$3 = 1; $$3 < $$1; $$3++) {
+         ddg $$4 = $$0.get($$3).b().d();
+         if (!$$4.equals($$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   @Override
-   protected boolean a(cuz $$0) {
-      return switch ($$0.d) {
-         case 0, 1, 2 -> true;
-         default -> false;
-      };
-   }
+   public void a(cpt $$0, Predicate<dda> $$1) {
+      for (ddb $$2 : this.a) {
+         boolean $$3 = $$1.test($$2.b());
+         if ($$3) {
+            this.d.add($$2.a());
+         } else {
+            this.d.remove($$2.a());
+         }
 
-   @Override
-   protected void a(fxt $$0, ddj $$1, bbp $$2) {
-      $$0.b(this.f.l(), $$2, $$1.d());
-      if ($$1 instanceof ddi $$3) {
-         $$0.a(this.f.k.get(0), $$2, $$3.b());
-         cuz $$4 = this.f.k.get(1);
-         if ($$4.g().f()) {
-            $$0.a($$4, $$2, $$3.c());
+         if ($$3 && $$2.a($$0)) {
+            this.c.add($$2.a());
+         } else {
+            this.c.remove($$2.a());
          }
       }
    }
 
-   @Override
-   protected xv b() {
-      return this.i;
+   public boolean a(ddc $$0) {
+      return this.c.contains($$0);
    }
 
-   @Override
-   protected void a(fxz $$0, cqc $$1) {
-      $$0.a($$1, $$0x -> $$0x instanceof ddi);
+   public boolean a() {
+      return !this.c.isEmpty();
+   }
+
+   public boolean b() {
+      return !this.d.isEmpty();
+   }
+
+   public List<ddb> c() {
+      return this.a;
+   }
+
+   public List<ddb> a(fxs.a $$0) {
+      Predicate<ddc> $$1 = switch ($$0) {
+         case a -> this.d::contains;
+         case b -> this.c::contains;
+         case c -> $$0x -> this.d.contains($$0x) && !this.c.contains($$0x);
+      };
+      List<ddb> $$2 = new ArrayList<>();
+
+      for (ddb $$3 : this.a) {
+         if ($$1.test($$3.a())) {
+            $$2.add($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

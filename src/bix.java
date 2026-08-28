@@ -1,56 +1,69 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class bix {
-   public static final TypeReference a = a("level");
-   public static final TypeReference b = a("player");
-   public static final TypeReference c = a("chunk");
-   public static final TypeReference d = a("hotbar");
-   public static final TypeReference e = a("options");
-   public static final TypeReference f = a("structure");
-   public static final TypeReference g = a("stats");
-   public static final TypeReference h = a("saved_data/command_storage");
-   public static final TypeReference i = a("saved_data/chunks");
-   public static final TypeReference j = a("saved_data/map_data");
-   public static final TypeReference k = a("saved_data/idcounts");
-   public static final TypeReference l = a("saved_data/raids");
-   public static final TypeReference m = a("saved_data/random_sequences");
-   public static final TypeReference n = a("saved_data/structure_feature_indices");
-   public static final TypeReference o = a("saved_data/scoreboard");
-   public static final TypeReference p = a("advancements");
-   public static final TypeReference q = a("poi_chunk");
-   public static final TypeReference r = a("entity_chunk");
-   public static final TypeReference s = a("block_entity");
-   public static final TypeReference t = a("item_stack");
-   public static final TypeReference u = a("block_state");
-   public static final TypeReference v = a("flat_block_state");
-   public static final TypeReference w = a("data_components");
-   public static final TypeReference x = a("villager_trade");
-   public static final TypeReference y = a("particle");
-   public static final TypeReference z = a("entity_name");
-   public static final TypeReference A = a("entity_tree");
-   public static final TypeReference B = a("entity");
-   public static final TypeReference C = a("block_name");
-   public static final TypeReference D = a("item_name");
-   public static final TypeReference E = a("game_event_name");
-   public static final TypeReference F = a("untagged_spawner");
-   public static final TypeReference G = a("structure_feature");
-   public static final TypeReference H = a("objective");
-   public static final TypeReference I = a("team");
-   public static final TypeReference J = a("recipe");
-   public static final TypeReference K = a("biome");
-   public static final TypeReference L = a("multi_noise_biome_source_parameter_list");
-   public static final TypeReference M = a("world_gen_settings");
+public class bix extends DataFix {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("slot_0", "list")
+      .put("slot_1", "sidebar")
+      .put("slot_2", "below_name")
+      .put("slot_3", "sidebar.team.black")
+      .put("slot_4", "sidebar.team.dark_blue")
+      .put("slot_5", "sidebar.team.dark_green")
+      .put("slot_6", "sidebar.team.dark_aqua")
+      .put("slot_7", "sidebar.team.dark_red")
+      .put("slot_8", "sidebar.team.dark_purple")
+      .put("slot_9", "sidebar.team.gold")
+      .put("slot_10", "sidebar.team.gray")
+      .put("slot_11", "sidebar.team.dark_gray")
+      .put("slot_12", "sidebar.team.blue")
+      .put("slot_13", "sidebar.team.green")
+      .put("slot_14", "sidebar.team.aqua")
+      .put("slot_15", "sidebar.team.red")
+      .put("slot_16", "sidebar.team.light_purple")
+      .put("slot_17", "sidebar.team.yellow")
+      .put("slot_18", "sidebar.team.white")
+      .build();
 
-   public static TypeReference a(final String $$0) {
-      return new TypeReference() {
-         public String typeName() {
-            return $$0;
-         }
+   public bix(Schema $$0) {
+      super($$0, false);
+   }
 
-         @Override
-         public String toString() {
-            return "@" + $$0;
-         }
-      };
+   @Nullable
+   private static String a(String $$0) {
+      return a.get($$0);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bin.o);
+      OpticFinder<?> $$1 = $$0.findField("data");
+      return this.fixTypeEverywhereTyped(
+         "Scoreboard DisplaySlot rename",
+         $$0,
+         $$1x -> $$1x.updateTyped(
+               $$1,
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update(
+                           "DisplaySlots",
+                           $$0xxxx -> $$0xxxx.updateMapValues(
+                                 $$0xxxxx -> $$0xxxxx.mapFirst(
+                                       $$0xxxxxx -> (Dynamic)DataFixUtils.orElse(
+                                             $$0xxxxxx.asString().result().map(bix::a).map($$0xxxxxx::createString), $$0xxxxxx
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 }

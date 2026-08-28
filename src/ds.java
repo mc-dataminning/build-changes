@@ -8,7 +8,7 @@ public class ds extends dy<ds.a> {
       return ds.a.a;
    }
 
-   public void a(asi $$0) {
+   public void a(ary $$0) {
       this.a($$0, $$0x -> true);
    }
 
@@ -43,7 +43,7 @@ public class ds extends dy<ds.a> {
          return ao.x.a(new ds.a(Optional.empty()));
       }
 
-      public static ap<ds.a> a(jr<dkm> $$0, jr<cxl> $$1, dkm $$2, cxl $$3) {
+      public static ap<ds.a> a(jr<dkd> $$0, jr<cxc> $$1, dkd $$2, cxc $$3) {
          return a(bw.a.a().a(bt.a.a().d(cu.a.a().a($$1, $$3))).b(dh.a.a().a(ax.a.a().a($$0, $$2))));
       }
 

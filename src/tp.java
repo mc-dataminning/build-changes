@@ -1,20 +1,19 @@
-import javax.annotation.Nullable;
+public class tp {
+   private static ue a = new tr();
 
-class tp {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
-
-   private tp(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static void a(ue $$0) {
+      a = $$0;
    }
 
-   static tp a(Runnable $$0) {
-      return new tp(null, $$0);
+   public static void a(th $$0) {
+      a.a($$0);
    }
 
-   static tp a(long $$0, Runnable $$1) {
-      return new tp($$0, $$1);
+   public static void b(th $$0) {
+      a.b($$0);
+   }
+
+   public static void a() {
+      a.a();
    }
 }

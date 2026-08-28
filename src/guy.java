@@ -1,28 +1,19 @@
-public class guy extends gsh<cnr, hal, gef<hal>> {
-   private static final alz a = alz.b("textures/entity/zombie_villager/zombie_villager.png");
+public class guy extends gwa<gxe, gar> {
+   private static final alp a = alp.b("textures/entity/breeze/breeze_wind.png");
+   private final gar b;
 
-   public guy(grq.a $$0) {
-      super($$0, new gef<>($$0.a(gen.dQ)), new gef<>($$0.a(gen.dR)), 0.5F, gum.a);
-      this.a(new gvu<>(this, new gef($$0.a(gen.dU)), new gef($$0.a(gen.dV)), new gef($$0.a(gen.dS)), new gef($$0.a(gen.dT)), $$0.h()));
-      this.a(new gwp<>(this, $$0.e(), "zombie_villager"));
+   public guy(grl.a $$0, gti<gxe, gar> $$1) {
+      super($$1);
+      this.b = new gar($$0.a(gei.L));
    }
 
-   public alz a(hal $$0) {
-      return a;
+   public void a(fgl $$0, glg $$1, int $$2, gxe $$3, float $$4, float $$5) {
+      fgp $$6 = $$1.getBuffer(glq.a(a, this.a($$3.p) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gqq.a(this.b, this.b.d()).a($$0, $$6, $$2, hax.d);
    }
 
-   public hal b() {
-      return new hal();
-   }
-
-   public void a(cnr $$0, hal $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.gx();
-      $$1.c = $$0.gy();
-      $$1.a = $$0.gd();
-   }
-
-   protected boolean b(hal $$0) {
-      return super.a($$0) || $$0.b;
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

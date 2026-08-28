@@ -1,45 +1,45 @@
-import java.util.List;
+import net.minecraft.server.MinecraftServer;
 
-public class awl {
-   private int a;
-   private int b;
+public class awl implements ev {
+   private static final String b = "Rcon";
+   private static final xk c = xk.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
 
-   public boolean a(int $$0) {
-      return this.b >= this.b($$0);
+   public awl(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   public boolean a(int $$0, List<asi> $$1) {
-      int $$2 = (int)$$1.stream().filter(cpx::gm).count();
-      return $$2 >= this.b($$0);
+   public void e() {
+      this.d.setLength(0);
    }
 
-   public int b(int $$0) {
-      return Math.max(1, bae.f((float)(this.a * $$0) / 100.0F));
+   public String f() {
+      return this.d.toString();
    }
 
-   public void a() {
-      this.b = 0;
+   public ew g() {
+      arx $$0 = this.e.J();
+      return new ew(this, fbr.a($$0.Z()), fbq.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public void a(xk $$0) {
+      this.d.append($$0.getString());
    }
 
-   public boolean a(List<asi> $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      this.a = 0;
-      this.b = 0;
+   @Override
+   public boolean y_() {
+      return true;
+   }
 
-      for (asi $$3 : $$0) {
-         if (!$$3.aa_()) {
-            this.a++;
-            if ($$3.fR()) {
-               this.b++;
-            }
-         }
-      }
+   @Override
+   public boolean z_() {
+      return true;
+   }
 
-      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
+   @Override
+   public boolean c() {
+      return this.e.m();
    }
 }

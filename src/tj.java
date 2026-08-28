@@ -1,28 +1,148 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface tj {
-   int a() default 100;
+public class tj {
+   private static final Collection<ub> a = Lists.newArrayList();
+   private static final Set<String> b = Sets.newHashSet();
+   private static final Map<String, Consumer<arx>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<arx>> d = Maps.newHashMap();
+   private static final Set<ub> e = Sets.newHashSet();
 
-   String b() default "defaultBatch";
+   public static void a(Class<?> $$0) {
+      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(tj::a);
+   }
 
-   boolean c() default false;
+   public static void a(Method $$0) {
+      String $$1 = $$0.getDeclaringClass().getSimpleName();
+      sy $$2 = $$0.getAnnotation(sy.class);
+      if ($$2 != null) {
+         a.add(c($$0));
+         b.add($$1);
+      }
 
-   int d() default 0;
+      tf $$3 = $$0.getAnnotation(tf.class);
+      if ($$3 != null) {
+         a.addAll(b($$0));
+         b.add($$1);
+      }
 
-   boolean e() default true;
+      a($$0, sw.class, sw::a, c);
+      a($$0, sv.class, sv::a, d);
+   }
 
-   boolean f() default false;
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<arx>> $$3) {
+      T $$4 = $$0.getAnnotation($$1);
+      if ($$4 != null) {
+         String $$5 = $$2.apply($$4);
+         Consumer<arx> $$6 = $$3.putIfAbsent($$5, (Consumer<arx>)d($$0));
+         if ($$6 != null) {
+            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
+         }
+      }
+   }
 
-   String g() default "";
+   public static Stream<ub> a(String $$0) {
+      return a.stream().filter($$1 -> a($$1, $$0));
+   }
 
-   long h() default 0L;
+   public static Collection<ub> a() {
+      return a;
+   }
 
-   int i() default 1;
+   public static Collection<String> b() {
+      return b;
+   }
 
-   int j() default 1;
+   public static boolean b(String $$0) {
+      return b.contains($$0);
+   }
+
+   public static Consumer<arx> c(String $$0) {
+      return c.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Consumer<arx> d(String $$0) {
+      return d.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Optional<ub> e(String $$0) {
+      return a().stream().filter($$1 -> $$1.c().equalsIgnoreCase($$0)).findFirst();
+   }
+
+   public static ub f(String $$0) {
+      Optional<ub> $$1 = e($$0);
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Can't find the test function for " + $$0);
+      } else {
+         return $$1.get();
+      }
+   }
+
+   private static Collection<ub> b(Method $$0) {
+      try {
+         Object $$1 = $$0.getDeclaringClass().newInstance();
+         return (Collection<ub>)$$0.invoke($$1);
+      } catch (ReflectiveOperationException var2) {
+         throw new RuntimeException(var2);
+      }
+   }
+
+   private static ub c(Method $$0) {
+      sy $$1 = $$0.getAnnotation(sy.class);
+      String $$2 = $$0.getDeclaringClass().getSimpleName();
+      String $$3 = $$2.toLowerCase();
+      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
+      String $$5 = $$1.g().isEmpty() ? $$4 : $$3 + "." + $$1.g();
+      String $$6 = $$1.b();
+      dqv $$7 = tx.a($$1.d());
+      return new ub($$6, $$4, $$5, $$7, $$1.a(), $$1.h(), $$1.e(), $$1.f(), $$1.j(), $$1.i(), $$1.c(), (Consumer<tg>)d($$0));
+   }
+
+   private static Consumer<?> d(Method $$0) {
+      return $$1 -> {
+         try {
+            Object $$2 = $$0.getDeclaringClass().newInstance();
+            $$0.invoke($$2, $$1);
+         } catch (InvocationTargetException var3) {
+            if (var3.getCause() instanceof RuntimeException) {
+               throw (RuntimeException)var3.getCause();
+            } else {
+               throw new RuntimeException(var3.getCause());
+            }
+         } catch (ReflectiveOperationException var4) {
+            throw new RuntimeException(var4);
+         }
+      };
+   }
+
+   private static boolean a(ub $$0, String $$1) {
+      return $$0.c().toLowerCase().startsWith($$1.toLowerCase() + ".");
+   }
+
+   public static Stream<ub> c() {
+      return e.stream();
+   }
+
+   public static void a(ub $$0) {
+      e.add($$0);
+   }
+
+   public static void d() {
+      e.clear();
+   }
 }

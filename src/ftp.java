@@ -1,82 +1,84 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ftp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cul<?>, ftp.a<?, ?>> b = Maps.newHashMap();
-
-   public static <T extends ctc> void a(cul<T> $$0, fmg $$1, int $$2, xv $$3) {
-      ftp.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", ma.p.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
-      }
-   }
-
+public class ftp extends ftr {
+   private static final xk a = xk.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier d;
+   private final ftp.a s;
    @Nullable
-   private static <T extends ctc> ftp.a<T, ?> a(cul<T> $$0) {
-      return (ftp.a<T, ?>)b.get($$0);
+   private hbg u;
+
+   public ftp(BooleanSupplier $$0, ftp.a $$1) {
+      super(flq.a);
+      this.d = $$0;
+      this.s = $$1;
+      this.c = ae.c();
    }
 
-   private static <M extends ctc, U extends fty & fvt<M>> void a(cul<? extends M> $$0, ftp.a<M, U> $$1) {
-      ftp.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + ma.p.b($$0));
+   @Override
+   public boolean aH_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aS_() {
+      return false;
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, -1);
+   }
+
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      switch (this.s) {
+         case a:
+            $$0.a(glq::G, this.l(), 0, 0, $$0.a(), $$0.b());
+            break;
+         case b:
+            $$0.b(glq.t(), 0, 0, this.n, this.o, 0);
+            break;
+         case c:
+            this.a($$0, $$3);
+            this.q();
+            this.a($$0);
       }
    }
 
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cul<?> $$1 : ma.p) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", ma.p.b($$1));
-            $$0 = true;
-         }
+   private hbg l() {
+      if (this.u != null) {
+         return this.u;
+      } else {
+         this.u = this.m.ap().a().a(dkf.eq.m());
+         return this.u;
       }
-
-      return $$0;
    }
 
-   static {
-      a(cul.a, fuz::new);
-      a(cul.b, fuz::new);
-      a(cul.c, fuz::new);
-      a(cul.d, fuz::new);
-      a(cul.e, fuz::new);
-      a(cul.f, fuz::new);
-      a(cul.g, fvf::new);
-      a(cul.h, fva::new);
-      a(cul.i, fur::new);
-      a(cul.j, fus::new);
-      a(cul.k, fut::new);
-      a(cul.l, fuw::new);
-      a(cul.m, fvb::new);
-      a(cul.n, fvi::new);
-      a(cul.o, fvj::new);
-      a(cul.p, fvk::new);
-      a(cul.q, fvm::new);
-      a(cul.r, fvr::new);
-      a(cul.s, fvs::new);
-      a(cul.t, fvu::new);
-      a(cul.u, fvx::new);
-      a(cul.v, fvz::new);
-      a(cul.w, fwa::new);
-      a(cul.x, fux::new);
-      a(cul.y, fwb::new);
+   @Override
+   public void e() {
+      if (this.d.getAsBoolean() || ae.c() > this.c + 30000L) {
+         this.aP_();
+      }
    }
 
-   interface a<T extends ctc, U extends fty & fvt<T>> {
-      default void a(xv $$0, cul<T> $$1, fmg $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.gi()), $$2.t.gi(), $$0);
-         $$2.t.cd = $$4.F();
-         $$2.a($$4);
-      }
+   @Override
+   public void aP_() {
+      this.m.aZ().c(xk.c("narrator.ready_to_play"));
+      super.aP_();
+   }
 
-      U create(T var1, cpw var2, xv var3);
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

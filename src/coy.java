@@ -1,44 +1,36 @@
-import java.util.Arrays;
+public interface coy {
+   String c_ = "Inventory";
 
-public enum coy {
-   a(0, axf.Cg, axf.Co),
-   b(40, axf.Cf, axf.Cp),
-   c(80, axf.Ch, axf.Cp);
+   bth t();
 
-   private static final coy[] d = ae.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final axe f;
-   private final axe g;
+   static void a(arx $$0, bvz $$1, coy $$2, cls $$3) {
+      cxg $$4 = $$3.l();
+      if ($$1.c($$0, $$4)) {
+         bth $$5 = $$2.t();
+         boolean $$6 = $$5.c($$4);
+         if (!$$6) {
+            return;
+         }
 
-   private coy(final int $$0, final axe $$1, final axe $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public axe b() {
-      return this.f;
-   }
-
-   public axe c() {
-      return this.g;
-   }
-
-   public static coy a(int $$0) {
-      for (coy $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
+         $$1.a($$3);
+         int $$7 = $$4.M();
+         cxg $$8 = $$5.b($$4);
+         $$1.a($$3, $$7 - $$8.M());
+         if ($$8.f()) {
+            $$3.at();
+         } else {
+            $$4.e($$8.M());
          }
       }
-
-      return a;
    }
 
-   public boolean d() {
-      return this == c;
+   default void a(um $$0, js.a $$1) {
+      if ($$0.b("Inventory", 9)) {
+         this.t().a($$0.c("Inventory", 10), $$1);
+      }
+   }
+
+   default void b(um $$0, js.a $$1) {
+      $$0.a("Inventory", this.t().a($$1));
    }
 }

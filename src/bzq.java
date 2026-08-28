@@ -1,29 +1,56 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bzq extends bxz<bwi> {
-   private final bso c;
-   private final float d;
-   private final float e;
-   private final float f;
-
-   public bzq(bso $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(cfk.n, cfl.b, cfk.Q, cfl.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+@Deprecated
+public class bzq {
+   public static bxr<bvx> a(float $$0, bsl $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   protected void a(ash $$0, bwi $$1, long $$2) {
-      bam $$3 = $$1.dZ();
-      float $$4 = bae.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = bae.h($$1.dM() + 2.0F * $$3.i() * this.d - this.d);
-      fby $$6 = fby.a($$4, $$5);
-      $$1.ec().a(cfk.n, new byc($$1.bF().e($$6)));
-      $$1.ec().a(cfk.Q, this.c.a($$3));
+   public static bxr<bvx> a(bvi<?> $$0, float $$1, bsl $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.aq()));
+   }
+
+   private static bxr<bvx> a(float $$0, bsl $$1, Predicate<bvx> $$2) {
+      float $$3 = $$0 * $$0;
+      bzq.a $$4 = new bzq.a($$1);
+      return cbd.a(
+         (Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$3x -> $$3x.group($$3x.c(cfb.n), $$3x.b(cfb.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bvx> $$9 = $$3x.<cfd>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((bvb)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.A)) {
+                        return false;
+                     } else {
+                        $$4x.a(new byb($$9.get(), true));
+                        return true;
+                     }
+                  }))
+      );
+   }
+
+   public static final class a {
+      private final bsl a;
+      private int b;
+
+      public a(bsl $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(bac $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

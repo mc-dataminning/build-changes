@@ -1,54 +1,40 @@
-import javax.annotation.Nullable;
+public abstract class fnp extends fnw {
+   protected static final int e = 2;
+   private static final fpm a = new fpm(alp.b("widget/button"), alp.b("widget/button_disabled"), alp.b("widget/button_highlighted"));
 
-public interface fnp {
-   static fnp a(fqd $$0) {
-      return new fnp.a($$0);
+   public fnp(int $$0, int $$1, int $$2, int $$3, xk $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Nullable
-   static fnp a(fqc $$0, @Nullable fnp $$1) {
-      return $$1 == null ? null : new fnp.b($$0, $$1);
+   public abstract void b();
+
+   @Override
+   protected void b(fnl $$0, int $$1, int $$2, float $$3) {
+      flz $$4 = flz.Q();
+      $$0.a(glq::H, a.a(this.j, this.B()), this.D(), this.E(), this.y(), this.w(), ayf.a(this.l));
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | azu.f(this.l * 255.0F) << 24);
    }
 
-   static fnp a(fqd $$0, fqc... $$1) {
-      fnp $$2 = a($$0);
-
-      for (fqc $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
+   public void a(fnl $$0, fnj $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
-   fqd a();
-
-   void a(boolean var1);
-
-   public static record a(fqd a) implements fnp {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
-      }
+   @Override
+   public void a(double $$0, double $$1) {
+      this.b();
    }
 
-   public static record b(fqc a, fnp b) implements fnp {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
-         }
-
-         this.b.a($$0);
-      }
-
-      public fqc b() {
-         return this.a;
-      }
-
-      public fnp c() {
-         return this.b;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (fsb.a($$0)) {
+         this.a(flz.Q().ak());
+         this.b();
+         return true;
+      } else {
+         return false;
       }
    }
 }

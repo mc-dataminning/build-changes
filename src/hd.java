@@ -8,23 +8,23 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public class hd {
-   public static <T, C, P> bpc<List<T>> a(hd.b<T, C, P> $$0) {
-      bos<List<T>> $$1 = bos.a("top");
-      bos<Optional<T>> $$2 = bos.a("type");
-      bos<bbk> $$3 = bos.a("any_type");
-      bos<T> $$4 = bos.a("element_type");
-      bos<T> $$5 = bos.a("tag_type");
-      bos<List<T>> $$6 = bos.a("conditions");
-      bos<List<T>> $$7 = bos.a("alternatives");
-      bos<T> $$8 = bos.a("term");
-      bos<T> $$9 = bos.a("negation");
-      bos<T> $$10 = bos.a("test");
-      bos<C> $$11 = bos.a("component_type");
-      bos<P> $$12 = bos.a("predicate_type");
-      bos<alz> $$13 = bos.a("id");
-      bos<vu> $$14 = bos.a("tag");
-      bou<StringReader> $$15 = new bou<>();
-      $$15.a($$1, bpb.b(bpb.a(bpb.a($$2), bph.a('['), bpb.a(), bpb.a(bpb.a($$6)), bph.a(']')), bpb.a($$2)), $$2x -> {
+   public static <T, C, P> bos<List<T>> a(hd.b<T, C, P> $$0) {
+      boi<List<T>> $$1 = boi.a("top");
+      boi<Optional<T>> $$2 = boi.a("type");
+      boi<bba> $$3 = boi.a("any_type");
+      boi<T> $$4 = boi.a("element_type");
+      boi<T> $$5 = boi.a("tag_type");
+      boi<List<T>> $$6 = boi.a("conditions");
+      boi<List<T>> $$7 = boi.a("alternatives");
+      boi<T> $$8 = boi.a("term");
+      boi<T> $$9 = boi.a("negation");
+      boi<T> $$10 = boi.a("test");
+      boi<C> $$11 = boi.a("component_type");
+      boi<P> $$12 = boi.a("predicate_type");
+      boi<alp> $$13 = boi.a("id");
+      boi<vj> $$14 = boi.a("tag");
+      bok<StringReader> $$15 = new bok<>();
+      $$15.a($$1, bor.b(bor.a(bor.a($$2), box.a('['), bor.a(), bor.a(bor.a($$6)), box.a(']')), bor.a($$2)), $$2x -> {
          Builder<T> $$3x = ImmutableList.builder();
          $$2x.b($$2).ifPresent($$3x::add);
          List<T> $$4x = $$2x.a($$6);
@@ -34,33 +34,33 @@ public class hd {
 
          return $$3x.build();
       });
-      $$15.a($$2, bpb.b(bpb.a($$4), bpb.a(bph.a('#'), bpb.a(), bpb.a($$5)), bpb.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
-      $$15.a($$3, bph.a('*'), $$0x -> bbk.a);
+      $$15.a($$2, bor.b(bor.a($$4), bor.a(box.a('#'), bor.a(), bor.a($$5)), bor.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
+      $$15.a($$3, box.a('*'), $$0x -> bba.a);
       $$15.a($$4, new hd.c<>($$13, $$0));
       $$15.a($$5, new hd.e<>($$13, $$0));
-      $$15.a($$6, bpb.a(bpb.a($$7), bpb.a(bpb.a(bph.a(','), bpb.a($$6)))), $$3x -> {
+      $$15.a($$6, bor.a(bor.a($$7), bor.a(bor.a(box.a(','), bor.a($$6)))), $$3x -> {
          T $$4x = $$0.a($$3x.b($$7));
          return Optional.ofNullable($$3x.a($$6)).map($$1xx -> ae.a($$4x, $$1xx)).orElse(List.of($$4x));
       });
-      $$15.a($$7, bpb.a(bpb.a($$8), bpb.a(bpb.a(bph.a('|'), bpb.a($$7)))), $$2x -> {
+      $$15.a($$7, bor.a(bor.a($$8), bor.a(bor.a(box.a('|'), bor.a($$7)))), $$2x -> {
          T $$3x = $$2x.b($$8);
          return Optional.ofNullable($$2x.a($$7)).map($$1xx -> ae.a($$3x, $$1xx)).orElse(List.of($$3x));
       });
-      $$15.a($$8, bpb.b(bpb.a($$10), bpb.a(bph.a('!'), bpb.a($$9))), $$2x -> $$2x.b($$10, $$9));
-      $$15.a($$9, bpb.a($$10), $$2x -> $$0.a($$2x.b($$10)));
+      $$15.a($$8, bor.b(bor.a($$10), bor.a(box.a('!'), bor.a($$9))), $$2x -> $$2x.b($$10, $$9));
+      $$15.a($$9, bor.a($$10), $$2x -> $$0.a($$2x.b($$10)));
       $$15.a(
          $$10,
-         bpb.b(bpb.a(bpb.a($$11), bph.a('='), bpb.a(), bpb.a($$14)), bpb.a(bpb.a($$12), bph.a('~'), bpb.a(), bpb.a($$14)), bpb.a($$11)),
+         bor.b(bor.a(bor.a($$11), box.a('='), bor.a(), bor.a($$14)), bor.a(bor.a($$12), box.a('~'), bor.a(), bor.a($$14)), bor.a($$11)),
          ($$4x, $$5x) -> {
             P $$6x = $$5x.a($$12);
 
             try {
                if ($$6x != null) {
-                  vu $$7x = $$5x.b($$14);
+                  vj $$7x = $$5x.b($$14);
                   return Optional.of($$0.b((ImmutableStringReader)$$4x.b(), $$6x, $$7x));
                } else {
                   C $$8x = $$5x.b($$11);
-                  vu $$9x = $$5x.a($$14);
+                  vj $$9x = $$5x.a($$14);
                   return Optional.of($$9x != null ? $$0.a((ImmutableStringReader)$$4x.b(), $$8x, $$9x) : $$0.a((ImmutableStringReader)$$4x.b(), $$8x));
                }
             } catch (CommandSyntaxException var9x) {
@@ -71,99 +71,99 @@ public class hd {
       );
       $$15.a($$11, new hd.a<>($$13, $$0));
       $$15.a($$12, new hd.d<>($$13, $$0));
-      $$15.a($$14, bpi.a);
-      $$15.a($$13, bpd.a);
-      return new bpc<>($$15, $$1);
+      $$15.a($$14, boy.a);
+      $$15.a($$13, bot.a);
+      return new bos<>($$15, $$1);
    }
 
-   static class a<T, C, P> extends bpe<hd.b<T, C, P>, C> {
-      a(bos<alz> $$0, hd.b<T, C, P> $$1) {
+   static class a<T, C, P> extends bou<hd.b<T, C, P>, C> {
+      a(boi<alp> $$0, hd.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
       @Override
-      protected C a(ImmutableStringReader $$0, alz $$1) throws Exception {
+      protected C a(ImmutableStringReader $$0, alp $$1) throws Exception {
          return this.a.c($$0, $$1);
       }
 
       @Override
-      public Stream<alz> a() {
+      public Stream<alp> a() {
          return this.a.c();
       }
    }
 
    public interface b<T, C, P> {
-      T a(ImmutableStringReader var1, alz var2) throws CommandSyntaxException;
+      T a(ImmutableStringReader var1, alp var2) throws CommandSyntaxException;
 
-      Stream<alz> a();
+      Stream<alp> a();
 
-      T b(ImmutableStringReader var1, alz var2) throws CommandSyntaxException;
+      T b(ImmutableStringReader var1, alp var2) throws CommandSyntaxException;
 
-      Stream<alz> b();
+      Stream<alp> b();
 
-      C c(ImmutableStringReader var1, alz var2) throws CommandSyntaxException;
+      C c(ImmutableStringReader var1, alp var2) throws CommandSyntaxException;
 
-      Stream<alz> c();
+      Stream<alp> c();
 
-      T a(ImmutableStringReader var1, C var2, vu var3) throws CommandSyntaxException;
+      T a(ImmutableStringReader var1, C var2, vj var3) throws CommandSyntaxException;
 
       T a(ImmutableStringReader var1, C var2);
 
-      P d(ImmutableStringReader var1, alz var2) throws CommandSyntaxException;
+      P d(ImmutableStringReader var1, alp var2) throws CommandSyntaxException;
 
-      Stream<alz> d();
+      Stream<alp> d();
 
-      T b(ImmutableStringReader var1, P var2, vu var3) throws CommandSyntaxException;
+      T b(ImmutableStringReader var1, P var2, vj var3) throws CommandSyntaxException;
 
       T a(T var1);
 
       T a(List<T> var1);
    }
 
-   static class c<T, C, P> extends bpe<hd.b<T, C, P>, T> {
-      c(bos<alz> $$0, hd.b<T, C, P> $$1) {
+   static class c<T, C, P> extends bou<hd.b<T, C, P>, T> {
+      c(boi<alp> $$0, hd.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
       @Override
-      protected T a(ImmutableStringReader $$0, alz $$1) throws Exception {
+      protected T a(ImmutableStringReader $$0, alp $$1) throws Exception {
          return this.a.a($$0, $$1);
       }
 
       @Override
-      public Stream<alz> a() {
+      public Stream<alp> a() {
          return this.a.a();
       }
    }
 
-   static class d<T, C, P> extends bpe<hd.b<T, C, P>, P> {
-      d(bos<alz> $$0, hd.b<T, C, P> $$1) {
+   static class d<T, C, P> extends bou<hd.b<T, C, P>, P> {
+      d(boi<alp> $$0, hd.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
       @Override
-      protected P a(ImmutableStringReader $$0, alz $$1) throws Exception {
+      protected P a(ImmutableStringReader $$0, alp $$1) throws Exception {
          return this.a.d($$0, $$1);
       }
 
       @Override
-      public Stream<alz> a() {
+      public Stream<alp> a() {
          return this.a.d();
       }
    }
 
-   static class e<T, C, P> extends bpe<hd.b<T, C, P>, T> {
-      e(bos<alz> $$0, hd.b<T, C, P> $$1) {
+   static class e<T, C, P> extends bou<hd.b<T, C, P>, T> {
+      e(boi<alp> $$0, hd.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
       @Override
-      protected T a(ImmutableStringReader $$0, alz $$1) throws Exception {
+      protected T a(ImmutableStringReader $$0, alp $$1) throws Exception {
          return this.a.b($$0, $$1);
       }
 
       @Override
-      public Stream<alz> a() {
+      public Stream<alp> a() {
          return this.a.b();
       }
    }

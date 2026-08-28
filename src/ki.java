@@ -1,7 +1,7 @@
 import io.netty.buffer.ByteBuf;
 
 public class ki {
-   public static final zt<ByteBuf, ki> a = new zt<ByteBuf, ki>() {
+   public static final zi<ByteBuf, ki> a = new zi<ByteBuf, ki>() {
       public ki a(ByteBuf $$0) {
          return new ki($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
       }
@@ -22,15 +22,15 @@ public class ki {
       this.d = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   public ki(vd $$0) {
+   public ki(us $$0) {
       this($$0.i(0), $$0.i(1), $$0.i(2));
    }
 
-   public vd a() {
-      vd $$0 = new vd();
-      $$0.add(va.a(this.b));
-      $$0.add(va.a(this.c));
-      $$0.add(va.a(this.d));
+   public us a() {
+      us $$0 = new us();
+      $$0.add(up.a(this.b));
+      $$0.add(up.a(this.c));
+      $$0.add(up.a(this.d));
       return $$0;
    }
 
@@ -52,14 +52,14 @@ public class ki {
    }
 
    public float e() {
-      return bae.h(this.b);
+      return azu.h(this.b);
    }
 
    public float f() {
-      return bae.h(this.c);
+      return azu.h(this.c);
    }
 
    public float g() {
-      return bae.h(this.d);
+      return azu.h(this.d);
    }
 }

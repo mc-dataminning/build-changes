@@ -1,48 +1,38 @@
-import com.google.common.collect.Iterables;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
+import java.util.Collection;
 
 public class aol {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.help.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.op.failed"));
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("help").executes($$1 -> {
-               Map<CommandNode<ew>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ew)$$1.getSource());
-
-               for (String $$3 : $$2.values()) {
-                  ((ew)$$1.getSource()).a(() -> xv.b("/" + $$3), false);
-               }
-
-               return $$2.size();
-            }))
-            .then(
-               ex.a("command", StringArgumentType.greedyString())
-                  .executes(
-                     $$1 -> {
-                        ParseResults<ew> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ew)$$1.getSource());
-                        if ($$2.getContext().getNodes().isEmpty()) {
-                           throw a.create();
-                        } else {
-                           Map<CommandNode<ew>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ew)$$1.getSource()
-                           );
-
-                           for (String $$4 : $$3.values()) {
-                              ((ew)$$1.getSource()).a(() -> xv.b("/" + $$2.getReader().getString() + " " + $$4), false);
-                           }
-
-                           return $$3.size();
-                        }
-                     }
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("op").requires($$0x -> $$0x.c(3))).then(ex.a("targets", fl.a()).suggests(($$0x, $$1) -> {
+            avy $$2 = ((ew)$$0x.getSource()).l().ag();
+            return fb.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gh())).map($$0xx -> $$0xx.gh().getName()), $$1);
+         }).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"))))
       );
+   }
+
+   private static int a(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avy $$2 = $$0.l().ag();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.f($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> xk.a("commands.op.success", $$1.iterator().next().getName()), true);
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         return $$3;
+      }
    }
 }

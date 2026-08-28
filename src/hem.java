@@ -1,20 +1,17 @@
-import java.util.UUID;
+public abstract class hem extends hel implements hfe {
+   private boolean n;
 
-public interface hem {
-   void a(UUID var1, hem.b var2);
-
-   void a(UUID var1, hem.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   protected hem(awu $$0, aww $$1, bac $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static enum b {
-      a,
-      b;
+   @Override
+   public boolean m() {
+      return this.n;
+   }
+
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

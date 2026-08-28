@@ -1,110 +1,78 @@
-import java.util.List;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class chv extends cht {
-   @Nullable
-   private chv a;
-   private int b = 1;
+public class chv extends cho {
+   private static final bve bZ = bvi.C.n().a(0.5F).b(0.665F);
 
-   public chv(bvr<? extends chv> $$0, dhi $$1) {
+   public chv(bvi<? extends chv> $$0, dgz $$1) {
       super($$0, $$1);
    }
 
    @Override
    protected void B() {
-      super.B();
-      this.bT.a(5, new cda(this));
+      this.bT.a(0, new ccp(this));
+      this.bT.a(1, new cdo(this, 2.0));
+      this.bT.a(2, new cch(this, 1.0));
+      this.bT.a(3, new ced(this, 1.25, $$0 -> $$0.a(axt.af), false));
+      this.bT.a(4, new ccu(this, 1.25));
+      this.bT.a(5, new cei(this, 1.0));
+      this.bT.a(6, new cdd(this, cpo.class, 6.0F));
+      this.bT.a(7, new cdq(this));
    }
 
    @Override
-   public int ad() {
-      return this.gp();
+   public boolean j(cxg $$0) {
+      return $$0.a(axt.af);
    }
 
-   public int gp() {
-      return super.ad();
-   }
-
-   @Override
-   protected boolean x() {
-      return !this.gq();
-   }
-
-   public boolean gq() {
-      return this.a != null && this.a.bL();
-   }
-
-   public chv a(chv $$0) {
-      this.a = $$0;
-      $$0.gw();
-      return $$0;
-   }
-
-   public void gr() {
-      this.a.gx();
-      this.a = null;
-   }
-
-   private void gw() {
-      this.b++;
-   }
-
-   private void gx() {
-      this.b--;
-   }
-
-   public boolean gs() {
-      return this.gt() && this.b < this.gp();
+   public static bxe.a p() {
+      return cho.gt().a(bxf.s, 10.0).a(bxf.v, 0.2F);
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.gt() && this.dW().A.a(200) == 1) {
-         List<? extends cht> $$0 = this.dW().a((Class<? extends cht>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.b = 1;
-         }
+   protected awu u() {
+      return awv.gd;
+   }
+
+   @Override
+   protected awu e(btr $$0) {
+      return awv.gf;
+   }
+
+   @Override
+   protected awu o_() {
+      return awv.ge;
+   }
+
+   @Override
+   protected void b(jh $$0, dxo $$1) {
+      this.a(awv.gh, 0.15F, 1.0F);
+   }
+
+   @Override
+   protected float fg() {
+      return 0.4F;
+   }
+
+   @Override
+   public bta b(cpo $$0, bsz $$1) {
+      cxg $$2 = $$0.b($$1);
+      if ($$2.a(cxk.rf) && !this.e_()) {
+         $$0.a(awv.gg, 1.0F, 1.0F);
+         cxg $$3 = cxj.a($$2, $$0, cxk.rl.n());
+         $$0.a($$1, $$3);
+         return bta.a;
+      } else {
+         return super.b($$0, $$1);
       }
-   }
-
-   public boolean gt() {
-      return this.b > 1;
-   }
-
-   public boolean gu() {
-      return this.g(this.a) <= 121.0;
-   }
-
-   public void gv() {
-      if (this.gq()) {
-         this.L().a(this.a, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends chv> $$0) {
-      $$0.limit((long)(this.gp() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
    }
 
    @Nullable
-   @Override
-   public bwz a(dhz $$0, bth $$1, bvq $$2, @Nullable bwz $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new chv.a(this);
-      } else {
-         this.a(((chv.a)$$3).a);
-      }
-
-      return $$3;
+   public chv b(arx $$0, bus $$1) {
+      return bvi.C.a($$0, bvh.e);
    }
 
-   public static class a implements bwz {
-      public final chv a;
-
-      public a(chv $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public bve e(bwj $$0) {
+      return this.e_() ? bZ : super.e($$0);
    }
 }

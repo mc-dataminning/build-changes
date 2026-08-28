@@ -1,29 +1,31 @@
-public class hez extends her {
-   private final bvk n;
+public class hez extends hem {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final ckf p;
 
-   public hez(axe $$0, axg $$1, float $$2, float $$3, bvk $$4, long $$5) {
-      super($$0, $$1, bam.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.dB());
-      this.g = (double)((float)this.n.dD());
-      this.h = (double)((float)this.n.dH());
+   public hez(ckf $$0) {
+      super(awv.zj, aww.g, hfd.t());
+      this.p = $$0;
+      this.k = hfd.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
    @Override
    public boolean s() {
-      return !this.n.bb();
+      return !this.p.bb();
    }
 
    @Override
    public void q() {
-      if (this.n.dR()) {
-         this.n();
+      if (!this.p.dR() && this.p.O_() == null && this.p.gp()) {
+         this.f = (double)((float)this.p.dB());
+         this.g = (double)((float)this.p.dD());
+         this.h = (double)((float)this.p.dH());
+         this.d = 1.0F;
+         this.e = 1.0F;
       } else {
-         this.f = (double)((float)this.n.dB());
-         this.g = (double)((float)this.n.dD());
-         this.h = (double)((float)this.n.dH());
+         this.n();
       }
    }
 }

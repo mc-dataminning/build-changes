@@ -1,36 +1,29 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+public class afh implements zr<acg> {
+   public static final zi<wh, afh> a = zr.a(afh::a, afh::new);
+   private final double b;
 
-public class afh implements aac<acr> {
-   public static final zt<ws, afh> a = aac.a(afh::a, afh::new);
-   private final IntList b;
-
-   public afh(IntList $$0) {
-      this.b = new IntArrayList($$0);
+   public afh(dze $$0) {
+      this.b = $$0.k();
    }
 
-   public afh(int... $$0) {
-      this.b = new IntArrayList($$0);
+   private afh(wh $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private afh(ws $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(ws $$0) {
+   private void a(wh $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public aae<afh> a() {
-      return ahk.an;
+   public zt<afh> a() {
+      return agz.ax;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
+   public double b() {
       return this.b;
    }
 }

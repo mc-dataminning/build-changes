@@ -1,12 +1,25 @@
-import java.util.Optional;
-import java.util.function.Predicate;
-
 public interface dho {
-   boolean a(jh var1, Predicate<dxv> var2);
+   <T> fdj<T> a(jh var1, T var2, int var3, fdn var4);
 
-   boolean b(jh var1, Predicate<etx> var2);
+   <T> fdj<T> a(jh var1, T var2, int var3);
 
-   <T extends dux> Optional<T> a(jh var1, duz<T> var2);
+   fdf<dkd> U();
 
-   jh a(edq.a var1, jh var2);
+   default void a(jh $$0, dkd $$1, int $$2, fdn $$3) {
+      this.U().a(this.a($$0, $$1, $$2, $$3));
+   }
+
+   default void a(jh $$0, dkd $$1, int $$2) {
+      this.U().a(this.a($$0, $$1, $$2));
+   }
+
+   fdf<etp> T();
+
+   default void a(jh $$0, etp $$1, int $$2, fdn $$3) {
+      this.T().a(this.a($$0, $$1, $$2, $$3));
+   }
+
+   default void a(jh $$0, etp $$1, int $$2) {
+      this.T().a(this.a($$0, $$1, $$2));
+   }
 }

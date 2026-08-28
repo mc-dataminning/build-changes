@@ -1,70 +1,88 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Streams;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public class or {
-   private final Optional<alz> a;
-   private final Set<ou> b;
-   private final Optional<String> c;
+   public static final or.a a = a(op::a, oo.c);
+   public static final or.a b = a(op::a, oo.d);
+   public static final or.a c = a(op::a, oo.e);
+   public static final or.a d = a(op::n, oo.j);
+   public static final or.a e = a(op::n, oo.k);
+   public static final or.a f = a(op::t, oo.n);
+   public static final or.a g = a(op::o, oo.m);
+   public static final or.a h = a(op::E, oo.p);
+   public static final or.a i = a(op::D, oo.q);
+   public static final or.a j = a(op::i, oo.ay);
+   public static final or.a k = a(op::d, oo.az);
+   public static final or.a l = a(op::j, oo.aA);
+   public static final or.a m = a(op::j, oo.aB);
+   public static final or.a n = a(op::j, oo.aC);
+   public static final or.a o = a(op::j, oo.aD);
+   public static final or.a p = a(op::l, oo.aG);
+   public static final or.a q = a(op::m, oo.aE);
+   public static final or.a r = a(op::x, oo.aa);
+   public static final or.a s = a(op::G, oo.aV);
+   public static final or.a t = a(op::a, oo.ad);
+   public static final or.a u = a(op::A, oo.bg);
+   public static final or.a v = a(op::A, oo.bh);
+   public static final or.a w = a(op::b, oo.br);
+   public static final or.a x = a(op::q, oo.j);
+   public static final or.a y = a(op::q, oo.k);
+   public static final or.a z = a(op::u, oo.n);
+   public static final or.a A = a(op::v, oo.j);
+   private final op B;
+   private final on C;
 
-   public or(Optional<alz> $$0, Optional<String> $$1, ou... $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.b = ImmutableSet.copyOf($$2);
+   private or(op $$0, on $$1) {
+      this.B = $$0;
+      this.C = $$1;
    }
 
-   public alz a(dkm $$0) {
-      return oq.a($$0, this.c.orElse(""));
+   public on a() {
+      return this.C;
    }
 
-   public alz a(dkm $$0, ot $$1, BiConsumer<alz, Supplier<JsonElement>> $$2) {
-      return this.a(oq.a($$0, this.c.orElse("")), $$1, $$2);
+   public op b() {
+      return this.B;
    }
 
-   public alz a(dkm $$0, String $$1, ot $$2, BiConsumer<alz, Supplier<JsonElement>> $$3) {
-      return this.a(oq.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
+   public or a(Consumer<op> $$0) {
+      $$0.accept(this.B);
+      return this;
    }
 
-   public alz b(dkm $$0, String $$1, ot $$2, BiConsumer<alz, Supplier<JsonElement>> $$3) {
-      return this.a(oq.a($$0, $$1), $$2, $$3);
+   public alp a(dkd $$0, BiConsumer<alp, Supplier<JsonElement>> $$1) {
+      return this.C.a($$0, this.B, $$1);
    }
 
-   public alz a(alz $$0, ot $$1, BiConsumer<alz, Supplier<JsonElement>> $$2) {
-      return this.a($$0, $$1, $$2, this::a);
+   public alp a(dkd $$0, String $$1, BiConsumer<alp, Supplier<JsonElement>> $$2) {
+      return this.C.a($$0, $$1, this.B, $$2);
    }
 
-   public alz a(alz $$0, ot $$1, BiConsumer<alz, Supplier<JsonElement>> $$2, or.a $$3) {
-      Map<ou, alz> $$4 = this.a($$1);
-      $$2.accept($$0, () -> $$3.create($$0, $$4));
-      return $$0;
+   private static or.a a(Function<dkd, op> $$0, on $$1) {
+      return $$2 -> new or($$0.apply($$2), $$1);
    }
 
-   public JsonObject a(alz $$0, Map<ou, alz> $$1) {
-      JsonObject $$2 = new JsonObject();
-      this.a.ifPresent($$1x -> $$2.addProperty("parent", $$1x.toString()));
-      if (!$$1.isEmpty()) {
-         JsonObject $$3 = new JsonObject();
-         $$1.forEach(($$1x, $$2x) -> $$3.addProperty($$1x.a(), $$2x.toString()));
-         $$2.add("textures", $$3);
+   public static or a(alp $$0) {
+      return new or(op.b($$0), oo.c);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      or get(dkd var1);
+
+      default alp create(dkd $$0, BiConsumer<alp, Supplier<JsonElement>> $$1) {
+         return this.get($$0).a($$0, $$1);
       }
 
-      return $$2;
-   }
+      default alp createWithSuffix(dkd $$0, String $$1, BiConsumer<alp, Supplier<JsonElement>> $$2) {
+         return this.get($$0).a($$0, $$1, $$2);
+      }
 
-   private Map<ou, alz> a(ot $$0) {
-      return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
-   }
-
-   public interface a {
-      JsonObject create(alz var1, Map<ou, alz> var2);
+      default or.a updateTexture(Consumer<op> $$0) {
+         return $$1 -> this.get($$1).a($$0);
+      }
    }
 }

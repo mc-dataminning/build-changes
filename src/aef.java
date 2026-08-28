@@ -1,53 +1,33 @@
-public class aef implements aac<acr> {
-   public static final zt<ws, aef> a = aac.a(aef::a, aef::new);
+public class aef implements zr<acg> {
+   public static final zi<wv, aef> a = zi.a(zg.w, aef::b, zg.a(mb.V), aef::e, xm.d, aef::f, aef::new);
    private final int b;
-   private final jh c;
-   private final int d;
-   private final boolean e;
+   private final cuc<?> c;
+   private final xk d;
 
-   public aef(int $$0, jh $$1, int $$2, boolean $$3) {
+   public aef(int $$0, cuc<?> $$1, xk $$2) {
       this.b = $$0;
-      this.c = $$1.j();
+      this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-   }
-
-   private aef(ws $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.e();
-      this.d = $$0.readInt();
-      this.e = $$0.readBoolean();
-   }
-
-   private void a(ws $$0) {
-      $$0.q(this.b);
-      $$0.a(this.c);
-      $$0.q(this.d);
-      $$0.a(this.e);
    }
 
    @Override
-   public aae<aef> a() {
-      return ahk.L;
+   public zt<aef> a() {
+      return agz.X;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.e;
-   }
-
-   public int e() {
+   public int b() {
       return this.b;
    }
 
-   public int f() {
-      return this.d;
+   public cuc<?> e() {
+      return this.c;
    }
 
-   public jh g() {
-      return this.c;
+   public xk f() {
+      return this.d;
    }
 }

@@ -1,65 +1,76 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.function.BiFunction;
 
-public class exy extends eyc {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<exy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(aly.a(mb.bh).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, exy::new)
-   );
-   private final aly<eyd> c;
+public class exy {
+   public static final BiFunction<cxg, ewi, cxg> a = ($$0, $$1) -> $$0;
+   public static final Codec<exw> b = ma.E.q().dispatch("function", exw::b, exx::a);
+   public static final Codec<exw> c = Codec.lazyInitialized(() -> Codec.withAlternative(b, eya.b));
+   public static final Codec<jq<exw>> d = all.a(mb.bh, c);
+   public static final exx<eyn> e = a("set_count", eyn.a);
+   public static final exx<eyp> f = a("set_item", eyp.a);
+   public static final exx<exm> g = a("enchant_with_levels", exm.a);
+   public static final exx<exl> h = a("enchant_randomly", exl.a);
+   public static final exx<eyj> i = a("set_enchantments", eyj.a);
+   public static final exx<eyh> j = a("set_custom_data", eyh.a);
+   public static final exx<eye> k = a("set_components", eye.a);
+   public static final exx<eyx> l = a("furnace_smelt", eyx.a);
+   public static final exx<exn> m = a("enchanted_count_increase", exn.b);
+   public static final exx<eyo> n = a("set_damage", eyo.a);
+   public static final exx<eyb> o = a("set_attributes", eyb.a);
+   public static final exx<eyr> p = a("set_name", eyr.a);
+   public static final exx<exo> q = a("exploration_map", exo.f);
+   public static final exx<eyu> r = a("set_stew_effect", eyu.a);
+   public static final exx<exk> s = a("copy_name", exk.a);
+   public static final exx<eyf> t = a("set_contents", eyf.a);
+   public static final exx<exz> u = a("modify_contents", exz.a);
+   public static final exx<exq> v = a("filtered", exq.a);
+   public static final exx<ext> w = a("limit_count", ext.a);
+   public static final exx<exf> x = a("apply_bonus", exf.a);
+   public static final exx<eyg> y = a("set_loot_table", eyg.a);
+   public static final exx<exg> z = a("explosion_decay", exg.a);
+   public static final exx<eyq> A = a("set_lore", eyq.a);
+   public static final exx<exp> B = a("fill_player_head", exp.a);
+   public static final exx<exj> C = a("copy_custom_data", exj.a);
+   public static final exx<exh> D = a("copy_state", exh.a);
+   public static final exx<eyc> E = a("set_banner_pattern", eyc.a);
+   public static final exx<eyt> F = a("set_potion", eyt.a);
+   public static final exx<eym> G = a("set_instrument", eym.a);
+   public static final exx<exr> H = a("reference", exr.a);
+   public static final exx<eya> I = a("sequence", eya.a);
+   public static final exx<exi> J = a("copy_components", exi.a);
+   public static final exx<eyl> K = a("set_fireworks", eyl.a);
+   public static final exx<eyk> L = a("set_firework_explosion", eyk.a);
+   public static final exx<eyd> M = a("set_book_cover", eyd.a);
+   public static final exx<eyw> N = a("set_written_book_pages", eyw.b);
+   public static final exx<eyv> O = a("set_writable_book_pages", eyv.a);
+   public static final exx<eyy> P = a("toggle_tooltips", eyy.a);
+   public static final exx<eys> Q = a("set_ominous_bottle_amplifier", eys.a);
+   public static final exx<eyi> R = a("set_custom_model_data", eyi.a);
 
-   private exy(List<ezy> $$0, aly<eyd> $$1) {
-      super($$0);
-      this.c = $$1;
+   private static <T extends exw> exx<T> a(String $$0, MapCodec<T> $$1) {
+      return kd.a(ma.E, alp.b($$0), new exx<>($$1));
    }
 
-   @Override
-   public eye<exy> b() {
-      return eyf.H;
-   }
+   public static BiFunction<cxg, ewi, cxg> a(List<? extends BiFunction<cxg, ewi, cxg>> $$0) {
+      List<BiFunction<cxg, ewi, cxg>> $$1 = List.copyOf($$0);
 
-   @Override
-   public void a(ewv $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .c(this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
-      }
-   }
-
-   @Override
-   protected cxp a(cxp $$0, ewp $$1) {
-      eyd $$2 = $$1.a().c(this.c).map(jq::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         ewp.c<?> $$3 = ewp.a($$2);
-         if ($$1.b($$3)) {
-            cxp var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
+      return switch ($$1.size()) {
+         case 0 -> a;
+         case 1 -> (BiFunction)$$1.get(0);
+         case 2 -> {
+            BiFunction<cxg, ewi, cxg> $$2 = $$1.get(0);
+            BiFunction<cxg, ewi, cxg> $$3 = $$1.get(1);
+            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
          }
-      }
-   }
+         default -> ($$1x, $$2x) -> {
+         for (BiFunction<cxg, ewi, cxg> $$3x : $$1) {
+            $$1x = $$3x.apply($$1x, $$2x);
+         }
 
-   public static eyc.a<?> a(aly<eyd> $$0) {
-      return a($$1 -> new exy($$1, $$0));
+         return $$1x;
+      };
+      };
    }
 }

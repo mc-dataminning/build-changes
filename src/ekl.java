@@ -1,28 +1,48 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekl extends ekh {
-   public static final MapCodec<ekl> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ekl::new));
+public class ekl extends ekf {
+   public static final MapCodec<ekl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bsf.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ekl::new)
+   );
+   private final bsf b;
 
-   public ekl(bso $$0, bso $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public ekl(bsf $$0, bsf $$1, bsf $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected ekn<?> a() {
-      return ekn.f;
+   protected ekg<?> a() {
+      return ekg.b;
    }
 
    @Override
-   protected void a(dho $$0, ekm.b $$1, bam $$2, ejw $$3, int $$4, ekm.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+   protected void a(dhf $$0, ekf.b $$1, bac $$2, ejp $$3, int $$4, ekf.a $$5, int $$6, int $$7, int $$8) {
+      jh $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
       }
    }
 
    @Override
-   protected boolean a(bam $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return bae.l((float)$$1 + 0.5F) + bae.l((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public int a(bac $$0, int $$1, ejp $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(bac $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,32 +1,45 @@
-import javax.annotation.Nullable;
+public class afv implements zr<acg> {
+   public static final zi<wh, afv> a = zr.a(afv::a, afv::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-public class afv implements aac<acr> {
-   public static final zt<ws, afv> a = aac.a(afv::a, afv::new);
-   private final int b;
-
-   public afv(bvk $$0) {
-      this.b = $$0.ar();
+   public afv(float $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afv(ws $$0) {
-      this.b = $$0.l();
+   private afv(wh $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(ws $$0) {
-      $$0.c(this.b);
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aae<afv> a() {
-      return ahk.aA;
+   public zt<afv> a() {
+      return agz.aK;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bvk a(dhi $$0) {
-      return $$0.a(this.b);
+   public float b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

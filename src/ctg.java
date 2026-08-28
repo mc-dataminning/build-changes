@@ -1,43 +1,34 @@
-import com.mojang.datafixers.util.Pair;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
-class ctg extends cuz {
-   private final bwg a;
-   private final bvs b;
-   @Nullable
-   private final alz g;
+public interface ctg {
+   ctg a = new ctg() {
+      @Override
+      public <T> Optional<T> a(BiFunction<dgz, jh, T> $$0) {
+         return Optional.empty();
+      }
+   };
 
-   public ctg(btc $$0, bwg $$1, bvs $$2, int $$3, int $$4, int $$5, @Nullable alz $$6) {
-      super($$0, $$3, $$4, $$5);
-      this.a = $$1;
-      this.b = $$2;
-      this.g = $$6;
+   static ctg a(final dgz $$0, final jh $$1) {
+      return new ctg() {
+         @Override
+         public <T> Optional<T> a(BiFunction<dgz, jh, T> $$0x) {
+            return Optional.of($$0.apply($$0, $$1));
+         }
+      };
    }
 
-   @Override
-   public void a(cxp $$0, cxp $$1) {
-      this.a.a(this.b, $$1, $$0);
-      super.a($$0, $$1);
+   <T> Optional<T> a(BiFunction<dgz, jh, T> var1);
+
+   default <T> T a(BiFunction<dgz, jh, T> $$0, T $$1) {
+      return this.a($$0).orElse($$1);
    }
 
-   @Override
-   public int a() {
-      return 1;
-   }
-
-   @Override
-   public boolean a(cxp $$0) {
-      return this.b == this.a.f($$0);
-   }
-
-   @Override
-   public boolean a(cpx $$0) {
-      cxp $$1 = this.g();
-      return !$$1.f() && !$$0.b() && deb.a($$1, dea.E) ? false : super.a($$0);
-   }
-
-   @Override
-   public Pair<alz, alz> b() {
-      return this.g != null ? Pair.of(cuf.B, this.g) : super.b();
+   default void a(BiConsumer<dgz, jh> $$0) {
+      this.a(($$1, $$2) -> {
+         $$0.accept($$1, $$2);
+         return Optional.empty();
+      });
    }
 }

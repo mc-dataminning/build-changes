@@ -1,72 +1,59 @@
-import it.unimi.dsi.fastutil.Stack;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.google.common.net.InetAddresses;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class amz {
-   private static final int a = 2;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.banip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.banip.failed"));
 
-   private static amz.b a(ag $$0, boolean $$1) {
-      Optional<at> $$2 = $$0.c();
-      if ($$2.isEmpty()) {
-         return amz.b.b;
-      } else if ($$1) {
-         return amz.b.a;
+   public static void a(CommandDispatcher<ew> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("ban-ip").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("target", StringArgumentType.word())
+                     .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
+                  .then(ex.a("reason", fn.a()).executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), fn.a($$0x, "reason"))))
+            )
+      );
+   }
+
+   private static int a(ew $$0, String $$1, @Nullable xk $$2) throws CommandSyntaxException {
+      if (InetAddresses.isInetAddress($$1)) {
+         return b($$0, $$1, $$2);
       } else {
-         return $$2.get().j() ? amz.b.b : amz.b.c;
-      }
-   }
-
-   private static boolean a(Stack<amz.b> $$0) {
-      for (int $$1 = 0; $$1 <= 2; $$1++) {
-         amz.b $$2 = (amz.b)$$0.peek($$1);
-         if ($$2 == amz.b.a) {
-            return true;
-         }
-
-         if ($$2 == amz.b.b) {
-            return false;
+         ary $$3 = $$0.l().ag().a($$1);
+         if ($$3 != null) {
+            return b($$0, $$3.B(), $$2);
+         } else {
+            throw a.create();
          }
       }
-
-      return false;
    }
 
-   private static boolean a(ai $$0, Stack<amz.b> $$1, Predicate<ai> $$2, amz.a $$3) {
-      boolean $$4 = $$2.test($$0);
-      amz.b $$5 = a($$0.a(), $$4);
-      boolean $$6 = $$4;
-      $$1.push($$5);
+   private static int b(ew $$0, String $$1, @Nullable xk $$2) throws CommandSyntaxException {
+      avv $$3 = $$0.l().ag().g();
+      if ($$3.a($$1)) {
+         throw b.create();
+      } else {
+         List<ary> $$4 = $$0.l().ag().b($$1);
+         avw $$5 = new avw($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         $$3.a($$5);
+         $$0.a(() -> xk.a("commands.banip.success", $$1, $$5.d()), true);
+         if (!$$4.isEmpty()) {
+            $$0.a(() -> xk.a("commands.banip.info", $$4.size(), hl.a($$4)), true);
+         }
 
-      for (ai $$7 : $$0.e()) {
-         $$6 |= a($$7, $$1, $$2, $$3);
+         for (ary $$6 : $$4) {
+            $$6.f.a(xk.c("multiplayer.disconnect.ip_banned"));
+         }
+
+         return $$4.size();
       }
-
-      boolean $$8 = $$6 || a($$1);
-      $$1.pop();
-      $$3.accept($$0, $$8);
-      return $$6;
-   }
-
-   public static void a(ai $$0, Predicate<ai> $$1, amz.a $$2) {
-      ai $$3 = $$0.d();
-      Stack<amz.b> $$4 = new ObjectArrayList();
-
-      for (int $$5 = 0; $$5 <= 2; $$5++) {
-         $$4.push(amz.b.c);
-      }
-
-      a($$3, $$4, $$1, $$2);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(ai var1, boolean var2);
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
    }
 }

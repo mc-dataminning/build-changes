@@ -1,100 +1,312 @@
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic4CommandExceptionType;
 import java.util.Collection;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 public class apo {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xv.b("commands.schedule.cleared.failure", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xv.b("commands.schedule.macro"));
-   private static final SuggestionProvider<ew> d = ($$0, $$1) -> fb.b(((ew)$$0.getSource()).l().aZ().I().s().a(), $$1);
+   private static final int a = 10000;
+   private static final Dynamic4CommandExceptionType b = new Dynamic4CommandExceptionType(
+      ($$0, $$1, $$2, $$3) -> xk.b("commands.spreadplayers.failed.teams", $$0, $$1, $$2, $$3)
+   );
+   private static final Dynamic4CommandExceptionType c = new Dynamic4CommandExceptionType(
+      ($$0, $$1, $$2, $$3) -> xk.b("commands.spreadplayers.failed.entities", $$0, $$1, $$2, $$3)
+   );
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> xk.b("commands.spreadplayers.failed.invalid.height", $$0, $$1)
+   );
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ex.a("function")
-                     .then(
-                        ex.a("function", he.a())
-                           .suggests(aoh.b)
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("time", gl.a())
-                                       .executes($$0x -> a((ew)$$0x.getSource(), he.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       ex.a("append")
-                                          .executes(
-                                             $$0x -> a((ew)$$0x.getSource(), he.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
-                                 .then(
-                                    ex.a("replace")
-                                       .executes($$0x -> a((ew)$$0x.getSource(), he.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
-                                 )
-                           )
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("spreadplayers").requires($$0x -> $$0x.c(2)))
             .then(
-               ex.a("clear")
+               ex.a("center", gy.a())
                   .then(
-                     ex.a("function", StringArgumentType.greedyString())
-                        .suggests(d)
-                        .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                     ex.a("spreadDistance", FloatArgumentType.floatArg(0.0F))
+                        .then(
+                           ((RequiredArgumentBuilder)ex.a("maxRange", FloatArgumentType.floatArg(1.0F))
+                                 .then(
+                                    ex.a("respectTeams", BoolArgumentType.bool())
+                                       .then(
+                                          ex.a("targets", fj.b())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ew)$$0x.getSource(),
+                                                      gy.a($$0x, "center"),
+                                                      FloatArgumentType.getFloat($$0x, "spreadDistance"),
+                                                      FloatArgumentType.getFloat($$0x, "maxRange"),
+                                                      ((ew)$$0x.getSource()).e().an() + 1,
+                                                      BoolArgumentType.getBool($$0x, "respectTeams"),
+                                                      fj.b($$0x, "targets")
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 ex.a("under")
+                                    .then(
+                                       ex.a("maxHeight", IntegerArgumentType.integer())
+                                          .then(
+                                             ex.a("respectTeams", BoolArgumentType.bool())
+                                                .then(
+                                                   ex.a("targets", fj.b())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ew)$$0x.getSource(),
+                                                               gy.a($$0x, "center"),
+                                                               FloatArgumentType.getFloat($$0x, "spreadDistance"),
+                                                               FloatArgumentType.getFloat($$0x, "maxRange"),
+                                                               IntegerArgumentType.getInteger($$0x, "maxHeight"),
+                                                               BoolArgumentType.getBool($$0x, "respectTeams"),
+                                                               fj.b($$0x, "targets")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(ew $$0, Pair<alz, Either<ik<ew>, Collection<ik<ew>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
-         throw a.create();
+   private static int a(ew $$0, fbq $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bvb> $$6) throws CommandSyntaxException {
+      arx $$7 = $$0.e();
+      int $$8 = $$7.L_();
+      if ($$4 < $$8) {
+         throw d.create($$4, $$8);
       } else {
-         long $$4 = $$0.e().ac() + (long)$$2;
-         alz $$5 = (alz)$$1.getFirst();
-         fbl<MinecraftServer> $$6 = $$0.l().aZ().I().s();
-         Optional<ik<ew>> $$7 = ((Either)$$1.getSecond()).left();
-         if ($$7.isPresent()) {
-            if ($$7.get() instanceof in) {
-               throw c.create();
-            }
-
-            String $$8 = $$5.toString();
-            if ($$3) {
-               $$6.a($$8);
-            }
-
-            $$6.a($$8, $$4, new fbh($$5));
-            $$0.a(() -> xv.a("commands.schedule.created.function", xv.a($$5), $$2, $$4), true);
-         } else {
-            String $$9 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$9);
-            }
-
-            $$6.a($$9, $$4, new fbi($$5));
-            $$0.a(() -> xv.a("commands.schedule.created.tag", xv.a($$5), $$2, $$4), true);
-         }
-
-         return Math.floorMod($$4, Integer.MAX_VALUE);
+         bac $$9 = bac.a();
+         double $$10 = (double)($$1.i - $$3);
+         double $$11 = (double)($$1.j - $$3);
+         double $$12 = (double)($$1.i + $$3);
+         double $$13 = (double)($$1.j + $$3);
+         apo.a[] $$14 = a($$9, $$5 ? a($$6) : $$6.size(), $$10, $$11, $$12, $$13);
+         a($$1, (double)$$2, $$7, $$9, $$10, $$11, $$12, $$13, $$4, $$14, $$5);
+         double $$15 = a($$6, $$7, $$14, $$4, $$5);
+         $$0.a(
+            () -> xk.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
+            true
+         );
+         return $$14.length;
       }
    }
 
-   private static int a(ew $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().aZ().I().s().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
-      } else {
-         $$0.a(() -> xv.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
+   private static int a(Collection<? extends bvb> $$0) {
+      Set<fcy> $$1 = Sets.newHashSet();
+
+      for (bvb $$2 : $$0) {
+         if ($$2 instanceof cpo) {
+            $$1.add($$2.cr());
+         } else {
+            $$1.add(null);
+         }
+      }
+
+      return $$1.size();
+   }
+
+   private static void a(fbq $$0, double $$1, arx $$2, bac $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apo.a[] $$9, boolean $$10) throws CommandSyntaxException {
+      boolean $$11 = true;
+      double $$12 = Float.MAX_VALUE;
+
+      int $$13;
+      for ($$13 = 0; $$13 < 10000 && $$11; $$13++) {
+         $$11 = false;
+         $$12 = Float.MAX_VALUE;
+
+         for (int $$14 = 0; $$14 < $$9.length; $$14++) {
+            apo.a $$15 = $$9[$$14];
+            int $$16 = 0;
+            apo.a $$17 = new apo.a();
+
+            for (int $$18 = 0; $$18 < $$9.length; $$18++) {
+               if ($$14 != $$18) {
+                  apo.a $$19 = $$9[$$18];
+                  double $$20 = $$15.a($$19);
+                  $$12 = Math.min($$20, $$12);
+                  if ($$20 < $$1) {
+                     $$16++;
+                     $$17.a = $$17.a + ($$19.a - $$15.a);
+                     $$17.b = $$17.b + ($$19.b - $$15.b);
+                  }
+               }
+            }
+
+            if ($$16 > 0) {
+               $$17.a /= (double)$$16;
+               $$17.b /= (double)$$16;
+               double $$21 = $$17.b();
+               if ($$21 > 0.0) {
+                  $$17.a();
+                  $$15.b($$17);
+               } else {
+                  $$15.a($$3, $$4, $$5, $$6, $$7);
+               }
+
+               $$11 = true;
+            }
+
+            if ($$15.a($$4, $$5, $$6, $$7)) {
+               $$11 = true;
+            }
+         }
+
+         if (!$$11) {
+            for (apo.a $$22 : $$9) {
+               if (!$$22.b($$2, $$8)) {
+                  $$22.a($$3, $$4, $$5, $$6, $$7);
+                  $$11 = true;
+               }
+            }
+         }
+      }
+
+      if ($$12 == Float.MAX_VALUE) {
+         $$12 = 0.0;
+      }
+
+      if ($$13 >= 10000) {
+         if ($$10) {
+            throw b.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
+         } else {
+            throw c.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
+         }
+      }
+   }
+
+   private static double a(Collection<? extends bvb> $$0, arx $$1, apo.a[] $$2, int $$3, boolean $$4) {
+      double $$5 = 0.0;
+      int $$6 = 0;
+      Map<fcy, apo.a> $$7 = Maps.newHashMap();
+
+      for (bvb $$8 : $$0) {
+         apo.a $$10;
+         if ($$4) {
+            fcy $$9 = $$8 instanceof cpo ? $$8.cr() : null;
+            if (!$$7.containsKey($$9)) {
+               $$7.put($$9, $$2[$$6++]);
+            }
+
+            $$10 = $$7.get($$9);
+         } else {
+            $$10 = $$2[$$6++];
+         }
+
+         $$8.a($$1, (double)azu.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)azu.a($$10.b) + 0.5, Set.of(), $$8.dM(), $$8.dO(), true);
+         double $$12 = Double.MAX_VALUE;
+
+         for (apo.a $$13 : $$2) {
+            if ($$10 != $$13) {
+               double $$14 = $$10.a($$13);
+               $$12 = Math.min($$14, $$12);
+            }
+         }
+
+         $$5 += $$12;
+      }
+
+      return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
+   }
+
+   private static apo.a[] a(bac $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
+      apo.a[] $$6 = new apo.a[$$1];
+
+      for (int $$7 = 0; $$7 < $$6.length; $$7++) {
+         apo.a $$8 = new apo.a();
+         $$8.a($$0, $$2, $$3, $$4, $$5);
+         $$6[$$7] = $$8;
+      }
+
+      return $$6;
+   }
+
+   static class a {
+      double a;
+      double b;
+
+      double a(apo.a $$0) {
+         double $$1 = this.a - $$0.a;
+         double $$2 = this.b - $$0.b;
+         return Math.sqrt($$1 * $$1 + $$2 * $$2);
+      }
+
+      void a() {
+         double $$0 = this.b();
+         this.a /= $$0;
+         this.b /= $$0;
+      }
+
+      double b() {
+         return Math.sqrt(this.a * this.a + this.b * this.b);
+      }
+
+      public void b(apo.a $$0) {
+         this.a = this.a - $$0.a;
+         this.b = this.b - $$0.b;
+      }
+
+      public boolean a(double $$0, double $$1, double $$2, double $$3) {
+         boolean $$4 = false;
+         if (this.a < $$0) {
+            this.a = $$0;
+            $$4 = true;
+         } else if (this.a > $$2) {
+            this.a = $$2;
+            $$4 = true;
+         }
+
+         if (this.b < $$1) {
+            this.b = $$1;
+            $$4 = true;
+         } else if (this.b > $$3) {
+            this.b = $$3;
+            $$4 = true;
+         }
+
+         return $$4;
+      }
+
+      public int a(dge $$0, int $$1) {
+         jh.a $$2 = new jh.a(this.a, (double)($$1 + 1), this.b);
+         boolean $$3 = $$0.a_($$2).l();
+         $$2.c(jm.a);
+         boolean $$4 = $$0.a_($$2).l();
+
+         while ($$2.v() > $$0.L_()) {
+            $$2.c(jm.a);
+            boolean $$5 = $$0.a_($$2).l();
+            if (!$$5 && $$4 && $$3) {
+               return $$2.v() + 1;
+            }
+
+            $$3 = $$4;
+            $$4 = $$5;
+         }
+
+         return $$1 + 1;
+      }
+
+      public boolean b(dge $$0, int $$1) {
+         jh $$2 = jh.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
+         dxo $$3 = $$0.a_($$2);
+         return $$2.v() < $$1 && !$$3.n() && !$$3.a(axk.aN);
+      }
+
+      public void a(bac $$0, double $$1, double $$2, double $$3, double $$4) {
+         this.a = azu.a($$0, $$1, $$3);
+         this.b = azu.a($$0, $$2, $$4);
       }
    }
 }

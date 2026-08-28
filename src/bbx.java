@@ -1,40 +1,60 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public class bbx extends DataFix {
-   public bbx(Schema $$0) {
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   public bbx(Schema $$0, String $$1, UnaryOperator<String> $$2) {
       super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(bix.B), this::a);
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped(this.a + " (Components)", this.getInputSchema().getType(bin.w), this::a),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bin.B), this::b),
+            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bin.b), this::b)
+         }
+      );
    }
 
    private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:arrow", bbx::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", bbx::a);
-      return this.a($$0, "minecraft:trident", bbx::a);
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "minecraft:attribute_modifiers",
+               $$0xx -> $$0xx.update(
+                     "modifiers",
+                     $$0xxx -> (Dynamic)DataFixUtils.orElse($$0xxx.asStreamOpt().result().map($$0xxxx -> $$0xxxx.map(this::b)).map($$0xxx::createList), $$0xxx)
+                  )
+            )
+      );
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("pickup").result().isPresent()) {
-         return $$0;
-      } else {
-         boolean $$1 = $$0.get("player").asBoolean(true);
-         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
-      }
+   private Typed<?> b(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "attributes",
+               $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map(this::a)).map($$0xx::createList), $$0xx)
+            )
+      );
    }
 
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bix.B, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bix.B, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return bbk.a($$0, "id", this.b);
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return bbk.a($$0, "type", this.b);
    }
 }

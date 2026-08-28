@@ -1,126 +1,52 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface arr {
-   arr a = new arr() {
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return false;
-      }
+public class arr {
+   @Nullable
+   protected static jh a(arx $$0, int $$1, int $$2) {
+      boolean $$3 = $$0.G_().h();
+      dzt $$4 = $$0.d(kj.a($$1), kj.a($$2));
+      int $$5 = $$3 ? $$0.m().g().a($$0) : $$4.a(edj.a.e, $$1 & 15, $$2 & 15);
+      if ($$5 < $$0.L_()) {
+         return null;
+      } else {
+         int $$6 = $$4.a(edj.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(edj.a.d, $$1 & 15, $$2 & 15)) {
+            return null;
+         } else {
+            jh.a $$7 = new jh.a();
 
-      @Override
-      public void a(Consumer<dgo> $$0) {
-      }
-   };
+            for (int $$8 = $$5 + 1; $$8 >= $$0.L_(); $$8--) {
+               $$7.d($$1, $$8, $$2);
+               dxo $$9 = $$0.a_($$7);
+               if (!$$9.y().c()) {
+                  break;
+               }
 
-   static arr a(dgo $$0, int $$1) {
-      return new arr.a($$0, $$1);
-   }
-
-   static void a(arr $$0, arr $$1, Consumer<dgo> $$2, Consumer<dgo> $$3) {
-      if (!$$0.equals($$1)) {
-         if ($$0 instanceof arr.a $$4 && $$1 instanceof arr.a $$5 && $$4.a($$5)) {
-            int $$6 = Math.min($$4.c(), $$5.c());
-            int $$7 = Math.min($$4.d(), $$5.d());
-            int $$8 = Math.max($$4.e(), $$5.e());
-            int $$9 = Math.max($$4.f(), $$5.f());
-
-            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
-                  boolean $$12 = $$4.a($$10, $$11);
-                  boolean $$13 = $$5.a($$10, $$11);
-                  if ($$12 != $$13) {
-                     if ($$13) {
-                        $$2.accept(new dgo($$10, $$11));
-                     } else {
-                        $$3.accept(new dgo($$10, $$11));
-                     }
-                  }
+               if (dkd.a($$9.g($$0, $$7), jm.b)) {
+                  return $$7.d().j();
                }
             }
 
-            return;
+            return null;
          }
-
-         $$0.a($$3);
-         $$1.a($$2);
       }
    }
 
-   default boolean a(dgo $$0) {
-      return this.a($$0.h, $$0.i);
-   }
-
-   default boolean a(int $$0, int $$1) {
-      return this.a($$0, $$1, true);
-   }
-
-   boolean a(int var1, int var2, boolean var3);
-
-   void a(Consumer<dgo> var1);
-
-   default boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      return a($$0, $$1, $$2, $$3, $$4, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
-      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
-      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
-      long $$9 = (long)Math.min($$6, $$7);
-      long $$10 = $$9 * $$9 + $$8 * $$8;
-      int $$11 = $$2 * $$2;
-      return $$10 < (long)$$11;
-   }
-
-   public static record a(dgo b, int c) implements arr {
-      int c() {
-         return this.b.h - this.c - 1;
-      }
-
-      int d() {
-         return this.b.i - this.c - 1;
-      }
-
-      int e() {
-         return this.b.h + this.c + 1;
-      }
-
-      int f() {
-         return this.b.i + this.c + 1;
-      }
-
-      @VisibleForTesting
-      protected boolean a(arr.a $$0) {
-         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return arr.a(this.b.h, this.b.i, this.c, $$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(Consumer<dgo> $$0) {
-         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
-            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
-               if (this.a($$1, $$2)) {
-                  $$0.accept(new dgo($$1, $$2));
+   @Nullable
+   public static jh a(arx $$0, dgf $$1) {
+      if (ab.a($$1)) {
+         return null;
+      } else {
+         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
+            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
+               jh $$4 = a($$0, $$2, $$3);
+               if ($$4 != null) {
+                  return $$4;
                }
             }
          }
-      }
 
-      public dgo a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
+         return null;
       }
    }
 }

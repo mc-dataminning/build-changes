@@ -2,62 +2,45 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class eyn extends eyc {
+public class eyn extends exv {
    public static final MapCodec<eyn> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aly.a(mb.bg).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  ma.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(fao.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
             .apply($$0, eyn::new)
    );
-   private final aly<ewu> b;
-   private final long c;
-   private final jq<duz<?>> d;
+   private final fan b;
+   private final boolean c;
 
-   private eyn(List<ezy> $$0, aly<ewu> $$1, long $$2, jq<duz<?>> $$3) {
+   private eyn(List<ezr> $$0, fan $$1, boolean $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public eye<eyn> b() {
-      return eyf.y;
+   public exx<eyn> b() {
+      return exy.e;
    }
 
    @Override
-   public cxp a(cxp $$0, ewp $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         $$0.b(ku.ap, new dap(this.b, this.c));
-         return $$0;
-      }
+   public Set<bbd<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public void a(ewv $$0) {
-      super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().c(this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
-      }
+   public cxg a(cxg $$0, ewi $$1) {
+      int $$2 = this.c ? $$0.M() : 0;
+      $$0.e($$2 + this.b.a($$1));
+      return $$0;
    }
 
-   public static eyc.a<?> a(duz<?> $$0, aly<ewu> $$1) {
-      return a($$2 -> new eyn($$2, $$1, 0L, $$0.a()));
+   public static exv.a<?> a(fan $$0) {
+      return a($$1 -> new eyn($$1, $$0, false));
    }
 
-   public static eyc.a<?> a(duz<?> $$0, aly<ewu> $$1, long $$2) {
-      return a($$3 -> new eyn($$3, $$1, $$2, $$0.a()));
+   public static exv.a<?> a(fan $$0, boolean $$1) {
+      return a($$2 -> new eyn($$2, $$0, $$1));
    }
 }

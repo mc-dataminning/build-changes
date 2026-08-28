@@ -1,68 +1,85 @@
-import java.util.Optional;
+public class adr implements zr<acg> {
+   public static final zi<wh, adr> a = zr.a(adr::a, adr::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final long f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-public record adr(int b, jq<buc> c, int d, int e, Optional<fby> f) implements aac<acr> {
-   public static final zt<xg, adr> a = aac.a(adr::a, adr::new);
-
-   public adr(bvk $$0, bua $$1) {
-      this($$0.ar(), $$1.l(), $$1.d() != null ? $$1.d().ar() : -1, $$1.c() != null ? $$1.c().ar() : -1, Optional.ofNullable($$1.j()));
+   private adr(wh $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.m();
+      this.g = $$0.l();
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private adr(xg $$0) {
-      this($$0.l(), buc.c.decode($$0), a((ws)$$0), a((ws)$$0), $$0.b($$0x -> new fby($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
+   public adr(dze $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
+      this.d = $$0.i();
+      this.e = $$0.k();
+      this.f = $$0.j();
+      this.g = $$0.m();
+      this.h = $$0.r();
+      this.i = $$0.q();
    }
 
-   private static void a(ws $$0, int $$1) {
-      $$0.c($$1 + 1);
-   }
-
-   private static int a(ws $$0) {
-      return $$0.l() - 1;
-   }
-
-   private void a(xg $$0) {
-      $$0.c(this.b);
-      buc.c.encode($$0, this.c);
-      a($$0, this.d);
-      a($$0, this.e);
-      $$0.a(this.f, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.b());
-         $$0x.a($$1.c());
-      });
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.c(this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public aae<adr> a() {
-      return ahk.z;
+   public zt<adr> a() {
+      return agz.J;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public bua a(dhi $$0) {
-      if (this.f.isPresent()) {
-         return new bua(this.c, this.f.get());
-      } else {
-         bvk $$1 = $$0.a(this.d);
-         bvk $$2 = $$0.a(this.e);
-         return new bua(this.c, $$2, $$1);
-      }
+   public double b() {
+      return this.b;
    }
 
-   public jq<buc> e() {
+   public double e() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
+   public double f() {
       return this.e;
    }
 
-   public Optional<fby> h() {
+   public double g() {
+      return this.d;
+   }
+
+   public long h() {
       return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.i;
+   }
+
+   public int k() {
+      return this.h;
    }
 }

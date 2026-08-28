@@ -1,109 +1,67 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import com.google.common.collect.Sets;
 import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class ewo {
-   private static final Codec<ewo> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               fav.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-               fav.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, ewo::new)
-   );
-   public static final Codec<ewo> a = Codec.either(Codec.INT, b).xmap($$0 -> (ewo)$$0.map(ewo::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final fau c;
-   @Nullable
-   private final fau d;
-   private final ewo.b e;
-   private final ewo.a f;
+   private final baa a;
+   private final bbe b;
+   private final Optional<jr.a> c;
+   private final Set<alo<?>> d;
 
-   public Set<bbn<?>> a() {
-      Builder<bbn<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   public ewo(baa $$0, bbe $$1, jr.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   private ewo(Optional<fau> $$0, Optional<fau> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
+   public ewo(baa $$0, bbe $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   private ewo(@Nullable fau $$0, @Nullable fau $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> bae.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+   private ewo(baa $$0, bbe $$1, Optional<jr.a> $$2, Set<alo<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public ewo a(String $$0) {
+      return new ewo(this.a.a($$0), this.b, this.c, this.d);
+   }
+
+   public ewo a(String $$0, alo<?> $$1) {
+      Set<alo<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new ewo(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(alo<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(ewj $$0) {
+      Set<bbd<?>> $$1 = $$0.a();
+      Set<bbd<?>> $$2 = Sets.difference($$1, this.b.b());
+      if (!$$2.isEmpty()) {
+         this.a.b("Parameters " + $$2 + " are not provided in this context");
       }
    }
 
-   public static ewo a(int $$0) {
-      far $$1 = far.a((float)$$0);
-      return new ewo(Optional.of($$1), Optional.of($$1));
+   public jr.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
    }
 
-   public static ewo a(int $$0, int $$1) {
-      return new ewo(Optional.of(far.a((float)$$0)), Optional.of(far.a((float)$$1)));
+   public boolean b() {
+      return this.c.isPresent();
    }
 
-   public static ewo b(int $$0) {
-      return new ewo(Optional.of(far.a((float)$$0)), Optional.empty());
+   public ewo a(bbe $$0) {
+      return new ewo(this.a, $$0, this.c, this.d);
    }
 
-   public static ewo c(int $$0) {
-      return new ewo(Optional.empty(), Optional.of(far.a((float)$$0)));
-   }
-
-   public int a(ewp $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
-
-   public boolean b(ewp $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
-
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof far $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface a {
-      boolean test(ewp var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      int apply(ewp var1, int var2);
+   public baa c() {
+      return this.a;
    }
 }

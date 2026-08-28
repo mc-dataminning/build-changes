@@ -1,5 +1,3 @@
-public class gzt extends gyt {
-   public float a;
-   public float b;
-   public float c;
+public class gzt extends gwx {
+   public boolean d;
 }

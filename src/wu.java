@@ -1,19 +1,24 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class wu extends ChannelInboundHandlerAdapter {
-   private final wi a;
+public class wu extends we {
+   private static final Logger h = LogUtils.getLogger();
+   private static final xk i = xk.c("disconnect.exceeded_packet_rate");
+   private final int j;
 
-   public wu(wi $$0) {
-      this.a = $$0;
+   public wu(int $$0) {
+      super(zs.a);
+      this.j = $$0;
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      if ($$1 instanceof ByteBuf $$2) {
-         this.a.a($$2.readableBytes());
+   @Override
+   protected void c() {
+      super.c();
+      float $$0 = this.o();
+      if ($$0 > (float)this.j) {
+         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new aaa(i), wr.a(() -> this.a(i)));
+         this.m();
       }
-
-      $$0.fireChannelRead($$1);
    }
 }

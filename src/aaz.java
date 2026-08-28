@@ -1,29 +1,16 @@
-public class aaz implements aac<aav> {
-   public static final zt<ws, aaz> a = aac.a(aaz::a, aaz::new);
-   private final int b;
+public record aaz() implements aau {
+   public static final zi<wh, aaz> a = aau.a(aaz::a, aaz::new);
+   public static final aau.b<aaz> b = aau.a("debug/game_test_clear");
 
-   public aaz(int $$0) {
-      this.b = $$0;
+   private aaz(wh $$0) {
+      this();
    }
 
-   private aaz(ws $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(ws $$0) {
-      $$0.q(this.b);
+   private void a(wh $$0) {
    }
 
    @Override
-   public aae<aaz> a() {
-      return aau.o;
-   }
-
-   public void a(aav $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
+   public aau.b<aaz> a() {
+      return b;
    }
 }

@@ -1,20 +1,26 @@
-public record aje(short b, cxp c) implements aac<ahm> {
-   public static final zt<xg, aje> a = zt.a(zr.e, aje::b, cxp.a(cxp.g), aje::e, aje::new);
+public enum aje {
+   a,
+   b,
+   c;
 
-   public aje(int $$0, cxp $$1) {
-      this((short)$$0, $$1);
+   private static final int d = 1;
+   private static final int e = 2;
+   private static final int f = 3;
+
+   public static aje a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         case 3 -> c;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   @Override
-   public aae<aje> a() {
-      return ahk.cd;
-   }
-
-   public void a(ahm $$0) {
-      $$0.a(this);
-   }
-
-   public cxp e() {
-      return this.c;
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+         case c -> 3;
+      };
    }
 }

@@ -1,7 +1,8 @@
-public record akj() implements akh {
-   public static final akj a = new akj();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public void a(ws $$0) {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface akj {
 }

@@ -1,94 +1,56 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class hcj implements AutoCloseable {
-   private final Int2ObjectMap<hcj.a> a = new Int2ObjectOpenHashMap();
-   final hbm b;
+public class hcj extends avq<List<String>> {
+   private static final alp a = alp.b("texts/splashes.txt");
+   private static final bac b = bac.a();
+   private final List<String> c = Lists.newArrayList();
+   private final fml d;
 
-   public hcj(hbm $$0) {
-      this.b = $$0;
+   public hcj(fml $$0) {
+      this.d = $$0;
    }
 
-   public void a(evp $$0, evr $$1) {
-      this.c($$0, $$1).a();
-   }
-
-   public alz b(evp $$0, evr $$1) {
-      hcj.a $$2 = this.c($$0, $$1);
-      $$2.b();
-      return $$2.d;
-   }
-
-   public void a() {
-      ObjectIterator var1 = this.a.values().iterator();
-
-      while (var1.hasNext()) {
-         hcj.a $$0 = (hcj.a)var1.next();
-         $$0.close();
-      }
-
-      this.a.clear();
-   }
-
-   private hcj.a c(evp $$0, evr $$1) {
-      return (hcj.a)this.a.compute($$0.b(), ($$1x, $$2) -> {
-         if ($$2 == null) {
-            return new hcj.a($$1x, $$1);
-         } else {
-            $$2.a($$1);
-            return $$2;
+   protected List<String> a(avl $$0, bpj $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = flz.Q().ac().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
          }
-      });
+
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
+      }
    }
 
-   @Override
-   public void close() {
-      this.a();
+   protected void a(List<String> $$0, avl $$1, bpj $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
    }
 
-   class a implements AutoCloseable {
-      private evr a;
-      private final hay b;
-      private boolean c = true;
-      final alz d;
-
-      a(final int $$0, final evr $$1) {
-         this.a = $$1;
-         this.b = new hay(128, 128, true);
-         this.d = hcj.this.b.a("map/" + $$0, this.b);
-      }
-
-      void a(evr $$0) {
-         boolean $$1 = this.a != $$0;
-         this.a = $$0;
-         this.c |= $$1;
-      }
-
-      public void a() {
-         this.c = true;
-      }
-
-      void b() {
-         if (this.c) {
-            ffs $$0 = this.b.f();
-            if ($$0 != null) {
-               for (int $$1 = 0; $$1 < 128; $$1++) {
-                  for (int $$2 = 0; $$2 < 128; $$2++) {
-                     int $$3 = $$2 + $$1 * 128;
-                     $$0.a($$2, $$1, eub.b(this.a.g[$$3]));
-                  }
-               }
-            }
-
-            this.b.e();
-            this.c = false;
-         }
-      }
-
-      @Override
-      public void close() {
-         this.b.close();
+   @Nullable
+   public fpd a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return fpd.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return fpd.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return fpd.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new fpd(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fpd(this.c.get(b.a(this.c.size())));
       }
    }
 }

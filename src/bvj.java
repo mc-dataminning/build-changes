@@ -1,60 +1,88 @@
-public class bvj {
-   private static final float a = (float) (Math.PI / 12);
-   private static final float b = (float) (-Math.PI / 12);
-   private float c;
-   private float d;
-   private float e;
-   private float f;
-   private float g;
-   private float h;
-   private final bwg i;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-   public bvj(bwg $$0) {
-      this.i = $$0;
+public enum bvj implements baq {
+   a(bvj.a.a, 0, 0, "mainhand"),
+   b(bvj.a.a, 1, 5, "offhand"),
+   c(bvj.a.b, 0, 1, 1, "feet"),
+   d(bvj.a.b, 1, 1, 2, "legs"),
+   e(bvj.a.b, 2, 1, 3, "chest"),
+   f(bvj.a.b, 3, 1, 4, "head"),
+   g(bvj.a.c, 0, 1, 6, "body");
+
+   public static final int h = 0;
+   public static final List<bvj> i = List.of(values());
+   public static final IntFunction<bvj> j = ayl.a($$0 -> $$0.p, values(), ayl.a.a);
+   public static final baq.a<bvj> k = baq.a(bvj::values);
+   public static final zi<ByteBuf, bvj> l = zg.a(j, $$0 -> $$0.p);
+   private final bvj.a m;
+   private final int n;
+   private final int o;
+   private final int p;
+   private final String q;
+
+   private bvj(final bvj.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
    }
 
-   public void a() {
-      this.f = this.c;
-      this.g = this.d;
-      this.h = this.e;
-      float $$3;
-      float $$4;
-      float $$5;
-      if (this.i.fJ()) {
-         float $$0 = 1.0F;
-         fby $$1 = this.i.dz();
-         if ($$1.e < 0.0) {
-            fby $$2 = $$1.d();
-            $$0 = 1.0F - (float)Math.pow(-$$2.e, 1.5);
-         }
+   private bvj(final bvj.a $$0, final int $$1, final int $$2, final String $$3) {
+      this($$0, $$1, 0, $$2, $$3);
+   }
 
-         $$3 = bae.h($$0, (float) (Math.PI / 12), (float) (Math.PI / 9));
-         $$4 = bae.h($$0, (float) (-Math.PI / 12), (float) (-Math.PI / 2));
-         $$5 = 0.0F;
-      } else if (this.i.ci()) {
-         $$3 = (float) (Math.PI * 2.0 / 9.0);
-         $$4 = (float) (-Math.PI / 4);
-         $$5 = 0.08726646F;
+   public bvj.a a() {
+      return this.m;
+   }
+
+   public int b() {
+      return this.n;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.n;
+   }
+
+   public cxg a(cxg $$0) {
+      return this.o > 0 ? $$0.a(this.o) : $$0;
+   }
+
+   public int d() {
+      return this.p;
+   }
+
+   public int b(int $$0) {
+      return this.p + $$0;
+   }
+
+   public String e() {
+      return this.q;
+   }
+
+   public boolean f() {
+      return this.m == bvj.a.b || this.m == bvj.a.c;
+   }
+
+   @Override
+   public String c() {
+      return this.q;
+   }
+
+   public static bvj a(String $$0) {
+      bvj $$1 = k.a($$0);
+      if ($$1 != null) {
+         return $$1;
       } else {
-         $$3 = (float) (Math.PI / 12);
-         $$4 = (float) (-Math.PI / 12);
-         $$5 = 0.0F;
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
       }
-
-      this.c = this.c + ($$3 - this.c) * 0.3F;
-      this.d = this.d + ($$5 - this.d) * 0.3F;
-      this.e = this.e + ($$4 - this.e) * 0.3F;
    }
 
-   public float a(float $$0) {
-      return bae.h($$0, this.f, this.c);
-   }
-
-   public float b(float $$0) {
-      return bae.h($$0, this.g, this.d);
-   }
-
-   public float c(float $$0) {
-      return bae.h($$0, this.h, this.e);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

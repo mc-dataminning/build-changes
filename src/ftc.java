@@ -1,39 +1,25 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class ftc extends fty {
-   private static final alz a = alz.b("icon/draft_report");
-   private int b;
-   private final xv c;
-   private final boolean d;
-   private xv s;
-   private final List<fof> u = Lists.newArrayList();
+public class ftc extends ftr {
    @Nullable
-   private fof v;
+   private foj a;
 
-   public ftc(@Nullable xv $$0, boolean $$1) {
-      super(xv.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.d = $$1;
+   public ftc(xk $$0) {
+      super($$0);
    }
 
    @Override
    protected void aT_() {
-      this.b = 0;
-      this.u.clear();
-      xv $$0 = this.d ? xv.c("deathScreen.spectate") : xv.c("deathScreen.respawn");
-      this.u.add(this.c(fof.a($$0, $$0x -> {
-         this.m.t.gg();
-         $$0x.j = false;
-      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
-      this.v = this.c(
-         fof.a(xv.c("deathScreen.titleScreen"), $$0x -> this.m.bb().a(this.m, this, this::l, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
-      );
-      this.u.add(this.v);
-      this.c(false);
-      this.s = xv.a("deathScreen.score.value", xv.b(Integer.toString(this.m.t.gd())).a(n.o));
+      this.a = this.c(new foj(this.n, this.l, this.p, 12));
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      if (this.a != null) {
+         this.a.b(this.n);
+         this.a.c(this.n / 2 - this.a.y() / 2, this.o / 2 - 9 / 2);
+      }
    }
 
    @Override
@@ -41,116 +27,15 @@ public class ftc extends fty {
       return false;
    }
 
-   private void l() {
-      if (this.d) {
-         this.E();
-      } else {
-         fsw $$0 = new ftc.a($$0x -> {
-            if ($$0x) {
-               this.E();
-            } else {
-               this.m.t.gg();
-               this.m.a(null);
-            }
-         }, xv.c("deathScreen.quit.confirm"), xu.a, xv.c("deathScreen.titleScreen"), xv.c("deathScreen.respawn"));
-         this.m.a($$0);
-         $$0.b(20);
-      }
-   }
-
-   private void E() {
-      if (this.m.s != null) {
-         this.m.s.ab();
-      }
-
-      this.m.b(new ftj(xv.c("menu.savingLevel")));
-      this.m.a(new fua());
-   }
-
    @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
-      }
-
-      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         ys $$4 = this.a($$1);
-         $$0.a(this.p, $$4, $$1, $$2);
-      }
-
-      if (this.v != null && this.m.bb().c()) {
-         $$0.a(glv::C, a, this.v.D() + this.v.y() - 17, this.v.E() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(fns $$0, int $$1, int $$2, float $$3) {
-      a($$0, this.n, this.o);
-   }
-
-   static void a(fns $$0, int $$1, int $$2) {
-      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
-   }
-
-   @Nullable
-   private ys a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.m.h.a(this.c);
-         int $$2 = this.n / 2 - $$1 / 2;
-         int $$3 = this.n / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         ys $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == xt.a.a) {
-            this.a($$3);
-            return false;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean j() {
+   protected boolean aS_() {
       return false;
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
-      }
-   }
-
-   private void c(boolean $$0) {
-      for (fof $$1 : this.u) {
-         $$1.j = $$0;
-      }
-   }
-
-   public static class a extends fsw {
-      public a(BooleanConsumer $$0, xv $$1, xv $$2, xv $$3, xv $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public void b(fns $$0, int $$1, int $$2, float $$3) {
-         ftc.a($$0, this.n, this.o);
-      }
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.q();
+      this.a($$0);
    }
 }

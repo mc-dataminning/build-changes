@@ -1,27 +1,33 @@
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.ImmutableStringReader;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class bou<S> {
-   private final Map<bos<?>, boy<S, ?>> a = new HashMap<>();
+public abstract class bou<C, V> implements boo<StringReader, V>, bov {
+   private final boi<alp> b;
+   protected final C a;
 
-   public <T> void a(bos<T> $$0, boy<S, T> $$1) {
-      boy<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalArgumentException("Trying to override rule: " + $$0);
+   protected bou(boi<alp> $$0, C $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
+
+   @Override
+   public Optional<V> a(bon<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
+      Optional<alp> $$2 = $$0.b(this.b);
+      if ($$2.isPresent()) {
+         try {
+            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
+         } catch (Exception var5) {
+            $$0.a().a($$1, this, var5);
+            return Optional.empty();
+         }
+      } else {
+         $$0.a().a($$1, this, alp.c.createWithContext((ImmutableStringReader)$$0.b()));
+         return Optional.empty();
       }
    }
 
-   public <T> void a(bos<T> $$0, bpb<S> $$1, boy.a<S, T> $$2) {
-      this.a($$0, boy.a($$1, $$2));
-   }
-
-   public <T> void a(bos<T> $$0, bpb<S> $$1, boy.b<T> $$2) {
-      this.a($$0, boy.a($$1, $$2));
-   }
-
-   @Nullable
-   public <T> boy<S, T> a(bos<T> $$0) {
-      return (boy<S, T>)this.a.get($$0);
-   }
+   protected abstract V a(ImmutableStringReader var1, alp var2) throws Exception;
 }

@@ -1,130 +1,76 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-public class cis extends chv implements bxg<cis.a> {
-   private static final alc<String> a = alg.a(cis.class, ale.e);
+public final class cis {
+   public static final Codec<cis> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alp.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.e),
+               alp.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.f),
+               alp.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.g),
+               kf.a(mb.aI).fieldOf("biomes").forGetter(cis::d)
+            )
+            .apply($$0, cis::new)
+   );
+   public static final zi<wv, cis> b = zi.a(alp.b, cis::a, alp.b, cis::b, alp.b, cis::c, zg.c(mb.aI), cis::d, cis::new);
+   public static final Codec<jq<cis>> c = all.a(mb.m, a);
+   public static final zi<wv, jq<cis>> d = zg.a(mb.m, b);
+   private final alp e;
+   private final alp f;
+   private final alp g;
+   private final alp h;
+   private final alp i;
+   private final alp j;
+   private final ju<dib> k;
 
-   public cis(bvr<? extends cis> $$0, dhi $$1) {
-      super($$0, $$1);
-      this.m_();
+   public cis(alp $$0, alp $$1, alp $$2, ju<dib> $$3) {
+      this.e = $$0;
+      this.h = a($$0);
+      this.f = $$1;
+      this.i = a($$1);
+      this.g = $$2;
+      this.j = a($$2);
+      this.k = $$3;
+   }
+
+   private static alp a(alp $$0) {
+      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
+   }
+
+   public alp a() {
+      return this.h;
+   }
+
+   public alp b() {
+      return this.i;
+   }
+
+   public alp c() {
+      return this.j;
+   }
+
+   public ju<dib> d() {
+      return this.k;
    }
 
    @Override
-   public int gp() {
-      return 5;
-   }
-
-   @Override
-   public cxp X_() {
-      return new cxp(cxt.re);
-   }
-
-   @Override
-   protected axe u() {
-      return axf.vZ;
-   }
-
-   @Override
-   protected axe o_() {
-      return axf.wa;
-   }
-
-   @Override
-   protected axe e(bua $$0) {
-      return axf.wc;
-   }
-
-   @Override
-   protected axe go() {
-      return axf.wb;
-   }
-
-   @Override
-   protected void a(alg.a $$0) {
-      super.a($$0);
-      $$0.a(a, cis.a.b.e);
-   }
-
-   @Override
-   public void a(alc<?> $$0) {
-      super.a($$0);
-      if (a.equals($$0)) {
-         this.m_();
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof cis $$1)
+            ? false
+            : Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Objects.equals(this.g, $$1.g) && Objects.equals(this.k, $$1.k);
       }
    }
 
    @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("type", this.gw().c());
-   }
-
-   @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      this.a(cis.a.a($$0.l("type")));
-   }
-
-   @Override
-   public void i(cxp $$0) {
-      chz.a(this, $$0);
-      czy.a(ku.X, $$0, $$0x -> $$0x.a("type", this.gw().c()));
-   }
-
-   @Override
-   public void h(ux $$0) {
-      chz.a(this, $$0);
-      this.a(cis.a.a($$0.l("type")));
-   }
-
-   public void a(cis.a $$0) {
-      this.al.a(a, $$0.e);
-   }
-
-   public cis.a gw() {
-      return cis.a.a(this.al.a(a));
-   }
-
-   @Nullable
-   @Override
-   public bwz a(dhz $$0, bth $$1, bvq $$2, @Nullable bwz $$3) {
-      brr.a<cis.a> $$4 = brr.a();
-      $$4.a(cis.a.a, 30);
-      $$4.a(cis.a.b, 50);
-      $$4.a(cis.a.c, 15);
-      $$4.a().a(this.ae).ifPresent(this::a);
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   public float gx() {
-      return this.gw().f;
-   }
-
-   @Override
-   protected bvn e(bws $$0) {
-      return super.e($$0).a(this.gx());
-   }
-
-   public static enum a implements bba {
-      a("small", 0.5F),
-      b("medium", 1.0F),
-      c("large", 1.5F);
-
-      public static final bba.a<cis.a> d = bba.a(cis.a::values);
-      final String e;
-      final float f;
-
-      private a(final String $$0, final float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      static cis.a a(String $$0) {
-         return d.a($$0, b);
-      }
+   public int hashCode() {
+      int $$0 = 1;
+      $$0 = 31 * $$0 + this.e.hashCode();
+      $$0 = 31 * $$0 + this.f.hashCode();
+      $$0 = 31 * $$0 + this.g.hashCode();
+      return 31 * $$0 + this.k.hashCode();
    }
 }

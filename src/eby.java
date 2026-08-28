@@ -1,24 +1,38 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface eby {
-   int ar();
+public interface eby<B, T extends B> {
+   static <B, T extends B> eby<B, T> a(final Class<T> $$0) {
+      return new eby<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
 
-   UUID cG();
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
 
-   jh dw();
+   static <B, T extends B> eby<B, T> b(final Class<T> $$0) {
+      return new eby<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
+         }
 
-   fbt cR();
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
 
-   void a(ebz var1);
+   @Nullable
+   T a(B var1);
 
-   Stream<? extends eby> db();
-
-   Stream<? extends eby> dc();
-
-   void c(bvk.d var1);
-
-   boolean dU();
-
-   boolean dV();
+   Class<? extends B> a();
 }

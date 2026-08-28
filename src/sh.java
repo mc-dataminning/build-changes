@@ -1,734 +1,267 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
 public class sh {
-   protected static final int a = 4159204;
-   protected static final int b = 329011;
-   private static final int d = 12638463;
-   @Nullable
-   private static final axc e = null;
-   public static final int c = 70;
+   public static final alo<egb<?, ?>> a = sb.a("bamboo_no_podzol");
+   public static final alo<egb<?, ?>> b = sb.a("bamboo_some_podzol");
+   public static final alo<egb<?, ?>> c = sb.a("vines");
+   public static final alo<egb<?, ?>> d = sb.a("patch_brown_mushroom");
+   public static final alo<egb<?, ?>> e = sb.a("patch_red_mushroom");
+   public static final alo<egb<?, ?>> f = sb.a("patch_sunflower");
+   public static final alo<egb<?, ?>> g = sb.a("patch_pumpkin");
+   public static final alo<egb<?, ?>> h = sb.a("patch_berry_bush");
+   public static final alo<egb<?, ?>> i = sb.a("patch_taiga_grass");
+   public static final alo<egb<?, ?>> j = sb.a("patch_grass");
+   public static final alo<egb<?, ?>> k = sb.a("patch_grass_jungle");
+   public static final alo<egb<?, ?>> l = sb.a("single_piece_of_grass");
+   public static final alo<egb<?, ?>> m = sb.a("patch_dead_bush");
+   public static final alo<egb<?, ?>> n = sb.a("patch_melon");
+   public static final alo<egb<?, ?>> o = sb.a("patch_waterlily");
+   public static final alo<egb<?, ?>> p = sb.a("patch_tall_grass");
+   public static final alo<egb<?, ?>> q = sb.a("patch_large_fern");
+   public static final alo<egb<?, ?>> r = sb.a("patch_cactus");
+   public static final alo<egb<?, ?>> s = sb.a("patch_sugar_cane");
+   public static final alo<egb<?, ?>> t = sb.a("flower_default");
+   public static final alo<egb<?, ?>> u = sb.a("flower_flower_forest");
+   public static final alo<egb<?, ?>> v = sb.a("flower_swamp");
+   public static final alo<egb<?, ?>> w = sb.a("flower_plain");
+   public static final alo<egb<?, ?>> x = sb.a("flower_meadow");
+   public static final alo<egb<?, ?>> y = sb.a("flower_cherry");
+   public static final alo<egb<?, ?>> z = sb.a("flower_pale_garden");
+   public static final alo<egb<?, ?>> A = sb.a("forest_flowers");
+   public static final alo<egb<?, ?>> B = sb.a("pale_forest_flowers");
+   public static final alo<egb<?, ?>> C = sb.a("dark_forest_vegetation");
+   public static final alo<egb<?, ?>> D = sb.a("pale_garden_vegetation");
+   public static final alo<egb<?, ?>> E = sb.a("pale_moss_vegetation");
+   public static final alo<egb<?, ?>> F = sb.a("pale_moss_patch");
+   public static final alo<egb<?, ?>> G = sb.a("pale_moss_patch_bonemeal");
+   public static final alo<egb<?, ?>> H = sb.a("trees_flower_forest");
+   public static final alo<egb<?, ?>> I = sb.a("meadow_trees");
+   public static final alo<egb<?, ?>> J = sb.a("trees_taiga");
+   public static final alo<egb<?, ?>> K = sb.a("trees_grove");
+   public static final alo<egb<?, ?>> L = sb.a("trees_savanna");
+   public static final alo<egb<?, ?>> M = sb.a("birch_tall");
+   public static final alo<egb<?, ?>> N = sb.a("trees_windswept_hills");
+   public static final alo<egb<?, ?>> O = sb.a("trees_water");
+   public static final alo<egb<?, ?>> P = sb.a("trees_birch_and_oak");
+   public static final alo<egb<?, ?>> Q = sb.a("trees_plains");
+   public static final alo<egb<?, ?>> R = sb.a("trees_sparse_jungle");
+   public static final alo<egb<?, ?>> S = sb.a("trees_old_growth_spruce_taiga");
+   public static final alo<egb<?, ?>> T = sb.a("trees_old_growth_pine_taiga");
+   public static final alo<egb<?, ?>> U = sb.a("trees_jungle");
+   public static final alo<egb<?, ?>> V = sb.a("bamboo_vegetation");
+   public static final alo<egb<?, ?>> W = sb.a("mushroom_island_vegetation");
+   public static final alo<egb<?, ?>> X = sb.a("mangrove_vegetation");
 
-   protected static int a(float $$0) {
-      float $$1 = $$0 / 3.0F;
-      $$1 = bae.a($$1, -1.0F, 1.0F);
-      return bae.g(0.62222224F - $$1 * 0.05F, 0.5F + $$1 * 0.1F, 1.0F);
+   private static ejg a(eku $$0, int $$1) {
+      return sb.a($$1, sq.a(egp.T, new ejl($$0)));
    }
 
-   private static dik a(boolean $$0, float $$1, float $$2, diw.a $$3, dil.a $$4, @Nullable axc $$5) {
-      return a($$0, $$1, $$2, 4159204, 329011, null, null, $$3, $$4, $$5);
-   }
-
-   private static dik a(
-      boolean $$0, float $$1, float $$2, int $$3, int $$4, @Nullable Integer $$5, @Nullable Integer $$6, diw.a $$7, dil.a $$8, @Nullable axc $$9
-   ) {
-      diq.a $$10 = new diq.a().b($$3).c($$4).a(12638463).d(a($$1)).a(dii.b).a($$9);
-      if ($$5 != null) {
-         $$10.f($$5);
-      }
-
-      if ($$6 != null) {
-         $$10.e($$6);
-      }
-
-      return new dik.a().a($$0).a($$1).b($$2).a($$10.a()).a($$7.a()).a($$8.a()).a();
-   }
-
-   private static void a(dil.a $$0) {
-      rj.a($$0);
-      rj.av($$0);
-      rj.b($$0);
-      rj.c($$0);
-      rj.ao($$0);
-      rj.as($$0);
-   }
-
-   public static dik a(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a();
-      rj.a($$3);
-      $$3.a(bwj.b, new diw.c(bvr.bM, 8, 4, 4));
-      $$3.a(bwj.b, new diw.c(bvr.aY, 4, 2, 3));
-      $$3.a(bwj.b, new diw.c(bvr.ab, 8, 2, 4));
-      if ($$2) {
-         rj.c($$3);
-      } else {
-         rj.b($$3);
-         rj.a($$3, 100, 25, 100, false);
-      }
-
-      dil.a $$4 = new dil.a($$0, $$1);
-      a($$4);
-      rj.m($$4);
-      rj.n($$4);
-      rj.f($$4);
-      rj.j($$4);
-      $$4.a(edm.a.j, $$2 ? td.as : td.at);
-      rj.V($$4);
-      rj.U($$4);
-      rj.ac($$4);
-      rj.ad($$4);
-      rj.p($$4);
-      axc $$5 = axd.a(axf.qE);
-      return a(true, $$2 ? 0.25F : 0.3F, 0.8F, $$3, $$4, $$5);
-   }
-
-   public static dik a(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      rj.i($$2);
-      $$2.a(bwj.b, new diw.c(bvr.bM, 8, 2, 4));
-      return a($$0, $$1, 0.8F, false, true, false, $$2, axd.a(axf.qR));
-   }
-
-   public static dik b(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      rj.i($$2);
-      $$2.a(bwj.b, new diw.c(bvr.aP, 40, 1, 2)).a(bwj.a, new diw.c(bvr.aJ, 2, 1, 3)).a(bwj.b, new diw.c(bvr.aO, 1, 1, 2));
-      return a($$0, $$1, 0.9F, false, false, true, $$2, axd.a(axf.qQ));
-   }
-
-   public static dik c(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      rj.i($$2);
-      $$2.a(bwj.b, new diw.c(bvr.aP, 40, 1, 2)).a(bwj.b, new diw.c(bvr.aO, 80, 1, 2)).a(bwj.a, new diw.c(bvr.aJ, 2, 1, 1));
-      return a($$0, $$1, 0.9F, true, false, true, $$2, axd.a(axf.qS));
-   }
-
-   private static dik a(jr<eno> $$0, jr<efu<?>> $$1, float $$2, boolean $$3, boolean $$4, boolean $$5, diw.a $$6, axc $$7) {
-      dil.a $$8 = new dil.a($$0, $$1);
-      a($$8);
-      rj.f($$8);
-      rj.j($$8);
-      if ($$3) {
-         rj.r($$8);
-      } else {
-         if ($$5) {
-            rj.q($$8);
-         }
-
-         if ($$4) {
-            rj.F($$8);
-         } else {
-            rj.E($$8);
-         }
-      }
-
-      rj.Y($$8);
-      rj.I($$8);
-      rj.ac($$8);
-      rj.ad($$8);
-      rj.ah($$8);
-      if ($$4) {
-         rj.ag($$8);
-      } else {
-         rj.af($$8);
-      }
-
-      return a(true, 0.95F, $$2, $$6, $$8, $$7);
-   }
-
-   public static dik b(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a();
-      rj.a($$3);
-      $$3.a(bwj.b, new diw.c(bvr.ay, 5, 4, 6));
-      rj.c($$3);
-      dil.a $$4 = new dil.a($$0, $$1);
-      a($$4);
-      rj.f($$4);
-      rj.j($$4);
-      if ($$2) {
-         rj.D($$4);
-      } else {
-         rj.C($$4);
-      }
-
-      rj.V($$4);
-      rj.Z($$4);
-      rj.ac($$4);
-      rj.ad($$4);
-      rj.h($$4);
-      rj.i($$4);
-      return a(true, 0.2F, 0.3F, $$3, $$4, e);
-   }
-
-   public static dik d(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      rj.f($$2);
-      dil.a $$3 = new dil.a($$0, $$1);
-      rj.al($$3);
-      a($$3);
-      rj.f($$3);
-      rj.j($$3);
-      rj.V($$3);
-      rj.Z($$3);
-      rj.T($$3);
-      rj.ac($$3);
-      rj.ai($$3);
-      rj.ak($$3);
-      return a(false, 2.0F, 0.0F, $$2, $$3, axd.a(axf.qO));
-   }
-
-   public static dik a(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2, boolean $$3, boolean $$4) {
-      diw.a $$5 = new diw.a();
-      dil.a $$6 = new dil.a($$0, $$1);
-      a($$6);
-      if ($$3) {
-         $$5.a(0.07F);
-         rj.e($$5);
-         if ($$4) {
-            $$6.a(edm.a.e, sy.a);
-            $$6.a(edm.a.e, sy.b);
-         }
-      } else {
-         rj.d($$5);
-         rj.ab($$6);
-         if ($$2) {
-            $$6.a(edm.a.j, td.d);
-         }
-      }
-
-      rj.f($$6);
-      rj.j($$6);
-      if ($$3) {
-         rj.H($$6);
-         rj.V($$6);
-         rj.Z($$6);
-      } else {
-         rj.S($$6);
-      }
-
-      rj.ac($$6);
-      if ($$2) {
-         $$6.a(edm.a.j, td.E);
-         $$6.a(edm.a.j, td.e);
-      } else {
-         rj.ad($$6);
-      }
-
-      float $$7 = $$3 ? 0.0F : 0.8F;
-      return a(true, $$7, $$3 ? 0.5F : 0.4F, $$5, $$6, e);
-   }
-
-   public static dik e(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      rj.h($$2);
-      dil.a $$3 = new dil.a($$0, $$1);
-      a($$3);
-      rj.f($$3);
-      rj.j($$3);
-      rj.R($$3);
-      rj.ad($$3);
-      return a(true, 0.9F, 1.0F, $$2, $$3, e);
-   }
-
-   public static dik a(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2, boolean $$3) {
-      dil.a $$4 = new dil.a($$0, $$1);
-      a($$4);
-      if (!$$2) {
-         rj.J($$4);
-      }
-
-      rj.f($$4);
-      rj.j($$4);
-      if ($$2) {
-         rj.z($$4);
-         rj.V($$4);
-         rj.K($$4);
-      } else {
-         rj.y($$4);
-         rj.Y($$4);
-         rj.L($$4);
-      }
-
-      rj.ac($$4);
-      rj.ad($$4);
-      diw.a $$5 = new diw.a();
-      rj.a($$5);
-      $$5.a(bwj.b, new diw.c(bvr.am, 1, 2, 6)).a(bwj.b, new diw.c(bvr.J, 1, 1, 1)).a(bwj.b, new diw.c(bvr.e, 10, 2, 3));
-      rj.c($$5);
-      if ($$3) {
-         $$5.a(bwj.b, new diw.c(bvr.ay, 8, 4, 4));
-         $$5.a(bwj.b, new diw.c(bvr.bM, 8, 4, 8));
-      }
-
-      return a(false, 2.0F, 0.0F, $$5, $$4, e);
-   }
-
-   public static dik c(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a();
-      rj.c($$3);
-      $$3.a(bwj.b, new diw.c(bvr.e, 6, 1, 2));
-      $$3.a(0.03F);
-      if ($$2) {
-         $$3.a(bwj.b, new diw.c(bvr.bM, 2, 4, 8));
-         $$3.a(0.04F);
-      }
-
-      dil.a $$4 = new dil.a($$0, $$1);
-      a($$4);
-      rj.f($$4);
-      rj.g($$4);
-      rj.j($$4);
-      if ($$2) {
-         rj.G($$4);
-      }
-
-      rj.M($$4);
-      rj.ac($$4);
-      rj.ae($$4);
-      return new dik.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(new diq.a().b(4159204).c(329011).a(12638463).d(a(2.0F)).e(10387789).f(9470285).a(dii.b).a(axd.a(axf.qP)).a())
-         .a($$3.a())
-         .a($$4.a())
-         .a();
-   }
-
-   private static dik a(diw.a $$0, int $$1, int $$2, dil.a $$3) {
-      return a(true, 0.5F, 0.5F, $$1, $$2, null, null, $$0, $$3, e);
-   }
-
-   private static dil.a r(jr<eno> $$0, jr<efu<?>> $$1) {
-      dil.a $$2 = new dil.a($$0, $$1);
-      a($$2);
-      rj.f($$2);
-      rj.j($$2);
-      rj.u($$2);
-      rj.V($$2);
-      rj.Z($$2);
-      rj.ac($$2);
-      rj.ad($$2);
-      return $$2;
-   }
-
-   public static dik d(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a();
-      rj.a($$3, 3, 4, 15);
-      $$3.a(bwj.g, new diw.c(bvr.ba, 15, 1, 5));
-      dil.a $$4 = r($$0, $$1);
-      $$4.a(edm.a.j, $$2 ? sv.h : sv.c);
-      rj.am($$4);
-      return a($$3, 4020182, 329011, $$4);
-   }
-
-   public static dik e(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a();
-      rj.a($$3, 1, 4, 10);
-      $$3.a(bwj.f, new diw.c(bvr.I, 1, 1, 2));
-      dil.a $$4 = r($$0, $$1);
-      $$4.a(edm.a.j, $$2 ? sv.g : sv.b);
-      rj.am($$4);
-      return a($$3, 4159204, 329011, $$4);
-   }
-
-   public static dik f(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a();
-      if ($$2) {
-         rj.a($$3, 8, 4, 8);
-      } else {
-         rj.a($$3, 10, 2, 15);
-      }
-
-      $$3.a(bwj.g, new diw.c(bvr.aX, 5, 1, 3)).a(bwj.g, new diw.c(bvr.bA, 25, 8, 8)).a(bwj.f, new diw.c(bvr.I, 2, 1, 2));
-      dil.a $$4 = r($$0, $$1);
-      $$4.a(edm.a.j, $$2 ? sv.f : sv.a);
-      rj.an($$4);
-      return a($$3, 4566514, 267827, $$4);
-   }
-
-   public static dik f(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a().a(bwj.g, new diw.c(bvr.aX, 15, 1, 3));
-      rj.a($$2, 10, 4);
-      dil.a $$3 = r($$0, $$1).a(edm.a.j, sv.l).a(edm.a.j, sv.a).a(edm.a.j, sv.i);
-      return a($$2, 4445678, 270131, $$3);
-   }
-
-   public static dik g(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a().a(bwj.f, new diw.c(bvr.br, 1, 1, 4)).a(bwj.g, new diw.c(bvr.ba, 15, 1, 5)).a(bwj.b, new diw.c(bvr.aV, 1, 1, 2));
-      rj.c($$3);
-      $$3.a(bwj.a, new diw.c(bvr.L, 5, 1, 1));
-      float $$4 = $$2 ? 0.5F : 0.0F;
-      dil.a $$5 = new dil.a($$0, $$1);
-      rj.aq($$5);
-      a($$5);
-      rj.ar($$5);
-      rj.f($$5);
-      rj.j($$5);
-      rj.u($$5);
-      rj.V($$5);
-      rj.Z($$5);
-      rj.ac($$5);
-      rj.ad($$5);
-      return new dik.a().a(true).a($$4).a(dik.d.b).b(0.5F).a(new diq.a().b(3750089).c(329011).a(12638463).d(a($$4)).a(dii.b).a()).a($$3.a()).a($$5.a()).a();
-   }
-
-   public static dik b(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2, boolean $$3, boolean $$4) {
-      dil.a $$5 = new dil.a($$0, $$1);
-      a($$5);
-      axc $$6;
-      if ($$4) {
-         $$6 = axd.a(axf.qN);
-         $$5.a(edm.a.j, td.Z);
-      } else {
-         $$6 = axd.a(axf.qD);
-         rj.N($$5);
-      }
-
-      rj.f($$5);
-      rj.j($$5);
-      if ($$4) {
-         $$5.a(edm.a.j, td.ab);
-         $$5.a(edm.a.j, td.R);
-         rj.Z($$5);
-      } else {
-         if ($$2) {
-            if ($$3) {
-               rj.x($$5);
-            } else {
-               rj.v($$5);
-            }
-         } else {
-            rj.w($$5);
-         }
-
-         rj.V($$5);
-         rj.O($$5);
-      }
-
-      rj.ac($$5);
-      rj.ad($$5);
-      diw.a $$8 = new diw.a();
-      rj.a($$8);
-      rj.c($$8);
-      if ($$4) {
-         $$8.a(bwj.b, new diw.c(bvr.aY, 4, 2, 3));
-      } else if (!$$2) {
-         $$8.a(bwj.b, new diw.c(bvr.bM, 5, 4, 4));
-      }
-
-      float $$9 = $$2 ? 0.6F : 0.7F;
-      return a(true, $$9, $$2 ? 0.6F : 0.8F, $$8, $$5, $$6);
-   }
-
-   public static dik h(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a();
-      rj.a($$3);
-      $$3.a(bwj.b, new diw.c(bvr.bM, 8, 4, 4)).a(bwj.b, new diw.c(bvr.aY, 4, 2, 3)).a(bwj.b, new diw.c(bvr.ab, 8, 2, 4));
-      rj.c($$3);
-      float $$4 = $$2 ? -0.5F : 0.25F;
-      dil.a $$5 = new dil.a($$0, $$1);
-      a($$5);
-      rj.n($$5);
-      rj.f($$5);
-      rj.j($$5);
-      rj.s($$5);
-      rj.V($$5);
-      rj.aa($$5);
-      rj.ad($$5);
-      if ($$2) {
-         rj.o($$5);
-      } else {
-         rj.p($$5);
-      }
-
-      return a(true, $$4, $$2 ? 0.4F : 0.8F, $$2 ? 4020182 : 4159204, 329011, null, null, $$3, $$5, e);
-   }
-
-   public static dik i(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a();
-      if (!$$2) {
-         rj.a($$3);
-      }
-
-      rj.c($$3);
-      dil.a $$4 = new dil.a($$0, $$1);
-      a($$4);
-      $$4.a(edm.a.j, $$2 ? td.Y : td.X);
-      if (!$$2) {
-         rj.N($$4);
-      }
-
-      rj.f($$4);
-      rj.j($$4);
-      if (!$$2) {
-         rj.V($$4);
-      }
-
-      rj.O($$4);
-      if (!$$2) {
-         rj.ac($$4);
-      }
-
-      rj.ad($$4);
-      axc $$5 = axd.a(axf.qD);
-      return new dik.a()
-         .a(true)
-         .a(0.7F)
-         .b(0.8F)
-         .a(
-            $$2
-               ? new diq.a().b(7768221).c(5597568).a(8484720).d(12171705).f(7832178).e(8883574).a(dii.b).a($$5).a()
-               : new diq.a().b(4159204).c(329011).a(12638463).d(a(0.7F)).a(diq.b.b).a(dii.b).a($$5).a()
+   public static void a(ra<egb<?, ?>> $$0) {
+      jr<egb<?, ?>> $$1 = $$0.a(mb.aL);
+      jq<egb<?, ?>> $$2 = $$1.b(sg.e);
+      jq<egb<?, ?>> $$3 = $$1.b(sg.f);
+      jq<egb<?, ?>> $$4 = $$1.b(sg.L);
+      jq<egb<?, ?>> $$5 = $$1.b(sg.F);
+      jq<egb<?, ?>> $$6 = $$1.b(k);
+      jr<enh> $$7 = $$0.a(mb.aT);
+      jq<enh> $$8 = $$7.b(sr.d);
+      jq<enh> $$9 = $$7.b(sr.e);
+      jq<enh> $$10 = $$7.b(sr.f);
+      jq<enh> $$11 = $$7.b(sr.g);
+      jq<enh> $$12 = $$7.b(sr.p);
+      jq<enh> $$13 = $$7.b(sr.A);
+      jq<enh> $$14 = $$7.b(sr.C);
+      jq<enh> $$15 = $$7.b(sr.D);
+      jq<enh> $$16 = $$7.b(sr.n);
+      jq<enh> $$17 = $$7.b(sr.i);
+      jq<enh> $$18 = $$7.b(sr.l);
+      jq<enh> $$19 = $$7.b(sr.h);
+      jq<enh> $$20 = $$7.b(sr.v);
+      jq<enh> $$21 = $$7.b(sr.z);
+      jq<enh> $$22 = $$7.b(sr.B);
+      jq<enh> $$23 = $$7.b(sr.u);
+      jq<enh> $$24 = $$7.b(sr.r);
+      jq<enh> $$25 = $$7.b(sr.s);
+      jq<enh> $$26 = $$7.b(sr.q);
+      jq<enh> $$27 = $$7.b(sr.t);
+      jq<enh> $$28 = $$7.b(sr.c);
+      jq<enh> $$29 = $$7.b(sr.y);
+      jq<enh> $$30 = $$7.b(sr.w);
+      jq<enh> $$31 = $$7.b(sr.m);
+      jq<enh> $$32 = $$7.b(sr.x);
+      jq<enh> $$33 = $$7.b(sr.o);
+      jq<enh> $$34 = $$7.b(sr.j);
+      sb.a($$0, a, egp.U, new ejd(0.0F));
+      sb.a($$0, b, egp.U, new ejd(0.2F));
+      sb.a($$0, c, egp.v);
+      sb.a($$0, d, egp.i, sb.a(egp.T, new ejl(eku.a(dkf.cm))));
+      sb.a($$0, e, egp.i, sb.a(egp.T, new ejl(eku.a(dkf.cn))));
+      sb.a($$0, f, egp.i, sb.a(egp.T, new ejl(eku.a(dkf.jb))));
+      sb.a($$0, g, egp.i, sb.a(egp.T, new ejl(eku.a(dkf.fn)), List.of(dkf.i)));
+      sb.a($$0, h, egp.i, sb.a(egp.T, new ejl(eku.a(dkf.oK.m().b(dsl.c, Integer.valueOf(3)))), List.of(dkf.i)));
+      sb.a($$0, i, egp.i, a(new ele(bri.<dxo>a().a(dkf.bA.m(), 1).a(dkf.bB.m(), 4)), 32));
+      sb.a($$0, j, egp.i, a(eku.a(dkf.bA), 32));
+      sb.a(
+         $$0,
+         k,
+         egp.i,
+         new ejg(32, 7, 3, sq.a(egp.T, new ejl(new ele(bri.<dxo>a().a(dkf.bA.m(), 3).a(dkf.bB.m(), 1))), eeq.a(eeq.c, eeq.a(eeq.a(jm.a.q(), dkf.l)))))
+      );
+      sb.a($$0, l, egp.T, new ejl(eku.a(dkf.bA.m())));
+      sb.a($$0, m, egp.i, a(eku.a(dkf.bC), 4));
+      sb.a($$0, n, egp.i, new ejg(64, 7, 3, sq.a(egp.T, new ejl(eku.a(dkf.fo)), eeq.a(eeq.b(), eeq.d(), eeq.a(jm.a.q(), dkf.i)))));
+      sb.a($$0, o, egp.i, new ejg(10, 7, 3, sq.a(egp.T, new ejl(eku.a(dkf.fB)))));
+      sb.a($$0, p, egp.i, sb.a(egp.T, new ejl(eku.a(dkf.jf))));
+      sb.a($$0, q, egp.i, sb.a(egp.T, new ejl(eku.a(dkf.jg))));
+      sb.a($$0, r, egp.i, sb.a(10, sq.a(egp.w, eik.b(brx.a(1, 3), eku.a(dkf.ed)), emw.a(eeq.a(eeq.c, eeq.a(dkf.ed.m(), jh.c))))));
+      sb.a(
+         $$0,
+         s,
+         egp.i,
+         new ejg(
+            20,
+            4,
+            0,
+            sq.a(
+               egp.w,
+               eik.b(brx.a(2, 4), eku.a(dkf.ef)),
+               emw.a(
+                  eeq.a(
+                     eeq.c,
+                     eeq.a(dkf.ef.m(), jh.c),
+                     eeq.b(
+                        eeq.a(new jh(1, -1, 0), etr.c, etr.b),
+                        eeq.a(new jh(-1, -1, 0), etr.c, etr.b),
+                        eeq.a(new jh(0, -1, 1), etr.c, etr.b),
+                        eeq.a(new jh(0, -1, -1), etr.c, etr.b)
+                     )
+                  )
+               )
+            )
          )
-         .a($$3.a())
-         .a($$4.a())
-         .a();
-   }
+      );
+      sb.a($$0, t, egp.g, a(new ele(bri.<dxo>a().a(dkf.ca.m(), 2).a(dkf.bY.m(), 1)), 64));
+      sb.a(
+         $$0,
+         u,
+         egp.g,
+         new ejg(
+            96,
+            6,
+            2,
+            sq.a(
+               egp.T,
+               new ejl(
+                  new eky(
+                     2345L,
+                     new est.a(0, 1.0),
+                     0.020833334F,
+                     List.of(dkf.bY.m(), dkf.ca.m(), dkf.cc.m(), dkf.cd.m(), dkf.ce.m(), dkf.cf.m(), dkf.cg.m(), dkf.ch.m(), dkf.ci.m(), dkf.cj.m(), dkf.cl.m())
+                  )
+               )
+            )
+         )
+      );
+      sb.a($$0, v, egp.g, new ejg(64, 6, 2, sq.a(egp.T, new ejl(eku.a(dkf.cb)))));
+      sb.a(
+         $$0,
+         w,
+         egp.g,
+         new ejg(
+            64,
+            6,
+            2,
+            sq.a(
+               egp.T,
+               new ejl(
+                  new ekz(
+                     2345L,
+                     new est.a(0, 1.0),
+                     0.005F,
+                     -0.8F,
+                     0.33333334F,
+                     dkf.bY.m(),
+                     List.of(dkf.cf.m(), dkf.ce.m(), dkf.ch.m(), dkf.cg.m()),
+                     List.of(dkf.ca.m(), dkf.cd.m(), dkf.ci.m(), dkf.cj.m())
+                  )
+               )
+            )
+         )
+      );
+      sb.a(
+         $$0,
+         x,
+         egp.g,
+         new ejg(
+            96,
+            6,
+            2,
+            sq.a(
+               egp.T,
+               new ejl(
+                  new ekw(
+                     new azm<>(1, 3),
+                     new est.a(-10, 1.0),
+                     1.0F,
+                     2345L,
+                     new est.a(-3, 1.0),
+                     1.0F,
+                     List.of(dkf.jf.m(), dkf.cc.m(), dkf.ca.m(), dkf.cd.m(), dkf.bY.m(), dkf.cj.m(), dkf.ci.m(), dkf.bA.m())
+                  )
+               )
+            )
+         )
+      );
+      bri.a<dxo> $$35 = bri.a();
 
-   public static dik g(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      rj.a($$2);
-      rj.a($$2, 70);
-      $$2.a(bwj.a, new diw.c(bvr.bh, 1, 1, 1));
-      $$2.a(bwj.a, new diw.c(bvr.q, 30, 4, 4));
-      $$2.a(bwj.b, new diw.c(bvr.ac, 10, 2, 5));
-      dil.a $$3 = new dil.a($$0, $$1);
-      rj.al($$3);
-      a($$3);
-      rj.f($$3);
-      rj.k($$3);
-      rj.P($$3);
-      rj.ac($$3);
-      rj.aj($$3);
-      $$3.a(edm.a.j, sv.e);
-      axc $$4 = axd.a(axf.qC);
-      return new dik.a()
-         .a(true)
-         .a(0.8F)
-         .b(0.9F)
-         .a(new diq.a().b(6388580).c(2302743).a(12638463).d(a(0.8F)).e(6975545).a(diq.b.c).a(dii.b).a($$4).a())
-         .a($$2.a())
-         .a($$3.a())
-         .a();
-   }
-
-   public static dik h(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      rj.a($$2, 70);
-      $$2.a(bwj.a, new diw.c(bvr.bh, 1, 1, 1));
-      $$2.a(bwj.a, new diw.c(bvr.q, 30, 4, 4));
-      $$2.a(bwj.b, new diw.c(bvr.ac, 10, 2, 5));
-      $$2.a(bwj.g, new diw.c(bvr.bA, 25, 8, 8));
-      dil.a $$3 = new dil.a($$0, $$1);
-      rj.al($$3);
-      a($$3);
-      rj.f($$3);
-      rj.l($$3);
-      rj.Q($$3);
-      $$3.a(edm.a.j, sv.e);
-      axc $$4 = axd.a(axf.qC);
-      return new dik.a()
-         .a(true)
-         .a(0.8F)
-         .b(0.9F)
-         .a(new diq.a().b(3832426).c(5077600).a(12638463).d(a(0.8F)).e(9285927).a(diq.b.c).a(dii.b).a($$4).a())
-         .a($$2.a())
-         .a($$3.a())
-         .a();
-   }
-
-   public static dik j(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      diw.a $$3 = new diw.a().a(bwj.f, new diw.c(bvr.br, 2, 1, 4)).a(bwj.g, new diw.c(bvr.ba, 5, 1, 5));
-      rj.c($$3);
-      $$3.a(bwj.a, new diw.c(bvr.L, $$2 ? 1 : 100, 1, 1));
-      dil.a $$4 = new dil.a($$0, $$1);
-      a($$4);
-      rj.f($$4);
-      rj.j($$4);
-      rj.u($$4);
-      rj.V($$4);
-      rj.Z($$4);
-      rj.ac($$4);
-      rj.ad($$4);
-      if (!$$2) {
-         $$4.a(edm.a.j, sv.d);
+      for (int $$36 = 1; $$36 <= 4; $$36++) {
+         for (jm $$37 : jm.c.a) {
+            $$35.a(dkf.td.m().b(dpu.e, Integer.valueOf($$36)).b(dpu.d, $$37), 1);
+         }
       }
 
-      float $$5 = $$2 ? 0.0F : 0.5F;
-      return a(true, $$5, 0.5F, $$2 ? 3750089 : 4159204, 329011, null, null, $$3, $$4, e);
-   }
-
-   public static dik b(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2, boolean $$3) {
-      diw.a $$4 = new diw.a();
-      boolean $$5 = !$$3 && !$$2;
-      if ($$5) {
-         $$4.a(bwj.b, new diw.c(bvr.bB, 5, 2, 5));
-      }
-
-      rj.c($$4);
-      dil.a $$6 = new dil.a($$0, $$1);
-      a($$6);
-      rj.f($$6);
-      rj.j($$6);
-      rj.V($$6);
-      rj.Z($$6);
-      rj.ac($$6);
-      rj.ad($$6);
-      float $$7;
-      if ($$2) {
-         $$7 = 0.05F;
-      } else if ($$3) {
-         $$7 = 0.2F;
-      } else {
-         $$7 = 0.8F;
-      }
-
-      return a(true, $$7, $$5 ? 0.4F : 0.3F, $$2 ? 4020182 : 4159204, 329011, null, null, $$4, $$6, e);
-   }
-
-   public static dik i(jr<eno> $$0, jr<efu<?>> $$1) {
-      dil.a $$2 = new dil.a($$0, $$1);
-      $$2.a(edm.a.k, sy.n);
-      return a(false, 0.5F, 0.5F, new diw.a(), $$2, e);
-   }
-
-   public static dik k(jr<eno> $$0, jr<efu<?>> $$1, boolean $$2) {
-      dil.a $$3 = new dil.a($$0, $$1);
-      diw.a $$4 = new diw.a();
-      $$4.a(bwj.b, new diw.c($$2 ? bvr.aR : bvr.J, 1, 1, 2)).a(bwj.b, new diw.c(bvr.aY, 2, 2, 6)).a(bwj.b, new diw.c(bvr.bb, 2, 2, 4));
-      rj.c($$4);
-      a($$3);
-      rj.ab($$3);
-      rj.f($$3);
-      rj.j($$3);
-      if ($$2) {
-         rj.W($$3);
-      } else {
-         rj.X($$3);
-      }
-
-      rj.h($$3);
-      rj.i($$3);
-      axc $$5 = axd.a($$2 ? axf.qG : axf.qF);
-      return $$2 ? a(true, 0.5F, 0.8F, 6141935, 6141935, 11983713, 11983713, $$4, $$3, $$5) : a(true, 0.5F, 0.8F, 937679, 329011, null, null, $$4, $$3, $$5);
-   }
-
-   public static dik j(jr<eno> $$0, jr<efu<?>> $$1) {
-      dil.a $$2 = new dil.a($$0, $$1);
-      diw.a $$3 = new diw.a();
-      $$3.a(bwj.b, new diw.c(bvr.ai, 5, 1, 3));
-      rj.c($$3);
-      a($$2);
-      rj.ap($$2);
-      rj.f($$2);
-      rj.j($$2);
-      rj.h($$2);
-      rj.i($$2);
-      axc $$4 = axd.a(axf.qI);
-      return a(true, -0.7F, 0.9F, $$3, $$2, $$4);
-   }
-
-   public static dik k(jr<eno> $$0, jr<efu<?>> $$1) {
-      dil.a $$2 = new dil.a($$0, $$1);
-      diw.a $$3 = new diw.a();
-      $$3.a(bwj.b, new diw.c(bvr.ai, 5, 1, 3));
-      rj.c($$3);
-      a($$2);
-      rj.ap($$2);
-      rj.f($$2);
-      rj.j($$2);
-      rj.h($$2);
-      rj.i($$2);
-      axc $$4 = axd.a(axf.qA);
-      return a(true, -0.7F, 0.9F, $$3, $$2, $$4);
-   }
-
-   public static dik l(jr<eno> $$0, jr<efu<?>> $$1) {
-      dil.a $$2 = new dil.a($$0, $$1);
-      diw.a $$3 = new diw.a();
-      rj.c($$3);
-      a($$2);
-      rj.f($$2);
-      rj.j($$2);
-      rj.h($$2);
-      rj.i($$2);
-      axc $$4 = axd.a(axf.qL);
-      return a(true, 1.0F, 0.3F, $$3, $$2, $$4);
-   }
-
-   public static dik m(jr<eno> $$0, jr<efu<?>> $$1) {
-      dil.a $$2 = new dil.a($$0, $$1);
-      diw.a $$3 = new diw.a();
-      $$3.a(bwj.b, new diw.c(bvr.aY, 4, 2, 3)).a(bwj.b, new diw.c(bvr.ai, 5, 1, 3));
-      rj.c($$3);
-      a($$2);
-      rj.ap($$2);
-      rj.f($$2);
-      rj.j($$2);
-      rj.ad($$2);
-      rj.h($$2);
-      rj.i($$2);
-      axc $$4 = axd.a(axf.qJ);
-      return a(true, -0.3F, 0.9F, $$3, $$2, $$4);
-   }
-
-   public static dik n(jr<eno> $$0, jr<efu<?>> $$1) {
-      dil.a $$2 = new dil.a($$0, $$1);
-      diw.a $$3 = new diw.a();
-      $$3.a(bwj.b, new diw.c(bvr.bM, 1, 1, 1)).a(bwj.b, new diw.c(bvr.aY, 8, 2, 3)).a(bwj.b, new diw.c(bvr.ab, 4, 2, 4));
-      rj.c($$3);
-      a($$2);
-      rj.ap($$2);
-      rj.f($$2);
-      rj.j($$2);
-      rj.t($$2);
-      rj.ad($$2);
-      rj.h($$2);
-      rj.i($$2);
-      axc $$4 = axd.a(axf.qz);
-      return a(true, -0.2F, 0.8F, $$3, $$2, $$4);
-   }
-
-   public static dik o(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      $$2.a(bwj.d, new diw.c(bvr.h, 10, 4, 6));
-      $$2.a(bwj.g, new diw.c(bvr.bA, 25, 8, 8));
-      rj.c($$2);
-      dil.a $$3 = new dil.a($$0, $$1);
-      a($$3);
-      rj.ab($$3);
-      rj.f($$3);
-      rj.B($$3);
-      rj.j($$3);
-      rj.A($$3);
-      axc $$4 = axd.a(axf.qB);
-      return a(true, 0.5F, 0.5F, $$2, $$3, $$4);
-   }
-
-   public static dik p(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      rj.g($$2);
-      dil.a $$3 = new dil.a($$0, $$1);
-      a($$3);
-      rj.ab($$3);
-      rj.a($$3, true);
-      rj.j($$3);
-      rj.S($$3);
-      rj.ac($$3);
-      rj.ad($$3);
-      rj.d($$3);
-      axc $$4 = axd.a(axf.qy);
-      return a(true, 0.8F, 0.4F, $$2, $$3, $$4);
-   }
-
-   public static dik q(jr<eno> $$0, jr<efu<?>> $$1) {
-      diw.a $$2 = new diw.a();
-      dil.a $$3 = new dil.a($$0, $$1);
-      $$3.a(rl.a);
-      $$3.a(rl.b);
-      $$3.a(rl.c);
-      rj.av($$3);
-      rj.b($$3);
-      rj.c($$3);
-      rj.as($$3);
-      rj.ab($$3);
-      rj.f($$3);
-      rj.j($$3);
-      rj.S($$3);
-      rj.ac($$3);
-      rj.ad($$3);
-      rj.e($$3);
-      axc $$4 = axd.a(axf.qx);
-      return a(true, 0.8F, 0.4F, $$2, $$3, $$4);
+      sb.a($$0, y, egp.g, new ejg(96, 6, 2, sq.a(egp.T, new ejl(new ele($$35)))));
+      sb.a($$0, z, egp.g, new ejg(1, 0, 0, sq.a(egp.T, new ejl(eku.a(dkf.ua), true))));
+      sb.a(
+         $$0,
+         A,
+         egp.ah,
+         new ejm(
+            ju.a(
+               sq.a(egp.i, sb.a(egp.T, new ejl(eku.a(dkf.jc)))),
+               sq.a(egp.i, sb.a(egp.T, new ejl(eku.a(dkf.jd)))),
+               sq.a(egp.i, sb.a(egp.T, new ejl(eku.a(dkf.je)))),
+               sq.a(egp.h, sb.a(egp.T, new ejl(eku.a(dkf.cl))))
+            )
+         )
+      );
+      sb.a($$0, B, egp.i, sb.a(egp.T, new ejl(eku.a(dkf.ua), true)));
+      sb.a(
+         $$0,
+         C,
+         egp.ag,
+         new ejf(List.of(new eij(sq.a($$2), 0.025F), new eij(sq.a($$3), 0.05F), new eij($$8, 0.6666667F), new eij($$11, 0.2F), new eij($$12, 0.1F)), $$28)
+      );
+      sb.a($$0, D, egp.ag, new ejf(List.of(new eij($$10, 0.1F), new eij($$9, 0.9F)), $$9));
+      sb.a($$0, E, egp.T, new ejl(new ele(bri.<dxo>a().a(dkf.tX.m(), 25).a(dkf.bA.m(), 25).a(dkf.jf.m(), 10))));
+      sb.a($$0, F, egp.x, new ejs(axk.bw, eku.a(dkf.tW), sq.a($$1.b(E)), emx.b, bsc.a(1), 0.0F, 5, 0.3F, bsl.a(2, 4), 0.75F));
+      sb.a($$0, G, egp.x, new ejs(axk.bw, eku.a(dkf.tW), sq.a($$1.b(E)), emx.b, bsc.a(1), 0.0F, 5, 0.6F, bsl.a(1, 2), 0.75F));
+      sb.a($$0, H, egp.ag, new ejf(List.of(new eij($$13, 0.2F), new eij($$14, 0.1F)), $$29));
+      sb.a($$0, I, egp.ag, new ejf(List.of(new eij($$15, 0.5F)), $$30));
+      sb.a($$0, J, egp.ag, new ejf(List.of(new eij($$16, 0.33333334F)), $$17));
+      sb.a($$0, K, egp.ag, new ejf(List.of(new eij($$18, 0.33333334F)), $$31));
+      sb.a($$0, L, egp.ag, new ejf(List.of(new eij($$19, 0.8F)), $$28));
+      sb.a($$0, M, egp.ag, new ejf(List.of(new eij($$20, 0.5F)), $$21));
+      sb.a($$0, N, egp.ag, new ejf(List.of(new eij($$17, 0.666F), new eij($$12, 0.1F)), $$28));
+      sb.a($$0, O, egp.ag, new ejf(List.of(new eij($$12, 0.1F)), $$28));
+      sb.a($$0, P, egp.ag, new ejf(List.of(new eij($$21, 0.2F), new eij($$22, 0.1F)), $$32));
+      sb.a($$0, Q, egp.ag, new ejf(List.of(new eij(sq.a($$4), 0.33333334F)), sq.a($$5)));
+      sb.a($$0, R, egp.ag, new ejf(List.of(new eij($$12, 0.1F), new eij($$23, 0.5F)), $$33));
+      sb.a($$0, S, egp.ag, new ejf(List.of(new eij($$24, 0.33333334F), new eij($$16, 0.33333334F)), $$17));
+      sb.a($$0, T, egp.ag, new ejf(List.of(new eij($$24, 0.025641026F), new eij($$25, 0.30769232F), new eij($$16, 0.33333334F)), $$17));
+      sb.a($$0, U, egp.ag, new ejf(List.of(new eij($$12, 0.1F), new eij($$23, 0.5F), new eij($$26, 0.33333334F)), $$33));
+      sb.a($$0, V, egp.ag, new ejf(List.of(new eij($$12, 0.05F), new eij($$23, 0.15F), new eij($$26, 0.7F)), sq.a($$6)));
+      sb.a($$0, W, egp.ai, new eje(sq.a($$3), sq.a($$2)));
+      sb.a($$0, X, egp.ag, new ejf(List.of(new eij($$27, 0.85F)), $$34));
    }
 }

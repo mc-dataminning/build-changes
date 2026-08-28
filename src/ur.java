@@ -1,65 +1,145 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public record ur(List<String> c, Map<String, String> d) {
-   private static final Logger e = LogUtils.getLogger();
-   public static final ur a = new ur(List.of(), Map.of());
-   public static final Codec<ur> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.listOf().fieldOf("removed").forGetter(ur::b), Codec.unboundedMap(Codec.STRING, Codec.STRING).fieldOf("renamed").forGetter(ur::c)
-            )
-            .apply($$0, ur::new)
-   );
-
-   public static ur a(InputStream $$0) {
-      JsonElement $$1 = JsonParser.parseReader(new InputStreamReader($$0, StandardCharsets.UTF_8));
-      return (ur)b.parse(JsonOps.INSTANCE, $$1).getOrThrow($$0x -> new IllegalStateException("Failed to parse deprecated language data: " + $$0x));
-   }
-
-   public static ur a(String $$0) {
-      try (InputStream $$1 = us.class.getResourceAsStream($$0)) {
-         return $$1 != null ? a($$1) : a;
-      } catch (Exception var6) {
-         e.error("Failed to read {}", $$0, var6);
-         return a;
-      }
-   }
-
-   public static ur a() {
-      return a("/assets/minecraft/lang/deprecated.json");
-   }
-
-   public void a(Map<String, String> $$0) {
-      for (String $$1 : this.c) {
-         $$0.remove($$1);
+public class ur extends vc {
+   private static final int b = 12;
+   public static final vl<ur> a = new vl.a<ur>() {
+      public ur a(DataInput $$0, uv $$1) throws IOException {
+         return ur.a(d($$0, $$1));
       }
 
-      this.d.forEach(($$1x, $$2) -> {
-         String $$3 = $$0.remove($$1x);
-         if ($$3 == null) {
-            e.warn("Missing translation key for rename: {}", $$1x);
-            $$0.remove($$2);
-         } else {
-            $$0.put($$2, $$3);
-         }
-      });
+      @Override
+      public vg.b a(DataInput $$0, vg $$1, uv $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static int d(DataInput $$0, uv $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readInt();
+      }
+
+      @Override
+      public int c() {
+         return 4;
+      }
+
+      @Override
+      public String a() {
+         return "INT";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Int";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final int c;
+
+   ur(int $$0) {
+      this.c = $$0;
    }
 
-   public List<String> b() {
+   public static ur a(int $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? ur.a.a[$$0 - -128] : new ur($$0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeInt(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 12;
+   }
+
+   @Override
+   public byte b() {
+      return 3;
+   }
+
+   @Override
+   public vl<ur> c() {
+      return a;
+   }
+
+   public ur e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ur && this.c == ((ur)$$0).c;
+   }
+
+   @Override
+   public int hashCode() {
       return this.c;
    }
 
-   public Map<String, String> c() {
-      return this.d;
+   @Override
+   public void a(vn $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.c;
+   }
+
+   @Override
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public short h() {
+      return (short)(this.c & 65535);
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(this.c & 0xFF);
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.c;
+   }
+
+   @Override
+   public Number l() {
+      return this.c;
+   }
+
+   @Override
+   public vg.b a(vg $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final ur[] a = new ur[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new ur(-128 + $$0);
+         }
+      }
    }
 }

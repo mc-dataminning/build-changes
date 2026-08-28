@@ -1,30 +1,57 @@
 import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.CorruptedFrameException;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface xd<T extends xb> {
-   wq a();
-
-   aad b();
-
-   zt<ByteBuf, aac<? super T>> c();
-
+public class xd extends ByteToMessageDecoder {
+   private static final int a = 3;
+   private final ByteBuf b = Unpooled.directBuffer(3);
    @Nullable
-   aab d();
+   private final vx c;
 
-   public interface a<T extends xb, B extends ByteBuf> {
-      xd<T> a(Function<ByteBuf, B> var1);
+   public xd(@Nullable vx $$0) {
+      this.c = $$0;
+   }
 
-      wq a();
+   protected void handlerRemoved0(ChannelHandlerContext $$0) {
+      this.b.release();
+   }
 
-      aad b();
+   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (!$$0.isReadable()) {
+            return false;
+         }
 
-      @bbl
-      void a(xd.a.a var1);
+         byte $$3 = $$0.readByte();
+         $$1.writeByte($$3);
+         if (!xb.a($$3)) {
+            return true;
+         }
+      }
 
-      @FunctionalInterface
-      public interface a {
-         void accept(aae<?> var1, int var2);
+      throw new CorruptedFrameException("length wider than 21-bit");
+   }
+
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
+      $$1.markReaderIndex();
+      this.b.clear();
+      if (!a($$1, this.b)) {
+         $$1.resetReaderIndex();
+      } else {
+         int $$3 = xb.a(this.b);
+         if ($$1.readableBytes() < $$3) {
+            $$1.resetReaderIndex();
+         } else {
+            if (this.c != null) {
+               this.c.a($$3 + xb.a($$3));
+            }
+
+            $$2.add($$1.readBytes($$3));
+         }
       }
    }
 }

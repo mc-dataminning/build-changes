@@ -1,98 +1,46 @@
-import java.util.Set;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public record eux(ash d, fby e, fby f, float g, float h, boolean i, boolean j, Set<bwu> k, eux.a l) {
-   public static final eux.a a = $$0 -> {
-   };
-   public static final eux.a b = eux::a;
-   public static final eux.a c = eux::b;
+public interface eux {
+   jm[] a = new jm[]{jm.e, jm.f, jm.a, jm.b, jm.c, jm.d};
 
-   public eux(ash $$0, fby $$1, fby $$2, float $$3, float $$4, eux.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
-   }
+   void a(jm var1, dxo var2, jh var3, jh var4, int var5, int var6);
 
-   public eux(ash $$0, fby $$1, fby $$2, float $$3, float $$4, Set<bwu> $$5, eux.a $$6) {
-      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
-   }
+   void a(jh var1, dkd var2, @Nullable euy var3);
 
-   public eux(ash $$0, bvk $$1, eux.a $$2) {
-      this($$0, a($$0, $$1), fby.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
-   }
+   void a(dxo var1, jh var2, dkd var3, @Nullable euy var4, boolean var5);
 
-   private static void a(bvk $$0) {
-      if ($$0 instanceof asi $$1) {
-         $$1.f.b(new aef(1032, jh.c, 0, false));
+   default void a(jh $$0, dkd $$1, @Nullable jm $$2, @Nullable euy $$3) {
+      for (jm $$4 : a) {
+         if ($$4 != $$2) {
+            this.a($$0.a($$4), $$1, null);
+         }
       }
    }
 
-   private static void b(bvk $$0) {
-      $$0.f(jh.a((ka)$$0.du()));
+   static void a(dha $$0, jm $$1, jh $$2, jh $$3, dxo $$4, int $$5, int $$6) {
+      dxo $$7 = $$0.a_($$2);
+      if (($$5 & 128) == 0 || !$$7.a(dkf.cE)) {
+         dxo $$8 = $$7.a($$0, $$0, $$2, $$1, $$3, $$4, $$0.H_());
+         dkd.a($$7, $$8, $$0, $$2, $$5, $$6);
+      }
    }
 
-   public static eux a(ash $$0, bvk $$1, eux.a $$2) {
-      return new eux($$0, a($$0, $$1), fby.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
-   }
-
-   private static fby a(ash $$0, bvk $$1) {
-      return $$1.a($$0, $$0.Y()).c();
-   }
-
-   public eux a(float $$0, float $$1) {
-      return new eux(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
-   }
-
-   public eux a(fby $$0) {
-      return new eux(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
-   }
-
-   public eux a() {
-      return new eux(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
-   }
-
-   public ash b() {
-      return this.d;
-   }
-
-   public fby c() {
-      return this.e;
-   }
-
-   public fby d() {
-      return this.f;
-   }
-
-   public float e() {
-      return this.g;
-   }
-
-   public float f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public Set<bwu> i() {
-      return this.k;
-   }
-
-   public eux.a j() {
-      return this.l;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(bvk var1);
-
-      default eux.a then(eux.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
+   static void a(dgz $$0, dxo $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", ma.e.b($$3), $$3.v(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + ma.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new z($$7);
       }
    }
 }

@@ -1,45 +1,133 @@
-import java.nio.file.Path;
-import java.util.Collections;
+import com.mojang.jtracy.Plot;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.jtracy.Zone;
+import com.mojang.logging.LogUtils;
+import java.lang.StackWalker.Option;
+import java.lang.StackWalker.StackFrame;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public class bpn implements bpr {
-   public static final bpn a = new bpn();
+public class bpn implements bpj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final StackWalker c = StackWalker.getInstance(Set.of(Option.RETAIN_CLASS_REFERENCE), 5);
+   private final List<Zone> d = new ArrayList<>();
+   private final Map<String, bpn.a> e = new HashMap<>();
+   private final String f = Thread.currentThread().getName();
 
-   private bpn() {
+   @Override
+   public void a() {
    }
 
    @Override
-   public List<bpv> a(String $$0) {
-      return Collections.emptyList();
+   public void b() {
+      for (bpn.a $$0 : this.e.values()) {
+         $$0.a(0);
+      }
    }
 
    @Override
-   public boolean a(Path $$0) {
-      return false;
+   public void a(String $$0) {
+      String $$1 = "";
+      String $$2 = "";
+      int $$3 = 0;
+      if (ab.aU) {
+         Optional<StackFrame> $$4 = c.walk(
+            $$0x -> $$0x.filter($$0xx -> $$0xx.getDeclaringClass() != bpn.class && $$0xx.getDeclaringClass() != bpj.a.class).findFirst()
+         );
+         if ($$4.isPresent()) {
+            StackFrame $$5 = $$4.get();
+            $$1 = $$5.getMethodName();
+            $$2 = $$5.getFileName();
+            $$3 = $$5.getLineNumber();
+         }
+      }
+
+      Zone $$6 = TracyClient.beginZone($$0, $$1, $$2, $$3);
+      this.d.add($$6);
    }
 
    @Override
-   public long a() {
-      return 0L;
+   public void a(Supplier<String> $$0) {
+      this.a($$0.get());
    }
 
    @Override
-   public int b() {
-      return 0;
+   public void c() {
+      if (this.d.isEmpty()) {
+         a.error("Tried to pop one too many times! Mismatched push() and pop()?");
+      } else {
+         Zone $$0 = this.d.removeLast();
+         $$0.close();
+      }
    }
 
    @Override
-   public long c() {
-      return 0L;
+   public void b(String $$0) {
+      this.c();
+      this.a($$0);
    }
 
    @Override
-   public int d() {
-      return 0;
+   public void b(Supplier<String> $$0) {
+      this.c();
+      this.a($$0.get());
    }
 
    @Override
-   public String e() {
-      return "";
+   public void a(bqs $$0) {
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+      this.e.computeIfAbsent($$0, $$1x -> new bpn.a(this.f + " " + $$0)).b($$1);
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+      this.a($$0.get(), $$1);
+   }
+
+   private Zone d() {
+      return this.d.getLast();
+   }
+
+   @Override
+   public void e(String $$0) {
+      this.d().addText($$0);
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.d().addValue($$0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.d().setColor($$0);
+   }
+
+   static final class a {
+      private final Plot a;
+      private int b;
+
+      a(String $$0) {
+         this.a = TracyClient.createPlot($$0);
+         this.b = 0;
+      }
+
+      void a(int $$0) {
+         this.b = $$0;
+         this.a.setValue((double)$$0);
+      }
+
+      void b(int $$0) {
+         this.a(this.b + $$0);
+      }
    }
 }

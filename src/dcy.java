@@ -1,29 +1,19 @@
-public class dcy extends dbk {
-   public dcy(String $$0, dbq $$1, dca $$2, cxp $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+import java.util.List;
+
+public interface dcy<T> {
+   public interface a<T> extends dcy<T> {
+      T a(T var1, List<T> var2);
    }
 
-   @Override
-   protected cxl f() {
-      return cxt.fc;
-   }
+   public interface b<T> extends dcy<T> {
+      default T a(jq<cxc> $$0) {
+         return this.a(new cxg($$0));
+      }
 
-   @Override
-   public dco<dcy> a() {
-      return dco.o;
-   }
+      default T a(cxc $$0) {
+         return this.a(new cxg($$0));
+      }
 
-   @Override
-   public dcp<dcy> b() {
-      return dcp.b;
-   }
-
-   @Override
-   public dch h() {
-      return switch (this.e()) {
-         case b -> dcg.f;
-         case a -> dcg.e;
-         case c -> dcg.g;
-      };
+      T a(cxg var1);
    }
 }

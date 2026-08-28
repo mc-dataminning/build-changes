@@ -1,82 +1,132 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record gme(alz b, alz c, List<gme.a> d, List<gme.b> e, gmb f) {
-   public static final Codec<gme> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alz.a.fieldOf("vertex").forGetter(gme::a),
-               alz.a.fieldOf("fragment").forGetter(gme::b),
-               gme.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(gme::c),
-               gme.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gme::d),
-               gmb.b.optionalFieldOf("defines", gmb.a).forGetter(gme::e)
-            )
-            .apply($$0, gme::new)
-   );
+public class gme {
+   protected final glc a;
+   protected final dgz b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   private kj h;
+   public got.b[] f;
 
-   public alz a() {
+   public gme(got $$0, dgz $$1, int $$2, glc $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
+      this.h = kj.a(this.g + 1, 0, this.g + 1);
+   }
+
+   protected void a(got $$0) {
+      if (!flz.Q().bx()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new got.b[$$1];
+
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, kj.b($$2, $$3 + this.b.ap(), $$4));
+               }
+            }
+         }
+      }
+   }
+
+   public void a() {
+      for (got.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.ao();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public dhb c() {
       return this.b;
    }
 
-   public alz b() {
-      return this.c;
+   public void a(kj $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         int $$2 = $$0.a() - this.g;
+         int $$3 = $$2 + Math.floorMod($$1 - $$2, this.d);
+
+         for (int $$4 = 0; $$4 < this.e; $$4++) {
+            int $$5 = $$0.c() - this.g;
+            int $$6 = $$5 + Math.floorMod($$4 - $$5, this.e);
+
+            for (int $$7 = 0; $$7 < this.c; $$7++) {
+               int $$8 = this.b.ap() + $$7;
+               got.b $$9 = this.f[this.a($$1, $$7, $$4)];
+               long $$10 = $$9.g();
+               if ($$10 != kj.b($$3, $$8, $$6)) {
+                  $$9.a(kj.b($$3, $$8, $$6));
+               }
+            }
+         }
+      }
+
+      this.h = $$0;
+      this.a.x().a();
    }
 
-   public List<gme.a> c() {
-      return this.d;
+   public kj d() {
+      return this.h;
    }
 
-   public List<gme.b> d() {
-      return this.e;
-   }
-
-   public gmb e() {
-      return this.f;
-   }
-
-   public static record a(String b) {
-      public static final Codec<gme.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gme.a::a)).apply($$0, gme.a::new));
-
-      public String a() {
-         return this.b;
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      got.b $$4 = this.b($$0, $$1, $$2);
+      if ($$4 != null) {
+         $$4.a($$3);
       }
    }
 
-   public static record b(String b, String c, int d, List<Float> e) {
-      public static final Codec<gme.b> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.STRING.fieldOf("name").forGetter(gme.b::a),
-                     Codec.STRING.fieldOf("type").forGetter(gme.b::b),
-                     Codec.INT.fieldOf("count").forGetter(gme.b::c),
-                     Codec.FLOAT.listOf().fieldOf("values").forGetter(gme.b::d)
-                  )
-                  .apply($$0, gme.b::new)
-         )
-         .validate(gme.b::a);
+   @Nullable
+   protected got.b a(jh $$0) {
+      return this.a(kj.c($$0));
+   }
 
-      private static DataResult<gme.b> a(gme.b $$0) {
-         int $$1 = $$0.d;
-         int $$2 = $$0.e.size();
-         return $$2 != $$1 && $$2 > 1
-            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
-            : DataResult.success($$0);
+   @Nullable
+   protected got.b a(long $$0) {
+      int $$1 = kj.b($$0);
+      int $$2 = kj.c($$0);
+      int $$3 = kj.d($$0);
+      return this.b($$1, $$2, $$3);
+   }
+
+   @Nullable
+   private got.b b(int $$0, int $$1, int $$2) {
+      if (!this.c($$0, $$1, $$2)) {
+         return null;
+      } else {
+         int $$3 = $$1 - this.b.ap();
+         int $$4 = Math.floorMod($$0, this.d);
+         int $$5 = Math.floorMod($$2, this.e);
+         return this.f[this.a($$4, $$3, $$5)];
       }
+   }
 
-      public String a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public List<Float> d() {
-         return this.e;
+   private boolean c(int $$0, int $$1, int $$2) {
+      if ($$1 >= this.b.ap() && $$1 <= this.b.aq()) {
+         return $$0 < this.h.a() - this.g || $$0 > this.h.a() + this.g ? false : $$2 >= this.h.c() - this.g && $$2 <= this.h.c() + this.g;
+      } else {
+         return false;
       }
    }
 }

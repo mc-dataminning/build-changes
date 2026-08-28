@@ -1,42 +1,33 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
 
 public class rh {
-   public static void a(rk<epu> $$0) {
-      jr<epu> $$1 = $$0.a(mb.aX);
-      jq<epu> $$2 = $$1.b(rr.a);
-      rr.a(
-         $$0,
-         "bastion/mobs/piglin",
-         new epu(
-            $$2,
-            ImmutableList.of(
-               Pair.of(eps.b("bastion/mobs/melee_piglin"), 1),
-               Pair.of(eps.b("bastion/mobs/sword_piglin"), 4),
-               Pair.of(eps.b("bastion/mobs/crossbow_piglin"), 4),
-               Pair.of(eps.b("bastion/mobs/empty"), 1)
-            ),
-            epu.a.b
-         )
-      );
-      rr.a(
-         $$0, "bastion/mobs/hoglin", new epu($$2, ImmutableList.of(Pair.of(eps.b("bastion/mobs/hoglin"), 2), Pair.of(eps.b("bastion/mobs/empty"), 1)), epu.a.b)
-      );
-      rr.a(
-         $$0, "bastion/blocks/gold", new epu($$2, ImmutableList.of(Pair.of(eps.b("bastion/blocks/air"), 3), Pair.of(eps.b("bastion/blocks/gold"), 1)), epu.a.b)
-      );
-      rr.a(
-         $$0,
-         "bastion/mobs/piglin_melee",
-         new epu(
-            $$2,
-            ImmutableList.of(
-               Pair.of(eps.b("bastion/mobs/melee_piglin_always"), 1),
-               Pair.of(eps.b("bastion/mobs/melee_piglin"), 5),
-               Pair.of(eps.b("bastion/mobs/sword_piglin"), 1)
-            ),
-            epu.a.b
-         )
-      );
+   public static final alo<epn> a = a("empty");
+
+   public static alo<epn> a(alp $$0) {
+      return alo.a(mb.aX, $$0);
+   }
+
+   public static alo<epn> a(String $$0) {
+      return a(alp.b($$0));
+   }
+
+   public static alo<epn> b(String $$0) {
+      return a(alp.a($$0));
+   }
+
+   public static void a(ra<epn> $$0, String $$1, epn $$2) {
+      $$0.a(a($$1), $$2);
+   }
+
+   public static void a(ra<epn> $$0) {
+      jr<epn> $$1 = $$0.a(mb.aX);
+      jq<epn> $$2 = $$1.b(a);
+      $$0.a(a, new epn($$2, ImmutableList.of(), epn.a.b));
+      qw.a($$0);
+      rf.a($$0);
+      rs.a($$0);
+      qr.a($$0);
+      rq.a($$0);
+      rr.a($$0);
    }
 }

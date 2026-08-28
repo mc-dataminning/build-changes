@@ -1,46 +1,89 @@
-public class ffj {
-   private static final int a = 60;
-   private static final int b = 10;
-   private static final int c = 30;
-   private static final int d = 10;
-   private static final long e = 60000L;
-   private static final long f = 600000L;
-   private final fmk g;
-   private final fmg h;
-   private int i;
-   private long j;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-   public ffj(fmk $$0, fmg $$1) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$0.h().c();
+public final class ffj {
+   private final long a;
+   private final List<ffn> b;
+   private ffn c;
+   private int d;
+   private int e;
+
+   public ffj(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
    }
 
-   public int a() {
-      fmc $$0 = this.g.i().c();
-      if (this.h.aO().j()) {
-         return 10;
-      } else {
-         if ($$0 == fmc.b) {
-            long $$1 = ae.c() - this.j;
-            if ($$1 > 600000L) {
-               return 10;
-            }
+   public void a() {
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
 
-            if ($$1 > 60000L) {
-               return Math.min(this.i, 30);
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         ffn $$2 = new ffn($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
+         }
+      }
+
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new ffn($$5);
+   }
+
+   public ffn a(Optional<ffn> $$0) {
+      if ($$0.isPresent()) {
+         ffn $$1 = $$0.get();
+
+         for (ffn $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
             }
          }
-
-         return this.h.s != null || this.h.z == null && this.h.aM() == null ? this.i : 60;
       }
+
+      return this.b();
    }
 
-   public void a(int $$0) {
-      this.i = $$0;
+   public int a(ffn $$0) {
+      return this.b.indexOf($$0);
    }
 
-   public void b() {
-      this.j = ae.c();
+   public ffn b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public ffn a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

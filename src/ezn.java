@@ -1,47 +1,35 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
-public record ezn(jq<ddz> b, List<Float> c) implements ezy {
-   public static final MapCodec<ezn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ddz.c.fieldOf("enchantment").forGetter(ezn::c), azn.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(ezn::d)).apply($$0, ezn::new)
-   );
+public class ezn implements ezr {
+   private static final ezn b = new ezn();
+   public static final MapCodec<ezn> a = MapCodec.unit(b);
 
-   @Override
-   public ezz b() {
-      return faa.k;
+   private ezn() {
    }
 
    @Override
-   public Set<bbn<?>> a() {
-      return Set.of(ezj.i);
+   public ezs b() {
+      return ezt.l;
    }
 
-   public boolean a(ewp $$0) {
-      cxp $$1 = $$0.c(ezj.i);
-      int $$2 = $$1 != null ? deb.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   @Override
+   public Set<bbd<?>> a() {
+      return Set.of(ezc.j);
    }
 
-   public static ezy.a a(jq<ddz> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+   public boolean a(ewi $$0) {
+      Float $$1 = $$0.c(ezc.j);
+      if ($$1 != null) {
+         bac $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
       }
-
-      return () -> new ezn($$0, $$2);
    }
 
-   public jq<ddz> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+   public static ezr.a c() {
+      return () -> b;
    }
 }

@@ -1,61 +1,88 @@
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
 import java.util.function.Consumer;
 
-public class frz implements frw {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public class frz {
+   int a;
+   final Map<frz.a, frz.b> b = Maps.newTreeMap(Comparator.<frz.a, frv>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-   public frz(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   public void a(Consumer<frw> $$0) {
+      this.a++;
+      $$0.accept(new frz.c(0));
    }
 
-   public frz(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
+
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
+
+            this.b = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   public static frz a(int $$0) {
-      return new frz($$0, 0);
+   static class a {
+      final frv a;
+      final int b;
+
+      a(frv $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   public static frz b(int $$0) {
-      return new frz(0, $$0);
+   static class b {
+      fry<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fry.a;
+         this.b = -1;
+      }
+
+      public frz.b a(int $$0, fry<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
    }
 
-   @Override
-   public void k(int $$0) {
-      this.a = $$0;
-   }
+   class c implements frw {
+      private final int b;
 
-   @Override
-   public void l(int $$0) {
-      this.b = $$0;
-   }
+      c(final int $$0) {
+         this.b = $$0;
+      }
 
-   @Override
-   public int D() {
-      return this.a;
-   }
+      @Override
+      public void a(frv $$0, fry<?> $$1) {
+         frz.this.b.computeIfAbsent(new frz.a($$0, this.b), $$0x -> new frz.b()).a(frz.this.a, $$1);
+      }
 
-   @Override
-   public int E() {
-      return this.b;
-   }
-
-   @Override
-   public int y() {
-      return this.c;
-   }
-
-   @Override
-   public int w() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<fod> $$0) {
+      @Override
+      public frw a() {
+         return frz.this.new c(this.b + 1);
+      }
    }
 }

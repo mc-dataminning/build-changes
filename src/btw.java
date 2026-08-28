@@ -1,28 +1,46 @@
-public class btw {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public static float a(bwg $$0, float $$1, bua $$2, float $$3, float $$4) {
-      float $$5 = 2.0F + $$4 / 4.0F;
-      float $$6 = bae.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
-      float $$7 = $$6 / 25.0F;
-      cxp $$8 = $$2.e();
-      float $$10;
-      if ($$8 != null && $$0.dW() instanceof ash $$9) {
-         $$10 = bae.a(deb.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
+public record btw(String i) {
+   public static final btw a = new btw("generic");
+   public static final btw b = new btw("ladder");
+   public static final btw c = new btw("vines");
+   public static final btw d = new btw("weeping_vines");
+   public static final btw e = new btw("twisting_vines");
+   public static final btw f = new btw("scaffolding");
+   public static final btw g = new btw("other_climbable");
+   public static final btw h = new btw("water");
+
+   public static btw a(dxo $$0) {
+      if ($$0.a(dkf.cX) || $$0.a(axk.R)) {
+         return b;
+      } else if ($$0.a(dkf.ft)) {
+         return c;
+      } else if ($$0.a(dkf.pb) || $$0.a(dkf.pc)) {
+         return d;
+      } else if ($$0.a(dkf.pd) || $$0.a(dkf.pe)) {
+         return e;
       } else {
-         $$10 = $$7;
+         return $$0.a(dkf.ou) ? f : g;
       }
-
-      float $$12 = 1.0F - $$10;
-      return $$1 * $$12;
    }
 
-   public static float a(float $$0, float $$1) {
-      float $$2 = bae.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
+   @Nullable
+   public static btw a(bvx $$0) {
+      Optional<jh> $$1 = $$0.eN();
+      if ($$1.isPresent()) {
+         dxo $$2 = $$0.dW().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bj() ? h : null;
+      }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

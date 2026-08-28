@@ -1,29 +1,17 @@
-public class gtv extends gqk<cko, gzs, gdl> {
-   private static final alz a = alz.b("textures/entity/sniffer/sniffer.png");
+public class gtv extends gqd<cna, gzl> {
+   private static final alp a = alp.b("textures/entity/skeleton/stray.png");
+   private static final alp b = alp.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gtv(grq.a $$0) {
-      super($$0, new gdl($$0.a(gen.cN)), new gdl($$0.a(gen.cO)), 1.1F);
+   public gtv(grl.a $$0) {
+      super($$0, gei.cZ, gei.da, gei.db);
+      this.a(new gwd<>(this, $$0.f(), gei.dc, b));
    }
 
-   public alz a(gzs $$0) {
+   public alp b(gzl $$0) {
       return a;
    }
 
-   public gzs b() {
-      return new gzs();
-   }
-
-   public void a(cko $$0, gzs $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.cd);
-      $$1.c.a($$0.cb);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.bZ);
-      $$1.f.a($$0.ca);
-   }
-
-   protected fbt a(cko $$0) {
-      return super.a($$0).g(0.6F);
+   public gzl b() {
+      return new gzl();
    }
 }

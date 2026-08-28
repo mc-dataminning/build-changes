@@ -1,83 +1,64 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 public class get {
-   private static final Set<jm> a = EnumSet.allOf(jm.class);
-   private final List<ger> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
+   private final List<gem> a;
+   private final gel b;
+   private final Map<String, get> c = Maps.newHashMap();
 
-   public get a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   get(List<gem> $$0, gel $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public get a() {
-      return this.a(true);
+   public get a(String $$0, geo $$1, gel $$2) {
+      get $$3 = new get($$1.b(), $$2);
+      return this.a($$0, $$3);
    }
 
-   public get a(boolean $$0) {
-      this.e = $$0;
-      return this;
+   public get a(String $$0, get $$1) {
+      get $$2 = this.c.put($$0, $$1);
+      if ($$2 != null) {
+         $$1.c.putAll($$2.c);
+      }
+
+      return $$1;
    }
 
-   public get a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, ges $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new ger($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
+   public get a(String $$0) {
+      return this.a($$0, geo.c(), gel.a);
    }
 
-   public get a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new ger($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, ges.a, this.e, 1.0F, 1.0F, a));
-      return this;
+   public gej a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, gej> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((get)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<gej.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      gej $$4 = new gej($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
    }
 
-   public get a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new ger(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ges.a, this.e, 1.0F, 1.0F, a));
-      return this;
+   public get b(String $$0) {
+      return this.c.get($$0);
    }
 
-   public get a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<jm> $$6) {
-      this.b.add(new ger(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ges.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
+   public Set<Entry<String, get>> a() {
+      return this.c.entrySet();
    }
 
-   public get a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new ger($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, ges.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public get a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, ges $$7) {
-      this.b.add(new ger($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public get a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new ger(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ges.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public get a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, ges $$6, float $$7, float $$8) {
-      this.b.add(new ger(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public get a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, ges $$6) {
-      this.b.add(new ger(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<ger> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static get c() {
-      return new get();
+   public get a(UnaryOperator<gel> $$0) {
+      get $$1 = new get(this.a, $$0.apply(this.b));
+      $$1.c.putAll(this.c);
+      return $$1;
    }
 }

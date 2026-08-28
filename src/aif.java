@@ -1,20 +1,20 @@
-public record aif(boe b) implements aac<ahm> {
-   public static final zt<ws, aif> a = aac.a(aif::a, aif::new);
-
-   private aif(ws $$0) {
-      this($$0.b(boe.class));
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.b);
-   }
+public record aif(int b, ddc c, boolean d) implements zr<ahb> {
+   public static final zi<wh, aif> a = zi.a(zg.w, aif::b, ddc.a, aif::e, zg.b, aif::f, aif::new);
 
    @Override
-   public aae<aif> a() {
-      return ahk.bC;
+   public zt<aif> a() {
+      return agz.bQ;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
+   }
+
+   public ddc e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

@@ -1,45 +1,66 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public abstract class ewy extends exf {
-   protected final List<exf> d;
-   private final ewx a;
+public abstract class ewy implements ewq {
+   protected final List<ezr> e;
+   private final Predicate<ewi> a;
 
-   protected ewy(List<exf> $$0, List<ezy> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   protected ewy(List<ezr> $$0) {
+      this.e = $$0;
+      this.a = ae.a($$0);
    }
 
-   @Override
-   public void a(ewv $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
-      }
+   protected static <T extends ewy> P1<Mu<T>, List<ezr>> a(Instance<T> $$0) {
+      return $$0.group(ezr.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   }
 
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+   public void a(ewo $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
    }
 
-   protected abstract ewx a(List<? extends ewx> var1);
-
-   @Override
-   public final boolean expand(ewp $$0, Consumer<exe> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
+   protected final boolean a(ewi $$0) {
+      return this.a.test($$0);
    }
 
-   public static <T extends ewy> MapCodec<T> a(ewy.a<T> $$0) {
-      return RecordCodecBuilder.mapCodec(
-         $$1 -> $$1.group(exd.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
+   public abstract ewz a();
 
-   @FunctionalInterface
-   public interface a<T extends ewy> {
-      T create(List<exf> var1, List<ezy> var2);
+   public abstract static class a<T extends ewy.a<T>> implements ezj<T> {
+      private final Builder<ezr> a = ImmutableList.builder();
+
+      protected abstract T aF_();
+
+      public T a(ezr.a $$0) {
+         this.a.add($$0.build());
+         return this.aF_();
+      }
+
+      public final T e() {
+         return this.aF_();
+      }
+
+      protected List<ezr> f() {
+         return this.a.build();
+      }
+
+      public ewp.a a(ewy.a<?> $$0) {
+         return new ewp.a(this, $$0);
+      }
+
+      public ewu.a b(ewy.a<?> $$0) {
+         return new ewu.a(this, $$0);
+      }
+
+      public exc.a c(ewy.a<?> $$0) {
+         return new exc.a(this, $$0);
+      }
+
+      public abstract ewy b();
    }
 }

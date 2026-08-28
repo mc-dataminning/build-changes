@@ -1,27 +1,13 @@
-public class gvl extends gwf<gxq, gbf> {
-   private final gso a;
-
-   public gvl(gtn<gxq, gbf> $$0, gso $$1) {
+public abstract class gvl<S extends gxq, M extends gbh<S>> extends gwa<S, M> {
+   public gvl(gti<S, M> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, gxq $$3, float $$4, float $$5) {
-      cxp $$6 = $$3.aY_();
-      hdn $$7 = $$3.b();
-      if ($$7 != null) {
-         $$0.a();
-         float $$8 = 1.0F;
-         float $$9 = -1.0F;
-         float $$10 = bae.e($$3.V) / 60.0F;
-         if ($$3.V < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$10 * 0.5F, -1.0F + $$10 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$10 * 0.8F, -1.0F + $$10 * 0.2F);
-         }
-
-         this.a.a($$6, cxn.h, false, $$0, $$1, $$2, hbc.d, $$7);
-         $$0.b();
-      }
+   @Override
+   public void a(fgl $$0, glg $$1, int $$2, S $$3, float $$4, float $$5) {
+      fgp $$6 = $$1.getBuffer(this.a());
+      this.d().a($$0, $$6, $$2, hax.d);
    }
+
+   public abstract glq a();
 }

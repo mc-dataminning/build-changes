@@ -1,51 +1,41 @@
-public class goj implements gnw<dwj> {
-   private final goj.a a;
+public class goj extends gok<dwj> {
+   private static final alp c = alp.b("textures/entity/end_gateway_beam.png");
 
-   public goj(gnx.a $$0) {
-      this.a = new goj.a($$0.a(gen.cC));
+   public goj(gns.a $$0) {
+      super($$0);
    }
 
-   public void a(dwj $$0, float $$1, fgs $$2, gll $$3, int $$4, int $$5) {
-      jm $$6 = jm.b;
-      if ($$0.l()) {
-         dxv $$7 = $$0.i().a_($$0.aB_());
-         if ($$7.b() instanceof dro) {
-            $$6 = $$7.c(dro.b);
-         }
+   public void a(dwj $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
+      if ($$0.b() || $$0.c()) {
+         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.b() ? (double)$$0.i().an() : 50.0;
+         $$6 = azu.a($$6 * (float) Math.PI);
+         int $$8 = azu.a((double)$$6 * $$7);
+         int $$9 = $$0.b() ? cwd.c.d() : cwd.k.d();
+         long $$10 = $$0.i().ad();
+         gnn.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
       }
 
-      cwm $$8 = $$0.t();
-      hdu $$9;
-      if ($$8 == null) {
-         $$9 = gmg.i;
-      } else {
-         $$9 = gmg.j.get($$8.a());
-      }
-
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      this.a.a($$0, $$1);
-      fgw $$12 = $$9.a($$3, this.a::a);
-      this.a.a($$2, $$12, $$4, $$5);
-      $$2.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   static class a extends gch {
-      private final geo a;
+   @Override
+   protected float b() {
+      return 1.0F;
+   }
 
-      public a(geo $$0) {
-         super($$0, glv::g);
-         this.a = $$0.b("lid");
-      }
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
 
-      public void a(dwj $$0, float $$1) {
-         this.a.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-         this.a.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      }
+   @Override
+   protected glq d() {
+      return glq.u();
+   }
+
+   @Override
+   public int a() {
+      return 256;
    }
 }

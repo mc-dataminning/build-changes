@@ -1,222 +1,64 @@
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public abstract class bwf extends bvz {
+   protected static final float bY = 0.0F;
 
-public class bwf extends bvk {
-   private static final int b = 2;
-   private static final double c = 3.0;
-   private static final double d = 15.0;
-   private int e;
-   public long a;
-   private int f;
-   private boolean g;
-   @Nullable
-   private asi h;
-   private final Set<bvk> i = Sets.newHashSet();
-   private int j;
-
-   public bwf(bvr<? extends bwf> $$0, dhi $$1) {
+   protected bwf(bvi<? extends bwf> $$0, dgz $$1) {
       super($$0, $$1);
-      this.e = 2;
-      this.a = this.ae.g();
-      this.f = this.ae.a(3) + 1;
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   public float c(jh $$0) {
+      return this.a($$0, this.dW());
    }
 
-   @Override
-   public axg dn() {
-      return axg.d;
-   }
-
-   @Nullable
-   public asi l() {
-      return this.h;
-   }
-
-   public void b(@Nullable asi $$0) {
-      this.h = $$0;
-   }
-
-   private void s() {
-      jh $$0 = this.t();
-      dxv $$1 = this.dW().a_($$0);
-      if ($$1.a(dko.sN)) {
-         ((dpd)$$1.b()).e($$1, this.dW(), $$0);
-      }
+   public float a(jh $$0, dhc $$1) {
+      return 0.0F;
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.e == 2) {
-         if (this.dW().B_()) {
-            this.dW().a(this.dB(), this.dD(), this.dH(), axf.oo, axg.d, 10000.0F, 0.8F + this.ae.i() * 0.2F, false);
-            this.dW().a(this.dB(), this.dD(), this.dH(), axf.on, axg.d, 2.0F, 0.5F + this.ae.i() * 0.2F, false);
-         } else {
-            btg $$0 = this.dW().al();
-            if ($$0 == btg.c || $$0 == btg.d) {
-               this.b(4);
-            }
-
-            this.s();
-            a(this.dW(), this.t());
-            this.a(ecr.G);
-         }
-      }
-
-      this.e--;
-      if (this.e < 0) {
-         if (this.f == 0) {
-            if (this.dW() instanceof ash) {
-               List<bvk> $$1 = this.dW()
-                  .a(
-                     this,
-                     new fbt(this.dB() - 15.0, this.dD() - 15.0, this.dH() - 15.0, this.dB() + 15.0, this.dD() + 6.0 + 15.0, this.dH() + 15.0),
-                     $$0 -> $$0.bL() && !this.i.contains($$0)
-                  );
-
-               for (asi $$2 : ((ash)this.dW()).a($$0 -> $$0.f(this) < 256.0F)) {
-                  ao.V.a($$2, this, $$1);
-               }
-            }
-
-            this.at();
-         } else if (this.e < -this.ae.a(10)) {
-            this.f--;
-            this.e = 1;
-            this.a = this.ae.g();
-            this.b(0);
-         }
-      }
-
-      if (this.e >= 0) {
-         if (!(this.dW() instanceof ash)) {
-            this.dW().c(2);
-         } else if (!this.g) {
-            List<bvk> $$3 = this.dW()
-               .a(this, new fbt(this.dB() - 3.0, this.dD() - 3.0, this.dH() - 3.0, this.dB() + 3.0, this.dD() + 6.0 + 3.0, this.dH() + 3.0), bvk::bL);
-
-            for (bvk $$4 : $$3) {
-               $$4.a((ash)this.dW(), this);
-            }
-
-            this.i.addAll($$3);
-            if (this.h != null) {
-               ao.F.a(this.h, $$3);
-            }
-         }
-      }
+   public boolean a(dha $$0, bvh $$1) {
+      return this.a(this.dw(), $$0) >= 0.0F;
    }
 
-   private jh t() {
-      fby $$0 = this.du();
-      return jh.a($$0.d, $$0.e - 1.0E-6, $$0.f);
+   public boolean gk() {
+      return !this.L().m();
    }
 
-   private void b(int $$0) {
-      if (!this.g && this.dW() instanceof ash $$1 && $$1.N().b(dhe.b)) {
-         jh $$3 = this.dw();
-         dxv $$4 = djz.a(this.dW(), $$3);
-         if (this.dW().a_($$3).l() && $$4.a((dhl)this.dW(), $$3)) {
-            this.dW().b($$3, $$4);
-            this.j++;
-         }
-
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            jh $$6 = $$3.b(this.ae.a(3) - 1, this.ae.a(3) - 1, this.ae.a(3) - 1);
-            $$4 = djz.a(this.dW(), $$6);
-            if (this.dW().a_($$6).l() && $$4.a((dhl)this.dW(), $$6)) {
-               this.dW().b($$6, $$4);
-               this.j++;
-            }
-         }
-      }
-   }
-
-   private static void a(dhi $$0, jh $$1) {
-      dxv $$2 = $$0.a_($$1);
-      jh $$3;
-      dxv $$4;
-      if ($$2.a(dko.sN)) {
-         $$3 = $$1.a($$2.c(dpd.a).g());
-         $$4 = $$0.a_($$3);
+   public boolean gl() {
+      if (this.bF.a(cfb.Z)) {
+         return this.bF.c(cfb.Z).isPresent();
       } else {
-         $$3 = $$1;
-         $$4 = $$2;
-      }
-
-      if ($$4.b() instanceof dtu) {
-         $$0.b($$3, dtu.c($$0.a_($$3)));
-         jh.a $$7 = $$1.k();
-         int $$8 = $$0.A.a(3) + 3;
-
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$0.A.a(8) + 1;
-            a($$0, $$3, $$7, $$10);
-         }
-      }
-   }
-
-   private static void a(dhi $$0, jh $$1, jh.a $$2, int $$3) {
-      $$2.g($$1);
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         Optional<jh> $$5 = b($$0, $$2);
-         if ($$5.isEmpty()) {
-            break;
+         for (cej $$0 : this.bT.b()) {
+            if ($$0.h() && $$0.k() instanceof cdo) {
+               return true;
+            }
          }
 
-         $$2.g($$5.get());
+         return false;
       }
    }
 
-   private static Optional<jh> b(dhi $$0, jh $$1) {
-      for (jh $$2 : jh.a($$0.A, 10, $$1, 1)) {
-         dxv $$3 = $$0.a_($$2);
-         if ($$3.b() instanceof dtu) {
-            dtu.b($$3).ifPresent($$2x -> $$0.b($$2, $$2x));
-            $$0.c(3002, $$2, -1);
-            return Optional.of($$2);
-         }
+   protected boolean gm() {
+      return true;
+   }
+
+   @Override
+   public void a(bvb $$0) {
+      super.a($$0);
+      if (this.gm() && !this.gl()) {
+         this.bT.b(ccv.a.a);
+         float $$1 = 2.0F;
+         float $$2 = this.f($$0);
+         fbr $$3 = new fbr($$0.dB() - this.dB(), $$0.dD() - this.dD(), $$0.dH() - this.dH()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
+         this.L().a(this.dB() + $$3.d, this.dD() + $$3.e, this.dH() + $$3.f, this.gn());
       }
-
-      return Optional.empty();
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = 64.0 * cK();
-      return $$0 < $$1 * $$1;
+   public boolean a(bvb $$0, float $$1) {
+      this.a($$0.dw(), 5);
+      return true;
    }
 
-   @Override
-   protected void a(alg.a $$0) {
-   }
-
-   @Override
-   protected void a(ux $$0) {
-   }
-
-   @Override
-   protected void b(ux $$0) {
-   }
-
-   public int m() {
-      return this.j;
-   }
-
-   public Stream<bvk> p() {
-      return this.i.stream().filter(bvk::bL);
-   }
-
-   @Override
-   public final boolean a(ash $$0, bua $$1, float $$2) {
-      return false;
+   protected double gn() {
+      return 1.0;
    }
 }

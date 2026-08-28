@@ -1,39 +1,67 @@
 import javax.annotation.Nullable;
 
-public class fov extends fod {
-   private final fnq a;
+public abstract class fov<E extends fov.a<E>> extends fnt<E> {
+   private static final xk a = xk.c("narration.selection.usage");
 
-   public fov(fnq $$0, xv $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
-   }
-
-   @Override
-   protected void b(fns $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.D() + this.y() / 2;
-      int $$5 = this.E() + this.w() / 2;
-      xv $$6 = this.z();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = ftn.a(ae.c());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
-   }
-
-   @Override
-   protected void a(fsd $$0) {
-   }
-
-   @Override
-   public void a(hgn $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return false;
+   public fov(flz $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Nullable
    @Override
-   public fnp a(fsj $$0) {
-      return null;
+   public fni a(fsc $$0) {
+      if (this.k() == 0) {
+         return null;
+      } else if (this.aN_() && $$0 instanceof fsc.a $$1) {
+         E $$2 = this.a($$1.b());
+         if ($$2 != null) {
+            return fni.a(this, fni.a($$2));
+         } else {
+            this.a(null);
+            return null;
+         }
+      } else if (!this.aN_()) {
+         E $$3 = this.g();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
+
+         return $$3 == null ? null : fni.a(this, fni.a($$3));
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   public void a(frw $$0) {
+      E $$1 = this.v();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.g();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
+      }
+
+      if (this.aN_()) {
+         $$0.a(frv.d, a);
+      }
+   }
+
+   public abstract static class a<E extends fov.a<E>> extends fnt.a<E> implements frx {
+      public abstract xk a();
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public void b(frw $$0) {
+         $$0.a(frv.a, this.a());
+      }
    }
 }

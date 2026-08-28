@@ -1,70 +1,45 @@
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class hdm implements AutoCloseable {
-   private final Map<alz, hdm.a> a;
+public abstract class hdm implements hdi {
+   protected final hdi a;
 
-   public hdm(Map<alz, alz> $$0, hbm $$1) {
-      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
-         hbk $$2 = new hbk((alz)$$1x.getKey());
-         $$1.a((alz)$$1x.getKey(), $$2);
-         return new hdm.a($$2, (alz)$$1x.getValue());
-      }));
-   }
-
-   public hbk a(alz $$0) {
-      return this.a.get($$0).a();
+   public hdm(hdi $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void close() {
-      this.a.values().forEach(hdm.a::close);
-      this.a.clear();
+   public List<gmn> a(@Nullable dxo $$0, @Nullable jm $$1, bac $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public Map<alz, CompletableFuture<hdm.b>> a(avv $$0, int $$1, Executor $$2) {
-      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
-         hdm.a $$4 = $$3.getValue();
-         return hbg.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new hdm.b($$4.a, $$1xx));
-      }));
+   @Override
+   public boolean a() {
+      return this.a.a();
    }
 
-   static record a(hbk a, alz b) implements AutoCloseable {
-
-      @Override
-      public void close() {
-         this.a.g();
-      }
+   @Override
+   public boolean b() {
+      return this.a.b();
    }
 
-   public static class b {
-      private final hbk a;
-      private final hbg.a b;
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
 
-      public b(hbk $$0, hbg.a $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public boolean d() {
+      return this.a.d();
+   }
 
-      @Nullable
-      public hbl a(alz $$0) {
-         return this.b.f().get($$0);
-      }
+   @Override
+   public hbg e() {
+      return this.a.e();
+   }
 
-      public hbl a() {
-         return this.b.e();
-      }
-
-      public CompletableFuture<Void> b() {
-         return this.b.g();
-      }
-
-      public void c() {
-         this.a.a(this.b);
-      }
+   @Override
+   public gmy f() {
+      return this.a.f();
    }
 }

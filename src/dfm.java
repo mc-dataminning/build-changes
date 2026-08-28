@@ -1,78 +1,8 @@
-public interface dfm {
-   aly<dfh> a = dfn.a("trades/desert_armorer_boots_4");
-   aly<dfh> b = dfn.a("trades/desert_armorer_leggings_4");
-   aly<dfh> c = dfn.a("trades/desert_armorer_chestplate_4");
-   aly<dfh> d = dfn.a("trades/desert_armorer_helmet_4");
-   aly<dfh> e = dfn.a("trades/desert_armorer_leggings_5");
-   aly<dfh> f = dfn.a("trades/desert_armorer_chestplate_5");
-   aly<dfh> g = dfn.a("trades/plains_armorer_boots_4");
-   aly<dfh> h = dfn.a("trades/plains_armorer_leggings_4");
-   aly<dfh> i = dfn.a("trades/plains_armorer_chestplate_4");
-   aly<dfh> j = dfn.a("trades/plains_armorer_helmet_4");
-   aly<dfh> k = dfn.a("trades/plains_armorer_boots_5");
-   aly<dfh> l = dfn.a("trades/plains_armorer_leggings_5");
-   aly<dfh> m = dfn.a("trades/savanna_armorer_boots_4");
-   aly<dfh> n = dfn.a("trades/savanna_armorer_leggings_4");
-   aly<dfh> o = dfn.a("trades/savanna_armorer_chestplate_4");
-   aly<dfh> p = dfn.a("trades/savanna_armorer_helmet_4");
-   aly<dfh> q = dfn.a("trades/savanna_armorer_chestplate_5");
-   aly<dfh> r = dfn.a("trades/savanna_armorer_helmet_5");
-   aly<dfh> s = dfn.a("trades/snow_armorer_boots_4");
-   aly<dfh> t = dfn.a("trades/snow_armorer_helmet_4");
-   aly<dfh> u = dfn.a("trades/snow_armorer_boots_5");
-   aly<dfh> v = dfn.a("trades/snow_armorer_helmet_5");
-   aly<dfh> w = dfn.a("trades/jungle_armorer_boots_4");
-   aly<dfh> x = dfn.a("trades/jungle_armorer_leggings_4");
-   aly<dfh> y = dfn.a("trades/jungle_armorer_chestplate_4");
-   aly<dfh> z = dfn.a("trades/jungle_armorer_helmet_4");
-   aly<dfh> A = dfn.a("trades/jungle_armorer_boots_5");
-   aly<dfh> B = dfn.a("trades/jungle_armorer_helmet_5");
-   aly<dfh> C = dfn.a("trades/swamp_armorer_boots_4");
-   aly<dfh> D = dfn.a("trades/swamp_armorer_leggings_4");
-   aly<dfh> E = dfn.a("trades/swamp_armorer_chestplate_4");
-   aly<dfh> F = dfn.a("trades/swamp_armorer_helmet_4");
-   aly<dfh> G = dfn.a("trades/swamp_armorer_boots_5");
-   aly<dfh> H = dfn.a("trades/swamp_armorer_helmet_5");
-   aly<dfh> I = dfn.a("trades/taiga_armorer_leggings_5");
-   aly<dfh> J = dfn.a("trades/taiga_armorer_chestplate_5");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static void a(rk<dfh> $$0) {
-      jr<ddz> $$1 = $$0.a(mb.aO);
-      $$0.a(a, new dfl($$1.b(dee.h), bsl.a(1)));
-      $$0.a(b, new dfl($$1.b(dee.h), bsl.a(1)));
-      $$0.a(c, new dfl($$1.b(dee.h), bsl.a(1)));
-      $$0.a(d, new dfl($$1.b(dee.h), bsl.a(1)));
-      $$0.a(e, new dfl($$1.b(dee.h), bsl.a(1)));
-      $$0.a(f, new dfl($$1.b(dee.h), bsl.a(1)));
-      $$0.a(g, new dfl($$1.b(dee.a), bsl.a(1)));
-      $$0.a(h, new dfl($$1.b(dee.a), bsl.a(1)));
-      $$0.a(i, new dfl($$1.b(dee.a), bsl.a(1)));
-      $$0.a(j, new dfl($$1.b(dee.a), bsl.a(1)));
-      $$0.a(k, new dfl($$1.b(dee.a), bsl.a(1)));
-      $$0.a(l, new dfl($$1.b(dee.a), bsl.a(1)));
-      $$0.a(m, new dfl($$1.b(dee.k), bsl.a(1)));
-      $$0.a(n, new dfl($$1.b(dee.k), bsl.a(1)));
-      $$0.a(o, new dfl($$1.b(dee.k), bsl.a(1)));
-      $$0.a(p, new dfl($$1.b(dee.k), bsl.a(1)));
-      $$0.a(q, new dfl($$1.b(dee.k), bsl.a(1)));
-      $$0.a(r, new dfl($$1.b(dee.k), bsl.a(1)));
-      $$0.a(s, new dfl($$1.b(dee.j), bsl.a(1)));
-      $$0.a(t, new dfl($$1.b(dee.g), bsl.a(1)));
-      $$0.a(u, new dfl($$1.b(dee.j), bsl.a(1)));
-      $$0.a(v, new dfl($$1.b(dee.g), bsl.a(1)));
-      $$0.a(w, new dfl($$1.b(dee.w), bsl.a(1)));
-      $$0.a(x, new dfl($$1.b(dee.w), bsl.a(1)));
-      $$0.a(y, new dfl($$1.b(dee.w), bsl.a(1)));
-      $$0.a(z, new dfl($$1.b(dee.w), bsl.a(1)));
-      $$0.a(A, new dfl($$1.b(dee.c), bsl.a(1)));
-      $$0.a(B, new dfl($$1.b(dee.e), bsl.a(1)));
-      $$0.a(C, new dfl($$1.b(dee.O), bsl.a(1)));
-      $$0.a(D, new dfl($$1.b(dee.O), bsl.a(1)));
-      $$0.a(E, new dfl($$1.b(dee.O), bsl.a(1)));
-      $$0.a(F, new dfl($$1.b(dee.O), bsl.a(1)));
-      $$0.a(G, new dfl($$1.b(dee.i), bsl.a(1)));
-      $$0.a(H, new dfl($$1.b(dee.f), bsl.a(1)));
-      $$0.a(I, new dfl($$1.b(dee.d), bsl.a(1)));
-      $$0.a(J, new dfl($$1.b(dee.d), bsl.a(1)));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dfm {
 }

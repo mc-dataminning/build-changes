@@ -1,110 +1,96 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.lang.reflect.Type;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class gng implements hec {
-   private final alz a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class gng implements gna {
+   private final List<gng.d> a;
 
-   public gng(alz $$0, j $$1, boolean $$2, int $$3) {
+   gng(List<gng.d> $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public alz a() {
-      return this.a;
    }
 
    @Override
-   public j b() {
-      return this.b;
-   }
+   public Object a(dxo $$0) {
+      IntList $$1 = new IntArrayList();
 
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof gng $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
-   }
-
-   public static class a implements JsonDeserializer<gng> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
-      public gng a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         alz $$4 = this.b($$3);
-         hdo $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new gng($$4, $$5.b(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return azu.a($$0, "uvlock", false);
-      }
-
-      protected hdo a(JsonObject $$0) {
-         int $$1 = azu.a($$0, "x", 0);
-         int $$2 = azu.a($$0, "y", 0);
-         hdo $$3 = hdo.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
+      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+         if (this.a.get($$2).a.test($$0)) {
+            $$1.add($$2);
          }
       }
 
-      protected alz b(JsonObject $$0) {
-         return alz.a(azu.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = azu.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
+      record a(gng a, IntList b) {
+         a(IntList b) {
+            this.b = b;
          }
       }
+
+      return new a($$1);
+   }
+
+   @Override
+   public void a(heb.a $$0) {
+      this.a.forEach($$1 -> $$1.b.a($$0));
+   }
+
+   @Override
+   public hdi a(hdr $$0, Function<hdp, hbg> $$1, hdx $$2) {
+      List<hdy.a> $$3 = new ArrayList<>(this.a.size());
+
+      for (gng.d $$4 : this.a) {
+         hdi $$5 = $$4.b.a($$0, $$1, $$2);
+         $$3.add(new hdy.a($$4.a, $$5));
+      }
+
+      return new hdy($$3);
+   }
+
+   public static record b(List<gni> a) {
+      public gng a(dxp<dkd, dxo> $$0) {
+         List<gng.d> $$1 = this.a.stream().map($$1x -> new gng.d($$1x.a($$0), $$1x.a())).toList();
+         return new gng($$1);
+      }
+
+      public Set<gmz> a() {
+         return this.a.stream().map(gni::a).collect(Collectors.toSet());
+      }
+
+      public List<gni> b() {
+         return this.a;
+      }
+   }
+
+   public static class c implements JsonDeserializer<gng.b> {
+      public gng.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new gng.b(this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<gni> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<gni> $$2 = new ArrayList<>();
+         if ($$1.isEmpty()) {
+            throw new JsonSyntaxException("Empty selector array");
+         } else {
+            for (JsonElement $$3 : $$1) {
+               $$2.add((gni)$$0.deserialize($$3, gni.class));
+            }
+
+            return $$2;
+         }
+      }
+   }
+
+   static record d(Predicate<dxo> a, gmz b) {
    }
 }

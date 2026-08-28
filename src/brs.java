@@ -1,52 +1,20 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public class brs {
-   public static final Codec<brs> a = Codec.INT.xmap(brs::a, brs::a);
-   private static final brs b = new brs(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
-
-   private brs(int $$0) {
-      this.d = $$0;
+public class brs extends bro<bru.c> {
+   public brs(int $$0, Executor $$1, String $$2) {
+      super(new bru.a($$0), $$1, $$2);
+      bqu.a.a(this);
    }
 
-   public static brs a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new brs($$0);
-      }
+   public bru.c b(Runnable $$0) {
+      return new bru.c(0, $$0);
    }
 
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ae.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && ab.aU) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
-      }
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof brs && this.d == ((brs)$$0).d;
+   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
+      CompletableFuture<Source> $$2 = new CompletableFuture<>();
+      this.a_(new bru.c($$0, () -> $$1.accept($$2)));
+      return $$2;
    }
 }

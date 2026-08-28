@@ -1,47 +1,25 @@
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public abstract class qk<T> extends qp<T> {
-   private final Function<T, aly<T>> d;
-
-   public qk(mj $$0, aly<? extends kd<T>> $$1, CompletableFuture<js.a> $$2, Function<T, aly<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+public class qk extends qj<ddq> {
+   public qk(mj $$0, CompletableFuture<js.a> $$1) {
+      super($$0, mb.aO, $$1);
    }
 
-   public qk(mj $$0, aly<? extends kd<T>> $$1, CompletableFuture<js.a> $$2, CompletableFuture<qp.c<T>> $$3, Function<T, aly<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected qk.a<T> a(ayk<T> $$0) {
-      ayh $$1 = this.c($$0);
-      return new qk.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends qp.b<T> {
-      private final Function<T, aly<T>> a;
-
-      a(ayh $$0, Function<T, aly<T>> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public qk.a<T> a(ayk<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final qk.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final qk.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+   @Override
+   protected void a(js.a $$0) {
+      this.b(axn.w).a(ddv.b, ddv.h, ddv.B);
+      this.b(axn.x).a(ddv.c, ddv.e, ddv.y);
+      this.b(axn.y).a(ddv.z, ddv.o, ddv.p);
+      this.b(axn.z).a(ddv.q, ddv.k, ddv.t);
+      this.b(axn.A).a(ddv.g, ddv.s, ddv.j);
+      this.b(axn.B).a(ddv.i, ddv.f, ddv.P);
+      this.b(axn.C).a(ddv.d, ddv.r, ddv.A);
+      this.b(axn.D).a(ddv.u);
+      this.b(axn.E).a(ddv.w);
+      this.b(axn.F).a(ddv.a);
+      this.b(axn.G).a(ddv.n);
+      this.b(axn.H).a(ddv.v);
+      this.b(axn.I).a(ddv.O);
+      this.b(axn.J).a(ddv.x);
    }
 }

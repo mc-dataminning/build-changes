@@ -1,177 +1,116 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public abstract class crv {
+   protected final crn a;
 
-public abstract class crv extends cru implements bvz, csb {
-   private static final int h = 27;
-   private jz<cxp> i = jz.a(27, cxp.j);
-   @Nullable
-   private aly<ewu> j;
-   private long k;
-
-   public crv(bvr<? extends crv> $$0, dhi $$1, Supplier<cxl> $$2) {
-      super($$0, $$1, $$2);
+   protected crv(crn $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected float s() {
-      return 0.15F;
-   }
-
-   @Override
-   protected int t() {
-      return 1;
-   }
-
-   @Override
-   protected void b(ux $$0) {
-      super.b($$0);
-      this.a($$0, this.dY());
-   }
-
-   @Override
-   protected void a(ux $$0) {
-      super.a($$0);
-      this.b($$0, this.dY());
-   }
-
-   @Override
-   public void a(ash $$0, bua $$1) {
-      this.a($$0, this.u());
-      this.a($$1, $$0, this);
-   }
-
-   @Override
-   public void a(bvk.d $$0) {
-      if (!this.dW().C && $$0.a()) {
-         btf.a(this.dW(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public btj a(cpx $$0, bti $$1) {
-      if (!$$0.fY()) {
-         btj $$2 = super.a($$0, $$1);
-         if ($$2 != btj.e) {
-            return $$2;
-         }
-      }
-
-      if (this.r($$0) && !$$0.fY()) {
-         return btj.e;
-      } else {
-         btj $$3 = this.b_($$0);
-         if ($$3.a() && $$0.dW() instanceof ash $$4) {
-            this.a(ecr.k, $$0);
-            com.a($$4, $$0, true);
-         }
-
-         return $$3;
-      }
-   }
-
-   @Override
-   public void b(cpx $$0) {
-      $$0.a(this);
-      if ($$0.dW() instanceof ash $$1) {
-         this.a(ecr.k, $$0);
-         com.a($$1, $$0, true);
-      }
-   }
-
-   @Override
    public void a() {
-      this.f();
    }
 
-   @Override
-   public int b() {
-      return 27;
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.c($$0, $$1, $$2);
+      this.b($$3 % 360.0F);
+      this.a($$4 % 360.0F);
    }
 
-   @Override
-   public cxp a(int $$0) {
-      return this.g_($$0);
+   public double b() {
+      return this.l();
    }
 
-   @Override
-   public cxp a(int $$0, int $$1) {
-      return this.b($$0, $$1);
+   public double c() {
+      return this.m();
    }
 
-   @Override
-   public cxp b(int $$0) {
-      return this.f_($$0);
+   public double d() {
+      return this.n();
    }
 
-   @Override
-   public void a(int $$0, cxp $$1) {
-      this.c($$0, $$1);
+   public float e() {
+      return this.o();
    }
 
-   @Override
-   public bwy a_(int $$0) {
-      return this.h_($$0);
+   public float f() {
+      return this.p();
    }
 
-   @Override
-   public void e() {
+   public void a(double $$0, double $$1, double $$2) {
+      this.b($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean a(cpx $$0) {
-      return this.g($$0);
+   public abstract void g();
+
+   public dgz h() {
+      return this.a.dW();
    }
 
-   @Nullable
-   @Override
-   public ctc createMenu(int $$0, cpw $$1, cpx $$2) {
-      if (this.j != null && $$2.aa_()) {
-         return null;
-      } else {
-         this.e($$1.k);
-         return ctl.a($$0, $$1, this);
-      }
+   public abstract void a(arx var1);
+
+   public abstract double a(jh var1, dyr var2, double var3);
+
+   public abstract boolean i();
+
+   public fbr j() {
+      return this.a.dz();
    }
 
-   public void e(@Nullable cpx $$0) {
-      this.f($$0);
+   public void a(fbr $$0) {
+      this.a.h($$0);
    }
 
-   @Nullable
-   @Override
-   public aly<ewu> v() {
-      return this.j;
+   public void b(double $$0, double $$1, double $$2) {
+      this.a.n($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(@Nullable aly<ewu> $$0) {
-      this.j = $$0;
+   public fbr k() {
+      return this.a.du();
    }
 
-   @Override
-   public long x() {
-      return this.k;
+   public double l() {
+      return this.a.dB();
    }
 
-   @Override
-   public void a(long $$0) {
-      this.k = $$0;
+   public double m() {
+      return this.a.dD();
    }
 
-   @Override
-   public jz<cxp> B() {
-      return this.i;
+   public double n() {
+      return this.a.dH();
    }
 
-   @Override
-   public void C() {
-      this.i = jz.a(this.b(), cxp.j);
+   public void b(fbr $$0) {
+      this.a.b($$0);
    }
 
-   @Override
-   public void c(cpx $$0) {
-      this.dW().a(ecr.j, this.du(), ecr.a.a($$0));
+   public void c(double $$0, double $$1, double $$2) {
+      this.a.a_($$0, $$1, $$2);
    }
+
+   public float o() {
+      return this.a.dO();
+   }
+
+   public void a(float $$0) {
+      this.a.w($$0);
+   }
+
+   public float p() {
+      return this.a.dM();
+   }
+
+   public void b(float $$0) {
+      this.a.v($$0);
+   }
+
+   public jm q() {
+      return this.a.cO();
+   }
+
+   public fbr c(fbr $$0) {
+      return $$0;
+   }
+
+   public abstract double b(arx var1);
+
+   public abstract double r();
 }

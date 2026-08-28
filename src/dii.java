@@ -1,42 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public abstract class dii {
+   public static final alo<dib> a = a("the_void");
+   public static final alo<dib> b = a("plains");
+   public static final alo<dib> c = a("sunflower_plains");
+   public static final alo<dib> d = a("snowy_plains");
+   public static final alo<dib> e = a("ice_spikes");
+   public static final alo<dib> f = a("desert");
+   public static final alo<dib> g = a("swamp");
+   public static final alo<dib> h = a("mangrove_swamp");
+   public static final alo<dib> i = a("forest");
+   public static final alo<dib> j = a("flower_forest");
+   public static final alo<dib> k = a("birch_forest");
+   public static final alo<dib> l = a("dark_forest");
+   public static final alo<dib> m = a("pale_garden");
+   public static final alo<dib> n = a("old_growth_birch_forest");
+   public static final alo<dib> o = a("old_growth_pine_taiga");
+   public static final alo<dib> p = a("old_growth_spruce_taiga");
+   public static final alo<dib> q = a("taiga");
+   public static final alo<dib> r = a("snowy_taiga");
+   public static final alo<dib> s = a("savanna");
+   public static final alo<dib> t = a("savanna_plateau");
+   public static final alo<dib> u = a("windswept_hills");
+   public static final alo<dib> v = a("windswept_gravelly_hills");
+   public static final alo<dib> w = a("windswept_forest");
+   public static final alo<dib> x = a("windswept_savanna");
+   public static final alo<dib> y = a("jungle");
+   public static final alo<dib> z = a("sparse_jungle");
+   public static final alo<dib> A = a("bamboo_jungle");
+   public static final alo<dib> B = a("badlands");
+   public static final alo<dib> C = a("eroded_badlands");
+   public static final alo<dib> D = a("wooded_badlands");
+   public static final alo<dib> E = a("meadow");
+   public static final alo<dib> F = a("cherry_grove");
+   public static final alo<dib> G = a("grove");
+   public static final alo<dib> H = a("snowy_slopes");
+   public static final alo<dib> I = a("frozen_peaks");
+   public static final alo<dib> J = a("jagged_peaks");
+   public static final alo<dib> K = a("stony_peaks");
+   public static final alo<dib> L = a("river");
+   public static final alo<dib> M = a("frozen_river");
+   public static final alo<dib> N = a("beach");
+   public static final alo<dib> O = a("snowy_beach");
+   public static final alo<dib> P = a("stony_shore");
+   public static final alo<dib> Q = a("warm_ocean");
+   public static final alo<dib> R = a("lukewarm_ocean");
+   public static final alo<dib> S = a("deep_lukewarm_ocean");
+   public static final alo<dib> T = a("ocean");
+   public static final alo<dib> U = a("deep_ocean");
+   public static final alo<dib> V = a("cold_ocean");
+   public static final alo<dib> W = a("deep_cold_ocean");
+   public static final alo<dib> X = a("frozen_ocean");
+   public static final alo<dib> Y = a("deep_frozen_ocean");
+   public static final alo<dib> Z = a("mushroom_fields");
+   public static final alo<dib> aa = a("dripstone_caves");
+   public static final alo<dib> ab = a("lush_caves");
+   public static final alo<dib> ac = a("deep_dark");
+   public static final alo<dib> ad = a("nether_wastes");
+   public static final alo<dib> ae = a("warped_forest");
+   public static final alo<dib> af = a("crimson_forest");
+   public static final alo<dib> ag = a("soul_sand_valley");
+   public static final alo<dib> ah = a("basalt_deltas");
+   public static final alo<dib> ai = a("the_end");
+   public static final alo<dib> aj = a("end_highlands");
+   public static final alo<dib> ak = a("end_midlands");
+   public static final alo<dib> al = a("small_end_islands");
+   public static final alo<dib> am = a("end_barrens");
 
-public class dii {
-   public static final Codec<dii> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axe.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dii::new)
-   );
-   public static final dii b = new dii(axf.h, 6000, 8, 2.0);
-   private final jq<axe> c;
-   private final int d;
-   private final int e;
-   private final double f;
-
-   public dii(jq<axe> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public jq<axe> a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public double d() {
-      return this.f;
+   private static alo<dib> a(String $$0) {
+      return alo.a(mb.aI, alp.b($$0));
    }
 }

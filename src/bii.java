@@ -1,26 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public class bii extends DataFix {
    public bii(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsMenuBlurrinessFix",
-         this.getInputSchema().getType(bix.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("menuBackgroundBlurriness", $$0xx -> $$0xx.createInt(this.a($$0xx.asString("0.5")))))
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bin.B);
+      Type<?> $$1 = this.getOutputSchema().getType(bin.B);
+      return this.fixTypeEverywhereTyped("Fix Arrow stored weapon", $$0, $$1, bbk.a(this.a("minecraft:arrow"), this.a("minecraft:spectral_arrow")));
    }
 
-   private int a(String $$0) {
-      try {
-         return Math.round(Float.parseFloat($$0) * 10.0F);
-      } catch (NumberFormatException var3) {
-         return 5;
-      }
+   private Function<Typed<?>, Typed<?>> a(String $$0) {
+      Type<?> $$1 = this.getInputSchema().getChoiceType(bin.B, $$0);
+      Type<?> $$2 = this.getOutputSchema().getChoiceType(bin.B, $$0);
+      return a($$0, $$1, $$2);
+   }
+
+   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, Type<?> $$1, Type<T> $$2) {
+      OpticFinder<?> $$3 = DSL.namedChoice($$0, $$1);
+      return $$2x -> $$2x.updateTyped($$3, $$2, $$1xx -> ae.a($$1xx, $$2, UnaryOperator.identity()));
    }
 }

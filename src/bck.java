@@ -1,96 +1,51 @@
-import com.mojang.datafixers.DSL;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import java.util.Map;
 
-public class bck extends bhs {
-   private static final Map<String, String> a = Map.ofEntries(
-      Map.entry("b", "minecraft:base"),
-      Map.entry("bl", "minecraft:square_bottom_left"),
-      Map.entry("br", "minecraft:square_bottom_right"),
-      Map.entry("tl", "minecraft:square_top_left"),
-      Map.entry("tr", "minecraft:square_top_right"),
-      Map.entry("bs", "minecraft:stripe_bottom"),
-      Map.entry("ts", "minecraft:stripe_top"),
-      Map.entry("ls", "minecraft:stripe_left"),
-      Map.entry("rs", "minecraft:stripe_right"),
-      Map.entry("cs", "minecraft:stripe_center"),
-      Map.entry("ms", "minecraft:stripe_middle"),
-      Map.entry("drs", "minecraft:stripe_downright"),
-      Map.entry("dls", "minecraft:stripe_downleft"),
-      Map.entry("ss", "minecraft:small_stripes"),
-      Map.entry("cr", "minecraft:cross"),
-      Map.entry("sc", "minecraft:straight_cross"),
-      Map.entry("bt", "minecraft:triangle_bottom"),
-      Map.entry("tt", "minecraft:triangle_top"),
-      Map.entry("bts", "minecraft:triangles_bottom"),
-      Map.entry("tts", "minecraft:triangles_top"),
-      Map.entry("ld", "minecraft:diagonal_left"),
-      Map.entry("rd", "minecraft:diagonal_up_right"),
-      Map.entry("lud", "minecraft:diagonal_up_left"),
-      Map.entry("rud", "minecraft:diagonal_right"),
-      Map.entry("mc", "minecraft:circle"),
-      Map.entry("mr", "minecraft:rhombus"),
-      Map.entry("vh", "minecraft:half_vertical"),
-      Map.entry("hh", "minecraft:half_horizontal"),
-      Map.entry("vhr", "minecraft:half_vertical_right"),
-      Map.entry("hhb", "minecraft:half_horizontal_bottom"),
-      Map.entry("bo", "minecraft:border"),
-      Map.entry("cbo", "minecraft:curly_border"),
-      Map.entry("gra", "minecraft:gradient"),
-      Map.entry("gru", "minecraft:gradient_up"),
-      Map.entry("bri", "minecraft:bricks"),
-      Map.entry("glb", "minecraft:globe"),
-      Map.entry("cre", "minecraft:creeper"),
-      Map.entry("sku", "minecraft:skull"),
-      Map.entry("flo", "minecraft:flower"),
-      Map.entry("moj", "minecraft:mojang"),
-      Map.entry("pig", "minecraft:piglin")
-   );
+public class bck extends DataFix {
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("Airportal", "minecraft:end_portal");
+      $$0.put("Banner", "minecraft:banner");
+      $$0.put("Beacon", "minecraft:beacon");
+      $$0.put("Cauldron", "minecraft:brewing_stand");
+      $$0.put("Chest", "minecraft:chest");
+      $$0.put("Comparator", "minecraft:comparator");
+      $$0.put("Control", "minecraft:command_block");
+      $$0.put("DLDetector", "minecraft:daylight_detector");
+      $$0.put("Dropper", "minecraft:dropper");
+      $$0.put("EnchantTable", "minecraft:enchanting_table");
+      $$0.put("EndGateway", "minecraft:end_gateway");
+      $$0.put("EnderChest", "minecraft:ender_chest");
+      $$0.put("FlowerPot", "minecraft:flower_pot");
+      $$0.put("Furnace", "minecraft:furnace");
+      $$0.put("Hopper", "minecraft:hopper");
+      $$0.put("MobSpawner", "minecraft:mob_spawner");
+      $$0.put("Music", "minecraft:noteblock");
+      $$0.put("Piston", "minecraft:piston");
+      $$0.put("RecordPlayer", "minecraft:jukebox");
+      $$0.put("Sign", "minecraft:sign");
+      $$0.put("Skull", "minecraft:skull");
+      $$0.put("Structure", "minecraft:structure_block");
+      $$0.put("Trap", "minecraft:dispenser");
+   });
 
-   public bck(Schema $$0) {
-      super($$0, false, "BannerPatternFormatFix", bix.s, "minecraft:banner");
+   public bck(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bck::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.renameAndFixField("Patterns", "patterns", $$0x -> $$0x.createList($$0x.asStream().map(bck::b)));
-   }
-
-   private static Dynamic<?> b(Dynamic<?> $$0) {
-      $$0 = $$0.renameAndFixField(
-         "Pattern",
-         "pattern",
-         $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map($$0xx -> a.getOrDefault($$0xx, $$0xx)).map($$0x::createString).result(), $$0x)
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bin.t);
+      Type<?> $$1 = this.getOutputSchema().getType(bin.t);
+      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bin.s);
+      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bin.s);
+      return TypeRewriteRule.seq(
+         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
+         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
       );
-      $$0 = $$0.set("color", $$0.createString(a($$0.get("Color").asInt(0))));
-      return $$0.remove("Color");
-   }
-
-   public static String a(int $$0) {
-      return switch ($$0) {
-         case 1 -> "orange";
-         case 2 -> "magenta";
-         case 3 -> "light_blue";
-         case 4 -> "yellow";
-         case 5 -> "lime";
-         case 6 -> "pink";
-         case 7 -> "gray";
-         case 8 -> "light_gray";
-         case 9 -> "cyan";
-         case 10 -> "purple";
-         case 11 -> "blue";
-         case 12 -> "brown";
-         case 13 -> "green";
-         case 14 -> "red";
-         case 15 -> "black";
-         default -> "white";
-      };
    }
 }

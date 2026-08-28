@@ -1,64 +1,93 @@
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.stream.Stream;
 
 public class beg extends DataFix {
-   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
-
-   public beg(Schema $$0) {
-      super($$0, false);
+   public beg(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = this.getInputSchema().getType(bix.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bix.D.typeName(), bkl.a()));
-      OpticFinder<?> $$3 = $$1.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bix.B), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bix.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
-               if ($$2x.getOptional($$2).filter($$0xx -> a.contains($$0xx.getSecond())).isPresent()) {
-                  Optional<? extends Typed<?>> $$3x = $$2x.getOptionalTyped($$3);
-                  if ($$3x.isPresent()) {
-                     Dynamic<?> $$4 = (Dynamic<?>)$$3x.get().get(DSL.remainderFinder());
-                     Typed<?> $$5 = $$3x.get().set(DSL.remainderFinder(), $$4.update("CustomPotionEffects", this::b));
-                     return $$2x.set($$3, $$5);
-                  }
+   public TypeRewriteRule makeRule() {
+      return this.a(this.getInputSchema().getTypeRaw(bin.t));
+   }
+
+   private <IS> TypeRewriteRule a(Type<IS> $$0) {
+      Type<Pair<Either<List<IS>, Unit>, Dynamic<?>>> $$1 = DSL.and(DSL.optional(DSL.field("Equipment", DSL.list($$0))), DSL.remainderType());
+      Type<Pair<Either<List<IS>, Unit>, Pair<Either<List<IS>, Unit>, Pair<Either<IS, Unit>, Dynamic<?>>>>> $$2 = DSL.and(
+         DSL.optional(DSL.field("ArmorItems", DSL.list($$0))),
+         DSL.optional(DSL.field("HandItems", DSL.list($$0))),
+         DSL.optional(DSL.field("body_armor_item", $$0)),
+         DSL.remainderType()
+      );
+      OpticFinder<Pair<Either<List<IS>, Unit>, Dynamic<?>>> $$3 = DSL.typeFinder($$1);
+      OpticFinder<List<IS>> $$4 = DSL.fieldFinder("Equipment", DSL.list($$0));
+      return this.fixTypeEverywhereTyped(
+         "EntityEquipmentToArmorAndHandFix",
+         this.getInputSchema().getType(bin.B),
+         this.getOutputSchema().getType(bin.B),
+         $$4x -> {
+            Either<List<IS>, Unit> $$5 = Either.right(DSL.unit());
+            Either<List<IS>, Unit> $$6 = Either.right(DSL.unit());
+            Either<IS, Unit> $$7 = Either.right(DSL.unit());
+            Dynamic<?> $$8 = (Dynamic<?>)$$4x.getOrCreate(DSL.remainderFinder());
+            Optional<List<IS>> $$9 = $$4x.getOptional($$4);
+            if ($$9.isPresent()) {
+               List<IS> $$10 = $$9.get();
+               IS $$11 = (IS)((Pair)$$0.read($$8.emptyMap())
+                     .result()
+                     .orElseThrow(() -> new IllegalStateException("Could not parse newly created empty itemstack.")))
+                  .getFirst();
+               if (!$$10.isEmpty()) {
+                  $$5 = Either.left(Lists.newArrayList(new Object[]{$$10.get(0), $$11}));
                }
 
-               return $$2x;
-            })
+               if ($$10.size() > 1) {
+                  List<IS> $$12 = Lists.newArrayList(new Object[]{$$11, $$11, $$11, $$11});
+
+                  for (int $$13 = 1; $$13 < Math.min($$10.size(), 5); $$13++) {
+                     $$12.set($$13 - 1, $$10.get($$13));
+                  }
+
+                  $$6 = Either.left($$12);
+               }
+            }
+
+            Dynamic<?> $$14 = $$8;
+            Optional<? extends Stream<? extends Dynamic<?>>> $$15 = $$8.get("DropChances").asStreamOpt().result();
+            if ($$15.isPresent()) {
+               Iterator<? extends Dynamic<?>> $$16 = Stream.concat((Stream<? extends Dynamic<?>>)$$15.get(), Stream.generate(() -> $$14.createInt(0)))
+                  .iterator();
+               float $$17 = $$16.next().asFloat(0.0F);
+               if ($$8.get("HandDropChances").result().isEmpty()) {
+                  Dynamic<?> $$18 = $$8.createList(Stream.of($$17, 0.0F).map($$8::createFloat));
+                  $$8 = $$8.set("HandDropChances", $$18);
+               }
+
+               if ($$8.get("ArmorDropChances").result().isEmpty()) {
+                  Dynamic<?> $$19 = $$8.createList(
+                     Stream.of($$16.next().asFloat(0.0F), $$16.next().asFloat(0.0F), $$16.next().asFloat(0.0F), $$16.next().asFloat(0.0F))
+                        .map($$8::createFloat)
+                  );
+                  $$8 = $$8.set("ArmorDropChances", $$19);
+               }
+
+               $$8 = $$8.remove("DropChances");
+            }
+
+            return $$4x.set($$3, $$2, Pair.of($$5, Pair.of($$6, Pair.of($$7, $$8))));
          }
       );
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("FactorCalculationData", $$1 -> {
-         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
-         $$1 = $$1.remove("effect_changed_timestamp");
-         int $$3 = $$0.get("Duration").asInt(-1);
-         int $$4 = $$2 - $$3;
-         return $$1.set("ticks_active", $$1.createInt($$4));
-      });
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.createList($$0.asStream().map(this::a));
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      $$0 = $$0.update("Effects", this::b);
-      $$0 = $$0.update("ActiveEffects", this::b);
-      return $$0.update("CustomPotionEffects", this::b);
    }
 }

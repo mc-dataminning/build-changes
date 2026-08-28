@@ -1,36 +1,31 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public record dei<T>(ded a, ded b, T c, Optional<ezy> d) {
-   public static <S> Codec<dei<S>> a(Codec<S> $$0, bbo $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  ded.d.fieldOf("enchanted").forGetter(dei::a),
-                  ded.d.fieldOf("affected").forGetter(dei::b),
-                  $$0.fieldOf("effect").forGetter(dei::c),
-                  ddw.a($$1).optionalFieldOf("requirements").forGetter(dei::d)
-               )
-               .apply($$2, dei::new)
-      );
+public interface dei {
+   Codec<dei> c = ma.av.q().dispatch(dei::a, Function.identity());
+
+   static MapCodec<? extends dei> b(kd<MapCodec<? extends dei>> $$0) {
+      kd.a($$0, "all_of", deb.b.a);
+      kd.a($$0, "apply_mob_effect", dec.a);
+      kd.a($$0, "attribute", deg.a);
+      kd.a($$0, "change_item_damage", ded.a);
+      kd.a($$0, "damage_entity", dee.a);
+      kd.a($$0, "explode", dek.a);
+      kd.a($$0, "ignite", del.a);
+      kd.a($$0, "play_sound", den.a);
+      kd.a($$0, "replace_block", dep.a);
+      kd.a($$0, "replace_disk", deq.a);
+      kd.a($$0, "run_function", der.a);
+      kd.a($$0, "set_block_properties", des.a);
+      kd.a($$0, "spawn_particles", deu.a);
+      return kd.a($$0, "summon_entity", dev.a);
    }
 
-   public static <S> Codec<dei<S>> b(Codec<S> $$0, bbo $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  ded.d
-                     .validate($$0xx -> $$0xx != ded.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
-                     .fieldOf("enchanted")
-                     .forGetter(dei::a),
-                  $$0.fieldOf("effect").forGetter(dei::c),
-                  ddw.a($$1).optionalFieldOf("requirements").forGetter(dei::d)
-               )
-               .apply($$2, ($$0xx, $$1xx, $$2x) -> new dei<>($$0xx, ded.c, $$1xx, $$2x))
-      );
+   void a(arx var1, int var2, ddp var3, bvb var4, fbr var5, boolean var6);
+
+   default void a(ddp $$0, bvb $$1, fbr $$2, int $$3) {
    }
 
-   public boolean a(ewp $$0) {
-      return this.d.isEmpty() ? true : this.d.get().test($$0);
-   }
+   MapCodec<? extends dei> a();
 }

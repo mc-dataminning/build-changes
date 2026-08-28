@@ -1,54 +1,59 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class ezi {
-   private static final BiMap<alz, bbo> y = HashBiMap.create();
-   public static final Codec<bbo> a = alz.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((bbo)y.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         y.inverse()::get
-      );
-   public static final bbo b = a("empty", $$0 -> {
-   });
-   public static final bbo c = a("chest", $$0 -> $$0.a(ezj.f).b(ezj.a));
-   public static final bbo d = a("command", $$0 -> $$0.a(ezj.f).b(ezj.a));
-   public static final bbo e = a("selector", $$0 -> $$0.a(ezj.f).a(ezj.a));
-   public static final bbo f = a("fishing", $$0 -> $$0.a(ezj.f).a(ezj.i).b(ezj.a));
-   public static final bbo g = a("entity", $$0 -> $$0.a(ezj.a).a(ezj.f).a(ezj.c).b(ezj.d).b(ezj.e).b(ezj.b));
-   public static final bbo h = a("equipment", $$0 -> $$0.a(ezj.f).a(ezj.a));
-   public static final bbo i = a("archaeology", $$0 -> $$0.a(ezj.f).a(ezj.a).a(ezj.i));
-   public static final bbo j = a("gift", $$0 -> $$0.a(ezj.f).a(ezj.a));
-   public static final bbo k = a("barter", $$0 -> $$0.a(ezj.a));
-   public static final bbo l = a("vault", $$0 -> $$0.a(ezj.f).b(ezj.a).b(ezj.i));
-   public static final bbo m = a("advancement_reward", $$0 -> $$0.a(ezj.a).a(ezj.f));
-   public static final bbo n = a("advancement_entity", $$0 -> $$0.a(ezj.a).a(ezj.f));
-   public static final bbo o = a("advancement_location", $$0 -> $$0.a(ezj.a).a(ezj.f).a(ezj.i).a(ezj.g));
-   public static final bbo p = a("block_use", $$0 -> $$0.a(ezj.a).a(ezj.f).a(ezj.g));
-   public static final bbo q = a("generic", $$0 -> $$0.a(ezj.a).a(ezj.b).a(ezj.c).a(ezj.d).a(ezj.e).a(ezj.f).a(ezj.g).a(ezj.h).a(ezj.i).a(ezj.j));
-   public static final bbo r = a("block", $$0 -> $$0.a(ezj.g).a(ezj.f).a(ezj.i).b(ezj.a).b(ezj.h).b(ezj.j));
-   public static final bbo s = a("shearing", $$0 -> $$0.a(ezj.f).a(ezj.a).a(ezj.i));
-   public static final bbo t = a("enchanted_damage", $$0 -> $$0.a(ezj.a).a(ezj.k).a(ezj.f).a(ezj.c).b(ezj.e).b(ezj.d));
-   public static final bbo u = a("enchanted_item", $$0 -> $$0.a(ezj.i).a(ezj.k));
-   public static final bbo v = a("enchanted_location", $$0 -> $$0.a(ezj.a).a(ezj.k).a(ezj.f).a(ezj.l));
-   public static final bbo w = a("enchanted_entity", $$0 -> $$0.a(ezj.a).a(ezj.k).a(ezj.f));
-   public static final bbo x = a("hit_block", $$0 -> $$0.a(ezj.a).a(ezj.k).a(ezj.f).a(ezj.g));
+public record ezi(alo<ezr> b) implements ezr {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<ezi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alo.a(mb.bi).fieldOf("name").forGetter(ezi::c)).apply($$0, ezi::new));
 
-   private static bbo a(String $$0, Consumer<bbo.a> $$1) {
-      bbo.a $$2 = new bbo.a();
-      $$1.accept($$2);
-      bbo $$3 = $$2.a();
-      alz $$4 = alz.b($$0);
-      bbo $$5 = (bbo)y.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+   @Override
+   public ezs b() {
+      return ezt.p;
+   }
+
+   @Override
+   public void a(ewo $$0) {
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else if ($$0.a(this.b)) {
+         $$0.b("Condition " + this.b.a() + " is recursively called");
       } else {
-         return $$3;
+         ezr.super.a($$0);
+         $$0.a()
+            .c(this.b)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
       }
+   }
+
+   public boolean a(ewi $$0) {
+      ezr $$1 = $$0.a().c(this.b).map(jq.c::a).orElse(null);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b.a());
+         return false;
+      } else {
+         ewi.c<?> $$2 = ewi.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
+         }
+      }
+   }
+
+   public static ezr.a a(alo<ezr> $$0) {
+      return () -> new ezi($$0);
+   }
+
+   public alo<ezr> c() {
+      return this.b;
    }
 }

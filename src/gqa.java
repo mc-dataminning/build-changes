@@ -1,37 +1,14 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-
-public class gqa implements gpl.a {
-   private static final int a = 60;
-   private final Set<kj> b = Sets.newHashSet();
-
-   gqa() {
+public abstract class gqa<T extends bvz & cny> extends gqf<T, gye, gbr> {
+   public gqa(grl.a $$0, geh $$1, geh $$2, float $$3) {
+      super($$0, new gbr($$0.a($$1)), new gbr($$0.a($$2)), $$3);
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
+   public gye a() {
+      return new gye();
    }
 
-   public void a(kj $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(kj $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(fgs $$0, gll $$1, double $$2, double $$3, double $$4) {
-      jh $$5 = jh.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.k(), 60.0)) {
-            a($$0, $$1, $$3x);
-         }
-      });
-   }
-
-   private static void a(fgs $$0, gll $$1, kj $$2) {
-      gpl.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
+   public void a(T $$0, gye $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.x();
    }
 }

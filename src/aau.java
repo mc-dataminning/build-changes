@@ -1,26 +1,51 @@
-public class aau {
-   public static final aae<aaj> a = a("custom_payload");
-   public static final aae<aak> b = a("custom_report_details");
-   public static final aae<aal> c = a("disconnect");
-   public static final aae<aam> d = a("keep_alive");
-   public static final aae<aan> e = a("ping");
-   public static final aae<aao> f = a("resource_pack_pop");
-   public static final aae<aap> g = a("resource_pack_push");
-   public static final aae<aaq> h = a("server_links");
-   public static final aae<aar> i = a("store_cookie");
-   public static final aae<aas> j = a("transfer");
-   public static final aae<aat> k = a("update_tags");
-   public static final aae<aaw> l = b("client_information");
-   public static final aae<aax> m = b("custom_payload");
-   public static final aae<aay> n = b("keep_alive");
-   public static final aae<aaz> o = b("pong");
-   public static final aae<aba> p = b("resource_pack");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-   private static <T extends aac<aai>> aae<T> a(String $$0) {
-      return new aae<>(aad.b, alz.b($$0));
+public interface aau {
+   aau.b<? extends aau> a();
+
+   static <B extends ByteBuf, T extends aau> zi<B, T> a(zl<B, T> $$0, zj<B, T> $$1) {
+      return zi.a($$0, $$1);
    }
 
-   private static <T extends aac<aav>> aae<T> b(String $$0) {
-      return new aae<>(aad.a, alz.b($$0));
+   static <T extends aau> aau.b<T> a(String $$0) {
+      return new aau.b<>(alp.b($$0));
+   }
+
+   static <B extends wh> zi<B, aau> a(final aau.a<B> $$0, List<aau.c<? super B, ?>> $$1) {
+      final Map<alp, zi<? super B, ? extends aau>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aau.c::b));
+      return new zi<B, aau>() {
+         private zi<? super B, ? extends aau> a(alp $$0x) {
+            zi<? super B, ? extends aau> $$1 = $$2.get($$0);
+            return $$1 != null ? $$1 : $$0.create($$0);
+         }
+
+         private <T extends aau> void a(B $$0x, aau.b<T> $$1, aau $$2x) {
+            $$0.a($$1.a());
+            zi<B, T> $$3 = this.a($$1.a);
+            $$3.encode($$0, (T)$$2);
+         }
+
+         public void a(B $$0x, aau $$1) {
+            this.a($$0, $$1.a(), $$1);
+         }
+
+         public aau a(B $$0x) {
+            alp $$1 = $$0.q();
+            return (aau)this.a($$1).decode($$0);
+         }
+      };
+   }
+
+   public interface a<B extends wh> {
+      zi<B, ? extends aau> create(alp var1);
+   }
+
+   public static record b<T extends aau>(alp a) {
+   }
+
+   public static record c<B extends wh, T extends aau>(aau.b<T> a, zi<B, T> b) {
    }
 }

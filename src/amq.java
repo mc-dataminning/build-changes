@@ -1,17 +1,8 @@
-public interface amq extends amp {
-   aqz a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   String b();
-
-   int d();
-
-   String h();
-
-   String[] P();
-
-   String j();
-
-   String s();
-
-   String a(String var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface amq {
 }

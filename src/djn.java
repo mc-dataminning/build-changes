@@ -1,91 +1,72 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class djn extends dkw {
-   public static final MapCodec<djn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aly.a(mb.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               aly.a(mb.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               aly.a(mb.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               t()
-            )
-            .apply($$0, djn::new)
-   );
-   public static final dys<jm> b = dok.aF;
-   protected static final float c = 2.0F;
-   private static final Map<jm, fcs> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         jm.d,
-         dkm.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         jm.e,
-         dkm.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         jm.c,
-         dkm.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         jm.f,
-         dkm.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final aly<dkm> e;
-   private final aly<dkm> f;
-   private final aly<cxl> g;
+public abstract class djn extends dkd implements drj {
+   public static final dyf d = dye.J;
+   private static final fcl a = dkd.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+
+   protected djn(dxn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(d, Boolean.valueOf(true)));
+   }
 
    @Override
-   public MapCodec<djn> a() {
+   protected abstract MapCodec<? extends djn> a();
+
+   protected void a(dxo $$0, dge $$1, dho $$2, bac $$3, jh $$4) {
+      if (!d($$0, $$1, $$4)) {
+         $$2.a($$4, this, 60 + $$3.a(40));
+      }
+   }
+
+   protected static boolean d(dxo $$0, dge $$1, jh $$2) {
+      if ($$0.c(d)) {
+         return true;
+      } else {
+         for (jm $$3 : jm.values()) {
+            if ($$1.b_($$2.a($$3)).a(axq.a)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dxo a(dax $$0) {
+      etq $$1 = $$0.q().b_($$0.a());
+      return this.m().b(d, Boolean.valueOf($$1.a(axq.a) && $$1.e() == 8));
+   }
+
+   @Override
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
       return a;
    }
 
-   protected djn(aly<dkm> $$0, aly<dkm> $$1, aly<cxl> $$2, dxu.d $$3) {
-      super($$3);
-      this.l(this.F.b().b(b, jm.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
-   }
-
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return d.get($$0.c(b));
-   }
-
-   @Override
-   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
-      if (!$$6.a(this.e) && $$4 == $$0.c(b)) {
-         Optional<dkm> $$8 = $$1.K_().e(mb.f).f(this.f);
-         if ($$8.isPresent()) {
-            return $$8.get().m().c(dsl.c, Integer.valueOf(7));
-         }
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, etr.c, etr.c.a($$1));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return $$4 == jm.a && !this.a($$0, $$1, $$3) ? dkf.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
-      return $$0.a(dko.cK);
+   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
+      jh $$3 = $$2.e();
+      return $$1.a_($$3).c($$1, $$3, jm.b);
    }
 
    @Override
-   public cxp a(dhl $$0, jh $$1, dxv $$2) {
-      return new cxp((dhh)DataFixUtils.orElse($$0.K_().e(mb.K).f(this.g), this));
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   protected dxv a(dxv $$0, drc $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dxv a(dxv $$0, dpl $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      $$0.a(b);
+   protected etq b_(dxo $$0) {
+      return $$0.c(d) ? etr.c.a(false) : super.b_($$0);
    }
 }

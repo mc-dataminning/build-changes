@@ -1,86 +1,59 @@
-public class agt implements aac<acr> {
-   public static final zt<xg, agt> a = aac.a(agt::a, agt::new);
-   public static final float b = 8.0F;
-   private final jq<axe> c;
-   private final axg d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final float h;
-   private final float i;
-   private final long j;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-   public agt(jq<axe> $$0, axg $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = (int)($$2 * 8.0);
-      this.f = (int)($$3 * 8.0);
-      this.g = (int)($$4 * 8.0);
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
+public class agt implements zr<acg> {
+   public static final zi<wv, agt> a = zi.a(zg.h, agt::b, agt.a.b.a(zg.a()), agt::e, agt::new);
+   private final int b;
+   private final List<agt.a> c;
+
+   public agt(int $$0, Collection<bxb> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (bxb $$2 : $$1) {
+         this.c.add(new agt.a($$2.a(), $$2.b(), $$2.c()));
+      }
    }
 
-   private agt(xg $$0) {
-      this.c = axe.d.decode($$0);
-      this.d = $$0.b(axg.class);
-      this.e = $$0.readInt();
-      this.f = $$0.readInt();
-      this.g = $$0.readInt();
-      this.h = $$0.readFloat();
-      this.i = $$0.readFloat();
-      this.j = $$0.readLong();
-   }
-
-   private void a(xg $$0) {
-      axe.d.encode($$0, this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
-      $$0.q(this.f);
-      $$0.q(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.b(this.j);
+   private agt(int $$0, List<agt.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public aae<agt> a() {
-      return ahk.aW;
+   public zt<agt> a() {
+      return agz.bg;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public jq<axe> b() {
+   public int b() {
+      return this.b;
+   }
+
+   public List<agt.a> e() {
       return this.c;
    }
 
-   public axg e() {
-      return this.d;
-   }
+   public static record a(jq<bxa> c, double d, Collection<bxd> e) {
+      public static final zi<ByteBuf, bxd> a = zi.a(alp.b, bxd::b, zg.m, bxd::c, bxd.a.e, bxd::d, bxd::new);
+      public static final zi<wv, agt.a> b = zi.a(bxa.b, agt.a::a, zg.m, agt.a::b, a.a(zg.a(ArrayList::new)), agt.a::c, agt.a::new);
 
-   public double f() {
-      return (double)((float)this.e / 8.0F);
-   }
+      public jq<bxa> a() {
+         return this.c;
+      }
 
-   public double g() {
-      return (double)((float)this.f / 8.0F);
-   }
+      public double b() {
+         return this.d;
+      }
 
-   public double h() {
-      return (double)((float)this.g / 8.0F);
-   }
-
-   public float i() {
-      return this.h;
-   }
-
-   public float j() {
-      return this.i;
-   }
-
-   public long k() {
-      return this.j;
+      public Collection<bxd> c() {
+         return this.e;
+      }
    }
 }

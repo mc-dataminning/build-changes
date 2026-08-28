@@ -1,29 +1,29 @@
-public class aan implements aac<aai> {
-   public static final zt<ws, aan> a = aac.a(aan::a, aan::new);
-   private final int b;
+public class aan implements zr<aak> {
+   public static final zi<wh, aan> a = zr.a(aan::a, aan::new);
+   private final long b;
 
-   public aan(int $$0) {
+   public aan(long $$0) {
       this.b = $$0;
    }
 
-   private aan(ws $$0) {
-      this.b = $$0.readInt();
+   private aan(wh $$0) {
+      this.b = $$0.readLong();
    }
 
-   private void a(ws $$0) {
-      $$0.q(this.b);
+   private void a(wh $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public aae<aan> a() {
-      return aau.e;
+   public zt<aan> a() {
+      return aaj.n;
    }
 
-   public void a(aai $$0) {
+   public void a(aak $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 }

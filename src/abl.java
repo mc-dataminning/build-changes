@@ -1,45 +1,46 @@
-import java.util.List;
+public record abl(jh c, float d, float e, float f, float g, float h) implements aau {
+   public static final zi<wh, abl> a = aau.a(abl::a, abl::new);
+   public static final aau.b<abl> b = aau.a("debug/worldgen_attempt");
 
-public record abl(int c, jh d, List<abl.a> e) implements abf {
-   public static final zt<ws, abl> a = abf.a(abl::a, abl::new);
-   public static final abf.b<abl> b = abf.a("debug/goal_selector");
-
-   private abl(ws $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(abl.a::new));
+   private abl(wh $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   private void a(ws $$0) {
-      $$0.q(this.c);
+   private void a(wh $$0) {
+      $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public abf.b<abl> a() {
+   public aau.b<abl> a() {
       return b;
    }
 
-   public int b() {
+   public jh b() {
       return this.c;
    }
 
-   public jh c() {
+   public float c() {
       return this.d;
    }
 
-   public List<abl.a> d() {
+   public float d() {
       return this.e;
    }
 
-   public static record a(int a, boolean b, String c) {
-      public a(ws $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
-      }
+   public float e() {
+      return this.f;
+   }
 
-      public void a(ws $$0) {
-         $$0.q(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-      }
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
    }
 }

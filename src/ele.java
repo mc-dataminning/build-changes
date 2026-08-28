@@ -1,30 +1,29 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ele extends elb {
-   protected final long c;
-   protected final eta.a d;
-   protected final float e;
-   protected final eta f;
+public class ele extends eku {
+   public static final MapCodec<ele> b = bri.b(dxo.a).comapFlatMap(ele::a, $$0 -> $$0.c).fieldOf("entries");
+   private final bri<dxo> c;
 
-   protected static <P extends ele> P3<Mu<P>, Long, eta.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         eta.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         azn.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   private static DataResult<ele> a(bri<dxo> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new ele($$0));
    }
 
-   protected ele(long $$0, eta.a $$1, float $$2) {
+   public ele(bri<dxo> $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = eta.b(new eep(new edr($$0)), $$1);
    }
 
-   protected double a(jh $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public ele(bri.a<dxo> $$0) {
+      this($$0.a());
+   }
+
+   @Override
+   protected ekv<?> a() {
+      return ekv.b;
+   }
+
+   @Override
+   public dxo a(bac $$0, jh $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

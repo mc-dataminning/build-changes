@@ -1,28 +1,37 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
-public class bgd extends bhs {
+public abstract class bgd extends DataFix {
+   private final String a;
+
    public bgd(Schema $$0, String $$1) {
-      super($$0, false, "Gossip for for " + $$1, bix.B, $$1);
+      super($$0, false);
+      this.a = $$1;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Gossips",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt()
-                        .result()
-                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)bbz.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
-                        .map($$0xx::createList),
-                     $$0xx
-                  )
-            )
-      );
+   public TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(bin.D.typeName(), bkb.a());
+      if (!Objects.equals(this.getInputSchema().getType(bin.D), $$0)) {
+         throw new IllegalStateException("item name type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
+   }
+
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new bgd($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

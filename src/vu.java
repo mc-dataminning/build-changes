@@ -1,52 +1,89 @@
-import java.io.DataOutput;
-import java.io.IOException;
-
-public interface vu {
-   int d = 8;
-   int e = 12;
-   int f = 4;
-   int g = 28;
-   byte h = 0;
-   byte i = 1;
-   byte j = 2;
-   byte k = 3;
-   byte l = 4;
-   byte m = 5;
-   byte n = 6;
-   byte o = 7;
-   byte p = 8;
-   byte q = 9;
-   byte r = 10;
-   byte s = 11;
-   byte t = 12;
-   byte u = 99;
-   int v = 512;
-
-   void a(DataOutput var1) throws IOException;
+public interface vu extends vg {
+   vu a = new vu() {
+   };
 
    @Override
-   String toString();
-
-   byte b();
-
-   vw<?> c();
-
-   vu d();
-
-   int a();
-
-   default String u_() {
-      return new vt().a(this);
+   default vg.b a() {
+      return vg.b.a;
    }
 
-   void a(vy var1);
+   @Override
+   default vg.b a(String $$0) {
+      return vg.b.a;
+   }
 
-   vr.b a(vr var1);
+   @Override
+   default vg.b a(byte $$0) {
+      return vg.b.a;
+   }
 
-   default void b(vr $$0) {
-      vr.b $$1 = $$0.b(this.c());
-      if ($$1 == vr.b.a) {
-         this.a($$0);
-      }
+   @Override
+   default vg.b a(short $$0) {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.b a(int $$0) {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.b a(long $$0) {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.b a(float $$0) {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.b a(double $$0) {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.b a(byte[] $$0) {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.b a(int[] $$0) {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.b a(long[] $$0) {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.b a(vl<?> $$0, int $$1) {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.a b(vl<?> $$0, int $$1) {
+      return vg.a.b;
+   }
+
+   @Override
+   default vg.a a(vl<?> $$0) {
+      return vg.a.b;
+   }
+
+   @Override
+   default vg.a a(vl<?> $$0, String $$1) {
+      return vg.a.b;
+   }
+
+   @Override
+   default vg.b b() {
+      return vg.b.a;
+   }
+
+   @Override
+   default vg.b b(vl<?> $$0) {
+      return vg.b.a;
    }
 }

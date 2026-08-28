@@ -1,50 +1,32 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.stream.Stream;
+import java.nio.file.Path;
+import java.util.List;
 
 public interface bph {
-   static bpb<StringReader> a(String $$0) {
-      return new bph.b($$0);
+   char d = '\u001e';
+
+   List<bpl> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
    }
 
-   static bpb<StringReader> a(char $$0) {
-      return new bph.a($$0);
+   default int f() {
+      return this.d() - this.b();
    }
 
-   public static record a(char a) implements bpb<StringReader> {
-      @Override
-      public boolean a(box<StringReader> $$0, boz $$1, bot $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         if ($$0.b().canRead() && $$0.b().read() == this.a) {
-            return true;
-         } else {
-            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         }
-      }
+   String e();
 
-      public char c() {
-         return this.a;
-      }
-   }
-
-   public static record b(String a) implements bpb<StringReader> {
-      @Override
-      public boolean a(box<StringReader> $$0, boz $$1, bot $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         String $$4 = $$0.b().readUnquotedString();
-         if (!$$4.equals(this.a)) {
-            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      public String c() {
-         return this.a;
-      }
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

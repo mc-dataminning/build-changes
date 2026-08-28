@@ -1,150 +1,150 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.Stream;
 
 public final class czy {
-   private static final Logger e = LogUtils.getLogger();
-   public static final czy a = new czy(new ux());
-   public static final Codec<czy> b = Codec.withAlternative(ux.a, vv.i).xmap(czy::new, $$0 -> $$0.f);
-   public static final Codec<czy> c = b.validate(
-      $$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
-   );
-   @Deprecated
-   public static final zt<ByteBuf, czy> d = zr.r.a(czy::new, $$0 -> $$0.f);
-   private final ux f;
+   private static final int d = -1;
+   private static final int e = 256;
+   public static final czy a = new czy(jz.a());
+   public static final Codec<czy> b = czy.a.a.sizeLimitedListOf(256).xmap(czy::b, czy::f);
+   public static final zi<wv, czy> c = cxg.g.a(zg.c(256)).a(czy::new, $$0 -> $$0.f);
+   private final jz<cxg> f;
+   private final int g;
 
-   private czy(ux $$0) {
-      this.f = $$0;
-   }
-
-   public static czy a(ux $$0) {
-      return new czy($$0.i());
-   }
-
-   public static Predicate<cxp> a(kt<czy> $$0, ux $$1) {
-      return $$2 -> {
-         czy $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
-   }
-
-   public boolean b(ux $$0) {
-      return vm.a($$0, this.f, true);
-   }
-
-   public static void a(kt<czy> $$0, cxp $$1, Consumer<ux> $$2) {
-      czy $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.f.g()) {
-         $$1.c($$0);
+   private czy(jz<cxg> $$0) {
+      if ($$0.size() > 256) {
+         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
       } else {
-         $$1.b($$0, $$3);
+         this.f = $$0;
+         this.g = cxg.a($$0);
       }
    }
 
-   public static void a(kt<czy> $$0, cxp $$1, ux $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.c($$0);
+   private czy(int $$0) {
+      this(jz.a($$0, cxg.j));
+   }
+
+   private czy(List<cxg> $$0) {
+      this($$0.size());
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         this.f.set($$1, $$0.get($$1));
       }
    }
 
-   public czy a(Consumer<ux> $$0) {
-      ux $$1 = this.f.i();
-      $$0.accept($$1);
-      return new czy($$1);
+   private static czy b(List<czy.a> $$0) {
+      OptionalInt $$1 = $$0.stream().mapToInt(czy.a::a).max();
+      if ($$1.isEmpty()) {
+         return a;
+      } else {
+         czy $$2 = new czy($$1.getAsInt() + 1);
+
+         for (czy.a $$3 : $$0) {
+            $$2.f.set($$3.a(), $$3.b());
+         }
+
+         return $$2;
+      }
    }
 
-   public void a(bvk $$0) {
-      ux $$1 = $$0.f(new ux());
-      UUID $$2 = $$0.cG();
-      $$1.a(this.f);
-      $$0.g($$1);
-      $$0.a_($$2);
+   public static czy a(List<cxg> $$0) {
+      int $$1 = c($$0);
+      if ($$1 == -1) {
+         return a;
+      } else {
+         czy $$2 = new czy($$1 + 1);
+
+         for (int $$3 = 0; $$3 <= $$1; $$3++) {
+            $$2.f.set($$3, $$0.get($$3).v());
+         }
+
+         return $$2;
+      }
    }
 
-   public boolean a(dux $$0, js.a $$1) {
-      ux $$2 = $$0.e($$1);
-      ux $$3 = $$2.i();
-      $$2.a(this.f);
-      if (!$$2.equals($$3)) {
-         try {
-            $$0.d($$2, $$1);
-            $$0.e();
-            return true;
-         } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.aB_(), var8);
-
-            try {
-               $$0.d($$3, $$1);
-            } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.aB_(), var7);
-            }
+   private static int c(List<cxg> $$0) {
+      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
+         if (!$$0.get($$1).f()) {
+            return $$1;
          }
       }
 
-      return false;
+      return -1;
    }
 
-   public <T> DataResult<czy> a(DynamicOps<vu> $$0, MapEncoder<T> $$1, T $$2) {
-      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.f).map($$0x -> new czy((ux)$$0x));
+   private List<czy.a> f() {
+      List<czy.a> $$0 = new ArrayList<>();
+
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         cxg $$2 = this.f.get($$1);
+         if (!$$2.f()) {
+            $$0.add(new czy.a($$1, $$2));
+         }
+      }
+
+      return $$0;
    }
 
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      return this.a(vl.a, $$0);
+   public void a(jz<cxg> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         cxg $$2 = $$1 < this.f.size() ? this.f.get($$1) : cxg.j;
+         $$0.set($$1, $$2.v());
+      }
    }
 
-   public <T> DataResult<T> a(DynamicOps<vu> $$0, MapDecoder<T> $$1) {
-      MapLike<vu> $$2 = (MapLike<vu>)$$0.getMap(this.f).getOrThrow();
-      return $$1.decode($$0, $$2);
+   public cxg a() {
+      return this.f.isEmpty() ? cxg.j : this.f.get(0).v();
    }
 
-   public int a() {
-      return this.f.f();
+   public Stream<cxg> b() {
+      return this.f.stream().map(cxg::v);
    }
 
-   public boolean b() {
-      return this.f.g();
+   public Stream<cxg> c() {
+      return this.f.stream().filter($$0 -> !$$0.f()).map(cxg::v);
    }
 
-   public ux c() {
-      return this.f.i();
+   public Iterable<cxg> d() {
+      return Iterables.filter(this.f, $$0 -> !$$0.f());
    }
 
-   public boolean a(String $$0) {
-      return this.f.e($$0);
+   public Iterable<cxg> e() {
+      return Iterables.transform(this.d(), cxg::v);
    }
 
    @Override
    public boolean equals(Object $$0) {
-      if ($$0 == this) {
+      if (this == $$0) {
          return true;
       } else {
-         return $$0 instanceof czy $$1 ? this.f.equals($$1.f) : false;
+         if ($$0 instanceof czy $$1 && cxg.a(this.f, $$1.f)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return this.f.hashCode();
+      return this.g;
    }
 
-   @Override
-   public String toString() {
-      return this.f.toString();
-   }
+   static record a(int b, cxg c) {
+      public static final Codec<czy.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(czy.a::a), cxg.a.fieldOf("item").forGetter(czy.a::b)).apply($$0, czy.a::new)
+      );
 
-   @Deprecated
-   public ux d() {
-      return this.f;
+      public int a() {
+         return this.b;
+      }
+
+      public cxg b() {
+         return this.c;
+      }
    }
 }

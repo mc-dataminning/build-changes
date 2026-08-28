@@ -1,36 +1,23 @@
-public enum dyy implements bba {
-   a("north_south"),
-   b("east_west"),
-   c("ascending_east"),
-   d("ascending_west"),
-   e("ascending_north"),
-   f("ascending_south"),
-   g("south_east"),
-   h("south_west"),
-   i("north_west"),
-   j("north_east");
+public enum dyy implements baq {
+   a("none", true),
+   b("unstable", false),
+   c("partial", true),
+   d("full", true);
 
-   private final String k;
+   private final String e;
+   private final boolean f;
 
-   private dyy(final String $$0) {
-      this.k = $$0;
-   }
-
-   public String a() {
-      return this.k;
-   }
-
-   @Override
-   public String toString() {
-      return this.k;
-   }
-
-   public boolean b() {
-      return this == e || this == c || this == f || this == d;
+   private dyy(final String $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
    public String c() {
-      return this.k;
+      return this.e;
+   }
+
+   public boolean a() {
+      return this.f;
    }
 }

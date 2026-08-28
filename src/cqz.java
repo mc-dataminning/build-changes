@@ -1,75 +1,45 @@
-public class cqz extends cqx {
-   private static final bvn a = bvn.c(0.0F, 0.0F);
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cqz(bvr<? extends cqz> $$0, dhi $$1) {
+public class cqz extends cqx {
+   private static final dgs f = new dhs(true, false, Optional.of(1.22F), ma.e.a(axk.cB).map(Function.identity()));
+   private static final float g = 1.2F;
+   private static final float h = azu.l(3.5F);
+   private int i = 5;
+
+   public cqz(bvi<? extends cqx> $$0, dgz $$1) {
       super($$0, $$1);
    }
 
-   public cqz(dhi $$0, bwg $$1, cxp $$2) {
-      super(bvr.M, $$1, $$0, $$2);
+   public cqz(cpo $$0, dgz $$1, double $$2, double $$3, double $$4) {
+      super(bvi.bH, $$1, $$0, $$2, $$3, $$4);
    }
 
-   public cqz(dhi $$0, double $$1, double $$2, double $$3, cxp $$4) {
-      super(bvr.M, $$1, $$2, $$3, $$0, $$4);
+   public cqz(dgz $$0, double $$1, double $$2, double $$3, fbr $$4) {
+      super(bvi.bH, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dW()
-               .a(
-                  new lo(ls.S, this.l()),
-                  this.dB(),
-                  this.dD(),
-                  this.dH(),
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08
-               );
-         }
+   public void h() {
+      super.h();
+      if (this.i > 0) {
+         this.i--;
       }
    }
 
    @Override
-   protected void a(fbv $$0) {
-      super.a($$0);
-      $$0.a().a(this.dX().b(this, this.p()), 0.0F);
+   public boolean a(cqi $$0, @Nullable bvb $$1, @Nullable bvb $$2, boolean $$3) {
+      return this.i > 0 ? false : super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(fbw $$0) {
-      super.a($$0);
-      if (!this.dW().C) {
-         if (this.ae.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ae.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cic $$3 = bvr.z.a(this.dW(), bvq.k);
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dB(), this.dD(), this.dH(), this.dM(), 0.0F);
-                  if (!$$3.a(a)) {
-                     break;
-                  }
-
-                  this.dW().b($$3);
-               }
-            }
-         }
-
-         this.dW().a(this, (byte)3);
-         this.at();
-      }
+   protected void a(fbr $$0) {
+      this.dW().a(this, null, f, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dgz.a.e, ls.A, ls.z, awv.Df);
    }
 
    @Override
-   protected cxl m() {
-      return cxt.rp;
+   public boolean a(double $$0) {
+      return this.af < 2 && $$0 < (double)h ? false : super.a($$0);
    }
 }

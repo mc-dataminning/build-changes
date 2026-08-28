@@ -1,53 +1,69 @@
-public class ado implements aac<acr> {
-   public static final zt<xg, ado> a = aac.a(ado::a, ado::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final cxp e;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   public ado(int $$0, int $$1, int $$2, cxp $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3.v();
+public class ado implements zr<acg> {
+   public static final zi<wh, ado> a = zr.a(ado::a, ado::new);
+   public static final ado.a b = new ado.a(0);
+   public static final ado.a c = new ado.a(1);
+   public static final ado.a d = new ado.a(2);
+   public static final ado.a e = new ado.a(3);
+   public static final ado.a f = new ado.a(4);
+   public static final ado.a g = new ado.a(5);
+   public static final ado.a h = new ado.a(6);
+   public static final ado.a i = new ado.a(7);
+   public static final ado.a j = new ado.a(8);
+   public static final ado.a k = new ado.a(9);
+   public static final ado.a l = new ado.a(10);
+   public static final ado.a m = new ado.a(11);
+   public static final ado.a n = new ado.a(12);
+   public static final ado.a o = new ado.a(13);
+   public static final int p = 0;
+   public static final int q = 101;
+   public static final int r = 102;
+   public static final int s = 103;
+   public static final int t = 104;
+   private final ado.a u;
+   private final float v;
+
+   public ado(ado.a $$0, float $$1) {
+      this.u = $$0;
+      this.v = $$1;
    }
 
-   private ado(xg $$0) {
-      this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = $$0.readShort();
-      this.e = cxp.g.decode($$0);
+   private ado(wh $$0) {
+      this.u = (ado.a)ado.a.a.get($$0.readUnsignedByte());
+      this.v = $$0.readFloat();
    }
 
-   private void a(xg $$0) {
-      $$0.f(this.b);
-      $$0.c(this.c);
-      $$0.m(this.d);
-      cxp.g.encode($$0, this.e);
+   private void a(wh $$0) {
+      $$0.l(this.u.b);
+      $$0.a(this.v);
    }
 
    @Override
-   public aae<ado> a() {
-      return ahk.w;
+   public zt<ado> a() {
+      return agz.G;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public ado.a b() {
+      return this.u;
    }
 
-   public int e() {
-      return this.d;
+   public float e() {
+      return this.v;
    }
 
-   public cxp f() {
-      return this.e;
-   }
+   public static class a {
+      static final Int2ObjectMap<ado.a> a = new Int2ObjectOpenHashMap();
+      final int b;
 
-   public int g() {
-      return this.c;
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
+      }
    }
 }

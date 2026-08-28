@@ -1,26 +1,20 @@
 import javax.annotation.Nullable;
 
-public class cer extends ceb {
-   public static final float i = 0.001F;
-   protected final float j;
+public class cer<T extends bvx> extends ceo<T> {
+   private final bwu i;
 
-   public cer(bwo $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cer(bwu $$0, Class<T> $$1, boolean $$2, @Nullable cgo.a $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
    }
 
-   public cer(bwo $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected fby h() {
-      if (this.b.bm()) {
-         fby $$0 = che.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.dZ().i() >= this.j ? che.a(this.b, 10, 7) : super.h();
-      }
+   public boolean b() {
+      return !this.i.p() && super.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
    }
 }

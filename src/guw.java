@@ -1,11 +1,12 @@
-public class guw extends gqf<cnp> {
-   private static final alz a = alz.b("textures/entity/hoglin/zoglin.png");
+public class guw<M extends gcm> extends gwi<M> {
+   private static final alp a = alp.b("textures/entity/bee/bee_stinger.png");
 
-   public guw(grq.a $$0) {
-      super($$0, gen.dF, gen.dG, 0.7F);
+   public guw(gsm<?, gzb, M> $$0, grl.a $$1) {
+      super($$0, new gal($$1.a(gei.z)), a, gwi.a.b);
    }
 
-   public alz a(gyj $$0) {
-      return a;
+   @Override
+   protected int a(gzb $$0) {
+      return $$0.f;
    }
 }

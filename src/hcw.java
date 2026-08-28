@@ -1,22 +1,12 @@
-public class hcw {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+import com.google.gson.JsonObject;
 
-   public hcw(int $$0) {
-      this($$0, -1);
+public class hcw implements auj<hcv> {
+   public hcv b(JsonObject $$0) {
+      return new hcv(hcv.a.a(azk.a($$0, "hat", "none")));
    }
 
-   public hcw(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   @Override
+   public String a() {
+      return "villager";
    }
 }

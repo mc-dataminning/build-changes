@@ -1,258 +1,396 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import io.netty.buffer.ByteBuf;
 import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class cix extends chv implements bxg<cix.b> {
-   public static final String a = "BucketVariantTag";
-   private static final alc<Integer> c = alg.a(cix.class, ale.b);
-   public static final List<cix.d> b = List.of(
-      new cix.d(cix.b.h, cwm.b, cwm.h),
-      new cix.d(cix.b.g, cwm.h, cwm.h),
-      new cix.d(cix.b.g, cwm.h, cwm.l),
-      new cix.d(cix.b.l, cwm.a, cwm.h),
-      new cix.d(cix.b.b, cwm.l, cwm.h),
-      new cix.d(cix.b.a, cwm.b, cwm.a),
-      new cix.d(cix.b.f, cwm.g, cwm.d),
-      new cix.d(cix.b.j, cwm.k, cwm.e),
-      new cix.d(cix.b.l, cwm.a, cwm.o),
-      new cix.d(cix.b.f, cwm.a, cwm.e),
-      new cix.d(cix.b.i, cwm.a, cwm.h),
-      new cix.d(cix.b.l, cwm.a, cwm.b),
-      new cix.d(cix.b.d, cwm.j, cwm.g),
-      new cix.d(cix.b.e, cwm.f, cwm.d),
-      new cix.d(cix.b.k, cwm.o, cwm.a),
-      new cix.d(cix.b.c, cwm.h, cwm.o),
-      new cix.d(cix.b.j, cwm.o, cwm.a),
-      new cix.d(cix.b.g, cwm.a, cwm.e),
-      new cix.d(cix.b.a, cwm.o, cwm.a),
-      new cix.d(cix.b.b, cwm.h, cwm.a),
-      new cix.d(cix.b.d, cwm.j, cwm.e),
-      new cix.d(cix.b.g, cwm.e, cwm.e)
-   );
-   private boolean bZ = true;
+public class cix extends cho {
+   public static final float bZ = 0.6F;
+   public static final float ca = 32.5F;
+   public static final int cb = 80;
+   private static final double cg = 7.0;
+   private static final double ch = 2.0;
+   private static final aks<cix.a> ci = akw.a(cix.class, aku.B);
+   private long cj = 0L;
+   public final but cd = new but();
+   public final but ce = new but();
+   public final but cf = new but();
+   private int ck;
+   private boolean cl = false;
 
-   public cix(bvr<? extends cix> $$0, dhi $$1) {
+   public cix(bvi<? extends cho> $$0, dgz $$1) {
       super($$0, $$1);
-   }
-
-   public static String b(int $$0) {
-      return "entity.minecraft.tropical_fish.predefined." + $$0;
-   }
-
-   static int a(cix.b $$0, cwm $$1, cwm $$2) {
-      return $$0.b() & 65535 | ($$1.a() & 0xFF) << 16 | ($$2.a() & 0xFF) << 24;
-   }
-
-   public static cwm c(int $$0) {
-      return cwm.a($$0 >> 16 & 0xFF);
-   }
-
-   public static cwm r(int $$0) {
-      return cwm.a($$0 >> 24 & 0xFF);
-   }
-
-   public static cix.b s(int $$0) {
-      return cix.b.a($$0 & 65535);
-   }
-
-   @Override
-   protected void a(alg.a $$0) {
-      super.a($$0);
-      $$0.a(c, 0);
-   }
-
-   @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("Variant", this.gz());
-   }
-
-   @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      this.u($$0.h("Variant"));
-   }
-
-   private void u(int $$0) {
-      this.al.a(c, $$0);
-   }
-
-   @Override
-   public boolean q(int $$0) {
-      return !this.bZ;
-   }
-
-   private int gz() {
-      return this.al.a(c);
-   }
-
-   public cwm gw() {
-      return c(this.gz());
-   }
-
-   public cwm gx() {
-      return r(this.gz());
-   }
-
-   public cix.b gy() {
-      return s(this.gz());
-   }
-
-   public void a(cix.b $$0) {
-      int $$1 = this.gz();
-      cwm $$2 = c($$1);
-      cwm $$3 = r($$1);
-      this.u(a($$0, $$2, $$3));
-   }
-
-   @Override
-   public void i(cxp $$0) {
-      super.i($$0);
-      czy.a(ku.X, $$0, $$0x -> $$0x.a("BucketVariantTag", this.gz()));
-   }
-
-   @Override
-   public cxp X_() {
-      return new cxp(cxt.rg);
-   }
-
-   @Override
-   protected axe u() {
-      return axf.Al;
-   }
-
-   @Override
-   protected axe o_() {
-      return axf.Am;
-   }
-
-   @Override
-   protected axe e(bua $$0) {
-      return axf.Ao;
-   }
-
-   @Override
-   protected axe go() {
-      return axf.An;
-   }
-
-   @Override
-   public void h(ux $$0) {
-      super.h($$0);
-      if ($$0.b("BucketVariantTag", 3)) {
-         this.u($$0.h("BucketVariantTag"));
-      }
+      this.L().a(true);
+      this.ck = this.gB();
    }
 
    @Nullable
    @Override
-   public bwz a(dhz $$0, bth $$1, bvq $$2, @Nullable bwz $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      bam $$4 = $$0.H_();
-      cix.d $$6;
-      if ($$3 instanceof cix.c $$5) {
-         $$6 = $$5.b;
-      } else if ((double)$$4.i() < 0.9) {
-         $$6 = ae.a(b, $$4);
-         $$3 = new cix.c(this, $$6);
+   public bus a(arx $$0, bus $$1) {
+      return bvi.e.a($$0, bvh.e);
+   }
+
+   public static bxe.a p() {
+      return cho.gt().a(bxf.s, 12.0).a(bxf.v, 0.14);
+   }
+
+   @Override
+   protected void a(akw.a $$0) {
+      super.a($$0);
+      $$0.a(ci, cix.a.a);
+   }
+
+   public boolean t() {
+      return this.al.a(ci) != cix.a.a;
+   }
+
+   public boolean x() {
+      return this.gp().a(this.cj);
+   }
+
+   public boolean go() {
+      return this.gp() == cix.a.b && this.cj > (long)cix.a.b.b();
+   }
+
+   public cix.a gp() {
+      return this.al.a(ci);
+   }
+
+   @Override
+   protected void Y() {
+      super.Y();
+      agy.a(this);
+   }
+
+   public void a(cix.a $$0) {
+      this.al.a(ci, $$0);
+   }
+
+   @Override
+   public void a(aks<?> $$0) {
+      if (ci.equals($$0)) {
+         this.cj = 0L;
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   protected bwz.b<cix> ed() {
+      return ciy.a();
+   }
+
+   @Override
+   protected bwz<?> a(Dynamic<?> $$0) {
+      return ciy.a(this.ed().a($$0));
+   }
+
+   @Override
+   protected void a(arx $$0) {
+      bpj $$1 = bpi.a();
+      $$1.a("armadilloBrain");
+      ((bwz<cix>)this.bF).a($$0, this);
+      $$1.c();
+      $$1.a("armadilloActivityUpdate");
+      ciy.a(this);
+      $$1.c();
+      if (this.bL() && !this.e_() && --this.ck <= 0) {
+         if (this.a($$0, ewe.aJ, this::a)) {
+            this.a(awv.ak, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+            this.a(eck.t);
+         }
+
+         this.ck = this.gB();
+      }
+
+      super.a($$0);
+   }
+
+   private int gB() {
+      return this.ae.a(20 * baw.e * 5) + 20 * baw.e * 5;
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      if (this.dW().B_()) {
+         this.gC();
+      }
+
+      if (this.t()) {
+         this.ab();
+      }
+
+      this.cj++;
+   }
+
+   @Override
+   public float ej() {
+      return this.e_() ? 0.6F : 1.0F;
+   }
+
+   private void gC() {
+      switch (this.gp()) {
+         case a:
+            this.cd.a();
+            this.ce.a();
+            this.cf.a();
+            break;
+         case b:
+            this.cd.a();
+            this.ce.b(this.af);
+            this.cf.a();
+            break;
+         case c:
+            this.cd.a();
+            this.ce.a();
+            if (this.cl) {
+               this.cf.a();
+               this.cl = false;
+            }
+
+            if (this.cj == 0L) {
+               this.cf.a(this.af);
+               this.cf.a(cix.a.c.b(), 1.0F);
+            } else {
+               this.cf.b(this.af);
+            }
+            break;
+         case d:
+            this.cd.b(this.af);
+            this.ce.a();
+            this.cf.a();
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 64 && this.dW().C) {
+         this.cl = true;
+         this.dW().a(this.dB(), this.dD(), this.dH(), awv.am, this.dn(), 1.0F, 1.0F, false);
       } else {
-         this.bZ = false;
-         cix.b[] $$8 = cix.b.values();
-         cwm[] $$9 = cwm.values();
-         cix.b $$10 = ae.a($$8, $$4);
-         cwm $$11 = ae.a($$9, $$4);
-         cwm $$12 = ae.a($$9, $$4);
-         $$6 = new cix.d($$10, $$11, $$12);
-      }
-
-      this.u($$6.a());
-      return $$3;
-   }
-
-   public static boolean b(bvr<cix> $$0, dhj $$1, bvq $$2, jh $$3, bam $$4) {
-      return $$1.b_($$3.e()).a(aya.a) && $$1.a_($$3.d()).a(dko.J) && ($$1.t($$3).a(axt.an) || ciz.c($$0, $$1, $$2, $$3, $$4));
-   }
-
-   public static enum a {
-      a(0),
-      b(1);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
+         super.b($$0);
       }
    }
 
-   public static enum b implements bba {
-      a("kob", cix.a.a, 0),
-      b("sunstreak", cix.a.a, 1),
-      c("snooper", cix.a.a, 2),
-      d("dasher", cix.a.a, 3),
-      e("brinely", cix.a.a, 4),
-      f("spotty", cix.a.a, 5),
-      g("flopper", cix.a.b, 0),
-      h("stripey", cix.a.b, 1),
-      i("glitter", cix.a.b, 2),
-      j("blockfish", cix.a.b, 3),
-      k("betty", cix.a.b, 4),
-      l("clayfish", cix.a.b, 5);
+   @Override
+   public boolean j(cxg $$0) {
+      return $$0.a(axt.an);
+   }
 
-      public static final Codec<cix.b> m = bba.a(cix.b::values);
-      private static final IntFunction<cix.b> n = ayv.a(cix.b::b, values(), a);
-      private final String o;
-      private final xv p;
-      private final cix.a q;
-      private final int r;
+   public static boolean c(bvi<cix> $$0, dha $$1, bvh $$2, jh $$3, bac $$4) {
+      return $$1.a_($$3.e()).a(axk.bZ) && a($$1, $$3);
+   }
 
-      private b(final String $$0, final cix.a $$1, final int $$2) {
-         this.o = $$0;
-         this.q = $$1;
-         this.r = $$1.c | $$2 << 8;
-         this.p = xv.c("entity.minecraft.tropical_fish.type." + this.o);
+   public boolean j(bvx $$0) {
+      if (!this.cR().c(7.0, 2.0, 7.0).c($$0.cR())) {
+         return false;
+      } else if ($$0.aq().a(axo.d)) {
+         return true;
+      } else if (this.eq() == $$0) {
+         return true;
+      } else if ($$0 instanceof cpo $$1) {
+         return $$1.aa_() ? false : $$1.cj() || $$1.bZ();
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void b(um $$0) {
+      super.b($$0);
+      $$0.a("state", this.gp().c());
+      $$0.a("scute_time", this.ck);
+   }
+
+   @Override
+   public void a(um $$0) {
+      super.a($$0);
+      this.a(cix.a.a($$0.l("state")));
+      if ($$0.e("scute_time")) {
+         this.ck = $$0.h("scute_time");
+      }
+   }
+
+   public void gq() {
+      if (!this.t()) {
+         this.U();
+         this.gz();
+         this.a(eck.u);
+         this.b(awv.ai);
+         this.a(cix.a.b);
+      }
+   }
+
+   public void gr() {
+      if (this.t()) {
+         this.a(eck.u);
+         this.b(awv.al);
+         this.a(cix.a.a);
+      }
+   }
+
+   @Override
+   public boolean a(arx $$0, btr $$1, float $$2) {
+      if (this.t()) {
+         $$2 = ($$2 - 1.0F) / 2.0F;
       }
 
-      public static cix.b a(int $$0) {
-         return n.apply($$0);
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void b(arx $$0, btr $$1, float $$2) {
+      super.b($$0, $$1, $$2);
+      if (!this.gb() && !this.eF()) {
+         if ($$1.d() instanceof bvx) {
+            this.ec().a(cfb.G, true, 80L);
+            if (this.gA()) {
+               this.gq();
+            }
+         } else if ($$1.a(axm.G)) {
+            this.gr();
+         }
+      }
+   }
+
+   @Override
+   public bta b(cpo $$0, bsz $$1) {
+      cxg $$2 = $$0.b($$1);
+      if ($$2.a(cxk.yv) && this.gs()) {
+         $$2.a(16, $$0, d($$1));
+         return bta.a;
+      } else {
+         return (bta)(this.t() ? bta.d : super.b($$0, $$1));
+      }
+   }
+
+   public boolean gs() {
+      if (this.e_()) {
+         return false;
+      } else {
+         if (this.dW() instanceof arx $$0) {
+            this.a($$0, new cxg(cxk.oV));
+            this.a(eck.r);
+            this.a(awv.ao);
+         }
+
+         return true;
+      }
+   }
+
+   public boolean gA() {
+      return !this.gl() && !this.bn() && !this.P_() && !this.bZ() && !this.ca();
+   }
+
+   @Override
+   public boolean gv() {
+      return super.gv() && !this.t();
+   }
+
+   @Override
+   protected awu u() {
+      return this.t() ? null : awv.af;
+   }
+
+   @Override
+   protected void gu() {
+      this.b(awv.ac);
+   }
+
+   @Override
+   protected awu o_() {
+      return awv.ah;
+   }
+
+   @Override
+   protected awu e(btr $$0) {
+      return this.t() ? awv.ae : awv.ad;
+   }
+
+   @Override
+   protected void b(jh $$0, dxo $$1) {
+      this.a(awv.ag, 0.15F, 1.0F);
+   }
+
+   @Override
+   public int aa() {
+      return this.t() ? 0 : 32;
+   }
+
+   @Override
+   protected cbt G() {
+      return new cbt(this) {
+         @Override
+         public void a() {
+            if (!cix.this.t()) {
+               super.a();
+            }
+         }
+      };
+   }
+
+   public static enum a implements baq {
+      a("idle", false, 0, 0) {
+         @Override
+         public boolean a(long $$0) {
+            return false;
+         }
+      },
+      b("rolling", true, 10, 1) {
+         @Override
+         public boolean a(long $$0) {
+            return $$0 > 5L;
+         }
+      },
+      c("scared", true, 50, 2) {
+         @Override
+         public boolean a(long $$0) {
+            return true;
+         }
+      },
+      d("unrolling", true, 30, 3) {
+         @Override
+         public boolean a(long $$0) {
+            return $$0 < 26L;
+         }
+      };
+
+      private static final baq.a<cix.a> f = baq.a(cix.a::values);
+      private static final IntFunction<cix.a> g = ayl.a(cix.a::d, values(), ayl.a.a);
+      public static final zi<ByteBuf, cix.a> e = zg.a(g, cix.a::d);
+      private final String h;
+      private final boolean i;
+      private final int j;
+      private final int k;
+
+      a(final String $$0, final boolean $$1, final int $$2, final int $$3) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+         this.k = $$3;
       }
 
-      public cix.a a() {
-         return this.q;
-      }
-
-      public int b() {
-         return this.r;
+      public static cix.a a(String $$0) {
+         return f.a($$0, a);
       }
 
       @Override
       public String c() {
-         return this.o;
+         return this.h;
       }
 
-      public xv d() {
-         return this.p;
-      }
-   }
-
-   static class c extends chv.a {
-      final cix.d b;
-
-      c(cix $$0, cix.d $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-   }
-
-   public static record d(cix.b b, cwm c, cwm d) {
-      public static final Codec<cix.d> a = Codec.INT.xmap(cix.d::new, cix.d::a);
-
-      public d(int $$0) {
-         this(cix.s($$0), cix.c($$0), cix.r($$0));
+      private int d() {
+         return this.k;
       }
 
-      public int a() {
-         return cix.a(this.b, this.c, this.d);
+      public abstract boolean a(long var1);
+
+      public boolean a() {
+         return this.i;
+      }
+
+      public int b() {
+         return this.j;
       }
    }
 }

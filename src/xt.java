@@ -1,81 +1,72 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class xt {
-   public static final Codec<xt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(xt.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, xt::new)
-   );
-   private final xt.a b;
-   private final String c;
+   private final int a;
+   private final ObjectList<xu> b = new ObjectArrayList();
+   @Nullable
+   private xw c;
 
-   public xt(xt.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public xt(int $$0) {
+      this.a = $$0;
+
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
+      }
    }
 
-   public xt.a a() {
-      return this.b;
+   public void a(xw $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new xu($$0, true));
+         this.c = $$0;
+      }
    }
 
-   public String b() {
-      return this.c;
+   public int a() {
+      return this.b.size();
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
          return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         xt $$1 = (xt)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
       } else {
          return false;
       }
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
-   }
+   public Optional<xr> a(xr.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<xw> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               xu $$4 = (xu)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
 
-   public static enum a implements bba {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
+                  this.b.set($$2, null);
+               }
+            }
 
-      public static final MapCodec<xt.a> g = bba.a(xt.a::values).fieldOf("action");
-      public static final MapCodec<xt.a> h = g.validate(xt.a::a);
-      private final boolean i;
-      private final String j;
-
-      private a(final String $$0, final boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
-      }
-
-      public boolean a() {
-         return this.i;
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
-
-      public static DataResult<xt.a> a(xt.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+            return Optional.of(new xr($$1));
+         }
       }
    }
 }

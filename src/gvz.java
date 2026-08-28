@@ -1,28 +1,38 @@
-public class gvz extends gwf<gyu, gce> {
-   private final gce a;
-   private final gce b;
-   private final gvp c;
+import javax.annotation.Nullable;
 
-   public gvz(gtn<gyu, gce> $$0, gek $$1, gvp $$2) {
-      super($$0);
-      this.c = $$2;
-      this.a = new gce($$1.a(gen.bs));
-      this.b = new gce($$1.a(gen.br));
+public class gvz<S extends gzb, M extends gbh<S> & gab & gbq> extends gvs<S, M> {
+   private final gsj a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
+
+   public gvz(gti<S, M> $$0, gsj $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, gyu $$3, float $$4, float $$5) {
-      cxp $$6 = $$3.c;
-      dfu $$7 = $$6.a(ku.D);
-      if ($$7 != null && $$7.c().isPresent()) {
-         this.a($$0, $$1, $$3, $$6, $$7.c().get(), $$2);
-      } else if ($$3.d) {
-         this.a($$0, $$1, $$3, cxp.j, dft.k, $$2);
+   protected void a(S $$0, @Nullable hdi $$1, cxg $$2, cxe $$3, bvr $$4, fgl $$5, glg $$6, int $$7) {
+      if ($$1 != null) {
+         bsz $$8 = $$4 == $$0.ap ? bsz.a : bsz.b;
+         if ($$0.M && $$0.H == $$8 && $$0.C < 1.0E-5F && $$2.a(cxk.rU)) {
+            this.a($$1, $$2, $$4, $$5, $$6, $$7);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         }
       }
    }
 
-   private void a(fgs $$0, gll $$1, gyu $$2, cxp $$3, alz $$4, int $$5) {
-      gce $$6 = $$2.ae ? this.b : this.a;
-      $$6.a($$2);
-      this.c.a(dfs.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
+   private void a(hdi $$0, cxg $$1, bvr $$2, fgl $$3, glg $$4, int $$5) {
+      $$3.a();
+      this.d().e().a($$3);
+      gej $$6 = this.d().b();
+      float $$7 = $$6.e;
+      $$6.e = azu.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      gve.a($$3, gve.a.a);
+      boolean $$8 = $$2 == bvr.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$1, cxe.f, false, $$3, $$4, $$5, hax.d, $$0);
+      $$3.b();
    }
 }

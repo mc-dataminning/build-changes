@@ -1,24 +1,16 @@
-public class ceh extends cde {
-   private final bwo a;
+import javax.annotation.Nullable;
 
-   public ceh(bwo $$0) {
-      this.a = $$0;
+public class ceh extends cei {
+   public ceh(bwf $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return this.a.dW().U() && this.a.a(bvs.f).f() && chc.a(this.a);
-   }
-
-   @Override
-   public void d() {
-      ((cfr)this.a.L()).d(true);
-   }
-
-   @Override
-   public void e() {
-      if (chc.a(this.a)) {
-         ((cfr)this.a.L()).d(false);
-      }
+   protected fbr h() {
+      fbr $$0 = this.b.g(0.0F);
+      int $$1 = 8;
+      fbr $$2 = cgu.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cgq.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

@@ -1,36 +1,42 @@
-public class cdj extends cde {
-   private final ciu a;
-   private asi b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public cdj(ciu $$0) {
+public class cdj extends ccv {
+   private final bwf a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+
+   public cdj(bwf $$0, double $$1) {
       this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(ccv.a.a));
    }
 
    @Override
    public boolean b() {
-      asi $$0 = (asi)this.a.ah_();
-      boolean $$1 = $$0 != null && !$$0.aa_() && !$$0.gj().b && !$$0.bj() && !$$0.av;
-      return !this.a.go() && $$1 && this.a.gE();
+      if (this.a.ak()) {
+         return false;
+      } else {
+         fbr $$0 = cgs.a(this.a, 16, 7, fbr.c(this.a.fX()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.d;
+            this.c = $$0.e;
+            this.d = $$0.f;
+            return true;
+         }
+      }
    }
 
    @Override
-   public boolean U_() {
-      return !this.c;
+   public boolean c() {
+      return !this.a.L().m();
    }
 
    @Override
    public void d() {
-      this.b = (asi)this.a.ah_();
-      this.c = false;
-   }
-
-   @Override
-   public void a() {
-      if (!this.c && !this.a.x() && !this.a.P_()) {
-         if (this.a.cR().c(this.b.cR())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+      this.a.L().a(this.b, this.c, this.d, this.e);
    }
 }

@@ -1,153 +1,110 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public class civ extends chu implements bwx, cnb {
-   private static final alc<Byte> a = alg.a(civ.class, ale.a);
-   private static final byte b = 16;
+public class civ {
+   private static final float a = 1.0F;
+   private static final float b = 2.25F;
+   private static final float c = 1.75F;
+   private static final float d = 2.5F;
+   private static final int e = 4;
+   private static final int f = 16;
+   private static final int g = 6;
+   private static final int h = 30;
+   private static final int i = 60;
+   private static final int j = 600;
+   private static final int k = 32;
+   private static final int l = 20;
 
-   public civ(bvr<? extends civ> $$0, dhi $$1) {
-      super($$0, $$1);
+   protected static bwz<?> a(bwz<ciu> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(crf.a));
+      $$0.b(crf.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   protected void B() {
-      this.bT.a(1, new ced(this, 1.25, 20, 10.0F));
-      this.bT.a(2, new cer(this, 1.0, 1.0000001E-5F));
-      this.bT.a(3, new cdm(this, cpx.class, 6.0F));
-      this.bT.a(4, new cdz(this));
-      this.bU.a(1, new cex<>(this, bwi.class, 10, true, false, ($$0, $$1) -> $$0 instanceof cmp));
+   private static void b(bwz<ciu> $$0) {
+      $$0.a(crf.a, 0, ImmutableList.of(new cak(0.8F), new bxl(2.5F), new byw(45, 90), new bza(), new bxw(cfb.aO), new bxw(cfb.aP)));
    }
 
-   public static bxn.a m() {
-      return bwi.C().a(bxo.s, 4.0).a(bxo.v, 0.2F);
+   private static void c(bwz<ciu> $$0) {
+      $$0.a(
+         crf.b,
+         ImmutableList.of(
+            Pair.of(0, byk.a($$0x -> true, 1.75F, true, 32)),
+            Pair.of(1, new byg(civ::b, 2.25F, 20)),
+            Pair.of(2, cae.a(civ::b, Predicate.not(civ::c), 4, 16, 2.25F)),
+            Pair.of(3, bzq.a(6.0F, bsl.a(30, 60))),
+            Pair.of(4, new bzn(ImmutableList.of(Pair.of(bzi.b(1.0F), 2), Pair.of(bzx.a(1.0F, 3), 2), Pair.of(new bya(30, 60), 1))))
+         ),
+         ImmutableSet.of()
+      );
    }
 
-   @Override
-   protected void a(alg.a $$0) {
-      super.a($$0);
-      $$0.a(a, (byte)16);
+   public static void a(ciu $$0) {
+      $$0.ec().a(ImmutableList.of(crf.b));
    }
 
-   @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("Pumpkin", this.p());
-   }
-
-   @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      if ($$0.e("Pumpkin")) {
-         this.x($$0.q("Pumpkin"));
+   public static void a(bvx $$0, jh $$1) {
+      bwz<?> $$2 = $$0.ec();
+      jp $$3 = jp.a($$0.dW().ai(), $$1);
+      Optional<jp> $$4 = $$2.c(cfb.aN);
+      if ($$4.isEmpty()) {
+         $$2.a(cfb.aN, $$3);
+         $$2.a(cfb.aO, 600);
+      } else if ($$4.get().equals($$3)) {
+         $$2.a(cfb.aO, 600);
       }
    }
 
-   @Override
-   public boolean fr() {
-      return true;
+   private static Optional<bze> b(bvx $$0) {
+      bwz<?> $$1 = $$0.ec();
+      Optional<jp> $$2 = $$1.c(cfb.aN);
+      if ($$2.isPresent()) {
+         jp $$3 = $$2.get();
+         if (a($$0, $$1, $$3)) {
+            return Optional.of(new bxt($$3.b().d()));
+         }
+
+         $$1.b(cfb.aN);
+      }
+
+      return d($$0);
    }
 
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.dW() instanceof ash $$0) {
-         if (this.dW().t(this.dw()).a(axt.ae)) {
-            this.a($$0, this.dX().d(), 1.0F);
-         }
+   private static boolean c(bvx $$0) {
+      bwz<?> $$1 = $$0.ec();
+      return $$1.a(cfb.L);
+   }
 
-         if (!$$0.N().b(dhe.c)) {
-            return;
-         }
+   private static boolean a(bvx $$0, bwz<?> $$1, jp $$2) {
+      Optional<Integer> $$3 = $$1.c(cfb.aO);
+      dgz $$4 = $$0.dW();
+      return $$2.a($$4.ai(), $$0.dw(), 1024) && $$4.a_($$2.b()).a(dkf.bf) && $$3.isPresent();
+   }
 
-         dxv $$1 = dko.ea.m();
+   private static Optional<bze> d(bvx $$0) {
+      return a($$0).map($$0x -> new byb($$0x, true));
+   }
 
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            int $$3 = bae.a(this.dB() + (double)((float)($$2 % 2 * 2 - 1) * 0.25F));
-            int $$4 = bae.a(this.dD());
-            int $$5 = bae.a(this.dH() + (double)((float)($$2 / 2 % 2 * 2 - 1) * 0.25F));
-            jh $$6 = new jh($$3, $$4, $$5);
-            if (this.dW().a_($$6).l() && $$1.a((dhl)this.dW(), $$6)) {
-               this.dW().b($$6, $$1);
-               this.dW().a(ecr.i, $$6, ecr.a.a(this, $$1));
+   public static Optional<ary> a(bvx $$0) {
+      dgz $$1 = $$0.dW();
+      if (!$$1.B_() && $$1 instanceof arx $$2) {
+         Optional<UUID> $$3 = $$0.ec().c(cfb.aM);
+         if ($$3.isPresent()) {
+            if ($$2.a($$3.get()) instanceof ary $$5 && ($$5.h.d() || $$5.h.e()) && $$5.a($$0, 64.0)) {
+               return Optional.of($$5);
             }
+
+            return Optional.empty();
          }
       }
-   }
 
-   @Override
-   public void a(bwg $$0, float $$1) {
-      double $$2 = $$0.dB() - this.dB();
-      double $$3 = $$0.dF() - 1.1F;
-      double $$4 = $$0.dH() - this.dH();
-      double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4) * 0.2F;
-      if (this.dW() instanceof ash $$6) {
-         cxp $$7 = new cxp(cxt.ra);
-         cqq.a(new cqv($$6, this, $$7), $$6, $$7, $$4x -> $$4x.c($$2, $$3 + $$5 - $$4x.dD(), $$4, 1.6F, 12.0F));
-      }
-
-      this.a(axf.zf, 1.0F, 0.4F / (this.dZ().i() * 0.4F + 0.8F));
-   }
-
-   @Override
-   protected btj b(cpx $$0, bti $$1) {
-      cxp $$2 = $$0.b($$1);
-      if ($$2.a(cxt.sJ) && this.a()) {
-         if (this.dW() instanceof ash $$3) {
-            this.a($$3, axg.h, $$2);
-            this.a(ecr.M, $$0);
-            $$2.a(1, $$0, d($$1));
-         }
-
-         return btj.a;
-      } else {
-         return btj.e;
-      }
-   }
-
-   @Override
-   public void a(ash $$0, axg $$1, cxp $$2) {
-      $$0.a(null, this, axf.zg, $$1, 1.0F, 1.0F);
-      this.x(false);
-      this.a($$0, ewl.aU, $$2, ($$0x, $$1x) -> this.a($$0x, $$1x, this.cS()));
-   }
-
-   @Override
-   public boolean a() {
-      return this.bL() && this.p();
-   }
-
-   public boolean p() {
-      return (this.al.a(a) & 16) != 0;
-   }
-
-   public void x(boolean $$0) {
-      byte $$1 = this.al.a(a);
-      if ($$0) {
-         this.al.a(a, (byte)($$1 | 16));
-      } else {
-         this.al.a(a, (byte)($$1 & -17));
-      }
-   }
-
-   @Nullable
-   @Override
-   protected axe u() {
-      return axf.zc;
-   }
-
-   @Nullable
-   @Override
-   protected axe e(bua $$0) {
-      return axf.ze;
-   }
-
-   @Nullable
-   @Override
-   protected axe o_() {
-      return axf.zd;
-   }
-
-   @Override
-   public fby cT() {
-      return new fby(0.0, (double)(0.75F * this.cS()), (double)(this.dr() * 0.4F));
+      return Optional.empty();
    }
 }

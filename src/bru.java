@@ -1,47 +1,101 @@
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public class bru {
-   private bru() {
-   }
+public interface bru<T extends Runnable> {
+   @Nullable
+   Runnable a();
 
-   public static int a(List<? extends brt> $$0) {
-      long $$1 = 0L;
+   boolean a(T var1);
 
-      for (brt $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
-      }
+   boolean b();
 
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
-      }
-   }
+   int c();
 
-   public static <T extends brt> Optional<T> a(bam $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ae.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
-      }
-   }
+   public static final class a implements bru<bru.c> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
 
-   public static <T extends brt> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
          }
       }
 
-      return Optional.empty();
+      @Nullable
+      @Override
+      public Runnable a() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public boolean a(bru.c $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
+      }
    }
 
-   public static <T extends brt> Optional<T> a(bam $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+   public static final class b implements bru<Runnable> {
+      private final Queue<Runnable> a;
+
+      public b(Queue<Runnable> $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public Runnable a() {
+         return this.a.poll();
+      }
+
+      @Override
+      public boolean a(Runnable $$0) {
+         return this.a.add($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public int c() {
+         return this.a.size();
+      }
+   }
+
+   public static record c(int a, Runnable b) implements Runnable {
+
+      @Override
+      public void run() {
+         this.b.run();
+      }
    }
 }

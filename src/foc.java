@@ -1,26 +1,10 @@
-public abstract class foc extends fod {
-   private final fnq a;
-   private int b = 16777215;
-
-   public foc(int $$0, int $$1, int $$2, int $$3, xv $$4, fnq $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
+public class foc {
+   public static fpe a(int $$0, fny.c $$1, boolean $$2) {
+      return fpe.a(xk.c("options.language"), $$1, $$2).a($$0).a(alp.b("icon/language"), 15, 15).a();
    }
 
-   @Override
-   protected void a(fsd $$0) {
-   }
-
-   public foc a(int $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   protected final fnq a() {
-      return this.a;
-   }
-
-   protected final int b() {
-      return this.b;
+   public static fpe b(int $$0, fny.c $$1, boolean $$2) {
+      xk $$3 = $$2 ? xk.c("options.accessibility") : xk.c("accessibility.onboarding.accessibility.button");
+      return fpe.a($$3, $$1, $$2).a($$0).a(alp.b("icon/accessibility"), 15, 15).a();
    }
 }

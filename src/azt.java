@@ -1,30 +1,49 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-public final class azt {
-   private azt() {
+public record azt(azt.a a, String b) {
+   public static azt a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new azt(azt.a.c, $$2 + " brand changed to '" + $$4 + "'");
+      } else {
+         return $$3.getSigners() == null
+            ? new azt(azt.a.b, $$2 + " jar signature invalidated")
+            : new azt(azt.a.a, $$2 + " jar signature and brand is untouched");
+      }
    }
 
-   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
-      if ($$1.contains($$4)) {
-         return false;
-      } else if ($$2.contains($$4)) {
-         return true;
-      } else {
-         $$2.add($$4);
+   public boolean a() {
+      return this.a.e;
+   }
 
-         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
-            if (a($$0, $$1, $$2, $$3, $$5)) {
-               return true;
-            }
-         }
+   public azt a(azt $$0) {
+      return new azt((azt.a)ObjectUtils.max(new azt.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   }
 
-         $$2.remove($$4);
-         $$1.add($$4);
-         $$3.accept($$4);
-         return false;
+   public String b() {
+      return this.a.d + " " + this.b;
+   }
+
+   public azt.a c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(final String $$0, final boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
    }
 }

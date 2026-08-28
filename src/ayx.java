@@ -1,36 +1,43 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
-public class ayx {
-   public static final int a = -1;
-   private final Object2IntMap<Class<?>> b = ae.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
+public class ayx<T> {
+   private final AtomicReferenceArray<T> a;
+   private final AtomicInteger b;
 
-   public int a(Class<?> $$0) {
-      int $$1 = this.b.getInt($$0);
-      if ($$1 != -1) {
-         return $$1;
-      } else {
-         Class<?> $$2 = $$0;
+   public ayx(int $$0) {
+      this.a = new AtomicReferenceArray<>($$0);
+      this.b = new AtomicInteger(0);
+   }
 
-         while (($$2 = $$2.getSuperclass()) != Object.class) {
-            int $$3 = this.b.getInt($$2);
-            if ($$3 != -1) {
-               return $$3;
-            }
+   public void a(T $$0) {
+      int $$1 = this.a.length();
+
+      int $$2;
+      int $$3;
+      do {
+         $$2 = this.b.get();
+         $$3 = ($$2 + 1) % $$1;
+      } while (!this.b.compareAndSet($$2, $$3));
+
+      this.a.set($$3, $$0);
+   }
+
+   public List<T> a() {
+      int $$0 = this.b.get();
+      Builder<T> $$1 = ImmutableList.builder();
+
+      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
+         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
+         T $$4 = this.a.get($$3);
+         if ($$4 != null) {
+            $$1.add($$4);
          }
-
-         return -1;
       }
-   }
 
-   public int b(Class<?> $$0) {
-      return this.a($$0) + 1;
-   }
-
-   public int c(Class<?> $$0) {
-      int $$1 = this.a($$0);
-      int $$2 = $$1 == -1 ? 0 : $$1 + 1;
-      this.b.put($$0, $$2);
-      return $$2;
+      return $$1.build();
    }
 }

@@ -1,19 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public class erj extends esg {
-   public static final MapCodec<erj> a = MapCodec.unit(() -> erj.b);
-   public static final erj b = new erj();
+public class erj extends erz {
+   public static final MapCodec<erj> a = dxo.a.fieldOf("block_state").xmap(erj::new, $$0 -> $$0.b);
+   private final dxo b;
 
-   private erj() {
+   public erj(dxo $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean a(dxv $$0, bam $$1) {
-      return true;
+   public boolean a(dxo $$0, bac $$1) {
+      return $$0 == this.b;
    }
 
    @Override
-   protected esh<?> a() {
-      return esh.a;
+   protected esa<?> a() {
+      return esa.c;
    }
 }

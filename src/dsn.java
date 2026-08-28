@@ -1,84 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsn extends djy implements dnv {
+public class dsn extends dkn implements dkg {
    public static final MapCodec<dsn> a = b(dsn::new);
-   public static final dys<dze> b = dyl.bk;
+   protected static final float b = 6.0F;
+   protected static final fcl c = dkd.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dsn> a() {
       return a;
    }
 
-   protected dsn(dxu.d $$0) {
+   protected dsn(dxn.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dze.b));
    }
 
    @Override
-   public dux a(jh $$0, dxv $$1) {
-      return new dwp($$0, $$1);
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return c;
    }
 
    @Override
-   protected btj a(dxv $$0, dhi $$1, jh $$2, cpx $$3, fbu $$4) {
-      dux $$5 = $$1.c_($$2);
-      if ($$5 instanceof dwp) {
-         return (btj)(((dwp)$$5).a($$3) ? btj.a : btj.e);
-      } else {
-         return btj.e;
-      }
+   public boolean b(dhc $$0, jh $$1, dxo $$2) {
+      return o($$2).m().a($$0, $$1) && $$0.u($$1.d());
    }
 
    @Override
-   public void a(dhi $$0, jh $$1, dxv $$2, @Nullable bwg $$3, cxp $$4) {
-      if (!$$0.C) {
-         if ($$3 != null) {
-            dux $$5 = $$0.c_($$1);
-            if ($$5 instanceof dwp) {
-               ((dwp)$$5).a($$3);
-            }
-         }
-      }
+   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
+      return true;
    }
 
    @Override
-   protected dqv a_(dxv $$0) {
-      return dqv.c;
+   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
+      dmm.a($$0, o($$3).m(), $$2, 2);
    }
 
-   @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dxv $$0, dhi $$1, jh $$2, dkm $$3, @Nullable evf $$4, boolean $$5) {
-      if ($$1 instanceof ash) {
-         if ($$1.c_($$2) instanceof dwp $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.D();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((ash)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(ash $$0, dwp $$1) {
-      switch ($$1.v()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.B();
-         case d:
-      }
+   private static dmm o(dxo $$0) {
+      return (dmm)($$0.a(dkf.bB) ? dkf.jg : dkf.jf);
    }
 }

@@ -1,17 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.IntConsumer;
 
-public record ayj(List<ayi> b, boolean c) {
-   public static final Codec<ayj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayi.a.listOf().fieldOf("values").forGetter(ayj::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(ayj::b)).apply($$0, ayj::new)
-   );
+public interface ayj {
+   int a(int var1, int var2);
 
-   public List<ayi> a() {
-      return this.b;
-   }
+   void b(int var1, int var2);
 
-   public boolean b() {
-      return this.c;
-   }
+   int a(int var1);
+
+   long[] a();
+
+   int b();
+
+   int c();
+
+   void a(IntConsumer var1);
+
+   void a(int[] var1);
+
+   ayj d();
 }

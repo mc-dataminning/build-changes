@@ -1,25 +1,22 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+public class fok extends fny {
+   protected final fpm a;
 
-public class fok {
-   private static final azq a = azq.codepoint(32, ys.a);
-
-   private static String a(String $$0) {
-      return fmg.Q().n.N().c() ? $$0 : n.a($$0);
+   public fok(int $$0, int $$1, int $$2, int $$3, fpm $$4, fny.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, xj.a);
    }
 
-   public static List<azq> a(ya $$0, int $$1, fnq $$2) {
-      flu $$3 = new flu();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(ya.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, ys.a);
-      List<azq> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, ys.a, ($$1x, $$2x) -> {
-         azq $$3x = us.a().a($$1x);
-         $$4.add($$2x ? azq.composite(a, $$3x) : $$3x);
-      });
-      return (List<azq>)($$4.isEmpty() ? Lists.newArrayList(new azq[]{azq.a}) : $$4);
+   public fok(int $$0, int $$1, int $$2, int $$3, fpm $$4, fny.c $$5, xk $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
+   }
+
+   public fok(int $$0, int $$1, fpm $$2, fny.c $$3, xk $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      alp $$4 = this.a.a(this.C(), this.B());
+      $$0.a(glq::H, $$4, this.D(), this.E(), this.g, this.h);
    }
 }

@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Lists;
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fhx {
+public class fhx extends fiq implements fik {
+   @SerializedName("pingResults")
+   public List<fil> a = Lists.newArrayList();
+   @SerializedName("worldIds")
+   public List<Long> b = Lists.newArrayList();
 }

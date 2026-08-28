@@ -1,33 +1,54 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dty extends dtt implements dtu {
+public class dty extends djr {
    public static final MapCodec<dty> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dtu.a.e.fieldOf("weathering_state").forGetter(dty::q), t()).apply($$0, dty::new)
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dyd.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dty::new)
    );
-   private final dtu.a f;
+   public static final dyn f = dye.aW;
+   private final int g;
 
    @Override
-   protected MapCodec<dty> a() {
+   public MapCodec<dty> a() {
       return e;
    }
 
-   protected dty(dtu.a $$0, dxu.d $$1) {
-      super($$1);
-      this.f = $$0;
+   protected dty(int $$0, dyd $$1, dxn.d $$2) {
+      super($$2, $$1);
+      this.l(this.F.b().b(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
    @Override
-   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected int b(dgz $$0, jh $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), bvb.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return azu.f($$3 * 15.0F);
+      } else {
+         return 0;
+      }
    }
 
    @Override
-   protected boolean f(dxv $$0) {
-      return dtu.c($$0.b()).isPresent();
+   protected int h(dxo $$0) {
+      return $$0.c(f);
    }
 
-   public dtu.a q() {
-      return this.f;
+   @Override
+   protected dxo a(dxo $$0, int $$1) {
+      return $$0.b(f, Integer.valueOf($$1));
+   }
+
+   @Override
+   protected int b() {
+      return 10;
+   }
+
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(f);
    }
 }

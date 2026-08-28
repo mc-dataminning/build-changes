@@ -1,57 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class ehs extends egw<ejj> {
-   public ehs(Codec<ejj> $$0) {
+public class ehs extends egp<ejb> {
+   private static final int a = 7;
+
+   ehs(Codec<ejb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<ejj> $$0) {
-      dhj $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      bam $$3 = $$0.d();
-      ejj $$4 = $$0.f();
-      Optional<jm> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         jh $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && egr.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         egr.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+   public boolean a(egr<ejb> $$0) {
+      dhx $$1 = $$0.b();
+      bac $$2 = $$0.d();
+      ejb $$3 = $$0.f();
+      jh $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      jh.a $$6 = new jh.a();
 
-   private static Optional<jm> a(dhj $$0, jh $$1, bam $$2) {
-      boolean $$3 = egr.b($$0.a_($$1.d()));
-      boolean $$4 = egr.b($$0.a_($$1.e()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? jm.a : jm.b);
-      } else if ($$3) {
-         return Optional.of(jm.a);
-      } else {
-         return $$4 ? Optional.of(jm.b) : Optional.empty();
-      }
-   }
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dxo $$8 = $$1.a_($$6);
 
-   private static void a(dhj $$0, bam $$1, jh $$2, ejj $$3) {
-      egr.c($$0, $$2);
-
-      for (jm $$4 : jm.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            jh $$5 = $$2.a($$4);
-            egr.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               jh $$6 = $$5.a(jm.b($$1));
-               egr.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  jh $$7 = $$6.a(jm.b($$1));
-                  egr.c($$0, $$7);
-               }
+         for (ejb.a $$9 : $$3.b) {
+            if (ehk.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
          }
       }
+
+      return true;
+   }
+
+   private void a(jh.a $$0, bac $$1, jh $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(bac $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

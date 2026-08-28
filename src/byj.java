@@ -1,41 +1,28 @@
-public class byj implements bya<bwg> {
-   private final int a;
-   private final int b;
-   private bxz.a c = bxz.a.a;
-   private long d;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public byj(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class byj {
+   private static jh a(bvz $$0, jh $$1) {
+      bac $$2 = $$0.dW().A;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   @Override
-   public bxz.a a() {
-      return this.c;
+   private static int a(bac $$0) {
+      return $$0.a(3) - 1;
    }
 
-   @Override
-   public final boolean e(ash $$0, bwg $$1, long $$2) {
-      this.c = bxz.a.b;
-      int $$3 = this.a + $$0.H_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
-   }
+   public static <E extends bvz> bzb<E> a(cfb<jh> $$0, int $$1, float $$2) {
+      return cbd.a(
+         (Function<cbd.b<E>, ? extends App<cbd.c<E>, cbg<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cfb.o), $$3.c(cfb.m), $$3.a(cfb.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     jh $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dw(), (double)$$1);
+                     if (!$$8) {
+                        bxs.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
 
-   @Override
-   public final void f(ash $$0, bwg $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(ash $$0, bwg $$1, long $$2) {
-      this.c = bxz.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+                     return true;
+                  }))
+      );
    }
 }

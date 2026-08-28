@@ -1,35 +1,35 @@
-import com.mojang.serialization.Codec;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public interface dce<T extends dck> {
-   Codec<dce<?>> a = ma.r.q().dispatch(dce::a, dco::a);
-   zt<xg, dce<?>> b = zr.a(mb.ae).b(dce::a, dco::b);
+public class dce {
+   public static final alo<? extends kd<dce>> a = alo.a(alp.b("recipe_property_set"));
+   public static final alo<dce> b = a("smithing_base");
+   public static final alo<dce> c = a("smithing_template");
+   public static final alo<dce> d = a("smithing_addition");
+   public static final alo<dce> e = a("furnace_input");
+   public static final alo<dce> f = a("blast_furnace_input");
+   public static final alo<dce> g = a("smoker_input");
+   public static final alo<dce> h = a("campfire_input");
+   public static final zi<wv, dce> i = zg.b(mb.K).a(zg.a()).a($$0 -> new dce(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
+   public static final dce j = new dce(Set.of());
+   private final Set<jq<cxc>> k;
 
-   boolean a(T var1, dhi var2);
-
-   cxp a(T var1, js.a var2);
-
-   default boolean aq_() {
-      return false;
+   private dce(Set<jq<cxc>> $$0) {
+      this.k = $$0;
    }
 
-   default boolean i() {
-      return true;
+   private static alo<dce> a(String $$0) {
+      return alo.a(a, alp.b($$0));
    }
 
-   default String j() {
-      return "";
+   public boolean a(cxg $$0) {
+      return this.k.contains($$0.i());
    }
 
-   dco<? extends dce<T>> a();
-
-   dcp<? extends dce<T>> b();
-
-   dcd ap_();
-
-   default List<ddj> g() {
-      return List.of();
+   static dce a(Collection<dbr> $$0) {
+      Set<jq<cxc>> $$1 = $$0.stream().flatMap($$0x -> $$0x.a().stream()).collect(Collectors.toUnmodifiableSet());
+      return new dce($$1);
    }
-
-   dch h();
 }

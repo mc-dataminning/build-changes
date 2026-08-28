@@ -1,21 +1,16 @@
-public class gts extends gsw<cne, gyt, gdg> {
-   private static final alz a = alz.b("textures/entity/silverfish.png");
+public class gts extends gqj<cqn, gwx> {
+   public static final alp a = alp.b("textures/entity/projectiles/spectral_arrow.png");
 
-   public gts(grq.a $$0) {
-      super($$0, new gdg($$0.a(gen.cE)), 0.3F);
+   public gts(grl.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected float aX_() {
-      return 180.0F;
-   }
-
-   @Override
-   public alz b(gyt $$0) {
+   protected alp a(gwx $$0) {
       return a;
    }
 
-   public gyt b() {
-      return new gyt();
+   public gwx a() {
+      return new gwx();
    }
 }

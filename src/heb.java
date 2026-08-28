@@ -1,28 +1,11 @@
-import java.util.Locale;
+import java.util.function.Function;
 
-public record heb(alz b, String c) {
-   public static final String a = "inventory";
+public interface heb {
+   void a(heb.a var1);
 
-   public heb(alz b, String c) {
-      c = a(c);
-      this.b = b;
-      this.c = c;
-   }
+   hdi a(hdr var1, Function<hdp, hbg> var2, hdx var3);
 
-   public static heb a(alz $$0) {
-      return new heb($$0, "inventory");
-   }
-
-   private static String a(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.b + "#" + this.c;
+   public interface a {
+      heb a(alp var1);
    }
 }

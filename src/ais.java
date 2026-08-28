@@ -1,61 +1,84 @@
-public class ais implements aac<ahm> {
-   public static final zt<ws, ais> a = aac.a(ais::a, ais::new);
-   private final int b;
-   private final ais.a c;
-   private final int d;
+public class ais implements zr<ahb> {
+   public static final zi<wh, ais> a = zr.a(ais::a, ais::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private final jh e;
+   private final String f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final dva.a j;
 
-   public ais(bvk $$0, ais.a $$1) {
-      this($$0, $$1, 0);
+   public ais(jh $$0, String $$1, dva.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$2;
    }
 
-   public ais(bvk $$0, ais.a $$1, int $$2) {
-      this.b = $$0.ar();
-      this.c = $$1;
-      this.d = $$2;
+   private ais(wh $$0) {
+      this.e = $$0.e();
+      this.f = $$0.p();
+      this.j = $$0.b(dva.a.class);
+      int $$1 = $$0.readByte();
+      this.g = ($$1 & 1) != 0;
+      this.h = ($$1 & 2) != 0;
+      this.i = ($$1 & 4) != 0;
    }
 
-   private ais(ws $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(ais.a.class);
-      this.d = $$0.l();
-   }
+   private void a(wh $$0) {
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.j);
+      int $$1 = 0;
+      if (this.g) {
+         $$1 |= 1;
+      }
 
-   private void a(ws $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+      if (this.h) {
+         $$1 |= 2;
+      }
+
+      if (this.i) {
+         $$1 |= 4;
+      }
+
+      $$0.l($$1);
    }
 
    @Override
-   public aae<ais> a() {
-      return ahk.bS;
+   public zt<ais> a() {
+      return agz.cc;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public jh b() {
+      return this.e;
    }
 
-   public ais.a e() {
-      return this.c;
+   public String e() {
+      return this.f;
    }
 
-   public int f() {
-      return this.d;
+   public boolean f() {
+      return this.g;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
+   public boolean g() {
+      return this.h;
+   }
+
+   public boolean h() {
+      return this.i;
+   }
+
+   public dva.a i() {
+      return this.j;
    }
 }

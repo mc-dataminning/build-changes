@@ -1,96 +1,136 @@
-public class fvh {
-   private static final alz a = alz.b("alt");
-   private static final ys b = ys.a.a(a);
-   private static final fvh c = new fvh();
-   private final bam d = bam.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   private fvh() {
+public class fvh extends fui<ctw> {
+   private float G;
+   private float H;
+   private boolean I;
+   private final fuz J;
+
+   public fvh(cpo $$0) {
+      super($$0.cc, new fxk($$0.cc), $$0.gi(), xk.c("container.crafting"));
+      this.v = 97;
+      this.J = new fuz(this);
    }
 
-   public static fvh a() {
-      return c;
+   @Override
+   public void E() {
+      super.E();
+      if (this.m.r.f()) {
+         this.m.a(new fuw(this.m.t, this.m.t.j.y(), this.m.n.L().c()));
+      }
    }
 
-   public ya a(fnq $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
+   @Override
+   protected void aT_() {
+      if (this.m.r.f()) {
+         this.m.a(new fuw(this.m.t, this.m.t.j.y(), this.m.n.L().c()));
+      } else {
+         super.aT_();
+      }
+   }
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
+   @Override
+   protected fsf G() {
+      return new fsf(this.C + 104, this.o / 2 - 22);
+   }
 
-         $$2.append(ae.a(this.e, this.d));
+   @Override
+   protected void J() {
+      this.I = true;
+   }
+
+   @Override
+   protected void b(fnl $$0, int $$1, int $$2) {
+      $$0.a(this.p, this.l, this.v, this.w, 4210752, false);
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.J.a($$0, $$1, $$2, $$3);
+      this.G = (float)$$1;
+      this.H = (float)$$2;
+   }
+
+   @Override
+   public boolean C() {
+      return this.J.a();
+   }
+
+   @Override
+   protected boolean K() {
+      return false;
+   }
+
+   @Override
+   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(glq::H, a, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      a($$0, $$4 + 26, $$5 + 8, $$4 + 75, $$5 + 78, 30, 0.0625F, this.G, this.H, this.m.t);
+   }
+
+   public static void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, bvx $$9) {
+      float $$10 = (float)($$1 + $$3) / 2.0F;
+      float $$11 = (float)($$2 + $$4) / 2.0F;
+      $$0.c($$1, $$2, $$3, $$4);
+      float $$12 = (float)Math.atan((double)(($$10 - $$7) / 40.0F));
+      float $$13 = (float)Math.atan((double)(($$11 - $$8) / 40.0F));
+      Quaternionf $$14 = new Quaternionf().rotateZ((float) Math.PI);
+      Quaternionf $$15 = new Quaternionf().rotateX($$13 * 20.0F * (float) (Math.PI / 180.0));
+      $$14.mul($$15);
+      float $$16 = $$9.aX;
+      float $$17 = $$9.dM();
+      float $$18 = $$9.dO();
+      float $$19 = $$9.ba;
+      float $$20 = $$9.aZ;
+      $$9.aX = 180.0F + $$12 * 20.0F;
+      $$9.v(180.0F + $$12 * 40.0F);
+      $$9.w(-$$13 * 20.0F);
+      $$9.aZ = $$9.dM();
+      $$9.ba = $$9.dM();
+      float $$21 = $$9.ek();
+      Vector3f $$22 = new Vector3f(0.0F, $$9.ds() / 2.0F + $$6 * $$21, 0.0F);
+      float $$23 = (float)$$5 / $$21;
+      a($$0, $$10, $$11, $$23, $$22, $$14, $$15, $$9);
+      $$9.aX = $$16;
+      $$9.v($$17);
+      $$9.w($$18);
+      $$9.ba = $$19;
+      $$9.aZ = $$20;
+      $$0.e();
+   }
+
+   public static void a(fnl $$0, float $$1, float $$2, float $$3, Vector3f $$4, Quaternionf $$5, @Nullable Quaternionf $$6, bvx $$7) {
+      $$0.c().a();
+      $$0.c().a((double)$$1, (double)$$2, 50.0);
+      $$0.c().b($$3, $$3, -$$3);
+      $$0.c().a($$4.x, $$4.y, $$4.z);
+      $$0.c().a($$5);
+      $$0.d();
+      ffh.e();
+      grj $$8 = flz.Q().aq();
+      if ($$6 != null) {
+         $$8.a($$6.conjugate(new Quaternionf()).rotateY((float) Math.PI));
       }
 
-      return $$0.b().a(xv.b($$2.toString()).c(b), $$1, ys.a);
+      $$8.a(false);
+      $$0.a($$3x -> $$8.a($$7, 0.0, 0.0, 0.0, 1.0F, $$0.c(), $$3x, 15728880));
+      $$0.d();
+      $$8.a(true);
+      $$0.c().b();
+      ffh.d();
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (this.I) {
+         this.I = false;
+         return true;
+      } else {
+         return super.b($$0, $$1, $$2);
+      }
    }
 }

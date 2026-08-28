@@ -1,64 +1,72 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
-
 public class gkj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cpw.g();
-   public static final Codec<gkj> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ae.a($$0, c)).xmap(gkj::new, $$0 -> $$0.f);
-   private static final DynamicOps<vu> d = vl.a;
-   private static final Dynamic<?> e = new Dynamic(d, (vu)cxp.e.encodeStart(d, cxp.j).getOrThrow());
-   private List<Dynamic<?>> f;
+   public static final xk a = xk.c("quickplay.error.title");
+   private static final xk b = xk.c("quickplay.error.invalid_identifier");
+   private static final xk c = xk.c("quickplay.error.realm_connect");
+   private static final xk d = xk.c("quickplay.error.realm_permission");
+   private static final xk e = xk.c("gui.toTitle");
+   private static final xk f = xk.c("gui.toWorld");
+   private static final xk g = xk.c("gui.toRealms");
 
-   private gkj(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+   public static void a(flz $$0, fzr.c $$1, fhb $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!bar.h($$3)) {
+         a($$0, $$3);
+      } else if (!bar.h($$4)) {
+         b($$0, $$4);
+      } else if (!bar.h($$5)) {
+         a($$0, $$2, $$5);
+      }
    }
 
-   public gkj() {
-      this(Collections.nCopies(c, e));
+   private static void a(flz $$0, String $$1) {
+      if (!$$0.m().b($$1)) {
+         ftr $$2 = new fyy(new ftt());
+         $$0.a(new fsy($$2, a, b, f));
+      } else {
+         $$0.x().a($$1, () -> $$0.a(new ftt()));
+      }
    }
 
-   public List<cxp> a(js.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> cxp.e.parse(alx.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cxp.j))
-         .toList();
-   }
-
-   public void a(cpw $$0, ke $$1) {
-      alx<vu> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
-
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         cxp $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = cxp.e
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+   private static void b(flz $$0, String $$1) {
+      gfv $$2 = new gfv($$0);
+      $$2.a();
+      gfu $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new gfu(hcn.a("selectServer.defaultName"), $$1, gfu.c.c);
+         $$2.a($$3, true);
+         $$2.b();
       }
 
-      this.f = $$3.build();
+      ggx $$4 = ggx.a($$1);
+      fsq.a(new fwh(new ftt()), $$0, $$4, $$3, true, null);
    }
 
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
-         }
+   private static void a(flz $$0, fhb $$1, String $$2) {
+      long $$3;
+      fie $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         ftr $$6 = new fgw(new ftt());
+         $$0.a(new fsy($$6, a, b, g));
+         return;
+      } catch (fix var10) {
+         ftr $$8 = new ftt();
+         $$0.a(new fsy($$8, a, c, e));
+         return;
       }
 
-      return true;
-   }
-
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
+      fic $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         ftr $$12 = new fgw(new ftt());
+         $$0.a(new fsy($$12, a, d, g));
+      } else {
+         ftt $$13 = new ftt();
+         fkx $$14 = new fkx($$13, $$11);
+         $$0.a(new fjr($$13, $$14));
+      }
    }
 }

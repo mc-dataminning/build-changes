@@ -1,11 +1,111 @@
-public interface dni {
-   default void a(dhi $$0, jh $$1, dxv $$2, dxv $$3, cma $$4) {
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.MapCodec;
+
+public class dni extends dkd {
+   public static final MapCodec<dni> a = b(dni::new);
+   private static final int c = 2;
+   private static final int d = 5;
+   private static final int e = 3600;
+   private static final int f = 12000;
+   protected static final fcl b = dkd.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
+   private static int g = 3600;
+   private static int h = 12000;
+
+   @Override
+   public MapCodec<dni> a() {
+      return a;
    }
 
-   default void a(dhi $$0, jh $$1, cma $$2) {
+   public dni(dxn.d $$0) {
+      super($$0);
    }
 
-   default bua a(bvk $$0) {
-      return $$0.dX().a($$0);
+   @Override
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
+      return a($$1, $$2.e());
+   }
+
+   @Override
+   protected void b(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
+      $$1.a($$2, this, a($$1.H_()));
+   }
+
+   private static int a(bac $$0) {
+      return $$0.b(g, h);
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      return !this.a($$0, $$1, $$3) ? dkf.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      if (!this.a($$0, $$1, $$2)) {
+         this.a((dgz)$$1, $$2);
+      } else {
+         this.a($$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   protected void a(dxo $$0, dgz $$1, jh $$2, bvb $$3) {
+      if ($$3.aq().equals(bvi.Y)) {
+         this.a($$1, $$2);
+      }
+   }
+
+   private static boolean a(dge $$0, jh $$1) {
+      etq $$2 = $$0.b_($$1);
+      etq $$3 = $$0.b_($$1.d());
+      return $$2.a() == etr.c && $$3.a() == etr.a;
+   }
+
+   private void a(arx $$0, jh $$1, bac $$2) {
+      this.a((dgz)$$0, $$1);
+      $$0.a(null, $$1, awv.ki, aww.e, 1.0F, 1.0F);
+      this.b($$0, $$1, $$2);
+   }
+
+   private void a(dgz $$0, jh $$1) {
+      $$0.b($$1, false);
+   }
+
+   private void b(arx $$0, jh $$1, bac $$2) {
+      int $$3 = $$2.b(2, 6);
+
+      for (int $$4 = 1; $$4 <= $$3; $$4++) {
+         cjl $$5 = bvi.bu.a($$0, bvh.e);
+         if ($$5 != null) {
+            double $$6 = (double)$$1.u() + this.b($$2);
+            double $$7 = (double)$$1.w() + this.b($$2);
+            int $$8 = $$2.b(1, 361);
+            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
+            $$5.ai();
+            $$0.b($$5);
+         }
+      }
+   }
+
+   private double b(bac $$0) {
+      double $$1 = 0.2F;
+      return azu.a($$0.j(), 0.2F, 0.7999999970197678);
+   }
+
+   @VisibleForTesting
+   public static void a(int $$0, int $$1) {
+      g = $$0;
+      h = $$1;
+   }
+
+   @VisibleForTesting
+   public static void b() {
+      g = 3600;
+      h = 12000;
    }
 }

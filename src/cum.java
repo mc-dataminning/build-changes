@@ -1,135 +1,101 @@
-import javax.annotation.Nullable;
+public class cum extends cuq {
+   private final ctl a;
+   private final cpo b;
+   private int g;
 
-public class cum implements btc {
-   private final dge b;
-   private final jz<cxp> c = jz.a(3, cxp.j);
-   @Nullable
-   private dgf d;
-   private int e;
-   private int f;
-
-   public cum(dge $$0) {
+   public cum(cpo $$0, ctl $$1, bst $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
       this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public int b() {
-      return this.c.size();
+   public boolean a(cxg $$0) {
+      return false;
    }
 
    @Override
-   public boolean c() {
-      for (cxp $$0 : this.c) {
-         if (!$$0.f()) {
-            return false;
-         }
+   public cxg a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().M());
       }
 
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cxg $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b(int $$0) {
+      this.g += $$0;
+   }
+
+   @Override
+   protected void b_(cxg $$0) {
+      if (this.g > 0) {
+         $$0.a(this.b.dW(), this.b, this.g);
+      }
+
+      if (this.c instanceof cuk $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.g = 0;
+   }
+
+   private static jz<cxg> a(dbj $$0) {
+      jz<cxg> $$1 = jz.a($$0.a(), cxg.j);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.set($$2, $$0.a($$2));
+      }
+
+      return $$1;
+   }
+
+   private jz<cxg> a(dbj $$0, dgz $$1) {
+      return $$1 instanceof arx $$2 ? $$2.t().a(dcg.a, $$0, $$2).map($$1x -> ((dbk)$$1x.b()).a($$0)).orElseGet(() -> a($$0)) : dbk.b($$0);
+   }
+
+   @Override
+   public void a(cpo $$0, cxg $$1) {
+      this.b_($$1);
+      dbj.a $$2 = this.a.aD_();
+      dbj $$3 = $$2.a();
+      int $$4 = $$2.b();
+      int $$5 = $$2.c();
+      jz<cxg> $$6 = this.a($$3, $$0.dW());
+
+      for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
+         for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
+            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.az_();
+            cxg $$10 = this.a.a($$9);
+            cxg $$11 = $$6.get($$8 + $$7 * $$3.f());
+            if (!$$10.f()) {
+               this.a.a($$9, 1);
+               $$10 = this.a.a($$9);
+            }
+
+            if (!$$11.f()) {
+               if ($$10.f()) {
+                  this.a.a($$9, $$11);
+               } else if (cxg.c($$10, $$11)) {
+                  $$11.g($$10.M());
+                  this.a.a($$9, $$11);
+               } else if (!this.b.gi().f($$11)) {
+                  this.b.a($$11, false);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean f() {
       return true;
-   }
-
-   @Override
-   public cxp a(int $$0) {
-      return this.c.get($$0);
-   }
-
-   @Override
-   public cxp a(int $$0, int $$1) {
-      cxp $$2 = this.c.get($$0);
-      if ($$0 == 2 && !$$2.f()) {
-         return btd.a(this.c, $$0, $$2.L());
-      } else {
-         cxp $$3 = btd.a(this.c, $$0, $$1);
-         if (!$$3.f() && this.d($$0)) {
-            this.f();
-         }
-
-         return $$3;
-      }
-   }
-
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   @Override
-   public cxp b(int $$0) {
-      return btd.a(this.c, $$0);
-   }
-
-   @Override
-   public void a(int $$0, cxp $$1) {
-      this.c.set($$0, $$1);
-      $$1.f(this.e_($$1));
-      if (this.d($$0)) {
-         this.f();
-      }
-   }
-
-   @Override
-   public boolean a(cpx $$0) {
-      return this.b.go() == $$0;
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.d = null;
-      cxp $$0;
-      cxp $$1;
-      if (this.c.get(0).f()) {
-         $$0 = this.c.get(1);
-         $$1 = cxp.j;
-      } else {
-         $$0 = this.c.get(0);
-         $$1 = this.c.get(1);
-      }
-
-      if ($$0.f()) {
-         this.a(2, cxp.j);
-         this.f = 0;
-      } else {
-         dgg $$4 = this.b.gq();
-         if (!$$4.isEmpty()) {
-            dgf $$5 = $$4.a($$0, $$1, this.e);
-            if ($$5 == null || $$5.r()) {
-               this.d = $$5;
-               $$5 = $$4.a($$1, $$0, this.e);
-            }
-
-            if ($$5 != null && !$$5.r()) {
-               this.d = $$5;
-               this.a(2, $$5.h());
-               this.f = $$5.q();
-            } else {
-               this.a(2, cxp.j);
-               this.f = 0;
-            }
-         }
-
-         this.b.i(this.a(2));
-      }
-   }
-
-   @Nullable
-   public dgf g() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.e = $$0;
-      this.f();
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public int h() {
-      return this.f;
    }
 }

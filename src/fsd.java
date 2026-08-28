@@ -1,19 +1,29 @@
-import com.google.common.collect.ImmutableList;
+public enum fsd {
+   a,
+   b;
 
-public interface fsd {
-   default void a(fsc $$0, xv $$1) {
-      this.a($$0, fsf.a($$1.getString()));
+   public fsd a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+      };
    }
 
-   default void a(fsc $$0, String $$1) {
-      this.a($$0, fsf.a($$1));
+   public fse b() {
+      return switch (this) {
+         case a -> fse.d;
+         case b -> fse.b;
+      };
    }
 
-   default void a(fsc $$0, xv... $$1) {
-      this.a($$0, fsf.a(ImmutableList.copyOf($$1)));
+   public fse c() {
+      return switch (this) {
+         case a -> fse.c;
+         case b -> fse.a;
+      };
    }
 
-   void a(fsc var1, fsf<?> var2);
-
-   fsd a();
+   public fse a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
+   }
 }

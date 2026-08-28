@@ -1,101 +1,92 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public abstract class eou extends eoo {
-   private static final Logger h = LogUtils.getLogger();
-   protected final String a;
-   protected esm b;
-   protected esi c;
-   protected jh d;
+public interface eou {
+   eou a = a(eqh.a::new, "MSCorridor");
+   eou b = a(eqh.b::new, "MSCrossing");
+   eou c = a(eqh.d::new, "MSRoom");
+   eou d = a(eqh.e::new, "MSStairs");
+   eou e = a(eqj.a::new, "NeBCr");
+   eou f = a(eqj.b::new, "NeBEF");
+   eou g = a(eqj.c::new, "NeBS");
+   eou h = a(eqj.d::new, "NeCCS");
+   eou i = a(eqj.e::new, "NeCTB");
+   eou j = a(eqj.f::new, "NeCE");
+   eou k = a(eqj.g::new, "NeSCSC");
+   eou l = a(eqj.h::new, "NeSCLT");
+   eou m = a(eqj.i::new, "NeSC");
+   eou n = a(eqj.j::new, "NeSCRT");
+   eou o = a(eqj.k::new, "NeCSR");
+   eou p = a(eqj.l::new, "NeMT");
+   eou q = a(eqj.o::new, "NeRC");
+   eou r = a(eqj.p::new, "NeSR");
+   eou s = a(eqj.q::new, "NeStart");
+   eou t = a(eqv.a::new, "SHCC");
+   eou u = a(eqv.b::new, "SHFC");
+   eou v = a(eqv.c::new, "SH5C");
+   eou w = a(eqv.d::new, "SHLT");
+   eou x = a(eqv.e::new, "SHLi");
+   eou y = a(eqv.g::new, "SHPR");
+   eou z = a(eqv.h::new, "SHPH");
+   eou A = a(eqv.i::new, "SHRT");
+   eou B = a(eqv.j::new, "SHRC");
+   eou C = a(eqv.l::new, "SHSD");
+   eou D = a(eqv.m::new, "SHStart");
+   eou E = a(eqv.n::new, "SHS");
+   eou F = a(eqv.o::new, "SHSSD");
+   eou G = a(eqf::new, "TeJP");
+   eou H = a(eqp.a::a, "ORP");
+   eou I = a(eqc.a::new, "Iglu");
+   eou J = a(eqr::new, "RUPO");
+   eou K = a(eqx::new, "TeSH");
+   eou L = a(epy::new, "TeDP");
+   eou M = a(eqn.h::new, "OMB");
+   eou N = a(eqn.j::new, "OMCR");
+   eou O = a(eqn.k::new, "OMDXR");
+   eou P = a(eqn.l::new, "OMDXYR");
+   eou Q = a(eqn.m::new, "OMDYR");
+   eou R = a(eqn.n::new, "OMDYZR");
+   eou S = a(eqn.o::new, "OMDZR");
+   eou T = a(eqn.p::new, "OMEntry");
+   eou U = a(eqn.q::new, "OMPenthouse");
+   eou V = a(eqn.s::new, "OMSimple");
+   eou W = a(eqn.t::new, "OMSimpleT");
+   eou X = a(eqn.u::new, "OMWR");
+   eou Y = a(eqa.a::new, "ECP");
+   eou Z = a(eqz.i::new, "WMP");
+   eou aa = a(epw.a::new, "BTP");
+   eou ab = a(eqt.a::new, "Shipwreck");
+   eou ac = a(eql.a::new, "NeFos");
+   eou ad = a(enz::new, "jigsaw");
 
-   public eou(epb $$0, int $$1, esn $$2, alz $$3, String $$4, esi $$5, jh $$6) {
-      super($$0, $$1, $$2.a($$3).b($$5, $$6));
-      this.a(jm.c);
-      this.a = $$4;
-      this.d = $$6;
-      this.b = $$2.a($$3);
-      this.c = $$5;
+   eoh load(eot var1, um var2);
+
+   private static eou a(eou $$0, String $$1) {
+      return kd.a(ma.Q, $$1.toLowerCase(Locale.ROOT), $$0);
    }
 
-   public eou(epb $$0, ux $$1, esn $$2, Function<alz, esi> $$3) {
-      super($$0, $$1);
-      this.a(jm.c);
-      this.a = $$1.l("Template");
-      this.d = new jh($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
-      alz $$4 = this.b();
-      this.b = $$2.a($$4);
-      this.c = $$3.apply($$4);
-      this.f = this.b.b(this.c, this.d);
+   private static eou a(eou.a $$0, String $$1) {
+      return a((eou)$$0, $$1);
    }
 
-   protected alz b() {
-      return alz.a(this.a);
+   private static eou a(eou.b $$0, String $$1) {
+      return a((eou)$$0, $$1);
    }
 
-   @Override
-   protected void a(epa $$0, ux $$1) {
-      $$1.a("TPX", this.d.u());
-      $$1.a("TPY", this.d.v());
-      $$1.a("TPZ", this.d.w());
-      $$1.a("Template", this.a);
-   }
+   public interface a extends eou {
+      eoh load(um var1);
 
-   @Override
-   public void a(dig $$0, die $$1, dzr $$2, bam $$3, eoc $$4, dgo $$5, jh $$6) {
-      this.c.a($$4);
-      this.f = this.b.b(this.c, this.d);
-      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
-         for (esm.d $$8 : this.b.a(this.d, this.c, dko.pv)) {
-            if ($$8.c() != null) {
-               dze $$9 = dze.valueOf($$8.c().l("mode"));
-               if ($$9 == dze.d) {
-                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
-               }
-            }
-         }
-
-         for (esm.d $$11 : this.b.a(this.d, this.c, dko.pw)) {
-            if ($$11.c() != null) {
-               String $$12 = $$11.c().l("final_state");
-               dxv $$13 = dko.a.m();
-
-               try {
-                  $$13 = gq.a($$0.a(mb.f), $$12, true).a();
-               } catch (CommandSyntaxException var15) {
-                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
-               }
-
-               $$0.a($$11.a(), $$13, 3);
-            }
-         }
+      @Override
+      default eoh load(eot $$0, um $$1) {
+         return this.load($$1);
       }
    }
 
-   protected abstract void a(String var1, jh var2, dhz var3, bam var4, eoc var5);
+   public interface b extends eou {
+      eoh load(esg var1, um var2);
 
-   @Deprecated
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.d = this.d.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public drc a() {
-      return this.c.d();
-   }
-
-   public esm c() {
-      return this.b;
-   }
-
-   public jh d() {
-      return this.d;
-   }
-
-   public esi e() {
-      return this.c;
+      @Override
+      default eoh load(eot $$0, um $$1) {
+         return this.load($$0.c(), $$1);
+      }
    }
 }

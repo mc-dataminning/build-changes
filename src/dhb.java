@@ -1,27 +1,59 @@
-import java.util.Optional;
+public interface dhb {
+   int M_();
 
-public class dhb {
-   public Optional<Float> a(dha $$0, dgn $$1, jh $$2, dxv $$3, etx $$4) {
-      return $$3.l() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+   int L_();
+
+   default int an() {
+      return this.L_() + this.M_() - 1;
    }
 
-   public boolean a(dha $$0, dgn $$1, jh $$2, dxv $$3, float $$4) {
-      return true;
+   default int ao() {
+      return this.aq() - this.ap() + 1;
    }
 
-   public boolean a(dha $$0, bvk $$1) {
-      return true;
+   default int ap() {
+      return kj.a(this.L_());
    }
 
-   public float a(bvk $$0) {
-      return 1.0F;
+   default int aq() {
+      return kj.a(this.an());
    }
 
-   public float a(dha $$0, bvk $$1, float $$2) {
-      float $$3 = $$0.e() * 2.0F;
-      fby $$4 = $$0.f();
-      double $$5 = Math.sqrt($$1.f($$4)) / (double)$$3;
-      double $$6 = (1.0 - $$5) * (double)$$2;
-      return (float)(($$6 * $$6 + $$6) / 2.0 * 7.0 * (double)$$3 + 1.0);
+   default boolean d(int $$0) {
+      return $$0 >= this.L_() && $$0 <= this.an();
+   }
+
+   default boolean s(jh $$0) {
+      return this.e($$0.v());
+   }
+
+   default boolean e(int $$0) {
+      return $$0 < this.L_() || $$0 > this.an();
+   }
+
+   default int f(int $$0) {
+      return this.g(kj.a($$0));
+   }
+
+   default int g(int $$0) {
+      return $$0 - this.ap();
+   }
+
+   default int h(int $$0) {
+      return $$0 + this.ap();
+   }
+
+   static dhb e(final int $$0, final int $$1) {
+      return new dhb() {
+         @Override
+         public int M_() {
+            return $$1;
+         }
+
+         @Override
+         public int L_() {
+            return $$0;
+         }
+      };
    }
 }

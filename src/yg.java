@@ -1,23 +1,68 @@
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record yg(UUID a, cpz b) {
-   public static yg a(cpz $$0) {
-      return new yg(UUID.randomUUID(), $$0);
-   }
+@FunctionalInterface
+public interface yg {
+   Logger a = LogUtils.getLogger();
+   yg b = ya::b;
+   yg c = $$0 -> {
+      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
+      return null;
+   };
 
-   public yp.c a(UUID $$0) {
-      return new yp($$0, this.a).a(bas.a(this.b.b(), "SHA256withRSA"));
-   }
+   @Nullable
+   ya updateAndValidate(ya var1);
 
-   public ym a() {
-      return new ym(this.a, this.b.c());
-   }
+   public static class a implements yg {
+      private final bah d;
+      private final BooleanSupplier e;
+      @Nullable
+      private ya f;
+      private boolean g = true;
 
-   public UUID b() {
-      return this.a;
-   }
+      public a(bah $$0, BooleanSupplier $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
 
-   public cpz c() {
-      return this.b;
+      private boolean a(ya $$0) {
+         if ($$0.equals(this.f)) {
+            return true;
+         } else if (this.f != null && !$$0.k().a(this.f.k())) {
+            a.error(
+               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
+               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
+            );
+            return false;
+         } else {
+            return true;
+         }
+      }
+
+      private boolean b(ya $$0) {
+         if (this.e.getAsBoolean()) {
+            a.error("Received message from player with expired profile public key: {}", $$0);
+            return false;
+         } else if (!$$0.a(this.d)) {
+            a.error("Received message with invalid signature from {}", $$0.g());
+            return false;
+         } else {
+            return this.a($$0);
+         }
+      }
+
+      @Nullable
+      @Override
+      public ya updateAndValidate(ya $$0) {
+         this.g = this.g && this.b($$0);
+         if (!this.g) {
+            return null;
+         } else {
+            this.f = $$0;
+            return $$0;
+         }
+      }
    }
 }

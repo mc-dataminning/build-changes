@@ -1,119 +1,102 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public interface ggi extends ggh {
-   static ggi.a a(GameProfile $$0, yl $$1, ggg $$2) {
-      return new ggi.a($$0, $$1, $$2);
+public class ggi {
+   final int a;
+   private final List<ggi.a> b = new ArrayList<>();
+
+   public ggi(int $$0) {
+      this.a = $$0;
    }
 
-   static ggi.b a(xv $$0, Instant $$1) {
-      return new ggi.b($$0, $$1);
+   public void a(gga $$0, IntCollection $$1, ggi.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
+
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         ggc $$6 = $$0.b($$4);
+         if ($$6 instanceof ggd.a) {
+            ggd.a $$5 = (ggd.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
+      }
    }
 
-   xv b();
-
-   default xv c() {
-      return this.b();
+   public void a(ya $$0) {
+      this.b.add(new ggi.a($$0));
    }
 
-   boolean a(UUID var1);
+   public boolean b(ya $$0) {
+      boolean $$1 = false;
+      Iterator<ggi.a> $$2 = this.b.iterator();
 
-   public static record a(GameProfile c, yl d, ggg e) implements ggi {
-      public static final MapCodec<ggi.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  azn.z.fieldOf("profile").forGetter(ggi.a::f), yl.a.forGetter(ggi.a::g), ggg.d.optionalFieldOf("trust_level", ggg.a).forGetter(ggi.a::h)
-               )
-               .apply($$0, ggi.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public xv b() {
-         if (!this.d.o().a()) {
-            xv $$0 = this.d.o().b(this.d.c());
-            return (xv)($$0 != null ? $$0 : xv.i());
-         } else {
-            return this.d.d();
+      while ($$2.hasNext()) {
+         ggi.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
          }
       }
 
-      @Override
-      public xv c() {
-         xv $$0 = this.b();
-         xv $$1 = this.i();
-         return xv.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<xw> b;
+      private ya c;
+      private boolean d = true;
+      private int e;
+
+      a(final ya $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
       }
 
-      public xv d() {
-         xv $$0 = this.i();
-         return xv.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      boolean a(ya $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
       }
 
-      private xv i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return xv.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public ggh.a a() {
-         return ggh.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public yl g() {
-         return this.d;
-      }
-
-      public ggg h() {
-         return this.e;
+      boolean a() {
+         return this.e >= ggi.this.a || !this.d && this.b.isEmpty();
       }
    }
 
-   public static record b(xv c, Instant d) implements ggi {
-      public static final MapCodec<ggi.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(xx.a.fieldOf("message").forGetter(ggi.b::d), azn.q.fieldOf("time_stamp").forGetter(ggi.b::e)).apply($$0, ggi.b::new)
-      );
-
-      @Override
-      public xv b() {
-         return this.c;
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
-
-      @Override
-      public ggh.a a() {
-         return ggh.a.b;
-      }
-
-      public xv d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
-      }
+   public interface b {
+      void accept(int var1, ggd.a var2);
    }
 }

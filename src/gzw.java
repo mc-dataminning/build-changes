@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gzw extends gxv {
-   @Nullable
-   public hdn a;
-   public cxp b = cxp.j;
+public class gzw extends gyo {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 }

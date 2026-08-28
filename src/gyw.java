@@ -1,21 +1,17 @@
-import javax.annotation.Nullable;
-
-public class gyw extends gxv {
-   public float a;
-   public float b;
-   public long c;
+public class gyw extends gyo {
+   public cid.a a;
+   public boolean b;
+   public boolean c;
    public int d;
-   public float e;
-   public float f;
-   public int g;
-   public dxv h = dko.a.m();
-   public boolean i;
-   @Nullable
-   public fby j;
-   @Nullable
-   public fby k;
-   @Nullable
-   public fby l;
-   @Nullable
-   public fby B;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public float h;
+   public float i;
+   public float j;
+   public float k;
+
+   public gyw() {
+      this.a = cid.a.a;
+   }
 }

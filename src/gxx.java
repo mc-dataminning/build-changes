@@ -1,4 +1,8 @@
-public class gxx extends gxv {
-   public float a;
-   public float b;
+import javax.annotation.Nullable;
+
+public class gxx extends gxq {
+   public boolean a;
+   @Nullable
+   public hdi b;
+   public cxg c = cxg.j;
 }

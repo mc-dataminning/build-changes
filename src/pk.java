@@ -1,55 +1,46 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public class pk implements oz {
-   private final pa b;
-   private final jq<cxl> c;
-   private final dca d;
-   private final dca e;
-   private final Map<String, ap<?>> f = new LinkedHashMap<>();
-   @Nullable
-   private String g;
+public class pk implements mh {
+   private final mj d;
+   private final CompletableFuture<js.a> e;
 
-   private pk(pa $$0, jq<cxl> $$1, dca $$2, dca $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   public static pk a(pa $$0, dca $$1, dca $$2, cxl $$3) {
-      return new pk($$0, $$3.f(), $$1, $$2);
-   }
-
-   public pk b(String $$0, ap<?> $$1) {
-      this.f.put($$0, $$1);
-      return this;
-   }
-
-   public pk b(@Nullable String $$0) {
-      this.g = $$0;
-      return this;
+   public pk(mj $$0, CompletableFuture<js.a> $$1) {
+      this.e = $$1;
+      this.d = $$0;
    }
 
    @Override
-   public cxl a() {
-      return this.c.a();
+   public CompletableFuture<?> a(mf $$0) {
+      return this.e.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         return CompletableFuture.allOf(alk.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (alk.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private <T> Optional<CompletableFuture<?>> a(mf $$0, js.a $$1, DynamicOps<JsonElement> $$2, alk.d<T> $$3) {
+      alo<? extends kd<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         mj.a $$5 = this.d.a($$4);
+         return CompletableFuture.allOf($$4x.c().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private static <E> CompletableFuture<?> a(Path $$0, mf $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      return (CompletableFuture<?>)$$3.encodeStart($$2, $$4)
+         .mapOrElse(
+            $$2x -> mh.a($$1, $$2x, $$0),
+            $$1x -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + $$0 + "': " + $$1x.message()))
+         );
    }
 
    @Override
-   public void a(pb $$0, aly<dce<?>> $$1) {
-      this.a($$1);
-      ag.a $$2 = $$0.a().a("has_the_recipe", dv.a($$1)).a(al.a.c($$1)).a(ak.a.b);
-      this.f.forEach($$2::a);
-      ddg $$3 = new ddg(Objects.requireNonNullElse(this.g, ""), oz.a(this.b), this.d, this.e, this.c);
-      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
-   }
-
-   private void a(aly<dce<?>> $$0) {
-      if (this.f.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
-      }
+   public final String a() {
+      return "Registries";
    }
 }

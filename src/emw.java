@@ -1,23 +1,27 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emw extends emr {
+public class emw extends enj {
    public static final MapCodec<emw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(brr.b(emr.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, emw::new)
+      $$0 -> $$0.group(eeq.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, emw::new)
    );
-   private final brr<emr> b;
+   private final eeq c;
 
-   public emw(brr<emr> $$0) {
-      this.b = $$0;
+   private emw(eeq $$0) {
+      this.c = $$0;
+   }
+
+   public static emw a(eeq $$0) {
+      return new emw($$0);
    }
 
    @Override
-   public int a(bam $$0, een $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   protected boolean a(eni $$0, bac $$1, jh $$2) {
+      return this.c.test($$0.d(), $$2);
    }
 
    @Override
-   public ems<?> a() {
-      return ems.f;
+   public enl<?> b() {
+      return enl.a;
    }
 }

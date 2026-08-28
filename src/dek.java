@@ -1,88 +1,101 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface dek {
-   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
-      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
+public record dek(boolean d, Optional<jq<btt>> e, Optional<ddx> f, Optional<ju<dkd>> g, fbr h, ddx i, boolean j, dgz.a k, lq l, lq m, jq<awu> n) implements deh {
+   public static final MapCodec<dek> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(dek::b),
+               btt.b.optionalFieldOf("damage_type").forGetter(dek::c),
+               ddx.b.optionalFieldOf("knockback_multiplier").forGetter(dek::d),
+               kf.a(mb.f).optionalFieldOf("immune_blocks").forGetter(dek::e),
+               fbr.a.optionalFieldOf("offset", fbr.c).forGetter(dek::f),
+               ddx.b.fieldOf("radius").forGetter(dek::g),
+               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(dek::h),
+               dgz.a.f.fieldOf("block_interaction").forGetter(dek::i),
+               ls.bi.fieldOf("small_particle").forGetter(dek::j),
+               ls.bi.fieldOf("large_particle").forGetter(dek::k),
+               awu.b.fieldOf("sound").forGetter(dek::l)
+            )
+            .apply($$0, dek::new)
+   );
+
+   @Override
+   public void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4) {
+      fbr $$5 = $$4.e(this.h);
+      $$0.a(
+         this.d ? $$3 : null,
+         this.a($$3, $$5),
+         new dhs(this.k != dgz.a.a, this.e.isPresent(), this.f.map($$1x -> $$1x.a($$1)), this.g),
+         $$5.a(),
+         $$5.b(),
+         $$5.c(),
+         Math.max(this.i.a($$1), 0.0F),
+         this.j,
+         this.k,
+         this.l,
+         this.m,
+         this.n
+      );
    }
 
-   static dek.a a(deq... $$0) {
-      return new dek.a(List.of($$0));
-   }
-
-   static dek.b a(der... $$0) {
-      return new dek.b(List.of($$0));
-   }
-
-   static dek.c a(des... $$0) {
-      return new dek.c(List.of($$0));
-   }
-
-   public static record a(List<deq> d) implements deq {
-      public static final MapCodec<dek.a> a = dek.a(deq.b, dek.a::new, dek.a::b);
-
-      @Override
-      public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4) {
-         for (deq $$5 : this.d) {
-            $$5.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
-
-      @Override
-      public MapCodec<dek.a> a() {
-         return a;
-      }
-
-      public List<deq> b() {
-         return this.d;
-      }
-   }
-
-   public static record b(List<der> b) implements der {
-      public static final MapCodec<dek.b> a = dek.a(der.c, dek.b::new, dek.b::b);
-
-      @Override
-      public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4, boolean $$5) {
-         for (der $$6 : this.b) {
-            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
-      }
-
-      @Override
-      public void a(ddy $$0, bvk $$1, fby $$2, int $$3) {
-         for (der $$4 : this.b) {
-            $$4.a($$0, $$1, $$2, $$3);
-         }
-      }
-
-      @Override
-      public MapCodec<dek.b> a() {
-         return a;
+   @Nullable
+   private btr a(bvb $$0, fbr $$1) {
+      if (this.e.isEmpty()) {
+         return null;
+      } else {
+         return this.d ? new btr(this.e.get(), $$0) : new btr(this.e.get(), $$1);
       }
    }
 
-   public static record c(List<des> c) implements des {
-      public static final MapCodec<dek.c> a = dek.a(des.b, dek.c::new, dek.c::b);
+   @Override
+   public MapCodec<dek> a() {
+      return a;
+   }
 
-      @Override
-      public float a(int $$0, bam $$1, float $$2) {
-         for (des $$3 : this.c) {
-            $$2 = $$3.a($$0, $$1, $$2);
-         }
+   public boolean b() {
+      return this.d;
+   }
 
-         return $$2;
-      }
+   public Optional<jq<btt>> c() {
+      return this.e;
+   }
 
-      @Override
-      public MapCodec<dek.c> a() {
-         return a;
-      }
+   public Optional<ddx> d() {
+      return this.f;
+   }
 
-      public List<des> b() {
-         return this.c;
-      }
+   public Optional<ju<dkd>> e() {
+      return this.g;
+   }
+
+   public fbr f() {
+      return this.h;
+   }
+
+   public ddx g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public dgz.a i() {
+      return this.k;
+   }
+
+   public lq j() {
+      return this.l;
+   }
+
+   public lq k() {
+      return this.m;
+   }
+
+   public jq<awu> l() {
+      return this.n;
    }
 }

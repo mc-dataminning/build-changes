@@ -1,16 +1,28 @@
-public abstract class cur extends ctc {
-   public cur(cul<?> $$0, int $$1) {
-      super($$0, $$1);
+import it.unimi.dsi.fastutil.ints.IntList;
+
+public interface cur extends baq {
+   IntList a();
+
+   default int b() {
+      return this.a().size();
    }
 
-   public abstract cur.a a(boolean var1, boolean var2, dcj<?> var3, ash var4, cpw var5);
+   static cur a(final String $$0, final IntList $$1) {
+      return new cur() {
+         @Override
+         public IntList a() {
+            return $$1;
+         }
 
-   public abstract void a(cqc var1);
+         @Override
+         public String c() {
+            return $$0;
+         }
 
-   public abstract cus an_();
-
-   public static enum a {
-      a,
-      b;
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

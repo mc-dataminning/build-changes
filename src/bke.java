@@ -1,29 +1,33 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bke extends DataFix {
-   public bke(Schema $$0) {
-      super($$0, false);
+public class bke extends Schema {
+   public bke(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.M);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
-               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
-                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
-                        if ($$1xx.get("type").asString().result().isEmpty()) {
-                           throw new vj("Unable load old custom worlds.");
-                        }
-                     });
-                     return $$0xxxx;
-                  }));
-               return $$0xx;
-            })
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bin.J, () -> DSL.constType(bkb.a()));
+      $$0.registerType(
+         false,
+         bin.b,
+         () -> DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bin.A.in($$0))),
+                  Pair.of("ender_pearls", DSL.list(bin.A.in($$0))),
+                  Pair.of("Inventory", DSL.list(bin.t.in($$0))),
+                  Pair.of("EnderItems", DSL.list(bin.t.in($$0))),
+                  Pair.of("ShoulderEntityLeft", bin.A.in($$0)),
+                  Pair.of("ShoulderEntityRight", bin.A.in($$0)),
+                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bin.J.in($$0)), "toBeDisplayed", DSL.list(bin.J.in($$0))))
+               }
+            )
       );
+      $$0.registerType(false, bin.d, () -> DSL.compoundList(DSL.list(bin.t.in($$0))));
    }
 }

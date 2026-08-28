@@ -1,198 +1,25 @@
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public final class dhl implements dzg {
+   private final int a;
+   private final dxo[] b;
 
-public interface dhl extends dgk, dgr, dia, dim.a {
-   @Nullable
-   dzq a(int var1, int var2, ear var3, boolean var4);
-
-   @Deprecated
-   boolean b(int var1, int var2);
-
-   int a(edq.a var1, int var2, int var3);
-
-   int E_();
-
-   dim I_();
-
-   default jq<dik> t(jh $$0) {
-      return this.I_().a($$0);
-   }
-
-   default Stream<dxv> c(fbt $$0) {
-      int $$1 = bae.a($$0.a);
-      int $$2 = bae.a($$0.d);
-      int $$3 = bae.a($$0.b);
-      int $$4 = bae.a($$0.e);
-      int $$5 = bae.a($$0.c);
-      int $$6 = bae.a($$0.f);
-      return this.a($$1, $$3, $$5, $$2, $$4, $$6) ? this.a($$0) : Stream.empty();
+   public dhl(int $$0, dxo[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   default int a(jh $$0, dgs $$1) {
-      return $$1.getColor(this.t($$0).a(), (double)$$0.u(), (double)$$0.w());
+   public dxo a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dkf.a.m();
    }
 
    @Override
-   default jq<dik> getNoiseBiome(int $$0, int $$1, int $$2) {
-      dzq $$3 = this.a(kb.e($$0), kb.e($$2), ear.f, false);
-      return $$3 != null ? $$3.getNoiseBiome($$0, $$1, $$2) : this.a($$0, $$1, $$2);
-   }
-
-   jq<dik> a(int var1, int var2, int var3);
-
-   boolean B_();
-
-   int O();
-
-   ebq G_();
-
-   @Override
-   default int L_() {
-      return this.G_().n();
-   }
-
-   @Override
-   default int M_() {
-      return this.G_().o();
-   }
-
-   default jh a(edq.a $$0, jh $$1) {
-      return new jh($$1.u(), this.a($$0, $$1.u(), $$1.w()), $$1.w());
-   }
-
-   default boolean u(jh $$0) {
-      return this.a_($$0).l();
-   }
-
-   default boolean v(jh $$0) {
-      if ($$0.v() >= this.O()) {
-         return this.h($$0);
+   public void a(int $$0, dxo $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
       } else {
-         jh $$1 = new jh($$0.u(), this.O(), $$0.w());
-         if (!this.h($$1)) {
-            return false;
-         } else {
-            for (jh var4 = $$1.e(); var4.v() > $$0.v(); var4 = var4.e()) {
-               dxv $$2 = this.a_(var4);
-               if ($$2.g() > 0 && !$$2.n()) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
       }
-   }
-
-   default float w(jh $$0) {
-      return this.x($$0) - 0.5F;
-   }
-
-   @Deprecated
-   default float x(jh $$0) {
-      float $$1 = (float)this.A($$0) / 15.0F;
-      float $$2 = $$1 / (4.0F - 3.0F * $$1);
-      return bae.h(this.G_().s(), $$2, 1.0F);
-   }
-
-   default dzq y(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w()));
-   }
-
-   default dzq a(int $$0, int $$1) {
-      return this.a($$0, $$1, ear.n, true);
-   }
-
-   default dzq a(int $$0, int $$1, ear $$2) {
-      return this.a($$0, $$1, $$2, true);
-   }
-
-   @Nullable
-   @Override
-   default dgn c(int $$0, int $$1) {
-      return this.a($$0, $$1, ear.c, false);
-   }
-
-   default boolean z(jh $$0) {
-      return this.b_($$0).a(aya.a);
-   }
-
-   default boolean d(fbt $$0) {
-      int $$1 = bae.a($$0.a);
-      int $$2 = bae.c($$0.d);
-      int $$3 = bae.a($$0.b);
-      int $$4 = bae.c($$0.e);
-      int $$5 = bae.a($$0.c);
-      int $$6 = bae.c($$0.f);
-      jh.a $$7 = new jh.a();
-
-      for (int $$8 = $$1; $$8 < $$2; $$8++) {
-         for (int $$9 = $$3; $$9 < $$4; $$9++) {
-            for (int $$10 = $$5; $$10 < $$6; $$10++) {
-               dxv $$11 = this.a_($$7.d($$8, $$9, $$10));
-               if (!$$11.y().c()) {
-                  return true;
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   default int A(jh $$0) {
-      return this.c($$0, this.E_());
-   }
-
-   default int c(jh $$0, int $$1) {
-      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000 ? this.b($$0, $$1) : 15;
-   }
-
-   @Deprecated
-   default boolean f(int $$0, int $$1) {
-      return this.b(kj.a($$0), kj.a($$1));
-   }
-
-   @Deprecated
-   default boolean B(jh $$0) {
-      return this.f($$0.u(), $$0.w());
-   }
-
-   @Deprecated
-   default boolean a(jh $$0, jh $$1) {
-      return this.a($$0.u(), $$0.v(), $$0.w(), $$1.u(), $$1.v(), $$1.w());
-   }
-
-   @Deprecated
-   default boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return $$4 >= this.L_() && $$1 <= this.am() ? this.b($$0, $$2, $$3, $$5) : false;
-   }
-
-   @Deprecated
-   default boolean b(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = kj.a($$0);
-      int $$5 = kj.a($$2);
-      int $$6 = kj.a($$1);
-      int $$7 = kj.a($$3);
-
-      for (int $$8 = $$4; $$8 <= $$5; $$8++) {
-         for (int $$9 = $$6; $$9 <= $$7; $$9++) {
-            if (!this.b($$8, $$9)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   ke K_();
-
-   cst J();
-
-   default <T> js<T> a(aly<? extends kd<? extends T>> $$0) {
-      kd<T> $$1 = this.K_().e($$0);
-      return $$1.a(this.J());
    }
 }

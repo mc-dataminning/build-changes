@@ -1,59 +1,29 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class ahd implements zr<ahb> {
+   public static final zi<wh, ahd> a = zr.a(ahd::a, ahd::new);
+   private final int b;
 
-public class ahd implements aac<acr> {
-   public static final zt<xg, ahd> a = aac.a(ahd::a, ahd::new);
-   private final boolean b;
-   private final List<ah> c;
-   private final Set<alz> d;
-   private final Map<alz, aj> e;
-
-   public ahd(boolean $$0, Collection<ah> $$1, Set<alz> $$2, Map<alz, aj> $$3) {
+   public ahd(int $$0) {
       this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
    }
 
-   private ahd(xg $$0) {
-      this.b = $$0.readBoolean();
-      this.c = ah.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, ws::q);
-      this.e = $$0.a(ws::q, aj::b);
+   private ahd(wh $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(xg $$0) {
-      $$0.a(this.b);
-      ah.b.encode($$0, this.c);
-      $$0.a(this.d, ws::a);
-      $$0.a(this.e, ws::a, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wh $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public aae<ahd> a() {
-      return ahk.bf;
+   public zt<ahd> a() {
+      return agz.bk;
    }
 
-   public void a(acr $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public List<ah> b() {
-      return this.c;
-   }
-
-   public Set<alz> e() {
-      return this.d;
-   }
-
-   public Map<alz, aj> f() {
-      return this.e;
-   }
-
-   public boolean g() {
+   public int b() {
       return this.b;
    }
 }

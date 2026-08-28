@@ -1,132 +1,219 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.Locale;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Bitmap;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FT_GlyphSlot;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fen implements AutoCloseable {
-   private static final MemoryPool c = TracyClient.createMemoryPool("GPU Buffers");
-   private final fel d;
-   private final fem e;
-   private boolean f;
-   private boolean g = false;
-   public final int a;
-   public int b;
+public class fen implements fek {
+   @Nullable
+   private ByteBuffer b;
+   @Nullable
+   private FT_Face c;
+   final float d;
+   private final fqo<fen.b> e = new fqo<>(fen.b[]::new, fen.b[][]::new);
 
-   public fen(fel $$0, fem $$1, int $$2) {
-      this.d = $$0;
-      this.b = $$2;
-      this.e = $$1;
-      this.a = GlStateManager._glGenBuffers();
-   }
+   public fen(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      IntSet $$7 = new IntArraySet();
+      $$6.codePoints().forEach($$7::add);
+      int $$8 = Math.round($$2 * $$3);
+      FreeType.FT_Set_Pixel_Sizes($$1, $$8, $$8);
+      float $$9 = $$4 * $$3;
+      float $$10 = -$$5 * $$3;
+      MemoryStack $$11 = MemoryStack.stackPush();
 
-   public fen(fel $$0, fem $$1, ByteBuffer $$2) {
-      this($$0, $$1, $$2.remaining());
-      this.a($$2, 0);
-   }
+      try {
+         FT_Vector $$12 = frb.a(FT_Vector.malloc($$11), $$9, $$10);
+         FreeType.FT_Set_Transform($$1, null, $$12);
+         IntBuffer $$13 = $$11.mallocInt(1);
+         int $$14 = (int)FreeType.FT_Get_First_Char($$1, $$13);
 
-   public void a(int $$0) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else {
-         if (this.g) {
-            c.free((long)this.a);
+         while (true) {
+            int $$15 = $$13.get(0);
+            if ($$15 == 0) {
+               break;
+            }
+
+            if (!$$7.contains($$14)) {
+               this.e.a($$14, new fen.b($$15));
+            }
+
+            $$14 = (int)FreeType.FT_Get_Next_Char($$1, (long)$$14, $$13);
+         }
+      } catch (Throwable var18) {
+         if ($$11 != null) {
+            try {
+               $$11.close();
+            } catch (Throwable var17) {
+               var18.addSuppressed(var17);
+            }
          }
 
-         this.b = $$0;
-         if (this.e.l) {
-            this.g = false;
-         } else {
-            this.b();
-            GlStateManager._glBufferData(this.d.h, (long)$$0, this.e.j);
-            c.malloc((long)this.a, $$0);
-            this.g = true;
-         }
+         throw var18;
+      }
+
+      if ($$11 != null) {
+         $$11.close();
       }
    }
 
-   public void a(ByteBuffer $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.l) {
-         throw new IllegalStateException("Buffer is not writable");
-      } else {
-         int $$2 = $$0.remaining();
-         if ($$2 + $$1 > this.b) {
-            throw new IllegalArgumentException(
-               "Cannot write more data than this buffer can hold (attempting to write " + $$2 + " bytes at offset " + $$1 + " to " + this.b + " size buffer)"
-            );
-         } else {
-            this.b();
-            if (this.g) {
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-            } else if ($$1 == 0 && $$2 == this.b) {
-               GlStateManager._glBufferData(this.d.h, $$0, this.e.j);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
-            } else {
-               GlStateManager._glBufferData(this.d.h, (long)this.b, this.e.j);
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
+   @Nullable
+   @Override
+   public fej a(int $$0) {
+      fen.b $$1 = this.e.a($$0);
+      return $$1 != null ? this.a($$0, $$1) : null;
+   }
+
+   private fej a(int $$0, fen.b $$1) {
+      fej $$2 = $$1.b;
+      if ($$2 == null) {
+         FT_Face $$3 = this.b();
+         synchronized ($$3) {
+            $$2 = $$1.b;
+            if ($$2 == null) {
+               $$2 = this.a($$0, $$3, $$1.a);
+               $$1.b = $$2;
             }
          }
       }
+
+      return $$2;
    }
 
-   @Nullable
-   public fen.a a() {
-      return this.a(0, this.b);
-   }
+   private fej a(int $$0, FT_Face $$1, int $$2) {
+      int $$3 = FreeType.FT_Load_Glyph($$1, $$2, 4194312);
+      if ($$3 != 0) {
+         frb.a($$3, String.format(Locale.ROOT, "Loading glyph U+%06X", $$0));
+      }
 
-   @Nullable
-   public fen.a a(int $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.k) {
-         throw new IllegalStateException("Buffer is not readable");
-      } else if ($$0 + $$1 > this.b) {
-         throw new IllegalArgumentException(
-            "Cannot read more data than this buffer can hold (attempting to read " + $$1 + " bytes at offset " + $$0 + " from " + this.b + " size buffer)"
-         );
+      FT_GlyphSlot $$4 = $$1.glyph();
+      if ($$4 == null) {
+         throw new NullPointerException(String.format(Locale.ROOT, "Glyph U+%06X not initialized", $$0));
       } else {
-         this.b();
-         ByteBuffer $$2 = GlStateManager._glMapBufferRange(this.d.h, $$0, $$1, 1);
-         return $$2 == null ? null : new fen.a(this.d.h, $$2);
+         float $$5 = frb.a($$4.advance());
+         FT_Bitmap $$6 = $$4.bitmap();
+         int $$7 = $$4.bitmap_left();
+         int $$8 = $$4.bitmap_top();
+         int $$9 = $$6.width();
+         int $$10 = $$6.rows();
+         return (fej)($$9 > 0 && $$10 > 0 ? new fen.a((float)$$7, (float)$$8, $$9, $$10, $$5, $$2) : () -> $$5 / this.d);
+      }
+   }
+
+   FT_Face b() {
+      if (this.b != null && this.c != null) {
+         return this.c;
+      } else {
+         throw new IllegalStateException("Provider already closed");
       }
    }
 
    @Override
    public void close() {
-      if (!this.f) {
-         this.f = true;
-         GlStateManager._glDeleteBuffers(this.a);
-         if (this.g) {
-            c.free((long)this.a);
+      if (this.c != null) {
+         synchronized (frb.a) {
+            frb.b(FreeType.FT_Done_Face(this.c), "Deleting face");
          }
-      }
-   }
 
-   public void b() {
-      GlStateManager._glBindBuffer(this.d.h, this.a);
-   }
-
-   public static class a implements AutoCloseable {
-      private final int a;
-      private final ByteBuffer b;
-
-      protected a(int $$0, ByteBuffer $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         this.c = null;
       }
 
-      public ByteBuffer a() {
-         return this.b;
+      MemoryUtil.memFree(this.b);
+      this.b = null;
+   }
+
+   @Override
+   public IntSet a() {
+      return this.e.b();
+   }
+
+   class a implements fej {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
+
+      a(final float $$0, final float $$1, final int $$2, final int $$3, final float $$4, final int $$5) {
+         this.b = $$2;
+         this.c = $$3;
+         this.f = $$4 / fen.this.d;
+         this.d = $$0 / fen.this.d;
+         this.e = $$1 / fen.this.d;
+         this.g = $$5;
       }
 
       @Override
-      public void close() {
-         GlStateManager._glUnmapBuffer(this.a);
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public fqv bake(Function<fel, fqv> $$0) {
+         return $$0.apply(new fel() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return fen.this.d;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               FT_Face $$2 = fen.this.b();
+               ffl $$3 = new ffl(ffl.a.d, a.this.b, a.this.c, false);
+               if ($$3.a($$2, a.this.g)) {
+                  $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
+               } else {
+                  $$3.close();
+               }
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
+      }
+   }
+
+   static class b {
+      final int a;
+      @Nullable
+      volatile fej b;
+
+      b(int $$0) {
+         this.a = $$0;
       }
    }
 }

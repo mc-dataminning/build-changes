@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class ehu extends egw<ejn> {
-   public ehu(Codec<ejn> $$0) {
+public class ehu extends egp<eio> {
+   public ehu(Codec<eio> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<ejn> $$0) {
-      ejn $$1 = $$0.f();
-      bam $$2 = $$0.d();
-      jh $$3 = $$0.e();
-      dig $$4 = $$0.b();
-      int $$5 = 0;
-      jh.a $$6 = new jh.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public boolean a(egr<eio> $$0) {
+      int $$1 = 0;
+      bac $$2 = $$0.d();
+      dhx $$3 = $$0.b();
+      jh $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(edj.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         jh $$10 = new jh($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dxo $$11 = dkf.nx.m().b(drf.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dkf.J) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
       }
 
-      return $$5 > 0;
+      return $$1 > 0;
    }
 }

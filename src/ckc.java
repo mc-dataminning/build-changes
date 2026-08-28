@@ -1,59 +1,57 @@
 import javax.annotation.Nullable;
 
-public class ckc extends cka {
-   public ckc(bvr<? extends ckc> $$0, dhi $$1) {
+public class ckc extends cjs {
+   private static final bve bZ = bvi.bP.n().a(bvd.a().a(bvc.a, 0.0F, bvi.bP.m() - 0.03125F, 0.0F)).a(0.5F);
+
+   public ckc(bvi<? extends ckc> $$0, dgz $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected axe u() {
-      return axf.hz;
+   public static bxe.a p() {
+      return gQ().a(bxf.s, 15.0).a(bxf.v, 0.2F);
+   }
+
+   public static boolean c(bvi<? extends cho> $$0, dha $$1, bvh $$2, jh $$3, bac $$4) {
+      return !bvh.a($$2) ? cho.b($$0, $$1, $$2, $$3, $$4) : bvh.b($$2) || a($$1, $$3);
    }
 
    @Override
-   protected axe gP() {
-      return axf.hA;
+   protected void a(bac $$0) {
+      this.g(bxf.o).a(a($$0::j));
    }
 
    @Override
-   protected axe o_() {
-      return axf.hC;
-   }
-
-   @Nullable
-   @Override
-   protected axe gq() {
-      return axf.hD;
+   protected awu u() {
+      return awv.Ep;
    }
 
    @Override
-   protected axe e(bua $$0) {
-      return axf.hE;
+   protected awu o_() {
+      return awv.Eq;
    }
 
    @Override
-   public boolean a(chx $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof ckc) && !($$0 instanceof ckd) ? false : this.gX() && ((ckb)$$0).gX();
-      }
-   }
-
-   @Override
-   protected void gW() {
-      this.a(axf.hF, 0.4F, 1.0F);
+   protected awu e(btr $$0) {
+      return awv.Er;
    }
 
    @Nullable
    @Override
-   public bvb a(ash $$0, bvb $$1) {
-      bvr<? extends ckb> $$2 = $$1 instanceof ckd ? bvr.aG : bvr.J;
-      ckb $$3 = $$2.a($$0, bvq.e);
-      if ($$3 != null) {
-         this.a($$1, $$3);
-      }
+   public bus a(arx $$0, bus $$1) {
+      return bvi.bP.a($$0, bvh.e);
+   }
 
-      return $$3;
+   @Override
+   public bta b(cpo $$0, bsz $$1) {
+      return (bta)(!this.gF() ? bta.e : super.b($$0, $$1));
+   }
+
+   @Override
+   protected void gG() {
+   }
+
+   @Override
+   public bve e(bwj $$0) {
+      return this.e_() ? bZ : super.e($$0);
    }
 }

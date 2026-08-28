@@ -1,46 +1,29 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.function.Function;
 
-public class fdo<T> implements fdr<T>, fdt<T> {
-   private final List<fdp<T>> a = Lists.newArrayList();
-   private final Set<fdp<?>> b = new ObjectOpenCustomHashSet(fdp.a);
+public class fdo<T> implements fdf<T> {
+   private final Function<jh, fdm<T>> a;
 
-   @Override
-   public void a(fdq<T> $$0) {
-      fdp<T> $$1 = new fdp<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
-   }
-
-   private void a(fdp<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
-      }
+   public fdo(Function<jh, fdm<T>> $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a(jh $$0, T $$1) {
-      return this.b.contains(fdp.a($$1, $$0));
+      return this.a.apply($$0).a($$0, $$1);
+   }
+
+   @Override
+   public void a(fdj<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
+   }
+
+   @Override
+   public boolean b(jh $$0, T $$1) {
+      return false;
    }
 
    @Override
    public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public List<fdp<T>> a(long $$0) {
-      return this.a;
-   }
-
-   public List<fdp<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> fdo<T> a(List<fdp<T>> $$0) {
-      fdo<T> $$1 = new fdo<>();
-      $$0.forEach($$1::a);
-      return $$1;
+      return 0;
    }
 }

@@ -1,179 +1,154 @@
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fii {
-   static final Logger a = LogUtils.getLogger();
-   private static final String b = "notificationUuid";
-   private static final String c = "dismissable";
-   private static final String d = "seen";
-   private static final String e = "type";
-   private static final String f = "visitUrl";
-   private static final String g = "infoPopup";
-   static final xv h = xv.c("mco.notification.visitUrl.buttonText.default");
-   final UUID i;
-   final boolean j;
-   final boolean k;
-   final String l;
+public class fii extends fiq {
+   public final boolean a;
+   public final boolean b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final int f;
+   public final int g;
+   public final boolean h;
+   private final String n;
+   public final String i;
+   public final fic.a j;
+   public long k;
+   @Nullable
+   public String l;
+   public boolean m;
+   private static final boolean o = false;
+   private static final boolean p = true;
+   private static final boolean q = true;
+   private static final int r = 0;
+   private static final boolean s = false;
+   private static final int t = 2;
+   private static final int u = 0;
+   private static final boolean v = false;
+   private static final String w = "";
+   private static final String x = "";
+   private static final fic.a y = fic.a.a;
+   private static final long z = -1L;
+   private static final String A = null;
 
-   fii(UUID $$0, boolean $$1, boolean $$2, String $$3) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
+   public fii(boolean $$0, boolean $$1, int $$2, boolean $$3, int $$4, int $$5, boolean $$6, boolean $$7, String $$8, String $$9, fic.a $$10) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$7;
+      this.n = $$8;
+      this.i = $$9;
+      this.j = $$10;
    }
 
-   public boolean a() {
-      return this.k;
+   public static fii a() {
+      return new fii(true, true, 0, false, 2, 0, false, false, "", "", y);
    }
 
-   public boolean b() {
-      return this.j;
+   public static fii a(dgw $$0, bsx $$1, boolean $$2, String $$3, String $$4) {
+      return new fii(true, true, 0, false, $$1.a(), $$0.a(), $$2, false, $$4, $$3, y);
    }
 
-   public UUID c() {
-      return this.i;
+   public static fii a(dhd $$0, String $$1) {
+      return a($$0.b(), $$0.d(), $$0.c(), $$1, $$0.a());
    }
 
-   public static List<fii> a(String $$0) {
-      List<fii> $$1 = new ArrayList<>();
-
-      try {
-         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
-            $$1.add(a($$3.getAsJsonObject()));
-         }
-      } catch (Exception var5) {
-         a.error("Could not parse list of RealmsNotifications", var5);
-      }
-
-      return $$1;
+   public static fii b() {
+      fii $$0 = a();
+      $$0.a(true);
+      return $$0;
    }
 
-   private static fii a(JsonObject $$0) {
-      UUID $$1 = fkt.a("notificationUuid", $$0, null);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing required property notificationUuid");
+   public void a(boolean $$0) {
+      this.m = $$0;
+   }
+
+   public static fii a(JsonObject $$0, fig $$1) {
+      fii $$2 = new fii(
+         fkm.a("pvp", $$0, true),
+         fkm.a("spawnMonsters", $$0, true),
+         fkm.a("spawnProtection", $$0, 0),
+         fkm.a("commandBlocks", $$0, false),
+         fkm.a("difficulty", $$0, 2),
+         fkm.a("gameMode", $$0, 0),
+         $$1.a(),
+         fkm.a("forceGameMode", $$0, false),
+         fkm.a("slotName", $$0, ""),
+         fkm.a("version", $$0, ""),
+         fic.d(fkm.a("compatibility", $$0, fic.a.a.name()))
+      );
+      $$2.k = fkm.a("worldTemplateId", $$0, -1L);
+      $$2.l = fkm.b("worldTemplateImage", $$0, A);
+      return $$2;
+   }
+
+   public String a(int $$0) {
+      if (bar.h(this.n)) {
+         return this.m ? hcn.a("mco.configure.world.slot.empty") : this.b($$0);
       } else {
-         boolean $$2 = fkt.a("dismissable", $$0, true);
-         boolean $$3 = fkt.a("seen", $$0, false);
-         String $$4 = fkt.a("type", $$0);
-         fii $$5 = new fii($$1, $$2, $$3, $$4);
-
-         return (fii)(switch ($$4) {
-            case "visitUrl" -> fii.c.a($$5, $$0);
-            case "infoPopup" -> fii.a.a($$5, $$0);
-            default -> $$5;
-         });
+         return this.n;
       }
    }
 
-   public static class a extends fii {
-      private static final String a = "title";
-      private static final String b = "message";
-      private static final String c = "image";
-      private static final String d = "urlButton";
-      private final fio e;
-      private final fio f;
-      private final alz g;
-      @Nullable
-      private final fii.b h;
-
-      private a(fii $$0, fio $$1, fio $$2, alz $$3, @Nullable fii.b $$4) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.e = $$1;
-         this.f = $$2;
-         this.g = $$3;
-         this.h = $$4;
-      }
-
-      public static fii.a a(fii $$0, JsonObject $$1) {
-         fio $$2 = fkt.a("title", $$1, fio::a);
-         fio $$3 = fkt.a("message", $$1, fio::a);
-         alz $$4 = alz.a(fkt.a("image", $$1));
-         fii.b $$5 = fkt.b("urlButton", $$1, fii.b::a);
-         return new fii.a($$0, $$2, $$3, $$4, $$5);
-      }
-
-      @Nullable
-      public fpi a(fty $$0, Consumer<UUID> $$1) {
-         xv $$2 = this.e.a();
-         if ($$2 == null) {
-            fii.a.warn("Realms info popup had title with no available translation: {}", this.e);
-            return null;
-         } else {
-            fpi.a $$3 = new fpi.a($$0, $$2).a(this.g).a(this.f.a(xu.a));
-            if (this.h != null) {
-               $$3.a(this.h.b.a(fii.h), $$2x -> {
-                  fmg $$3x = fmg.Q();
-                  $$3x.a(new fsv($$3xx -> {
-                     if ($$3xx) {
-                        ae.m().a(this.h.a);
-                        $$3x.a($$0);
-                     } else {
-                        $$3x.a($$2x);
-                     }
-                  }, this.h.a, true));
-                  $$1.accept(this.c());
-               });
-            }
-
-            $$3.a(xu.h, $$1x -> {
-               $$1x.aP_();
-               $$1.accept(this.c());
-            });
-            $$3.a(() -> $$1.accept(this.c()));
-            return $$3.a();
-         }
-      }
+   public String b(int $$0) {
+      return hcn.a("mco.configure.world.slot", $$0);
    }
 
-   static record b(String a, fio b) {
-      private static final String c = "url";
-      private static final String d = "urlText";
-
-      public static fii.b a(JsonObject $$0) {
-         String $$1 = fkt.a("url", $$0);
-         fio $$2 = fkt.a("urlText", $$0, fio::a);
-         return new fii.b($$1, $$2);
+   public String c() {
+      JsonObject $$0 = new JsonObject();
+      if (!this.a) {
+         $$0.addProperty("pvp", this.a);
       }
+
+      if (!this.b) {
+         $$0.addProperty("spawnMonsters", this.b);
+      }
+
+      if (this.c != 0) {
+         $$0.addProperty("spawnProtection", this.c);
+      }
+
+      if (this.d) {
+         $$0.addProperty("commandBlocks", this.d);
+      }
+
+      if (this.f != 2) {
+         $$0.addProperty("difficulty", this.f);
+      }
+
+      if (this.g != 0) {
+         $$0.addProperty("gameMode", this.g);
+      }
+
+      if (this.h) {
+         $$0.addProperty("hardcore", this.h);
+      }
+
+      if (this.e) {
+         $$0.addProperty("forceGameMode", this.e);
+      }
+
+      if (!Objects.equals(this.n, "")) {
+         $$0.addProperty("slotName", this.n);
+      }
+
+      if (!Objects.equals(this.i, "")) {
+         $$0.addProperty("version", this.i);
+      }
+
+      if (this.j != y) {
+         $$0.addProperty("compatibility", this.j.name());
+      }
+
+      return $$0.toString();
    }
 
-   public static class c extends fii {
-      private static final String a = "url";
-      private static final String b = "buttonText";
-      private static final String c = "message";
-      private final String d;
-      private final fio e;
-      private final fio f;
-
-      private c(fii $$0, String $$1, fio $$2, fio $$3) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
-
-      public static fii.c a(fii $$0, JsonObject $$1) {
-         String $$2 = fkt.a("url", $$1);
-         fio $$3 = fkt.a("buttonText", $$1, fio::a);
-         fio $$4 = fkt.a("message", $$1, fio::a);
-         return new fii.c($$0, $$2, $$3, $$4);
-      }
-
-      public xv d() {
-         return this.f.a(xv.c("mco.notification.visitUrl.message.default"));
-      }
-
-      public fof a(fty $$0) {
-         xv $$1 = this.e.a(fii.h);
-         return fof.a($$1, fsv.b($$0, this.d)).a();
-      }
+   public fii d() {
+      return new fii(this.a, this.b, this.c, this.d, this.f, this.g, this.h, this.e, this.n, this.i, this.j);
    }
 }

@@ -1,23 +1,26 @@
-public record abg(alz a) implements abf {
-   public static <T extends ws> zt<T, abg> a(alz $$0, int $$1) {
-      return abf.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.k($$3);
-            return new abg($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+public record abg(jh c, int d) implements aau {
+   public static final zi<wh, abg> a = aau.a(abg::a, abg::new);
+   public static final aau.b<abg> b = aau.a("debug/poi_ticket_count");
+
+   private abg(wh $$0) {
+      this($$0.e(), $$0.readInt());
+   }
+
+   private void a(wh $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public abf.b<abg> a() {
-      return new abf.b<>(this.a);
+   public aau.b<abg> a() {
+      return b;
    }
 
-   public alz b() {
-      return this.a;
+   public jh b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

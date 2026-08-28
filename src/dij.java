@@ -1,23 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dij {
-   public static final Codec<dij> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ls.bh.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dij::new)
+public class dij extends dif {
+   public static final MapCodec<dij> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dib.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+            .apply($$0, dij::new)
    );
-   private final lq b;
-   private final float c;
+   private final ju<dib> c;
+   private final int d;
+   private final int e;
 
-   public dij(lq $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dij(ju<dib> $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1 + 2;
+      this.e = $$1;
    }
 
-   public lq a() {
-      return this.b;
+   @Override
+   protected Stream<jq<dib>> b() {
+      return this.c.a();
    }
 
-   public boolean a(bam $$0) {
-      return $$0.i() <= this.c;
+   @Override
+   protected MapCodec<? extends dif> a() {
+      return b;
+   }
+
+   @Override
+   public jq<dib> getNoiseBiome(int $$0, int $$1, int $$2, dik.f $$3) {
+      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
    }
 }

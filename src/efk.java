@@ -1,19 +1,31 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Function;
 
-record efk(kl e) implements eex {
-   public static MapCodec<efk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kl.g.optionalFieldOf("offset", kl.h).forGetter(efk::g)).apply($$0, efk::new));
+public class efk extends eeg {
+   private final ke a;
+   private final edn b;
+   private final edx c;
+   private final eea.o d;
 
-   @Override
-   public eey<?> a() {
-      return eey.m;
+   public efk(edm $$0, ke $$1, dhb $$2, edn $$3, edx $$4, eea.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   public boolean a(dig $$0, jh $$1) {
-      return $$0.a(null, fcp.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   @Deprecated
+   public Optional<dxo> a(Function<jh, jq<dib>> $$0, dzj $$1, jh $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   public kl g() {
-      return this.e;
+   @Deprecated
+   public ke c() {
+      return this.a;
+   }
+
+   public edx d() {
+      return this.c;
    }
 }

@@ -1,56 +1,53 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eik extends egw<ejy> {
-   public eik(Codec<ejy> $$0) {
-      super($$0);
+public record eik(List<eik.a> b, jm c, eeq d, boolean e) implements eit {
+   public static final Codec<eik> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eik.a.a.listOf().fieldOf("layers").forGetter(eik::a),
+               jm.g.fieldOf("direction").forGetter(eik::b),
+               eeq.b.fieldOf("allowed_placement").forGetter(eik::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eik::d)
+            )
+            .apply($$0, eik::new)
+   );
+
+   public static eik.a a(bsf $$0, eku $$1) {
+      return new eik.a($$0, $$1);
    }
 
-   @Override
-   public boolean a(egy<ejy> $$0) {
-      dig $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      ejy $$3 = $$0.f();
-      bam $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         jh $$6 = $$2.h($$5.getAsInt());
-         kl $$7 = new kl($$3.c, $$3.c, $$3.c);
-         eoc $$8 = eoc.a($$6.b($$7), $$6.a($$7));
-         return jh.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dko.le.m(), 2);
-            return 1;
-         }).sum() > 0;
+   public static eik b(bsf $$0, eku $$1) {
+      return new eik(List.of(a($$0, $$1)), jm.b, eeq.c, false);
+   }
+
+   public List<eik.a> a() {
+      return this.b;
+   }
+
+   public jm b() {
+      return this.c;
+   }
+
+   public eeq c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(bsf b, eku c) {
+      public static final Codec<eik.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bsf.d.fieldOf("height").forGetter(eik.a::a), eku.a.fieldOf("provider").forGetter(eik.a::b)).apply($$0, eik.a::new)
+      );
+
+      public bsf a() {
+         return this.b;
       }
-   }
 
-   private static OptionalInt a(dig $$0, jh $$1, ejy $$2) {
-      Predicate<dxv> $$3 = $$0x -> $$0x.a(dko.J);
-      Predicate<dxv> $$4 = $$0x -> !$$0x.a(dko.J);
-      Optional<edg> $$5 = edg.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(edg::c).orElseGet(OptionalInt::empty);
-   }
-
-   private boolean b(dig $$0, jh $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
-         for (jm $$2 : jm.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         return false;
+      public eku b() {
+         return this.c;
       }
-   }
-
-   private boolean a(dhj $$0, jh $$1) {
-      dxv $$2 = $$0.a_($$1);
-      return $$2.a(dko.J) || $$2.l();
    }
 }

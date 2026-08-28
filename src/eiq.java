@@ -1,20 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiq {
+public record eiq(elc b, eeq c, bsf d, int e) implements eit {
    public static final Codec<eiq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eno.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               elc.a.fieldOf("state_provider").forGetter(eiq::a),
+               eeq.b.fieldOf("target").forGetter(eiq::b),
+               bsf.b(0, 8).fieldOf("radius").forGetter(eiq::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eiq::d)
+            )
             .apply($$0, eiq::new)
    );
-   public final jq<eno> b;
-   public final float c;
 
-   public eiq(jq<eno> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public elc a() {
+      return this.b;
    }
 
-   public boolean a(dig $$0, dzr $$1, bam $$2, jh $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   public eeq b() {
+      return this.c;
+   }
+
+   public bsf c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

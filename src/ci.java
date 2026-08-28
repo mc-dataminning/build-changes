@@ -12,18 +12,18 @@ public class ci extends dy<ci.a> {
       return ci.a.a;
    }
 
-   public void a(asi $$0, cpw $$1, cxp $$2) {
+   public void a(ary $$0, cpn $$1, cxg $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cxp $$7 = $$1.a($$6);
+         cxg $$7 = $$1.a($$6);
          if ($$7.f()) {
             $$4++;
          } else {
             $$5++;
-            if ($$7.L() >= $$7.k()) {
+            if ($$7.M() >= $$7.k()) {
                $$3++;
             }
          }
@@ -32,7 +32,7 @@ public class ci extends dy<ci.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(asi $$0, cpw $$1, cxp $$2, int $$3, int $$4, int $$5) {
+   private void a(ary $$0, cpn $$1, cxg $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
@@ -54,7 +54,7 @@ public class ci extends dy<ci.a> {
          return ao.f.a(new ci.a(Optional.empty(), ci.a.a.b, List.of($$0)));
       }
 
-      public static ap<ci.a> a(dhh... $$0) {
+      public static ap<ci.a> a(dgy... $$0) {
          cu[] $$1 = new cu[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
@@ -64,7 +64,7 @@ public class ci extends dy<ci.a> {
          return a($$1);
       }
 
-      public boolean a(cpw $$0, cxp $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cpn $$0, cxg $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -78,7 +78,7 @@ public class ci extends dy<ci.a> {
                   return true;
                }
 
-               cxp $$8 = $$0.a($$7);
+               cxg $$8 = $$0.a($$7);
                if (!$$8.f()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

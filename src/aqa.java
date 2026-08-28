@@ -1,44 +1,63 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.List;
 
 public class aqa {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.transfer.error.no_players"));
+
    public static void a(CommandDispatcher<ew> $$0) {
-      RequiredArgumentBuilder<ew, hl> $$1 = (RequiredArgumentBuilder<ew, hl>)((RequiredArgumentBuilder)ex.a("targets", fj.d())
-            .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), null, null)))
-         .then(ex.a("*").then(ex.a("sound", fx.a()).suggests(iw.b).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), null, fx.a($$0x, "sound")))));
-
-      for (axg $$2 : axg.values()) {
-         $$1.then(
-            ((LiteralArgumentBuilder)ex.a($$2.a()).executes($$1x -> a((ew)$$1x.getSource(), fj.f($$1x, "targets"), $$2, null)))
-               .then(ex.a("sound", fx.a()).suggests(iw.b).executes($$1x -> a((ew)$$1x.getSource(), fj.f($$1x, "targets"), $$2, fx.a($$1x, "sound"))))
-         );
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("transfer").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("hostname", StringArgumentType.string())
+                     .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((ew)$$0x.getSource()).h()))))
+                  .then(
+                     ((RequiredArgumentBuilder)ex.a("port", IntegerArgumentType.integer(1, 65535))
+                           .executes(
+                              $$0x -> a(
+                                    (ew)$$0x.getSource(),
+                                    StringArgumentType.getString($$0x, "hostname"),
+                                    IntegerArgumentType.getInteger($$0x, "port"),
+                                    List.of(((ew)$$0x.getSource()).h())
+                                 )
+                           ))
+                        .then(
+                           ex.a("players", fj.d())
+                              .executes(
+                                 $$0x -> a(
+                                       (ew)$$0x.getSource(),
+                                       StringArgumentType.getString($$0x, "hostname"),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       fj.f($$0x, "players")
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   private static int a(ew $$0, Collection<asi> $$1, @Nullable axg $$2, @Nullable alz $$3) {
-      agv $$4 = new agv($$3, $$2);
-
-      for (asi $$5 : $$1) {
-         $$5.f.b($$4);
-      }
-
-      if ($$2 != null) {
-         if ($$3 != null) {
-            $$0.a(() -> xv.a("commands.stopsound.success.source.sound", xv.a($$3), $$2.a()), true);
-         } else {
-            $$0.a(() -> xv.a("commands.stopsound.success.source.any", $$2.a()), true);
-         }
-      } else if ($$3 != null) {
-         $$0.a(() -> xv.a("commands.stopsound.success.sourceless.sound", xv.a($$3)), true);
+   private static int a(ew $$0, String $$1, int $$2, Collection<ary> $$3) throws CommandSyntaxException {
+      if ($$3.isEmpty()) {
+         throw a.create();
       } else {
-         $$0.a(() -> xv.c("commands.stopsound.success.sourceless.any"), true);
-      }
+         for (ary $$4 : $$3) {
+            $$4.f.b(new aah($$1, $$2));
+         }
 
-      return $$1.size();
+         if ($$3.size() == 1) {
+            $$0.a(() -> xk.a("commands.transfer.success.single", $$3.iterator().next().p_(), $$1, $$2), true);
+         } else {
+            $$0.a(() -> xk.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
+         }
+
+         return $$3.size();
+      }
    }
 }

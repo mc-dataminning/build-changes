@@ -1,56 +1,61 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class cky extends ckw {
-   private static final Logger b = LogUtils.getLogger();
+public class cky extends cko {
+   private static final int b = 100;
    private static final int c = 10;
-   @Nullable
-   private fby d;
-   private int e;
+   private static final int d = 20;
+   private static final int e = 150;
+   private static final cgo f = cgo.a().a(150.0);
+   private final cgo g;
+   private int h;
 
-   public cky(cku $$0) {
+   public cky(ckl $$0) {
       super($$0);
+      this.g = cgo.a().a(20.0).a(($$1, $$2) -> Math.abs($$1.dD() - $$0.dD()) <= 10.0);
    }
 
    @Override
-   public void a(ash $$0) {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.gk().a(clk.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gk().a(clk.a);
-      } else {
-         double $$1 = this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
-         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
+   public void a(arx $$0) {
+      this.h++;
+      bvx $$1 = $$0.a(this.g, this.a, this.a.dB(), this.a.dD(), this.a.dH());
+      if ($$1 != null) {
+         if (this.h > 25) {
+            this.a.gk().a(clb.h);
+         } else {
+            fbr $$2 = new fbr($$1.dB() - this.a.dB(), 0.0, $$1.dH() - this.a.dH()).d();
+            fbr $$3 = new fbr((double)azu.a(this.a.dM() * (float) (Math.PI / 180.0)), 0.0, (double)(-azu.b(this.a.dM() * (float) (Math.PI / 180.0)))).d();
+            float $$4 = (float)$$3.b($$2);
+            float $$5 = (float)(Math.acos((double)$$4) * 180.0F / (float)Math.PI) + 0.5F;
+            if ($$5 < 0.0F || $$5 > 10.0F) {
+               double $$6 = $$1.dB() - this.a.c.dB();
+               double $$7 = $$1.dH() - this.a.c.dH();
+               double $$8 = azu.a(azu.d(180.0 - azu.d($$6, $$7) * 180.0F / (float)Math.PI - (double)this.a.dM()), -100.0, 100.0);
+               this.a.cb *= 0.8F;
+               float $$9 = (float)Math.sqrt($$6 * $$6 + $$7 * $$7) + 1.0F;
+               float $$10 = $$9;
+               if ($$9 > 40.0F) {
+                  $$9 = 40.0F;
+               }
+
+               this.a.cb += (float)$$8 * (0.7F / $$9 / $$10);
+               this.a.v(this.a.dM() + this.a.cb);
+            }
+         }
+      } else if (this.h >= 100) {
+         $$1 = $$0.a(f, this.a, this.a.dB(), this.a.dD(), this.a.dH());
+         this.a.gk().a(clb.e);
+         if ($$1 != null) {
+            this.a.gk().a(clb.i);
+            this.a.gk().b(clb.i).a(new fbr($$1.dB(), $$1.dD(), $$1.dH()));
          }
       }
    }
 
    @Override
    public void c() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(fby $$0) {
-      this.d = $$0;
+      this.h = 0;
    }
 
    @Override
-   public float e() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public fby f() {
-      return this.d;
-   }
-
-   @Override
-   public clk<cky> h() {
-      return clk.i;
+   public clb<cky> h() {
+      return clb.g;
    }
 }

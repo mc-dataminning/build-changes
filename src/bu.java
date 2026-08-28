@@ -18,7 +18,7 @@ public record bu(
             .apply($$0, bu::new)
    );
 
-   public boolean a(bvk $$0) {
+   public boolean a(bvb $$0) {
       if (this.b.isPresent() && $$0.aJ() != this.b.get()) {
          return false;
       } else if (this.c.isPresent() && $$0.bY() != this.c.get()) {
@@ -33,7 +33,7 @@ public record bu(
          if (this.g.isPresent()) {
             boolean var10000;
             label53: {
-               if ($$0 instanceof bwg $$1 && ($$1.fJ() || $$1 instanceof cpx $$2 && $$2.gj().b)) {
+               if ($$0 instanceof bvx $$1 && ($$1.fJ() || $$1 instanceof cpo $$2 && $$2.gj().b)) {
                   var10000 = true;
                   break label53;
                }
@@ -47,7 +47,7 @@ public record bu(
             }
          }
 
-         if (this.h.isPresent() && $$0 instanceof bwg $$4 && $$4.e_() != this.h.get()) {
+         if (this.h.isPresent() && $$0 instanceof bvx $$4 && $$4.e_() != this.h.get()) {
             return false;
          }
 

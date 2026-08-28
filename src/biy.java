@@ -1,34 +1,19 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
 
-public class biy extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
-
-   public biy(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+public abstract class biy extends bev {
+   public biy(String $$0, Schema $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(bix.c),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
-            )
-      );
+   @Override
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
+      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bkl::a).map(this.b).map($$0::createString);
-      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
-   }
+   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
 }

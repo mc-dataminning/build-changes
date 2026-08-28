@@ -1,15 +1,24 @@
-import java.util.Locale;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class esz {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
+public class esz extends ete<esz.a> {
+   protected esz(dzw $$0) {
+      super(dhi.b, $$0, new esz.a(new Long2ObjectOpenHashMap()));
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   @Override
+   protected int a(long $$0) {
+      long $$1 = kj.e($$0);
+      dzo $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(kj.b(jh.a($$0)), kj.b(jh.b($$0)), kj.b(jh.c($$0)));
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   protected static final class a extends etb<esz.a> {
+      public a(Long2ObjectOpenHashMap<dzo> $$0) {
+         super($$0);
+      }
+
+      public esz.a a() {
+         return new esz.a(this.a.clone());
+      }
    }
 }

@@ -1,20 +1,23 @@
-public enum dyw implements bba {
-   a("normal"),
-   b("sticky");
+public enum dyw implements baq {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-   private final String c;
+   private final String f;
 
    private dyw(final String $$0) {
-      this.c = $$0;
+      this.f = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c;
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.f;
    }
 }

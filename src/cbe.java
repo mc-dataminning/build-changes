@@ -1,22 +1,35 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.mojang.datafixers.kinds.K1;
+import java.util.Optional;
 
-public class cbe {
-   private static final int a = 36;
+public final class cbe<F extends K1, Value> {
+   private final bwz<?> a;
+   private final cfb<Value> b;
+   private final App<F, Value> c;
 
-   public static bya<bwg> a() {
-      return cbm.a(
-         (Function<cbm.b<bwg>, ? extends App<cbm.c<bwg>, cbp<bwg>>>)($$0 -> $$0.group($$0.a(cfk.x), $$0.a(cfk.y), $$0.a(cfk.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bwg>a($$2).filter($$1xx -> $$1xx.g((bvk)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.ec().a($$4.ad(), $$4.ac());
-                     }
+   public cbe(bwz<?> $$0, cfb<Value> $$1, App<F, Value> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-                     return true;
-                  }))
-      );
+   public App<F, Value> a() {
+      return this.c;
+   }
+
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
+   }
+
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
+   }
+
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
+   }
+
+   public void b() {
+      this.a.b(this.b);
    }
 }

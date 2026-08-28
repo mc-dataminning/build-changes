@@ -1,51 +1,157 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
 public class esb {
-   public static final est a = est.a;
-   public static final Codec<esb> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               esg.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
-               esg.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
-               erz.c.lenientOptionalFieldOf("position_predicate", ery.b).forGetter($$0x -> $$0x.e),
-               dxv.a.fieldOf("output_state").forGetter($$0x -> $$0x.f),
-               esu.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, esb::new)
-   );
-   private final esg c;
-   private final esg d;
-   private final erz e;
-   private final dxv f;
-   private final esu g;
+   private dpc a;
+   private dqv b;
+   private jh c;
+   private boolean d;
+   @Nullable
+   private env e;
+   private erp f;
+   @Nullable
+   private bac g;
+   private int h;
+   private final List<esc> i;
+   private boolean j;
+   private boolean k;
 
-   public esb(esg $$0, esg $$1, dxv $$2) {
-      this($$0, $$1, ery.b, $$2);
+   public esb() {
+      this.a = dpc.a;
+      this.b = dqv.a;
+      this.c = jh.c;
+      this.f = erp.b;
+      this.i = Lists.newArrayList();
    }
 
-   public esb(esg $$0, esg $$1, erz $$2, dxv $$3) {
-      this($$0, $$1, $$2, $$3, a);
+   public esb a() {
+      esb $$0 = new esb();
+      $$0.a = this.a;
+      $$0.b = this.b;
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      $$0.h = this.h;
+      $$0.i.addAll(this.i);
+      $$0.j = this.j;
+      $$0.k = this.k;
+      return $$0;
    }
 
-   public esb(esg $$0, esg $$1, erz $$2, dxv $$3, esu $$4) {
+   public esb a(dpc $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public esb a(dqv $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public esb a(jh $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+      return this;
    }
 
-   public boolean a(dxv $$0, dxv $$1, jh $$2, jh $$3, jh $$4, bam $$5) {
-      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
+   public esb a(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   public dxv a() {
-      return this.f;
+   public esb a(env $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public esb a(@Nullable bac $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public esb a(erp $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public esb b(boolean $$0) {
+      this.j = $$0;
+      return this;
+   }
+
+   public esb b() {
+      this.i.clear();
+      return this;
+   }
+
+   public esb a(esc $$0) {
+      this.i.add($$0);
+      return this;
+   }
+
+   public esb b(esc $$0) {
+      this.i.remove($$0);
+      return this;
+   }
+
+   public dpc c() {
+      return this.a;
+   }
+
+   public dqv d() {
+      return this.b;
+   }
+
+   public jh e() {
+      return this.c;
+   }
+
+   public bac b(@Nullable jh $$0) {
+      if (this.g != null) {
+         return this.g;
+      } else {
+         return $$0 == null ? bac.a(ae.c()) : bac.a(azu.a($$0));
+      }
+   }
+
+   public boolean f() {
+      return this.d;
    }
 
    @Nullable
-   public ux a(bam $$0, @Nullable ux $$1) {
-      return this.g.a($$0, $$1);
+   public env g() {
+      return this.e;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public List<esc> i() {
+      return this.i;
+   }
+
+   public boolean j() {
+      return this.f == erp.b;
+   }
+
+   public esf.b a(List<esf.b> $$0, @Nullable jh $$1) {
+      int $$2 = $$0.size();
+      if ($$2 == 0) {
+         throw new IllegalStateException("No palettes");
+      } else {
+         return $$0.get(this.b($$1).a($$2));
+      }
+   }
+
+   public esb c(boolean $$0) {
+      this.k = $$0;
+      return this;
+   }
+
+   public boolean k() {
+      return this.k;
    }
 }

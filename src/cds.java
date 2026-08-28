@@ -1,42 +1,87 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cds extends cde {
-   private final bwo a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class cds extends ccv {
+   public static final int a = 120;
+   protected final bwf b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public cds(bwo $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(cde.a.a));
+   public cds(bwf $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public cds(bwf $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public cds(bwf $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(ccv.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.a.ak()) {
+      if (this.b.cY()) {
          return false;
       } else {
-         fby $$0 = chb.a(this.a, 16, 7, fby.c(this.a.fX()), (float) (Math.PI / 2));
+         if (!this.h) {
+            if (this.i && this.b.eu() >= 100) {
+               return false;
+            }
+
+            if (this.b.dZ().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         fbr $$0 = this.h();
          if ($$0 == null) {
             return false;
          } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            this.h = false;
             return true;
          }
       }
    }
 
+   @Nullable
+   protected fbr h() {
+      return cgs.a(this.b, 10, 7);
+   }
+
    @Override
    public boolean c() {
-      return !this.a.L().m();
+      return !this.b.L().m() && !this.b.cY();
    }
 
    @Override
    public void d() {
-      this.a.L().a(this.b, this.c, this.d, this.e);
+      this.b.L().a(this.c, this.d, this.e, this.f);
+   }
+
+   @Override
+   public void e() {
+      this.b.L().o();
+      super.e();
+   }
+
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

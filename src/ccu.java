@@ -1,85 +1,78 @@
-public class ccu extends cdi {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final cif b;
-   private final int c;
-   private boolean d;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public ccu(cif $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class ccu extends ccv {
+   public static final int a = 8;
+   public static final int b = 4;
+   public static final int c = 3;
+   private final cho d;
+   @Nullable
+   private cho e;
+   private final double f;
+   private int g;
+
+   public ccu(cho $$0, double $$1) {
+      this.d = $$0;
+      this.f = $$1;
    }
 
    @Override
    public boolean b() {
-      if (this.b.dZ().a(this.c) != 0) {
+      if (this.d.Z_() >= 0) {
          return false;
       } else {
-         jm $$0 = this.b.cP();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         jh $$3 = this.b.dw();
+         List<? extends cho> $$0 = this.d.dW().a((Class<? extends cho>)this.d.getClass(), this.d.cR().c(8.0, 4.0, 8.0));
+         cho $$1 = null;
+         double $$2 = Double.MAX_VALUE;
 
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
+         for (cho $$3 : $$0) {
+            if ($$3.Z_() >= 0) {
+               double $$4 = this.d.g($$3);
+               if (!($$4 > $$2)) {
+                  $$2 = $$4;
+                  $$1 = $$3;
+               }
             }
          }
 
-         return true;
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 9.0) {
+            return false;
+         } else {
+            this.e = $$1;
+            return true;
+         }
       }
-   }
-
-   private boolean a(jh $$0, int $$1, int $$2, int $$3) {
-      jh $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dW().b_($$4).a(aya.a) && !this.b.dW().a_($$4).d();
-   }
-
-   private boolean b(jh $$0, int $$1, int $$2, int $$3) {
-      return this.b.dW().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dW().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
    }
 
    @Override
    public boolean c() {
-      double $$0 = this.b.dz().e;
-      return (!($$0 * $$0 < 0.03F) || this.b.dO() == 0.0F || !(Math.abs(this.b.dO()) < 10.0F) || !this.b.bj()) && !this.b.aJ();
-   }
-
-   @Override
-   public boolean U_() {
-      return false;
+      if (this.d.Z_() >= 0) {
+         return false;
+      } else if (!this.e.bL()) {
+         return false;
+      } else {
+         double $$0 = this.d.g(this.e);
+         return !($$0 < 9.0) && !($$0 > 256.0);
+      }
    }
 
    @Override
    public void d() {
-      jm $$0 = this.b.cP();
-      this.b.h(this.b.dz().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.L().o();
+      this.g = 0;
    }
 
    @Override
    public void e() {
-      this.b.w(0.0F);
+      this.e = null;
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         etx $$1 = this.b.dW().b_(this.b.dw());
-         this.d = $$1.a(aya.a);
-      }
-
-      if (this.d && !$$0) {
-         this.b.a(axf.hv, 1.0F, 1.0F);
-      }
-
-      fby $$2 = this.b.dz();
-      if ($$2.e * $$2.e < 0.03F && this.b.dO() != 0.0F) {
-         this.b.w(bae.i(0.2F, this.b.dO(), 0.0F));
-      } else if ($$2.g() > 1.0E-5F) {
-         double $$3 = $$2.i();
-         double $$4 = Math.atan2(-$$2.e, $$3) * 180.0F / (float)Math.PI;
-         this.b.w((float)$$4);
+      if (--this.g <= 0) {
+         this.g = this.a(10);
+         this.d.L().a(this.e, this.f);
       }
    }
 }

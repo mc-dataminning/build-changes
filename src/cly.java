@@ -1,128 +1,114 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cly {
-   public static final aly<clx> a = a("kebab");
-   public static final aly<clx> b = a("aztec");
-   public static final aly<clx> c = a("alban");
-   public static final aly<clx> d = a("aztec2");
-   public static final aly<clx> e = a("bomb");
-   public static final aly<clx> f = a("plant");
-   public static final aly<clx> g = a("wasteland");
-   public static final aly<clx> h = a("pool");
-   public static final aly<clx> i = a("courbet");
-   public static final aly<clx> j = a("sea");
-   public static final aly<clx> k = a("sunset");
-   public static final aly<clx> l = a("creebet");
-   public static final aly<clx> m = a("wanderer");
-   public static final aly<clx> n = a("graham");
-   public static final aly<clx> o = a("match");
-   public static final aly<clx> p = a("bust");
-   public static final aly<clx> q = a("stage");
-   public static final aly<clx> r = a("void");
-   public static final aly<clx> s = a("skull_and_roses");
-   public static final aly<clx> t = a("wither");
-   public static final aly<clx> u = a("fighters");
-   public static final aly<clx> v = a("pointer");
-   public static final aly<clx> w = a("pigscene");
-   public static final aly<clx> x = a("burning_skull");
-   public static final aly<clx> y = a("skeleton");
-   public static final aly<clx> z = a("donkey_kong");
-   public static final aly<clx> A = a("earth");
-   public static final aly<clx> B = a("wind");
-   public static final aly<clx> C = a("water");
-   public static final aly<clx> D = a("fire");
-   public static final aly<clx> E = a("baroque");
-   public static final aly<clx> F = a("humble");
-   public static final aly<clx> G = a("meditative");
-   public static final aly<clx> H = a("prairie_ride");
-   public static final aly<clx> I = a("unpacked");
-   public static final aly<clx> J = a("backyard");
-   public static final aly<clx> K = a("bouquet");
-   public static final aly<clx> L = a("cavebird");
-   public static final aly<clx> M = a("changing");
-   public static final aly<clx> N = a("cotan");
-   public static final aly<clx> O = a("endboss");
-   public static final aly<clx> P = a("fern");
-   public static final aly<clx> Q = a("finding");
-   public static final aly<clx> R = a("lowmist");
-   public static final aly<clx> S = a("orb");
-   public static final aly<clx> T = a("owlemons");
-   public static final aly<clx> U = a("passage");
-   public static final aly<clx> V = a("pond");
-   public static final aly<clx> W = a("sunflowers");
-   public static final aly<clx> X = a("tides");
+public class cly extends clw implements bwo {
+   private static final int b = 50;
+   private static final int c = 70;
+   private static final aks<Boolean> d = akw.a(cly.class, aku.k);
+   public static final String a = "sheared";
 
-   public static void a(rk<clx> $$0) {
-      a($$0, a, 1, 1);
-      a($$0, b, 1, 1);
-      a($$0, c, 1, 1);
-      a($$0, d, 1, 1);
-      a($$0, e, 1, 1);
-      a($$0, f, 1, 1);
-      a($$0, g, 1, 1);
-      a($$0, h, 2, 1);
-      a($$0, i, 2, 1);
-      a($$0, j, 2, 1);
-      a($$0, k, 2, 1);
-      a($$0, l, 2, 1);
-      a($$0, m, 1, 2);
-      a($$0, n, 1, 2);
-      a($$0, o, 2, 2);
-      a($$0, p, 2, 2);
-      a($$0, q, 2, 2);
-      a($$0, r, 2, 2);
-      a($$0, s, 2, 2);
-      a($$0, t, 2, 2, false);
-      a($$0, u, 4, 2);
-      a($$0, v, 4, 4);
-      a($$0, w, 4, 4);
-      a($$0, x, 4, 4);
-      a($$0, y, 4, 3);
-      a($$0, A, 2, 2, false);
-      a($$0, B, 2, 2, false);
-      a($$0, C, 2, 2, false);
-      a($$0, D, 2, 2, false);
-      a($$0, z, 4, 3);
-      a($$0, E, 2, 2);
-      a($$0, F, 2, 2);
-      a($$0, G, 1, 1);
-      a($$0, H, 1, 2);
-      a($$0, I, 4, 4);
-      a($$0, J, 3, 4);
-      a($$0, K, 3, 3);
-      a($$0, L, 3, 3);
-      a($$0, M, 4, 2);
-      a($$0, N, 3, 3);
-      a($$0, O, 3, 3);
-      a($$0, P, 3, 3);
-      a($$0, Q, 4, 2);
-      a($$0, R, 4, 2);
-      a($$0, S, 4, 4);
-      a($$0, T, 3, 3);
-      a($$0, U, 4, 2);
-      a($$0, V, 3, 4);
-      a($$0, W, 3, 3);
-      a($$0, X, 3, 3);
+   public static bxe.a gq() {
+      return clw.m().a(bxf.s, 16.0);
    }
 
-   private static void a(rk<clx> $$0, aly<clx> $$1, int $$2, int $$3) {
-      a($$0, $$1, $$2, $$3, true);
+   public cly(bvi<? extends cly> $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
-   private static void a(rk<clx> $$0, aly<clx> $$1, int $$2, int $$3, boolean $$4) {
-      $$0.a(
-         $$1,
-         new clx(
-            $$2,
-            $$3,
-            $$1.a(),
-            Optional.of(xv.c($$1.a().c("painting", "title")).a(n.o)),
-            $$4 ? Optional.of(xv.c($$1.a().c("painting", "author")).a(n.h)) : Optional.empty()
-         )
-      );
+   @Override
+   protected void a(akw.a $$0) {
+      super.a($$0);
+      $$0.a(d, false);
    }
 
-   private static aly<clx> a(String $$0) {
-      return aly.a(mb.X, alz.b($$0));
+   @Override
+   public void b(um $$0) {
+      super.b($$0);
+      $$0.a("sheared", this.gr());
+   }
+
+   @Override
+   public void a(um $$0) {
+      super.a($$0);
+      this.x($$0.q("sheared"));
+   }
+
+   public boolean gr() {
+      return this.al.a(d);
+   }
+
+   public void x(boolean $$0) {
+      this.al.a(d, $$0);
+   }
+
+   @Override
+   protected bta b(cpo $$0, bsz $$1) {
+      cxg $$2 = $$0.b($$1);
+      if ($$2.a(cxk.sS) && this.a()) {
+         if (this.dW() instanceof arx $$3) {
+            this.a($$3, aww.h, $$2);
+            this.a(eck.M, $$0);
+            $$2.a(1, $$0, d($$1));
+         }
+
+         return bta.a;
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   @Override
+   protected awu u() {
+      return awv.cn;
+   }
+
+   @Override
+   protected awu e(btr $$0) {
+      return awv.cp;
+   }
+
+   @Override
+   protected awu o_() {
+      return awv.co;
+   }
+
+   @Override
+   protected awu p() {
+      return awv.cr;
+   }
+
+   @Override
+   protected cpv a(cxg $$0, float $$1, @Nullable cxg $$2) {
+      cpv $$3 = super.a($$0, $$1, $$2);
+      if ($$3 instanceof cpx $$4) {
+         $$4.a(new bug(bui.s, 100));
+      }
+
+      return $$3;
+   }
+
+   @Override
+   protected int x() {
+      return 50;
+   }
+
+   @Override
+   protected int go() {
+      return 70;
+   }
+
+   @Override
+   public void a(arx $$0, aww $$1, cxg $$2) {
+      $$0.a(null, this, awv.cq, $$1, 1.0F, 1.0F);
+      this.d($$0, $$2);
+      this.x(true);
+   }
+
+   private void d(arx $$0, cxg $$1) {
+      this.a($$0, ewe.aQ, $$1, ($$0x, $$1x) -> this.a($$0x, $$1x, this.ds()));
+   }
+
+   @Override
+   public boolean a() {
+      return !this.gr() && this.bL();
    }
 }

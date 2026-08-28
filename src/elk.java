@@ -1,20 +1,43 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-public class elk extends elb {
-   public static final MapCodec<elk> b = dxv.a.fieldOf("state").xmap(elk::new, $$0 -> $$0.c);
-   private final dxv c;
+public class elk extends eln {
+   public static final MapCodec<elk> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(elk::new, $$0 -> $$0.b);
+   private final float b;
 
-   protected elk(dxv $$0) {
-      this.c = $$0;
+   public elk(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected elc<?> a() {
-      return elc.a;
+   protected elo<?> a() {
+      return elo.d;
    }
 
    @Override
-   public dxv a(bam $$0, jh $$1) {
-      return this.c;
+   public void a(eln.a $$0) {
+      bac $$1 = $$0.b();
+      List<jh> $$2 = $$0.c();
+      if (!$$2.isEmpty()) {
+         if (!($$1.i() >= this.b)) {
+            List<jh> $$3 = new ArrayList<>($$2);
+            ae.c($$3, $$1);
+            Optional<jh> $$4 = $$3.stream().filter($$1x -> {
+               for (jm $$2x : jm.values()) {
+                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(axk.u))) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }).findFirst();
+            if (!$$4.isEmpty()) {
+               $$0.a($$4.get(), dkf.cB.m().b(dly.c, Boolean.valueOf(true)).b(dly.d, Boolean.valueOf(true)));
+            }
+         }
+      }
    }
 }

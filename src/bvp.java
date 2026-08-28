@@ -1,55 +1,91 @@
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
+import org.jetbrains.annotations.Nullable;
 
-public final class bvp {
-   public static final Predicate<bvk> a = bvk::bL;
-   public static final Predicate<bvk> b = $$0 -> $$0.bL() && $$0 instanceof bwg;
-   public static final Predicate<bvk> c = $$0 -> $$0.bL() && !$$0.ca() && !$$0.bZ();
-   public static final Predicate<bvk> d = $$0 -> $$0 instanceof btc && $$0.bL();
-   public static final Predicate<bvk> e = $$0 -> !($$0 instanceof cpx) || !$$0.aa_() && !((cpx)$$0).b();
-   public static final Predicate<bvk> f = $$0 -> !$$0.aa_();
-   public static final Predicate<bvk> g = f.and(bvk::bN);
-   public static final Predicate<bvk> h = f.and(bvk::bH);
+public class bvp extends cin {
+   private static final aks<Integer> ch = akw.a(bvp.class, aku.b);
 
-   private bvp() {
+   public bvp(bvi<? extends bvp> $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
-   public static Predicate<bvk> a(double $$0, double $$1, double $$2, double $$3) {
-      double $$4 = $$3 * $$3;
-      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
+   @Override
+   protected lq p() {
+      return ls.aR;
    }
 
-   public static Predicate<bvk> a(bvk $$0) {
-      fdf $$1 = $$0.cr();
-      fdf.a $$2 = $$1 == null ? fdf.a.a : $$1.l();
-      return (Predicate<bvk>)($$2 == fdf.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bI()) {
-            return false;
-         } else if (!$$0.dW().C || $$3 instanceof cpx && ((cpx)$$3).c()) {
-            fdf $$4 = $$3.cr();
-            fdf.a $$5 = $$4 == null ? fdf.a.a : $$4.l();
-            if ($$5 == fdf.a.b) {
-               return false;
-            } else {
-               boolean $$6 = $$1 != null && $$1.a($$4);
-               return ($$2 == fdf.a.d || $$5 == fdf.a.d) && $$6 ? false : $$2 != fdf.a.c && $$5 != fdf.a.c || $$6;
-            }
-         } else {
-            return false;
-         }
-      }));
+   @Override
+   protected void a(akw.a $$0) {
+      super.a($$0);
+      $$0.a(ch, 0);
    }
 
-   public static Predicate<bvk> b(bvk $$0) {
-      return $$1 -> {
-         while ($$1.bZ()) {
-            $$1 = $$1.dl();
-            if ($$1 == $$0) {
-               return false;
-            }
-         }
+   @Nullable
+   @Override
+   public bus a(arx $$0, bus $$1) {
+      return bvi.ah.a($$0, bvh.e);
+   }
 
-         return true;
-      };
+   @Override
+   protected awu t() {
+      return awv.lj;
+   }
+
+   @Override
+   protected awu u() {
+      return awv.lg;
+   }
+
+   @Override
+   protected awu e(btr $$0) {
+      return awv.li;
+   }
+
+   @Override
+   protected awu o_() {
+      return awv.lh;
+   }
+
+   @Override
+   public void b(um $$0) {
+      super.b($$0);
+      $$0.a("DarkTicksRemaining", this.x());
+   }
+
+   @Override
+   public void a(um $$0) {
+      super.a($$0);
+      this.s($$0.h("DarkTicksRemaining"));
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      int $$0 = this.x();
+      if ($$0 > 0) {
+         this.s($$0 - 1);
+      }
+
+      this.dW().a(ls.aS, this.d(0.6), this.dE(), this.g(0.6), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public boolean a(arx $$0, btr $$1, float $$2) {
+      boolean $$3 = super.a($$0, $$1, $$2);
+      if ($$3) {
+         this.s(100);
+      }
+
+      return $$3;
+   }
+
+   private void s(int $$0) {
+      this.al.a(ch, $$0);
+   }
+
+   public int x() {
+      return this.al.a(ch);
+   }
+
+   public static boolean a(bvi<? extends bvx> $$0, dhq $$1, bvh $$2, jh $$3, bac $$4) {
+      return $$3.v() <= $$1.P() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dkf.J);
    }
 }

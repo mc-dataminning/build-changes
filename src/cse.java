@@ -1,116 +1,12 @@
-public abstract class cse {
-   protected final crw a;
+import java.util.function.Supplier;
 
-   protected cse(crw $$0) {
-      this.a = $$0;
+public class cse extends crl {
+   public cse(bvi<? extends cse> $$0, dgz $$1, Supplier<cxc> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a() {
+   @Override
+   protected double b(bve $$0) {
+      return (double)($$0.b() * 0.8888889F);
    }
-
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.c($$0, $$1, $$2);
-      this.b($$3 % 360.0F);
-      this.a($$4 % 360.0F);
-   }
-
-   public double b() {
-      return this.l();
-   }
-
-   public double c() {
-      return this.m();
-   }
-
-   public double d() {
-      return this.n();
-   }
-
-   public float e() {
-      return this.o();
-   }
-
-   public float f() {
-      return this.p();
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2);
-   }
-
-   public abstract void g();
-
-   public dhi h() {
-      return this.a.dW();
-   }
-
-   public abstract void a(ash var1);
-
-   public abstract double a(jh var1, dyy var2, double var3);
-
-   public abstract boolean i();
-
-   public fby j() {
-      return this.a.dz();
-   }
-
-   public void a(fby $$0) {
-      this.a.h($$0);
-   }
-
-   public void b(double $$0, double $$1, double $$2) {
-      this.a.n($$0, $$1, $$2);
-   }
-
-   public fby k() {
-      return this.a.du();
-   }
-
-   public double l() {
-      return this.a.dB();
-   }
-
-   public double m() {
-      return this.a.dD();
-   }
-
-   public double n() {
-      return this.a.dH();
-   }
-
-   public void b(fby $$0) {
-      this.a.b($$0);
-   }
-
-   public void c(double $$0, double $$1, double $$2) {
-      this.a.a_($$0, $$1, $$2);
-   }
-
-   public float o() {
-      return this.a.dO();
-   }
-
-   public void a(float $$0) {
-      this.a.w($$0);
-   }
-
-   public float p() {
-      return this.a.dM();
-   }
-
-   public void b(float $$0) {
-      this.a.v($$0);
-   }
-
-   public jm q() {
-      return this.a.cO();
-   }
-
-   public fby c(fby $$0) {
-      return $$0;
-   }
-
-   public abstract double b(ash var1);
-
-   public abstract double r();
 }

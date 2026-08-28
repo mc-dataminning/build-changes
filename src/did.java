@@ -1,34 +1,101 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.hash.Hashing;
 
-public interface did {
-   void a(bvr<?> var1, bam var2);
+public class did {
+   public static final int a = kb.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final did.a e;
+   private final long f;
 
-   static void a(cxp $$0, List<xv> $$1, String $$2) {
-      xv $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
-      } else {
-         $$1.add(xu.a);
-         $$1.add(xv.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(xu.a().b(xv.c("block.minecraft.spawner.desc2").a(n.j)));
-      }
+   public did(did.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Nullable
-   static xv a(cxp $$0, String $$1) {
-      ux $$2 = $$0.a(ku.Y, czy.a).d();
-      alz $$3 = a($$2, $$1);
-      return $$3 != null ? ma.f.b($$3).map($$0x -> xv.c($$0x.g()).a(n.h)).orElse(null) : null;
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   @Nullable
-   private static alz a(ux $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return alz.c($$2);
-      } else {
-         return null;
+   public did a(did.a $$0) {
+      return new did($$0, this.f);
+   }
+
+   public jq<dib> a(jh $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
       }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
+   }
+
+   public jq<dib> a(double $$0, double $$1, double $$2) {
+      int $$3 = kb.a(azu.a($$0));
+      int $$4 = kb.a(azu.a($$1));
+      int $$5 = kb.a(azu.a($$2));
+      return this.a($$3, $$4, $$5);
+   }
+
+   public jq<dib> b(jh $$0) {
+      int $$1 = kb.a($$0.u());
+      int $$2 = kb.a($$0.v());
+      int $$3 = kb.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
+
+   public jq<dib> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = azp.a($$0, (long)$$1);
+      $$7 = azp.a($$7, (long)$$2);
+      $$7 = azp.a($$7, (long)$$3);
+      $$7 = azp.a($$7, (long)$$1);
+      $$7 = azp.a($$7, (long)$$2);
+      $$7 = azp.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = azp.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = azp.a($$7, $$0);
+      double $$10 = b($$7);
+      return azu.k($$6 + $$10) + azu.k($$5 + $$9) + azu.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      jq<dib> getNoiseBiome(int var1, int var2, int var3);
    }
 }

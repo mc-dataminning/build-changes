@@ -1,55 +1,194 @@
 import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-class bus extends bun {
-   private static final int d = 2;
-   public static final int c = 2;
-   private final ToIntFunction<bam> e;
+public abstract class bus extends bwf {
+   private static final aks<Boolean> bZ = akw.a(bus.class, aku.k);
+   public static final int a = -24000;
+   private static final int ca = 40;
+   protected int b;
+   protected int c;
+   protected int d;
 
-   protected bus(buo $$0, int $$1, ToIntFunction<bam> $$2) {
-      super($$0, $$1, ls.V);
-      this.e = $$2;
-   }
-
-   @VisibleForTesting
-   protected static int a(int $$0, bus.a $$1, int $$2) {
-      return $$0 < 1 ? $$2 : bae.a(0, $$0 - $$1.count($$0), $$2);
+   protected bus(bvi<? extends bus> $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(ash $$0, bwg $$1, int $$2, bvk.d $$3) {
-      if ($$3 == bvk.d.a) {
-         int $$4 = this.e.applyAsInt($$1.dZ());
-         int $$5 = $$0.N().c(dhe.v);
-         int $$6 = a($$5, bus.a.a($$1), $$4);
+   public bwq a(dhq $$0, bsy $$1, bvh $$2, @Nullable bwq $$3) {
+      if ($$3 == null) {
+         $$3 = new bus.a(true);
+      }
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            this.a($$1.dW(), $$1.dB(), $$1.dD() + 0.5, $$1.dH());
+      bus.a $$4 = (bus.a)$$3;
+      if ($$4.c() && $$4.a() > 0 && $$0.H_().i() <= $$4.d()) {
+         this.c_(-24000);
+      }
+
+      $$4.b();
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   public abstract bus a(arx var1, bus var2);
+
+   @Override
+   protected void a(akw.a $$0) {
+      super.a($$0);
+      $$0.a(bZ, false);
+   }
+
+   public boolean Y_() {
+      return false;
+   }
+
+   public int Z_() {
+      if (this.dW().C) {
+         return this.al.a(bZ) ? -1 : 1;
+      } else {
+         return this.b;
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      int $$2 = this.Z_();
+      $$2 += $$0 * 20;
+      if ($$2 > 0) {
+         $$2 = 0;
+      }
+
+      int $$4 = $$2 - $$2;
+      this.c_($$2);
+      if ($$1) {
+         this.c += $$4;
+         if (this.d == 0) {
+            this.d = 40;
+         }
+      }
+
+      if (this.Z_() == 0) {
+         this.c_(this.c);
+      }
+   }
+
+   public void b_(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void c_(int $$0) {
+      int $$1 = this.Z_();
+      this.b = $$0;
+      if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
+         this.al.a(bZ, $$0 < 0);
+         this.i();
+      }
+   }
+
+   @Override
+   public void b(um $$0) {
+      super.b($$0);
+      $$0.a("Age", this.Z_());
+      $$0.a("ForcedAge", this.c);
+   }
+
+   @Override
+   public void a(um $$0) {
+      super.a($$0);
+      this.c_($$0.h("Age"));
+      this.c = $$0.h("ForcedAge");
+   }
+
+   @Override
+   public void a(aks<?> $$0) {
+      if (bZ.equals($$0)) {
+         this.m_();
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      if (this.dW().C) {
+         if (this.d > 0) {
+            if (this.d % 4 == 0) {
+               this.dW().a(ls.P, this.d(1.0), this.dE() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+            }
+
+            this.d--;
+         }
+      } else if (this.bL()) {
+         int $$0 = this.Z_();
+         if ($$0 < 0) {
+            this.c_(++$$0);
+         } else if ($$0 > 0) {
+            this.c_(--$$0);
          }
       }
    }
 
-   private void a(dhi $$0, double $$1, double $$2, double $$3) {
-      cng $$4 = bvr.bh.a($$0, bvq.k);
-      if ($$4 != null) {
-         $$4.a(2, true);
-         $$4.b($$1, $$2, $$3, $$0.H_().i() * 360.0F, 0.0F);
-         $$0.b($$4);
+   protected void i() {
+      if (!this.e_() && this.bZ() && this.dl() instanceof crl $$0 && !$$0.b((bvb)this)) {
+         this.ae();
       }
    }
 
-   @FunctionalInterface
-   protected interface a {
-      int count(int var1);
+   @Override
+   public boolean e_() {
+      return this.Z_() < 0;
+   }
 
-      static bus.a a(bwg $$0) {
-         return $$1 -> {
-            List<cng> $$2 = new ArrayList<>();
-            $$0.dW().a(bvr.bh, $$0.cR().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
-            return $$2.size();
-         };
+   @Override
+   public void a(boolean $$0) {
+      this.c_($$0 ? -24000 : 0);
+   }
+
+   public static int d_(int $$0) {
+      return (int)((float)($$0 / 20) * 0.1F);
+   }
+
+   @VisibleForTesting
+   public int l() {
+      return this.c;
+   }
+
+   @VisibleForTesting
+   public int m() {
+      return this.d;
+   }
+
+   public static class a implements bwq {
+      private int a;
+      private final boolean b;
+      private final float c;
+
+      public a(boolean $$0, float $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public a(boolean $$0) {
+         this($$0, 0.05F);
+      }
+
+      public a(float $$0) {
+         this(true, $$0);
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public void b() {
+         this.a++;
+      }
+
+      public boolean c() {
+         return this.b;
+      }
+
+      public float d() {
+         return this.c;
       }
    }
 }

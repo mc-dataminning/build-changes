@@ -1,43 +1,42 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class eze extends eyc {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<eze> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eze::new));
+public class eze extends ezh {
+   public static final MapCodec<eze> a = a(eze::new);
+   public static final Codec<eze> b = b(eze::new);
 
-   private eze(List<ezy> $$0) {
-      super($$0);
+   eze(List<ezr> $$0) {
+      super($$0, ae.a($$0));
+   }
+
+   public static eze a(List<ezr> $$0) {
+      return new eze(List.copyOf($$0));
    }
 
    @Override
-   public eye<eze> b() {
-      return eyf.l;
+   public ezs b() {
+      return ezt.c;
    }
 
-   @Override
-   public cxp a(cxp $$0, ewp $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         dcx $$2 = new dcx($$0);
-         Optional<dcj<dcy>> $$3 = $$1.d().s().a(dcp.b, $$2, $$1.d());
-         if ($$3.isPresent()) {
-            cxp $$4 = $$3.get().b().a($$2, $$1.d().K_());
-            if (!$$4.f()) {
-               return $$4.c($$0.L());
-            }
-         }
+   public static eze.a a(ezr.a... $$0) {
+      return new eze.a($$0);
+   }
 
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
+   public static class a extends ezh.a {
+      public a(ezr.a... $$0) {
+         super($$0);
       }
-   }
 
-   public static eyc.a<?> c() {
-      return a(eze::new);
+      @Override
+      public eze.a and(ezr.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected ezr a(List<ezr> $$0) {
+         return new eze($$0);
+      }
    }
 }

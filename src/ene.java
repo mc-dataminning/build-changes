@@ -1,30 +1,23 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public enum ene implements bba {
-   a(jm.b, 1, "ceiling"),
-   b(jm.a, -1, "floor");
+public class ene extends enk {
+   private static final ene c = new ene();
+   public static final MapCodec<ene> a = MapCodec.unit(() -> c);
 
-   public static final Codec<ene> c = bba.a(ene::values);
-   private final jm d;
-   private final int e;
-   private final String f;
-
-   private ene(final jm $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public jm a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static ene a() {
+      return c;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public Stream<jh> a_(eni $$0, bac $$1, jh $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new jh($$3, $$2.v(), $$4));
+   }
+
+   @Override
+   public enl<?> b() {
+      return enl.m;
    }
 }

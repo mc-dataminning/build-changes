@@ -1,46 +1,62 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.List;
 
-public class cwn extends cxl implements cyt {
-   private static final Map<cwm, cwn> a = Maps.newEnumMap(cwm.class);
-   private final cwm b;
+public class cwn extends cxc implements cyb {
+   public static final byte[] a = new byte[]{1, 2, 3};
+   public static final double b = 0.15;
 
-   public cwn(cwm $$0, cxl.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+   public cwn(cxc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public btj a(cxp $$0, cpx $$1, bwg $$2, bti $$3) {
-      if ($$2 instanceof cit $$4 && $$4.bL() && !$$4.x() && $$4.t() != this.b) {
-         $$4.dW().a($$1, $$4, axf.ig, axg.h, 1.0F, 1.0F);
-         if (!$$1.dW().C) {
-            $$4.b(this.b);
-            $$0.h(1);
+   public bta a(daz $$0) {
+      dgz $$1 = $$0.q();
+      if ($$1 instanceof arx $$2) {
+         cxg $$3 = $$0.n();
+         fbr $$4 = $$0.l();
+         jm $$5 = $$0.k();
+         cqh.a(new cqc($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
+         $$3.h(1);
+      }
+
+      return bta.a;
+   }
+
+   @Override
+   public bta a(dgz $$0, cpo $$1, bsz $$2) {
+      if ($$1.fJ()) {
+         cxg $$3 = $$1.b($$2);
+         if ($$0 instanceof arx $$4) {
+            cqh.a(new cqc($$0, $$3, $$1), $$4, $$3);
+            $$3.a(1, $$1);
+            $$1.b(axf.c.b(this));
          }
 
-         return btj.a;
+         return bta.a;
+      } else {
+         return bta.e;
       }
-
-      return btj.e;
-   }
-
-   public cwm b() {
-      return this.b;
-   }
-
-   public static cwn a(cwm $$0) {
-      return a.get($$0);
    }
 
    @Override
-   public boolean a(dhi $$0, dwk $$1, boolean $$2, cpx $$3) {
-      if ($$1.a($$0x -> $$0x.a(this.b()), $$2)) {
-         $$0.a(null, $$1.aB_(), axf.ig, axg.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+   public void a(cxg $$0, cxc.b $$1, List<xk> $$2, cyy $$3) {
+      czw $$4 = $$0.a(ku.af);
+      if ($$4 != null) {
+         $$4.a($$1, $$2::add, $$3);
       }
+   }
+
+   @Override
+   public cqh a(dgz $$0, ka $$1, cxg $$2, jm $$3) {
+      return new cqc($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   }
+
+   @Override
+   public cyb.a b() {
+      return cyb.a.a().a(cwn::a).a(1.0F).b(0.5F).a(1004).a();
+   }
+
+   private static fbr a(ky $$0, jm $$1) {
+      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
    }
 }

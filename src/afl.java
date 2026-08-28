@@ -1,37 +1,37 @@
-public class afl implements aac<acr> {
-   public static final zt<ws, afl> a = aac.a(afl::a, afl::new);
+public class afl implements zr<acg> {
+   public static final zi<wh, afl> a = zr.a(afl::a, afl::new);
    private final int b;
-   private final byte c;
+   private final int c;
 
-   public afl(bvk $$0, byte $$1) {
-      this.b = $$0.ar();
+   public afl(int $$0, int $$1) {
+      this.b = $$0;
       this.c = $$1;
    }
 
-   private afl(ws $$0) {
+   private afl(wh $$0) {
       this.b = $$0.l();
-      this.c = $$0.readByte();
+      this.c = $$0.l();
    }
 
-   private void a(ws $$0) {
+   private void a(wh $$0) {
       $$0.c(this.b);
-      $$0.l(this.c);
+      $$0.c(this.c);
    }
 
    @Override
-   public aae<afl> a() {
-      return ahk.aq;
+   public zt<afl> a() {
+      return agz.aB;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public bvk a(dhi $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 
-   public float b() {
-      return bae.a(this.c);
+   public int e() {
+      return this.c;
    }
 }

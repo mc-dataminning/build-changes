@@ -1,3 +1,3 @@
-public class gys extends gxv {
-   public long a;
+public class gys extends gyr {
+   public float C = -1.0F;
 }

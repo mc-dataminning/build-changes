@@ -1,89 +1,113 @@
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
-public class amj {
-   private static final Logger a = LogUtils.getLogger();
-   private static final kc b = new kc(Optional.empty(), Lifecycle.experimental());
+public class amj extends btj {
+   private long g = 0L;
+   private long h = 0L;
+   private long i = 0L;
+   private long j = 0L;
+   private boolean k = false;
+   private final MinecraftServer l;
 
-   public static CompletableFuture<amj.b> a(jx<ami> $$0, List<kd.a<?>> $$1, avv $$2, Executor $$3) {
-      List<js.b<?>> $$4 = ayl.a($$0.b(ami.d), $$1);
-      js.a $$5 = js.a.a($$4.stream());
-      alx<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
-      List<CompletableFuture<km<?>>> $$7 = ewr.a().map($$3x -> a($$3x, $$6, $$2, $$3)).toList();
-      CompletableFuture<List<km<?>>> $$8 = ae.d($$7);
-      return $$8.thenApplyAsync($$2x -> a($$0, $$5, $$2x), $$3);
+   public amj(MinecraftServer $$0) {
+      this.l = $$0;
    }
 
-   private static <T> CompletableFuture<km<?>> a(ewr<T> $$0, alx<JsonElement> $$1, avv $$2, Executor $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         km<T> $$3x = new jy<>($$0.b(), Lifecycle.experimental());
-         Map<alz, T> $$4 = new HashMap<>();
-         String $$5 = mb.c($$0.b());
-         avz.a($$2, $$5, $$1, $$0.c(), $$4);
-         $$4.forEach(($$2xx, $$3xx) -> $$3x.a(aly.a($$0.b(), $$2xx), (T)$$3xx, b));
-         ayl.a($$2, $$3x);
-         return $$3x;
-      }, $$3);
+   public boolean a() {
+      return this.j > 0L;
    }
 
-   private static amj.b a(jx<ami> $$0, js.a $$1, List<km<?>> $$2) {
-      jx<ami> $$3 = a($$0, $$2);
-      js.a $$4 = a($$1, $$3.a(ami.d));
-      a($$4);
-      return new amj.b($$3, $$4);
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.n();
    }
 
-   private static js.a a(js.a $$0, js.a $$1) {
-      return js.a.a(Stream.concat($$0.c(), $$1.c()));
+   private void n() {
+      this.l.ag().a(agq.a(this));
    }
 
-   private static void a(js.a $$0) {
-      bak.a $$1 = new bak.a();
-      ewv $$2 = new ewv($$1, ezi.q, $$0);
-      ewr.a().forEach($$2x -> a($$2, $$2x, $$0));
-      $$1.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+   private void o() {
+      this.l.ag().a(agr.a(this));
    }
 
-   private static jx<ami> a(jx<ami> $$0, List<km<?>> $$1) {
-      return $$0.a(ami.d, new ke.c($$1).e());
-   }
-
-   private static <T> void a(ewv $$0, ewr<T> $$1, js.a $$2) {
-      js<T> $$3 = $$2.d($$1.b());
-      $$3.c().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
-   }
-
-   public static class a {
-      private final js.a a;
-
-      public a(js.a $$0) {
-         this.a = $$0;
-      }
-
-      public jr.a a() {
-         return this.a;
-      }
-
-      public Collection<alz> a(aly<? extends kd<?>> $$0) {
-         return this.a.d($$0).c_().map(aly::a).toList();
-      }
-
-      public ewu b(aly<ewu> $$0) {
-         return this.a.a(mb.bg).flatMap($$1 -> $$1.a($$0)).map(jq::a).orElse(ewu.a);
+   public boolean a(int $$0) {
+      if (!this.l()) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.o();
+         return true;
       }
    }
 
-   public static record b(jx<ami> a, js.a b) {
+   public boolean b() {
+      if (this.d > 0) {
+         this.d = 0;
+         this.o();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean c() {
+      if (this.g > 0L) {
+         this.p();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(int $$0) {
+      boolean $$1 = this.g > 0L;
+      this.i = 0L;
+      this.j = (long)$$0;
+      this.g = (long)$$0;
+      this.k = this.l();
+      this.a(false);
+      return $$1;
+   }
+
+   private void p() {
+      long $$0 = this.j - this.g;
+      double $$1 = Math.max(1.0, (double)this.i) / (double)baw.b;
+      int $$2 = (int)((double)(baw.c * $$0) / $$1);
+      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
+      this.j = 0L;
+      this.i = 0L;
+      this.l.aH().a(() -> xk.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.g = 0L;
+      this.a(this.k);
+      this.l.F();
+   }
+
+   public boolean d() {
+      if (!this.e) {
+         return false;
+      } else if (this.g > 0L) {
+         this.h = System.nanoTime();
+         this.g--;
+         return true;
+      } else {
+         this.p();
+         return false;
+      }
+   }
+
+   public void e() {
+      this.i = this.i + (System.nanoTime() - this.h);
+   }
+
+   @Override
+   public void a(float $$0) {
+      super.a($$0);
+      this.l.F();
+      this.n();
+   }
+
+   public void a(ary $$0) {
+      $$0.f.b(agq.a(this));
+      $$0.f.b(agr.a(this));
    }
 }

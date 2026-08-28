@@ -1,4 +1,3 @@
-public class gzd extends gyt {
-   public float a;
-   public int b;
+public class gzd extends gyo {
+   public int a;
 }

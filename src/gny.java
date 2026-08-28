@@ -1,51 +1,103 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class gny {
-   private static final Map<duz<?>, gnx<?>> a = Maps.newHashMap();
+public class gny implements gnr<dvc> {
+   public static final hdp a = new hdp(hbf.d, alp.b("entity/conduit/base"));
+   public static final hdp b = new hdp(hbf.d, alp.b("entity/conduit/cage"));
+   public static final hdp c = new hdp(hbf.d, alp.b("entity/conduit/wind"));
+   public static final hdp d = new hdp(hbf.d, alp.b("entity/conduit/wind_vertical"));
+   public static final hdp e = new hdp(hbf.d, alp.b("entity/conduit/open_eye"));
+   public static final hdp f = new hdp(hbf.d, alp.b("entity/conduit/closed_eye"));
+   private final gej g;
+   private final gej h;
+   private final gej i;
+   private final gej j;
+   private final gnq k;
 
-   private static <T extends dux> void a(duz<? extends T> $$0, gnx<T> $$1) {
-      a.put($$0, $$1);
+   public gny(gns.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(gei.ac);
+      this.h = $$0.a(gei.ae);
+      this.i = $$0.a(gei.ad);
+      this.j = $$0.a(gei.ab);
    }
 
-   public static Map<duz<?>, gnw<?>> a(gnx.a $$0) {
-      Builder<duz<?>, gnw<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + ma.j.b((duz<?>)$$2), var5);
+   public static gep b() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("eye", geo.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new gen(0.01F)), gel.a);
+      return gep.a($$0, 16, 16);
+   }
+
+   public static gep c() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("wind", geo.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gel.a);
+      return gep.a($$0, 64, 32);
+   }
+
+   public static gep d() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("shell", geo.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gel.a);
+      return gep.a($$0, 32, 16);
+   }
+
+   public static gep e() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("shell", geo.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gel.a);
+      return gep.a($$0, 32, 16);
+   }
+
+   public void a(dvc $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.c()) {
+         float $$7 = $$0.a(0.0F);
+         fgp $$8 = a.a($$3, glq::d);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
+      } else {
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = azu.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, glq::g), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
          }
-      });
-      return $$1.build();
-   }
 
-   static {
-      a(duz.h, gok::new);
-      a(duz.i, gog::new);
-      a(duz.j, gom::new);
-      a(duz.l, goi::new);
-      a(duz.b, goc::new);
-      a(duz.d, goc::new);
-      a(duz.c, goc::new);
-      a(duz.n, gof::new);
-      a(duz.E, goh::new);
-      a(duz.o, gop::new);
-      a(duz.w, goo::new);
-      a(duz.p, gns::new);
-      a(duz.q, gol::new);
-      a(duz.u, gnr::new);
-      a(duz.v, gon::new);
-      a(duz.y, goj::new);
-      a(duz.z, gnt::new);
-      a(duz.A, god::new);
-      a(duz.F, gnu::new);
-      a(duz.H, gob::new);
-      a(duz.O, goa::new);
-      a(duz.P, goe::new);
-      a(duz.R, goq::new);
-      a(duz.S, gor::new);
+         fgp $$13 = ($$12 == 1 ? d : c).a($$3, glq::g);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         fli $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.d() ? e : f).a($$3, glq::g), $$4, $$5);
+         $$2.b();
+      }
    }
 }

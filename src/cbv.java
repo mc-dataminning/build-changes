@@ -1,40 +1,51 @@
-import com.google.common.collect.ImmutableMap;
+public class cbv extends cby {
+   private final int l;
+   private final boolean m;
 
-public class cbv extends bxz<cpa> {
-   private static final int c = 25;
-   private static final int d = 20;
-
-   public cbv() {
-      super(ImmutableMap.of(cfk.ay, cfl.a, cfk.o, cfl.b, cfk.aF, cfl.c, cfk.aD, cfl.c), cpb.b);
+   public cbv(bvz $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
-   protected void a(ash $$0, cpa $$1, long $$2) {
-      bxi<cpa> $$3 = $$1.ec();
-      $$3.a(cfk.aD, bbk.a, 25L);
-      $$3.b(cfk.m);
-      bwg $$4 = $$1.ec().c(cfk.ay).get();
-      byb.a($$1, $$4);
-      $$1.b(bws.l);
-      $$1.a($$4, 20, false);
-   }
+   @Override
+   public void a() {
+      if (this.k == cby.a.b) {
+         this.k = cby.a.a;
+         this.d.f(true);
+         double $$0 = this.e - this.d.dB();
+         double $$1 = this.f - this.d.dD();
+         double $$2 = this.g - this.d.dH();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.H(0.0F);
+            this.d.G(0.0F);
+            return;
+         }
 
-   protected boolean b(ash $$0, cpa $$1, long $$2) {
-      return true;
-   }
+         float $$4 = (float)(azu.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.v(this.b(this.d.dM(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aJ()) {
+            $$5 = (float)(this.h * this.d.h(bxf.v));
+         } else {
+            $$5 = (float)(this.h * this.d.h(bxf.l));
+         }
 
-   protected void c(ash $$0, cpa $$1, long $$2) {
-      if (!$$1.ec().a(cfk.aD) && !$$1.ec().a(cfk.aF)) {
-         $$1.ec().a(cfk.aF, bbk.a, (long)(cpb.b - 25));
-         $$1.a(axf.Ct, 3.0F, 1.0F);
+         this.d.C($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(azu.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.w(this.b(this.d.dO(), $$8, (float)this.l));
+            this.d.H($$1 > 0.0 ? $$5 : -$$5);
+         }
+      } else {
+         if (!this.m) {
+            this.d.f(false);
+         }
+
+         this.d.H(0.0F);
+         this.d.G(0.0F);
       }
-   }
-
-   protected void d(ash $$0, cpa $$1, long $$2) {
-      if ($$1.c(bws.l)) {
-         $$1.b(bws.a);
-      }
-
-      $$1.ec().c(cfk.ay).ifPresent($$1::j);
-      $$1.ec().b(cfk.ay);
    }
 }

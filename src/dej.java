@@ -1,20 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dej(deg c) implements des {
-   public static final MapCodec<dej> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(deg.b.fieldOf("value").forGetter(dej::b)).apply($$0, dej::new));
+public interface dej {
+   Codec<dej> b = ma.aw.q().dispatch(dej::a, Function.identity());
 
-   @Override
-   public float a(int $$0, bam $$1, float $$2) {
-      return $$2 + this.c.a($$0);
+   static MapCodec<? extends dej> a(kd<MapCodec<? extends dej>> $$0) {
+      kd.a($$0, "add", dea.a);
+      kd.a($$0, "all_of", deb.c.a);
+      kd.a($$0, "multiply", dem.a);
+      kd.a($$0, "remove_binomial", deo.a);
+      return kd.a($$0, "set", det.a);
    }
 
-   @Override
-   public MapCodec<dej> a() {
-      return a;
-   }
+   float a(int var1, bac var2, float var3);
 
-   public deg b() {
-      return this.c;
-   }
+   MapCodec<? extends dej> a();
 }

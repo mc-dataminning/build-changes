@@ -1,101 +1,61 @@
-import javax.annotation.Nullable;
+public class gjr extends gjn {
+   private final gji a;
+   private static final int b = 8;
 
-public class gjr extends gjs {
-   private final jh a;
-   private final float b;
-   private final float F;
-
-   public gjr(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dxv $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, jh.a($$1, $$2, $$3));
-   }
-
-   public gjr(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dxv $$7, jh $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected gjr(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gji $$8) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
       this.a = $$8;
-      this.a(fmg.Q().ap().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(dko.i)) {
-         int $$9 = fmg.Q().aw().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
-      }
-
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.j *= 0.0;
+      this.k *= 0.9;
+      this.l *= 0.0;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      this.D *= 0.75F * $$7;
+      this.t = (int)(8.0F / azu.b(this.r, 0.5F, 1.0F) * $$7);
+      this.t = Math.max(this.t, 1);
+      this.b($$8);
+      this.n = true;
    }
 
    @Override
-   public giw b() {
-      return giw.a;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
+   public gir b() {
+      return gir.b;
    }
 
    @Override
    public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? glh.a(this.c, this.a) : $$1;
+      return 240;
    }
 
-   @Nullable
-   static gjr a(lk $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      dxv $$8 = $$0.b();
-      return !$$8.l() && !$$8.a(dko.bX) && $$8.D() ? new gjr($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+   @Override
+   public gja.a p() {
+      return gja.a.b;
    }
 
-   public static class a implements giv<lk> {
-      @Nullable
-      public gis a(lk $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gis $$8 = gjr.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b(0.0, 0.0, 0.0);
-            $$8.a($$1.A.a(10) + 1);
-         }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
 
-         return $$8;
+   @Override
+   public float b(float $$0) {
+      return this.D * azu.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements giq<lw> {
+      private final gji a;
+
+      public a(gji $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static class b implements giv<lk> {
-      @Nullable
-      public gis a(lk $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gis $$8 = gjr.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b($$1.A.k() / 30.0, $$6 + $$1.A.k() / 2.0, $$1.A.k() / 30.0);
-            $$8.a($$1.A.a(20) + 20);
-         }
-
-         return $$8;
-      }
-   }
-
-   public static class c implements giv<lk> {
-      @Nullable
-      public gis a(lk $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return gjr.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjr($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
       }
    }
 }

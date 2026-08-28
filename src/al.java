@@ -7,33 +7,33 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record al(int c, List<aly<ewu>> d, List<aly<dce<?>>> e, Optional<er> f) {
+public record al(int c, List<alo<ewn>> d, List<alo<dbv<?>>> e, Optional<er> f) {
    public static final Codec<al> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(al::a),
-               aly.a(mb.bg).listOf().optionalFieldOf("loot", List.of()).forGetter(al::b),
-               aly.a(mb.bk).listOf().optionalFieldOf("recipes", List.of()).forGetter(al::c),
+               alo.a(mb.bg).listOf().optionalFieldOf("loot", List.of()).forGetter(al::b),
+               alo.a(mb.bk).listOf().optionalFieldOf("recipes", List.of()).forGetter(al::c),
                er.a.optionalFieldOf("function").forGetter(al::d)
             )
             .apply($$0, al::new)
    );
    public static final al b = new al(0, List.of(), List.of(), Optional.empty());
 
-   public void a(asi $$0) {
+   public void a(ary $$0) {
       $$0.d(this.c);
-      ews $$1 = new ews.a($$0.y()).a(ezj.a, $$0).a(ezj.f, $$0.du()).a(ezi.m);
+      ewl $$1 = new ewl.a($$0.y()).a(ezc.a, $$0).a(ezc.f, $$0.du()).a(ezb.m);
       boolean $$2 = false;
 
-      for (aly<ewu> $$3 : this.d) {
+      for (alo<ewn> $$3 : this.d) {
          ObjectListIterator var6 = $$0.g.bc().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cxp $$4 = (cxp)var6.next();
+            cxg $$4 = (cxg)var6.next();
             if ($$0.i($$4)) {
-               $$0.dW().a(null, $$0.dB(), $$0.dD(), $$0.dH(), axf.nU, axg.h, 0.2F, (($$0.dZ().i() - $$0.dZ().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dW().a(null, $$0.dB(), $$0.dD(), $$0.dH(), awv.oa, aww.h, 0.2F, (($$0.dZ().i() - $$0.dZ().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               cmb $$5 = $$0.a($$4, false);
+               cls $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.t();
                   $$5.b($$0.cG());
@@ -58,11 +58,11 @@ public record al(int c, List<aly<ewu>> d, List<aly<dce<?>>> e, Optional<er> f) {
       return this.c;
    }
 
-   public List<aly<ewu>> b() {
+   public List<alo<ewn>> b() {
       return this.d;
    }
 
-   public List<aly<dce<?>>> c() {
+   public List<alo<dbv<?>>> c() {
       return this.e;
    }
 
@@ -72,9 +72,9 @@ public record al(int c, List<aly<ewu>> d, List<aly<dce<?>>> e, Optional<er> f) {
 
    public static class a {
       private int a;
-      private final Builder<aly<ewu>> b = ImmutableList.builder();
-      private final Builder<aly<dce<?>>> c = ImmutableList.builder();
-      private Optional<alz> d = Optional.empty();
+      private final Builder<alo<ewn>> b = ImmutableList.builder();
+      private final Builder<alo<dbv<?>>> c = ImmutableList.builder();
+      private Optional<alp> d = Optional.empty();
 
       public static al.a a(int $$0) {
          return new al.a().b($$0);
@@ -85,29 +85,29 @@ public record al(int c, List<aly<ewu>> d, List<aly<dce<?>>> e, Optional<er> f) {
          return this;
       }
 
-      public static al.a a(aly<ewu> $$0) {
+      public static al.a a(alo<ewn> $$0) {
          return new al.a().b($$0);
       }
 
-      public al.a b(aly<ewu> $$0) {
+      public al.a b(alo<ewn> $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static al.a c(aly<dce<?>> $$0) {
+      public static al.a c(alo<dbv<?>> $$0) {
          return new al.a().d($$0);
       }
 
-      public al.a d(aly<dce<?>> $$0) {
+      public al.a d(alo<dbv<?>> $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static al.a a(alz $$0) {
+      public static al.a a(alp $$0) {
          return new al.a().b($$0);
       }
 
-      public al.a b(alz $$0) {
+      public al.a b(alp $$0) {
          this.d = Optional.of($$0);
          return this;
       }

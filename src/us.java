@@ -1,97 +1,424 @@
-import com.google.common.collect.ImmutableList;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import java.io.DataInput;
+import java.io.DataOutput;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.regex.Pattern;
-import org.slf4j.Logger;
+import java.util.Locale;
+import java.util.Objects;
 
-public abstract class us {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new Gson();
-   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
-   public static final String a = "en_us";
-   private static volatile us e = c();
+public class us extends ul<vj> {
+   private static final int b = 37;
+   public static final vl<us> a = new vl.b<us>() {
+      public us a(DataInput $$0, uv $$1) throws IOException {
+         $$1.b();
 
-   private static us c() {
-      ur $$0 = ur.a();
-      Map<String, String> $$1 = new HashMap<>();
-      BiConsumer<String, String> $$2 = $$1::put;
-      a($$2, "/assets/minecraft/lang/en_us.json");
-      $$0.a($$1);
-      final Map<String, String> $$3 = Map.copyOf($$1);
-      return new us() {
-         @Override
-         public String a(String $$0, String $$1) {
-            return $$3.getOrDefault($$0, $$1);
+         us var3;
+         try {
+            var3 = d($$0, $$1);
+         } finally {
+            $$1.c();
          }
 
-         @Override
-         public boolean b(String $$0) {
-            return $$3.containsKey($$0);
+         return var3;
+      }
+
+      private static us d(DataInput $$0, uv $$1) throws IOException {
+         $$1.b(37L);
+         byte $$2 = $$0.readByte();
+         int $$3 = $$0.readInt();
+         if ($$2 == 0 && $$3 > 0) {
+            throw new uy("Missing type on ListTag");
+         } else {
+            $$1.a(4L, (long)$$3);
+            vl<?> $$4 = vm.a($$2);
+            List<vj> $$5 = Lists.newArrayListWithCapacity($$3);
+
+            for (int $$6 = 0; $$6 < $$3; $$6++) {
+               $$5.add($$4.c($$0, $$1));
+            }
+
+            return new us($$5, $$2);
+         }
+      }
+
+      @Override
+      public vg.b a(DataInput $$0, vg $$1, uv $$2) throws IOException {
+         $$2.b();
+
+         vg.b var4;
+         try {
+            var4 = c($$0, $$1, $$2);
+         } finally {
+            $$2.c();
          }
 
-         @Override
-         public boolean b() {
-            return false;
-         }
+         return var4;
+      }
 
-         @Override
-         public azq a(ya $$0) {
-            return $$1 -> $$0.a(($$1x, $$2) -> baz.c($$2, $$1x, $$1) ? Optional.empty() : ya.a, ys.a).isPresent();
+      private static vg.b c(DataInput $$0, vg $$1, uv $$2) throws IOException {
+         $$2.b(37L);
+         vl<?> $$3 = vm.a($$0.readByte());
+         int $$4 = $$0.readInt();
+         switch ($$1.a($$3, $$4)) {
+            case c:
+               return vg.b.c;
+            case b:
+               $$3.a($$0, $$4, $$2);
+               return $$1.b();
+            default:
+               $$2.a(4L, (long)$$4);
+               int $$5 = 0;
+
+               while (true) {
+                  label41: {
+                     if ($$5 < $$4) {
+                        switch ($$1.b($$3, $$5)) {
+                           case d:
+                              return vg.b.c;
+                           case c:
+                              $$3.b($$0, $$2);
+                              break;
+                           case b:
+                              $$3.b($$0, $$2);
+                              break label41;
+                           default:
+                              switch ($$3.a($$0, $$1, $$2)) {
+                                 case c:
+                                    return vg.b.c;
+                                 case b:
+                                    break;
+                                 default:
+                                    break label41;
+                              }
+                        }
+                     }
+
+                     int $$6 = $$4 - 1 - $$5;
+                     if ($$6 > 0) {
+                        $$3.a($$0, $$6, $$2);
+                     }
+
+                     return $$1.b();
+                  }
+
+                  $$5++;
+               }
          }
-      };
+      }
+
+      @Override
+      public void b(DataInput $$0, uv $$1) throws IOException {
+         $$1.b();
+
+         try {
+            vl<?> $$2 = vm.a($$0.readByte());
+            int $$3 = $$0.readInt();
+            $$2.a($$0, $$3, $$1);
+         } finally {
+            $$1.c();
+         }
+      }
+
+      @Override
+      public String a() {
+         return "LIST";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_List";
+      }
+   };
+   private final List<vj> c;
+   private byte w;
+
+   us(List<vj> $$0, byte $$1) {
+      this.c = $$0;
+      this.w = $$1;
    }
 
-   private static void a(BiConsumer<String, String> $$0, String $$1) {
-      try (InputStream $$2 = us.class.getResourceAsStream($$1)) {
-         a($$2, $$0);
-      } catch (JsonParseException | IOException var7) {
-         b.error("Couldn't read strings from {}", $$1, var7);
+   public us() {
+      this(Lists.newArrayList(), (byte)0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      if (this.c.isEmpty()) {
+         this.w = 0;
+      } else {
+         this.w = this.c.get(0).b();
+      }
+
+      $$0.writeByte(this.w);
+      $$0.writeInt(this.c.size());
+
+      for (vj $$1 : this.c) {
+         $$1.a($$0);
       }
    }
 
-   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
-      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
+   @Override
+   public int a() {
+      int $$0 = 37;
+      $$0 += 4 * this.c.size();
 
-      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(azu.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
-         $$1.accept($$3.getKey(), $$4);
+      for (vj $$1 : this.c) {
+         $$0 += $$1.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public byte b() {
+      return 9;
+   }
+
+   @Override
+   public vl<us> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.u_();
+   }
+
+   private void g() {
+      if (this.c.isEmpty()) {
+         this.w = 0;
       }
    }
 
-   public static us a() {
-      return e;
+   @Override
+   public vj c(int $$0) {
+      vj $$1 = this.c.remove($$0);
+      this.g();
+      return $$1;
    }
 
-   public static void a(us $$0) {
-      e = $$0;
+   @Override
+   public boolean isEmpty() {
+      return this.c.isEmpty();
    }
 
-   public String a(String $$0) {
-      return this.a($$0, $$0);
+   public um a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         vj $$1 = this.c.get($$0);
+         if ($$1.b() == 10) {
+            return (um)$$1;
+         }
+      }
+
+      return new um();
    }
 
-   public abstract String a(String var1, String var2);
+   public us b(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         vj $$1 = this.c.get($$0);
+         if ($$1.b() == 9) {
+            return (us)$$1;
+         }
+      }
 
-   public abstract boolean b(String var1);
+      return new us();
+   }
 
-   public abstract boolean b();
+   public short d(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         vj $$1 = this.c.get($$0);
+         if ($$1.b() == 2) {
+            return ((ve)$$1).h();
+         }
+      }
 
-   public abstract azq a(ya var1);
+      return 0;
+   }
 
-   public List<azq> a(List<ya> $$0) {
-      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
+   public int e(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         vj $$1 = this.c.get($$0);
+         if ($$1.b() == 3) {
+            return ((ur)$$1).g();
+         }
+      }
+
+      return 0;
+   }
+
+   public int[] f(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         vj $$1 = this.c.get($$0);
+         if ($$1.b() == 11) {
+            return ((uq)$$1).g();
+         }
+      }
+
+      return new int[0];
+   }
+
+   public long[] g(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         vj $$1 = this.c.get($$0);
+         if ($$1.b() == 12) {
+            return ((ut)$$1).g();
+         }
+      }
+
+      return new long[0];
+   }
+
+   public double h(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         vj $$1 = this.c.get($$0);
+         if ($$1.b() == 6) {
+            return ((un)$$1).j();
+         }
+      }
+
+      return 0.0;
+   }
+
+   public float i(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         vj $$1 = this.c.get($$0);
+         if ($$1.b() == 5) {
+            return ((up)$$1).k();
+         }
+      }
+
+      return 0.0F;
+   }
+
+   public String j(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         vj $$1 = this.c.get($$0);
+         return $$1.b() == 8 ? $$1.u_() : $$1.toString();
+      } else {
+         return "";
+      }
+   }
+
+   @Override
+   public int size() {
+      return this.c.size();
+   }
+
+   public vj k(int $$0) {
+      return this.c.get($$0);
+   }
+
+   @Override
+   public vj d(int $$0, vj $$1) {
+      vj $$2 = this.k($$0);
+      if (!this.a($$0, $$1)) {
+         throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
+      } else {
+         return $$2;
+      }
+   }
+
+   @Override
+   public void c(int $$0, vj $$1) {
+      if (!this.b($$0, $$1)) {
+         throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, vj $$1) {
+      if (this.a($$1)) {
+         this.c.set($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, vj $$1) {
+      if (this.a($$1)) {
+         this.c.add($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(vj $$0) {
+      if ($$0.b() == 0) {
+         return false;
+      } else if (this.w == 0) {
+         this.w = $$0.b();
+         return true;
+      } else {
+         return this.w == $$0.b();
+      }
+   }
+
+   public us e() {
+      Iterable<vj> $$0 = (Iterable<vj>)(vm.a(this.w).d() ? this.c : Iterables.transform(this.c, vj::d));
+      List<vj> $$1 = Lists.newArrayList($$0);
+      return new us($$1, this.w);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof us && Objects.equals(this.c, ((us)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   @Override
+   public void a(vn $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public byte f() {
+      return this.w;
+   }
+
+   @Override
+   public void clear() {
+      this.c.clear();
+      this.w = 0;
+   }
+
+   @Override
+   public vg.b a(vg $$0) {
+      switch ($$0.a(vm.a(this.w), this.c.size())) {
+         case c:
+            return vg.b.c;
+         case b:
+            return $$0.b();
+         default:
+            int $$1 = 0;
+
+            while ($$1 < this.c.size()) {
+               vj $$2 = this.c.get($$1);
+               switch ($$0.b($$2.c(), $$1)) {
+                  case d:
+                     return vg.b.c;
+                  case c:
+                     return $$0.b();
+                  default:
+                     switch ($$2.a($$0)) {
+                        case c:
+                           return vg.b.c;
+                        case b:
+                           return $$0.b();
+                     }
+                  case b:
+                     $$1++;
+               }
+            }
+
+            return $$0.b();
+      }
    }
 }

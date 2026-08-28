@@ -1,29 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class ekb {
-   public static final Codec<ekb> a = ma.Y.q().dispatch(ekb::b, ekc::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class ekb extends eka {
+   public static final MapCodec<ekb> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ekb::new));
 
-   protected static <S extends ekb> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public ekb(bsf $$0, bsf $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public ekb(OptionalInt $$0) {
-      this.c = $$0;
+   @Override
+   protected ekg<?> a() {
+      return ekg.e;
    }
 
-   protected abstract ekc<?> b();
+   @Override
+   protected void a(dhf $$0, ekf.b $$1, bac $$2, ejp $$3, int $$4, ekf.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
 
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
+   @Override
+   protected boolean a(bac $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

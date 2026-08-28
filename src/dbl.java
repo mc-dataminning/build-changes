@@ -1,69 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbl extends dbu {
-   public dbl(dbr $$0) {
-      super($$0);
-   }
+public abstract class dbl implements dbk {
+   private final dbi c;
 
-   public boolean a(dbs $$0, dhi $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxp $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.a(ayd.bR)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else {
-                  if (!($$5.h() instanceof cwn)) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public cxp a(dbs $$0, js.a $$1) {
-      List<cwn> $$2 = new ArrayList<>();
-      cxp $$3 = cxp.j;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxp $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(ayd.bR)) {
-               if (!$$3.f()) {
-                  return cxp.j;
-               }
-
-               $$3 = $$5.v();
-            } else {
-               if (!($$5.h() instanceof cwn $$6)) {
-                  return cxp.j;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.f() && !$$2.isEmpty() ? dad.a($$3, $$2) : cxp.j;
+   public dbl(dbi $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public dco<dbl> a() {
-      return dco.c;
+   public boolean aq_() {
+      return true;
+   }
+
+   @Override
+   public dbi c() {
+      return this.c;
+   }
+
+   @Override
+   public dbu ap_() {
+      return dbu.a;
+   }
+
+   @Override
+   public abstract dcf<? extends dbl> a();
+
+   public static class a<T extends dbk> implements dcf<T> {
+      private final MapCodec<T> w;
+      private final zi<wv, T> x;
+
+      public a(dbl.a.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(dbi.e.fieldOf("category").orElse(dbi.d).forGetter(dbk::c)).apply($$1, $$0::create));
+         this.x = zi.a(dbi.g, dbk::c, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public zi<wv, T> b() {
+         return this.x;
+      }
+
+      @FunctionalInterface
+      public interface a<T extends dbk> {
+         T create(dbi var1);
+      }
    }
 }

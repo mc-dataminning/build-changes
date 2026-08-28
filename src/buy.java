@@ -1,16 +1,38 @@
-class buy extends bun {
-   protected buy(buo $$0, int $$1) {
-      super($$0, $$1, ls.y);
+public class buy {
+   public static final buy a = new buy(0.75F, 0.5F, 0.25F);
+   public static final buy b = new buy(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
+
+   private buy(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Override
-   public void a(ash $$0, bwg $$1, int $$2, bvk.d $$3) {
-      if ($$3 == bvk.d.a) {
-         double $$4 = $$1.dB();
-         double $$5 = $$1.dD() + (double)($$1.ds() / 2.0F);
-         double $$6 = $$1.dH();
-         float $$7 = 3.0F + $$1.dZ().i() * 2.0F;
-         $$0.a($$1, null, crg.d, $$4, $$5, $$6, $$7, false, dhi.a.e, ls.A, ls.z, axf.cQ);
+   public buy.a a(float $$0) {
+      if ($$0 < this.e) {
+         return buy.a.d;
+      } else if ($$0 < this.d) {
+         return buy.a.c;
+      } else {
+         return $$0 < this.c ? buy.a.b : buy.a.a;
       }
+   }
+
+   public buy.a a(cxg $$0) {
+      return !$$0.m() ? buy.a.a : this.a($$0.o(), $$0.p());
+   }
+
+   public buy.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

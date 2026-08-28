@@ -1,13 +1,11 @@
-import javax.annotation.Nullable;
+public class gyp extends gyo {
+   public cjv.d a;
+   public boolean b;
+   public cxg c;
+   public boolean d;
 
-public class gyp extends gxp {
-   @Nullable
-   public bvi.g.a a;
-   @Nullable
-   public hdn f;
-
-   @Override
-   public boolean a() {
-      return this.a != null && this.f != null;
+   public gyp() {
+      this.a = cjv.d.a;
+      this.c = cxg.j;
    }
 }

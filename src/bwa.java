@@ -1,38 +1,57 @@
 import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
 
-public enum bwa implements bah, bba {
-   a(0, "left", "options.mainHand.left"),
-   b(1, "right", "options.mainHand.right");
+public enum bwa implements baq {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
 
-   public static final Codec<bwa> c = bba.a(bwa::values);
-   public static final IntFunction<bwa> d = ayv.a(bwa::b, values(), ayv.a.a);
-   private final int e;
-   private final String f;
-   private final String g;
+   public static final Codec<bwa> i = baq.a(bwa::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
 
-   private bwa(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private bwa(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
    }
 
-   public bwa e() {
-      return this == a ? b : a;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
    public String a() {
-      return this.g;
+      return this.m;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.m;
+   }
+
+   public int b() {
+      return this.j;
+   }
+
+   public boolean d() {
+      return this.k;
+   }
+
+   public boolean e() {
+      return this.l;
+   }
+
+   public int f() {
+      return this.o;
+   }
+
+   public int g() {
+      return 32;
    }
 }

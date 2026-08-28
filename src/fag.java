@@ -1,61 +1,16 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record fag(Optional<Long> b, ewo c) implements ezy {
-   public static final MapCodec<fag> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(fag::c), ewo.a.fieldOf("value").forGetter(fag::d)).apply($$0, fag::new)
+public class fag {
+   private static final Codec<faf> d = ma.H.q().dispatch(faf::a, fae::a);
+   public static final Codec<faf> a = Codec.lazyInitialized(
+      () -> Codec.either(fad.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fad $$1 ? Either.left($$1) : Either.right($$0))
    );
+   public static final fae b = a("storage", fah.a);
+   public static final fae c = a("context", fad.b);
 
-   @Override
-   public ezz b() {
-      return faa.q;
-   }
-
-   @Override
-   public Set<bbn<?>> a() {
-      return this.c.a();
-   }
-
-   public boolean a(ewp $$0) {
-      ash $$1 = $$0.d();
-      long $$2 = $$1.ad();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
-   }
-
-   public static fag.a a(ewo $$0) {
-      return new fag.a($$0);
-   }
-
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public ewo d() {
-      return this.c;
-   }
-
-   public static class a implements ezy.a {
-      private Optional<Long> a = Optional.empty();
-      private final ewo b;
-
-      public a(ewo $$0) {
-         this.b = $$0;
-      }
-
-      public fag.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public fag a() {
-         return new fag(this.a, this.b);
-      }
+   private static fae a(String $$0, MapCodec<? extends faf> $$1) {
+      return kd.a(ma.H, alp.b($$0), new fae($$1));
    }
 }

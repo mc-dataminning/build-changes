@@ -1,92 +1,48 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class dcd {
-   public static final dcd a = new dcd(List.of(), List.of(), List.of());
-   private final List<dca> b;
-   private final List<cqb.a<jq<cxl>>> c;
-   private final List<Optional<dcd.a>> d;
+   public static final dcd a = new dcd(ImmutableMultimap.of(), Map.of());
+   private final Multimap<dcg<?>, dca<?>> b;
+   private final Map<alo<dbv<?>>, dca<?>> c;
 
-   private dcd(List<dca> $$0, List<cqb.a<jq<cxl>>> $$1, List<Optional<dcd.a>> $$2) {
+   private dcd(Multimap<dcg<?>, dca<?>> $$0, Map<alo<dbv<?>>, dca<?>> $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   public static cqb.a<jq<cxl>> a(dca $$0) {
-      return cqc.a($$0.a().stream());
-   }
+   public static dcd a(Iterable<dca<?>> $$0) {
+      Builder<dcg<?>, dca<?>> $$1 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<alo<dbv<?>>, dca<?>> $$2 = ImmutableMap.builder();
 
-   public static dcd b(dca $$0) {
-      if ($$0.a().isEmpty()) {
-         return a;
-      } else {
-         cqb.a<jq<cxl>> $$1 = a($$0);
-         dcd.a $$2 = new dcd.a(0);
-         return new dcd(List.of($$0), List.of($$1), List.of(Optional.of($$2)));
-      }
-   }
-
-   public static dcd a(List<Optional<dca>> $$0) {
-      int $$1 = $$0.size();
-      List<dca> $$2 = new ArrayList<>($$1);
-      List<cqb.a<jq<cxl>>> $$3 = new ArrayList<>($$1);
-      List<Optional<dcd.a>> $$4 = new ArrayList<>($$1);
-      int $$5 = 0;
-
-      for (Optional<dca> $$6 : $$0) {
-         if ($$6.isPresent()) {
-            dca $$7 = $$6.get();
-            if ($$7.a().isEmpty()) {
-               return a;
-            }
-
-            $$2.add($$7);
-            $$3.add(a($$7));
-            $$4.add(Optional.of(new dcd.a($$5++)));
-         } else {
-            $$4.add(Optional.empty());
-         }
+      for (dca<?> $$3 : $$0) {
+         $$1.put($$3.b().b(), $$3);
+         $$2.put($$3.a(), $$3);
       }
 
-      return new dcd($$2, $$3, $$4);
+      return new dcd($$1.build(), $$2.build());
    }
 
-   public static dcd b(List<dca> $$0) {
-      int $$1 = $$0.size();
-      List<cqb.a<jq<cxl>>> $$2 = new ArrayList<>($$1);
-      List<Optional<dcd.a>> $$3 = new ArrayList<>($$1);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         dca $$5 = $$0.get($$4);
-         if ($$5.a().isEmpty()) {
-            return a;
-         }
-
-         $$2.add(a($$5));
-         $$3.add(Optional.of(new dcd.a($$4)));
-      }
-
-      return new dcd($$0, $$2, $$3);
+   public <I extends dcb, T extends dbv<I>> Collection<dca<T>> a(dcg<T> $$0) {
+      return this.b.get($$0);
    }
 
-   public List<Optional<dcd.a>> a() {
-      return this.d;
+   public Collection<dca<?>> a() {
+      return this.c.values();
    }
 
-   public List<dca> b() {
-      return this.b;
+   @Nullable
+   public dca<?> a(alo<dbv<?>> $$0) {
+      return this.c.get($$0);
    }
 
-   public List<cqb.a<jq<cxl>>> c() {
-      return this.c;
-   }
-
-   public boolean d() {
-      return this.d.isEmpty();
-   }
-
-   public static record a(int a) {
+   public <I extends dcb, T extends dbv<I>> Stream<dca<T>> a(dcg<T> $$0, I $$1, dgz $$2) {
+      return $$1.b() ? Stream.empty() : this.a($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2));
    }
 }

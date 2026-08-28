@@ -1,36 +1,19 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import java.util.List;
 
-public enum cxr implements bba {
-   a(0, "none"),
-   b(1, "eat"),
-   c(2, "drink"),
-   d(3, "block"),
-   e(4, "bow"),
-   f(5, "spear"),
-   g(6, "crossbow"),
-   h(7, "spyglass"),
-   i(8, "toot_horn"),
-   j(9, "brush");
-
-   private static final IntFunction<cxr> m = ayv.a(cxr::a, values(), ayv.a.a);
-   public static final Codec<cxr> k = bba.a(cxr::values);
-   public static final zt<ByteBuf, cxr> l = zr.a(m, cxr::a);
-   private final int n;
-   private final String o;
-
-   private cxr(final int $$0, final String $$1) {
-      this.n = $$0;
-      this.o = $$1;
-   }
-
-   public int a() {
-      return this.n;
+public class cxr extends cyv {
+   public cxr(cxc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.o;
+   public void a(cxg $$0, cxc.b $$1, List<xk> $$2, cyy $$3) {
+      czf $$4 = $$0.a(ku.Q, czf.a);
+      $$4.a($$2::add, 0.25F, $$1.b());
+   }
+
+   @Override
+   public bta a(dgz $$0, cpo $$1, bsz $$2) {
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awv.ov, aww.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

@@ -1,29 +1,36 @@
-public class aay implements aac<aav> {
-   public static final zt<ws, aay> a = aac.a(aay::a, aay::new);
-   private final long b;
+public record aay(jh c, int d, String e, int f) implements aau {
+   public static final zi<wh, aay> a = aau.a(aay::a, aay::new);
+   public static final aau.b<aay> b = aau.a("debug/game_test_add_marker");
 
-   public aay(long $$0) {
-      this.b = $$0;
+   private aay(wh $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private aay(ws $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(ws $$0) {
-      $$0.b(this.b);
+   private void a(wh $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
+      $$0.q(this.f);
    }
 
    @Override
-   public aae<aay> a() {
-      return aau.n;
+   public aau.b<aay> a() {
+      return b;
    }
 
-   public void a(aav $$0) {
-      $$0.a(this);
+   public jh b() {
+      return this.c;
    }
 
-   public long b() {
-      return this.b;
+   public int c() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
    }
 }

@@ -1,18 +1,8 @@
-public class amw implements Runnable {
-   private final int a;
-   private final Runnable b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public amw(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   @Override
-   public void run() {
-      this.b.run();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface amw {
 }

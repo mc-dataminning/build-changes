@@ -1,24 +1,50 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 import java.util.Map;
-import java.util.Optional;
+import java.util.function.Function;
 
-public class bir extends bht {
-   public bir(Schema $$0) {
-      super($$0, true, "PrimedTnt BlockState fixer", bix.B, "minecraft:tnt");
+public class bir extends DataFix {
+   final String a;
+   final Map<String, String> b;
+
+   public bir(Schema $$0, String $$1, Map<String, String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Fuse").get().result();
-      return $$1.isPresent() ? $$0.set("fuse", $$1.get()) : $$0;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bin.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
    }
 
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return $$0.set("block_state", $$0.createMap(Map.of($$0.createString("Name"), $$0.createString("minecraft:tnt"))));
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = this.a($$0, "Enchantments");
+      return this.a($$0, "StoredEnchantments");
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b(c($$0));
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update(
+         $$1,
+         $$0x -> (Dynamic)$$0x.asStreamOpt()
+               .map(
+                  $$0xx -> $$0xx.map(
+                        $$0xxx -> $$0xxx.update(
+                              "id",
+                              $$1x -> (Dynamic)$$1x.asString()
+                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault(bkb.a($$1xx), $$1xx)))
+                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
+                           )
+                     )
+               )
+               .map($$0x::createList)
+               .mapOrElse(Function.identity(), $$1x -> $$0x)
+      );
    }
 }

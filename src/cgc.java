@@ -1,41 +1,30 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cgc extends cgq<bwg> {
-   private static final int a = 200;
-   private static final int b = 599;
-
-   public cgc() {
-      this(200);
-   }
-
-   public cgc(int $$0) {
-      super($$0);
+public class cgc extends cgh<bvx> {
+   @Override
+   public Set<cfb<?>> a() {
+      return ImmutableSet.of(cfb.h, cfb.M, cfb.an);
    }
 
    @Override
-   protected void a(ash $$0, bwg $$1) {
-      a($$1);
-   }
+   protected void a(arx $$0, bvx $$1) {
+      bwz<?> $$2 = $$1.ec();
+      List<cob> $$3 = Lists.newArrayList();
+      cfd $$4 = $$2.c(cfb.h).orElse(cfd.a());
+      Optional<bvz> $$5 = $$4.a($$0x -> $$0x instanceof cnf || $$0x instanceof clf).map(bvz.class::cast);
 
-   @Override
-   public Set<cfk<?>> a() {
-      return ImmutableSet.of(cfk.g);
-   }
-
-   public static void a(bwg $$0) {
-      Optional<List<bwg>> $$1 = $$0.ec().c(cfk.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bvr.aq));
-         if ($$2) {
-            b($$0);
+      for (bvx $$7 : $$2.c(cfb.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cob && ((cob)$$7).go()) {
+            $$3.add((cob)$$7);
          }
       }
-   }
 
-   public static void b(bwg $$0) {
-      $$0.ec().a(cfk.F, true, 599L);
+      $$2.a(cfb.M, $$5);
+      $$2.a(cfb.an, $$3);
    }
 }

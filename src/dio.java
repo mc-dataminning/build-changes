@@ -1,142 +1,84 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import java.util.Optional;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public abstract class dio implements din {
-   public static final Codec<dio> a = ma.Z.q().dispatchStable(dio::a, Function.identity());
-   private final Supplier<Set<jq<dik>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
+public class dio extends dif {
+   private static final MapCodec<jq<dib>> d = dib.c.fieldOf("biome");
+   public static final MapCodec<dik.c<jq<dib>>> b = dik.c.a(d).fieldOf("biomes");
+   private static final MapCodec<jq<dip>> e = dip.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final MapCodec<dio> c = Codec.mapEither(b, e).xmap(dio::new, $$0 -> $$0.f);
+   private final Either<dik.c<jq<dib>>, jq<dip>> f;
 
-   protected dio() {
+   private dio(Either<dik.c<jq<dib>>, jq<dip>> $$0) {
+      this.f = $$0;
    }
 
-   protected abstract MapCodec<? extends dio> a();
-
-   protected abstract Stream<jq<dik>> b();
-
-   public Set<jq<dik>> c() {
-      return this.b.get();
+   public static dio a(dik.c<jq<dib>> $$0) {
+      return new dio(Either.left($$0));
    }
 
-   public Set<jq<dik>> a(int $$0, int $$1, int $$2, int $$3, dit.f $$4) {
-      int $$5 = kb.a($$0 - $$3);
-      int $$6 = kb.a($$1 - $$3);
-      int $$7 = kb.a($$2 - $$3);
-      int $$8 = kb.a($$0 + $$3);
-      int $$9 = kb.a($$1 + $$3);
-      int $$10 = kb.a($$2 + $$3);
-      int $$11 = $$8 - $$5 + 1;
-      int $$12 = $$9 - $$6 + 1;
-      int $$13 = $$10 - $$7 + 1;
-      Set<jq<dik>> $$14 = Sets.newHashSet();
-
-      for (int $$15 = 0; $$15 < $$13; $$15++) {
-         for (int $$16 = 0; $$16 < $$11; $$16++) {
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               int $$18 = $$5 + $$16;
-               int $$19 = $$6 + $$17;
-               int $$20 = $$7 + $$15;
-               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
-            }
-         }
-      }
-
-      return $$14;
+   public static dio a(jq<dip> $$0) {
+      return new dio(Either.right($$0));
    }
 
-   @Nullable
-   public Pair<jh, jq<dik>> a(int $$0, int $$1, int $$2, int $$3, Predicate<jq<dik>> $$4, bam $$5, dit.f $$6) {
-      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
-   }
-
-   @Nullable
-   public Pair<jh, jq<dik>> a(jh $$0, int $$1, int $$2, int $$3, Predicate<jq<dik>> $$4, dit.f $$5, dhl $$6) {
-      Set<jq<dik>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
-      if ($$7.isEmpty()) {
-         return null;
-      } else {
-         int $$8 = Math.floorDiv($$1, $$2);
-         int[] $$9 = bae.a($$0.v(), $$6.L_() + 1, $$6.am() + 1, $$3).toArray();
-
-         for (jh.a $$10 : jh.a(jh.c, $$8, jm.f, jm.d)) {
-            int $$11 = $$0.u() + $$10.u() * $$2;
-            int $$12 = $$0.w() + $$10.w() * $$2;
-            int $$13 = kb.a($$11);
-            int $$14 = kb.a($$12);
-
-            for (int $$15 : $$9) {
-               int $$16 = kb.a($$15);
-               jq<dik> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
-               if ($$7.contains($$17)) {
-                  return Pair.of(new jh($$11, $$15, $$12), $$17);
-               }
-            }
-         }
-
-         return null;
-      }
-   }
-
-   @Nullable
-   public Pair<jh, jq<dik>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jq<dik>> $$5, bam $$6, boolean $$7, dit.f $$8) {
-      int $$9 = kb.a($$0);
-      int $$10 = kb.a($$2);
-      int $$11 = kb.a($$3);
-      int $$12 = kb.a($$1);
-      Pair<jh, jq<dik>> $$13 = null;
-      int $$14 = 0;
-      int $$15 = $$7 ? 0 : $$11;
-      int $$16 = $$15;
-
-      while ($$16 <= $$11) {
-         for (int $$17 = ab.ar ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
-            boolean $$18 = Math.abs($$17) == $$16;
-
-            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
-               if ($$7) {
-                  boolean $$20 = Math.abs($$19) == $$16;
-                  if (!$$20 && !$$18) {
-                     continue;
-                  }
-               }
-
-               int $$21 = $$9 + $$19;
-               int $$22 = $$10 + $$17;
-               jq<dik> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
-               if ($$5.test($$23)) {
-                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
-                     jh $$24 = new jh(kb.c($$21), $$1, kb.c($$22));
-                     if ($$7) {
-                        return Pair.of($$24, $$23);
-                     }
-
-                     $$13 = Pair.of($$24, $$23);
-                  }
-
-                  $$14++;
-               }
-            }
-         }
-
-         $$16 += $$4;
-      }
-
-      return $$13;
+   private dik.c<jq<dib>> d() {
+      return (dik.c<jq<dib>>)this.f.map($$0 -> $$0, $$0 -> ((dip)$$0.a()).a());
    }
 
    @Override
-   public abstract jq<dik> getNoiseBiome(int var1, int var2, int var3, dit.f var4);
+   protected Stream<jq<dib>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
+   }
 
-   public void a(List<String> $$0, jh $$1, dit.f $$2) {
+   @Override
+   protected MapCodec<? extends dif> a() {
+      return c;
+   }
+
+   public boolean a(alo<dip> $$0) {
+      Optional<jq<dip>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
+   }
+
+   @Override
+   public jq<dib> getNoiseBiome(int $$0, int $$1, int $$2, dik.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @bbb
+   public jq<dib> a(dik.h $$0) {
+      return this.d().a($$0);
+   }
+
+   @Override
+   public void a(List<String> $$0, jh $$1, dik.f $$2) {
+      int $$3 = kb.a($$1.u());
+      int $$4 = kb.a($$1.v());
+      int $$5 = kb.a($$1.w());
+      dik.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = dik.a($$6.d());
+      float $$8 = dik.a($$6.e());
+      float $$9 = dik.a($$6.b());
+      float $$10 = dik.a($$6.c());
+      float $$11 = dik.a($$6.g());
+      double $$12 = (double)edq.a($$11);
+      dir $$13 = new dir();
+      $$0.add(
+         "Biome builder PV: "
+            + dir.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
+      );
    }
 }

@@ -1,228 +1,135 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.UUID;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fkd extends hhw {
+public class fkd extends hhs {
    static final Logger a = LogUtils.getLogger();
-   private static final xv b = xv.c("mco.configure.world.players.title");
-   static final xv c = xv.c("mco.question");
-   private static final int C = 8;
-   final fru D = new fru(this);
-   private final fjs E;
-   final fij F;
+   private static final xk b = xk.c("mco.configure.world.subscription.title");
+   private static final xk c = xk.c("mco.configure.world.subscription.start");
+   private static final xk C = xk.c("mco.configure.world.subscription.timeleft");
+   private static final xk D = xk.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final xk E = xk.c("mco.configure.world.subscription.expired");
+   private static final xk F = xk.c("mco.configure.world.subscription.less_than_a_day");
+   private static final xk G = xk.c("mco.configure.world.subscription.unknown");
+   private static final xk H = xk.c("mco.configure.world.subscription.recurring.info");
+   private final ftr I;
+   final fic J;
+   final ftr K;
+   private xk L = G;
+   private xk M = G;
    @Nullable
-   private fkd.b G;
-   boolean H;
+   private fio.a N;
 
-   public fkd(fjs $$0, fij $$1) {
-      super(b);
-      this.E = $$0;
-      this.F = $$1;
+   public fkd(ftr $$0, fic $$1, ftr $$2) {
+      super(flq.a);
+      this.I = $$0;
+      this.J = $$1;
+      this.K = $$2;
    }
 
    @Override
    public void aT_() {
-      this.D.a(b, this.p);
-      this.G = this.D.c(new fkd.b());
-      this.E();
-      fry $$0 = this.D.b(fry.e().a(8));
-      $$0.a(fof.a(xv.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fjx(this.E, this, this.F))).a());
-      $$0.a(fof.a(xu.k, $$0x -> this.aP_()).a());
-      this.D.a($$1 -> {
-         fod var10000 = this.c($$1);
-      });
-      this.c();
+      this.a(this.J.a);
+      this.c(fny.a(xk.c("mco.configure.world.subscription.extend"), $$0 -> fso.a(this, ayq.a(this.J.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
+      if (this.J.j) {
+         this.c(
+            fny.a(xk.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fjx.b(this, xk.c("mco.configure.world.delete.question.line1"), $$0x -> this.E())))
+               .a(this.n / 2 - 100, g(10), 200, 20)
+               .a()
+         );
+      } else if (fgw.b() && this.J.u != null) {
+         this.c(new foi(this.n / 2 - 100, g(8), 200, 46, xk.a("mco.snapshot.subscription.info", this.J.u), this.p));
+      } else {
+         this.c(new foi(this.n / 2 - 100, g(8), 200, 46, H, this.p));
+      }
+
+      this.c(fny.a(xj.k, $$0 -> this.aP_()).a(this.n / 2 - 100, g(12), 200, 20).a());
    }
 
    @Override
-   protected void c() {
-      this.D.a();
-      if (this.G != null) {
-         this.G.a(this.n, this.D);
+   public xk i() {
+      return xj.b(b, c, this.M, C, this.L);
+   }
+
+   private void E() {
+      (new Thread("Realms-delete-realm") {
+         @Override
+         public void run() {
+            try {
+               fhb $$0 = fhb.a();
+               $$0.j(fkd.this.J.a);
+            } catch (fix var2) {
+               fkd.a.error("Couldn't delete world", var2);
+            }
+
+            fkd.this.m.execute(() -> fkd.this.m.a(fkd.this.K));
+         }
+      }).start();
+      this.m.a(this);
+   }
+
+   private void a(long $$0) {
+      fhb $$1 = fhb.a();
+
+      try {
+         fio $$2 = $$1.h($$0);
+         this.L = this.a($$2.b);
+         this.M = b($$2.a);
+         this.N = $$2.c;
+      } catch (fix var5) {
+         a.error("Couldn't get subscription", var5);
+         this.m.a(new fjp(var5, this.I));
       }
    }
 
-   void E() {
-      if (this.G != null) {
-         this.G.aI_().clear();
-
-         for (fif $$0 : this.F.h) {
-            this.G.aI_().add(new fkd.a($$0));
-         }
-      }
+   private static xk b(long $$0) {
+      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
+      $$1.setTimeInMillis($$0);
+      return xk.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
    }
 
    @Override
    public void aP_() {
-      this.F();
+      this.m.a(this.I);
    }
 
-   private void F() {
-      if (this.H) {
-         this.m.a(this.E.g());
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = this.n / 2 - 100;
+      $$0.a(this.p, b, this.n / 2, 17, -1);
+      $$0.b(this.p, c, $$4, g(0), -6250336);
+      $$0.b(this.p, this.M, $$4, g(1), -1);
+      if (this.N == fio.a.a) {
+         $$0.b(this.p, C, $$4, g(3), -6250336);
+      } else if (this.N == fio.a.b) {
+         $$0.b(this.p, D, $$4, g(3), -6250336);
+      }
+
+      $$0.b(this.p, this.L, $$4, g(4), -1);
+   }
+
+   private xk a(int $$0) {
+      if ($$0 < 0 && this.J.j) {
+         return E;
+      } else if ($$0 <= 1) {
+         return F;
       } else {
-         this.m.a(this.E);
-      }
-   }
-
-   class a extends fol.a<fkd.a> {
-      private static final xv b = xv.c("mco.configure.world.invites.normal.tooltip");
-      private static final xv c = xv.c("mco.configure.world.invites.ops.tooltip");
-      private static final xv d = xv.c("mco.configure.world.invites.remove.tooltip");
-      private static final alz e = alz.b("player_list/make_operator");
-      private static final alz f = alz.b("player_list/remove_operator");
-      private static final alz g = alz.b("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final fif j;
-      private final fof k;
-      private final fof l;
-      private final fof m;
-
-      public a(final fif $$0) {
-         this.j = $$0;
-         int $$1 = fkd.this.F.h.indexOf(this.j);
-         this.l = fpl.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fkd.this.p.a(b))
-            .a($$1x -> xu.a(xv.a("mco.invited.player.narration", $$0.a()), (xv)$$1x.get(), xv.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = fpl.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fkd.this.p.a(c))
-            .a($$1x -> xu.a(xv.a("mco.invited.player.narration", $$0.a()), (xv)$$1x.get(), xv.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = fpl.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fkd.this.p.a(d))
-            .a($$1x -> xu.a(xv.a("mco.invited.player.narration", $$0.a()), (xv)$$1x.get()))
-            .a();
-         this.c();
-      }
-
-      private void a(int $$0) {
-         fhi $$1 = fhi.a();
-         UUID $$2 = fkd.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fkd.this.F.a, $$2));
-         } catch (fje var5) {
-            fkd.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void b(int $$0) {
-         fhi $$1 = fhi.a();
-         UUID $$2 = fkd.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fkd.this.F.a, $$2));
-         } catch (fje var5) {
-            fkd.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fkd.this.F.h.size()) {
-            fif $$1 = fkd.this.F.h.get($$0);
-            fjt $$2 = new fjt($$2x -> {
-               if ($$2x) {
-                  fhi $$3 = fhi.a();
-
-                  try {
-                     $$3.a(fkd.this.F.a, $$1.b());
-                  } catch (fje var6) {
-                     fkd.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fkd.this.F.h.remove($$0);
-                  fkd.this.E();
-               }
-
-               fkd.this.H = true;
-               fkd.this.m.a(fkd.this);
-            }, fkd.c, xv.a("mco.configure.world.uninvite.player", $$1.a()));
-            fkd.this.m.a($$2);
-         }
-      }
-
-      private void a(fib $$0) {
-         for (fif $$1 : fkd.this.F.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private fof g() {
-         return this.l.k ? this.l : this.m;
-      }
-
-      @Override
-      public List<? extends fqd> aI_() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public List<? extends fsb> b() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public void a(fns $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
+         int $$1 = $$0 / 30;
+         int $$2 = $$0 % 30;
+         boolean $$3 = $$1 > 0;
+         boolean $$4 = $$2 > 0;
+         if ($$3 && $$4) {
+            return xk.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+         } else if ($$3) {
+            return xk.a("mco.configure.world.subscription.remaining.months", $$1);
          } else {
-            $$10 = -1;
+            return $$4 ? xk.a("mco.configure.world.subscription.remaining.days", $$2) : xk.i();
          }
-
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fkx.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.a(fkd.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.y();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.g().y() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
-      }
-   }
-
-   class b extends fol<fkd.a> {
-      private static final int m = 36;
-
-      public b() {
-         super(fmg.Q(), fkd.this.n, fkd.this.D.d(), fkd.this.D.c(), 36);
-         this.a(true, (int)(9.0F * 1.5F));
-      }
-
-      @Override
-      protected void a(fns $$0, int $$1, int $$2) {
-         String $$3 = fkd.this.F.h != null ? Integer.toString(fkd.this.F.h.size()) : "0";
-         xv $$4 = xv.a("mco.configure.world.invited.number", $$3).a(n.t);
-         $$0.a(fkd.this.p, $$4, $$1 + this.a() / 2 - fkd.this.p.a($$4) / 2, $$2, -1, false);
-      }
-
-      @Override
-      public int a() {
-         return 300;
       }
    }
 }

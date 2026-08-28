@@ -1,41 +1,36 @@
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class hhn implements hhq {
-   private static final int a = 600;
-   private static final xv b = xv.c("tutorial.open_inventory.title");
-   private static final xv c = xv.a("tutorial.open_inventory.description", hhp.a("inventory"));
-   private final hhp d;
-   @Nullable
-   private fqs e;
-   private int f;
+public enum hhn {
+   a("movement", hhi::new),
+   b("find_tree", hhh::new),
+   c("punch_tree", hhk::new),
+   d("open_inventory", hhj::new),
+   e("craft_planks", hhg::new),
+   f("none", hhf::new);
 
-   public hhn(hhp $$0) {
-      this.d = $$0;
+   private final String g;
+   private final Function<hhl, ? extends hhm> h;
+
+   private <T extends hhm> hhn(final String $$0, final Function<hhl, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hhr.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fqs(fqs.a.d, b, c, false);
-            this.d.e().aA().a(this.e);
+   public hhm a(hhl $$0) {
+      return this.h.apply($$0);
+   }
+
+   public String a() {
+      return this.g;
+   }
+
+   public static hhn a(String $$0) {
+      for (hhn $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
          }
       }
-   }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.d();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(hhr.e);
+      return f;
    }
 }

@@ -1,37 +1,52 @@
-public class afq implements aac<acr> {
-   public static final zt<ws, afq> a = aac.a(afq::a, afq::new);
-   private final double b;
-   private final double c;
+import java.util.ArrayList;
+import java.util.List;
 
-   public afq(dzl $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
+public record afq(int c, List<akw.c<?>> d) implements zr<acg> {
+   public static final zi<wv, afq> a = zr.a(afq::b, afq::new);
+   public static final int b = 255;
+
+   private afq(wv $$0) {
+      this($$0.l(), a($$0));
    }
 
-   private afq(ws $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
+   private static void a(List<akw.c<?>> $$0, wv $$1) {
+      for (akw.c<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.l(255);
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private static List<akw.c<?>> a(wv $$0) {
+      List<akw.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(akw.c.a($$0, $$2));
+      }
+
+      return $$1;
+   }
+
+   private void b(wv $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public aae<afq> a() {
-      return ahk.av;
+   public zt<afq> a() {
+      return agz.aF;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public int b() {
       return this.c;
    }
 
-   public double e() {
-      return this.b;
+   public List<akw.c<?>> e() {
+      return this.d;
    }
 }

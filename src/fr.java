@@ -11,9 +11,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fr implements ArgumentType<fdg> {
+public class fr implements ArgumentType<fcz> {
    private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xv.b("argument.criteria.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xk.b("argument.criteria.invalid", $$0));
 
    private fr() {
    }
@@ -22,11 +22,11 @@ public class fr implements ArgumentType<fdg> {
       return new fr();
    }
 
-   public static fdg a(CommandContext<ew> $$0, String $$1) {
-      return (fdg)$$0.getArgument($$1, fdg.class);
+   public static fcz a(CommandContext<ew> $$0, String $$1) {
+      return (fcz)$$0.getArgument($$1, fcz.class);
    }
 
-   public fdg a(StringReader $$0) throws CommandSyntaxException {
+   public fcz a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
 
       while ($$0.canRead() && $$0.peek() != ' ') {
@@ -34,16 +34,16 @@ public class fr implements ArgumentType<fdg> {
       }
 
       String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-      return fdg.a($$2).orElseThrow(() -> {
+      return fcz.a($$2).orElseThrow(() -> {
          $$0.setCursor($$1);
          return a.createWithContext($$0, $$2);
       });
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList(fdg.c());
+      List<String> $$2 = Lists.newArrayList(fcz.c());
 
-      for (axo<?> $$3 : ma.v) {
+      for (axe<?> $$3 : ma.v) {
          for (Object $$4 : $$3.b()) {
             String $$5 = this.a($$3, $$4);
             $$2.add($$5);
@@ -53,8 +53,8 @@ public class fr implements ArgumentType<fdg> {
       return fb.b($$2, $$1);
    }
 
-   public <T> String a(axo<T> $$0, Object $$1) {
-      return axm.a($$0, (T)$$1);
+   public <T> String a(axe<T> $$0, Object $$1) {
+      return axc.a($$0, (T)$$1);
    }
 
    public Collection<String> getExamples() {

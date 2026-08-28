@@ -1,77 +1,72 @@
-import com.google.common.base.Stopwatch;
-import java.io.File;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.TimeUnit;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import java.util.function.Consumer;
 
-public class ub implements up {
-   private final Document a;
-   private final Element b;
-   private final Stopwatch c;
-   private final File d;
-
-   public ub(File $$0) throws ParserConfigurationException {
-      this.d = $$0;
-      this.a = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-      this.b = this.a.createElement("testsuite");
-      Element $$1 = this.a.createElement("testsuite");
-      $$1.appendChild(this.b);
-      this.a.appendChild($$1);
-      this.b.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
-      this.c = Stopwatch.createStarted();
+public record ub(String a, String b, String c, dqv d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<tg> l) {
+   public ub(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<tg> $$6) {
+      this($$0, $$1, $$2, dqv.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
    }
 
-   private Element a(ts $$0, String $$1) {
-      Element $$2 = this.a.createElement("testcase");
-      $$2.setAttribute("name", $$1);
-      $$2.setAttribute("classname", $$0.t());
-      $$2.setAttribute("time", String.valueOf((double)$$0.l() / 1000.0));
-      this.b.appendChild($$2);
-      return $$2;
+   public ub(String $$0, String $$1, String $$2, dqv $$3, int $$4, long $$5, boolean $$6, Consumer<tg> $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
+   }
+
+   public void a(tg $$0) {
+      this.l.accept($$0);
    }
 
    @Override
-   public void a(ts $$0) {
-      String $$1 = $$0.b();
-      String $$2 = $$0.n().getMessage();
-      Element $$3 = this.a.createElement($$0.r() ? "failure" : "skipped");
-      $$3.setAttribute("message", "(" + $$0.d().x() + ") " + $$2);
-      Element $$4 = this.a($$0, $$1);
-      $$4.appendChild($$3);
+   public String toString() {
+      return this.b;
    }
 
-   @Override
-   public void b(ts $$0) {
-      String $$1 = $$0.b();
-      this.a($$0, $$1);
+   public boolean a() {
+      return this.i > 1;
    }
 
-   @Override
-   public void a() {
-      this.c.stop();
-      this.b.setAttribute("time", String.valueOf((double)this.c.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
-
-      try {
-         this.a(this.d);
-      } catch (TransformerException var2) {
-         throw new Error("Couldn't save test report", var2);
-      }
+   public String b() {
+      return this.a;
    }
 
-   public void a(File $$0) throws TransformerException {
-      TransformerFactory $$1 = TransformerFactory.newInstance();
-      Transformer $$2 = $$1.newTransformer();
-      DOMSource $$3 = new DOMSource(this.a);
-      StreamResult $$4 = new StreamResult($$0);
-      $$2.transform($$3, $$4);
+   public String c() {
+      return this.b;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public dqv e() {
+      return this.d;
+   }
+
+   public int f() {
+      return this.e;
+   }
+
+   public long g() {
+      return this.f;
+   }
+
+   public boolean h() {
+      return this.g;
+   }
+
+   public boolean i() {
+      return this.h;
+   }
+
+   public int j() {
+      return this.i;
+   }
+
+   public int k() {
+      return this.j;
+   }
+
+   public boolean l() {
+      return this.k;
+   }
+
+   public Consumer<tg> m() {
+      return this.l;
    }
 }

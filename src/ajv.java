@@ -1,41 +1,46 @@
-public record ajv(int b, aki c) implements aac<aju> {
-   public static final zt<ws, ajv> a = aac.a(ajv::a, ajv::new);
-   private static final int d = 1048576;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Arrays;
+import javax.crypto.SecretKey;
 
-   private ajv(ws $$0) {
-      this($$0.l(), a($$0.q(), $$0));
+public class ajv implements zr<ajs> {
+   public static final zi<wh, ajv> a = zr.a(ajv::a, ajv::new);
+   private final byte[] b;
+   private final byte[] c;
+
+   public ajv(SecretKey $$0, PublicKey $$1, byte[] $$2) throws ayt {
+      this.b = ays.a($$1, $$0.getEncoded());
+      this.c = ays.a($$1, $$2);
    }
 
-   private static aki a(alz $$0, ws $$1) {
-      return b($$0, $$1);
+   private ajv(wh $$0) {
+      this.b = $$0.b();
+      this.c = $$0.b();
    }
 
-   private static akk b(alz $$0, ws $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.k($$2);
-         return new akk($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void a(ws $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aae<ajv> a() {
-      return aka.a;
+   public zt<ajv> a() {
+      return ajq.h;
    }
 
-   public void a(aju $$0) {
+   public void a(ajs $$0) {
       $$0.a(this);
    }
 
-   public aki e() {
-      return this.c;
+   public SecretKey a(PrivateKey $$0) throws ayt {
+      return ays.a($$0, this.b);
+   }
+
+   public boolean a(byte[] $$0, PrivateKey $$1) {
+      try {
+         return Arrays.equals($$0, ays.b($$1, this.c));
+      } catch (ayt var4) {
+         return false;
+      }
    }
 }

@@ -1,40 +1,30 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddk(ddl b, ddj c, OptionalInt d, dch e, Optional<List<dca>> f) {
-   public static final zt<xg, ddk> a = zt.a(ddl.a, ddk::a, ddj.e, ddk::b, zr.i, ddk::c, zr.a(mb.aH), ddk::d, dca.a.a(zr.a()).a(zr::a), ddk::e, ddk::new);
+public record ddk(ddg f, ddg g, ddg h) implements dda {
+   public static final MapCodec<ddk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ddg.a.fieldOf("input").forGetter(ddk::b), ddg.a.fieldOf("result").forGetter(ddk::d), ddg.a.fieldOf("crafting_station").forGetter(ddk::e))
+            .apply($$0, ddk::new)
+   );
+   public static final zi<wv, ddk> b = zi.a(ddg.b, ddk::b, ddg.b, ddk::d, ddg.b, ddk::e, ddk::new);
+   public static final dda.a<ddk> c = new dda.a<>(a, b);
 
-   public List<cxp> a(bbp $$0) {
-      return this.c.d().a($$0);
+   @Override
+   public dda.a<ddk> a() {
+      return c;
    }
 
-   public boolean a(cqc $$0) {
-      if (this.f.isEmpty()) {
-         return false;
-      } else {
-         List<cqb.a<jq<cxl>>> $$1 = this.f.get().stream().map(dcd::a).toList();
-         return $$0.a($$1, null);
-      }
-   }
-
-   public ddl a() {
-      return this.b;
-   }
-
-   public ddj b() {
-      return this.c;
-   }
-
-   public OptionalInt c() {
-      return this.d;
-   }
-
-   public dch d() {
-      return this.e;
-   }
-
-   public Optional<List<dca>> e() {
+   public ddg b() {
       return this.f;
+   }
+
+   @Override
+   public ddg d() {
+      return this.g;
+   }
+
+   @Override
+   public ddg e() {
+      return this.h;
    }
 }

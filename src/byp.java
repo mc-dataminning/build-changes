@@ -1,79 +1,101 @@
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class byp<E extends bwg & cph> extends bxz<E> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private final Function<bwg, Optional<bzn>> e;
-   private final float f;
+public class byp extends bxq<bvz> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
+   private final float g;
+   @Nullable
+   private jh h;
+   private int i;
+   private int j;
+   private int k;
 
-   public byp(Function<bwg, Optional<bzn>> $$0, float $$1, int $$2) {
-      super(Map.of(cfk.n, cfl.c, cfk.m, cfl.c, cfk.aP, cfl.c), $$2);
-      this.e = $$0;
-      this.f = $$1;
+   public byp(float $$0) {
+      super(ImmutableMap.of(cfb.w, cfc.a, cfb.m, cfc.b));
+      this.g = $$0;
+   }
+
+   protected boolean a(arx $$0, bvz $$1) {
+      return $$1.e_() && this.b($$0, $$1);
+   }
+
+   protected void a(arx $$0, bvz $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.A.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
+   }
+
+   protected void b(arx $$0, bvz $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   protected boolean c(arx $$0, bvz $$1, long $$2) {
+      return $$1.e_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
    }
 
    @Override
-   protected boolean a(ash $$0, E $$1) {
-      return this.b($$1);
+   protected boolean a(long $$0) {
+      return false;
    }
 
-   @Override
-   protected boolean a(ash $$0, E $$1, long $$2) {
-      return this.b($$1);
-   }
-
-   @Override
-   protected void d(ash $$0, E $$1, long $$2) {
-      this.e.apply($$1).ifPresent($$1x -> byb.a($$1, $$1x, this.f, 3));
-   }
-
-   @Override
-   protected void c(ash $$0, E $$1, long $$2) {
-      Optional<bzn> $$3 = this.e.apply($$1);
-      if (!$$3.isEmpty()) {
-         bzn $$4 = $$3.get();
-         double $$5 = $$4.a().f($$1.bF());
-         if ($$5 < 3.0) {
-            cxp $$6 = $$1.t().a(0, 1);
-            if (!$$6.f()) {
-               a($$1, $$6, a($$4));
-               if ($$1 instanceof cjd $$7) {
-                  cje.a((bwg)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
-               }
-
-               $$1.ec().a(cfk.aP, 60);
-            }
+   protected void d(arx $$0, bvz $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
+      } else {
+         if (this.d($$0, $$1)) {
+            $$1.J().a();
+            this.j--;
+            this.k = 5;
          }
       }
    }
 
-   private void a(bzn $$0, cxp $$1, asi $$2) {
-      jh $$3 = $$0.b().e();
-      ao.aa.a($$2, $$3, $$1);
+   private void a(bvz $$0, jh $$1) {
+      $$0.ec().a(cfb.m, new cfe($$1, this.g, 0));
    }
 
-   private boolean b(E $$0) {
-      if ($$0.t().c()) {
-         return false;
-      } else {
-         Optional<bzn> $$1 = this.e.apply($$0);
-         return $$1.isPresent();
-      }
+   private boolean b(arx $$0, bvz $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
    }
 
-   private static fby a(bzn $$0) {
-      return $$0.a().b(0.0, 1.0, 0.0);
+   private boolean c(arx $$0, bvz $$1) {
+      jh $$2 = $$1.dw();
+      jh $$3 = $$2.e();
+      return this.a($$0, $$2) || this.a($$0, $$3);
    }
 
-   public static void a(bwg $$0, cxp $$1, fby $$2) {
-      fby $$3 = new fby(0.2F, 0.3F, 0.2F);
-      byb.a($$0, $$1, $$2, $$3, 0.2F);
-      dhi $$4 = $$0.dW();
-      if ($$4.ac() % 7L == 0L && $$4.A.j() < 0.9) {
-         float $$5 = ae.<Float>a(cjd.d, $$4.H_());
-         $$4.a(null, $$0, axf.g, axg.g, 1.0F, $$5);
-      }
+   private boolean d(arx $$0, bvz $$1) {
+      return this.a($$0, $$1.dw());
+   }
+
+   private boolean a(arx $$0, jh $$1) {
+      return $$0.a_($$1).a(axk.T);
+   }
+
+   private Optional<jh> a(bvz $$0) {
+      return $$0.ec().c(cfb.w);
+   }
+
+   private boolean e(arx $$0, bvz $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(arx $$0, bvz $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

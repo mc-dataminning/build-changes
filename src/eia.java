@@ -1,60 +1,75 @@
 import com.mojang.serialization.Codec;
 
-public class eia extends egw<ejr> {
-   public eia(Codec<ejr> $$0) {
+public class eia extends egp<ejo> {
+   public eia(Codec<ejo> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<ejr> $$0) {
-      dig $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+   public boolean a(egr<ejo> $$0) {
+      ejo $$1 = $$0.f();
+      dhx $$2 = $$0.b();
+      jh $$3 = $$0.e();
+      if (!$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
          return false;
       } else {
-         ejr $$3 = $$0.f();
-         bam $$4 = $$0.d();
-         drk $$5 = drk.b();
-         int $$6 = $$3.f() + $$3.d();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
+         dxo $$4 = $$2.a_($$3);
+         if (!$$4.l() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
             }
 
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
+            if ($$2.a_($$3.i()).a($$1.f)) {
+               $$6++;
             }
 
-            $$5.j();
-         }
-
-         jh $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, dko.rp.m(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            jh $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jm.b)) {
-               $$1.a($$14, dko.rq.m().b(drj.d, Boolean.valueOf(true)), 3);
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
             }
+
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.u($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.i())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.e())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
          }
-
-         return true;
-      }
-   }
-
-   private boolean a(dhj $$0, jh $$1) {
-      dxv $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof drf) {
-         return true;
-      } else {
-         return !$$2.l() && (!$$2.a(dko.J) || !$$2.y().b()) ? false : jm.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
       }
    }
 }

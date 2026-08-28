@@ -1,32 +1,50 @@
-public class cci extends ccg {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import java.util.EnumSet;
 
-   public cci(bwi $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class cci extends cdi {
+   private final chr g;
+
+   public cci(chr $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(ccv.a.c, ccv.a.a));
+   }
+
+   @Override
+   public boolean b() {
+      return this.g.p() && !this.g.go() && !this.g.gB() && super.b();
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.g.y(false);
+   }
+
+   @Override
+   protected int a(bwf $$0) {
+      return 40;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.g.A(false);
    }
 
    @Override
    public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aZ = this.a(this.a.aZ, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dO(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.L().m()) {
-            this.a.w(this.a(this.a.dO(), 0.0F, 5.0F));
-         }
-
-         this.a.aZ = this.a(this.a.aZ, this.a.aX, this.b);
+      super.a();
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gB()) {
+         this.g.A(true);
       }
+   }
 
-      float $$0 = bae.h(this.a.aZ - this.a.aX);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aX -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aX += 4.0F;
-      }
+   @Override
+   protected boolean a(dhc $$0, jh $$1) {
+      return $$0.u($$1.d()) && $$0.a_($$1).a(axk.T);
    }
 }

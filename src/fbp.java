@@ -1,4 +1,26 @@
-import java.nio.file.Path;
+public abstract class fbp {
+   protected final fbr a;
 
-public record fbp(Path a, Path b) {
+   protected fbp(fbr $$0) {
+      this.a = $$0;
+   }
+
+   public double a(bvb $$0) {
+      double $$1 = this.a.d - $$0.dB();
+      double $$2 = this.a.e - $$0.dD();
+      double $$3 = this.a.f - $$0.dH();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public abstract fbp.a d();
+
+   public fbr g() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 }

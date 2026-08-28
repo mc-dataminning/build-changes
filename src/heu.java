@@ -1,15 +1,29 @@
-public class heu extends hev {
-   public heu(chy $$0) {
-      super($$0, axf.bR, axg.g);
+public class heu extends hem {
+   private final bvb n;
+
+   public heu(awu $$0, aww $$1, float $$2, float $$3, bvb $$4, long $$5) {
+      super($$0, $$1, bac.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dB());
+      this.g = (double)((float)this.n.dD());
+      this.h = (double)((float)this.n.dH());
    }
 
    @Override
-   protected her o() {
-      return new het(this.n);
+   public boolean s() {
+      return !this.n.bb();
    }
 
    @Override
-   protected boolean p() {
-      return this.n.ad_();
+   public void q() {
+      if (this.n.dR()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dB());
+         this.g = (double)((float)this.n.dD());
+         this.h = (double)((float)this.n.dH());
+      }
    }
 }

@@ -4,14 +4,19 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bnl extends bkl {
+public class bnl extends Schema {
    public bnl(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:ominous_item_spawner", () -> DSL.optionalFields("item", bix.t.in($$0)));
+      $$1.remove("EntityHorse");
+      $$0.register($$1, "Horse", () -> DSL.optionalFields("ArmorItem", bin.t.in($$0), "SaddleItem", bin.t.in($$0), bkc.a($$0)));
+      $$0.register($$1, "Donkey", () -> DSL.optionalFields("Items", DSL.list(bin.t.in($$0)), "SaddleItem", bin.t.in($$0), bkc.a($$0)));
+      $$0.register($$1, "Mule", () -> DSL.optionalFields("Items", DSL.list(bin.t.in($$0)), "SaddleItem", bin.t.in($$0), bkc.a($$0)));
+      $$0.register($$1, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", bin.t.in($$0), bkc.a($$0)));
+      $$0.register($$1, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", bin.t.in($$0), bkc.a($$0)));
       return $$1;
    }
 }

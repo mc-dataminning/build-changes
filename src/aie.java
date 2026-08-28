@@ -1,30 +1,18 @@
-public record aie(int b, int c, boolean d) implements aac<ahm> {
-   public static final zt<ws, aie> a = aac.a(aie::a, aie::new);
+import io.netty.buffer.ByteBuf;
 
-   private aie(ws $$0) {
-      this($$0.l(), $$0.x(), $$0.readBoolean());
-   }
-
-   private void a(ws $$0) {
-      $$0.c(this.b);
-      $$0.f(this.c);
-      $$0.a(this.d);
-   }
+public record aie(int b, boolean c) implements zr<ahb> {
+   public static final zi<ByteBuf, aie> a = zi.a(zg.h, aie::b, zg.b, aie::e, aie::new);
 
    @Override
-   public aae<aie> a() {
-      return ahk.bB;
+   public zt<aie> a() {
+      return agz.bP;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

@@ -1,23 +1,34 @@
-public class gtw extends gsw<civ, gyt, gdm> {
-   private static final alz a = alz.b("textures/entity/snow_golem.png");
+public class gtw extends gqf<cnb, gzp, gdl> {
+   private static final alp a = alp.b("textures/entity/strider/strider.png");
+   private static final alp b = alp.b("textures/entity/strider/strider_cold.png");
+   private static final float k = 0.5F;
 
-   public gtw(grq.a $$0) {
-      super($$0, new gdm($$0.a(gen.cP)), 0.5F);
-      this.a(new gwk(this, $$0.d(), $$0.b()));
+   public gtw(grl.a $$0) {
+      super($$0, new gdl($$0.a(gei.dd)), new gdl($$0.a(gei.df)), 0.5F);
+      this.a(new gwb<>(this, new gdl($$0.a(gei.de)), new gdl($$0.a(gei.dg)), alp.b("textures/entity/strider/strider_saddle.png")));
    }
 
-   @Override
-   public alz b(gyt $$0) {
-      return a;
+   public alp a(gzp $$0) {
+      return $$0.b ? b : a;
    }
 
-   public gyt b() {
-      return new gyt();
+   protected float b(gzp $$0) {
+      float $$1 = super.g($$0);
+      return $$0.ae ? $$1 * 0.5F : $$1;
    }
 
-   public void a(civ $$0, gyt $$1, float $$2) {
+   public gzp b() {
+      return new gzp();
+   }
+
+   public void a(cnb $$0, gzp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.ao = $$0.p() ? new cxp(cxt.fy) : cxp.j;
-      $$1.an = this.i.a($$1.ao, $$0, cxn.f);
+      $$1.a = $$0.j();
+      $$1.b = $$0.p();
+      $$1.c = $$0.ca();
+   }
+
+   protected boolean c(gzp $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

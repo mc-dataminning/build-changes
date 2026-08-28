@@ -1,117 +1,72 @@
-public class fwy extends fxc {
-   private static final xv a = xv.c("options.languageAccuracyWarning").b(-4539718);
-   private static final int u = 53;
-   private fwy.a v;
-   final hcu w;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
 
-   public fwy(fty $$0, fmk $$1, hcu $$2) {
-      super($$0, $$1, xv.c("options.language.title"));
-      this.w = $$2;
-      this.s.a(53);
+public class fwy extends ftr {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final xk d;
+   private final List<xk> s;
+   private final ImmutableList<fwy.a> u;
+   private fos v = fos.a;
+   private int w;
+   private int x;
+
+   protected fwy(xk $$0, List<xk> $$1, ImmutableList<fwy.a> $$2) {
+      super($$0);
+      this.s = $$1;
+      this.d = xj.a($$0, xn.a($$1, xj.a));
+      this.u = $$2;
    }
 
    @Override
-   protected void F() {
-      this.v = this.s.c(new fwy.a(this.m));
+   public xk i() {
+      return this.d;
    }
 
    @Override
-   protected void l() {
-   }
+   public void aT_() {
+      UnmodifiableIterator $$1 = this.u.iterator();
 
-   @Override
-   protected void E() {
-      fry $$0 = this.s.b(fry.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fpn(a, this.p));
-      fry $$1 = $$0.a(fry.e().a(8));
-      $$1.a(fof.a(xv.c("options.font"), $$0x -> this.m.a(new fwx(this, this.c))).a());
-      $$1.a(fof.a(xu.d, $$0x -> this.J()).a());
-   }
-
-   @Override
-   protected void c() {
-      super.c();
-      this.v.a(this.n, this.s);
-   }
-
-   void J() {
-      fwy.a.a $$0 = this.v.g();
-      if ($$0 != null && !$$0.b.equals(this.w.a())) {
-         this.w.a($$0.b);
-         this.c.ab = $$0.b;
-         this.m.l();
+      while ($$1.hasNext()) {
+         fwy.a $$0 = (fwy.a)$$1.next();
+         this.x = Math.max(this.x, 20 + this.p.a($$0.a) + 20);
       }
 
-      this.m.a(this.b);
+      int $$1x = 5 + this.x + 5;
+      int $$2 = $$1x * this.u.size();
+      this.v = fos.a(this.p, $$2, this.s.toArray(new xk[0]));
+      int $$3 = this.v.a() * 9;
+      this.w = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.w + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
+
+      for (UnmodifiableIterator var6 = this.u.iterator(); var6.hasNext(); $$5 += $$1x) {
+         fwy.a $$6 = (fwy.a)var6.next();
+         this.c(fny.a($$6.a, $$6.b).a($$5, $$4, this.x, 20).a());
+      }
    }
 
-   class a extends fpc<fwy.a.a> {
-      public a(final fmg $$0) {
-         super($$0, fwy.this.n, fwy.this.o - 33 - 53, 33, 18);
-         String $$1 = fwy.this.w.a();
-         fwy.this.w.b().forEach(($$1x, $$2) -> {
-            fwy.a.a $$3 = new fwy.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.g() != null) {
-            this.e(this.g());
-         }
-      }
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.w - 9 * 2, -1);
+      this.v.a($$0, this.n / 2, this.w);
+   }
 
-      @Override
-      public int a() {
-         return super.a() + 50;
-      }
+   @Override
+   public boolean aH_() {
+      return false;
+   }
 
-      public class a extends fpc.a<fwy.a.a> {
-         final String b;
-         private final xv c;
-         private long d;
+   public static final class a {
+      final xk a;
+      final fny.c b;
 
-         public a(final String $$1, final hct $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(fns $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fwy.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
-         }
-
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (fsi.a($$0)) {
-               this.b();
-               fwy.this.J();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ae.c() - this.d < 250L) {
-               fwy.this.J();
-            }
-
-            this.d = ae.c();
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public xv a() {
-            return xv.a("narrator.select", this.c);
-         }
+      public a(xk $$0, fny.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

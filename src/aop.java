@@ -1,28 +1,84 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 public class aop {
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xk.c("commands.perf.alreadyRunning"));
+
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ew)$$0x.getSource(), ImmutableList.of(((ew)$$0x.getSource()).g()))))
-            .then(ex.a("targets", fj.b()).executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(ex.a("start").executes($$0x -> a((ew)$$0x.getSource()))))
+            .then(ex.a("stop").executes($$0x -> b((ew)$$0x.getSource())))
       );
    }
 
-   private static int a(ew $$0, Collection<? extends bvk> $$1) {
-      for (bvk $$2 : $$1) {
-         $$2.c($$0.e());
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xv.a("commands.kill.success.single", $$1.iterator().next().p_()), true);
+   private static int a(ew $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aT()) {
+         throw c.create();
       } else {
-         $$0.a(() -> xv.a("commands.kill.success.multiple", $$1.size()), true);
+         Consumer<bph> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> xk.c("commands.perf.started"), false);
+         return 0;
+      }
+   }
+
+   private static int b(ew $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aT()) {
+         throw b.create();
+      } else {
+         $$1.aV();
+         return 0;
+      }
+   }
+
+   private static void a(ew $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ae.f(), $$2.aZ().e(), ab.b().b());
+
+      String $$4;
+      try {
+         $$4 = v.a(bre.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(xk.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
       }
 
-      return $$1.size();
+      try (azf $$7 = new azf(bre.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ac()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> xk.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(ew $$0, bph $$1) {
+      if ($$1 != bpd.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)baw.a;
+         $$0.a(() -> xk.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+      }
    }
 }

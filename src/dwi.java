@@ -1,200 +1,430 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dwi extends dux implements ect.b<eda.b>, eda {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 10;
-   private static final int c = 20;
+public class dwi extends duq {
    private static final int d = 5;
-   private static final int h = 6;
-   private static final int i = 40;
-   private static final int j = 90;
-   private static final Int2ObjectMap<axe> k = ae.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, axf.Cq);
-      $$0.put(2, axf.Cr);
-      $$0.put(3, axf.Cs);
-      $$0.put(4, axf.Cp);
-   });
-   private int l;
-   private final eda.d m = new dwi.a();
-   private eda.a n = new eda.a();
-   private final eda.b r = new eda.b(this);
+   public static final int a = 48;
+   public static final int b = 48;
+   public static final String c = "author";
+   @Nullable
+   private alp e;
+   private String f = "";
+   private String g = "";
+   private jh h = new jh(0, 1, 0);
+   private kl i = kl.h;
+   private dpc j = dpc.a;
+   private dqv k = dqv.a;
+   private dyx l;
+   private boolean m = true;
+   private boolean n;
+   private boolean r;
+   private boolean s = true;
+   private float t = 1.0F;
+   private long u;
 
-   public dwi(jh $$0, dxv $$1) {
-      super(duz.M, $$0, $$1);
+   public dwi(jh $$0, dxo $$1) {
+      super(dus.v, $$0, $$1);
+      this.l = $$1.c(dsg.b);
    }
 
    @Override
-   public eda.a gp() {
-      return this.n;
+   protected void b(um $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("name", this.c());
+      $$0.a("author", this.f);
+      $$0.a("metadata", this.g);
+      $$0.a("posX", this.h.u());
+      $$0.a("posY", this.h.v());
+      $$0.a("posZ", this.h.w());
+      $$0.a("sizeX", this.i.u());
+      $$0.a("sizeY", this.i.v());
+      $$0.a("sizeZ", this.i.w());
+      $$0.a("rotation", this.k.toString());
+      $$0.a("mirror", this.j.toString());
+      $$0.a("mode", this.l.toString());
+      $$0.a("ignoreEntities", this.m);
+      $$0.a("powered", this.n);
+      $$0.a("showair", this.r);
+      $$0.a("showboundingbox", this.s);
+      $$0.a("integrity", this.t);
+      $$0.a("seed", this.u);
    }
 
    @Override
-   public eda.d gq() {
+   protected void a(um $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.a($$0.l("name"));
+      this.f = $$0.l("author");
+      this.g = $$0.l("metadata");
+      int $$2 = azu.a($$0.h("posX"), -48, 48);
+      int $$3 = azu.a($$0.h("posY"), -48, 48);
+      int $$4 = azu.a($$0.h("posZ"), -48, 48);
+      this.h = new jh($$2, $$3, $$4);
+      int $$5 = azu.a($$0.h("sizeX"), 0, 48);
+      int $$6 = azu.a($$0.h("sizeY"), 0, 48);
+      int $$7 = azu.a($$0.h("sizeZ"), 0, 48);
+      this.i = new kl($$5, $$6, $$7);
+
+      try {
+         this.k = dqv.valueOf($$0.l("rotation"));
+      } catch (IllegalArgumentException var12) {
+         this.k = dqv.a;
+      }
+
+      try {
+         this.j = dpc.valueOf($$0.l("mirror"));
+      } catch (IllegalArgumentException var11) {
+         this.j = dpc.a;
+      }
+
+      try {
+         this.l = dyx.valueOf($$0.l("mode"));
+      } catch (IllegalArgumentException var10) {
+         this.l = dyx.d;
+      }
+
+      this.m = $$0.q("ignoreEntities");
+      this.n = $$0.q("powered");
+      this.r = $$0.q("showair");
+      this.s = $$0.q("showboundingbox");
+      if ($$0.e("integrity")) {
+         this.t = $$0.j("integrity");
+      } else {
+         this.t = 1.0F;
+      }
+
+      this.u = $$0.i("seed");
+      this.F();
+   }
+
+   private void F() {
+      if (this.o != null) {
+         jh $$0 = this.aB_();
+         dxo $$1 = this.o.a_($$0);
+         if ($$1.a(dkf.pC)) {
+            this.o.a($$0, $$1.b(dsg.b, this.l), 2);
+         }
+      }
+   }
+
+   public acn b() {
+      return acn.a(this);
+   }
+
+   @Override
+   public um a(js.a $$0) {
+      return this.e($$0);
+   }
+
+   public boolean a(cpo $$0) {
+      if (!$$0.gG()) {
+         return false;
+      } else {
+         if ($$0.cU().C) {
+            $$0.a(this);
+         }
+
+         return true;
+      }
+   }
+
+   public String c() {
+      return this.e == null ? "" : this.e.toString();
+   }
+
+   public boolean d() {
+      return this.e != null;
+   }
+
+   public void a(@Nullable String $$0) {
+      this.a(bar.b($$0) ? null : alp.c($$0));
+   }
+
+   public void a(@Nullable alp $$0) {
+      this.e = $$0;
+   }
+
+   public void a(bvx $$0) {
+      this.f = $$0.al().getString();
+   }
+
+   public jh f() {
+      return this.h;
+   }
+
+   public void a(jh $$0) {
+      this.h = $$0;
+   }
+
+   public kl j() {
+      return this.i;
+   }
+
+   public void a(kl $$0) {
+      this.i = $$0;
+   }
+
+   public dpc k() {
+      return this.j;
+   }
+
+   public void a(dpc $$0) {
+      this.j = $$0;
+   }
+
+   public dqv s() {
+      return this.k;
+   }
+
+   public void a(dqv $$0) {
+      this.k = $$0;
+   }
+
+   public String t() {
+      return this.g;
+   }
+
+   public void b(String $$0) {
+      this.g = $$0;
+   }
+
+   public dyx u() {
+      return this.l;
+   }
+
+   public void a(dyx $$0) {
+      this.l = $$0;
+      dxo $$1 = this.o.a_(this.aB_());
+      if ($$1.a(dkf.pC)) {
+         this.o.a(this.aB_(), $$1.b(dsg.b, $$0), 2);
+      }
+   }
+
+   public boolean v() {
       return this.m;
    }
 
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("warning_level", 99)) {
-         this.l = $$0.h("warning_level");
-      }
+   public void a(boolean $$0) {
+      this.m = $$0;
+   }
 
-      alx<vu> $$2 = $$1.a(vl.a);
-      if ($$0.b("listener", 10)) {
-         eda.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Shrieker: '{}'", $$0x))
-            .ifPresent($$0x -> this.n = $$0x);
+   public float w() {
+      return this.t;
+   }
+
+   public void a(float $$0) {
+      this.t = $$0;
+   }
+
+   public long x() {
+      return this.u;
+   }
+
+   public void a(long $$0) {
+      this.u = $$0;
+   }
+
+   public boolean y() {
+      if (this.l != dyx.a) {
+         return false;
+      } else {
+         jh $$0 = this.aB_();
+         int $$1 = 80;
+         jh $$2 = new jh($$0.u() - 80, this.o.L_(), $$0.w() - 80);
+         jh $$3 = new jh($$0.u() + 80, this.o.an(), $$0.w() + 80);
+         Stream<jh> $$4 = this.a($$2, $$3);
+         return a($$0, $$4).filter($$1x -> {
+            int $$2x = $$1x.k() - $$1x.h();
+            int $$3x = $$1x.l() - $$1x.i();
+            int $$4x = $$1x.m() - $$1x.j();
+            if ($$2x > 1 && $$3x > 1 && $$4x > 1) {
+               this.h = new jh($$1x.h() - $$0.u() + 1, $$1x.i() - $$0.v() + 1, $$1x.j() - $$0.w() + 1);
+               this.i = new kl($$2x - 1, $$3x - 1, $$4x - 1);
+               this.e();
+               dxo $$5 = this.o.a_($$0);
+               this.o.a($$0, $$5, $$5, 3);
+               return true;
+            } else {
+               return false;
+            }
+         }).isPresent();
       }
    }
 
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("warning_level", this.l);
-      alx<vu> $$2 = $$1.a(vl.a);
-      eda.a.a
-         .encodeStart($$2, this.n)
-         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Shrieker: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
+   private Stream<jh> a(jh $$0, jh $$1) {
+      return jh.d($$0, $$1)
+         .filter($$0x -> this.o.a_($$0x).a(dkf.pC))
+         .map(this.o::c_)
+         .filter($$0x -> $$0x instanceof dwi)
+         .map($$0x -> (dwi)$$0x)
+         .filter($$0x -> $$0x.l == dyx.c && Objects.equals(this.e, $$0x.e))
+         .map(duq::aB_);
+   }
+
+   private static Optional<env> a(jh $$0, Stream<jh> $$1) {
+      Iterator<jh> $$2 = $$1.iterator();
+      if (!$$2.hasNext()) {
+         return Optional.empty();
+      } else {
+         jh $$3 = $$2.next();
+         env $$4 = new env($$3);
+         if ($$2.hasNext()) {
+            $$2.forEachRemaining($$4::a);
+         } else {
+            $$4.a($$0);
+         }
+
+         return Optional.of($$4);
+      }
+   }
+
+   public boolean z() {
+      return this.l != dyx.a ? false : this.b(true);
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.e == null) {
+         return false;
+      } else {
+         jh $$1 = this.aB_().a((kl)this.h);
+         arx $$2 = (arx)this.o;
+         esg $$3 = $$2.r();
+
+         esf $$4;
+         try {
+            $$4 = $$3.a(this.e);
+         } catch (aa var8) {
+            return false;
+         }
+
+         $$4.a(this.o, $$1, this.i, !this.m, dkf.lp);
+         $$4.a(this.f);
+         if ($$0) {
+            try {
+               return $$3.c(this.e);
+            } catch (aa var7) {
+               return false;
+            }
+         } else {
+            return true;
+         }
+      }
+   }
+
+   public static bac b(long $$0) {
+      return $$0 == 0L ? bac.a(ae.c()) : bac.a($$0);
+   }
+
+   public boolean a(arx $$0) {
+      if (this.l == dyx.b && this.e != null) {
+         esf $$1 = $$0.r().b(this.e).orElse(null);
+         if ($$1 == null) {
+            return false;
+         } else if ($$1.a().equals(this.i)) {
+            this.a($$0, $$1);
+            return true;
+         } else {
+            this.a($$1);
+            return false;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(arx $$0) {
+      esf $$1 = this.d($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         this.a($$1);
+         return true;
+      }
+   }
+
+   private void a(esf $$0) {
+      this.f = !bar.b($$0.b()) ? $$0.b() : "";
+      this.i = $$0.a();
+      this.e();
+   }
+
+   public void c(arx $$0) {
+      esf $$1 = this.d($$0);
+      if ($$1 != null) {
+         this.a($$0, $$1);
+      }
    }
 
    @Nullable
-   public static asi a(@Nullable bvk $$0) {
-      if ($$0 instanceof asi) {
-         return (asi)$$0;
+   private esf d(arx $$0) {
+      return this.e == null ? null : $$0.r().b(this.e).orElse(null);
+   }
+
+   private void a(arx $$0, esf $$1) {
+      this.a($$1);
+      esb $$2 = new esb().a(this.j).a(this.k).a(this.m);
+      if (this.t < 1.0F) {
+         $$2.b().a(new eri(azu.a(this.t, 0.0F, 1.0F))).a(b(this.u));
+      }
+
+      jh $$3 = this.aB_().a((kl)this.h);
+      $$1.a($$0, $$3, $$3, $$2, b(this.u), 2);
+   }
+
+   public void A() {
+      if (this.e != null) {
+         arx $$0 = (arx)this.o;
+         esg $$1 = $$0.r();
+         $$1.d(this.e);
+      }
+   }
+
+   public boolean B() {
+      if (this.l == dyx.b && !this.o.C && this.e != null) {
+         arx $$0 = (arx)this.o;
+         esg $$1 = $$0.r();
+
+         try {
+            return $$1.b(this.e).isPresent();
+         } catch (aa var4) {
+            return false;
+         }
       } else {
-         if ($$0 != null) {
-            bwg $$6 = $$0.cX();
-            if ($$6 instanceof asi) {
-               return (asi)$$6;
-            }
-         }
-
-         if ($$0 instanceof cqq $$3) {
-            bvk var3 = $$3.p();
-            if (var3 instanceof asi) {
-               return (asi)var3;
-            }
-         }
-
-         if ($$0 instanceof cmb $$5) {
-            bvk var9 = $$5.p();
-            if (var9 instanceof asi) {
-               return (asi)var9;
-            }
-         }
-
-         return null;
+         return false;
       }
    }
 
-   public void a(ash $$0, @Nullable asi $$1) {
-      if ($$1 != null) {
-         dxv $$2 = this.m();
-         if (!$$2.c(drj.b)) {
-            this.l = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (bvk)$$1);
-            }
-         }
-      }
+   public boolean C() {
+      return this.n;
    }
 
-   private boolean b(ash $$0, asi $$1) {
-      OptionalInt $$2 = cpc.a($$0, this.aB_(), $$1);
-      $$2.ifPresent($$0x -> this.l = $$0x);
-      return $$2.isPresent();
+   public void c(boolean $$0) {
+      this.n = $$0;
    }
 
-   private void a(ash $$0, @Nullable bvk $$1) {
-      jh $$2 = this.aB_();
-      dxv $$3 = this.m();
-      $$0.a($$2, $$3.b(drj.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(ecr.N, $$2, ecr.a.a($$1));
-   }
-
-   private boolean b(ash $$0) {
-      return this.m().c(drj.d) && $$0.al() != btg.a && $$0.N().b(dhe.N);
-   }
-
-   public void a(ash $$0) {
-      if (this.b($$0) && this.l > 0) {
-         if (!this.c($$0)) {
-            this.b((dhi)$$0);
-         }
-
-         cpa.a($$0, fby.b(this.aB_()), null, 40);
-      }
-   }
-
-   private void b(dhi $$0) {
-      axe $$1 = (axe)k.get(this.l);
-      if ($$1 != null) {
-         jh $$2 = this.aB_();
-         int $$3 = $$2.u() + bae.b($$0.A, -10, 10);
-         int $$4 = $$2.v() + bae.b($$0.A, -10, 10);
-         int $$5 = $$2.w() + bae.b($$0.A, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, axg.f, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean c(ash $$0) {
-      return this.l < 4 ? false : bax.a(bvr.bG, bvq.k, $$0, this.aB_(), 20, 5, 6, bax.a.b).isPresent();
-   }
-
-   public eda.b b() {
+   public boolean D() {
       return this.r;
    }
 
-   class a implements eda.d {
-      private static final int b = 8;
-      private final ecv c = new ecn(dwi.this.p);
+   public void d(boolean $$0) {
+      this.r = $$0;
+   }
 
-      public a() {
-      }
+   public boolean E() {
+      return this.s;
+   }
 
-      @Override
-      public int a() {
-         return 8;
-      }
+   public void e(boolean $$0) {
+      this.s = $$0;
+   }
 
-      @Override
-      public ecv b() {
-         return this.c;
-      }
-
-      @Override
-      public ayk<ecr> c() {
-         return ayb.c;
-      }
-
-      @Override
-      public boolean a(ash $$0, jh $$1, jq<ecr> $$2, ecr.a $$3) {
-         return !dwi.this.m().c(drj.b) && dwi.a($$3.a()) != null;
-      }
-
-      @Override
-      public void a(ash $$0, jh $$1, jq<ecr> $$2, @Nullable bvk $$3, @Nullable bvk $$4, float $$5) {
-         dwi.this.a($$0, dwi.a($$4 != null ? $$4 : $$3));
-      }
-
-      @Override
-      public void e() {
-         dwi.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -11,14 +11,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class fk implements ArgumentType<dhf> {
-   private static final Collection<String> a = Stream.of(dhf.a, dhf.b).map(dhf::b).collect(Collectors.toList());
-   private static final dhf[] b = dhf.values();
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xv.b("argument.gamemode.invalid", $$0));
+public class fk implements ArgumentType<dgw> {
+   private static final Collection<String> a = Stream.of(dgw.a, dgw.b).map(dgw::b).collect(Collectors.toList());
+   private static final dgw[] b = dgw.values();
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xk.b("argument.gamemode.invalid", $$0));
 
-   public dhf a(StringReader $$0) throws CommandSyntaxException {
+   public dgw a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      dhf $$2 = dhf.a($$1, null);
+      dgw $$2 = dgw.a($$1, null);
       if ($$2 == null) {
          throw c.createWithContext($$0, $$1);
       } else {
@@ -27,7 +27,7 @@ public class fk implements ArgumentType<dhf> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof fb ? fb.b(Arrays.stream(b).map(dhf::b), $$1) : Suggestions.empty();
+      return $$0.getSource() instanceof fb ? fb.b(Arrays.stream(b).map(dgw::b), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
@@ -38,7 +38,7 @@ public class fk implements ArgumentType<dhf> {
       return new fk();
    }
 
-   public static dhf a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return (dhf)$$0.getArgument($$1, dhf.class);
+   public static dgw a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return (dgw)$$0.getArgument($$1, dgw.class);
    }
 }

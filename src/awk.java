@@ -1,57 +1,33 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
 
-public class awk extends awm<GameProfile> {
-   private final int a;
-   private final boolean b;
+public class awk {
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-   public awk(GameProfile $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-   }
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
 
-   public awk(JsonObject $$0) {
-      super(b($$0));
-      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
-      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
-   }
-
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-         $$0.addProperty("level", this.a);
-         $$0.addProperty("bypassesPlayerLimit", this.b);
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
       }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   @Nullable
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
+   }
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
+   }
 
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
+   }
+
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

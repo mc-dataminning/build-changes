@@ -1,46 +1,18 @@
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 public class awt {
-   private final ByteArrayOutputStream a;
-   private final DataOutputStream b;
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final aws a = new aws(awv.qA, 20, 600, true);
+   public static final aws b = new aws(awv.qc, 12000, 24000, false);
+   public static final aws c = new aws(awv.qd, 0, 0, true);
+   public static final aws d = new aws(awv.qx, 0, 0, true);
+   public static final aws e = new aws(awv.qy, 6000, 24000, true);
+   public static final aws f = a(awv.qZ);
+   public static final aws g = a(awv.qz);
 
-   public awt(int $$0) {
-      this.a = new ByteArrayOutputStream($$0);
-      this.b = new DataOutputStream(this.a);
-   }
-
-   public void a(byte[] $$0) throws IOException {
-      this.b.write($$0, 0, $$0.length);
-   }
-
-   public void a(String $$0) throws IOException {
-      this.b.writeBytes($$0);
-      this.b.write(0);
-   }
-
-   public void a(int $$0) throws IOException {
-      this.b.write($$0);
-   }
-
-   public void a(short $$0) throws IOException {
-      this.b.writeShort(Short.reverseBytes($$0));
-   }
-
-   public void b(int $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes($$0));
-   }
-
-   public void a(float $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
-   }
-
-   public byte[] a() {
-      return this.a.toByteArray();
-   }
-
-   public void b() {
-      this.a.reset();
+   public static aws a(jq<awu> $$0) {
+      return new aws($$0, 12000, 24000, false);
    }
 }

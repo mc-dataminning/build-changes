@@ -1,60 +1,48 @@
-import com.google.common.annotations.VisibleForTesting;
+public interface vg {
+   vg.b a();
 
-public class vg {
-   private static final int a = 512;
-   private final long b;
-   private long c;
-   private final int d;
-   private int e;
+   vg.b a(String var1);
 
-   public vg(long $$0, int $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   vg.b a(byte var1);
+
+   vg.b a(short var1);
+
+   vg.b a(int var1);
+
+   vg.b a(long var1);
+
+   vg.b a(float var1);
+
+   vg.b a(double var1);
+
+   vg.b a(byte[] var1);
+
+   vg.b a(int[] var1);
+
+   vg.b a(long[] var1);
+
+   vg.b a(vl<?> var1, int var2);
+
+   vg.a a(vl<?> var1);
+
+   vg.a a(vl<?> var1, String var2);
+
+   vg.a b(vl<?> var1, int var2);
+
+   vg.b b();
+
+   vg.b b(vl<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   public static vg a(long $$0) {
-      return new vg($$0, 512);
-   }
-
-   public static vg a() {
-      return new vg(Long.MAX_VALUE, 512);
-   }
-
-   public void a(long $$0, long $$1) {
-      this.b($$0 * $$1);
-   }
-
-   public void b(long $$0) {
-      if (this.c + $$0 > this.b) {
-         throw new vh("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
-      } else {
-         this.c += $$0;
-      }
-   }
-
-   public void b() {
-      if (this.e >= this.d) {
-         throw new vh("Tried to read NBT tag with too high complexity, depth > " + this.d);
-      } else {
-         this.e++;
-      }
-   }
-
-   public void c() {
-      if (this.e <= 0) {
-         throw new vh("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.e--;
-      }
-   }
-
-   @VisibleForTesting
-   public long d() {
-      return this.c;
-   }
-
-   @VisibleForTesting
-   public int e() {
-      return this.e;
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

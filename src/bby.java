@@ -1,42 +1,61 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import java.util.function.UnaryOperator;
 
-public abstract class bby extends DataFix {
+public class bby extends DataFix {
    private final String a;
+   private final UnaryOperator<String> b;
 
-   public bby(Schema $$0, String $$1) {
+   public bby(Schema $$0, String $$1, UnaryOperator<String> $$2) {
       super($$0, false);
       this.a = $$1;
+      this.b = $$2;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bix.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bix.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
+      Type<?> $$0 = this.getInputSchema().getType(bin.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped(this.a + " (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, this::a)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bin.B), this::b),
+            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bin.b), this::b)
+         }
+      );
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map(this.b).map($$0::createString), $$0);
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
+   private Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "AttributeModifiers",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", this::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
    }
 
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
+   private Typed<?> b(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Attributes",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", this::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
    }
-
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

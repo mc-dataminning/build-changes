@@ -1,76 +1,98 @@
 import javax.annotation.Nullable;
 
-public class hhl implements hhq {
-   private static final int a = 6000;
-   private static final xv b = xv.c("tutorial.find_tree.title");
-   private static final xv c = xv.c("tutorial.find_tree.description");
-   private final hhp d;
+public class hhl {
+   private final flz a;
    @Nullable
-   private fqs e;
-   private int f;
+   private hhm b;
 
-   public hhl(hhp $$0) {
-      this.d = $$0;
+   public hhl(flz $$0, fmd $$1) {
+      this.a = $$0;
    }
 
-   @Override
+   public void a(gka $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      if (this.b != null) {
+         this.b.a($$0, $$1);
+      }
+   }
+
+   public void a(@Nullable gff $$0, @Nullable fbp $$1) {
+      if (this.b != null && $$1 != null && $$0 != null) {
+         this.b.a($$0, $$1);
+      }
+   }
+
+   public void a(gff $$0, jh $$1, dxo $$2, float $$3) {
+      if (this.b != null) {
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+   }
+
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hhr.f);
-      } else {
-         if (this.f == 1) {
-            gkh $$0 = this.d.e().t;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(hhr.e);
-               return;
-            }
-         }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fqs(fqs.a.c, b, c, false);
-            this.d.e().aA().a(this.e);
-         }
+      if (this.b != null) {
+         this.b.c();
       }
    }
 
-   @Override
+   public void a(cxg $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+   }
+
    public void b() {
-      if (this.e != null) {
-         this.e.d();
-         this.e = null;
+      if (this.b != null) {
+         this.b.b();
+         this.b = null;
       }
    }
 
-   @Override
-   public void a(gfk $$0, fbw $$1) {
-      if ($$1.d() == fbw.a.b) {
-         dxv $$2 = $$0.a_(((fbu)$$1).b());
-         if ($$2.a(axu.al)) {
-            this.d.a(hhr.c);
+   public void c() {
+      if (this.b != null) {
+         this.b();
+      }
+
+      this.b = this.a.n.r.a(this);
+   }
+
+   public void d() {
+      if (this.b != null) {
+         if (this.a.s != null) {
+            this.b.a();
+         } else {
+            this.b();
          }
+      } else if (this.a.s != null) {
+         this.c();
       }
    }
 
-   @Override
-   public void a(cxp $$0) {
-      if ($$0.a(ayd.aS)) {
-         this.d.a(hhr.e);
+   public void a(hhn $$0) {
+      this.a.n.r = $$0;
+      this.a.n.az();
+      if (this.b != null) {
+         this.b.b();
+         this.b = $$0.a(this);
       }
    }
 
-   private static boolean b(gkh $$0) {
-      return $$0.gi().a_($$0x -> $$0x.a(ayd.aS));
+   public flz e() {
+      return this.a;
    }
 
-   public static boolean a(gkh $$0) {
-      for (jq<dkm> $$1 : ma.e.c(axu.al)) {
-         dkm $$2 = $$1.a();
-         if ($$0.m().a(axp.a.b($$2)) > 0) {
-            return true;
-         }
-      }
+   public boolean f() {
+      return this.a.r == null ? false : this.a.r.j() == dgw.a;
+   }
 
-      return false;
+   public static xk a(String $$0) {
+      return xk.d("key." + $$0).a(n.r);
+   }
+
+   public void a(cxg $$0, cxg $$1, ctd $$2) {
    }
 }

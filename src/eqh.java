@@ -1,264 +1,790 @@
 import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class eqh {
-   private static final int a = 8;
-   static final eqh.b b = new eqh.b() {
-      @Override
-      public void a() {
+   static final Logger b = LogUtils.getLogger();
+   private static final int c = 3;
+   private static final int d = 3;
+   private static final int e = 5;
+   private static final int f = 20;
+   private static final int g = 50;
+   private static final int h = 8;
+   public static final int a = 50;
+
+   private static eqh.c a(eoi $$0, bac $$1, int $$2, int $$3, int $$4, @Nullable jm $$5, int $$6, eqi.a $$7) {
+      int $$8 = $$1.a(100);
+      if ($$8 >= 80) {
+         env $$9 = eqh.b.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$9 != null) {
+            return new eqh.b($$6, $$9, $$5, $$7);
+         }
+      } else if ($$8 >= 70) {
+         env $$10 = eqh.e.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$10 != null) {
+            return new eqh.e($$6, $$10, $$5, $$7);
+         }
+      } else {
+         env $$11 = eqh.a.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$11 != null) {
+            return new eqh.a($$6, $$1, $$11, $$5, $$7);
+         }
+      }
+
+      return null;
+   }
+
+   static eqh.c a(eoh $$0, eoi $$1, bac $$2, int $$3, int $$4, int $$5, jm $$6, int $$7) {
+      if ($$7 > 8) {
+         return null;
+      } else if (Math.abs($$3 - $$0.f().h()) <= 80 && Math.abs($$5 - $$0.f().j()) <= 80) {
+         eqi.a $$8 = ((eqh.c)$$0).a;
+         eqh.c $$9 = a($$1, $$2, $$3, $$4, $$5, $$6, $$7 + 1, $$8);
+         if ($$9 != null) {
+            $$1.a($$9);
+            $$9.a($$0, $$1, $$2);
+         }
+
+         return $$9;
+      } else {
+         return null;
+      }
+   }
+
+   public static class a extends eqh.c {
+      private final boolean b;
+      private final boolean c;
+      private boolean d;
+      private final int h;
+
+      public a(um $$0) {
+         super(eou.a, $$0);
+         this.b = $$0.q("hr");
+         this.c = $$0.q("sc");
+         this.d = $$0.q("hps");
+         this.h = $$0.h("Num");
       }
 
       @Override
-      public boolean a(esn $$0, int $$1, eqh.a $$2, jh $$3, List<eoo> $$4, bam $$5) {
-         if ($$1 > 8) {
-            return false;
+      protected void a(eot $$0, um $$1) {
+         super.a($$0, $$1);
+         $$1.a("hr", this.b);
+         $$1.a("sc", this.c);
+         $$1.a("hps", this.d);
+         $$1.a("Num", this.h);
+      }
+
+      public a(int $$0, bac $$1, env $$2, jm $$3, eqi.a $$4) {
+         super(eou.a, $$0, $$4, $$2);
+         this.a($$3);
+         this.b = $$1.a(3) == 0;
+         this.c = !this.b && $$1.a(23) == 0;
+         if (this.i().o() == jm.a.c) {
+            this.h = $$2.f() / 5;
          } else {
-            drc $$6 = $$2.e().d();
-            eqh.a $$7 = eqh.a($$4, eqh.a($$0, $$2, $$3, "base_floor", $$6, true));
-            int $$8 = $$5.a(3);
-            if ($$8 == 0) {
-               $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(-1, 4, -1), "base_roof", $$6, true));
-            } else if ($$8 == 1) {
-               $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(-1, 0, -1), "second_floor_2", $$6, false));
-               $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(-1, 8, -1), "second_roof", $$6, false));
-               eqh.a($$0, eqh.d, $$1 + 1, $$7, null, $$4, $$5);
-            } else if ($$8 == 2) {
-               $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(-1, 0, -1), "second_floor_2", $$6, false));
-               $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(-1, 4, -1), "third_floor_2", $$6, false));
-               $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(-1, 8, -1), "third_roof", $$6, true));
-               eqh.a($$0, eqh.d, $$1 + 1, $$7, null, $$4, $$5);
+            this.h = $$2.d() / 5;
+         }
+      }
+
+      @Nullable
+      public static env a(eoi $$0, bac $$1, int $$2, int $$3, int $$4, jm $$5) {
+         for (int $$6 = $$1.a(3) + 2; $$6 > 0; $$6--) {
+            int $$7 = $$6 * 5;
+
+            env $$11 = switch ($$5) {
+               default -> new env(0, 0, -($$7 - 1), 2, 2, 0);
+               case d -> new env(0, 0, 0, 2, 2, $$7 - 1);
+               case e -> new env(-($$7 - 1), 0, 0, 0, 2, 2);
+               case f -> new env(0, 0, 0, $$7 - 1, 2, 2);
+            };
+            $$11.a($$2, $$3, $$4);
+            if ($$0.a($$11) == null) {
+               return $$11;
+            }
+         }
+
+         return null;
+      }
+
+      @Override
+      public void a(eoh $$0, eoi $$1, bac $$2) {
+         int $$3 = this.g();
+         int $$4 = $$2.a(4);
+         jm $$5 = this.i();
+         if ($$5 != null) {
+            switch ($$5) {
+               case c:
+               default:
+                  if ($$4 <= 1) {
+                     eqh.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.j() - 1, $$5, $$3);
+                  } else if ($$4 == 2) {
+                     eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() - 1 + $$2.a(3), this.f.j(), jm.e, $$3);
+                  } else {
+                     eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() - 1 + $$2.a(3), this.f.j(), jm.f, $$3);
+                  }
+                  break;
+               case d:
+                  if ($$4 <= 1) {
+                     eqh.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.m() + 1, $$5, $$3);
+                  } else if ($$4 == 2) {
+                     eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() - 1 + $$2.a(3), this.f.m() - 3, jm.e, $$3);
+                  } else {
+                     eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() - 1 + $$2.a(3), this.f.m() - 3, jm.f, $$3);
+                  }
+                  break;
+               case e:
+                  if ($$4 <= 1) {
+                     eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() - 1 + $$2.a(3), this.f.j(), $$5, $$3);
+                  } else if ($$4 == 2) {
+                     eqh.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.j() - 1, jm.c, $$3);
+                  } else {
+                     eqh.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.m() + 1, jm.d, $$3);
+                  }
+                  break;
+               case f:
+                  if ($$4 <= 1) {
+                     eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() - 1 + $$2.a(3), this.f.j(), $$5, $$3);
+                  } else if ($$4 == 2) {
+                     eqh.a($$0, $$1, $$2, this.f.k() - 3, this.f.i() - 1 + $$2.a(3), this.f.j() - 1, jm.c, $$3);
+                  } else {
+                     eqh.a($$0, $$1, $$2, this.f.k() - 3, this.f.i() - 1 + $$2.a(3), this.f.m() + 1, jm.d, $$3);
+                  }
+            }
+         }
+
+         if ($$3 < 8) {
+            if ($$5 != jm.c && $$5 != jm.d) {
+               for (int $$8 = this.f.h() + 3; $$8 + 3 <= this.f.k(); $$8 += 5) {
+                  int $$9 = $$2.a(5);
+                  if ($$9 == 0) {
+                     eqh.a($$0, $$1, $$2, $$8, this.f.i(), this.f.j() - 1, jm.c, $$3 + 1);
+                  } else if ($$9 == 1) {
+                     eqh.a($$0, $$1, $$2, $$8, this.f.i(), this.f.m() + 1, jm.d, $$3 + 1);
+                  }
+               }
+            } else {
+               for (int $$6 = this.f.j() + 3; $$6 + 3 <= this.f.m(); $$6 += 5) {
+                  int $$7 = $$2.a(5);
+                  if ($$7 == 0) {
+                     eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), $$6, jm.e, $$3 + 1);
+                  } else if ($$7 == 1) {
+                     eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), $$6, jm.f, $$3 + 1);
+                  }
+               }
+            }
+         }
+      }
+
+      @Override
+      protected boolean a(dhx $$0, env $$1, bac $$2, int $$3, int $$4, int $$5, alo<ewn> $$6) {
+         jh $$7 = this.b($$3, $$4, $$5);
+         if ($$1.b($$7) && $$0.a_($$7).l() && !$$0.a_($$7.e()).l()) {
+            dxo $$8 = dkf.cY.m().b(dqh.e, $$2.h() ? dyr.a : dyr.b);
+            this.a($$0, $$8, $$3, $$4, $$5, $$1);
+            crw $$9 = bvi.y.a($$0.a(), bvh.b);
+            if ($$9 != null) {
+               $$9.p((double)$$7.u() + 0.5, (double)$$7.v() + 0.5, (double)$$7.w() + 0.5);
+               $$9.a($$6, $$2.g());
+               $$0.b($$9);
             }
 
             return true;
-         }
-      }
-   };
-   static final List<bbj<drc, jh>> c = Lists.newArrayList(
-      new bbj[]{new bbj<>(drc.a, new jh(1, -1, 0)), new bbj<>(drc.b, new jh(6, -1, 1)), new bbj<>(drc.d, new jh(0, -1, 5)), new bbj<>(drc.c, new jh(5, -1, 6))}
-   );
-   static final eqh.b d = new eqh.b() {
-      @Override
-      public void a() {
-      }
-
-      @Override
-      public boolean a(esn $$0, int $$1, eqh.a $$2, jh $$3, List<eoo> $$4, bam $$5) {
-         drc $$6 = $$2.e().d();
-         eqh.a $$7 = eqh.a($$4, eqh.a($$0, $$2, new jh(3 + $$5.a(2), -3, 3 + $$5.a(2)), "tower_base", $$6, true));
-         $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(0, 7, 0), "tower_piece", $$6, true));
-         eqh.a $$8 = $$5.a(3) == 0 ? $$7 : null;
-         int $$9 = 1 + $$5.a(3);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(0, 4, 0), "tower_piece", $$6, true));
-            if ($$10 < $$9 - 1 && $$5.h()) {
-               $$8 = $$7;
-            }
-         }
-
-         if ($$8 != null) {
-            for (bbj<drc, jh> $$11 : eqh.c) {
-               if ($$5.h()) {
-                  eqh.a $$12 = eqh.a($$4, eqh.a($$0, $$8, $$11.b(), "bridge_end", $$6.a($$11.a()), true));
-                  eqh.a($$0, eqh.e, $$1 + 1, $$12, null, $$4, $$5);
-               }
-            }
-
-            $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(-1, 4, -1), "tower_top", $$6, true));
          } else {
-            if ($$1 != 7) {
-               return eqh.a($$0, eqh.g, $$1 + 1, $$7, null, $$4, $$5);
-            }
-
-            $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(-1, 4, -1), "tower_top", $$6, true));
-         }
-
-         return true;
-      }
-   };
-   static final eqh.b e = new eqh.b() {
-      public boolean a;
-
-      @Override
-      public void a() {
-         this.a = false;
-      }
-
-      @Override
-      public boolean a(esn $$0, int $$1, eqh.a $$2, jh $$3, List<eoo> $$4, bam $$5) {
-         drc $$6 = $$2.e().d();
-         int $$7 = $$5.a(4) + 1;
-         eqh.a $$8 = eqh.a($$4, eqh.a($$0, $$2, new jh(0, 0, -4), "bridge_piece", $$6, true));
-         $$8.a(-1);
-         int $$9 = 0;
-
-         for (int $$10 = 0; $$10 < $$7; $$10++) {
-            if ($$5.h()) {
-               $$8 = eqh.a($$4, eqh.a($$0, $$8, new jh(0, $$9, -4), "bridge_piece", $$6, true));
-               $$9 = 0;
-            } else {
-               if ($$5.h()) {
-                  $$8 = eqh.a($$4, eqh.a($$0, $$8, new jh(0, $$9, -4), "bridge_steep_stairs", $$6, true));
-               } else {
-                  $$8 = eqh.a($$4, eqh.a($$0, $$8, new jh(0, $$9, -8), "bridge_gentle_stairs", $$6, true));
-               }
-
-               $$9 = 4;
-            }
-         }
-
-         if (!this.a && $$5.a(10 - $$1) == 0) {
-            eqh.a($$4, eqh.a($$0, $$8, new jh(-8 + $$5.a(8), $$9, -70 + $$5.a(10)), "ship", $$6, true));
-            this.a = true;
-         } else if (!eqh.a($$0, eqh.b, $$1 + 1, $$8, new jh(-3, $$9 + 1, -11), $$4, $$5)) {
             return false;
          }
-
-         $$8 = eqh.a($$4, eqh.a($$0, $$8, new jh(4, $$9, 0), "bridge_end", $$6.a(drc.c), true));
-         $$8.a(-1);
-         return true;
-      }
-   };
-   static final List<bbj<drc, jh>> f = Lists.newArrayList(
-      new bbj[]{
-         new bbj<>(drc.a, new jh(4, -1, 0)), new bbj<>(drc.b, new jh(12, -1, 4)), new bbj<>(drc.d, new jh(0, -1, 8)), new bbj<>(drc.c, new jh(8, -1, 12))
-      }
-   );
-   static final eqh.b g = new eqh.b() {
-      @Override
-      public void a() {
       }
 
       @Override
-      public boolean a(esn $$0, int $$1, eqh.a $$2, jh $$3, List<eoo> $$4, bam $$5) {
-         drc $$6 = $$2.e().d();
-         eqh.a $$7 = eqh.a($$4, eqh.a($$0, $$2, new jh(-3, 4, -3), "fat_tower_base", $$6, true));
-         $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(0, 4, 0), "fat_tower_middle", $$6, true));
-
-         for (int $$8 = 0; $$8 < 2 && $$5.a(3) != 0; $$8++) {
-            $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(0, 8, 0), "fat_tower_middle", $$6, true));
-
-            for (bbj<drc, jh> $$9 : eqh.f) {
-               if ($$5.h()) {
-                  eqh.a $$10 = eqh.a($$4, eqh.a($$0, $$7, $$9.b(), "bridge_end", $$6.a($$9.a()), true));
-                  eqh.a($$0, eqh.e, $$1 + 1, $$10, null, $$4, $$5);
-               }
+      public void a(dhx $$0, dhv $$1, dzk $$2, bac $$3, env $$4, dgf $$5, jh $$6) {
+         if (!this.a($$0, $$4)) {
+            int $$7 = 0;
+            int $$8 = 2;
+            int $$9 = 0;
+            int $$10 = 2;
+            int $$11 = this.h * 5 - 1;
+            dxo $$12 = this.a.d();
+            this.a($$0, $$4, 0, 0, 0, 2, 1, $$11, e, e, false);
+            this.a($$0, $$4, $$3, 0.8F, 0, 2, 0, 2, 2, $$11, e, e, false, false);
+            if (this.c) {
+               this.a($$0, $$4, $$3, 0.6F, 0, 0, 0, 2, 1, $$11, dkf.bz.m(), e, false, true);
             }
-         }
 
-         $$7 = eqh.a($$4, eqh.a($$0, $$7, new jh(-2, 8, -2), "fat_tower_top", $$6, true));
-         return true;
-      }
-   };
+            for (int $$13 = 0; $$13 < this.h; $$13++) {
+               int $$14 = 2 + $$13 * 5;
+               this.a($$0, $$4, 0, 0, $$14, 2, 2, $$3);
+               this.a($$0, $$4, $$3, 0.1F, 0, 2, $$14 - 1);
+               this.a($$0, $$4, $$3, 0.1F, 2, 2, $$14 - 1);
+               this.a($$0, $$4, $$3, 0.1F, 0, 2, $$14 + 1);
+               this.a($$0, $$4, $$3, 0.1F, 2, 2, $$14 + 1);
+               this.a($$0, $$4, $$3, 0.05F, 0, 2, $$14 - 2);
+               this.a($$0, $$4, $$3, 0.05F, 2, 2, $$14 - 2);
+               this.a($$0, $$4, $$3, 0.05F, 0, 2, $$14 + 2);
+               this.a($$0, $$4, $$3, 0.05F, 2, 2, $$14 + 2);
+               if ($$3.a(100) == 0) {
+                  this.a($$0, $$4, $$3, 2, 0, $$14 - 1, ewe.t);
+               }
 
-   static eqh.a a(esn $$0, eqh.a $$1, jh $$2, String $$3, drc $$4, boolean $$5) {
-      eqh.a $$6 = new eqh.a($$0, $$3, $$1.d(), $$4, $$5);
-      jh $$7 = $$1.c().a($$1.e(), $$2, $$6.e(), jh.c);
-      $$6.a($$7.u(), $$7.v(), $$7.w());
-      return $$6;
-   }
+               if ($$3.a(100) == 0) {
+                  this.a($$0, $$4, $$3, 0, 0, $$14 + 1, ewe.t);
+               }
 
-   public static void a(esn $$0, jh $$1, drc $$2, List<eoo> $$3, bam $$4) {
-      g.a();
-      b.a();
-      e.a();
-      d.a();
-      eqh.a $$5 = a($$3, new eqh.a($$0, "base_floor", $$1, $$2, true));
-      $$5 = a($$3, a($$0, $$5, new jh(-1, 0, -1), "second_floor_1", $$2, false));
-      $$5 = a($$3, a($$0, $$5, new jh(-1, 4, -1), "third_floor_1", $$2, false));
-      $$5 = a($$3, a($$0, $$5, new jh(-1, 8, -1), "third_roof", $$2, true));
-      a($$0, d, 1, $$5, null, $$3, $$4);
-   }
-
-   static eqh.a a(List<eoo> $$0, eqh.a $$1) {
-      $$0.add($$1);
-      return $$1;
-   }
-
-   static boolean a(esn $$0, eqh.b $$1, int $$2, eqh.a $$3, jh $$4, List<eoo> $$5, bam $$6) {
-      if ($$2 > 8) {
-         return false;
-      } else {
-         List<eoo> $$7 = Lists.newArrayList();
-         if ($$1.a($$0, $$2, $$3, $$4, $$7, $$6)) {
-            boolean $$8 = false;
-            int $$9 = $$6.f();
-
-            for (eoo $$10 : $$7) {
-               $$10.a($$9);
-               eoo $$11 = eoo.a($$5, $$10.f());
-               if ($$11 != null && $$11.g() != $$3.g()) {
-                  $$8 = true;
-                  break;
+               if (this.c && !this.d) {
+                  int $$15 = 1;
+                  int $$16 = $$14 - 1 + $$3.a(3);
+                  jh $$17 = this.b(1, 0, $$16);
+                  if ($$4.b($$17) && this.b($$0, 1, 0, $$16, $$4)) {
+                     this.d = true;
+                     $$0.a($$17, dkf.cA.m(), 2);
+                     if ($$0.c_($$17) instanceof dwh $$19) {
+                        $$19.a(bvi.v, $$3);
+                     }
+                  }
                }
             }
 
-            if (!$$8) {
-               $$5.addAll($$7);
-               return true;
+            for (int $$20 = 0; $$20 <= 2; $$20++) {
+               for (int $$21 = 0; $$21 <= $$11; $$21++) {
+                  this.a($$0, $$4, $$12, $$20, -1, $$21);
+               }
             }
+
+            int $$22 = 2;
+            this.a($$0, $$4, 0, -1, 2);
+            if (this.h > 1) {
+               int $$23 = $$11 - 2;
+               this.a($$0, $$4, 0, -1, $$23);
+            }
+
+            if (this.b) {
+               dxo $$24 = dkf.cY.m().b(dqh.e, dyr.a);
+
+               for (int $$25 = 0; $$25 <= $$11; $$25++) {
+                  dxo $$26 = this.a($$0, 1, -1, $$25, $$4);
+                  if (!$$26.l() && $$26.s()) {
+                     float $$27 = this.b($$0, 1, 0, $$25, $$4) ? 0.7F : 0.9F;
+                     this.a($$0, $$4, $$3, $$27, 1, 0, $$25, $$24);
+                  }
+               }
+            }
+         }
+      }
+
+      private void a(dhx $$0, env $$1, int $$2, int $$3, int $$4) {
+         dxo $$5 = this.a.b();
+         dxo $$6 = this.a.d();
+         if (this.a($$0, $$2, $$3, $$4, $$1).a($$6.b())) {
+            this.c($$0, $$5, $$2, $$3, $$4, $$1);
+         }
+
+         if (this.a($$0, $$2 + 2, $$3, $$4, $$1).a($$6.b())) {
+            this.c($$0, $$5, $$2 + 2, $$3, $$4, $$1);
+         }
+      }
+
+      @Override
+      protected void b(dhx $$0, dxo $$1, int $$2, int $$3, int $$4, env $$5) {
+         jh.a $$6 = this.b($$2, $$3, $$4);
+         if ($$5.b($$6)) {
+            int $$7 = $$6.v();
+
+            while (this.a($$0.a_($$6)) && $$6.v() > $$0.L_() + 1) {
+               $$6.c(jm.a);
+            }
+
+            if (this.a($$0, $$6, $$0.a_($$6))) {
+               while ($$6.v() < $$7) {
+                  $$6.c(jm.b);
+                  $$0.a($$6, $$1, 2);
+               }
+            }
+         }
+      }
+
+      protected void c(dhx $$0, dxo $$1, int $$2, int $$3, int $$4, env $$5) {
+         jh.a $$6 = this.b($$2, $$3, $$4);
+         if ($$5.b($$6)) {
+            int $$7 = $$6.v();
+            int $$8 = 1;
+            boolean $$9 = true;
+
+            for (boolean $$10 = true; $$9 || $$10; $$8++) {
+               if ($$9) {
+                  $$6.q($$7 - $$8);
+                  dxo $$11 = $$0.a_($$6);
+                  boolean $$12 = this.a($$11) && !$$11.a(dkf.K);
+                  if (!$$12 && this.a($$0, $$6, $$11)) {
+                     a($$0, $$1, $$6, $$7 - $$8 + 1, $$7);
+                     return;
+                  }
+
+                  $$9 = $$8 <= 20 && $$12 && $$6.v() > $$0.L_() + 1;
+               }
+
+               if ($$10) {
+                  $$6.q($$7 + $$8);
+                  dxo $$13 = $$0.a_($$6);
+                  boolean $$14 = this.a($$13);
+                  if (!$$14 && this.b($$0, $$6, $$13)) {
+                     $$0.a($$6.q($$7 + 1), this.a.e(), 2);
+                     a($$0, dkf.fl.m(), $$6, $$7 + 2, $$7 + $$8);
+                     return;
+                  }
+
+                  $$10 = $$8 <= 50 && $$14 && $$6.v() < $$0.an();
+               }
+            }
+         }
+      }
+
+      private static void a(dhx $$0, dxo $$1, jh.a $$2, int $$3, int $$4) {
+         for (int $$5 = $$3; $$5 < $$4; $$5++) {
+            $$0.a($$2.q($$5), $$1, 2);
+         }
+      }
+
+      private boolean a(dhc $$0, jh $$1, dxo $$2) {
+         return $$2.c($$0, $$1, jm.b);
+      }
+
+      private boolean b(dhc $$0, jh $$1, dxo $$2) {
+         return dkd.a($$0, $$1, jm.a) && !($$2.b() instanceof dna);
+      }
+
+      private void a(dhx $$0, env $$1, int $$2, int $$3, int $$4, int $$5, int $$6, bac $$7) {
+         if (this.a($$0, $$1, $$2, $$6, $$5, $$4)) {
+            dxo $$8 = this.a.d();
+            dxo $$9 = this.a.e();
+            this.a($$0, $$1, $$2, $$3, $$4, $$2, $$5 - 1, $$4, $$9.b(dnc.d, Boolean.valueOf(true)), e, false);
+            this.a($$0, $$1, $$6, $$3, $$4, $$6, $$5 - 1, $$4, $$9.b(dnc.b, Boolean.valueOf(true)), e, false);
+            if ($$7.a(4) == 0) {
+               this.a($$0, $$1, $$2, $$5, $$4, $$2, $$5, $$4, $$8, e, false);
+               this.a($$0, $$1, $$6, $$5, $$4, $$6, $$5, $$4, $$8, e, false);
+            } else {
+               this.a($$0, $$1, $$2, $$5, $$4, $$6, $$5, $$4, $$8, e, false);
+               this.a($$0, $$1, $$7, 0.05F, $$2 + 1, $$5, $$4 - 1, dkf.cx.m().b(dtk.g, jm.d));
+               this.a($$0, $$1, $$7, 0.05F, $$2 + 1, $$5, $$4 + 1, dkf.cx.m().b(dtk.g, jm.c));
+            }
+         }
+      }
+
+      private void a(dhx $$0, env $$1, bac $$2, float $$3, int $$4, int $$5, int $$6) {
+         if (this.b($$0, $$4, $$5, $$6, $$1) && $$2.i() < $$3 && this.a($$0, $$1, $$4, $$5, $$6, 2)) {
+            this.a($$0, dkf.bz.m(), $$4, $$5, $$6, $$1);
+         }
+      }
+
+      private boolean a(dhx $$0, env $$1, int $$2, int $$3, int $$4, int $$5) {
+         jh.a $$6 = this.b($$2, $$3, $$4);
+         int $$7 = 0;
+
+         for (jm $$8 : jm.values()) {
+            $$6.c($$8);
+            if ($$1.b($$6) && $$0.a_($$6).c($$0, $$6, $$8.g())) {
+               if (++$$7 >= $$5) {
+                  return true;
+               }
+            }
+
+            $$6.c($$8.g());
          }
 
          return false;
       }
    }
 
-   public static class a extends eou {
-      public a(esn $$0, String $$1, jh $$2, drc $$3, boolean $$4) {
-         super(epb.Y, 0, $$0, a($$1), $$1, a($$4, $$3), $$2);
-      }
+   public static class b extends eqh.c {
+      private final jm b;
+      private final boolean c;
 
-      public a(esn $$0, ux $$1) {
-         super(epb.Y, $$1, $$0, $$1x -> a($$1.q("OW"), drc.valueOf($$1.l("Rot"))));
-      }
-
-      private static esi a(boolean $$0, drc $$1) {
-         ern $$2 = $$0 ? ern.b : ern.d;
-         return new esi().a(true).a($$2).a($$1);
+      public b(um $$0) {
+         super(eou.b, $$0);
+         this.c = $$0.q("tf");
+         this.b = jm.b($$0.h("D"));
       }
 
       @Override
-      protected alz b() {
-         return a(this.a);
-      }
-
-      private static alz a(String $$0) {
-         return alz.b("end_city/" + $$0);
-      }
-
-      @Override
-      protected void a(epa $$0, ux $$1) {
+      protected void a(eot $$0, um $$1) {
          super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-         $$1.a("OW", this.c.i().get(0) == ern.b);
+         $$1.a("tf", this.c);
+         $$1.a("D", this.b.e());
+      }
+
+      public b(int $$0, env $$1, @Nullable jm $$2, eqi.a $$3) {
+         super(eou.b, $$0, $$3, $$1);
+         this.b = $$2;
+         this.c = $$1.e() > 3;
+      }
+
+      @Nullable
+      public static env a(eoi $$0, bac $$1, int $$2, int $$3, int $$4, jm $$5) {
+         int $$6;
+         if ($$1.a(4) == 0) {
+            $$6 = 6;
+         } else {
+            $$6 = 2;
+         }
+         env $$11 = switch ($$5) {
+            default -> new env(-1, 0, -4, 3, $$6, 0);
+            case d -> new env(-1, 0, 0, 3, $$6, 4);
+            case e -> new env(-4, 0, -1, 0, $$6, 3);
+            case f -> new env(0, 0, -1, 4, $$6, 3);
+         };
+         $$11.a($$2, $$3, $$4);
+         return $$0.a($$11) != null ? null : $$11;
       }
 
       @Override
-      protected void a(String $$0, jh $$1, dhz $$2, bam $$3, eoc $$4) {
-         if ($$0.startsWith("Chest")) {
-            jh $$5 = $$1.e();
-            if ($$4.b($$5)) {
-               btp.a($$2, $$3, $$5, ewl.b);
+      public void a(eoh $$0, eoi $$1, bac $$2) {
+         int $$3 = this.g();
+         switch (this.b) {
+            case c:
+            default:
+               eqh.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.j() - 1, jm.c, $$3);
+               eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j() + 1, jm.e, $$3);
+               eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j() + 1, jm.f, $$3);
+               break;
+            case d:
+               eqh.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.m() + 1, jm.d, $$3);
+               eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j() + 1, jm.e, $$3);
+               eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j() + 1, jm.f, $$3);
+               break;
+            case e:
+               eqh.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.j() - 1, jm.c, $$3);
+               eqh.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.m() + 1, jm.d, $$3);
+               eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j() + 1, jm.e, $$3);
+               break;
+            case f:
+               eqh.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.j() - 1, jm.c, $$3);
+               eqh.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.m() + 1, jm.d, $$3);
+               eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j() + 1, jm.f, $$3);
+         }
+
+         if (this.c) {
+            if ($$2.h()) {
+               eqh.a($$0, $$1, $$2, this.f.h() + 1, this.f.i() + 3 + 1, this.f.j() - 1, jm.c, $$3);
             }
-         } else if ($$4.b($$1) && dhi.l($$1)) {
-            if ($$0.startsWith("Sentry")) {
-               cnd $$6 = bvr.bc.a($$2.a(), bvq.d);
-               if ($$6 != null) {
-                  $$6.a_((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5);
-                  $$2.b($$6);
+
+            if ($$2.h()) {
+               eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() + 3 + 1, this.f.j() + 1, jm.e, $$3);
+            }
+
+            if ($$2.h()) {
+               eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() + 3 + 1, this.f.j() + 1, jm.f, $$3);
+            }
+
+            if ($$2.h()) {
+               eqh.a($$0, $$1, $$2, this.f.h() + 1, this.f.i() + 3 + 1, this.f.m() + 1, jm.d, $$3);
+            }
+         }
+      }
+
+      @Override
+      public void a(dhx $$0, dhv $$1, dzk $$2, bac $$3, env $$4, dgf $$5, jh $$6) {
+         if (!this.a($$0, $$4)) {
+            dxo $$7 = this.a.d();
+            if (this.c) {
+               this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.j(), this.f.k() - 1, this.f.i() + 3 - 1, this.f.m(), e, e, false);
+               this.a($$0, $$4, this.f.h(), this.f.i(), this.f.j() + 1, this.f.k(), this.f.i() + 3 - 1, this.f.m() - 1, e, e, false);
+               this.a($$0, $$4, this.f.h() + 1, this.f.l() - 2, this.f.j(), this.f.k() - 1, this.f.l(), this.f.m(), e, e, false);
+               this.a($$0, $$4, this.f.h(), this.f.l() - 2, this.f.j() + 1, this.f.k(), this.f.l(), this.f.m() - 1, e, e, false);
+               this.a($$0, $$4, this.f.h() + 1, this.f.i() + 3, this.f.j() + 1, this.f.k() - 1, this.f.i() + 3, this.f.m() - 1, e, e, false);
+            } else {
+               this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.j(), this.f.k() - 1, this.f.l(), this.f.m(), e, e, false);
+               this.a($$0, $$4, this.f.h(), this.f.i(), this.f.j() + 1, this.f.k(), this.f.l(), this.f.m() - 1, e, e, false);
+            }
+
+            this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.j() + 1, this.f.l());
+            this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.m() - 1, this.f.l());
+            this.a($$0, $$4, this.f.k() - 1, this.f.i(), this.f.j() + 1, this.f.l());
+            this.a($$0, $$4, this.f.k() - 1, this.f.i(), this.f.m() - 1, this.f.l());
+            int $$8 = this.f.i() - 1;
+
+            for (int $$9 = this.f.h(); $$9 <= this.f.k(); $$9++) {
+               for (int $$10 = this.f.j(); $$10 <= this.f.m(); $$10++) {
+                  this.a($$0, $$4, $$7, $$9, $$8, $$10);
                }
-            } else if ($$0.startsWith("Elytra")) {
-               clu $$7 = new clu($$2.a(), $$1, this.c.d().a(jm.d));
-               $$7.a(new cxp(cxt.on), false);
-               $$2.b($$7);
+            }
+         }
+      }
+
+      private void a(dhx $$0, env $$1, int $$2, int $$3, int $$4, int $$5) {
+         if (!this.a($$0, $$2, $$5 + 1, $$4, $$1).l()) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$2, $$5, $$4, this.a.d(), e, false);
+         }
+      }
+   }
+
+   abstract static class c extends eoh {
+      protected eqi.a a;
+
+      public c(eou $$0, int $$1, eqi.a $$2, env $$3) {
+         super($$0, $$1, $$3);
+         this.a = $$2;
+      }
+
+      public c(eou $$0, um $$1) {
+         super($$0, $$1);
+         this.a = eqi.a.a($$1.h("MST"));
+      }
+
+      @Override
+      protected boolean a(dhc $$0, int $$1, int $$2, int $$3, env $$4) {
+         dxo $$5 = this.a($$0, $$1, $$2, $$3, $$4);
+         return !$$5.a(this.a.d().b()) && !$$5.a(this.a.b().b()) && !$$5.a(this.a.e().b()) && !$$5.a(dkf.fl);
+      }
+
+      @Override
+      protected void a(eot $$0, um $$1) {
+         $$1.a("MST", this.a.ordinal());
+      }
+
+      protected boolean a(dge $$0, env $$1, int $$2, int $$3, int $$4, int $$5) {
+         for (int $$6 = $$2; $$6 <= $$3; $$6++) {
+            if (this.a($$0, $$6, $$4 + 1, $$5, $$1).l()) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      protected boolean a(dha $$0, env $$1) {
+         int $$2 = Math.max(this.f.h() - 1, $$1.h());
+         int $$3 = Math.max(this.f.i() - 1, $$1.i());
+         int $$4 = Math.max(this.f.j() - 1, $$1.j());
+         int $$5 = Math.min(this.f.k() + 1, $$1.k());
+         int $$6 = Math.min(this.f.l() + 1, $$1.l());
+         int $$7 = Math.min(this.f.m() + 1, $$1.m());
+         jh.a $$8 = new jh.a(($$2 + $$5) / 2, ($$3 + $$6) / 2, ($$4 + $$7) / 2);
+         if ($$0.t($$8).a(axj.Y)) {
+            return true;
+         } else {
+            for (int $$9 = $$2; $$9 <= $$5; $$9++) {
+               for (int $$10 = $$4; $$10 <= $$7; $$10++) {
+                  if ($$0.a_($$8.d($$9, $$3, $$10)).n()) {
+                     return true;
+                  }
+
+                  if ($$0.a_($$8.d($$9, $$6, $$10)).n()) {
+                     return true;
+                  }
+               }
+            }
+
+            for (int $$11 = $$2; $$11 <= $$5; $$11++) {
+               for (int $$12 = $$3; $$12 <= $$6; $$12++) {
+                  if ($$0.a_($$8.d($$11, $$12, $$4)).n()) {
+                     return true;
+                  }
+
+                  if ($$0.a_($$8.d($$11, $$12, $$7)).n()) {
+                     return true;
+                  }
+               }
+            }
+
+            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
+               for (int $$14 = $$3; $$14 <= $$6; $$14++) {
+                  if ($$0.a_($$8.d($$2, $$14, $$13)).n()) {
+                     return true;
+                  }
+
+                  if ($$0.a_($$8.d($$5, $$14, $$13)).n()) {
+                     return true;
+                  }
+               }
+            }
+
+            return false;
+         }
+      }
+
+      protected void a(dhx $$0, env $$1, dxo $$2, int $$3, int $$4, int $$5) {
+         if (this.b($$0, $$3, $$4, $$5, $$1)) {
+            jh $$6 = this.b($$3, $$4, $$5);
+            dxo $$7 = $$0.a_($$6);
+            if (!$$7.c($$0, $$6, jm.b)) {
+               $$0.a($$6, $$2, 2);
             }
          }
       }
    }
 
-   interface b {
-      void a();
+   public static class d extends eqh.c {
+      private final List<env> b = Lists.newLinkedList();
 
-      boolean a(esn var1, int var2, eqh.a var3, jh var4, List<eoo> var5, bam var6);
+      public d(int $$0, bac $$1, int $$2, int $$3, eqi.a $$4) {
+         super(eou.c, $$0, $$4, new env($$2, 50, $$3, $$2 + 7 + $$1.a(6), 54 + $$1.a(6), $$3 + 7 + $$1.a(6)));
+         this.a = $$4;
+      }
+
+      public d(um $$0) {
+         super(eou.c, $$0);
+         env.a.listOf().parse(va.a, $$0.c("Entrances", 11)).resultOrPartial(eqh.b::error).ifPresent(this.b::addAll);
+      }
+
+      @Override
+      public void a(eoh $$0, eoi $$1, bac $$2) {
+         int $$3 = this.g();
+         int $$4 = this.f.e() - 3 - 1;
+         if ($$4 <= 0) {
+            $$4 = 1;
+         }
+
+         int $$5 = 0;
+
+         while ($$5 < this.f.d()) {
+            $$5 += $$2.a(this.f.d());
+            if ($$5 + 3 > this.f.d()) {
+               break;
+            }
+
+            eqh.c $$6 = eqh.a($$0, $$1, $$2, this.f.h() + $$5, this.f.i() + $$2.a($$4) + 1, this.f.j() - 1, jm.c, $$3);
+            if ($$6 != null) {
+               env $$7 = $$6.f();
+               this.b.add(new env($$7.h(), $$7.i(), this.f.j(), $$7.k(), $$7.l(), this.f.j() + 1));
+            }
+
+            $$5 += 4;
+         }
+
+         $$5 = 0;
+
+         while ($$5 < this.f.d()) {
+            $$5 += $$2.a(this.f.d());
+            if ($$5 + 3 > this.f.d()) {
+               break;
+            }
+
+            eqh.c $$8 = eqh.a($$0, $$1, $$2, this.f.h() + $$5, this.f.i() + $$2.a($$4) + 1, this.f.m() + 1, jm.d, $$3);
+            if ($$8 != null) {
+               env $$9 = $$8.f();
+               this.b.add(new env($$9.h(), $$9.i(), this.f.m() - 1, $$9.k(), $$9.l(), this.f.m()));
+            }
+
+            $$5 += 4;
+         }
+
+         $$5 = 0;
+
+         while ($$5 < this.f.f()) {
+            $$5 += $$2.a(this.f.f());
+            if ($$5 + 3 > this.f.f()) {
+               break;
+            }
+
+            eqh.c $$10 = eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() + $$2.a($$4) + 1, this.f.j() + $$5, jm.e, $$3);
+            if ($$10 != null) {
+               env $$11 = $$10.f();
+               this.b.add(new env(this.f.h(), $$11.i(), $$11.j(), this.f.h() + 1, $$11.l(), $$11.m()));
+            }
+
+            $$5 += 4;
+         }
+
+         $$5 = 0;
+
+         while ($$5 < this.f.f()) {
+            $$5 += $$2.a(this.f.f());
+            if ($$5 + 3 > this.f.f()) {
+               break;
+            }
+
+            eoh $$12 = eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() + $$2.a($$4) + 1, this.f.j() + $$5, jm.f, $$3);
+            if ($$12 != null) {
+               env $$13 = $$12.f();
+               this.b.add(new env(this.f.k() - 1, $$13.i(), $$13.j(), this.f.k(), $$13.l(), $$13.m()));
+            }
+
+            $$5 += 4;
+         }
+      }
+
+      @Override
+      public void a(dhx $$0, dhv $$1, dzk $$2, bac $$3, env $$4, dgf $$5, jh $$6) {
+         if (!this.a($$0, $$4)) {
+            this.a($$0, $$4, this.f.h(), this.f.i() + 1, this.f.j(), this.f.k(), Math.min(this.f.i() + 3, this.f.l()), this.f.m(), e, e, false);
+
+            for (env $$7 : this.b) {
+               this.a($$0, $$4, $$7.h(), $$7.l() - 2, $$7.j(), $$7.k(), $$7.l(), $$7.m(), e, e, false);
+            }
+
+            this.a($$0, $$4, this.f.h(), this.f.i() + 4, this.f.j(), this.f.k(), this.f.l(), this.f.m(), e, false);
+         }
+      }
+
+      @Override
+      public void a(int $$0, int $$1, int $$2) {
+         super.a($$0, $$1, $$2);
+
+         for (env $$3 : this.b) {
+            $$3.a($$0, $$1, $$2);
+         }
+      }
+
+      @Override
+      protected void a(eot $$0, um $$1) {
+         super.a($$0, $$1);
+         env.a.listOf().encodeStart(va.a, this.b).resultOrPartial(eqh.b::error).ifPresent($$1x -> $$1.a("Entrances", $$1x));
+      }
+   }
+
+   public static class e extends eqh.c {
+      public e(int $$0, env $$1, jm $$2, eqi.a $$3) {
+         super(eou.d, $$0, $$3, $$1);
+         this.a($$2);
+      }
+
+      public e(um $$0) {
+         super(eou.d, $$0);
+      }
+
+      @Nullable
+      public static env a(eoi $$0, bac $$1, int $$2, int $$3, int $$4, jm $$5) {
+         env $$9 = switch ($$5) {
+            default -> new env(0, -5, -8, 2, 2, 0);
+            case d -> new env(0, -5, 0, 2, 2, 8);
+            case e -> new env(-8, -5, 0, 0, 2, 2);
+            case f -> new env(0, -5, 0, 8, 2, 2);
+         };
+         $$9.a($$2, $$3, $$4);
+         return $$0.a($$9) != null ? null : $$9;
+      }
+
+      @Override
+      public void a(eoh $$0, eoi $$1, bac $$2) {
+         int $$3 = this.g();
+         jm $$4 = this.i();
+         if ($$4 != null) {
+            switch ($$4) {
+               case c:
+               default:
+                  eqh.a($$0, $$1, $$2, this.f.h(), this.f.i(), this.f.j() - 1, jm.c, $$3);
+                  break;
+               case d:
+                  eqh.a($$0, $$1, $$2, this.f.h(), this.f.i(), this.f.m() + 1, jm.d, $$3);
+                  break;
+               case e:
+                  eqh.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j(), jm.e, $$3);
+                  break;
+               case f:
+                  eqh.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j(), jm.f, $$3);
+            }
+         }
+      }
+
+      @Override
+      public void a(dhx $$0, dhv $$1, dzk $$2, bac $$3, env $$4, dgf $$5, jh $$6) {
+         if (!this.a($$0, $$4)) {
+            this.a($$0, $$4, 0, 5, 0, 2, 7, 1, e, e, false);
+            this.a($$0, $$4, 0, 0, 7, 2, 2, 8, e, e, false);
+
+            for (int $$7 = 0; $$7 < 5; $$7++) {
+               this.a($$0, $$4, 0, 5 - $$7 - ($$7 < 4 ? 1 : 0), 2 + $$7, 2, 7 - $$7, 2 + $$7, e, e, false);
+            }
+         }
+      }
    }
 }

@@ -1,44 +1,52 @@
-public class gud<T extends bvk & cqn> extends grp<T, gzw> {
-   private final gso a;
-   private final float b;
-   private final boolean h;
+public class gud extends gsr<cio, gzv, gbh<gzv>> {
+   private final gbh<gzv> a = this.c();
+   private final gbh<gzv> b;
+   private static final alp k = alp.b("textures/entity/fish/tropical_a.png");
+   private static final alp l = alp.b("textures/entity/fish/tropical_b.png");
 
-   public gud(grq.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.b = $$1;
-      this.h = $$2;
+   public gud(grl.a $$0) {
+      super($$0, new gdo($$0.a(gei.do)), 0.15F);
+      this.b = new gdp($$0.a(gei.dm));
+      this.a(new gwj(this, $$0.f()));
    }
 
-   public gud(grq.a $$0) {
-      this($$0, 1.0F, false);
+   public alp a(gzv $$0) {
+      return switch ($$0.a.a()) {
+         case a -> k;
+         case b -> l;
+      };
    }
 
-   @Override
-   protected int a(T $$0, jh $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   public gzv b() {
+      return new gzv();
    }
 
-   public void a(gzw $$0, fgs $$1, gll $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.b, this.b, this.b);
-      $$1.a(this.e.b());
-      if ($$0.a != null) {
-         this.a.a($$0.b, cxn.h, false, $$1, $$2, $$3, hbc.d, $$0.a);
-      }
+   public void a(cio $$0, gzv $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gy();
+      $$1.b = $$0.gw().d();
+      $$1.c = $$0.gx().d();
+   }
 
-      $$1.b();
+   public void a(gzv $$0, fgl $$1, glg $$2, int $$3) {
+      this.h = switch ($$0.a.a()) {
+         case a -> this.a;
+         case b -> this.b;
+      };
       super.a($$0, $$1, $$2, $$3);
    }
 
-   public gzw a() {
-      return new gzw();
+   protected int b(gzv $$0) {
+      return $$0.b;
    }
 
-   public void a(T $$0, gzw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      cxp $$3 = $$0.l();
-      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dW(), null, $$0.ar()) : null;
-      $$1.b = $$3.v();
+   protected void a(gzv $$0, fgl $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * azu.a(0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.af) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

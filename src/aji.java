@@ -1,29 +1,8 @@
-public class aji implements aac<ahm> {
-   public static final zt<ws, aji> a = aac.a(aji::a, aji::new);
-   private final bti b;
-
-   public aji(bti $$0) {
-      this.b = $$0;
-   }
-
-   private aji(ws $$0) {
-      this.b = $$0.b(bti.class);
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.b);
-   }
-
+public interface aji extends ahc {
    @Override
-   public aae<aji> a() {
-      return ahk.ch;
+   default wf b() {
+      return wf.a;
    }
 
-   public void a(ahm $$0) {
-      $$0.a(this);
-   }
-
-   public bti b() {
-      return this.b;
-   }
+   void a(ajf var1);
 }

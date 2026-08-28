@@ -1,127 +1,84 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dcs implements dbt {
-   final dct c;
-   final cxp d;
-   final String e;
-   final dbr f;
-   final boolean g;
+public class dcs implements dcq {
+   final Optional<dbr> c;
+   final Optional<dbr> d;
+   final Optional<dbr> e;
+   final cxg f;
    @Nullable
-   private dcd h;
+   private dbu g;
 
-   public dcs(String $$0, dbr $$1, dct $$2, cxp $$3, boolean $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.g = $$4;
+   public dcs(Optional<dbr> $$0, Optional<dbr> $$1, Optional<dbr> $$2, cxg $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public dcs(String $$0, dbr $$1, dct $$2, cxp $$3) {
-      this($$0, $$1, $$2, $$3, true);
-   }
-
-   @Override
-   public dco<? extends dcs> a() {
-      return dco.a;
+   public cxg a(dcr $$0, js.a $$1) {
+      cxg $$2 = $$0.d().a(this.f.h(), this.f.M());
+      $$2.b(this.f.e());
+      return $$2;
    }
 
    @Override
-   public String j() {
+   public Optional<dbr> c() {
+      return this.c;
+   }
+
+   @Override
+   public Optional<dbr> f() {
+      return this.d;
+   }
+
+   @Override
+   public Optional<dbr> k() {
       return this.e;
    }
 
    @Override
-   public dbr c() {
-      return this.f;
-   }
-
-   @VisibleForTesting
-   public List<Optional<dca>> f() {
-      return this.c.c();
+   public dcf<dcs> a() {
+      return dcf.t;
    }
 
    @Override
-   public dcd ap_() {
-      if (this.h == null) {
-         this.h = dcd.a(this.c.c());
+   public dbu ap_() {
+      if (this.g == null) {
+         this.g = dbu.a(List.of(this.c, this.d, this.e));
       }
 
-      return this.h;
-   }
-
-   @Override
-   public boolean i() {
       return this.g;
    }
 
-   public boolean a(dbs $$0, dhi $$1) {
-      return this.c.a($$0);
-   }
-
-   public cxp a(dbs $$0, js.a $$1) {
-      return this.d.v();
-   }
-
-   public int k() {
-      return this.c.a();
-   }
-
-   public int l() {
-      return this.c.b();
-   }
-
    @Override
-   public List<ddj> g() {
-      return List.of(
-         new ddn(this.c.a(), this.c.b(), this.c.c().stream().map($$0 -> $$0.<ddp>map(dca::b).orElse(ddp.c.c)).toList(), new ddp.f(this.d), new ddp.d(cxt.fa))
-      );
+   public List<dda> g() {
+      return List.of(new ddj(dbr.a(this.c), dbr.a(this.d), dbr.a(this.e), new ddg.f(this.f), new ddg.d(cxk.xq)));
    }
 
-   public static class a implements dco<dcs> {
-      public static final MapCodec<dcs> w = RecordCodecBuilder.mapCodec(
+   public static class a implements dcf<dcs> {
+      private static final MapCodec<dcs> x = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.e),
-                  dbr.e.fieldOf("category").orElse(dbr.d).forGetter($$0x -> $$0x.f),
-                  dct.b.forGetter($$0x -> $$0x.c),
-                  cxp.c.fieldOf("result").forGetter($$0x -> $$0x.d),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.g)
+                  dbr.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
+                  dbr.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
+                  dbr.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
+                  cxg.c.fieldOf("result").forGetter($$0x -> $$0x.f)
                )
                .apply($$0, dcs::new)
       );
-      public static final zt<xg, dcs> x = zt.a(dcs.a::a, dcs.a::a);
+      public static final zi<wv, dcs> w = zi.a(dbr.b, $$0 -> $$0.c, dbr.b, $$0 -> $$0.d, dbr.b, $$0 -> $$0.e, cxg.h, $$0 -> $$0.f, dcs::new);
 
       @Override
       public MapCodec<dcs> a() {
-         return w;
-      }
-
-      @Override
-      public zt<xg, dcs> b() {
          return x;
       }
 
-      private static dcs a(xg $$0) {
-         String $$1 = $$0.p();
-         dbr $$2 = $$0.b(dbr.class);
-         dct $$3 = dct.c.decode($$0);
-         cxp $$4 = cxp.h.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new dcs($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(xg $$0, dcs $$1) {
-         $$0.a($$1.e);
-         $$0.a($$1.f);
-         dct.c.encode($$0, $$1.c);
-         cxp.h.encode($$0, $$1.d);
-         $$0.a($$1.g);
+      @Override
+      public zi<wv, dcs> b() {
+         return w;
       }
    }
 }

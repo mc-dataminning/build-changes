@@ -1,24 +1,11 @@
-public record ahc(int b) implements aac<acr> {
-   public static final zt<ws, ahc> a = aac.a(ahc::a, ahc::new);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private ahc(ws $$0) {
-      this($$0.l());
-   }
-
-   public static ahc a(bts $$0) {
-      return new ahc($$0.k());
-   }
-
-   private void a(ws $$0) {
-      $$0.c(this.b);
-   }
+public interface ahc extends ww {
+   Logger a = LogUtils.getLogger();
 
    @Override
-   public aae<ahc> a() {
-      return ahk.cn;
-   }
-
-   public void a(acr $$0) {
-      $$0.a(this);
+   default void a(zr $$0, Exception $$1) throws z {
+      a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
    }
 }

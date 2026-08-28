@@ -1,77 +1,41 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.View;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.BitSet;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class bbu {
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("X").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
-      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
-      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
-         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
-         : $$0;
+public class bbu extends bhi {
+   public bbu(Schema $$0) {
+      super($$0, false, "AreaEffectCloudPotionFix", bin.B, "minecraft:area_effect_cloud");
    }
 
-   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
-      return new Typed($$0, $$1.getOps(), $$1.getValue());
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 
-   public static Type<?> a(Type<?> $$0, Type<?> $$1, Type<?> $$2) {
-      return $$0.all(a($$1, $$2), true, false).view().newType();
-   }
-
-   private static <A, B> TypeRewriteRule a(Type<A> $$0, Type<B> $$1) {
-      RewriteResult<A, B> $$2 = RewriteResult.create(View.create("Patcher", $$0, $$1, $$0x -> $$0xx -> {
-            throw new UnsupportedOperationException();
-         }), new BitSet());
-      return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame($$0, $$2), PointFreeRule.nop(), true, true);
-   }
-
-   @SafeVarargs
-   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
-      return $$1 -> {
-         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
-            $$1 = $$2.apply($$1);
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Color").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Potion").result();
+      $$0 = $$0.remove("Color").remove("effects").remove("Potion");
+      if ($$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<T> $$4 = $$0.emptyMap();
+         if ($$1.isPresent()) {
+            $$4 = $$4.set("custom_color", $$1.get());
          }
 
-         return $$1;
-      };
-   }
+         if ($$2.isPresent()) {
+            $$4 = $$4.set("custom_effects", $$2.get());
+         }
 
-   public static Dynamic<?> a(String $$0, Map<String, String> $$1) {
-      Dynamic<vu> $$2 = new Dynamic(vl.a, new ux());
-      Dynamic<vu> $$3 = $$2.set("Name", $$2.createString($$0));
-      if (!$$1.isEmpty()) {
-         $$3 = $$3.set(
-            "Properties",
-            $$2.createMap(
-               $$1.entrySet()
-                  .stream()
-                  .collect(Collectors.toMap($$1x -> $$2.createString((String)$$1x.getKey()), $$1x -> $$2.createString((String)$$1x.getValue())))
-            )
-         );
+         if ($$3.isPresent()) {
+            $$4 = $$4.set("potion", $$3.get());
+         }
+
+         return $$0.set("potion_contents", $$4);
       }
-
-      return $$3;
-   }
-
-   public static Dynamic<?> a(String $$0) {
-      return a($$0, Map.of());
-   }
-
-   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, UnaryOperator<String> $$2) {
-      return $$0.update($$1, $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asString().map($$2).map($$0::createString).result(), $$2x));
    }
 }

@@ -1,26 +1,55 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dcz extends dce<dda> {
+public record dcz(ddg f, ddg g, ddg h, ddg i, int j, float k) implements dda {
+   public static final MapCodec<dcz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ddg.a.fieldOf("ingredient").forGetter(dcz::b),
+               ddg.a.fieldOf("fuel").forGetter(dcz::c),
+               ddg.a.fieldOf("result").forGetter(dcz::d),
+               ddg.a.fieldOf("crafting_station").forGetter(dcz::e),
+               Codec.INT.fieldOf("duration").forGetter(dcz::f),
+               Codec.FLOAT.fieldOf("experience").forGetter(dcz::g)
+            )
+            .apply($$0, dcz::new)
+   );
+   public static final zi<wv, dcz> b = zi.a(ddg.b, dcz::b, ddg.b, dcz::c, ddg.b, dcz::d, ddg.b, dcz::e, zg.h, dcz::f, zg.l, dcz::g, dcz::new);
+   public static final dda.a<dcz> c = new dda.a<>(a, b);
+
    @Override
-   default dcp<dcz> b() {
-      return dcp.g;
+   public dda.a<dcz> a() {
+      return c;
    }
 
    @Override
-   dco<? extends dcz> a();
-
-   default boolean a(dda $$0, dhi $$1) {
-      return dca.a(this.c(), $$0.c()) && dca.a(this.f(), $$0.d()) && dca.a(this.k(), $$0.e());
+   public boolean a(csk $$0) {
+      return this.f.a($$0) && this.c().a($$0) && dda.super.a($$0);
    }
 
-   Optional<dca> c();
+   public ddg b() {
+      return this.f;
+   }
 
-   Optional<dca> f();
-
-   Optional<dca> k();
+   public ddg c() {
+      return this.g;
+   }
 
    @Override
-   default dch h() {
-      return dcg.l;
+   public ddg d() {
+      return this.h;
+   }
+
+   @Override
+   public ddg e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
+   }
+
+   public float g() {
+      return this.k;
    }
 }

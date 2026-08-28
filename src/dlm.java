@@ -1,129 +1,196 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dlm extends drp {
-   public static final MapCodec<dlm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dzh.a.fieldOf("wood_type").forGetter(drp::d), t()).apply($$0, dlm::new));
-   public static final dyu b = dyl.bb;
-   public static final dym c = dyl.a;
-   protected static final float d = 5.0F;
-   protected static final fcs e = dkm.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final Map<Integer, fcs> i = Maps.newHashMap(
-      ImmutableMap.of(
-         0,
-         dkm.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         4,
-         dkm.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
-         8,
-         dkm.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         12,
-         dkm.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
-      )
+public class dlm extends djp implements dnm {
+   public static final MapCodec<dlm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), t()).apply($$0, dlm::new)
    );
+   private static final Logger d = LogUtils.getLogger();
+   public static final dyl<jm> b = dmh.a;
+   public static final dyf c = dye.g;
+   private final boolean e;
 
    @Override
    public MapCodec<dlm> a() {
       return a;
    }
 
-   public dlm(dzh $$0, dxu.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.l(this.F.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)).b(f, Boolean.valueOf(false)));
+   public dlm(boolean $$0, dxn.d $$1) {
+      super($$1);
+      this.l(this.F.b().b(b, jm.c).b(c, Boolean.valueOf(false)));
+      this.e = $$0;
    }
 
    @Override
-   protected btj a(cxp $$0, dxv $$1, dhi $$2, jh $$3, cpx $$4, bti $$5, fbu $$6) {
-      if ($$2.c_($$3) instanceof dwk $$7 && this.a($$4, $$6, $$7, $$0)) {
-         return btj.e;
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private boolean a(cpx $$0, fbu $$1, dwk $$2, cxp $$3) {
-      return !$$2.a($$2.a($$0), $$0) && $$3.h() instanceof cxe && $$1.c().equals(jm.a);
+   public duq a(jh $$0, dxo $$1) {
+      dva $$2 = new dva($$0, $$1);
+      $$2.b(this.e);
+      return $$2;
    }
 
    @Override
-   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
-      return $$1.a_($$2.d()).a($$1, $$2.d(), jm.a, dsq.b);
-   }
-
-   @Override
-   public dxv a(dbg $$0) {
-      dhi $$1 = $$0.q();
-      etx $$2 = $$1.b_($$0.a());
-      jh $$3 = $$0.a().d();
-      dxv $$4 = $$1.a_($$3);
-      boolean $$5 = $$4.a(axu.aD);
-      jm $$6 = jm.a((double)$$0.i());
-      boolean $$7 = !dkm.a($$4.g($$1, $$3), jm.a) || $$0.h();
-      if ($$5 && !$$0.h()) {
-         if ($$4.b(dto.b)) {
-            jm $$8 = $$4.c(dto.b);
-            if ($$8.o().a($$6)) {
-               $$7 = false;
-            }
-         } else if ($$4.b(b)) {
-            Optional<jm> $$9 = dza.a($$4.c(b));
-            if ($$9.isPresent() && $$9.get().o().a($$6)) {
-               $$7 = false;
-            }
+   protected void a(dxo $$0, dgz $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
+      if (!$$1.C) {
+         if ($$1.c_($$2) instanceof dva $$7) {
+            this.a($$1, $$2, $$7, $$1.C($$2));
          }
       }
+   }
 
-      int $$10 = !$$7 ? dza.a($$6.g()) : dza.a($$0.i() + 180.0F);
-      return this.m().b(c, Boolean.valueOf($$7)).b(b, Integer.valueOf($$10)).b(f, Boolean.valueOf($$2.a() == ety.c));
+   private void a(dgz $$0, jh $$1, dva $$2, boolean $$3) {
+      boolean $$4 = $$2.c();
+      if ($$3 != $$4) {
+         $$2.a($$3);
+         if ($$3) {
+            if ($$2.d() || $$2.s() == dva.a.a) {
+               return;
+            }
+
+            $$2.k();
+            $$0.a($$1, this, 1);
+         }
+      }
    }
 
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      fcs $$4 = i.get($$0.c(b));
-      return $$4 == null ? e : $$4;
+   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      if ($$1.c_($$2) instanceof dva $$5) {
+         dfz $$6 = $$5.b();
+         boolean $$7 = !bar.b($$6.m());
+         dva.a $$8 = $$5.s();
+         boolean $$9 = $$5.j();
+         if ($$8 == dva.a.b) {
+            $$5.k();
+            if ($$9) {
+               this.a($$0, $$1, $$2, $$6, $$7);
+            } else if ($$5.t()) {
+               $$6.a(0);
+            }
+
+            if ($$5.c() || $$5.d()) {
+               $$1.a($$2, this, 1);
+            }
+         } else if ($$8 == dva.a.c) {
+            if ($$9) {
+               this.a($$0, $$1, $$2, $$6, $$7);
+            } else if ($$5.t()) {
+               $$6.a(0);
+            }
+         }
+
+         $$1.c($$2, this);
+      }
+   }
+
+   private void a(dxo $$0, arx $$1, jh $$2, dfz $$3, boolean $$4) {
+      if ($$4) {
+         $$3.a($$1);
+      } else {
+         $$3.a(0);
+      }
+
+      a($$1, $$2, $$0.c(b));
    }
 
    @Override
-   protected fcs b_(dxv $$0, dgn $$1, jh $$2) {
-      return this.a($$0, $$1, $$2, fcd.a());
+   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
+      duq $$5 = $$1.c_($$2);
+      if ($$5 instanceof dva && $$3.gG()) {
+         $$3.a((dva)$$5);
+         return bta.a;
+      } else {
+         return bta.e;
+      }
    }
 
    @Override
-   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
-      return $$4 == jm.b && !this.a($$0, $$1, $$3) ? dko.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected boolean c_(dxo $$0) {
+      return true;
    }
 
    @Override
-   public float h(dxv $$0) {
-      return dza.b($$0.c(b));
+   protected int a(dxo $$0, dgz $$1, jh $$2) {
+      duq $$3 = $$1.c_($$2);
+      return $$3 instanceof dva ? ((dva)$$3).b().k() : 0;
    }
 
    @Override
-   protected dxv a(dxv $$0, drc $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public void a(dgz $$0, jh $$1, dxo $$2, bvx $$3, cxg $$4) {
+      if ($$0.c_($$1) instanceof dva $$6) {
+         dfz $$8 = $$6.b();
+         if ($$0 instanceof arx $$9) {
+            if (!$$4.b(ku.Y)) {
+               $$8.a($$9.O().b(dgv.p));
+               $$6.b(this.e);
+            }
+
+            boolean $$10 = $$0.C($$1);
+            this.a($$0, $$1, $$6, $$10);
+         }
+      }
    }
 
    @Override
-   protected dxv a(dxv $$0, dpl $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected dqo a_(dxo $$0) {
+      return dqo.c;
    }
 
    @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      $$0.a(b, c, f);
+   protected dxo a(dxo $$0, dqv $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public dux a(jh $$0, dxv $$1) {
-      return new dvx($$0, $$1);
+   protected dxo a(dxo $$0, dpc $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
-   @Nullable
    @Override
-   public <T extends dux> duy<T> a(dhi $$0, dxv $$1, duz<T> $$2) {
-      return a($$2, duz.i, dwk::a);
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dxo a(dax $$0) {
+      return this.m().b(b, $$0.d().g());
+   }
+
+   private static void a(arx $$0, jh $$1, jm $$2) {
+      jh.a $$3 = $$1.k();
+      dgv $$4 = $$0.O();
+      int $$5 = $$4.c(dgv.y);
+
+      while ($$5-- > 0) {
+         $$3.c($$2);
+         dxo $$6 = $$0.a_($$3);
+         dkd $$7 = $$6.b();
+         if (!$$6.a(dkf.lj) || !($$0.c_($$3) instanceof dva $$9) || $$9.s() != dva.a.a) {
+            break;
+         }
+
+         if ($$9.c() || $$9.d()) {
+            dfz $$10 = $$9.b();
+            if ($$9.k()) {
+               if (!$$10.a($$0)) {
+                  break;
+               }
+
+               $$0.c($$3, $$7);
+            } else if ($$9.t()) {
+               $$10.a(0);
+            }
+         }
+
+         $$2 = $$6.c(b);
+      }
+
+      if ($$5 <= 0) {
+         int $$11 = Math.max($$4.c(dgv.y), 0);
+         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
+      }
    }
 }

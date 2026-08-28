@@ -1,24 +1,23 @@
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public record aen(int b, List<csl.a> c) implements aac<acr> {
-   public static final zt<ws, aen> a = zt.a(zr.h, aen::b, csl.a.a.a(zr.a()), aen::e, aen::new);
+public record aen(List<UUID> b) implements zr<acg> {
+   public static final zi<wh, aen> a = zr.a(aen::a, aen::new);
+
+   private aen(wh $$0) {
+      this($$0.a(kk.g));
+   }
+
+   private void a(wh $$0) {
+      $$0.a(this.b, kk.g);
+   }
 
    @Override
-   public aae<aen> a() {
-      return ahk.T;
+   public zt<aen> a() {
+      return agz.af;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public bvk a(dhi $$0) {
-      return $$0.a(this.b);
-   }
-
-   public List<csl.a> e() {
-      return this.c;
    }
 }

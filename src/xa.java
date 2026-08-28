@@ -1,37 +1,52 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import org.slf4j.Logger;
+import io.netty.buffer.ByteBufUtil;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import java.nio.charset.StandardCharsets;
 
-public class xa<T extends xb> extends MessageToByteEncoder<aac<T>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final xd<T> b;
-
-   public xa(xd<T> $$0) {
-      this.b = $$0;
+public class xa {
+   public static String a(ByteBuf $$0, int $$1) {
+      int $$2 = ByteBufUtil.utf8MaxBytes($$1);
+      int $$3 = xb.a($$0);
+      if ($$3 > $$2) {
+         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + $$3 + " > " + $$2 + ")");
+      } else if ($$3 < 0) {
+         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
+      } else {
+         int $$4 = $$0.readableBytes();
+         if ($$3 > $$4) {
+            throw new DecoderException("Not enough bytes in buffer, expected " + $$3 + ", but got " + $$4);
+         } else {
+            String $$5 = $$0.toString($$0.readerIndex(), $$3, StandardCharsets.UTF_8);
+            $$0.readerIndex($$0.readerIndex() + $$3);
+            if ($$5.length() > $$1) {
+               throw new DecoderException("The received string length is longer than maximum allowed (" + $$5.length() + " > " + $$1 + ")");
+            } else {
+               return $$5;
+            }
+         }
+      }
    }
 
-   protected void a(ChannelHandlerContext $$0, aac<T> $$1, ByteBuf $$2) throws Exception {
-      aae<? extends aac<? super T>> $$3 = $$1.a();
+   public static void a(ByteBuf $$0, CharSequence $$1, int $$2) {
+      if ($$1.length() > $$2) {
+         throw new EncoderException("String too big (was " + $$1.length() + " characters, max " + $$2 + ")");
+      } else {
+         int $$3 = ByteBufUtil.utf8MaxBytes($$1);
+         ByteBuf $$4 = $$0.alloc().buffer($$3);
 
-      try {
-         this.b.c().encode($$2, $$1);
-         int $$4 = $$2.readableBytes();
-         if (a.isDebugEnabled()) {
-            a.debug(wp.d, "OUT: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName(), $$4});
+         try {
+            int $$5 = ByteBufUtil.writeUtf8($$4, $$1);
+            int $$6 = ByteBufUtil.utf8MaxBytes($$2);
+            if ($$5 > $$6) {
+               throw new EncoderException("String too big (was " + $$5 + " bytes encoded, max " + $$6 + ")");
+            }
+
+            xb.a($$0, $$5);
+            $$0.writeBytes($$4);
+         } finally {
+            $$4.release();
          }
-
-         bqb.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
-      } catch (Throwable var9) {
-         a.error("Error sending packet {}", $$3, var9);
-         if ($$1.c()) {
-            throw new xi(var9);
-         }
-
-         throw var9;
-      } finally {
-         xe.b($$0, $$1);
       }
    }
 }

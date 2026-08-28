@@ -1,81 +1,63 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqw extends dmq {
-   public static final MapCodec<dqw> a = b(dqw::new);
-   public static final dym b = dyl.t;
-   public static final dyu e = dyl.aB;
-
-   @Override
-   public MapCodec<dqw> a() {
-      return a;
-   }
-
-   protected dqw(dxu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(aF, jm.c).b(e, Integer.valueOf(1)).b(b, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
-   }
+public class dqw extends dkn implements dkg {
+   public static final MapCodec<dqw> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxd.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dqw::new)
+   );
+   public static final dyn f = dye.aX;
+   protected static final float g = 6.0F;
+   protected static final fcl h = dkd.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   protected final dxd i;
 
    @Override
-   protected btj a(dxv $$0, dhi $$1, jh $$2, cpx $$3, fbu $$4) {
-      if (!$$3.gj().e) {
-         return btj.e;
+   public MapCodec<? extends dqw> a() {
+      return e;
+   }
+
+   protected dqw(dxd $$0, dxn.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.l(this.F.b().b(f, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return h;
+   }
+
+   @Override
+   protected void b(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
+      }
+   }
+
+   public void a(arx $$0, jh $$1, dxo $$2, bac $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 4);
       } else {
-         $$1.a($$2, $$0.a(e), 3);
-         return btj.a;
+         this.i.a($$0, $$0.m().g(), $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected int h(dxv $$0) {
-      return $$0.c(e) * 2;
-   }
-
-   @Override
-   public dxv a(dbg $$0) {
-      dxv $$1 = super.a($$0);
-      return $$1.b(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
-   }
-
-   @Override
-   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
-      if ($$4 == jm.a && !this.b($$1, $$5, $$6)) {
-         return dko.a.m();
-      } else {
-         return !$$1.B_() && $$4.o() != $$0.c(aF).o() ? $$0.b(b, Boolean.valueOf(this.c($$1, $$3, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
-
-   @Override
-   public boolean c(dhl $$0, jh $$1, dxv $$2) {
-      return this.a((dia)$$0, $$1, $$2) > 0;
-   }
-
-   @Override
-   protected boolean b() {
+   public boolean b(dhc $$0, jh $$1, dxo $$2) {
       return true;
    }
 
    @Override
-   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
-      if ($$0.c(d)) {
-         jm $$4 = $$0.c(aF);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(e) * 2 - 1);
-         }
-
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(ln.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
-      }
+   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
+      return (double)$$0.A.i() < 0.45;
    }
 
    @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      $$0.a(aF, e, b, d);
+   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(f);
    }
 }

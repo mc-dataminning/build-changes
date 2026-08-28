@@ -1,7 +1,9 @@
-import javax.annotation.Nullable;
+public class gzz extends gyo implements gzy {
+   public boolean a;
+   public cpb b = new cpb(cpf.c, cpd.b, 1);
 
-public class gzz extends gxv {
-   public float a;
-   @Nullable
-   public dxv b;
+   @Override
+   public cpb a() {
+      return this.b;
+   }
 }

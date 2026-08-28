@@ -1,22 +1,25 @@
 public class gez {
-   private final float a;
-   private final float b;
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = ae.d();
 
-   public gez(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public void a() {
+      this.e = ae.d();
    }
 
-   public float a() {
-      return this.a;
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(ae.d() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = azu.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
+      }
    }
 
    public float b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+      return (float)(7000000.0 / this.c);
    }
 }

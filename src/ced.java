@@ -1,94 +1,103 @@
 import java.util.EnumSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ced extends cde {
-   private final bwi a;
-   private final cnb b;
-   @Nullable
-   private bwg c;
-   private int d = -1;
+public class ced extends ccv {
+   private static final cgo c = cgo.b().d();
+   private final cgo d;
+   protected final bwf a;
    private final double e;
-   private int f;
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
+   @Nullable
+   protected cpo b;
+   private int k;
+   private boolean l;
+   private final Predicate<cxg> m;
+   private final boolean n;
 
-   public ced(cnb $$0, double $$1, int $$2, float $$3) {
-      this($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public ced(cnb $$0, double $$1, int $$2, int $$3, float $$4) {
-      if (!($$0 instanceof bwg)) {
-         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
-      } else {
-         this.b = $$0;
-         this.a = (bwi)$$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$4 * $$4;
-         this.a(EnumSet.of(cde.a.a, cde.a.b));
-      }
+   public ced(bwf $$0, double $$1, Predicate<cxg> $$2, boolean $$3) {
+      this.a = $$0;
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(ccv.a.a, ccv.a.b));
+      this.d = c.c().a(($$0x, $$1x) -> this.a($$0x));
    }
 
    @Override
    public boolean b() {
-      bwg $$0 = this.a.O_();
-      if ($$0 != null && $$0.bL()) {
-         this.c = $$0;
-         return true;
-      } else {
+      if (this.k > 0) {
+         this.k--;
          return false;
+      } else {
+         this.b = a(this.a).a(this.d.a(this.a.h(bxf.E)), this.a);
+         return this.b != null;
       }
+   }
+
+   private boolean a(bvx $$0) {
+      return this.m.test($$0.eZ()) || this.m.test($$0.fa());
    }
 
    @Override
    public boolean c() {
-      return this.b() || this.c.bL() && !this.a.L().m();
+      if (this.h()) {
+         if (this.a.g(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
+            }
+
+            if (Math.abs((double)this.b.dO() - this.i) > 5.0 || Math.abs((double)this.b.dM() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.dB();
+            this.g = this.b.dD();
+            this.h = this.b.dH();
+         }
+
+         this.i = (double)this.b.dO();
+         this.j = (double)this.b.dM();
+      }
+
+      return this.b();
+   }
+
+   protected boolean h() {
+      return this.n;
+   }
+
+   @Override
+   public void d() {
+      this.f = this.b.dB();
+      this.g = this.b.dD();
+      this.h = this.b.dH();
+      this.l = true;
    }
 
    @Override
    public void e() {
-      this.c = null;
-      this.f = 0;
-      this.d = -1;
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
+      this.b = null;
+      this.a.L().o();
+      this.k = b(100);
+      this.l = false;
    }
 
    @Override
    public void a() {
-      double $$0 = this.a.i(this.c.dB(), this.c.dD(), this.c.dH());
-      boolean $$1 = this.a.N().a(this.c);
-      if ($$1) {
-         this.f++;
-      } else {
-         this.f = 0;
-      }
-
-      if (!($$0 > (double)this.j) && this.f >= 5) {
+      this.a.H().a(this.b, (float)(this.a.aa() + 20), (float)this.a.Z());
+      if (this.a.g(this.b) < 6.25) {
          this.a.L().o();
       } else {
-         this.a.L().a(this.c, this.e);
+         this.a.L().a(this.b, this.e);
       }
+   }
 
-      this.a.H().a(this.c, 30.0F, 30.0F);
-      if (--this.d == 0) {
-         if (!$$1) {
-            return;
-         }
-
-         float $$2 = (float)Math.sqrt($$0) / this.i;
-         float $$3 = bae.a($$2, 0.1F, 1.0F);
-         this.b.a(this.c, $$3);
-         this.d = bae.d($$2 * (float)(this.h - this.g) + (float)this.g);
-      } else if (this.d < 0) {
-         this.d = bae.a(bae.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
-      }
+   public boolean i() {
+      return this.l;
    }
 }

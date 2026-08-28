@@ -1,36 +1,34 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-
-public class ecn implements ecv {
-   public static final MapCodec<ecn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jh.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, ecn::new));
-   public static final zt<ByteBuf, ecn> b = zt.a(jh.b, $$0 -> $$0.e, ecn::new);
-   private final jh e;
-
-   public ecn(jh $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public Optional<fby> a(dhi $$0) {
-      return Optional.of(fby.b(this.e));
-   }
-
-   @Override
-   public ecw<ecn> a() {
-      return ecw.a;
-   }
-
-   public static class a implements ecw<ecn> {
+public interface ecn {
+   ecn a = new ecn() {
       @Override
-      public MapCodec<ecn> a() {
-         return ecn.a;
+      public boolean a() {
+         return true;
       }
 
       @Override
-      public zt<ByteBuf, ecn> b() {
-         return ecn.b;
+      public void a(ecm $$0) {
       }
+
+      @Override
+      public void b(ecm $$0) {
+      }
+
+      @Override
+      public boolean a(jq<eck> $$0, fbr $$1, eck.a $$2, ecn.a $$3) {
+         return false;
+      }
+   };
+
+   boolean a();
+
+   void a(ecm var1);
+
+   void b(ecm var1);
+
+   boolean a(jq<eck> var1, fbr var2, eck.a var3, ecn.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(ecm var1, fbr var2);
    }
 }

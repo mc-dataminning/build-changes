@@ -1,28 +1,21 @@
-import com.mojang.serialization.Codec;
-
-public enum bty implements bba {
-   a("hurt", axf.uF),
-   b("thorns", axf.zW),
-   c("drowning", axf.uG),
-   d("burning", axf.uI),
-   e("poking", axf.uJ),
-   f("freezing", axf.uH);
-
-   public static final Codec<bty> g = bba.a(bty::values);
-   private final String h;
-   private final axe i;
-
-   private bty(final String $$0, final axe $$1) {
-      this.h = $$0;
-      this.i = $$1;
+class bty extends bue {
+   protected bty(buf $$0, int $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public boolean a(arx $$0, bvx $$1, int $$2) {
+      return $$1.fw() > 0.0F;
    }
 
-   public axe a() {
-      return this.i;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public void a(bvx $$0, int $$1) {
+      super.a($$0, $$1);
+      $$0.E(Math.max($$0.fw(), (float)(4 * (1 + $$1))));
    }
 }

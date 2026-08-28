@@ -1,81 +1,83 @@
-import com.mojang.logging.LogUtils;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
-import org.slf4j.Logger;
+public abstract class fri implements fro {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-public class fri {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Object a = new Object();
-   private static long c = 0L;
+   public fri(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
+   }
 
-   public static long a() {
-      synchronized (a) {
-         if (c == 0L) {
-            MemoryStack $$0 = MemoryStack.stackPush();
+   @Override
+   public void k(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.D() + ($$0 - this.D());
+         $$1.k($$2);
+      });
+      this.c = $$0;
+   }
 
-            try {
-               PointerBuffer $$1 = $$0.mallocPointer(1);
-               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-               c = $$1.get();
-            } catch (Throwable var6) {
-               if ($$0 != null) {
-                  try {
-                     $$0.close();
-                  } catch (Throwable var5) {
-                     var6.addSuppressed(var5);
-                  }
-               }
+   @Override
+   public void l(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.E() + ($$0 - this.E());
+         $$1.l($$2);
+      });
+      this.d = $$0;
+   }
 
-               throw var6;
-            }
+   @Override
+   public int D() {
+      return this.c;
+   }
 
-            if ($$0 != null) {
-               $$0.close();
-            }
-         }
+   @Override
+   public int E() {
+      return this.d;
+   }
 
-         return c;
+   @Override
+   public int y() {
+      return this.a;
+   }
+
+   @Override
+   public int w() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final frp a;
+      public final frq.a b;
+
+      protected a(frp $$0, frq $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
       }
-   }
 
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
+      public int a() {
+         return this.a.w() + this.b.b + this.b.d;
       }
-   }
 
-   public static boolean b(int $$0, String $$1) {
-      if ($$0 != 0) {
-         b.error("FreeType error: {} ({})", a($$0), $$1);
-         return true;
-      } else {
-         return false;
+      public int b() {
+         return this.a.y() + this.b.a + this.b.c;
       }
-   }
 
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
-   }
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.y() - this.b.c);
+         int $$4 = (int)azu.h(this.b.e, $$2, $$3);
+         this.a.k($$4 + $$0);
+      }
 
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
-   }
-
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
-   }
-
-   public static void b() {
-      synchronized (a) {
-         if (c != 0L) {
-            FreeType.FT_Done_Library(c);
-            c = 0L;
-         }
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.w() - this.b.d);
+         int $$4 = Math.round(azu.h(this.b.f, $$2, $$3));
+         this.a.l($$4 + $$0);
       }
    }
 }

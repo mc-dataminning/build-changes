@@ -1,16 +1,17 @@
-import com.google.common.collect.Lists;
-
-public record aax(abf b) implements aac<aav> {
-   private static final int c = 32767;
-   public static final zt<ws, aax> a = abf.<ws>a($$0 -> abg.a($$0, 32767), ae.a(Lists.newArrayList(new abf.c[]{new abf.c<>(abd.b, abd.a)}), $$0 -> {
-   })).a(aax::new, aax::b);
+public record aax(eco c, int d) implements aau {
+   public static final zi<wv, aax> a = zi.a(eco.d, aax::b, zg.h, aax::c, aax::new);
+   public static final aau.b<aax> b = aau.a("debug/game_event_listeners");
 
    @Override
-   public aae<aax> a() {
-      return aau.m;
+   public aau.b<aax> a() {
+      return b;
    }
 
-   public void a(aav $$0) {
-      $$0.a(this);
+   public eco b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

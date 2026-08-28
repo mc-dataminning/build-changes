@@ -1,20 +1,11 @@
-import io.netty.buffer.ByteBuf;
-import java.util.HashMap;
-import java.util.Map;
+public interface aak extends acd {
+   void a(aan var1);
 
-public record aak(Map<String, String> b) implements aac<aai> {
-   private static final int c = 128;
-   private static final int d = 4096;
-   private static final int e = 32;
-   private static final zt<ByteBuf, Map<String, String>> f = zr.a(HashMap::new, zr.b(128), zr.b(4096), 32);
-   public static final zt<ByteBuf, aak> a = zt.a(f, aak::b, aak::new);
+   void a(aao var1);
 
-   @Override
-   public aae<aak> a() {
-      return aau.b;
-   }
+   void a(aam var1);
 
-   public void a(aai $$0) {
-      $$0.a(this);
-   }
+   void a(aap var1);
+
+   void a(aal var1);
 }

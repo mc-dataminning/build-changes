@@ -1,97 +1,42 @@
-import java.util.List;
+import java.util.function.Consumer;
 
-public class cvg implements ctu {
-   private final jz<cxp> b;
-   private final int c;
-   private final int d;
-   private final ctc e;
-
-   public cvg(ctc $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, jz.a($$1 * $$2, cxp.j));
-   }
-
-   private cvg(ctc $$0, int $$1, int $$2, jz<cxp> $$3) {
-      this.b = $$3;
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public class cvg extends cxc {
+   public cvg(cxc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public int b() {
-      return this.b.size();
-   }
+   public bta a(daz $$0) {
+      jm $$1 = $$0.k();
+      if ($$1 == jm.a) {
+         return bta.d;
+      } else {
+         dgz $$2 = $$0.q();
+         dax $$3 = new dax($$0);
+         jh $$4 = $$3.a();
+         cxg $$5 = $$0.n();
+         fbr $$6 = fbr.c($$4);
+         fbm $$7 = bvi.f.n().a($$6.a(), $$6.b(), $$6.c());
+         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
+            if ($$2 instanceof arx $$8) {
+               Consumer<clh> $$9 = bvi.a($$8, $$5, $$0.o());
+               clh $$10 = bvi.f.b($$8, $$9, $$4, bvh.m, true, true);
+               if ($$10 == null) {
+                  return bta.d;
+               }
 
-   @Override
-   public boolean c() {
-      for (cxp $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
+               float $$11 = (float)azu.d((azu.h($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
+               $$10.b($$10.dB(), $$10.dD(), $$10.dH(), $$11, 0.0F);
+               $$8.a_($$10);
+               $$2.a(null, $$10.dB(), $$10.dD(), $$10.dH(), awv.aD, aww.e, 0.75F, 0.8F);
+               $$10.a(eck.t, $$0.o());
+            }
+
+            $$5.h(1);
+            return bta.a;
+         } else {
+            return bta.d;
          }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cxp a(int $$0) {
-      return $$0 >= this.b() ? cxp.j : this.b.get($$0);
-   }
-
-   @Override
-   public cxp b(int $$0) {
-      return btd.a(this.b, $$0);
-   }
-
-   @Override
-   public cxp a(int $$0, int $$1) {
-      cxp $$2 = btd.a(this.b, $$0, $$1);
-      if (!$$2.f()) {
-         this.e.a(this);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(int $$0, cxp $$1) {
-      this.b.set($$0, $$1);
-      this.e.a(this);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cpx $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public int g() {
-      return this.d;
-   }
-
-   @Override
-   public int az_() {
-      return this.c;
-   }
-
-   @Override
-   public List<cxp> h() {
-      return List.copyOf(this.b);
-   }
-
-   @Override
-   public void fillStackedContents(cqc $$0) {
-      for (cxp $$1 : this.b) {
-         $$0.a($$1);
       }
    }
 }

@@ -1,43 +1,63 @@
-import javax.annotation.Nullable;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public class clb extends ckw {
-   @Nullable
-   private fby b;
+public class clb<T extends ckv> {
+   private static clb<?>[] l = new clb[0];
+   public static final clb<ckr> a = a(ckr.class, "HoldingPattern");
+   public static final clb<ckz> b = a(ckz.class, "StrafePlayer");
+   public static final clb<ckt> c = a(ckt.class, "LandingApproach");
+   public static final clb<cku> d = a(cku.class, "Landing");
+   public static final clb<cla> e = a(cla.class, "Takeoff");
+   public static final clb<ckx> f = a(ckx.class, "SittingFlaming");
+   public static final clb<cky> g = a(cky.class, "SittingScanning");
+   public static final clb<ckw> h = a(ckw.class, "SittingAttacking");
+   public static final clb<ckp> i = a(ckp.class, "ChargingPlayer");
+   public static final clb<ckq> j = a(ckq.class, "Dying");
+   public static final clb<cks> k = a(cks.class, "Hover");
+   private final Class<? extends ckv> m;
+   private final int n;
+   private final String o;
 
-   public clb(cku $$0) {
-      super($$0);
+   private clb(int $$0, Class<? extends ckv> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   @Override
-   public void a(ash $$0) {
-      if (this.b == null) {
-         this.b = this.a.du();
+   public ckv a(ckl $$0) {
+      try {
+         Constructor<? extends ckv> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
       }
    }
 
-   @Override
-   public boolean a() {
-      return true;
+   protected Constructor<? extends ckv> a() throws NoSuchMethodException {
+      return this.m.getConstructor(ckl.class);
+   }
+
+   public int b() {
+      return this.n;
    }
 
    @Override
-   public void c() {
-      this.b = null;
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
    }
 
-   @Override
-   public float e() {
-      return 1.0F;
+   public static clb<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
    }
 
-   @Nullable
-   @Override
-   public fby f() {
-      return this.b;
+   public static int c() {
+      return l.length;
    }
 
-   @Override
-   public clk<clb> h() {
-      return clk.k;
+   private static <T extends ckv> clb<T> a(Class<T> $$0, String $$1) {
+      clb<T> $$2 = new clb<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
+      return $$2;
    }
 }

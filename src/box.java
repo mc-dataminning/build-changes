@@ -1,67 +1,50 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.stream.Stream;
 
-public abstract class box<S> {
-   private final Map<box.b<?>, box.a<?>> a = new HashMap<>();
-   private final bou<S> b;
-   private final bov<S> c;
-
-   protected box(bou<S> $$0, bov<S> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public interface box {
+   static bor<StringReader> a(String $$0) {
+      return new box.b($$0);
    }
 
-   public bov<S> a() {
-      return this.c;
+   static bor<StringReader> a(char $$0) {
+      return new box.a($$0);
    }
 
-   public <T> Optional<T> a(bos<T> $$0) {
-      Optional<T> $$1 = this.b($$0);
-      if ($$1.isPresent()) {
-         this.c.a(this.c());
-      }
-
-      return $$1;
-   }
-
-   public <T> Optional<T> b(bos<T> $$0) {
-      box.b<T> $$1 = new box.b<>($$0, this.c());
-      box.a<T> $$2 = this.a($$1);
-      if ($$2 != null) {
-         this.a($$2.b());
-         return $$2.a;
-      } else {
-         boy<S, T> $$3 = this.b.a($$0);
-         if ($$3 == null) {
-            throw new IllegalStateException("No symbol " + $$0);
+   public static record a(char a) implements bor<StringReader> {
+      @Override
+      public boolean a(bon<StringReader> $$0, bop $$1, boj $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         if ($$0.b().canRead() && $$0.b().read() == this.a) {
+            return true;
          } else {
-            Optional<T> $$4 = $$3.a(this);
-            this.a($$1, $$4);
-            return $$4;
+            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
          }
       }
+
+      public char c() {
+         return this.a;
+      }
    }
 
-   @Nullable
-   private <T> box.a<T> a(box.b<T> $$0) {
-      return (box.a<T>)this.a.get($$0);
-   }
+   public static record b(String a) implements bor<StringReader> {
+      @Override
+      public boolean a(bon<StringReader> $$0, bop $$1, boj $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         String $$4 = $$0.b().readUnquotedString();
+         if (!$$4.equals(this.a)) {
+            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
+         } else {
+            return true;
+         }
+      }
 
-   private <T> void a(box.b<T> $$0, Optional<T> $$1) {
-      this.a.put($$0, new box.a<>($$1, this.c()));
-   }
-
-   public abstract S b();
-
-   public abstract int c();
-
-   public abstract void a(int var1);
-
-   static record a<T>(Optional<T> a, int b) {
-   }
-
-   static record b<T>(bos<T> a, int b) {
+      public String c() {
+         return this.a;
+      }
    }
 }

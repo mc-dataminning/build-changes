@@ -1,149 +1,79 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.function.UnaryOperator;
+public class axj {
+   public static final aya<dib> a = a("is_deep_ocean");
+   public static final aya<dib> b = a("is_ocean");
+   public static final aya<dib> c = a("is_beach");
+   public static final aya<dib> d = a("is_river");
+   public static final aya<dib> e = a("is_mountain");
+   public static final aya<dib> f = a("is_badlands");
+   public static final aya<dib> g = a("is_hill");
+   public static final aya<dib> h = a("is_taiga");
+   public static final aya<dib> i = a("is_jungle");
+   public static final aya<dib> j = a("is_forest");
+   public static final aya<dib> k = a("is_savanna");
+   public static final aya<dib> l = a("is_overworld");
+   public static final aya<dib> m = a("is_nether");
+   public static final aya<dib> n = a("is_end");
+   public static final aya<dib> o = a("stronghold_biased_to");
+   public static final aya<dib> p = a("has_structure/buried_treasure");
+   public static final aya<dib> q = a("has_structure/desert_pyramid");
+   public static final aya<dib> r = a("has_structure/igloo");
+   public static final aya<dib> s = a("has_structure/jungle_temple");
+   public static final aya<dib> t = a("has_structure/mineshaft");
+   public static final aya<dib> u = a("has_structure/mineshaft_mesa");
+   public static final aya<dib> v = a("has_structure/ocean_monument");
+   public static final aya<dib> w = a("has_structure/ocean_ruin_cold");
+   public static final aya<dib> x = a("has_structure/ocean_ruin_warm");
+   public static final aya<dib> y = a("has_structure/pillager_outpost");
+   public static final aya<dib> z = a("has_structure/ruined_portal_desert");
+   public static final aya<dib> A = a("has_structure/ruined_portal_jungle");
+   public static final aya<dib> B = a("has_structure/ruined_portal_ocean");
+   public static final aya<dib> C = a("has_structure/ruined_portal_swamp");
+   public static final aya<dib> D = a("has_structure/ruined_portal_mountain");
+   public static final aya<dib> E = a("has_structure/ruined_portal_standard");
+   public static final aya<dib> F = a("has_structure/shipwreck_beached");
+   public static final aya<dib> G = a("has_structure/shipwreck");
+   public static final aya<dib> H = a("has_structure/stronghold");
+   public static final aya<dib> I = a("has_structure/trial_chambers");
+   public static final aya<dib> J = a("has_structure/swamp_hut");
+   public static final aya<dib> K = a("has_structure/village_desert");
+   public static final aya<dib> L = a("has_structure/village_plains");
+   public static final aya<dib> M = a("has_structure/village_savanna");
+   public static final aya<dib> N = a("has_structure/village_snowy");
+   public static final aya<dib> O = a("has_structure/village_taiga");
+   public static final aya<dib> P = a("has_structure/trail_ruins");
+   public static final aya<dib> Q = a("has_structure/woodland_mansion");
+   public static final aya<dib> R = a("has_structure/nether_fortress");
+   public static final aya<dib> S = a("has_structure/nether_fossil");
+   public static final aya<dib> T = a("has_structure/bastion_remnant");
+   public static final aya<dib> U = a("has_structure/ancient_city");
+   public static final aya<dib> V = a("has_structure/ruined_portal_nether");
+   public static final aya<dib> W = a("has_structure/end_city");
+   public static final aya<dib> X = a("required_ocean_monument_surrounding");
+   public static final aya<dib> Y = a("mineshaft_blocking");
+   public static final aya<dib> Z = a("plays_underwater_music");
+   public static final aya<dib> aa = a("has_closer_water_fog");
+   public static final aya<dib> ab = a("water_on_map_outlines");
+   public static final aya<dib> ac = a("produces_corals_from_bonemeal");
+   public static final aya<dib> ad = a("increased_fire_burnout");
+   public static final aya<dib> ae = a("snow_golem_melts");
+   public static final aya<dib> af = a("without_zombie_sieges");
+   public static final aya<dib> ag = a("without_patrol_spawns");
+   public static final aya<dib> ah = a("without_wandering_trader_spawns");
+   public static final aya<dib> ai = a("spawns_cold_variant_frogs");
+   public static final aya<dib> aj = a("spawns_warm_variant_frogs");
+   public static final aya<dib> ak = a("spawns_gold_rabbits");
+   public static final aya<dib> al = a("spawns_white_rabbits");
+   public static final aya<dib> am = a("reduce_water_ambient_spawns");
+   public static final aya<dib> an = a("allows_tropical_fish_spawns_at_any_height");
+   public static final aya<dib> ao = a("polar_bears_spawn_on_alternate_blocks");
+   public static final aya<dib> ap = a("more_frequent_drowned_spawns");
+   public static final aya<dib> aq = a("allows_surface_slime_spawns");
+   public static final aya<dib> ar = a("spawns_snow_foxes");
 
-public final class axj {
-   public static final zt<ws, axj> a = zt.a(axj::b, axj::a);
-   private static final Map<cus, Pair<String, String>> b = ImmutableMap.of(
-      cus.a,
-      Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cus.b,
-      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cus.c,
-      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cus.d,
-      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
-   );
-   private final Map<cus, axj.a> c;
-
-   private axj(Map<cus, axj.a> $$0) {
-      this.c = $$0;
+   private axj() {
    }
 
-   public axj() {
-      this(new EnumMap<>(cus.class));
-   }
-
-   private axj.a c(cus $$0) {
-      return this.c.getOrDefault($$0, axj.a.a);
-   }
-
-   private void a(cus $$0, UnaryOperator<axj.a> $$1) {
-      this.c.compute($$0, ($$1x, $$2) -> {
-         if ($$2 == null) {
-            $$2 = axj.a.a;
-         }
-
-         $$2 = $$1.apply($$2);
-         if ($$2.equals(axj.a.a)) {
-            $$2 = null;
-         }
-
-         return $$2;
-      });
-   }
-
-   public boolean a(cus $$0) {
-      return this.c($$0).b;
-   }
-
-   public void a(cus $$0, boolean $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public boolean b(cus $$0) {
-      return this.c($$0).c;
-   }
-
-   public void b(cus $$0, boolean $$1) {
-      this.a($$0, $$1x -> $$1x.b($$1));
-   }
-
-   private static axj a(ws $$0) {
-      Map<cus, axj.a> $$1 = new EnumMap<>(cus.class);
-
-      for (cus $$2 : cus.values()) {
-         boolean $$3 = $$0.readBoolean();
-         boolean $$4 = $$0.readBoolean();
-         if ($$3 || $$4) {
-            $$1.put($$2, new axj.a($$3, $$4));
-         }
-      }
-
-      return new axj($$1);
-   }
-
-   private void b(ws $$0) {
-      for (cus $$1 : cus.values()) {
-         axj.a $$2 = this.c.getOrDefault($$1, axj.a.a);
-         $$0.a($$2.b);
-         $$0.a($$2.c);
-      }
-   }
-
-   public static axj a(ux $$0) {
-      Map<cus, axj.a> $$1 = new EnumMap<>(cus.class);
-      b.forEach(($$2, $$3) -> {
-         boolean $$4 = $$0.q((String)$$3.getFirst());
-         boolean $$5 = $$0.q((String)$$3.getSecond());
-         if ($$4 || $$5) {
-            $$1.put($$2, new axj.a($$4, $$5));
-         }
-      });
-      return new axj($$1);
-   }
-
-   public void b(ux $$0) {
-      b.forEach(($$1, $$2) -> {
-         axj.a $$3 = this.c.getOrDefault($$1, axj.a.a);
-         $$0.a((String)$$2.getFirst(), $$3.b);
-         $$0.a((String)$$2.getSecond(), $$3.c);
-      });
-   }
-
-   public axj a() {
-      return new axj(new EnumMap<>(this.c));
-   }
-
-   public void a(axj $$0) {
-      this.c.clear();
-      this.c.putAll($$0.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof axj && this.c.equals(((axj)$$0).c);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   static record a(boolean b, boolean c) {
-      public static final axj.a a = new axj.a(false, false);
-
-      @Override
-      public String toString() {
-         return "[open=" + this.b + ", filtering=" + this.c + "]";
-      }
-
-      public axj.a a(boolean $$0) {
-         return new axj.a($$0, this.c);
-      }
-
-      public axj.a b(boolean $$0) {
-         return new axj.a(this.b, $$0);
-      }
-
-      public boolean a() {
-         return this.b;
-      }
-
-      public boolean b() {
-         return this.c;
-      }
+   private static aya<dib> a(String $$0) {
+      return aya.a(mb.aI, alp.b($$0));
    }
 }

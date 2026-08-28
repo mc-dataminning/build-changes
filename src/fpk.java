@@ -1,23 +1,47 @@
-public class fpk {
-   public static final fpk a = new fpk("Merry X-mas!");
-   public static final fpk b = new fpk("Happy new year!");
-   public static final fpk c = new fpk("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public fpk(String $$0) {
-      this.f = $$0;
+public class fpk implements frx {
+   private static final int a = 170;
+   private final xk b;
+   @Nullable
+   private List<azg> c;
+   @Nullable
+   private uh d;
+   @Nullable
+   private final xk e;
+
+   private fpk(xk $$0, @Nullable xk $$1) {
+      this.b = $$0;
+      this.e = $$1;
    }
 
-   public void a(fns $$0, int $$1, fnq $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - bae.e(bae.a((float)(ae.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   public static fpk a(xk $$0, @Nullable xk $$1) {
+      return new fpk($$0, $$1);
+   }
+
+   public static fpk a(xk $$0) {
+      return new fpk($$0, $$0);
+   }
+
+   @Override
+   public void b(frw $$0) {
+      if (this.e != null) {
+         $$0.a(frv.c, this.e);
+      }
+   }
+
+   public List<azg> a(flz $$0) {
+      uh $$1 = uh.a();
+      if (this.c == null || $$1 != this.d) {
+         this.c = a($$0, this.b);
+         this.d = $$1;
+      }
+
+      return this.c;
+   }
+
+   public static List<azg> a(flz $$0, xk $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

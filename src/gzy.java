@@ -1,3 +1,3 @@
-public class gzy extends gxc {
-   public boolean d;
+public interface gzy {
+   cpb a();
 }

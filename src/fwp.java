@@ -1,32 +1,34 @@
-public class fwp extends fwt {
-   private static final xv b = xv.c("multiplayerWarning.header").a(n.r);
-   private static final xv c = xv.c("multiplayerWarning.message");
-   private static final xv d = xv.c("multiplayerWarning.check");
-   private static final xv s = b.f().f("\n").b(c);
-   private final fty u;
+public class fwp extends fwv {
+   private static final xk a = xk.c("options.chat.title");
 
-   public fwp(fty $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+   private static fmc<?>[] a(fmd $$0) {
+      return new fmc[]{
+         $$0.n(),
+         $$0.N(),
+         $$0.O(),
+         $$0.P(),
+         $$0.o(),
+         $$0.s(),
+         $$0.y(),
+         $$0.p(),
+         $$0.C(),
+         $$0.z(),
+         $$0.B(),
+         $$0.A(),
+         $$0.av(),
+         $$0.M(),
+         $$0.ah(),
+         $$0.Y(),
+         $$0.aj()
+      };
+   }
+
+   public fwp(ftr $$0, fmd $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   protected frv l() {
-      fry $$0 = fry.e().a(8);
-      $$0.a(fof.a(xu.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.az();
-         }
-
-         this.m.a(new fwo(this.u));
-      }).a());
-      $$0.a(fof.a(xu.k, $$0x -> this.aP_()).a());
-      return $$0;
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.u);
+   protected void l() {
+      this.d.a(a(this.c));
    }
 }

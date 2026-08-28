@@ -1,33 +1,36 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public record cxi(jq<axe> e, float f, float g, xv h) {
-   public static final Codec<cxi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axe.b.fieldOf("sound_event").forGetter(cxi::a),
-               azn.o.fieldOf("use_duration").forGetter(cxi::b),
-               azn.o.fieldOf("range").forGetter(cxi::c),
-               xx.a.fieldOf("description").forGetter(cxi::d)
-            )
-            .apply($$0, cxi::new)
-   );
-   public static final zt<xg, cxi> b = zt.a(axe.d, cxi::a, zr.l, cxi::b, zr.l, cxi::c, xx.b, cxi::d, cxi::new);
-   public static final Codec<jq<cxi>> c = alv.a(mb.I, a);
-   public static final zt<xg, jq<cxi>> d = zr.a(mb.I, b);
+public enum cxi implements baq {
+   a(0, "none"),
+   b(1, "eat"),
+   c(2, "drink"),
+   d(3, "block"),
+   e(4, "bow"),
+   f(5, "spear"),
+   g(6, "crossbow"),
+   h(7, "spyglass"),
+   i(8, "toot_horn"),
+   j(9, "brush");
 
-   public jq<axe> a() {
-      return this.e;
+   private static final IntFunction<cxi> m = ayl.a(cxi::a, values(), ayl.a.a);
+   public static final Codec<cxi> k = baq.a(cxi::values);
+   public static final zi<ByteBuf, cxi> l = zg.a(m, cxi::a);
+   private final int n;
+   private final String o;
+
+   private cxi(final int $$0, final String $$1) {
+      this.n = $$0;
+      this.o = $$1;
    }
 
-   public float b() {
-      return this.f;
+   public int a() {
+      return this.n;
    }
 
-   public float c() {
-      return this.g;
-   }
-
-   public xv d() {
-      return this.h;
+   @Override
+   public String c() {
+      return this.o;
    }
 }

@@ -1,62 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class ejf implements eja {
+public class ejf implements eit {
    public static final Codec<ejf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ma.e.q().fieldOf("block").flatXmap(ejf::a, DataResult::success).orElse((dpo)dko.fu).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               kf.a(mb.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ejf::new)
+      $$0 -> $$0.apply2(ejf::new, eij.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), enh.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
-   public final dpo b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final ju<dkm> h;
-   private final ObjectArrayList<jm> i;
+   public final List<eij> b;
+   public final jq<enh> c;
 
-   private static DataResult<dpo> a(dkm $$0) {
-      return $$0 instanceof dpo $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
-   }
-
-   public ejf(dpo $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, ju<dkm> $$6) {
+   public ejf(List<eij> $$0, jq<enh> $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(jm.b);
-      }
-
-      if ($$2) {
-         this.i.add(jm.a);
-      }
-
-      if ($$4) {
-         jm.c.a.forEach(this.i::add);
-      }
    }
 
-   public List<jm> a(bam $$0, jm $$1) {
-      return ae.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
-   }
-
-   public List<jm> a(bam $$0) {
-      return ae.a(this.i, $$0);
+   @Override
+   public Stream<egb<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

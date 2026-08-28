@@ -1,116 +1,146 @@
-public enum dxi implements bba {
-   a("inactive", dxi.a.a) {
-      @Override
-      protected void a(ash $$0, jh $$1, dxf $$2, dxh $$3, boolean $$4) {
-         $$3.a(cxp.j);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
-      }
-   },
-   b("active", dxi.a.b) {
-      @Override
-      protected void a(ash $$0, jh $$1, dxf $$2, dxh $$3, boolean $$4) {
-         if (!$$3.b()) {
-            dxd.b.a($$0, this, $$2, $$3, $$1);
-         }
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
-      }
-   },
-   c("unlocking", dxi.a.b) {
-      @Override
-      protected void a(ash $$0, jh $$1, dxf $$2, dxh $$3, boolean $$4) {
-         $$0.a(null, $$1, axf.Bi, axg.e);
-      }
-   },
-   d("ejecting", dxi.a.b) {
-      @Override
-      protected void a(ash $$0, jh $$1, dxf $$2, dxh $$3, boolean $$4) {
-         $$0.a(null, $$1, axf.Bk, axg.e);
-      }
+public class dxi extends dmh {
+   public static final MapCodec<dxi> b = b(dxi::new);
+   public static final dyl<dyp> c = dye.bj;
+   public static final dyf d = dye.C;
+   public static final float e = 4.0F;
+   protected static final fcl f = dkd.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final fcl g = dkd.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final fcl h = dkd.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final fcl i = dkd.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final fcl j = dkd.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final fcl k = dkd.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final fcl o = dkd.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final fcl G = dkd.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final fcl H = dkd.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final fcl I = dkd.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final fcl J = dkd.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final fcl K = dkd.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final fcl L = dkd.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final fcl M = dkd.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final fcl N = dkd.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final fcl O = dkd.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final fcl P = dkd.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final fcl Q = dkd.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final fcl[] R = a(true);
+   private static final fcl[] S = a(false);
 
-      @Override
-      protected void a(ash $$0, jh $$1, dxf $$2, dxh $$3) {
-         $$0.a(null, $$1, axf.Bc, axg.e);
+   @Override
+   protected MapCodec<dxi> a() {
+      return b;
+   }
+
+   private static fcl[] a(boolean $$0) {
+      return Arrays.stream(jm.values()).map($$1 -> a($$1, $$0)).toArray(fcl[]::new);
+   }
+
+   private static fcl a(jm $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return fci.a(k, $$1 ? M : G);
+         case b:
+            return fci.a(j, $$1 ? L : o);
+         case c:
+            return fci.a(i, $$1 ? O : I);
+         case d:
+            return fci.a(h, $$1 ? N : H);
+         case e:
+            return fci.a(g, $$1 ? Q : K);
+         case f:
+            return fci.a(f, $$1 ? P : J);
       }
-   };
+   }
 
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dxi.a j;
-
-   dxi(final String $$0, final dxi.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public dxi(dxn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(a, jm.c).b(c, dyp.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public String c() {
-      return this.i;
+   protected boolean g_(dxo $$0) {
+      return true;
    }
 
-   public int a() {
-      return this.j.c;
+   @Override
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return ($$0.c(d) ? R : S)[$$0.c(a).ordinal()];
    }
 
-   public dxi a(ash $$0, jh $$1, dxf $$2, dxg $$3, dxh $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.ac() + 20L);
-            yield d;
+   private boolean a(dxo $$0, dxo $$1) {
+      dkd $$2 = $$0.c(c) == dyp.a ? dkf.bF : dkf.by;
+      return $$1.a($$2) && $$1.c(dxh.c) && $$1.c(a) == $$0.c(a);
+   }
+
+   @Override
+   public dxo a(dgz $$0, jh $$1, dxo $$2, cpo $$3) {
+      if (!$$0.C && $$3.gj().d) {
+         jh $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
          }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.ac() + (long)$$7);
-               yield d;
-            }
-         }
-      };
-   }
-
-   private static dxi a(ash $$0, jh $$1, dxf $$2, dxg $$3, dxh $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.ac() + 20L);
-      return $$4.c() ? b : a;
-   }
-
-   public void a(ash $$0, jh $$1, dxi $$2, dxf $$3, dxh $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
-   }
-
-   protected void a(ash $$0, jh $$1, dxf $$2, dxh $$3, boolean $$4) {
-   }
-
-   protected void a(ash $$0, jh $$1, dxf $$2, dxh $$3) {
-   }
-
-   private void a(ash $$0, jh $$1, cxp $$2, float $$3) {
-      la.a($$0, $$2, 2, jm.b, fby.c($$1).a(jm.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, axf.Be, axg.e, 1.0F, 0.8F + 0.4F * $$3);
-   }
-
-   static enum a {
-      a(6),
-      b(12);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
       }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         jh $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
+         }
+      }
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      return $$4.g() == $$0.c(a) && !$$0.a($$1, $$3) ? dkf.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
+      dxo $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(dkf.bX) && $$3.c(a) == $$0.c(a);
+   }
+
+   @Override
+   protected void a(dxo $$0, dgz $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
+      if ($$0.a((dhc)$$1, $$2)) {
+         $$1.b($$2.a($$0.c(a).g()), $$3, euu.a($$4, $$0.c(a).g()));
+      }
+   }
+
+   @Override
+   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
+      return new cxg($$2.c(c) == dyp.b ? dkf.by : dkf.bF);
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dqv $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dpc $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(a, c, d);
+   }
+
+   @Override
+   protected boolean a(dxo $$0, euf $$1) {
+      return false;
    }
 }

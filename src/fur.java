@@ -1,121 +1,82 @@
-public class fur extends fvp<ctf> {
-   private static final alz G = alz.b("container/anvil/text_field");
-   private static final alz H = alz.b("container/anvil/text_field_disabled");
-   private static final alz I = alz.b("container/anvil/error");
-   private static final alz J = alz.b("textures/gui/container/anvil.png");
-   private static final xv K = xv.c("container.repair.expensive");
-   private foo L;
-   private final cpx M;
+public class fur extends fuf {
+   private final dva u;
+   private fof<dva.a> v;
+   private fof<Boolean> w;
+   private fof<Boolean> x;
+   private dva.a y = dva.a.c;
+   private boolean z;
+   private boolean A;
 
-   public fur(ctf $$0, cpw $$1, xv $$2) {
-      super($$0, $$1, $$2, J);
-      this.M = $$1.k;
-      this.v = 60;
+   public fur(dva $$0) {
+      this.u = $$0;
    }
 
    @Override
-   protected void G() {
-      int $$0 = (this.n - this.s) / 2;
-      int $$1 = (this.o - this.u) / 2;
-      this.L = new foo(this.p, $$0 + 62, $$1 + 24, 103, 12, xv.c("container.repair"));
-      this.L.f(false);
-      this.L.g(-1);
-      this.L.n(-1);
-      this.L.d(false);
-      this.L.f(50);
-      this.L.b(this::a);
-      this.L.a("");
-      this.d(this.L);
-      this.L.e(this.z.b(0).h());
+   dfz l() {
+      return this.u.b();
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.L);
+   int E() {
+      return 135;
    }
 
    @Override
-   public void a(fmg $$0, int $$1, int $$2) {
-      String $$3 = this.L.a();
-      this.b($$0, $$1, $$2);
-      this.L.a($$3);
+   protected void aT_() {
+      super.aT_();
+      this.v = this.c(fof.<dva.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> xk.c("advMode.mode.sequence");
+            case b -> xk.c("advMode.mode.auto");
+            case c -> xk.c("advMode.mode.redstone");
+         };
+      }).a(dva.a.values()).a().a(this.y).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, xk.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
+      this.w = this.c(
+         fof.a(xk.c("advMode.mode.conditional"), xk.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.z)
+            .a(this.n / 2 - 50, 165, 100, 20, xk.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
+      );
+      this.x = this.c(
+         fof.a(xk.c("advMode.mode.autoexec.bat"), xk.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.A)
+            .a(this.n / 2 + 50 + 4, 165, 100, 20, xk.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
+      );
+      this.f(false);
+   }
+
+   private void f(boolean $$0) {
+      this.c.j = $$0;
+      this.s.j = $$0;
+      this.v.j = $$0;
+      this.w.j = $$0;
+      this.x.j = $$0;
+   }
+
+   public void G() {
+      dfz $$0 = this.u.b();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.p();
+      this.y = this.u.s();
+      this.z = this.u.t();
+      this.A = this.u.d();
+      this.s.a($$1);
+      this.v.a(this.y);
+      this.w.a(this.z);
+      this.x.a(this.A);
+      this.c($$1);
+      this.f(true);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.t.p();
-      }
-
-      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
-   }
-
-   private void a(String $$0) {
-      cuz $$1 = this.z.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().b(ku.g) && $$0.equals($$1.g().y().getString())) {
-            $$2 = "";
-         }
-
-         if (this.z.a($$2)) {
-            this.m.t.i.b(new aiw($$2));
-         }
-      }
+   public void a(flz $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.f(true);
    }
 
    @Override
-   protected void b(fns $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.z.m();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         xv $$5;
-         if ($$3 >= 40 && !this.m.t.gj().d) {
-            $$5 = K;
-            $$4 = 16736352;
-         } else if (!this.z.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = xv.a("container.repair.cost", $$3);
-            if (!this.z.b(2).a(this.M)) {
-               $$4 = 16736352;
-            }
-         }
-
-         if ($$5 != null) {
-            int $$8 = this.s - 8 - this.p.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
-            $$0.b(this.p, $$5, $$8, 69, $$4);
-         }
-      }
-   }
-
-   @Override
-   protected void a(fns $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(glv::C, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
-   }
-
-   @Override
-   public void d(fns $$0, int $$1, int $$2, float $$3) {
-      this.L.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void c(fns $$0, int $$1, int $$2) {
-      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
-         $$0.a(glv::C, I, $$1 + 99, $$2 + 45, 28, 21);
-      }
-   }
-
-   @Override
-   public void a(ctc $$0, int $$1, cxp $$2) {
-      if ($$1 == 0) {
-         this.L.a($$2.f() ? "" : $$2.y().getString());
-         this.L.e(!$$2.f());
-         this.a(this.L);
-      }
+   protected void a(dfz $$0) {
+      this.m.L().b(new ais(jh.a((ka)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
    }
 }

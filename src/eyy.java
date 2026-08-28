@@ -1,103 +1,61 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eyy extends eyc {
-   private static final Logger b = LogUtils.getLogger();
+public class eyy extends exv {
+   private static final Map<kt<?>, eyy.a<?>> b = Stream.of(
+         new eyy.a<>(ku.U, dfn::a),
+         new eyy.a<>(ku.J, czu::a),
+         new eyy.a<>(ku.l, ddw::a),
+         new eyy.a<>(ku.I, ddw::a),
+         new eyy.a<>(ku.f, dak::a),
+         new eyy.a<>(ku.n, cvc::a),
+         new eyy.a<>(ku.m, cvc::a),
+         new eyy.a<>(ku.o, czx::a),
+         new eyy.a<>(ku.ab, cxl::a)
+      )
+      .collect(Collectors.toMap(eyy.a::a, $$0 -> (eyy.a<?>)$$0));
+   private static final Codec<eyy.a<?>> c = ma.ao.q().comapFlatMap($$0 -> {
+      eyy.a<?> $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + ma.ao.b($$0));
+   }, eyy.a::a);
    public static final MapCodec<eyy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  xx.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
-                  ewp.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
-                  eyy.a.c.optionalFieldOf("target", eyy.a.a).forGetter($$0x -> $$0x.e)
-               )
-            )
-            .apply($$0, eyy::new)
+      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, eyy::new)
    );
-   private final Optional<xv> c;
-   private final Optional<ewp.b> d;
-   private final eyy.a e;
+   private final Map<eyy.a<?>, Boolean> d;
 
-   private eyy(List<ezy> $$0, Optional<xv> $$1, Optional<ewp.b> $$2, eyy.a $$3) {
+   private eyy(List<ezr> $$0, Map<eyy.a<?>, Boolean> $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      this.d = $$1;
    }
 
    @Override
-   public eye<eyy> b() {
-      return eyf.p;
-   }
-
-   @Override
-   public Set<bbn<?>> a() {
-      return this.d.<Set<bbn<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<xv> a(ewp $$0, @Nullable ewp.b $$1) {
-      if ($$1 != null) {
-         bvk $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            ew $$3 = $$2.d($$0.d()).a(2);
-            return $$2x -> {
-               try {
-                  return xy.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
-      }
-
-      return $$0x -> $$0x;
-   }
-
-   @Override
-   public cxp a(cxp $$0, ewp $$1) {
-      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
+   protected cxg a(cxg $$0, ewi $$1) {
+      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
       return $$0;
    }
 
-   public static eyc.a<?> a(xv $$0, eyy.a $$1) {
-      return a($$2 -> new eyy($$2, Optional.of($$0), Optional.empty(), $$1));
+   @Override
+   public exx<eyy> b() {
+      return exy.P;
    }
 
-   public static eyc.a<?> a(xv $$0, eyy.a $$1, ewp.b $$2) {
-      return a($$3 -> new eyy($$3, Optional.of($$0), Optional.of($$2), $$1));
+   static record a<T>(kt<T> a, eyy.b<T> b) {
+      public void a(cxg $$0, boolean $$1) {
+         T $$2 = $$0.a(this.a);
+         if ($$2 != null) {
+            $$0.b(this.a, this.b.withTooltip($$2, $$1));
+         }
+      }
    }
 
-   public static enum a implements bba {
-      a("custom_name"),
-      b("item_name");
-
-      public static final Codec<eyy.a> c = bba.a(eyy.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      public kt<xv> a() {
-         return switch (this) {
-            case a -> ku.g;
-            case b -> ku.h;
-         };
-      }
+   @FunctionalInterface
+   interface b<T> {
+      T withTooltip(T var1, boolean var2);
    }
 }

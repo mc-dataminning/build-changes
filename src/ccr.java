@@ -1,50 +1,61 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ccr extends cdr {
-   private final cia g;
+public class ccr extends ccv {
+   private static final int a = 200;
+   private final chm b;
+   private int c;
+   private int d;
 
-   public ccr(cia $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(cde.a.c, cde.a.a));
+   public ccr(chm $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(chm $$0) {
+      return b(200 + $$0.dZ().a(200) % 20);
    }
 
    @Override
    public boolean b() {
-      return this.g.p() && !this.g.go() && !this.g.gB() && super.b();
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.y(false);
-   }
-
-   @Override
-   protected int a(bwo $$0) {
-      return 40;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.A(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gB()) {
-         this.g.A(true);
+      if (this.b.gt()) {
+         return false;
+      } else if (this.b.gq()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         this.d = this.a(this.b);
+         Predicate<chm> $$0 = $$0x -> $$0x.gs() || !$$0x.gq();
+         List<? extends chm> $$1 = this.b.dW().a((Class<? extends chm>)this.b.getClass(), this.b.cR().c(8.0, 8.0, 8.0), $$0);
+         chm $$2 = (chm)DataFixUtils.orElse($$1.stream().filter(chm::gs).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gq()));
+         return this.b.gq();
       }
    }
 
    @Override
-   protected boolean a(dhl $$0, jh $$1) {
-      return $$0.u($$1.d()) && $$0.a_($$1).a(axu.T);
+   public boolean c() {
+      return this.b.gq() && this.b.gu();
+   }
+
+   @Override
+   public void d() {
+      this.c = 0;
+   }
+
+   @Override
+   public void e() {
+      this.b.gr();
+   }
+
+   @Override
+   public void a() {
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gv();
+      }
    }
 }

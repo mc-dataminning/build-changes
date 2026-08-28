@@ -3,13 +3,32 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bfi extends bhs {
+public class bfi extends bhi {
+   private static final int a = 6;
+
    public bfi(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityShulkerColorFix", bix.B, "minecraft:shulker");
+      super($$0, $$1, "EntityZombieVillagerTypeFix", bin.B, "Zombie");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Color").map(Dynamic::asNumber).result().isEmpty() ? $$0.set("Color", $$0.createByte((byte)10)) : $$0;
+      if ($$0.get("IsVillager").asBoolean(false)) {
+         if ($$0.get("ZombieType").result().isEmpty()) {
+            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
+            if ($$1 == -1) {
+               $$1 = this.a(bac.a().a(6));
+            }
+
+            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
+         }
+
+         $$0 = $$0.remove("IsVillager");
+      }
+
+      return $$0;
+   }
+
+   private int a(int $$0) {
+      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
    }
 
    @Override

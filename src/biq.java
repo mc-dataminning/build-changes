@@ -1,19 +1,19 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public class biq extends bby {
-   private final Function<String, String> a;
-
-   public biq(Schema $$0, String $$1, Function<String, String> $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+public class biq extends bhi {
+   public biq(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Remove Golem Gossip Fix", bin.B, "minecraft:villager");
    }
 
    @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), biq::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
    }
 }

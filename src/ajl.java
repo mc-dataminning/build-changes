@@ -1,53 +1,41 @@
-public class ajl implements aac<ahm> {
-   public static final zt<ws, ajl> a = aac.a(ajl::a, ajl::new);
-   private final bti b;
-   private final int c;
-   private final float d;
-   private final float e;
+public record ajl(int b, ajy c) implements zr<ajk> {
+   public static final zi<wh, ajl> a = zr.a(ajl::a, ajl::new);
+   private static final int d = 1048576;
 
-   public ajl(bti $$0, int $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private ajl(wh $$0) {
+      this($$0.l(), a($$0.q(), $$0));
    }
 
-   private ajl(ws $$0) {
-      this.b = $$0.b(bti.class);
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   private static ajy a(alp $$0, wh $$1) {
+      return b($$0, $$1);
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private static aka b(alp $$0, wh $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.k($$2);
+         return new aka($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void a(wh $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
    }
 
    @Override
-   public aae<ajl> a() {
-      return ahk.ck;
+   public zt<ajl> a() {
+      return ajq.a;
    }
 
-   public void a(ahm $$0) {
+   public void a(ajk $$0) {
       $$0.a(this);
    }
 
-   public bti b() {
-      return this.b;
-   }
-
-   public int e() {
+   public ajy e() {
       return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

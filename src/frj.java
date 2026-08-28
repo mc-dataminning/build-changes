@@ -1,34 +1,20 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.util.function.Consumer;
 
-public interface frj {
-   MapCodec<frj> b = frk.f.dispatchMap(frj::a, frk::a);
+public class frj {
+   private static final int a = 4;
 
-   frk a();
-
-   Either<frj.b, frj.c> b();
-
-   public static record a(frj b, fqx.a c) {
-      public static final Codec<frj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(frj.b.forGetter(frj.a::a), fqx.a.a.optionalFieldOf("filter", fqx.a.b).forGetter(frj.a::b)).apply($$0, frj.a::new)
-      );
-
-      public frj a() {
-         return this.b;
-      }
-
-      public fqx.a b() {
-         return this.c;
-      }
+   private frj() {
    }
 
-   public interface b {
-      fer load(avv var1) throws IOException;
+   public static fro a(fnj $$0, frp $$1, xk $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   public static record c(alz a) {
+   public static fro a(fnj $$0, frp $$1, xk $$2, Consumer<frq> $$3) {
+      frr $$4 = frr.d().a(4);
+      $$4.a(new fpg($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

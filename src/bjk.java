@@ -1,50 +1,42 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
-public class bjk extends DataFix {
+public class bjk extends bhj {
    public bjk(Schema $$0) {
-      super($$0, true);
+      super($$0, true, "Trial Spawner config tag fixer", bin.s, "minecraft:trial_spawner");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.F);
-      Type<?> $$1 = this.getOutputSchema().getType(bix.F);
-      OpticFinder<?> $$2 = $$0.findField("SpawnData");
-      Type<?> $$3 = $$1.findField("SpawnData").type();
-      OpticFinder<?> $$4 = $$0.findField("SpawnPotentials");
-      Type<?> $$5 = $$1.findField("SpawnPotentials").type();
-      return this.fixTypeEverywhereTyped(
-         "Fix mob spawner data structure",
-         $$0,
-         $$1,
-         $$4x -> $$4x.updateTyped($$2, $$3, $$1xx -> this.a($$3, $$1xx)).updateTyped($$4, $$5, $$1xx -> this.b($$5, $$1xx))
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      List<String> $$1 = List.of(
+         "spawn_range",
+         "total_mobs",
+         "simultaneous_mobs",
+         "total_mobs_added_per_player",
+         "simultaneous_mobs_added_per_player",
+         "ticks_between_spawn",
+         "spawn_potentials",
+         "loot_tables_to_eject",
+         "items_to_drop_when_ominous"
       );
+      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
+
+      for (String $$3 : $$1) {
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
+         if ($$4.isPresent()) {
+            $$2.put($$0.createString($$3), $$4.get());
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
    }
 
-   private <T> Typed<T> a(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      return new Typed($$0, $$2, Pair.of($$1.getValue(), new Dynamic($$2)));
-   }
-
-   private <T> Typed<T> b(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      List<?> $$3 = (List<?>)$$1.getValue();
-      List<?> $$4 = $$3.stream().map($$1x -> {
-         Pair<Object, Dynamic<?>> $$2x = (Pair<Object, Dynamic<?>>)$$1x;
-         int $$3x = ((Dynamic)$$2x.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
-         Dynamic<?> $$4x = new Dynamic($$2);
-         $$4x = $$4x.set("weight", $$4x.createInt($$3x));
-         Dynamic<?> $$5 = ((Dynamic)$$2x.getSecond()).remove("Weight").remove("Entity");
-         return Pair.of(Pair.of($$2x.getFirst(), $$5), $$4x);
-      }).toList();
-      return new Typed($$0, $$2, $$4);
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 }

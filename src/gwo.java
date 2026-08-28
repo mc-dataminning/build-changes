@@ -1,47 +1,43 @@
-public class gwo extends gwf<haa, gbm<haa>> {
-   private static final alz a = alz.b("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final alz b = alz.b("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final alz c = alz.b("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final alz d = alz.b("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final alz e = alz.b("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final alz f = alz.b("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final alz g = alz.b("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final alz h = alz.b("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final alz i = alz.b("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final alz j = alz.b("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final alz k = alz.b("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final alz l = alz.b("textures/entity/fish/tropical_b_pattern_6.png");
-   private final gdt m;
-   private final gdu n;
+import java.util.Map;
 
-   public gwo(gtn<haa, gbm<haa>> $$0, gek $$1) {
+public class gwo extends gwa<hae, gdy> {
+   private final gdy a;
+   private final gdy b;
+   private final gvk c;
+   private static final Map<buy.a, alp> d = Map.of(
+      buy.a.b,
+      alp.b("textures/entity/wolf/wolf_armor_crackiness_low.png"),
+      buy.a.c,
+      alp.b("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
+      buy.a.d,
+      alp.b("textures/entity/wolf/wolf_armor_crackiness_high.png")
+   );
+
+   public gwo(gti<hae, gdy> $$0, gef $$1, gvk $$2) {
       super($$0);
-      this.m = new gdt($$1.a(gen.dk));
-      this.n = new gdu($$1.a(gen.di));
+      this.a = new gdy($$1.a(gei.dI));
+      this.b = new gdy($$1.a(gei.dK));
+      this.c = $$2;
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, haa $$3, float $$4, float $$5) {
-      cix.b $$6 = $$3.a;
+   public void a(fgl $$0, glg $$1, int $$2, hae $$3, float $$4, float $$5) {
+      cxg $$6 = $$3.i;
+      dfl $$7 = $$6.a(ku.D);
+      if ($$7 != null && !$$7.c().isEmpty()) {
+         gdy $$8 = $$3.ae ? this.b : this.a;
+         alp $$9 = $$7.c().get();
+         $$8.a($$3);
+         this.c.a(dfj.d.d, $$9, $$8, $$6, $$0, $$1, $$2);
+         this.a($$0, $$1, $$2, $$6, $$8);
+      }
+   }
 
-      gbm<haa> $$7 = (gbm<haa>)(switch ($$6.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
-
-      alz $$8 = switch ($$6) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      a($$7, $$8, $$0, $$1, $$2, $$3, $$3.c);
+   private void a(fgl $$0, glg $$1, int $$2, cxg $$3, gcc $$4) {
+      buy.a $$5 = buy.b.a($$3);
+      if ($$5 != buy.a.a) {
+         alp $$6 = d.get($$5);
+         fgp $$7 = $$1.getBuffer(glq.c($$6));
+         $$4.a($$0, $$7, $$2, hax.d);
+      }
    }
 }

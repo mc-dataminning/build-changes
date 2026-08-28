@@ -1,7 +1,8 @@
-import javax.annotation.Nullable;
+public class gyz extends gyo implements gzg {
+   public boolean a;
 
-public class gyz extends gxv {
-   @Nullable
-   public hdn a;
-   public cxp b = cxp.j;
+   @Override
+   public boolean c() {
+      return this.a;
+   }
 }

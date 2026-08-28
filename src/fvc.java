@@ -1,16 +1,13 @@
-public class fvc implements ctq {
-   private final fmg a;
+import java.util.List;
 
-   public fvc(fmg $$0) {
-      this.a = $$0;
-   }
+public class fvc extends fuh<ctr> {
+   private static final alp G = alp.b("container/furnace/lit_progress");
+   private static final alp H = alp.b("container/furnace/burn_progress");
+   private static final alp I = alp.b("textures/gui/container/furnace.png");
+   private static final xk J = xk.c("gui.recipebook.toggleRecipes.smeltable");
+   private static final List<fxo.a> K = List.of(new fxo.a(fxu.b), new fxo.a(cxk.qC, dbx.e), new fxo.a(cxk.b, dbx.f), new fxo.a(cxk.rh, cxk.pf, dbx.g));
 
-   @Override
-   public void a(ctc $$0, int $$1, cxp $$2) {
-      this.a.r.a($$2, $$1);
-   }
-
-   @Override
-   public void a(ctc $$0, int $$1, int $$2) {
+   public fvc(ctr $$0, cpn $$1, xk $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

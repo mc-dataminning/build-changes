@@ -1,8 +1,5 @@
-public class gze extends gyt implements gzl {
-   public boolean a;
-
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class gze extends gyo {
+   public float a;
+   public boolean b;
+   public cii.g c = cii.g.a;
 }

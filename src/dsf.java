@@ -1,53 +1,75 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dsf extends dkm {
+public class dsf extends dkd {
    public static final MapCodec<dsf> a = b(dsf::new);
-   private static final fcs b = dkm.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+   private static final xk d = xk.c("container.stonecutter");
+   public static final dyl<jm> b = dob.aF;
+   protected static final fcl c = dkd.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dsf> a() {
       return a;
    }
 
-   public dsf(dxu.d $$0) {
+   public dsf(dxn.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, jm.c));
    }
 
    @Override
-   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
-      return dkm.a($$1, $$2.d(), jm.a) && !$$1.z($$2);
+   public dxo a(dax $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
-      return $$4 == jm.b && !this.a($$0, $$1, $$3) ? dko.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(ls.aA, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      jh.a $$10 = new jh.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + bae.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + bae.a($$3, -10, 10));
-         dxv $$12 = $$1.a_($$10);
-         if (!$$12.m($$1, $$10)) {
-            $$1.a(ls.aE, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(axf.ay);
       }
+
+      return bta.a;
+   }
+
+   @Nullable
+   @Override
+   protected btc b(dxo $$0, dgz $$1, jh $$2) {
+      return new bti(($$2x, $$3, $$4) -> new cuw($$2x, $$3, ctg.a($$1, $$2)), d);
    }
 
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return b;
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean g_(dxo $$0) {
+      return true;
+   }
+
+   @Override
+   protected dqo a_(dxo $$0) {
+      return dqo.c;
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dqv $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dpc $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dxo $$0, euf $$1) {
+      return false;
    }
 }

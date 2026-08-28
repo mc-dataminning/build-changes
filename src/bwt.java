@@ -1,58 +1,122 @@
-import java.util.Set;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public record bwt(fby b, fby c, float d, float e) {
-   public static final zt<ws, bwt> a = zt.a(fby.b, bwt::a, fby.b, bwt::b, zr.l, bwt::c, zr.l, bwt::d, bwt::new);
+public class bwt {
+   private static final Map<bvi<?>, bwt.a> a = Maps.newHashMap();
 
-   public static bwt a(bvk $$0) {
-      return new bwt($$0.du(), $$0.ah(), $$0.dM(), $$0.dO());
-   }
-
-   public static bwt b(bvk $$0) {
-      return new bwt(new fby($$0.R_(), $$0.S_(), $$0.g_()), $$0.ah(), $$0.dM(), $$0.dO());
-   }
-
-   public static bwt a(eux $$0) {
-      return new bwt($$0.c(), $$0.d(), $$0.e(), $$0.f());
-   }
-
-   public static bwt a(bwt $$0, bwt $$1, Set<bwu> $$2) {
-      double $$3 = $$2.contains(bwu.a) ? $$0.b.d : 0.0;
-      double $$4 = $$2.contains(bwu.b) ? $$0.b.e : 0.0;
-      double $$5 = $$2.contains(bwu.c) ? $$0.b.f : 0.0;
-      float $$6 = $$2.contains(bwu.d) ? $$0.d : 0.0F;
-      float $$7 = $$2.contains(bwu.e) ? $$0.e : 0.0F;
-      fby $$8 = new fby($$3 + $$1.b.d, $$4 + $$1.b.e, $$5 + $$1.b.f);
-      float $$9 = $$6 + $$1.d;
-      float $$10 = $$7 + $$1.e;
-      fby $$11 = $$0.c;
-      if ($$2.contains(bwu.i)) {
-         float $$12 = $$0.d - $$9;
-         float $$13 = $$0.e - $$10;
-         $$11 = $$11.a((float)Math.toRadians((double)$$13));
-         $$11 = $$11.b((float)Math.toRadians((double)$$12));
+   private static <T extends bvz> void a(bvi<T> $$0, bwr $$1, edj.a $$2, bwt.b<T> $$3) {
+      bwt.a $$4 = a.put($$0, new bwt.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + ma.f.b($$0));
       }
-
-      fby $$14 = new fby(a($$11.d, $$1.c.d, $$2, bwu.f), a($$11.e, $$1.c.e, $$2, bwu.g), a($$11.f, $$1.c.f, $$2, bwu.h));
-      return new bwt($$8, $$14, $$9, $$10);
    }
 
-   private static double a(double $$0, double $$1, Set<bwu> $$2, bwu $$3) {
-      return $$2.contains($$3) ? $$0 + $$1 : $$1;
+   public static bwr a(bvi<?> $$0) {
+      bwt.a $$1 = a.get($$0);
+      return $$1 == null ? bws.a : $$1.b;
    }
 
-   public fby a() {
-      return this.b;
+   public static boolean a(bvi<?> $$0, dhc $$1, jh $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
    }
 
-   public fby b() {
-      return this.c;
+   public static edj.a b(@Nullable bvi<?> $$0) {
+      bwt.a $$1 = a.get($$0);
+      return $$1 == null ? edj.a.f : $$1.a;
    }
 
-   public float c() {
-      return this.d;
+   public static <T extends bvb> boolean a(bvi<T> $$0, dhq $$1, bvh $$2, jh $$3, bac $$4) {
+      bwt.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   public float d() {
-      return this.e;
+   static {
+      a(bvi.h, bws.b, edj.a.f, cja::a);
+      a(bvi.A, bws.b, edj.a.f, ciq::c);
+      a(bvi.I, bws.b, edj.a.f, chn::b);
+      a(bvi.L, bws.b, edj.a.f, cmc::a);
+      a(bvi.aj, bws.b, edj.a.f, cmk::b);
+      a(bvi.aX, bws.b, edj.a.f, ciq::c);
+      a(bvi.ba, bws.b, edj.a.f, ciq::c);
+      a(bvi.br, bws.b, edj.a.f, chn::b);
+      a(bvi.bA, bws.b, edj.a.f, cio::b);
+      a(bvi.e, bws.d, edj.a.f, cix::c);
+      a(bvi.k, bws.d, edj.a.f, chi::b);
+      a(bvi.o, bws.d, edj.a.f, cmo::c);
+      a(bvi.q, bws.d, edj.a.f, cmo::b);
+      a(bvi.r, bws.d, edj.a.f, cmo::c);
+      a(bvi.v, bws.d, edj.a.f, cmo::b);
+      a(bvi.z, bws.d, edj.a.f, cho::b);
+      a(bvi.C, bws.d, edj.a.f, cho::b);
+      a(bvi.F, bws.d, edj.a.f, cmo::b);
+      a(bvi.J, bws.d, edj.a.f, cho::b);
+      a(bvi.O, bws.d, edj.a.f, cmo::b);
+      a(bvi.P, bws.d, edj.a.f, cmf::b);
+      a(bvi.Q, bws.d, edj.a.f, bvz::a);
+      a(bvi.ac, bws.d, edj.a.f, cji::c);
+      a(bvi.ae, bws.d, edj.a.f, cmi::b);
+      a(bvi.af, bws.d, edj.a.f, cmo::b);
+      a(bvi.ah, bws.b, edj.a.f, bvp::a);
+      a(bvi.ai, bws.d, edj.a.f, cjo::c);
+      a(bvi.am, bws.d, edj.a.f, cho::b);
+      a(bvi.an, bws.d, edj.a.f, cml::a);
+      a(bvi.aq, bws.d, edj.a.f, bvz::a);
+      a(bvi.ay, bws.d, edj.a.f, cho::b);
+      a(bvi.aA, bws.d, edj.a.f, cmn::b);
+      a(bvi.aF, bws.d, edj.a.f, cib::c);
+      a(bvi.aG, bws.d, edj.a.f, cho::b);
+      a(bvi.aJ, bws.d, edj.a.e, cic::c);
+      a(bvi.aP, bws.d, edj.a.e, cie::c);
+      a(bvi.aR, bws.d, edj.a.f, cho::b);
+      a(bvi.ak, bws.d, edj.a.f, cnw::c);
+      a(bvi.aS, bws.d, edj.a.f, coc::b);
+      a(bvi.aU, bws.d, edj.a.f, cmp::b);
+      a(bvi.aV, bws.d, edj.a.f, cig::c);
+      a(bvi.aY, bws.d, edj.a.f, cii::c);
+      a(bvi.bb, bws.d, edj.a.f, cho::b);
+      a(bvi.be, bws.d, edj.a.f, cmv::b);
+      a(bvi.bf, bws.d, edj.a.f, cmo::b);
+      a(bvi.bg, bws.d, edj.a.f, cjy::c);
+      a(bvi.bh, bws.d, edj.a.f, cmx::c);
+      a(bvi.bl, bws.d, edj.a.f, bvz::a);
+      a(bvi.bo, bws.d, edj.a.f, cmo::b);
+      a(bvi.bs, bws.d, edj.a.f, cna::a);
+      a(bvi.bt, bws.c, edj.a.f, cnb::c);
+      a(bvi.bB, bws.d, edj.a.f, cip::c);
+      a(bvi.bD, bws.d, edj.a.f, bvz::a);
+      a(bvi.bI, bws.d, edj.a.f, cmo::b);
+      a(bvi.bJ, bws.d, edj.a.f, cmo::b);
+      a(bvi.bK, bws.d, edj.a.f, cmo::b);
+      a(bvi.bM, bws.d, edj.a.f, cir::c);
+      a(bvi.bN, bws.d, edj.a.f, cmo::c);
+      a(bvi.D, bws.d, edj.a.f, cmo::b);
+      a(bvi.E, bws.d, edj.a.f, cmo::b);
+      a(bvi.bO, bws.d, edj.a.f, cmo::b);
+      a(bvi.bP, bws.d, edj.a.f, ckc::c);
+      a(bvi.bR, bws.d, edj.a.f, cnj::b);
+      a(bvi.bQ, bws.d, edj.a.f, cmo::b);
+      a(bvi.u, bws.d, edj.a.f, cho::b);
+      a(bvi.N, bws.b, edj.a.f, cmk::b);
+      a(bvi.T, bws.a, edj.a.f, cmo::b);
+      a(bvi.ab, bws.a, edj.a.f, chy::c);
+      a(bvi.ao, bws.a, edj.a.f, cmo::b);
+      a(bvi.aO, bws.a, edj.a.f, cho::b);
+      a(bvi.aQ, bws.a, edj.a.f, bvz::a);
+      a(bvi.aZ, bws.d, edj.a.f, cmo::b);
+      a(bvi.bc, bws.a, edj.a.f, bvz::a);
+      a(bvi.by, bws.a, edj.a.f, cho::b);
+      a(bvi.bC, bws.a, edj.a.f, cmo::b);
+      a(bvi.bE, bws.a, edj.a.f, cmo::b);
+      a(bvi.bF, bws.d, edj.a.f, bvz::a);
+      a(bvi.bG, bws.a, edj.a.f, cmo::b);
+   }
+
+   static record a(edj.a a, bwr b, bwt.b<?> c) {
+   }
+
+   @FunctionalInterface
+   public interface b<T extends bvb> {
+      boolean test(bvi<T> var1, dhq var2, bvh var3, jh var4, bac var5);
    }
 }

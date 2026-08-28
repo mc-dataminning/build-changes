@@ -1,13 +1,13 @@
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public class bfn extends bjj {
-   public bfn(Schema $$0, boolean $$1) {
-      super("EntityTippedArrowFix", $$0, $$1);
+public class bfn extends bgg {
+   public bfn(Schema $$0) {
+      super($$0, "FireResistantToDamageResistantComponentFix", "minecraft:fire_resistant", "minecraft:damage_resistant");
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals($$0, "TippedArrow") ? "Arrow" : $$0;
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.emptyMap().set("types", $$0.createString("#minecraft:is_fire"));
    }
 }

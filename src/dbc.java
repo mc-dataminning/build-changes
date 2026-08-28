@@ -1,22 +1,69 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
-public record dbc(jq<axe> c) implements dbb {
-   public static final MapCodec<dbc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(axe.b.fieldOf("sound").forGetter(dbc::b)).apply($$0, dbc::new));
-   public static final zt<xg, dbc> b = zt.a(axe.d, dbc::b, dbc::new);
+public class dbc extends dbl {
+   public dbc(dbi $$0) {
+      super($$0);
+   }
 
-   @Override
-   public dbb.a<dbc> a() {
-      return dbb.a.e;
+   public boolean a(dbj $$0, dgz $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxg $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.a(axt.bR)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$5.h() instanceof cwe)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public cxg a(dbj $$0, js.a $$1) {
+      List<cwe> $$2 = new ArrayList<>();
+      cxg $$3 = cxg.j;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxg $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(axt.bR)) {
+               if (!$$3.f()) {
+                  return cxg.j;
+               }
+
+               $$3 = $$5.v();
+            } else {
+               if (!($$5.h() instanceof cwe $$6)) {
+                  return cxg.j;
+               }
+
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.f() && !$$2.isEmpty() ? czu.a($$3, $$2) : cxg.j;
    }
 
    @Override
-   public boolean a(dhi $$0, cxp $$1, bwg $$2) {
-      $$0.a(null, $$2.dw(), this.c.a(), $$2.dn(), 1.0F, 1.0F);
-      return true;
-   }
-
-   public jq<axe> b() {
-      return this.c;
+   public dcf<dbc> a() {
+      return dcf.c;
    }
 }

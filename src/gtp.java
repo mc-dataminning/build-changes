@@ -1,25 +1,36 @@
-public class gtp extends gqk<cit, gzn, gdc> {
-   private static final alz a = alz.b("textures/entity/sheep/sheep.png");
+public class gtp extends gsr<cmx, gzm, gdf> {
+   public static final alp a = alp.b("textures/entity/slime/slime.png");
 
-   public gtp(grq.a $$0) {
-      super($$0, new gdc($$0.a(gen.cw)), new gdc($$0.a(gen.cx)), 0.7F);
-      this.a(new gwh(this, $$0.f()));
+   public gtp(grl.a $$0) {
+      super($$0, new gdf($$0.a(gei.cO)), 0.25F);
+      this.a(new gwe(this, $$0.f()));
    }
 
-   public alz a(gzn $$0) {
+   protected float a(gzm $$0) {
+      return (float)$$0.b * 0.25F;
+   }
+
+   protected void a(gzm $$0, fgl $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   }
+
+   public alp b(gzm $$0) {
       return a;
    }
 
-   public gzn b() {
-      return new gzn();
+   public gzm b() {
+      return new gzm();
    }
 
-   public void a(cit $$0, gzn $$1, float $$2) {
+   public void a(cmx $$0, gzm $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.K($$2);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.x();
-      $$1.d = $$0.t();
-      $$1.e = $$0.ar();
+      $$1.a = azu.h($$2, $$0.bZ, $$0.bY);
+      $$1.b = $$0.go();
    }
 }

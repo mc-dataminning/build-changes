@@ -1,52 +1,43 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import com.google.gson.JsonObject;
+import java.io.File;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-public interface avv extends avy {
-   Set<String> a();
+public class avv extends awd<String, avw> {
+   public avv(File $$0) {
+      super($$0);
+   }
 
-   List<avt> a(alz var1);
+   @Override
+   protected awc<String> a(JsonObject $$0) {
+      return new avw($$0);
+   }
 
-   Map<alz, avt> b(String var1, Predicate<alz> var2);
+   public boolean a(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.d($$1);
+   }
 
-   Map<alz, List<avt>> c(String var1, Predicate<alz> var2);
+   public boolean a(String $$0) {
+      return this.d($$0);
+   }
 
-   Stream<aug> b();
+   @Nullable
+   public avw b(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.b($$1);
+   }
 
-   public static enum a implements avv {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
+   private String c(SocketAddress $$0) {
+      String $$1 = $$0.toString();
+      if ($$1.contains("/")) {
+         $$1 = $$1.substring($$1.indexOf(47) + 1);
       }
 
-      @Override
-      public Optional<avt> getResource(alz $$0) {
-         return Optional.empty();
+      if ($$1.contains(":")) {
+         $$1 = $$1.substring(0, $$1.indexOf(58));
       }
 
-      @Override
-      public List<avt> a(alz $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<alz, avt> b(String $$0, Predicate<alz> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<alz, List<avt>> c(String $$0, Predicate<alz> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<aug> b() {
-         return Stream.of();
-      }
+      return $$1;
    }
 }

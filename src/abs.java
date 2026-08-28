@@ -1,23 +1,15 @@
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record abs(List<jh> c) implements abf {
-   public static final zt<ws, abs> a = abf.a(abs::a, abs::new);
-   public static final abf.b<abs> b = abf.a("debug/raids");
-
-   private abs(ws $$0) {
-      this($$0.a(jh.b));
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.c, jh.b);
-   }
+public record abs(List<aur> b) implements zr<abo> {
+   public static final zi<ByteBuf, abs> a = zi.a(aur.a.a(zg.a()), abs::b, abs::new);
 
    @Override
-   public abf.b<abs> a() {
-      return b;
+   public zt<abs> a() {
+      return abu.d;
    }
 
-   public List<jh> b() {
-      return this.c;
+   public void a(abo $$0) {
+      $$0.a(this);
    }
 }

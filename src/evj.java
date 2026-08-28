@@ -1,31 +1,48 @@
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public abstract class evj {
-   private boolean a;
+public class evj extends evc {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public abstract ux a(ux var1, js.a var2);
-
-   public void c() {
-      this.a(true);
+   public static evc.a<evj> a() {
+      return new evc.a<>(evj::new, evj::b, bbi.k);
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   public evj() {
+      this.b.defaultReturnValue(-1);
    }
 
-   public boolean d() {
-      return this.a;
+   public static evj b(um $$0, js.a $$1) {
+      evj $$2 = new evj();
+
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
+         }
+      }
+
+      return $$2;
    }
 
-   public ux a(js.a $$0) {
-      ux $$1 = new ux();
-      $$1.a("data", this.a(new ux(), $$0));
-      vm.e($$1);
-      this.a(false);
-      return $$1;
+   @Override
+   public um a(um $$0, js.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
+
+      return $$0;
    }
 
-   public static record a<T extends evj>(Supplier<T> a, BiFunction<ux, js.a, T> b, bbs c) {
+   public evi b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new evi($$0);
    }
 }

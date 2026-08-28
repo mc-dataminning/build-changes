@@ -1,165 +1,112 @@
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
 import javax.annotation.Nullable;
 
-public class csk extends crw {
-   private static final byte b = 10;
-   private static final String c = "explosion_power";
-   private static final float d = 4.0F;
-   private int h = -1;
-   private float i = 4.0F;
+public final class csk {
+   private static final csk b = new csk(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final csl c;
+   private final long d;
 
-   public csk(bvr<? extends csk> $$0, dhi $$1) {
-      super($$0, $$1);
+   private csk(@Nullable csl $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public dxv w() {
-      return dko.cr.m();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.h > 0) {
-         this.h--;
-         this.dW().a(ls.af, this.dB(), this.dD() + 0.5, this.dH(), 0.0, 0.0, 0.0);
-      } else if (this.h == 0) {
-         this.h(this.dz().j());
-      }
-
-      if (this.P) {
-         double $$0 = this.dz().j();
-         if ($$0 >= 0.01F) {
-            this.h($$0);
-         }
-      }
-   }
-
-   @Override
-   public boolean a(ash $$0, bua $$1, float $$2) {
-      if ($$1.c() instanceof cqe $$4 && $$4.bY()) {
-         bua $$5 = this.dX().d(this, $$1.d());
-         this.a($$5, $$4.dz().h());
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(ash $$0, bua $$1) {
-      double $$2 = this.dz().j();
-      if (!e($$1) && !($$2 >= 0.01F)) {
-         this.a($$0, this.u());
+   static csk a(csl $$0, Collection<csi> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
       } else {
-         if (this.h < 0) {
-            this.v();
-            this.h = this.ae.a(20) + this.ae.a(20);
+         long $$2 = a($$0, 0L, $$1);
+         return new csk($$0, $$2);
+      }
+   }
+
+   public static csk a() {
+      return b;
+   }
+
+   public static csk a(csi $$0) {
+      return new csk($$0.a, $$0.b);
+   }
+
+   public static csk a(csi $$0, csi... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new csk($$0.a, $$2);
+   }
+
+   private static long a(csl $$0, long $$1, Iterable<csi> $$2) {
+      for (csi $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
          }
-      }
-   }
 
-   @Override
-   protected cxl u() {
-      return cxt.oi;
-   }
-
-   @Override
-   public cxp dJ() {
-      return new cxp(cxt.oi);
-   }
-
-   protected void h(double $$0) {
-      this.a(null, $$0);
-   }
-
-   protected void a(@Nullable bua $$0, double $$1) {
-      if (this.dW() instanceof ash $$2) {
-         double $$3 = Math.min(Math.sqrt($$1), 5.0);
-         $$2.a(this, $$0, null, this.dB(), this.dD(), this.dH(), (float)((double)this.i + this.ae.j() * 1.5 * $$3), false, dhi.a.d);
-         this.at();
-      }
-   }
-
-   @Override
-   public boolean a(float $$0, float $$1, bua $$2) {
-      if ($$0 >= 3.0F) {
-         float $$3 = $$0 / 10.0F;
-         this.h((double)($$3 * $$3));
+         $$1 |= $$3.b;
       }
 
-      return super.a($$0, $$1, $$2);
+      return $$1;
    }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.h < 0) {
-         this.v();
-      }
+   public boolean b(csi $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 10) {
-         this.v();
+   public boolean b() {
+      return this.equals(b);
+   }
+
+   public boolean a(csk $$0) {
+      if (this.c == null) {
+         return true;
       } else {
-         super.b($$0);
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
       }
    }
 
-   public void v() {
-      this.h = 80;
-      if (!this.dW().C) {
-         this.dW().a(this, (byte)10);
-         if (!this.bb()) {
-            this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.zX, axg.e, 1.0F, 1.0F);
+   public boolean b(csk $$0) {
+      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
+   }
+
+   public csk c(csk $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new csk(this.c, this.d | $$0.d);
+      }
+   }
+
+   public csk d(csk $$0) {
+      if (this.c == null || $$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         long $$1 = this.d & ~$$0.d;
+         return $$1 == 0L ? b : new csk(this.c, $$1);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof csk $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
          }
-      }
-   }
 
-   public int x() {
-      return this.h;
-   }
-
-   public boolean B() {
-      return this.h > -1;
-   }
-
-   @Override
-   public float a(dha $$0, dgn $$1, jh $$2, dxv $$3, etx $$4, float $$5) {
-      return !this.B() || !$$3.a(axu.P) && !$$1.a_($$2.d()).a(axu.P) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
-   }
-
-   @Override
-   public boolean a(dha $$0, dgn $$1, jh $$2, dxv $$3, float $$4) {
-      return !this.B() || !$$3.a(axu.P) && !$$1.a_($$2.d()).a(axu.P) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected void a(ux $$0) {
-      super.a($$0);
-      if ($$0.b("TNTFuse", 99)) {
-         this.h = $$0.h("TNTFuse");
-      }
-
-      if ($$0.b("explosion_power", 99)) {
-         this.i = bae.a($$0.j("explosion_power"), 0.0F, 128.0F);
+         return false;
       }
    }
 
    @Override
-   protected void b(ux $$0) {
-      super.b($$0);
-      $$0.a("TNTFuse", this.h);
-      if (this.i != 4.0F) {
-         $$0.a("explosion_power", this.i);
-      }
-   }
-
-   @Override
-   boolean a(bua $$0) {
-      return e($$0);
-   }
-
-   private static boolean e(bua $$0) {
-      return $$0.a(axw.i) || $$0.a(axw.l);
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

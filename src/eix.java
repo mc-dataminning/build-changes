@@ -1,30 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eix(elj b, eex c, bso d, int e) implements eja {
+public class eix implements eit {
    public static final Codec<eix> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               elj.a.fieldOf("state_provider").forGetter(eix::a),
-               eex.b.fieldOf("target").forGetter(eix::b),
-               bso.b(0, 8).fieldOf("radius").forGetter(eix::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eix::d)
-            )
+      $$0 -> $$0.group(Codec.intRange(0, ebj.c).fieldOf("height").forGetter($$0x -> $$0x.b), dxo.a.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, eix::new)
    );
+   public final int b;
+   public final dxo c;
 
-   public elj a() {
-      return this.b;
-   }
-
-   public eex b() {
-      return this.c;
-   }
-
-   public bso c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   public eix(int $$0, dxo $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 }

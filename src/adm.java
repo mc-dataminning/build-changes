@@ -1,60 +1,26 @@
-import java.util.List;
+import java.util.Optional;
 
-public class adm implements aac<acr> {
-   public static final zt<xg, adm> a = aac.a(adm::a, adm::new);
-   private final int b;
-   private final int c;
-   private final List<cxp> d;
-   private final cxp e;
-
-   public adm(int $$0, int $$1, jz<cxp> $$2, cxp $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = jz.a($$2.size(), cxp.j);
-
-      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
-         this.d.set($$4, $$2.get($$4).v());
-      }
-
-      this.e = $$3.v();
-   }
-
-   private adm(xg $$0) {
-      this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = cxp.i.decode($$0);
-      this.e = cxp.g.decode($$0);
-   }
-
-   private void a(xg $$0) {
-      $$0.f(this.b);
-      $$0.c(this.c);
-      cxp.i.encode($$0, this.d);
-      cxp.g.encode($$0, this.e);
-   }
+public record adm(fbr b, Optional<fbr> c, lq d, jq<awu> e) implements zr<acg> {
+   public static final zi<wv, adm> a = zi.a(fbr.b, adm::b, fbr.b.a(zg::a), adm::e, ls.bj, adm::f, awu.d, adm::g, adm::new);
 
    @Override
-   public aae<adm> a() {
-      return ahk.u;
+   public zt<adm> a() {
+      return agz.E;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<fbr> e() {
+      return this.c;
    }
 
-   public List<cxp> e() {
+   public lq f() {
       return this.d;
    }
 
-   public cxp f() {
+   public jq<awu> g() {
       return this.e;
-   }
-
-   public int g() {
-      return this.c;
    }
 }

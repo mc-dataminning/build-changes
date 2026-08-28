@@ -1,116 +1,61 @@
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public class qt extends qe {
-   public qt(mj $$0, CompletableFuture<js.a> $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a(js.a $$0) {
-      this.a(
+public class qt {
+   public static void a(ra<epn> $$0) {
+      jr<esd> $$1 = $$0.a(mb.aV);
+      jq<esd> $$2 = $$1.b(ri.y);
+      jq<esd> $$3 = $$1.b(ri.w);
+      jq<esd> $$4 = $$1.b(ri.z);
+      jq<esd> $$5 = $$1.b(ri.x);
+      jr<epn> $$6 = $$0.a(mb.aX);
+      jq<epn> $$7 = $$6.b(rh.a);
+      rh.a(
          $$0,
-         new aly[]{
-            dee.k,
-            dee.P,
-            dee.G,
-            dee.H,
-            dee.N,
-            dee.j,
-            dee.n,
-            dee.o,
-            dee.p,
-            dee.F,
-            dee.y,
-            dee.L,
-            dee.M,
-            dee.K,
-            dee.t,
-            dee.I,
-            dee.r,
-            dee.A,
-            dee.q,
-            dee.z,
-            dee.a,
-            dee.d,
-            dee.b,
-            dee.e,
-            dee.c,
-            dee.x,
-            dee.s,
-            dee.v,
-            dee.C,
-            dee.u,
-            dee.J,
-            dee.D,
-            dee.f,
-            dee.g,
-            dee.l,
-            dee.m,
-            dee.i,
-            dee.h,
-            dee.E,
-            dee.w,
-            dee.B,
-            dee.O
-         }
+         "bastion/bridge/starting_pieces",
+         new epn(
+            $$7,
+            ImmutableList.of(
+               Pair.of(epl.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(epl.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
+            ),
+            epn.a.b
+         )
       );
-      this.b(axx.b).a(dee.a, dee.d, dee.b, dee.e);
-      this.b(axx.c).a(dee.j, dee.i);
-      this.b(axx.d).a(dee.B, dee.O);
-      this.b(axx.e).a(dee.I, dee.K);
-      this.b(axx.f).a(dee.n, dee.o, dee.p, dee.F, dee.L, dee.M);
-      this.b(axx.g).a(dee.x, dee.v);
-      this.b(axx.h).a(dee.E, dee.H);
-      this.b(axx.u).a(dee.k, dee.P, dee.m, dee.l, dee.j, dee.O, dee.N);
-      this.b(axx.v)
-         .a(
-            dee.a,
-            dee.b,
-            dee.c,
-            dee.d,
-            dee.e,
-            dee.f,
-            dee.g,
-            dee.h,
-            dee.i,
-            dee.n,
-            dee.o,
-            dee.p,
-            dee.q,
-            dee.r,
-            dee.s,
-            dee.t,
-            dee.u,
-            dee.v,
-            dee.w,
-            dee.x,
-            dee.y,
-            dee.z,
-            dee.A,
-            dee.B,
-            dee.C,
-            dee.D,
-            dee.E,
-            dee.F,
-            dee.G,
-            dee.H,
-            dee.I,
-            dee.J,
-            dee.K,
-            dee.L,
-            dee.M
-         );
-      this.b(axx.j).b(axx.u);
-      this.b(axx.k).b(axx.v);
-      this.b(axx.l).b(axx.v);
-      this.b(axx.m).b(axx.v);
-      this.b(axx.n).b(axx.v).a(dee.k, dee.P, dee.j, dee.O);
-      this.b(axx.i).b(axx.v).a(dee.k, dee.P, dee.j, dee.O);
-      this.b(axx.o).a(dee.k, dee.P);
-      this.b(axx.p).a(dee.r);
-      this.b(axx.q).a(dee.v);
-      this.b(axx.r).a(dee.v);
-      this.b(axx.s).a(dee.v);
-      this.b(axx.t).a(dee.v);
+      rh.a($$0, "bastion/bridge/bridge_pieces", new epn($$7, ImmutableList.of(Pair.of(epl.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), epn.a.b));
+      rh.a(
+         $$0,
+         "bastion/bridge/legs",
+         new epn($$7, ImmutableList.of(Pair.of(epl.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(epl.b("bastion/bridge/legs/leg_1", $$3), 1)), epn.a.b)
+      );
+      rh.a(
+         $$0,
+         "bastion/bridge/walls",
+         new epn(
+            $$7,
+            ImmutableList.of(Pair.of(epl.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(epl.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
+            epn.a.b
+         )
+      );
+      rh.a(
+         $$0,
+         "bastion/bridge/ramparts",
+         new epn(
+            $$7,
+            ImmutableList.of(Pair.of(epl.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(epl.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
+            epn.a.b
+         )
+      );
+      rh.a($$0, "bastion/bridge/rampart_plates", new epn($$7, ImmutableList.of(Pair.of(epl.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), epn.a.b));
+      rh.a(
+         $$0,
+         "bastion/bridge/connectors",
+         new epn(
+            $$7,
+            ImmutableList.of(
+               Pair.of(epl.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(epl.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
+            ),
+            epn.a.b
+         )
+      );
    }
 }

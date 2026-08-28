@@ -8,7 +8,7 @@ public class ed extends dy<ed.a> {
       return ed.a.a;
    }
 
-   public void a(asi $$0) {
+   public void a(ary $$0) {
       this.a($$0, $$0x -> true);
    }
 

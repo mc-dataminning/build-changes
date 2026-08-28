@@ -1,29 +1,24 @@
-public class adl implements aac<acr> {
-   public static final zt<ws, adl> a = aac.a(adl::a, adl::new);
-   private final int b;
+public record adl(int b, bwk c, boolean d) implements zr<acg> {
+   public static final zi<wh, adl> a = zi.a(zg.h, adl::b, bwk.a, adl::e, zg.b, adl::f, adl::new);
 
-   public adl(int $$0) {
-      this.b = $$0;
-   }
-
-   private adl(ws $$0) {
-      this.b = $$0.x();
-   }
-
-   private void a(ws $$0) {
-      $$0.f(this.b);
+   public static adl a(bvb $$0) {
+      return new adl($$0.ar(), new bwk($$0.dv(), $$0.dz(), $$0.dM(), $$0.dO()), $$0.aJ());
    }
 
    @Override
-   public aae<adl> a() {
-      return ahk.t;
+   public zt<adl> a() {
+      return agz.be;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public bwk e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

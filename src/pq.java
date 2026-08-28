@@ -1,22 +1,32 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 public class pq {
-   public static CompletableFuture<kg.g> a(CompletableFuture<js.a> $$0, kg $$1) {
-      return $$0.thenApply($$1x -> {
-         ke.b $$2 = ke.a(ma.aC);
-         ji.a $$3 = new ji.a();
-         alu.a.forEach($$1xx -> $$1xx.a($$3::a));
-         kg.g $$4 = $$1.a($$2, $$1x, $$3);
-         js.a $$5 = $$4.a();
-         Optional<? extends js.b<dik>> $$6 = $$5.a(mb.aI);
-         Optional<? extends js.b<eno>> $$7 = $$5.a(mb.aT);
-         if ($$6.isPresent() || $$7.isPresent()) {
-            ps.a((jr<eno>)DataFixUtils.orElseGet($$7, () -> $$1x.d(mb.aT)), (js<dik>)DataFixUtils.orElseGet($$6, () -> $$1x.d(mb.aI)));
-         }
+   public static void a(String[] $$0) throws IOException {
+      ab.a(t.a);
+      alr.a();
 
-         return $$4;
-      });
+      for (String $$1 : $$0) {
+         a($$1);
+      }
+   }
+
+   private static void a(String $$0) throws IOException {
+      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
+         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
+            try {
+               String $$1x = Files.readString($$0x);
+               um $$2 = vb.a($$1x);
+               um $$3 = ps.a($$0x.toString(), $$2);
+               pp.a(mf.a, $$0x, vb.a($$3));
+            } catch (IOException | CommandSyntaxException var4) {
+               throw new RuntimeException(var4);
+            }
+         });
+      }
    }
 }

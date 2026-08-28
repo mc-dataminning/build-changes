@@ -1,47 +1,198 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
+import io.netty.channel.local.LocalAddress;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.ServerSocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.util.HashedWheelTimer;
+import io.netty.util.Timeout;
+import io.netty.util.Timer;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.SocketAddress;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record asz<T>(T a, Optional<T> b) {
-   public static <T> Codec<asz<T>> a(Codec<T> $$0) {
-      Codec<asz<T>> $$1 = RecordCodecBuilder.create(
-         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(asz::a), $$0.optionalFieldOf("filtered").forGetter(asz::b)).apply($$1x, asz::new)
-      );
-      Codec<asz<T>> $$2 = $$0.xmap(asz::a, asz::a);
-      return Codec.withAlternative($$1, $$2);
+public class asz {
+   private static final Logger d = LogUtils.getLogger();
+   public static final Supplier<NioEventLoopGroup> a = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<EpollEventLoopGroup> b = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
+   );
+   final MinecraftServer e;
+   public volatile boolean c;
+   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
+   final List<we> g = Collections.synchronizedList(Lists.newArrayList());
+
+   public asz(MinecraftServer $$0) {
+      this.e = $$0;
+      this.c = true;
    }
 
-   public static <B extends ByteBuf, T> zt<B, asz<T>> a(zt<B, T> $$0) {
-      return zt.a($$0, asz::a, $$0.a(zr::a), asz::b, asz::new);
+   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
+      synchronized (this.f) {
+         Class<? extends ServerSocketChannel> $$2;
+         EventLoopGroup $$3;
+         if (Epoll.isAvailable() && this.e.p()) {
+            $$2 = EpollServerSocketChannel.class;
+            $$3 = (EventLoopGroup)b.get();
+            d.info("Using epoll channel type");
+         } else {
+            $$2 = NioServerSocketChannel.class;
+            $$3 = (EventLoopGroup)a.get();
+            d.info("Using default channel type");
+         }
+
+         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               try {
+                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+               } catch (ChannelException var5) {
+               }
+
+               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
+               if (asz.this.e.am()) {
+                  $$1.addLast("legacy_query", new ass(asz.this.d()));
+               }
+
+               we.a($$1, zs.a, false, null);
+               int $$2 = asz.this.e.o();
+               we $$3 = (we)($$2 > 0 ? new wu($$2) : new we(zs.a));
+               asz.this.g.add($$3);
+               $$3.a($$1);
+               $$3.a(new atb(asz.this.e, $$3));
+            }
+         }).group($$3).localAddress($$0, $$1)).bind().syncUninterruptibly());
+      }
    }
 
-   public static <T> asz<T> a(T $$0) {
-      return new asz<>($$0, Optional.empty());
+   public SocketAddress a() {
+      ChannelFuture $$0;
+      synchronized (this.f) {
+         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               we $$1 = new we(zs.a);
+               $$1.a(new asu(asz.this.e, $$1));
+               asz.this.g.add($$1);
+               ChannelPipeline $$2 = $$0.pipeline();
+               we.a($$2, zs.a);
+               $$1.a($$2);
+            }
+         }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
+         this.f.add($$0);
+      }
+
+      return $$0.channel().localAddress();
    }
 
-   public static asz<String> a(ata $$0) {
-      return new asz<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
+   public void b() {
+      this.c = false;
+
+      for (ChannelFuture $$0 : this.f) {
+         try {
+            $$0.channel().close().sync();
+         } catch (InterruptedException var4) {
+            d.error("Interrupted whilst closing channel");
+         }
+      }
    }
 
-   public T a(boolean $$0) {
-      return $$0 ? this.b.orElse(this.a) : this.a;
+   public void c() {
+      synchronized (this.g) {
+         Iterator<we> $$0 = this.g.iterator();
+
+         while ($$0.hasNext()) {
+            we $$1 = $$0.next();
+            if (!$$1.j()) {
+               if ($$1.i()) {
+                  try {
+                     $$1.b();
+                  } catch (Exception var7) {
+                     if ($$1.e()) {
+                        throw new z(o.a(var7, "Ticking memory connection"));
+                     }
+
+                     d.warn("Failed to handle packet for {}", $$1.a(this.e.bl()), var7);
+                     xk $$3 = xk.b("Internal server error");
+                     $$1.a(new aaa($$3), wr.a(() -> $$1.a($$3)));
+                     $$1.m();
+                  }
+               } else {
+                  $$0.remove();
+                  $$1.n();
+               }
+            }
+         }
+      }
    }
 
-   public <U> asz<U> a(Function<T, U> $$0) {
-      return new asz<>($$0.apply(this.a), this.b.map($$0));
+   public MinecraftServer d() {
+      return this.e;
    }
 
-   public <U> Optional<asz<U>> b(Function<T, Optional<U>> $$0) {
-      Optional<U> $$1 = $$0.apply(this.a);
-      if ($$1.isEmpty()) {
-         return Optional.empty();
-      } else if (this.b.isPresent()) {
-         Optional<U> $$2 = $$0.apply(this.b.get());
-         return $$2.isEmpty() ? Optional.empty() : Optional.of(new asz<>($$1.get(), $$2));
-      } else {
-         return Optional.of(new asz<>($$1.get(), Optional.empty()));
+   public List<we> e() {
+      return this.g;
+   }
+
+   static class a extends ChannelInboundHandlerAdapter {
+      private static final Timer a = new HashedWheelTimer();
+      private final int b;
+      private final int c;
+      private final List<asz.a.a> d = Lists.newArrayList();
+
+      public a(int $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         this.a($$0, $$1);
+      }
+
+      private void a(ChannelHandlerContext $$0, Object $$1) {
+         int $$2 = this.b + (int)(Math.random() * (double)this.c);
+         this.d.add(new asz.a.a($$0, $$1));
+         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
+      }
+
+      private void a(Timeout $$0) {
+         asz.a.a $$1 = this.d.remove(0);
+         $$1.a.fireChannelRead($$1.b);
+      }
+
+      static class a {
+         public final ChannelHandlerContext a;
+         public final Object b;
+
+         public a(ChannelHandlerContext $$0, Object $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
       }
    }
 }

@@ -1,5 +1,5 @@
-public interface to {
-   void a(tm var1);
-
-   void b(tm var1);
+public class to extends RuntimeException {
+   public to(String $$0) {
+      super($$0);
+   }
 }

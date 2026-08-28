@@ -1,29 +1,17 @@
-import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public interface amg extends amf {
+   aqp a();
 
-public class amg extends PrintStream {
-   private static final Logger b = LogUtils.getLogger();
-   protected final String a;
+   String b();
 
-   public amg(String $$0, OutputStream $$1) {
-      super($$1);
-      this.a = $$0;
-   }
+   int d();
 
-   @Override
-   public void println(@Nullable String $$0) {
-      this.a($$0);
-   }
+   String h();
 
-   @Override
-   public void println(Object $$0) {
-      this.a(String.valueOf($$0));
-   }
+   String[] P();
 
-   protected void a(@Nullable String $$0) {
-      b.info("[{}]: {}", this.a, $$0);
-   }
+   String j();
+
+   String s();
+
+   String a(String var1);
 }

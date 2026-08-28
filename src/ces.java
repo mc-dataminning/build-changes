@@ -1,99 +1,40 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class ces extends cde {
-   private final cde a;
-   private final int b;
-   private boolean c;
+public class ces extends cev {
+   private final bwu a;
+   private bvx b;
+   private int c;
 
-   public ces(int $$0, cde $$1) {
-      this.b = $$0;
-      this.a = $$1;
-   }
-
-   public boolean a(ces $$0) {
-      return this.U_() && $$0.i() < this.i();
+   public ces(bwu $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(ccv.a.d));
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean U_() {
-      return this.a.U_();
+      if (this.a.p() && !this.a.go()) {
+         bvx $$0 = this.a.ah_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.eq();
+            int $$1 = $$0.er();
+            return $$1 != this.c && this.a(this.b, cgo.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void d() {
-      if (!this.c) {
-         this.c = true;
-         this.a.d();
+      this.e.h(this.b);
+      bvx $$0 = this.a.ah_();
+      if ($$0 != null) {
+         this.c = $$0.er();
       }
-   }
 
-   @Override
-   public void e() {
-      if (this.c) {
-         this.c = false;
-         this.a.e();
-      }
-   }
-
-   @Override
-   public boolean V_() {
-      return this.a.V_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public void a(EnumSet<cde.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<cde.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public cde k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((ces)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+      super.d();
    }
 }

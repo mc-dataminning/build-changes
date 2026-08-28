@@ -1,59 +1,83 @@
-public class ccc implements ccd {
-   private final bwi a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public ccc(bwi $$0) {
-      this.a = $$0;
+public class ccc<T extends bvx> extends ccv {
+   protected final bwf a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected eue d;
+   protected final cfj e;
+   protected final Class<T> f;
+   protected final Predicate<bvx> g;
+   protected final Predicate<bvx> h;
+   private final cgo k;
+
+   public ccc(bwf $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bvg.e::test);
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aX = this.a.dM();
-         this.c();
-         this.f = this.a.aZ;
-         this.e = 0;
+   public ccc(bwf $$0, Class<T> $$1, Predicate<bvx> $$2, float $$3, double $$4, double $$5, Predicate<bvx> $$6) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.L();
+      this.a(EnumSet.of(ccv.a.a));
+      this.k = cgo.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
+   }
+
+   public ccc(bwf $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bvx> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean b() {
+      this.b = a(this.a)
+         .a(this.a.dW().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dB(), this.a.dD(), this.a.dH());
+      if (this.b == null) {
+         return false;
       } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aZ - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aZ;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
+         fbr $$0 = cgs.a(this.a, 16, 7, this.b.du());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
+            return this.d != null;
          }
       }
    }
 
-   private void b() {
-      this.a.aX = bae.c(this.a.aX, this.a.aZ, (float)this.a.aa());
+   @Override
+   public boolean c() {
+      return !this.e.m();
    }
 
-   private void c() {
-      this.a.aZ = bae.c(this.a.aZ, this.a.aX, (float)this.a.aa());
+   @Override
+   public void d() {
+      this.e.a(this.d, this.i);
    }
 
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = bae.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.aa() * (1.0F - $$1);
-      this.a.aX = bae.c(this.a.aX, this.a.aZ, $$2);
+   @Override
+   public void e() {
+      this.b = null;
    }
 
-   private boolean e() {
-      return !(this.a.da() instanceof bwi);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dB() - this.a.K;
-      double $$1 = this.a.dH() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+   @Override
+   public void a() {
+      if (this.a.g((bvb)this.b) < 49.0) {
+         this.a.L().a(this.j);
+      } else {
+         this.a.L().a(this.i);
+      }
    }
 }

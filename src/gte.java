@@ -1,12 +1,16 @@
-public class gte extends gsw<cmz, gzd, gcl> {
-   private static final alz a = alz.b("textures/entity/phantom.png");
+public class gte extends gsr<cih, gzd, gbh<gxq>> {
+   private static final alp a = alp.b("textures/entity/fish/pufferfish.png");
+   private final gbh<gxq> b;
+   private final gbh<gxq> k;
+   private final gbh<gxq> l = this.c();
 
-   public gte(grq.a $$0) {
-      super($$0, new gcl($$0.a(gen.bL)), 0.75F);
-      this.a(new gwd(this));
+   public gte(grl.a $$0) {
+      super($$0, new gco($$0.a(gei.cq)), 0.2F);
+      this.k = new gcp($$0.a(gei.cr));
+      this.b = new gcq($$0.a(gei.cs));
    }
 
-   public alz a(gzd $$0) {
+   public alp a(gzd $$0) {
       return a;
    }
 
@@ -14,20 +18,26 @@ public class gte extends gsw<cmz, gzd, gcl> {
       return new gzd();
    }
 
-   public void a(cmz $$0, gzd $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.p() + $$1.p;
-      $$1.b = $$0.m();
+   protected float b(gzd $$0) {
+      return 0.1F + 0.1F * (float)$$0.a;
    }
 
-   protected void a(gzd $$0, fgs $$1) {
-      float $$2 = 1.0F + 0.15F * (float)$$0.b;
-      $$1.b($$2, $$2, $$2);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(gzd $$0, fgs $$1, float $$2, float $$3) {
+   public void a(gzd $$0, fgl $$1, glg $$2, int $$3) {
+      this.h = switch ($$0.a) {
+         case 0 -> this.b;
+         case 1 -> this.k;
+         default -> this.l;
+      };
       super.a($$0, $$1, $$2, $$3);
-      $$1.a(a.b.rotationDegrees($$0.V));
+   }
+
+   public void a(cih $$0, gzd $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gp();
+   }
+
+   protected void a(gzd $$0, fgl $$1, float $$2, float $$3) {
+      $$1.a(0.0F, azu.b($$0.p * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3);
    }
 }

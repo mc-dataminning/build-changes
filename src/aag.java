@@ -1,23 +1,33 @@
 import io.netty.buffer.ByteBuf;
 
-public class aag<B extends ByteBuf, L extends xb> {
-   private final zs.a<B, aac<? super L>, aae<? extends aac<? super L>>> a = zs.a(aac::a);
-   private final aad b;
+public record aag(alp c, byte[] d) implements zr<zx> {
+   public static final zi<wh, aag> a = zr.a(aag::a, aag::new);
+   private static final int e = 5120;
+   public static final zi<ByteBuf, byte[]> b = zg.a(5120);
 
-   public aag(aad $$0) {
-      this.b = $$0;
+   private aag(wh $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   public <T extends aac<? super L>> aag<B, L> a(aae<T> $$0, zt<? super B, T> $$1) {
-      if ($$0.a() != this.b) {
-         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
-      } else {
-         this.a.a($$0, $$1);
-         return this;
-      }
+   private void a(wh $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
-   public zt<B, aac<? super L>> a() {
-      return this.a.a();
+   @Override
+   public zt<aag> a() {
+      return aaj.i;
+   }
+
+   public void a(zx $$0) {
+      $$0.a(this);
+   }
+
+   public alp b() {
+      return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

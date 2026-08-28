@@ -1,69 +1,48 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cxm {
-   private final Map<alz, cxm.a> a = Maps.newHashMap();
-   private int b;
+public record cxm(jq<awu> e, xk f, float g, int h) {
+   public static final Codec<cxm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awu.b.fieldOf("sound_event").forGetter(cxm::b),
+               xm.a.fieldOf("description").forGetter(cxm::c),
+               azd.o.fieldOf("length_in_seconds").forGetter(cxm::d),
+               azd.a(0, 15).fieldOf("comparator_output").forGetter(cxm::e)
+            )
+            .apply($$0, cxm::new)
+   );
+   public static final zi<wv, cxm> b = zi.a(awu.d, cxm::b, xm.b, cxm::c, zg.l, cxm::d, zg.h, cxm::e, cxm::new);
+   public static final Codec<jq<cxm>> c = alm.a(mb.L);
+   public static final zi<wv, jq<cxm>> d = zg.a(mb.L, b);
+   private static final int i = 20;
 
-   public boolean a(cxp $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public int a() {
+      return azu.f(this.g * 20.0F);
    }
 
-   public float a(cxp $$0, float $$1) {
-      alz $$2 = this.b($$0);
-      cxm.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return bae.a($$5 / $$4, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
+   public boolean a(long $$0) {
+      return $$0 >= (long)(this.a() + 20);
    }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<alz, cxm.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<alz, cxm.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
-            }
-         }
-      }
+   public static Optional<jq<cxm>> a(js.a $$0, cxg $$1) {
+      cxl $$2 = $$1.a(ku.ab);
+      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
    }
 
-   public alz b(cxp $$0) {
-      dau $$1 = $$0.a(ku.z);
-      alz $$2 = ma.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   public jq<awu> b() {
+      return this.e;
    }
 
-   public void a(cxp $$0, int $$1) {
-      this.a(this.b($$0), $$1);
+   public xk c() {
+      return this.f;
    }
 
-   public void a(alz $$0, int $$1) {
-      this.a.put($$0, new cxm.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
+   public float d() {
+      return this.g;
    }
 
-   public void a(alz $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(alz $$0, int $$1) {
-   }
-
-   protected void b(alz $$0) {
-   }
-
-   static record a(int a, int b) {
+   public int e() {
+      return this.h;
    }
 }

@@ -1,3 +1,3 @@
-public class gzh extends gyt {
-   public float a;
+public class gzh extends gyo {
+   public cij.a a = cij.a.b;
 }

@@ -1,29 +1,16 @@
-public class aam implements aac<aai> {
-   public static final zt<ws, aam> a = aac.a(aam::a, aam::new);
-   private final long b;
+import com.google.common.collect.Lists;
 
-   public aam(long $$0) {
-      this.b = $$0;
-   }
-
-   private aam(ws $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(ws $$0) {
-      $$0.b(this.b);
-   }
+public record aam(aau b) implements zr<aak> {
+   private static final int c = 32767;
+   public static final zi<wh, aam> a = aau.<wh>a($$0 -> aav.a($$0, 32767), ae.a(Lists.newArrayList(new aau.c[]{new aau.c<>(aas.b, aas.a)}), $$0 -> {
+   })).a(aam::new, aam::b);
 
    @Override
-   public aae<aam> a() {
-      return aau.d;
+   public zt<aam> a() {
+      return aaj.m;
    }
 
-   public void a(aai $$0) {
+   public void a(aak $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

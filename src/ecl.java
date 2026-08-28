@@ -1,29 +1,59 @@
-public enum ecl {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-   private final boolean d;
-   private final boolean e;
+public class ecl {
+   private final arx a;
 
-   private ecl(final boolean $$0, final boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public ecl(arx $$0) {
+      this.a = $$0;
    }
 
-   public boolean a() {
-      return this.e;
+   public void a(jq<eck> $$0, fbr $$1, eck.a $$2) {
+      int $$3 = $$0.a().a();
+      jh $$4 = jh.a((ka)$$1);
+      int $$5 = kj.a($$4.u() - $$3);
+      int $$6 = kj.a($$4.v() - $$3);
+      int $$7 = kj.a($$4.w() - $$3);
+      int $$8 = kj.a($$4.u() + $$3);
+      int $$9 = kj.a($$4.v() + $$3);
+      int $$10 = kj.a($$4.w() + $$3);
+      List<eck.b> $$11 = new ArrayList<>();
+      ecn.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == ecm.a.b) {
+            $$11.add(new eck.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
+         }
+      };
+      boolean $$13 = false;
+
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dzj $$16 = this.a.m().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+               }
+            }
+         }
+      }
+
+      if (!$$11.isEmpty()) {
+         this.a($$11);
+      }
+
+      if ($$13) {
+         agy.a(this.a, $$0, $$1);
+      }
    }
 
-   public boolean b() {
-      return this.d;
-   }
+   private void a(List<eck.b> $$0) {
+      Collections.sort($$0);
 
-   public static ecl a(arw $$0) {
-      if ($$0.a(arw.d)) {
-         return c;
-      } else {
-         return $$0.a(arw.b) ? b : a;
+      for (eck.b $$1 : $$0) {
+         ecm $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
       }
    }
 }

@@ -1,21 +1,24 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Locale;
+import com.mojang.serialization.Dynamic;
+import java.util.Map;
 import java.util.Optional;
 
-public class bih extends DataFix {
-   public bih(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bih extends bhj {
+   public bih(Schema $$0) {
+      super($$0, true, "PrimedTnt BlockState fixer", bin.B, "minecraft:tnt");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(bix.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Optional<String> $$1 = $$0x.get("lang").asString().result();
-               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
-            })
-      );
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Fuse").get().result();
+      return $$1.isPresent() ? $$0.set("fuse", $$1.get()) : $$0;
+   }
+
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return $$0.set("block_state", $$0.createMap(Map.of($$0.createString("Name"), $$0.createString("minecraft:tnt"))));
+   }
+
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b(c($$0));
    }
 }

@@ -1,344 +1,218 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dus extends dux implements btl, btm {
-   private static final int f = 4;
-   public static final List<List<jq<bun>>> a = List.of(List.of(bur.a, bur.c), List.of(bur.k, bur.h), List.of(bur.e), List.of(bur.j));
-   private static final Set<jq<bun>> g = a.stream().flatMap(Collection::stream).collect(Collectors.toSet());
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   public static final int e = 3;
-   private static final int h = 10;
-   private static final xv i = xv.c("container.beacon");
-   private static final String j = "primary_effect";
-   private static final String k = "secondary_effect";
-   List<dus.a> l = Lists.newArrayList();
-   private List<dus.a> m = Lists.newArrayList();
-   int n;
-   private int r;
+public class dus<T extends duq> {
+   private static final Logger T = LogUtils.getLogger();
+   public static final dus<dvp> a = a("furnace", dvp::new, dkf.cL);
+   public static final dus<dux> b = a("chest", dux::new, dkf.cD);
+   public static final dus<dwm> c = a("trapped_chest", dwm::new, dkf.hs);
+   public static final dus<dvn> d = a("ender_chest", dvn::new, dkf.gb);
+   public static final dus<dvu> e = a("jukebox", dvu::new, dkf.eg);
+   public static final dus<dvk> f = a("dispenser", dvk::new, dkf.bb);
+   public static final dus<dvl> g = a("dropper", dvl::new, dkf.hF);
+   public static final dus<dwd> h = a(
+      "sign",
+      dwd::new,
+      dkf.cM,
+      dkf.cN,
+      dkf.cO,
+      dkf.cP,
+      dkf.cQ,
+      dkf.cR,
+      dkf.cS,
+      dkf.cT,
+      dkf.da,
+      dkf.db,
+      dkf.dc,
+      dkf.dd,
+      dkf.de,
+      dkf.df,
+      dkf.dg,
+      dkf.dh,
+      dkf.py,
+      dkf.pA,
+      dkf.pz,
+      dkf.pB,
+      dkf.cU,
+      dkf.di,
+      dkf.cV,
+      dkf.dj
+   );
+   public static final dus<dvq> i = a(
+      "hanging_sign",
+      dvq::new,
+      dkf.dk,
+      dkf.dl,
+      dkf.dm,
+      dkf.dn,
+      dkf.do,
+      dkf.dp,
+      dkf.dq,
+      dkf.dr,
+      dkf.ds,
+      dkf.dt,
+      dkf.du,
+      dkf.dv,
+      dkf.dw,
+      dkf.dx,
+      dkf.dy,
+      dkf.dz,
+      dkf.dA,
+      dkf.dB,
+      dkf.dC,
+      dkf.dD,
+      dkf.dF,
+      dkf.dG,
+      dkf.dE,
+      dkf.dH
+   );
+   public static final dus<dwh> j = a("mob_spawner", dwh::new, dkf.cA);
+   public static final dus<dvf> k = a("creaking_heart", dvf::new, dkf.cB);
+   public static final dus<dxk> l = a("piston", dxk::new, dkf.bX);
+   public static final dus<dut> m = a("brewing_stand", dut::new, dkf.fN);
+   public static final dus<dvm> n = a("enchanting_table", dvm::new, dkf.fM);
+   public static final dus<dwk> o = a("end_portal", dwk::new, dkf.fS);
+   public static final dus<dul> p = a("beacon", dul::new, dkf.gj);
+   public static final dus<dwf> q = a(
+      "skull", dwf::new, dkf.hb, dkf.hc, dkf.hj, dkf.hk, dkf.hl, dkf.hm, dkf.hf, dkf.hg, dkf.hd, dkf.he, dkf.hh, dkf.hi, dkf.hn, dkf.ho
+   );
+   public static final dus<dvg> r = a("daylight_detector", dvg::new, dkf.hw);
+   public static final dus<dvs> s = a("hopper", dvs::new, dkf.hz);
+   public static final dus<dvb> t = a("comparator", dvb::new, dkf.hv);
+   public static final dus<duf> u = a(
+      "banner",
+      duf::new,
+      dkf.jh,
+      dkf.ji,
+      dkf.jj,
+      dkf.jk,
+      dkf.jl,
+      dkf.jm,
+      dkf.jn,
+      dkf.jo,
+      dkf.jp,
+      dkf.jq,
+      dkf.jr,
+      dkf.js,
+      dkf.jt,
+      dkf.ju,
+      dkf.jv,
+      dkf.jw,
+      dkf.jx,
+      dkf.jy,
+      dkf.jz,
+      dkf.jA,
+      dkf.jB,
+      dkf.jC,
+      dkf.jD,
+      dkf.jE,
+      dkf.jF,
+      dkf.jG,
+      dkf.jH,
+      dkf.jI,
+      dkf.jJ,
+      dkf.jK,
+      dkf.jL,
+      dkf.jM
+   );
+   public static final dus<dwi> v = a("structure_block", dwi::new, dkf.pC);
+   public static final dus<dwj> w = a("end_gateway", dwj::new, dkf.lh);
+   public static final dus<dva> x = a("command_block", dva::new, dkf.gi, dkf.lj, dkf.li);
+   public static final dus<dwc> y = a(
+      "shulker_box",
+      dwc::new,
+      dkf.lr,
+      dkf.lH,
+      dkf.lD,
+      dkf.lE,
+      dkf.lB,
+      dkf.lz,
+      dkf.lF,
+      dkf.lv,
+      dkf.lA,
+      dkf.lx,
+      dkf.lu,
+      dkf.lt,
+      dkf.ly,
+      dkf.lC,
+      dkf.lG,
+      dkf.ls,
+      dkf.lw
+   );
+   public static final dus<dum> z = a(
+      "bed", dum::new, dkf.bu, dkf.bv, dkf.br, dkf.bs, dkf.bp, dkf.bn, dkf.bt, dkf.bj, dkf.bo, dkf.bl, dkf.bi, dkf.bh, dkf.bm, dkf.bq, dkf.bg, dkf.bk
+   );
+   public static final dus<dvc> A = a("conduit", dvc::new, dkf.nz);
+   public static final dus<duj> B = a("barrel", duj::new, dkf.ow);
+   public static final dus<dwg> C = a("smoker", dwg::new, dkf.ox);
+   public static final dus<dup> D = a("blast_furnace", dup::new, dkf.oy);
+   public static final dus<dvv> E = a("lectern", dvv::new, dkf.oC);
+   public static final dus<duo> F = a("bell", duo::new, dkf.oF);
+   public static final dus<dvt> G = a("jigsaw", dvt::new, dkf.pD);
+   public static final dus<duw> H = a("campfire", duw::new, dkf.oI, dkf.oJ);
+   public static final dus<dun> I = a("beehive", dun::new, dkf.pG, dkf.pH);
+   public static final dus<dwa> J = a("sculk_sensor", dwa::new, dkf.rs);
+   public static final dus<duv> K = a("calibrated_sculk_sensor", duv::new, dkf.rt);
+   public static final dus<dvz> L = a("sculk_catalyst", dvz::new, dkf.rw);
+   public static final dus<dwb> M = a("sculk_shrieker", dwb::new, dkf.rx);
+   public static final dus<duz> N = a("chiseled_bookshelf", duz::new, dkf.ct);
+   public static final dus<duu> O = a("brushable_block", duu::new, dkf.M, dkf.P);
+   public static final dus<dvh> P = a("decorated_pot", dvh::new, dkf.tR);
+   public static final dus<dve> Q = a("crafter", dve::new, dkf.tS);
+   public static final dus<dwn> R = a("trial_spawner", dwn::new, dkf.tT);
+   public static final dus<dww> S = a("vault", dww::new, dkf.tU);
+   private static final Set<dus<?>> U = Set.of(x, E, h, i, j, R);
+   private final dus.a<? extends T> V;
+   private final Set<dkd> W;
+   private final jq.c<dus<?>> X = ma.j.f(this);
+
    @Nullable
-   jq<bun> s;
-   @Nullable
-   jq<bun> t;
-   @Nullable
-   private xv u;
-   private btk v = btk.a;
-   private final cto w = new cto() {
-      @Override
-      public int a(int $$0) {
-         return switch ($$0) {
-            case 0 -> dus.this.n;
-            case 1 -> cth.a(dus.this.s);
-            case 2 -> cth.a(dus.this.t);
-            default -> 0;
-         };
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         switch ($$0) {
-            case 0:
-               dus.this.n = $$1;
-               break;
-            case 1:
-               if (!dus.this.o.C && !dus.this.l.isEmpty()) {
-                  dus.a(dus.this.o, dus.this.p, axf.bN);
-               }
-
-               dus.this.s = dus.a(cth.e($$1));
-               break;
-            case 2:
-               dus.this.t = dus.a(cth.e($$1));
-         }
-      }
-
-      @Override
-      public int a() {
-         return 3;
-      }
-   };
-
-   @Nullable
-   static jq<bun> a(@Nullable jq<bun> $$0) {
-      return g.contains($$0) ? $$0 : null;
+   public static alp a(dus<?> $$0) {
+      return ma.j.b($$0);
    }
 
-   public dus(jh $$0, dxv $$1) {
-      super(duz.p, $$0, $$1);
-   }
-
-   public static void a(dhi $$0, jh $$1, dxv $$2, dus $$3) {
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      jh $$7;
-      if ($$3.r < $$5) {
-         $$7 = $$1;
-         $$3.m = Lists.newArrayList();
-         $$3.r = $$1.v() - 1;
-      } else {
-         $$7 = new jh($$4, $$3.r + 1, $$6);
+   private static <T extends duq> dus<T> a(String $$0, dus.a<? extends T> $$1, dkd... $$2) {
+      if ($$2.length == 0) {
+         T.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
       }
 
-      dus.a $$9 = $$3.m.isEmpty() ? null : $$3.m.get($$3.m.size() - 1);
-      int $$10 = $$0.a(edq.a.b, $$4, $$6);
-
-      for (int $$11 = 0; $$11 < 10 && $$7.v() <= $$10; $$11++) {
-         dxv $$12 = $$0.a_($$7);
-         if ($$12.b() instanceof dkd $$14) {
-            int $$15 = $$14.b().d();
-            if ($$3.m.size() <= 1) {
-               $$9 = new dus.a($$15);
-               $$3.m.add($$9);
-            } else if ($$9 != null) {
-               if ($$15 == $$9.a) {
-                  $$9.a();
-               } else {
-                  $$9 = new dus.a(ayp.d($$9.a, $$15));
-                  $$3.m.add($$9);
-               }
-            }
-         } else {
-            if ($$9 == null || $$12.g() >= 15 && !$$12.a(dko.I)) {
-               $$3.m.clear();
-               $$3.r = $$10;
-               break;
-            }
-
-            $$9.a();
-         }
-
-         $$7 = $$7.d();
-         $$3.r++;
-      }
-
-      int $$16 = $$3.n;
-      if ($$0.ac() % 80L == 0L) {
-         if (!$$3.l.isEmpty()) {
-            $$3.n = a($$0, $$4, $$5, $$6);
-         }
-
-         if ($$3.n > 0 && !$$3.l.isEmpty()) {
-            a($$0, $$1, $$3.n, $$3.s, $$3.t);
-            a($$0, $$1, axf.bL);
-         }
-      }
-
-      if ($$3.r >= $$10) {
-         $$3.r = $$0.L_() - 1;
-         boolean $$17 = $$16 > 0;
-         $$3.l = $$3.m;
-         if (!$$0.C) {
-            boolean $$18 = $$3.n > 0;
-            if (!$$17 && $$18) {
-               a($$0, $$1, axf.bK);
-
-               for (asi $$19 : $$0.a(asi.class, new fbt((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
-                  ao.m.a($$19, $$3.n);
-               }
-            } else if ($$17 && !$$18) {
-               a($$0, $$1, axf.bM);
-            }
-         }
-      }
+      ae.a(bin.s, $$0);
+      return kd.a(ma.j, $$0, new dus<>($$1, Set.of($$2)));
    }
 
-   private static int a(dhi $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 1; $$5 <= 4; $$4 = $$5++) {
-         int $$6 = $$2 - $$5;
-         if ($$6 < $$0.L_()) {
-            break;
-         }
-
-         boolean $$7 = true;
-
-         for (int $$8 = $$1 - $$5; $$8 <= $$1 + $$5 && $$7; $$8++) {
-            for (int $$9 = $$3 - $$5; $$9 <= $$3 + $$5; $$9++) {
-               if (!$$0.a_(new jh($$8, $$6, $$9)).a(axu.aP)) {
-                  $$7 = false;
-                  break;
-               }
-            }
-         }
-
-         if (!$$7) {
-            break;
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   public void aw_() {
-      a(this.o, this.p, axf.bM);
-      super.aw_();
-   }
-
-   private static void a(dhi $$0, jh $$1, int $$2, @Nullable jq<bun> $$3, @Nullable jq<bun> $$4) {
-      if (!$$0.C && $$3 != null) {
-         double $$5 = (double)($$2 * 10 + 10);
-         int $$6 = 0;
-         if ($$2 >= 4 && Objects.equals($$3, $$4)) {
-            $$6 = 1;
-         }
-
-         int $$7 = (9 + $$2 * 2) * 20;
-         fbt $$8 = new fbt($$1).g($$5).b(0.0, (double)$$0.M_(), 0.0);
-         List<cpx> $$9 = $$0.a(cpx.class, $$8);
-
-         for (cpx $$10 : $$9) {
-            $$10.a(new bup($$3, $$7, $$6, true, true));
-         }
-
-         if ($$2 >= 4 && !Objects.equals($$3, $$4) && $$4 != null) {
-            for (cpx $$11 : $$9) {
-               $$11.a(new bup($$4, $$7, 0, true, true));
-            }
-         }
-      }
-   }
-
-   public static void a(dhi $$0, jh $$1, axe $$2) {
-      $$0.a(null, $$1, $$2, axg.e, 1.0F, 1.0F);
-   }
-
-   public List<dus.a> b() {
-      return (List<dus.a>)(this.n == 0 ? ImmutableList.of() : this.l);
-   }
-
-   public acy c() {
-      return acy.a(this);
-   }
-
-   @Override
-   public ux a(js.a $$0) {
-      return this.e($$0);
-   }
-
-   private static void a(ux $$0, String $$1, @Nullable jq<bun> $$2) {
-      if ($$2 != null) {
-         $$2.e().ifPresent($$2x -> $$0.a($$1, $$2x.a().toString()));
-      }
+   private dus(dus.a<? extends T> $$0, Set<dkd> $$1) {
+      this.V = $$0;
+      this.W = $$1;
    }
 
    @Nullable
-   private static jq<bun> a(ux $$0, String $$1) {
-      if ($$0.b($$1, 8)) {
-         alz $$2 = alz.c($$0.l($$1));
-         return $$2 == null ? null : ma.d.c($$2).map(dus::a).orElse(null);
-      } else {
-         return null;
-      }
+   public T a(jh $$0, dxo $$1) {
+      return (T)this.V.create($$0, $$1);
    }
 
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.s = a($$0, "primary_effect");
-      this.t = a($$0, "secondary_effect");
-      if ($$0.b("CustomName", 8)) {
-         this.u = a($$0.l("CustomName"), $$1);
-      }
-
-      this.v = btk.b($$0, $$1);
+   public boolean a(dxo $$0) {
+      return this.W.contains($$0.b());
    }
 
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      a($$0, "primary_effect", this.s);
-      a($$0, "secondary_effect", this.t);
-      $$0.a("Levels", this.n);
-      if (this.u != null) {
-         $$0.a("CustomName", xv.a.a(this.u, $$1));
-      }
-
-      this.v.a($$0, $$1);
-   }
-
-   public void a(@Nullable xv $$0) {
-      this.u = $$0;
+   @Deprecated
+   public jq.c<dus<?>> a() {
+      return this.X;
    }
 
    @Nullable
-   @Override
-   public xv an() {
-      return this.u;
+   public T a(dge $$0, jh $$1) {
+      duq $$2 = $$0.c_($$1);
+      return (T)($$2 != null && $$2.p() == this ? $$2 : null);
    }
 
-   @Nullable
-   @Override
-   public ctc createMenu(int $$0, cpw $$1, cpx $$2) {
-      return dur.a($$2, this.v, this.p_()) ? new cth($$0, $$1, this.w, ctp.a(this.o, this.aB_())) : null;
+   public boolean b() {
+      return U.contains(this);
    }
 
-   @Override
-   public xv p_() {
-      return this.al();
-   }
-
-   @Override
-   public xv al() {
-      return this.u != null ? this.u : i;
-   }
-
-   @Override
-   protected void a(dux.b $$0) {
-      super.a($$0);
-      this.u = $$0.a(ku.g);
-      this.v = $$0.a(ku.ao, btk.a);
-   }
-
-   @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      $$0.a(ku.g, this.u);
-      if (!this.v.equals(btk.a)) {
-         $$0.a(ku.ao, this.v);
-      }
-   }
-
-   @Override
-   public void a(ux $$0) {
-      $$0.r("CustomName");
-      $$0.r("lock");
-   }
-
-   @Override
-   public void a(dhi $$0) {
-      super.a($$0);
-      this.r = $$0.L_() - 1;
-   }
-
-   public static class a {
-      final int a;
-      private int b;
-
-      public a(int $$0) {
-         this.a = $$0;
-         this.b = 1;
-      }
-
-      protected void a() {
-         this.b++;
-      }
-
-      public int b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
+   @FunctionalInterface
+   interface a<T extends duq> {
+      T create(jh var1, dxo var2);
    }
 }

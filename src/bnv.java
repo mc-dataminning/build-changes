@@ -1,22 +1,19 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+public class bnv extends bnr {
+   private final bns c;
+   private final bnu d;
 
-public class bnv extends Schema {
-   public bnv(int $$0, Schema $$1) {
-      super($$0, $$1);
+   public bnv(int $$0, bns $$1, bnu $$2) {
+      this($$0, $$1, $$2, new long[$$0]);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("EntityHorse");
-      $$0.register($$1, "Horse", () -> DSL.optionalFields("ArmorItem", bix.t.in($$0), "SaddleItem", bix.t.in($$0), bkm.a($$0)));
-      $$0.register($$1, "Donkey", () -> DSL.optionalFields("Items", DSL.list(bix.t.in($$0)), "SaddleItem", bix.t.in($$0), bkm.a($$0)));
-      $$0.register($$1, "Mule", () -> DSL.optionalFields("Items", DSL.list(bix.t.in($$0)), "SaddleItem", bix.t.in($$0), bkm.a($$0)));
-      $$0.register($$1, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", bix.t.in($$0), bkm.a($$0)));
-      $$0.register($$1, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", bix.t.in($$0), bkm.a($$0)));
-      return $$1;
+   public bnv(int $$0, bns $$1, bnu $$2, long[] $$3) {
+      super($$0, $$3);
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   @Override
+   protected void a() {
+      this.c.a(new adh((long[])this.b.clone(), this.d));
    }
 }

@@ -1,35 +1,42 @@
-public class gwc extends gwf<gzg, gcr> {
-   private final gck a;
-   private final gzc b = new gzc();
+public class gwc extends gwa<gzi, gcx> {
+   private static final alp a = alp.b("textures/entity/sheep/sheep_fur.png");
+   private final gbh<gzi> b;
+   private final gbh<gzi> c;
 
-   public gwc(gtn<gzg, gcr> $$0, gek $$1) {
+   public gwc(gti<gzi, gcx> $$0, gef $$1) {
       super($$0);
-      this.a = new gck($$1.a(gen.bK));
-      this.b.c = gck.a.e;
+      this.b = new gcw($$1.a(gei.cC));
+      this.c = new gcw($$1.a(gei.cB));
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, gzg $$3, float $$4, float $$5) {
-      cin.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
-      }
+   public void a(fgl $$0, glg $$1, int $$2, gzi $$3, float $$4, float $$5) {
+      if (!$$3.c) {
+         gbh<gzi> $$6 = $$3.ae ? this.c : this.b;
+         if ($$3.u) {
+            if ($$3.aj) {
+               $$6.a($$3);
+               fgp $$7 = $$1.getBuffer(glq.s(a));
+               $$6.a($$0, $$7, $$2, gsm.a($$3, 0.0F), -16777216);
+            }
+         } else {
+            int $$17;
+            if ($$3.al != null && "jeb_".equals($$3.al.getString())) {
+               int $$8 = 25;
+               int $$9 = azu.d($$3.p);
+               int $$10 = $$9 / 25 + $$3.e;
+               int $$11 = cwd.values().length;
+               int $$12 = $$10 % $$11;
+               int $$13 = ($$10 + 1) % $$11;
+               float $$14 = ((float)($$9 % 25) + azu.i($$3.p)) / 25.0F;
+               int $$15 = cik.a(cwd.a($$12));
+               int $$16 = cik.a(cwd.a($$13));
+               $$17 = ayf.a($$14, $$15, $$16);
+            } else {
+               $$17 = cik.a($$3.d);
+            }
 
-      cin.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+            a($$6, a, $$0, $$1, $$2, $$3, $$17);
+         }
       }
-   }
-
-   private void a(fgs $$0, gll $$1, int $$2, gzg $$3, cin.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.I ? -1.3F : -1.5F, 0.0F);
-      this.b.p = $$3.p;
-      this.b.X = $$3.X;
-      this.b.Y = $$3.Y;
-      this.b.U = $$5;
-      this.b.V = $$6;
-      this.a.a(this.b);
-      this.a.a($$0, $$1.getBuffer(this.a.a(gtd.a($$4))), $$2, hbc.d);
-      $$0.b();
    }
 }

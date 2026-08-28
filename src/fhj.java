@@ -1,18 +1,13 @@
-import java.net.Proxy;
 import javax.annotation.Nullable;
 
-public class fhj {
+public abstract class fhj extends RuntimeException {
    @Nullable
-   private static Proxy a;
-
-   @Nullable
-   public static Proxy a() {
-      return a;
+   public xk a() {
+      return null;
    }
 
-   public static void a(Proxy $$0) {
-      if (a == null) {
-         a = $$0;
-      }
+   @Nullable
+   public xk[] b() {
+      return null;
    }
 }

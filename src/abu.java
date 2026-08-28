@@ -1,57 +1,17 @@
-import java.util.List;
+public class abu {
+   public static final zt<abp> a = a("finish_configuration");
+   public static final zt<abq> b = a("registry_data");
+   public static final zt<abt> c = a("update_enabled_features");
+   public static final zt<abs> d = a("select_known_packs");
+   public static final zt<abr> e = a("reset_chat");
+   public static final zt<abx> f = b("finish_configuration");
+   public static final zt<aby> g = b("select_known_packs");
 
-public record abu(aly<dhi> c, eoc d, List<abu.a> e) implements abf {
-   public static final zt<ws, abu> a = abf.a(abu::a, abu::new);
-   public static final abf.b<abu> b = abf.a("debug/structures");
-
-   private abu(ws $$0) {
-      this($$0.a(mb.be), b($$0), $$0.a(abu.a::new));
+   private static <T extends zr<abo>> zt<T> a(String $$0) {
+      return new zt<>(zs.b, alp.b($$0));
    }
 
-   private void a(ws $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
-   }
-
-   @Override
-   public abf.b<abu> a() {
-      return b;
-   }
-
-   static eoc b(ws $$0) {
-      return new eoc($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(ws $$0, eoc $$1) {
-      $$0.q($$1.h());
-      $$0.q($$1.i());
-      $$0.q($$1.j());
-      $$0.q($$1.k());
-      $$0.q($$1.l());
-      $$0.q($$1.m());
-   }
-
-   public aly<dhi> b() {
-      return this.c;
-   }
-
-   public eoc c() {
-      return this.d;
-   }
-
-   public List<abu.a> d() {
-      return this.e;
-   }
-
-   public static record a(eoc a, boolean b) {
-      public a(ws $$0) {
-         this(abu.b($$0), $$0.readBoolean());
-      }
-
-      public void a(ws $$0) {
-         abu.a($$0, this.a);
-         $$0.a(this.b);
-      }
+   private static <T extends zr<abw>> zt<T> b(String $$0) {
+      return new zt<>(zs.a, alp.b($$0));
    }
 }

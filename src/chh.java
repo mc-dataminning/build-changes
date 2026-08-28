@@ -1,16 +1,10 @@
-public interface chh {
-   chh a = a("zombie_villager_cured");
-   chh b = a("golem_killed");
-   chh c = a("villager_hurt");
-   chh d = a("villager_killed");
-   chh e = a("trade");
+public abstract class chh extends bvz {
+   protected chh(bvi<? extends chh> $$0, dgz $$1) {
+      super($$0, $$1);
+   }
 
-   static chh a(final String $$0) {
-      return new chh() {
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   @Override
+   public boolean y() {
+      return false;
    }
 }

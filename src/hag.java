@@ -1,4 +1,8 @@
-public class hag extends gyt {
-   public int a;
-   public boolean b;
+public class hag extends haf implements gzy {
+   public cpb c = new cpb(cpf.c, cpd.b, 1);
+
+   @Override
+   public cpb a() {
+      return this.c;
+   }
 }

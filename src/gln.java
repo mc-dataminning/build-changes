@@ -1,81 +1,70 @@
-import java.util.Optional;
+public class gln {
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-public class gln implements gll {
-   private final gll.a a;
-   private final gll.a b = gll.a(new fgp(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+   public gln(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 
-   public gln(gll.a $$0) {
+   public gln a(gln $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
       this.a = $$0;
    }
 
-   @Override
-   public fgw getBuffer(glv $$0) {
-      if ($$0.R()) {
-         fgw $$1 = this.b.getBuffer($$0);
-         return new gln.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         fgw $$2 = this.a.getBuffer($$0);
-         Optional<glv> $$3 = $$0.Q();
-         if ($$3.isPresent()) {
-            fgw $$4 = this.b.getBuffer($$3.get());
-            gln.a $$5 = new gln.a($$4, this.c, this.d, this.e, this.f);
-            return fgz.a($$5, $$2);
-         } else {
-            return $$2;
-         }
-      }
+   public void b(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
    }
 
-   public void a() {
-      this.b.b();
+   public void d(int $$0) {
+      this.d = $$0;
    }
 
-   static record a(fgw a, int b) implements fgw {
-      public a(fgw $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, ayp.a($$4, $$1, $$2, $$3));
-      }
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      @Override
-      public fgw a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2).a(this.b);
-         return this;
-      }
-
-      @Override
-      public fgw a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public fgw a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fgw a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fgw b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fgw b(float $$0, float $$1, float $$2) {
-         return this;
-      }
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

@@ -1,241 +1,77 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Set;
-import java.util.regex.Pattern;
 
-public class vq implements vy {
-   private static final Map<String, List<String>> a = ae.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("{}", Lists.newArrayList(new String[]{"DataVersion", "author", "size", "data", "entities", "palette", "palettes"}));
-      $$0.put("{}.data.[].{}", Lists.newArrayList(new String[]{"pos", "state", "nbt"}));
-      $$0.put("{}.entities.[].{}", Lists.newArrayList(new String[]{"blockPos", "pos"}));
-   });
-   private static final Set<String> b = Sets.newHashSet(new String[]{"{}.size.[]", "{}.data.[].{}", "{}.palette.[].{}", "{}.entities.[].{}"});
-   private static final Pattern c = Pattern.compile("[A-Za-z0-9._+-]+");
-   private static final String d = String.valueOf(':');
-   private static final String e = String.valueOf(',');
-   private static final String f = "[";
-   private static final String g = "]";
-   private static final String h = ";";
-   private static final String i = " ";
-   private static final String j = "{";
-   private static final String k = "}";
-   private static final String l = "\n";
-   private final String m;
-   private final int n;
-   private final List<String> o;
-   private String p = "";
+public class vq extends vr {
+   private int a;
+   private final Set<vl<?>> b;
+   private final Deque<vt> c = new ArrayDeque<>();
 
-   public vq() {
-      this("    ", 0, Lists.newArrayList());
-   }
+   public vq(vs... $$0) {
+      this.a = $$0.length;
+      Builder<vl<?>> $$1 = ImmutableSet.builder();
+      vt $$2 = vt.a();
 
-   public vq(String $$0, int $$1, List<String> $$2) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-   }
-
-   public String a(vu $$0) {
-      $$0.a(this);
-      return this.p;
-   }
-
-   @Override
-   public void a(vs $$0) {
-      this.p = vs.b($$0.u_());
-   }
-
-   @Override
-   public void a(uv $$0) {
-      this.p = $$0.l() + "b";
-   }
-
-   @Override
-   public void a(vp $$0) {
-      this.p = $$0.l() + "s";
-   }
-
-   @Override
-   public void a(vc $$0) {
-      this.p = String.valueOf($$0.l());
-   }
-
-   @Override
-   public void a(vf $$0) {
-      this.p = $$0.l() + "L";
-   }
-
-   @Override
-   public void a(va $$0) {
-      this.p = $$0.k() + "f";
-   }
-
-   @Override
-   public void a(uy $$0) {
-      this.p = $$0.j() + "d";
-   }
-
-   @Override
-   public void a(uu $$0) {
-      StringBuilder $$1 = new StringBuilder("[").append("B").append(";");
-      byte[] $$2 = $$0.e();
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$1.append(" ").append($$2[$$3]).append("B");
-         if ($$3 != $$2.length - 1) {
-            $$1.append(e);
-         }
+      for (vs $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
       }
 
-      $$1.append("]");
-      this.p = $$1.toString();
+      this.c.push($$2);
+      $$1.add(um.b);
+      this.b = $$1.build();
    }
 
    @Override
-   public void a(vb $$0) {
-      StringBuilder $$1 = new StringBuilder("[").append("I").append(";");
-      int[] $$2 = $$0.g();
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$1.append(" ").append($$2[$$3]);
-         if ($$3 != $$2.length - 1) {
-            $$1.append(e);
-         }
-      }
-
-      $$1.append("]");
-      this.p = $$1.toString();
+   public vg.b b(vl<?> $$0) {
+      return $$0 != um.b ? vg.b.c : super.b($$0);
    }
 
    @Override
-   public void a(ve $$0) {
-      String $$1 = "L";
-      StringBuilder $$2 = new StringBuilder("[").append("L").append(";");
-      long[] $$3 = $$0.g();
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         $$2.append(" ").append($$3[$$4]).append("L");
-         if ($$4 != $$3.length - 1) {
-            $$2.append(e);
-         }
-      }
-
-      $$2.append("]");
-      this.p = $$2.toString();
-   }
-
-   @Override
-   public void a(vd $$0) {
-      if ($$0.isEmpty()) {
-         this.p = "[]";
+   public vg.a a(vl<?> $$0) {
+      vt $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return vg.a.d;
       } else {
-         StringBuilder $$1 = new StringBuilder("[");
-         this.b("[]");
-         String $$2 = b.contains(this.a()) ? "" : this.m;
-         if (!$$2.isEmpty()) {
-            $$1.append("\n");
-         }
+         return !this.b.contains($$0) ? vg.a.b : super.a($$0);
+      }
+   }
 
-         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-            $$1.append(Strings.repeat($$2, this.n + 1));
-            $$1.append(new vq($$2, this.n + 1, this.o).a($$0.k($$3)));
-            if ($$3 != $$0.size() - 1) {
-               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
+   @Override
+   public vg.a a(vl<?> $$0, String $$1) {
+      vt $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == um.b) {
+            vt $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
             }
          }
 
-         if (!$$2.isEmpty()) {
-            $$1.append("\n").append(Strings.repeat($$2, this.n));
-         }
-
-         $$1.append("]");
-         this.p = $$1.toString();
-         this.b();
+         return vg.a.b;
       }
    }
 
    @Override
-   public void a(ux $$0) {
-      if ($$0.g()) {
-         this.p = "{}";
-      } else {
-         StringBuilder $$1 = new StringBuilder("{");
-         this.b("{}");
-         String $$2 = b.contains(this.a()) ? "" : this.m;
-         if (!$$2.isEmpty()) {
-            $$1.append("\n");
-         }
-
-         Collection<String> $$3 = this.b($$0);
-         Iterator<String> $$4 = $$3.iterator();
-
-         while ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            vu $$6 = $$0.c($$5);
-            this.b($$5);
-            $$1.append(Strings.repeat($$2, this.n + 1)).append(a($$5)).append(d).append(" ").append(new vq($$2, this.n + 1, this.o).a($$6));
-            this.b();
-            if ($$4.hasNext()) {
-               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
-            }
-         }
-
-         if (!$$2.isEmpty()) {
-            $$1.append("\n").append(Strings.repeat($$2, this.n));
-         }
-
-         $$1.append("}");
-         this.p = $$1.toString();
-         this.b();
-      }
-   }
-
-   private void b() {
-      this.o.remove(this.o.size() - 1);
-   }
-
-   private void b(String $$0) {
-      this.o.add($$0);
-   }
-
-   protected List<String> b(ux $$0) {
-      Set<String> $$1 = Sets.newHashSet($$0.e());
-      List<String> $$2 = Lists.newArrayList();
-      List<String> $$3 = a.get(this.a());
-      if ($$3 != null) {
-         for (String $$4 : $$3) {
-            if ($$1.remove($$4)) {
-               $$2.add($$4);
-            }
-         }
-
-         if (!$$1.isEmpty()) {
-            $$1.stream().sorted().forEach($$2::add);
-         }
-      } else {
-         $$2.addAll($$1);
-         Collections.sort($$2);
+   public vg.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
       }
 
-      return $$2;
+      return super.b();
    }
 
-   public String a() {
-      return String.join(".", this.o);
-   }
-
-   protected static String a(String $$0) {
-      return c.matcher($$0).matches() ? $$0 : vs.b($$0);
-   }
-
-   @Override
-   public void a(uz $$0) {
+   public int c() {
+      return this.a;
    }
 }

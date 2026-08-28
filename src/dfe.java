@@ -1,45 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public interface dfe {
+   alo<dey> a = a("mob_spawn_equipment");
+   alo<dey> b = a("pillager_spawn_crossbow");
+   alo<dey> c = a("raid/pillager_post_wave_3");
+   alo<dey> d = a("raid/pillager_post_wave_5");
+   alo<dey> e = a("raid/vindicator");
+   alo<dey> f = a("raid/vindicator_post_wave_5");
+   alo<dey> g = a("enderman_loot_drop");
 
-public record dfe(ju<bvr<?>> d, boolean e) implements deq {
-   public static final MapCodec<dfe> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kf.a(mb.z).fieldOf("entity").forGetter(dfe::b), Codec.BOOL.optionalFieldOf("join_team", false).forGetter(dfe::c)).apply($$0, dfe::new)
-   );
-
-   @Override
-   public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4) {
-      jh $$5 = jh.a((ka)$$4);
-      if (dhi.l($$5)) {
-         Optional<jq<bvr<?>>> $$6 = this.b().a($$0.H_());
-         if (!$$6.isEmpty()) {
-            bvk $$7 = $$6.get().a().a($$0, $$5, bvq.k);
-            if ($$7 != null) {
-               if ($$7 instanceof bwf $$8 && $$2.c() instanceof asi $$9) {
-                  $$8.b($$9);
-               }
-
-               if (this.e && $$3.cr() != null) {
-                  $$0.g().a($$7.cI(), $$3.cr());
-               }
-
-               $$7.b($$4.d, $$4.e, $$4.f, $$7.dM(), $$7.dO());
-            }
-         }
-      }
+   static void a(ra<dey> $$0) {
+      jr<ddq> $$1 = $$0.a(mb.aO);
+      $$0.a(a, new dfb($$1.b(axn.l), 5, 17));
+      $$0.a(b, new dfc($$1.b(ddv.K), bsc.a(1)));
+      $$0.a(c, new dfc($$1.b(ddv.J), bsc.a(1)));
+      $$0.a(d, new dfc($$1.b(ddv.J), bsc.a(2)));
+      $$0.a(e, new dfc($$1.b(ddv.n), bsc.a(1)));
+      $$0.a(f, new dfc($$1.b(ddv.n), bsc.a(2)));
+      $$0.a(g, new dfc($$1.b(ddv.v), bsc.a(1)));
    }
 
-   @Override
-   public MapCodec<dfe> a() {
-      return a;
-   }
-
-   public ju<bvr<?>> b() {
-      return this.d;
-   }
-
-   public boolean c() {
-      return this.e;
+   static alo<dey> a(String $$0) {
+      return alo.a(mb.aP, alp.b($$0));
    }
 }

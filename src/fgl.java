@@ -1,90 +1,130 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import com.google.common.collect.Queues;
+import java.util.Deque;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class fgl {
-   private int a;
+   private final Deque<fgl.a> a = ae.a(Queues.newArrayDeque(), $$0 -> {
+      Matrix4f $$1 = new Matrix4f();
+      Matrix3f $$2 = new Matrix3f();
+      $$0.add(new fgl.a($$1, $$2));
+   });
 
-   public static Optional<fgl> a() {
-      return fgl.b.a;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      fgl.a $$3 = this.a.getLast();
+      $$3.a.translate($$0, $$1, $$2);
+   }
+
+   public void a(fbr $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
+   }
+
+   public void b(float $$0, float $$1, float $$2) {
+      fgl.a $$3 = this.a.getLast();
+      $$3.a.scale($$0, $$1, $$2);
+      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
+         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
+            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
+         }
+      } else {
+         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
+         $$3.c = false;
+      }
+   }
+
+   public void a(Quaternionf $$0) {
+      fgl.a $$1 = this.a.getLast();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
+   }
+
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      fgl.a $$4 = this.a.getLast();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
+   }
+
+   public void a() {
+      this.a.addLast(new fgl.a(this.a.getLast()));
    }
 
    public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
-      }
+      this.a.removeLast();
    }
 
    public fgl.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         fgl.a $$0 = new fgl.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
+      return this.a.getLast();
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
+   public boolean d() {
+      return this.a.size() == 1;
+   }
 
-      a(int $$0) {
-         this.c = $$0;
-      }
+   public void e() {
+      fgl.a $$0 = this.a.getLast();
+      $$0.a.identity();
+      $$0.b.identity();
+      $$0.c = true;
+   }
 
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
+   public void a(Matrix4f $$0) {
+      fgl.a $$1 = this.a.getLast();
+      $$1.a.mul($$0);
+      if (!f.b($$0)) {
+         if (f.c($$0)) {
+            $$1.b.mul(new Matrix3f($$0));
          } else {
-            return false;
+            $$1.d();
          }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
       }
    }
 
-   static class b {
-      static final Optional<fgl> a = Optional.ofNullable(a());
+   public static final class a {
+      final Matrix4f a;
+      final Matrix3f b;
+      boolean c = true;
 
-      private b() {
+      a(Matrix4f $$0, Matrix3f $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      @Nullable
-      private static fgl a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fgl();
+      a(fgl.a $$0) {
+         this.a = new Matrix4f($$0.a);
+         this.b = new Matrix3f($$0.b);
+         this.c = $$0.c;
+      }
+
+      void d() {
+         this.b.set(this.a).invert().transpose();
+         this.c = false;
+      }
+
+      public Matrix4f a() {
+         return this.a;
+      }
+
+      public Matrix3f b() {
+         return this.b;
+      }
+
+      public Vector3f a(Vector3f $$0, Vector3f $$1) {
+         return this.a($$0.x, $$0.y, $$0.z, $$1);
+      }
+
+      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
+         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
+         return this.c ? $$4 : $$4.normalize();
+      }
+
+      public fgl.a c() {
+         return new fgl.a(this);
       }
    }
 }

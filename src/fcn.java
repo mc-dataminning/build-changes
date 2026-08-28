@@ -1,53 +1,66 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class fcn extends AbstractDoubleList implements fck {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
+public enum fcn implements baq {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
 
-   protected fcn(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static final baq.a<fcn> t = baq.a(fcn::values);
+   public static final IntFunction<fcn> u = ayl.a(fcn::a, values(), ayl.a.a);
+   private final int v;
+   private final String w;
+
+   private fcn(final int $$0, final String $$1) {
+      this.v = $$0;
+      this.w = $$1;
+   }
+
+   public int a() {
+      return this.v;
    }
 
    @Override
-   public int size() {
-      return this.a.size() + this.b.size();
+   public String c() {
+      return this.w;
    }
 
-   @Override
-   public boolean a(fck.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
-   }
-
-   private boolean b(fck.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
-      }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
-
-   @Override
-   public DoubleList a() {
-      return this;
+   @Nullable
+   public static fcn a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

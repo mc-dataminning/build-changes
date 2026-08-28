@@ -1,8 +1,82 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.authlib.GameProfile;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gkd {
+public class gkd extends gjz {
+   private fbr h = fbr.c;
+   private int i;
+
+   public gkd(gff $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.ad = true;
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cR().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
+
+      $$1 *= 64.0 * cK();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public boolean b(btr $$0) {
+      return true;
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      this.s(false);
+   }
+
+   @Override
+   public void d_() {
+      if (this.br > 0) {
+         this.a(this.br, this.bs, this.bt, this.bu, this.bv, this.bw);
+         this.br--;
+      }
+
+      if (this.by > 0) {
+         this.a(this.by, this.bx);
+         this.by--;
+      }
+
+      if (this.i > 0) {
+         this.i(new fbr((this.h.d - this.dz().d) / (double)this.i, (this.h.e - this.dz().e) / (double)this.i, (this.h.f - this.dz().f) / (double)this.i));
+         this.i--;
+      }
+
+      this.cg = this.ch;
+      this.eX();
+      float $$1;
+      if (this.aJ() && !this.eF()) {
+         $$1 = (float)Math.min(0.1, this.dz().i());
+      } else {
+         $$1 = 0.0F;
+      }
+
+      this.ch = this.ch + ($$1 - this.ch) * 0.4F;
+
+      try (bpo $$2 = bpi.a().d("push")) {
+         this.o();
+      }
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.h = new fbr($$0, $$1, $$2);
+      this.i = this.aq().p() + 1;
+   }
+
+   @Override
+   protected void gc() {
+   }
+
+   @Override
+   public void a(ach $$0) {
+      super.a($$0);
+      this.bz();
+   }
 }

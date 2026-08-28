@@ -1,342 +1,115 @@
-import com.google.common.base.Stopwatch;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2LongMap.Entry;
 import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class ts {
-   private final um a;
-   @Nullable
-   private jh b;
-   @Nullable
-   private jh c;
-   private final ash d;
-   private final Collection<tt> e = Lists.newArrayList();
-   private final int f;
-   private final Collection<tw> g = Lists.newCopyOnWriteArrayList();
-   private final Object2LongMap<Runnable> h = new Object2LongOpenHashMap();
-   private long i;
-   private int j = 20;
-   private boolean k;
-   private boolean l;
-   private long m;
-   private boolean n;
-   private final uf o;
-   private final Stopwatch p = Stopwatch.createUnstarted();
-   private boolean q;
-   private final drc r;
-   @Nullable
-   private Throwable s;
-   @Nullable
-   private dwp t;
+   private static final char a = ' ';
+   private static final char b = '_';
+   private static final char c = '+';
+   private static final char d = 'x';
+   private static final char e = 'X';
+   private final Collection<th> f = Lists.newArrayList();
+   private final Collection<ti> g = Lists.newArrayList();
 
-   public ts(um $$0, drc $$1, ash $$2, uf $$3) {
-      this.a = $$0;
-      this.d = $$2;
-      this.o = $$3;
-      this.f = $$0.f();
-      this.r = $$0.e().a($$1);
+   public ts() {
    }
 
-   void a(jh $$0) {
-      this.b = $$0;
+   public ts(Collection<th> $$0) {
+      this.f.addAll($$0);
    }
 
-   public ts a(int $$0) {
-      this.i = this.d.ac() + this.a.g() + (long)$$0;
-      this.p.start();
-      return this;
+   public void a(th $$0) {
+      this.f.add($$0);
+      this.g.forEach($$0::a);
    }
 
-   public ts a() {
-      if (this.k) {
-         return this;
-      } else {
-         this.j = 0;
-         this.k = true;
-         dwp $$0 = this.f();
-         $$0.c(this.d);
-         eoc $$1 = ui.b($$0);
-         this.d.n().a($$1);
-         this.d.a($$1);
-         return this;
-      }
+   public void a(ti $$0) {
+      this.g.add($$0);
+      this.f.forEach($$1 -> $$1.a($$0));
    }
 
-   private boolean E() {
-      if (this.k) {
-         return true;
-      } else if (this.j > 0) {
-         this.j--;
-         return false;
-      } else {
-         this.a().a(0);
-         return true;
-      }
-   }
-
-   public void a(tv $$0) {
-      if (!this.k()) {
-         if (this.t == null) {
-            this.a(new IllegalStateException("Running test without structure block entity"));
+   public void a(final Consumer<th> $$0) {
+      this.a(new ti() {
+         @Override
+         public void a(th $$0x) {
          }
 
-         if (this.l || ui.b(this.t).b().allMatch($$0x -> this.d.f($$0x.l()))) {
-            this.l = true;
-            if (this.E()) {
-               this.F();
-               if (this.k()) {
-                  if (this.s != null) {
-                     this.e.forEach($$1 -> $$1.b(this, $$0));
-                  } else {
-                     this.e.forEach($$1 -> $$1.a(this, $$0));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void F() {
-      this.m = this.d.ac() - this.i;
-      if (this.m >= 0L) {
-         if (!this.n) {
-            this.G();
+         @Override
+         public void a(th $$0x, tk $$1) {
          }
 
-         ObjectIterator<Entry<Runnable>> $$0 = this.h.object2LongEntrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<Runnable> $$1 = (Entry<Runnable>)$$0.next();
-            if ($$1.getLongValue() <= this.m) {
-               try {
-                  ((Runnable)$$1.getKey()).run();
-               } catch (Exception var4) {
-                  this.a(var4);
-               }
-
-               $$0.remove();
-            }
+         @Override
+         public void b(th $$0x, tk $$1) {
+            $$0.accept($$0);
          }
 
-         if (this.m > (long)this.f) {
-            if (this.g.isEmpty()) {
-               this.a(new tz("Didn't succeed or fail within " + this.a.f() + " ticks"));
-            } else {
-               this.g.forEach($$0x -> $$0x.b(this.m));
-               if (this.s == null) {
-                  this.a(new tz("No sequences finished"));
-               }
-            }
-         } else {
-            this.g.forEach($$0x -> $$0x.a(this.m));
+         @Override
+         public void a(th $$0x, th $$1, tk $$2) {
          }
-      }
+      });
    }
 
-   private void G() {
-      if (!this.n) {
-         this.n = true;
-
-         try {
-            this.a.a(new tr(this));
-         } catch (Exception var2) {
-            this.a(var2);
-         }
-      }
+   public int a() {
+      return (int)this.f.stream().filter(th::i).filter(th::r).count();
    }
 
-   public void a(long $$0, Runnable $$1) {
-      this.h.put($$1, $$0);
+   public int b() {
+      return (int)this.f.stream().filter(th::i).filter(th::s).count();
    }
 
-   public String b() {
-      return this.a.c();
+   public int c() {
+      return (int)this.f.stream().filter(th::k).count();
    }
 
-   @Nullable
-   public jh c() {
-      return this.b;
+   public boolean d() {
+      return this.a() > 0;
    }
 
-   public jh d() {
-      return ui.c(this.t);
+   public boolean e() {
+      return this.b() > 0;
    }
 
-   public fbt e() {
-      dwp $$0 = this.f();
-      return ui.a($$0);
+   public Collection<th> f() {
+      return this.f.stream().filter(th::i).filter(th::r).collect(Collectors.toList());
    }
 
-   public dwp f() {
-      if (this.t == null) {
-         if (this.b == null) {
-            throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
-         }
-
-         this.t = (dwp)this.d.c_(this.b);
-         if (this.t == null) {
-            throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
-         }
-      }
-
-      return this.t;
+   public Collection<th> g() {
+      return this.f.stream().filter(th::i).filter(th::s).collect(Collectors.toList());
    }
 
-   public ash g() {
-      return this.d;
-   }
-
-   public boolean h() {
-      return this.q && this.s == null;
+   public int h() {
+      return this.f.size();
    }
 
    public boolean i() {
-      return this.s != null;
+      return this.c() == this.h();
    }
 
-   public boolean j() {
-      return this.n;
-   }
-
-   public boolean k() {
-      return this.q;
-   }
-
-   public long l() {
-      return this.p.elapsed(TimeUnit.MILLISECONDS);
-   }
-
-   private void H() {
-      if (!this.q) {
-         this.q = true;
-         if (this.p.isRunning()) {
-            this.p.stop();
+   public String j() {
+      StringBuffer $$0 = new StringBuffer();
+      $$0.append('[');
+      this.f.forEach($$1 -> {
+         if (!$$1.j()) {
+            $$0.append(' ');
+         } else if ($$1.h()) {
+            $$0.append('+');
+         } else if ($$1.i()) {
+            $$0.append((char)($$1.r() ? 'X' : 'x'));
+         } else {
+            $$0.append('_');
          }
-      }
-   }
-
-   public void m() {
-      if (this.s == null) {
-         this.H();
-         fbt $$0 = this.e();
-         List<bvk> $$1 = this.g().a(bvk.class, $$0.g(1.0), $$0x -> !($$0x instanceof cpx));
-         $$1.forEach($$0x -> $$0x.a(bvk.d.b));
-      }
-   }
-
-   public void a(Throwable $$0) {
-      this.s = $$0;
-      this.H();
-   }
-
-   @Nullable
-   public Throwable n() {
-      return this.s;
+      });
+      $$0.append(']');
+      return $$0.toString();
    }
 
    @Override
    public String toString() {
-      return this.b();
+      return this.j();
    }
 
-   public void a(tt $$0) {
-      this.e.add($$0);
-   }
-
-   public ts o() {
-      jh $$0 = this.D();
-      this.t = ui.b(this, $$0, this.u(), this.d);
-      this.b = this.t.aB_();
-      ui.a(this.b, new jh(1, 0, -1), this.u(), this.d);
-      ui.a(this.e(), this.d, !this.a.l());
-      this.e.forEach($$0x -> $$0x.a(this));
-      return this;
-   }
-
-   long p() {
-      return this.m;
-   }
-
-   tw q() {
-      tw $$0 = new tw(this);
-      this.g.add($$0);
-      return $$0;
-   }
-
-   public boolean r() {
-      return this.a.h();
-   }
-
-   public boolean s() {
-      return !this.a.h();
-   }
-
-   public String t() {
-      return this.a.d();
-   }
-
-   public drc u() {
-      return this.r;
-   }
-
-   public um v() {
-      return this.a;
-   }
-
-   public int w() {
-      return this.f;
-   }
-
-   public boolean x() {
-      return this.a.a();
-   }
-
-   public int y() {
-      return this.a.j();
-   }
-
-   public int z() {
-      return this.a.k();
-   }
-
-   public uf A() {
-      return this.o;
-   }
-
-   public Stream<tt> B() {
-      return this.e.stream();
-   }
-
-   public ts C() {
-      ts $$0 = new ts(this.a, this.r, this.d, this.A());
-      if (this.c != null) {
-         $$0.b(this.c);
-      }
-
-      if (this.b != null) {
-         $$0.a(this.b);
-      }
-
-      return $$0;
-   }
-
-   public jh D() {
-      if (this.c == null) {
-         eoc $$0 = ui.b(this.f());
-         this.c = new jh($$0.h(), $$0.i(), $$0.j());
-      }
-
-      return this.c;
-   }
-
-   public void b(jh $$0) {
-      this.c = $$0;
+   public void b(th $$0) {
+      this.f.remove($$0);
    }
 }

@@ -1,70 +1,33 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class yz implements xw {
-   public static final MapCodec<yz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, yz::new)
-   );
-   public static final xw.a<yz> b = new xw.a<>(a, "keybind");
-   private final String c;
-   @Nullable
-   private Supplier<xv> d;
+public class yz implements za {
+   public static final zb<yz> a = new zb<yz>() {
+      private static final MapCodec<yz> a = xm.a.fieldOf("value").xmap(yz::new, $$0 -> $$0.b);
+      private static final zi<wv, yz> b = zi.a(xm.d, $$0 -> $$0.b, yz::new);
 
-   public yz(String $$0) {
-      this.c = $$0;
-   }
-
-   private xv c() {
-      if (this.d == null) {
-         this.d = za.a.apply(this.c);
+      @Override
+      public MapCodec<yz> a() {
+         return a;
       }
 
-      return this.d.get();
-   }
-
-   @Override
-   public <T> Optional<T> a(ya.a<T> $$0) {
-      return this.c().a($$0);
-   }
-
-   @Override
-   public <T> Optional<T> a(ya.b<T> $$0, ys $$1) {
-      return this.c().a($$0, $$1);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof yz $$1 && this.c.equals($$1.c)) {
-            return true;
-         }
-
-         return false;
+      @Override
+      public zi<wv, yz> b() {
+         return b;
       }
+   };
+   final xk b;
+
+   public yz(xk $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public int hashCode() {
-      return this.c.hashCode();
+   public xy a(int $$0) {
+      return this.b.f();
    }
 
    @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   @Override
-   public xw.a<?> a() {
-      return b;
+   public zb<yz> a() {
+      return a;
    }
 }

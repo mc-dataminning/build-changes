@@ -1,33 +1,37 @@
-import java.nio.charset.StandardCharsets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class awu {
-   public static final int a = 1460;
-   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+public record awu(alp e, Optional<Float> f) {
+   public static final Codec<awu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(alp.a.fieldOf("sound_id").forGetter(awu::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(awu::b)).apply($$0, awu::a)
+   );
+   public static final Codec<jq<awu>> b = all.a(mb.al, a);
+   public static final zi<ByteBuf, awu> c = zi.a(alp.b, awu::a, zg.l.a(zg::a), awu::b, awu::a);
+   public static final zi<wv, jq<awu>> d = zg.a(mb.al, c);
 
-   public static String a(byte[] $$0, int $$1, int $$2) {
-      int $$3 = $$2 - 1;
-      int $$4 = $$1 > $$3 ? $$3 : $$1;
-
-      while (0 != $$0[$$4] && $$4 < $$3) {
-         $$4++;
-      }
-
-      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
+   private static awu a(alp $$0, Optional<Float> $$1) {
+      return $$1.<awu>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
    }
 
-   public static int a(byte[] $$0, int $$1) {
-      return b($$0, $$1, $$0.length);
+   public static awu a(alp $$0) {
+      return new awu($$0, Optional.empty());
    }
 
-   public static int b(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
+   public static awu a(alp $$0, float $$1) {
+      return new awu($$0, Optional.of($$1));
    }
 
-   public static int c(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
+   public float a(float $$0) {
+      return this.f.orElse($$0 > 1.0F ? 16.0F * $$0 : 16.0F);
    }
 
-   public static String a(byte $$0) {
-      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
+   public alp a() {
+      return this.e;
+   }
+
+   public Optional<Float> b() {
+      return this.f;
    }
 }

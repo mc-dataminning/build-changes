@@ -1,26 +1,30 @@
-public abstract class fbw {
-   protected final fby a;
+import java.util.Objects;
 
-   protected fbw(fby $$0) {
-      this.a = $$0;
+public interface fbw {
+   static fbw a() {
+      return fcb.a;
    }
 
-   public double a(bvk $$0) {
-      double $$1 = this.a.d - $$0.dB();
-      double $$2 = this.a.e - $$0.dD();
-      double $$3 = this.a.f - $$0.dH();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   static fbw a(bvb $$0) {
+      Objects.requireNonNull($$0);
+
+      return (fbw)(switch ($$0) {
+         case crn $$1 -> crn.b($$1.dW()) ? new fcf($$1, false) : new fcb($$0, false);
+         default -> new fcb($$0, false);
+      });
    }
 
-   public abstract fbw.a d();
-
-   public fby g() {
-      return this.a;
+   static fbw a(bvb $$0, boolean $$1) {
+      return new fcb($$0, $$1);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
-   }
+   boolean b();
+
+   boolean a(fcl var1, jh var2, boolean var3);
+
+   boolean a(cxc var1);
+
+   boolean a(etq var1, etq var2);
+
+   fcl a(dxo var1, dgi var2, jh var3);
 }

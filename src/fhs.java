@@ -1,12 +1,33 @@
-public class fhs extends fhq {
-   final long a;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public fhs(long $$0) {
-      this.a = $$0;
-   }
+public class fhs extends fiq {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fhr> a;
 
-   @Override
-   public xv[] b() {
-      return new xv[]{xv.c("mco.upload.failed.too_big.title"), xv.a("mco.upload.failed.too_big.description", fhe.b(this.a, fhe.a(this.a)))};
+   public static fhs a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      fhs $$2 = new fhs();
+      $$2.a = Lists.newArrayList();
+
+      try {
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$2.a.add(fhr.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
+      }
+
+      return $$2;
    }
 }

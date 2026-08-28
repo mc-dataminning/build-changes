@@ -1,56 +1,56 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class avj extends ava {
-   private static final auv c = new auv(xv.c("dataPack.vanilla.description"), ab.b().a(aui.b), Optional.empty());
-   private static final auc d = new auc(csv.i);
-   private static final aty e = aty.a(auv.b, c, auc.a, d);
-   private static final auf f = new auf("vanilla", xv.c("dataPack.vanilla.name"), avh.c, Optional.of(b));
-   private static final auh g = new auh(false, avd.b.b, false);
-   private static final auh h = new auh(false, avd.b.a, false);
-   private static final alz i = alz.b("datapacks");
-
-   public avj(fbo $$0) {
-      super(aui.b, b(), i, $$0);
-   }
-
-   private static auf a(String $$0, xv $$1) {
-      return new auf($$0, $$1, avh.d, Optional.of(avc.a($$0)));
-   }
-
-   @VisibleForTesting
-   public static auk b() {
-      return new aul().a(e).a("minecraft").b().a().a(f);
-   }
-
-   @Override
-   protected xv a(String $$0) {
-      return xv.b($$0);
-   }
-
+public class avj {
+   private final atw a;
+   private final avd<InputStream> b;
+   private final avd<avn> c;
    @Nullable
-   @Override
-   protected avd a(aug $$0) {
-      return avd.a(f, b($$0), aui.b, g);
+   private avn d;
+
+   public avj(atw $$0, avd<InputStream> $$1, avd<avn> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Nullable
-   @Override
-   protected avd a(String $$0, avd.c $$1, xv $$2) {
-      return avd.a(a($$0, $$2), $$1, aui.b, h);
+   public avj(atw $$0, avd<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = avn.b;
+      this.d = avn.a;
    }
 
-   public static avg a(Path $$0, fbo $$1) {
-      return new avg(new avj($$1), new avb($$0, aui.b, avh.e, $$1));
+   public atw a() {
+      return this.a;
    }
 
-   public static avg c() {
-      return new avg(new avj(new fbo($$0 -> true)));
+   public String b() {
+      return this.a.b();
    }
 
-   public static avg a(ewd.c $$0) {
-      return a($$0.a(ewb.j), $$0.d().e());
+   public Optional<aur> c() {
+      return this.a.c();
+   }
+
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public avn f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
+
+      return this.d;
    }
 }

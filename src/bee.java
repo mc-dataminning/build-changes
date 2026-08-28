@@ -1,56 +1,29 @@
-import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public class bee extends bhs {
-   private static final String[] a = new String[]{
-      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
-   };
-
-   public bee(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, bix.s, $$2);
+public class bee extends DataFix {
+   public bee(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      $$0 = $$0.update("front_text", bee::b);
-      $$0 = $$0.update("back_text", bee::b);
-
-      for (String $$1 : a) {
-         $$0 = $$0.remove($$1);
-      }
-
-      return $$0;
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bkb.a());
+      return this.fixTypeEverywhereTyped(
+         "EntityCustomNameToComponentFix", this.getInputSchema().getType(bin.B), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
+            })
+      );
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
-      if ($$1) {
-         return $$0.remove("_filtered_correct");
-      } else {
-         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
-         if ($$2.isEmpty()) {
-            return $$0;
-         } else {
-            Dynamic<T> $$3 = bbr.a($$0.getOps());
-            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
-            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
-               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
-               return $$2x.equals($$3) ? $$4x : $$2x;
-            }).toList();
-            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
-               ? $$0.remove("filtered_messages")
-               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
-         }
-      }
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bee::a);
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("CustomName").asString("");
+      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", bbh.a($$0.getOps(), $$1));
    }
 }

@@ -1,21 +1,8 @@
-public enum dzb implements bba {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String d;
-
-   private dzb(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dzb {
 }

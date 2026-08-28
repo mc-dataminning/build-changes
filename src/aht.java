@@ -1,42 +1,30 @@
-import java.time.Instant;
+public record aht(int b, int c, boolean d) implements zr<ahb> {
+   public static final zi<wh, aht> a = zr.a(aht::a, aht::new);
 
-public record aht(String b, Instant c, long d, fd e, yc.b f) implements aac<ahm> {
-   public static final zt<ws, aht> a = aac.a(aht::a, aht::new);
-
-   private aht(ws $$0) {
-      this($$0.p(), $$0.t(), $$0.readLong(), new fd($$0), new yc.b($$0));
+   private aht(wh $$0) {
+      this($$0.l(), $$0.x(), $$0.readBoolean());
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      this.e.a($$0);
-      this.f.a($$0);
+   private void a(wh $$0) {
+      $$0.c(this.b);
+      $$0.f(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aae<aht> a() {
-      return ahk.bq;
+   public zt<aht> a() {
+      return agz.bB;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public Instant e() {
+   public int e() {
       return this.c;
    }
 
-   public long f() {
+   public boolean f() {
       return this.d;
-   }
-
-   public fd g() {
-      return this.e;
-   }
-
-   public yc.b h() {
-      return this.f;
    }
 }

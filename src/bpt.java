@@ -1,148 +1,58 @@
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public interface bpt {
-   String b = "root";
+public class bpt {
+   private static final Logger a = LogUtils.getLogger();
+   private final Runnable b;
 
-   void a();
-
-   void b();
-
-   void a(String var1);
-
-   void a(Supplier<String> var1);
-
-   void c();
-
-   void b(String var1);
-
-   void b(Supplier<String> var1);
-
-   default void e(String $$0) {
+   protected bpt(Runnable $$0) {
+      this.b = $$0;
    }
 
-   default void a(long $$0) {
+   public void a(@Nullable Path $$0) {
+      if ($$0 != null) {
+         this.b.run();
+         a(() -> "Dumped flight recorder profiling to " + $$0);
+
+         bqb $$1;
+         try {
+            $$1 = bqa.a($$0);
+         } catch (Throwable var5) {
+            a(() -> "Failed to parse JFR recording", var5);
+            return;
+         }
+
+         try {
+            a($$1::b);
+            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
+            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
+            a(() -> "Dumped recording summary to " + $$4);
+         } catch (Throwable var4) {
+            a(() -> "Failed to output JFR report", var4);
+         }
+      }
    }
 
-   default void a(int $$0) {
-   }
-
-   default bpy d(String $$0) {
-      this.a($$0);
-      return new bpy(this);
-   }
-
-   default bpy c(Supplier<String> $$0) {
-      this.a($$0);
-      return new bpy(this);
-   }
-
-   void a(brb var1);
-
-   default void f(String $$0) {
-      this.a($$0, 1);
-   }
-
-   void a(String var1, int var2);
-
-   default void d(Supplier<String> $$0) {
-      this.a($$0, 1);
-   }
-
-   void a(Supplier<String> var1, int var2);
-
-   static bpt a(bpt $$0, bpt $$1) {
-      if ($$0 == bpp.a) {
-         return $$1;
+   private static void a(Supplier<String> $$0) {
+      if (LogUtils.isLoggerActive()) {
+         a.info($$0.get());
       } else {
-         return (bpt)($$1 == bpp.a ? $$0 : new bpt.a($$0, $$1));
+         alr.a($$0.get());
       }
    }
 
-   public static class a implements bpt {
-      private final bpt a;
-      private final bpt c;
-
-      public a(bpt $$0, bpt $$1) {
-         this.a = $$0;
-         this.c = $$1;
-      }
-
-      @Override
-      public void a() {
-         this.a.a();
-         this.c.a();
-      }
-
-      @Override
-      public void b() {
-         this.a.b();
-         this.c.b();
-      }
-
-      @Override
-      public void a(String $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(brb $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void c() {
-         this.a.c();
-         this.c.c();
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void b(Supplier<String> $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void a(String $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void e(String $$0) {
-         this.a.e($$0);
-         this.c.e($$0);
-      }
-
-      @Override
-      public void a(long $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
+   private static void a(Supplier<String> $$0, Throwable $$1) {
+      if (LogUtils.isLoggerActive()) {
+         a.warn($$0.get(), $$1);
+      } else {
+         alr.a($$0.get());
+         $$1.printStackTrace(alr.a);
       }
    }
 }

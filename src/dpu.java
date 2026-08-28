@@ -1,19 +1,89 @@
-public class dpu {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
+import java.util.function.BiFunction;
 
-   public static boolean a(dxv $$0) {
-      return $$0.l();
+public class dpu extends dkn implements dkg {
+   public static final MapCodec<dpu> a = b(dpu::new);
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dyl<jm> d = dye.U;
+   public static final dyn e = dye.V;
+   private static final BiFunction<jm, Integer, fcl> f = ae.a(
+      ($$0, $$1) -> {
+         fcl[] $$2 = new fcl[]{
+            dkd.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            dkd.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            dkd.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            dkd.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         fcl $$3 = fci.a();
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = fci.a($$3, $$2[$$5]);
+         }
+
+         return $$3.b();
+      }
+   );
+
+   @Override
+   public MapCodec<dpu> a() {
+      return a;
    }
 
-   public static int a(bam $$0) {
-      double $$1 = 1.0;
+   protected dpu(dxn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(d, jm.c).b(e, Integer.valueOf(1)));
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
+   @Override
+   public dxo a(dxo $$0, dqv $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   public dxo a(dxo $$0, dpc $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   public boolean a(dxo $$0, dax $$1) {
+      return !$$1.h() && $$1.n().a(this.j()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public dxo a(dax $$0) {
+      dxo $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.b(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.m().b(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(dhc $$0, jh $$1, dxo $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.b(e, Integer.valueOf($$4 + 1)), 2);
+      } else {
+         a($$0, $$2, new cxg(this));
       }
-
-      return $$2;
    }
 }

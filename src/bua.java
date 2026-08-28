@@ -1,125 +1,36 @@
 import javax.annotation.Nullable;
 
-public class bua {
-   private final jq<buc> a;
-   @Nullable
-   private final bvk b;
-   @Nullable
-   private final bvk c;
-   @Nullable
-   private final fby d;
+class bua extends bud {
+   private final boolean c;
+
+   public bua(buf $$0, int $$1, boolean $$2) {
+      super($$0, $$1);
+      this.c = $$2;
+   }
 
    @Override
-   public String toString() {
-      return "DamageSource (" + this.k().a() + ")";
-   }
-
-   public float a() {
-      return this.k().c();
-   }
-
-   public boolean b() {
-      return this.b == this.c;
-   }
-
-   private bua(jq<buc> $$0, @Nullable bvk $$1, @Nullable bvk $$2, @Nullable fby $$3) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-   }
-
-   public bua(jq<buc> $$0, @Nullable bvk $$1, @Nullable bvk $$2) {
-      this($$0, $$1, $$2, null);
-   }
-
-   public bua(jq<buc> $$0, fby $$1) {
-      this($$0, null, null, $$1);
-   }
-
-   public bua(jq<buc> $$0, @Nullable bvk $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public bua(jq<buc> $$0) {
-      this($$0, null, null, null);
-   }
-
-   @Nullable
-   public bvk c() {
-      return this.c;
-   }
-
-   @Nullable
-   public bvk d() {
-      return this.b;
-   }
-
-   @Nullable
-   public cxp e() {
-      return this.c != null ? this.c.ea() : null;
-   }
-
-   public xv a(bwg $$0) {
-      String $$1 = "death.attack." + this.k().a();
-      if (this.b == null && this.c == null) {
-         bwg $$5 = $$0.eR();
-         String $$6 = $$1 + ".player";
-         return $$5 != null ? xv.a($$6, $$0.p_(), $$5.p_()) : xv.a($$1, $$0.p_());
+   public boolean a(arx $$0, bvx $$1, int $$2) {
+      if (this.c == $$1.eD()) {
+         $$1.c((float)Math.max(4 << $$2, 0));
       } else {
-         xv $$2 = this.b == null ? this.c.p_() : this.b.p_();
-         cxp $$4 = this.b instanceof bwg $$3 ? $$3.eZ() : cxp.j;
-         return !$$4.f() && $$4.b(ku.g) ? xv.a($$1 + ".item", $$0.p_(), $$2, $$4.J()) : xv.a($$1, $$0.p_(), $$2);
-      }
-   }
-
-   public String f() {
-      return this.k().a();
-   }
-
-   public boolean g() {
-      return switch (this.k().b()) {
-         case a -> false;
-         case b -> this.b instanceof bwg && !(this.b instanceof cpx);
-         case c -> true;
-      };
-   }
-
-   public boolean h() {
-      if (this.d() instanceof cpx $$0 && $$0.gj().d) {
-         return true;
+         $$1.a($$0, $$1.dX().q(), (float)(6 << $$2));
       }
 
-      return false;
+      return true;
    }
 
-   @Nullable
-   public fby i() {
-      if (this.d != null) {
-         return this.d;
+   @Override
+   public void a(arx $$0, @Nullable bvb $$1, @Nullable bvb $$2, bvx $$3, int $$4, double $$5) {
+      if (this.c == $$3.eD()) {
+         int $$6 = (int)($$5 * (double)(4 << $$4) + 0.5);
+         $$3.c((float)$$6);
       } else {
-         return this.c != null ? this.c.du() : null;
+         int $$7 = (int)($$5 * (double)(6 << $$4) + 0.5);
+         if ($$1 == null) {
+            $$3.a($$0, $$3.dX().q(), (float)$$7);
+         } else {
+            $$3.a($$0, $$3.dX().c($$1, $$2), (float)$$7);
+         }
       }
-   }
-
-   @Nullable
-   public fby j() {
-      return this.d;
-   }
-
-   public boolean a(ayk<buc> $$0) {
-      return this.a.a($$0);
-   }
-
-   public boolean a(aly<buc> $$0) {
-      return this.a.a($$0);
-   }
-
-   public buc k() {
-      return this.a.a();
-   }
-
-   public jq<buc> l() {
-      return this.a;
    }
 }

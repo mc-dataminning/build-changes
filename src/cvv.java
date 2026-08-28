@@ -1,179 +1,274 @@
-import java.util.List;
-import java.util.Map;
+import java.util.Collection;
+import java.util.Set;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class cvv extends cxl {
-   @Deprecated
-   private final dkm a;
+public class cvv {
+   static final alp a = a("items");
+   private final xk b;
+   alp c = a;
+   boolean d = true;
+   boolean e = true;
+   boolean f = false;
+   private final cvv.f g;
+   private final int h;
+   private final cvv.h i;
+   @Nullable
+   private cxg j;
+   private Collection<cxg> k = cxh.a();
+   private Set<cxg> l = cxh.a();
+   private final Supplier<cxg> m;
+   private final cvv.b n;
 
-   public cvv(dkm $$0, cxl.a $$1) {
-      super($$1);
-      this.a = $$0;
+   cvv(cvv.f $$0, int $$1, cvv.h $$2, xk $$3, Supplier<cxg> $$4, cvv.b $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.b = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.i = $$2;
    }
 
-   @Override
-   public btj a(dbi $$0) {
-      btj $$1 = this.a(new dbg($$0));
-      return !$$1.a() && $$0.n().b(ku.x) ? super.a($$0.q(), $$0.o(), $$0.p()) : $$1;
+   public static alp a(String $$0) {
+      return alp.b("textures/gui/container/creative_inventory/tab_" + $$0 + ".png");
    }
 
-   public btj a(dbg $$0) {
-      if (!this.d().a($$0.q().J())) {
-         return btj.d;
-      } else if (!$$0.b()) {
-         return btj.d;
-      } else {
-         dbg $$1 = this.b($$0);
-         if ($$1 == null) {
-            return btj.d;
+   public static cvv.a a(cvv.f $$0, int $$1) {
+      return new cvv.a($$0, $$1);
+   }
+
+   public xk a() {
+      return this.b;
+   }
+
+   public cxg b() {
+      if (this.j == null) {
+         this.j = this.m.get();
+      }
+
+      return this.j;
+   }
+
+   public alp c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.d;
+   }
+
+   public int f() {
+      return this.h;
+   }
+
+   public cvv.f g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return !this.k.isEmpty();
+   }
+
+   public boolean i() {
+      return this.i != cvv.h.a || this.h();
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public cvv.h k() {
+      return this.i;
+   }
+
+   public void a(cvv.d $$0) {
+      cvv.c $$1 = new cvv.c(this, $$0.a);
+      alo<cvv> $$2 = ma.al.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
+      this.n.accept($$0, $$1);
+      this.k = $$1.a;
+      this.l = $$1.b;
+   }
+
+   public Collection<cxg> l() {
+      return this.k;
+   }
+
+   public Collection<cxg> m() {
+      return this.l;
+   }
+
+   public boolean a(cxg $$0) {
+      return this.l.contains($$0);
+   }
+
+   public static class a {
+      private static final cvv.b a = ($$0, $$1) -> {
+      };
+      private final cvv.f b;
+      private final int c;
+      private xk d = xk.i();
+      private Supplier<cxg> e = () -> cxg.j;
+      private cvv.b f = a;
+      private boolean g = true;
+      private boolean h = true;
+      private boolean i = false;
+      private cvv.h j = cvv.h.a;
+      private alp k = cvv.a;
+
+      public a(cvv.f $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public cvv.a a(xk $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cvv.a a(Supplier<cxg> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public cvv.a a(cvv.b $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cvv.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public cvv.a b() {
+         this.h = false;
+         return this;
+      }
+
+      public cvv.a c() {
+         this.g = false;
+         return this;
+      }
+
+      protected cvv.a a(cvv.h $$0) {
+         this.j = $$0;
+         return this;
+      }
+
+      public cvv.a a(alp $$0) {
+         this.k = $$0;
+         return this;
+      }
+
+      public cvv d() {
+         if ((this.j == cvv.h.c || this.j == cvv.h.b) && this.f != a) {
+            throw new IllegalStateException("Special tabs can't have display items");
          } else {
-            dxv $$2 = this.c($$1);
-            if ($$2 == null) {
-               return btj.d;
-            } else if (!this.a($$1, $$2)) {
-               return btj.d;
+            cvv $$0 = new cvv(this.b, this.c, this.j, this.d, this.e, this.f);
+            $$0.f = this.i;
+            $$0.e = this.h;
+            $$0.d = this.g;
+            $$0.c = this.k;
+            return $$0;
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void accept(cvv.d var1, cvv.e var2);
+   }
+
+   static class c implements cvv.e {
+      public final Collection<cxg> a = cxh.a();
+      public final Set<cxg> b = cxh.a();
+      private final cvv c;
+      private final csk d;
+
+      public c(cvv $$0, csk $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(cxg $$0, cvv.g $$1) {
+         if ($$0.M() != 1) {
+            throw new IllegalArgumentException("Stack size must be exactly 1");
+         } else {
+            boolean $$2 = this.a.contains($$0) && $$1 != cvv.g.c;
+            if ($$2) {
+               throw new IllegalStateException(
+                  "Accidentally adding the same item stack twice " + $$0.K().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
+               );
             } else {
-               jh $$3 = $$1.a();
-               dhi $$4 = $$1.q();
-               cpx $$5 = $$1.o();
-               cxp $$6 = $$1.n();
-               dxv $$7 = $$4.a_($$3);
-               if ($$7.a($$2.b())) {
-                  $$7 = this.a($$3, $$4, $$6, $$7);
-                  this.a($$3, $$4, $$5, $$6, $$7);
-                  a($$4, $$3, $$6);
-                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
-                  if ($$5 instanceof asi) {
-                     ao.z.a((asi)$$5, $$3, $$6);
+               if ($$0.h().a(this.d)) {
+                  switch ($$1) {
+                     case a:
+                        this.a.add($$0);
+                        this.b.add($$0);
+                        break;
+                     case b:
+                        this.a.add($$0);
+                        break;
+                     case c:
+                        this.b.add($$0);
                   }
                }
-
-               dsc $$8 = $$7.A();
-               $$4.a($$5, $$3, this.a($$7), axg.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
-               $$4.a(ecr.i, $$3, ecr.a.a($$5, $$7));
-               $$6.a(1, $$5);
-               return btj.a;
             }
          }
       }
    }
 
-   protected axe a(dxv $$0) {
-      return $$0.A().e();
-   }
+   public static record d(csk a, boolean b, js.a c) {
 
-   @Nullable
-   public dbg b(dbg $$0) {
-      return $$0;
-   }
-
-   private static void a(dhi $$0, jh $$1, cxp $$2) {
-      dux $$3 = $$0.c_($$1);
-      if ($$3 != null) {
-         $$3.a($$2);
-         $$3.e();
+      public boolean a(csk $$0, boolean $$1, js.a $$2) {
+         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
       }
    }
 
-   protected boolean a(jh $$0, dhi $$1, @Nullable cpx $$2, cxp $$3, dxv $$4) {
-      return a($$1, $$2, $$0, $$3);
-   }
+   public interface e {
+      void a(cxg var1, cvv.g var2);
 
-   @Nullable
-   protected dxv c(dbg $$0) {
-      dxv $$1 = this.d().a($$0);
-      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
-   }
+      default void a(cxg $$0) {
+         this.a($$0, cvv.g.a);
+      }
 
-   private dxv a(jh $$0, dhi $$1, cxp $$2, dxv $$3) {
-      czr $$4 = $$2.a(ku.am, czr.a);
-      if ($$4.a()) {
-         return $$3;
-      } else {
-         dxv $$5 = $$4.a($$3);
-         if ($$5 != $$3) {
-            $$1.a($$0, $$5, 2);
-         }
+      default void a(dgy $$0, cvv.g $$1) {
+         this.a(new cxg($$0), $$1);
+      }
 
-         return $$5;
+      default void a(dgy $$0) {
+         this.a(new cxg($$0), cvv.g.a);
+      }
+
+      default void a(Collection<cxg> $$0, cvv.g $$1) {
+         $$0.forEach($$1x -> this.a($$1x, $$1));
+      }
+
+      default void a(Collection<cxg> $$0) {
+         this.a($$0, cvv.g.a);
       }
    }
 
-   protected boolean b(dbg $$0, dxv $$1) {
-      cpx $$2 = $$0.o();
-      fcd $$3 = $$2 == null ? fcd.a() : fcd.a($$2);
-      return (!this.c() || $$1.a((dhl)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
+   public static enum f {
+      a,
+      b;
    }
 
-   protected boolean c() {
-      return true;
+   protected static enum g {
+      a,
+      b,
+      c;
    }
 
-   protected boolean a(dbg $$0, dxv $$1) {
-      return $$0.q().a($$0.a(), $$1, 11);
-   }
-
-   public static boolean a(dhi $$0, @Nullable cpx $$1, jh $$2, cxp $$3) {
-      MinecraftServer $$4 = $$0.p();
-      if ($$4 == null) {
-         return false;
-      } else {
-         czy $$5 = $$3.a(ku.Y, czy.a);
-         if (!$$5.b()) {
-            dux $$6 = $$0.c_($$2);
-            if ($$6 != null) {
-               if ($$0.C || !$$6.p() || $$1 != null && $$1.gG()) {
-                  return $$5.a($$6, $$0.K_());
-               }
-
-               return false;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public void a(cxp $$0, cxl.b $$1, List<xv> $$2, czh $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d().a($$0, $$1, $$2, $$3);
-   }
-
-   public dkm d() {
-      return this.a;
-   }
-
-   public void a(Map<dkm, cxl> $$0, cxl $$1) {
-      $$0.put(this.d(), $$1);
-   }
-
-   @Override
-   public boolean e() {
-      return !(this.d() instanceof dro);
-   }
-
-   @Override
-   public void a(cmb $$0) {
-      dah $$1 = $$0.l().b(ku.al, dah.a);
-      if ($$1 != null) {
-         cxs.a($$0, $$1.e());
-      }
-   }
-
-   public static void a(cxp $$0, duz<?> $$1, ux $$2) {
-      $$2.r("id");
-      if ($$2.g()) {
-         $$0.c(ku.Y);
-      } else {
-         dux.a($$2, $$1);
-         $$0.b(ku.Y, czy.a($$2));
-      }
-   }
-
-   @Override
-   public cst i() {
-      return this.d().i();
+   public static enum h {
+      a,
+      b,
+      c,
+      d;
    }
 }

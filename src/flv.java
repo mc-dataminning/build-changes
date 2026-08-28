@@ -1,38 +1,32 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class flv {
-   private final gfl a;
-   private int b = -1;
-   @Nullable
-   private Consumer<ux> c;
+public enum flv implements azx, baq {
+   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
+   b(1, "afk", "options.inactivityFpsLimit.afk");
 
-   public flv(gfl $$0) {
-      this.a = $$0;
+   public static final Codec<flv> c = baq.a(flv::values);
+   private final int d;
+   private final String e;
+   private final String f;
+
+   private flv(final int $$0, final String $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public boolean a(int $$0, @Nullable ux $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public int b() {
+      return this.d;
    }
 
-   private int a(Consumer<ux> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   @Override
+   public String a() {
+      return this.f;
    }
 
-   public void a(int $$0, Consumer<ux> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new aih($$2, $$0));
-   }
-
-   public void a(jh $$0, Consumer<ux> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahp($$2, $$0));
+   @Override
+   public String c() {
+      return this.e;
    }
 }

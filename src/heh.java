@@ -1,17 +1,20 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class heh extends hdr {
-   private final brr<hdn> b;
+public interface heh {
+   void a(UUID var1, heh.b var2);
 
-   public heh(brr<hdn> $$0) {
-      super($$0.e().getFirst().b());
-      this.b = $$0;
+   void a(UUID var1, heh.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   public List<gms> a(@Nullable dxv $$0, @Nullable jm $$1, bam $$2) {
-      return this.b.a($$2).map($$3 -> $$3.a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public static enum b {
+      a,
+      b;
    }
 }

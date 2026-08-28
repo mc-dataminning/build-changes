@@ -72,8 +72,8 @@ public class it {
       a($$0, "loot_predicate", fy.b.class, iv.a(fy::c));
       a($$0, "loot_modifier", fy.a.class, iv.a(fy::b));
       if (ab.aU) {
-         a($$0, "test_argument", un.class, iv.a(un::a));
-         a($$0, "test_class", uj.class, iv.a(uj::a));
+         a($$0, "test_argument", uc.class, iv.a(uc::a));
+         a($$0, "test_class", ty.class, iv.a(ty::a));
       }
 
       return a($$0, "uuid", gm.class, iv.a(gm::a));

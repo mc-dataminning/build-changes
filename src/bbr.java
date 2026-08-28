@@ -1,81 +1,37 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Locale;
 
-public class bbr {
-   private static final String a = b("");
+public class bbr extends DataFix {
+   private final String a;
+   private final TypeReference b;
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
-      String $$2 = b($$1);
-      return new Dynamic($$0, $$0.createString($$2));
+   public bbr(Schema $$0, String $$1, TypeReference $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      return new Dynamic($$0, $$0.createString(a));
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
+      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
+      return this.a($$0, $$1);
    }
 
-   private static String b(String $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("text", $$0);
-      return azu.e($$1);
-   }
-
-   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("translate", $$1);
-      return new Dynamic($$0, $$0.createString(azu.e($$2)));
-   }
-
-   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
-   }
-
-   public static Dynamic<?> b(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.asString().result();
-      if ($$1.isEmpty()) {
-         return $$0;
+   private <K> TypeRewriteRule a(TaggedChoiceType<K> $$0, TaggedChoiceType<?> $$1) {
+      if ($$0.getKeyType() != $$1.getKeyType()) {
+         throw new IllegalStateException("Could not inject: key type is not the same");
       } else {
-         String $$2 = $$1.get();
-         if (!$$2.isEmpty() && !$$2.equals("null")) {
-            char $$3 = $$2.charAt(0);
-            char $$4 = $$2.charAt($$2.length() - 1);
-            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
-               try {
-                  JsonElement $$5 = JsonParser.parseString($$2);
-                  if ($$5.isJsonPrimitive()) {
-                     return a($$0.getOps(), $$5.getAsString());
-                  }
-
-                  return $$0.createString(azu.e($$5));
-               } catch (JsonParseException var6) {
+         return this.fixTypeEverywhere(this.a, $$0, $$1, $$1x -> $$1xx -> {
+               if (!$$1.hasType($$1xx.getFirst())) {
+                  throw new IllegalArgumentException(String.format(Locale.ROOT, "%s: Unknown type %s in '%s'", this.a, $$1xx.getFirst(), this.b.typeName()));
+               } else {
+                  return $$1xx;
                }
-            }
-
-            return a($$0.getOps(), $$2);
-         } else {
-            return a($$0.getOps());
-         }
+            });
       }
-   }
-
-   public static Optional<String> a(String $$0) {
-      try {
-         JsonElement $$1 = JsonParser.parseString($$0);
-         if ($$1.isJsonObject()) {
-            JsonObject $$2 = $$1.getAsJsonObject();
-            JsonElement $$3 = $$2.get("translate");
-            if ($$3 != null && $$3.isJsonPrimitive()) {
-               return Optional.of($$3.getAsString());
-            }
-         }
-      } catch (JsonParseException var4) {
-      }
-
-      return Optional.empty();
    }
 }

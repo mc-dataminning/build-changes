@@ -1,256 +1,95 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dvj extends dux {
-   private static final int b = 2;
-   private static final int c = 13;
-   private static final float d = -0.0375F;
-   private static final int e = 16;
-   private static final int f = 42;
-   private static final int g = 8;
-   private static final dkm[] h = new dkm[]{dko.iq, dko.ir, dko.iz, dko.is};
-   public int a;
-   private float i;
-   private boolean j;
-   private boolean k;
-   private final List<jh> l = Lists.newArrayList();
-   @Nullable
-   private bwg m;
-   @Nullable
-   private UUID n;
-   private long r;
-
-   public dvj(jh $$0, dxv $$1) {
-      super(duz.A, $$0, $$1);
-   }
-
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("Target")) {
-         this.n = $$0.a("Target");
-      } else {
-         this.n = null;
-      }
-   }
-
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (this.m != null) {
-         $$0.a("Target", this.m.cG());
-      }
-   }
-
-   public acy b() {
-      return acy.a(this);
-   }
-
-   @Override
-   public ux a(js.a $$0) {
-      return this.e($$0);
-   }
-
-   public static void a(dhi $$0, jh $$1, dxv $$2, dvj $$3) {
-      $$3.a++;
-      long $$4 = $$0.ac();
-      List<jh> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         $$3.j = a($$0, $$1, $$5);
-         a($$3, $$5);
-      }
-
-      a($$0, $$1, $$3);
-      a($$0, $$1, $$5, $$3.m, $$3.a);
-      if ($$3.c()) {
-         $$3.i++;
-      }
-   }
-
-   public static void b(dhi $$0, jh $$1, dxv $$2, dvj $$3) {
-      $$3.a++;
-      long $$4 = $$0.ac();
-      List<jh> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         boolean $$6 = a($$0, $$1, $$5);
-         if ($$6 != $$3.j) {
-            axe $$7 = $$6 ? axf.fy : axf.fC;
-            $$0.a(null, $$1, $$7, axg.e, 1.0F, 1.0F);
-         }
-
-         $$3.j = $$6;
-         a($$3, $$5);
-         if ($$6) {
-            b($$0, $$1, $$5);
-            a($$0, $$1, $$2, $$5, $$3);
-         }
-      }
-
-      if ($$3.c()) {
-         if ($$4 % 80L == 0L) {
-            $$0.a(null, $$1, axf.fz, axg.e, 1.0F, 1.0F);
-         }
-
-         if ($$4 > $$3.r) {
-            $$3.r = $$4 + 60L + (long)$$0.H_().a(40);
-            $$0.a(null, $$1, axf.fA, axg.e, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   private static void a(dvj $$0, List<jh> $$1) {
-      $$0.a($$1.size() >= 42);
-   }
-
-   private static boolean a(dhi $$0, jh $$1, List<jh> $$2) {
-      $$2.clear();
-
-      for (int $$3 = -1; $$3 <= 1; $$3++) {
-         for (int $$4 = -1; $$4 <= 1; $$4++) {
-            for (int $$5 = -1; $$5 <= 1; $$5++) {
-               jh $$6 = $$1.b($$3, $$4, $$5);
-               if (!$$0.z($$6)) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      for (int $$7 = -2; $$7 <= 2; $$7++) {
-         for (int $$8 = -2; $$8 <= 2; $$8++) {
-            for (int $$9 = -2; $$9 <= 2; $$9++) {
-               int $$10 = Math.abs($$7);
-               int $$11 = Math.abs($$8);
-               int $$12 = Math.abs($$9);
-               if (($$10 > 1 || $$11 > 1 || $$12 > 1)
-                  && ($$7 == 0 && ($$11 == 2 || $$12 == 2) || $$8 == 0 && ($$10 == 2 || $$12 == 2) || $$9 == 0 && ($$10 == 2 || $$11 == 2))) {
-                  jh $$13 = $$1.b($$7, $$8, $$9);
-                  dxv $$14 = $$0.a_($$13);
-
-                  for (dkm $$15 : h) {
-                     if ($$14.a($$15)) {
-                        $$2.add($$13);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$2.size() >= 16;
-   }
-
-   private static void b(dhi $$0, jh $$1, List<jh> $$2) {
-      int $$3 = $$2.size();
-      int $$4 = $$3 / 7 * 16;
-      int $$5 = $$1.u();
-      int $$6 = $$1.v();
-      int $$7 = $$1.w();
-      fbt $$8 = new fbt((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
-         .g((double)$$4)
-         .b(0.0, (double)$$0.M_(), 0.0);
-      List<cpx> $$9 = $$0.a(cpx.class, $$8);
-      if (!$$9.isEmpty()) {
-         for (cpx $$10 : $$9) {
-            if ($$1.a($$10.dw(), (double)$$4) && $$10.bk()) {
-               $$10.a(new bup(bur.C, 260, 0, true, true));
-            }
-         }
-      }
-   }
-
-   private static void a(dhi $$0, jh $$1, dxv $$2, List<jh> $$3, dvj $$4) {
-      bwg $$5 = $$4.m;
-      int $$6 = $$3.size();
-      if ($$6 < 42) {
-         $$4.m = null;
-      } else if ($$4.m == null && $$4.n != null) {
-         $$4.m = a($$0, $$1, $$4.n);
-         $$4.n = null;
-      } else if ($$4.m == null) {
-         List<bwg> $$7 = $$0.a(bwg.class, a($$1), $$0x -> $$0x instanceof cmp && $$0x.bk());
-         if (!$$7.isEmpty()) {
-            $$4.m = $$7.get($$0.A.a($$7.size()));
-         }
-      } else if (!$$4.m.bL() || !$$1.a($$4.m.dw(), 8.0)) {
-         $$4.m = null;
-      }
-
-      if ($$4.m != null) {
-         $$0.a(null, $$4.m.dB(), $$4.m.dD(), $$4.m.dH(), axf.fB, axg.e, 1.0F, 1.0F);
-         $$4.m.a($$0.aj().q(), 4.0F);
-      }
-
-      if ($$5 != $$4.m) {
-         $$0.a($$1, $$2, $$2, 2);
-      }
-   }
-
-   private static void a(dhi $$0, jh $$1, dvj $$2) {
-      if ($$2.n == null) {
-         $$2.m = null;
-      } else if ($$2.m == null || !$$2.m.cG().equals($$2.n)) {
-         $$2.m = a($$0, $$1, $$2.n);
-         if ($$2.m == null) {
-            $$2.n = null;
-         }
-      }
-   }
-
-   private static fbt a(jh $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      return new fbt((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
-   }
+public class dvj {
+   public static final alo<dvi> a = a("blank");
+   public static final alo<dvi> b = a("angler");
+   public static final alo<dvi> c = a("archer");
+   public static final alo<dvi> d = a("arms_up");
+   public static final alo<dvi> e = a("blade");
+   public static final alo<dvi> f = a("brewer");
+   public static final alo<dvi> g = a("burn");
+   public static final alo<dvi> h = a("danger");
+   public static final alo<dvi> i = a("explorer");
+   public static final alo<dvi> j = a("flow");
+   public static final alo<dvi> k = a("friend");
+   public static final alo<dvi> l = a("guster");
+   public static final alo<dvi> m = a("heart");
+   public static final alo<dvi> n = a("heartbreak");
+   public static final alo<dvi> o = a("howl");
+   public static final alo<dvi> p = a("miner");
+   public static final alo<dvi> q = a("mourner");
+   public static final alo<dvi> r = a("plenty");
+   public static final alo<dvi> s = a("prize");
+   public static final alo<dvi> t = a("scrape");
+   public static final alo<dvi> u = a("sheaf");
+   public static final alo<dvi> v = a("shelter");
+   public static final alo<dvi> w = a("skull");
+   public static final alo<dvi> x = a("snort");
+   private static final Map<cxc, alo<dvi>> y = Map.ofEntries(
+      Map.entry(cxk.rs, a),
+      Map.entry(cxk.yP, b),
+      Map.entry(cxk.yQ, c),
+      Map.entry(cxk.yR, d),
+      Map.entry(cxk.yS, e),
+      Map.entry(cxk.yT, f),
+      Map.entry(cxk.yU, g),
+      Map.entry(cxk.yV, h),
+      Map.entry(cxk.yW, i),
+      Map.entry(cxk.yX, j),
+      Map.entry(cxk.yY, k),
+      Map.entry(cxk.yZ, l),
+      Map.entry(cxk.za, m),
+      Map.entry(cxk.zb, n),
+      Map.entry(cxk.zc, o),
+      Map.entry(cxk.zd, p),
+      Map.entry(cxk.ze, q),
+      Map.entry(cxk.zf, r),
+      Map.entry(cxk.zg, s),
+      Map.entry(cxk.zh, t),
+      Map.entry(cxk.zi, u),
+      Map.entry(cxk.zj, v),
+      Map.entry(cxk.zk, w),
+      Map.entry(cxk.zl, x)
+   );
 
    @Nullable
-   private static bwg a(dhi $$0, jh $$1, UUID $$2) {
-      List<bwg> $$3 = $$0.a(bwg.class, a($$1), $$1x -> $$1x.cG().equals($$2));
-      return $$3.size() == 1 ? $$3.get(0) : null;
+   public static alo<dvi> a(cxc $$0) {
+      return y.get($$0);
    }
 
-   private static void a(dhi $$0, jh $$1, List<jh> $$2, @Nullable bvk $$3, int $$4) {
-      bam $$5 = $$0.A;
-      double $$6 = (double)(bae.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
-      $$6 = ($$6 * $$6 + $$6) * 0.3F;
-      fby $$7 = new fby((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
-
-      for (jh $$8 : $$2) {
-         if ($$5.a(50) == 0) {
-            jh $$9 = $$8.b($$1);
-            float $$10 = -0.5F + $$5.i() + (float)$$9.u();
-            float $$11 = -2.0F + $$5.i() + (float)$$9.v();
-            float $$12 = -0.5F + $$5.i() + (float)$$9.w();
-            $$0.a(ls.as, $$7.d, $$7.e, $$7.f, (double)$$10, (double)$$11, (double)$$12);
-         }
-      }
-
-      if ($$3 != null) {
-         fby $$13 = new fby($$3.dB(), $$3.dF(), $$3.dH());
-         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dr());
-         float $$15 = -1.0F + $$5.i() * $$3.ds();
-         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dr());
-         fby $$17 = new fby((double)$$14, (double)$$15, (double)$$16);
-         $$0.a(ls.as, $$13.d, $$13.e, $$13.f, $$17.d, $$17.e, $$17.f);
-      }
+   private static alo<dvi> a(String $$0) {
+      return alo.a(mb.ax, alp.b($$0));
    }
 
-   public boolean c() {
-      return this.j;
+   public static dvi a(kd<dvi> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   public boolean d() {
-      return this.k;
-   }
-
-   private void a(boolean $$0) {
-      this.k = $$0;
-   }
-
-   public float a(float $$0) {
-      return (this.i + $$0) * -0.0375F;
+   private static dvi a(kd<dvi> $$0, alo<dvi> $$1, String $$2) {
+      return kd.a($$0, $$1, new dvi(alp.b($$2)));
    }
 }

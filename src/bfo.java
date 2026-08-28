@@ -1,228 +1,64 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class bfo extends bbz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Set<String> c = Sets.newHashSet();
-   private static final Set<String> d = Sets.newHashSet();
-   private static final Set<String> e = Sets.newHashSet();
-   private static final Set<String> f = Sets.newHashSet();
-   private static final Set<String> g = Sets.newHashSet();
-   private static final Set<String> h = Sets.newHashSet();
+public class bfo extends DataFix {
+   private static final String a = "minecraft:empty";
 
    public bfo(Schema $$0) {
-      super($$0, bix.B);
+      super($$0, true);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("EntityUUIDFixes", this.getInputSchema().getType(this.a), $$0 -> {
-         $$0 = $$0.update(DSL.remainderFinder(), bfo::c);
-
-         for (String $$1 : c) {
-            $$0 = this.a($$0, $$1, bfo::l);
-         }
-
-         for (String $$2 : d) {
-            $$0 = this.a($$0, $$2, bfo::l);
-         }
-
-         for (String $$3 : e) {
-            $$0 = this.a($$0, $$3, bfo::m);
-         }
-
-         for (String $$4 : f) {
-            $$0 = this.a($$0, $$4, bfo::n);
-         }
-
-         for (String $$5 : g) {
-            $$0 = this.a($$0, $$5, bfo::b);
-         }
-
-         for (String $$6 : h) {
-            $$0 = this.a($$0, $$6, bfo::o);
-         }
-
-         $$0 = this.a($$0, "minecraft:bee", bfo::k);
-         $$0 = this.a($$0, "minecraft:zombified_piglin", bfo::k);
-         $$0 = this.a($$0, "minecraft:fox", bfo::j);
-         $$0 = this.a($$0, "minecraft:item", bfo::i);
-         $$0 = this.a($$0, "minecraft:shulker_bullet", bfo::h);
-         $$0 = this.a($$0, "minecraft:area_effect_cloud", bfo::g);
-         $$0 = this.a($$0, "minecraft:zombie_villager", bfo::f);
-         $$0 = this.a($$0, "minecraft:evoker_fangs", bfo::e);
-         return this.a($$0, "minecraft:piglin", bfo::d);
-      });
-   }
-
-   private static Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.update(
-         "Brain", $$0x -> $$0x.update("memories", $$0xx -> $$0xx.update("minecraft:angry_at", $$0xxx -> a($$0xxx, "value", "value").orElseGet(() -> {
-                     b.warn("angry_at has no value.");
-                     return $$0xxx;
-                  })))
+      Type<?> $$0 = this.getInputSchema().getType(bin.B);
+      Type<?> $$1 = this.getOutputSchema().getType(bin.B);
+      return this.fixTypeEverywhereTyped(
+         "Fix AbstractArrow item type",
+         $$0,
+         $$1,
+         bbk.a(this.a("minecraft:trident", bfo::c), this.a("minecraft:arrow", bfo::a), this.a("minecraft:spectral_arrow", bfo::b))
       );
    }
 
-   private static Dynamic<?> e(Dynamic<?> $$0) {
-      return c($$0, "OwnerUUID", "Owner").orElse($$0);
+   private Function<Typed<?>, Typed<?>> a(String $$0, bfo.a<?> $$1) {
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bin.B, $$0);
+      Type<?> $$3 = this.getOutputSchema().getChoiceType(bin.B, $$0);
+      return a($$0, $$1, $$2, $$3);
    }
 
-   private static Dynamic<?> f(Dynamic<?> $$0) {
-      return c($$0, "ConversionPlayer", "ConversionPlayer").orElse($$0);
+   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, bfo.a<?> $$1, Type<?> $$2, Type<T> $$3) {
+      OpticFinder<?> $$4 = DSL.namedChoice($$0, $$2);
+      return $$3x -> $$3x.updateTyped($$4, $$3, $$2xx -> $$1.fix($$2xx, $$3));
    }
 
-   private static Dynamic<?> g(Dynamic<?> $$0) {
-      return c($$0, "OwnerUUID", "Owner").orElse($$0);
+   private static <T> Typed<T> a(Typed<?> $$0, Type<T> $$1) {
+      return ae.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, a($$0x))));
    }
 
-   private static Dynamic<?> h(Dynamic<?> $$0) {
-      $$0 = b($$0, "Owner", "Owner").orElse($$0);
-      return b($$0, "Target", "Target").orElse($$0);
+   private static String a(Dynamic<?> $$0) {
+      return $$0.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
    }
 
-   private static Dynamic<?> i(Dynamic<?> $$0) {
-      $$0 = b($$0, "Owner", "Owner").orElse($$0);
-      return b($$0, "Thrower", "Thrower").orElse($$0);
+   private static <T> Typed<T> b(Typed<?> $$0, Type<T> $$1) {
+      return ae.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, "minecraft:spectral_arrow")));
    }
 
-   private static Dynamic<?> j(Dynamic<?> $$0) {
-      Optional<Dynamic<?>> $$1 = $$0.get("TrustedUUIDs").result().map($$1x -> $$0.createList($$1x.asStream().map($$0xx -> (Dynamic)a($$0xx).orElseGet(() -> {
-               b.warn("Trusted contained invalid data.");
-               return $$0xx;
-            }))));
-      return (Dynamic<?>)DataFixUtils.orElse($$1.map($$1x -> $$0.remove("TrustedUUIDs").set("Trusted", $$1x)), $$0);
+   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("id"), $$0.createString($$1), $$0.createString("Count"), $$0.createInt(1)));
    }
 
-   private static Dynamic<?> k(Dynamic<?> $$0) {
-      return a($$0, "HurtBy", "HurtBy").orElse($$0);
+   private static <T> Typed<T> c(Typed<?> $$0, Type<T> $$1) {
+      return new Typed($$1, $$0.getOps(), $$0.getValue());
    }
 
-   private static Dynamic<?> l(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = m($$0);
-      return a($$1, "OwnerUUID", "Owner").orElse($$1);
-   }
-
-   private static Dynamic<?> m(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = n($$0);
-      return c($$1, "LoveCause", "LoveCause").orElse($$1);
-   }
-
-   private static Dynamic<?> n(Dynamic<?> $$0) {
-      return b($$0).update("Leash", $$0x -> c($$0x, "UUID", "UUID").orElse($$0x));
-   }
-
-   public static Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update(
-         "Attributes",
-         $$1 -> $$0.createList(
-               $$1.asStream()
-                  .map(
-                     $$0xx -> $$0xx.update(
-                           "Modifiers", $$1x -> $$0xx.createList($$1x.asStream().map($$0xxxx -> (Dynamic)c($$0xxxx, "UUID", "UUID").orElse($$0xxxx)))
-                        )
-                  )
-            )
-      );
-   }
-
-   private static Dynamic<?> o(Dynamic<?> $$0) {
-      return (Dynamic<?>)DataFixUtils.orElse($$0.get("OwnerUUID").result().map($$1 -> $$0.remove("OwnerUUID").set("Owner", $$1)), $$0);
-   }
-
-   public static Dynamic<?> c(Dynamic<?> $$0) {
-      return c($$0, "UUID", "UUID").orElse($$0);
-   }
-
-   static {
-      c.add("minecraft:donkey");
-      c.add("minecraft:horse");
-      c.add("minecraft:llama");
-      c.add("minecraft:mule");
-      c.add("minecraft:skeleton_horse");
-      c.add("minecraft:trader_llama");
-      c.add("minecraft:zombie_horse");
-      d.add("minecraft:cat");
-      d.add("minecraft:parrot");
-      d.add("minecraft:wolf");
-      e.add("minecraft:bee");
-      e.add("minecraft:chicken");
-      e.add("minecraft:cow");
-      e.add("minecraft:fox");
-      e.add("minecraft:mooshroom");
-      e.add("minecraft:ocelot");
-      e.add("minecraft:panda");
-      e.add("minecraft:pig");
-      e.add("minecraft:polar_bear");
-      e.add("minecraft:rabbit");
-      e.add("minecraft:sheep");
-      e.add("minecraft:turtle");
-      e.add("minecraft:hoglin");
-      f.add("minecraft:bat");
-      f.add("minecraft:blaze");
-      f.add("minecraft:cave_spider");
-      f.add("minecraft:cod");
-      f.add("minecraft:creeper");
-      f.add("minecraft:dolphin");
-      f.add("minecraft:drowned");
-      f.add("minecraft:elder_guardian");
-      f.add("minecraft:ender_dragon");
-      f.add("minecraft:enderman");
-      f.add("minecraft:endermite");
-      f.add("minecraft:evoker");
-      f.add("minecraft:ghast");
-      f.add("minecraft:giant");
-      f.add("minecraft:guardian");
-      f.add("minecraft:husk");
-      f.add("minecraft:illusioner");
-      f.add("minecraft:magma_cube");
-      f.add("minecraft:pufferfish");
-      f.add("minecraft:zombified_piglin");
-      f.add("minecraft:salmon");
-      f.add("minecraft:shulker");
-      f.add("minecraft:silverfish");
-      f.add("minecraft:skeleton");
-      f.add("minecraft:slime");
-      f.add("minecraft:snow_golem");
-      f.add("minecraft:spider");
-      f.add("minecraft:squid");
-      f.add("minecraft:stray");
-      f.add("minecraft:tropical_fish");
-      f.add("minecraft:vex");
-      f.add("minecraft:villager");
-      f.add("minecraft:iron_golem");
-      f.add("minecraft:vindicator");
-      f.add("minecraft:pillager");
-      f.add("minecraft:wandering_trader");
-      f.add("minecraft:witch");
-      f.add("minecraft:wither");
-      f.add("minecraft:wither_skeleton");
-      f.add("minecraft:zombie");
-      f.add("minecraft:zombie_villager");
-      f.add("minecraft:phantom");
-      f.add("minecraft:ravager");
-      f.add("minecraft:piglin");
-      g.add("minecraft:armor_stand");
-      h.add("minecraft:arrow");
-      h.add("minecraft:dragon_fireball");
-      h.add("minecraft:firework_rocket");
-      h.add("minecraft:fireball");
-      h.add("minecraft:llama_spit");
-      h.add("minecraft:small_fireball");
-      h.add("minecraft:snowball");
-      h.add("minecraft:spectral_arrow");
-      h.add("minecraft:egg");
-      h.add("minecraft:ender_pearl");
-      h.add("minecraft:experience_bottle");
-      h.add("minecraft:potion");
-      h.add("minecraft:trident");
-      h.add("minecraft:wither_skull");
+   interface a<F> {
+      Typed<F> fix(Typed<?> var1, Type<F> var2);
    }
 }

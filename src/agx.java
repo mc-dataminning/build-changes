@@ -1,16 +1,93 @@
-public record agx(xv b, xv c) implements aac<acr> {
-   public static final zt<xg, agx> a = zt.a(xx.d, agx::b, xx.d, agx::e, agx::new);
+import java.util.UUID;
 
-   @Override
-   public aae<agx> a() {
-      return ahk.ba;
+public class agx {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
+
+   public static String a(bvb $$0) {
+      if ($$0 instanceof cpo) {
+         return $$0.al().getString();
+      } else {
+         xk $$1 = $$0.an();
+         return $$1 != null ? $$1.getString() : a($$0.cG());
+      }
    }
 
-   public void a(acr $$0) {
-      $$0.a(this);
+   public static String a(UUID $$0) {
+      bac $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
    }
 
-   public xv e() {
-      return this.c;
+   private static String a(bac $$0, String[] $$1) {
+      return ae.a($$1, $$0);
+   }
+
+   private static bac b(UUID $$0) {
+      return bac.a((long)($$0.hashCode() >> 2));
    }
 }

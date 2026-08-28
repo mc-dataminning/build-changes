@@ -1,21 +1,18 @@
-public class guf extends gqo<cqg, gzy> {
-   public static final alz a = alz.b("textures/entity/projectiles/arrow.png");
-   public static final alz b = alz.b("textures/entity/projectiles/tipped_arrow.png");
+public class guf extends gqb<cjs, gxr, fzv<gxr>> {
+   private static final alp a = alp.b("textures/entity/horse/horse_zombie.png");
+   private static final alp b = alp.b("textures/entity/horse/horse_skeleton.png");
+   private final alp k;
 
-   public guf(grq.a $$0) {
-      super($$0);
+   public guf(grl.a $$0, geh $$1, geh $$2, boolean $$3) {
+      super($$0, new gbs($$0.a($$1)), new gbs($$0.a($$2)));
+      this.k = $$3 ? b : a;
    }
 
-   protected alz a(gzy $$0) {
-      return $$0.d ? b : a;
+   public alp a(gxr $$0) {
+      return this.k;
    }
 
-   public gzy a() {
-      return new gzy();
-   }
-
-   public void a(cqg $$0, gzy $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.d = $$0.D() > 0;
+   public gxr b() {
+      return new gxr();
    }
 }

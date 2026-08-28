@@ -1,15 +1,33 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public record deh(ju<cxl> c) {
-   public static final Codec<deh> a = RecordCodecBuilder.create($$0 -> $$0.group(kf.a(mb.K).fieldOf("items").forGetter(deh::a)).apply($$0, deh::new));
-   public static final zt<xg, deh> b = zt.a(zr.c(mb.K), deh::a, deh::new);
+public interface deh extends dei {
+   Codec<deh> b = ma.au.q().dispatch(deh::a, Function.identity());
 
-   public boolean a(cxp $$0) {
-      return $$0.a(this.c);
+   static MapCodec<? extends deh> a(kd<MapCodec<? extends deh>> $$0) {
+      kd.a($$0, "all_of", deb.a.a);
+      kd.a($$0, "apply_mob_effect", dec.a);
+      kd.a($$0, "change_item_damage", ded.a);
+      kd.a($$0, "damage_entity", dee.a);
+      kd.a($$0, "explode", dek.a);
+      kd.a($$0, "ignite", del.a);
+      kd.a($$0, "play_sound", den.a);
+      kd.a($$0, "replace_block", dep.a);
+      kd.a($$0, "replace_disk", deq.a);
+      kd.a($$0, "run_function", der.a);
+      kd.a($$0, "set_block_properties", des.a);
+      kd.a($$0, "spawn_particles", deu.a);
+      return kd.a($$0, "summon_entity", dev.a);
    }
 
-   public ju<cxl> a() {
-      return this.c;
+   void a(arx var1, int var2, ddp var3, bvb var4, fbr var5);
+
+   @Override
+   default void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
+
+   @Override
+   MapCodec<? extends deh> a();
 }

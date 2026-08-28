@@ -1,53 +1,40 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Streams;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class tn {
-   private static final int a = 50;
+   public static final tn a = new tn();
+   private final Collection<th> b = Lists.newCopyOnWriteArrayList();
+   @Nullable
+   private tk c;
 
-   public static Collection<tm> a(Collection<um> $$0, ash $$1) {
-      Map<String, List<um>> $$2 = $$0.stream().collect(Collectors.groupingBy(um::b));
-      return $$2.entrySet()
-         .stream()
-         .flatMap(
-            $$1x -> {
-               String $$2x = (String)$$1x.getKey();
-               List<um> $$3 = (List<um>)$$1x.getValue();
-               return Streams.mapWithIndex(
-                  Lists.partition($$3, 50).stream(), ($$2xx, $$3x) -> a($$2xx.stream().map($$1xxx -> a($$1xxx, 0, $$1)).toList(), $$2x, $$3x)
-               );
-            }
-         )
-         .toList();
+   private tn() {
    }
 
-   public static ts a(um $$0, int $$1, ash $$2) {
-      return new ts($$0, ui.a($$1), $$2, uf.a());
+   public void a(th $$0) {
+      this.b.add($$0);
    }
 
-   public static tv.b a() {
-      return a(50);
+   public void a() {
+      this.b.clear();
+      if (this.c != null) {
+         this.c.c();
+         this.c = null;
+      }
    }
 
-   public static tv.b a(int $$0) {
-      return $$1 -> {
-         Map<String, List<ts>> $$2 = $$1.stream().filter(Objects::nonNull).collect(Collectors.groupingBy($$0xx -> $$0xx.v().b()));
-         return $$2.entrySet().stream().flatMap($$1x -> {
-            String $$2x = (String)$$1x.getKey();
-            List<ts> $$3 = (List<ts>)$$1x.getValue();
-            return Streams.mapWithIndex(Lists.partition($$3, $$0).stream(), ($$1xx, $$2xx) -> a(List.copyOf($$1xx), $$2x, $$2xx));
-         }).toList();
-      };
+   public void a(tk $$0) {
+      if (this.c != null) {
+         ae.b("The runner was already set in GameTestTicker");
+      }
+
+      this.c = $$0;
    }
 
-   public static tm a(Collection<ts> $$0, String $$1, long $$2) {
-      Consumer<ash> $$3 = tu.c($$1);
-      Consumer<ash> $$4 = tu.d($$1);
-      return new tm($$1 + ":" + $$2, $$0, $$3, $$4);
+   public void b() {
+      if (this.c != null) {
+         this.b.forEach($$0 -> $$0.a(this.c));
+         this.b.removeIf(th::k);
+      }
    }
 }

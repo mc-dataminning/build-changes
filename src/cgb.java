@@ -1,22 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class cgb extends cgk {
-   public static final float a = 10.0F;
+public abstract class cgb extends cgh<bvx> {
+   protected abstract boolean a(arx var1, bvx var2, bvx var3);
+
+   protected abstract cfb<bvx> b();
 
    @Override
-   protected boolean a(ash $$0, bwg $$1, bwg $$2) {
-      return !$$1.ec().a(cfk.U) && cgq.c($$0, $$1, $$2) && cjr.j($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
-   }
-
-   private boolean a(bwg $$0, bwg $$1) {
-      List<UUID> $$2 = $$0.ec().c(cfk.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cG());
+   public Set<cfb<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   protected cfk<bwg> b() {
-      return cfk.B;
+   protected void a(arx $$0, bvx $$1) {
+      $$1.ec().a(this.b(), this.c($$0, $$1));
+   }
+
+   private Optional<bvx> c(arx $$0, bvx $$1) {
+      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
+   }
+
+   protected Optional<cfd> a(bvx $$0) {
+      return $$0.ec().c(cfb.h);
    }
 }

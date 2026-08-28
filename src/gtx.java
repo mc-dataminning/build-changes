@@ -1,16 +1,16 @@
-public class gtx extends gqo<cqw, gxc> {
-   public static final alz a = alz.b("textures/entity/projectiles/spectral_arrow.png");
+public class gtx extends gsr<cjl, gyo, gdm> {
+   private static final alp a = alp.b("textures/entity/tadpole/tadpole.png");
 
-   public gtx(grq.a $$0) {
-      super($$0);
+   public gtx(grl.a $$0) {
+      super($$0, new gdm($$0.a(gei.dh)), 0.14F);
    }
 
    @Override
-   protected alz a(gxc $$0) {
+   public alp b(gyo $$0) {
       return a;
    }
 
-   public gxc a() {
-      return new gxc();
+   public gyo b() {
+      return new gyo();
    }
 }

@@ -1,45 +1,29 @@
-public class acx implements aac<acr> {
-   public static final zt<ws, acx> a = aac.a(acx::a, acx::new);
-   private final int b;
-   private final jh c;
-   private final int d;
+public class acx implements zr<acg> {
+   public static final zi<wh, acx> a = zr.a(acx::a, acx::new);
+   private final boolean b;
 
-   public acx(int $$0, jh $$1, int $$2) {
+   public acx(boolean $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private acx(ws $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
-      this.d = $$0.readUnsignedByte();
+   private acx(wh $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(ws $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
+   private void a(wh $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public aae<acx> a() {
-      return ahk.h;
+   public zt<acx> a() {
+      return agz.q;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
-   }
-
-   public jh e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

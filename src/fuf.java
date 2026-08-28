@@ -1,125 +1,140 @@
-enum fuf {
-   a(
-      new fuf.a(alz.b("advancements/tab_above_left_selected"), alz.b("advancements/tab_above_middle_selected"), alz.b("advancements/tab_above_right_selected")),
-      new fuf.a(alz.b("advancements/tab_above_left"), alz.b("advancements/tab_above_middle"), alz.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fuf.a(alz.b("advancements/tab_below_left_selected"), alz.b("advancements/tab_below_middle_selected"), alz.b("advancements/tab_below_right_selected")),
-      new fuf.a(alz.b("advancements/tab_below_left"), alz.b("advancements/tab_below_middle"), alz.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fuf.a(alz.b("advancements/tab_left_top_selected"), alz.b("advancements/tab_left_middle_selected"), alz.b("advancements/tab_left_bottom_selected")),
-      new fuf.a(alz.b("advancements/tab_left_top"), alz.b("advancements/tab_left_middle"), alz.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fuf.a(alz.b("advancements/tab_right_top_selected"), alz.b("advancements/tab_right_middle_selected"), alz.b("advancements/tab_right_bottom_selected")),
-      new fuf.a(alz.b("advancements/tab_right_top"), alz.b("advancements/tab_right_middle"), alz.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+public abstract class fuf extends ftr {
+   private static final xk u = xk.c("advMode.setCommand");
+   private static final xk v = xk.c("advMode.command");
+   private static final xk w = xk.c("advMode.previousOutput");
+   protected foh a;
+   protected foh b;
+   protected fny c;
+   protected fny d;
+   protected fof<Boolean> s;
+   fob x;
 
-   private final fuf.a e;
-   private final fuf.a f;
-   private final int g;
-   private final int h;
-   private final int i;
-
-   private fuf(final fuf.a $$0, final fuf.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fuf() {
+      super(flq.a);
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   public void e() {
+      if (!this.l().j()) {
+         this.aP_();
+      }
    }
 
-   public void a(fns $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fuf.a $$5 = $$3 ? this.e : this.f;
-      alz $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   abstract dfz l();
+
+   abstract int E();
+
+   @Override
+   protected void aT_() {
+      this.c = this.c(fny.a(xj.d, $$0x -> this.F()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
+      this.d = this.c(fny.a(xj.e, $$0x -> this.aP_()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.l().p();
+      this.s = this.c(fof.a(xk.b("O"), xk.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.E(), 20, 20, xk.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         dfz $$2 = this.l();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new foh(this.p, this.n / 2 - 150, 50, 300, 20, xk.c("advMode.command")) {
+         @Override
+         protected xy aR_() {
+            return super.aR_().b(fuf.this.x.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new foh(this.p, this.n / 2 - 150, this.E(), 276, 20, xk.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.x = new fob(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.x.a(true);
+      this.x.d();
+      this.c($$0);
+   }
+
+   @Override
+   protected void aG_() {
+      this.b(this.a);
+   }
+
+   @Override
+   protected xk z() {
+      return this.x.a() ? this.x.b() : super.z();
+   }
+
+   @Override
+   public void a(flz $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.x.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.l().l().getString() : "-");
+   }
+
+   protected void F() {
+      dfz $$0 = this.l();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.m.a(null);
+   }
+
+   protected abstract void a(dfz var1);
+
+   private void a(String $$0) {
+      this.x.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
       } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a(glv::C, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fns $$0, int $$1, int $$2, int $$3, cxp $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+         this.F();
+         return true;
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, u, this.n / 2, 20, 16777215);
+      $$0.b(this.p, v, this.n / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.E() - 135;
+         $$0.b(this.p, w, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
       }
+
+      this.x.a($$0, $$1, $$2);
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
-   }
-
-   static record a(alz a, alz b, alz c) {
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

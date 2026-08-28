@@ -1,156 +1,195 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongMaps;
+import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.time.Duration;
 import java.util.List;
-import java.util.Optional;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
 
-public interface bpb<S> {
-   boolean a(box<S> var1, boz var2, bot var3);
+public class bpb implements bpg {
+   private static final long a = Duration.ofMillis(100L).toNanos();
+   private static final Logger c = LogUtils.getLogger();
+   private final List<String> d = Lists.newArrayList();
+   private final LongList e = new LongArrayList();
+   private final Map<String, bpb.a> f = Maps.newHashMap();
+   private final IntSupplier g;
+   private final LongSupplier h;
+   private final long i;
+   private final int j;
+   private String k = "";
+   private boolean l;
+   @Nullable
+   private bpb.a m;
+   private final boolean n;
+   private final Set<Pair<String, bqs>> o = new ObjectArraySet();
 
-   static <S> bpb<S> a(bos<?> $$0) {
-      return new bpb.d<>($$0);
+   public bpb(LongSupplier $$0, IntSupplier $$1, boolean $$2) {
+      this.i = $$0.getAsLong();
+      this.h = $$0;
+      this.j = $$1.getAsInt();
+      this.g = $$1;
+      this.n = $$2;
    }
 
-   static <S, T> bpb<S> a(bos<T> $$0, T $$1) {
-      return new bpb.b<>($$0, $$1);
+   @Override
+   public void a() {
+      if (this.l) {
+         c.error("Profiler tick already started - missing endTick()?");
+      } else {
+         this.l = true;
+         this.k = "";
+         this.d.clear();
+         this.a("root");
+      }
    }
 
-   @SafeVarargs
-   static <S> bpb<S> a(bpb<S>... $$0) {
-      return new bpb.e<>(List.of($$0));
+   @Override
+   public void b() {
+      if (!this.l) {
+         c.error("Profiler tick already ended - missing startTick()?");
+      } else {
+         this.c();
+         this.l = false;
+         if (!this.k.isEmpty()) {
+            c.error("Profiler tick ended before path was fully popped (remainder: '{}'). Mismatched push/pop?", LogUtils.defer(() -> bph.b(this.k)));
+         }
+      }
    }
 
-   @SafeVarargs
-   static <S> bpb<S> b(bpb<S>... $$0) {
-      return new bpb.a<>(List.of($$0));
-   }
-
-   static <S> bpb<S> a(bpb<S> $$0) {
-      return new bpb.c<>($$0);
-   }
-
-   static <S> bpb<S> a() {
-      return new bpb<S>() {
-         @Override
-         public boolean a(box<S> $$0, boz $$1, bot $$2) {
-            $$2.cut();
-            return true;
+   @Override
+   public void a(String $$0) {
+      if (!this.l) {
+         c.error("Cannot push '{}' to profiler if profiler tick hasn't started - missing startTick()?", $$0);
+      } else {
+         if (!this.k.isEmpty()) {
+            this.k = this.k + "\u001e";
          }
 
-         @Override
-         public String toString() {
-            return "↑";
-         }
-      };
+         this.k = this.k + $$0;
+         this.d.add(this.k);
+         this.e.add(ae.d());
+         this.m = null;
+      }
    }
 
-   static <S> bpb<S> b() {
-      return new bpb<S>() {
-         @Override
-         public boolean a(box<S> $$0, boz $$1, bot $$2) {
-            return true;
-         }
-
-         @Override
-         public String toString() {
-            return "ε";
-         }
-      };
+   @Override
+   public void a(Supplier<String> $$0) {
+      this.a($$0.get());
    }
 
-   public static record a<S>(List<bpb<S>> a) implements bpb<S> {
-      @Override
-      public boolean a(box<S> $$0, boz $$1, bot $$2) {
-         MutableBoolean $$3 = new MutableBoolean();
-         bot $$4 = $$3::setTrue;
-         int $$5 = $$0.c();
+   @Override
+   public void a(bqs $$0) {
+      this.o.add(Pair.of(this.k, $$0));
+   }
 
-         for (bpb<S> $$6 : this.a) {
-            if ($$3.isTrue()) {
-               break;
-            }
-
-            boz $$7 = new boz();
-            if ($$6.a($$0, $$7, $$4)) {
-               $$1.a($$7);
-               return true;
-            }
-
-            $$0.a($$5);
+   @Override
+   public void c() {
+      if (!this.l) {
+         c.error("Cannot pop from profiler if profiler tick hasn't started - missing startTick()?");
+      } else if (this.e.isEmpty()) {
+         c.error("Tried to pop one too many times! Mismatched push() and pop()?");
+      } else {
+         long $$0 = ae.d();
+         long $$1 = this.e.removeLong(this.e.size() - 1);
+         this.d.remove(this.d.size() - 1);
+         long $$2 = $$0 - $$1;
+         bpb.a $$3 = this.f();
+         $$3.c += $$2;
+         $$3.d++;
+         $$3.a = Math.max($$3.a, $$2);
+         $$3.b = Math.min($$3.b, $$2);
+         if (this.n && $$2 > a) {
+            c.warn("Something's taking too long! '{}' took aprox {} ms", LogUtils.defer(() -> bph.b(this.k)), LogUtils.defer(() -> (double)$$2 / 1000000.0));
          }
 
-         return false;
+         this.k = this.d.isEmpty() ? "" : this.d.get(this.d.size() - 1);
+         this.m = null;
+      }
+   }
+
+   @Override
+   public void b(String $$0) {
+      this.c();
+      this.a($$0);
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+      this.c();
+      this.a($$0);
+   }
+
+   private bpb.a f() {
+      if (this.m == null) {
+         this.m = this.f.computeIfAbsent(this.k, $$0 -> new bpb.a());
       }
 
-      public List<bpb<S>> c() {
+      return this.m;
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+      this.f().e.addTo($$0, (long)$$1);
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+      this.f().e.addTo($$0.get(), (long)$$1);
+   }
+
+   @Override
+   public bph d() {
+      return new bpe(this.f, this.i, this.j, this.h.getAsLong(), this.g.getAsInt());
+   }
+
+   @Nullable
+   @Override
+   public bpb.a c(String $$0) {
+      return this.f.get($$0);
+   }
+
+   @Override
+   public Set<Pair<String, bqs>> e() {
+      return this.o;
+   }
+
+   public static class a implements bpk {
+      long a = Long.MIN_VALUE;
+      long b = Long.MAX_VALUE;
+      long c;
+      long d;
+      final Object2LongOpenHashMap<String> e = new Object2LongOpenHashMap();
+
+      @Override
+      public long a() {
+         return this.c;
+      }
+
+      @Override
+      public long b() {
          return this.a;
       }
-   }
 
-   public static record b<S, T>(bos<T> a, T b) implements bpb<S> {
       @Override
-      public boolean a(box<S> $$0, boz $$1, bot $$2) {
-         $$1.a(this.a, this.b);
-         return true;
+      public long c() {
+         return this.d;
       }
 
-      public bos<T> c() {
-         return this.a;
-      }
-
-      public T d() {
-         return this.b;
-      }
-   }
-
-   public static record c<S>(bpb<S> a) implements bpb<S> {
       @Override
-      public boolean a(box<S> $$0, boz $$1, bot $$2) {
-         int $$3 = $$0.c();
-         if (!this.a.a($$0, $$1, $$2)) {
-            $$0.a($$3);
-         }
-
-         return true;
-      }
-
-      public bpb<S> c() {
-         return this.a;
-      }
-   }
-
-   public static record d<S, T>(bos<T> a) implements bpb<S> {
-      @Override
-      public boolean a(box<S> $$0, boz $$1, bot $$2) {
-         Optional<T> $$3 = $$0.b(this.a);
-         if ($$3.isEmpty()) {
-            return false;
-         } else {
-            $$1.a(this.a, $$3.get());
-            return true;
-         }
-      }
-
-      public bos<T> c() {
-         return this.a;
-      }
-   }
-
-   public static record e<S>(List<bpb<S>> a) implements bpb<S> {
-      @Override
-      public boolean a(box<S> $$0, boz $$1, bot $$2) {
-         int $$3 = $$0.c();
-
-         for (bpb<S> $$4 : this.a) {
-            if (!$$4.a($$0, $$1, $$2)) {
-               $$0.a($$3);
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      public List<bpb<S>> c() {
-         return this.a;
+      public Object2LongMap<String> d() {
+         return Object2LongMaps.unmodifiable(this.e);
       }
    }
 }

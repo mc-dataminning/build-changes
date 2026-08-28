@@ -1,21 +1,26 @@
-public class fvx extends fun<cuw> {
-   private static final alz G = alz.b("textures/gui/container/shulker_box.png");
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fvx(cuw $$0, cpw $$1, xv $$2) {
-      super($$0, $$1, $$2);
-      this.u++;
+public class fvx implements fwc {
+   private final fsg a;
+
+   public fvx(fsg $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
+      }
 
-   @Override
-   protected void a(fns $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(glv::C, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
+
+      return $$6;
    }
 }

@@ -1,97 +1,84 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 import java.util.concurrent.Executor;
+import java.util.stream.Stream;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class amn implements avp {
-   private static final Logger b = LogUtils.getLogger();
-   public static final aly<kd<ik<ew>>> a = aly.a(alz.b("function"));
-   private static final als c = new als(mb.c(a), ".mcfunction");
-   private volatile Map<alz, ik<ew>> d = ImmutableMap.of();
-   private final ayl<ik<ew>> e = new ayl<>(($$0x, $$1x) -> this.a($$0x), mb.d(a));
-   private volatile Map<alz, List<ik<ew>>> f = Map.of();
-   private final int g;
-   private final CommandDispatcher<ew> h;
+public class amn {
+   private static final Logger a = LogUtils.getLogger();
 
-   public Optional<ik<ew>> a(alz $$0) {
-      return Optional.ofNullable(this.d.get($$0));
-   }
-
-   public Map<alz, ik<ew>> a() {
-      return this.d;
-   }
-
-   public List<ik<ew>> b(alz $$0) {
-      return this.f.getOrDefault($$0, List.of());
-   }
-
-   public Iterable<alz> b() {
-      return this.f.keySet();
-   }
-
-   public amn(int $$0, CommandDispatcher<ew> $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   @Override
-   public CompletableFuture<Void> a(avp.a $$0, avv $$1, Executor $$2, Executor $$3) {
-      CompletableFuture<Map<alz, List<ayl.b>>> $$4 = CompletableFuture.supplyAsync(() -> this.e.a($$1), $$2);
-      CompletableFuture<Map<alz, CompletableFuture<ik<ew>>>> $$5 = CompletableFuture.<Map<alz, avt>>supplyAsync(() -> c.a($$1), $$2).thenCompose($$1x -> {
-         Map<alz, CompletableFuture<ik<ew>>> $$2x = Maps.newHashMap();
-         ew $$3x = new ew(ev.a, fby.c, fbx.a, null, this.g, "", xu.a, null, null);
-
-         for (Entry<alz, avt> $$4x : $$1x.entrySet()) {
-            alz $$5x = $$4x.getKey();
-            alz $$6 = c.b($$5x);
-            $$2x.put($$6, CompletableFuture.supplyAsync(() -> {
-               List<String> $$3xx = a($$4x.getValue());
-               return ik.a($$6, this.h, $$3x, $$3xx);
-            }, $$2));
-         }
-
-         CompletableFuture<?>[] $$7 = $$2x.values().toArray(new CompletableFuture[0]);
-         return CompletableFuture.allOf($$7).handle(($$1xx, $$2xx) -> $$2x);
-      });
-      return $$4.thenCombine($$5, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
-         Map<alz, CompletableFuture<ik<ew>>> $$1x = (Map<alz, CompletableFuture<ik<ew>>>)$$0x.getSecond();
-         Builder<alz, ik<ew>> $$2x = ImmutableMap.builder();
-         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
-               if ($$3x != null) {
-                  b.error("Failed to load function {}", $$1xx, $$3x);
-               } else {
-                  $$2x.put($$1xx, $$2xxx);
-               }
-
-               return null;
-            }).join());
-         this.d = $$2x.build();
-         this.f = this.e.a((Map<alz, List<ayl.b>>)$$0x.getFirst());
-      }, $$3);
-   }
-
-   private static List<String> a(avt $$0) {
+   public static <D, R> CompletableFuture<R> a(amn.c $$0, amn.f<D> $$1, amn.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         List var2;
-         try (BufferedReader $$1 = $$0.e()) {
-            var2 = $$1.lines().toList();
-         }
-
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
+         Pair<dhw, avb> $$5 = $$0.a.a();
+         avb $$6 = (avb)$$5.getSecond();
+         jx<aly> $$7 = aly.a();
+         List<kd.a<?>> $$8 = ayb.a($$6, $$7.a(aly.a));
+         ke.b $$9 = $$7.b(aly.b);
+         List<js.b<?>> $$10 = ayb.a($$9, $$8);
+         ke.b $$11 = alk.a($$6, $$10, alk.a);
+         List<js.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
+         ke.b $$13 = alk.a($$6, $$12, alk.b);
+         dhw $$14 = (dhw)$$5.getFirst();
+         js.a $$15 = js.a.a($$12.stream());
+         amn.b<D> $$16 = $$1.get(new amn.a($$6, $$14, $$15, $$13));
+         jx<aly> $$17 = $$7.a(aly.b, $$11, $$16.b);
+         return ama.a($$6, $$17, $$8, $$14.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
+            }
+         }).thenApplyAsync($$4x -> {
+            $$4x.g();
+            return $$2.create($$6, $$4x, $$17, $$16.a);
+         }, $$4);
+      } catch (Exception var18) {
+         return CompletableFuture.failedFuture(var18);
       }
+   }
+
+   public static record a(avl a, dhw b, js.a c, ke.b d) {
+   }
+
+   public static record b<D>(D a, ke.b b) {
+   }
+
+   public static record c(amn.d a, ex.a b, int c) {
+   }
+
+   public static record d(auv a, dhw b, boolean c, boolean d) {
+      public Pair<dhw, avb> a() {
+         dhw $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+         List<atw> $$1 = this.a.h();
+         avb $$2 = new ave(aty.b, $$1);
+         return Pair.of($$0, $$2);
+      }
+
+      public auv b() {
+         return this.a;
+      }
+
+      public dhw c() {
+         return this.b;
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
+   }
+
+   @FunctionalInterface
+   public interface e<D, R> {
+      R create(avb var1, ama var2, jx<aly> var3, D var4);
+   }
+
+   @FunctionalInterface
+   public interface f<D> {
+      amn.b<D> get(amn.a var1);
    }
 }

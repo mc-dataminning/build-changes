@@ -1,21 +1,20 @@
-public class fbv extends fbw {
-   private final bvk b;
+public interface fbv {
+   fbv a = ($$0, $$1) -> false;
+   fbv b = ($$0, $$1) -> !$$0 && !$$1;
+   fbv c = ($$0, $$1) -> $$1 && !$$0;
+   fbv d = ($$0, $$1) -> !$$0;
+   fbv e = ($$0, $$1) -> $$0 && !$$1;
+   fbv f = ($$0, $$1) -> !$$1;
+   fbv g = ($$0, $$1) -> $$0 != $$1;
+   fbv h = ($$0, $$1) -> !$$0 || !$$1;
+   fbv i = ($$0, $$1) -> $$0 && $$1;
+   fbv j = ($$0, $$1) -> $$0 == $$1;
+   fbv k = ($$0, $$1) -> $$1;
+   fbv l = ($$0, $$1) -> !$$0 || $$1;
+   fbv m = ($$0, $$1) -> $$0;
+   fbv n = ($$0, $$1) -> $$0 || !$$1;
+   fbv o = ($$0, $$1) -> $$0 || $$1;
+   fbv p = ($$0, $$1) -> true;
 
-   public fbv(bvk $$0) {
-      this($$0, $$0.du());
-   }
-
-   public fbv(bvk $$0, fby $$1) {
-      super($$1);
-      this.b = $$0;
-   }
-
-   public bvk a() {
-      return this.b;
-   }
-
-   @Override
-   public fbw.a d() {
-      return fbw.a.c;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

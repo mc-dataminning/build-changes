@@ -1,48 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class egg extends egw<ejh> {
-   public egg(Codec<ejh> $$0) {
+public class egg extends egp<eip> {
+   private static final ImmutableList<dkd> a = ImmutableList.of(dkf.I, dkf.fI, dkf.fJ, dkf.fK, dkf.fL, dkf.cD, dkf.cA);
+   private static final jm[] b = jm.values();
+   private static final double c = 0.9;
+
+   public egg(Codec<eip> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<ejh> $$0) {
-      bam $$1 = $$0.d();
-      dig $$2 = $$0.b();
-      dgo $$3 = new dgo($$0.e());
-      IntArrayList $$4 = ae.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ae.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      jh.a $$6 = new jh.a();
-      IntListIterator var8 = $$4.iterator();
+   public boolean a(egr<eip> $$0) {
+      boolean $$1 = false;
+      bac $$2 = $$0.d();
+      dhx $$3 = $$0.b();
+      eip $$4 = $$0.f();
+      jh $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+      for (jh $$13 : jh.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            jh $$9 = $$2.a(edq.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, dko.cD.m(), 2);
-               btp.a($$2, $$1, $$9, ewl.a);
-               dxv $$10 = dko.cw.m();
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
 
-               for (jm $$11 : jm.c.a) {
-                  jh $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
+            jh $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
             }
          }
       }
 
-      return false;
+      return $$1;
+   }
+
+   private static boolean a(dha $$0, jh $$1, eip $$2) {
+      dxo $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (jm $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).l();
+            if ($$5 && $$4 != jm.b || !$$5 && $$4 == jm.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

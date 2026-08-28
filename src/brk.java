@@ -1,30 +1,48 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class brk {
-   private final Set<String> a = new ObjectOpenHashSet();
+public interface brk {
+   brj a();
 
-   public Set<brc> a(Supplier<bpq> $$0) {
-      Set<brc> $$1 = $$0.get()
-         .e()
-         .stream()
-         .filter($$0x -> !this.a.contains($$0x.getLeft()))
-         .map($$1x -> a($$0, (String)$$1x.getLeft(), (brb)$$1x.getRight()))
-         .collect(Collectors.toSet());
-
-      for (brc $$2 : $$1) {
-         this.a.add($$2.d());
-      }
-
-      return $$1;
+   static <T> brk.b<T> a(T $$0, int $$1) {
+      return new brk.b<>($$0, brj.a($$1));
    }
 
-   private static brc a(Supplier<bpq> $$0, String $$1, brb $$2) {
-      return brc.a($$1, $$2, () -> {
-         bpl.a $$2x = $$0.get().c($$1);
-         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)bbg.b;
-      });
+   public static class a implements brk {
+      private final brj a;
+
+      public a(int $$0) {
+         this.a = brj.a($$0);
+      }
+
+      public a(brj $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public brj a() {
+         return this.a;
+      }
+   }
+
+   public static record b<T>(T a, brj b) implements brk {
+      @Override
+      public brj a() {
+         return this.b;
+      }
+
+      public static <E> Codec<brk.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(brk.b::b), brj.a.fieldOf("weight").forGetter(brk.b::c)).apply($$1, brk.b::new)
+         );
+      }
+
+      public T b() {
+         return this.a;
+      }
+
+      public brj c() {
+         return this.b;
+      }
    }
 }

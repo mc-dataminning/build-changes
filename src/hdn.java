@@ -1,22 +1,18 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public interface hdn {
-   List<gms> a(@Nullable dxv var1, @Nullable jm var2, bam var3);
+public class hdn extends avp<dfj> {
+   public static final dfj a = new dfj(Map.of());
+   private Map<alp, dfj> b = Map.of();
 
-   boolean a();
+   public hdn() {
+      super(dfj.a, "models/equipment");
+   }
 
-   boolean b();
+   protected void a(Map<alp, dfj> $$0, avl $$1, bpj $$2) {
+      this.b = Map.copyOf($$0);
+   }
 
-   boolean c();
-
-   boolean d();
-
-   hbl e();
-
-   gnd f();
-
-   default gmr g() {
-      return gmr.a;
+   public dfj a(alp $$0) {
+      return this.b.getOrDefault($$0, a);
    }
 }

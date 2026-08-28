@@ -1,55 +1,22 @@
-import org.joml.Quaternionf;
+public abstract class gqe<T extends cnh, S extends haf, M extends gdz<S>> extends gsc<T, S, M> {
+   private static final alp a = alp.b("textures/entity/zombie/zombie.png");
 
-public abstract class gqe extends grp<cru, gxh> {
-   public gqe(grq.a $$0) {
-      super($$0);
-      this.f = 0.8F;
+   protected gqe(grl.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
+      super($$0, $$1, $$2, 0.5F);
+      this.a(new gvp<>(this, $$3, $$4, $$5, $$6, $$0.h()));
    }
 
-   public void a(gxh $$0, fgs $$1, gll $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.375F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$0.a));
-      float $$4 = $$0.c;
-      if ($$4 > 0.0F) {
-         $$1.a(a.b.rotationDegrees(bae.a($$4) * $$4 * $$0.d / 10.0F * (float)$$0.b));
-      }
-
-      if (!bae.a($$0.e, 0.0F)) {
-         $$1.a(new Quaternionf().setAngleAxis($$0.e * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
-
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      $$1.a(a.d.rotationDegrees(90.0F));
-      gbm<gxh> $$5 = this.a();
-      $$5.a($$0);
-      fgw $$6 = $$2.getBuffer(this.b());
-      $$5.a($$1, $$6, $$3, hbc.d);
-      this.b($$0, $$1, $$2, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public alp a(S $$0) {
+      return a;
    }
 
-   protected void b(gxh $$0, fgs $$1, gll $$2, int $$3) {
-   }
-
-   protected abstract gbm<gxh> a();
-
-   protected abstract glv b();
-
-   public gxh c() {
-      return new gxh();
-   }
-
-   public void a(cru $$0, gxh $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.k($$2);
-      $$1.c = (float)$$0.N() - $$2;
-      $$1.b = $$0.O();
-      $$1.d = Math.max($$0.L() - $$2, 0.0F);
-      $$1.e = $$0.a($$2);
-      $$1.f = $$0.bo();
-      $$1.g = $$0.a(0, $$2);
-      $$1.h = $$0.a(1, $$2);
+      $$1.a = $$0.gd();
+      $$1.b = $$0.gu();
+   }
+
+   protected boolean b(S $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

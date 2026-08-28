@@ -1,45 +1,44 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class elw extends elu {
-   public static final MapCodec<elw> a = MapCodec.unit(() -> elw.b);
-   public static final elw b = new elw();
+public class elw extends elz {
+   public static final MapCodec<elw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elw::new));
 
-   @Override
-   protected elv<?> a() {
-      return elv.a;
+   public elw(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(elu.a $$0) {
-      bam $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            jh $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dtl.d);
-            }
-         }
+   protected ema<?> a() {
+      return ema.c;
+   }
 
-         if ($$1.a(3) > 0) {
-            jh $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dtl.f);
-            }
-         }
+   @Override
+   public List<ekf.a> a(dhf $$0, BiConsumer<jh, dxo> $$1, bac $$2, int $$3, jh $$4, ejp $$5) {
+      jh $$6 = $$4.e();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.i(), $$5);
+      a($$0, $$1, $$2, $$6.g(), $$5);
+      a($$0, $$1, $$2, $$6.g().i(), $$5);
+      jh.a $$7 = new jh.a();
 
-         if ($$1.a(3) > 0) {
-            jh $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dtl.e);
-            }
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
          }
+      }
 
-         if ($$1.a(3) > 0) {
-            jh $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dtl.c);
-            }
-         }
-      });
+      return ImmutableList.of(new ekf.a($$4.b($$3), 0, true));
+   }
+
+   private void a(dhf $$0, BiConsumer<jh, dxo> $$1, bac $$2, jh.a $$3, ejp $$4, jh $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

@@ -1,28 +1,69 @@
-public class ewb {
-   public static final ewb a = new ewb("advancements");
-   public static final ewb b = new ewb("stats");
-   public static final ewb c = new ewb("playerdata");
-   public static final ewb d = new ewb("players");
-   public static final ewb e = new ewb("level.dat");
-   public static final ewb f = new ewb("level.dat_old");
-   public static final ewb g = new ewb("icon.png");
-   public static final ewb h = new ewb("session.lock");
-   public static final ewb i = new ewb("generated");
-   public static final ewb j = new ewb("datapacks");
-   public static final ewb k = new ewb("resources.zip");
-   public static final ewb l = new ewb(".");
-   private final String m;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   private ewb(String $$0) {
-      this.m = $$0;
-   }
+public interface ewb extends ewd {
+   @Override
+   String e();
 
-   public String a() {
-      return this.m;
-   }
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
 
    @Override
-   public String toString() {
-      return "/" + this.m;
+   default void a(p $$0, dhb $$1) {
+      ewd.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
+
+   int f();
+
+   void a(int var1);
+
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   dgw k();
+
+   void a(dze.c var1);
+
+   dze.c p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(dgw var1);
+
+   fbe<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
+
+   dgv o();
 }

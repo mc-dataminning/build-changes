@@ -1,102 +1,22 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.Arrays;
 import java.util.function.Function;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public class exs extends eyc {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<exs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  kf.a(mb.aO).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, exs::new)
-   );
-   private final Optional<ju<ddz>> c;
-   private final boolean d;
+public interface exs<T extends exs<T>> {
+   T b(exw.a var1);
 
-   exs(List<ezy> $$0, Optional<ju<ddz>> $$1, boolean $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-   }
+   default <E> T a(Iterable<E> $$0, Function<E, exw.a> $$1) {
+      T $$2 = this.c();
 
-   @Override
-   public eye<exs> b() {
-      return eyf.h;
-   }
-
-   @Override
-   public cxp a(cxp $$0, ewp $$1) {
-      bam $$2 = $$1.b();
-      boolean $$3 = $$0.a(cxt.rn);
-      boolean $$4 = !$$3 && this.d;
-      Stream<jq<ddz>> $$5 = this.c
-         .<Stream<jq<ddz>>>map(ju::a)
-         .orElseGet(() -> $$1.d().K_().e(mb.aO).c().map(Function.identity()))
-         .filter($$2x -> !$$4 || ((ddz)$$2x.a()).c($$0));
-      List<jq<ddz>> $$6 = $$5.toList();
-      Optional<jq<ddz>> $$7 = ae.b($$6, $$2);
-      if ($$7.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$7.get(), $$2);
-      }
-   }
-
-   private static cxp a(cxp $$0, jq<ddz> $$1, bam $$2) {
-      int $$3 = bae.a($$2, $$1.a().d(), $$1.a().e());
-      if ($$0.a(cxt.rn)) {
-         $$0 = new cxp(cxt.vm);
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
 
-      $$0.a($$1, $$3);
-      return $$0;
+      return $$2;
    }
 
-   public static exs.a c() {
-      return new exs.a();
+   default <E> T a(E[] $$0, Function<E, exw.a> $$1) {
+      return this.a(Arrays.asList($$0), $$1);
    }
 
-   public static exs.a a(js.a $$0) {
-      return c().a($$0.d(mb.aO).b(axx.n));
-   }
-
-   public static class a extends eyc.a<exs.a> {
-      private Optional<ju<ddz>> a = Optional.empty();
-      private boolean b = true;
-
-      protected exs.a a() {
-         return this;
-      }
-
-      public exs.a a(jq<ddz> $$0) {
-         this.a = Optional.of(ju.a($$0));
-         return this;
-      }
-
-      public exs.a a(ju<ddz> $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public exs.a e() {
-         this.b = false;
-         return this;
-      }
-
-      @Override
-      public eyd b() {
-         return new exs(this.g(), this.a, this.b);
-      }
-   }
+   T c();
 }

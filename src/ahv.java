@@ -1,20 +1,30 @@
-public record ahv(ym.a b) implements aac<ahm> {
-   public static final zt<ws, ahv> a = aac.a(ahv::a, ahv::new);
+import java.util.List;
+import java.util.Optional;
 
-   private ahv(ws $$0) {
-      this(ym.a.a($$0));
-   }
+public record ahv(int b, List<String> c, Optional<String> d) implements zr<ahb> {
+   public static final zi<wh, ahv> a = zi.a(zg.h, ahv::b, zg.b(1024).a(zg.c(100)), ahv::e, zg.b(32).a(zg::a), ahv::f, ahv::new);
 
-   private void a(ws $$0) {
-      ym.a.a($$0, this.b);
+   public ahv(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public aae<ahv> a() {
-      return ahk.bs;
+   public zt<ahv> a() {
+      return agz.bD;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
+   }
+
+   public List<String> e() {
+      return this.c;
+   }
+
+   public Optional<String> f() {
+      return this.d;
    }
 }

@@ -1,61 +1,19 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dug extends dkm {
-   public static final MapCodec<dug> a = b(dug::new);
+public record dug(alp e, String f) {
+   public static final Codec<dug> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(alp.a.fieldOf("asset_id").forGetter(dug::a), Codec.STRING.fieldOf("translation_key").forGetter(dug::b)).apply($$0, dug::new)
+   );
+   public static final zi<wv, dug> b = zi.a(alp.b, dug::a, zg.o, dug::b, dug::new);
+   public static final Codec<jq<dug>> c = all.a(mb.d, a);
+   public static final zi<wv, jq<dug>> d = zg.a(mb.d, b);
 
-   @Override
-   public MapCodec<dug> a() {
-      return a;
+   public alp a() {
+      return this.e;
    }
 
-   protected dug(dxu.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void b(dxv $$0, dhi $$1, jh $$2, dxv $$3, boolean $$4) {
-      if ($$1.G_().i()) {
-         $$1.a($$2, dko.aV.m(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, axf.CK, axg.e, 1.0F, (1.0F + $$1.H_().i() * 0.2F) * 0.7F);
-      }
-   }
-
-   @Override
-   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
-      jm $$4 = jm.b($$3);
-      if ($$4 != jm.b) {
-         jh $$5 = $$2.a($$4);
-         dxv $$6 = $$1.a_($$5);
-         if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == jm.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == jm.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == jm.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == jm.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
-
-            $$1.a(ls.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+   public String b() {
+      return this.f;
    }
 }

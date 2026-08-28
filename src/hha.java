@@ -1,65 +1,60 @@
-import java.time.Duration;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class hha {
-   private final UUID a = UUID.randomUUID();
-   private final hgv b;
-   private final hhe c;
-   private final hhg d = new hhg();
-   private final hhd e;
-   private final hhf f;
+   private boolean a;
+   @Nullable
+   private hgu.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
 
-   public hha(hgv $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new hhe($$3);
-      this.e = new hhd();
-      this.f = new hhf($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(hgy.i, this.a);
-      });
+   public hha(@Nullable String $$0) {
+      this.d = $$0;
    }
 
-   public void a() {
-      this.e.a(this.b);
+   public void a(hgv.a $$0) {
+      if (this.c != null) {
+         $$0.a(hgu.j, !this.c.equals("vanilla"));
+      }
+
+      $$0.a(hgu.k, this.a());
    }
 
-   public void a(dhf $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
+   private hgu.c a() {
+      gfu $$0 = flz.Q().S();
+      if ($$0 != null && $$0.e()) {
+         return hgu.c.a;
+      } else {
+         return flz.Q().U() ? hgu.c.b : hgu.c.c;
+      }
+   }
+
+   public boolean a(hgr $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(hgs.b, $$0x -> {
+            $$0x.a(hgu.n, this.b);
+            if (this.d != null) {
+               $$0x.a(hgu.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void a(dgw $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? hgu.b.e : hgu.b.a;
+         case b -> hgu.b.b;
+         case c -> hgu.b.c;
+         case d -> hgu.b.d;
+      };
    }
 
    public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
-   }
-
-   public void a(long $$0) {
-      this.d.a($$0);
-   }
-
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
-      }
-   }
-
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
-   }
-
-   public void a(dhi $$0, ah $$1) {
-      alz $$2 = $$1.a();
-      if ($$1.b().g() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.ac();
-         this.b.send(hgw.f, $$2x -> {
-            $$2x.a(hgy.D, $$2.toString());
-            $$2x.a(hgy.E, $$3);
-         });
-      }
+      this.c = $$0;
    }
 }

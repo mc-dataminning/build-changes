@@ -1,21 +1,53 @@
-public record adu(xv b, xr.a c) implements aac<acr> {
-   public static final zt<xg, adu> a = zt.a(xx.d, adu::b, xr.a.a, adu::e, adu::new);
+public class adu implements zr<acg> {
+   public static final zi<wh, adu> a = zr.a(adu::a, adu::new);
+   private final int b;
+   private final jh c;
+   private final int d;
+   private final boolean e;
 
-   @Override
-   public aae<adu> a() {
-      return ahk.C;
+   public adu(int $$0, jh $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.j();
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public void a(acr $$0) {
+   private adu(wh $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
+   }
+
+   private void a(wh $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
+   }
+
+   @Override
+   public zt<adu> a() {
+      return agz.L;
+   }
+
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public boolean b() {
+      return this.e;
    }
 
-   public xr.a e() {
+   public int e() {
+      return this.b;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public jh g() {
       return this.c;
    }
 }

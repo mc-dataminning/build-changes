@@ -1,21 +1,8 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class bka extends bhs {
-   private static final String a = "CanPickUpLoot";
-
-   public bka(Schema $$0) {
-      super($$0, true, "Villager CanPickUpLoot default value", bix.B, "Villager");
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bka::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bka {
 }

@@ -1,50 +1,81 @@
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 
-public interface bbh<C> {
-   bbh<Float> a = a($$0 -> $$0);
+public class bbh {
+   private static final String a = b("");
 
-   float a(C var1);
-
-   float b();
-
-   float c();
-
-   static bbh<Float> a(final Float2FloatFunction $$0) {
-      return new bbh<Float>() {
-         public float a(Float $$0x) {
-            return (Float)$$0.apply($$0);
-         }
-
-         @Override
-         public float b() {
-            return Float.NEGATIVE_INFINITY;
-         }
-
-         @Override
-         public float c() {
-            return Float.POSITIVE_INFINITY;
-         }
-      };
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = b($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   default <C2> bbh<C2> a(final Function<C2, C> $$0) {
-      final bbh<C> $$1 = this;
-      return new bbh<C2>() {
-         @Override
-         public float a(C2 $$0x) {
-            return $$1.a($$0.apply($$0));
-         }
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
+   }
 
-         @Override
-         public float b() {
-            return $$1.b();
-         }
+   private static String b(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return azk.e($$1);
+   }
 
-         @Override
-         public float c() {
-            return $$1.c();
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(azk.e($$2)));
+   }
+
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+   }
+
+   public static Dynamic<?> b(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         String $$2 = $$1.get();
+         if (!$$2.isEmpty() && !$$2.equals("null")) {
+            char $$3 = $$2.charAt(0);
+            char $$4 = $$2.charAt($$2.length() - 1);
+            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
+               try {
+                  JsonElement $$5 = JsonParser.parseString($$2);
+                  if ($$5.isJsonPrimitive()) {
+                     return a($$0.getOps(), $$5.getAsString());
+                  }
+
+                  return $$0.createString(azk.e($$5));
+               } catch (JsonParseException var6) {
+               }
+            }
+
+            return a($$0.getOps(), $$2);
+         } else {
+            return a($$0.getOps());
          }
-      };
+      }
+   }
+
+   public static Optional<String> a(String $$0) {
+      try {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         if ($$1.isJsonObject()) {
+            JsonObject $$2 = $$1.getAsJsonObject();
+            JsonElement $$3 = $$2.get("translate");
+            if ($$3 != null && $$3.isJsonPrimitive()) {
+               return Optional.of($$3.getAsString());
+            }
+         }
+      } catch (JsonParseException var4) {
+      }
+
+      return Optional.empty();
    }
 }

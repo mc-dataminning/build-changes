@@ -1,5 +1,4 @@
-public class gzj extends gyt {
+public class gzj extends gxq {
    public float a;
-   public boolean b;
-   public cir.g c = cir.g.a;
+   public float b;
 }

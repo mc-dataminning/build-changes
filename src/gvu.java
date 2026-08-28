@@ -1,82 +1,28 @@
-public class gvu<S extends gyl, M extends gbz<S>, A extends gbz<S>> extends gwf<S, M> {
-   private final A a;
-   private final A b;
-   private final A c;
-   private final A d;
-   private final gvp e;
+public class gvu extends gwa<gyp, gbz> {
+   private final gbz a;
+   private final gbz b;
+   private final gvk c;
 
-   public gvu(gtn<S, M> $$0, A $$1, A $$2, gvp $$3) {
-      this($$0, $$1, $$2, $$1, $$2, $$3);
-   }
-
-   public gvu(gtn<S, M> $$0, A $$1, A $$2, A $$3, A $$4, gvp $$5) {
+   public gvu(gti<gyp, gbz> $$0, gef $$1, gvk $$2) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
+      this.c = $$2;
+      this.a = new gbz($$1.a(gei.bv));
+      this.b = new gbz($$1.a(gei.bu));
    }
 
-   public static boolean a(cxp $$0, bvs $$1) {
-      dfu $$2 = $$0.a(ku.D);
-      return $$2 != null && a($$2, $$1);
-   }
-
-   private static boolean a(dfu $$0, bvs $$1) {
-      return $$0.c().isPresent() && $$0.a() == $$1;
-   }
-
-   public void a(fgs $$0, gll $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$0, $$1, $$3.Q, bvs.e, $$2, this.a($$3, bvs.e));
-      this.a($$0, $$1, $$3.R, bvs.d, $$2, this.a($$3, bvs.d));
-      this.a($$0, $$1, $$3.S, bvs.c, $$2, this.a($$3, bvs.c));
-      this.a($$0, $$1, $$3.ao, bvs.f, $$2, this.a($$3, bvs.f));
-   }
-
-   private void a(fgs $$0, gll $$1, cxp $$2, bvs $$3, int $$4, A $$5) {
-      dfu $$6 = $$2.a(ku.D);
-      if ($$6 != null && a($$6, $$3)) {
-         this.d().a($$5);
-         this.a($$5, $$3);
-         alz $$7 = $$6.c().orElseThrow();
-         dfs.d $$8 = this.a($$3) ? dfs.d.b : dfs.d.a;
-         this.e.a($$8, $$7, $$5, $$2, $$0, $$1, $$4);
+   public void a(fgl $$0, glg $$1, int $$2, gyp $$3, float $$4, float $$5) {
+      cxg $$6 = $$3.c;
+      dfl $$7 = $$6.a(ku.D);
+      if ($$7 != null && $$7.c().isPresent()) {
+         this.a($$0, $$1, $$3, $$6, $$7.c().get(), $$2);
+      } else if ($$3.d) {
+         this.a($$0, $$1, $$3, cxg.j, dfk.k, $$2);
       }
    }
 
-   protected void a(A $$0, bvs $$1) {
-      $$0.c_(false);
-      switch ($$1) {
-         case f:
-            $$0.o.k = true;
-            $$0.p.k = true;
-            break;
-         case e:
-            $$0.q.k = true;
-            $$0.r.k = true;
-            $$0.s.k = true;
-            break;
-         case d:
-            $$0.q.k = true;
-            $$0.t.k = true;
-            $$0.u.k = true;
-            break;
-         case c:
-            $$0.t.k = true;
-            $$0.u.k = true;
-      }
-   }
-
-   private A a(S $$0, bvs $$1) {
-      if (this.a($$1)) {
-         return $$0.ae ? this.c : this.a;
-      } else {
-         return $$0.ae ? this.d : this.b;
-      }
-   }
-
-   private boolean a(bvs $$0) {
-      return $$0 == bvs.d;
+   private void a(fgl $$0, glg $$1, gyp $$2, cxg $$3, alp $$4, int $$5) {
+      gbz $$6 = $$2.ae ? this.b : this.a;
+      $$6.a($$2);
+      this.c.a(dfj.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
    }
 }

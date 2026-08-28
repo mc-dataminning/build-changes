@@ -1,30 +1,42 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.datafixers.types.templates.Const.PrimitiveType;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.PrimitiveCodec;
 
-public class bkb extends DataFix {
-   public bkb(Schema $$0) {
-      super($$0, false);
+public class bkb extends Schema {
+   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
+      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
+         return $$0.getStringValue($$1).map(bkb::a);
+      }
+
+      public <T> T a(DynamicOps<T> $$0, String $$1) {
+         return (T)$$0.createString($$1);
+      }
+
+      @Override
+      public String toString() {
+         return "NamespacedString";
+      }
+   };
+   private static final Type<String> b = new PrimitiveType(a);
+
+   public bkb(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.x);
-      OpticFinder<?> $$1 = $$0.findField("buy");
-      OpticFinder<?> $$2 = $$0.findField("buyB");
-      OpticFinder<?> $$3 = $$0.findField("sell");
-      OpticFinder<Pair<String, String>> $$4 = DSL.fieldFinder("id", DSL.named(bix.D.typeName(), bkl.a()));
-      Function<Typed<?>, Typed<?>> $$5 = $$1x -> this.a($$4, $$1x);
-      return this.fixTypeEverywhereTyped("Villager trade fix", $$0, $$4x -> $$4x.updateTyped($$1, $$5).updateTyped($$2, $$5).updateTyped($$3, $$5));
+   public static String a(String $$0) {
+      alp $$1 = alp.c($$0);
+      return $$1 != null ? $$1.toString() : $$0;
    }
 
-   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
-      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
+   public static Type<String> a() {
+      return b;
+   }
+
+   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
+      return super.getChoiceType($$0, a($$1));
    }
 }

@@ -1,63 +1,56 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Locale;
+import java.util.function.Function;
 
-public class aqk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.transfer.error.no_players"));
+public class aqk implements aqh {
+   static final SuggestionProvider<ew> b = ($$0, $$1) -> fb.a(a($$0).a(), $$1);
+   public static final Function<String, aqi.c> a = $$0 -> new aqi.c() {
+         @Override
+         public aqh a(CommandContext<ew> $$0x) {
+            return new aqk(aqk.a($$0), fx.a($$0, $$0));
+         }
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("transfer").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ex.a("hostname", StringArgumentType.string())
-                     .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((ew)$$0x.getSource()).h()))))
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              $$0x -> a(
-                                    (ew)$$0x.getSource(),
-                                    StringArgumentType.getString($$0x, "hostname"),
-                                    IntegerArgumentType.getInteger($$0x, "port"),
-                                    List.of(((ew)$$0x.getSource()).h())
-                                 )
-                           ))
-                        .then(
-                           ex.a("players", fj.d())
-                              .executes(
-                                 $$0x -> a(
-                                       (ew)$$0x.getSource(),
-                                       StringArgumentType.getString($$0x, "hostname"),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       fj.f($$0x, "players")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+         @Override
+         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
+            return $$0.then(ex.a("storage").then($$1.apply(ex.a($$0, fx.a()).suggests(aqk.b))));
+         }
+      };
+   private final evn c;
+   private final alp d;
+
+   static evn a(CommandContext<ew> $$0) {
+      return ((ew)$$0.getSource()).l().aK();
    }
 
-   private static int a(ew $$0, String $$1, int $$2, Collection<asi> $$3) throws CommandSyntaxException {
-      if ($$3.isEmpty()) {
-         throw a.create();
-      } else {
-         for (asi $$4 : $$3) {
-            $$4.f.b(new aas($$1, $$2));
-         }
+   aqk(evn $$0, alp $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-         if ($$3.size() == 1) {
-            $$0.a(() -> xv.a("commands.transfer.success.single", $$3.iterator().next().p_(), $$1, $$2), true);
-         } else {
-            $$0.a(() -> xv.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
-         }
+   @Override
+   public void a(um $$0) {
+      this.c.a(this.d, $$0);
+   }
 
-         return $$3.size();
-      }
+   @Override
+   public um a() {
+      return this.c.a(this.d);
+   }
+
+   @Override
+   public xk b() {
+      return xk.a("commands.data.storage.modified", xk.a(this.d));
+   }
+
+   @Override
+   public xk a(vj $$0) {
+      return xk.a("commands.data.storage.query", xk.a(this.d), vb.c($$0));
+   }
+
+   @Override
+   public xk a(fo.g $$0, double $$1, int $$2) {
+      return xk.a("commands.data.storage.get", $$0.a(), xk.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

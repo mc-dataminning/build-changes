@@ -1,40 +1,33 @@
-public class cwz extends cxl {
-   public cwz(cxl.a $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cwz(jq<awu> e, float f, float g, xk h) {
+   public static final Codec<cwz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awu.b.fieldOf("sound_event").forGetter(cwz::a),
+               azd.o.fieldOf("use_duration").forGetter(cwz::b),
+               azd.o.fieldOf("range").forGetter(cwz::c),
+               xm.a.fieldOf("description").forGetter(cwz::d)
+            )
+            .apply($$0, cwz::new)
+   );
+   public static final zi<wv, cwz> b = zi.a(awu.d, cwz::a, zg.l, cwz::b, zg.l, cwz::c, xm.b, cwz::d, cwz::new);
+   public static final Codec<jq<cwz>> c = all.a(mb.I, a);
+   public static final zi<wv, jq<cwz>> d = zg.a(mb.I, b);
+
+   public jq<awu> a() {
+      return this.e;
    }
 
-   @Override
-   public btj a(dbi $$0) {
-      cpx $$1 = $$0.o();
-      dhi $$2 = $$0.q();
-      jh $$3 = $$0.a();
-      dxv $$4 = $$2.a_($$3);
-      if (!dlb.i($$4) && !dlc.h($$4) && !dld.h($$4)) {
-         jh $$5 = $$3.a($$0.k());
-         if (djz.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, axf.jt, axg.e, 1.0F, $$2.H_().i() * 0.4F + 0.8F);
-            dxv $$6 = djz.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, ecr.i, $$3);
-            cxp $$7 = $$0.n();
-            if ($$1 instanceof asi) {
-               ao.z.a((asi)$$1, $$5, $$7);
-               $$7.a(1, $$1, bwg.d($$0.p()));
-            }
+   public float b() {
+      return this.f;
+   }
 
-            return btj.a;
-         } else {
-            return btj.d;
-         }
-      } else {
-         $$2.a($$1, $$3, axf.jt, axg.e, 1.0F, $$2.H_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.b(dyl.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, ecr.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, bwg.d($$0.p()));
-         }
+   public float c() {
+      return this.g;
+   }
 
-         return btj.a;
-      }
+   public xk d() {
+      return this.h;
    }
 }

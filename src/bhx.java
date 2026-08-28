@@ -2,7 +2,7 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import java.util.Locale;
 import java.util.Optional;
 
 public class bhx extends DataFix {
@@ -10,21 +10,12 @@ public class bhx extends DataFix {
       super($$0, $$1);
    }
 
-   private static String a(String $$0) {
-      return $$0.equals("health") ? "hearts" : "integer";
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.H);
-      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
-            if ($$1.isEmpty()) {
-               String $$2 = $$0xx.get("CriteriaName").asString("");
-               String $$3 = a($$2);
-               return $$0xx.set("RenderType", $$0xx.createString($$3));
-            } else {
-               return $$0xx;
-            }
-         }));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(bin.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Optional<String> $$1 = $$0x.get("lang").asString().result();
+               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
+            })
+      );
    }
 }

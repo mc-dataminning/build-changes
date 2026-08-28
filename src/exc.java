@@ -1,30 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class exc extends exh {
-   public static final MapCodec<exc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cxl.e.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, exc::new)
-   );
-   private final jq<cxl> j;
+public class exc extends ewr {
+   public static final MapCodec<exc> a = a(exc::new);
 
-   private exc(jq<cxl> $$0, int $$1, int $$2, List<ezy> $$3, List<eyd> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   exc(List<ewy> $$0, List<ezr> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public exg a() {
-      return exd.c;
+   public ewz a() {
+      return eww.h;
    }
 
    @Override
-   public void a(Consumer<cxp> $$0, ewp $$1) {
-      $$0.accept(new cxp(this.j));
+   protected ewq a(List<? extends ewq> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ewq)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ewq $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   public static exh.a<?> a(dhh $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new exc($$0.j().f(), $$1, $$2, $$3, $$4));
+   public static exc.a a(ewy.a<?>... $$0) {
+      return new exc.a($$0);
+   }
+
+   public static class a extends ewy.a<exc.a> {
+      private final Builder<ewy> a = ImmutableList.builder();
+
+      public a(ewy.a<?>... $$0) {
+         for (ewy.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected exc.a a() {
+         return this;
+      }
+
+      @Override
+      public exc.a c(ewy.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ewy b() {
+         return new exc(this.a.build(), this.f());
+      }
    }
 }

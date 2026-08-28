@@ -1,77 +1,70 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
 public class cco extends ccv {
-   private static final int g = 240;
-   private final Predicate<btg> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
+   protected final bwf a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dgz f;
 
-   public cco(bwi $$0, Predicate<btg> $$1) {
-      super($$0);
-      this.h = $$1;
-   }
-
-   public cco(bwi $$0, int $$1, Predicate<btg> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
-   }
-
-   protected int f() {
-      return Math.max(240, this.c);
+   public cco(bwf $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dW();
+      this.a(EnumSet.of(ccv.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!super.b()) {
+      if (this.a.O_() != null) {
+         return false;
+      } else if (!this.f.V()) {
+         return false;
+      } else if (!this.a.bY()) {
+         return false;
+      } else if (!this.f.h(this.a.dw())) {
          return false;
       } else {
-         return !a(this.d).N().b(dhe.c) ? false : this.a(this.d.dW().al()) && !this.h();
+         return !this.a.a(bvj.f).f() ? false : this.h();
       }
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.a = 0;
+   protected boolean h() {
+      fbr $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.d;
+         this.c = $$0.e;
+         this.d = $$0.f;
+         return true;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.du(), 2.0) && this.a(this.d.dW().al());
+      return !this.a.L().m();
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.d.dW().a(this.d.ar(), this.e, -1);
+   public void d() {
+      this.a.L().a(this.b, this.c, this.d, this.e);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (this.d.dZ().a(20) == 0) {
-         this.d.dW().c(1019, this.e, 0);
-         if (!this.d.aI) {
-            this.d.a(this.d.fA());
+   @Nullable
+   protected fbr i() {
+      bac $$0 = this.a.dZ();
+      jh $$1 = this.a.dw();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         jh $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
+            return fbr.c($$3);
          }
       }
 
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dW().a(this.d.ar(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dW().al())) {
-         this.d.dW().a(this.e, false);
-         this.d.dW().c(1021, this.e, 0);
-         this.d.dW().c(2001, this.e, dkm.j(this.d.dW().a_(this.e)));
-      }
-   }
-
-   private boolean a(btg $$0) {
-      return this.h.test($$0);
+      return null;
    }
 }

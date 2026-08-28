@@ -1,121 +1,119 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class cvc extends cug {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   public static final int p = 3;
-   public static final int u = 8;
-   public static final int v = 26;
-   public static final int w = 44;
-   private static final int y = 98;
-   public static final int x = 48;
-   private final dhi z;
-   private final dcn A;
-   private final dcn B;
-   private final dcn C;
-   private final ctw D = ctw.a();
+public class cvc {
+   private static final Codec<cvc> e = ax.a.flatComapMap($$0 -> new cvc(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
+   private static final Codec<cvc> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azd.a(ax.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cvc::a)
+            )
+            .apply($$0, cvc::new)
+   );
+   public static final Codec<cvc> a = Codec.withAlternative(f, e);
+   public static final zi<wv, cvc> b = zi.a(ax.b.a(zg.a()), $$0 -> $$0.h, zg.b, cvc::a, cvc::new);
+   public static final xk c = xk.c("item.canBreak").a(n.h);
+   public static final xk d = xk.c("item.canPlace").a(n.h);
+   private static final xk g = xk.c("item.canUse.unknown").a(n.h);
+   private final List<ax> h;
+   private final boolean i;
+   @Nullable
+   private List<xk> j;
+   @Nullable
+   private dxs k;
+   private boolean l;
+   private boolean m;
 
-   public cvc(int $$0, cpw $$1) {
-      this($$0, $$1, ctp.a);
+   public cvc(List<ax> $$0, boolean $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   public cvc(int $$0, cpw $$1, ctp $$2) {
-      this($$0, $$1, $$2, $$1.k.dW());
-   }
-
-   private cvc(int $$0, cpw $$1, ctp $$2, dhi $$3) {
-      super(cul.v, $$0, $$1, $$2, a($$3.P()));
-      this.z = $$3;
-      this.A = $$3.P().a(dcn.b);
-      this.B = $$3.P().a(dcn.c);
-      this.C = $$3.P().a(dcn.d);
-      this.a(this.D).a(0);
-   }
-
-   private static cuh a(dcf $$0) {
-      dcn $$1 = $$0.a(dcn.b);
-      dcn $$2 = $$0.a(dcn.c);
-      dcn $$3 = $$0.a(dcn.d);
-      return cuh.a().a(0, 8, 48, $$2::a).a(1, 26, 48, $$1::a).a(2, 44, 48, $$3::a).a(3, 98, 48).a();
-   }
-
-   @Override
-   protected boolean a(dxv $$0) {
-      return $$0.a(dko.ow);
-   }
-
-   @Override
-   protected void a(cpx $$0, cxp $$1) {
-      $$1.a($$0.dW(), $$0, $$1.L());
-      this.t.a($$0, this.o());
-      this.e(0);
-      this.e(1);
-      this.e(2);
-      this.q.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
-   }
-
-   private List<cxp> o() {
-      return List.of(this.s.a(0), this.s.a(1), this.s.a(2));
-   }
-
-   private dda p() {
-      return new dda(this.s.a(0), this.s.a(1), this.s.a(2));
-   }
-
-   private void e(int $$0) {
-      cxp $$1 = this.s.a($$0);
-      if (!$$1.f()) {
-         $$1.h(1);
-         this.s.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(btc $$0) {
-      super.a($$0);
-      if (this.z instanceof ash) {
-         boolean $$1 = this.b(0).h() && this.b(1).h() && this.b(2).h() && !this.b(this.n()).h();
-         this.D.a($$1 ? 1 : 0);
-      }
-   }
-
-   @Override
-   public void l() {
-      dda $$0 = this.p();
-      Optional<dcj<dcz>> $$2;
-      if (this.z instanceof ash $$1) {
-         $$2 = $$1.s().a(dcp.g, $$0, $$1);
+   private static boolean a(dxs $$0, @Nullable dxs $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
+         return false;
+      } else if (!$$2) {
+         return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
+      } else if ($$0.b() != null && $$1.b() != null) {
+         ke $$3 = $$0.c().K_();
+         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
       } else {
-         $$2 = Optional.empty();
+         return false;
+      }
+   }
+
+   public boolean a(dxs $$0) {
+      if (a($$0, this.k, this.m)) {
+         return this.l;
+      } else {
+         this.k = $$0;
+         this.m = false;
+
+         for (ax $$1 : this.h) {
+            if ($$1.a($$0)) {
+               this.m = this.m | $$1.a();
+               this.l = true;
+               return true;
+            }
+         }
+
+         this.l = false;
+         return false;
+      }
+   }
+
+   private List<xk> b() {
+      if (this.j == null) {
+         this.j = a(this.h);
       }
 
-      $$2.ifPresentOrElse($$1x -> {
-         cxp $$2x = ((dcz)$$1x.b()).a($$0, this.z.K_());
-         this.t.a($$1x);
-         this.t.a(0, $$2x);
-      }, () -> {
-         this.t.a(null);
-         this.t.a(0, cxp.j);
-      });
+      return this.j;
+   }
+
+   public void a(Consumer<xk> $$0) {
+      this.b().forEach($$0);
+   }
+
+   public cvc a(boolean $$0) {
+      return new cvc(this.h, $$0);
+   }
+
+   private static List<xk> a(List<ax> $$0) {
+      for (ax $$1 : $$0) {
+         if ($$1.b().isEmpty()) {
+            return List.of(g);
+         }
+      }
+
+      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dkd)$$0x.a()).f().a(n.i)).toList();
+   }
+
+   public boolean a() {
+      return this.i;
    }
 
    @Override
-   public boolean a(cxp $$0, cuz $$1) {
-      return $$1.c != this.t && super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean c(cxp $$0) {
-      if (this.B.a($$0) && !this.b(0).h()) {
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
       } else {
-         return this.A.a($$0) && !this.b(1).h() ? true : this.C.a($$0) && !this.b(2).h();
+         return !($$0 instanceof cvc $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
       }
    }
 
-   public boolean m() {
-      return this.D.b() > 0;
+   @Override
+   public int hashCode() {
+      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
+   }
+
+   @Override
+   public String toString() {
+      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
    }
 }

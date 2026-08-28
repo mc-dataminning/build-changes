@@ -1,30 +1,33 @@
-public class gdd extends gch {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final geo e;
-   private final geo f;
+public class gdd extends gde {
+   protected final gej a;
 
-   public gdd(geo $$0) {
-      super($$0, glv::d);
-      this.e = $$0.b("plate");
-      this.f = $$0.b("handle");
+   public gdd(gej $$0) {
+      super($$0);
+      this.a = $$0.b("head");
    }
 
-   public static geu a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      $$1.a("plate", get.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), geq.a);
-      $$1.a("handle", get.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), geq.a);
-      return geu.a($$0, 64, 64);
+   public static ger a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("head", geo.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gel.a);
+      return $$0;
    }
 
-   public geo b() {
-      return this.e;
+   public static gep b() {
+      ger $$0 = a();
+      get $$1 = $$0.a();
+      $$1.b("head").a("hat", geo.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gen(0.25F)), gel.a);
+      return gep.a($$0, 64, 64);
    }
 
-   public geo c() {
-      return this.f;
+   public static gep c() {
+      ger $$0 = a();
+      return gep.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

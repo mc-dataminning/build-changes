@@ -1,81 +1,45 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class gpx implements gpl.a {
-   private final fmg a;
+public class gpx implements gpg.a {
+   private final List<jh> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
 
-   public gpx(fmg $$0) {
-      this.a = $$0;
+   public void a(jh $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
    @Override
-   public void a(fgs $$0, gll $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      dgn $$6 = this.a.t.dW();
-      jh $$7 = jh.a($$2, $$3, $$4);
+   public void a(fgl $$0, glg $$1, double $$2, double $$3, double $$4) {
+      fgp $$5 = $$1.getBuffer(glq.B());
 
-      for (jh $$8 : jh.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dxv $$9 = $$6.a_($$8);
-         if (!$$9.a(dko.a)) {
-            fcs $$10 = $$9.f($$6, $$8);
-
-            for (fbt $$11 : $$10.e()) {
-               fbt $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               int $$19 = -2130771968;
-               if ($$9.c($$6, $$8, jm.e)) {
-                  fgw $$20 = $$1.getBuffer(glv.B());
-                  $$20.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$18).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jm.d)) {
-                  fgw $$21 = $$1.getBuffer(glv.B());
-                  $$21.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jm.f)) {
-                  fgw $$22 = $$1.getBuffer(glv.B());
-                  $$22.a($$5, $$16, $$14, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$15).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jm.c)) {
-                  fgw $$23 = $$1.getBuffer(glv.B());
-                  $$23.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$14, $$15).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jm.a)) {
-                  fgw $$24 = $$1.getBuffer(glv.B());
-                  $$24.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jm.b)) {
-                  fgw $$25 = $$1.getBuffer(glv.B());
-                  $$25.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$18).a(-2130771968);
-               }
-            }
-         }
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         jh $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         gma.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
       }
    }
 }

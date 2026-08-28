@@ -1,30 +1,27 @@
-public class gue extends grp<crd, gzx> {
-   public static final alz a = alz.b("textures/entity/trident.png");
-   private final gds b;
+public class gue extends gqf<cip, gzw, gdq> {
+   private static final alp a = alp.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public gue(grq.a $$0) {
-      super($$0);
-      this.b = new gds($$0.a(gen.dg));
+   public gue(grl.a $$0) {
+      super($$0, new gdq($$0.a(gei.dq)), new gdq($$0.a(gei.dr)), 0.7F);
    }
 
-   public void a(gzx $$0, fgs $$1, gll $$2, int $$3) {
-      $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
-      fgw $$4 = gso.a($$2, this.b.a(a), false, $$0.c);
-      this.b.a($$1, $$4, $$3, hbc.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   protected float a(gzw $$0) {
+      float $$1 = super.g($$0);
+      return $$0.ae ? $$1 * 0.83F : $$1;
    }
 
-   public gzx a() {
-      return new gzx();
+   public gzw b() {
+      return new gzw();
    }
 
-   public void a(crd $$0, gzx $$1, float $$2) {
+   public void a(cip $$0, gzw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.k($$2);
-      $$1.a = $$0.j($$2);
-      $$1.c = $$0.D();
+      $$1.a = !$$0.bj() && $$0.aJ();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.e_() && $$0.p();
+   }
+
+   public alp b(gzw $$0) {
+      return a;
    }
 }

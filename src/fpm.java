@@ -1,36 +1,17 @@
-import javax.annotation.Nullable;
-
-public class fpm extends fod {
-   @Nullable
-   protected fpt a;
-   protected boolean b;
-
-   public fpm(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, xu.a);
-      this.b = $$4;
+public record fpm(alp a, alp b, alp c, alp d) {
+   public fpm(alp $$0, alp $$1) {
+      this($$0, $$0, $$1, $$1);
    }
 
-   public void a(fpt $$0) {
-      this.a = $$0;
+   public fpm(alp $$0, alp $$1, alp $$2) {
+      this($$0, $$1, $$2, $$1);
    }
 
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(fsd $$0) {
-      this.c($$0);
-   }
-
-   @Override
-   public void b(fns $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         $$0.a(glv::C, this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
+   public alp a(boolean $$0, boolean $$1) {
+      if ($$0) {
+         return $$1 ? this.c : this.a;
+      } else {
+         return $$1 ? this.d : this.b;
       }
    }
 }

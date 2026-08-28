@@ -1,32 +1,23 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public record abt(long c, List<abt.a> d) implements abf {
-   public static final abf.b<abt> a = abf.a("debug/redstone_update_order");
-   public static final zt<ws, abt> b = zt.a(zr.k, abt::b, abt.a.a.a(zr.a()), abt::c, abt::new);
+public record abt(Set<alp> b) implements zr<abo> {
+   public static final zi<wh, abt> a = zr.a(abt::a, abt::new);
+
+   private abt(wh $$0) {
+      this($$0.a(HashSet::new, wh::q));
+   }
+
+   private void a(wh $$0) {
+      $$0.a(this.b, wh::a);
+   }
 
    @Override
-   public abf.b<abt> a() {
-      return a;
+   public zt<abt> a() {
+      return abu.c;
    }
 
-   public long b() {
-      return this.c;
-   }
-
-   public List<abt.a> c() {
-      return this.d;
-   }
-
-   public static record a(jh b, evf c) {
-      public static final zt<ByteBuf, abt.a> a = zt.a(jh.b, abt.a::a, evf.a, abt.a::b, abt.a::new);
-
-      public jh a() {
-         return this.b;
-      }
-
-      public evf b() {
-         return this.c;
-      }
+   public void a(abo $$0) {
+      $$0.a(this);
    }
 }

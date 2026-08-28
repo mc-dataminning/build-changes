@@ -1,29 +1,33 @@
-public class aiz implements aac<ahm> {
-   public static final zt<ws, aiz> a = aac.a(aiz::a, aiz::new);
-   private final int b;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aiz(int $$0) {
+public class aiz implements zr<ahb> {
+   public static final zi<wh, aiz> a = zr.a(aiz::a, aiz::new);
+   private final UUID b;
+
+   public aiz(UUID $$0) {
       this.b = $$0;
    }
 
-   private aiz(ws $$0) {
-      this.b = $$0.l();
+   private aiz(wh $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(ws $$0) {
-      $$0.c(this.b);
+   private void a(wh $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public aae<aiz> a() {
-      return ahk.bY;
+   public zt<aiz> a() {
+      return agz.cj;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bvb a(arx $$0) {
+      return $$0.a(this.b);
    }
 }

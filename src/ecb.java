@@ -1,14 +1,45 @@
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface ecb<T> extends AutoCloseable {
-   CompletableFuture<ebw<T>> a(dgo var1);
+public class ecb<T extends ebr> implements eca<T> {
+   private final ebt<T> a;
+   private final ebw<T> b;
 
-   void a(ebw<T> var1);
+   public ecb(ebt<T> $$0, ebw<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void a(boolean var1);
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
+   }
 
    @Override
-   default void close() throws IOException {
+   public Iterable<T> a() {
+      return this.a.a();
+   }
+
+   @Override
+   public <U extends T> void a(eby<T, U> $$0, ayg<U> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void a(fbm $$0, Consumer<T> $$1) {
+      this.b.b($$0, ayg.forConsumer($$1));
+   }
+
+   @Override
+   public <U extends T> void a(eby<T, U> $$0, fbm $$1, ayg<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

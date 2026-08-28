@@ -1,13 +1,57 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public abstract class awa<T> implements avp {
-   @Override
-   public final CompletableFuture<Void> a(avp.a $$0, avv $$1, Executor $$2, Executor $$3) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, bps.a()), $$2).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a((T)$$1x, $$1, bps.a()), $$3);
+public class awa extends awc<GameProfile> {
+   private final int a;
+   private final boolean b;
+
+   public awa(GameProfile $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   protected abstract T b(avv var1, bpt var2);
+   public awa(JsonObject $$0) {
+      super(b($$0));
+      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
+      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
+   }
 
-   protected abstract void a(T var1, avv var2, bpt var3);
+   public int a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         $$0.addProperty("level", this.a);
+         $$0.addProperty("bypassesPlayerLimit", this.b);
+      }
+   }
+
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
+
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
+   }
 }

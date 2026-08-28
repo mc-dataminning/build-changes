@@ -1,54 +1,93 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.StringUtils;
 
-public interface bar {
-   bar a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
+public class bar {
+   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
+   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
+   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
 
-   boolean validate(baq var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
+   public static String a(int $$0, float $$1) {
+      int $$2 = azu.d((float)$$0 / $$1);
+      int $$3 = $$2 / 60;
+      $$2 %= 60;
+      int $$4 = $$3 / 60;
+      $$3 %= 60;
+      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
    }
 
-   private static boolean a(baq $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
+   public static String a(String $$0) {
+      return a.matcher($$0).replaceAll("");
    }
 
-   static bar a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
+   public static boolean b(@Nullable String $$0) {
+      return StringUtils.isEmpty($$0);
+   }
+
+   public static String a(String $$0, int $$1, boolean $$2) {
+      if ($$0.length() <= $$1) {
+         return $$0;
+      } else {
+         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
+      }
+   }
+
+   public static int c(String $$0) {
+      if ($$0.isEmpty()) {
+         return 0;
+      } else {
+         Matcher $$1 = b.matcher($$0);
+         int $$2 = 1;
+
+         while ($$1.find()) {
+            $$2++;
          }
-      };
+
+         return $$2;
+      }
    }
 
-   @Nullable
-   static bar a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
+   public static boolean d(String $$0) {
+      return c.matcher($$0).find();
+   }
 
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+   public static String e(String $$0) {
+      return a($$0, 256, false);
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
+   }
+
+   public static boolean f(String $$0) {
+      return $$0.length() > 16 ? false : $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
+   }
+
+   public static String g(String $$0) {
+      return a($$0, false);
+   }
+
+   public static String a(String $$0, boolean $$1) {
+      StringBuilder $$2 = new StringBuilder();
+
+      for (char $$3 : $$0.toCharArray()) {
+         if (a($$3)) {
+            $$2.append($$3);
+         } else if ($$1 && $$3 == '\n') {
+            $$2.append($$3);
+         }
+      }
+
+      return $$2.toString();
+   }
+
+   public static boolean a(int $$0) {
+      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
+   }
+
+   public static boolean h(@Nullable String $$0) {
+      return $$0 != null && !$$0.isEmpty() ? $$0.chars().allMatch(bar::a) : true;
    }
 }

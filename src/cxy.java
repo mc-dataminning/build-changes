@@ -1,43 +1,17 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
-
-public class cxy extends cxl {
-   private static final Logger a = LogUtils.getLogger();
-
-   public cxy(cxl.a $$0) {
-      super($$0);
+public class cxy extends cvm {
+   public cxy(dkd $$0, cxc.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public btj a(dhi $$0, cpx $$1, bti $$2) {
-      cxp $$3 = $$1.b($$2);
-      List<aly<dce<?>>> $$4 = $$3.a(ku.ac, List.of());
-      $$3.a(1, $$1);
-      if ($$4.isEmpty()) {
-         return btj.d;
-      } else {
-         if (!$$0.C) {
-            dcl $$5 = $$0.p().aI();
-            List<dcj<?>> $$6 = new ArrayList<>($$4.size());
+   public bta a(daz $$0) {
+      return bta.e;
+   }
 
-            for (aly<dce<?>> $$7 : $$4) {
-               Optional<dcj<?>> $$8 = $$5.b($$7);
-               if (!$$8.isPresent()) {
-                  a.error("Invalid recipe: {}", $$7);
-                  return btj.d;
-               }
-
-               $$6.add($$8.get());
-            }
-
-            $$1.a($$6);
-            $$1.b(axp.c.b(this));
-         }
-
-         return btj.a;
-      }
+   @Override
+   public bta a(dgz $$0, cpo $$1, bsz $$2) {
+      fbn $$3 = a($$0, $$1, dgh.b.b);
+      fbn $$4 = $$3.a($$3.b().d());
+      return super.a(new daz($$1, $$2, $$4));
    }
 }

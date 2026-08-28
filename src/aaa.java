@@ -1,14 +1,14 @@
-public abstract class aaa<T extends xb> implements aac<T> {
-   private final Iterable<aac<? super T>> a;
+import io.netty.buffer.ByteBuf;
 
-   protected aaa(Iterable<aac<? super T>> $$0) {
-      this.a = $$0;
-   }
-
-   public final Iterable<aac<? super T>> b() {
-      return this.a;
-   }
+public record aaa(xk b) implements zr<zx> {
+   public static final zi<ByteBuf, aaa> a = xm.f.a(aaa::new, aaa::b);
 
    @Override
-   public abstract aae<? extends aaa<T>> a();
+   public zt<aaa> a() {
+      return aaj.c;
+   }
+
+   public void a(zx $$0) {
+      $$0.a(this);
+   }
 }

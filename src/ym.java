@@ -1,44 +1,18 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public record ym(UUID a, cqa b) {
-   public yr a(Duration $$0) {
-      return new yr.a(this.b.a(), () -> this.b.b().a($$0));
-   }
+public interface ym {
+   MapCodec<ym> c = xm.a(new ym.a[]{yn.b, yl.b, yu.b}, ym.a::a, ym::a, "source");
 
-   public yp.b a(UUID $$0) {
-      return new yp($$0, this.a).a(this.b);
-   }
+   Stream<um> a(ew var1) throws CommandSyntaxException;
 
-   public ym.a a() {
-      return new ym.a(this.a, this.b.b());
-   }
+   ym.a<?> a();
 
-   public boolean b() {
-      return this.b.b().a();
-   }
-
-   public UUID c() {
-      return this.a;
-   }
-
-   public cqa d() {
-      return this.b;
-   }
-
-   public static record a(UUID a, cqa.a b) {
-      public static ym.a a(ws $$0) {
-         return new ym.a($$0.n(), new cqa.a($$0));
-      }
-
-      public static void a(ws $$0, ym.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
-      }
-
-      public ym a(GameProfile $$0, bar $$1) throws cqa.b {
-         return new ym(this.a, cqa.a($$1, $$0.getId(), this.b));
+   public static record a<T extends ym>(MapCodec<T> a, String b) implements baq {
+      @Override
+      public String c() {
+         return this.b;
       }
    }
 }

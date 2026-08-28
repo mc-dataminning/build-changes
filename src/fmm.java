@@ -1,30 +1,37 @@
-import java.util.function.IntFunction;
+import org.joml.Vector3f;
 
-public enum fmm implements bah {
-   a(0, "options.prioritizeChunkUpdates.none"),
-   b(1, "options.prioritizeChunkUpdates.byPlayer"),
-   c(2, "options.prioritizeChunkUpdates.nearby");
-
-   private static final IntFunction<fmm> d = ayv.a(fmm::b, values(), ayv.a.b);
-   private final int e;
-   private final String f;
-
-   private fmm(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public record fmm(fmm.c a, fmo... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, fmo[] var3, int var4, int var5, float var6);
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   public static class b {
+      public static final fmm.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final fmm.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            azu.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            azu.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            azu.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   public interface c {
+      void apply(gej var1, Vector3f var2);
    }
 
-   public static fmm a(int $$0) {
-      return d.apply($$0);
+   public static class d {
+      public static final fmm.c a = gej::a;
+      public static final fmm.c b = gej::b;
+      public static final fmm.c c = gej::c;
    }
 }

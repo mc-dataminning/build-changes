@@ -1,32 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Locale;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public record ayy(int b) {
-   private static final String c = "#";
-   public static final Codec<ayy> a = Codec.STRING.comapFlatMap($$0 -> {
-      if (!$$0.startsWith("#")) {
-         return DataResult.error(() -> "Not a color code: " + $$0);
-      } else {
-         try {
-            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
-            return DataResult.success(new ayy($$1));
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
-         }
-      }
-   }, ayy::b);
+public class ayy implements DataOutput {
+   private final DataOutput a;
 
-   private String b() {
-      return String.format(Locale.ROOT, "#%08X", this.b);
+   public ayy(DataOutput $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public String toString() {
-      return this.b();
+   public void write(int $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   public int a() {
-      return this.b;
+   @Override
+   public void write(byte[] $$0) throws IOException {
+      this.a.write($$0);
+   }
+
+   @Override
+   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
+      this.a.write($$0, $$1, $$2);
+   }
+
+   @Override
+   public void writeBoolean(boolean $$0) throws IOException {
+      this.a.writeBoolean($$0);
+   }
+
+   @Override
+   public void writeByte(int $$0) throws IOException {
+      this.a.writeByte($$0);
+   }
+
+   @Override
+   public void writeShort(int $$0) throws IOException {
+      this.a.writeShort($$0);
+   }
+
+   @Override
+   public void writeChar(int $$0) throws IOException {
+      this.a.writeChar($$0);
+   }
+
+   @Override
+   public void writeInt(int $$0) throws IOException {
+      this.a.writeInt($$0);
+   }
+
+   @Override
+   public void writeLong(long $$0) throws IOException {
+      this.a.writeLong($$0);
+   }
+
+   @Override
+   public void writeFloat(float $$0) throws IOException {
+      this.a.writeFloat($$0);
+   }
+
+   @Override
+   public void writeDouble(double $$0) throws IOException {
+      this.a.writeDouble($$0);
+   }
+
+   @Override
+   public void writeBytes(String $$0) throws IOException {
+      this.a.writeBytes($$0);
+   }
+
+   @Override
+   public void writeChars(String $$0) throws IOException {
+      this.a.writeChars($$0);
+   }
+
+   @Override
+   public void writeUTF(String $$0) throws IOException {
+      this.a.writeUTF($$0);
    }
 }

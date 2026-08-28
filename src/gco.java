@@ -1,67 +1,37 @@
-public class gco extends gad<gzf> {
-   public gco(geo $$0) {
+public class gco extends gbh<gxq> {
+   private final gej a;
+   private final gej b;
+
+   public gco(gej $$0) {
       super($$0);
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public void a(gzf $$0) {
-      super.a($$0);
-      float $$1 = (float) (Math.PI / 6);
-      float $$2 = $$0.C;
-      coo $$3 = $$0.d;
-      if ($$3 == coo.e) {
-         float $$4 = $$0.p / 60.0F;
-         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * bae.a($$4 * 30.0F) * 10.0F;
-         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * bae.b($$4 * 30.0F) * 10.0F;
-         this.o.b = this.o.b + bae.a($$4 * 10.0F);
-         this.o.c = this.o.c + bae.a($$4 * 40.0F) + 0.4F;
-         this.r.g = (float) (Math.PI / 180.0) * (70.0F + bae.b($$4 * 40.0F) * 10.0F);
-         this.s.g = this.r.g * -1.0F;
-         this.r.c = this.r.c + (bae.a($$4 * 40.0F) * 0.5F - 0.5F);
-         this.s.c = this.s.c + bae.a($$4 * 40.0F) * 0.5F + 0.5F;
-         this.q.c = this.q.c + bae.a($$4 * 40.0F) * 0.35F;
-      } else if ($$3 == coo.a && $$2 == 0.0F) {
-         this.b($$0);
-      } else if ($$3 == coo.b) {
-         gag.a(this.r, this.s, this.o, $$0.ap == bwa.b);
-      } else if ($$3 == coo.c) {
-         gag.a(this.r, this.s, $$0.c, $$0.F, $$0.ap == bwa.b);
-      } else if ($$3 == coo.d) {
-         this.o.e = 0.5F;
-         this.o.f = 0.0F;
-         if ($$0.ap == bwa.a) {
-            this.r.f = -0.5F;
-            this.r.e = -0.9F;
-         } else {
-            this.s.f = 0.5F;
-            this.s.e = -0.9F;
-         }
-      }
-   }
-
-   protected void a(gzf $$0, float $$1) {
-      float $$2 = $$0.C;
-      if ($$2 > 0.0F && $$0.d == coo.a) {
-         gag.a(this.r, this.s, $$0.ap, $$2, $$0.p);
-      } else {
-         super.a($$0, $$1);
-      }
-   }
-
-   private void b(gzf $$0) {
-      if ($$0.ap == bwa.a) {
-         this.s.e = -1.8F;
-      } else {
-         this.r.e = -1.8F;
-      }
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", geo.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gel.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", geo.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gel.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", geo.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gel.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", geo.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gel.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", geo.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gel.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", geo.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gel.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", geo.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gel.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", geo.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gel.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", geo.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gel.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", geo.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gel.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", geo.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gel.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", geo.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gel.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", geo.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gel.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return gep.a($$0, 32, 32);
    }
 
    @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
+   public void a(gxq $$0) {
+      super.a($$0);
+      this.b.g = -0.2F + 0.4F * azu.a($$0.p * 0.2F);
+      this.a.g = 0.2F - 0.4F * azu.a($$0.p * 0.2F);
    }
 }

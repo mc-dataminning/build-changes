@@ -1,26 +1,19 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
 
 public interface frw {
-   void k(int var1);
-
-   void l(int var1);
-
-   int D();
-
-   int E();
-
-   int y();
-
-   int w();
-
-   default fsn H() {
-      return new fsn(this.D(), this.E(), this.y(), this.w());
+   default void a(frv $$0, xk $$1) {
+      this.a($$0, fry.a($$1.getString()));
    }
 
-   default void c(int $$0, int $$1) {
-      this.k($$0);
-      this.l($$1);
+   default void a(frv $$0, String $$1) {
+      this.a($$0, fry.a($$1));
    }
 
-   void a(Consumer<fod> var1);
+   default void a(frv $$0, xk... $$1) {
+      this.a($$0, fry.a(ImmutableList.copyOf($$1)));
+   }
+
+   void a(frv var1, fry<?> var2);
+
+   frw a();
 }

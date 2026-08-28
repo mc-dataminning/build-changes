@@ -1,37 +1,29 @@
-public class hht extends hhw {
-   private final xv a;
-   private foz b = foz.a;
-   private final fty c;
-   private int C;
+import com.google.common.util.concurrent.RateLimiter;
+import java.time.Duration;
+import java.util.concurrent.atomic.AtomicReference;
 
-   public hht(fty $$0, xv $$1, xv $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class hht {
+   private final float a;
+   private final AtomicReference<hht.a> b = new AtomicReference<>();
+
+   public hht(Duration $$0) {
+      this.a = 1000.0F / (float)$$0.toMillis();
    }
 
-   @Override
-   public void aT_() {
-      this.m.af().i();
-      this.b = foz.a(this.p, this.a, this.n - 50);
-      this.C = this.b.a() * 9;
-      this.c(fof.a(xu.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.C / 2 + 9, 200, 20).a());
+   public void a(flq $$0, xk $$1) {
+      hht.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new hht.a($$1, RateLimiter.create((double)this.a)));
+      if ($$2.b.tryAcquire(1)) {
+         $$0.c($$1);
+      }
    }
 
-   @Override
-   public xv i() {
-      return xv.i().b(this.l).f(": ").b(this.a);
-   }
+   static class a {
+      final xk a;
+      final RateLimiter b;
 
-   @Override
-   public void aP_() {
-      fmg.Q().a(this.c);
-   }
-
-   @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.C / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.C / 2);
+      a(xk $$0, RateLimiter $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

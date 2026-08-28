@@ -1,28 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class byi {
-   public static <E extends bwg> bya<E> a(int $$0, BiPredicate<E, bvk> $$1) {
-      return cbm.a((Function<cbm.b<E>, ? extends App<cbm.c<E>, cbp<E>>>)($$2 -> $$2.group($$2.a(cfk.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bvk $$7 = $$5.dl();
-               bvk $$8 = $$2.<bvk>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bvk $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.ae();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+public class byi extends bxq<cpa> {
+   private static final int d = 1200;
+   final float c;
+
+   public byi(float $$0) {
+      super(ImmutableMap.of(cfb.d, cfc.a), 1200);
+      this.c = $$0;
    }
 
-   private static boolean a(bwg $$0, bvk $$1, int $$2) {
-      return $$1.bL() && $$1.a($$0, (double)$$2) && $$1.dW() == $$0.dW();
+   protected boolean a(arx $$0, cpa $$1) {
+      return $$1.ec().g().map($$0x -> $$0x == crf.b || $$0x == crf.c || $$0x == crf.d).orElse(true);
+   }
+
+   protected boolean a(arx $$0, cpa $$1, long $$2) {
+      return $$1.ec().a(cfb.d);
+   }
+
+   protected void b(arx $$0, cpa $$1, long $$2) {
+      bxs.a($$1, $$1.ec().c(cfb.d).get().b(), this.c, 1);
+   }
+
+   protected void c(arx $$0, cpa $$1, long $$2) {
+      Optional<jp> $$3 = $$1.ec().c(cfb.d);
+      $$3.ifPresent($$1x -> {
+         jh $$2x = $$1x.b();
+         arx $$3x = $$0.p().a($$1x.a());
+         if ($$3x != null) {
+            chb $$4 = $$3x.A();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            agy.c($$0, $$2x);
+         }
+      });
+      $$1.ec().b(cfb.d);
    }
 }

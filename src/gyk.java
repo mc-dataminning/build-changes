@@ -1,11 +1,13 @@
-public class gyk extends gxw {
-   public ckk a;
-   public ckf h;
-   public cxp i;
+import javax.annotation.Nullable;
 
-   public gyk() {
-      this.a = ckk.a;
-      this.h = ckf.a;
-      this.i = cxp.j;
+public class gyk extends gxk {
+   @Nullable
+   public buz.g.a a;
+   @Nullable
+   public hdi f;
+
+   @Override
+   public boolean a() {
+      return this.a != null && this.f != null;
    }
 }

@@ -1,44 +1,27 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-public record dak(Map<String, dak.a> c) {
-   public static final dak a = new dak(Map.of());
-   public static final Codec<dak> b = Codec.unboundedMap(Codec.STRING, dak.a.a).xmap(dak::new, dak::a);
+public record dak(boolean c) implements daj {
+   public static final Codec<dak> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(dak::a)).apply($$0, dak::new)
+   );
+   public static final zi<ByteBuf, dak> b = zg.b.a(dak::new, dak::a);
+   private static final xk d = xk.c("item.unbreakable").a(n.j);
 
-   public dak a(String $$0, dak.a $$1) {
-      return new dak(ae.a(this.c, $$0, $$1));
+   @Override
+   public void a(cxc.b $$0, Consumer<xk> $$1, cyy $$2) {
+      if (this.c) {
+         $$1.accept(d);
+      }
    }
 
-   public Map<String, dak.a> a() {
+   public dak a(boolean $$0) {
+      return new dak($$0);
+   }
+
+   public boolean a() {
       return this.c;
-   }
-
-   public static record a(jq<evm> b, double c, double d, float e) {
-      public static final Codec<dak.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  evm.b.fieldOf("type").forGetter(dak.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(dak.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(dak.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(dak.a::d)
-               )
-               .apply($$0, dak.a::new)
-      );
-
-      public jq<evm> a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
    }
 }

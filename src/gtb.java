@@ -1,128 +1,30 @@
-public class gtb extends grp<clw, gza> {
-   public gtb(grq.a $$0) {
-      super($$0);
+public class gtb extends gsc<cob, gza, gcj> {
+   private static final alp b = alp.b("textures/entity/piglin/piglin.png");
+   private static final alp k = alp.b("textures/entity/piglin/piglin_brute.png");
+   public static final gve.a a = new gve.a(0.0F, 0.0F, 1.0019531F);
+
+   public gtb(grl.a $$0, geh $$1, geh $$2, geh $$3, geh $$4, geh $$5, geh $$6) {
+      super($$0, new gcj($$0.a($$1)), new gcj($$0.a($$2)), 0.5F, a);
+      this.a(new gvp<>(this, new gbt($$0.a($$3)), new gbt($$0.a($$4)), new gbt($$0.a($$5)), new gbt($$0.a($$6)), $$0.h()));
    }
 
-   public void a(gza $$0, fgs $$1, gll $$2, int $$3) {
-      clx $$4 = $$0.b;
-      if ($$4 != null) {
-         $$1.a();
-         $$1.a(a.d.rotationDegrees((float)(180 - $$0.a.e() * 90)));
-         hcl $$5 = fmg.Q().aF();
-         hbl $$6 = $$5.a();
-         fgw $$7 = $$2.getBuffer(glv.e($$6.i()));
-         this.a($$1, $$7, $$0.c, $$4.b(), $$4.c(), $$5.a($$4), $$6);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public alp a(gza $$0) {
+      return $$0.a ? k : b;
    }
 
-   public gza a() {
+   public gza b() {
       return new gza();
    }
 
-   public void a(clw $$0, gza $$1, float $$2) {
+   public void a(cob $$0, gza $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      jm $$3 = $$0.cO();
-      clx $$4 = $$0.s().a();
-      $$1.a = $$3;
-      $$1.b = $$4;
-      int $$5 = $$4.b();
-      int $$6 = $$4.c();
-      if ($$1.c.length != $$5 * $$6) {
-         $$1.c = new int[$$5 * $$6];
-      }
-
-      float $$7 = (float)(-$$5) / 2.0F;
-      float $$8 = (float)(-$$6) / 2.0F;
-      dhi $$9 = $$0.dW();
-
-      for (int $$10 = 0; $$10 < $$6; $$10++) {
-         for (int $$11 = 0; $$11 < $$5; $$11++) {
-            float $$12 = (float)$$11 + $$7 + 0.5F;
-            float $$13 = (float)$$10 + $$8 + 0.5F;
-            int $$14 = $$0.dA();
-            int $$15 = bae.a($$0.dD() + (double)$$13);
-            int $$16 = $$0.dG();
-            switch ($$3) {
-               case c:
-                  $$14 = bae.a($$0.dB() + (double)$$12);
-                  break;
-               case e:
-                  $$16 = bae.a($$0.dH() - (double)$$12);
-                  break;
-               case d:
-                  $$14 = bae.a($$0.dB() - (double)$$12);
-                  break;
-               case f:
-                  $$16 = bae.a($$0.dH() + (double)$$12);
-            }
-
-            $$1.c[$$11 + $$10 * $$5] = glh.a($$9, new jh($$14, $$15, $$16));
-         }
-      }
+      $$1.a = $$0.aq() == bvi.aT;
+      $$1.d = $$0.gp();
+      $$1.c = (float)cvx.b($$0.fB(), $$0);
+      $$1.b = $$0.x();
    }
 
-   private void a(fgs $$0, fgw $$1, int[] $$2, int $$3, int $$4, hbl $$5, hbl $$6) {
-      fgs.a $$7 = $$0.c();
-      float $$8 = (float)(-$$3) / 2.0F;
-      float $$9 = (float)(-$$4) / 2.0F;
-      float $$10 = 0.03125F;
-      float $$11 = $$6.c();
-      float $$12 = $$6.d();
-      float $$13 = $$6.g();
-      float $$14 = $$6.h();
-      float $$15 = $$6.c();
-      float $$16 = $$6.d();
-      float $$17 = $$6.g();
-      float $$18 = $$6.c(0.0625F);
-      float $$19 = $$6.c();
-      float $$20 = $$6.a(0.0625F);
-      float $$21 = $$6.g();
-      float $$22 = $$6.h();
-      double $$23 = 1.0 / (double)$$3;
-      double $$24 = 1.0 / (double)$$4;
-
-      for (int $$25 = 0; $$25 < $$3; $$25++) {
-         for (int $$26 = 0; $$26 < $$4; $$26++) {
-            float $$27 = $$8 + (float)($$25 + 1);
-            float $$28 = $$8 + (float)$$25;
-            float $$29 = $$9 + (float)($$26 + 1);
-            float $$30 = $$9 + (float)$$26;
-            int $$31 = $$2[$$25 + $$26 * $$3];
-            float $$32 = $$5.a((float)($$23 * (double)($$3 - $$25)));
-            float $$33 = $$5.a((float)($$23 * (double)($$3 - ($$25 + 1))));
-            float $$34 = $$5.c((float)($$24 * (double)($$4 - $$26)));
-            float $$35 = $$5.c((float)($$24 * (double)($$4 - ($$26 + 1))));
-            this.a($$7, $$1, $$27, $$30, $$33, $$34, -0.03125F, 0, 0, -1, $$31);
-            this.a($$7, $$1, $$28, $$30, $$32, $$34, -0.03125F, 0, 0, -1, $$31);
-            this.a($$7, $$1, $$28, $$29, $$32, $$35, -0.03125F, 0, 0, -1, $$31);
-            this.a($$7, $$1, $$27, $$29, $$33, $$35, -0.03125F, 0, 0, -1, $$31);
-            this.a($$7, $$1, $$27, $$29, $$12, $$13, 0.03125F, 0, 0, 1, $$31);
-            this.a($$7, $$1, $$28, $$29, $$11, $$13, 0.03125F, 0, 0, 1, $$31);
-            this.a($$7, $$1, $$28, $$30, $$11, $$14, 0.03125F, 0, 0, 1, $$31);
-            this.a($$7, $$1, $$27, $$30, $$12, $$14, 0.03125F, 0, 0, 1, $$31);
-            this.a($$7, $$1, $$27, $$29, $$15, $$17, -0.03125F, 0, 1, 0, $$31);
-            this.a($$7, $$1, $$28, $$29, $$16, $$17, -0.03125F, 0, 1, 0, $$31);
-            this.a($$7, $$1, $$28, $$29, $$16, $$18, 0.03125F, 0, 1, 0, $$31);
-            this.a($$7, $$1, $$27, $$29, $$15, $$18, 0.03125F, 0, 1, 0, $$31);
-            this.a($$7, $$1, $$27, $$30, $$15, $$17, 0.03125F, 0, -1, 0, $$31);
-            this.a($$7, $$1, $$28, $$30, $$16, $$17, 0.03125F, 0, -1, 0, $$31);
-            this.a($$7, $$1, $$28, $$30, $$16, $$18, -0.03125F, 0, -1, 0, $$31);
-            this.a($$7, $$1, $$27, $$30, $$15, $$18, -0.03125F, 0, -1, 0, $$31);
-            this.a($$7, $$1, $$27, $$29, $$20, $$21, 0.03125F, -1, 0, 0, $$31);
-            this.a($$7, $$1, $$27, $$30, $$20, $$22, 0.03125F, -1, 0, 0, $$31);
-            this.a($$7, $$1, $$27, $$30, $$19, $$22, -0.03125F, -1, 0, 0, $$31);
-            this.a($$7, $$1, $$27, $$29, $$19, $$21, -0.03125F, -1, 0, 0, $$31);
-            this.a($$7, $$1, $$28, $$29, $$20, $$21, -0.03125F, 1, 0, 0, $$31);
-            this.a($$7, $$1, $$28, $$30, $$20, $$22, -0.03125F, 1, 0, 0, $$31);
-            this.a($$7, $$1, $$28, $$30, $$19, $$22, 0.03125F, 1, 0, 0, $$31);
-            this.a($$7, $$1, $$28, $$29, $$19, $$21, 0.03125F, 1, 0, 0, $$31);
-         }
-      }
-   }
-
-   private void a(fgs.a $$0, fgw $$1, float $$2, float $$3, float $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
-      $$1.a($$0, $$2, $$3, $$6).a(-1).a($$4, $$5).b(hbc.d).c($$10).b($$0, (float)$$7, (float)$$8, (float)$$9);
+   protected boolean b(gza $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

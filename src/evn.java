@@ -1,52 +1,84 @@
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
+
 public class evn {
-   private static final int J = 12741452;
-   public static final jq<evm> a = a("player", "player", false, true);
-   public static final jq<evm> b = a("frame", "frame", true, true);
-   public static final jq<evm> c = a("red_marker", "red_marker", false, true);
-   public static final jq<evm> d = a("blue_marker", "blue_marker", false, true);
-   public static final jq<evm> e = a("target_x", "target_x", true, false);
-   public static final jq<evm> f = a("target_point", "target_point", true, false);
-   public static final jq<evm> g = a("player_off_map", "player_off_map", false, true);
-   public static final jq<evm> h = a("player_off_limits", "player_off_limits", false, true);
-   public static final jq<evm> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
-   public static final jq<evm> j = a("monument", "ocean_monument", true, 3830373, false, true);
-   public static final jq<evm> k = a("banner_white", "white_banner", true, true);
-   public static final jq<evm> l = a("banner_orange", "orange_banner", true, true);
-   public static final jq<evm> m = a("banner_magenta", "magenta_banner", true, true);
-   public static final jq<evm> n = a("banner_light_blue", "light_blue_banner", true, true);
-   public static final jq<evm> o = a("banner_yellow", "yellow_banner", true, true);
-   public static final jq<evm> p = a("banner_lime", "lime_banner", true, true);
-   public static final jq<evm> q = a("banner_pink", "pink_banner", true, true);
-   public static final jq<evm> r = a("banner_gray", "gray_banner", true, true);
-   public static final jq<evm> s = a("banner_light_gray", "light_gray_banner", true, true);
-   public static final jq<evm> t = a("banner_cyan", "cyan_banner", true, true);
-   public static final jq<evm> u = a("banner_purple", "purple_banner", true, true);
-   public static final jq<evm> v = a("banner_blue", "blue_banner", true, true);
-   public static final jq<evm> w = a("banner_brown", "brown_banner", true, true);
-   public static final jq<evm> x = a("banner_green", "green_banner", true, true);
-   public static final jq<evm> y = a("banner_red", "red_banner", true, true);
-   public static final jq<evm> z = a("banner_black", "black_banner", true, true);
-   public static final jq<evm> A = a("red_x", "red_x", true, false);
-   public static final jq<evm> B = a("village_desert", "desert_village", true, eub.w.ak, false, true);
-   public static final jq<evm> C = a("village_plains", "plains_village", true, eub.w.ak, false, true);
-   public static final jq<evm> D = a("village_savanna", "savanna_village", true, eub.w.ak, false, true);
-   public static final jq<evm> E = a("village_snowy", "snowy_village", true, eub.w.ak, false, true);
-   public static final jq<evm> F = a("village_taiga", "taiga_village", true, eub.w.ak, false, true);
-   public static final jq<evm> G = a("jungle_temple", "jungle_temple", true, eub.w.ak, false, true);
-   public static final jq<evm> H = a("swamp_hut", "swamp_hut", true, eub.w.ak, false, true);
-   public static final jq<evm> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
+   private static final String a = "command_storage_";
+   private final Map<String, evn.a> b = Maps.newHashMap();
+   private final evq c;
 
-   public static jq<evm> a(kd<evm> $$0) {
-      return a;
+   public evn(evq $$0) {
+      this.c = $$0;
    }
 
-   private static jq<evm> a(String $$0, String $$1, boolean $$2, boolean $$3) {
-      return a($$0, $$1, $$2, -1, $$3, false);
+   private evn.a a(String $$0) {
+      evn.a $$1 = new evn.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   private static jq<evm> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
-      aly<evm> $$6 = aly.a(mb.aC, alz.b($$0));
-      evm $$7 = new evm(alz.b($$1), $$2, $$3, $$5, $$4);
-      return kd.b(ma.ar, $$6, $$7);
+   private evc.a<evn.a> b(String $$0) {
+      return new evc.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), bbi.h);
+   }
+
+   public um a(alp $$0) {
+      String $$1 = $$0.b();
+      evn.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new um();
+   }
+
+   public void a(alp $$0, um $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   }
+
+   public Stream<alp> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
+
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends evc {
+      private static final String a = "contents";
+      private final Map<String, um> b = Maps.newHashMap();
+
+      evn.a a(um $$0) {
+         um $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
+
+         return this;
+      }
+
+      @Override
+      public um a(um $$0, js.a $$1) {
+         um $$2 = new um();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
+
+      public um a(String $$0) {
+         um $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new um();
+      }
+
+      public void a(String $$0, um $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         this.c();
+      }
+
+      public Stream<alp> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> alp.a($$0, $$1));
+      }
    }
 }

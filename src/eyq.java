@@ -1,83 +1,93 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class eyq extends eyc {
+public class eyq extends exv {
    public static final MapCodec<eyq> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  Codec.unboundedMap(ddz.c, fav.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+                  xm.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  exu.a(256).forGetter($$0x -> $$0x.c),
+                  ewi.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, eyq::new)
    );
-   private final Map<jq<ddz>, fau> b;
-   private final boolean c;
+   private final List<xk> b;
+   private final exu c;
+   private final Optional<ewi.b> d;
 
-   eyq(List<ezy> $$0, Map<jq<ddz>, fau> $$1, boolean $$2) {
+   public eyq(List<ezr> $$0, List<xk> $$1, exu $$2, Optional<ewi.b> $$3) {
       super($$0);
-      this.b = Map.copyOf($$1);
+      this.b = List.copyOf($$1);
       this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public eye<eyq> b() {
-      return eyf.i;
+   public exx<eyq> b() {
+      return exy.A;
    }
 
    @Override
-   public Set<bbn<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   public Set<bbd<?>> a() {
+      return this.d.<Set<bbd<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
    @Override
-   public cxp a(cxp $$0, ewp $$1) {
-      if ($$0.a(cxt.rn)) {
-         $$0 = $$0.a((dhh)cxt.vm);
-      }
-
-      deb.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jq<ddz>)$$2, bae.a($$1x.a((jq<ddz>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jq<ddz>)$$2, bae.a($$3.a($$1), 0, 255)));
-         }
-      });
+   public cxg a(cxg $$0, ewi $$1) {
+      $$0.a(ku.j, czz.a, $$1x -> new czz(this.a($$1x, $$1)));
       return $$0;
    }
 
-   public static class a extends eyc.a<eyq.a> {
-      private final Builder<jq<ddz>, fau> a = ImmutableMap.builder();
-      private final boolean b;
+   private List<xk> a(@Nullable czz $$0, ewi $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
+      } else {
+         UnaryOperator<xk> $$2 = eyr.a($$1, this.d.orElse(null));
+         List<xk> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
+      }
+   }
 
-      public a() {
-         this(false);
+   public static eyq.a c() {
+      return new eyq.a();
+   }
+
+   public static class a extends exv.a<eyq.a> {
+      private Optional<ewi.b> a = Optional.empty();
+      private final Builder<xk> b = ImmutableList.builder();
+      private exu c = exu.a.b;
+
+      public eyq.a a(exu $$0) {
+         this.c = $$0;
+         return this;
       }
 
-      public a(boolean $$0) {
-         this.b = $$0;
+      public eyq.a a(ewi.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public eyq.a a(xk $$0) {
+         this.b.add($$0);
+         return this;
       }
 
       protected eyq.a a() {
          return this;
       }
 
-      public eyq.a a(jq<ddz> $$0, fau $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
       @Override
-      public eyd b() {
-         return new eyq(this.g(), this.a.build(), this.b);
+      public exw b() {
+         return new eyq(this.g(), this.b.build(), this.c, this.a);
       }
    }
 }

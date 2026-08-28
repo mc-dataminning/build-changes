@@ -1,20 +1,8 @@
-public class gkf {
-   public cpv a = cpv.b;
-   public float b;
-   public float c;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public void a(boolean $$0, float $$1) {
-   }
-
-   public fbx a() {
-      return new fbx(this.b, this.c);
-   }
-
-   public boolean b() {
-      return this.c > 1.0E-5F;
-   }
-
-   public void c() {
-      this.a = new cpv(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gkf {
 }

@@ -1,36 +1,26 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public abstract class fqb implements fqc {
-   @Nullable
-   private fqd a;
-   private boolean b;
+public class fqb implements fqc {
+   private final xk b;
+   protected final frm a = new frm();
+
+   public fqb(xk $$0) {
+      this.b = $$0;
+   }
 
    @Override
-   public final boolean aL_() {
+   public xk a() {
       return this.b;
    }
 
    @Override
-   public final void b_(boolean $$0) {
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public fqd aM_() {
-      return this.a;
+   public void a(Consumer<fnw> $$0) {
+      this.a.a($$0);
    }
 
    @Override
-   public void a(@Nullable fqd $$0) {
-      if (this.a != null) {
-         this.a.a(false);
-      }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
+   public void a(fsg $$0) {
+      this.a.a();
+      frl.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

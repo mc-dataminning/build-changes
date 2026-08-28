@@ -1,221 +1,227 @@
+import java.util.List;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public class dwc extends dux implements bta, btl {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final btc e = new btc() {
-      @Override
-      public int b() {
-         return 1;
-      }
+public class dwc extends dvy implements btk {
+   public static final int d = 9;
+   public static final int e = 3;
+   public static final int f = 27;
+   public static final int g = 1;
+   public static final int h = 10;
+   public static final float i = 0.5F;
+   public static final float j = 270.0F;
+   private static final int[] k = IntStream.range(0, 27).toArray();
+   private jz<cxg> n = jz.a(27, cxg.j);
+   private int r;
+   private dwc.a s = dwc.a.a;
+   private float t;
+   private float u;
+   @Nullable
+   private final cwd v;
 
-      @Override
-      public boolean c() {
-         return dwc.this.g.f();
-      }
+   public dwc(@Nullable cwd $$0, jh $$1, dxo $$2) {
+      super(dus.y, $$1, $$2);
+      this.v = $$0;
+   }
 
-      @Override
-      public cxp a(int $$0) {
-         return $$0 == 0 ? dwc.this.g : cxp.j;
-      }
+   public dwc(jh $$0, dxo $$1) {
+      super(dus.y, $$0, $$1);
+      this.v = drh.a($$1.b());
+   }
 
-      @Override
-      public cxp a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cxp $$2 = dwc.this.g.a($$1);
-            if (dwc.this.g.f()) {
-               dwc.this.k();
+   public static void a(dgz $$0, jh $$1, dxo $$2, dwc $$3) {
+      $$3.b($$0, $$1, $$2);
+   }
+
+   private void b(dgz $$0, jh $$1, dxo $$2) {
+      this.u = this.t;
+      switch (this.s) {
+         case a:
+            this.t = 0.0F;
+            break;
+         case b:
+            this.t += 0.1F;
+            if (this.u == 0.0F) {
+               d($$0, $$1, $$2);
             }
 
-            return $$2;
-         } else {
-            return cxp.j;
+            if (this.t >= 1.0F) {
+               this.s = dwc.a.c;
+               this.t = 1.0F;
+               d($$0, $$1, $$2);
+            }
+
+            this.c($$0, $$1, $$2);
+            break;
+         case c:
+            this.t = 1.0F;
+            break;
+         case d:
+            this.t -= 0.1F;
+            if (this.u == 1.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.t <= 0.0F) {
+               this.s = dwc.a.a;
+               this.t = 0.0F;
+               d($$0, $$1, $$2);
+            }
+      }
+   }
+
+   public dwc.a k() {
+      return this.s;
+   }
+
+   public fbm a(dxo $$0) {
+      return cmu.a(1.0F, $$0.c(drh.b), 0.5F * this.a(1.0F));
+   }
+
+   private void c(dgz $$0, jh $$1, dxo $$2) {
+      if ($$2.b() instanceof drh) {
+         jm $$3 = $$2.c(drh.b);
+         fbm $$4 = cmu.a(1.0F, $$3, this.u, this.t).a($$1);
+         List<bvb> $$5 = $$0.a_(null, $$4);
+         if (!$$5.isEmpty()) {
+            for (bvb $$6 : $$5) {
+               if ($$6.n_() != etv.d) {
+                  $$6.a(bwb.d, new fbr(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
+               }
+            }
          }
       }
-
-      @Override
-      public cxp b(int $$0) {
-         if ($$0 == 0) {
-            cxp $$1 = dwc.this.g;
-            dwc.this.g = cxp.j;
-            dwc.this.k();
-            return $$1;
-         } else {
-            return cxp.j;
-         }
-      }
-
-      @Override
-      public void a(int $$0, cxp $$1) {
-      }
-
-      @Override
-      public int ao_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dwc.this.e();
-      }
-
-      @Override
-      public boolean a(cpx $$0) {
-         return btc.a(dwc.this, $$0) && dwc.this.c();
-      }
-
-      @Override
-      public boolean b(int $$0, cxp $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final cto f = new cto() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? dwc.this.h : 0;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dwc.this.a($$1);
-         }
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   cxp g = cxp.j;
-   int h;
-   private int i;
-
-   public dwc(jh $$0, dxv $$1) {
-      super(duz.E, $$0, $$1);
-   }
-
-   public cxp b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.g.b(ku.S) || this.g.b(ku.T);
-   }
-
-   public void b(cxp $$0) {
-      this.a($$0, null);
-   }
-
-   void k() {
-      this.h = 0;
-      this.i = 0;
-      doz.a(null, this.i(), this.aB_(), this.m(), false);
-   }
-
-   public void a(cxp $$0, @Nullable cpx $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = c(this.g);
-      this.e();
-   }
-
-   void a(int $$0) {
-      int $$1 = bae.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         doz.a(this.i(), this.aB_(), this.m());
-      }
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public int j() {
-      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
-      return bae.d($$0 * 14.0F) + (this.c() ? 1 : 0);
-   }
-
-   private cxp b(cxp $$0, @Nullable cpx $$1) {
-      if (this.o instanceof ash $$2) {
-         czl.a($$0, this.a($$1, $$2), $$1);
-      }
-
-      return $$0;
-   }
-
-   private ew a(@Nullable cpx $$0, ash $$1) {
-      String $$2;
-      xv $$3;
-      if ($$0 == null) {
-         $$2 = "Lectern";
-         $$3 = xv.b("Lectern");
-      } else {
-         $$2 = $$0.al().getString();
-         $$3 = $$0.p_();
-      }
-
-      fby $$6 = fby.b(this.p);
-      return new ew(ev.a, $$6, fbx.a, $$1, 2, $$2, $$3, $$1.p(), $$0);
    }
 
    @Override
-   public boolean p() {
+   public int b() {
+      return this.n.size();
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.r = $$1;
+         if ($$1 == 0) {
+            this.s = dwc.a.d;
+         }
+
+         if ($$1 == 1) {
+            this.s = dwc.a.b;
+         }
+
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   private static void d(dgz $$0, jh $$1, dxo $$2) {
+      $$2.a($$0, $$1, 3);
+      $$0.a($$1, $$2.b());
+   }
+
+   @Override
+   public void c_(cpo $$0) {
+      if (!this.q && !$$0.aa_()) {
+         if (this.r < 0) {
+            this.r = 0;
+         }
+
+         this.r++;
+         this.o.a(this.p, this.m().b(), 1, this.r);
+         if (this.r == 1) {
+            this.o.a($$0, eck.k, this.p);
+            this.o.a(null, this.p, awv.xn, aww.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   public void c(cpo $$0) {
+      if (!this.q && !$$0.aa_()) {
+         this.r--;
+         this.o.a(this.p, this.m().b(), 1, this.r);
+         if (this.r <= 0) {
+            this.o.a($$0, eck.j, this.p);
+            this.o.a(null, this.p, awv.xm, aww.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   protected xk j() {
+      return xk.c("container.shulkerBox");
+   }
+
+   @Override
+   protected void a(um $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.e($$0, $$1);
+   }
+
+   @Override
+   protected void b(um $$0, js.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         bsu.a($$0, this.n, false, $$1);
+      }
+   }
+
+   public void e(um $$0, js.a $$1) {
+      this.n = jz.a(this.b(), cxg.j);
+      if (!this.b_($$0) && $$0.b("Items", 9)) {
+         bsu.b($$0, this.n, $$1);
+      }
+   }
+
+   @Override
+   protected jz<cxg> f() {
+      return this.n;
+   }
+
+   @Override
+   protected void a(jz<cxg> $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   public int[] a(jm $$0) {
+      return k;
+   }
+
+   @Override
+   public boolean a(int $$0, cxg $$1, @Nullable jm $$2) {
+      return !(dkd.a($$1.h()) instanceof drh);
+   }
+
+   @Override
+   public boolean b(int $$0, cxg $$1, jm $$2) {
       return true;
    }
 
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cxp.a($$1, (vu)$$0.p("Book")).orElse(cxp.j), null);
-      } else {
-         this.g = cxp.j;
-      }
+   public float a(float $$0) {
+      return azu.h($$0, this.u, this.t);
+   }
 
-      this.i = c(this.g);
-      this.h = bae.a($$0.h("Page"), 0, this.i - 1);
+   @Nullable
+   public cwd s() {
+      return this.v;
    }
 
    @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b().f()) {
-         $$0.a("Book", this.b().a($$1));
-         $$0.a("Page", this.h);
-      }
+   protected cst a(int $$0, cpn $$1) {
+      return new cun($$0, $$1, this);
    }
 
-   @Override
-   public void a() {
-      this.b(cxp.j);
+   public boolean t() {
+      return this.s == dwc.a.a;
    }
 
-   @Override
-   public ctc createMenu(int $$0, cpw $$1, cpx $$2) {
-      return new cui($$0, this.e, this.f);
-   }
-
-   @Override
-   public xv p_() {
-      return xv.c("container.lectern");
-   }
-
-   private static int c(cxp $$0) {
-      dax $$1 = $$0.a(ku.T);
-      if ($$1 != null) {
-         return $$1.a().size();
-      } else {
-         daw $$2 = $$0.a(ku.S);
-         return $$2 != null ? $$2.a().size() : 0;
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

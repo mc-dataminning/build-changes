@@ -1,35 +1,34 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gsg extends gsr<cia, gyj, gbw> {
+   private static final alp a = alp.b("textures/entity/iron_golem/iron_golem.png");
 
-public final class gsg extends gqg<ckd, gyk, gbx> {
-   private static final Map<ckk, alz> a = ae.a(Maps.newEnumMap(ckk.class), $$0 -> {
-      $$0.put(ckk.a, alz.b("textures/entity/horse/horse_white.png"));
-      $$0.put(ckk.b, alz.b("textures/entity/horse/horse_creamy.png"));
-      $$0.put(ckk.c, alz.b("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(ckk.d, alz.b("textures/entity/horse/horse_brown.png"));
-      $$0.put(ckk.e, alz.b("textures/entity/horse/horse_black.png"));
-      $$0.put(ckk.f, alz.b("textures/entity/horse/horse_gray.png"));
-      $$0.put(ckk.g, alz.b("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public gsg(grq.a $$0) {
-      super($$0, new gbx($$0.a(gen.ba)), new gbx($$0.a(gen.bc)), 1.1F);
-      this.a(new gvt(this));
-      this.a(new gvs(this, $$0.f(), $$0.h()));
+   public gsg(grl.a $$0) {
+      super($$0, new gbw($$0.a(gei.bo)), 0.7F);
+      this.a(new gvq(this));
+      this.a(new gvr(this, $$0.d()));
    }
 
-   public alz a(gyk $$0) {
-      return a.get($$0.a);
+   public alp a(gyj $$0) {
+      return a;
    }
 
-   public gyk b() {
-      return new gyk();
+   public gyj b() {
+      return new gyj();
    }
 
-   public void a(ckd $$0, gyk $$1, float $$2) {
+   public void a(cia $$0, gyj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.p();
-      $$1.h = $$0.t();
-      $$1.i = $$0.af().v();
+      $$1.a = (float)$$0.t() > 0.0F ? (float)$$0.t() - $$2 : 0.0F;
+      $$1.b = $$0.x();
+      $$1.c = $$0.p();
+   }
+
+   protected void a(gyj $$0, fgl $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (!((double)$$0.Y < 0.01)) {
+         float $$4 = 13.0F;
+         float $$5 = $$0.X + 6.0F;
+         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$6));
+      }
    }
 }

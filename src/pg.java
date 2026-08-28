@@ -3,30 +3,24 @@ import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class pg implements oz {
-   private final pa b;
-   private final cxl c;
-   private final dca d;
-   private final int e;
+public class pg implements ov {
+   private final ow b;
+   private final jq<cxc> c;
+   private final dbr d;
+   private final dbr e;
    private final Map<String, ap<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
-   private final dcw.a<?> h;
 
-   public pg(pa $$0, dcw.a<?> $$1, dca $$2, dhh $$3, int $$4) {
+   private pg(ow $$0, jq<cxc> $$1, dbr $$2, dbr $$3) {
       this.b = $$0;
-      this.h = $$1;
-      this.c = $$3.j();
+      this.c = $$1;
       this.d = $$2;
-      this.e = $$4;
+      this.e = $$3;
    }
 
-   public static pg a(dca $$0, pa $$1, dhh $$2) {
-      return new pg($$1, dde::new, $$0, $$2, 1);
-   }
-
-   public static pg a(dca $$0, pa $$1, dhh $$2, int $$3) {
-      return new pg($$1, dde::new, $$0, $$2, $$3);
+   public static pg a(ow $$0, dbr $$1, dbr $$2, cxc $$3) {
+      return new pg($$0, $$3.f(), $$1, $$2);
    }
 
    public pg b(String $$0, ap<?> $$1) {
@@ -40,20 +34,20 @@ public class pg implements oz {
    }
 
    @Override
-   public cxl a() {
-      return this.c;
+   public cxc a() {
+      return this.c.a();
    }
 
    @Override
-   public void a(pb $$0, aly<dce<?>> $$1) {
+   public void a(ox $$0, alo<dbv<?>> $$1) {
       this.a($$1);
       ag.a $$2 = $$0.a().a("has_the_recipe", dv.a($$1)).a(al.a.c($$1)).a(ak.a.b);
       this.f.forEach($$2::a);
-      dcw $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cxp(this.c, this.e));
+      dcx $$3 = new dcx(Objects.requireNonNullElse(this.g, ""), ov.a(this.b), this.d, this.e, this.c);
       $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
    }
 
-   private void a(aly<dce<?>> $$0) {
+   private void a(alo<dbv<?>> $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }

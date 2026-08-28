@@ -1,49 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
 
-public record elj(elb b, List<elj.a> c) {
-   public static final Codec<elj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(elb.a.fieldOf("fallback").forGetter(elj::a), elj.a.a.listOf().fieldOf("rules").forGetter(elj::b)).apply($$0, elj::new)
-   );
+public class elj extends eln {
+   public static final MapCodec<elj> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(elj::new, $$0 -> $$0.b);
+   private final float b;
 
-   public static elj a(elb $$0) {
-      return new elj($$0, List.of());
+   public elj(float $$0) {
+      this.b = $$0;
    }
 
-   public static elj a(dkm $$0) {
-      return a(elb.a($$0));
+   @Override
+   protected elo<?> a() {
+      return elo.e;
    }
 
-   public dxv a(dig $$0, bam $$1, jh $$2) {
-      for (elj.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public elb a() {
-      return this.b;
-   }
-
-   public List<elj.a> b() {
-      return this.c;
-   }
-
-   public static record a(eex b, elb c) {
-      public static final Codec<elj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eex.b.fieldOf("if_true").forGetter(elj.a::a), elb.a.fieldOf("then").forGetter(elj.a::b)).apply($$0, elj.a::new)
-      );
-
-      public eex a() {
-         return this.b;
-      }
-
-      public elb b() {
-         return this.c;
+   @Override
+   public void a(eln.a $$0) {
+      bac $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<jh> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (jm $$3x : jm.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  jm $$4 = $$3x.g();
+                  jh $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, dkf.fX.m().b(dlk.c, Integer.valueOf($$1.a(3))).b(dlk.aF, $$3x));
+                  }
+               }
+            }
+         });
       }
    }
 }

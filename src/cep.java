@@ -1,41 +1,18 @@
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cep<T extends bwi> extends cde {
-   private final T a;
-   private final cxp b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final axe d;
+public class cep<T extends bvx> extends ceo<T> {
+   private boolean i = true;
 
-   public cep(T $$0, cxp $$1, @Nullable axe $$2, Predicate<? super T> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+   public cep(crc $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cgo.a $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
    @Override
    public boolean b() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.fz();
-   }
-
-   @Override
-   public void d() {
-      this.a.a(bvs.a, this.b.v());
-      this.a.c(bti.a);
-   }
-
-   @Override
-   public void e() {
-      this.a.a(bvs.a, cxp.j);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dZ().i() * 0.2F + 0.9F);
-      }
+      return this.i && super.b();
    }
 }

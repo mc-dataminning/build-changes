@@ -1,46 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dsg extends drz {
-   protected dsg(dxu.d $$0) {
-      super($$0);
+public class dsg extends djp implements dnm {
+   public static final MapCodec<dsg> a = b(dsg::new);
+   public static final dyl<dyx> b = dye.bm;
+
+   @Override
+   public MapCodec<dsg> a() {
+      return a;
    }
 
-   private static boolean b(dxv $$0, dhl $$1, jh $$2) {
-      jh $$3 = $$2.d();
-      dxv $$4 = $$1.a_($$3);
-      if ($$4.a(dko.ea) && $$4.c(dry.c) == 1) {
-         return true;
-      } else if ($$4.y().e() == 8) {
-         return false;
+   protected dsg(dxn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, dyx.b));
+   }
+
+   @Override
+   public duq a(jh $$0, dxo $$1) {
+      return new dwi($$0, $$1);
+   }
+
+   @Override
+   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
+      duq $$5 = $$1.c_($$2);
+      if ($$5 instanceof dwi) {
+         return (bta)(((dwi)$$5).a($$3) ? bta.a : bta.e);
       } else {
-         int $$5 = eto.a($$0, $$4, jm.b, $$4.g());
-         return $$5 < 15;
+         return bta.e;
       }
    }
 
    @Override
-   protected abstract MapCodec<? extends dsg> a();
-
-   private static boolean c(dxv $$0, dhl $$1, jh $$2) {
-      jh $$3 = $$2.d();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(aya.a);
+   public void a(dgz $$0, jh $$1, dxo $$2, @Nullable bvx $$3, cxg $$4) {
+      if (!$$0.C) {
+         if ($$3 != null) {
+            duq $$5 = $$0.c_($$1);
+            if ($$5 instanceof dwi) {
+               ((dwi)$$5).a($$3);
+            }
+         }
+      }
    }
 
    @Override
-   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dko.j.m());
-      } else {
-         if ($$1.A($$2.d()) >= 9) {
-            dxv $$4 = this.m();
+   protected dqo a_(dxo $$0) {
+      return dqo.c;
+   }
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               jh $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dko.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.b(c, Boolean.valueOf($$1.a_($$6.d()).a(dko.ea))));
-               }
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void a(dxo $$0, dgz $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
+      if ($$1 instanceof arx) {
+         if ($$1.c_($$2) instanceof dwi $$7) {
+            boolean $$8 = $$1.C($$2);
+            boolean $$9 = $$7.C();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((arx)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
             }
          }
+      }
+   }
+
+   private void a(arx $$0, dwi $$1) {
+      switch ($$1.u()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.A();
+         case d:
       }
    }
 }

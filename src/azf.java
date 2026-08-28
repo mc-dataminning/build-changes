@@ -1,44 +1,84 @@
-public class azf {
-   private static final int a = 2;
-   private static final int b = 6;
-   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystem;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-   private azf() {
+public class azf implements Closeable {
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final Path c;
+   private final FileSystem d;
+
+   public azf(Path $$0) {
+      this.b = $$0;
+      this.c = $$0.resolveSibling($$0.getFileName().toString() + "_tmp");
+
+      try {
+         this.d = ae.f.newFileSystem(this.c, ImmutableMap.of("create", "true"));
+      } catch (IOException var3) {
+         throw new UncheckedIOException(var3);
+      }
    }
 
-   public static fby a(fby $$0, azf.a $$1) {
-      int $$2 = bae.a($$0.a());
-      int $$3 = bae.a($$0.b());
-      int $$4 = bae.a($$0.c());
-      double $$5 = $$0.a() - (double)$$2;
-      double $$6 = $$0.b() - (double)$$3;
-      double $$7 = $$0.c() - (double)$$4;
-      double $$8 = 0.0;
-      fby $$9 = fby.c;
+   public void a(Path $$0, String $$1) {
+      try {
+         Path $$2 = this.d.getPath(File.separator);
+         Path $$3 = $$2.resolve($$0.toString());
+         Files.createDirectories($$3.getParent());
+         Files.write($$3, $$1.getBytes(StandardCharsets.UTF_8));
+      } catch (IOException var5) {
+         throw new UncheckedIOException(var5);
+      }
+   }
 
-      for (int $$10 = 0; $$10 < 6; $$10++) {
-         double $$11 = bae.d($$5, c[$$10 + 1], c[$$10]);
-         int $$12 = $$2 - 2 + $$10;
+   public void a(Path $$0, File $$1) {
+      try {
+         Path $$2 = this.d.getPath(File.separator);
+         Path $$3 = $$2.resolve($$0.toString());
+         Files.createDirectories($$3.getParent());
+         Files.copy($$1.toPath(), $$3);
+      } catch (IOException var5) {
+         throw new UncheckedIOException(var5);
+      }
+   }
 
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            double $$14 = bae.d($$6, c[$$13 + 1], c[$$13]);
-            int $$15 = $$3 - 2 + $$13;
-
-            for (int $$16 = 0; $$16 < 6; $$16++) {
-               double $$17 = bae.d($$7, c[$$16 + 1], c[$$16]);
-               int $$18 = $$4 - 2 + $$16;
-               double $$19 = $$11 * $$14 * $$17;
-               $$8 += $$19;
-               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).c($$19));
+   public void a(Path $$0) {
+      try {
+         Path $$1 = this.d.getPath(File.separator);
+         if (Files.isRegularFile($$0)) {
+            Path $$2 = $$1.resolve($$0.getParent().relativize($$0).toString());
+            Files.copy($$2, $$0);
+         } else {
+            try (Stream<Path> $$3 = Files.find($$0, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
+               for (Path $$4 : $$3.collect(Collectors.toList())) {
+                  Path $$5 = $$1.resolve($$0.relativize($$4).toString());
+                  Files.createDirectories($$5.getParent());
+                  Files.copy($$4, $$5);
+               }
             }
          }
+      } catch (IOException var9) {
+         throw new UncheckedIOException(var9);
       }
-
-      return $$9.c(1.0 / $$8);
    }
 
-   @FunctionalInterface
-   public interface a {
-      fby fetch(int var1, int var2, int var3);
+   @Override
+   public void close() {
+      try {
+         this.d.close();
+         Files.move(this.c, this.b);
+         a.info("Compressed to {}", this.b);
+      } catch (IOException var2) {
+         throw new UncheckedIOException(var2);
+      }
    }
 }

@@ -1,16 +1,6 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface ems<P extends emr> {
-   ems<emq> a = a("constant", emq.b);
-   ems<emu> b = a("uniform", emu.a);
-   ems<emp> c = a("biased_to_bottom", emp.a);
-   ems<emv> d = a("very_biased_to_bottom", emv.a);
-   ems<emt> e = a("trapezoid", emt.a);
-   ems<emw> f = a("weighted_list", emw.a);
-
-   MapCodec<P> codec();
-
-   private static <P extends emr> ems<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.L, $$0, () -> $$1);
-   }
+public interface ems {
+   @Nullable
+   dxo a(edn var1, int var2, int var3, int var4);
 }

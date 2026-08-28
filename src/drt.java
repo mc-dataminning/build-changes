@@ -1,49 +1,33 @@
 import com.mojang.serialization.MapCodec;
 
-public class drt extends dod {
-   public static final MapCodec<drt> a = b(drt::new);
+public class drt extends djq {
+   public static final MapCodec<drt> c = b(drt::new);
 
    @Override
    public MapCodec<drt> a() {
-      return a;
+      return c;
    }
 
-   public drt(dxu.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(dhi $$0, dxv $$1, jh $$2, bvk $$3, float $$4) {
-      if (!$$3.cf()) {
-         $$3.a($$4, 0.0F, $$0.aj().l());
-      }
+   public drt(dxn.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   public void a(dgn $$0, bvk $$1) {
-      if ($$1.cf()) {
-         super.a($$0, $$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   private void a(bvk $$0) {
-      fby $$1 = $$0.dz();
-      if ($$1.e < 0.0) {
-         double $$2 = $$0 instanceof bwg ? 1.0 : 0.8;
-         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
-      }
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      return this.a($$0, $$1, $$3) ? this.m() : dkf.a.m();
    }
 
    @Override
-   public void a(dhi $$0, jh $$1, dxv $$2, bvk $$3) {
-      double $$4 = Math.abs($$3.dz().e);
-      if ($$4 < 0.1 && !$$3.ce()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.h($$3.dz().d($$5, 1.0, $$5));
-      }
+   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
+      return o($$1.a_($$2.e()));
+   }
 
-      super.a($$0, $$1, $$2, $$3);
+   public static boolean o(dxo $$0) {
+      return $$0.a(axk.aV);
+   }
+
+   @Override
+   protected boolean g(dxo $$0) {
+      return true;
    }
 }

@@ -1,18 +1,8 @@
-import io.netty.buffer.ByteBuf;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class aky implements aac<akx> {
-   public static final aky a = new aky();
-   public static final zt<ByteBuf, aky> b = zt.a(a);
-
-   private aky() {
-   }
-
-   @Override
-   public aae<aky> a() {
-      return akz.b;
-   }
-
-   public void a(akx $$0) {
-      $$0.a(this);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aky {
 }

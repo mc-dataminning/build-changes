@@ -1,101 +1,26 @@
-import com.google.common.collect.Queues;
-import java.util.Locale;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public interface bsd<T extends Runnable> {
-   @Nullable
-   Runnable a();
+public abstract class bsd implements bsi {
+   private static final Codec<Either<Float, bsd>> a = Codec.either(Codec.FLOAT, ma.J.q().dispatch(bsd::c, bse::codec));
+   public static final Codec<bsd> c = a.xmap(
+      $$0 -> (bsd)$$0.map(bsb::a, $$0x -> $$0x), $$0 -> $$0.c() == bse.a ? Either.left(((bsb)$$0).d()) : Either.right($$0)
+   );
 
-   boolean a(T var1);
-
-   boolean b();
-
-   int c();
-
-   public static final class a implements bsd<bsd.c> {
-      private final Queue<Runnable>[] a;
-      private final AtomicInteger b = new AtomicInteger();
-
-      public a(int $$0) {
-         this.a = new Queue[$$0];
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            this.a[$$1] = Queues.newConcurrentLinkedQueue();
-         }
-      }
-
-      @Nullable
-      @Override
-      public Runnable a() {
-         for (Queue<Runnable> $$0 : this.a) {
-            Runnable $$1 = $$0.poll();
-            if ($$1 != null) {
-               this.b.decrementAndGet();
-               return $$1;
-            }
-         }
-
-         return null;
-      }
-
-      public boolean a(bsd.c $$0) {
-         int $$1 = $$0.a;
-         if ($$1 < this.a.length && $$1 >= 0) {
-            this.a[$$1].add($$0);
-            this.b.incrementAndGet();
-            return true;
+   public static Codec<bsd> a(float $$0, float $$1) {
+      return c.validate($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
          } else {
-            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
          }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.get() == 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b.get();
-      }
+      });
    }
 
-   public static final class b implements bsd<Runnable> {
-      private final Queue<Runnable> a;
+   public abstract float a();
 
-      public b(Queue<Runnable> $$0) {
-         this.a = $$0;
-      }
+   public abstract float b();
 
-      @Nullable
-      @Override
-      public Runnable a() {
-         return this.a.poll();
-      }
-
-      @Override
-      public boolean a(Runnable $$0) {
-         return this.a.add($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return this.a.isEmpty();
-      }
-
-      @Override
-      public int c() {
-         return this.a.size();
-      }
-   }
-
-   public static record c(int a, Runnable b) implements Runnable {
-
-      @Override
-      public void run() {
-         this.b.run();
-      }
-   }
+   public abstract bse<?> c();
 }

@@ -1,35 +1,35 @@
-public class dbv extends dbu {
-   public dbv(dbr $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import java.util.List;
+
+public interface dbv<T extends dcb> {
+   Codec<dbv<?>> a = ma.r.q().dispatch(dbv::a, dcf::a);
+   zi<wv, dbv<?>> b = zg.a(mb.ae).b(dbv::a, dcf::b);
+
+   boolean a(T var1, dgz var2);
+
+   cxg a(T var1, js.a var2);
+
+   default boolean aq_() {
+      return false;
    }
 
-   private static cxp c(dbs $$0) {
-      return $$0.a(1, 0);
+   default boolean i() {
+      return true;
    }
 
-   private static cxp d(dbs $$0) {
-      return $$0.a(0, 1);
+   default String j() {
+      return "";
    }
 
-   private static cxp e(dbs $$0) {
-      return $$0.a(2, 1);
+   dcf<? extends dbv<T>> a();
+
+   dcg<? extends dbv<T>> b();
+
+   dbu ap_();
+
+   default List<dda> g() {
+      return List.of();
    }
 
-   private static cxp f(dbs $$0) {
-      return $$0.a(1, 2);
-   }
-
-   public boolean a(dbs $$0, dhi $$1) {
-      return $$0.f() == 3 && $$0.g() == 3 && $$0.e() == 4 ? c($$0).a(ayd.bI) && d($$0).a(ayd.bI) && e($$0).a(ayd.bI) && f($$0).a(ayd.bI) : false;
-   }
-
-   public cxp a(dbs $$0, js.a $$1) {
-      dwe $$2 = new dwe(c($$0).h(), d($$0).h(), e($$0).h(), f($$0).h());
-      return dvo.a($$2);
-   }
-
-   @Override
-   public dco<dbv> a() {
-      return dco.v;
-   }
+   dby h();
 }

@@ -1,18 +1,23 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import java.util.Map;
 
-public class bed extends DataFix {
-   private static final String a = "minecraft:decorated_pot";
+public class bed extends biz {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:salmon_mob", "minecraft:salmon")
+      .put("minecraft:cod_mob", "minecraft:cod")
+      .build();
+   public static final Map<String, String> b = ImmutableMap.builder()
+      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
+      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
+      .build();
 
-   public bed(Schema $$0) {
-      super($$0, true);
+   public bed(Schema $$0, boolean $$1) {
+      super("EntityCodSalmonFix", $$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bix.s, "minecraft:decorated_pot");
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bix.s, "minecraft:decorated_pot");
-      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
+   @Override
+   protected String a(String $$0) {
+      return a.getOrDefault($$0, $$0);
    }
 }

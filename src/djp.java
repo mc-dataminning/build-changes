@@ -1,72 +1,35 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class djp extends dkm implements dkp {
-   public static final MapCodec<djp> a = b(djp::new);
-   protected static final float b = 4.0F;
-   protected static final fcs c = dkm.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
-
-   @Override
-   public MapCodec<djp> a() {
-      return a;
-   }
-
-   public djp(dxu.d $$0) {
+public abstract class djp extends dkd implements dmw {
+   protected djp(dxn.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      fby $$4 = $$0.a($$2);
-      return c.a($$4.d, $$4.e, $$4.f);
+   protected abstract MapCodec<? extends djp> a();
+
+   @Override
+   protected dqo a_(dxo $$0) {
+      return dqo.a;
    }
 
    @Override
-   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   protected boolean a(dxo $$0, dgz $$1, jh $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      duq $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
    }
 
+   @Nullable
    @Override
-   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
-      return $$1.a_($$2.e()).a(axu.ax);
+   protected btc b(dxo $$0, dgz $$1, jh $$2) {
+      duq $$3 = $$1.c_($$2);
+      return $$3 instanceof btc ? (btc)$$3 : null;
    }
 
-   @Override
-   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
-      if (!$$0.a($$1, $$3)) {
-         return dko.a.m();
-      } else {
-         return $$4 == jm.b && $$6.a(dko.nu) ? dko.nu.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
-
-   @Override
-   public cxp a(dhl $$0, jh $$1, dxv $$2) {
-      return new cxp(cxt.eb);
-   }
-
-   @Override
-   public boolean b(dhl $$0, jh $$1, dxv $$2) {
-      return $$0.a_($$1.d()).l();
-   }
-
-   @Override
-   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   protected float a(dxv $$0, cpx $$1, dgn $$2, jh $$3) {
-      return $$1.eZ().h() instanceof czd ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(dhi $$0, jh $$1) {
-      $$0.a($$1.d(), dko.nu.m().b(djq.i, dyh.b), 3);
+   @Nullable
+   protected static <E extends duq, A extends duq> dur<A> a(dus<A> $$0, dus<E> $$1, dur<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

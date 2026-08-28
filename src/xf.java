@@ -1,24 +1,8 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class xf extends wp {
-   private static final Logger h = LogUtils.getLogger();
-   private static final xv i = xv.c("disconnect.exceeded_packet_rate");
-   private final int j;
+@FunctionalInterface
+public interface xf {
+   xf a = ($$0, $$1) -> $$1;
 
-   public xf(int $$0) {
-      super(aad.a);
-      this.j = $$0;
-   }
-
-   @Override
-   protected void c() {
-      super.c();
-      float $$0 = this.o();
-      if ($$0 > (float)this.j) {
-         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new aal(i), xc.a(() -> this.a(i)));
-         this.m();
-      }
-   }
+   xk decorate(@Nullable ary var1, xk var2);
 }

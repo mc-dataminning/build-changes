@@ -1,16 +1,27 @@
-public interface aju extends acl {
-   @Override
-   default wq b() {
-      return wq.d;
+import java.util.UUID;
+
+public record aju(String b, UUID c) implements zr<ajs> {
+   public static final zi<wh, aju> a = zr.a(aju::a, aju::new);
+
+   private aju(wh $$0) {
+      this($$0.d(16), $$0.n());
    }
 
-   void a(ajw var1);
+   private void a(wh $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
+   }
 
-   void a(ajz var1);
+   @Override
+   public zt<aju> a() {
+      return ajq.g;
+   }
 
-   void a(ajy var1);
+   public void a(ajs $$0) {
+      $$0.a(this);
+   }
 
-   void a(ajx var1);
-
-   void a(ajv var1);
+   public UUID e() {
+      return this.c;
+   }
 }

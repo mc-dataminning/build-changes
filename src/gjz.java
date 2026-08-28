@@ -1,56 +1,80 @@
-public class gjz extends gjs {
-   private float a;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-   gjz(gfk $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+public abstract class gjz extends cpo {
+   @Nullable
+   private gfr h;
+   protected fbr a = fbr.c;
+   public float b;
+   public float c;
+   public float d;
+   public final gff e;
+   public float f;
+   public float g;
+
+   public gjz(gff $$0, GameProfile $$1) {
+      super($$0, $$0.Z(), $$0.aa(), $$1);
+      this.e = $$0;
    }
 
    @Override
-   public giw b() {
-      return giw.b;
+   public boolean aa_() {
+      gfr $$0 = this.a();
+      return $$0 != null && $$0.e() == dgw.d;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * bae.b(this.a));
-         this.l = this.l + (double)(0.6F * bae.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(jh.a(this.g, this.h, this.i)).a(aya.a) || this.m) {
-            this.k();
+   public boolean b() {
+      gfr $$0 = this.a();
+      return $$0 != null && $$0.e() == dgw.b;
+   }
+
+   @Nullable
+   protected gfr a() {
+      if (this.h == null) {
+         this.h = flz.Q().L().a(this.cG());
+      }
+
+      return this.h;
+   }
+
+   @Override
+   public void h() {
+      this.f = this.g;
+      this.a = this.dz();
+      super.h();
+   }
+
+   public fbr I(float $$0) {
+      return this.a.a(this.dz(), (double)$$0);
+   }
+
+   public hch d() {
+      gfr $$0 = this.a();
+      return $$0 == null ? hby.a(this.cG()) : $$0.g();
+   }
+
+   public float a(boolean $$0, float $$1) {
+      float $$2 = 1.0F;
+      if (this.gj().b) {
+         $$2 *= 1.1F;
+      }
+
+      float $$3 = this.gj().b();
+      if ($$3 != 0.0F) {
+         float $$4 = (float)this.h(bxf.v) / $$3;
+         $$2 *= ($$4 + 1.0F) / 2.0F;
+      }
+
+      if (this.fz()) {
+         if (this.fB().a(cxk.pa)) {
+            float $$5 = Math.min((float)this.fD() / 20.0F, 1.0F);
+            $$2 *= 1.0F - azu.l($$5) * 0.15F;
+         } else if ($$0 && this.gH()) {
+            return 0.1F;
          }
-
-         this.a += 0.08F;
-      }
-   }
-
-   public static class a implements giv<lw> {
-      private final gjn a;
-
-      public a(gjn $$0) {
-         this.a = $$0;
       }
 
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjz $$8 = new gjz($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+      return azu.h($$1, 1.0F, $$2);
    }
 }

@@ -1,26 +1,13 @@
-import java.util.function.Function;
-
 public interface feq {
-   float getAdvance();
+   <T> ffx<T> a(String var1, ffw<T> var2);
 
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
-   }
+   <T> void a(ffx<T> var1);
 
-   default float a() {
-      return 1.0F;
-   }
+   <T> ffx<T> b(ffx<T> var1);
 
-   default float b() {
-      return 1.0F;
-   }
+   void a(feq var1);
 
-   frc bake(Function<fes, frc> var1);
+   void a();
 
-   public interface a extends feq {
-      @Override
-      default frc bake(Function<fes, frc> $$0) {
-         return frd.a;
-      }
-   }
+   void a(Runnable var1);
 }

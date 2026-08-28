@@ -1,90 +1,24 @@
-import java.util.Optional;
+public record chz(alp e) {
+   public static final zi<wv, jq<chz>> a = zg.b(mb.F);
+   public static final alo<chz> b = a("temperate");
+   public static final alo<chz> c = a("warm");
+   public static final alo<chz> d = a("cold");
 
-public interface chz {
-   boolean p();
-
-   void x(boolean var1);
-
-   void i(cxp var1);
-
-   void h(ux var1);
-
-   cxp X_();
-
-   axe t();
-
-   @Deprecated
-   static void a(bwi $$0, cxp $$1) {
-      $$1.b(ku.g, $$0.an());
-      czy.a(ku.X, $$1, $$1x -> {
-         if ($$0.gb()) {
-            $$1x.a("NoAI", $$0.gb());
-         }
-
-         if ($$0.bb()) {
-            $$1x.a("Silent", $$0.bb());
-         }
-
-         if ($$0.bc()) {
-            $$1x.a("NoGravity", $$0.bc());
-         }
-
-         if ($$0.cn()) {
-            $$1x.a("Glowing", $$0.cn());
-         }
-
-         if ($$0.cC()) {
-            $$1x.a("Invulnerable", $$0.cC());
-         }
-
-         $$1x.a("Health", $$0.eE());
-      });
+   private static alo<chz> a(String $$0) {
+      return alo.a(mb.F, alp.b($$0));
    }
 
-   @Deprecated
-   static void a(bwi $$0, ux $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.u($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.e($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.f($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.j($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.n($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.x($$1.j("Health"));
-      }
+   public static chz a(kd<chz> $$0) {
+      a($$0, b, "textures/entity/frog/temperate_frog.png");
+      a($$0, c, "textures/entity/frog/warm_frog.png");
+      return a($$0, d, "textures/entity/frog/cold_frog.png");
    }
 
-   static <T extends bwg & chz> Optional<btj> a(cpx $$0, bti $$1, T $$2) {
-      cxp $$3 = $$0.b($$1);
-      if ($$3.h() == cxt.qX && $$2.bL()) {
-         $$2.a($$2.t(), 1.0F, 1.0F);
-         cxp $$4 = $$2.X_();
-         $$2.i($$4);
-         cxp $$5 = cxs.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         dhi $$6 = $$2.dW();
-         if (!$$6.C) {
-            ao.k.a((asi)$$0, $$4);
-         }
+   private static chz a(kd<chz> $$0, alo<chz> $$1, String $$2) {
+      return kd.a($$0, $$1, new chz(alp.b($$2)));
+   }
 
-         $$2.at();
-         return Optional.of(btj.a);
-      } else {
-         return Optional.empty();
-      }
+   public alp a() {
+      return this.e;
    }
 }

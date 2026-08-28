@@ -1,78 +1,67 @@
-import com.mojang.logging.LogUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Function;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class hdp {
-   private static final Logger e = LogUtils.getLogger();
-   private static final String f = "map";
-   private static final String g = "map=true";
-   private static final String h = "map=false";
-   private static final dxw<dkm, dxv> i = new dxw.a<dkm, dxv>(dko.a).a(dym.a("map")).a(dkm::m, dxv::new);
-   private static final alz j = alz.b("glow_item_frame");
-   private static final alz k = alz.b("item_frame");
-   private static final Map<alz, dxw<dkm, dxv>> l = Map.of(k, i, j, i);
-   public static final heb a = new heb(j, "map=true");
-   public static final heb b = new heb(j, "map=false");
-   public static final heb c = new heb(k, "map=true");
-   public static final heb d = new heb(k, "map=false");
-   private final heg m;
+   public static final Comparator<hdp> a = Comparator.<hdp, alp>comparing(hdp::a).thenComparing(hdp::b);
+   private final alp b;
+   private final alp c;
+   @Nullable
+   private glq d;
 
-   public hdp(heg $$0) {
-      this.m = $$0;
+   public hdp(alp $$0, alp $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static Function<alz, dxw<dkm, dxv>> a() {
-      Map<alz, dxw<dkm, dxv>> $$0 = new HashMap<>(l);
+   public alp a() {
+      return this.b;
+   }
 
-      for (dkm $$1 : ma.e) {
-         $$0.put($$1.p().h().a(), $$1.l());
+   public alp b() {
+      return this.c;
+   }
+
+   public hbg c() {
+      return flz.Q().a(this.a()).apply(this.b());
+   }
+
+   public glq a(Function<alp, glq> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
       }
 
-      return $$0::get;
+      return this.d;
    }
 
-   public hdp.c a(alz $$0, dxw<dkm, dxv> $$1, List<hdp.a> $$2) {
-      List<dxv> $$3 = $$1.a();
-      Map<dxv, hdp.b> $$4 = new HashMap<>();
-      Map<heb, hdp.b> $$5 = new HashMap<>();
+   public fgp a(glg $$0, Function<alp, glq> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
 
-      try {
-         for (hdp.a $$6 : $$2) {
-            $$6.b.a($$1, $$0 + "/" + $$6.a).forEach(($$1x, $$2x) -> $$4.put($$1x, new hdp.b($$1x, $$2x)));
-         }
-      } finally {
-         Iterator var12 = $$3.iterator();
+   public fgp a(glg $$0, Function<alp, glq> $$1, boolean $$2, boolean $$3) {
+      return this.c().a(gsj.a($$0, this.a($$1), $$2, $$3));
+   }
 
-         while (true) {
-            if (!var12.hasNext()) {
-               ;
-            } else {
-               dxv $$10 = (dxv)var12.next();
-               heb $$11 = gmn.a($$0, $$10);
-               hdp.b $$12 = $$4.get($$10);
-               if ($$12 == null) {
-                  e.warn("Missing blockstate definition: '{}' missing model for variant: '{}'", $$0, $$11);
-                  $$12 = new hdp.b($$10, this.m);
-               }
-
-               $$5.put($$11, $$12);
-            }
-         }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         hdp $$1 = (hdp)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
       }
-
-      return new hdp.c($$5);
    }
 
-   public static record a(String a, gmy b) {
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
    }
 
-   public static record b(dxv a, heg b) {
-   }
-
-   public static record c(Map<heb, hdp.b> a) {
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

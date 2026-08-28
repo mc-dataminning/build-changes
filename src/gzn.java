@@ -1,7 +1,8 @@
-public class gzn extends gyt {
-   public float a;
-   public float b;
-   public boolean c;
-   public cwm d = cwm.a;
-   public int e;
+public class gzn extends gyo {
+   public boolean a;
+   public final but b = new but();
+   public final but c = new but();
+   public final but d = new but();
+   public final but e = new but();
+   public final but f = new but();
 }

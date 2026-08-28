@@ -1,40 +1,51 @@
-public class gda extends gbm<gzm> {
-   public static final gex a = gex.scaling(0.5F);
-   public static final gex b = gex.scaling(1.5F);
-   private static final String c = "body_front";
-   private static final String d = "body_back";
-   private static final float e = -7.2F;
-   private final geo f;
+public class gda extends gbh<gzk> {
+   public static final String a = "lid";
+   private static final String b = "base";
+   private final gej c;
+   private final gej d;
 
-   public gda(geo $$0) {
-      super($$0);
-      this.f = $$0.b("body_back");
+   public gda(gej $$0) {
+      super($$0, glq::h);
+      this.c = $$0.b("lid");
+      this.d = $$0.b("head");
    }
 
-   public static geu a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      int $$2 = 20;
-      gey $$3 = $$1.a("body_front", get.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), geq.a(0.0F, 20.0F, -7.2F));
-      gey $$4 = $$1.a("body_back", get.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), geq.a(0.0F, 20.0F, 0.8000002F));
-      $$1.a("head", get.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), geq.a(0.0F, 20.0F, -7.2F));
-      $$4.a("back_fin", get.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), geq.a(0.0F, 0.0F, 8.0F));
-      $$3.a("top_front_fin", get.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), geq.a(0.0F, -4.5F, 5.0F));
-      $$4.a("top_back_fin", get.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), geq.a(0.0F, -4.5F, -1.0F));
-      $$1.a("right_fin", get.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), geq.a(-1.5F, 21.5F, -7.2F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", get.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), geq.a(1.5F, 21.5F, -7.2F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      return geu.a($$0, 32, 32);
+   private static ger c() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("lid", geo.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gel.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", geo.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gel.a(0.0F, 24.0F, 0.0F));
+      return $$0;
    }
 
-   public void a(gzm $$0) {
+   public static gep a() {
+      ger $$0 = c();
+      $$0.a().a("head", geo.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gel.a(0.0F, 12.0F, 0.0F));
+      return gep.a($$0, 64, 64);
+   }
+
+   public static gep b() {
+      ger $$0 = c();
+      return gep.a($$0, 64, 64);
+   }
+
+   public void a(gzk $$0) {
       super.a($$0);
-      float $$1 = 1.0F;
-      float $$2 = 1.0F;
-      if (!$$0.af) {
-         $$1 = 1.3F;
-         $$2 = 1.7F;
+      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
+      float $$2 = -1.0F + azu.a($$1);
+      float $$3 = 0.0F;
+      if ($$1 > (float) Math.PI) {
+         $$3 = azu.a($$0.p * 0.1F) * 0.7F;
       }
 
-      this.f.f = -$$1 * 0.25F * bae.a($$2 * 0.6F * $$0.p);
+      this.c.a(0.0F, 16.0F + azu.a($$1) * 8.0F + $$3, 0.0F);
+      if ($$0.c > 0.3F) {
+         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
+      } else {
+         this.c.f = 0.0F;
+      }
+
+      this.d.e = $$0.V * (float) (Math.PI / 180.0);
+      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
    }
 }

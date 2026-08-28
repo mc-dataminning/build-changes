@@ -1,19 +1,19 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class beb extends DataFix {
+public class beb extends bhi {
    public beb(Schema $$0) {
-      super($$0, false);
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bin.s, "minecraft:brushable_block");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("ContainerBlockEntityLockPredicateFix", this.getInputSchema().findChoiceType(bix.s), beb::a);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameField("loot_table", "LootTable").renameField("loot_table_seed", "LootTableSeed");
    }
 
-   private static Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.renameAndFixField("Lock", "lock", bhk::b));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

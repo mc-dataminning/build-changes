@@ -1,48 +1,44 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.List;
 
-public class fvy extends fuq {
-   public static final float c = 62.500004F;
-   public static final float d = 0.9765628F;
-   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private gch u;
+public class fvy implements fwb {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
 
-   public fvy(dwk $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+   public fvy(fvy.a $$0) {
+      this.c = $$0.a();
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      boolean $$0 = this.a.m().b() instanceof dsk;
-      this.u = gok.a(this.m.aS(), this.b, $$0);
+   public int a(fnj $$0) {
+      return this.c.size() * 12 + 2;
    }
 
    @Override
-   protected void a(fns $$0, dxv $$1) {
-      super.a($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dsk;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
+   public int b(fnj $$0) {
+      int $$1 = 0;
+
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1 + 10 + 6;
+   }
+
+   @Override
+   public void a(fnj $$0, int $$1, int $$2, int $$3, int $$4, fnl $$5) {
+      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
+         ProfileResult $$7 = this.c.get($$6);
+         int $$8 = $$2 + 2 + $$6 * 12;
+         foy.a($$5, flz.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
+         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
       }
    }
 
-   @Override
-   protected void c(fns $$0) {
-      if (this.u != null) {
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         $$0.a($$1 -> {
-            hdu $$2 = gmg.a(this.b);
-            fgw $$3 = $$2.a($$1, this.u::a);
-            this.u.a($$0.c(), $$3, 15728880, hbc.d);
-         });
-      }
-   }
-
-   @Override
-   protected Vector3f l() {
-      return s;
+   public static record a(List<ProfileResult> a) implements cva {
    }
 }

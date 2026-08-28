@@ -1,93 +1,42 @@
-import java.util.UUID;
+import java.time.Instant;
 
-public class ahi {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
+public record ahi(String b, Instant c, long d, fd e, xr.b f) implements zr<ahb> {
+   public static final zi<wh, ahi> a = zr.a(ahi::a, ahi::new);
 
-   public static String a(bvk $$0) {
-      if ($$0 instanceof cpx) {
-         return $$0.al().getString();
-      } else {
-         xv $$1 = $$0.an();
-         return $$1 != null ? $$1.getString() : a($$0.cG());
-      }
+   private ahi(wh $$0) {
+      this($$0.p(), $$0.t(), $$0.readLong(), new fd($$0), new xr.b($$0));
    }
 
-   public static String a(UUID $$0) {
-      bam $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      this.e.a($$0);
+      this.f.a($$0);
    }
 
-   private static String a(bam $$0, String[] $$1) {
-      return ae.a($$1, $$0);
+   @Override
+   public zt<ahi> a() {
+      return agz.bq;
    }
 
-   private static bam b(UUID $$0) {
-      return bam.a((long)($$0.hashCode() >> 2));
+   public void a(ahb $$0) {
+      $$0.a(this);
+   }
+
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   public fd g() {
+      return this.e;
+   }
+
+   public xr.b h() {
+      return this.f;
    }
 }

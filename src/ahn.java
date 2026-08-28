@@ -1,11 +1,15 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import io.netty.buffer.ByteBuf;
 
-public interface ahn extends xh {
-   Logger a = LogUtils.getLogger();
+public record ahn() implements zr<ahb> {
+   public static final ahn a = new ahn();
+   public static final zi<ByteBuf, ahn> b = zi.a(a);
 
    @Override
-   default void a(aac $$0, Exception $$1) throws z {
-      a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
+   public zt<ahn> a() {
+      return agz.bv;
+   }
+
+   public void a(ahb $$0) {
+      $$0.a(this);
    }
 }

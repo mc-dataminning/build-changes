@@ -1,79 +1,64 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fte extends fsn {
+   private fny c;
 
-public class fte extends fty {
-   private static final xv a = xv.c("addServer.enterIp");
-   private fof b;
-   private final gfz c;
-   private foo d;
-   private final BooleanConsumer s;
-   private final fty u;
-
-   public fte(fty $$0, BooleanConsumer $$1, gfz $$2) {
-      super(xv.c("selectServer.direct"));
-      this.u = $$0;
-      this.c = $$2;
-      this.s = $$1;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aM_() != this.d || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.l();
-         return true;
-      }
+   public fte() {
+      super("");
    }
 
    @Override
    protected void aT_() {
-      this.d = new foo(this.p, this.n / 2 - 100, 116, 200, 20, xv.c("addServer.enterIp"));
-      this.d.f(128);
-      this.d.a(this.m.n.Y);
-      this.d.b($$0 -> this.E());
-      this.d(this.d);
-      this.b = this.c(fof.a(xv.c("selectServer.select"), $$0 -> this.l()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
-      this.c(fof.a(xu.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-      this.E();
+      super.aT_();
+      this.c = fny.a(xk.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.d);
-   }
-
-   @Override
-   public void a(fmg $$0, int $$1, int $$2) {
-      String $$3 = this.d.a();
-      this.b($$0, $$1, $$2);
-      this.d.a($$3);
-   }
-
-   private void l() {
-      this.c.b = this.d.a();
-      this.s.accept(true);
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
    public void aP_() {
-      this.m.a(this.u);
+      this.E();
    }
 
    @Override
-   public void aJ_() {
-      this.m.n.Y = this.d.a();
-      this.m.n.az();
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.E();
+      }
+
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.m.d().d();
+         return true;
+      }
    }
 
    private void E() {
-      this.b.j = ghc.b(this.d.a());
+      gfg $$0 = this.m.t.j;
+      $$0.b(new aii(this.m.t, aii.a.c));
    }
 
-   @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
-      this.d.a($$0, $$1, $$2, $$3);
+   public void l() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new fsn(this.b.a()));
+      }
    }
 }

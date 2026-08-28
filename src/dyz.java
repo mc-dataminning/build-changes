@@ -1,7 +1,7 @@
-public enum dyz implements bba {
-   a("up"),
-   b("side"),
-   c("none");
+public enum dyz implements baq {
+   a("none"),
+   b("low"),
+   c("tall");
 
    private final String d;
 
@@ -17,9 +17,5 @@ public enum dyz implements bba {
    @Override
    public String c() {
       return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
    }
 }

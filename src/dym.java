@@ -1,38 +1,20 @@
-import java.util.List;
-import java.util.Optional;
+public enum dym implements baq {
+   a("top"),
+   b("bottom");
 
-public final class dym extends dyx<Boolean> {
-   private static final List<Boolean> a = List.of(true, false);
-   private static final int b = 0;
-   private static final int c = 1;
+   private final String c;
 
-   private dym(String $$0) {
-      super($$0, Boolean.class);
+   private dym(final String $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public List<Boolean> a() {
-      return a;
-   }
-
-   public static dym a(String $$0) {
-      return new dym($$0);
+   public String toString() {
+      return this.c;
    }
 
    @Override
-   public Optional<Boolean> b(String $$0) {
-      return switch ($$0) {
-         case "true" -> Optional.of(true);
-         case "false" -> Optional.of(false);
-         default -> Optional.empty();
-      };
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   public int b(Boolean $$0) {
-      return $$0 ? 0 : 1;
+   public String c() {
+      return this.c;
    }
 }

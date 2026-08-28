@@ -1,23 +1,30 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
 import java.util.Objects;
+import java.util.function.Function;
 
 public class bjr extends DataFix {
-   public bjr(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bjr(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bix.I.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bix.I))) {
-         throw new IllegalStateException("Team type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", bbr::a)));
-      }
+      Type<?> $$0 = this.getInputSchema().getType(bin.x);
+      OpticFinder<?> $$1 = $$0.findField("buy");
+      OpticFinder<?> $$2 = $$0.findField("buyB");
+      OpticFinder<?> $$3 = $$0.findField("sell");
+      OpticFinder<Pair<String, String>> $$4 = DSL.fieldFinder("id", DSL.named(bin.D.typeName(), bkb.a()));
+      Function<Typed<?>, Typed<?>> $$5 = $$1x -> this.a($$4, $$1x);
+      return this.fixTypeEverywhereTyped("Villager trade fix", $$0, $$4x -> $$4x.updateTyped($$1, $$5).updateTyped($$2, $$5).updateTyped($$3, $$5));
+   }
+
+   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
+      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
    }
 }

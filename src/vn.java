@@ -1,23 +1,27 @@
-public abstract class vn implements vu {
-   protected vn() {
-   }
+public interface vn {
+   void a(vh var1);
 
-   public abstract long f();
+   void a(uk var1);
 
-   public abstract int g();
+   void a(ve var1);
 
-   public abstract short h();
+   void a(ur var1);
 
-   public abstract byte i();
+   void a(uu var1);
 
-   public abstract double j();
+   void a(up var1);
 
-   public abstract float k();
+   void a(un var1);
 
-   public abstract Number l();
+   void a(uj var1);
 
-   @Override
-   public String toString() {
-      return this.u_();
-   }
+   void a(uq var1);
+
+   void a(ut var1);
+
+   void a(us var1);
+
+   void a(um var1);
+
+   void a(uo var1);
 }

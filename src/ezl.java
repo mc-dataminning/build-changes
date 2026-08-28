@@ -1,42 +1,34 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class ezl extends ezo {
-   public static final MapCodec<ezl> a = a(ezl::new);
-   public static final Codec<ezl> b = b(ezl::new);
+public record ezl(boolean b) implements ezr {
+   public static final MapCodec<ezl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(ezl::e)).apply($$0, ezl::new));
 
-   ezl(List<ezy> $$0) {
-      super($$0, ae.a($$0));
-   }
-
-   public static ezl a(List<ezy> $$0) {
-      return new ezl(List.copyOf($$0));
+   public boolean a(ewi $$0) {
+      return $$0.b(ezc.l) == this.b;
    }
 
    @Override
-   public ezz b() {
-      return faa.c;
+   public ezs b() {
+      return ezt.s;
    }
 
-   public static ezl.a a(ezy.a... $$0) {
-      return new ezl.a($$0);
+   @Override
+   public Set<bbd<?>> a() {
+      return Set.of(ezc.l);
    }
 
-   public static class a extends ezo.a {
-      public a(ezy.a... $$0) {
-         super($$0);
-      }
+   public static ezr.a c() {
+      return () -> new ezl(true);
+   }
 
-      @Override
-      public ezl.a and(ezy.a $$0) {
-         this.a($$0);
-         return this;
-      }
+   public static ezr.a d() {
+      return () -> new ezl(false);
+   }
 
-      @Override
-      protected ezy a(List<ezy> $$0) {
-         return new ezl($$0);
-      }
+   public boolean e() {
+      return this.b;
    }
 }

@@ -1,243 +1,342 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Optional;
+import java.util.UUID;
 
-public class dwq extends dwr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 200;
-   private static final int c = 40;
-   private static final int d = 2400;
-   private static final int e = 1;
-   private static final int f = 10;
-   private long g;
-   private int h;
-   @Nullable
-   private jh i;
-   private boolean j;
+public final class dwq {
+   public static final String a = "normal_config";
+   public static final String b = "ominous_config";
+   public static final int c = 40;
+   private static final int d = 36000;
+   private static final int e = 14;
+   private static final int f = 47;
+   private static final int g = azu.h(47);
+   private static final float h = 0.02F;
+   private final jq<dwr> i;
+   private final jq<dwr> j;
+   private final dwt k;
+   private final int l;
+   private final int m;
+   private final dwq.b n;
+   private dwp o;
+   private final dwp.a p;
+   private boolean q;
+   private boolean r;
 
-   public dwq(jh $$0, dxv $$1) {
-      super(duz.w, $$0, $$1);
+   public Codec<dwq> a() {
+      return RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dwr.c.optionalFieldOf("normal_config", jq.a(dwr.a)).forGetter($$0x -> $$0x.i),
+                  dwr.c.optionalFieldOf("ominous_config", jq.a(dwr.a)).forGetter($$0x -> $$0x.j),
+                  dwt.b.forGetter(dwq::f),
+                  Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", 36000).forGetter(dwq::g),
+                  Codec.intRange(1, 128).optionalFieldOf("required_player_range", 14).forGetter(dwq::h)
+               )
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dwq($$0x, $$1, $$2, $$3, $$4, this.n, this.o, this.p))
+      );
    }
 
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("Age", this.g);
-      if (this.i != null) {
-         $$0.a("exit_portal", vm.a(this.i));
-      }
-
-      if (this.j) {
-         $$0.a("ExactTeleport", true);
-      }
+   public dwq(dwq.b $$0, dwp $$1, dwp.a $$2) {
+      this(jq.a(dwr.a), jq.a(dwr.a), new dwt(), 36000, 14, $$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.g = $$0.i("Age");
-      vm.a($$0, "exit_portal").filter(dhi::l).ifPresent($$0x -> this.i = $$0x);
-      this.j = $$0.q("ExactTeleport");
+   public dwq(jq<dwr> $$0, jq<dwr> $$1, dwt $$2, int $$3, int $$4, dwq.b $$5, dwp $$6, dwp.a $$7) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.m = $$3;
+      this.l = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
    }
 
-   public static void a(dhi $$0, jh $$1, dxv $$2, dwq $$3) {
-      $$3.g++;
-      if ($$3.c()) {
-         $$3.h--;
-      }
+   public dwr b() {
+      return this.r ? this.d() : this.c();
    }
 
-   public static void b(dhi $$0, jh $$1, dxv $$2, dwq $$3) {
-      boolean $$4 = $$3.b();
-      boolean $$5 = $$3.c();
-      $$3.g++;
-      if ($$5) {
-         $$3.h--;
-      } else if ($$3.g % 2400L == 0L) {
-         c($$0, $$1, $$2, $$3);
-      }
-
-      if ($$4 != $$3.b() || $$5 != $$3.c()) {
-         a($$0, $$1, $$2);
-      }
+   @VisibleForTesting
+   public dwr c() {
+      return this.i.a();
    }
 
-   public boolean b() {
-      return this.g < 200L;
+   @VisibleForTesting
+   public dwr d() {
+      return this.j.a();
    }
 
-   public boolean c() {
-      return this.h > 0;
+   public void a(arx $$0, jh $$1) {
+      $$0.a($$1, $$0.a_($$1).b(dsx.c, Boolean.valueOf(true)), 3);
+      $$0.c(3020, $$1, 1);
+      this.r = true;
+      this.k.a(this, $$0);
    }
 
-   public float a(float $$0) {
-      return bae.a(((float)this.g + $$0) / 200.0F, 0.0F, 1.0F);
+   public void b(arx $$0, jh $$1) {
+      $$0.a($$1, $$0.a_($$1).b(dsx.c, Boolean.valueOf(false)), 3);
+      this.r = false;
    }
 
-   public float b(float $$0) {
-      return 1.0F - bae.a(((float)this.h - $$0) / 40.0F, 0.0F, 1.0F);
+   public boolean e() {
+      return this.r;
    }
 
-   public acy d() {
-      return acy.a(this);
+   public dwt f() {
+      return this.k;
    }
 
-   @Override
-   public ux a(js.a $$0) {
-      return this.e($$0);
+   public int g() {
+      return this.m;
    }
 
-   public static void c(dhi $$0, jh $$1, dxv $$2, dwq $$3) {
-      if (!$$0.C) {
-         $$3.h = 40;
-         $$0.a($$1, $$2.b(), 1, 0);
-         a($$0, $$1, $$2);
-      }
+   public int h() {
+      return this.l;
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h = 40;
+   public dwu i() {
+      return this.n.d();
+   }
+
+   public void a(dgz $$0, dwu $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   public void j() {
+      this.n.f();
+   }
+
+   public dwp k() {
+      return this.o;
+   }
+
+   public dwp.a l() {
+      return this.p;
+   }
+
+   public boolean a(arx $$0) {
+      if (this.q) {
          return true;
       } else {
-         return super.a_($$0, $$1);
+         return $$0.am() == bsx.a ? false : $$0.O().b(dgv.e);
       }
    }
 
-   @Nullable
-   public fby a(ash $$0, jh $$1) {
-      if (this.i == null && $$0.ah() == dhi.k) {
-         jh $$2 = b($$0, $$1);
-         $$2 = $$2.b(10);
-         a.debug("Creating portal at {}", $$2);
-         a($$0, $$2, eiz.a($$1, false));
-         this.a($$2, this.j);
-      }
-
-      if (this.i != null) {
-         jh $$3 = this.j ? this.i : a((dhi)$$0, this.i);
-         return $$3.c();
+   public Optional<UUID> c(arx $$0, jh $$1) {
+      bac $$2 = $$0.H_();
+      dht $$3 = this.k.b(this, $$0.H_());
+      um $$4 = $$3.d();
+      us $$5 = $$4.c("Pos", 6);
+      Optional<bvi<?>> $$6 = bvi.a($$4);
+      if ($$6.isEmpty()) {
+         return Optional.empty();
       } else {
-         return null;
-      }
-   }
+         int $$7 = $$5.size();
+         double $$8 = $$7 >= 1 ? $$5.h(0) : (double)$$1.u() + ($$2.j() - $$2.j()) * (double)this.b().c() + 0.5;
+         double $$9 = $$7 >= 2 ? $$5.h(1) : (double)($$1.v() + $$2.a(3) - 1);
+         double $$10 = $$7 >= 3 ? $$5.h(2) : (double)$$1.w() + ($$2.j() - $$2.j()) * (double)this.b().c() + 0.5;
+         if (!$$0.b($$6.get().a($$8, $$9, $$10))) {
+            return Optional.empty();
+         } else {
+            fbr $$11 = new fbr($$8, $$9, $$10);
+            if (!a($$0, $$1.b(), $$11)) {
+               return Optional.empty();
+            } else {
+               jh $$12 = jh.a((ka)$$11);
+               if (!bwt.a($$6.get(), $$0, bvh.q, $$12, $$0.H_())) {
+                  return Optional.empty();
+               } else {
+                  if ($$3.b().isPresent()) {
+                     dht.a $$13 = $$3.b().get();
+                     if (!$$13.a($$12, $$0)) {
+                        return Optional.empty();
+                     }
+                  }
 
-   private static jh a(dhi $$0, jh $$1) {
-      jh $$2 = a($$0, $$1.b(0, 2, 0), 5, false);
-      a.debug("Best exit position for portal at {} is {}", $$1, $$2);
-      return $$2.d();
-   }
+                  bvb $$14 = bvi.a($$4, $$0, bvh.q, $$4x -> {
+                     $$4x.b($$8, $$9, $$10, $$2.i() * 360.0F, 0.0F);
+                     return $$4x;
+                  });
+                  if ($$14 == null) {
+                     return Optional.empty();
+                  } else {
+                     if ($$14 instanceof bvz $$15) {
+                        if (!$$15.a((dhc)$$0)) {
+                           return Optional.empty();
+                        }
 
-   private static jh b(ash $$0, jh $$1) {
-      fby $$2 = c($$0, $$1);
-      eaa $$3 = a((dhi)$$0, $$2);
-      jh $$4 = a($$3);
-      if ($$4 == null) {
-         jh $$5 = jh.a($$2.d + 0.5, 75.0, $$2.f + 0.5);
-         a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
-         $$0.K_().a(mb.aL).flatMap($$0x -> $$0x.a(sl.f)).ifPresent($$2x -> ((egi)$$2x.a()).a($$0, $$0.m().g(), bam.a($$5.a()), $$5));
-         $$4 = $$5;
-      } else {
-         a.debug("Found suitable block to teleport to: {}", $$4);
-      }
+                        boolean $$16 = $$3.a().f() == 1 && $$3.a().b("id", 8);
+                        if ($$16) {
+                           $$15.a($$0, $$0.d_($$15.dw()), bvh.q, null);
+                        }
 
-      return a($$0, $$4, 16, true);
-   }
+                        $$15.ai();
+                        $$3.c().ifPresent($$15::a);
+                     }
 
-   private static fby c(ash $$0, jh $$1) {
-      fby $$2 = new fby((double)$$1.u(), 0.0, (double)$$1.w()).d();
-      int $$3 = 1024;
-      fby $$4 = $$2.c(1024.0);
-
-      for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.c(-16.0))) {
-         a.debug("Skipping backwards past nonempty chunk at {}", $$4);
-      }
-
-      for (int var6 = 16; a($$0, $$4) && var6-- > 0; $$4 = $$4.e($$2.c(16.0))) {
-         a.debug("Skipping forward past empty chunk at {}", $$4);
-      }
-
-      a.debug("Found chunk at {}", $$4);
-      return $$4;
-   }
-
-   private static boolean a(ash $$0, fby $$1) {
-      return a((dhi)$$0, $$1).a() == -1;
-   }
-
-   private static jh a(dgn $$0, jh $$1, int $$2, boolean $$3) {
-      jh $$4 = null;
-
-      for (int $$5 = -$$2; $$5 <= $$2; $$5++) {
-         for (int $$6 = -$$2; $$6 <= $$2; $$6++) {
-            if ($$5 != 0 || $$6 != 0 || $$3) {
-               for (int $$7 = $$0.am(); $$7 > ($$4 == null ? $$0.L_() : $$4.v()); $$7--) {
-                  jh $$8 = new jh($$1.u() + $$5, $$7, $$1.w() + $$6);
-                  dxv $$9 = $$0.a_($$8);
-                  if ($$9.m($$0, $$8) && ($$3 || !$$9.a(dko.I))) {
-                     $$4 = $$8;
-                     break;
+                     if (!$$0.e($$14)) {
+                        return Optional.empty();
+                     } else {
+                        dwq.a $$17 = this.r ? dwq.a.b : dwq.a.a;
+                        $$0.c(3011, $$1, $$17.a());
+                        $$0.c(3012, $$12, $$17.a());
+                        $$0.a($$14, eck.t, $$12);
+                        return Optional.of($$14.cG());
+                     }
                   }
                }
             }
          }
       }
-
-      return $$4 == null ? $$1 : $$4;
    }
 
-   private static eaa a(dhi $$0, fby $$1) {
-      return $$0.d(bae.a($$1.d / 16.0), bae.a($$1.f / 16.0));
+   public void a(arx $$0, jh $$1, alo<ewn> $$2) {
+      ewn $$3 = $$0.p().bc().b($$2);
+      ewl $$4 = new ewl.a($$0).a(ezb.b);
+      ObjectArrayList<cxg> $$5 = $$3.a($$4);
+      if (!$$5.isEmpty()) {
+         ObjectListIterator var7 = $$5.iterator();
+
+         while (var7.hasNext()) {
+            cxg $$6 = (cxg)var7.next();
+            la.a($$0, $$6, 2, jm.b, fbr.c($$1).a(jm.b, 1.2));
+         }
+
+         $$0.c(3014, $$1, 0);
+      }
    }
 
-   @Nullable
-   private static jh a(eaa $$0) {
-      dgo $$1 = $$0.f();
-      jh $$2 = new jh($$1.d(), 30, $$1.e());
-      int $$3 = $$0.b() + 16 - 1;
-      jh $$4 = new jh($$1.f(), $$3, $$1.g());
-      jh $$5 = null;
-      double $$6 = 0.0;
+   public void a(dgz $$0, jh $$1, boolean $$2) {
+      dwu $$3 = this.i();
+      $$3.a($$0, $$1, $$2);
+      if ($$3.d()) {
+         double $$4 = (double)Math.max(0L, this.k.f - $$0.ad());
+         this.k.l = this.k.k;
+         this.k.k = (this.k.k + $$3.b() / ($$4 + 200.0)) % 360.0;
+      }
 
-      for (jh $$7 : jh.c($$2, $$4)) {
-         dxv $$8 = $$0.a_($$7);
-         jh $$9 = $$7.d();
-         jh $$10 = $$7.b(2);
-         if ($$8.a(dko.fN) && !$$0.a_($$9).m($$0, $$9) && !$$0.a_($$10).m($$0, $$10)) {
-            double $$11 = $$7.c(0.0, 0.0, 0.0);
-            if ($$5 == null || $$11 < $$6) {
-               $$5 = $$7;
-               $$6 = $$11;
-            }
+      if ($$3.e()) {
+         bac $$5 = $$0.H_();
+         if ($$5.i() <= 0.02F) {
+            awu $$6 = $$2 ? awv.mH : awv.mG;
+            $$0.a($$1, $$6, aww.e, $$5.i() * 0.25F + 0.75F, $$5.i() + 0.5F, false);
          }
       }
-
-      return $$5;
    }
 
-   private static void a(ash $$0, jh $$1, eiz $$2) {
-      egw.M.a($$2, $$0, $$0.m().g(), bam.a(), $$1);
-   }
-
-   @Override
-   public boolean a(jm $$0) {
-      return dkm.a(this.m(), this.o.a_(this.aB_().a($$0)), $$0);
-   }
-
-   public int f() {
-      int $$0 = 0;
-
-      for (jm $$1 : jm.values()) {
-         $$0 += this.a($$1) ? 1 : 0;
+   public void a(arx $$0, jh $$1, boolean $$2) {
+      this.r = $$2;
+      dwu $$3 = this.i();
+      if (this.k.d.removeIf($$2x -> a($$0, $$1, $$2x))) {
+         this.k.f = $$0.ad() + (long)this.b().h();
       }
 
-      return $$0;
+      dwu $$4 = $$3.a($$1, this, $$0);
+      if ($$4 != $$3) {
+         this.a($$0, $$4);
+      }
    }
 
-   public void a(jh $$0, boolean $$1) {
-      this.j = $$1;
-      this.i = $$0;
-      this.e();
+   private static boolean a(arx $$0, jh $$1, UUID $$2) {
+      bvb $$3 = $$0.a($$2);
+      return $$3 == null || !$$3.bL() || !$$3.dW().ai().equals($$0.ai()) || $$3.dw().j($$1) > (double)g;
+   }
+
+   private static boolean a(dgz $$0, fbr $$1, fbr $$2) {
+      fbn $$3 = $$0.a(new dgh($$2, $$1, dgh.a.c, dgh.b.a, fbw.a()));
+      return $$3.b().equals(jh.a((ka)$$1)) || $$3.d() == fbp.a.a;
+   }
+
+   public static void a(dgz $$0, jh $$1, bac $$2, lw $$3) {
+      for (int $$4 = 0; $$4 < 20; $$4++) {
+         double $$5 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$6 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$7 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         $$0.a(ls.ag, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+         $$0.a($$3, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+      }
+   }
+
+   public static void a(dgz $$0, jh $$1, bac $$2) {
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         double $$4 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$5 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$6 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$7 = $$2.k() * 0.02;
+         double $$8 = $$2.k() * 0.02;
+         double $$9 = $$2.k() * 0.02;
+         $$0.a(ls.bg, $$4, $$5, $$6, $$7, $$8, $$9);
+         $$0.a(ls.M, $$4, $$5, $$6, $$7, $$8, $$9);
+      }
+   }
+
+   public static void a(dgz $$0, jh $$1, bac $$2, int $$3, lq $$4) {
+      for (int $$5 = 0; $$5 < 30 + Math.min($$3, 10) * 5; $$5++) {
+         double $$6 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
+         double $$7 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
+         double $$8 = (double)$$1.u() + 0.5 + $$6;
+         double $$9 = (double)$$1.v() + 0.1 + (double)$$2.i() * 0.8;
+         double $$10 = (double)$$1.w() + 0.5 + $$7;
+         $$0.a($$4, $$8, $$9, $$10, 0.0, 0.0, 0.0);
+      }
+   }
+
+   public static void b(dgz $$0, jh $$1, bac $$2) {
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         double $$4 = (double)$$1.u() + 0.4 + $$2.j() * 0.2;
+         double $$5 = (double)$$1.v() + 0.4 + $$2.j() * 0.2;
+         double $$6 = (double)$$1.w() + 0.4 + $$2.j() * 0.2;
+         double $$7 = $$2.k() * 0.02;
+         double $$8 = $$2.k() * 0.02;
+         double $$9 = $$2.k() * 0.02;
+         $$0.a(ls.aL, $$4, $$5, $$6, $$7, $$8, $$9 * 0.25);
+         $$0.a(ls.ag, $$4, $$5, $$6, $$7, $$8, $$9);
+      }
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   @VisibleForTesting
+   public void a(dwp $$0) {
+      this.o = $$0;
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   @VisibleForTesting
+   public void m() {
+      this.q = true;
+   }
+
+   public static enum a {
+      a(ls.F),
+      b(ls.M);
+
+      public final lw c;
+
+      private a(final lw $$0) {
+         this.c = $$0;
+      }
+
+      public static dwq.a a(int $$0) {
+         dwq.a[] $$1 = values();
+         return $$0 <= $$1.length && $$0 >= 0 ? $$1[$$0] : a;
+      }
+
+      public int a() {
+         return this.ordinal();
+      }
+   }
+
+   public interface b {
+      void a(dgz var1, dwu var2);
+
+      dwu d();
+
+      void f();
    }
 }

@@ -1,22 +1,8 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class awm<T> {
-   @Nullable
-   private final T a;
-
-   public awm(@Nullable T $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   T g() {
-      return this.a;
-   }
-
-   boolean f() {
-      return false;
-   }
-
-   protected abstract void a(JsonObject var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface awm {
 }

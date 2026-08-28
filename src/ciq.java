@@ -1,191 +1,58 @@
-import java.util.List;
+public abstract class ciq extends bwf {
+   public static final int d = 120;
 
-public class ciq extends cht {
-   private static final alc<Integer> bZ = alg.a(ciq.class, ale.b);
-   int ca;
-   int cb;
-   private static final cgx.a cc = ($$0, $$1) -> {
-      if ($$0 instanceof cpx $$2 && $$2.b()) {
-         return false;
-      }
-
-      return !$$0.aq().a(axy.A);
-   };
-   static final cgx cd = cgx.b().e().d().a(cc);
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-
-   public ciq(bvr<? extends ciq> $$0, dhi $$1) {
+   protected ciq(bvi<? extends ciq> $$0, dgz $$1) {
       super($$0, $$1);
-      this.m_();
+      this.a(euh.j, 0.0F);
    }
 
    @Override
-   protected void a(alg.a $$0) {
-      super.a($$0);
-      $$0.a(bZ, 0);
-   }
-
-   public int gp() {
-      return this.al.a(bZ);
-   }
-
-   public void b(int $$0) {
-      this.al.a(bZ, $$0);
+   public boolean a(dhc $$0) {
+      return $$0.f(this);
    }
 
    @Override
-   public void a(alc<?> $$0) {
-      if (bZ.equals($$0)) {
-         this.m_();
-      }
-
-      super.a($$0);
+   public int Q() {
+      return 120;
    }
 
    @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("PuffState", this.gp());
+   protected int e(arx $$0) {
+      return 1 + this.ae.a(3);
    }
 
-   @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      this.b(Math.min($$0.h("PuffState"), 2));
-   }
-
-   @Override
-   public cxp X_() {
-      return new cxp(cxt.rd);
-   }
-
-   @Override
-   protected void B() {
-      super.B();
-      this.bT.a(1, new ciq.a(this));
-   }
-
-   @Override
-   public void h() {
-      if (!this.dW().C && this.bL() && this.dk()) {
-         if (this.ca > 0) {
-            if (this.gp() == 0) {
-               this.b(axf.vl);
-               this.b(1);
-            } else if (this.ca > 40 && this.gp() == 1) {
-               this.b(axf.vl);
-               this.b(2);
-            }
-
-            this.ca++;
-         } else if (this.gp() != 0) {
-            if (this.cb > 60 && this.gp() == 2) {
-               this.b(axf.vk);
-               this.b(1);
-            } else if (this.cb > 100 && this.gp() == 1) {
-               this.b(axf.vk);
-               this.b(0);
-            }
-
-            this.cb++;
+   protected void t(int $$0) {
+      if (this.bL() && !this.bm()) {
+         this.j($$0 - 1);
+         if (this.ct() == -20) {
+            this.j(0);
+            this.a(this.dX().i(), 2.0F);
          }
-      }
-
-      super.h();
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.dW() instanceof ash $$0 && this.bL() && this.gp() > 0) {
-         for (bwi $$2 : this.dW().a(bwi.class, this.cR().g(0.3), $$1 -> cd.a($$0, this, $$1))) {
-            if ($$2.bL()) {
-               this.a($$0, $$2);
-            }
-         }
-      }
-   }
-
-   private void a(ash $$0, bwi $$1) {
-      int $$2 = this.gp();
-      if ($$1.a($$0, this.dX().b((bwg)this), (float)(1 + $$2))) {
-         $$1.b(new bup(bur.s, 60 * $$2, 0), this);
-         this.a(axf.vp, 1.0F, 1.0F);
+      } else {
+         this.j(300);
       }
    }
 
    @Override
-   public void a_(cpx $$0) {
-      int $$1 = this.gp();
-      if ($$0 instanceof asi $$2 && $$1 > 0 && $$0.a($$2.y(), this.dX().b((bwg)this), (float)(1 + $$1))) {
-         if (!this.bb()) {
-            $$2.f.b(new adz(adz.k, 0.0F));
-         }
-
-         $$0.b(new bup(bur.s, 60 * $$1, 0), this);
-      }
+   public void az() {
+      int $$0 = this.ct();
+      super.az();
+      this.t($$0);
    }
 
    @Override
-   protected axe u() {
-      return axf.vj;
+   public boolean cJ() {
+      return false;
    }
 
    @Override
-   protected axe o_() {
-      return axf.vm;
+   public boolean y() {
+      return false;
    }
 
-   @Override
-   protected axe e(bua $$0) {
-      return axf.vo;
-   }
-
-   @Override
-   protected axe go() {
-      return axf.vn;
-   }
-
-   @Override
-   public bvn e(bws $$0) {
-      return super.e($$0).a(c(this.gp()));
-   }
-
-   private static float c(int $$0) {
-      switch ($$0) {
-         case 0:
-            return 0.5F;
-         case 1:
-            return 0.7F;
-         default:
-            return 1.0F;
-      }
-   }
-
-   static class a extends cde {
-      private final ciq a;
-
-      public a(ciq $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public boolean b() {
-         List<bwg> $$0 = this.a.dW().a(bwg.class, this.a.cR().g(2.0), $$0x -> ciq.cd.a(a(this.a), this.a, $$0x));
-         return !$$0.isEmpty();
-      }
-
-      @Override
-      public void d() {
-         this.a.ca = 1;
-         this.a.cb = 0;
-      }
-
-      @Override
-      public void e() {
-         this.a.ca = 0;
-      }
+   public static boolean c(bvi<? extends ciq> $$0, dha $$1, bvh $$2, jh $$3, bac $$4) {
+      int $$5 = $$1.P();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axq.a) && $$1.a_($$3.d()).a(dkf.J);
    }
 }

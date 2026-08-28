@@ -1,71 +1,75 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import java.security.SignatureException;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
 import java.util.ArrayList;
-import java.util.BitSet;
 import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record yc(List<yh> d) {
-   public static final Codec<yc> a = yh.a.listOf().xmap(yc::new, yc::a);
-   public static yc b = new yc(List.of());
-   public static final int c = 20;
-
-   public void a(baq.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
-
-      for (yh $$1 : this.d) {
-         $$0.update($$1.b());
-      }
+public record yc<S>(List<yc.a<S>> a) {
+   public static <S> boolean a(ParseResults<S> $$0) {
+      return !b($$0).a().isEmpty();
    }
 
-   public yc.a a(yi $$0) {
-      return new yc.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
-   }
+   public static <S> yc<S> b(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<yc.a<S>> $$4 = a($$1, $$2);
 
-   public List<yh> a() {
-      return this.d;
-   }
-
-   public static record a(List<yh.a> b) {
-      public static final yc.a a = new yc.a(List.of());
-
-      public a(ws $$0) {
-         this($$0.a(ws.a(ArrayList::new, 20), yh.a::a));
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
       }
 
-      public void a(ws $$0) {
-         $$0.a(this.b, yh.a::a);
-      }
+      return new yc<>($$4);
+   }
 
-      public Optional<yc> a(yi $$0) {
-         List<yh> $$1 = new ArrayList<>(this.b.size());
+   private static <S> List<yc.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<yc.a<S>> $$2 = new ArrayList<>();
 
-         for (yh.a $$2 : this.b) {
-            Optional<yh> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof gd) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new yc.a<>($$4, $$6));
+               }
             }
-
-            $$1.add($$3.get());
          }
-
-         return Optional.of(new yc($$1));
       }
 
-      public List<yh.a> a() {
-         return this.b;
-      }
+      return $$2;
    }
 
-   public static record b(int a, BitSet b) {
-      public b(ws $$0) {
-         this($$0.l(), $$0.e(20));
+   @Nullable
+   public yc.a<S> a(String $$0) {
+      for (yc.a<S> $$1 : this.a) {
+         if ($$0.equals($$1.a())) {
+            return $$1;
+         }
       }
 
-      public void a(ws $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
+      return null;
+   }
+
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
+      }
+
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
+
+      public String c() {
+         return this.b;
       }
    }
 }

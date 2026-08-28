@@ -1,48 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+public abstract class bzb<E extends bvx> implements bxr<E>, cbg<E> {
+   private bxq.a a;
 
-public class bzb<E extends bwi> extends bzc<E> {
-   private final ayk<dkm> m;
-   private final float n;
-   private final List<bzc.a> o = new ArrayList<>();
-   private boolean p;
-
-   public bzb(bsu $$0, int $$1, int $$2, float $$3, Function<E, axe> $$4, ayk<dkm> $$5, float $$6, BiPredicate<E, jh> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public bzb() {
+      this.a = bxq.a.a;
    }
 
    @Override
-   protected void a(ash $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.dZ().i() < this.n;
+   public final bxq.a a() {
+      return this.a;
    }
 
    @Override
-   protected Optional<bzc.a> a(ash $$0) {
-      if (!this.p) {
-         return super.a($$0);
+   public final boolean e(arx $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bxq.a.b;
+         return true;
       } else {
-         jh.a $$1 = new jh.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<bzc.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bzc.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), jm.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+         return false;
       }
+   }
+
+   @Override
+   public final void f(arx $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(arx $$0, E $$1, long $$2) {
+      this.a = bxq.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

@@ -1,21 +1,5 @@
-import java.util.function.IntConsumer;
-
-public interface ayt {
-   int a(int var1, int var2);
-
-   void b(int var1, int var2);
-
-   int a(int var1);
-
-   long[] a();
-
-   int b();
-
-   int c();
-
-   void a(IntConsumer var1);
-
-   void a(int[] var1);
-
-   ayt d();
+public class ayt extends Exception {
+   public ayt(Throwable $$0) {
+      super($$0);
+   }
 }

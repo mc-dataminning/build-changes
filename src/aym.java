@@ -1,75 +1,77 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.Map.Entry;
 
-public class aym {
-   public static Map<aly<? extends kd<?>>, aym.a> a(jx<ami> $$0) {
-      return kh.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((aym.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+public class aym<T> extends AbstractCollection<T> {
+   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
+   private final Class<T> b;
+   private final List<T> c = Lists.newArrayList();
+
+   public aym(Class<T> $$0) {
+      this.b = $$0;
+      this.a.put($$0, this.c);
    }
 
-   private static <T> aym.a a(kd<T> $$0) {
-      Map<alz, IntList> $$1 = new HashMap<>();
-      $$0.l().forEach($$2 -> {
-         IntList $$3 = new IntArrayList($$2.b());
+   @Override
+   public boolean add(T $$0) {
+      boolean $$1 = false;
 
-         for (jq<T> $$4 : $$2) {
-            if ($$4.f() != jq.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$4);
-            }
-
-            $$3.add($$0.a($$4.a()));
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            $$1 |= $$2.getValue().add($$0);
          }
+      }
 
-         $$1.put($$2.h().b(), $$3);
-      });
-      return new aym.a($$1);
+      return $$1;
    }
 
-   static <T> ayl.c<T> a(kd<T> $$0, aym.a $$1) {
-      aly<? extends kd<T>> $$2 = $$0.g();
-      Map<ayk<T>, List<jq<T>>> $$3 = new HashMap<>();
-      $$1.b.forEach(($$3x, $$4) -> {
-         ayk<T> $$5 = ayk.a($$2, $$3x);
-         List<jq<T>> $$6 = $$4.intStream().mapToObj($$0::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.put($$5, $$6);
-      });
-      return new ayl.c<>($$2, $$3);
+   @Override
+   public boolean remove(Object $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            List<T> $$3 = $$2.getValue();
+            $$1 |= $$3.remove($$0);
+         }
+      }
+
+      return $$1;
    }
 
-   public static final class a {
-      public static final aym.a a = new aym.a(Map.of());
-      final Map<alz, IntList> b;
+   @Override
+   public boolean contains(Object $$0) {
+      return this.a($$0.getClass()).contains($$0);
+   }
 
-      a(Map<alz, IntList> $$0) {
-         this.b = $$0;
+   public <S> Collection<S> a(Class<S> $$0) {
+      if (!this.b.isAssignableFrom($$0)) {
+         throw new IllegalArgumentException("Don't know how to search for " + $$0);
+      } else {
+         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(ae.b()));
+         return (Collection<S>)Collections.unmodifiableCollection($$1);
       }
+   }
 
-      public void a(ws $$0) {
-         $$0.a(this.b, ws::a, ws::a);
-      }
+   @Override
+   public Iterator<T> iterator() {
+      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
+   }
 
-      public static aym.a b(ws $$0) {
-         return new aym.a($$0.a(ws::q, ws::a));
-      }
+   public List<T> a() {
+      return ImmutableList.copyOf(this.c);
+   }
 
-      public boolean a() {
-         return this.b.isEmpty();
-      }
-
-      public int b() {
-         return this.b.size();
-      }
-
-      public <T> ayl.c<T> a(kd<T> $$0) {
-         return aym.a($$0, this);
-      }
+   @Override
+   public int size() {
+      return this.c.size();
    }
 }

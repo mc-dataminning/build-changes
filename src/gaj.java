@@ -1,37 +1,49 @@
-public class gaj extends gbz<gxb> {
-   public gaj(geo $$0) {
-      super($$0);
+public class gaj extends gbh<gwz> {
+   private final gej a;
+   private final gej b;
+   private final gej c;
+   private final gej d;
+   private final gej e;
+   private final gej f;
+   private final gej g;
+
+   public gaj(gej $$0) {
+      super($$0, glq::f);
+      this.b = $$0.b("body");
+      this.a = $$0.b("head");
+      this.c = this.b.b("right_wing");
+      this.e = this.c.b("right_wing_tip");
+      this.d = this.b.b("left_wing");
+      this.f = this.d.b("left_wing_tip");
+      this.g = this.b.b("feet");
    }
 
-   public static geu a(ges $$0) {
-      gew $$1 = gbz.a($$0, 0.0F);
-      gey $$2 = $$1.a();
-      gey $$3 = $$2.a("head", get.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), geq.a(0.0F, 1.0F, 0.0F));
-      $$3.a("hat", get.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), geq.a);
-      $$2.a("right_leg", get.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), geq.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", get.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), geq.a(1.9F, 11.0F, 0.0F));
-      return geu.a($$1, 64, 32);
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      get $$2 = $$1.a("body", geo.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), gel.a(0.0F, 17.0F, 0.0F));
+      get $$3 = $$1.a("head", geo.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), gel.a(0.0F, 17.0F, 0.0F));
+      $$3.a("right_ear", geo.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), gel.a(-1.5F, -2.0F, 0.0F));
+      $$3.a("left_ear", geo.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), gel.a(1.1F, -3.0F, 0.0F));
+      get $$4 = $$2.a("right_wing", geo.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gel.a(-1.5F, 0.0F, 0.0F));
+      $$4.a("right_wing_tip", geo.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gel.a(-2.0F, 0.0F, 0.0F));
+      get $$5 = $$2.a("left_wing", geo.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gel.a(1.5F, 0.0F, 0.0F));
+      $$5.a("left_wing_tip", geo.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gel.a(2.0F, 0.0F, 0.0F));
+      $$2.a("feet", geo.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), gel.a(0.0F, 5.0F, 0.0F));
+      return gep.a($$0, 32, 32);
    }
 
-   public void a(gxb $$0) {
+   public void a(gwz $$0) {
       super.a($$0);
-      this.o.e = (float) (Math.PI / 180.0) * $$0.g.b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.g.c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.g.d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.h.d();
-      this.s.e = (float) (Math.PI / 180.0) * $$0.i.b();
-      this.s.f = (float) (Math.PI / 180.0) * $$0.i.c();
-      this.s.g = (float) (Math.PI / 180.0) * $$0.i.d();
-      this.r.e = (float) (Math.PI / 180.0) * $$0.j.b();
-      this.r.f = (float) (Math.PI / 180.0) * $$0.j.c();
-      this.r.g = (float) (Math.PI / 180.0) * $$0.j.d();
-      this.u.e = (float) (Math.PI / 180.0) * $$0.k.b();
-      this.u.f = (float) (Math.PI / 180.0) * $$0.k.c();
-      this.u.g = (float) (Math.PI / 180.0) * $$0.k.d();
-      this.t.e = (float) (Math.PI / 180.0) * $$0.l.b();
-      this.t.f = (float) (Math.PI / 180.0) * $$0.l.c();
-      this.t.g = (float) (Math.PI / 180.0) * $$0.l.d();
+      if ($$0.a) {
+         this.a($$0.U);
+      }
+
+      this.a($$0.b, fmr.b, $$0.p, 1.0F);
+      this.a($$0.c, fmr.a, $$0.p, 1.0F);
+   }
+
+   private void a(float $$0) {
+      this.a.f = $$0 * (float) (Math.PI / 180.0);
    }
 }

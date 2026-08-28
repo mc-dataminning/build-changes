@@ -1,80 +1,63 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public abstract class eyc implements eyd {
-   protected final List<ezy> g;
-   private final Predicate<ewp> a;
+public class eyc extends exv {
+   public static final MapCodec<eyc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(duh.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eyc::new)
+   );
+   private final duh b;
+   private final boolean c;
 
-   protected eyc(List<ezy> $$0) {
-      this.g = $$0;
-      this.a = ae.a($$0);
+   eyc(List<ezr> $$0, duh $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public abstract eye<? extends eyc> b();
+   protected cxg a(cxg $$0, ewi $$1) {
+      if (this.c) {
+         $$0.a(ku.ai, duh.a, this.b, ($$0x, $$1x) -> new duh.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(ku.ai, this.b);
+      }
 
-   protected static <T extends eyc> P1<Mu<T>, List<ezy>> a(Instance<T> $$0) {
-      return $$0.group(ezy.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+      return $$0;
    }
-
-   public final cxp b(cxp $$0, ewp $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract cxp a(cxp var1, ewp var2);
 
    @Override
-   public void a(ewv $$0) {
-      eyd.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
+   public exx<eyc> b() {
+      return exy.E;
    }
 
-   protected static eyc.a<?> a(Function<List<ezy>, eyd> $$0) {
-      return new eyc.b($$0);
+   public static eyc.a a(boolean $$0) {
+      return new eyc.a($$0);
    }
 
-   public abstract static class a<T extends eyc.a<T>> implements eyd.a, ezq<T> {
-      private final Builder<ezy> a = ImmutableList.builder();
+   public static class a extends exv.a<eyc.a> {
+      private final duh.a a = new duh.a();
+      private final boolean b;
 
-      public T a(ezy.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
+      a(boolean $$0) {
+         this.b = $$0;
       }
 
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<ezy> g() {
-         return this.a.build();
-      }
-   }
-
-   static final class b extends eyc.a<eyc.b> {
-      private final Function<List<ezy>, eyd> a;
-
-      public b(Function<List<ezy>, eyd> $$0) {
-         this.a = $$0;
-      }
-
-      protected eyc.b a() {
+      protected eyc.a a() {
          return this;
       }
 
       @Override
-      public eyd b() {
-         return this.a.apply(this.g());
+      public exw b() {
+         return new eyc(this.g(), this.a.a(), this.b);
+      }
+
+      public eyc.a a(jq<dug> $$0, cwd $$1) {
+         this.a.a($$0, $$1);
+         return this;
       }
    }
 }

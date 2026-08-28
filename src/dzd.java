@@ -1,23 +1,15 @@
-public enum dzd implements bba {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+public enum dzd {
+   a(4259712),
+   b(16724016),
+   c(2138367);
 
-   private final String f;
+   private final int d;
 
-   private dzd(final String $$0) {
-      this.f = $$0;
+   private dzd(final int $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.f;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
+   public int a() {
+      return this.d;
    }
 }

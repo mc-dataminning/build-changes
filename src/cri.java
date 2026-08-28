@@ -1,45 +1,45 @@
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class cri extends crg {
-   private static final dhb f = new dib(true, false, Optional.of(1.22F), ma.e.a(axu.cB).map(Function.identity()));
-   private static final float g = 1.2F;
-   private static final float h = bae.l(3.5F);
-   private int i = 5;
+public class cri {
+   private final crh a;
+   private final List<cri.a> b = Lists.newArrayList();
 
-   public cri(bvr<? extends crg> $$0, dhi $$1) {
-      super($$0, $$1);
+   public cri(crh $$0) {
+      this.a = $$0;
    }
 
-   public cri(cpx $$0, dhi $$1, double $$2, double $$3, double $$4) {
-      super(bvr.bH, $$1, $$0, $$2, $$3, $$4);
+   public cri a(int $$0, crf $$1) {
+      this.b.add(new cri.a($$0, $$1));
+      return this;
    }
 
-   public cri(dhi $$0, double $$1, double $$2, double $$3, fby $$4) {
-      super(bvr.bH, $$1, $$2, $$3, $$4, $$0);
+   public crh a() {
+      this.b.stream().map(cri.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         crf $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
    }
 
-   @Override
-   public void h() {
-      super.h();
-      if (this.i > 0) {
-         this.i--;
+   static class a {
+      private final int a;
+      private final crf b;
+
+      public a(int $$0, crf $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   @Override
-   public boolean a(cqr $$0, @Nullable bvk $$1, @Nullable bvk $$2, boolean $$3) {
-      return this.i > 0 ? false : super.a($$0, $$1, $$2, $$3);
-   }
+      public int a() {
+         return this.a;
+      }
 
-   @Override
-   protected void a(fby $$0) {
-      this.dW().a(this, null, f, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dhi.a.e, ls.A, ls.z, axf.CP);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return this.af < 2 && $$0 < (double)h ? false : super.a($$0);
+      public crf b() {
+         return this.b;
+      }
    }
 }

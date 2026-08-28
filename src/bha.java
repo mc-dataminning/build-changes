@@ -1,28 +1,29 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.escape.Escaper;
+import com.google.common.escape.Escapers;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bha extends DataFix {
-   public bha(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bha extends bgg {
+   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
+
+   public bha(Schema $$0) {
+      super($$0, "LockComponentPredicateFix", "minecraft:lock");
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "pages", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().map($$0xx -> $$0xx.map(bbr::b)).map($$0::createList).result(), $$0.emptyList())
-      );
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemWrittenBookPagesStrictJsonFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
-      );
+   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isPresent()) {
+         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
+         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
+         return $$0.emptyMap().set("components", $$3);
+      } else {
+         return $$0.emptyMap();
+      }
    }
 }

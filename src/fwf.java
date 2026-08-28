@@ -1,44 +1,34 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.List;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class fwf implements fwi {
-   private static final int a = 10;
-   private static final int b = 2;
-   private final List<ProfileResult> c;
+public class fwf {
+   private static final alp f = alp.b("tooltip/background");
+   private static final alp g = alp.b("tooltip/frame");
+   public static final int a = 12;
+   private static final int h = 3;
+   public static final int b = 3;
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 3;
+   private static final int i = 9;
 
-   public fwf(fwf.a $$0) {
-      this.c = $$0.a();
+   public static void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, @Nullable alp $$6) {
+      int $$7 = $$1 - 3 - 9;
+      int $$8 = $$2 - 3 - 9;
+      int $$9 = $$3 + 3 + 3 + 18;
+      int $$10 = $$4 + 3 + 3 + 18;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, (float)$$5);
+      $$0.a(glq::H, a($$6), $$7, $$8, $$9, $$10);
+      $$0.a(glq::H, b($$6), $$7, $$8, $$9, $$10);
+      $$0.c().b();
    }
 
-   @Override
-   public int a(fnq $$0) {
-      return this.c.size() * 12 + 2;
+   private static alp a(@Nullable alp $$0) {
+      return $$0 == null ? f : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_background"));
    }
 
-   @Override
-   public int b(fnq $$0) {
-      int $$1 = 0;
-
-      for (ProfileResult $$2 : this.c) {
-         int $$3 = $$0.b($$2.profile().getName());
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1 + 10 + 6;
-   }
-
-   @Override
-   public void a(fnq $$0, int $$1, int $$2, int $$3, int $$4, fns $$5) {
-      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
-         ProfileResult $$7 = this.c.get($$6);
-         int $$8 = $$2 + 2 + $$6 * 12;
-         fpf.a($$5, fmg.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
-         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
-      }
-   }
-
-   public static record a(List<ProfileResult> a) implements cvj {
+   private static alp b(@Nullable alp $$0) {
+      return $$0 == null ? g : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_frame"));
    }
 }

@@ -1,137 +1,43 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public class ckj extends cke {
-   private int bZ = 47999;
+public class ckj {
+   public static final int a = 64;
+   private static final int b = 63;
+   private final ckj.a[] c = new ckj.a[64];
+   private int d = -1;
 
-   public ckj(bvr<? extends ckj> $$0, dhi $$1) {
-      super($$0, $$1);
+   public ckj() {
+      Arrays.fill(this.c, new ckj.a(0.0, 0.0F));
    }
 
-   @Override
-   public boolean gr() {
-      return true;
+   public void a(ckj $$0) {
+      System.arraycopy($$0.c, 0, this.c, 0, 64);
+      this.d = $$0.d;
    }
 
-   @Nullable
-   @Override
-   protected cke gC() {
-      return bvr.by.a(this.dW(), bvq.e);
-   }
-
-   @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bZ);
-   }
-
-   @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bZ = $$0.h("DespawnDelay");
-      }
-   }
-
-   @Override
-   protected void B() {
-      super.B();
-      this.bT.a(1, new cdx(this, 2.0));
-      this.bU.a(1, new ckj.a(this));
-      this.bU.a(2, new cex<>(this, cnq.class, true, ($$0, $$1) -> $$0.aq() != bvr.bR));
-      this.bU.a(2, new cex<>(this, cme.class, true));
-   }
-
-   @Override
-   public void w(int $$0) {
-      this.bZ = $$0;
-   }
-
-   @Override
-   protected void a(cpx $$0) {
-      bvk $$1 = this.A();
-      if (!($$1 instanceof cpp)) {
-         super.a($$0);
-      }
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (!this.dW().C) {
-         this.hd();
-      }
-   }
-
-   private void hd() {
-      if (this.he()) {
-         this.bZ = this.hf() ? ((cpp)this.A()).gx() - 1 : this.bZ - 1;
-         if (this.bZ <= 0) {
-            this.a(true, false);
-            this.at();
-         }
-      }
-   }
-
-   private boolean he() {
-      return !this.gF() && !this.hg() && !this.df();
-   }
-
-   private boolean hf() {
-      return this.A() instanceof cpp;
-   }
-
-   private boolean hg() {
-      return this.P_() && !this.hf();
-   }
-
-   @Nullable
-   @Override
-   public bwz a(dhz $$0, bth $$1, bvq $$2, @Nullable bwz $$3) {
-      if ($$2 == bvq.h) {
-         this.c_(0);
+   public void a(double $$0, float $$1) {
+      ckj.a $$2 = new ckj.a($$0, $$1);
+      if (this.d < 0) {
+         Arrays.fill(this.c, $$2);
       }
 
-      if ($$3 == null) {
-         $$3 = new bvb.a(false);
+      if (++this.d == 64) {
+         this.d = 0;
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      this.c[this.d] = $$2;
    }
 
-   protected static class a extends cfe {
-      private final cke a;
-      private bwg b;
-      private int c;
+   public ckj.a a(int $$0) {
+      return this.c[this.d - $$0 & 63];
+   }
 
-      public a(cke $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(cde.a.d));
-      }
+   public ckj.a a(int $$0, float $$1) {
+      ckj.a $$2 = this.a($$0);
+      ckj.a $$3 = this.a($$0 + 1);
+      return new ckj.a(azu.d((double)$$1, $$3.a, $$2.a), azu.i($$1, $$3.b, $$2.b));
+   }
 
-      @Override
-      public boolean b() {
-         if (!this.a.P_()) {
-            return false;
-         } else if (!(this.a.A() instanceof cpp $$1)) {
-            return false;
-         } else {
-            this.b = $$1.eq();
-            int $$2 = $$1.er();
-            return $$2 != this.c && this.a(this.b, cgx.a);
-         }
-      }
-
-      @Override
-      public void d() {
-         this.e.h(this.b);
-         bvk $$0 = this.a.A();
-         if ($$0 instanceof cpp) {
-            this.c = ((cpp)$$0).er();
-         }
-
-         super.d();
-      }
+   public static record a(double a, float b) {
    }
 }

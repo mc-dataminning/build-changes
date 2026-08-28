@@ -1,91 +1,35 @@
-public class dbm extends dbu {
-   public dbm(dbr $$0) {
+public class dbm extends dbl {
+   public dbm(dbi $$0) {
       super($$0);
    }
 
-   public boolean a(dbs $$0, dhi $$1) {
-      if ($$0.e() != 2) {
-         return false;
-      } else {
-         cwm $$2 = null;
-         boolean $$3 = false;
-         boolean $$4 = false;
-
-         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
-            cxp $$6 = $$0.a($$5);
-            if (!$$6.f()) {
-               cxl $$7 = $$6.h();
-               if (!($$7 instanceof cvs)) {
-                  return false;
-               }
-
-               cvs $$8 = (cvs)$$7;
-               if ($$2 == null) {
-                  $$2 = $$8.b();
-               } else if ($$2 != $$8.b()) {
-                  return false;
-               }
-
-               int $$10 = $$6.a(ku.ai, duo.a).b().size();
-               if ($$10 > 6) {
-                  return false;
-               }
-
-               if ($$10 > 0) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$4 && $$3;
-      }
+   private static cxg c(dbj $$0) {
+      return $$0.a(1, 0);
    }
 
-   public cxp a(dbs $$0, js.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-         cxp $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            int $$4 = $$3.a(ku.ai, duo.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
+   private static cxg d(dbj $$0) {
+      return $$0.a(0, 1);
+   }
 
-      return cxp.j;
+   private static cxg e(dbj $$0) {
+      return $$0.a(2, 1);
+   }
+
+   private static cxg f(dbj $$0) {
+      return $$0.a(1, 2);
+   }
+
+   public boolean a(dbj $$0, dgz $$1) {
+      return $$0.f() == 3 && $$0.g() == 3 && $$0.e() == 4 ? c($$0).a(axt.bI) && d($$0).a(axt.bI) && e($$0).a(axt.bI) && f($$0).a(axt.bI) : false;
+   }
+
+   public cxg a(dbj $$0, js.a $$1) {
+      dvx $$2 = new dvx(c($$0).h(), d($$0).h(), e($$0).h(), f($$0).h());
+      return dvh.a($$2);
    }
 
    @Override
-   public jz<cxp> a(dbs $$0) {
-      jz<cxp> $$1 = jz.a($$0.a(), cxp.j);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cxp $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            cxp $$4 = $$3.h().k();
-            if (!$$4.f()) {
-               $$1.set($$2, $$4);
-            } else if (!$$3.a(ku.ai, duo.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public dco<dbm> a() {
-      return dco.k;
+   public dcf<dbm> a() {
+      return dcf.v;
    }
 }

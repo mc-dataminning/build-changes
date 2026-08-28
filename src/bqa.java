@@ -1,238 +1,186 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.SocketAddress;
-import java.net.URL;
+import java.io.UncheckedIOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.ParseException;
+import java.time.Duration;
 import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.NoSuchElementException;
+import java.util.Spliterators;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
-import jdk.jfr.Configuration;
-import jdk.jfr.Event;
-import jdk.jfr.FlightRecorder;
-import jdk.jfr.FlightRecorderListener;
-import jdk.jfr.Recording;
-import jdk.jfr.RecordingState;
-import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
-import net.minecraft.util.profiling.jfr.event.ChunkRegionReadEvent;
-import net.minecraft.util.profiling.jfr.event.ChunkRegionWriteEvent;
-import net.minecraft.util.profiling.jfr.event.NetworkSummaryEvent;
-import net.minecraft.util.profiling.jfr.event.PacketReceivedEvent;
-import net.minecraft.util.profiling.jfr.event.PacketSentEvent;
-import net.minecraft.util.profiling.jfr.event.ServerTickTimeEvent;
-import net.minecraft.util.profiling.jfr.event.WorldLoadFinishedEvent;
-import org.slf4j.Logger;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordingFile;
 
-public class bqa implements bqb {
-   private static final Logger g = LogUtils.getLogger();
-   public static final String a = "Minecraft";
-   public static final String b = "World Generation";
-   public static final String c = "Ticking";
-   public static final String d = "Network";
-   public static final String e = "Storage";
-   private static final List<Class<? extends Event>> h = List.of(
-      ChunkGenerationEvent.class,
-      ChunkRegionReadEvent.class,
-      ChunkRegionWriteEvent.class,
-      PacketReceivedEvent.class,
-      PacketSentEvent.class,
-      NetworkSummaryEvent.class,
-      ServerTickTimeEvent.class,
-      WorldLoadFinishedEvent.class
-   );
-   private static final String i = "/flightrecorder-config.jfc";
-   private static final DateTimeFormatter j = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd-HHmmss").toFormatter().withZone(ZoneId.systemDefault());
-   private static final bqa k = new bqa();
+public class bqa {
+   private Instant a = Instant.EPOCH;
+   private Instant b = Instant.EPOCH;
+   private final List<bqf> c = Lists.newArrayList();
+   private final List<bqm> d = Lists.newArrayList();
+   private final List<bqh> e = Lists.newArrayList();
+   private final Map<bql, bqa.a> f = Maps.newHashMap();
+   private final Map<bql, bqa.a> g = Maps.newHashMap();
+   private final Map<bqg, bqa.a> h = Maps.newHashMap();
+   private final Map<bqg, bqa.a> i = Maps.newHashMap();
+   private final List<bqi> j = Lists.newArrayList();
+   private final List<bqi> k = Lists.newArrayList();
+   private int l;
+   private Duration m = Duration.ZERO;
+   private final List<bqj> n = Lists.newArrayList();
+   private final List<bqn> o = Lists.newArrayList();
+   private final List<bqo> p = Lists.newArrayList();
    @Nullable
-   Recording l;
-   private float m;
-   private final Map<String, NetworkSummaryEvent.b> n = new ConcurrentHashMap<>();
+   private Duration q = null;
 
-   private bqa() {
-      h.forEach(FlightRecorder::register);
-      FlightRecorder.addPeriodicEvent(ServerTickTimeEvent.class, () -> new ServerTickTimeEvent(this.m).commit());
-      FlightRecorder.addPeriodicEvent(NetworkSummaryEvent.class, () -> {
-         Iterator<NetworkSummaryEvent.b> $$0 = this.n.values().iterator();
+   private bqa(Stream<RecordedEvent> $$0) {
+      this.a($$0);
+   }
 
-         while ($$0.hasNext()) {
-            $$0.next().a();
-            $$0.remove();
+   public static bqb a(Path $$0) {
+      try {
+         bqb var4;
+         try (final RecordingFile $$1 = new RecordingFile($$0)) {
+            Iterator<RecordedEvent> $$2 = new Iterator<RecordedEvent>() {
+               @Override
+               public boolean hasNext() {
+                  return $$1.hasMoreEvents();
+               }
+
+               public RecordedEvent a() {
+                  if (!this.hasNext()) {
+                     throw new NoSuchElementException();
+                  } else {
+                     try {
+                        return $$1.readEvent();
+                     } catch (IOException var2) {
+                        throw new UncheckedIOException(var2);
+                     }
+                  }
+               }
+            };
+            Stream<RecordedEvent> $$3 = StreamSupport.stream(Spliterators.spliteratorUnknownSize($$2, 1297), false);
+            var4 = new bqa($$3).a();
+         }
+
+         return var4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
+      }
+   }
+
+   private bqb a() {
+      Duration $$0 = Duration.between(this.a, this.b);
+      return new bqb(
+         this.a,
+         this.b,
+         $$0,
+         this.q,
+         this.p,
+         this.e,
+         bqj.a($$0, this.n, this.m, this.l),
+         bqn.a(this.o),
+         a($$0, this.f),
+         a($$0, this.g),
+         a($$0, this.i),
+         a($$0, this.h),
+         bqi.a($$0, this.j),
+         bqi.a($$0, this.k),
+         this.c,
+         this.d
+      );
+   }
+
+   private void a(Stream<RecordedEvent> $$0) {
+      $$0.forEach($$0x -> {
+         if ($$0x.getEndTime().isAfter(this.b) || this.b.equals(Instant.EPOCH)) {
+            this.b = $$0x.getEndTime();
+         }
+
+         if ($$0x.getStartTime().isBefore(this.a) || this.a.equals(Instant.EPOCH)) {
+            this.a = $$0x.getStartTime();
+         }
+
+         String var2 = $$0x.getEventType().getName();
+         switch (var2) {
+            case "minecraft.ChunkGeneration":
+               this.c.add(bqf.a($$0x));
+               break;
+            case "minecraft.StructureGeneration":
+               this.d.add(bqm.a($$0x));
+               break;
+            case "minecraft.LoadWorld":
+               this.q = $$0x.getDuration();
+               break;
+            case "minecraft.ServerTickTime":
+               this.p.add(bqo.a($$0x));
+               break;
+            case "minecraft.PacketReceived":
+               this.a($$0x, $$0x.getInt("bytes"), this.f);
+               break;
+            case "minecraft.PacketSent":
+               this.a($$0x, $$0x.getInt("bytes"), this.g);
+               break;
+            case "minecraft.ChunkRegionRead":
+               this.b($$0x, $$0x.getInt("bytes"), this.h);
+               break;
+            case "minecraft.ChunkRegionWrite":
+               this.b($$0x, $$0x.getInt("bytes"), this.i);
+               break;
+            case "jdk.ThreadAllocationStatistics":
+               this.o.add(bqn.a($$0x));
+               break;
+            case "jdk.GCHeapSummary":
+               this.n.add(bqj.a($$0x));
+               break;
+            case "jdk.CPULoad":
+               this.e.add(bqh.a($$0x));
+               break;
+            case "jdk.FileWrite":
+               this.a($$0x, this.j, "bytesWritten");
+               break;
+            case "jdk.FileRead":
+               this.a($$0x, this.k, "bytesRead");
+               break;
+            case "jdk.GarbageCollection":
+               this.l++;
+               this.m = this.m.plus($$0x.getDuration());
          }
       });
    }
 
-   public static bqa a() {
-      return k;
+   private void a(RecordedEvent $$0, int $$1, Map<bql, bqa.a> $$2) {
+      $$2.computeIfAbsent(bql.a($$0), $$0x -> new bqa.a()).a($$1);
    }
 
-   @Override
-   public boolean a(bpz $$0) {
-      URL $$1 = bqa.class.getResource("/flightrecorder-config.jfc");
-      if ($$1 == null) {
-         g.warn("Could not find default flight recorder config at {}", "/flightrecorder-config.jfc");
-         return false;
-      } else {
-         try {
-            boolean var4;
-            try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1.openStream()))) {
-               var4 = this.a($$2, $$0);
-            }
-
-            return var4;
-         } catch (IOException var8) {
-            g.warn("Failed to start flight recorder using configuration at {}", $$1, var8);
-            return false;
-         }
-      }
+   private void b(RecordedEvent $$0, int $$1, Map<bqg, bqa.a> $$2) {
+      $$2.computeIfAbsent(bqg.a($$0), $$0x -> new bqa.a()).a($$1);
    }
 
-   @Override
-   public Path b() {
-      if (this.l == null) {
-         throw new IllegalStateException("Not currently profiling");
-      } else {
-         this.n.clear();
-         Path $$0 = this.l.getDestination();
-         this.l.stop();
-         return $$0;
-      }
+   private void a(RecordedEvent $$0, List<bqi> $$1, String $$2) {
+      $$1.add(new bqi($$0.getDuration(), $$0.getString("path"), $$0.getLong($$2)));
    }
 
-   @Override
-   public boolean c() {
-      return this.l != null;
+   private static <T> bqk<T> a(Duration $$0, Map<T, bqa.a> $$1) {
+      List<Pair<T, bqk.a>> $$2 = $$1.entrySet().stream().map($$0x -> Pair.of($$0x.getKey(), ((bqa.a)$$0x.getValue()).a())).toList();
+      return new bqk<>($$0, $$2);
    }
 
-   @Override
-   public boolean d() {
-      return FlightRecorder.isAvailable();
-   }
+   public static final class a {
+      private long a;
+      private long b;
 
-   private boolean a(Reader $$0, bpz $$1) {
-      if (this.c()) {
-         g.warn("Profiling already in progress");
-         return false;
-      } else {
-         try {
-            Configuration $$2 = Configuration.create($$0);
-            String $$3 = j.format(Instant.now());
-            this.l = ae.a(new Recording($$2), $$2x -> {
-               h.forEach($$2x::enable);
-               $$2x.setDumpOnExit(true);
-               $$2x.setToDisk(true);
-               $$2x.setName(String.format(Locale.ROOT, "%s-%s-%s", $$1.a(), ab.b().c(), $$3));
-            });
-            Path $$4 = Paths.get(String.format(Locale.ROOT, "debug/%s-%s.jfr", $$1.a(), $$3));
-            v.c($$4.getParent());
-            this.l.setDestination($$4);
-            this.l.start();
-            this.f();
-         } catch (ParseException | IOException var6) {
-            g.warn("Failed to start jfr profiling", var6);
-            return false;
-         }
-
-         g.info(
-            "Started flight recorder profiling id({}):name({}) - will dump to {} on exit or stop command",
-            new Object[]{this.l.getId(), this.l.getName(), this.l.getDestination()}
-         );
-         return true;
-      }
-   }
-
-   private void f() {
-      FlightRecorder.addListener(new FlightRecorderListener() {
-         final bqd a = new bqd(() -> bqa.this.l = null);
-
-         @Override
-         public void recordingStateChanged(Recording $$0) {
-            if ($$0 == bqa.this.l && $$0.getState() == RecordingState.STOPPED) {
-               this.a.a($$0.getDestination());
-               FlightRecorder.removeListener(this);
-            }
-         }
-      });
-   }
-
-   @Override
-   public void a(float $$0) {
-      if (ServerTickTimeEvent.TYPE.isEnabled()) {
-         this.m = $$0;
-      }
-   }
-
-   @Override
-   public void a(wq $$0, aae<?> $$1, SocketAddress $$2, int $$3) {
-      if (PacketReceivedEvent.TYPE.isEnabled()) {
-         new PacketReceivedEvent($$0.a(), $$1.a().b(), $$1.b().toString(), $$2, $$3).commit();
+      public void a(int $$0) {
+         this.b += (long)$$0;
+         this.a++;
       }
 
-      if (NetworkSummaryEvent.TYPE.isEnabled()) {
-         this.a($$2).b($$3);
-      }
-   }
-
-   @Override
-   public void b(wq $$0, aae<?> $$1, SocketAddress $$2, int $$3) {
-      if (PacketSentEvent.TYPE.isEnabled()) {
-         new PacketSentEvent($$0.a(), $$1.a().b(), $$1.b().toString(), $$2, $$3).commit();
-      }
-
-      if (NetworkSummaryEvent.TYPE.isEnabled()) {
-         this.a($$2).a($$3);
-      }
-   }
-
-   private NetworkSummaryEvent.b a(SocketAddress $$0) {
-      return this.n.computeIfAbsent($$0.toString(), NetworkSummaryEvent.b::new);
-   }
-
-   @Override
-   public void a(ebj $$0, dgo $$1, ebi $$2, int $$3) {
-      if (ChunkRegionReadEvent.TYPE.isEnabled()) {
-         new ChunkRegionReadEvent($$0, $$1, $$2, $$3).commit();
-      }
-   }
-
-   @Override
-   public void b(ebj $$0, dgo $$1, ebi $$2, int $$3) {
-      if (ChunkRegionWriteEvent.TYPE.isEnabled()) {
-         new ChunkRegionWriteEvent($$0, $$1, $$2, $$3).commit();
-      }
-   }
-
-   @Nullable
-   @Override
-   public bqe e() {
-      if (!WorldLoadFinishedEvent.TYPE.isEnabled()) {
-         return null;
-      } else {
-         WorldLoadFinishedEvent $$0 = new WorldLoadFinishedEvent();
-         $$0.begin();
-         return $$0::commit;
-      }
-   }
-
-   @Nullable
-   @Override
-   public bqe a(dgo $$0, aly<dhi> $$1, String $$2) {
-      if (!ChunkGenerationEvent.TYPE.isEnabled()) {
-         return null;
-      } else {
-         ChunkGenerationEvent $$3 = new ChunkGenerationEvent($$0, $$1, $$2);
-         $$3.begin();
-         return $$3::commit;
+      public bqk.a a() {
+         return new bqk.a(this.a, this.b);
       }
    }
 }

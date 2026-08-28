@@ -1,198 +1,57 @@
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import java.util.UUID;
+import java.util.function.Supplier;
 
-public abstract class fye<B extends ggp.a<?>> extends fty {
-   private static final xv C = xv.c("gui.abuseReport.report_sent_msg");
-   private static final xv D = xv.c("gui.abuseReport.sending.title").a(n.r);
-   private static final xv E = xv.c("gui.abuseReport.sent.title").a(n.r);
-   private static final xv F = xv.c("gui.abuseReport.error.title").a(n.r);
-   private static final xv G = xv.c("gui.abuseReport.send.generic_error");
-   protected static final xv a = xv.c("gui.abuseReport.send");
-   protected static final xv b = xv.c("gui.abuseReport.observed_what");
-   protected static final xv c = xv.c("gui.abuseReport.select_reason");
-   private static final xv H = xv.c("gui.abuseReport.describe");
-   protected static final xv d = xv.c("gui.abuseReport.more_comments");
-   private static final xv I = xv.c("gui.abuseReport.comments");
-   private static final xv J = xv.c("gui.abuseReport.attestation");
-   protected static final int s = 120;
-   protected static final int u = 20;
-   protected static final int v = 280;
-   protected static final int w = 8;
-   private static final Logger K = LogUtils.getLogger();
-   protected final fty x;
-   protected final ggt y;
-   protected final fry z = fry.d().a(8);
-   protected B A;
-   private foh L;
-   protected fof B;
+public class fye extends fxx<ggp.a> {
+   private static final int C = 85;
+   private static final int D = 178;
+   private static final xk E = xk.c("gui.abuseReport.skin.title");
+   private foq F;
+   private fny G;
 
-   protected fye(xv $$0, fty $$1, ggt $$2, B $$3) {
-      super($$0);
-      this.x = $$1;
-      this.y = $$2;
-      this.A = $$3;
+   private fye(ftr $$0, ggo $$1, ggp.a $$2) {
+      super(E, $$0, $$1, $$2);
    }
 
-   protected foy a(int $$0, int $$1, Consumer<String> $$2) {
-      AbuseReportLimits $$3 = this.y.a().b();
-      foy $$4 = new foy(this.p, 0, 0, $$0, $$1, H, I);
-      $$4.a(this.A.g());
-      $$4.a($$3.maxOpinionCommentsLength());
-      $$4.b($$2);
-      return $$4;
+   public fye(ftr $$0, ggo $$1, UUID $$2, Supplier<hch> $$3) {
+      this($$0, $$1, new ggp.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fye(ftr $$0, ggo $$1, ggp $$2) {
+      this($$0, $$1, new ggp.a($$2, $$1.a().b()));
    }
 
    @Override
-   protected void aT_() {
-      this.z.c().b();
-      this.l();
-      this.E();
-      this.F();
-      this.G();
-      this.z.a($$1 -> {
-         fod var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   protected void l() {
-      this.z.a(new fpn(this.l, this.p));
-   }
-
-   protected abstract void E();
-
-   protected void F() {
-      this.L = this.z.a(foh.a(J, this.p).a(this.A.h()).a(280).a(($$0x, $$1) -> {
-         this.A.a($$1);
+   protected void E() {
+      frr $$0 = this.z.a(frr.e().a(8));
+      $$0.c().e();
+      $$0.a(new foz(85, 120, this.m.aS(), this.A.e().a()));
+      frr $$1 = $$0.a(frr.d().a(8));
+      this.G = fny.a(c, $$0x -> this.m.a(new fyd(this, this.A.i(), ggn.b, $$0xx -> {
+            this.A.a($$0xx);
+            this.G();
+         }))).a(178).a();
+      $$1.a(frj.a(this.p, this.G, b));
+      this.F = this.a(178, 9 * 8, $$0x -> {
+         this.A.a($$0x);
          this.G();
-      }).a());
-      fry $$0 = this.z.a(fry.e().a(8));
-      $$0.a(fof.a(xu.k, $$0x -> this.aP_()).a(120).a());
-      this.B = $$0.a(fof.a(a, $$0x -> this.J()).a(120).a());
+      });
+      $$1.a(frj.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
    }
 
+   @Override
    protected void G() {
-      ggp.b $$0 = this.A.c();
-      this.B.j = $$0 == null && this.L.a();
-      this.B.a(x.a($$0, ggp.b::a));
-   }
-
-   @Override
-   protected void c() {
-      this.z.a();
-      frs.a(this.z, this.H());
-   }
-
-   protected void J() {
-      this.A.a(this.y).ifLeft($$0 -> {
-         CompletableFuture<?> $$1 = this.y.a().a($$0.a(), $$0.b(), $$0.c());
-         this.m.a(ftk.a(D, xu.e, () -> {
-            this.m.a(this);
-            $$1.cancel(true);
-         }));
-         $$1.handleAsync(($$0x, $$1x) -> {
-            if ($$1x == null) {
-               this.K();
-            } else {
-               if ($$1x instanceof CancellationException) {
-                  return null;
-               }
-
-               this.a($$1x);
-            }
-
-            return null;
-         }, this.m);
-      }).ifRight($$0 -> this.a($$0.b()));
-   }
-
-   private void K() {
-      this.M();
-      this.m.a(ftk.a(E, C, xu.d, () -> this.m.a(null)));
-   }
-
-   private void a(Throwable $$0) {
-      K.error("Encountered error while sending abuse report", $$0);
-      xv $$2;
-      if ($$0.getCause() instanceof yv $$1) {
-         $$2 = $$1.a();
+      ggm $$0 = this.A.i();
+      if ($$0 != null) {
+         this.G.b($$0.b());
       } else {
-         $$2 = G;
+         this.G.b(c);
       }
 
-      this.a($$2);
-   }
-
-   private void a(xv $$0) {
-      xv $$1 = $$0.f().a(n.m);
-      this.m.a(ftk.a(F, $$1, xu.k, () -> this.m.a(this)));
-   }
-
-   void L() {
-      if (this.A.b()) {
-         this.y.a(this.A.e().b());
-      }
-   }
-
-   void M() {
-      this.y.a(null);
+      super.G();
    }
 
    @Override
-   public void aP_() {
-      if (this.A.b()) {
-         this.m.a(new fye.a());
-      } else {
-         this.m.a(this.x);
-      }
-   }
-
-   @Override
-   public void aJ_() {
-      this.L();
-      super.aJ_();
-   }
-
-   class a extends fwt {
-      private static final xv c = xv.c("gui.abuseReport.discard.title").a(n.r);
-      private static final xv d = xv.c("gui.abuseReport.discard.content");
-      private static final xv s = xv.c("gui.abuseReport.discard.return");
-      private static final xv u = xv.c("gui.abuseReport.discard.draft");
-      private static final xv v = xv.c("gui.abuseReport.discard.discard");
-
-      protected a() {
-         super(c, d, d);
-      }
-
-      @Override
-      protected frv l() {
-         fry $$0 = fry.d().a(8);
-         $$0.c().b();
-         fry $$1 = $$0.a(fry.e().a(8));
-         $$1.a(fof.a(s, $$0x -> this.aP_()).a());
-         $$1.a(fof.a(u, $$0x -> {
-            fye.this.L();
-            this.m.a(fye.this.x);
-         }).a());
-         $$0.a(fof.a(v, $$0x -> {
-            fye.this.M();
-            this.m.a(fye.this.x);
-         }).a());
-         return $$0;
-      }
-
-      @Override
-      public void aP_() {
-         this.m.a(fye.this);
-      }
-
-      @Override
-      public boolean aH_() {
-         return false;
-      }
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
    }
 }

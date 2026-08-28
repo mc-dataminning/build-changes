@@ -1,8 +1,15 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddy(cxp a, @Nullable bvs b, @Nullable bwg c, Consumer<cxl> d) {
-   public ddy(cxp $$0, bvs $$1, bwg $$2) {
-      this($$0, $$1, $$2, $$2x -> $$2.a($$2x, $$1));
+public record ddy(ju<cxc> c) {
+   public static final Codec<ddy> a = RecordCodecBuilder.create($$0 -> $$0.group(kf.a(mb.K).fieldOf("items").forGetter(ddy::a)).apply($$0, ddy::new));
+   public static final zi<wv, ddy> b = zi.a(zg.c(mb.K), ddy::a, ddy::new);
+
+   public boolean a(cxg $$0) {
+      return $$0.a(this.c);
+   }
+
+   public ju<cxc> a() {
+      return this.c;
    }
 }

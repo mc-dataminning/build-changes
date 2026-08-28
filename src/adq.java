@@ -1,33 +1,29 @@
-import java.util.List;
+public record adq(int b, float c) implements zr<acg> {
+   public static final zi<wh, adq> a = zr.a(adq::a, adq::new);
 
-public record adq(adq.a b, List<String> c) implements aac<acr> {
-   public static final zt<ws, adq> a = aac.a(adq::a, adq::new);
-
-   private adq(ws $$0) {
-      this($$0.b(adq.a.class), $$0.a(ws::p));
+   public adq(bvx $$0) {
+      this($$0.ar(), $$0.eK());
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, ws::a);
+   private adq(wh $$0) {
+      this($$0.l(), $$0.readFloat());
+   }
+
+   private void a(wh $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aae<adq> a() {
-      return ahk.y;
+   public zt<adq> a() {
+      return agz.I;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public float e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

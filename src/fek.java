@@ -1,8 +1,24 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fea
-@fdz
-interface fek {
+public interface fek extends AutoCloseable {
+   float a = 7.0F;
+
+   @Override
+   default void close() {
+   }
+
+   @Nullable
+   default fej a(int $$0) {
+      return null;
+   }
+
+   IntSet a();
+
+   public static record a(fek a, fqq.a b) implements AutoCloseable {
+      @Override
+      public void close() {
+         this.a.close();
+      }
+   }
 }

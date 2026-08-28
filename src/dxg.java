@@ -1,124 +1,113 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
+import com.mojang.serialization.MapCodec;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dxg {
-   static final String a = "server_data";
-   static Codec<dxg> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kk.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cxp.a.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dxg::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cxp> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public class dxg extends djp {
+   public static final MapCodec<dxg> a = b(dxg::new);
+   public static final dyl<jm> b = dxi.a;
+   public static final dyl<dyp> c = dxi.c;
 
-   dxg(Set<UUID> $$0, long $$1, List<cxp> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
+   @Override
+   public MapCodec<dxg> a() {
+      return a;
    }
 
-   dxg() {
+   public dxg(dxn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jm.c).b(c, dyp.a));
    }
 
-   void a(long $$0) {
-      this.h = $$0;
+   @Nullable
+   @Override
+   public duq a(jh $$0, dxo $$1) {
+      return null;
    }
 
-   long a() {
-      return this.h;
+   public static duq a(jh $$0, dxo $$1, dxo $$2, jm $$3, boolean $$4, boolean $$5) {
+      return new dxk($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   Set<UUID> b() {
-      return this.e;
+   @Nullable
+   @Override
+   public <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
+      return a($$2, dus.l, dxk::a);
    }
 
-   boolean a(cpx $$0) {
-      return this.e.contains($$0.cG());
-   }
-
-   @VisibleForTesting
-   public void b(cpx $$0) {
-      this.e.add($$0.cG());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+   @Override
+   protected void a(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         duq $$5 = $$1.c_($$2);
+         if ($$5 instanceof dxk) {
+            ((dxk)$$5).k();
          }
       }
-
-      this.i();
    }
 
-   long c() {
-      return this.f;
-   }
-
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<cxp> d() {
-      return this.g;
-   }
-
-   void e() {
-      this.i = 0;
-      this.i();
-   }
-
-   void a(List<cxp> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   cxp f() {
-      return this.g.isEmpty() ? cxp.j : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cxp.j);
-   }
-
-   cxp g() {
-      if (this.g.isEmpty()) {
-         return cxp.j;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cxp.j);
+   @Override
+   public void a(dha $$0, jh $$1, dxo $$2) {
+      jh $$3 = $$1.a($$2.c(b).g());
+      dxo $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof dxh && $$4.c(dxh.c)) {
+         $$0.a($$3, false);
       }
    }
 
-   void a(dxg $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
+   @Override
+   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
+      if (!$$1.C && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return bta.c;
+      } else {
+         return bta.e;
+      }
    }
 
-   private void i() {
-      this.c = true;
+   @Override
+   protected List<cxg> a(dxo $$0, ewl.a $$1) {
+      dxk $$2 = this.a($$1.a(), jh.a($$1.a(ezc.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
    }
 
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - bae.f((float)this.d().size(), 1.0F, (float)this.i);
+   @Override
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return fci.a();
+   }
+
+   @Override
+   protected fcl b(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      dxk $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : fci.a();
+   }
+
+   @Nullable
+   private dxk a(dge $$0, jh $$1) {
+      duq $$2 = $$0.c_($$1);
+      return $$2 instanceof dxk ? (dxk)$$2 : null;
+   }
+
+   @Override
+   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
+      return cxg.j;
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dqv $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dpc $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(dxo $$0, euf $$1) {
+      return false;
    }
 }

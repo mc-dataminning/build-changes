@@ -1,4 +1,6 @@
-import io.netty.channel.ChannelOutboundHandlerAdapter;
-
-public class ww extends ChannelOutboundHandlerAdapter {
+public interface ww extends wq {
+   @Override
+   default zs a() {
+      return zs.a;
+   }
 }

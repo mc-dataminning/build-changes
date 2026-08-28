@@ -1,17 +1,28 @@
-public enum dyj implements bba {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+public enum dyj implements baq {
+   a(jm.a),
+   b(jm.b);
 
-   private final String e;
+   private final jm c;
 
-   private dyj(final String $$0) {
-      this.e = $$0;
+   private dyj(final jm $$0) {
+      this.c = $$0;
+   }
+
+   public jm a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this == a ? "upper" : "lower";
+   }
+
+   public dyj b() {
+      return this == a ? b : a;
    }
 }

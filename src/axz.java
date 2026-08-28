@@ -1,10 +1,17 @@
-public class axz {
-   public static final ayk<eml> a = a("visible");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private axz() {
+public record axz(List<axy> b, boolean c) {
+   public static final Codec<axz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axy.a.listOf().fieldOf("values").forGetter(axz::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(axz::b)).apply($$0, axz::new)
+   );
+
+   public List<axy> a() {
+      return this.b;
    }
 
-   private static ayk<eml> a(String $$0) {
-      return ayk.a(mb.aQ, alz.b($$0));
+   public boolean b() {
+      return this.c;
    }
 }

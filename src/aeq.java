@@ -1,33 +1,26 @@
-public class aeq implements aac<acr> {
-   public static final zt<xg, aeq> a = zt.a(zr.w, aeq::b, zr.a(mb.V), aeq::e, xx.d, aeq::f, aeq::new);
-   private final int b;
-   private final cul<?> c;
-   private final xv d;
+import java.util.Set;
 
-   public aeq(int $$0, cul<?> $$1, xv $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record aeq(int b, bwk c, Set<bwl> d) implements zr<acg> {
+   public static final zi<wh, aeq> a = zi.a(zg.h, aeq::b, bwk.a, aeq::e, bwl.m, aeq::f, aeq::new);
+
+   public static aeq a(int $$0, bwk $$1, Set<bwl> $$2) {
+      return new aeq($$0, $$1, $$2);
    }
 
    @Override
-   public aae<aeq> a() {
-      return ahk.X;
+   public zt<aeq> a() {
+      return agz.ai;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public cul<?> e() {
+   public bwk e() {
       return this.c;
    }
 
-   public xv f() {
+   public Set<bwl> f() {
       return this.d;
    }
 }

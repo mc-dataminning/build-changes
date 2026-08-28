@@ -1,36 +1,30 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class flh extends flf {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xv c = xv.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+public enum flh implements azx {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public flh(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private static final IntFunction<flh> d = ayl.a(flh::b, values(), ayl.a.b);
+   private final int e;
+   private final String f;
+
+   private flh(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void run() {
-      fhi $$0 = fhi.a();
-
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (fje var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
-      }
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public xv a() {
-      return c;
+   public String a() {
+      return this.f;
+   }
+
+   public static flh a(int $$0) {
+      return d.apply($$0);
    }
 }

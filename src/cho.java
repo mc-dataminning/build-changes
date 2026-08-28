@@ -1,97 +1,226 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class cho {
-   public static final aly<chn> a = a("armorer");
-   public static final aly<chn> b = a("butcher");
-   public static final aly<chn> c = a("cartographer");
-   public static final aly<chn> d = a("cleric");
-   public static final aly<chn> e = a("farmer");
-   public static final aly<chn> f = a("fisherman");
-   public static final aly<chn> g = a("fletcher");
-   public static final aly<chn> h = a("leatherworker");
-   public static final aly<chn> i = a("librarian");
-   public static final aly<chn> j = a("mason");
-   public static final aly<chn> k = a("shepherd");
-   public static final aly<chn> l = a("toolsmith");
-   public static final aly<chn> m = a("weaponsmith");
-   public static final aly<chn> n = a("home");
-   public static final aly<chn> o = a("meeting");
-   public static final aly<chn> p = a("beehive");
-   public static final aly<chn> q = a("bee_nest");
-   public static final aly<chn> r = a("nether_portal");
-   public static final aly<chn> s = a("lodestone");
-   public static final aly<chn> t = a("lightning_rod");
-   private static final Set<dxv> u = ImmutableList.of(
-         dko.bu, dko.bv, dko.br, dko.bs, dko.bp, dko.bn, dko.bt, dko.bj, dko.bo, dko.bl, dko.bi, dko.bh, new dkm[]{dko.bm, dko.bq, dko.bg, dko.bk}
-      )
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .filter($$0 -> $$0.c(dkf.b) == dyi.a)
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Set<dxv> v = ImmutableList.of(dko.fH, dko.fJ, dko.fI, dko.fK)
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Map<dxv, jq<chn>> w = Maps.newHashMap();
+public abstract class cho extends bus {
+   protected static final int cc = 6000;
+   private int bZ;
+   @Nullable
+   private UUID ca;
 
-   private static Set<dxv> a(dkm $$0) {
-      return ImmutableSet.copyOf($$0.l().a());
+   protected cho(bvi<? extends cho> $$0, dgz $$1) {
+      super($$0, $$1);
+      this.a(euh.n, 16.0F);
+      this.a(euh.o, -1.0F);
    }
 
-   private static aly<chn> a(String $$0) {
-      return aly.a(mb.aa, alz.b($$0));
+   public static bxe.a gt() {
+      return bvz.C().a(bxf.E, 10.0);
    }
 
-   private static chn a(kd<chn> $$0, aly<chn> $$1, Set<dxv> $$2, int $$3, int $$4) {
-      chn $$5 = new chn($$2, $$3, $$4);
-      kd.a($$0, $$1, $$5);
-      a($$0.b($$1), $$2);
-      return $$5;
+   @Override
+   protected void a(arx $$0) {
+      if (this.Z_() != 0) {
+         this.bZ = 0;
+      }
+
+      super.a($$0);
    }
 
-   private static void a(jq<chn> $$0, Set<dxv> $$1) {
-      $$1.forEach($$1x -> {
-         jq<chn> $$2 = w.put($$1x, $$0);
-         if ($$2 != null) {
-            throw (IllegalStateException)ae.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
+   @Override
+   public void d_() {
+      super.d_();
+      if (this.Z_() != 0) {
+         this.bZ = 0;
+      }
+
+      if (this.bZ > 0) {
+         this.bZ--;
+         if (this.bZ % 10 == 0) {
+            double $$0 = this.ae.k() * 0.02;
+            double $$1 = this.ae.k() * 0.02;
+            double $$2 = this.ae.k() * 0.02;
+            this.dW().a(ls.R, this.d(1.0), this.dE() + 0.5, this.g(1.0), $$0, $$1, $$2);
          }
+      }
+   }
+
+   @Override
+   protected void b(arx $$0, btr $$1, float $$2) {
+      this.gz();
+      super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public float a(jh $$0, dhc $$1) {
+      return $$1.a_($$0.e()).a(dkf.i) ? 10.0F : $$1.w($$0);
+   }
+
+   @Override
+   public void b(um $$0) {
+      super.b($$0);
+      $$0.a("InLove", this.bZ);
+      if (this.ca != null) {
+         $$0.a("LoveCause", this.ca);
+      }
+   }
+
+   @Override
+   public void a(um $$0) {
+      super.a($$0);
+      this.bZ = $$0.h("InLove");
+      this.ca = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
+   }
+
+   public static boolean b(bvi<? extends cho> $$0, dha $$1, bvh $$2, jh $$3, bac $$4) {
+      boolean $$5 = bvh.b($$2) || a($$1, $$3);
+      return $$1.a_($$3.e()).a(axk.bY) && $$5;
+   }
+
+   protected static boolean a(dgb $$0, jh $$1) {
+      return $$0.b($$1, 0) > 8;
+   }
+
+   @Override
+   public int Q() {
+      return 120;
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return false;
+   }
+
+   @Override
+   protected int e(arx $$0) {
+      return 1 + this.ae.a(3);
+   }
+
+   public abstract boolean j(cxg var1);
+
+   @Override
+   public bta b(cpo $$0, bsz $$1) {
+      cxg $$2 = $$0.b($$1);
+      if (this.j($$2)) {
+         int $$3 = this.Z_();
+         if (!this.dW().C && $$3 == 0 && this.gv()) {
+            this.a($$0, $$1, $$2);
+            this.f($$0);
+            this.gu();
+            return bta.b;
+         }
+
+         if (this.e_()) {
+            this.a($$0, $$1, $$2);
+            this.a(d_(-$$3), true);
+            this.gu();
+            return bta.a;
+         }
+
+         if (this.dW().C) {
+            return bta.c;
+         }
+      }
+
+      return super.b($$0, $$1);
+   }
+
+   protected void gu() {
+   }
+
+   protected void a(cpo $$0, bsz $$1, cxg $$2) {
+      int $$3 = $$2.M();
+      dam $$4 = $$2.a(ku.y);
+      $$2.a(1, $$0);
+      if ($$4 != null) {
+         cxg $$5 = $$4.a($$2, $$3, $$0.fV(), $$0::b);
+         $$0.a($$1, $$5);
+      }
+   }
+
+   public boolean gv() {
+      return this.bZ <= 0;
+   }
+
+   public void f(@Nullable cpo $$0) {
+      this.bZ = 600;
+      if ($$0 != null) {
+         this.ca = $$0.cG();
+      }
+
+      this.dW().a(this, (byte)18);
+   }
+
+   public void r(int $$0) {
+      this.bZ = $$0;
+   }
+
+   public int gw() {
+      return this.bZ;
+   }
+
+   @Nullable
+   public ary gx() {
+      if (this.ca == null) {
+         return null;
+      } else {
+         cpo $$0 = this.dW().b(this.ca);
+         return $$0 instanceof ary ? (ary)$$0 : null;
+      }
+   }
+
+   public boolean gy() {
+      return this.bZ > 0;
+   }
+
+   public void gz() {
+      this.bZ = 0;
+   }
+
+   public boolean a(cho $$0) {
+      if ($$0 == this) {
+         return false;
+      } else {
+         return $$0.getClass() != this.getClass() ? false : this.gy() && $$0.gy();
+      }
+   }
+
+   public void a(arx $$0, cho $$1) {
+      bus $$2 = this.a($$0, (bus)$$1);
+      if ($$2 != null) {
+         $$2.a(true);
+         $$2.b(this.dB(), this.dD(), this.dH(), 0.0F, 0.0F);
+         this.a($$0, $$1, $$2);
+         $$0.a_($$2);
+      }
+   }
+
+   public void a(arx $$0, cho $$1, @Nullable bus $$2) {
+      Optional.ofNullable(this.gx()).or(() -> Optional.ofNullable($$1.gx())).ifPresent($$2x -> {
+         $$2x.a(axf.P);
+         ao.p.a($$2x, this, $$1, $$2);
       });
+      this.c_(6000);
+      $$1.c_(6000);
+      this.gz();
+      $$1.gz();
+      $$0.a(this, (byte)18);
+      if ($$0.O().b(dgv.f)) {
+         $$0.b(new bvn($$0, this.dB(), this.dD(), this.dH(), this.dZ().a(7) + 1));
+      }
    }
 
-   public static Optional<jq<chn>> a(dxv $$0) {
-      return Optional.ofNullable(w.get($$0));
-   }
-
-   public static boolean b(dxv $$0) {
-      return w.containsKey($$0);
-   }
-
-   public static chn a(kd<chn> $$0) {
-      a($$0, a, a(dko.or), 1, 1);
-      a($$0, b, a(dko.oq), 1, 1);
-      a($$0, c, a(dko.os), 1, 1);
-      a($$0, d, a(dko.fG), 1, 1);
-      a($$0, e, a(dko.px), 1, 1);
-      a($$0, f, a(dko.op), 1, 1);
-      a($$0, g, a(dko.ot), 1, 1);
-      a($$0, h, v, 1, 1);
-      a($$0, i, a(dko.ov), 1, 1);
-      a($$0, j, a(dko.ox), 1, 1);
-      a($$0, k, a(dko.oo), 1, 1);
-      a($$0, l, a(dko.ow), 1, 1);
-      a($$0, m, a(dko.ou), 1, 1);
-      a($$0, n, u, 1, 1);
-      a($$0, o, a(dko.oy), 32, 6);
-      a($$0, p, a(dko.pA), 0, 1);
-      a($$0, q, a(dko.pz), 0, 1);
-      a($$0, r, a(dko.eq), 0, 1);
-      a($$0, s, a(dko.pL), 0, 1);
-      return a($$0, t, a(dko.sN), 0, 1);
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 18) {
+         for (int $$1 = 0; $$1 < 7; $$1++) {
+            double $$2 = this.ae.k() * 0.02;
+            double $$3 = this.ae.k() * 0.02;
+            double $$4 = this.ae.k() * 0.02;
+            this.dW().a(ls.R, this.d(1.0), this.dE() + 0.5, this.g(1.0), $$2, $$3, $$4);
+         }
+      } else {
+         super.b($$0);
+      }
    }
 }

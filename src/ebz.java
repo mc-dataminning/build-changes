@@ -1,15 +1,15 @@
-public interface ebz {
-   ebz a = new ebz() {
-      @Override
-      public void a() {
-      }
+public interface ebz<T> {
+   void g(T var1);
 
-      @Override
-      public void a(bvk.d $$0) {
-      }
-   };
+   void f(T var1);
 
-   void a();
+   void e(T var1);
 
-   void a(bvk.d var1);
+   void d(T var1);
+
+   void c(T var1);
+
+   void b(T var1);
+
+   void a(T var1);
 }

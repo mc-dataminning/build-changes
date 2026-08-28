@@ -1,25 +1,58 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
-public class cgv extends cgj<cpa> {
-   @Override
-   public Set<cfk<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cfk.B)));
+public class cgv {
+   @Nullable
+   public static fbr a(bwf $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, $$0::c);
    }
 
-   protected void a(ash $$0, cpa $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.aq() == bvr.bS)
-         .or(() -> a($$1, $$0xx -> $$0xx.aq() != bvr.bS))
-         .ifPresentOrElse($$1x -> $$1.ec().a(cfk.B, $$1x), () -> $$1.ec().b(cfk.B));
+   @Nullable
+   public static fbr a(bwf $$0, int $$1, int $$2, ToDoubleFunction<jh> $$3) {
+      boolean $$4 = cgt.a($$0, $$1);
+      return cgw.a(() -> {
+         jh $$4x = cgw.a($$0.dZ(), $$1, $$2);
+         jh $$5 = a($$0, $$1, $$4, $$4x);
+         return $$5 == null ? null : a($$0, $$5);
+      }, $$3);
    }
 
-   private static Optional<bwg> a(cpa $$0, Predicate<bwg> $$1) {
-      return $$0.ec().c(cfk.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   @Nullable
+   public static fbr a(bwf $$0, int $$1, int $$2, fbr $$3) {
+      fbr $$4 = $$3.a($$0.dB(), $$0.dD(), $$0.dH());
+      boolean $$5 = cgt.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
+   }
+
+   @Nullable
+   public static fbr b(bwf $$0, int $$1, int $$2, fbr $$3) {
+      fbr $$4 = $$0.du().d($$3);
+      boolean $$5 = cgt.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
+   }
+
+   @Nullable
+   private static fbr a(bwf $$0, int $$1, int $$2, fbr $$3, boolean $$4) {
+      return cgw.a($$0, () -> {
+         jh $$5 = cgw.a($$0.dZ(), $$1, $$2, 0, $$3.d, $$3.f, (float) (Math.PI / 2));
+         if ($$5 == null) {
+            return null;
+         } else {
+            jh $$6 = a($$0, $$1, $$4, $$5);
+            return $$6 == null ? null : a($$0, $$6);
+         }
+      });
+   }
+
+   @Nullable
+   public static jh a(bwf $$0, jh $$1) {
+      $$1 = cgw.a($$1, $$0.dW().an(), $$1x -> cgt.c($$0, $$1x));
+      return !cgt.a($$0, $$1) && !cgt.b($$0, $$1) ? $$1 : null;
+   }
+
+   @Nullable
+   public static jh a(bwf $$0, int $$1, boolean $$2, jh $$3) {
+      jh $$4 = cgw.a($$0, $$1, $$0.dZ(), $$3);
+      return !cgt.a($$4, $$0) && !cgt.a($$2, $$0, $$4) && !cgt.a($$0.L(), $$4) ? $$4 : null;
    }
 }

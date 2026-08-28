@@ -1,18 +1,29 @@
-public interface dcp<T extends dce<?>> {
-   dcp<dbt> a = a("crafting");
-   dcp<dcy> b = a("smelting");
-   dcp<dbn> c = a("blasting");
-   dcp<ddd> d = a("smoking");
-   dcp<dbp> e = a("campfire_cooking");
-   dcp<dde> f = a("stonecutting");
-   dcp<dcz> g = a("smithing");
+public class dcp extends dbb {
+   public dcp(String $$0, dbh $$1, dbr $$2, cxg $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-   static <T extends dce<?>> dcp<T> a(final String $$0) {
-      return kd.a(ma.q, alz.b($$0), new dcp<T>() {
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      });
+   @Override
+   protected cxc f() {
+      return cxk.fe;
+   }
+
+   @Override
+   public dcf<dcp> a() {
+      return dcf.o;
+   }
+
+   @Override
+   public dcg<dcp> b() {
+      return dcg.b;
+   }
+
+   @Override
+   public dby h() {
+      return switch (this.e()) {
+         case b -> dbx.f;
+         case a -> dbx.e;
+         case c -> dbx.g;
+      };
    }
 }

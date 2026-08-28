@@ -1,22 +1,53 @@
-public enum fku {
-   a(0, eoa.a),
-   b(1, eoa.b),
-   c(2, eoa.c),
-   d(3, eoa.d);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private final int e;
-   private final xv f;
+public class fku extends fky {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xk c = xk.c("mco.configure.world.closing");
+   private final fic d;
+   private final fjl e;
 
-   private fku(final int $$0, final aly<enz> $$1) {
-      this.e = $$0;
-      this.f = xv.c($$1.a().h("generator"));
+   public fku(fic $$0, fjl $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public xv a() {
-      return this.f;
+   @Override
+   public void run() {
+      fhb $$0 = fhb.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = fic.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fiy var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   public xk a() {
+      return c;
    }
 }

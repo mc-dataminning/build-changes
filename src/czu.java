@@ -1,63 +1,92 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public final class czu {
-   public static final czu a = new czu(List.of());
-   public static final Codec<czu> b = cxp.a.listOf().xmap(czu::new, $$0 -> $$0.d);
-   public static final zt<xg, czu> c = cxp.h.a(zr.a()).a(czu::new, $$0 -> $$0.d);
-   private final List<cxp> d;
+public record czu(int d, boolean e) implements daj {
+   private static final Codec<czu> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(czu::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(czu::b)).apply($$0, czu::new)
+   );
+   public static final Codec<czu> a = Codec.withAlternative(f, Codec.INT, $$0 -> new czu($$0, true));
+   public static final zi<ByteBuf, czu> b = zi.a(zg.g, czu::a, zg.b, czu::b, czu::new);
+   public static final int c = -6265536;
 
-   private czu(List<cxp> $$0) {
-      this.d = $$0;
+   public static int a(cxg $$0, int $$1) {
+      czu $$2 = $$0.a(ku.J);
+      return $$2 != null ? ayf.f($$2.a()) : $$1;
    }
 
-   public static czu a(cxp $$0) {
-      return new czu(List.of($$0.v()));
+   public static cxg a(cxg $$0, List<cwe> $$1) {
+      if (!$$0.a(axt.bR)) {
+         return cxg.j;
+      } else {
+         cxg $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         czu $$8 = $$2.a(ku.J);
+         if ($$8 != null) {
+            int $$9 = ayf.b($$8.a());
+            int $$10 = ayf.c($$8.a());
+            int $$11 = ayf.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
+         }
+
+         for (cwe $$12 : $$1) {
+            int $$13 = $$12.b().d();
+            int $$14 = ayf.b($$13);
+            int $$15 = ayf.c($$13);
+            int $$16 = ayf.d($$13);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = ayf.a(0, $$17, $$18, $$19);
+         boolean $$23 = $$8 == null || $$8.b();
+         $$2.b(ku.J, new czu($$22, $$23));
+         return $$2;
+      }
    }
 
-   public static czu a(List<cxp> $$0) {
-      return new czu(List.copyOf(Lists.transform($$0, cxp::v)));
-   }
-
-   public boolean a(cxl $$0) {
-      for (cxp $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
+   @Override
+   public void a(cxc.b $$0, Consumer<xk> $$1, cyy $$2) {
+      if (this.e) {
+         if ($$2.a()) {
+            $$1.accept(xk.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
+         } else {
+            $$1.accept(xk.c("item.dyed").a(n.h, n.u));
          }
       }
-
-      return false;
    }
 
-   public List<cxp> a() {
-      return Lists.transform(this.d, cxp::v);
+   public czu a(boolean $$0) {
+      return new czu(this.d, $$0);
+   }
+
+   public int a() {
+      return this.d;
    }
 
    public boolean b() {
-      return this.d.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof czu $$1 && cxp.a(this.d, $$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return cxp.a(this.d);
-   }
-
-   @Override
-   public String toString() {
-      return "ChargedProjectiles[items=" + this.d + "]";
+      return this.e;
    }
 }

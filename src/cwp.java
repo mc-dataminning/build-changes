@@ -1,48 +1,31 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Function;
-
-public record cwp<T>(Optional<jq<T>> a, aly<T> b) {
-   public cwp(jq<T> $$0) {
-      this(Optional.of($$0), $$0.e().orElseThrow());
+public class cwp extends cxc {
+   public cwp(cxc.a $$0) {
+      super($$0);
    }
 
-   public cwp(aly<T> $$0) {
-      this(Optional.empty(), $$0);
-   }
+   @Override
+   public bta a(dgz $$0, cpo $$1, bsz $$2) {
+      cxg $$3 = $$1.b($$2);
+      if ($$1.cv != null) {
+         if (!$$0.C) {
+            int $$4 = $$1.cv.a($$3);
+            $$3.a($$4, $$1, bvx.d($$2));
+         }
 
-   public static <T> Codec<cwp<T>> a(aly<kd<T>> $$0, Codec<jq<T>> $$1) {
-      return Codec.either($$1, aly.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
-         .xmap(cwp::a, cwp::a);
-   }
+         $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awv.jw, aww.g, 1.0F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+         $$1.a(eck.C);
+      } else {
+         $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awv.jy, aww.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+         if ($$0 instanceof arx $$5) {
+            int $$6 = (int)(dds.b($$5, $$3, $$1) * 20.0F);
+            int $$7 = dds.a($$5, $$3, $$1);
+            cqh.a(new cqd($$1, $$0, $$7, $$6, $$3), $$5, $$3);
+         }
 
-   public static <T> zt<xg, cwp<T>> a(aly<kd<T>> $$0, zt<xg, jq<T>> $$1) {
-      return zt.a(zr.a($$1, aly.b($$0)), cwp::a, cwp::a);
-   }
+         $$1.b(axf.c.b(this));
+         $$1.a(eck.D);
+      }
 
-   public Either<jq<T>, aly<T>> a() {
-      return this.a.<Either<jq<T>, aly<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
-   }
-
-   public static <T> cwp<T> a(Either<jq<T>, aly<T>> $$0) {
-      return (cwp<T>)$$0.map(cwp::new, cwp::new);
-   }
-
-   public Optional<T> a(kd<T> $$0) {
-      return this.a.<T>map(jq::a).or(() -> $$0.f(this.b));
-   }
-
-   public Optional<jq<T>> a(js.a $$0) {
-      return this.a.or(() -> $$0.d(this.b.c()).a(this.b));
-   }
-
-   public Optional<jq<T>> b() {
-      return this.a;
-   }
-
-   public aly<T> c() {
-      return this.b;
+      return bta.a;
    }
 }

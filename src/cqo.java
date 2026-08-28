@@ -1,48 +1,49 @@
-public class cqo extends cqk {
-   private int d = 1;
+public abstract class cqo extends cqp implements cqe {
+   private static final aks<cxg> a = akw.a(cqo.class, aku.h);
 
-   public cqo(bvr<? extends cqo> $$0, dhi $$1) {
+   public cqo(bvi<? extends cqo> $$0, dgz $$1) {
       super($$0, $$1);
    }
 
-   public cqo(dhi $$0, bwg $$1, fby $$2, int $$3) {
-      super(bvr.Z, $$1, $$2, $$0);
-      this.d = $$3;
+   public cqo(bvi<? extends cqo> $$0, double $$1, double $$2, double $$3, dgz $$4, cxg $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a($$5);
+   }
+
+   public cqo(bvi<? extends cqo> $$0, bvx $$1, dgz $$2, cxg $$3) {
+      this($$0, $$1.dB(), $$1.dF() - 0.1F, $$1.dH(), $$2, $$3);
+      this.c($$1);
+   }
+
+   public void a(cxg $$0) {
+      this.au().a(a, $$0.c(1));
+   }
+
+   protected abstract cxc m();
+
+   @Override
+   public cxg l() {
+      return this.au().a(a);
    }
 
    @Override
-   protected void a(fbw $$0) {
-      super.a($$0);
-      if (this.dW() instanceof ash $$1) {
-         boolean $$2 = $$1.N().b(dhe.c);
-         this.dW().a(this, this.dB(), this.dD(), this.dH(), (float)this.d, $$2, dhi.a.c);
-         this.at();
-      }
+   protected void a(akw.a $$0) {
+      $$0.a(a, new cxg(this.m()));
    }
 
    @Override
-   protected void a(fbv $$0) {
-      super.a($$0);
-      if (this.dW() instanceof ash $$1) {
-         bvk var6 = $$0.a();
-         bvk $$4 = this.p();
-         bua $$5 = this.dX().a((cqk)this, $$4);
-         var6.a($$1, $$5, 6.0F);
-         deb.a($$1, var6, $$5);
-      }
-   }
-
-   @Override
-   public void b(ux $$0) {
+   public void b(um $$0) {
       super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.d);
+      $$0.a("Item", this.l().a(this.dY()));
    }
 
    @Override
-   public void a(ux $$0) {
+   public void a(um $$0) {
       super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.d = $$0.f("ExplosionPower");
+      if ($$0.b("Item", 10)) {
+         this.a(cxg.a(this.dY(), (vj)$$0.p("Item")).orElseGet(() -> new cxg(this.m())));
+      } else {
+         this.a(new cxg(this.m()));
       }
    }
 }

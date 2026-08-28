@@ -1,101 +1,53 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Streams;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class tc {
-   public static final aly<eno> a = tb.a("crimson_fungi");
-   public static final aly<eno> b = tb.a("warped_fungi");
-   public static final aly<eno> c = tb.a("oak_checked");
-   public static final aly<eno> d = tb.a("dark_oak_checked");
-   public static final aly<eno> e = tb.a("pale_oak_checked");
-   public static final aly<eno> f = tb.a("pale_oak_creaking_checked");
-   public static final aly<eno> g = tb.a("birch_checked");
-   public static final aly<eno> h = tb.a("acacia_checked");
-   public static final aly<eno> i = tb.a("spruce_checked");
-   public static final aly<eno> j = tb.a("mangrove_checked");
-   public static final aly<eno> k = tb.a("cherry_checked");
-   public static final aly<eno> l = tb.a("pine_on_snow");
-   public static final aly<eno> m = tb.a("spruce_on_snow");
-   public static final aly<eno> n = tb.a("pine_checked");
-   public static final aly<eno> o = tb.a("jungle_tree");
-   public static final aly<eno> p = tb.a("fancy_oak_checked");
-   public static final aly<eno> q = tb.a("mega_jungle_tree_checked");
-   public static final aly<eno> r = tb.a("mega_spruce_checked");
-   public static final aly<eno> s = tb.a("mega_pine_checked");
-   public static final aly<eno> t = tb.a("tall_mangrove_checked");
-   public static final aly<eno> u = tb.a("jungle_bush");
-   public static final aly<eno> v = tb.a("super_birch_bees_0002");
-   public static final aly<eno> w = tb.a("super_birch_bees");
-   public static final aly<eno> x = tb.a("oak_bees_0002");
-   public static final aly<eno> y = tb.a("oak_bees_002");
-   public static final aly<eno> z = tb.a("birch_bees_0002");
-   public static final aly<eno> A = tb.a("birch_bees_002");
-   public static final aly<eno> B = tb.a("fancy_oak_bees_0002");
-   public static final aly<eno> C = tb.a("fancy_oak_bees_002");
-   public static final aly<eno> D = tb.a("fancy_oak_bees");
-   public static final aly<eno> E = tb.a("cherry_bees_005");
+   private static final int a = 50;
 
-   public static void a(rk<eno> $$0) {
-      jr<egi<?, ?>> $$1 = $$0.a(mb.aL);
-      jq<egi<?, ?>> $$2 = $$1.b(sr.a);
-      jq<egi<?, ?>> $$3 = $$1.b(sr.c);
-      jq<egi<?, ?>> $$4 = $$1.b(sr.g);
-      jq<egi<?, ?>> $$5 = $$1.b(sr.h);
-      jq<egi<?, ?>> $$6 = $$1.b(sr.i);
-      jq<egi<?, ?>> $$7 = $$1.b(sr.j);
-      jq<egi<?, ?>> $$8 = $$1.b(sr.k);
-      jq<egi<?, ?>> $$9 = $$1.b(sr.l);
-      jq<egi<?, ?>> $$10 = $$1.b(sr.m);
-      jq<egi<?, ?>> $$11 = $$1.b(sr.z);
-      jq<egi<?, ?>> $$12 = $$1.b(sr.B);
-      jq<egi<?, ?>> $$13 = $$1.b(sr.n);
-      jq<egi<?, ?>> $$14 = $$1.b(sr.o);
-      jq<egi<?, ?>> $$15 = $$1.b(sr.p);
-      jq<egi<?, ?>> $$16 = $$1.b(sr.r);
-      jq<egi<?, ?>> $$17 = $$1.b(sr.s);
-      jq<egi<?, ?>> $$18 = $$1.b(sr.t);
-      jq<egi<?, ?>> $$19 = $$1.b(sr.A);
-      jq<egi<?, ?>> $$20 = $$1.b(sr.x);
-      jq<egi<?, ?>> $$21 = $$1.b(sr.u);
-      jq<egi<?, ?>> $$22 = $$1.b(sr.v);
-      jq<egi<?, ?>> $$23 = $$1.b(sr.C);
-      jq<egi<?, ?>> $$24 = $$1.b(sr.D);
-      jq<egi<?, ?>> $$25 = $$1.b(sr.F);
-      jq<egi<?, ?>> $$26 = $$1.b(sr.G);
-      jq<egi<?, ?>> $$27 = $$1.b(sr.I);
-      jq<egi<?, ?>> $$28 = $$1.b(sr.J);
-      jq<egi<?, ?>> $$29 = $$1.b(sr.L);
-      jq<egi<?, ?>> $$30 = $$1.b(sr.M);
-      tb.a($$0, a, $$2, enf.a(8), enc.a());
-      tb.a($$0, b, $$3, enf.a(8), enc.a());
-      tb.a($$0, c, $$4, tb.a(dko.z));
-      tb.a($$0, d, $$5, tb.a(dko.F));
-      tb.a($$0, e, $$6, tb.a(dko.G));
-      tb.a($$0, f, $$7, tb.a(dko.G));
-      tb.a($$0, g, $$8, tb.a(dko.B));
-      tb.a($$0, h, $$9, tb.a(dko.D));
-      tb.a($$0, i, $$10, tb.a(dko.A));
-      tb.a($$0, j, $$11, tb.a(dko.H));
-      tb.a($$0, k, $$12, tb.a(dko.E));
-      eex $$31 = eex.a(jm.a.q(), dko.ec, dko.rk);
-      List<enr> $$32 = List.of(enh.a(jm.b, eex.a(eex.a(dko.rk)), 8), end.a($$31));
-      tb.a($$0, l, $$13, $$32);
-      tb.a($$0, m, $$10, $$32);
-      tb.a($$0, n, $$13, tb.a(dko.A));
-      tb.a($$0, o, $$14, tb.a(dko.C));
-      tb.a($$0, p, $$15, tb.a(dko.z));
-      tb.a($$0, q, $$16, tb.a(dko.C));
-      tb.a($$0, r, $$17, tb.a(dko.A));
-      tb.a($$0, s, $$18, tb.a(dko.A));
-      tb.a($$0, t, $$19, tb.a(dko.H));
-      tb.a($$0, u, $$20, tb.a(dko.z));
-      tb.a($$0, v, $$21, tb.a(dko.B));
-      tb.a($$0, w, $$22, tb.a(dko.B));
-      tb.a($$0, x, $$23, tb.a(dko.z));
-      tb.a($$0, y, $$24, tb.a(dko.z));
-      tb.a($$0, z, $$25, tb.a(dko.B));
-      tb.a($$0, A, $$26, tb.a(dko.B));
-      tb.a($$0, B, $$27, tb.a(dko.z));
-      tb.a($$0, C, $$28, tb.a(dko.z));
-      tb.a($$0, D, $$29, tb.a(dko.z));
-      tb.a($$0, E, $$30, tb.a(dko.E));
+   public static Collection<tb> a(Collection<ub> $$0, arx $$1) {
+      Map<String, List<ub>> $$2 = $$0.stream().collect(Collectors.groupingBy(ub::b));
+      return $$2.entrySet()
+         .stream()
+         .flatMap(
+            $$1x -> {
+               String $$2x = (String)$$1x.getKey();
+               List<ub> $$3 = (List<ub>)$$1x.getValue();
+               return Streams.mapWithIndex(
+                  Lists.partition($$3, 50).stream(), ($$2xx, $$3x) -> a($$2xx.stream().map($$1xxx -> a($$1xxx, 0, $$1)).toList(), $$2x, $$3x)
+               );
+            }
+         )
+         .toList();
+   }
+
+   public static th a(ub $$0, int $$1, arx $$2) {
+      return new th($$0, tx.a($$1), $$2, tu.a());
+   }
+
+   public static tk.b a() {
+      return a(50);
+   }
+
+   public static tk.b a(int $$0) {
+      return $$1 -> {
+         Map<String, List<th>> $$2 = $$1.stream().filter(Objects::nonNull).collect(Collectors.groupingBy($$0xx -> $$0xx.v().b()));
+         return $$2.entrySet().stream().flatMap($$1x -> {
+            String $$2x = (String)$$1x.getKey();
+            List<th> $$3 = (List<th>)$$1x.getValue();
+            return Streams.mapWithIndex(Lists.partition($$3, $$0).stream(), ($$1xx, $$2xx) -> a(List.copyOf($$1xx), $$2x, $$2xx));
+         }).toList();
+      };
+   }
+
+   public static tb a(Collection<th> $$0, String $$1, long $$2) {
+      Consumer<arx> $$3 = tj.c($$1);
+      Consumer<arx> $$4 = tj.d($$1);
+      return new tb($$1 + ":" + $$2, $$0, $$3, $$4);
    }
 }

@@ -1,17 +1,32 @@
-public record abi(ecv c, int d) implements abf {
-   public static final zt<xg, abi> a = zt.a(ecv.d, abi::b, zr.h, abi::c, abi::new);
-   public static final abf.b<abi> b = abf.a("debug/game_event_listeners");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+
+public record abi(long c, List<abi.a> d) implements aau {
+   public static final aau.b<abi> a = aau.a("debug/redstone_update_order");
+   public static final zi<wh, abi> b = zi.a(zg.k, abi::b, abi.a.a.a(zg.a()), abi::c, abi::new);
 
    @Override
-   public abf.b<abi> a() {
-      return b;
+   public aau.b<abi> a() {
+      return a;
    }
 
-   public ecv b() {
+   public long b() {
       return this.c;
    }
 
-   public int c() {
+   public List<abi.a> c() {
       return this.d;
+   }
+
+   public static record a(jh b, euy c) {
+      public static final zi<ByteBuf, abi.a> a = zi.a(jh.b, abi.a::a, euy.a, abi.a::b, abi.a::new);
+
+      public jh a() {
+         return this.b;
+      }
+
+      public euy b() {
+         return this.c;
+      }
    }
 }

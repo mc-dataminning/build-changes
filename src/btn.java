@@ -1,37 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
 public class btn {
-   public static final Codec<btn> a = RecordCodecBuilder.create($$0 -> $$0.group(eer.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, btn::new));
-   private final eer b;
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-   public btn(eer $$0) {
-      this.b = $$0;
-   }
-
-   public btn(long $$0, alz $$1) {
-      this(a($$0, Optional.of($$1)));
-   }
-
-   public btn(long $$0, Optional<alz> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static eer a(long $$0, Optional<alz> $$1) {
-      eef.a $$2 = eef.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public static float a(bvx $$0, float $$1, btr $$2, float $$3, float $$4) {
+      float $$5 = 2.0F + $$4 / 4.0F;
+      float $$6 = azu.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
+      float $$7 = $$6 / 25.0F;
+      cxg $$8 = $$2.e();
+      float $$10;
+      if ($$8 != null && $$0.dW() instanceof arx $$9) {
+         $$10 = azu.a(dds.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
+      } else {
+         $$10 = $$7;
       }
 
-      return new eer($$2.a());
+      float $$12 = 1.0F - $$10;
+      return $$1 * $$12;
    }
 
-   public static eef.a a(alz $$0) {
-      return eef.a($$0.toString());
-   }
-
-   public bam a() {
-      return this.b;
+   public static float a(float $$0, float $$1) {
+      float $$2 = azu.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

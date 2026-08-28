@@ -1,84 +1,40 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public class ddb implements dcz {
-   final Optional<dca> c;
-   final Optional<dca> d;
-   final Optional<dca> e;
-   final cxp f;
-   @Nullable
-   private dcd g;
+public record ddb(ddc b, dda c, OptionalInt d, dby e, Optional<List<dbr>> f) {
+   public static final zi<wv, ddb> a = zi.a(ddc.a, ddb::a, dda.e, ddb::b, zg.i, ddb::c, zg.a(mb.aH), ddb::d, dbr.a.a(zg.a()).a(zg::a), ddb::e, ddb::new);
 
-   public ddb(Optional<dca> $$0, Optional<dca> $$1, Optional<dca> $$2, cxp $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public List<cxg> a(bbf $$0) {
+      return this.c.d().a($$0);
    }
 
-   public cxp a(dda $$0, js.a $$1) {
-      cxp $$2 = $$0.d().a(this.f.h(), this.f.L());
-      $$2.b(this.f.e());
-      return $$2;
+   public boolean a(cpt $$0) {
+      if (this.f.isEmpty()) {
+         return false;
+      } else {
+         List<cps.a<jq<cxc>>> $$1 = this.f.get().stream().map(dbu::a).toList();
+         return $$0.a($$1, null);
+      }
    }
 
-   @Override
-   public Optional<dca> c() {
+   public ddc a() {
+      return this.b;
+   }
+
+   public dda b() {
       return this.c;
    }
 
-   @Override
-   public Optional<dca> f() {
+   public OptionalInt c() {
       return this.d;
    }
 
-   @Override
-   public Optional<dca> k() {
+   public dby d() {
       return this.e;
    }
 
-   @Override
-   public dco<ddb> a() {
-      return dco.t;
-   }
-
-   @Override
-   public dcd ap_() {
-      if (this.g == null) {
-         this.g = dcd.a(List.of(this.c, this.d, this.e));
-      }
-
-      return this.g;
-   }
-
-   @Override
-   public List<ddj> g() {
-      return List.of(new dds(dca.a(this.c), dca.a(this.d), dca.a(this.e), new ddp.f(this.f), new ddp.d(cxt.xg)));
-   }
-
-   public static class a implements dco<ddb> {
-      private static final MapCodec<ddb> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  dca.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
-                  dca.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
-                  dca.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
-                  cxp.c.fieldOf("result").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, ddb::new)
-      );
-      public static final zt<xg, ddb> w = zt.a(dca.b, $$0 -> $$0.c, dca.b, $$0 -> $$0.d, dca.b, $$0 -> $$0.e, cxp.h, $$0 -> $$0.f, ddb::new);
-
-      @Override
-      public MapCodec<ddb> a() {
-         return x;
-      }
-
-      @Override
-      public zt<xg, ddb> b() {
-         return w;
-      }
+   public Optional<List<dbr>> e() {
+      return this.f;
    }
 }

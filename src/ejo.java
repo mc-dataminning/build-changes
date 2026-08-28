@@ -1,19 +1,28 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ejo implements eja {
+public class ejo implements eit {
    public static final Codec<ejo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(eji.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, ejo::new)
+      $$0 -> $$0.group(
+               etq.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               kf.a(mb.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ejo::new)
    );
-   public final List<eji.a> b;
+   public final etq b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final ju<dkd> f;
 
-   public ejo(dxv $$0, dxv $$1) {
-      this(ImmutableList.of(eji.a(new erq($$0), $$1)));
-   }
-
-   public ejo(List<eji.a> $$0) {
+   public ejo(etq $$0, boolean $$1, int $$2, int $$3, ju<dkd> $$4) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

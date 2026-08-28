@@ -1,24 +1,40 @@
-import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public final class fcg implements fck {
-   private final fce a;
-   private final int b;
-   private final int c;
+public class fcg extends AbstractDoubleList implements fcd {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   fcg(int $$0, int $$1) {
-      this.a = new fce((int)fcp.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   protected fcg(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public boolean a(fck.a $$0) {
-      int $$1 = this.a.size() - 1;
+   public int size() {
+      return this.a.size() + this.b.size();
+   }
+
+   @Override
+   public boolean a(fcd.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   }
+
+   private boolean b(fcd.a $$0) {
+      int $$1 = this.a.size();
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
+      }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
             return false;
          }
       }
@@ -26,13 +42,12 @@ public final class fcg implements fck {
       return true;
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
    }
 
    @Override
    public DoubleList a() {
-      return this.a;
+      return this;
    }
 }

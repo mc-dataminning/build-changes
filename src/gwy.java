@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gwy extends gyo {
+   public cja.e a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gwy {
+   public gwy() {
+      this.a = cja.e.a;
+      this.d = 1.0F;
+   }
 }

@@ -1,32 +1,23 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bjy extends bhs {
-   private static final double a = 16.0;
-   private static final double b = 48.0;
-
-   public bjy(Schema $$0) {
-      super($$0, false, "Villager Follow Range Fix", bix.B, "minecraft:villager");
+public class bjy extends bhi {
+   public bjy(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Zombie Villager XP rebuild", bin.B, "minecraft:zombie_villager");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bjy::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "Attributes",
-         $$1 -> $$0.createList(
-               $$1.asStream()
-                  .map(
-                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
-                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
-                           : $$0xx
-                  )
-            )
-      );
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
+         if ($$1.isEmpty()) {
+            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
+            return $$0x.set("Xp", $$0x.createInt(bjp.a($$2)));
+         } else {
+            return $$0x;
+         }
+      });
    }
 }

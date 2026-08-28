@@ -1,67 +1,287 @@
-import io.netty.buffer.ByteBuf;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public enum bwu {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8);
+public abstract class bwu extends cho implements bwe {
+   public static final int bZ = 144;
+   private static final int cd = 2;
+   private static final int ce = 3;
+   private static final int cf = 1;
+   protected static final aks<Byte> ca = akw.a(bwu.class, aku.a);
+   protected static final aks<Optional<UUID>> cb = akw.a(bwu.class, aku.r);
+   private boolean cg;
 
-   public static final Set<bwu> j = Set.of(values());
-   public static final Set<bwu> k = Set.of(e, d);
-   public static final Set<bwu> l = Set.of(f, g, h, i);
-   public static final zt<ByteBuf, Set<bwu>> m = zr.g.a(bwu::a, bwu::a);
-   private final int n;
+   protected bwu(bvi<? extends bwu> $$0, dgz $$1) {
+      super($$0, $$1);
+   }
 
-   @SafeVarargs
-   public static Set<bwu> a(Set<bwu>... $$0) {
-      HashSet<bwu> $$1 = new HashSet<>();
+   @Override
+   protected void a(akw.a $$0) {
+      super.a($$0);
+      $$0.a(ca, (byte)0);
+      $$0.a(cb, Optional.empty());
+   }
 
-      for (Set<bwu> $$2 : $$0) {
-         $$1.addAll($$2);
+   @Override
+   public void b(um $$0) {
+      super.b($$0);
+      if (this.ab_() != null) {
+         $$0.a("Owner", this.ab_());
       }
 
-      return $$1;
+      $$0.a("Sitting", this.cg);
    }
 
-   private bwu(final int $$0) {
-      this.n = $$0;
-   }
+   @Override
+   public void a(um $$0) {
+      super.a($$0);
+      UUID $$1;
+      if ($$0.b("Owner")) {
+         $$1 = $$0.a("Owner");
+      } else {
+         String $$2 = $$0.l("Owner");
+         $$1 = avx.a(this.cV(), $$2);
+      }
 
-   private int a() {
-      return 1 << this.n;
-   }
-
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
-   }
-
-   public static Set<bwu> a(int $$0) {
-      Set<bwu> $$1 = EnumSet.noneOf(bwu.class);
-
-      for (bwu $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
+      if ($$1 != null) {
+         try {
+            this.b($$1);
+            this.b(true, false);
+         } catch (Throwable var4) {
+            this.b(false, true);
          }
       }
 
-      return $$1;
+      this.cg = $$0.q("Sitting");
+      this.y(this.cg);
    }
 
-   public static int a(Set<bwu> $$0) {
-      int $$1 = 0;
+   @Override
+   public boolean y() {
+      return true;
+   }
 
-      for (bwu $$2 : $$0) {
-         $$1 |= $$2.a();
+   @Override
+   public boolean a(bvb $$0, float $$1) {
+      if (this.x()) {
+         if ($$1 > 10.0F) {
+            this.a(true, true);
+         }
+
+         return false;
+      } else {
+         return super.a($$0, $$1);
+      }
+   }
+
+   protected void x(boolean $$0) {
+      lq $$1 = ls.R;
+      if (!$$0) {
+         $$1 = ls.ag;
       }
 
-      return $$1;
+      for (int $$2 = 0; $$2 < 7; $$2++) {
+         double $$3 = this.ae.k() * 0.02;
+         double $$4 = this.ae.k() * 0.02;
+         double $$5 = this.ae.k() * 0.02;
+         this.dW().a($$1, this.d(1.0), this.dE() + 0.5, this.g(1.0), $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 7) {
+         this.x(true);
+      } else if ($$0 == 6) {
+         this.x(false);
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public boolean p() {
+      return (this.al.a(ca) & 4) != 0;
+   }
+
+   public void b(boolean $$0, boolean $$1) {
+      byte $$2 = this.al.a(ca);
+      if ($$0) {
+         this.al.a(ca, (byte)($$2 | 4));
+      } else {
+         this.al.a(ca, (byte)($$2 & -5));
+      }
+
+      if ($$1) {
+         this.t();
+      }
+   }
+
+   protected void t() {
+   }
+
+   public boolean x() {
+      return (this.al.a(ca) & 1) != 0;
+   }
+
+   public void y(boolean $$0) {
+      byte $$1 = this.al.a(ca);
+      if ($$0) {
+         this.al.a(ca, (byte)($$1 | 1));
+      } else {
+         this.al.a(ca, (byte)($$1 & -2));
+      }
+   }
+
+   @Nullable
+   @Override
+   public UUID ab_() {
+      return this.al.a(cb).orElse(null);
+   }
+
+   public void b(@Nullable UUID $$0) {
+      this.al.a(cb, Optional.ofNullable($$0));
+   }
+
+   public void a(cpo $$0) {
+      this.b(true, true);
+      this.b($$0.cG());
+      if ($$0 instanceof ary $$1) {
+         ao.y.a($$1, this);
+      }
+   }
+
+   @Override
+   public boolean c(bvx $$0) {
+      return this.j($$0) ? false : super.c($$0);
+   }
+
+   public boolean j(bvx $$0) {
+      return $$0 == this.ah_();
+   }
+
+   public boolean a(bvx $$0, bvx $$1) {
+      return true;
+   }
+
+   @Override
+   public fcr cr() {
+      if (this.p()) {
+         bvx $$0 = this.ah_();
+         if ($$0 != null) {
+            return $$0.cr();
+         }
+      }
+
+      return super.cr();
+   }
+
+   @Override
+   protected boolean t(bvb $$0) {
+      if (this.p()) {
+         bvx $$1 = this.ah_();
+         if ($$0 == $$1) {
+            return true;
+         }
+
+         if ($$1 != null) {
+            return $$1.t($$0);
+         }
+      }
+
+      return super.t($$0);
+   }
+
+   @Override
+   public void a(btr $$0) {
+      if (this.dW() instanceof arx $$1 && $$1.O().b(dgv.n) && this.ah_() instanceof ary $$2) {
+         $$2.a(this.eQ().a());
+      }
+
+      super.a($$0);
+   }
+
+   public boolean go() {
+      return this.cg;
+   }
+
+   public void z(boolean $$0) {
+      this.cg = $$0;
+   }
+
+   public void gp() {
+      bvx $$0 = this.ah_();
+      if ($$0 != null) {
+         this.h($$0.dw());
+      }
+   }
+
+   public boolean gq() {
+      bvx $$0 = this.ah_();
+      return $$0 != null && this.g((bvb)this.ah_()) >= 144.0;
+   }
+
+   private void h(jh $$0) {
+      for (int $$1 = 0; $$1 < 10; $$1++) {
+         int $$2 = this.ae.a(-3, 3);
+         int $$3 = this.ae.a(-3, 3);
+         if (Math.abs($$2) >= 2 || Math.abs($$3) >= 2) {
+            int $$4 = this.ae.a(-1, 1);
+            if (this.a($$0.u() + $$2, $$0.v() + $$4, $$0.w() + $$3)) {
+               return;
+            }
+         }
+      }
+   }
+
+   private boolean a(int $$0, int $$1, int $$2) {
+      if (!this.i(new jh($$0, $$1, $$2))) {
+         return false;
+      } else {
+         this.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.dM(), this.dO());
+         this.bS.o();
+         return true;
+      }
+   }
+
+   private boolean i(jh $$0) {
+      euh $$1 = eum.b(this, $$0);
+      if ($$1 != euh.c) {
+         return false;
+      } else {
+         dxo $$2 = this.dW().a_($$0.e());
+         if (!this.gs() && $$2.b() instanceof dop) {
+            return false;
+         } else {
+            jh $$3 = $$0.b(this.dw());
+            return this.dW().a(this, this.cR().a($$3));
+         }
+      }
+   }
+
+   public final boolean gr() {
+      return this.go() || this.bZ() || this.q() || this.ah_() != null && this.ah_().aa_();
+   }
+
+   protected boolean gs() {
+      return false;
+   }
+
+   public class a extends cdo {
+      public a(final double param3, final aya<btt> bwu.this) {
+         super(bwu.this, $$1, $$2);
+      }
+
+      public a(final double $$1) {
+         super(bwu.this, $$1);
+      }
+
+      @Override
+      public void a() {
+         if (!bwu.this.gr() && bwu.this.gq()) {
+            bwu.this.gp();
+         }
+
+         super.a();
+      }
    }
 }

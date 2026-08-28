@@ -1,37 +1,43 @@
-public class gjc extends gjs {
-   private final gjn a;
+public class gjc extends gjn {
+   private final gji a;
 
-   gjc(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjn $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
+   protected gjc(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gji $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
       this.a = $$7;
-      this.d(1.0F);
-      this.n = false;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public giw b() {
-      return giw.c;
+   public gir b() {
+      return gir.b;
    }
 
    @Override
    public void a() {
       super.a();
       this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public static record a(gjn a) implements giv<lw> {
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static class a implements giq<lw> {
+      private final gji a;
+
+      public a(gji $$0) {
+         this.a = $$0;
+      }
+
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gjc $$8 = new gjc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.a($$1.A.a(4) + 6);
+         $$8.a(0.923F, 0.964F, 0.999F);
          return $$8;
       }
    }

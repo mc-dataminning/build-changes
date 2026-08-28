@@ -1,171 +1,57 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public record dfu(bvs c, jq<axe> d, Optional<alz> e, Optional<alz> f, Optional<ju<bvr<?>>> g, boolean h, boolean i, boolean j) {
+public record dfu(jq<cxc> d, int e, ks f, cxg g) {
    public static final Codec<dfu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               bvs.k.fieldOf("slot").forGetter(dfu::a),
-               axe.b.optionalFieldOf("equip_sound", axf.as).forGetter(dfu::b),
-               alz.a.optionalFieldOf("model").forGetter(dfu::c),
-               alz.a.optionalFieldOf("camera_overlay").forGetter(dfu::d),
-               kf.a(mb.z).optionalFieldOf("allowed_entities").forGetter(dfu::e),
-               Codec.BOOL.optionalFieldOf("dispensable", true).forGetter(dfu::f),
-               Codec.BOOL.optionalFieldOf("swappable", true).forGetter(dfu::g),
-               Codec.BOOL.optionalFieldOf("damage_on_hurt", true).forGetter(dfu::h)
+               cxc.e.fieldOf("id").forGetter(dfu::a),
+               azd.m.fieldOf("count").orElse(1).forGetter(dfu::b),
+               ks.a.optionalFieldOf("components", ks.c).forGetter(dfu::c)
             )
             .apply($$0, dfu::new)
    );
-   public static final zt<xg, dfu> b = zt.a(
-      bvs.l,
-      dfu::a,
-      axe.d,
-      dfu::b,
-      alz.b.a(zr::a),
-      dfu::c,
-      alz.b.a(zr::a),
-      dfu::d,
-      zr.c(mb.z).a(zr::a),
-      dfu::e,
-      zr.b,
-      dfu::f,
-      zr.b,
-      dfu::g,
-      zr.b,
-      dfu::h,
-      dfu::new
-   );
+   public static final zi<wv, dfu> b = zi.a(zg.b(mb.K), dfu::a, zg.h, dfu::b, ks.b, dfu::c, dfu::new);
+   public static final zi<wv, Optional<dfu>> c = b.a(zg::a);
 
-   public static dfu a(cwm $$0) {
-      return a(bvs.g).a(axf.oy).a(dft.j.get($$0)).a(bvr.ay, bvr.by).a();
+   public dfu(dgy $$0) {
+      this($$0, 1);
    }
 
-   public static dfu.a a(bvs $$0) {
-      return new dfu.a($$0);
+   public dfu(dgy $$0, int $$1) {
+      this($$0.j().f(), $$1, ks.c);
    }
 
-   public btj a(cxp $$0, cpx $$1) {
-      if (!$$1.e(this.c)) {
-         return btj.e;
-      } else {
-         cxp $$2 = $$1.a(this.c);
-         if ((!deb.a($$2, dea.E) || $$1.b()) && !cxp.c($$0, $$2)) {
-            if (!$$1.dW().B_()) {
-               $$1.b(axp.c.b($$0.h()));
-            }
-
-            if ($$0.L() <= 1) {
-               cxp $$3 = $$2.f() ? $$0 : $$2.g();
-               cxp $$4 = $$1.b() ? $$0.v() : $$0.g();
-               $$1.a(this.c, $$4);
-               return btj.a.a($$3);
-            } else {
-               cxp $$5 = $$2.g();
-               cxp $$6 = $$0.b(1, $$1);
-               $$1.a(this.c, $$6);
-               if (!$$1.gi().f($$5)) {
-                  $$1.a($$5, false);
-               }
-
-               return btj.a.a($$0);
-            }
-         } else {
-            return btj.d;
-         }
-      }
+   public dfu(jq<cxc> $$0, int $$1, ks $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   public boolean a(bvr<?> $$0) {
-      return this.g.isEmpty() || this.g.get().a($$0.r());
+   public dfu a(UnaryOperator<ks.a> $$0) {
+      return new dfu(this.d, this.e, $$0.apply(ks.a()).a());
    }
 
-   public bvs a() {
-      return this.c;
+   private static cxg a(jq<cxc> $$0, int $$1, ks $$2) {
+      return new cxg($$0, $$1, $$2.c());
    }
 
-   public jq<axe> b() {
+   public boolean a(cxg $$0) {
+      return $$0.a(this.d) && this.f.a($$0);
+   }
+
+   public jq<cxc> a() {
       return this.d;
    }
 
-   public Optional<alz> c() {
+   public int b() {
       return this.e;
    }
 
-   public Optional<alz> d() {
+   public ks c() {
       return this.f;
    }
 
-   public Optional<ju<bvr<?>>> e() {
+   public cxg d() {
       return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public static class a {
-      private final bvs a;
-      private jq<axe> b = axf.as;
-      private Optional<alz> c = Optional.empty();
-      private Optional<alz> d = Optional.empty();
-      private Optional<ju<bvr<?>>> e = Optional.empty();
-      private boolean f = true;
-      private boolean g = true;
-      private boolean h = true;
-
-      a(bvs $$0) {
-         this.a = $$0;
-      }
-
-      public dfu.a a(jq<axe> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public dfu.a a(alz $$0) {
-         this.c = Optional.of($$0);
-         return this;
-      }
-
-      public dfu.a b(alz $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public dfu.a a(bvr<?>... $$0) {
-         return this.a(ju.a(bvr::r, $$0));
-      }
-
-      public dfu.a a(ju<bvr<?>> $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public dfu.a a(boolean $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public dfu.a b(boolean $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public dfu.a c(boolean $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public dfu a() {
-         return new dfu(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h);
-      }
    }
 }

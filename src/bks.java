@@ -4,7 +4,7 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bks extends Schema {
+public class bks extends bkb {
    public bks(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -13,18 +13,28 @@ public class bks extends Schema {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bix.b,
-         () -> DSL.optionalFields(
-               "RootVehicle",
-               DSL.optionalFields("Entity", bix.A.in($$0)),
-               "ender_pearls",
-               DSL.list(bix.A.in($$0)),
-               "Inventory",
-               DSL.list(bix.t.in($$0)),
-               "EnderItems",
-               DSL.list(bix.t.in($$0))
+         bin.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(bin.A.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(bin.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", bin.C.in($$0))),
+                  "Sections",
+                  DSL.list(DSL.optionalFields("Palette", DSL.list(bin.u.in($$0)))),
+                  "Structures",
+                  DSL.optionalFields("Starts", DSL.compoundList(bin.G.in($$0)))
+               )
             )
       );
-      $$0.registerType(true, bix.A, () -> DSL.optionalFields("Passengers", DSL.list(bix.A.in($$0)), bix.B.in($$0)));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$1.put("DUMMY", DSL::remainder);
+      return $$1;
    }
 }

@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface bra {
+   void a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bra {
+   void b();
+
+   void c();
+
+   boolean e();
+
+   bpj f();
+
+   void d();
 }

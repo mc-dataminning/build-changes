@@ -1,78 +1,138 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.channels.ClosedByInterruptException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class amv {
-   private static final int a = 8;
-   private final Queue<amv.a> b = new ayr<>();
-   private final Object2IntLinkedOpenHashMap<amv.b> c = new Object2IntLinkedOpenHashMap();
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final int c;
+   private final avy d;
+   private final int e;
+   private volatile boolean f;
+   @Nullable
+   private ServerSocket g;
+   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   private static long b() {
-      return System.currentTimeMillis();
+   public amv(String $$0, int $$1, avy $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public synchronized void a(String $$0, Throwable $$1) {
-      long $$2 = b();
-      String $$3 = $$1.getMessage();
-      this.b.add(new amv.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
-
-      while (this.b.size() > 8) {
-         this.b.remove();
+   public void a() throws IOException {
+      if (this.g != null && !this.g.isClosed()) {
+         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
+      } else {
+         this.f = true;
+         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
+         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
+         $$0.setDaemon(true);
+         $$0.start();
+         Thread $$1 = new Thread(this::c, "chase-server-sender");
+         $$1.setDaemon(true);
+         $$1.start();
       }
-
-      amv.b $$4 = new amv.b($$0, (Class<? extends Throwable>)$$1.getClass());
-      int $$5 = this.c.getInt($$4);
-      this.c.putAndMoveToFirst($$4, $$5 + 1);
    }
 
-   public synchronized String a() {
-      long $$0 = b();
-      StringBuilder $$1 = new StringBuilder();
-      if (!this.b.isEmpty()) {
-         $$1.append("\n\t\tLatest entries:\n");
+   private void c() {
+      amv.a $$0 = null;
 
-         for (amv.a $$2 : this.b) {
-            $$1.append("\t\t\t")
-               .append($$2.b)
-               .append(":")
-               .append($$2.c)
-               .append(": ")
-               .append($$2.d)
-               .append(" (")
-               .append($$0 - $$2.a)
-               .append("ms ago)")
-               .append("\n");
+      while (this.f) {
+         if (!this.h.isEmpty()) {
+            amv.a $$1 = this.e();
+            if ($$1 != null && !$$1.equals($$0)) {
+               $$0 = $$1;
+               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
+
+               for (Socket $$3 : this.h) {
+                  if (!$$3.isClosed()) {
+                     ae.h().execute(() -> {
+                        try {
+                           OutputStream $$2x = $$3.getOutputStream();
+                           $$2x.write($$2);
+                           $$2x.flush();
+                        } catch (IOException var3x) {
+                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
+                           IOUtils.closeQuietly($$3);
+                        }
+                     });
+                  }
+               }
+            }
+
+            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
+            this.h.removeAll($$4);
+         }
+
+         if (this.f) {
+            try {
+               Thread.sleep((long)this.e);
+            } catch (InterruptedException var6) {
+            }
          }
       }
+   }
 
-      if (!this.c.isEmpty()) {
-         if ($$1.isEmpty()) {
-            $$1.append("\n");
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+   }
+
+   private void d() {
+      try {
+         while (this.f) {
+            if (this.g != null) {
+               a.info("Remote control server is listening for connections on port {}", this.c);
+               Socket $$0 = this.g.accept();
+               a.info("Remote control server received client connection on port {}", $$0.getPort());
+               this.h.add($$0);
+            }
          }
-
-         $$1.append("\t\tEntry counts:\n");
-         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
-
-         while (var6.hasNext()) {
-            Entry<amv.b> $$3 = (Entry<amv.b>)var6.next();
-            $$1.append("\t\t\t")
-               .append(((amv.b)$$3.getKey()).a)
-               .append(":")
-               .append(((amv.b)$$3.getKey()).b)
-               .append(" x ")
-               .append($$3.getIntValue())
-               .append("\n");
+      } catch (ClosedByInterruptException var6) {
+         if (this.f) {
+            a.info("Remote control server closed by interrupt");
          }
+      } catch (IOException var7) {
+         if (this.f) {
+            a.error("Remote control server closed because of an IO exception", var7);
+         }
+      } finally {
+         IOUtils.closeQuietly(this.g);
       }
 
-      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
+      a.info("Remote control server is now stopped");
+      this.f = false;
    }
 
-   static record a(long a, String b, Class<? extends Throwable> c, String d) {
+   @Nullable
+   private amv.a e() {
+      List<ary> $$0 = this.d.t();
+      if ($$0.isEmpty()) {
+         return null;
+      } else {
+         ary $$1 = $$0.get(0);
+         String $$2 = (String)and.a.inverse().get($$1.dW().ai());
+         return $$2 == null ? null : new amv.a($$2, $$1.dB(), $$1.dD(), $$1.dH(), $$1.dM(), $$1.dO());
+      }
    }
 
-   static record b(String a, Class<? extends Throwable> b) {
+   static record a(String a, double b, double c, double d, float e, float f) {
+      String g() {
+         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
+      }
    }
 }

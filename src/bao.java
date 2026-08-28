@@ -1,59 +1,67 @@
-public class bao {
+import java.util.Locale;
+import java.util.function.Consumer;
+
+public class bao<T> {
    private final int a;
    private final int b;
-   private final float c;
-   private final float d;
+   private final int c;
+   private final int d;
+   private final Object[] e;
 
-   public bao(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
-      } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
+   public static <T> bao<T> a(int $$0, int $$1, int $$2, bao.a<T> $$3) {
+      int $$4 = $$0 - $$2;
+      int $$5 = $$1 - $$2;
+      int $$6 = 2 * $$2 + 1;
+      return new bao<>($$4, $$5, $$6, $$6, $$3);
+   }
+
+   private bao(int $$0, int $$1, int $$2, int $$3, bao.a<T> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = new Object[this.c * this.d];
+
+      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
+         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
+            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
+         }
       }
    }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
-   }
-
-   public int a(jm $$0) {
-      if ($$0.o().b()) {
-         return 0;
-      } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
+   public void a(Consumer<T> $$0) {
+      for (Object $$1 : this.e) {
+         $$0.accept((T)$$1);
       }
    }
 
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
+   public T a(int $$0, int $$1) {
+      if (!this.b($$0, $$1)) {
+         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
+      } else {
+         return (T)this.e[this.c($$0, $$1)];
+      }
    }
 
-   public int b(float $$0) {
-      return this.c(this.a($$0));
+   public boolean b(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
    }
 
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
    }
 
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
+   private int c(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 * this.d + $$3;
    }
 
-   public int c(int $$0) {
-      return $$0 & this.a;
-   }
-
-   public int a() {
-      return this.a;
+   @FunctionalInterface
+   public interface a<T> {
+      T get(int var1, int var2);
    }
 }

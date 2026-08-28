@@ -1,70 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
+public class dbx {
+   public static final dby a = a("crafting_building_blocks");
+   public static final dby b = a("crafting_redstone");
+   public static final dby c = a("crafting_equipment");
+   public static final dby d = a("crafting_misc");
+   public static final dby e = a("furnace_food");
+   public static final dby f = a("furnace_blocks");
+   public static final dby g = a("furnace_misc");
+   public static final dby h = a("blast_furnace_blocks");
+   public static final dby i = a("blast_furnace_misc");
+   public static final dby j = a("smoker_food");
+   public static final dby k = a("stonecutter");
+   public static final dby l = a("smithing");
+   public static final dby m = a("campfire");
 
-public class dbx extends dbu {
-   private static final dca c = dca.a(cxt.rm);
-   private static final dca d = dca.a(cxt.pQ);
-   private static final dca e = dca.a(cxt.vl);
-
-   public dbx(dbr $$0) {
-      super($$0);
+   private static dby a(String $$0) {
+      return kd.a(ma.aB, $$0, new dby());
    }
 
-   public boolean a(dbs $$0, dhi $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxp $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (c.a($$5)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else if (d.a($$5)) {
-                  if (++$$3 > 3) {
-                     return false;
-                  }
-               } else if (!e.a($$5)) {
-                  return false;
-               }
-            }
-         }
-
-         return $$2 && $$3 >= 1;
-      }
-   }
-
-   public cxp a(dbs $$0, js.a $$1) {
-      List<dae> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxp $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (d.a($$5)) {
-               $$3++;
-            } else if (e.a($$5)) {
-               dae $$6 = $$5.a(ku.ae);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cxp $$7 = new cxp(cxt.vk, 3);
-      $$7.b(ku.af, new daf($$3, $$2));
-      return $$7;
-   }
-
-   @Override
-   public dco<dbx> a() {
-      return dco.g;
+   public static dby a(kd<dby> $$0) {
+      return m;
    }
 }

@@ -1,147 +1,114 @@
-import javax.annotation.Nullable;
+public class crx extends crn {
+   static final aks<String> b = akw.a(crx.class, aku.e);
+   static final aks<xk> c = akw.a(crx.class, aku.f);
+   private final dfz d = new crx.a();
+   private static final int h = 4;
+   private int i;
 
-public abstract class crx extends crw implements csb {
-   private jz<cxp> b = jz.a(36, cxp.j);
-   @Nullable
-   private aly<ewu> c;
-   private long d;
-
-   protected crx(bvr<?> $$0, dhi $$1) {
+   public crx(bvi<? extends crx> $$0, dgz $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public void a(ash $$0, bua $$1) {
-      super.a($$0, $$1);
-      this.a($$1, $$0, this);
+   protected cxc u() {
+      return cxk.oo;
    }
 
    @Override
-   public cxp a(int $$0) {
-      return this.g_($$0);
+   public cxg dJ() {
+      return new cxg(cxk.vM);
    }
 
    @Override
-   public cxp a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cxp b(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cxp $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bwy a_(int $$0) {
-      return this.h_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cpx $$0) {
-      return this.g($$0);
-   }
-
-   @Override
-   public void a(bvk.d $$0) {
-      if (!this.dW().C && $$0.a()) {
-         btf.a(this.dW(), this, this);
-      }
-
+   protected void a(akw.a $$0) {
       super.a($$0);
+      $$0.a(b, "");
+      $$0.a(c, xj.a);
    }
 
    @Override
-   protected void b(ux $$0) {
+   protected void a(um $$0) {
+      super.a($$0);
+      this.d.b($$0, this.dY());
+      this.au().a(b, this.v().m());
+      this.au().a(c, this.v().l());
+   }
+
+   @Override
+   protected void b(um $$0) {
       super.b($$0);
-      this.a($$0, this.dY());
+      this.d.a($$0, this.dY());
    }
 
    @Override
-   protected void a(ux $$0) {
-      super.a($$0);
-      this.b($$0, this.dY());
+   public dxo w() {
+      return dkf.gi.m();
    }
 
-   @Override
-   public btj a(cpx $$0, bti $$1) {
-      return this.b_($$0);
-   }
-
-   @Override
-   protected fby a(fby $$0) {
-      float $$1 = 0.98F;
-      if (this.c == null) {
-         int $$2 = 15 - ctc.b(this);
-         $$1 += (float)$$2 * 0.001F;
-      }
-
-      if (this.bj()) {
-         $$1 *= 0.95F;
-      }
-
-      return $$0.d((double)$$1, 0.0, (double)$$1);
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   public void a(aly<ewu> $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Nullable
-   @Override
-   public ctc createMenu(int $$0, cpw $$1, cpx $$2) {
-      if (this.c != null && $$2.aa_()) {
-         return null;
-      } else {
-         this.f($$1.k);
-         return this.a($$0, $$1);
-      }
-   }
-
-   protected abstract ctc a(int var1, cpw var2);
-
-   @Nullable
-   @Override
-   public aly<ewu> v() {
-      return this.c;
-   }
-
-   @Override
-   public void a(@Nullable aly<ewu> $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public long x() {
+   public dfz v() {
       return this.d;
    }
 
    @Override
-   public void a(long $$0) {
-      this.d = $$0;
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.af - this.i >= 4) {
+         this.v().a(this.dW());
+         this.i = this.af;
+      }
    }
 
    @Override
-   public jz<cxp> B() {
-      return this.b;
+   public bta a(cpo $$0, bsz $$1) {
+      return this.d.a($$0);
    }
 
    @Override
-   public void C() {
-      this.b = jz.a(this.b(), cxp.j);
+   public void a(aks<?> $$0) {
+      super.a($$0);
+      if (c.equals($$0)) {
+         try {
+            this.d.c(this.au().a(c));
+         } catch (Throwable var3) {
+         }
+      } else if (b.equals($$0)) {
+         this.d.a(this.au().a(b));
+      }
+   }
+
+   @Override
+   public boolean cW() {
+      return true;
+   }
+
+   public class a extends dfz {
+      @Override
+      public arx e() {
+         return (arx)crx.this.dW();
+      }
+
+      @Override
+      public void f() {
+         crx.this.au().a(crx.b, this.m());
+         crx.this.au().a(crx.c, this.l());
+      }
+
+      @Override
+      public fbr g() {
+         return crx.this.du();
+      }
+
+      public crx h() {
+         return crx.this;
+      }
+
+      @Override
+      public ew i() {
+         return new ew(this, crx.this.du(), crx.this.bU(), this.e(), 2, this.n().getString(), crx.this.p_(), this.e().p(), crx.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !crx.this.dR();
+      }
    }
 }

@@ -1,25 +1,44 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public interface ens<P extends enr> {
-   ens<end> a = a("block_predicate_filter", end.a);
-   ens<enu> b = a("rarity_filter", enu.a);
-   ens<enw> c = a("surface_relative_threshold_filter", enw.a);
-   ens<enx> d = a("surface_water_depth_filter", enx.a);
-   ens<enc> e = a("biome", enc.a);
-   ens<eng> f = a("count", eng.a);
-   ens<enm> g = a("noise_based_count", enm.a);
-   ens<enn> h = a("noise_threshold_count", enn.a);
-   ens<enf> i = a("count_on_every_layer", enf.a);
-   ens<enh> j = a("environment_scan", enh.a);
-   ens<enk> k = a("heightmap", enk.a);
-   ens<enj> l = a("height_range", enj.a);
-   ens<enl> m = a("in_square", enl.a);
-   ens<ent> n = a("random_offset", ent.a);
-   ens<eni> o = a("fixed_placement", eni.a);
+public class ens {
+   public static final Codec<ens> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.unboundedMap(alo.a(mb.bf), ebk.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, ens::new)
+      )
+      .validate(ens::a);
+   public static final Codec<jq<ens>> b = all.a(mb.bb, a);
+   private final Map<alo<ebk>, ebk> c;
 
-   MapCodec<P> codec();
+   public ens(Map<alo<ebk>, ebk> $$0) {
+      this.c = $$0;
+   }
 
-   private static <P extends enr> ens<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.S, $$0, () -> $$1);
+   private ImmutableMap<alo<ebk>, ebk> c() {
+      Builder<alo<ebk>, ebk> $$0 = ImmutableMap.builder();
+      eee.a(this.c.keySet().stream()).forEach($$1 -> {
+         ebk $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2);
+         }
+      });
+      return $$0.build();
+   }
+
+   public eee a() {
+      return new eee(this.c());
+   }
+
+   public Optional<ebk> b() {
+      return Optional.ofNullable(this.c.get(ebk.b));
+   }
+
+   private static DataResult<ens> a(ens $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

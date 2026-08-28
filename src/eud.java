@@ -1,117 +1,91 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public abstract class eud extends etv {
-   @Override
-   public etw d() {
-      return ety.b;
+public abstract class eud {
+   protected euj b;
+   protected bvz c;
+   protected final Int2ObjectMap<euc> d = new Int2ObjectOpenHashMap();
+   protected int e;
+   protected int f;
+   protected int g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
+   protected boolean k;
+
+   public void a(dhm $$0, bvz $$1) {
+      this.b = new euj($$0, $$1);
+      this.c = $$1;
+      this.d.clear();
+      this.e = azu.d($$1.dr() + 1.0F);
+      this.f = azu.d($$1.ds() + 1.0F);
+      this.g = azu.d($$1.dr() + 1.0F);
    }
 
-   @Override
-   public etw e() {
-      return ety.c;
+   public void b() {
+      this.b = null;
+      this.c = null;
    }
 
-   @Override
-   public cxl a() {
-      return cxt.qX;
+   protected euc b(jh $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public void a(dhi $$0, jh $$1, etx $$2, bam $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, axf.CB, axg.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
-         }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(ls.am, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   protected euc c(int $$0, int $$1, int $$2) {
+      return (euc)this.d.computeIfAbsent(euc.b($$0, $$1, $$2), $$3 -> new euc($$0, $$1, $$2));
    }
 
-   @Nullable
-   @Override
-   public lq h() {
-      return ls.l;
+   public abstract euc a();
+
+   public abstract eul a(double var1, double var3, double var5);
+
+   protected eul b(double $$0, double $$1, double $$2) {
+      return new eul(this.c(azu.a($$0), azu.a($$1), azu.a($$2)));
    }
 
-   @Override
-   protected boolean a(ash $$0) {
-      return $$0.N().b(dhe.V);
+   public abstract int a(euc[] var1, euc var2);
+
+   public abstract euh a(euj var1, int var2, int var3, int var4, bvz var5);
+
+   public abstract euh a(euj var1, int var2, int var3, int var4);
+
+   public euh a(bvz $$0, jh $$1) {
+      return this.a(new euj($$0.dW(), $$0), $$1.u(), $$1.v(), $$1.w());
    }
 
-   @Override
-   protected void a(dhj $$0, jh $$1, dxv $$2) {
-      dux $$3 = $$2.x() ? $$0.c_($$1) : null;
-      dkm.a($$2, $$0, $$1, $$3);
+   public void a(boolean $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public int b(dhl $$0) {
-      return 4;
+   public void b(boolean $$0) {
+      this.i = $$0;
    }
 
-   @Override
-   public dxv b(etx $$0) {
-      return dko.J.m().b(dpe.b, Integer.valueOf(e($$0)));
+   public void c(boolean $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public boolean a(etw $$0) {
-      return $$0 == ety.c || $$0 == ety.b;
+   public void d(boolean $$0) {
+      this.k = $$0;
    }
 
-   @Override
-   public int c(dhl $$0) {
-      return 1;
+   public boolean d() {
+      return this.h;
    }
 
-   @Override
-   public int a(dhl $$0) {
-      return 5;
+   public boolean e() {
+      return this.i;
    }
 
-   @Override
-   public boolean a(etx $$0, dgn $$1, jh $$2, etw $$3, jm $$4) {
-      return $$4 == jm.a && !$$3.a(aya.a);
+   public boolean f() {
+      return this.j;
    }
 
-   @Override
-   protected float c() {
-      return 100.0F;
+   public boolean g() {
+      return this.k;
    }
 
-   @Override
-   public Optional<axe> j() {
-      return Optional.of(axf.dj);
-   }
-
-   public static class a extends eud {
-      @Override
-      protected void a(dxw.a<etw, etx> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(etx $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(etx $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends eud {
-      @Override
-      public int d(etx $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(etx $$0) {
-         return true;
-      }
+   public static boolean a(dxo $$0) {
+      return $$0.a(axk.aN) || $$0.a(dkf.K) || $$0.a(dkf.ll) || dks.h($$0) || $$0.a(dkf.fQ);
    }
 }

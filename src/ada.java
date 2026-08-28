@@ -1,31 +1,29 @@
-public class ada implements aac<acr> {
-   public static final zt<xg, ada> a = zt.a(jh.b, ada::e, zr.a(dkm.q), ada::b, ada::new);
-   private final jh b;
-   private final dxv c;
+public class ada implements zr<acg> {
+   public static final zi<wh, ada> a = zr.a(ada::a, ada::new);
+   private final int b;
 
-   public ada(jh $$0, dxv $$1) {
+   public ada(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   public ada(dgn $$0, jh $$1) {
-      this($$1, $$0.a_($$1));
+   private ada(wh $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(wh $$0) {
+      $$0.f(this.b);
    }
 
    @Override
-   public aae<ada> a() {
-      return ahk.k;
+   public zt<ada> a() {
+      return agz.t;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public dxv b() {
-      return this.c;
-   }
-
-   public jh e() {
+   public int b() {
       return this.b;
    }
 }

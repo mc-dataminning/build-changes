@@ -1,28 +1,35 @@
-import javax.annotation.Nullable;
+public class gvx extends gwa<gzb, gcm> {
+   private final gcf a;
+   private final gyx b = new gyx();
 
-public class gvx<S extends gyt, M extends gbm<S> & gai> extends gwf<S, M> {
-   private final gso a;
-
-   public gvx(gtn<S, M> $$0, gso $$1) {
+   public gvx(gti<gzb, gcm> $$0, gef $$1) {
       super($$0);
-      this.a = $$1;
+      this.a = new gcf($$1.a(gei.bN));
+      this.b.c = gcf.a.e;
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$3, $$3.aq, $$3.ar, cxn.c, bwa.b, $$0, $$1, $$2);
-      this.a($$3, $$3.as, $$3.at, cxn.b, bwa.a, $$0, $$1, $$2);
-   }
-
-   protected void a(S $$0, @Nullable hdn $$1, cxp $$2, cxn $$3, bwa $$4, fgs $$5, gll $$6, int $$7) {
-      if ($$1 != null && !$$2.f()) {
-         $$5.a();
-         this.d().a($$4, $$5);
-         $$5.a(a.b.rotationDegrees(-90.0F));
-         $$5.a(a.d.rotationDegrees(180.0F));
-         boolean $$8 = $$4 == bwa.a;
-         $$5.a((float)($$8 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$2, $$3, $$8, $$5, $$6, $$7, hbc.d, $$1);
-         $$5.b();
+   public void a(fgl $$0, glg $$1, int $$2, gzb $$3, float $$4, float $$5) {
+      cie.b $$6 = $$3.aE;
+      if ($$6 != null) {
+         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
       }
+
+      cie.b $$7 = $$3.aF;
+      if ($$7 != null) {
+         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+      }
+   }
+
+   private void a(fgl $$0, glg $$1, int $$2, gzb $$3, cie.b $$4, float $$5, float $$6, boolean $$7) {
+      $$0.a();
+      $$0.a($$7 ? 0.4F : -0.4F, $$3.I ? -1.3F : -1.5F, 0.0F);
+      this.b.p = $$3.p;
+      this.b.X = $$3.X;
+      this.b.Y = $$3.Y;
+      this.b.U = $$5;
+      this.b.V = $$6;
+      this.a.a(this.b);
+      this.a.a($$0, $$1.getBuffer(this.a.a(gsy.a($$4))), $$2, hax.d);
+      $$0.b();
    }
 }

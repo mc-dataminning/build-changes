@@ -1,29 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
 public class apk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.save.failed"));
-
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("save-all").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ew)$$0x.getSource(), false)))
-            .then(ex.a("flush").executes($$0x -> a((ew)$$0x.getSource(), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ew)$$0x.getSource(), Collections.singleton(((ew)$$0x.getSource()).h()), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                     .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
+                  .then(
+                     ((RequiredArgumentBuilder)ex.a("pos", gs.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), 0.0F)))
+                        .then(ex.a("angle", fc.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), fc.a($$0x, "angle"))))
+                  )
+            )
       );
    }
 
-   private static int a(ew $$0, boolean $$1) throws CommandSyntaxException {
-      $$0.a(() -> xv.c("commands.save.saving"), false);
-      MinecraftServer $$2 = $$0.l();
-      boolean $$3 = $$2.b(true, $$1, true);
-      if (!$$3) {
-         throw a.create();
-      } else {
-         $$0.a(() -> xv.c("commands.save.success"), true);
-         return 1;
+   private static int a(ew $$0, Collection<ary> $$1, jh $$2, float $$3) {
+      alo<dgz> $$4 = $$0.e().ai();
+
+      for (ary $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
+
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> xk.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().p_()), true);
+      } else {
+         $$0.a(() -> xk.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

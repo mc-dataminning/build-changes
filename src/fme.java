@@ -1,166 +1,158 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fme implements Comparable<fme> {
-   private static final Map<String, fme> h = Maps.newHashMap();
-   private static final Map<ffn.a, fme> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ae.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final ffn.a m;
-   private final String n;
-   private ffn.a o;
-   private boolean p;
-   private int q;
+public class fme extends avq<Map<String, List<fme.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<fme.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fme.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(fme.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(fme.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(fme.a::d)
+                  )
+                  .apply($$0, fme.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final alp c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private fme.b f;
 
-   public static void a(ffn.a $$0) {
-      fme $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public fme(alp $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static void a(ffn.a $$0, boolean $$1) {
-      fme $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   public static void a() {
-      for (fme $$0 : h.values()) {
-         if ($$0.o.a() == ffn.b.a && $$0.o.b() != ffn.bv.b()) {
-            $$0.a(ffn.a(fmg.Q().aO().h(), $$0.o.b()));
+   protected Map<String, List<fme.a>> a(avl $$0, bpj $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
          }
+
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
       }
    }
 
-   public static void b() {
-      for (fme $$0 : h.values()) {
-         $$0.n();
-      }
-   }
-
-   public static void c() {
-      for (fme $$0 : h.values()) {
-         if ($$0 instanceof fmr $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (fme $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public fme(String $$0, int $$1, String $$2) {
-      this($$0, ffn.b.a, $$1, $$2);
-   }
-
-   public fme(String $$0, ffn.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
+   protected void a(Map<String, List<fme.a>> $$0, avl $$1, bpj $$2) {
+      List<fme.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ae.b("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
       } else {
-         this.q--;
-         return true;
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
+
+         if (this.f == null) {
+            this.f = new fme.b($$3, $$4, $$5);
+         } else {
+            this.f = this.f.a($$3, $$5);
+         }
+
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
       }
    }
 
-   private void n() {
-      this.q = 0;
-      this.a(false);
+   @Override
+   public void close() {
+      this.a();
    }
 
-   public String h() {
-      return this.l;
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
+      }
    }
 
-   public ffn.a i() {
-      return this.m;
+   private long a(List<fme.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
    }
 
-   public void b(ffn.a $$0) {
-      this.o = $$0;
+   private long a(List<fme.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
    }
 
-   public int a(fme $$0) {
-      return this.n.equals($$0.n) ? hcs.a(this.l).compareTo(hcs.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   public static record a(long a, long b, String c, String d) {
+
+      public a(final long a, final long b, final String c, final String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
    }
 
-   public static Supplier<xv> a(String $$0) {
-      fme $$1 = h.get($$0);
-      return $$1 == null ? () -> xv.c($$0) : $$1::k;
-   }
+   static class b extends TimerTask {
+      private final flz a = flz.Q();
+      private final List<fme.a> b;
+      private final long c;
+      private final AtomicLong d;
 
-   public boolean b(fme $$0) {
-      return this.o.equals($$0.o);
-   }
+      public b(List<fme.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
+      }
 
-   public boolean j() {
-      return this.o.equals(ffn.bv);
-   }
+      public fme.b a(List<fme.a> $$0, long $$1) {
+         this.cancel();
+         return new fme.b($$0, this.d.get(), $$1);
+      }
 
-   public boolean a(int $$0, int $$1) {
-      return $$0 == ffn.bv.b() ? this.o.a() == ffn.b.b && this.o.b() == $$1 : this.o.a() == ffn.b.a && this.o.b() == $$0;
-   }
+      @Override
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
 
-   public boolean a(int $$0) {
-      return this.o.a() == ffn.b.c && this.o.b() == $$0;
-   }
-
-   public xv k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
+         for (fme.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fqi.a(flz.Q().aA(), fqi.a.g, xk.a($$2.c, $$3), xk.a($$2.d, $$3)));
+                  return;
+               }
+            }
+         }
+      }
    }
 }

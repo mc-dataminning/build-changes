@@ -1,15 +1,36 @@
-public interface ecg<T> {
-   void g(T var1);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   void f(T var1);
+public class ecg implements eco {
+   public static final MapCodec<ecg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jh.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, ecg::new));
+   public static final zi<ByteBuf, ecg> b = zi.a(jh.b, $$0 -> $$0.e, ecg::new);
+   private final jh e;
 
-   void e(T var1);
+   public ecg(jh $$0) {
+      this.e = $$0;
+   }
 
-   void d(T var1);
+   @Override
+   public Optional<fbr> a(dgz $$0) {
+      return Optional.of(fbr.b(this.e));
+   }
 
-   void c(T var1);
+   @Override
+   public ecp<ecg> a() {
+      return ecp.a;
+   }
 
-   void b(T var1);
+   public static class a implements ecp<ecg> {
+      @Override
+      public MapCodec<ecg> a() {
+         return ecg.a;
+      }
 
-   void a(T var1);
+      @Override
+      public zi<ByteBuf, ecg> b() {
+         return ecg.b;
+      }
+   }
 }

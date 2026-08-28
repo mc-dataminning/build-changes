@@ -1,17 +1,20 @@
-public class gwm extends gwf<gzg, gcr> {
-   public static final alz a = alz.b("textures/entity/trident_riptide.png");
-   private final gdo b;
-
-   public gwm(gtn<gzg, gcr> $$0, gek $$1) {
-      super($$0);
-      this.b = new gdo($$1.a(gen.ck));
+public class gwm extends gvd<hab, gdw> {
+   public gwm(gti<hab, gdw> $$0, gsj $$1) {
+      super($$0, $$1);
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, gzg $$3, float $$4, float $$5) {
-      if ($$3.ag) {
-         fgw $$6 = $$1.getBuffer(this.b.a(a));
-         this.b.a($$3);
-         this.b.a($$0, $$6, $$2, hbc.d);
+   protected void a(hab $$0, fgl $$1) {
+      if ($$0.ar.a(cxk.ti)) {
+         this.d().e().a($$1);
+         this.d().b().a($$1);
+         this.d().c().a($$1);
+         $$1.a(0.0625F, 0.25F, 0.0F);
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(140.0F));
+         $$1.a(a.f.rotationDegrees(10.0F));
+         $$1.a(a.b.rotationDegrees(180.0F));
+      } else {
+         super.a($$0, $$1);
       }
    }
 }

@@ -1,26 +1,36 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.stream.Stream;
 
-public record dan(int f) implements czw, das {
-   public static final int a = 120000;
-   public static final int b = 0;
-   public static final int c = 4;
-   public static final Codec<dan> d = azn.a(0, 4).xmap(dan::new, dan::a);
-   public static final zt<xg, dan> e = zt.a(zr.h, dan::a, dan::new);
+public record dan(List<asp<String>> g) implements czj<String, dan> {
+   public static final dan a = new dan(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<asp<String>> h = asp.a(Codec.string(0, 1024));
+   public static final Codec<List<asp<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<dan> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dan::a)).apply($$0, dan::new));
+   public static final zi<ByteBuf, dan> f = asp.a(zg.b(1024)).a(zg.c(100)).a(dan::new, dan::a);
 
-   @Override
-   public void a(dhi $$0, bwg $$1, cxp $$2, czv $$3) {
-      $$1.a(new bup(bur.E, 120000, this.f, false, false, true));
+   public dan(List<asp<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+      } else {
+         this.g = g;
+      }
+   }
+
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
+   }
+
+   public dan b(List<asp<String>> $$0) {
+      return new dan($$0);
    }
 
    @Override
-   public void a(cxl.b $$0, Consumer<xv> $$1, czh $$2) {
-      List<bup> $$3 = List.of(new bup(bur.E, 120000, this.f, false, false, true));
-      czo.a($$3, $$1, 1.0F, $$0.b());
-   }
-
-   public int a() {
-      return this.f;
+   public List<asp<String>> a() {
+      return this.g;
    }
 }

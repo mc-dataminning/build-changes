@@ -1,46 +1,52 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public record fab(Optional<bw> b, ewp.b c) implements ezy {
+public record fab(Optional<Boolean> b, Optional<Boolean> c) implements ezr {
    public static final MapCodec<fab> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bw.a.optionalFieldOf("predicate").forGetter(fab::c), ewp.b.e.fieldOf("entity").forGetter(fab::d)).apply($$0, fab::new)
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(fab::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(fab::e))
+            .apply($$0, fab::new)
    );
 
    @Override
-   public ezz b() {
-      return faa.f;
+   public ezs b() {
+      return ezt.o;
    }
 
-   @Override
-   public Set<bbn<?>> a() {
-      return Set.of(ezj.f, this.c.a());
+   public boolean a(ewi $$0) {
+      arx $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ag() ? false : !this.c.isPresent() || this.c.get() == $$1.af();
    }
 
-   public boolean a(ewp $$0) {
-      bvk $$1 = $$0.c(this.c.a());
-      fby $$2 = $$0.c(ezj.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public static fab.a c() {
+      return new fab.a();
    }
 
-   public static ezy.a a(ewp.b $$0) {
-      return a($$0, bw.a.a());
-   }
-
-   public static ezy.a a(ewp.b $$0, bw.a $$1) {
-      return () -> new fab(Optional.of($$1.b()), $$0);
-   }
-
-   public static ezy.a a(ewp.b $$0, bw $$1) {
-      return () -> new fab(Optional.of($$1), $$0);
-   }
-
-   public Optional<bw> c() {
+   public Optional<Boolean> d() {
       return this.b;
    }
 
-   public ewp.b d() {
+   public Optional<Boolean> e() {
       return this.c;
+   }
+
+   public static class a implements ezr.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public fab.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public fab.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public fab a() {
+         return new fab(this.a, this.b);
+      }
    }
 }

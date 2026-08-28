@@ -1,107 +1,112 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import org.joml.FrustumIntersection;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
 public class gox {
-   private final gmo a;
-   private final gnv b;
+   public static final int a = 4;
+   private final FrustumIntersection b = new FrustumIntersection();
+   private final Matrix4f c = new Matrix4f();
+   private Vector4f d;
+   private double e;
+   private double f;
+   private double g;
 
-   public gox(gmo $$0, gnv $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gox(Matrix4f $$0, Matrix4f $$1) {
+      this.a($$0, $$1);
    }
 
-   public gox.a a(kj $$0, gov $$1, fha $$2, gly $$3) {
-      gox.a $$4 = new gox.a();
-      jh $$5 = $$0.j();
-      jh $$6 = $$5.b(15, 15, 15);
-      goz $$7 = new goz();
-      fgs $$8 = new fgs();
-      gmq.a();
-      Map<glv, fgn> $$9 = new Reference2ObjectArrayMap(glv.M().size());
-      bam $$10 = bam.a();
-
-      for (jh $$11 : jh.c($$5, $$6)) {
-         dxv $$12 = $$1.a_($$11);
-         if ($$12.s()) {
-            $$7.a($$11);
-         }
-
-         if ($$12.x()) {
-            dux $$13 = $$1.c_($$11);
-            if ($$13 != null) {
-               this.a($$4, $$13);
-            }
-         }
-
-         etx $$14 = $$12.y();
-         if (!$$14.c()) {
-            glv $$15 = gld.a($$14);
-            fgn $$16 = this.a($$9, $$3, $$15);
-            this.a.a($$11, $$1, $$16, $$12, $$14);
-         }
-
-         if ($$12.o() == dqv.c) {
-            glv $$17 = gld.a($$12);
-            fgn $$18 = this.a($$9, $$3, $$17);
-            $$8.a();
-            $$8.a((float)kj.b($$11.u()), (float)kj.b($$11.v()), (float)kj.b($$11.w()));
-            this.a.a($$12, $$11, $$1, $$8, $$18, true, $$10);
-            $$8.b();
-         }
-      }
-
-      for (Entry<glv, fgn> $$19 : $$9.entrySet()) {
-         glv $$20 = $$19.getKey();
-         fgr $$21 = $$19.getValue().a();
-         if ($$21 != null) {
-            if ($$20 == glv.f()) {
-               $$4.e = $$21.a($$3.a(glv.f()), $$2);
-            }
-
-            $$4.c.put($$20, $$21);
-         }
-      }
-
-      gmq.b();
-      $$4.d = $$7.a();
-      return $$4;
+   public gox(gox $$0) {
+      this.b.set($$0.c);
+      this.c.set($$0.c);
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.d = $$0.d;
    }
 
-   private fgn a(Map<glv, fgn> $$0, gly $$1, glv $$2) {
-      fgn $$3 = $$0.get($$2);
-      if ($$3 == null) {
-         fgp $$4 = $$1.a($$2);
-         $$3 = new fgn($$4, fgx.c.h, fgq.b);
-         $$0.put($$2, $$3);
+   public gox a(int $$0) {
+      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
+      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
+      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
+      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
+      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
+
+      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
+         this.b
+               .intersectAab(
+                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
+               )
+            != -2;
+         this.g = this.g - (double)(this.d.z() * 4.0F)
+      ) {
+         this.e = this.e - (double)(this.d.x() * 4.0F);
+         this.f = this.f - (double)(this.d.y() * 4.0F);
       }
 
-      return $$3;
+      return this;
    }
 
-   private <E extends dux> void a(gox.a $$0, E $$1) {
-      gnw<E> $$2 = this.b.a($$1);
-      if ($$2 != null) {
-         $$0.b.add($$1);
-         if ($$2.a($$1)) {
-            $$0.a.add($$1);
-         }
-      }
+   public void a(double $$0, double $$1, double $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static final class a {
-      public final List<dux> a = new ArrayList<>();
-      public final List<dux> b = new ArrayList<>();
-      public final Map<glv, fgr> c = new Reference2ObjectArrayMap();
-      public gpa d = new gpa();
-      @Nullable
-      public fgr.b e;
+   private void a(Matrix4f $$0, Matrix4f $$1) {
+      $$1.mul($$0, this.c);
+      this.b.set(this.c);
+      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   }
 
-      public void a() {
-         this.c.values().forEach(fgr::close);
+   public boolean a(fbm $$0) {
+      int $$1 = this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+      return $$1 == -2 || $$1 == -1;
+   }
+
+   public int a(env $$0) {
+      return this.a((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
+   }
+
+   private int a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - this.e);
+      float $$7 = (float)($$1 - this.f);
+      float $$8 = (float)($$2 - this.g);
+      float $$9 = (float)($$3 - this.e);
+      float $$10 = (float)($$4 - this.f);
+      float $$11 = (float)($$5 - this.g);
+      return this.b.intersectAab($$6, $$7, $$8, $$9, $$10, $$11);
+   }
+
+   public Vector4f[] a() {
+      Vector4f[] $$0 = new Vector4f[]{
+         new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F),
+         new Vector4f(1.0F, -1.0F, -1.0F, 1.0F),
+         new Vector4f(1.0F, 1.0F, -1.0F, 1.0F),
+         new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F),
+         new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F),
+         new Vector4f(1.0F, -1.0F, 1.0F, 1.0F),
+         new Vector4f(1.0F, 1.0F, 1.0F, 1.0F),
+         new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F)
+      };
+      Matrix4f $$1 = this.c.invert(new Matrix4f());
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         $$1.transform($$0[$$2]);
+         $$0[$$2].div($$0[$$2].w());
       }
+
+      return $$0;
+   }
+
+   public double b() {
+      return this.e;
+   }
+
+   public double c() {
+      return this.f;
+   }
+
+   public double d() {
+      return this.g;
    }
 }

@@ -1,55 +1,23 @@
-import java.security.PublicKey;
+import io.netty.buffer.ByteBuf;
 
-public class ajw implements aac<aju> {
-   public static final zt<ws, ajw> a = aac.a(ajw::a, ajw::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
+public class ajw implements zr<ajs> {
+   public static final ajw a = new ajw();
+   public static final zi<ByteBuf, ajw> b = zi.a(a);
 
-   public ajw(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   private ajw(ws $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private ajw() {
    }
 
    @Override
-   public aae<ajw> a() {
-      return aka.c;
+   public zt<ajw> a() {
+      return ajq.i;
    }
 
-   public void a(aju $$0) {
+   public void a(ajs $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public PublicKey e() throws azd {
-      return azc.a(this.c);
-   }
-
-   public byte[] f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

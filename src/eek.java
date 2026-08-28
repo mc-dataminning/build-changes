@@ -1,93 +1,137 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
 
-public interface eek {
-   Codec<eek> a = Codec.xor(eek.b.d, Codec.xor(eek.a.d, eek.c.d)).xmap(eek::a, eek::a);
-   eek b = b(0);
-   eek c = c(0);
+public class eek implements bac {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<eek> b = eej.a.xmap($$0 -> new eek($$0), $$0 -> $$0.e);
+   private eej e;
+   private final edl f = new edl(this);
 
-   static eek a(int $$0) {
-      return new eek.b($$0);
+   public eek(long $$0) {
+      this.e = new eej(edy.c($$0));
    }
 
-   static eek b(int $$0) {
-      return new eek.a($$0);
+   public eek(edy.a $$0) {
+      this.e = new eej($$0);
    }
 
-   static eek c(int $$0) {
-      return new eek.c($$0);
+   public eek(long $$0, long $$1) {
+      this.e = new eej($$0, $$1);
    }
 
-   static eek a() {
-      return b;
+   private eek(eej $$0) {
+      this.e = $$0;
    }
 
-   static eek b() {
-      return c;
+   @Override
+   public bac d() {
+      return new eek(this.e.a(), this.e.a());
    }
 
-   private static eek a(Either<eek.b, Either<eek.a, eek.c>> $$0) {
-      return (eek)$$0.map(Function.identity(), Either::unwrap);
+   @Override
+   public edw e() {
+      return new eek.a(this.e.a(), this.e.a());
    }
 
-   private static Either<eek.b, Either<eek.a, eek.c>> a(eek $$0) {
-      return $$0 instanceof eek.b ? Either.left((eek.b)$$0) : Either.right($$0 instanceof eek.a ? Either.left((eek.a)$$0) : Either.right((eek.c)$$0));
+   @Override
+   public void b(long $$0) {
+      this.e = new eej(edy.c($$0));
+      this.f.a();
    }
 
-   int a(een var1);
+   @Override
+   public int f() {
+      return (int)this.e.a();
+   }
 
-   public static record a(int e) implements eek {
-      public static final Codec<eek.a> d = Codec.intRange(ebq.e, ebq.d).fieldOf("above_bottom").xmap(eek.a::new, eek.a::c).codec();
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
+            }
+         }
 
-      @Override
-      public int a(een $$0) {
-         return $$0.a() + this.e;
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
+   }
+
+   @Override
+   public long g() {
+      return this.e.a();
+   }
+
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
+   }
+
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
+   }
+
+   @Override
+   public double k() {
+      return this.f.b();
+   }
+
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
+   }
+
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
+   }
+
+   public static class a implements edw {
+      private final long a;
+      private final long b;
+
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
       @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements eek {
-      public static final Codec<eek.b> d = Codec.intRange(ebq.e, ebq.d).fieldOf("absolute").xmap(eek.b::new, eek.b::c).codec();
-
-      @Override
-      public int a(een $$0) {
-         return this.e;
+      public bac a(int $$0, int $$1, int $$2) {
+         long $$3 = azu.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new eek($$4, this.b);
       }
 
       @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements eek {
-      public static final Codec<eek.c> d = Codec.intRange(ebq.e, ebq.d).fieldOf("below_top").xmap(eek.c::new, eek.c::c).codec();
-
-      @Override
-      public int a(een $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
+      public bac a(String $$0) {
+         edy.a $$1 = edy.a($$0);
+         return new eek($$1.a(this.a, this.b));
       }
 
       @Override
-      public String toString() {
-         return this.e + " below top";
+      public bac a(long $$0) {
+         return new eek($$0 ^ this.a, $$0 ^ this.b);
       }
 
-      public int c() {
-         return this.e;
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
       }
    }
 }

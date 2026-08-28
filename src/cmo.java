@@ -1,103 +1,114 @@
-public class cmo extends cmx {
-   private static final int a = 2400;
-   private int b;
+import java.util.function.Predicate;
 
-   public cmo(bvr<? extends cmo> $$0, dhi $$1) {
+public abstract class cmo extends bwf implements cmg {
+   protected cmo(bvi<? extends cmo> $$0, dgz $$1) {
       super($$0, $$1);
-      this.bO = 3;
+      this.bO = 5;
    }
 
    @Override
-   protected void B() {
-      this.bT.a(1, new ccy(this));
-      this.bT.a(1, new cct(this, this.dW()));
-      this.bT.a(2, new cdo(this, 1.0, false));
-      this.bT.a(3, new cer(this, 1.0));
-      this.bT.a(7, new cdm(this, cpx.class, 8.0F));
-      this.bT.a(8, new cdz(this));
-      this.bU.a(1, new cew(this).a());
-      this.bU.a(2, new cex<>(this, cpx.class, true));
-   }
-
-   public static bxn.a m() {
-      return cmx.gt().a(bxo.s, 8.0).a(bxo.v, 0.25).a(bxo.c, 2.0);
-   }
-
-   @Override
-   protected bvk.c bg() {
-      return bvk.c.c;
-   }
-
-   @Override
-   protected axe u() {
-      return axf.iJ;
-   }
-
-   @Override
-   protected axe e(bua $$0) {
-      return axf.iL;
-   }
-
-   @Override
-   protected axe o_() {
-      return axf.iK;
-   }
-
-   @Override
-   protected void b(jh $$0, dxv $$1) {
-      this.a(axf.iM, 0.15F, 1.0F);
-   }
-
-   @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      this.b = $$0.h("Lifetime");
-   }
-
-   @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("Lifetime", this.b);
-   }
-
-   @Override
-   public void h() {
-      this.aX = this.dM();
-      super.h();
-   }
-
-   @Override
-   public void r(float $$0) {
-      this.v($$0);
-      super.r($$0);
+   public aww dn() {
+      return aww.f;
    }
 
    @Override
    public void d_() {
+      this.eX();
+      this.gs();
       super.d_();
-      if (this.dW().C) {
-         for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dW().a(ls.ad, this.d(0.5), this.dE(), this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);
-         }
-      } else {
-         if (!this.aj()) {
-            this.b++;
-         }
+   }
 
-         if (this.b >= 2400) {
-            this.at();
+   protected void gs() {
+      float $$0 = this.by();
+      if ($$0 > 0.5F) {
+         this.bf += 2;
+      }
+   }
+
+   @Override
+   protected boolean X() {
+      return true;
+   }
+
+   @Override
+   protected awu aV() {
+      return awv.nw;
+   }
+
+   @Override
+   protected awu aW() {
+      return awv.nv;
+   }
+
+   @Override
+   protected awu e(btr $$0) {
+      return awv.nt;
+   }
+
+   @Override
+   protected awu o_() {
+      return awv.ns;
+   }
+
+   @Override
+   public bvx.a eM() {
+      return new bvx.a(awv.nu, awv.nr);
+   }
+
+   @Override
+   public float a(jh $$0, dhc $$1) {
+      return -$$1.w($$0);
+   }
+
+   public static boolean a(dhq $$0, jh $$1, bac $$2) {
+      if ($$0.a(dhi.a, $$1) > $$2.a(32)) {
+         return false;
+      } else {
+         ebj $$3 = $$0.G_();
+         int $$4 = $$3.e();
+         if ($$4 < 15 && $$0.a(dhi.b, $$1) > $$4) {
+            return false;
+         } else {
+            int $$5 = $$0.a().af() ? $$0.c($$1, 10) : $$0.A($$1);
+            return $$5 <= $$3.d().a($$2);
          }
       }
    }
 
-   public static boolean b(bvr<cmo> $$0, dhj $$1, bvq $$2, jh $$3, bam $$4) {
-      if (!c($$0, $$1, $$2, $$3, $$4)) {
-         return false;
-      } else if (bvq.a($$2)) {
-         return true;
+   public static boolean b(bvi<? extends cmo> $$0, dhq $$1, bvh $$2, jh $$3, bac $$4) {
+      return $$1.am() != bsx.a && (bvh.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static boolean c(bvi<? extends cmo> $$0, dha $$1, bvh $$2, jh $$3, bac $$4) {
+      return $$1.am() != bsx.a && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static bxe.a gt() {
+      return bvz.C().a(bxf.c);
+   }
+
+   @Override
+   public boolean en() {
+      return true;
+   }
+
+   @Override
+   protected boolean eo() {
+      return true;
+   }
+
+   public boolean a(arx $$0, cpo $$1) {
+      return true;
+   }
+
+   @Override
+   public cxg d(cxg $$0) {
+      if ($$0.h() instanceof cyc) {
+         Predicate<cxg> $$1 = ((cyc)$$0.h()).d();
+         cxg $$2 = cyc.a(this, $$1);
+         return $$2.f() ? new cxg(cxk.pb) : $$2;
       } else {
-         cpx $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
-         return $$5 == null;
+         return cxg.j;
       }
    }
 }

@@ -1,19 +1,37 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+public class afo implements zr<acg> {
+   public static final zi<wh, afo> a = zr.a(afo::a, afo::new);
+   private final jh b;
+   private final float c;
 
-public record afo(xv b, Optional<byte[]> c) implements aac<acr> {
-   public static final zt<ByteBuf, afo> a = zt.a(xx.f, afo::b, zr.n.a(zr::a), afo::e, afo::new);
-
-   @Override
-   public aae<afo> a() {
-      return ahk.at;
+   public afo(jh $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(acr $$0) {
+   private afo(wh $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
+   }
+
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zt<afo> a() {
+      return agz.aD;
+   }
+
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
+   public jh b() {
+      return this.b;
+   }
+
+   public float e() {
       return this.c;
    }
 }

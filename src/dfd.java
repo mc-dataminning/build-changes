@@ -1,161 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dfd {
+   alo<dey> a = dfe.a("trades/desert_armorer_boots_4");
+   alo<dey> b = dfe.a("trades/desert_armorer_leggings_4");
+   alo<dey> c = dfe.a("trades/desert_armorer_chestplate_4");
+   alo<dey> d = dfe.a("trades/desert_armorer_helmet_4");
+   alo<dey> e = dfe.a("trades/desert_armorer_leggings_5");
+   alo<dey> f = dfe.a("trades/desert_armorer_chestplate_5");
+   alo<dey> g = dfe.a("trades/plains_armorer_boots_4");
+   alo<dey> h = dfe.a("trades/plains_armorer_leggings_4");
+   alo<dey> i = dfe.a("trades/plains_armorer_chestplate_4");
+   alo<dey> j = dfe.a("trades/plains_armorer_helmet_4");
+   alo<dey> k = dfe.a("trades/plains_armorer_boots_5");
+   alo<dey> l = dfe.a("trades/plains_armorer_leggings_5");
+   alo<dey> m = dfe.a("trades/savanna_armorer_boots_4");
+   alo<dey> n = dfe.a("trades/savanna_armorer_leggings_4");
+   alo<dey> o = dfe.a("trades/savanna_armorer_chestplate_4");
+   alo<dey> p = dfe.a("trades/savanna_armorer_helmet_4");
+   alo<dey> q = dfe.a("trades/savanna_armorer_chestplate_5");
+   alo<dey> r = dfe.a("trades/savanna_armorer_helmet_5");
+   alo<dey> s = dfe.a("trades/snow_armorer_boots_4");
+   alo<dey> t = dfe.a("trades/snow_armorer_helmet_4");
+   alo<dey> u = dfe.a("trades/snow_armorer_boots_5");
+   alo<dey> v = dfe.a("trades/snow_armorer_helmet_5");
+   alo<dey> w = dfe.a("trades/jungle_armorer_boots_4");
+   alo<dey> x = dfe.a("trades/jungle_armorer_leggings_4");
+   alo<dey> y = dfe.a("trades/jungle_armorer_chestplate_4");
+   alo<dey> z = dfe.a("trades/jungle_armorer_helmet_4");
+   alo<dey> A = dfe.a("trades/jungle_armorer_boots_5");
+   alo<dey> B = dfe.a("trades/jungle_armorer_helmet_5");
+   alo<dey> C = dfe.a("trades/swamp_armorer_boots_4");
+   alo<dey> D = dfe.a("trades/swamp_armorer_leggings_4");
+   alo<dey> E = dfe.a("trades/swamp_armorer_chestplate_4");
+   alo<dey> F = dfe.a("trades/swamp_armorer_helmet_4");
+   alo<dey> G = dfe.a("trades/swamp_armorer_boots_5");
+   alo<dey> H = dfe.a("trades/swamp_armorer_helmet_5");
+   alo<dey> I = dfe.a("trades/taiga_armorer_leggings_5");
+   alo<dey> J = dfe.a("trades/taiga_armorer_chestplate_5");
 
-public record dfd(lq d, dfd.a e, dfd.a f, dfd.c g, dfd.c h, bsm i) implements deq {
-   public static final MapCodec<dfd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ls.bh.fieldOf("particle").forGetter(dfd::c),
-               dfd.a.a.fieldOf("horizontal_position").forGetter(dfd::d),
-               dfd.a.a.fieldOf("vertical_position").forGetter(dfd::e),
-               dfd.c.a.fieldOf("horizontal_velocity").forGetter(dfd::f),
-               dfd.c.a.fieldOf("vertical_velocity").forGetter(dfd::g),
-               bsm.c.optionalFieldOf("speed", bsk.a).forGetter(dfd::h)
-            )
-            .apply($$0, dfd::new)
-   );
-
-   public static dfd.a a(float $$0) {
-      return new dfd.a(dfd.b.a, $$0, 1.0F);
-   }
-
-   public static dfd.a b() {
-      return new dfd.a(dfd.b.b, 0.0F, 1.0F);
-   }
-
-   public static dfd.c b(float $$0) {
-      return new dfd.c($$0, bsk.a);
-   }
-
-   public static dfd.c a(bsm $$0) {
-      return new dfd.c(0.0F, $$0);
-   }
-
-   @Override
-   public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4) {
-      bam $$5 = $$3.dZ();
-      fby $$6 = $$3.ah();
-      float $$7 = $$3.dr();
-      float $$8 = $$3.ds();
-      $$0.a(
-         this.d,
-         this.e.a($$4.a(), $$4.a(), $$7, $$5),
-         this.f.a($$4.b(), $$4.b() + (double)($$8 / 2.0F), $$8, $$5),
-         this.e.a($$4.c(), $$4.c(), $$7, $$5),
-         0,
-         this.g.a($$6.a(), $$5),
-         this.h.a($$6.b(), $$5),
-         this.g.a($$6.c(), $$5),
-         (double)this.i.a($$5)
-      );
-   }
-
-   @Override
-   public MapCodec<dfd> a() {
-      return a;
-   }
-
-   public lq c() {
-      return this.d;
-   }
-
-   public dfd.a d() {
-      return this.e;
-   }
-
-   public dfd.a e() {
-      return this.f;
-   }
-
-   public dfd.c f() {
-      return this.g;
-   }
-
-   public dfd.c g() {
-      return this.h;
-   }
-
-   public bsm h() {
-      return this.i;
-   }
-
-   public static record a(dfd.b b, float c, float d) {
-      public static final MapCodec<dfd.a> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     dfd.b.c.fieldOf("type").forGetter(dfd.a::a),
-                     Codec.FLOAT.optionalFieldOf("offset", 0.0F).forGetter(dfd.a::b),
-                     azn.o.optionalFieldOf("scale", 1.0F).forGetter(dfd.a::c)
-                  )
-                  .apply($$0, dfd.a::new)
-         )
-         .validate(
-            $$0 -> $$0.a() == dfd.b.a && $$0.c() != 1.0F
-                  ? DataResult.error(() -> "Cannot scale an entity position coordinate source")
-                  : DataResult.success($$0)
-         );
-
-      public double a(double $$0, double $$1, float $$2, bam $$3) {
-         return this.b.a($$0, $$1, $$2 * this.d, $$3) + (double)this.c;
-      }
-
-      public dfd.b a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public float c() {
-         return this.d;
-      }
-   }
-
-   public static enum b implements bba {
-      a("entity_position", ($$0, $$1, $$2, $$3) -> $$0),
-      b("in_bounding_box", ($$0, $$1, $$2, $$3) -> $$1 + ($$3.j() - 0.5) * (double)$$2);
-
-      public static final Codec<dfd.b> c = bba.a(dfd.b::values);
-      private final String d;
-      private final dfd.b.a e;
-
-      private b(final String $$0, final dfd.b.a $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public double a(double $$0, double $$1, float $$2, bam $$3) {
-         return this.e.getCoordinate($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      @FunctionalInterface
-      interface a {
-         double getCoordinate(double var1, double var3, float var5, bam var6);
-      }
-   }
-
-   public static record c(float b, bsm c) {
-      public static final MapCodec<dfd.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.optionalFieldOf("movement_scale", 0.0F).forGetter(dfd.c::a), bsm.c.optionalFieldOf("base", bsk.a).forGetter(dfd.c::b))
-               .apply($$0, dfd.c::new)
-      );
-
-      public double a(double $$0, bam $$1) {
-         return $$0 * (double)this.b + (double)this.c.a($$1);
-      }
-
-      public float a() {
-         return this.b;
-      }
-
-      public bsm b() {
-         return this.c;
-      }
+   static void a(ra<dey> $$0) {
+      jr<ddq> $$1 = $$0.a(mb.aO);
+      $$0.a(a, new dfc($$1.b(ddv.h), bsc.a(1)));
+      $$0.a(b, new dfc($$1.b(ddv.h), bsc.a(1)));
+      $$0.a(c, new dfc($$1.b(ddv.h), bsc.a(1)));
+      $$0.a(d, new dfc($$1.b(ddv.h), bsc.a(1)));
+      $$0.a(e, new dfc($$1.b(ddv.h), bsc.a(1)));
+      $$0.a(f, new dfc($$1.b(ddv.h), bsc.a(1)));
+      $$0.a(g, new dfc($$1.b(ddv.a), bsc.a(1)));
+      $$0.a(h, new dfc($$1.b(ddv.a), bsc.a(1)));
+      $$0.a(i, new dfc($$1.b(ddv.a), bsc.a(1)));
+      $$0.a(j, new dfc($$1.b(ddv.a), bsc.a(1)));
+      $$0.a(k, new dfc($$1.b(ddv.a), bsc.a(1)));
+      $$0.a(l, new dfc($$1.b(ddv.a), bsc.a(1)));
+      $$0.a(m, new dfc($$1.b(ddv.k), bsc.a(1)));
+      $$0.a(n, new dfc($$1.b(ddv.k), bsc.a(1)));
+      $$0.a(o, new dfc($$1.b(ddv.k), bsc.a(1)));
+      $$0.a(p, new dfc($$1.b(ddv.k), bsc.a(1)));
+      $$0.a(q, new dfc($$1.b(ddv.k), bsc.a(1)));
+      $$0.a(r, new dfc($$1.b(ddv.k), bsc.a(1)));
+      $$0.a(s, new dfc($$1.b(ddv.j), bsc.a(1)));
+      $$0.a(t, new dfc($$1.b(ddv.g), bsc.a(1)));
+      $$0.a(u, new dfc($$1.b(ddv.j), bsc.a(1)));
+      $$0.a(v, new dfc($$1.b(ddv.g), bsc.a(1)));
+      $$0.a(w, new dfc($$1.b(ddv.w), bsc.a(1)));
+      $$0.a(x, new dfc($$1.b(ddv.w), bsc.a(1)));
+      $$0.a(y, new dfc($$1.b(ddv.w), bsc.a(1)));
+      $$0.a(z, new dfc($$1.b(ddv.w), bsc.a(1)));
+      $$0.a(A, new dfc($$1.b(ddv.c), bsc.a(1)));
+      $$0.a(B, new dfc($$1.b(ddv.e), bsc.a(1)));
+      $$0.a(C, new dfc($$1.b(ddv.O), bsc.a(1)));
+      $$0.a(D, new dfc($$1.b(ddv.O), bsc.a(1)));
+      $$0.a(E, new dfc($$1.b(ddv.O), bsc.a(1)));
+      $$0.a(F, new dfc($$1.b(ddv.O), bsc.a(1)));
+      $$0.a(G, new dfc($$1.b(ddv.i), bsc.a(1)));
+      $$0.a(H, new dfc($$1.b(ddv.f), bsc.a(1)));
+      $$0.a(I, new dfc($$1.b(ddv.d), bsc.a(1)));
+      $$0.a(J, new dfc($$1.b(ddv.d), bsc.a(1)));
    }
 }

@@ -1,83 +1,37 @@
-import javax.annotation.Nullable;
+public class afa implements zr<acg> {
+   public static final zi<wh, afa> a = zr.a(afa::a, afa::new);
+   private final int b;
+   private final byte c;
 
-public class afa implements aac<acr> {
-   public static final zt<ws, afa> a = aac.a(afa::a, afa::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final int e;
-   private final fi.a f;
-   private final fi.a g;
-   private final boolean h;
-
-   public afa(fi.a $$0, double $$1, double $$2, double $$3) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = 0;
-      this.h = false;
-      this.g = null;
+   public afa(bvb $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   public afa(fi.a $$0, bvk $$1, fi.a $$2) {
-      this.f = $$0;
-      this.e = $$1.ar();
-      this.g = $$2;
-      fby $$3 = $$2.a($$1);
-      this.b = $$3.d;
-      this.c = $$3.e;
-      this.d = $$3.f;
-      this.h = true;
+   private afa(wh $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private afa(ws $$0) {
-      this.f = $$0.b(fi.a.class);
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.h = $$0.readBoolean();
-      if (this.h) {
-         this.e = $$0.l();
-         this.g = $$0.b(fi.a.class);
-      } else {
-         this.e = 0;
-         this.g = null;
-      }
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.f);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.h);
-      if (this.h) {
-         $$0.c(this.e);
-         $$0.a(this.g);
-      }
+   private void a(wh $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public aae<afa> a() {
-      return ahk.ah;
+   public zt<afa> a() {
+      return agz.aq;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public fi.a b() {
-      return this.f;
+   public bvb a(dgz $$0) {
+      return $$0.a(this.b);
    }
 
-   @Nullable
-   public fby a(dhi $$0) {
-      if (this.h) {
-         bvk $$1 = $$0.a(this.e);
-         return $$1 == null ? new fby(this.b, this.c, this.d) : this.g.a($$1);
-      } else {
-         return new fby(this.b, this.c, this.d);
-      }
+   public float b() {
+      return azu.a(this.c);
    }
 }

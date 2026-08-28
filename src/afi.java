@@ -1,23 +1,29 @@
-import javax.annotation.Nullable;
+public class afi implements zr<acg> {
+   public static final zi<wh, afi> a = zr.a(afi::a, afi::new);
+   private final int b;
 
-public record afi(int b, jq<bun> c) implements aac<acr> {
-   public static final zt<xg, afi> a = zt.a(zr.h, afi::b, bun.b, afi::e, afi::new);
-
-   @Override
-   public aae<afi> a() {
-      return ahk.ao;
+   public afi(dze $$0) {
+      this.b = $$0.q();
    }
 
-   public void a(acr $$0) {
+   private afi(wh $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(wh $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zt<afi> a() {
+      return agz.ay;
+   }
+
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bvk a(dhi $$0) {
-      return $$0.a(this.b);
-   }
-
-   public jq<bun> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

@@ -1,111 +1,46 @@
+import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class fry implements frv {
-   private final frt a;
-   private final fry.a b;
-   private int c = 0;
+public class fry<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final fry<?> a = new fry<>(bba.a, ($$0, $$1) -> {
+   });
 
-   private fry(fry.a $$0) {
-      this(0, 0, $$0);
+   private fry(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fry(int $$0, int $$1, fry.a $$2) {
-      this.a = new frt($$0, $$1);
-      this.b = $$2;
+   public static fry<?> a(String $$0) {
+      return new fry<>($$0, Consumer::accept);
    }
 
-   public fry a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
+   public static fry<?> a(xk $$0) {
+      return new fry<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
    }
 
-   public frx b() {
-      return this.a.b();
+   public static fry<?> a(List<xk> $$0) {
+      return new fry<>($$0, ($$1, $$2) -> $$0.stream().map(xk::getString).forEach($$1));
    }
 
-   public frx c() {
-      return this.a.c();
-   }
-
-   public <T extends frw> T a(T $$0, frx $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends frw> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends frw> T a(T $$0, Consumer<frx> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ae.a(this.b(), $$1));
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
    }
 
    @Override
-   public void b(Consumer<frw> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int y() {
-      return this.a.y();
-   }
-
-   @Override
-   public int w() {
-      return this.a.w();
-   }
-
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
-   }
-
-   @Override
-   public void l(int $$0) {
-      this.a.l($$0);
-   }
-
-   @Override
-   public int D() {
-      return this.a.D();
-   }
-
-   @Override
-   public int E() {
-      return this.a.E();
-   }
-
-   public static fry d() {
-      return new fry(fry.a.b);
-   }
-
-   public static fry e() {
-      return new fry(fry.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(frt $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fry<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
       }
+   }
 
-      public <T extends frw> T a(frt $$0, T $$1, int $$2, frx $$3) {
-         return (T)(switch (this) {
-            case a -> (frw)$$0.a($$1, 0, $$2, $$3);
-            case b -> (frw)$$0.a($$1, $$2, 0, $$3);
-         });
-      }
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

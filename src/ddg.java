@@ -2,116 +2,313 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class ddg implements dbt {
-   final String c;
-   final dbr d;
-   final dca e;
-   final dca f;
-   final jq<cxl> g;
-   @Nullable
-   private dcd h;
+public interface ddg {
+   Codec<ddg> a = ma.aA.q().dispatch(ddg::a, ddg.i::a);
+   zi<wv, ddg> b = zg.a(mb.aG).b(ddg::a, ddg.i::b);
 
-   public ddg(String $$0, dbr $$1, dca $$2, dca $$3, jq<cxl> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   <T> Stream<T> a(bbf var1, dcy<T> var2);
+
+   ddg.i<? extends ddg> a();
+
+   default boolean a(csk $$0) {
+      return true;
    }
 
-   public boolean a(dbs $$0, dhi $$1) {
-      if ($$0.e() != 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+   default List<cxg> a(bbf $$0) {
+      return this.a($$0, ddg.e.a).toList();
+   }
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxp $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (!$$2 && this.e.a($$5) && $$5.h() != this.g.a()) {
-                  $$2 = true;
-               } else {
-                  if ($$3 || !this.f.a($$5)) {
-                     return false;
-                  }
+   default cxg b(bbf $$0) {
+      return this.a($$0, ddg.e.a).findFirst().orElse(cxg.j);
+   }
 
-                  $$3 = true;
-               }
+   public static class a implements ddg {
+      public static final ddg.a c = new ddg.a();
+      public static final MapCodec<ddg.a> d = MapCodec.unit(c);
+      public static final zi<wv, ddg.a> e = zi.a(c);
+      public static final ddg.i<ddg.a> f = new ddg.i<>(d, e);
+
+      private a() {
+      }
+
+      @Override
+      public ddg.i<ddg.a> a() {
+         return f;
+      }
+
+      @Override
+      public String toString() {
+         return "<any fuel>";
+      }
+
+      @Override
+      public <T> Stream<T> a(bbf $$0, dcy<T> $$1) {
+         if ($$1 instanceof dcy.b<T> $$2) {
+            dvo $$3 = $$0.c(ddh.a);
+            if ($$3 != null) {
+               return $$3.a().stream().map($$2::a);
             }
          }
 
-         return $$2 && $$3;
+         return Stream.empty();
       }
    }
 
-   public cxp a(dbs $$0, js.a $$1) {
-      cxp $$2 = cxp.j;
+   public static record b(List<ddg> f) implements ddg {
+      public static final MapCodec<ddg.b> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ddg.a.listOf().fieldOf("contents").forGetter(ddg.b::b)).apply($$0, ddg.b::new)
+      );
+      public static final zi<wv, ddg.b> d = zi.a(ddg.b.a(zg.a()), ddg.b::b, ddg.b::new);
+      public static final ddg.i<ddg.b> e = new ddg.i<>(c, d);
 
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cxp $$4 = $$0.a($$3);
-         if (!$$4.f() && this.e.a($$4) && $$4.h() != this.g.a()) {
-            $$2 = $$4;
+      @Override
+      public ddg.i<ddg.b> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbf $$0, dcy<T> $$1) {
+         return this.f.stream().flatMap($$2 -> $$2.a($$0, $$1));
+      }
+
+      @Override
+      public boolean a(csk $$0) {
+         return this.f.stream().allMatch($$1 -> $$1.a($$0));
+      }
+
+      public List<ddg> b() {
+         return this.f;
+      }
+   }
+
+   public static class c implements ddg {
+      public static final ddg.c c = new ddg.c();
+      public static final MapCodec<ddg.c> d = MapCodec.unit(c);
+      public static final zi<wv, ddg.c> e = zi.a(c);
+      public static final ddg.i<ddg.c> f = new ddg.i<>(d, e);
+
+      private c() {
+      }
+
+      @Override
+      public ddg.i<ddg.c> a() {
+         return f;
+      }
+
+      @Override
+      public String toString() {
+         return "<empty>";
+      }
+
+      @Override
+      public <T> Stream<T> a(bbf $$0, dcy<T> $$1) {
+         return Stream.empty();
+      }
+   }
+
+   public static record d(jq<cxc> f) implements ddg {
+      public static final MapCodec<ddg.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxc.e.fieldOf("item").forGetter(ddg.d::b)).apply($$0, ddg.d::new));
+      public static final zi<wv, ddg.d> d = zi.a(zg.b(mb.K), ddg.d::b, ddg.d::new);
+      public static final ddg.i<ddg.d> e = new ddg.i<>(c, d);
+
+      public d(cxc $$0) {
+         this($$0.f());
+      }
+
+      @Override
+      public ddg.i<ddg.d> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbf $$0, dcy<T> $$1) {
+         return $$1 instanceof dcy.b<T> $$2 ? Stream.of($$2.a(this.f)) : Stream.empty();
+      }
+
+      @Override
+      public boolean a(csk $$0) {
+         return this.f.a().a($$0);
+      }
+
+      public jq<cxc> b() {
+         return this.f;
+      }
+   }
+
+   public static class e implements dcy.b<cxg> {
+      public static final ddg.e a = new ddg.e();
+
+      public cxg b(cxg $$0) {
+         return $$0;
+      }
+   }
+
+   public static record f(cxg f) implements ddg {
+      public static final MapCodec<ddg.f> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxg.c.fieldOf("item").forGetter(ddg.f::b)).apply($$0, ddg.f::new));
+      public static final zi<wv, ddg.f> d = zi.a(cxg.h, ddg.f::b, ddg.f::new);
+      public static final ddg.i<ddg.f> e = new ddg.i<>(c, d);
+
+      @Override
+      public ddg.i<ddg.f> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbf $$0, dcy<T> $$1) {
+         return $$1 instanceof dcy.b<T> $$2 ? Stream.of($$2.a(this.f)) : Stream.empty();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            if ($$0 instanceof ddg.f $$1 && cxg.a(this.f, $$1.f)) {
+               return true;
+            }
+
+            return false;
          }
       }
 
-      return $$2.a(this.g.a(), 1);
-   }
-
-   @Override
-   public List<ddj> g() {
-      return List.of(new ddo(List.of(this.e.b(), this.f.b()), new ddp.d(this.g), new ddp.d(cxt.fa)));
-   }
-
-   @Override
-   public dco<ddg> a() {
-      return dco.m;
-   }
-
-   @Override
-   public String j() {
-      return this.c;
-   }
-
-   @Override
-   public dcd ap_() {
-      if (this.h == null) {
-         this.h = dcd.b(List.of(this.e, this.f));
+      @Override
+      public boolean a(csk $$0) {
+         return this.f.h().a($$0);
       }
 
-      return this.h;
+      public cxg b() {
+         return this.f;
+      }
    }
 
-   @Override
-   public dbr c() {
-      return this.d;
-   }
-
-   public static class a implements dco<ddg> {
-      private static final MapCodec<ddg> x = RecordCodecBuilder.mapCodec(
+   public static record g(ddg f, ddg g, ddg h) implements ddg {
+      public static final MapCodec<ddg.g> c = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  dbr.e.fieldOf("category").orElse(dbr.d).forGetter($$0x -> $$0x.d),
-                  dca.d.fieldOf("input").forGetter($$0x -> $$0x.e),
-                  dca.d.fieldOf("material").forGetter($$0x -> $$0x.f),
-                  cxl.e.fieldOf("result").forGetter($$0x -> $$0x.g)
+                  ddg.a.fieldOf("base").forGetter(ddg.g::b), ddg.a.fieldOf("material").forGetter(ddg.g::c), ddg.a.fieldOf("pattern").forGetter(ddg.g::d)
                )
-               .apply($$0, ddg::new)
+               .apply($$0, ddg.g::new)
       );
-      public static final zt<xg, ddg> w = zt.a(
-         zr.o, $$0 -> $$0.c, dbr.g, $$0 -> $$0.d, dca.a, $$0 -> $$0.e, dca.a, $$0 -> $$0.f, zr.b(mb.K), $$0 -> $$0.g, ddg::new
-      );
+      public static final zi<wv, ddg.g> d = zi.a(ddg.b, ddg.g::b, ddg.b, ddg.g::c, ddg.b, ddg.g::d, ddg.g::new);
+      public static final ddg.i<ddg.g> e = new ddg.i<>(c, d);
 
       @Override
-      public MapCodec<ddg> a() {
-         return x;
+      public ddg.i<ddg.g> a() {
+         return e;
       }
 
       @Override
-      public zt<xg, ddg> b() {
-         return w;
+      public <T> Stream<T> a(bbf $$0, dcy<T> $$1) {
+         if ($$1 instanceof dcy.b<T> $$2) {
+            js.a $$3 = $$0.c(ddh.b);
+            if ($$3 != null) {
+               bac $$4 = bac.a((long)System.identityHashCode(this));
+               List<cxg> $$5 = this.f.a($$0);
+               if ($$5.isEmpty()) {
+                  return Stream.empty();
+               }
+
+               List<cxg> $$6 = this.g.a($$0);
+               if ($$6.isEmpty()) {
+                  return Stream.empty();
+               }
+
+               List<cxg> $$7 = this.h.a($$0);
+               if ($$7.isEmpty()) {
+                  return Stream.empty();
+               }
+
+               return Stream.<cxg>generate(() -> {
+                  cxg $$5x = ae.a($$5, $$4);
+                  cxg $$6x = ae.a($$6, $$4);
+                  cxg $$7x = ae.a($$7, $$4);
+                  return dct.a($$3, $$5x, $$6x, $$7x);
+               }).limit(256L).filter($$0x -> !$$0x.f()).limit(16L).map($$2::a);
+            }
+         }
+
+         return Stream.empty();
+      }
+
+      public ddg b() {
+         return this.f;
+      }
+
+      public ddg c() {
+         return this.g;
+      }
+
+      public ddg d() {
+         return this.h;
+      }
+   }
+
+   public static record h(aya<cxc> f) implements ddg {
+      public static final MapCodec<ddg.h> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(aya.a(mb.K).fieldOf("tag").forGetter(ddg.h::b)).apply($$0, ddg.h::new)
+      );
+      public static final zi<wv, ddg.h> d = zi.a(aya.c(mb.K), ddg.h::b, ddg.h::new);
+      public static final ddg.i<ddg.h> e = new ddg.i<>(c, d);
+
+      @Override
+      public ddg.i<ddg.h> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbf $$0, dcy<T> $$1) {
+         if ($$1 instanceof dcy.b<T> $$2) {
+            js.a $$3 = $$0.c(ddh.b);
+            if ($$3 != null) {
+               return $$3.d(mb.K).a(this.f).map($$1x -> $$1x.a().map($$2::a)).stream().flatMap($$0x -> $$0x);
+            }
+         }
+
+         return Stream.empty();
+      }
+
+      public aya<cxc> b() {
+         return this.f;
+      }
+   }
+
+   public static record i<T extends ddg>(MapCodec<T> a, zi<wv, T> b) {
+   }
+
+   public static record j(ddg f, ddg g) implements ddg {
+      public static final MapCodec<ddg.j> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ddg.a.fieldOf("input").forGetter(ddg.j::b), ddg.a.fieldOf("remainder").forGetter(ddg.j::c)).apply($$0, ddg.j::new)
+      );
+      public static final zi<wv, ddg.j> d = zi.a(ddg.b, ddg.j::b, ddg.b, ddg.j::c, ddg.j::new);
+      public static final ddg.i<ddg.j> e = new ddg.i<>(c, d);
+
+      @Override
+      public ddg.i<ddg.j> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbf $$0, dcy<T> $$1) {
+         if ($$1 instanceof dcy.a<T> $$2) {
+            List<T> $$3 = this.g.a($$0, $$1).toList();
+            return this.f.a($$0, $$1).map($$2x -> $$2.a((T)$$2x, $$3));
+         } else {
+            return this.f.a($$0, $$1);
+         }
+      }
+
+      @Override
+      public boolean a(csk $$0) {
+         return this.f.a($$0) && this.g.a($$0);
+      }
+
+      public ddg b() {
+         return this.f;
+      }
+
+      public ddg c() {
+         return this.g;
       }
    }
 }

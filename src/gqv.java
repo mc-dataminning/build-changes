@@ -1,46 +1,27 @@
-public class gqv extends gsw<cnt, gxj, gaw> {
-   private static final alz a = alz.b("textures/entity/breeze/breeze.png");
+public class gqv extends gsr<chu, gyo, gaw> {
+   private static final alp a = alp.b("textures/entity/fish/cod.png");
 
-   public gqv(grq.a $$0) {
-      super($$0, new gaw($$0.a(gen.H)), 0.5F);
-      this.a(new gvd($$0, this));
-      this.a(new gvc(this));
+   public gqv(grl.a $$0) {
+      super($$0, new gaw($$0.a(gei.Z)), 0.3F);
    }
 
-   public void a(gxj $$0, fgs $$1, gll $$2, int $$3) {
-      gaw $$4 = this.c();
-      a($$4, $$4.a(), $$4.c());
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public alz a(gxj $$0) {
+   @Override
+   public alp b(gyo $$0) {
       return a;
    }
 
-   public gxj a() {
-      return new gxj();
+   public gyo a() {
+      return new gyo();
    }
 
-   public void a(cnt $$0, gxj $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a.a($$0.a);
-      $$1.b.a($$0.bZ);
-      $$1.c.a($$0.b);
-      $$1.d.a($$0.c);
-      $$1.e.a($$0.ca);
-      $$1.f.a($$0.d);
-   }
-
-   public static gaw a(gaw $$0, geo... $$1) {
-      $$0.a().k = false;
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-
-      for (geo $$2 : $$1) {
-         $$2.k = true;
+   @Override
+   protected void a(gyo $$0, fgl $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * azu.a(0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.af) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
       }
-
-      return $$0;
    }
 }

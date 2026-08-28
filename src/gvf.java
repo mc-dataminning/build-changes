@@ -1,24 +1,18 @@
-public class gvf extends gwf<gxu, gbk<gxu>> {
-   private final gmo a;
+public class gvf extends gwa<gzb, gcm> {
+   private final gbu<gzb> a;
 
-   public gvf(gtn<gxu, gbk<gxu>> $$0, gmo $$1) {
+   public gvf(gti<gzb, gcm> $$0, gef $$1) {
       super($$0);
-      this.a = $$1;
+      this.a = new gcl($$1.a(gei.cg));
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, gxu $$3, float $$4, float $$5) {
-      dxv $$6 = $$3.b;
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$7 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$6, $$0, $$1, $$2, hbc.d);
-         $$0.b();
+   public void a(fgl $$0, glg $$1, int $$2, gzb $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.u) {
+         fgp $$6 = $$1.getBuffer(glq.d($$3.a.a()));
+         int $$7 = gsm.a($$3, 0.0F);
+         this.d().a(this.a);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
       }
    }
 }

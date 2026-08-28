@@ -1,55 +1,59 @@
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+
 public class cpt {
-   public boolean a;
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public boolean e = true;
-   private float f = 0.05F;
-   private float g = 0.1F;
+   private final cps<jq<cxc>> a = new cps<>();
 
-   public void a(ux $$0) {
-      ux $$1 = new ux();
-      $$1.a("invulnerable", this.a);
-      $$1.a("flying", this.b);
-      $$1.a("mayfly", this.c);
-      $$1.a("instabuild", this.d);
-      $$1.a("mayBuild", this.e);
-      $$1.a("flySpeed", this.f);
-      $$1.a("walkSpeed", this.g);
-      $$0.a("abilities", $$1);
-   }
-
-   public void b(ux $$0) {
-      if ($$0.b("abilities", 10)) {
-         ux $$1 = $$0.p("abilities");
-         this.a = $$1.q("invulnerable");
-         this.b = $$1.q("flying");
-         this.c = $$1.q("mayfly");
-         this.d = $$1.q("instabuild");
-         if ($$1.b("flySpeed", 99)) {
-            this.f = $$1.j("flySpeed");
-            this.g = $$1.j("walkSpeed");
-         }
-
-         if ($$1.b("mayBuild", 1)) {
-            this.e = $$1.q("mayBuild");
-         }
+   public void a(cxg $$0) {
+      if (cpn.d($$0)) {
+         this.b($$0);
       }
    }
 
-   public float a() {
-      return this.f;
+   public void b(cxg $$0) {
+      this.a($$0, $$0.k());
    }
 
-   public void a(float $$0) {
-      this.f = $$0;
+   public void a(cxg $$0, int $$1) {
+      if (!$$0.f()) {
+         int $$2 = Math.min($$1, $$0.M());
+         this.a.a($$0.i(), $$2);
+      }
    }
 
-   public float b() {
-      return this.g;
+   public static cps.a<jq<cxc>> a(Stream<jq<cxc>> $$0) {
+      List<jq<cxc>> $$1 = $$0.sorted(Comparator.comparingInt($$0x -> ma.g.a((cxc)$$0x.a()))).toList();
+      return new cps.a<>($$1);
    }
 
-   public void b(float $$0) {
-      this.g = $$0;
+   public boolean a(dbv<?> $$0, @Nullable cps.b<jq<cxc>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   public boolean a(dbv<?> $$0, int $$1, @Nullable cps.b<jq<cxc>> $$2) {
+      dbu $$3 = $$0.ap_();
+      return $$3.d() ? false : this.a($$3.c(), $$1, $$2);
+   }
+
+   public boolean a(List<cps.a<jq<cxc>>> $$0, @Nullable cps.b<jq<cxc>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   private boolean a(List<cps.a<jq<cxc>>> $$0, int $$1, @Nullable cps.b<jq<cxc>> $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   public int b(dbv<?> $$0, @Nullable cps.b<jq<cxc>> $$1) {
+      return this.b($$0, Integer.MAX_VALUE, $$1);
+   }
+
+   public int b(dbv<?> $$0, int $$1, @Nullable cps.b<jq<cxc>> $$2) {
+      return this.a.b($$0.ap_().c(), $$1, $$2);
+   }
+
+   public void a() {
+      this.a.a();
    }
 }

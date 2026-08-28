@@ -1,22 +1,11 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ats implements asy {
-   public static final asy.a a = new asy.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public record ats(csk b) {
+   private static final Codec<ats> c = RecordCodecBuilder.create($$0 -> $$0.group(csm.f.fieldOf("enabled").forGetter(ats::a)).apply($$0, ats::new));
+   public static final auk<ats> a = auk.a("features", c);
 
-   public ats(MinecraftServer.b $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(Consumer<aac<?>> $$0) {
-      $$0.accept(new aap(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
-   }
-
-   @Override
-   public asy.a a() {
-      return a;
+   public csk a() {
+      return this.b;
    }
 }

@@ -1,7 +1,7 @@
 public interface ev {
    ev a = new ev() {
       @Override
-      public void a(xv $$0) {
+      public void a(xk $$0) {
       }
 
       @Override
@@ -20,7 +20,7 @@ public interface ev {
       }
    };
 
-   void a(xv var1);
+   void a(xk var1);
 
    boolean y_();
 

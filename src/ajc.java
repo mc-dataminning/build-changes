@@ -1,84 +1,51 @@
-public class ajc implements aac<ahm> {
-   public static final zt<ws, ajc> a = aac.a(ajc::a, ajc::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final jh e;
-   private final String f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final dvh.a j;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   public ajc(jh $$0, String $$1, dvh.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$2;
+public class ajc {
+   private static final double a = 4096.0;
+   private fbr b = fbr.c;
+
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   private ajc(ws $$0) {
-      this.e = $$0.e();
-      this.f = $$0.p();
-      this.j = $$0.b(dvh.a.class);
-      int $$1 = $$0.readByte();
-      this.g = ($$1 & 1) != 0;
-      this.h = ($$1 & 2) != 0;
-      this.i = ($$1 & 4) != 0;
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.j);
-      int $$1 = 0;
-      if (this.g) {
-         $$1 |= 1;
+   public fbr a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
+         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
+         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
+         return new fbr($$3, $$4, $$5);
       }
-
-      if (this.h) {
-         $$1 |= 2;
-      }
-
-      if (this.i) {
-         $$1 |= 4;
-      }
-
-      $$0.l($$1);
    }
 
-   @Override
-   public aae<ajc> a() {
-      return ahk.cb;
+   public long a(fbr $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   public void a(ahm $$0) {
-      $$0.a(this);
+   public long b(fbr $$0) {
+      return a($$0.e) - a(this.b.e);
    }
 
-   public jh b() {
-      return this.e;
+   public long c(fbr $$0) {
+      return a($$0.f) - a(this.b.f);
    }
 
-   public String e() {
-      return this.f;
+   public fbr d(fbr $$0) {
+      return $$0.d(this.b);
    }
 
-   public boolean f() {
-      return this.g;
+   public void e(fbr $$0) {
+      this.b = $$0;
    }
 
-   public boolean g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.i;
-   }
-
-   public dvh.a i() {
-      return this.j;
+   public fbr a() {
+      return this.b;
    }
 }

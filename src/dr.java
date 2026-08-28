@@ -18,15 +18,15 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g, Map<alz, dr.c> h, Optional<bw> i, Optional<ch> j) implements bx {
+public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<alo<dbv<?>>> g, Map<alp, dr.c> h, Optional<bw> i, Optional<ch> j) implements bx {
    public static final int b = 100;
    public static final MapCodec<dr> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                dj.d.d.optionalFieldOf("level", dj.d.c).forGetter(dr::b),
                cf.c.optionalFieldOf("gamemode", cf.a).forGetter(dr::c),
                dr.e.a.listOf().optionalFieldOf("stats", List.of()).forGetter(dr::d),
-               azn.e(aly.a(mb.bk)).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dr::e),
-               Codec.unboundedMap(alz.a, dr.c.b).optionalFieldOf("advancements", Map.of()).forGetter(dr::f),
+               azd.e(alo.a(mb.bk)).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dr::e),
+               Codec.unboundedMap(alp.a, dr.c.b).optionalFieldOf("advancements", Map.of()).forGetter(dr::f),
                bw.a.optionalFieldOf("looking_at").forGetter(dr::g),
                ch.a.optionalFieldOf("input").forGetter(dr::h)
             )
@@ -34,15 +34,15 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
    );
 
    @Override
-   public boolean a(bvk $$0, ash $$1, @Nullable fby $$2) {
-      if (!($$0 instanceof asi $$3)) {
+   public boolean a(bvb $$0, arx $$1, @Nullable fbr $$2) {
+      if (!($$0 instanceof ary $$3)) {
          return false;
       } else if (!this.d.d($$3.cq)) {
          return false;
       } else if (!this.e.a($$3.h.b())) {
          return false;
       } else {
-         axq $$5 = $$3.I();
+         axg $$5 = $$3.I();
 
          for (dr.e<?> $$6 : this.f) {
             if (!$$6.a($$5)) {
@@ -50,21 +50,21 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
             }
          }
 
-         axk $$7 = $$3.J();
+         axa $$7 = $$3.J();
          ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
-            Entry<aly<dce<?>>> $$8 = (Entry<aly<dce<?>>>)var13.next();
-            if ($$7.b((aly<dce<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
+            Entry<alo<dbv<?>>> $$8 = (Entry<alo<dbv<?>>>)var13.next();
+            if ($$7.b((alo<dbv<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
                return false;
             }
          }
 
          if (!this.h.isEmpty()) {
-            amh $$9 = $$3.S();
-            amm $$10 = $$3.cV().aD();
+            alx $$9 = $$3.S();
+            amc $$10 = $$3.cV().aD();
 
-            for (java.util.Map.Entry<alz, dr.c> $$11 : this.h.entrySet()) {
+            for (java.util.Map.Entry<alp, dr.c> $$11 : this.h.entrySet()) {
                ah $$12 = $$10.a($$11.getKey());
                if ($$12 == null || !$$11.getValue().test($$9.b($$12))) {
                   return false;
@@ -73,15 +73,15 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
          }
 
          if (this.i.isPresent()) {
-            fby $$13 = $$3.bF();
-            fby $$14 = $$3.g(1.0F);
-            fby $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
-            fbv $$16 = cqs.a($$3.dW(), $$3, $$13, $$15, new fbt($$13, $$15).g(1.0), $$0x -> !$$0x.aa_(), 0.0F);
-            if ($$16 == null || $$16.d() != fbw.a.c) {
+            fbr $$13 = $$3.bF();
+            fbr $$14 = $$3.g(1.0F);
+            fbr $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
+            fbo $$16 = cqj.a($$3.dW(), $$3, $$13, $$15, new fbm($$13, $$15).g(1.0), $$0x -> !$$0x.aa_(), 0.0F);
+            if ($$16 == null || $$16.d() != fbp.a.c) {
                return false;
             }
 
-            bvk $$17 = $$16.a();
+            bvb $$17 = $$16.a();
             if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
@@ -108,11 +108,11 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
       return this.f;
    }
 
-   public Object2BooleanMap<aly<dce<?>>> e() {
+   public Object2BooleanMap<alo<dbv<?>>> e() {
       return this.g;
    }
 
-   public Map<alz, dr.c> f() {
+   public Map<alp, dr.c> f() {
       return this.h;
    }
 
@@ -125,7 +125,7 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
    }
 
    static record a(Object2BooleanMap<String> c) implements dr.c {
-      public static final Codec<dr.a> a = azn.e(Codec.STRING).xmap(dr.a::new, dr.a::a);
+      public static final Codec<dr.a> a = azd.e(Codec.STRING).xmap(dr.a::new, dr.a::a);
 
       public boolean a(aj $$0) {
          ObjectIterator var2 = this.c.object2BooleanEntrySet().iterator();
@@ -174,8 +174,8 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
       private dj.d a = dj.d.c;
       private cf b = cf.a;
       private final Builder<dr.e<?>> c = ImmutableList.builder();
-      private final Object2BooleanMap<aly<dce<?>>> d = new Object2BooleanOpenHashMap();
-      private final Map<alz, dr.c> e = Maps.newHashMap();
+      private final Object2BooleanMap<alo<dbv<?>>> d = new Object2BooleanOpenHashMap();
+      private final Map<alp, dr.c> e = Maps.newHashMap();
       private Optional<bw> f = Optional.empty();
       private Optional<ch> g = Optional.empty();
 
@@ -188,12 +188,12 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
          return this;
       }
 
-      public <T> dr.d a(axo<T> $$0, jq.c<T> $$1, dj.d $$2) {
+      public <T> dr.d a(axe<T> $$0, jq.c<T> $$1, dj.d $$2) {
          this.c.add(new dr.e<>($$0, $$1, $$2));
          return this;
       }
 
-      public dr.d a(aly<dce<?>> $$0, boolean $$1) {
+      public dr.d a(alo<dbv<?>> $$0, boolean $$1) {
          this.d.put($$0, $$1);
          return this;
       }
@@ -208,12 +208,12 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
          return this;
       }
 
-      public dr.d a(alz $$0, boolean $$1) {
+      public dr.d a(alp $$0, boolean $$1) {
          this.e.put($$0, new dr.b($$1));
          return this;
       }
 
-      public dr.d a(alz $$0, Map<String, Boolean> $$1) {
+      public dr.d a(alp $$0, Map<String, Boolean> $$1) {
          this.e.put($$0, new dr.a(new Object2BooleanOpenHashMap($$1)));
          return this;
       }
@@ -228,25 +228,25 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
       }
    }
 
-   static record e<T>(axo<T> b, jq<T> c, dj.d d, Supplier<axm<T>> e) {
+   static record e<T>(axe<T> b, jq<T> c, dj.d d, Supplier<axc<T>> e) {
       public static final Codec<dr.e<?>> a = ma.v.q().dispatch(dr.e::a, dr.e::a);
 
-      public e(axo<T> $$0, jq<T> $$1, dj.d $$2) {
+      public e(axe<T> $$0, jq<T> $$1, dj.d $$2) {
          this($$0, $$1, $$2, Suppliers.memoize(() -> $$0.b($$1.a())));
       }
 
-      private static <T> MapCodec<dr.e<T>> a(axo<T> $$0) {
+      private static <T> MapCodec<dr.e<T>> a(axe<T> $$0) {
          return RecordCodecBuilder.mapCodec(
             $$1 -> $$1.group($$0.b().r().fieldOf("stat").forGetter(dr.e::b), dj.d.d.optionalFieldOf("value", dj.d.c).forGetter(dr.e::c))
                   .apply($$1, ($$1x, $$2) -> new dr.e<>($$0, $$1x, $$2))
          );
       }
 
-      public boolean a(axq $$0) {
+      public boolean a(axg $$0) {
          return this.d.d($$0.a(this.e.get()));
       }
 
-      public axo<T> a() {
+      public axe<T> a() {
          return this.b;
       }
 
@@ -258,7 +258,7 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dce<?>>> g
          return this.d;
       }
 
-      public Supplier<axm<T>> d() {
+      public Supplier<axc<T>> d() {
          return this.e;
       }
    }

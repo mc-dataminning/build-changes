@@ -1,47 +1,28 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public interface hfi {
-   alz a();
+public class hfi<T> extends hfj<T> {
+   private final hfn<T> c;
 
-   @Nullable
-   hgo a(hgn var1);
-
-   hff b();
-
-   axg c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hfi.a k();
-
-   default boolean r() {
-      return false;
+   public hfi(Function<T, Stream<String>> $$0, Function<T, Stream<alp>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = hfn.plainText($$2, $$0);
    }
 
-   default boolean s() {
-      return true;
+   @Override
+   protected List<T> a(String $$0) {
+      return this.c.search($$0);
    }
 
-   static bam t() {
-      return bam.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.c.search($$1);
+      Iterator<T> $$5 = new hfl<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new hfk<T>($$2.iterator(), $$5, this.a));
    }
 }

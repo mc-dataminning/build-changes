@@ -1,31 +1,23 @@
-import io.netty.buffer.ByteBuf;
-
-public class aks implements aac<akr> {
-   public static final zt<ByteBuf, aks> a = aac.a(aks::a, aks::new);
-   private final long b;
-
-   public aks(long $$0) {
-      this.b = $$0;
-   }
-
-   private aks(ByteBuf $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(ByteBuf $$0) {
-      $$0.writeLong(this.b);
+public record aks<T>(int a, akt<T> b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         aks<?> $$1 = (aks<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public aae<aks> a() {
-      return akq.b;
+   public int hashCode() {
+      return this.a;
    }
 
-   public void a(akr $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

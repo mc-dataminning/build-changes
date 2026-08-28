@@ -1,46 +1,40 @@
-public class ddf extends dbu {
-   public ddf(dbr $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   public boolean a(dbs $$0, dhi $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               cxp $$4 = $$0.a($$3, $$2);
-               if ($$4.f()) {
-                  return false;
-               }
+public record ddf(List<ddg> f, ddg g, ddg h) implements dda {
+   public static final MapCodec<ddf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ddg.a.listOf().fieldOf("ingredients").forGetter(ddf::b),
+               ddg.a.fieldOf("result").forGetter(ddf::d),
+               ddg.a.fieldOf("crafting_station").forGetter(ddf::e)
+            )
+            .apply($$0, ddf::new)
+   );
+   public static final zi<wv, ddf> b = zi.a(ddg.b.a(zg.a()), ddf::b, ddg.b, ddf::d, ddg.b, ddf::e, ddf::new);
+   public static final dda.a<ddf> c = new dda.a<>(a, b);
 
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(cxt.wh)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cxt.oS)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public cxp a(dbs $$0, js.a $$1) {
-      cxp $$2 = $$0.a(1, 1);
-      if (!$$2.a(cxt.wh)) {
-         return cxp.j;
-      } else {
-         cxp $$3 = new cxp(cxt.wg, 8);
-         $$3.b(ku.Q, $$2.a(ku.Q));
-         return $$3;
-      }
+   @Override
+   public dda.a<ddf> a() {
+      return c;
    }
 
    @Override
-   public dco<ddf> a() {
-      return dco.j;
+   public boolean a(csk $$0) {
+      return this.f.stream().allMatch($$1 -> $$1.a($$0)) && dda.super.a($$0);
+   }
+
+   public List<ddg> b() {
+      return this.f;
+   }
+
+   @Override
+   public ddg d() {
+      return this.g;
+   }
+
+   @Override
+   public ddg e() {
+      return this.h;
    }
 }

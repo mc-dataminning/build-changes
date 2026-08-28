@@ -1,17 +1,16 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record eml(jq<cxl> c, emn d) {
-   public static final Codec<eml> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cxl.e.fieldOf("display").forGetter($$0x -> $$0x.c), emn.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, eml::new)
-   );
-   public static final Codec<jq<eml>> b = alv.a(mb.aQ, a);
+public interface eml<P extends emk> {
+   eml<emj> a = a("constant", emj.b);
+   eml<emn> b = a("uniform", emn.a);
+   eml<emi> c = a("biased_to_bottom", emi.a);
+   eml<emo> d = a("very_biased_to_bottom", emo.a);
+   eml<emm> e = a("trapezoid", emm.a);
+   eml<emp> f = a("weighted_list", emp.a);
 
-   public jq<cxl> a() {
-      return this.c;
-   }
+   MapCodec<P> codec();
 
-   public emn b() {
-      return this.d;
+   private static <P extends emk> eml<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.L, $$0, () -> $$1);
    }
 }

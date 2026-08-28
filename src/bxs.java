@@ -1,125 +1,133 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.UUID;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxs {
-   public static final int a = 48;
-
-   public static bya<bwo> a(Predicate<jq<chn>> $$0, cfk<jp> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   private bxs() {
    }
 
-   public static bya<bwo> a(Predicate<jq<chn>> $$0, cfk<jp> $$1, cfk<jp> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bxs.a> $$8 = new Long2ObjectOpenHashMap();
-      bzk<bwo> $$9 = cbm.a(
-         (Function<cbm.b<bwo>, ? extends App<cbm.c<bwo>, cbp<bwo>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.e_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.ac() + (long)$$6xx.A.a(20));
-                     return false;
-                  } else if ($$6xx.ac() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.H_().a(20));
-                     chk $$9x = $$6xx.z();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bxs.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<jh> $$10 = $$2xxxx -> {
-                        bxs.a $$3xxxx = (bxs.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<jq<chn>, jh>> $$11 = $$9x.c($$0, $$10, $$7x.dw(), 48, chk.b.a).limit(5L).collect(Collectors.toSet());
-                     eul $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        jh $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(jp.a($$6xx.ah(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           ahj.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<jq<chn>, jh> $$14 : $$11) {
-                           $$8.computeIfAbsent(((jh)$$14.getSecond()).a(), $$2xxxx -> new bxs.a($$6xx.A, $$8x));
-                        }
-                     }
+   public static void a(bvx $$0, bvx $$1, float $$2, int $$3) {
+      c($$0, $$1);
+      b($$0, $$1, $$2, $$3);
+   }
 
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : cbm.a((Function<cbm.b<bwo>, ? extends App<cbm.c<bwo>, cbp<bwo>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   public static boolean a(bwz<?> $$0, bvx $$1) {
+      Optional<cfd> $$2 = $$0.c(cfb.h);
+      return $$2.isPresent() && $$2.get().a($$1);
+   }
+
+   public static boolean a(bwz<?> $$0, cfb<? extends bvx> $$1, bvi<?> $$2) {
+      return a($$0, $$1, $$1x -> $$1x.aq() == $$2);
+   }
+
+   private static boolean a(bwz<?> $$0, cfb<? extends bvx> $$1, Predicate<bvx> $$2) {
+      return $$0.c($$1).filter($$2).filter(bvx::bL).filter($$1x -> a($$0, $$1x)).isPresent();
+   }
+
+   private static void c(bvx $$0, bvx $$1) {
+      a($$0, $$1);
+      a($$1, $$0);
+   }
+
+   public static void a(bvx $$0, bvx $$1) {
+      $$0.ec().a(cfb.n, new byb($$1, true));
+   }
+
+   private static void b(bvx $$0, bvx $$1, float $$2, int $$3) {
+      a($$0, (bvb)$$1, $$2, $$3);
+      a($$1, (bvb)$$0, $$2, $$3);
+   }
+
+   public static void a(bvx $$0, bvb $$1, float $$2, int $$3) {
+      a($$0, new byb($$1, true), $$2, $$3);
+   }
+
+   public static void a(bvx $$0, jh $$1, float $$2, int $$3) {
+      a($$0, new bxt($$1), $$2, $$3);
+   }
+
+   public static void a(bvx $$0, bze $$1, float $$2, int $$3) {
+      cfe $$4 = new cfe($$1, $$2, $$3);
+      $$0.ec().a(cfb.n, $$1);
+      $$0.ec().a(cfb.m, $$4);
+   }
+
+   public static void a(bvx $$0, cxg $$1, fbr $$2) {
+      fbr $$3 = new fbr(0.3F, 0.3F, 0.3F);
+      a($$0, $$1, $$2, $$3, 0.3F);
+   }
+
+   public static void a(bvx $$0, cxg $$1, fbr $$2, fbr $$3, float $$4) {
+      double $$5 = $$0.dF() - (double)$$4;
+      cls $$6 = new cls($$0.dW(), $$0.dB(), $$5, $$0.dH(), $$1);
+      $$6.b($$0);
+      fbr $$7 = $$2.d($$0.du());
+      $$7 = $$7.d().d($$3.d, $$3.e, $$3.f);
+      $$6.h($$7);
+      $$6.s();
+      $$0.dW().b($$6);
+   }
+
+   public static kj a(arx $$0, kj $$1, int $$2) {
+      int $$3 = $$0.b($$1);
+      return kj.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
+   }
+
+   public static boolean a(bvz $$0, bvx $$1, int $$2) {
+      if ($$0.eZ().h() instanceof cyc $$3 && $$0.a($$3)) {
+         int $$4 = $$3.c() - $$2;
+         return $$0.a($$1, (double)$$4);
+      }
+
+      return $$0.i($$1);
+   }
+
+   public static boolean a(bvx $$0, bvx $$1, double $$2) {
+      Optional<bvx> $$3 = $$0.ec().c(cfb.o);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         double $$4 = $$0.f($$3.get().du());
+         double $$5 = $$0.f($$1.du());
+         return $$5 > $$4 + $$2 * $$2;
+      }
+   }
+
+   public static boolean b(bvx $$0, bvx $$1) {
+      bwz<?> $$2 = $$0.ec();
+      return !$$2.a(cfb.h) ? false : $$2.c(cfb.h).get().a($$1);
+   }
+
+   public static bvx a(bvx $$0, Optional<bvx> $$1, bvx $$2) {
+      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
+   }
+
+   public static bvx a(bvx $$0, bvx $$1, bvx $$2) {
+      fbr $$3 = $$1.du();
+      fbr $$4 = $$2.du();
+      return $$0.f($$3) < $$0.f($$4) ? $$1 : $$2;
+   }
+
+   public static Optional<bvx> a(bvx $$0, cfb<UUID> $$1) {
+      Optional<UUID> $$2 = $$0.ec().c($$1);
+      return $$2.<bvb>map($$1x -> ((arx)$$0.dW()).a($$1x)).map($$0x -> $$0x instanceof bvx $$1x ? $$1x : null);
    }
 
    @Nullable
-   public static eul a(bwi $$0, Set<Pair<jq<chn>, jh>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<jh> $$2 = new HashSet<>();
-         int $$3 = 1;
+   public static fbr a(bwf $$0, int $$1, int $$2) {
+      fbr $$3 = cgs.a($$0, $$1, $$2);
+      int $$4 = 0;
 
-         for (Pair<jq<chn>, jh> $$4 : $$1) {
-            $$3 = Math.max($$3, ((chn)((jq)$$4.getFirst()).a()).c());
-            $$2.add((jh)$$4.getSecond());
-         }
-
-         return $$0.L().a($$2, $$3);
+      while ($$3 != null && !$$0.dW().a_(jh.a((ka)$$3)).a(euf.b) && $$4++ < 10) {
+         $$3 = cgs.a($$0, $$1, $$2);
       }
+
+      return $$3;
    }
 
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final bam d;
-      private long e;
-      private long f;
-      private int g;
-
-      a(bam $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
-      }
-
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
-      }
-
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
-
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
-
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+   public static boolean a(bvx $$0) {
+      return $$0.ec().a(cfb.r);
    }
 }

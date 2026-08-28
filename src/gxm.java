@@ -1,4 +1,3 @@
-public class gxm extends gyt {
-   public float a;
-   public float b;
+public class gxm extends gxr {
+   public boolean a;
 }

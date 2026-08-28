@@ -1,5 +1,8 @@
-public record akk(alz a) implements aki {
+public interface akk extends ake, wb {
    @Override
-   public void a(ws $$0) {
+   default wf b() {
+      return wf.c;
    }
+
+   void a(akl var1);
 }

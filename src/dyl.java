@@ -1,135 +1,92 @@
-public class dyl {
-   public static final dym a = dym.a("attached");
-   public static final dym b = dym.a("bottom");
-   public static final dym c = dym.a("conditional");
-   public static final dym d = dym.a("disarmed");
-   public static final dym e = dym.a("drag");
-   public static final dym f = dym.a("enabled");
-   public static final dym g = dym.a("extended");
-   public static final dym h = dym.a("eye");
-   public static final dym i = dym.a("falling");
-   public static final dym j = dym.a("hanging");
-   public static final dym k = dym.a("has_bottle_0");
-   public static final dym l = dym.a("has_bottle_1");
-   public static final dym m = dym.a("has_bottle_2");
-   public static final dym n = dym.a("has_record");
-   public static final dym o = dym.a("has_book");
-   public static final dym p = dym.a("inverted");
-   public static final dym q = dym.a("in_wall");
-   public static final dym r = dym.a("lit");
-   public static final dym s = dym.a("tip");
-   public static final dym t = dym.a("locked");
-   public static final dym u = dym.a("occupied");
-   public static final dym v = dym.a("open");
-   public static final dym w = dym.a("persistent");
-   public static final dym x = dym.a("powered");
-   public static final dym y = dym.a("short");
-   public static final dym z = dym.a("signal_fire");
-   public static final dym A = dym.a("snowy");
-   public static final dym B = dym.a("triggered");
-   public static final dym C = dym.a("unstable");
-   public static final dym D = dym.a("waterlogged");
-   public static final dym E = dym.a("berries");
-   public static final dym F = dym.a("bloom");
-   public static final dym G = dym.a("shrieking");
-   public static final dym H = dym.a("can_summon");
-   public static final dys<jm.a> I = dys.a("axis", jm.a.class, jm.a.a, jm.a.c);
-   public static final dys<jm.a> J = dys.a("axis", jm.a.class);
-   public static final dym K = dym.a("up");
-   public static final dym L = dym.a("down");
-   public static final dym M = dym.a("north");
-   public static final dym N = dym.a("east");
-   public static final dym O = dym.a("south");
-   public static final dym P = dym.a("west");
-   public static final dys<jm> Q = dys.a("facing", jm.class, jm.c, jm.f, jm.d, jm.e, jm.b, jm.a);
-   public static final dys<jm> R = dys.a("facing", jm.class, $$0 -> $$0 != jm.b);
-   public static final dys<jm> S = dys.a("facing", jm.class, jm.c.a);
-   public static final dyu T = dyu.a("flower_amount", 1, 4);
-   public static final dys<jo> U = dys.a("orientation", jo.class);
-   public static final dys<dyg> V = dys.a("face", dyg.class);
-   public static final dys<dyj> W = dys.a("attachment", dyj.class);
-   public static final dys<dzg> X = dys.a("east", dzg.class);
-   public static final dys<dzg> Y = dys.a("north", dzg.class);
-   public static final dys<dzg> Z = dys.a("south", dzg.class);
-   public static final dys<dzg> aa = dys.a("west", dzg.class);
-   public static final dys<dyz> ab = dys.a("east", dyz.class);
-   public static final dys<dyz> ac = dys.a("north", dyz.class);
-   public static final dys<dyz> ad = dys.a("south", dyz.class);
-   public static final dys<dyz> ae = dys.a("west", dyz.class);
-   public static final dys<dyq> af = dys.a("half", dyq.class);
-   public static final dys<dyt> ag = dys.a("half", dyt.class);
-   public static final dys<dyy> ah = dys.a("shape", dyy.class);
-   public static final dys<dyy> ai = dys.a("shape", dyy.class, $$0 -> $$0 != dyy.j && $$0 != dyy.i && $$0 != dyy.g && $$0 != dyy.h);
-   public static final int aj = 1;
-   public static final int ak = 2;
-   public static final int al = 3;
-   public static final int am = 4;
-   public static final int an = 5;
-   public static final int ao = 7;
-   public static final int ap = 15;
-   public static final int aq = 25;
-   public static final dyu ar = dyu.a("age", 0, 1);
-   public static final dyu as = dyu.a("age", 0, 2);
-   public static final dyu at = dyu.a("age", 0, 3);
-   public static final dyu au = dyu.a("age", 0, 4);
-   public static final dyu av = dyu.a("age", 0, 5);
-   public static final dyu aw = dyu.a("age", 0, 7);
-   public static final dyu ax = dyu.a("age", 0, 15);
-   public static final dyu ay = dyu.a("age", 0, 25);
-   public static final dyu az = dyu.a("bites", 0, 6);
-   public static final dyu aA = dyu.a("candles", 1, 4);
-   public static final dyu aB = dyu.a("delay", 1, 4);
-   public static final int aC = 7;
-   public static final dyu aD = dyu.a("distance", 1, 7);
-   public static final dyu aE = dyu.a("eggs", 1, 4);
-   public static final dyu aF = dyu.a("hatch", 0, 2);
-   public static final dyu aG = dyu.a("layers", 1, 8);
-   public static final int aH = 0;
-   public static final int aI = 1;
-   public static final int aJ = 3;
-   public static final int aK = 8;
-   public static final dyu aL = dyu.a("level", 1, 3);
-   public static final dyu aM = dyu.a("level", 0, 8);
-   public static final dyu aN = dyu.a("level", 1, 8);
-   public static final dyu aO = dyu.a("honey_level", 0, 5);
-   public static final int aP = 15;
-   public static final dyu aQ = dyu.a("level", 0, 15);
-   public static final dyu aR = dyu.a("moisture", 0, 7);
-   public static final dyu aS = dyu.a("note", 0, 24);
-   public static final dyu aT = dyu.a("pickles", 1, 4);
-   public static final dyu aU = dyu.a("power", 0, 15);
-   public static final dyu aV = dyu.a("stage", 0, 1);
-   public static final int aW = 7;
-   public static final dyu aX = dyu.a("distance", 0, 7);
-   public static final int aY = 0;
-   public static final int aZ = 4;
-   public static final dyu ba = dyu.a("charges", 0, 4);
-   public static final dyu bb = dyu.a("rotation", 0, dza.a());
-   public static final dys<dyi> bc = dys.a("part", dyi.class);
-   public static final dys<dyn> bd = dys.a("type", dyn.class);
-   public static final dys<dyo> be = dys.a("mode", dyo.class);
-   public static final dys<dyp> bf = dys.a("hinge", dyp.class);
-   public static final dys<dyv> bg = dys.a("instrument", dyv.class);
-   public static final dys<dyw> bh = dys.a("type", dyw.class);
-   public static final dys<dzc> bi = dys.a("type", dzc.class);
-   public static final dys<dzd> bj = dys.a("shape", dzd.class);
-   public static final dys<dze> bk = dys.a("mode", dze.class);
-   public static final dys<dyh> bl = dys.a("leaves", dyh.class);
-   public static final dys<dzf> bm = dys.a("tilt", dzf.class);
-   public static final dys<jm> bn = dys.a("vertical_direction", jm.class, jm.b, jm.a);
-   public static final dys<dyr> bo = dys.a("thickness", dyr.class);
-   public static final dys<dzb> bp = dys.a("sculk_sensor_phase", dzb.class);
-   public static final dym bq = dym.a("slot_0_occupied");
-   public static final dym br = dym.a("slot_1_occupied");
-   public static final dym bs = dym.a("slot_2_occupied");
-   public static final dym bt = dym.a("slot_3_occupied");
-   public static final dym bu = dym.a("slot_4_occupied");
-   public static final dym bv = dym.a("slot_5_occupied");
-   public static final dyu bw = dyu.a("dusted", 0, 3);
-   public static final dym bx = dym.a("cracked");
-   public static final dym by = dym.a("crafting");
-   public static final dys<dxb> bz = dys.a("trial_spawner_state", dxb.class);
-   public static final dys<dxi> bA = dys.a("vault_state", dxi.class);
-   public static final dys<dmi.a> bB = dys.a("creaking", dmi.a.class);
-   public static final dym bC = dym.a("ominous");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+public final class dyl<T extends Enum<T> & baq> extends dyq<T> {
+   private final List<T> a;
+   private final Map<String, T> b;
+   private final int[] c;
+
+   private dyl(String $$0, Class<T> $$1, List<T> $$2) {
+      super($$0, $$1);
+      if ($$2.isEmpty()) {
+         throw new IllegalArgumentException("Trying to make empty EnumProperty '" + $$0 + "'");
+      } else {
+         this.a = List.copyOf($$2);
+         T[] $$3 = $$1.getEnumConstants();
+         this.c = new int[$$3.length];
+
+         for (T $$4 : $$3) {
+            this.c[$$4.ordinal()] = $$2.indexOf($$4);
+         }
+
+         Builder<String, T> $$5 = ImmutableMap.builder();
+
+         for (T $$6 : $$2) {
+            String $$7 = $$6.c();
+            $$5.put($$7, $$6);
+         }
+
+         this.b = $$5.buildOrThrow();
+      }
+   }
+
+   @Override
+   public List<T> a() {
+      return this.a;
+   }
+
+   @Override
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
+   }
+
+   public String a(T $$0) {
+      return $$0.c();
+   }
+
+   public int b(T $$0) {
+      return this.c[$$0.ordinal()];
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dyl<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      int $$0 = super.b();
+      return 31 * $$0 + this.a.hashCode();
+   }
+
+   public static <T extends Enum<T> & baq> dyl<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   public static <T extends Enum<T> & baq> dyl<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   }
+
+   @SafeVarargs
+   public static <T extends Enum<T> & baq> dyl<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, List.of($$2));
+   }
+
+   public static <T extends Enum<T> & baq> dyl<T> a(String $$0, Class<T> $$1, List<T> $$2) {
+      return new dyl<>($$0, $$1, $$2);
+   }
 }

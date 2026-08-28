@@ -1,30 +1,34 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public class bgg extends DataFix {
-   public bgg(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class bgg extends DataFix {
+   private final String a;
+   private final String b;
+   private final String c;
+
+   public bgg(Schema $$0, String $$1, String $$2) {
+      this($$0, $$1, $$2, $$2);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.G);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bgg::a));
+   public bgg(Schema $$0, String $$1, String $$2, String $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(bgg::c)).result().orElse(false);
-      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", bgg::b);
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bin.t);
+      OpticFinder<?> $$1 = $$0.findField("components");
+      return this.fixTypeEverywhereTyped(
+         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameAndFixField(this.b, this.c, this::a)))
+      );
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
-   }
-
-   private static boolean c(Dynamic<?> $$0) {
-      return $$0.get("id").asString("").equals("Iglu");
-   }
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

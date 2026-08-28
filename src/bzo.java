@@ -1,146 +1,65 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
-import java.util.function.ToIntFunction;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bzo<E extends bwo> extends bxz<E> {
-   public static final int c = 160;
-   private final ToIntFunction<E> d;
-   private final int e;
-   private final int f;
-   private final float g;
-   private final cgx h;
-   private final int i;
-   private final Function<E, axe> j;
-   private Optional<Long> k = Optional.empty();
-   private Optional<bzo.a> l = Optional.empty();
+public class bzo {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private static final int d = 4;
 
-   public bzo(ToIntFunction<E> $$0, int $$1, int $$2, float $$3, cgx $$4, int $$5, Function<E, axe> $$6) {
-      super(ImmutableMap.of(cfk.n, cfl.c, cfk.V, cfl.b, cfk.h, cfl.a, cfk.W, cfl.b), 160);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-   }
+   public static bxr<bwf> a(float $$0) {
+      Long2LongMap $$1 = new Long2LongOpenHashMap();
+      MutableLong $$2 = new MutableLong(0L);
+      return cbd.a(
+         (Function<cbd.b<bwf>, ? extends App<cbd.c<bwf>, cbg<bwf>>>)($$3 -> $$3.group($$3.c(cfb.m), $$3.c(cfb.b))
+               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
+                     if ($$4x.ad() - $$2.getValue() < 20L) {
+                        return false;
+                     } else {
+                        chb $$7 = $$4x.A();
+                        Optional<jh> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(chf.n), $$5.dw(), 48, chb.b.c);
+                        if (!$$8.isEmpty() && !($$8.get().j($$5.dw()) <= 4.0)) {
+                           MutableInt $$9 = new MutableInt(0);
+                           $$2.setValue($$4x.ad() + (long)$$4x.H_().a(20));
+                           Predicate<jh> $$10 = $$3xxx -> {
+                              long $$4xx = $$3xxx.a();
+                              if ($$1.containsKey($$4xx)) {
+                                 return false;
+                              } else if ($$9.incrementAndGet() >= 5) {
+                                 return false;
+                              } else {
+                                 $$1.put($$4xx, $$2.getValue() + 40L);
+                                 return true;
+                              }
+                           };
+                           Set<Pair<jq<che>, jh>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(chf.n), $$10, $$5.dw(), 48, chb.b.c).collect(Collectors.toSet());
+                           eue $$12 = bxj.a($$5, $$11);
+                           if ($$12 != null && $$12.j()) {
+                              jh $$13 = $$12.l();
+                              Optional<jq<che>> $$14 = $$7.c($$13);
+                              if ($$14.isPresent()) {
+                                 $$3x.a(new cfe($$13, $$0, 1));
+                                 agy.c($$4x, $$13);
+                              }
+                           } else if ($$9.getValue() < 5) {
+                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
+                           }
 
-   protected void a(ash $$0, bwo $$1, long $$2) {
-      bxi<?> $$3 = $$1.ec();
-      $$3.c(cfk.h).flatMap($$2x -> $$2x.a($$2xx -> this.h.a($$0, $$1, $$2xx))).ifPresent($$1x -> this.b($$1, $$1x));
-   }
-
-   protected void b(ash $$0, E $$1, long $$2) {
-      bxi<?> $$3 = $$1.ec();
-      if (!$$3.a(cfk.W)) {
-         $$0.a($$1, (byte)59);
-         $$3.a(cfk.V, this.d.applyAsInt($$1));
-      }
-   }
-
-   protected boolean c(ash $$0, bwo $$1, long $$2) {
-      return this.l.isPresent() && this.l.get().c().bL();
-   }
-
-   protected void d(ash $$0, E $$1, long $$2) {
-      if (!this.l.isEmpty()) {
-         $$1.ec().a(cfk.m, new cfn(this.l.get().a(), this.g, 0));
-         $$1.ec().a(cfk.n, new byk(this.l.get().c(), true));
-         boolean $$3 = !this.l.get().c().dw().equals(this.l.get().b());
-         if ($$3) {
-            $$0.a($$1, (byte)59);
-            $$1.L().o();
-            this.b($$1, this.l.get().c);
-         } else {
-            jh $$4 = $$1.dw();
-            if ($$4.equals(this.l.get().a())) {
-               $$0.a($$1, (byte)58);
-               if (this.k.isEmpty()) {
-                  this.k = Optional.of($$2);
-               }
-
-               if ($$2 - this.k.get() >= (long)this.i) {
-                  $$1.ec().a(cfk.W, this.a($$4, this.l.get().b()));
-                  $$0.a(null, $$1, this.j.apply($$1), axg.g, 1.0F, $$1.fh());
-                  this.l = Optional.empty();
-               }
-            }
-         }
-      }
-   }
-
-   private fby a(jh $$0, jh $$1) {
-      double $$2 = 0.5;
-      double $$3 = 0.5 * (double)bae.j((double)($$1.u() - $$0.u()));
-      double $$4 = 0.5 * (double)bae.j((double)($$1.w() - $$0.w()));
-      return fby.c($$1).b($$3, 0.0, $$4);
-   }
-
-   private Optional<jh> a(bwo $$0, bwg $$1) {
-      jh $$2 = $$1.dw();
-      if (!this.a($$0, $$2)) {
-         return Optional.empty();
-      } else {
-         List<jh> $$3 = Lists.newArrayList();
-         jh.a $$4 = $$2.k();
-
-         for (jm $$5 : jm.c.a) {
-            $$4.g($$2);
-
-            for (int $$6 = 0; $$6 < this.f; $$6++) {
-               if (!this.a($$0, $$4.c($$5))) {
-                  $$4.c($$5.g());
-                  break;
-               }
-            }
-
-            if ($$4.k($$2) >= this.e) {
-               $$3.add($$4.j());
-            }
-         }
-
-         cfs $$7 = $$0.L();
-         return $$3.stream().sorted(Comparator.comparingDouble($$0.dw()::j)).filter($$1x -> {
-            eul $$2x = $$7.a($$1x, 0);
-            return $$2x != null && $$2x.j();
-         }).findFirst();
-      }
-   }
-
-   private boolean a(bwo $$0, jh $$1) {
-      return $$0.L().a($$1) && $$0.a(eut.b($$0, $$1)) == 0.0F;
-   }
-
-   private void b(bwo $$0, bwg $$1) {
-      this.k = Optional.empty();
-      this.l = this.a($$0, $$1).map($$1x -> new bzo.a($$1x, $$1.dw(), $$1));
-   }
-
-   public static class a {
-      private final jh a;
-      private final jh b;
-      final bwg c;
-
-      public a(jh $$0, jh $$1, bwg $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public jh a() {
-         return this.a;
-      }
-
-      public jh b() {
-         return this.b;
-      }
-
-      public bwg c() {
-         return this.c;
-      }
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

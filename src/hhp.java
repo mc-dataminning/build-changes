@@ -1,98 +1,37 @@
-import javax.annotation.Nullable;
+public class hhp extends hhs {
+   private final xk a;
+   private fos b = fos.a;
+   private final ftr c;
+   private int C;
 
-public class hhp {
-   private final fmg a;
-   @Nullable
-   private hhq b;
-
-   public hhp(fmg $$0, fmk $$1) {
-      this.a = $$0;
+   public hhp(ftr $$0, xk $$1, xk $$2) {
+      super($$1);
+      this.c = $$0;
+      this.a = $$2;
    }
 
-   public void a(gkf $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
+   @Override
+   public void aT_() {
+      this.m.af().i();
+      this.b = fos.a(this.p, this.a, this.n - 50);
+      this.C = this.b.a() * 9;
+      this.c(fny.a(xj.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.C / 2 + 9, 200, 20).a());
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
+   @Override
+   public xk i() {
+      return xk.i().b(this.l).f(": ").b(this.a);
    }
 
-   public void a(@Nullable gfk $$0, @Nullable fbw $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
+   @Override
+   public void aP_() {
+      flz.Q().a(this.c);
    }
 
-   public void a(gfk $$0, jh $$1, dxv $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
-
-   public void a(cxp $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.n.r.a(this);
-   }
-
-   public void d() {
-      if (this.b != null) {
-         if (this.a.s != null) {
-            this.b.a();
-         } else {
-            this.b();
-         }
-      } else if (this.a.s != null) {
-         this.c();
-      }
-   }
-
-   public void a(hhr $$0) {
-      this.a.n.r = $$0;
-      this.a.n.az();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public fmg e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.r == null ? false : this.a.r.j() == dhf.a;
-   }
-
-   public static xv a(String $$0) {
-      return xv.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cxp $$0, cxp $$1, ctm $$2) {
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.C / 2 - 9 * 2, 11184810);
+      this.b.a($$0, this.n / 2, this.o / 2 - this.C / 2);
    }
 }

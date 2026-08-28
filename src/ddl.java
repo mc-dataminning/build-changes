@@ -1,9 +1,8 @@
-import io.netty.buffer.ByteBuf;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record ddl(int b) {
-   public static final zt<ByteBuf, ddl> a = zt.a(zr.h, ddl::a, ddl::new);
-
-   public int a() {
-      return this.b;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ddl {
 }

@@ -1,171 +1,142 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class bto extends evj {
-   private static final Logger a = LogUtils.getLogger();
-   private final long b;
-   private int c;
-   private boolean d = true;
-   private boolean e = true;
-   private final Map<alz, btn> f = new Object2ObjectOpenHashMap();
+public class bto {
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final yh c = yh.a.a(new xi(xi.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new xq(xq.a.a, xk.b("MCPE-28723")));
+   private final List<btm> d = Lists.newArrayList();
+   private final bvx e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
 
-   public static evj.a<bto> a(long $$0) {
-      return new evj.a<>(() -> new bto($$0), ($$1, $$2) -> a($$0, $$1), bbs.m);
+   public bto(bvx $$0) {
+      this.e = $$0;
    }
 
-   public bto(long $$0) {
-      this.b = $$0;
-   }
-
-   public bam a(alz $$0) {
-      bam $$1 = this.f.computeIfAbsent($$0, this::c).a();
-      return new bto.a($$1);
-   }
-
-   private btn c(alz $$0) {
-      return this.b($$0, this.c, this.d, this.e);
-   }
-
-   private btn b(alz $$0, int $$1, boolean $$2, boolean $$3) {
-      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
-      return new btn($$4, $$3 ? Optional.of($$0) : Optional.empty());
-   }
-
-   public void a(BiConsumer<alz, btn> $$0) {
-      this.f.forEach($$0);
-   }
-
-   public void a(int $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   @Override
-   public ux a(ux $$0, js.a $$1) {
-      $$0.a("salt", this.c);
-      $$0.a("include_world_seed", this.d);
-      $$0.a("include_sequence_id", this.e);
-      ux $$2 = new ux();
-      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (vu)btn.a.encodeStart(vl.a, $$2x).result().orElseThrow()));
-      $$0.a("sequences", $$2);
-      return $$0;
-   }
-
-   private static boolean a(ux $$0, String $$1, boolean $$2) {
-      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
-   }
-
-   public static bto a(long $$0, ux $$1) {
-      bto $$2 = new bto($$0);
-      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
-      ux $$3 = $$1.p("sequences");
-
-      for (String $$5 : $$3.e()) {
-         try {
-            btn $$6 = (btn)((Pair)btn.a.decode(vl.a, $$3.c($$5)).result().get()).getFirst();
-            $$2.f.put(alz.a($$5), $$6);
-         } catch (Exception var9) {
-            a.error("Failed to load random sequence {}", $$5, var9);
-         }
+   public void a(btr $$0, float $$1) {
+      this.c();
+      btw $$2 = btw.a(this.e);
+      btm $$3 = new btm($$0, $$1, $$2, this.e.Z);
+      this.d.add($$3);
+      this.f = this.e.af;
+      this.j = true;
+      if (!this.i && this.e.bL() && a($$0)) {
+         this.i = true;
+         this.g = this.e.af;
+         this.h = this.g;
+         this.e.i_();
       }
-
-      return $$2;
    }
 
-   public int a() {
-      int $$0 = this.f.size();
-      this.f.clear();
-      return $$0;
+   private static boolean a(btr $$0) {
+      return $$0.d() instanceof bvx;
    }
 
-   public void b(alz $$0) {
-      this.f.put($$0, this.c($$0));
+   private xk a(bvb $$0, xk $$1, String $$2, String $$3) {
+      cxg $$5 = $$0 instanceof bvx $$4 ? $$4.eZ() : cxg.j;
+      return !$$5.f() && $$5.b(ku.g) ? xk.a($$2, this.e.p_(), $$1, $$5.K()) : xk.a($$3, this.e.p_(), $$1);
    }
 
-   public void a(alz $$0, int $$1, boolean $$2, boolean $$3) {
-      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
-   }
-
-   class a implements bam {
-      private final bam c;
-
-      a(final bam $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public bam d() {
-         bto.this.c();
-         return this.c.d();
-      }
-
-      @Override
-      public eed e() {
-         bto.this.c();
-         return this.c.e();
-      }
-
-      @Override
-      public void b(long $$0) {
-         bto.this.c();
-         this.c.b($$0);
-      }
-
-      @Override
-      public int f() {
-         bto.this.c();
-         return this.c.f();
-      }
-
-      @Override
-      public int a(int $$0) {
-         bto.this.c();
-         return this.c.a($$0);
-      }
-
-      @Override
-      public long g() {
-         bto.this.c();
-         return this.c.g();
-      }
-
-      @Override
-      public boolean h() {
-         bto.this.c();
-         return this.c.h();
-      }
-
-      @Override
-      public float i() {
-         bto.this.c();
-         return this.c.i();
-      }
-
-      @Override
-      public double j() {
-         bto.this.c();
-         return this.c.j();
-      }
-
-      @Override
-      public double k() {
-         bto.this.c();
-         return this.c.k();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
+   private xk a(btm $$0, @Nullable bvb $$1) {
+      btr $$2 = $$0.a();
+      if (!$$2.a(axm.m) && !$$2.a(axm.s)) {
+         xk $$4 = a($$1);
+         bvb $$5 = $$2.d();
+         xk $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
          } else {
-            return $$0 instanceof bto.a $$1 ? this.c.equals($$1.c) : false;
+            return (xk)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : xk.a("death.fell.killer", this.e.p_()));
          }
+      } else {
+         btw $$3 = Objects.requireNonNullElse($$0.c(), btw.a);
+         return xk.a($$3.a(), this.e.p_());
+      }
+   }
+
+   @Nullable
+   private static xk a(@Nullable bvb $$0) {
+      return $$0 == null ? null : $$0.p_();
+   }
+
+   public xk a() {
+      if (this.d.isEmpty()) {
+         return xk.a("death.attack.generic", this.e.p_());
+      } else {
+         btm $$0 = this.d.get(this.d.size() - 1);
+         btr $$1 = $$0.a();
+         btm $$2 = this.d();
+         btv $$3 = $$1.k().e();
+         if ($$3 == btv.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == btv.c) {
+            String $$4 = "death.attack." + $$1.f();
+            xk $$5 = xn.a((xk)xk.c($$4 + ".link")).c(c);
+            return xk.a($$4 + ".message", this.e.p_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
+      }
+   }
+
+   @Nullable
+   private btm d() {
+      btm $$0 = null;
+      btm $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         btm $$5 = this.d.get($$4);
+         btm $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         btr $$7 = $$5.a();
+         boolean $$8 = $$7.a(axm.s);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(axm.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
+   }
+
+   public int b() {
+      return this.i ? this.e.af - this.g : this.h - this.g;
+   }
+
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bL() || this.e.af - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.af;
+         if ($$1) {
+            this.e.j_();
+         }
+
+         this.d.clear();
       }
    }
 }

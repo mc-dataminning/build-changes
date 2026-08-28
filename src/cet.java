@@ -1,32 +1,40 @@
-public class cet extends cdo {
-   private final cnq b;
+import java.util.EnumSet;
+
+public class cet extends cev {
+   private final bwu a;
+   private bvx b;
    private int c;
 
-   public cet(cnq $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+   public cet(bwu $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(ccv.a.d));
+   }
+
+   @Override
+   public boolean b() {
+      if (this.a.p() && !this.a.go()) {
+         bvx $$0 = this.a.ah_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.es();
+            int $$1 = $$0.et();
+            return $$1 != this.c && this.a(this.b, cgo.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void d() {
-      super.d();
-      this.c = 0;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b.w(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.w(true);
-      } else {
-         this.b.w(false);
+      this.e.h(this.b);
+      bvx $$0 = this.a.ah_();
+      if ($$0 != null) {
+         this.c = $$0.et();
       }
+
+      super.d();
    }
 }

@@ -1,29 +1,31 @@
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-public class bhk extends bgq {
-   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
+public class bhk extends DataFix {
+   private final String a;
+   private final TypeReference b;
+   private final UnaryOperator<String> c;
 
-   public bhk(Schema $$0) {
-      super($$0, "LockComponentPredicateFix", "minecraft:lock");
+   public bhk(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b($$0);
-   }
-
-   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<String> $$1 = $$0.asString().result();
-      if ($$1.isPresent()) {
-         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
-         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
-         return $$0.emptyMap().set("components", $$3);
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bkb.a());
+      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
+         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
       } else {
-         return $$0.emptyMap();
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
       }
    }
 }

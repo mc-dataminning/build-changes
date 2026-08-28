@@ -1,53 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.ToIntFunction;
+import org.joml.Vector3f;
 
-public record buc(String d, btz e, float f, bty g, bue h) {
-   public static final Codec<buc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(buc::a),
-               btz.d.fieldOf("scaling").forGetter(buc::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(buc::c),
-               bty.g.optionalFieldOf("effects", bty.a).forGetter(buc::d),
-               bue.d.optionalFieldOf("death_message_type", bue.a).forGetter(buc::e)
-            )
-            .apply($$0, buc::new)
-   );
-   public static final Codec<jq<buc>> b = alw.a(mb.s);
-   public static final zt<xg, jq<buc>> c = zr.b(mb.s);
+class buc extends bue {
+   private final float c;
+   private final ToIntFunction<bac> d;
 
-   public buc(String $$0, btz $$1, float $$2) {
-      this($$0, $$1, $$2, bty.a, bue.a);
+   protected buc(buf $$0, int $$1, float $$2, ToIntFunction<bac> $$3) {
+      super($$0, $$1, ls.G);
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public buc(String $$0, btz $$1, float $$2, bty $$3) {
-      this($$0, $$1, $$2, $$3, bue.a);
+   @Override
+   public void a(arx $$0, bvx $$1, int $$2, btr $$3, float $$4) {
+      if ($$1.dZ().i() <= this.c) {
+         int $$5 = this.d.applyAsInt($$1.dZ());
+
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            this.a($$0, $$1, $$1.dB(), $$1.dD() + (double)$$1.ds() / 2.0, $$1.dH());
+         }
+      }
    }
 
-   public buc(String $$0, float $$1, bty $$2) {
-      this($$0, btz.b, $$1, $$2);
-   }
-
-   public buc(String $$0, float $$1) {
-      this($$0, btz.b, $$1);
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public btz b() {
-      return this.e;
-   }
-
-   public float c() {
-      return this.f;
-   }
-
-   public bty d() {
-      return this.g;
-   }
-
-   public bue e() {
-      return this.h;
+   private void a(arx $$0, bvx $$1, double $$2, double $$3, double $$4) {
+      cmv $$5 = bvi.be.a($$0, bvh.k);
+      if ($$5 != null) {
+         bac $$6 = $$1.dZ();
+         float $$7 = (float) (Math.PI / 2);
+         float $$8 = azu.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
+         Vector3f $$9 = $$1.bT().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
+         $$5.b($$2, $$3, $$4, $$0.H_().i() * 360.0F, 0.0F);
+         $$5.h(new fbr($$9));
+         $$0.b($$5);
+         $$5.a(awv.xz);
+      }
    }
 }

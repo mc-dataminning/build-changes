@@ -1,13 +1,10 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dig extends dhz {
-   long D();
-
-   default boolean f_(jh $$0) {
-      return true;
-   }
-
-   default void a(@Nullable Supplier<String> $$0) {
+public class dig {
+   public static MapCodec<? extends dif> a(kd<MapCodec<? extends dif>> $$0) {
+      kd.a($$0, "fixed", dim.b);
+      kd.a($$0, "multi_noise", dio.c);
+      kd.a($$0, "checkerboard", dij.b);
+      return kd.a($$0, "the_end", dis.b);
    }
 }

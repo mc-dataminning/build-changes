@@ -1,48 +1,73 @@
 import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class byd extends bxz<cpj> {
-   @Nullable
-   private crk c;
+public class byd extends bxq<bwf> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<bvx, Float> f;
+   private final Function<bvx, Double> g;
 
-   public byd(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+   public byd(Function<bvx, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   protected boolean a(ash $$0, cpj $$1) {
-      jh $$2 = $$1.dw();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && bzi.a($$0, $$1, $$2);
+   public byd(Function<bvx, Float> $$0, Function<bvx, Double> $$1) {
+      super(ae.a(() -> {
+         Builder<cfb<?>, cfc> $$0x = ImmutableMap.builder();
+         $$0x.put(cfb.n, cfc.c);
+         $$0x.put(cfb.m, cfc.c);
+         $$0x.put(cfb.P, cfc.b);
+         $$0x.put(cfb.R, cfc.c);
+         $$0x.put(cfb.O, cfc.a);
+         $$0x.put(cfb.r, cfc.b);
+         $$0x.put(cfb.Z, cfc.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected boolean a(ash $$0, cpj $$1, long $$2) {
-      return this.c != null && !this.c.d();
+   protected float a(bwf $$0) {
+      return this.f.apply($$0);
    }
 
-   protected void b(ash $$0, cpj $$1, long $$2) {
-      this.c = null;
-      $$1.ec().a($$0.ad(), $$0.ac());
+   private Optional<cpo> b(bwf $$0) {
+      return $$0.ec().c(cfb.O);
    }
 
-   protected void c(ash $$0, cpj $$1, long $$2) {
-      bam $$3 = $$1.dZ();
-      if ($$3.a(100) == 0) {
-         $$1.gt();
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected boolean a(arx $$0, bwf $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.ec().a(cfb.r) && !$$1.ec().a(cfb.Z);
+   }
+
+   protected void b(arx $$0, bwf $$1, long $$2) {
+      $$1.ec().a(cfb.R, true);
+   }
+
+   protected void c(arx $$0, bwf $$1, long $$2) {
+      bwz<?> $$3 = $$1.ec();
+      $$3.a(cfb.P, 100);
+      $$3.a(cfb.R, false);
+      $$3.b(cfb.m);
+      $$3.b(cfb.n);
+   }
+
+   protected void d(arx $$0, bwf $$1, long $$2) {
+      cpo $$3 = this.b($$1).get();
+      bwz<?> $$4 = $$1.ec();
+      $$4.a(cfb.n, new byb($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.g($$3) < azu.k($$5)) {
+         $$4.b(cfb.m);
+      } else {
+         $$4.a(cfb.m, new cfe(new byb($$3, false), this.a($$1), 2));
       }
-
-      if ($$3.a(200) == 0 && bzi.a($$0, $$1, $$1.dw())) {
-         cwm $$4 = ae.a(cwm.values(), $$3);
-         int $$5 = $$3.a(3);
-         cxp $$6 = this.a($$4, $$5);
-         cqq.a(new cql($$1.dW(), $$1, $$1.dB(), $$1.dF(), $$1.dH(), $$6), $$0, $$6);
-      }
-   }
-
-   private cxp a(cwm $$0, int $$1) {
-      cxp $$2 = new cxp(cxt.vk);
-      $$2.b(ku.af, new daf((byte)$$1, List.of(new dae(dae.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
    }
 }

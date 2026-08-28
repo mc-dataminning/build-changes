@@ -1,58 +1,123 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Either;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class anu {
-   public static void a(CommandDispatcher<ew> $$0) {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("argument.pos.unloaded"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xk.b("commands.fillbiome.toobig", $$0, $$1));
+
+   public static void a(CommandDispatcher<ew> $$0, es $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("debugconfig").requires($$0x -> $$0x.c(3)))
-               .then(ex.a("config").then(ex.a("target", fj.c()).executes($$0x -> a((ew)$$0x.getSource(), fj.e($$0x, "target"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("fillbiome").requires($$0x -> $$0x.c(2)))
             .then(
-               ex.a("unconfig")
+               ex.a("from", gs.a())
                   .then(
-                     ex.a("target", gm.a())
-                        .suggests(($$0x, $$1) -> fb.b(a(((ew)$$0x.getSource()).l()), $$1))
-                        .executes($$0x -> a((ew)$$0x.getSource(), gm.a($$0x, "target")))
+                     ex.a("to", gs.a())
+                        .then(
+                           ((RequiredArgumentBuilder)ex.a("biome", fv.a($$1, mb.aI))
+                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "to"), fv.a($$0x, "biome", mb.aI), $$0xx -> true)))
+                              .then(
+                                 ex.a("replace")
+                                    .then(
+                                       ex.a("filter", fz.a($$1, mb.aI))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ew)$$0x.getSource(),
+                                                   gs.a($$0x, "from"),
+                                                   gs.a($$0x, "to"),
+                                                   fv.a($$0x, "biome", mb.aI),
+                                                   fz.a($$0x, "filter", mb.aI)::test
+                                                )
+                                          )
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static Iterable<String> a(MinecraftServer $$0) {
-      Set<String> $$1 = new HashSet<>();
+   private static int a(int $$0) {
+      return kb.c(kb.a($$0));
+   }
 
-      for (wp $$2 : $$0.ah().e()) {
-         if ($$2.k() instanceof ati $$3) {
-            $$1.add($$3.j().getId().toString());
+   private static jh a(jh $$0) {
+      return new jh(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   private static die a(MutableInt $$0, dzj $$1, env $$2, jq<dib> $$3, Predicate<jq<dib>> $$4) {
+      return ($$5, $$6, $$7, $$8) -> {
+         int $$9 = kb.c($$5);
+         int $$10 = kb.c($$6);
+         int $$11 = kb.c($$7);
+         jq<dib> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
+            $$0.increment();
+            return $$3;
+         } else {
+            return $$12;
          }
-      }
-
-      return $$1;
+      };
    }
 
-   private static int a(ew $$0, asi $$1) {
-      GameProfile $$2 = $$1.gh();
-      $$1.f.n();
-      $$0.a(() -> xv.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
-      return 1;
+   public static Either<Integer, CommandSyntaxException> a(arx $$0, jh $$1, jh $$2, jq<dib> $$3) {
+      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
+      });
    }
 
-   private static int a(ew $$0, UUID $$1) {
-      for (wp $$2 : $$0.l().ah().e()) {
-         xb var5 = $$2.k();
-         if (var5 instanceof ati) {
-            ati $$3 = (ati)var5;
-            if ($$3.j().getId().equals($$1)) {
-               $$3.m();
+   public static Either<Integer, CommandSyntaxException> a(arx $$0, jh $$1, jh $$2, jq<dib> $$3, Predicate<jq<dib>> $$4, Consumer<Supplier<xk>> $$5) {
+      jh $$6 = a($$1);
+      jh $$7 = a($$2);
+      env $$8 = env.a($$6, $$7);
+      int $$9 = $$8.d() * $$8.e() * $$8.f();
+      int $$10 = $$0.O().c(dgv.A);
+      if ($$9 > $$10) {
+         return Either.right(b.create($$10, $$9));
+      } else {
+         List<dzj> $$11 = new ArrayList<>();
+
+         for (int $$12 = kj.a($$8.j()); $$12 <= kj.a($$8.m()); $$12++) {
+            for (int $$13 = kj.a($$8.h()); $$13 <= kj.a($$8.k()); $$13++) {
+               dzj $$14 = $$0.a($$13, $$12, eak.n, false);
+               if ($$14 == null) {
+                  return Either.right(a.create());
+               }
+
+               $$11.add($$14);
             }
          }
-      }
 
-      $$0.b(xv.b("Can't find player to unconfig"));
-      return 0;
+         MutableInt $$15 = new MutableInt(0);
+
+         for (dzj $$16 : $$11) {
+            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.m().i().b());
+            $$16.i();
+         }
+
+         $$0.m().a.a($$11);
+         $$5.accept(() -> xk.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
+         return Either.left($$15.getValue());
+      }
+   }
+
+   private static int a(ew $$0, jh $$1, jh $$2, jq.c<dib> $$3, Predicate<jq<dib>> $$4) throws CommandSyntaxException {
+      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
+      Optional<CommandSyntaxException> $$6 = $$5.right();
+      if ($$6.isPresent()) {
+         throw (CommandSyntaxException)$$6.get();
+      } else {
+         return (Integer)$$5.left().get();
+      }
    }
 }

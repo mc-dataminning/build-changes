@@ -1,30 +1,38 @@
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum flo implements bah {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class flo {
+   private final gfg a;
+   private int b = -1;
+   @Nullable
+   private Consumer<um> c;
 
-   private static final IntFunction<flo> d = ayv.a(flo::b, values(), ayv.a.b);
-   private final int e;
-   private final String f;
-
-   private flo(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public flo(gfg $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   public boolean a(int $$0, @Nullable um $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   private int a(Consumer<um> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   public static flo a(int $$0) {
-      return d.apply($$0);
+   public void a(int $$0, Consumer<um> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ahw($$2, $$0));
+   }
+
+   public void a(jh $$0, Consumer<um> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ahe($$2, $$0));
    }
 }

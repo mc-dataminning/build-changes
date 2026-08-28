@@ -1,439 +1,169 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
 import org.slf4j.Logger;
 
 public class gfu {
-   private static final Logger a = LogUtils.getLogger();
-   private final fmg b;
-   private final gfl c;
-   private jh d = new jh(-1, -1, -1);
-   private cxp e = cxp.j;
-   private float f;
-   private float g;
-   private int h;
-   private boolean i;
-   private dhf j = dhf.e;
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public xk c;
+   public xk d;
    @Nullable
-   private dhf k;
-   private int l;
+   public akm.b e;
+   public long f;
+   public int g = ab.b().e();
+   public xk h = xk.b(ab.b().c());
+   public List<xk> i = Collections.emptyList();
+   private gfu.a l = gfu.a.c;
+   @Nullable
+   private byte[] m;
+   private gfu.c n;
+   private gfu.b o = gfu.b.a;
 
-   public gfu(fmg $$0, gfl $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gfu(String $$0, String $$1, gfu.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   public void a(cpx $$0) {
-      this.j.a($$0.gj());
-   }
-
-   public void a(dhf $$0, @Nullable dhf $$1) {
-      this.j = $$0;
-      this.k = $$1;
-      this.j.a(this.b.t.gj());
-   }
-
-   public void a(dhf $$0) {
-      if ($$0 != this.j) {
-         this.k = this.j;
+   public um a() {
+      um $$0 = new um();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
       }
 
-      this.j = $$0;
-      this.j.a(this.b.t.gj());
+      if (this.l == gfu.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == gfu.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
    }
 
-   public boolean a() {
-      return this.j.h();
+   public gfu.a b() {
+      return this.l;
    }
 
-   public boolean a(jh $$0) {
-      if (this.b.t.a(this.b.s, $$0, this.j)) {
-         return false;
-      } else {
-         dhi $$1 = this.b.s;
-         dxv $$2 = $$1.a_($$0);
-         if (!this.b.t.eZ().h().a($$2, $$1, $$0, this.b.t)) {
-            return false;
+   public void a(gfu.a $$0) {
+      this.l = $$0;
+   }
+
+   public static gfu a(um $$0) {
+      gfu $$1 = new gfu($$0.l("name"), $$0.l("ip"), gfu.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
+         }
+      }
+
+      if ($$0.b("acceptTextures", 99)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(gfu.a.a);
          } else {
-            dkm $$3 = $$2.b();
-            if ($$3 instanceof dnv && !this.b.t.gG()) {
-               return false;
-            } else if ($$2.l()) {
-               return false;
-            } else {
-               $$3.a($$1, $$0, $$2, (cpx)this.b.t);
-               etx $$4 = $$1.b_($$0);
-               boolean $$5 = $$1.a($$0, $$4.g(), 11);
-               if ($$5) {
-                  $$3.a((dhj)$$1, $$0, $$2);
-               }
-
-               return $$5;
-            }
-         }
-      }
-   }
-
-   public boolean a(jh $$0, jm $$1) {
-      if (this.b.t.a(this.b.s, $$0, this.j)) {
-         return false;
-      } else if (!this.b.s.F_().a($$0)) {
-         return false;
-      } else {
-         if (this.j.g()) {
-            dxv $$2 = this.b.s.a_($$0);
-            this.b.aB().a(this.b.s, $$0, $$2, 1.0F);
-            this.a(this.b.s, $$2x -> {
-               this.a($$0);
-               return new air(air.a.a, $$0, $$1, $$2x);
-            });
-            this.h = 5;
-         } else if (!this.i || !this.b($$0)) {
-            if (this.i) {
-               this.c.b(new air(air.a.b, this.d, $$1));
-            }
-
-            dxv $$3 = this.b.s.a_($$0);
-            this.b.aB().a(this.b.s, $$0, $$3, 0.0F);
-            this.a(this.b.s, $$3x -> {
-               boolean $$4 = !$$3.l();
-               if ($$4 && this.f == 0.0F) {
-                  $$3.a(this.b.s, $$0, this.b.t);
-               }
-
-               if ($$4 && $$3.a(this.b.t, this.b.t.dW(), $$0) >= 1.0F) {
-                  this.a($$0);
-               } else {
-                  this.i = true;
-                  this.d = $$0;
-                  this.e = this.b.t.eZ();
-                  this.f = 0.0F;
-                  this.g = 0.0F;
-                  this.b.s.a(this.b.t.ar(), this.d, this.l());
-               }
-
-               return new air(air.a.a, $$0, $$1, $$3x);
-            });
-         }
-
-         return true;
-      }
-   }
-
-   public void b() {
-      if (this.i) {
-         dxv $$0 = this.b.s.a_(this.d);
-         this.b.aB().a(this.b.s, this.d, $$0, -1.0F);
-         this.c.b(new air(air.a.b, this.d, jm.a));
-         this.i = false;
-         this.f = 0.0F;
-         this.b.s.a(this.b.t.ar(), this.d, -1);
-         this.b.t.gD();
-      }
-   }
-
-   public boolean b(jh $$0, jm $$1) {
-      this.m();
-      if (this.h > 0) {
-         this.h--;
-         return true;
-      } else if (this.j.g() && this.b.s.F_().a($$0)) {
-         this.h = 5;
-         dxv $$2 = this.b.s.a_($$0);
-         this.b.aB().a(this.b.s, $$0, $$2, 1.0F);
-         this.a(this.b.s, $$2x -> {
-            this.a($$0);
-            return new air(air.a.a, $$0, $$1, $$2x);
-         });
-         return true;
-      } else if (this.b($$0)) {
-         dxv $$3 = this.b.s.a_($$0);
-         if ($$3.l()) {
-            this.i = false;
-            return false;
-         } else {
-            this.f = this.f + $$3.a(this.b.t, this.b.t.dW(), $$0);
-            if (this.g % 4.0F == 0.0F) {
-               dsc $$4 = $$3.A();
-               this.b.ak().a(new hfd($$4.f(), axg.e, ($$4.a() + 1.0F) / 8.0F, $$4.b() * 0.5F, hfi.t(), $$0));
-            }
-
-            this.g++;
-            this.b.aB().a(this.b.s, $$0, $$3, bae.a(this.f, 0.0F, 1.0F));
-            if (this.f >= 1.0F) {
-               this.i = false;
-               this.a(this.b.s, $$2 -> {
-                  this.a($$0);
-                  return new air(air.a.c, $$0, $$1, $$2);
-               });
-               this.f = 0.0F;
-               this.g = 0.0F;
-               this.h = 5;
-            }
-
-            this.b.s.a(this.b.t.ar(), this.d, this.l());
-            return true;
+            $$1.a(gfu.a.b);
          }
       } else {
-         return this.a($$0, $$1);
+         $$1.a(gfu.a.c);
       }
+
+      return $$1;
    }
 
-   private void a(gfk $$0, ggy $$1) {
-      try (ggx $$2 = $$0.a().a()) {
-         int $$3 = $$2.b();
-         aac<ahm> $$4 = $$1.predict($$3);
-         this.c.b($$4);
-      }
+   @Nullable
+   public byte[] c() {
+      return this.m;
    }
 
-   public void c() {
-      this.m();
-      if (this.c.k().i()) {
-         this.c.k().b();
-      } else {
-         this.c.k().n();
-      }
-   }
-
-   private boolean b(jh $$0) {
-      cxp $$1 = this.b.t.eZ();
-      return $$0.equals(this.d) && cxp.c($$1, this.e);
-   }
-
-   private void m() {
-      int $$0 = this.b.t.gi().j;
-      if ($$0 != this.l) {
-         this.l = $$0;
-         this.c.b(new ajb(this.l));
-      }
-   }
-
-   public btj a(gkh $$0, bti $$1, fbu $$2) {
-      this.m();
-      if (!this.b.s.F_().a($$2.b())) {
-         return btj.d;
-      } else {
-         MutableObject<btj> $$3 = new MutableObject();
-         this.a(this.b.s, $$4 -> {
-            $$3.setValue(this.b($$0, $$1, $$2));
-            return new ajk($$1, $$2, $$4);
-         });
-         return (btj)$$3.getValue();
-      }
-   }
-
-   private btj b(gkh $$0, bti $$1, fbu $$2) {
-      jh $$3 = $$2.b();
-      cxp $$4 = $$0.b($$1);
-      if (this.j == dhf.d) {
-         return btj.c;
-      } else {
-         boolean $$5 = !$$0.eZ().f() || !$$0.fa().f();
-         boolean $$6 = $$0.fY() && $$5;
-         if (!$$6) {
-            dxv $$7 = this.b.s.a_($$3);
-            if (!this.c.a($$7.b().i())) {
-               return btj.d;
-            }
-
-            btj $$8 = $$7.a($$0.b($$1), this.b.s, $$0, $$1, $$2);
-            if ($$8.a()) {
-               return $$8;
-            }
-
-            if ($$8 instanceof btj.f && $$1 == bti.a) {
-               btj $$9 = $$7.a(this.b.s, $$0, $$2);
-               if ($$9.a()) {
-                  return $$9;
-               }
-            }
-         }
-
-         if (!$$4.f() && !$$0.gE().a($$4)) {
-            dbi $$10 = new dbi($$0, $$1, $$2);
-            btj $$12;
-            if (this.j.g()) {
-               int $$11 = $$4.L();
-               $$12 = $$4.a($$10);
-               $$4.e($$11);
-            } else {
-               $$12 = $$4.a($$10);
-            }
-
-            return $$12;
-         } else {
-            return btj.e;
-         }
-      }
-   }
-
-   public btj a(cpx $$0, bti $$1) {
-      if (this.j == dhf.d) {
-         return btj.e;
-      } else {
-         this.m();
-         MutableObject<btj> $$2 = new MutableObject();
-         this.a(this.b.s, $$3 -> {
-            ajl $$4 = new ajl($$1, $$3, $$0.dM(), $$0.dO());
-            cxp $$5 = $$0.b($$1);
-            if ($$0.gE().a($$5)) {
-               $$2.setValue(btj.e);
-               return $$4;
-            } else {
-               btj $$6 = $$5.a(this.b.s, $$0, $$1);
-               cxp $$8;
-               if ($$6 instanceof btj.d $$7) {
-                  $$8 = Objects.requireNonNullElseGet($$7.d(), () -> $$0.b($$1));
-               } else {
-                  $$8 = $$0.b($$1);
-               }
-
-               if ($$8 != $$5) {
-                  $$0.a($$1, $$8);
-               }
-
-               $$2.setValue($$6);
-               return $$4;
-            }
-         });
-         return (btj)$$2.getValue();
-      }
-   }
-
-   public gkh a(gfk $$0, axq $$1, flr $$2) {
-      return this.a($$0, $$1, $$2, false, false);
-   }
-
-   public gkh a(gfk $$0, axq $$1, flr $$2, boolean $$3, boolean $$4) {
-      return new gkh(this.b, $$0, this.c, $$1, $$2, $$3, $$4);
-   }
-
-   public void a(cpx $$0, bvk $$1) {
-      this.m();
-      this.c.b(aii.a($$1, $$0.cd()));
-      if (this.j != dhf.d) {
-         $$0.e($$1);
-         $$0.gD();
-      }
-   }
-
-   public btj a(cpx $$0, bvk $$1, bti $$2) {
-      this.m();
-      this.c.b(aii.a($$1, $$0.cd(), $$2));
-      return (btj)(this.j == dhf.d ? btj.e : $$0.a($$1, $$2));
-   }
-
-   public btj a(cpx $$0, bvk $$1, fbv $$2, bti $$3) {
-      this.m();
-      fby $$4 = $$2.g().a($$1.dB(), $$1.dD(), $$1.dH());
-      this.c.b(aii.a($$1, $$0.cd(), $$3, $$4));
-      return (btj)(this.j == dhf.d ? btj.e : $$1.a($$0, $$4, $$3));
-   }
-
-   public void a(int $$0, int $$1, int $$2, ctn $$3, cpx $$4) {
-      ctc $$5 = $$4.cd;
-      if ($$0 != $$5.l) {
-         a.warn("Ignoring click in mismatching container. Click in {}, player has {}.", $$0, $$5.l);
-      } else {
-         jz<cuz> $$6 = $$5.k;
-         int $$7 = $$6.size();
-         List<cxp> $$8 = Lists.newArrayListWithCapacity($$7);
-
-         for (cuz $$9 : $$6) {
-            $$8.add($$9.g().v());
-         }
-
-         $$5.a($$1, $$2, $$3, $$4);
-         Int2ObjectMap<cxp> $$10 = new Int2ObjectOpenHashMap();
-
-         for (int $$11 = 0; $$11 < $$7; $$11++) {
-            cxp $$12 = $$8.get($$11);
-            cxp $$13 = $$6.get($$11).g();
-            if (!cxp.a($$12, $$13)) {
-               $$10.put($$11, $$13.v());
-            }
-         }
-
-         this.c.b(new aic($$0, $$5.j(), $$1, $$2, $$3, $$5.g().v(), $$10));
-      }
-   }
-
-   public void a(int $$0, ddl $$1, boolean $$2) {
-      this.c.b(new aip($$0, $$1, $$2));
-   }
-
-   public void a(int $$0, int $$1) {
-      this.c.b(new aib($$0, $$1));
-   }
-
-   public void a(cxp $$0, int $$1) {
-      if (this.j.g() && this.c.a($$0.h().i())) {
-         this.c.b(new aje($$1, $$0));
-      }
-   }
-
-   public void a(cxp $$0) {
-      boolean $$1 = this.b.z instanceof fun && !(this.b.z instanceof fvd);
-      if (this.j.g() && !$$1 && !$$0.f() && this.c.a($$0.h().i())) {
-         this.c.b(new aje(-1, $$0));
-         this.b.t.H().a();
-      }
-   }
-
-   public void b(cpx $$0) {
-      this.m();
-      this.c.b(new air(air.a.f, jh.c, jm.a));
-      $$0.fE();
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
    }
 
    public boolean d() {
-      return this.j.h();
+      return this.n == gfu.c.a;
    }
 
    public boolean e() {
-      return !this.j.g();
+      return this.n == gfu.c.b;
    }
 
-   public boolean f() {
-      return this.j.g();
+   public gfu.c f() {
+      return this.n;
    }
 
-   public boolean g() {
-      return this.b.t.bZ() && this.b.t.dl() instanceof bvz;
+   public void a(gfu $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
    }
 
-   public boolean h() {
-      return this.j == dhf.d;
+   public void b(gfu $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public gfu.b g() {
+      return this.o;
+   }
+
+   public void a(gfu.b $$0) {
+      this.o = $$0;
    }
 
    @Nullable
-   public dhf i() {
-      return this.k;
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            azz $$1 = azz.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
+      }
+
+      return null;
    }
 
-   public dhf j() {
-      return this.j;
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final xk d;
+
+      private a(final String $$0) {
+         this.d = xk.c("addServer.resourcePack." + $$0);
+      }
+
+      public xk a() {
+         return this.d;
+      }
    }
 
-   public boolean k() {
-      return this.i;
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   public int l() {
-      return this.f > 0.0F ? (int)(this.f * 10.0F) : -1;
-   }
-
-   public void a(int $$0) {
-      this.c.b(new aio($$0));
-   }
-
-   public void a(int $$0, int $$1, boolean $$2) {
-      this.c.b(new aie($$0, $$1, $$2));
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

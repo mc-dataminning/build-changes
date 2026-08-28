@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.IOException;
+import java.nio.file.Path;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface has {
+public interface has {
+   void a(alp var1, Path var2) throws IOException;
 }

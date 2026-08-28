@@ -1,15 +1,48 @@
-import java.util.List;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.zip.Deflater;
 
-public record wd(List<String> a, vw<?> b, String c) {
-   public wd(vw<?> $$0, String $$1) {
-      this(List.of(), $$0, $$1);
+public class wd extends MessageToByteEncoder<ByteBuf> {
+   private final byte[] a = new byte[8192];
+   private final Deflater b;
+   private int c;
+
+   public wd(int $$0) {
+      this.c = $$0;
+      this.b = new Deflater();
    }
 
-   public wd(String $$0, vw<?> $$1, String $$2) {
-      this(List.of($$0), $$1, $$2);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      if ($$3 > 8388608) {
+         throw new IllegalArgumentException("Packet too big (is " + $$3 + ", should be less than 8388608)");
+      } else {
+         if ($$3 < this.c) {
+            xb.a($$2, 0);
+            $$2.writeBytes($$1);
+         } else {
+            byte[] $$4 = new byte[$$3];
+            $$1.readBytes($$4);
+            xb.a($$2, $$4.length);
+            this.b.setInput($$4, 0, $$3);
+            this.b.finish();
+
+            while (!this.b.finished()) {
+               int $$5 = this.b.deflate(this.a);
+               $$2.writeBytes(this.a, 0, $$5);
+            }
+
+            this.b.reset();
+         }
+      }
    }
 
-   public wd(String $$0, String $$1, vw<?> $$2, String $$3) {
-      this(List.of($$0, $$1), $$2, $$3);
+   public int a() {
+      return this.c;
+   }
+
+   public void a(int $$0) {
+      this.c = $$0;
    }
 }

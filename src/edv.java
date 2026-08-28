@@ -1,117 +1,60 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class edv implements dgl {
+   private int a;
 
-public record edv(edy j, dxv k, dxv l, edw m, eeh.o n, List<dit.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
-   public static final Codec<edv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               edy.a.fieldOf("noise").forGetter(edv::f),
-               dxv.a.fieldOf("default_block").forGetter(edv::g),
-               dxv.a.fieldOf("default_fluid").forGetter(edv::h),
-               edw.a.fieldOf("noise_router").forGetter(edv::i),
-               eeh.o.b.fieldOf("surface_rule").forGetter(edv::j),
-               dit.d.a.listOf().fieldOf("spawn_target").forGetter(edv::k),
-               Codec.INT.fieldOf("sea_level").forGetter(edv::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(edv::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(edv::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(edv::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(edv::n)
-            )
-            .apply($$0, edv::new)
-   );
-   public static final Codec<jq<edv>> b = alv.a(mb.aR, a);
-   public static final aly<edv> c = aly.a(mb.aR, alz.b("overworld"));
-   public static final aly<edv> d = aly.a(mb.aR, alz.b("large_biomes"));
-   public static final aly<edv> e = aly.a(mb.aR, alz.b("amplified"));
-   public static final aly<edv> f = aly.a(mb.aR, alz.b("nether"));
-   public static final aly<edv> g = aly.a(mb.aR, alz.b("end"));
-   public static final aly<edv> h = aly.a(mb.aR, alz.b("caves"));
-   public static final aly<edv> i = aly.a(mb.aR, alz.b("floating_islands"));
+   @Override
+   public int a(arx $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.O().b(dgv.D)) {
+         return 0;
+      } else {
+         bac $$3 = $$0.A;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.E_() < 5 && $$0.G_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
 
-   @Deprecated
-   public boolean a() {
-      return this.q;
-   }
+               for (ary $$5 : $$0.z()) {
+                  if (!$$5.aa_()) {
+                     jh $$6 = $$5.dw();
+                     if (!$$0.G_().g() || $$6.v() >= $$0.P() && $$0.h($$6)) {
+                        bsy $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           axb $$8 = $$5.I();
+                           int $$9 = azu.a($$8.a(axf.i.b(axf.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              jh $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dxo $$12 = $$0.a_($$11);
+                              etq $$13 = $$0.b_($$11);
+                              if (dhk.a($$0, $$11, $$12, $$13, bvi.aQ)) {
+                                 bwq $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
 
-   public boolean b() {
-      return this.r;
-   }
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    cmq $$17 = bvi.aQ.a($$0, bvh.a);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bvh.a, $$14);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
 
-   public boolean c() {
-      return this.s;
-   }
-
-   public eep.a d() {
-      return this.t ? eep.a.a : eep.a.b;
-   }
-
-   public static void a(rk<edv> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
-   }
-
-   private static edv b(rk<?> $$0) {
-      return new edv(edy.d, dko.fN.m(), dko.a.m(), edx.a($$0.a(mb.aM)), rx.c(), List.of(), 0, true, false, false, true);
-   }
-
-   private static edv c(rk<?> $$0) {
-      return new edv(edy.c, dko.ei.m(), dko.K.m(), edx.a($$0.a(mb.aM), $$0.a(mb.aS)), rx.b(), List.of(), 32, false, false, false, true);
-   }
-
-   private static edv a(rk<?> $$0, boolean $$1, boolean $$2) {
-      return new edv(edy.b, dko.b.m(), dko.J.m(), edx.a($$0.a(mb.aM), $$0.a(mb.aS), $$2, $$1), rx.a(), new dja().a(), 63, false, true, true, false);
-   }
-
-   private static edv d(rk<?> $$0) {
-      return new edv(edy.e, dko.b.m(), dko.J.m(), edx.b($$0.a(mb.aM), $$0.a(mb.aS)), rx.a(false, true, true), List.of(), 32, false, false, false, true);
-   }
-
-   private static edv e(rk<?> $$0) {
-      return new edv(edy.f, dko.b.m(), dko.J.m(), edx.c($$0.a(mb.aM), $$0.a(mb.aS)), rx.a(false, false, false), List.of(), -64, false, false, false, true);
-   }
-
-   public static edv e() {
-      return new edv(edy.b, dko.b.m(), dko.a.m(), edx.a(), rx.d(), List.of(), 63, true, false, false, false);
-   }
-
-   public edy f() {
-      return this.j;
-   }
-
-   public dxv g() {
-      return this.k;
-   }
-
-   public dxv h() {
-      return this.l;
-   }
-
-   public edw i() {
-      return this.m;
-   }
-
-   public eeh.o j() {
-      return this.n;
-   }
-
-   public List<dit.d> k() {
-      return this.o;
-   }
-
-   public int l() {
-      return this.p;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public boolean n() {
-      return this.t;
+               return $$4;
+            }
+         }
+      }
    }
 }

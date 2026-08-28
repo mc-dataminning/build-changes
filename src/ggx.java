@@ -1,77 +1,85 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-public class ggx implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<ggx.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
+public final class ggx {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final ggx c = new ggx(HostAndPort.fromParts("server.invalid", 25565));
 
-   public void a(jh $$0, dxv $$1, gkh $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new ggx.a(this.b, $$1, $$2.du()));
+   public ggx(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   public boolean a(jh $$0, dxv $$1) {
-      ggx.a $$2 = (ggx.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
+   private ggx(HostAndPort $$0) {
+      this.b = $$0;
+   }
+
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
       }
    }
 
-   public void a(int $$0, gfk $$1) {
-      ObjectIterator<Entry<ggx.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+   public int b() {
+      return this.b.getPort();
+   }
 
-      while ($$2.hasNext()) {
-         Entry<ggx.a> $$3 = (Entry<ggx.a>)$$2.next();
-         ggx.a $$4 = (ggx.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            jh $$5 = jh.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
+   public static ggx a(String $$0) {
+      if ($$0 == null) {
+         return c;
+      } else {
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new ggx($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
          }
       }
    }
 
-   public ggx a() {
-      this.b++;
-      this.c = true;
-      return this;
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
+      }
+
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
+      }
    }
 
    @Override
-   public void close() {
-      this.c = false;
+   public String toString() {
+      return this.b.toString();
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof ggx ? this.b.equals(((ggx)$$0).b) : false;
+      }
    }
 
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final fby a;
-      int b;
-      dxv c;
-
-      a(int $$0, dxv $$1, fby $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
-      }
-
-      ggx.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      void a(dxv $$0) {
-         this.c = $$0;
-      }
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

@@ -32,15 +32,15 @@ public class hm {
    private static final char u = 's';
    private static final char v = 'e';
    private static final char w = 'n';
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xv.c("argument.entity.invalid"));
-   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xv.b("argument.entity.selector.unknown", $$0));
-   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xv.c("argument.entity.selector.not_allowed"));
-   public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(xv.c("argument.entity.selector.missing"));
-   public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(xv.c("argument.entity.options.unterminated"));
-   public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> xv.b("argument.entity.options.valueless", $$0));
-   public static final BiConsumer<fby, List<? extends bvk>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.f($$0), $$2.f($$0)));
-   public static final BiConsumer<fby, List<? extends bvk>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.f($$0), $$1x.f($$0)));
-   public static final BiConsumer<fby, List<? extends bvk>> m = ($$0, $$1) -> Collections.shuffle($$1);
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xk.c("argument.entity.invalid"));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xk.b("argument.entity.selector.unknown", $$0));
+   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xk.c("argument.entity.selector.not_allowed"));
+   public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(xk.c("argument.entity.selector.missing"));
+   public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(xk.c("argument.entity.options.unterminated"));
+   public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> xk.b("argument.entity.options.valueless", $$0));
+   public static final BiConsumer<fbr, List<? extends bvb>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.f($$0), $$2.f($$0)));
+   public static final BiConsumer<fbr, List<? extends bvb>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.f($$0), $$1x.f($$0)));
+   public static final BiConsumer<fbr, List<? extends bvb>> m = ($$0, $$1) -> Collections.shuffle($$1);
    public static final BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> n = ($$0, $$1) -> $$0.buildFuture();
    private final StringReader x;
    private final boolean y;
@@ -63,8 +63,8 @@ public class hm {
    private Double J;
    private en K = en.a;
    private en L = en.a;
-   private final List<Predicate<bvk>> M = new ArrayList<>();
-   private BiConsumer<fby, List<? extends bvk>> N = hl.b;
+   private final List<Predicate<bvb>> M = new ArrayList<>();
+   private BiConsumer<fbr, List<? extends bvb>> N = hl.b;
    private boolean O;
    @Nullable
    private String P;
@@ -81,7 +81,7 @@ public class hm {
    private boolean Z;
    private boolean aa;
    @Nullable
-   private bvr<?> ab;
+   private bvi<?> ab;
    private boolean ac;
    private boolean ad;
    private boolean ae;
@@ -101,11 +101,11 @@ public class hm {
    }
 
    public hl a() {
-      fbt $$2;
+      fbm $$2;
       if (this.H == null && this.I == null && this.J == null) {
          if (this.C.b().isPresent()) {
             double $$1 = this.C.b().get();
-            $$2 = new fbt(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
+            $$2 = new fbm(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
          } else {
             $$2 = null;
          }
@@ -113,17 +113,17 @@ public class hm {
          $$2 = this.a(this.H == null ? 0.0 : this.H, this.I == null ? 0.0 : this.I, this.J == null ? 0.0 : this.J);
       }
 
-      Function<fby, fby> $$4;
+      Function<fbr, fbr> $$4;
       if (this.E == null && this.F == null && this.G == null) {
          $$4 = $$0 -> $$0;
       } else {
-         $$4 = $$0 -> new fby(this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F, this.G == null ? $$0.f : this.G);
+         $$4 = $$0 -> new fbr(this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F, this.G == null ? $$0.f : this.G);
       }
 
       return new hl(this.z, this.A, this.B, List.copyOf(this.M), this.C, $$4, $$2, this.N, this.O, this.P, this.R, this.ab, this.af);
    }
 
-   private fbt a(double $$0, double $$1, double $$2) {
+   private fbm a(double $$0, double $$1, double $$2) {
       boolean $$3 = $$0 < 0.0;
       boolean $$4 = $$1 < 0.0;
       boolean $$5 = $$2 < 0.0;
@@ -133,28 +133,28 @@ public class hm {
       double $$9 = ($$3 ? 0.0 : $$0) + 1.0;
       double $$10 = ($$4 ? 0.0 : $$1) + 1.0;
       double $$11 = ($$5 ? 0.0 : $$2) + 1.0;
-      return new fbt($$6, $$7, $$8, $$9, $$10, $$11);
+      return new fbm($$6, $$7, $$8, $$9, $$10, $$11);
    }
 
    private void I() {
       if (this.K != en.a) {
-         this.M.add(this.a(this.K, bvk::dO));
+         this.M.add(this.a(this.K, bvb::dO));
       }
 
       if (this.L != en.a) {
-         this.M.add(this.a(this.L, bvk::dM));
+         this.M.add(this.a(this.L, bvb::dM));
       }
 
       if (!this.D.c()) {
-         this.M.add($$0 -> !($$0 instanceof asi) ? false : this.D.d(((asi)$$0).cq));
+         this.M.add($$0 -> !($$0 instanceof ary) ? false : this.D.d(((ary)$$0).cq));
       }
    }
 
-   private Predicate<bvk> a(en $$0, ToDoubleFunction<bvk> $$1) {
-      double $$2 = (double)bae.h($$0.b() == null ? 0.0F : $$0.b());
-      double $$3 = (double)bae.h($$0.c() == null ? 359.0F : $$0.c());
+   private Predicate<bvb> a(en $$0, ToDoubleFunction<bvb> $$1) {
+      double $$2 = (double)azu.h($$0.b() == null ? 0.0F : $$0.b());
+      double $$3 = (double)azu.h($$0.c() == null ? 359.0F : $$0.c());
       return $$3x -> {
-         double $$4 = bae.d($$1.applyAsDouble($$3x));
+         double $$4 = azu.d($$1.applyAsDouble($$3x));
          return $$2 > $$3 ? $$4 >= $$2 || $$4 <= $$3 : $$4 >= $$2 && $$4 <= $$3;
       };
    }
@@ -173,7 +173,7 @@ public class hm {
                this.z = Integer.MAX_VALUE;
                this.A = false;
                this.N = hl.b;
-               this.a(bvr.bS);
+               this.a(bvi.bS);
                yield false;
             }
             default -> {
@@ -196,14 +196,14 @@ public class hm {
                this.z = 1;
                this.A = false;
                this.N = k;
-               this.a(bvr.bS);
+               this.a(bvi.bS);
                yield false;
             }
             case 'r' -> {
                this.z = 1;
                this.A = false;
                this.N = m;
-               this.a(bvr.bS);
+               this.a(bvi.bS);
                yield false;
             }
             case 's' -> {
@@ -213,7 +213,7 @@ public class hm {
                yield false;
             }
          }) {
-            this.M.add(bvk::bL);
+            this.M.add(bvb::bL);
          }
 
          this.S = this::e;
@@ -317,7 +317,7 @@ public class hm {
       return this.x;
    }
 
-   public void a(Predicate<bvk> $$0) {
+   public void a(Predicate<bvb> $$0) {
       this.M.add($$0);
    }
 
@@ -419,11 +419,11 @@ public class hm {
       this.A = $$0;
    }
 
-   public BiConsumer<fby, List<? extends bvk>> s() {
+   public BiConsumer<fbr, List<? extends bvb>> s() {
       return this.N;
    }
 
-   public void a(BiConsumer<fby, List<? extends bvk>> $$0) {
+   public void a(BiConsumer<fbr, List<? extends bvb>> $$0) {
       this.N = $$0;
    }
 
@@ -446,12 +446,12 @@ public class hm {
    }
 
    private static void a(SuggestionsBuilder $$0) {
-      $$0.suggest("@p", xv.c("argument.entity.selector.nearestPlayer"));
-      $$0.suggest("@a", xv.c("argument.entity.selector.allPlayers"));
-      $$0.suggest("@r", xv.c("argument.entity.selector.randomPlayer"));
-      $$0.suggest("@s", xv.c("argument.entity.selector.self"));
-      $$0.suggest("@e", xv.c("argument.entity.selector.allEntities"));
-      $$0.suggest("@n", xv.c("argument.entity.selector.nearestEntity"));
+      $$0.suggest("@p", xk.c("argument.entity.selector.nearestPlayer"));
+      $$0.suggest("@a", xk.c("argument.entity.selector.allPlayers"));
+      $$0.suggest("@r", xk.c("argument.entity.selector.randomPlayer"));
+      $$0.suggest("@s", xk.c("argument.entity.selector.self"));
+      $$0.suggest("@e", xk.c("argument.entity.selector.allEntities"));
+      $$0.suggest("@n", xk.c("argument.entity.selector.nearestEntity"));
    }
 
    private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
@@ -579,7 +579,7 @@ public class hm {
       this.aa = $$0;
    }
 
-   public void a(bvr<?> $$0) {
+   public void a(bvi<?> $$0) {
       this.ab = $$0;
    }
 

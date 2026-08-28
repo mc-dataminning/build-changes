@@ -1,13 +1,21 @@
 import javax.annotation.Nullable;
 
-public class gyr extends gxv {
-   public jm a = jm.c;
-   public cxp b = cxp.j;
-   public int c;
-   public boolean d;
+public class gyr extends gxq {
+   public float a;
+   public float b;
+   public long c;
+   public int d;
+   public float e;
+   public float f;
+   public int g;
+   public dxo h = dkf.a.m();
+   public boolean i;
    @Nullable
-   public hdn e;
+   public fbr j;
    @Nullable
-   public evp f;
-   public final hau g = new hau();
+   public fbr k;
+   @Nullable
+   public fbr l;
+   @Nullable
+   public fbr B;
 }

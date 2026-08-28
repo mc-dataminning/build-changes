@@ -1,23 +1,28 @@
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record aey(List<UUID> b) implements aac<acr> {
-   public static final zt<ws, aey> a = aac.a(aey::a, aey::new);
+public record aey(String b, @Nullable String c) implements zr<acg> {
+   public static final zi<wh, aey> a = zr.a(aey::a, aey::new);
 
-   private aey(ws $$0) {
-      this($$0.a(kk.g));
+   private aey(wh $$0) {
+      this($$0.p(), $$0.c(wh::p));
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b, kk.g);
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, wh::a);
    }
 
    @Override
-   public aae<aey> a() {
-      return ahk.af;
+   public zt<aey> a() {
+      return agz.cm;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public String e() {
+      return this.c;
    }
 }

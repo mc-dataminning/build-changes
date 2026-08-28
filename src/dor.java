@@ -1,103 +1,84 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-
-public class dor extends djy {
-   public static final MapCodec<dor> a = b(dor::new);
-   public static final dym b = dyl.n;
-
-   @Override
-   public MapCodec<dor> a() {
-      return a;
-   }
-
-   protected dor(dxu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public void a(dhi $$0, jh $$1, dxv $$2, @Nullable bwg $$3, cxp $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      czy $$5 = $$4.a(ku.Y, czy.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
-      }
-   }
-
-   @Override
-   protected btj a(dxv $$0, dhi $$1, jh $$2, cpx $$3, fbu $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dwb $$5) {
-         $$5.t();
-         return btj.a;
-      } else {
-         return btj.e;
-      }
-   }
-
-   @Override
-   protected btj a(cxp $$0, dxv $$1, dhi $$2, jh $$3, cpx $$4, bti $$5, fbu $$6) {
-      if ($$1.c(b)) {
-         return btj.f;
-      } else {
-         cxp $$7 = $$4.b($$5);
-         btj $$8 = cxu.a($$2, $$3, $$7, $$4);
-         return (btj)(!$$8.a() ? btj.f : $$8);
-      }
-   }
-
-   @Override
-   protected void a(dxv $$0, dhi $$1, jh $$2, dxv $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dwb $$5) {
-            $$5.t();
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public dux a(jh $$0, dxv $$1) {
-      return new dwb($$0, $$1);
-   }
-
-   @Override
-   public boolean f_(dxv $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dxv $$0, dgn $$1, jh $$2, jm $$3) {
-      if ($$1.c_($$2) instanceof dwb $$4 && $$4.j().a()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean c_(dxv $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dxv $$0, dhi $$1, jh $$2) {
-      return $$1.c_($$2) instanceof dwb $$3 ? $$3.u() : 0;
-   }
-
-   @Override
-   protected dqv a_(dxv $$0) {
-      return dqv.c;
-   }
-
-   @Override
-   protected void a(dxw.a<dkm, dxv> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dux> duy<T> a(dhi $$0, dxv $$1, duz<T> $$2) {
-      return $$1.c(b) ? a($$2, duz.e, dwb::a) : null;
-   }
+public class dor {
+   public static final int a = 1000;
+   public static final int b = 1001;
+   public static final int c = 1002;
+   public static final int d = 1004;
+   public static final int e = 1009;
+   public static final int f = 1010;
+   public static final int g = 1011;
+   public static final int h = 1015;
+   public static final int i = 1016;
+   public static final int j = 1017;
+   public static final int k = 1018;
+   public static final int l = 1019;
+   public static final int m = 1020;
+   public static final int n = 1021;
+   public static final int o = 1022;
+   public static final int p = 1023;
+   public static final int q = 1024;
+   public static final int r = 1025;
+   public static final int s = 1026;
+   public static final int t = 1027;
+   public static final int u = 1028;
+   public static final int v = 1029;
+   public static final int w = 1030;
+   public static final int x = 1031;
+   public static final int y = 1032;
+   public static final int z = 1033;
+   public static final int A = 1034;
+   public static final int B = 1035;
+   public static final int C = 1038;
+   public static final int D = 1039;
+   public static final int E = 1040;
+   public static final int F = 1041;
+   public static final int G = 1042;
+   public static final int H = 1043;
+   public static final int I = 1044;
+   public static final int J = 1045;
+   public static final int K = 1046;
+   public static final int L = 1047;
+   public static final int M = 1048;
+   public static final int N = 1049;
+   public static final int O = 1050;
+   public static final int P = 1051;
+   public static final int Q = 1500;
+   public static final int R = 1501;
+   public static final int S = 1502;
+   public static final int T = 1503;
+   public static final int U = 1504;
+   public static final int V = 1505;
+   public static final int W = 2000;
+   public static final int X = 2001;
+   public static final int Y = 2002;
+   public static final int Z = 2003;
+   public static final int aa = 2004;
+   public static final int ab = 2006;
+   public static final int ac = 2007;
+   public static final int ad = 2008;
+   public static final int ae = 2009;
+   public static final int af = 2010;
+   public static final int ag = 2011;
+   public static final int ah = 2012;
+   public static final int ai = 2013;
+   public static final int aj = 3000;
+   public static final int ak = 3001;
+   public static final int al = 3002;
+   public static final int am = 3003;
+   public static final int an = 3004;
+   public static final int ao = 3005;
+   public static final int ap = 3006;
+   public static final int aq = 3007;
+   public static final int ar = 3008;
+   public static final int as = 3009;
+   public static final int at = 3011;
+   public static final int au = 3012;
+   public static final int av = 3013;
+   public static final int aw = 3014;
+   public static final int ax = 3015;
+   public static final int ay = 3016;
+   public static final int az = 3017;
+   public static final int aA = 3018;
+   public static final int aB = 3019;
+   public static final int aC = 3020;
+   public static final int aD = 3021;
 }

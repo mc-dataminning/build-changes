@@ -1,73 +1,80 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import org.apache.commons.io.IOUtils;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fhh {
-   public static List<fis> a(fhh.a... $$0) {
-      for (fhh.a $$1 : $$0) {
-         a($$1.j);
-      }
+   private static final Logger a = LogUtils.getLogger();
 
-      List<fis> $$2 = Lists.newArrayList();
-
-      for (fhh.a $$3 : $$0) {
-         $$2.add(new fis($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(fis::a));
-      return $$2;
-   }
-
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
-
-      for (int $$4 = 0; $$4 < 5; $$4++) {
+   public static void a(flz $$0, ftr $$1, ftr $$2, int $$3, fic $$4, @Nullable fla $$5) {
+      fyq.a($$0, $$1, ($$6, $$7, $$8, $$9) -> {
+         Path $$10;
          try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
+            $$10 = a($$7, $$8, $$9);
+         } catch (IOException var13) {
+            a.warn("Failed to create temporary world folder.");
+            $$0.a(new fjp(xk.c("mco.create.world.failed"), $$2));
+            return true;
          }
+
+         fii $$13 = fii.a($$8.J(), ab.b().c());
+         fho $$14 = new fho($$10, $$13, $$0.X(), $$4.a, $$3, fhp.f());
+         $$0.d(new fsk($$14::b, xk.c("mco.create.world.reset.title"), xk.i(), xj.e, false));
+         if ($$5 != null) {
+            $$5.run();
+         }
+
+         $$14.a().handleAsync(($$5xx, $$6x) -> {
+            if ($$6x != null) {
+               if ($$6x instanceof CompletionException $$7x) {
+                  $$6x = $$7x.getCause();
+               }
+
+               if ($$6x instanceof fhi) {
+                  $$0.d($$2);
+               } else {
+                  if ($$6x instanceof fhk $$8x) {
+                     a.warn("Failed to create realms world {}", $$8x.a());
+                  } else {
+                     a.warn("Failed to create realms world {}", $$6x.getMessage());
+                  }
+
+                  $$0.d(new fjp(xk.c("mco.create.world.failed"), $$2));
+               }
+            } else {
+               if ($$1 instanceof fjl $$9x) {
+                  $$9x.a($$4.a);
+               }
+
+               if ($$5 != null) {
+                  fgw.a($$4, $$1, true);
+               } else {
+                  $$0.d($$1);
+               }
+
+               fgw.g();
+            }
+
+            return null;
+         }, $$0);
+         return true;
+      });
+   }
+
+   private static Path a(jx<aly> $$0, ewa $$1, @Nullable Path $$2) throws IOException {
+      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
+      if ($$2 != null) {
+         Files.move($$2, $$3.resolve("datapacks"));
       }
 
-      return (int)((double)$$2 / 5.0);
-   }
-
-   private static long b() {
-      return ae.c();
-   }
-
-   public static List<fis> a() {
-      return a(fhh.a.values());
-   }
-
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(final String $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
+      um $$4 = $$1.a($$0.a(), null);
+      um $$5 = new um();
+      $$5.a("Data", $$4);
+      Path $$6 = Files.createFile($$3.resolve("level.dat"));
+      uz.a($$5, $$6);
+      return $$3;
    }
 }

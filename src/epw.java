@@ -1,38 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class epw {
+   public static class a extends eoh {
+      public a(jh $$0) {
+         super(eou.aa, 0, new env($$0));
+      }
 
-public interface epw {
-   Codec<epw> b = ma.ah.q().dispatch(epw::b, Function.identity());
+      public a(um $$0) {
+         super(eou.aa, $$0);
+      }
 
-   void a(bam var1, BiConsumer<aly<epu>, aly<epu>> var2);
+      @Override
+      protected void a(eot $$0, um $$1) {
+      }
 
-   Stream<aly<epu>> a();
+      @Override
+      public void a(dhx $$0, dhv $$1, dzk $$2, bac $$3, env $$4, dgf $$5, jh $$6) {
+         int $$7 = $$0.a(edj.a.c, this.f.h(), this.f.j());
+         jh.a $$8 = new jh.a(this.f.h(), $$7, this.f.j());
 
-   static epv a(String $$0, String $$1) {
-      return a(rr.a($$0), rr.a($$1));
+         while ($$8.v() > $$0.L_()) {
+            dxo $$9 = $$0.a_($$8);
+            dxo $$10 = $$0.a_($$8.e());
+            if ($$10 == dkf.bc.m() || $$10 == dkf.b.m() || $$10 == dkf.g.m() || $$10 == dkf.c.m() || $$10 == dkf.e.m()) {
+               dxo $$11 = !$$9.l() && !this.b($$9) ? $$9 : dkf.L.m();
+
+               for (jm $$12 : jm.values()) {
+                  jh $$13 = $$8.a($$12);
+                  dxo $$14 = $$0.a_($$13);
+                  if ($$14.l() || this.b($$14)) {
+                     jh $$15 = $$13.e();
+                     dxo $$16 = $$0.a_($$15);
+                     if (($$16.l() || this.b($$16)) && $$12 != jm.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new env($$8);
+               this.a($$0, $$4, $$3, $$8, ewe.F, null);
+               return;
+            }
+
+            $$8.e(0, -1, 0);
+         }
+      }
+
+      private boolean b(dxo $$0) {
+         return $$0 == dkf.J.m() || $$0 == dkf.K.m();
+      }
    }
-
-   static epv a(aly<epu> $$0, aly<epu> $$1) {
-      return new epv($$0, $$1);
-   }
-
-   static epz a(String $$0, brr<String> $$1) {
-      brr.a<aly<epu>> $$2 = brr.a();
-      $$1.e().forEach($$1x -> $$2.a(rr.a((String)$$1x.b()), $$1x.a().a()));
-      return a(rr.a($$0), $$2.a());
-   }
-
-   static epz a(aly<epu> $$0, brr<aly<epu>> $$1) {
-      return new epz($$0, $$1);
-   }
-
-   static eqa a(brr<List<epw>> $$0) {
-      return new eqa($$0);
-   }
-
-   MapCodec<? extends epw> b();
 }

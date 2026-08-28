@@ -1,42 +1,29 @@
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
 
-public class bju extends bht {
+public class bju extends DataFix {
    public bju(Schema $$0) {
-      super($$0, true, "Trial Spawner config tag fixer", bix.s, "minecraft:trial_spawner");
+      super($$0, false);
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      List<String> $$1 = List.of(
-         "spawn_range",
-         "total_mobs",
-         "simultaneous_mobs",
-         "total_mobs_added_per_player",
-         "simultaneous_mobs_added_per_player",
-         "ticks_between_spawn",
-         "spawn_potentials",
-         "loot_tables_to_eject",
-         "items_to_drop_when_ominous"
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bin.M);
+      OpticFinder<?> $$1 = $$0.findField("dimensions");
+      return this.fixTypeEverywhereTyped(
+         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
+               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
+                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
+                        if ($$1xx.get("type").asString().result().isEmpty()) {
+                           throw new uy("Unable load old custom worlds.");
+                        }
+                     });
+                     return $$0xxxx;
+                  }));
+               return $$0xx;
+            })
       );
-      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
-
-      for (String $$3 : $$1) {
-         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
-         if ($$4.isPresent()) {
-            $$2.put($$0.createString($$3), $$4.get());
-            $$0 = $$0.remove($$3);
-         }
-      }
-
-      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
-   }
-
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b($$0);
    }
 }

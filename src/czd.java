@@ -1,20 +1,43 @@
-public class czd extends cxl {
-   public czd(czg $$0, float $$1, float $$2, cxl.a $$3) {
-      super($$0.a($$3, $$1, $$2));
+import com.mojang.serialization.Codec;
+import java.util.List;
+
+public class czd implements csh {
+   public static final Codec<jq<czd>> a = ma.h.r();
+   public static final zi<wv, jq<czd>> b = zg.b(mb.ad);
+   private final String c;
+   private final List<bug> d;
+   private csk e = csm.g;
+
+   public czd(String $$0, bug... $$1) {
+      this.c = $$0;
+      this.d = List.of($$1);
+   }
+
+   public czd a(csi... $$0) {
+      this.e = csm.e.a($$0);
+      return this;
    }
 
    @Override
-   public boolean a(dxv $$0, dhi $$1, jh $$2, cpx $$3) {
-      return !$$3.b();
+   public csk i() {
+      return this.e;
    }
 
-   @Override
-   public boolean a(cxp $$0, bwg $$1, bwg $$2) {
-      return true;
+   public List<bug> a() {
+      return this.d;
    }
 
-   @Override
-   public void b(cxp $$0, bwg $$1, bwg $$2) {
-      $$0.a(1, $$2, bvs.a);
+   public String b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      for (bug $$0 : this.d) {
+         if ($$0.c().a().a()) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

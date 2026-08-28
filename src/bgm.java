@@ -8,43 +8,32 @@ import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
-public class bgm extends DataFix {
-   private final Set<String> a;
+public abstract class bgm extends DataFix {
+   private final String a;
+   private final Predicate<String> b;
 
-   public bgm(Schema $$0, boolean $$1, Set<String> $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   public bgm(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bix.D.typeName(), bkl.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped("ItemRemoveBlockEntityTagFix", $$0, $$3x -> {
-         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
-         if ($$4.isPresent() && this.a.contains($$4.get().getSecond())) {
-            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
-            if ($$5.isPresent()) {
-               Typed<?> $$6 = (Typed<?>)$$5.get();
-               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
-               if ($$7.isPresent()) {
-                  Optional<? extends Dynamic<?>> $$8 = $$6.write().result();
-                  Dynamic<?> $$9 = (Dynamic<?>)($$8.isPresent() ? $$8.get() : (Dynamic)$$6.get(DSL.remainderFinder()));
-                  Dynamic<?> $$10 = $$9.remove("BlockEntityTag");
-                  Optional<? extends Pair<? extends Typed<?>, ?>> $$11 = $$2.type().readTyped($$10).result();
-                  if ($$11.isEmpty()) {
-                     return $$3x;
-                  }
-
-                  return $$3x.set($$2, (Typed)$$11.get().getFirst());
-               }
-            }
-         }
-
-         return $$3x;
-      });
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bin.t);
+      return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
    }
+
+   public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Dynamic<?>> $$2) {
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bin.D.typeName(), bkb.a()));
+      OpticFinder<?> $$4 = $$0.findField("tag");
+      return $$4x -> {
+         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);
+         return $$5.isPresent() && $$1.test((String)$$5.get().getSecond()) ? $$4x.updateTyped($$4, $$1xx -> $$1xx.update(DSL.remainderFinder(), $$2)) : $$4x;
+      };
+   }
+
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

@@ -1,8 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eop {
-   void a(eoo var1);
-
-   @Nullable
-   eoo a(eoc var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eop {
 }

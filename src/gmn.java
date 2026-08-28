@@ -1,61 +1,45 @@
-import java.util.Map;
-import java.util.Map.Entry;
-
 public class gmn {
-   private Map<dxv, hdn> a = Map.of();
-   private final hea b;
+   protected final int[] a;
+   protected final int b;
+   protected final jm c;
+   protected final hbg d;
+   private final boolean e;
+   private final int f;
 
-   public gmn(hea $$0) {
-      this.b = $$0;
+   public gmn(int[] $$0, int $$1, jm $$2, hbg $$3, boolean $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public hbl a(dxv $$0) {
-      return this.b($$0).e();
+   public hbg a() {
+      return this.d;
    }
 
-   public hdn b(dxv $$0) {
-      hdn $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
+   public int[] b() {
+      return this.a;
    }
 
-   public hea a() {
+   public boolean c() {
+      return this.b != -1;
+   }
+
+   public int d() {
       return this.b;
    }
 
-   public void a(Map<dxv, hdn> $$0) {
-      this.a = $$0;
+   public jm e() {
+      return this.c;
    }
 
-   public static heb c(dxv $$0) {
-      return a(ma.e.b($$0.b()), $$0);
+   public boolean f() {
+      return this.e;
    }
 
-   public static heb a(alz $$0, dxv $$1) {
-      return new heb($$0, b($$1.G()));
-   }
-
-   public static String b(Map<dyx<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dyx<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         dyx<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
-      }
-
-      return $$1.toString();
-   }
-
-   private static <T extends Comparable<T>> String a(dyx<T> $$0, Comparable<?> $$1) {
-      return $$0.b((T)$$1);
+   public int g() {
+      return this.f;
    }
 }

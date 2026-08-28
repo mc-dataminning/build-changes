@@ -1,130 +1,89 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
-import java.util.function.UnaryOperator;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class yj implements xv {
-   private final xw c;
-   private final List<xv> d;
-   private ys e;
-   private azq f = azq.a;
+public final class yj {
+   private static final String b = "#";
+   public static final Codec<yj> a = Codec.STRING.comapFlatMap(yj::a, yj::b);
+   private static final Map<n, yj> c = Stream.of(n.values())
+      .filter(n::e)
+      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new yj($$0.f(), $$0.g())));
+   private static final Map<String, yj> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
+   private final int e;
    @Nullable
-   private us g;
+   private final String f;
 
-   yj(xw $$0, List<xv> $$1, ys $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private yj(int $$0, String $$1) {
+      this.e = $$0 & 16777215;
+      this.f = $$1;
    }
 
-   public static yj a(xw $$0) {
-      return new yj($$0, Lists.newArrayList(), ys.a);
+   private yj(int $$0) {
+      this.e = $$0 & 16777215;
+      this.f = null;
    }
 
-   @Override
-   public xw b() {
-      return this.c;
-   }
-
-   @Override
-   public List<xv> c() {
-      return this.d;
-   }
-
-   public yj b(ys $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public ys a() {
+   public int a() {
       return this.e;
    }
 
-   public yj f(String $$0) {
-      return $$0.isEmpty() ? this : this.b(xv.b($$0));
+   public String b() {
+      return this.f != null ? this.f : this.c();
    }
 
-   public yj b(xv $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public yj a(UnaryOperator<ys> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public yj c(ys $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public yj a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public yj a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public yj b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public azq g() {
-      us $$0 = us.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
-      }
-
-      return this.f;
+   private String c() {
+      return String.format(Locale.ROOT, "#%06X", this.e);
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         yj $$1 = (yj)$$0;
+         return this.e == $$1.e;
       } else {
-         return !($$0 instanceof yj $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+      return Objects.hash(this.e, this.f);
    }
 
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
+      return this.b();
+   }
 
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
+   @Nullable
+   public static yj a(n $$0) {
+      return c.get($$0);
+   }
 
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
+   public static yj a(int $$0) {
+      return new yj($$0);
+   }
 
-         $$0.append(']');
+   public static DataResult<yj> a(String $$0) {
+      if ($$0.startsWith("#")) {
+         try {
+            int $$1 = Integer.parseInt($$0.substring(1), 16);
+            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Invalid color value: " + $$0);
+         }
+      } else {
+         yj $$3 = d.get($$0);
+         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
       }
-
-      return $$0.toString();
    }
 }

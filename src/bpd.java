@@ -1,21 +1,45 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Optional;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-public class bpd implements boy<StringReader, alz> {
-   public static final boy<StringReader, alz> a = new bpd();
+public class bpd implements bph {
+   public static final bpd a = new bpd();
 
    private bpd() {
    }
 
    @Override
-   public Optional<alz> a(box<StringReader> $$0) {
-      $$0.b().skipWhitespace();
+   public List<bpl> a(String $$0) {
+      return Collections.emptyList();
+   }
 
-      try {
-         return Optional.of(alz.b($$0.b()));
-      } catch (CommandSyntaxException var3) {
-         return Optional.empty();
-      }
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
+
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
    }
 }

@@ -1,45 +1,76 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class duh extends dnp {
-   public static final MapCodec<duh> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dnp::b), t()).apply($$0, duh::new));
+public record duh(List<duh.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final duh a = new duh(List.of());
+   public static final Codec<duh> b = duh.b.a.listOf().xmap(duh::new, duh::b);
+   public static final zi<wv, duh> c = duh.b.b.a(zg.a()).a(duh::new, duh::b);
 
-   @Override
-   public MapCodec<duh> a() {
-      return e;
+   public duh a() {
+      return new duh(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   public duh(jq<bun> $$0, float $$1, dxu.d $$2) {
-      this(a($$0, $$1), $$2);
+   public List<duh.b> b() {
+      return this.d;
    }
 
-   public duh(daq $$0, dxu.d $$1) {
-      super($$0, $$1);
-   }
+   public static class a {
+      private final Builder<duh.b> a = ImmutableList.builder();
 
-   @Override
-   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dko.ei) || $$0.a(dko.ej) || $$0.a(dko.ek);
-   }
-
-   @Override
-   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
-      fcs $$4 = this.a($$0, $$1, $$2, fcd.a());
-      fby $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.d;
-      double $$7 = (double)$$2.w() + $$5.f;
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(ls.af, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
+      @Deprecated
+      public duh.a a(jr<dug> $$0, alo<dug> $$1, cwd $$2) {
+         Optional<jq.c<dug>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            duh.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
          }
+      }
+
+      public duh.a a(jq<dug> $$0, cwd $$1) {
+         return this.a(new duh.b($$0, $$1));
+      }
+
+      public duh.a a(duh.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public duh.a a(duh $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public duh a() {
+         return new duh(this.a.build());
       }
    }
 
-   @Override
-   protected void a(dxv $$0, dhi $$1, jh $$2, bvk $$3) {
-      if ($$1 instanceof ash $$4 && $$1.al() != btg.a && $$3 instanceof bwg $$5 && !$$5.a($$4, $$1.aj().r())) {
-         $$5.a(new bup(bur.t, 40));
+   public static record b(jq<dug> c, cwd d) {
+      public static final Codec<duh.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dug.c.fieldOf("pattern").forGetter(duh.b::b), cwd.q.fieldOf("color").forGetter(duh.b::c)).apply($$0, duh.b::new)
+      );
+      public static final zi<wv, duh.b> b = zi.a(dug.d, duh.b::b, cwd.r, duh.b::c, duh.b::new);
+
+      public xy a() {
+         String $$0 = this.c.a().b();
+         return xk.c($$0 + "." + this.d.b());
+      }
+
+      public jq<dug> b() {
+         return this.c;
+      }
+
+      public cwd c() {
+         return this.d;
       }
    }
 }

@@ -1,25 +1,19 @@
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class dgp {
-   private final fby a;
-   private final fby b;
-   private final Predicate<dxv> c;
+public class dgp extends dgs {
+   private final bvb a;
 
-   public dgp(fby $$0, fby $$1, Predicate<dxv> $$2) {
+   public dgp(bvb $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public fby a() {
-      return this.b;
+   @Override
+   public Optional<Float> a(dgr $$0, dge $$1, jh $$2, dxo $$3, etq $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   public fby b() {
-      return this.a;
-   }
-
-   public Predicate<dxv> c() {
-      return this.c;
+   @Override
+   public boolean a(dgr $$0, dge $$1, jh $$2, dxo $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

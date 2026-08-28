@@ -1,43 +1,69 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class elr extends elu {
-   public static final MapCodec<elr> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(elr::new, $$0 -> $$0.b);
-   private final float b;
+public class elr extends elz {
+   public static final MapCodec<elr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  azd.m.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bsf.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, elr::new)
+   );
+   private final int b;
+   private final bsf h;
 
-   public elr(float $$0) {
-      this.b = $$0;
+   public elr(int $$0, int $$1, int $$2, int $$3, bsf $$4) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
    }
 
    @Override
-   protected elv<?> a() {
-      return elv.d;
+   protected ema<?> a() {
+      return ema.g;
    }
 
    @Override
-   public void a(elu.a $$0) {
-      bam $$1 = $$0.b();
-      List<jh> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         if (!($$1.i() >= this.b)) {
-            List<jh> $$3 = new ArrayList<>($$2);
-            ae.c($$3, $$1);
-            Optional<jh> $$4 = $$3.stream().filter($$1x -> {
-               for (jm $$2x : jm.values()) {
-                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(axu.u))) {
-                     return false;
-                  }
-               }
+   public List<ekf.a> a(dhf $$0, BiConsumer<jh, dxo> $$1, bac $$2, int $$3, jh $$4, ejp $$5) {
+      jm $$6 = jm.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      jh.a $$8 = $$4.k();
+      jh $$9 = $$8.e();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<ekf.a> $$10 = Lists.newArrayList();
 
-               return true;
-            }).findFirst();
-            if (!$$4.isEmpty()) {
-               $$0.a($$4.get(), dko.cB.m().b(dmi.c, dmi.a.b));
-            }
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
          }
+
+         if (eib.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         if ($$11 >= this.b) {
+            $$10.add(new ekf.a($$8.j(), 0, false));
+         }
+
+         $$8.c(jm.b);
       }
+
+      int $$12 = this.h.a($$2);
+
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (eib.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         $$10.add(new ekf.a($$8.j(), 0, false));
+         $$8.c($$6);
+      }
+
+      return $$10;
    }
 }

@@ -1,20 +1,42 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ero extends esg {
-   public static final MapCodec<ero> a = ma.e.q().fieldOf("block").xmap(ero::new, $$0 -> $$0.b);
-   private final dkm b;
+public class ero extends ers {
+   public static final MapCodec<ero> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ero::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public ero(dkm $$0) {
-      this.b = $$0;
+   public ero(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
    }
 
    @Override
-   public boolean a(dxv $$0, bam $$1) {
-      return $$0.a(this.b);
+   public boolean a(jh $$0, jh $$1, jh $$2, bac $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= azu.b(this.b, this.d, azu.f((float)$$4, (float)this.e, (float)this.f));
    }
 
    @Override
-   protected esh<?> a() {
-      return esh.b;
+   protected ert<?> a() {
+      return ert.b;
    }
 }

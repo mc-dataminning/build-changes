@@ -1,16 +1,18 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import io.netty.buffer.ByteBuf;
 
-public record acv(Object2IntMap<axm<?>> b) implements aac<acr> {
-   private static final zt<xg, Object2IntMap<axm<?>>> c = zr.a(Object2IntOpenHashMap::new, axm.a, zr.h);
-   public static final zt<xg, acv> a = c.a(acv::new, acv::b);
+public class acv implements zr<acg> {
+   public static final acv a = new acv();
+   public static final zi<ByteBuf, acv> b = zi.a(a);
 
-   @Override
-   public aae<acv> a() {
-      return ahk.f;
+   private acv() {
    }
 
-   public void a(acr $$0) {
+   @Override
+   public zt<acv> a() {
+      return agz.o;
+   }
+
+   public void a(acg $$0) {
       $$0.a(this);
    }
 }

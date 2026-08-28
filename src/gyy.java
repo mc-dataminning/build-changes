@@ -1,7 +1,4 @@
-public class gyy extends gyt {
-   public cik.a a;
-
-   public gyy() {
-      this.a = cik.a.a;
-   }
+public class gyy extends gyo {
+   public float a;
+   public int b;
 }

@@ -1,60 +1,53 @@
-import javax.annotation.Nullable;
+public class aix implements zr<ahb> {
+   public static final zi<wh, aix> a = zr.a(aix::a, aix::new);
+   private static final int b = 384;
+   private final jh c;
+   private final String[] d;
+   private final boolean e;
 
-public class aix implements aac<ahm> {
-   public static final zt<ws, aix> a = aac.a(aix::a, aix::new);
-   private final aix.a b;
-   @Nullable
-   private final alz c;
-
-   public aix(aix.a $$0, @Nullable alz $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aix(jh $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   public static aix a(ah $$0) {
-      return new aix(aix.a.a, $$0.a());
-   }
+   private aix(wh $$0) {
+      this.c = $$0.e();
+      this.e = $$0.readBoolean();
+      this.d = new String[4];
 
-   public static aix b() {
-      return new aix(aix.a.b, null);
-   }
-
-   private aix(ws $$0) {
-      this.b = $$0.b(aix.a.class);
-      if (this.b == aix.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.d(384);
       }
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      if (this.b == aix.a.a) {
-         $$0.a(this.c);
+   private void a(wh $$0) {
+      $$0.a(this.c);
+      $$0.a(this.e);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.d[$$1]);
       }
    }
 
    @Override
-   public aae<aix> a() {
-      return ahk.bX;
+   public zt<aix> a() {
+      return agz.ch;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public aix.a e() {
-      return this.b;
-   }
-
-   @Nullable
-   public alz f() {
+   public jh b() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean e() {
+      return this.e;
+   }
+
+   public String[] f() {
+      return this.d;
    }
 }

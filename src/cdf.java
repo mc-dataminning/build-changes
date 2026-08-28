@@ -1,126 +1,140 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class cdf {
-   private static final ces a = new ces(Integer.MAX_VALUE, new cde() {
-      @Override
-      public boolean b() {
+public class cdf extends ccv {
+   protected final bwf a;
+   private final double b;
+   private final boolean c;
+   private eue d;
+   private double e;
+   private double f;
+   private double g;
+   private int h;
+   private int i;
+   private final int j = 20;
+   private long k;
+   private static final long l = 20L;
+
+   public cdf(bwf $$0, double $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.a(EnumSet.of(ccv.a.a, ccv.a.b));
+   }
+
+   @Override
+   public boolean b() {
+      long $$0 = this.a.dW().ad();
+      if ($$0 - this.k < 20L) {
          return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<cde.a, ces> b = new EnumMap<>(cde.a.class);
-   private final Set<ces> c = new ObjectLinkedOpenHashSet();
-   private final EnumSet<cde.a> d = EnumSet.noneOf(cde.a.class);
-
-   public void a(int $$0, cde $$1) {
-      this.c.add(new ces($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<cde> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(cde $$0) {
-      for (ces $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.e();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(ces $$0, EnumSet<cde.a> $$1) {
-      for (cde.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean a(ces $$0, Map<cde.a, ces> $$1) {
-      for (cde.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
+      } else {
+         this.k = $$0;
+         bvx $$1 = this.a.O_();
+         if ($$1 == null) {
             return false;
+         } else if (!$$1.bL()) {
+            return false;
+         } else {
+            this.d = this.a.L().a($$1, 0);
+            return this.d != null ? true : this.a.i($$1);
          }
       }
+   }
 
+   @Override
+   public boolean c() {
+      bvx $$0 = this.a.O_();
+      if ($$0 == null) {
+         return false;
+      } else if (!$$0.bL()) {
+         return false;
+      } else if (!this.c) {
+         return !this.a.L().m();
+      } else {
+         return !this.a.a($$0.dw()) ? false : !($$0 instanceof cpo) || !$$0.aa_() && !((cpo)$$0).b();
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.L().a(this.d, this.b);
+      this.a.w(true);
+      this.h = 0;
+      this.i = 0;
+   }
+
+   @Override
+   public void e() {
+      bvx $$0 = this.a.O_();
+      if (!bvg.e.test($$0)) {
+         this.a.h(null);
+      }
+
+      this.a.w(false);
+      this.a.L().o();
+   }
+
+   @Override
+   public boolean V_() {
       return true;
    }
 
+   @Override
    public void a() {
-      bpt $$0 = bps.a();
-      $$0.a("goalCleanup");
-
-      for (ces $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
-            $$1.e();
-         }
-      }
-
-      this.b.entrySet().removeIf($$0x -> !((ces)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (ces $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
-            for (cde.a $$3 : $$2.j()) {
-               ces $$4 = this.b.getOrDefault($$3, a);
-               $$4.e();
-               this.b.put($$3, $$2);
+      bvx $$0 = this.a.O_();
+      if ($$0 != null) {
+         this.a.H().a($$0, 30.0F, 30.0F);
+         this.h = Math.max(this.h - 1, 0);
+         if ((this.c || this.a.N().a($$0))
+            && this.h <= 0
+            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.dZ().i() < 0.05F)) {
+            this.e = $$0.dB();
+            this.f = $$0.dD();
+            this.g = $$0.dH();
+            this.h = 4 + this.a.dZ().a(7);
+            double $$1 = this.a.g((bvb)$$0);
+            if ($$1 > 1024.0) {
+               this.h += 10;
+            } else if ($$1 > 256.0) {
+               this.h += 5;
             }
 
-            $$2.d();
+            if (!this.a.L().a($$0, this.b)) {
+               this.h += 15;
+            }
+
+            this.h = this.a(this.h);
          }
-      }
 
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bpt $$1 = bps.a();
-      $$1.a("goalTick");
-
-      for (ces $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.V_())) {
-            $$2.a();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<ces> b() {
-      return this.c;
-   }
-
-   public void a(cde.a $$0) {
-      this.d.add($$0);
-   }
-
-   public void b(cde.a $$0) {
-      this.d.remove($$0);
-   }
-
-   public void a(cde.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
-      } else {
+         this.i = Math.max(this.i - 1, 0);
          this.a($$0);
       }
+   }
+
+   protected void a(bvx $$0) {
+      if (this.b($$0)) {
+         this.h();
+         this.a.a(bsz.a);
+         this.a.c(a(this.a), $$0);
+      }
+   }
+
+   protected void h() {
+      this.i = this.a(20);
+   }
+
+   protected boolean i() {
+      return this.i <= 0;
+   }
+
+   protected boolean b(bvx $$0) {
+      return this.i() && this.a.i($$0) && this.a.N().a($$0);
+   }
+
+   protected int k() {
+      return this.i;
+   }
+
+   protected int l() {
+      return this.a(20);
    }
 }

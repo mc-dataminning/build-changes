@@ -15,27 +15,27 @@ public class gv implements gu {
    }
 
    @Override
-   public fby a(ew $$0) {
-      fbx $$1 = $$0.k();
-      fby $$2 = $$0.m().a($$0);
-      float $$3 = bae.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = bae.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = bae.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = bae.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = bae.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = bae.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      fby $$9 = new fby((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      fby $$10 = new fby((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      fby $$11 = $$9.c($$10).c(-1.0);
+   public fbr a(ew $$0) {
+      fbq $$1 = $$0.k();
+      fbr $$2 = $$0.m().a($$0);
+      float $$3 = azu.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = azu.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = azu.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = azu.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = azu.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = azu.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      fbr $$9 = new fbr((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      fbr $$10 = new fbr((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      fbr $$11 = $$9.c($$10).c(-1.0);
       double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
       double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
-      return new fby($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
+      return new fbr($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
    @Override
-   public fbx b(ew $$0) {
-      return fbx.a;
+   public fbq b(ew $$0) {
+      return fbq.a;
    }
 
    @Override

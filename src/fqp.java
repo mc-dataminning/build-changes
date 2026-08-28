@@ -1,194 +1,318 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fqp implements fqq {
-   private static final alz a = alz.b("toast/system");
-   private static final int e = 200;
-   private static final int f = 12;
-   private static final int g = 10;
-   private final fqp.a h;
-   private xv i;
-   private List<azq> j;
-   private long k;
-   private boolean l;
-   private final int m;
-   private boolean n;
-   private fqq.a o = fqq.a.b;
+public class fqp implements avf, AutoCloseable {
+   static final Logger b = LogUtils.getLogger();
+   private static final String c = "fonts.json";
+   public static final alp a = alp.b("missing");
+   private static final ali d = ali.a("font");
+   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private final fqr f;
+   private final List<fek> g = new ArrayList<>();
+   private final Map<alp, fqr> h = new HashMap<>();
+   private final hbh i;
+   @Nullable
+   private volatile fqr j;
 
-   public fqp(fqp.a $$0, xv $$1, @Nullable xv $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(fmg.Q().h.a($$1), $$2 == null ? 0 : fmg.Q().h.a($$2))));
-   }
-
-   public static fqp a(fmg $$0, fqp.a $$1, xv $$2, xv $$3) {
-      fnq $$4 = $$0.h;
-      List<azq> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new fqp($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private fqp(fqp.a $$0, xv $$1, List<azq> $$2, int $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.m = $$3;
-   }
-
-   private static ImmutableList<azq> a(@Nullable xv $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
-   }
-
-   @Override
-   public int b() {
-      return this.m;
-   }
-
-   @Override
-   public int c() {
-      return 20 + Math.max(this.j.size(), 1) * 12;
-   }
-
-   public void d() {
-      this.n = true;
-   }
-
-   @Override
-   public fqq.a a() {
-      return this.o;
-   }
-
-   @Override
-   public void a(fqr $$0, long $$1) {
-      if (this.l) {
-         this.k = $$1;
-         this.l = false;
-      }
-
-      double $$2 = (double)this.h.l * $$0.d();
-      long $$3 = $$1 - this.k;
-      this.o = !this.n && (double)$$3 < $$2 ? fqq.a.a : fqq.a.b;
-   }
-
-   @Override
-   public void a(fns $$0, fnq $$1, long $$2) {
-      int $$3 = this.b();
-      if ($$3 == 160 && this.j.size() <= 1) {
-         $$0.a(glv::C, a, 0, 0, $$3, this.c());
-      } else {
-         int $$4 = this.c();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
-
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
-         }
-
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
-      }
-
-      if (this.j.isEmpty()) {
-         $$0.a($$1, this.i, 18, 12, -256, false);
-      } else {
-         $$0.a($$1, this.i, 18, 7, -256, false);
-
-         for (int $$8 = 0; $$8 < this.j.size(); $$8++) {
-            $$0.a($$1, this.j.get($$8), 18, 18 + $$8 * 12, -1, false);
-         }
-      }
-   }
-
-   private void a(fns $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      alz $$7 = a;
-      $$0.a(glv::C, $$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
-
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a(glv::C, $$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
-      }
-
-      $$0.a(glv::C, $$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
-   }
-
-   public void a(xv $$0, @Nullable xv $$1) {
+   public fqp(hbh $$0) {
       this.i = $$0;
-      this.j = a($$1);
-      this.l = true;
+      this.f = ae.a(new fqr($$0, a), $$0x -> $$0x.a(List.of(d()), Set.of()));
    }
 
-   public fqp.a e() {
-      return this.h;
+   private static fek.a d() {
+      return new fek.a(new fqn(), fqq.a.b);
    }
 
-   public static void a(fqr $$0, fqp.a $$1, xv $$2, @Nullable xv $$3) {
-      $$0.a(new fqp($$1, $$2, $$3));
+   @Override
+   public CompletableFuture<Void> a(avf.a $$0, avl $$1, Executor $$2, Executor $$3) {
+      return this.a($$1, $$2).thenCompose($$0::a).thenAcceptAsync($$0x -> this.a($$0x, bpi.a()), $$3);
    }
 
-   public static void b(fqr $$0, fqp.a $$1, xv $$2, @Nullable xv $$3) {
-      fqp $$4 = $$0.a(fqp.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
+   private CompletableFuture<fqp.d> a(avl $$0, Executor $$1) {
+      List<CompletableFuture<fqp.e>> $$2 = new ArrayList<>();
+
+      for (Entry<alp, List<avj>> $$3 : d.b($$0).entrySet()) {
+         alp $$4 = d.b($$3.getKey());
+         $$2.add(CompletableFuture.supplyAsync(() -> {
+            List<Pair<fqp.a, frc.a>> $$4x = a($$3.getValue(), $$4);
+            fqp.e $$5 = new fqp.e($$4);
+
+            for (Pair<fqp.a, frc.a> $$6 : $$4x) {
+               fqp.a $$7 = (fqp.a)$$6.getFirst();
+               fqq.a $$8 = ((frc.a)$$6.getSecond()).b();
+               ((frc.a)$$6.getSecond()).a().b().ifLeft($$5x -> {
+                  CompletableFuture<Optional<fek>> $$6x = this.a($$7, $$5x, $$0, $$1);
+                  $$5.a($$7, $$8, $$6x);
+               }).ifRight($$3xx -> $$5.a($$7, $$8, $$3xx));
+            }
+
+            return $$5;
+         }, $$1));
+      }
+
+      return ae.d($$2)
+         .thenCompose(
+            $$1x -> {
+               List<CompletableFuture<Optional<fek>>> $$2x = $$1x.stream().flatMap(fqp.e::d).collect(ae.b());
+               fek.a $$3x = d();
+               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x.a())));
+               return ae.d($$2x)
+                  .thenCompose(
+                     $$3xx -> {
+                        Map<alp, List<fek.a>> $$4x = this.a($$1x);
+                        CompletableFuture<?>[] $$5 = $$4x.values()
+                           .stream()
+                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
+                           .toArray(CompletableFuture[]::new);
+                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
+                           List<fek> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
+                           return new fqp.d($$4x, $$3xxx);
+                        });
+                     }
+                  );
+            }
+         );
+   }
+
+   private CompletableFuture<Optional<fek>> a(fqp.a $$0, frc.b $$1, avl $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            return Optional.of($$1.load($$2));
+         } catch (Exception var4x) {
+            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
+            return Optional.empty();
+         }
+      }, $$3);
+   }
+
+   private Map<alp, List<fek.a>> a(List<fqp.e> $$0) {
+      Map<alp, List<fek.a>> $$1 = new HashMap<>();
+      ayz<alp, fqp.e> $$2 = new ayz<>();
+      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
+      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
+      return $$1;
+   }
+
+   private void a(List<fek.a> $$0, fek.a $$1) {
+      $$0.add(0, $$1);
+      IntSet $$2 = new IntOpenHashSet();
+
+      for (fek.a $$3 : $$0) {
+         $$2.addAll($$3.a().a());
+      }
+
+      $$2.forEach($$1x -> {
+         if ($$1x != 32) {
+            for (fek.a $$2x : Lists.reverse($$0)) {
+               if ($$2x.a().a($$1x) != null) {
+                  break;
+               }
+            }
+         }
+      });
+   }
+
+   private static Set<fqq> b(fmd $$0) {
+      Set<fqq> $$1 = EnumSet.noneOf(fqq.class);
+      if ($$0.S().c()) {
+         $$1.add(fqq.a);
+      }
+
+      if ($$0.T().c()) {
+         $$1.add(fqq.b);
+      }
+
+      return $$1;
+   }
+
+   private void a(fqp.d $$0, bpj $$1) {
+      $$1.a("closing");
+      this.j = null;
+      this.h.values().forEach(fqr::close);
+      this.h.clear();
+      this.g.forEach(fek::close);
+      this.g.clear();
+      Set<fqq> $$2 = b(flz.Q().n);
+      $$1.b("reloading");
+      $$0.a().forEach(($$1x, $$2x) -> {
+         fqr $$3 = new fqr(this.i, $$1x);
+         $$3.a(Lists.reverse($$2x), $$2);
+         this.h.put($$1x, $$3);
+      });
+      this.g.addAll($$0.b);
+      $$1.c();
+      if (!this.h.containsKey(flz.b)) {
+         throw new IllegalStateException("Default font failed to load");
+      }
+   }
+
+   public void a(fmd $$0) {
+      Set<fqq> $$1 = b($$0);
+
+      for (fqr $$2 : this.h.values()) {
+         $$2.a($$1);
+      }
+   }
+
+   private static List<Pair<fqp.a, frc.a>> a(List<avj> $$0, alp $$1) {
+      List<Pair<fqp.a, frc.a>> $$2 = new ArrayList<>();
+
+      for (avj $$3 : $$0) {
+         try (Reader $$4 = $$3.e()) {
+            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
+            fqp.c $$6 = (fqp.c)fqp.c.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonParseException::new);
+            List<frc.a> $$7 = $$6.b;
+
+            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
+               fqp.a $$9 = new fqp.a($$1, $$3.b(), $$8);
+               $$2.add(Pair.of($$9, $$7.get($$8)));
+            }
+         } catch (Exception var13) {
+            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
+         }
+      }
+
+      return $$2;
+   }
+
+   public fnj a() {
+      return new fnj(this::b, false);
+   }
+
+   public fnj b() {
+      return new fnj(this::b, true);
+   }
+
+   private fqr a(alp $$0) {
+      return this.h.getOrDefault($$0, this.f);
+   }
+
+   private fqr b(alp $$0) {
+      fqr $$1 = this.j;
+      if ($$1 != null && $$0.equals($$1.a())) {
+         return $$1;
       } else {
-         $$4.a($$2, $$3);
+         fqr $$2 = this.a($$0);
+         this.j = $$2;
+         return $$2;
       }
    }
 
-   public static void a(fqr $$0, fqp.a $$1) {
-      fqp $$2 = $$0.a(fqp.class, $$1);
-      if ($$2 != null) {
-         $$2.d();
+   @Override
+   public void close() {
+      this.h.values().forEach(fqr::close);
+      this.g.forEach(fek::close);
+      this.f.close();
+   }
+
+   static record a(alp a, String b, int c) {
+      @Override
+      public String toString() {
+         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
       }
    }
 
-   public static void a(fmg $$0, String $$1) {
-      a($$0.aA(), fqp.a.d, xv.c("selectWorld.access_failure"), xv.b($$1));
-   }
+   static record b(fqp.a a, fqq.a b, Either<CompletableFuture<Optional<fek>>, alp> c) {
 
-   public static void b(fmg $$0, String $$1) {
-      a($$0.aA(), fqp.a.d, xv.c("selectWorld.delete_failure"), xv.b($$1));
-   }
-
-   public static void c(fmg $$0, String $$1) {
-      a($$0.aA(), fqp.a.e, xv.c("pack.copyFailure"), xv.b($$1));
-   }
-
-   public static void a(fmg $$0, int $$1) {
-      a($$0.aA(), fqp.a.f, xv.c("gui.fileDropFailure.title"), xv.a("gui.fileDropFailure.detail", $$1));
-   }
-
-   public static void a(fmg $$0) {
-      b($$0.aA(), fqp.a.h, xv.c("chunk.toast.lowDiskSpace"), xv.c("chunk.toast.lowDiskSpace.description"));
-   }
-
-   public static void a(fmg $$0, dgo $$1) {
-      b($$0.aA(), fqp.a.i, xv.a("chunk.toast.loadFailure", xv.a($$1)).a(n.m), xv.c("chunk.toast.checkLog"));
-   }
-
-   public static void b(fmg $$0, dgo $$1) {
-      b($$0.aA(), fqp.a.j, xv.a("chunk.toast.saveFailure", xv.a($$1)).a(n.m), xv.c("chunk.toast.checkLog"));
-   }
-
-   public static class a {
-      public static final fqp.a a = new fqp.a();
-      public static final fqp.a b = new fqp.a();
-      public static final fqp.a c = new fqp.a();
-      public static final fqp.a d = new fqp.a();
-      public static final fqp.a e = new fqp.a();
-      public static final fqp.a f = new fqp.a();
-      public static final fqp.a g = new fqp.a();
-      public static final fqp.a h = new fqp.a(10000L);
-      public static final fqp.a i = new fqp.a();
-      public static final fqp.a j = new fqp.a();
-      public static final fqp.a k = new fqp.a(10000L);
-      final long l;
-
-      public a(long $$0) {
-         this.l = $$0;
+      public Optional<List<fek.a>> a(Function<alp, List<fek.a>> $$0) {
+         return (Optional<List<fek.a>>)this.c.map($$0x -> ((Optional)$$0x.join()).map($$0xx -> List.of(new fek.a($$0xx, this.b))), $$1 -> {
+            List<fek.a> $$2 = $$0.apply($$1);
+            if ($$2 == null) {
+               fqp.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
+               return Optional.empty();
+            } else {
+               return Optional.of($$2.stream().map(this::a).toList());
+            }
+         });
       }
 
-      public a() {
-         this(5000L);
+      private fek.a a(fek.a $$0) {
+         return new fek.a($$0.a(), this.b.a($$0.b()));
+      }
+   }
+
+   static record c(List<frc.a> b) {
+      public static final Codec<fqp.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(frc.a.a.listOf().fieldOf("providers").forGetter(fqp.c::a)).apply($$0, fqp.c::new)
+      );
+
+      public List<frc.a> a() {
+         return this.b;
+      }
+   }
+
+   static record d(Map<alp, List<fek.a>> a, List<fek> b) {
+   }
+
+   static record e(alp a, List<fqp.b> b, Set<alp> c) implements ayz.a<alp> {
+
+      public e(alp $$0) {
+         this($$0, new ArrayList<>(), new HashSet<>());
+      }
+
+      public void a(fqp.a $$0, fqq.a $$1, frc.c $$2) {
+         this.b.add(new fqp.b($$0, $$1, Either.right($$2.a())));
+         this.c.add($$2.a());
+      }
+
+      public void a(fqp.a $$0, fqq.a $$1, CompletableFuture<Optional<fek>> $$2) {
+         this.b.add(new fqp.b($$0, $$1, Either.left($$2)));
+      }
+
+      private Stream<CompletableFuture<Optional<fek>>> d() {
+         return this.b.stream().flatMap($$0 -> $$0.c.left().stream());
+      }
+
+      public Optional<List<fek.a>> a(Function<alp, List<fek.a>> $$0) {
+         List<fek.a> $$1 = new ArrayList<>();
+
+         for (fqp.b $$2 : this.b) {
+            Optional<List<fek.a>> $$3 = $$2.a($$0);
+            if (!$$3.isPresent()) {
+               return Optional.empty();
+            }
+
+            $$1.addAll($$3.get());
+         }
+
+         return Optional.of($$1);
+      }
+
+      @Override
+      public void a(Consumer<alp> $$0) {
+         this.c.forEach($$0);
+      }
+
+      @Override
+      public void b(Consumer<alp> $$0) {
       }
    }
 }

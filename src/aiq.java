@@ -1,36 +1,18 @@
-public class aiq implements aac<ahm> {
-   public static final zt<ws, aiq> a = aac.a(aiq::a, aiq::new);
-   private static final int b = 2;
-   private final boolean c;
+import java.util.Optional;
 
-   public aiq(cpt $$0) {
-      this.c = $$0.b;
-   }
-
-   private aiq(ws $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
-   }
-
-   private void a(ws $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
-   }
+public record aiq(Optional<jq<bue>> b, Optional<jq<bue>> c) implements zr<ahb> {
+   public static final zi<wv, aiq> a = zi.a(bue.b.a(zg::a), aiq::b, bue.b.a(zg::a), aiq::e, aiq::new);
 
    @Override
-   public aae<aiq> a() {
-      return ahk.bQ;
+   public zt<aiq> a() {
+      return agz.ca;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public Optional<jq<bue>> e() {
       return this.c;
    }
 }

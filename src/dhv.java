@@ -1,108 +1,154 @@
-import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dhv implements dgr {
-   protected final int a;
-   protected final int b;
-   protected final dzq[][] c;
-   protected boolean d;
-   protected final dhi e;
-   private final Supplier<jq<dik>> f;
+public class dhv {
+   private final dha a;
+   private final eeh b;
+   private final eoe c;
 
-   public dhv(dhi $$0, jh $$1, jh $$2) {
-      this.e = $$0;
-      this.f = Suppliers.memoize(() -> $$0.K_().e(mb.aI).b(dir.b));
-      this.a = kj.a($$1.u());
-      this.b = kj.a($$1.w());
-      int $$3 = kj.a($$2.u());
-      int $$4 = kj.a($$2.w());
-      this.c = new dzq[$$3 - this.a + 1][$$4 - this.b + 1];
-      dzu $$5 = $$0.R();
-      this.d = true;
-
-      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
-         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
-            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
-         }
-      }
-
-      for (int $$8 = kj.a($$1.u()); $$8 <= kj.a($$2.u()); $$8++) {
-         for (int $$9 = kj.a($$1.w()); $$9 <= kj.a($$2.w()); $$9++) {
-            dzq $$10 = this.c[$$8 - this.a][$$9 - this.b];
-            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
-               this.d = false;
-               return;
-            }
-         }
-      }
+   public dhv(dha $$0, eeh $$1, eoe $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private dzq d(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w()));
-   }
-
-   private dzq a(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
-         dzq $$4 = this.c[$$2][$$3];
-         return (dzq)($$4 != null ? $$4 : new dzw(this.e, new dgo($$0, $$1), this.f.get()));
+   public dhv a(asf $$0) {
+      if ($$0.a() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.a() + ", region: " + $$0);
       } else {
-         return new dzw(this.e, new dgo($$0, $$1), this.f.get());
+         return new dhv($$0, this.b, this.c);
       }
    }
 
-   @Override
-   public dzl F_() {
-      return this.e.F_();
+   public List<eol> a(dgf $$0, Predicate<eod> $$1) {
+      Map<eod, LongSet> $$2 = this.a.a($$0.h, $$0.i, eak.e).h();
+      Builder<eol> $$3 = ImmutableList.builder();
+
+      for (Entry<eod, LongSet> $$4 : $$2.entrySet()) {
+         eod $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
+         }
+      }
+
+      return $$3.build();
    }
 
-   @Override
-   public dgn c(int $$0, int $$1) {
-      return this.a($$0, $$1);
+   public List<eol> a(kj $$0, eod $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), eak.e).b($$1);
+      Builder<eol> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
    }
 
-   @Override
-   public List<fcs> c(@Nullable bvk $$0, fbt $$1) {
-      return List.of();
+   public void a(eod $$0, LongSet $$1, Consumer<eol> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         kj $$4 = kj.a(new dgf($$3), this.a.ap());
+         eol $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), eak.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
+         }
+      }
    }
 
    @Nullable
-   @Override
-   public dux c_(jh $$0) {
-      dzq $$1 = this.d($$0);
-      return $$1.c_($$0);
+   public eol a(kj $$0, eod $$1, eaf $$2) {
+      return $$2.a($$1);
    }
 
-   @Override
-   public dxv a_(jh $$0) {
-      if (this.s($$0)) {
-         return dko.a.m();
-      } else {
-         dzq $$1 = this.d($$0);
-         return $$1.a_($$0);
+   public void a(kj $$0, eod $$1, eol $$2, eaf $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public void a(kj $$0, eod $$1, long $$2, eaf $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public boolean a() {
+      return this.b.d();
+   }
+
+   public eol a(jh $$0, eod $$1) {
+      for (eol $$2 : this.a(kj.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
+         }
       }
+
+      return eol.b;
    }
 
-   @Override
-   public etx b_(jh $$0) {
-      if (this.s($$0)) {
-         return ety.a.g();
-      } else {
-         dzq $$1 = this.d($$0);
-         return $$1.b_($$0);
+   public eol a(jh $$0, aya<eod> $$1) {
+      return this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public eol a(jh $$0, ju<eod> $$1) {
+      return this.a($$0, $$1::a);
+   }
+
+   public eol a(jh $$0, Predicate<jq<eod>> $$1) {
+      kd<eod> $$2 = this.b().e(mb.aU);
+
+      for (eol $$3 : this.a(new dgf($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1::test).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
       }
+
+      return eol.b;
    }
 
-   @Override
-   public int L_() {
-      return this.e.L_();
+   public eol b(jh $$0, eod $$1) {
+      for (eol $$2 : this.a(kj.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return eol.b;
    }
 
-   @Override
-   public int M_() {
-      return this.e.M_();
+   public boolean a(jh $$0, eol $$1) {
+      for (eoh $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(jh $$0) {
+      kj $$1 = kj.a($$0);
+      return this.a.a($$1.a(), $$1.c(), eak.e).y();
+   }
+
+   public Map<eod, LongSet> b(jh $$0) {
+      kj $$1 = kj.a($$0);
+      return this.a.a($$1.a(), $$1.c(), eak.e).h();
+   }
+
+   public eof a(dgf $$0, eod $$1, epa $$2, boolean $$3) {
+      return this.c.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(eol $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public ke b() {
+      return this.a.K_();
    }
 }

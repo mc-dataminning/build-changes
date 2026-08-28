@@ -1,5 +1,9 @@
-import java.util.List;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-public interface fdr<T> {
-   List<fdp<T>> a(long var1);
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface fdr {
 }

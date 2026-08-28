@@ -1,21 +1,5 @@
-public enum dzg implements bba {
-   a("none"),
-   b("low"),
-   c("tall");
+public interface dzg {
+   dxo a(int var1);
 
-   private final String d;
-
-   private dzg(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
+   void a(int var1, dxo var2);
 }

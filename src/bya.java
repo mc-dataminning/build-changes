@@ -1,11 +1,41 @@
-public interface bya<E extends bwg> {
-   bxz.a a();
+public class bya implements bxr<bvx> {
+   private final int a;
+   private final int b;
+   private bxq.a c = bxq.a.a;
+   private long d;
 
-   boolean e(ash var1, E var2, long var3);
+   public bya(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void f(ash var1, E var2, long var3);
+   @Override
+   public bxq.a a() {
+      return this.c;
+   }
 
-   void g(ash var1, E var2, long var3);
+   @Override
+   public final boolean e(arx $$0, bvx $$1, long $$2) {
+      this.c = bxq.a.b;
+      int $$3 = this.a + $$0.H_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
 
-   String b();
+   @Override
+   public final void f(arx $$0, bvx $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(arx $$0, bvx $$1, long $$2) {
+      this.c = bxq.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
 }

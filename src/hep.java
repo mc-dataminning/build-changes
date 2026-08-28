@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class hep extends heq {
+   public hep(chp $$0) {
+      super($$0, awv.bR, aww.g);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hep {
+   @Override
+   protected hem o() {
+      return new heo(this.n);
+   }
+
+   @Override
+   protected boolean p() {
+      return this.n.ad_();
+   }
 }

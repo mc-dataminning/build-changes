@@ -1,80 +1,45 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class clc extends ckw {
-   private static final cgx b = cgx.a().d();
+public class clc {
+   private static final Logger a = LogUtils.getLogger();
+   private final ckl b;
+   private final ckv[] c = new ckv[clb.c()];
    @Nullable
-   private eul c;
-   @Nullable
-   private fby d;
+   private ckv d;
 
-   public clc(cku $$0) {
-      super($$0);
+   public clc(ckl $$0) {
+      this.b = $$0;
+      this.a(clb.k);
    }
 
-   @Override
-   public clk<clc> h() {
-      return clk.c;
-   }
+   public void a(clb<?> $$0) {
+      if (this.d == null || $$0 != this.d.h()) {
+         if (this.d != null) {
+            this.d.d();
+         }
 
-   @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
-   }
+         this.d = this.b((clb<ckv>)$$0);
+         if (!this.b.dW().C) {
+            this.b.au().a(ckl.a, $$0.b());
+         }
 
-   @Override
-   public void a(ash $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
+         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dW().C ? "client" : "server");
+         this.d.c();
       }
    }
 
-   @Nullable
-   @Override
-   public fby f() {
+   public ckv a() {
       return this.d;
    }
 
-   private void b(ash $$0) {
-      if (this.c == null || this.c.c()) {
-         int $$1 = this.a.t();
-         jh $$2 = $$0.a(edq.a.f, egv.a(this.a.m()));
-         cpx $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
-         int $$5;
-         if ($$3 != null) {
-            fby $$4 = new fby($$3.dB(), 0.0, $$3.dH()).d();
-            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
-         } else {
-            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
-         }
-
-         euj $$7 = new euj($$2.u(), $$2.v(), $$2.w());
-         this.c = this.a.a($$1, $$5, $$7);
-         if (this.c != null) {
-            this.c.a();
-         }
+   public <T extends ckv> T b(clb<T> $$0) {
+      int $$1 = $$0.b();
+      if (this.c[$$1] == null) {
+         this.c[$$1] = $$0.a(this.b);
       }
 
-      this.i();
-      if (this.c != null && this.c.c()) {
-         this.a.gk().a(clk.d);
-      }
-   }
-
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         kl $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new fby($$1, $$3, $$2);
-      }
+      return (T)this.c[$$1];
    }
 }

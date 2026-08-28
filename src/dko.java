@@ -1,1222 +1,182 @@
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class dko {
-   private static final dxu.f tS = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof dwj $$4 ? $$4.u() : true;
-   private static final dxu.f tT = ($$0x, $$1x, $$2) -> !$$0x.c(dxo.c);
-   public static final dkm a = a("air", djj::new, dxu.d.a().p().b().g().m());
-   public static final dkm b = a("stone", dxu.d.a().a(eub.l).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm c = a("granite", dxu.d.a().a(eub.k).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm d = a("polished_granite", dxu.d.a().a(eub.k).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm e = a("diorite", dxu.d.a().a(eub.o).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm f = a("polished_diorite", dxu.d.a().a(eub.o).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm g = a("andesite", dxu.d.a().a(eub.l).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm h = a("polished_andesite", dxu.d.a().a(eub.l).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm i = a("grass_block", dny::new, dxu.d.a().a(eub.b).e().d(0.6F).a(dsc.d));
-   public static final dkm j = a("dirt", dxu.d.a().a(eub.k).d(0.5F).a(dsc.c));
-   public static final dkm k = a("coarse_dirt", dxu.d.a().a(eub.k).d(0.5F).a(dsc.c));
-   public static final dkm l = a("podzol", drz::new, dxu.d.a().a(eub.I).d(0.5F).a(dsc.c));
-   public static final dkm m = a("cobblestone", dxu.d.a().a(eub.l).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm n = a("oak_planks", dxu.d.a().a(eub.n).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm o = a("spruce_planks", dxu.d.a().a(eub.I).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm p = a("birch_planks", dxu.d.a().a(eub.c).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm q = a("jungle_planks", dxu.d.a().a(eub.k).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm r = a("acacia_planks", dxu.d.a().a(eub.p).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm s = a("cherry_planks", dxu.d.a().a(eub.K).a(dyv.e).a(2.0F, 3.0F).a(dsc.aU).i());
-   public static final dkm t = a("dark_oak_planks", dxu.d.a().a(eub.A).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm u = a("pale_oak_wood", drb::new, dxu.d.a().a(eub.l).a(dyv.e).d(2.0F).a(dsc.b).i().a(csv.b));
-   public static final dkm v = a("pale_oak_planks", dxu.d.a().a(eub.o).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i().a(csv.b));
-   public static final dkm w = a("mangrove_planks", dxu.d.a().a(eub.C).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm x = a("bamboo_planks", dxu.d.a().a(eub.s).a(dyv.e).a(2.0F, 3.0F).a(dsc.aS).i());
-   public static final dkm y = a("bamboo_mosaic", dxu.d.a().a(eub.s).a(dyv.e).a(2.0F, 3.0F).a(dsc.aS).i());
-   public static final dkm z = a("oak_sapling", $$0x -> new drd(dxk.b, $$0x), dxu.d.a().a(eub.h).b().e().d().a(dsc.d).a(euc.b));
-   public static final dkm A = a("spruce_sapling", $$0x -> new drd(dxk.c, $$0x), dxu.d.a().a(eub.h).b().e().d().a(dsc.d).a(euc.b));
-   public static final dkm B = a("birch_sapling", $$0x -> new drd(dxk.f, $$0x), dxu.d.a().a(eub.h).b().e().d().a(dsc.d).a(euc.b));
-   public static final dkm C = a("jungle_sapling", $$0x -> new drd(dxk.g, $$0x), dxu.d.a().a(eub.h).b().e().d().a(dsc.d).a(euc.b));
-   public static final dkm D = a("acacia_sapling", $$0x -> new drd(dxk.h, $$0x), dxu.d.a().a(eub.h).b().e().d().a(dsc.d).a(euc.b));
-   public static final dkm E = a("cherry_sapling", $$0x -> new drd(dxk.i, $$0x), dxu.d.a().a(eub.u).b().e().d().a(dsc.aV).a(euc.b));
-   public static final dkm F = a("dark_oak_sapling", $$0x -> new drd(dxk.j, $$0x), dxu.d.a().a(eub.h).b().e().d().a(dsc.d).a(euc.b));
-   public static final dkm G = a("pale_oak_sapling", $$0x -> new drd(dxk.k, $$0x), dxu.d.a().a(eub.o).b().e().d().a(dsc.d).a(euc.b).a(csv.b));
-   public static final dkm H = a("mangrove_propagule", $$0x -> new dpj(dxk.d, $$0x), dxu.d.a().a(eub.h).b().e().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm I = a("bedrock", dxu.d.a().a(eub.l).a(dyv.b).a(-1.0F, 3600000.0F).g().a(dko::a));
-   public static final dkm J = a("water", $$0x -> new dpe(ety.c, $$0x), dxu.d.a().a(eub.m).p().b().d(100.0F).a(euc.b).g().j().a(dsc.a));
-   public static final dkm K = a("lava", $$0x -> new dpe(ety.e, $$0x), dxu.d.a().a(eub.e).p().b().e().d(100.0F).a($$0x -> 15).a(euc.b).g().j().a(dsc.a));
-   public static final dkm L = a("sand", $$0x -> new dlv(new ayy(14406560), $$0x), dxu.d.a().a(eub.c).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm M = a("suspicious_sand", $$0x -> new dks(L, axf.cT, axf.cT, $$0x), dxu.d.a().a(eub.c).a(dyv.c).d(0.25F).a(dsc.aZ).a(euc.b));
-   public static final dkm N = a("red_sand", $$0x -> new dlv(new ayy(11098145), $$0x), dxu.d.a().a(eub.p).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm O = a("gravel", $$0x -> new dlv(new ayy(-8356741), $$0x), dxu.d.a().a(eub.l).a(dyv.c).d(0.6F).a(dsc.c));
-   public static final dkm P = a("suspicious_gravel", $$0x -> new dks(O, axf.cU, axf.cU, $$0x), dxu.d.a().a(eub.l).a(dyv.c).d(0.25F).a(dsc.ba).a(euc.b));
-   public static final dkm Q = a("gold_ore", $$0x -> new dmy(bsl.a(0), $$0x), dxu.d.a().a(eub.l).a(dyv.b).n().a(3.0F, 3.0F));
-   public static final dkm R = a("deepslate_gold_ore", $$0x -> new dmy(bsl.a(0), $$0x), dxu.d.b(Q).a(eub.ah).a(4.5F, 3.0F).a(dsc.aE));
-   public static final dkm S = a("iron_ore", $$0x -> new dmy(bsl.a(0), $$0x), dxu.d.a().a(eub.l).a(dyv.b).n().a(3.0F, 3.0F));
-   public static final dkm T = a("deepslate_iron_ore", $$0x -> new dmy(bsl.a(0), $$0x), dxu.d.b(S).a(eub.ah).a(4.5F, 3.0F).a(dsc.aE));
-   public static final dkm U = a("coal_ore", $$0x -> new dmy(bsu.a(0, 2), $$0x), dxu.d.a().a(eub.l).a(dyv.b).n().a(3.0F, 3.0F));
-   public static final dkm V = a("deepslate_coal_ore", $$0x -> new dmy(bsu.a(0, 2), $$0x), dxu.d.b(U).a(eub.ah).a(4.5F, 3.0F).a(dsc.aE));
-   public static final dkm W = a("nether_gold_ore", $$0x -> new dmy(bsu.a(0, 1), $$0x), dxu.d.a().a(eub.J).a(dyv.b).n().a(3.0F, 3.0F).a(dsc.V));
-   public static final dkm X = a("oak_log", drb::new, a(eub.n, eub.I, dsc.b));
-   public static final dkm Y = a("spruce_log", drb::new, a(eub.I, eub.A, dsc.b));
-   public static final dkm Z = a("birch_log", drb::new, a(eub.c, eub.o, dsc.b));
-   public static final dkm aa = a("jungle_log", drb::new, a(eub.k, eub.I, dsc.b));
-   public static final dkm ab = a("acacia_log", drb::new, a(eub.p, eub.l, dsc.b));
-   public static final dkm ac = a("cherry_log", drb::new, a(eub.K, eub.R, dsc.aU));
-   public static final dkm ad = a("dark_oak_log", drb::new, a(eub.A, eub.A, dsc.b));
-   public static final dkm ae = a("pale_oak_log", drb::new, a(v.w(), u.w(), dsc.b).a(csv.b));
-   public static final dkm af = a("mangrove_log", drb::new, a(eub.C, eub.I, dsc.b));
-   public static final dkm ag = a("mangrove_roots", dpk::new, dxu.d.a().a(eub.I).a(dyv.e).d(0.7F).a(dsc.aK).c().b(dko::b).c(dko::b).c().i());
-   public static final dkm ah = a("muddy_mangrove_roots", drb::new, dxu.d.a().a(eub.I).d(0.7F).a(dsc.aL));
-   public static final dkm ai = a("bamboo_block", drb::new, a(eub.s, eub.h, dsc.aS));
-   public static final dkm aj = a("stripped_spruce_log", drb::new, a(eub.I, eub.I, dsc.b));
-   public static final dkm ak = a("stripped_birch_log", drb::new, a(eub.c, eub.c, dsc.b));
-   public static final dkm al = a("stripped_jungle_log", drb::new, a(eub.k, eub.k, dsc.b));
-   public static final dkm am = a("stripped_acacia_log", drb::new, a(eub.p, eub.p, dsc.b));
-   public static final dkm an = a("stripped_cherry_log", drb::new, a(eub.K, eub.Q, dsc.aU));
-   public static final dkm ao = a("stripped_dark_oak_log", drb::new, a(eub.A, eub.A, dsc.b));
-   public static final dkm ap = a("stripped_pale_oak_log", drb::new, a(v.w(), v.w(), dsc.b).a(csv.b));
-   public static final dkm aq = a("stripped_oak_log", drb::new, a(eub.n, eub.n, dsc.b));
-   public static final dkm ar = a("stripped_mangrove_log", drb::new, a(eub.C, eub.C, dsc.b));
-   public static final dkm as = a("stripped_bamboo_block", drb::new, a(eub.s, eub.s, dsc.aS));
-   public static final dkm at = a("oak_wood", drb::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm au = a("spruce_wood", drb::new, dxu.d.a().a(eub.I).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm av = a("birch_wood", drb::new, dxu.d.a().a(eub.c).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm aw = a("jungle_wood", drb::new, dxu.d.a().a(eub.k).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm ax = a("acacia_wood", drb::new, dxu.d.a().a(eub.v).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm ay = a("cherry_wood", drb::new, dxu.d.a().a(eub.R).a(dyv.e).d(2.0F).a(dsc.aU).i());
-   public static final dkm az = a("dark_oak_wood", drb::new, dxu.d.a().a(eub.A).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm aA = a("mangrove_wood", drb::new, dxu.d.a().a(eub.C).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm aB = a("stripped_oak_wood", drb::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm aC = a("stripped_spruce_wood", drb::new, dxu.d.a().a(eub.I).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm aD = a("stripped_birch_wood", drb::new, dxu.d.a().a(eub.c).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm aE = a("stripped_jungle_wood", drb::new, dxu.d.a().a(eub.k).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm aF = a("stripped_acacia_wood", drb::new, dxu.d.a().a(eub.p).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm aG = a("stripped_cherry_wood", drb::new, dxu.d.a().a(eub.Q).a(dyv.e).d(2.0F).a(dsc.aU).i());
-   public static final dkm aH = a("stripped_dark_oak_wood", drb::new, dxu.d.a().a(eub.A).a(dyv.e).d(2.0F).a(dsc.b).i());
-   public static final dkm aI = a("stripped_pale_oak_wood", drb::new, dxu.d.a().a(v.w()).a(dyv.e).d(2.0F).a(dsc.b).i().a(csv.b));
-   public static final dkm aJ = a("stripped_mangrove_wood", drb::new, a(eub.C, eub.C, dsc.b));
-   public static final dkm aK = a("oak_leaves", doy::new, a(dsc.d));
-   public static final dkm aL = a("spruce_leaves", doy::new, a(dsc.d));
-   public static final dkm aM = a("birch_leaves", doy::new, a(dsc.d));
-   public static final dkm aN = a("jungle_leaves", doy::new, a(dsc.d));
-   public static final dkm aO = a("acacia_leaves", doy::new, a(dsc.d));
-   public static final dkm aP = a("cherry_leaves", dlp::new, dxu.d.a().a(eub.u).d(0.2F).e().a(dsc.aW).c().a(dko::c).b(dko::b).c(dko::b).i().a(euc.b).a(dko::b));
-   public static final dkm aQ = a("dark_oak_leaves", doy::new, a(dsc.d));
-   public static final dkm aR = a(
-      "pale_oak_leaves", doy::new, dxu.d.a().a(eub.X).d(0.2F).e().a(dsc.d).c().a(dko::c).b(dko::b).c(dko::b).i().a(euc.b).a(dko::b).a(csv.b)
+public class dko extends dmy {
+   public static final MapCodec<dko> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dyd.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.O),
+               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.P),
+               t()
+            )
+            .apply($$0, dko::new)
    );
-   public static final dkm aS = a("mangrove_leaves", dpi::new, a(dsc.d));
-   public static final dkm aT = a("azalea_leaves", doy::new, a(dsc.ax));
-   public static final dkm aU = a("flowering_azalea_leaves", doy::new, a(dsc.ax));
-   public static final dkm aV = a("sponge", dse::new, dxu.d.a().a(eub.s).d(0.6F).a(dsc.be));
-   public static final dkm aW = a("wet_sponge", dug::new, dxu.d.a().a(eub.s).d(0.6F).a(dsc.bf));
-   public static final dkm aX = a("glass", dtb::new, dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c().a(dko::a).a(dko::b).b(dko::b).c(dko::b));
-   public static final dkm aY = a("lapis_ore", $$0x -> new dmy(bsu.a(2, 5), $$0x), dxu.d.a().a(eub.l).a(dyv.b).n().a(3.0F, 3.0F));
-   public static final dkm aZ = a("deepslate_lapis_ore", $$0x -> new dmy(bsu.a(2, 5), $$0x), dxu.d.b(aY).a(eub.ah).a(4.5F, 3.0F).a(dsc.aE));
-   public static final dkm ba = a("lapis_block", dxu.d.a().a(eub.G).n().a(3.0F, 3.0F));
-   public static final dkm bb = a("dispenser", dmt::new, dxu.d.a().a(eub.l).a(dyv.b).n().d(3.5F));
-   public static final dkm bc = a("sandstone", dxu.d.a().a(eub.c).a(dyv.b).n().d(0.8F));
-   public static final dkm bd = a("chiseled_sandstone", dxu.d.a().a(eub.c).a(dyv.b).n().d(0.8F));
-   public static final dkm be = a("cut_sandstone", dxu.d.a().a(eub.c).a(dyv.b).n().d(0.8F));
-   public static final dkm bf = a("note_block", dpx::new, dxu.d.a().a(eub.n).a(dyv.e).a(dsc.b).d(0.8F).i());
-   public static final dkm bg = a("white_bed", cwm.a);
-   public static final dkm bh = a("orange_bed", cwm.b);
-   public static final dkm bi = a("magenta_bed", cwm.c);
-   public static final dkm bj = a("light_blue_bed", cwm.d);
-   public static final dkm bk = a("yellow_bed", cwm.e);
-   public static final dkm bl = a("lime_bed", cwm.f);
-   public static final dkm bm = a("pink_bed", cwm.g);
-   public static final dkm bn = a("gray_bed", cwm.h);
-   public static final dkm bo = a("light_gray_bed", cwm.i);
-   public static final dkm bp = a("cyan_bed", cwm.j);
-   public static final dkm bq = a("purple_bed", cwm.k);
-   public static final dkm br = a("blue_bed", cwm.l);
-   public static final dkm bs = a("brown_bed", cwm.m);
-   public static final dkm bt = a("green_bed", cwm.n);
-   public static final dkm bu = a("red_bed", cwm.o);
-   public static final dkm bv = a("black_bed", cwm.p);
-   public static final dkm bw = a("powered_rail", dql::new, dxu.d.a().b().d(0.7F).a(dsc.g));
-   public static final dkm bx = a("detector_rail", dmp::new, dxu.d.a().b().d(0.7F).a(dsc.g));
-   public static final dkm by = a("sticky_piston", $$0x -> new dxo(true, $$0x), a());
-   public static final dkm bz = a("cobweb", duc::new, dxu.d.a().a(eub.d).a(dsc.bj).k().b().n().d(4.0F).a(euc.b));
-   public static final dkm bA = a("short_grass", dsu::new, dxu.d.a().a(eub.h).p().b().d().a(dsc.d).a(dxu.c.c).i().a(euc.b));
-   public static final dkm bB = a("fern", dsu::new, dxu.d.a().a(eub.h).p().b().d().a(dsc.d).a(dxu.c.c).i().a(euc.b));
-   public static final dkm bC = a("dead_bush", dmn::new, dxu.d.a().a(eub.n).p().b().d().a(dsc.d).i().a(euc.b));
-   public static final dkm bD = a("seagrass", drn::new, dxu.d.a().a(eub.m).p().b().d().a(dsc.q).a(euc.b));
-   public static final dkm bE = a("tall_seagrass", dsv::new, dxu.d.a().a(eub.m).p().b().d().a(dsc.q).a(dxu.c.b).a(euc.b));
-   public static final dkm bF = a("piston", $$0x -> new dxo(false, $$0x), a());
-   public static final dkm bG = a("piston_head", dxp::new, dxu.d.a().a(eub.l).d(1.5F).g().a(euc.c));
-   public static final dkm bH = a("white_wool", dxu.d.a().a(eub.i).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bI = a("orange_wool", dxu.d.a().a(eub.p).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bJ = a("magenta_wool", dxu.d.a().a(eub.q).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bK = a("light_blue_wool", dxu.d.a().a(eub.r).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bL = a("yellow_wool", dxu.d.a().a(eub.s).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bM = a("lime_wool", dxu.d.a().a(eub.t).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bN = a("pink_wool", dxu.d.a().a(eub.u).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bO = a("gray_wool", dxu.d.a().a(eub.v).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bP = a("light_gray_wool", dxu.d.a().a(eub.w).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bQ = a("cyan_wool", dxu.d.a().a(eub.x).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bR = a("purple_wool", dxu.d.a().a(eub.y).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bS = a("blue_wool", dxu.d.a().a(eub.z).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bT = a("brown_wool", dxu.d.a().a(eub.A).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bU = a("green_wool", dxu.d.a().a(eub.B).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bV = a("red_wool", dxu.d.a().a(eub.C).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bW = a("black_wool", dxu.d.a().a(eub.D).a(dyv.h).d(0.8F).a(dsc.i).i());
-   public static final dkm bX = a("moving_piston", dxn::new, dxu.d.a().a(eub.l).k().d(-1.0F).f().g().c().a(dko::b).b(dko::b).c(dko::b).a(euc.c));
-   public static final dkm bY = a("dandelion", $$0x -> new dnp(bur.w, 0.35F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm bZ = a("torchflower", $$0x -> new dnp(bur.p, 5.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm ca = a("poppy", $$0x -> new dnp(bur.p, 5.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm cb = a("blue_orchid", $$0x -> new dnp(bur.w, 0.35F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm cc = a("allium", $$0x -> new dnp(bur.l, 4.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm cd = a("azure_bluet", $$0x -> new dnp(bur.o, 8.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm ce = a("red_tulip", $$0x -> new dnp(bur.r, 9.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm cf = a("orange_tulip", $$0x -> new dnp(bur.r, 9.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm cg = a("white_tulip", $$0x -> new dnp(bur.r, 9.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm ch = a("pink_tulip", $$0x -> new dnp(bur.r, 9.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm ci = a("oxeye_daisy", $$0x -> new dnp(bur.j, 8.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm cj = a("cornflower", $$0x -> new dnp(bur.h, 6.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm ck = a("wither_rose", $$0x -> new duh(bur.t, 8.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm cl = a("lily_of_the_valley", $$0x -> new dnp(bur.s, 12.0F, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).a(euc.b));
-   public static final dkm cm = a("brown_mushroom", $$0x -> new dpq(sr.e, $$0x), dxu.d.a().a(eub.A).b().e().d().a(dsc.d).a($$0x -> 1).d(dko::a).a(euc.b));
-   public static final dkm cn = a("red_mushroom", $$0x -> new dpq(sr.f, $$0x), dxu.d.a().a(eub.C).b().e().d().a(dsc.d).d(dko::a).a(euc.b));
-   public static final dkm co = a("gold_block", dxu.d.a().a(eub.E).a(dyv.g).n().a(3.0F, 6.0F).a(dsc.g));
-   public static final dkm cp = a("iron_block", dxu.d.a().a(eub.g).a(dyv.k).n().a(5.0F, 6.0F).a(dsc.g));
-   public static final dkm cq = a("bricks", dxu.d.a().a(eub.C).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm cr = a("tnt", dsy::new, dxu.d.a().a(eub.e).d().a(dsc.d).i().a(dko::b));
-   public static final dkm cs = a("bookshelf", dxu.d.a().a(eub.n).a(dyv.e).d(1.5F).a(dsc.b).i());
-   public static final dkm ct = a("chiseled_bookshelf", dlr::new, dxu.d.a().a(eub.n).a(dyv.e).d(1.5F).a(dsc.aY).i());
-   public static final dkm cu = a("mossy_cobblestone", dxu.d.a().a(eub.l).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm cv = a("obsidian", dxu.d.a().a(eub.D).a(dyv.b).n().a(50.0F, 1200.0F));
-   public static final dkm cw = a("torch", $$0x -> new dsz(ls.F, $$0x), dxu.d.a().b().d().a($$0x -> 14).a(dsc.b).a(euc.b));
-   public static final dkm cx = a("wall_torch", $$0x -> new dtr(ls.F, $$0x), a(cw, true).b().d().a($$0x -> 14).a(dsc.b).a(euc.b));
-   public static final dkm cy = a("fire", dnn::new, dxu.d.a().a(eub.e).p().b().d().a($$0x -> 15).a(dsc.i).a(euc.b));
-   public static final dkm cz = a("soul_fire", dsa::new, dxu.d.a().a(eub.r).p().b().d().a($$0x -> 10).a(dsc.i).a(euc.b));
-   public static final dkm cA = a("spawner", dsd::new, dxu.d.a().a(eub.l).a(dyv.b).n().d(5.0F).a(dsc.bk).c());
-   public static final dkm cB = a("creaking_heart", dmi::new, dxu.d.a().a(eub.p).a(dyv.b).d(5.0F).a(dsc.bh).a(csv.b));
-   public static final dkm cC = a("oak_stairs", n);
-   public static final dkm cD = a("chest", $$0x -> new dlq(() -> duz.b, $$0x), dxu.d.a().a(eub.n).a(dyv.e).d(2.5F).a(dsc.b).i());
-   public static final dkm cE = a("redstone_wire", dqr::new, dxu.d.a().b().d().a(euc.b));
-   public static final dkm cF = a("diamond_ore", $$0x -> new dmy(bsu.a(3, 7), $$0x), dxu.d.a().a(eub.l).a(dyv.b).n().a(3.0F, 3.0F));
-   public static final dkm cG = a("deepslate_diamond_ore", $$0x -> new dmy(bsu.a(3, 7), $$0x), dxu.d.b(cF).a(eub.ah).a(4.5F, 3.0F).a(dsc.aE));
-   public static final dkm cH = a("diamond_block", dxu.d.a().a(eub.F).n().a(5.0F, 6.0F).a(dsc.g));
-   public static final dkm cI = a("crafting_table", dmh::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.5F).a(dsc.b).i());
-   public static final dkm cJ = a("wheat", dmj::new, dxu.d.a().a($$0x -> $$0x.c(dmj.f) >= 6 ? eub.s : eub.h).b().e().d().a(dsc.w).a(euc.b));
-   public static final dkm cK = a("farmland", dnk::new, dxu.d.a().a(eub.k).e().d(0.6F).a(dsc.c).c(dko::a).b(dko::a));
-   public static final dkm cL = a("furnace", dnu::new, dxu.d.a().a(eub.l).a(dyv.b).n().d(3.5F).a(a(13)));
-   public static final dkm cM = a("oak_sign", $$0x -> new dsk(dzh.b, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm cN = a("spruce_sign", $$0x -> new dsk(dzh.c, $$0x), dxu.d.a().a(Y.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm cO = a("birch_sign", $$0x -> new dsk(dzh.d, $$0x), dxu.d.a().a(eub.c).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm cP = a("acacia_sign", $$0x -> new dsk(dzh.e, $$0x), dxu.d.a().a(eub.p).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm cQ = a("cherry_sign", $$0x -> new dsk(dzh.f, $$0x), dxu.d.a().a(s.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm cR = a("jungle_sign", $$0x -> new dsk(dzh.g, $$0x), dxu.d.a().a(aa.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm cS = a("dark_oak_sign", $$0x -> new dsk(dzh.h, $$0x), dxu.d.a().a(ad.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm cT = a("pale_oak_sign", $$0x -> new dsk(dzh.i, $$0x), dxu.d.a().a(v.w()).k().a(dyv.e).b().d(1.0F).i().a(csv.b));
-   public static final dkm cU = a("mangrove_sign", $$0x -> new dsk(dzh.l, $$0x), dxu.d.a().a(af.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm cV = a("bamboo_sign", $$0x -> new dsk(dzh.m, $$0x), dxu.d.a().a(x.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm cW = a("oak_door", $$0x -> new dmu(dyk.g, $$0x), dxu.d.a().a(n.w()).a(dyv.e).d(3.0F).c().i().a(euc.b));
-   public static final dkm cX = a("ladder", dou::new, dxu.d.a().l().d(0.4F).a(dsc.m).c().a(euc.b));
-   public static final dkm cY = a("rail", dqo::new, dxu.d.a().b().d(0.7F).a(dsc.g));
-   public static final dkm cZ = a("cobblestone_stairs", m);
-   public static final dkm da = a("oak_wall_sign", $$0x -> new dtp(dzh.b, $$0x), a(cM, true).a(eub.n).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm db = a("spruce_wall_sign", $$0x -> new dtp(dzh.c, $$0x), a(cN, true).a(Y.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dc = a("birch_wall_sign", $$0x -> new dtp(dzh.d, $$0x), a(cO, true).a(eub.c).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dd = a("acacia_wall_sign", $$0x -> new dtp(dzh.e, $$0x), a(cP, true).a(eub.p).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm de = a("cherry_wall_sign", $$0x -> new dtp(dzh.f, $$0x), a(cQ, true).a(ac.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm df = a("jungle_wall_sign", $$0x -> new dtp(dzh.g, $$0x), a(cR, true).a(aa.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dg = a("dark_oak_wall_sign", $$0x -> new dtp(dzh.h, $$0x), a(cS, true).a(ad.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dh = a("pale_oak_wall_sign", $$0x -> new dtp(dzh.i, $$0x), a(cT, true).a(v.w()).k().a(dyv.e).b().d(1.0F).i().a(csv.b));
-   public static final dkm di = a("mangrove_wall_sign", $$0x -> new dtp(dzh.l, $$0x), a(cU, true).a(af.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dj = a("bamboo_wall_sign", $$0x -> new dtp(dzh.m, $$0x), a(cV, true).a(x.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dk = a("oak_hanging_sign", $$0x -> new dlm(dzh.b, $$0x), dxu.d.a().a(X.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dl = a("spruce_hanging_sign", $$0x -> new dlm(dzh.c, $$0x), dxu.d.a().a(Y.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dm = a("birch_hanging_sign", $$0x -> new dlm(dzh.d, $$0x), dxu.d.a().a(eub.c).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dn = a("acacia_hanging_sign", $$0x -> new dlm(dzh.e, $$0x), dxu.d.a().a(eub.p).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm do = a("cherry_hanging_sign", $$0x -> new dlm(dzh.f, $$0x), dxu.d.a().a(eub.Q).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dp = a("jungle_hanging_sign", $$0x -> new dlm(dzh.g, $$0x), dxu.d.a().a(aa.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dq = a("dark_oak_hanging_sign", $$0x -> new dlm(dzh.h, $$0x), dxu.d.a().a(ad.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dr = a("pale_oak_hanging_sign", $$0x -> new dlm(dzh.i, $$0x), dxu.d.a().a(v.w()).k().a(dyv.e).b().d(1.0F).i().a(csv.b));
-   public static final dkm ds = a("crimson_hanging_sign", $$0x -> new dlm(dzh.j, $$0x), dxu.d.a().a(eub.ab).k().a(dyv.e).b().d(1.0F));
-   public static final dkm dt = a("warped_hanging_sign", $$0x -> new dlm(dzh.k, $$0x), dxu.d.a().a(eub.ae).k().a(dyv.e).b().d(1.0F));
-   public static final dkm du = a("mangrove_hanging_sign", $$0x -> new dlm(dzh.l, $$0x), dxu.d.a().a(af.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dv = a("bamboo_hanging_sign", $$0x -> new dlm(dzh.m, $$0x), dxu.d.a().a(eub.s).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dw = a("oak_wall_hanging_sign", $$0x -> new dto(dzh.b, $$0x), a(dk, true).a(X.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dx = a("spruce_wall_hanging_sign", $$0x -> new dto(dzh.c, $$0x), a(dl, true).a(eub.n).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dy = a("birch_wall_hanging_sign", $$0x -> new dto(dzh.d, $$0x), a(dm, true).a(eub.c).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dz = a("acacia_wall_hanging_sign", $$0x -> new dto(dzh.e, $$0x), a(dn, true).a(eub.p).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dA = a("cherry_wall_hanging_sign", $$0x -> new dto(dzh.f, $$0x), a(do, true).a(eub.Q).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dB = a("jungle_wall_hanging_sign", $$0x -> new dto(dzh.g, $$0x), a(dp, true).a(aa.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dC = a("dark_oak_wall_hanging_sign", $$0x -> new dto(dzh.h, $$0x), a(dq, true).a(ad.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dD = a("pale_oak_wall_hanging_sign", $$0x -> new dto(dzh.i, $$0x), a(dr, true).a(v.w()).k().a(dyv.e).b().d(1.0F).i().a(csv.b));
-   public static final dkm dE = a("mangrove_wall_hanging_sign", $$0x -> new dto(dzh.l, $$0x), a(du, true).a(af.w()).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dF = a("crimson_wall_hanging_sign", $$0x -> new dto(dzh.j, $$0x), a(ds, true).a(eub.ab).k().a(dyv.e).b().d(1.0F));
-   public static final dkm dG = a("warped_wall_hanging_sign", $$0x -> new dto(dzh.k, $$0x), a(dt, true).a(eub.ae).k().a(dyv.e).b().d(1.0F));
-   public static final dkm dH = a("bamboo_wall_hanging_sign", $$0x -> new dto(dzh.m, $$0x), a(dv, true).a(eub.s).k().a(dyv.e).b().d(1.0F).i());
-   public static final dkm dI = a("lever", dpb::new, dxu.d.a().b().d(0.5F).a(dsc.f).a(euc.b));
-   public static final dkm dJ = a("stone_pressure_plate", $$0x -> new dqm(dyk.e, $$0x), dxu.d.a().a(eub.l).k().a(dyv.b).n().b().d(0.5F).a(euc.b));
-   public static final dkm dK = a("iron_door", $$0x -> new dmu(dyk.b, $$0x), dxu.d.a().a(eub.g).n().d(5.0F).c().a(euc.b));
-   public static final dkm dL = a("oak_pressure_plate", $$0x -> new dqm(dyk.g, $$0x), dxu.d.a().a(n.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b));
-   public static final dkm dM = a("spruce_pressure_plate", $$0x -> new dqm(dyk.h, $$0x), dxu.d.a().a(o.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b));
-   public static final dkm dN = a("birch_pressure_plate", $$0x -> new dqm(dyk.i, $$0x), dxu.d.a().a(p.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b));
-   public static final dkm dO = a("jungle_pressure_plate", $$0x -> new dqm(dyk.l, $$0x), dxu.d.a().a(q.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b));
-   public static final dkm dP = a("acacia_pressure_plate", $$0x -> new dqm(dyk.j, $$0x), dxu.d.a().a(r.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b));
-   public static final dkm dQ = a("cherry_pressure_plate", $$0x -> new dqm(dyk.k, $$0x), dxu.d.a().a(s.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b));
-   public static final dkm dR = a("dark_oak_pressure_plate", $$0x -> new dqm(dyk.m, $$0x), dxu.d.a().a(t.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b));
-   public static final dkm dS = a("pale_oak_pressure_plate", $$0x -> new dqm(dyk.n, $$0x), dxu.d.a().a(v.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b).a(csv.b));
-   public static final dkm dT = a("mangrove_pressure_plate", $$0x -> new dqm(dyk.q, $$0x), dxu.d.a().a(w.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b));
-   public static final dkm dU = a("bamboo_pressure_plate", $$0x -> new dqm(dyk.r, $$0x), dxu.d.a().a(x.w()).k().a(dyv.e).b().d(0.5F).i().a(euc.b));
-   public static final dkm dV = a("redstone_ore", dqq::new, dxu.d.a().a(eub.l).a(dyv.b).n().e().a(a(9)).a(3.0F, 3.0F));
-   public static final dkm dW = a("deepslate_redstone_ore", dqq::new, dxu.d.b(dV).a(eub.ah).a(4.5F, 3.0F).a(dsc.aE));
-   public static final dkm dX = a("redstone_torch", dqt::new, dxu.d.a().b().d().a(a(7)).a(dsc.b).a(euc.b));
-   public static final dkm dY = a("redstone_wall_torch", dqu::new, a(dX, true).b().d().a(a(7)).a(dsc.b).a(euc.b));
-   public static final dkm dZ = a("stone_button", $$0x -> new dkx(dyk.e, 20, $$0x), b());
-   public static final dkm ea = a("snow", dry::new, dxu.d.a().a(eub.i).p().l().e().d(0.1F).n().a(dsc.k).c(($$0x, $$1x, $$2) -> $$0x.c(dry.c) >= 8).a(euc.b));
-   public static final dkm eb = a("ice", dom::new, dxu.d.a().a(eub.f).a(0.98F).e().d(0.5F).a(dsc.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bvr.aV).a(dko::b));
-   public static final dkm ec = a("snow_block", dxu.d.a().a(eub.i).n().d(0.2F).a(dsc.k));
-   public static final dkm ed = a("cactus", dky::new, dxu.d.a().a(eub.h).e().d(0.4F).a(dsc.i).a(euc.b));
-   public static final dkm ee = a("clay", dxu.d.a().a(eub.j).a(dyv.f).d(0.6F).a(dsc.c));
-   public static final dkm ef = a("sugar_cane", dsp::new, dxu.d.a().a(eub.h).b().e().d().a(dsc.d).a(euc.b));
-   public static final dkm eg = a("jukebox", dor::new, dxu.d.a().a(eub.k).a(dyv.e).a(2.0F, 6.0F).a(dsc.b).i());
-   public static final dkm eh = a("oak_fence", dnl::new, dxu.d.a().a(n.w()).k().a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm ei = a("netherrack", dpw::new, dxu.d.a().a(eub.J).a(dyv.b).n().d(0.4F).a(dsc.M));
-   public static final dkm ej = a("soul_sand", dsb::new, dxu.d.a().a(eub.A).a(dyv.l).d(0.5F).b(0.4F).a(dsc.I).a(dko::b).a(dko::a).c(dko::a).b(dko::a));
-   public static final dkm ek = a("soul_soil", dxu.d.a().a(eub.A).d(0.5F).a(dsc.J));
-   public static final dkm el = a("basalt", drb::new, dxu.d.a().a(eub.D).a(dyv.b).n().a(1.25F, 4.2F).a(dsc.K));
-   public static final dkm em = a("polished_basalt", drb::new, dxu.d.a().a(eub.D).a(dyv.b).n().a(1.25F, 4.2F).a(dsc.K));
-   public static final dkm en = a("soul_torch", $$0x -> new dsz(ls.L, $$0x), dxu.d.a().b().d().a($$0x -> 10).a(dsc.b).a(euc.b));
-   public static final dkm eo = a("soul_wall_torch", $$0x -> new dtr(ls.L, $$0x), a(en, true).b().d().a($$0x -> 10).a(dsc.b).a(euc.b));
-   public static final dkm ep = a("glowstone", dxu.d.a().a(eub.c).a(dyv.p).d(0.3F).a(dsc.h).a($$0x -> 15).a(dko::b));
-   public static final dkm eq = a("nether_portal", dps::new, dxu.d.a().b().e().d(-1.0F).a(dsc.h).a($$0x -> 11).a(euc.c));
-   public static final dkm er = a("carved_pumpkin", dlh::new, dxu.d.a().a(eub.p).d(1.0F).a(dsc.b).a(dko::b).a(euc.b));
-   public static final dkm es = a("jack_o_lantern", dlh::new, dxu.d.a().a(eub.p).d(1.0F).a(dsc.b).a($$0x -> 15).a(dko::b).a(euc.b));
-   public static final dkm et = a("cake", dkz::new, dxu.d.a().k().d(0.5F).a(dsc.i).a(euc.b));
-   public static final dkm eu = a("repeater", dqw::new, dxu.d.a().d().a(dsc.f).a(euc.b));
-   public static final dkm ev = b("white_stained_glass", cwm.a);
-   public static final dkm ew = b("orange_stained_glass", cwm.b);
-   public static final dkm ex = b("magenta_stained_glass", cwm.c);
-   public static final dkm ey = b("light_blue_stained_glass", cwm.d);
-   public static final dkm ez = b("yellow_stained_glass", cwm.e);
-   public static final dkm eA = b("lime_stained_glass", cwm.f);
-   public static final dkm eB = b("pink_stained_glass", cwm.g);
-   public static final dkm eC = b("gray_stained_glass", cwm.h);
-   public static final dkm eD = b("light_gray_stained_glass", cwm.i);
-   public static final dkm eE = b("cyan_stained_glass", cwm.j);
-   public static final dkm eF = b("purple_stained_glass", cwm.k);
-   public static final dkm eG = b("blue_stained_glass", cwm.l);
-   public static final dkm eH = b("brown_stained_glass", cwm.m);
-   public static final dkm eI = b("green_stained_glass", cwm.n);
-   public static final dkm eJ = b("red_stained_glass", cwm.o);
-   public static final dkm eK = b("black_stained_glass", cwm.p);
-   public static final dkm eL = a("oak_trapdoor", $$0x -> new dtc(dyk.g, $$0x), dxu.d.a().a(eub.n).a(dyv.e).d(3.0F).c().a(dko::a).i());
-   public static final dkm eM = a("spruce_trapdoor", $$0x -> new dtc(dyk.h, $$0x), dxu.d.a().a(eub.I).a(dyv.e).d(3.0F).c().a(dko::a).i());
-   public static final dkm eN = a("birch_trapdoor", $$0x -> new dtc(dyk.i, $$0x), dxu.d.a().a(eub.c).a(dyv.e).d(3.0F).c().a(dko::a).i());
-   public static final dkm eO = a("jungle_trapdoor", $$0x -> new dtc(dyk.l, $$0x), dxu.d.a().a(eub.k).a(dyv.e).d(3.0F).c().a(dko::a).i());
-   public static final dkm eP = a("acacia_trapdoor", $$0x -> new dtc(dyk.j, $$0x), dxu.d.a().a(eub.p).a(dyv.e).d(3.0F).c().a(dko::a).i());
-   public static final dkm eQ = a("cherry_trapdoor", $$0x -> new dtc(dyk.k, $$0x), dxu.d.a().a(eub.K).a(dyv.e).d(3.0F).c().a(dko::a).i());
-   public static final dkm eR = a("dark_oak_trapdoor", $$0x -> new dtc(dyk.m, $$0x), dxu.d.a().a(eub.A).a(dyv.e).d(3.0F).c().a(dko::a).i());
-   public static final dkm eS = a("pale_oak_trapdoor", $$0x -> new dtc(dyk.n, $$0x), dxu.d.a().a(v.w()).a(dyv.e).d(3.0F).c().a(dko::a).i().a(csv.b));
-   public static final dkm eT = a("mangrove_trapdoor", $$0x -> new dtc(dyk.q, $$0x), dxu.d.a().a(eub.C).a(dyv.e).d(3.0F).c().a(dko::a).i());
-   public static final dkm eU = a("bamboo_trapdoor", $$0x -> new dtc(dyk.r, $$0x), dxu.d.a().a(eub.s).a(dyv.e).d(3.0F).c().a(dko::a).i());
-   public static final dkm eV = a("stone_bricks", dxu.d.a().a(eub.l).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm eW = a("mossy_stone_bricks", dxu.d.a().a(eub.l).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm eX = a("cracked_stone_bricks", dxu.d.a().a(eub.l).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm eY = a("chiseled_stone_bricks", dxu.d.a().a(eub.l).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm eZ = a("packed_mud", dxu.d.b(j).a(1.0F, 3.0F).a(dsc.aO));
-   public static final dkm fa = a("mud_bricks", dxu.d.a().a(eub.S).a(dyv.b).n().a(1.5F, 3.0F).a(dsc.aN));
-   public static final dkm fb = a("infested_stone", $$0x -> new don(b, $$0x), dxu.d.a().a(eub.j));
-   public static final dkm fc = a("infested_cobblestone", $$0x -> new don(m, $$0x), dxu.d.a().a(eub.j));
-   public static final dkm fd = a("infested_stone_bricks", $$0x -> new don(eV, $$0x), dxu.d.a().a(eub.j));
-   public static final dkm fe = a("infested_mossy_stone_bricks", $$0x -> new don(eW, $$0x), dxu.d.a().a(eub.j));
-   public static final dkm ff = a("infested_cracked_stone_bricks", $$0x -> new don(eX, $$0x), dxu.d.a().a(eub.j));
-   public static final dkm fg = a("infested_chiseled_stone_bricks", $$0x -> new don(eY, $$0x), dxu.d.a().a(eub.j));
-   public static final dkm fh = a("brown_mushroom_block", dol::new, dxu.d.a().a(eub.k).a(dyv.e).d(0.2F).a(dsc.b).i());
-   public static final dkm fi = a("red_mushroom_block", dol::new, dxu.d.a().a(eub.C).a(dyv.e).d(0.2F).a(dsc.b).i());
-   public static final dkm fj = a("mushroom_stem", dol::new, dxu.d.a().a(eub.d).a(dyv.e).d(0.2F).a(dsc.b).i());
-   public static final dkm fk = a("iron_bars", dop::new, dxu.d.a().n().a(5.0F, 6.0F).a(dsc.g).c());
-   public static final dkm fl = a("chain", dln::new, dxu.d.a().k().n().a(5.0F, 6.0F).a(dsc.U).c());
-   public static final dkm fm = a("glass_pane", dop::new, dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm fn = a(aln.a, dqn::new, dxu.d.a().a(eub.p).a(dyv.m).d(1.0F).a(dsc.b).a(euc.b));
-   public static final dkm fo = a(aln.d, dxu.d.a().a(eub.t).d(1.0F).a(dsc.b).a(euc.b));
-   public static final dkm fp = a(aln.c, $$0x -> new djn(aln.b, aln.a, alo.a, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.b).a(euc.b));
-   public static final dkm fq = a(aln.f, $$0x -> new djn(aln.e, aln.d, alo.b, $$0x), dxu.d.a().a(eub.h).b().d().a(dsc.b).a(euc.b));
-   public static final dkm fr = a(aln.b, $$0x -> new dsl(aln.a, aln.c, alo.a, $$0x), dxu.d.a().a(eub.h).b().e().d().a(dsc.x).a(euc.b));
-   public static final dkm fs = a(aln.e, $$0x -> new dsl(aln.d, aln.f, alo.b, $$0x), dxu.d.a().a(eub.h).b().e().d().a(dsc.x).a(euc.b));
-   public static final dkm ft = a("vine", dtl::new, dxu.d.a().a(eub.h).p().b().e().d(0.2F).a(dsc.y).i().a(euc.b));
-   public static final dkm fu = a("glow_lichen", dnx::new, dxu.d.a().a(eub.aj).p().b().d(0.2F).a(dsc.aD).a(dnx.b(7)).i().a(euc.b));
-   public static final dkm fv = a("oak_fence_gate", $$0x -> new dnm(dzh.b, $$0x), dxu.d.a().a(n.w()).k().a(dyv.e).a(2.0F, 3.0F).i());
-   public static final dkm fw = a("brick_stairs", cq);
-   public static final dkm fx = a("stone_brick_stairs", eV);
-   public static final dkm fy = a("mud_brick_stairs", fa);
-   public static final dkm fz = a("mycelium", dpr::new, dxu.d.a().a(eub.y).e().d(0.6F).a(dsc.d));
-   public static final dkm fA = a("lily_pad", dts::new, dxu.d.a().a(eub.h).d().a(dsc.e).c().a(euc.b));
-   public static final dkm fB = a("nether_bricks", dxu.d.a().a(eub.J).a(dyv.b).n().a(2.0F, 6.0F).a(dsc.N));
-   public static final dkm fC = a("nether_brick_fence", dnl::new, dxu.d.a().a(eub.J).a(dyv.b).n().a(2.0F, 6.0F).a(dsc.N));
-   public static final dkm fD = a("nether_brick_stairs", fB);
-   public static final dkm fE = a("nether_wart", dpv::new, dxu.d.a().a(eub.C).b().e().a(dsc.z).a(euc.b));
-   public static final dkm fF = a("enchanting_table", dna::new, dxu.d.a().a(eub.C).a(dyv.b).n().a($$0x -> 7).a(5.0F, 1200.0F));
-   public static final dkm fG = a("brewing_stand", dkr::new, dxu.d.a().a(eub.g).n().d(0.5F).a($$0x -> 1).c());
-   public static final dkm fH = a("cauldron", dli::new, dxu.d.a().a(eub.l).n().d(2.0F).c());
-   public static final dkm fI = a("water_cauldron", $$0x -> new dox(dik.c.b, kn.d, $$0x), dxu.d.b(fH));
-   public static final dkm fJ = a("lava_cauldron", dow::new, dxu.d.b(fH).a($$0x -> 15));
-   public static final dkm fK = a("powder_snow_cauldron", $$0x -> new dox(dik.c.c, kn.f, $$0x), dxu.d.b(fH));
-   public static final dkm fL = a("end_portal", dnc::new, dxu.d.a().a(eub.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(euc.c));
-   public static final dkm fM = a("end_portal_frame", dnd::new, dxu.d.a().a(eub.B).a(dyv.b).a(dsc.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g());
-   public static final dkm fN = a("end_stone", dxu.d.a().a(eub.c).a(dyv.b).n().a(3.0F, 9.0F));
-   public static final dkm fO = a("dragon_egg", dmx::new, dxu.d.a().a(eub.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(euc.b));
-   public static final dkm fP = a("redstone_lamp", dqs::new, dxu.d.a().a(eub.L).a(a(15)).d(0.3F).a(dsc.h).a(dko::b));
-   public static final dkm fQ = a("cocoa", dlu::new, dxu.d.a().a(eub.h).e().a(0.2F, 3.0F).a(dsc.b).c().a(euc.b));
-   public static final dkm fR = a("sandstone_stairs", bc);
-   public static final dkm fS = a("emerald_ore", $$0x -> new dmy(bsu.a(3, 7), $$0x), dxu.d.a().a(eub.l).a(dyv.b).n().a(3.0F, 3.0F));
-   public static final dkm fT = a("deepslate_emerald_ore", $$0x -> new dmy(bsu.a(3, 7), $$0x), dxu.d.b(fS).a(eub.ah).a(4.5F, 3.0F).a(dsc.aE));
-   public static final dkm fU = a("ender_chest", dnf::new, dxu.d.a().a(eub.l).a(dyv.b).n().a(22.5F, 600.0F).a($$0x -> 7));
-   public static final dkm fV = a("tripwire_hook", dtg::new, dxu.d.a().b().a(dsc.b).a(euc.b));
-   public static final dkm fW = a("tripwire", $$0x -> new dtf(fV, $$0x), dxu.d.a().b().a(euc.b));
-   public static final dkm fX = a("emerald_block", dxu.d.a().a(eub.H).a(dyv.n).n().a(5.0F, 6.0F).a(dsc.g));
-   public static final dkm fY = a("spruce_stairs", o);
-   public static final dkm fZ = a("birch_stairs", p);
-   public static final dkm ga = a("jungle_stairs", q);
-   public static final dkm gb = a("command_block", $$0x -> new dlw(false, $$0x), dxu.d.a().a(eub.A).n().a(-1.0F, 3600000.0F).g());
-   public static final dkm gc = a("beacon", dke::new, dxu.d.a().a(eub.F).a(dyv.d).d(3.0F).a($$0x -> 15).c().a(dko::b));
-   public static final dkm gd = a("cobblestone_wall", dtn::new, dxu.d.b(m).k());
-   public static final dkm ge = a("mossy_cobblestone_wall", dtn::new, dxu.d.b(m).k());
-   public static final dkm gf = a("flower_pot", $$0x -> new dnq(a, $$0x), c());
-   public static final dkm gg = a("potted_torchflower", $$0x -> new dnq(bZ, $$0x), c());
-   public static final dkm gh = a("potted_oak_sapling", $$0x -> new dnq(z, $$0x), c());
-   public static final dkm gi = a("potted_spruce_sapling", $$0x -> new dnq(A, $$0x), c());
-   public static final dkm gj = a("potted_birch_sapling", $$0x -> new dnq(B, $$0x), c());
-   public static final dkm gk = a("potted_jungle_sapling", $$0x -> new dnq(C, $$0x), c());
-   public static final dkm gl = a("potted_acacia_sapling", $$0x -> new dnq(D, $$0x), c());
-   public static final dkm gm = a("potted_cherry_sapling", $$0x -> new dnq(E, $$0x), c());
-   public static final dkm gn = a("potted_dark_oak_sapling", $$0x -> new dnq(F, $$0x), c());
-   public static final dkm go = a("potted_pale_oak_sapling", $$0x -> new dnq(G, $$0x), c().a(csv.b));
-   public static final dkm gp = a("potted_mangrove_propagule", $$0x -> new dnq(H, $$0x), c());
-   public static final dkm gq = a("potted_fern", $$0x -> new dnq(bB, $$0x), c());
-   public static final dkm gr = a("potted_dandelion", $$0x -> new dnq(bY, $$0x), c());
-   public static final dkm gs = a("potted_poppy", $$0x -> new dnq(ca, $$0x), c());
-   public static final dkm gt = a("potted_blue_orchid", $$0x -> new dnq(cb, $$0x), c());
-   public static final dkm gu = a("potted_allium", $$0x -> new dnq(cc, $$0x), c());
-   public static final dkm gv = a("potted_azure_bluet", $$0x -> new dnq(cd, $$0x), c());
-   public static final dkm gw = a("potted_red_tulip", $$0x -> new dnq(ce, $$0x), c());
-   public static final dkm gx = a("potted_orange_tulip", $$0x -> new dnq(cf, $$0x), c());
-   public static final dkm gy = a("potted_white_tulip", $$0x -> new dnq(cg, $$0x), c());
-   public static final dkm gz = a("potted_pink_tulip", $$0x -> new dnq(ch, $$0x), c());
-   public static final dkm gA = a("potted_oxeye_daisy", $$0x -> new dnq(ci, $$0x), c());
-   public static final dkm gB = a("potted_cornflower", $$0x -> new dnq(cj, $$0x), c());
-   public static final dkm gC = a("potted_lily_of_the_valley", $$0x -> new dnq(cl, $$0x), c());
-   public static final dkm gD = a("potted_wither_rose", $$0x -> new dnq(ck, $$0x), c());
-   public static final dkm gE = a("potted_red_mushroom", $$0x -> new dnq(cn, $$0x), c());
-   public static final dkm gF = a("potted_brown_mushroom", $$0x -> new dnq(cm, $$0x), c());
-   public static final dkm gG = a("potted_dead_bush", $$0x -> new dnq(bC, $$0x), c());
-   public static final dkm gH = a("potted_cactus", $$0x -> new dnq(ed, $$0x), c());
-   public static final dkm gI = a("carrots", dlf::new, dxu.d.a().a(eub.h).b().e().d().a(dsc.w).a(euc.b));
-   public static final dkm gJ = a("potatoes", dqi::new, dxu.d.a().a(eub.h).b().e().d().a(dsc.w).a(euc.b));
-   public static final dkm gK = a("oak_button", $$0x -> new dkx(dyk.g, 30, $$0x), b());
-   public static final dkm gL = a("spruce_button", $$0x -> new dkx(dyk.h, 30, $$0x), b());
-   public static final dkm gM = a("birch_button", $$0x -> new dkx(dyk.i, 30, $$0x), b());
-   public static final dkm gN = a("jungle_button", $$0x -> new dkx(dyk.l, 30, $$0x), b());
-   public static final dkm gO = a("acacia_button", $$0x -> new dkx(dyk.j, 30, $$0x), b());
-   public static final dkm gP = a("cherry_button", $$0x -> new dkx(dyk.k, 30, $$0x), b());
-   public static final dkm gQ = a("dark_oak_button", $$0x -> new dkx(dyk.m, 30, $$0x), b());
-   public static final dkm gR = a("pale_oak_button", $$0x -> new dkx(dyk.n, 30, $$0x), b().a(csv.b));
-   public static final dkm gS = a("mangrove_button", $$0x -> new dkx(dyk.q, 30, $$0x), b());
-   public static final dkm gT = a("bamboo_button", $$0x -> new dkx(dyk.r, 30, $$0x), b());
-   public static final dkm gU = a("skeleton_skull", $$0x -> new drr(drr.b.c, $$0x), dxu.d.a().a(dyv.r).d(1.0F).a(euc.b));
-   public static final dkm gV = a("skeleton_wall_skull", $$0x -> new dtq(drr.b.c, $$0x), a(gU, true).d(1.0F).a(euc.b));
-   public static final dkm gW = a("wither_skeleton_skull", dui::new, dxu.d.a().a(dyv.u).d(1.0F).a(euc.b));
-   public static final dkm gX = a("wither_skeleton_wall_skull", duj::new, a(gW, true).d(1.0F).a(euc.b));
-   public static final dkm gY = a("zombie_head", $$0x -> new drr(drr.b.f, $$0x), dxu.d.a().a(dyv.q).d(1.0F).a(euc.b));
-   public static final dkm gZ = a("zombie_wall_head", $$0x -> new dtq(drr.b.f, $$0x), a(gY, true).d(1.0F).a(euc.b));
-   public static final dkm ha = a("player_head", dqe::new, dxu.d.a().a(dyv.w).d(1.0F).a(euc.b));
-   public static final dkm hb = a("player_wall_head", dqf::new, a(ha, true).d(1.0F).a(euc.b));
-   public static final dkm hc = a("creeper_head", $$0x -> new drr(drr.b.g, $$0x), dxu.d.a().a(dyv.s).d(1.0F).a(euc.b));
-   public static final dkm hd = a("creeper_wall_head", $$0x -> new dtq(drr.b.g, $$0x), a(hc, true).d(1.0F).a(euc.b));
-   public static final dkm he = a("dragon_head", $$0x -> new drr(drr.b.i, $$0x), dxu.d.a().a(dyv.t).d(1.0F).a(euc.b));
-   public static final dkm hf = a("dragon_wall_head", $$0x -> new dtq(drr.b.i, $$0x), a(he, true).d(1.0F).a(euc.b));
-   public static final dkm hg = a("piglin_head", $$0x -> new drr(drr.b.h, $$0x), dxu.d.a().a(dyv.v).d(1.0F).a(euc.b));
-   public static final dkm hh = a("piglin_wall_head", dqa::new, a(hg, true).d(1.0F).a(euc.b));
-   public static final dkm hi = a("anvil", djm::new, dxu.d.a().a(eub.g).n().a(5.0F, 1200.0F).a(dsc.n).a(euc.c));
-   public static final dkm hj = a("chipped_anvil", djm::new, dxu.d.a().a(eub.g).n().a(5.0F, 1200.0F).a(dsc.n).a(euc.c));
-   public static final dkm hk = a("damaged_anvil", djm::new, dxu.d.a().a(eub.g).n().a(5.0F, 1200.0F).a(dsc.n).a(euc.c));
-   public static final dkm hl = a("trapped_chest", dtd::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.5F).a(dsc.b).i());
-   public static final dkm hm = a("light_weighted_pressure_plate", $$0x -> new duf(15, dyk.d, $$0x), dxu.d.a().a(eub.E).k().n().b().d(0.5F).a(euc.b));
-   public static final dkm hn = a("heavy_weighted_pressure_plate", $$0x -> new duf(150, dyk.b, $$0x), dxu.d.a().a(eub.g).k().n().b().d(0.5F).a(euc.b));
-   public static final dkm ho = a("comparator", dlx::new, dxu.d.a().d().a(dsc.f).a(euc.b));
-   public static final dkm hp = a("daylight_detector", dmm::new, dxu.d.a().a(eub.n).a(dyv.e).d(0.2F).a(dsc.b).i());
-   public static final dkm hq = a("redstone_block", dqk::new, dxu.d.a().a(eub.e).n().a(5.0F, 6.0F).a(dsc.g).a(dko::b));
-   public static final dkm hr = a("nether_quartz_ore", $$0x -> new dmy(bsu.a(2, 5), $$0x), dxu.d.a().a(eub.J).a(dyv.b).n().a(3.0F, 3.0F).a(dsc.P));
-   public static final dkm hs = a("hopper", doj::new, dxu.d.a().a(eub.l).n().a(3.0F, 4.8F).a(dsc.g).c());
-   public static final dkm ht = a("quartz_block", dxu.d.a().a(eub.o).a(dyv.b).n().d(0.8F));
-   public static final dkm hu = a("chiseled_quartz_block", dxu.d.a().a(eub.o).a(dyv.b).n().d(0.8F));
-   public static final dkm hv = a("quartz_pillar", drb::new, dxu.d.a().a(eub.o).a(dyv.b).n().d(0.8F));
-   public static final dkm hw = a("quartz_stairs", ht);
-   public static final dkm hx = a("activator_rail", dql::new, dxu.d.a().b().d(0.7F).a(dsc.g));
-   public static final dkm hy = a("dropper", dmz::new, dxu.d.a().a(eub.l).a(dyv.b).n().d(3.5F));
-   public static final dkm hz = a("white_terracotta", dxu.d.a().a(eub.K).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hA = a("orange_terracotta", dxu.d.a().a(eub.L).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hB = a("magenta_terracotta", dxu.d.a().a(eub.M).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hC = a("light_blue_terracotta", dxu.d.a().a(eub.N).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hD = a("yellow_terracotta", dxu.d.a().a(eub.O).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hE = a("lime_terracotta", dxu.d.a().a(eub.P).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hF = a("pink_terracotta", dxu.d.a().a(eub.Q).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hG = a("gray_terracotta", dxu.d.a().a(eub.R).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hH = a("light_gray_terracotta", dxu.d.a().a(eub.S).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hI = a("cyan_terracotta", dxu.d.a().a(eub.T).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hJ = a("purple_terracotta", dxu.d.a().a(eub.U).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hK = a("blue_terracotta", dxu.d.a().a(eub.V).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hL = a("brown_terracotta", dxu.d.a().a(eub.W).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hM = a("green_terracotta", dxu.d.a().a(eub.X).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hN = a("red_terracotta", dxu.d.a().a(eub.Y).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hO = a("black_terracotta", dxu.d.a().a(eub.Z).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm hP = a("white_stained_glass_pane", $$0x -> new dsi(cwm.a, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hQ = a("orange_stained_glass_pane", $$0x -> new dsi(cwm.b, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hR = a("magenta_stained_glass_pane", $$0x -> new dsi(cwm.c, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hS = a("light_blue_stained_glass_pane", $$0x -> new dsi(cwm.d, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hT = a("yellow_stained_glass_pane", $$0x -> new dsi(cwm.e, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hU = a("lime_stained_glass_pane", $$0x -> new dsi(cwm.f, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hV = a("pink_stained_glass_pane", $$0x -> new dsi(cwm.g, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hW = a("gray_stained_glass_pane", $$0x -> new dsi(cwm.h, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hX = a("light_gray_stained_glass_pane", $$0x -> new dsi(cwm.i, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hY = a("cyan_stained_glass_pane", $$0x -> new dsi(cwm.j, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm hZ = a("purple_stained_glass_pane", $$0x -> new dsi(cwm.k, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm ia = a("blue_stained_glass_pane", $$0x -> new dsi(cwm.l, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm ib = a("brown_stained_glass_pane", $$0x -> new dsi(cwm.m, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm ic = a("green_stained_glass_pane", $$0x -> new dsi(cwm.n, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm id = a("red_stained_glass_pane", $$0x -> new dsi(cwm.o, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm ie = a("black_stained_glass_pane", $$0x -> new dsi(cwm.p, $$0x), dxu.d.a().a(dyv.d).d(0.3F).a(dsc.h).c());
-   public static final dkm if = a("acacia_stairs", r);
-   public static final dkm ig = a("cherry_stairs", s);
-   public static final dkm ih = a("dark_oak_stairs", t);
-   public static final dkm ii = a("pale_oak_stairs", v);
-   public static final dkm ij = a("mangrove_stairs", w);
-   public static final dkm ik = a("bamboo_stairs", x);
-   public static final dkm il = a("bamboo_mosaic_stairs", y);
-   public static final dkm im = a("slime_block", drt::new, dxu.d.a().a(eub.b).a(0.8F).a(dsc.o).c());
-   public static final dkm in = a("barrier", djt::new, dxu.d.a().a(-1.0F, 3600000.8F).a(a(eub.a)).g().c().a(dko::a).o().a(euc.c));
-   public static final dkm io = a("light", dpc::new, dxu.d.a().p().a(-1.0F, 3600000.8F).a(a(eub.a)).g().c().a(dpc.e));
-   public static final dkm ip = a("iron_trapdoor", $$0x -> new dtc(dyk.b, $$0x), dxu.d.a().a(eub.g).n().d(5.0F).c().a(dko::a));
-   public static final dkm iq = a("prismarine", dxu.d.a().a(eub.x).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm ir = a("prismarine_bricks", dxu.d.a().a(eub.F).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm is = a("dark_prismarine", dxu.d.a().a(eub.F).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm it = a("prismarine_stairs", iq);
-   public static final dkm iu = a("prismarine_brick_stairs", ir);
-   public static final dkm iv = a("dark_prismarine_stairs", is);
-   public static final dkm iw = a("prismarine_slab", drs::new, dxu.d.a().a(eub.x).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm ix = a("prismarine_brick_slab", drs::new, dxu.d.a().a(eub.F).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm iy = a("dark_prismarine_slab", drs::new, dxu.d.a().a(eub.F).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm iz = a("sea_lantern", dxu.d.a().a(eub.o).a(dyv.d).d(0.3F).a(dsc.h).a($$0x -> 15).a(dko::b));
-   public static final dkm iA = a("hay_block", dog::new, dxu.d.a().a(eub.s).a(dyv.o).d(0.5F).a(dsc.d));
-   public static final dkm iB = a("white_carpet", $$0x -> new duk(cwm.a, $$0x), dxu.d.a().a(eub.i).d(0.1F).a(dsc.i).i());
-   public static final dkm iC = a("orange_carpet", $$0x -> new duk(cwm.b, $$0x), dxu.d.a().a(eub.p).d(0.1F).a(dsc.i).i());
-   public static final dkm iD = a("magenta_carpet", $$0x -> new duk(cwm.c, $$0x), dxu.d.a().a(eub.q).d(0.1F).a(dsc.i).i());
-   public static final dkm iE = a("light_blue_carpet", $$0x -> new duk(cwm.d, $$0x), dxu.d.a().a(eub.r).d(0.1F).a(dsc.i).i());
-   public static final dkm iF = a("yellow_carpet", $$0x -> new duk(cwm.e, $$0x), dxu.d.a().a(eub.s).d(0.1F).a(dsc.i).i());
-   public static final dkm iG = a("lime_carpet", $$0x -> new duk(cwm.f, $$0x), dxu.d.a().a(eub.t).d(0.1F).a(dsc.i).i());
-   public static final dkm iH = a("pink_carpet", $$0x -> new duk(cwm.g, $$0x), dxu.d.a().a(eub.u).d(0.1F).a(dsc.i).i());
-   public static final dkm iI = a("gray_carpet", $$0x -> new duk(cwm.h, $$0x), dxu.d.a().a(eub.v).d(0.1F).a(dsc.i).i());
-   public static final dkm iJ = a("light_gray_carpet", $$0x -> new duk(cwm.i, $$0x), dxu.d.a().a(eub.w).d(0.1F).a(dsc.i).i());
-   public static final dkm iK = a("cyan_carpet", $$0x -> new duk(cwm.j, $$0x), dxu.d.a().a(eub.x).d(0.1F).a(dsc.i).i());
-   public static final dkm iL = a("purple_carpet", $$0x -> new duk(cwm.k, $$0x), dxu.d.a().a(eub.y).d(0.1F).a(dsc.i).i());
-   public static final dkm iM = a("blue_carpet", $$0x -> new duk(cwm.l, $$0x), dxu.d.a().a(eub.z).d(0.1F).a(dsc.i).i());
-   public static final dkm iN = a("brown_carpet", $$0x -> new duk(cwm.m, $$0x), dxu.d.a().a(eub.A).d(0.1F).a(dsc.i).i());
-   public static final dkm iO = a("green_carpet", $$0x -> new duk(cwm.n, $$0x), dxu.d.a().a(eub.B).d(0.1F).a(dsc.i).i());
-   public static final dkm iP = a("red_carpet", $$0x -> new duk(cwm.o, $$0x), dxu.d.a().a(eub.C).d(0.1F).a(dsc.i).i());
-   public static final dkm iQ = a("black_carpet", $$0x -> new duk(cwm.p, $$0x), dxu.d.a().a(eub.D).d(0.1F).a(dsc.i).i());
-   public static final dkm iR = a("terracotta", dxu.d.a().a(eub.p).a(dyv.b).n().a(1.25F, 4.2F));
-   public static final dkm iS = a("coal_block", dxu.d.a().a(eub.D).a(dyv.b).n().a(5.0F, 6.0F));
-   public static final dkm iT = a("packed_ice", dxu.d.a().a(eub.f).a(dyv.i).a(0.98F).d(0.5F).a(dsc.h));
-   public static final dkm iU = a("sunflower", dst::new, dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).i().a(euc.b));
-   public static final dkm iV = a("lilac", dst::new, dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).i().a(euc.b));
-   public static final dkm iW = a("rose_bush", dst::new, dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).i().a(euc.b));
-   public static final dkm iX = a("peony", dst::new, dxu.d.a().a(eub.h).b().d().a(dsc.d).a(dxu.c.b).i().a(euc.b));
-   public static final dkm iY = a("tall_grass", dmw::new, dxu.d.a().a(eub.h).p().b().d().a(dsc.d).a(dxu.c.b).i().a(euc.b));
-   public static final dkm iZ = a("large_fern", dmw::new, dxu.d.a().a(eub.h).p().b().d().a(dsc.d).a(dxu.c.b).i().a(euc.b));
-   public static final dkm ja = a("white_banner", $$0x -> new djr(cwm.a, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jb = a("orange_banner", $$0x -> new djr(cwm.b, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jc = a("magenta_banner", $$0x -> new djr(cwm.c, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jd = a("light_blue_banner", $$0x -> new djr(cwm.d, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm je = a("yellow_banner", $$0x -> new djr(cwm.e, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jf = a("lime_banner", $$0x -> new djr(cwm.f, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jg = a("pink_banner", $$0x -> new djr(cwm.g, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jh = a("gray_banner", $$0x -> new djr(cwm.h, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm ji = a("light_gray_banner", $$0x -> new djr(cwm.i, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jj = a("cyan_banner", $$0x -> new djr(cwm.j, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jk = a("purple_banner", $$0x -> new djr(cwm.k, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jl = a("blue_banner", $$0x -> new djr(cwm.l, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jm = a("brown_banner", $$0x -> new djr(cwm.m, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jn = a("green_banner", $$0x -> new djr(cwm.n, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jo = a("red_banner", $$0x -> new djr(cwm.o, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jp = a("black_banner", $$0x -> new djr(cwm.p, $$0x), dxu.d.a().a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jq = a("white_wall_banner", $$0x -> new dtm(cwm.a, $$0x), a(ja, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jr = a("orange_wall_banner", $$0x -> new dtm(cwm.b, $$0x), a(jb, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm js = a("magenta_wall_banner", $$0x -> new dtm(cwm.c, $$0x), a(jc, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jt = a("light_blue_wall_banner", $$0x -> new dtm(cwm.d, $$0x), a(jd, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm ju = a("yellow_wall_banner", $$0x -> new dtm(cwm.e, $$0x), a(je, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jv = a("lime_wall_banner", $$0x -> new dtm(cwm.f, $$0x), a(jf, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jw = a("pink_wall_banner", $$0x -> new dtm(cwm.g, $$0x), a(jg, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jx = a("gray_wall_banner", $$0x -> new dtm(cwm.h, $$0x), a(jh, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jy = a("light_gray_wall_banner", $$0x -> new dtm(cwm.i, $$0x), a(ji, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jz = a("cyan_wall_banner", $$0x -> new dtm(cwm.j, $$0x), a(jj, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jA = a("purple_wall_banner", $$0x -> new dtm(cwm.k, $$0x), a(jk, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jB = a("blue_wall_banner", $$0x -> new dtm(cwm.l, $$0x), a(jl, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jC = a("brown_wall_banner", $$0x -> new dtm(cwm.m, $$0x), a(jm, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jD = a("green_wall_banner", $$0x -> new dtm(cwm.n, $$0x), a(jn, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jE = a("red_wall_banner", $$0x -> new dtm(cwm.o, $$0x), a(jo, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jF = a("black_wall_banner", $$0x -> new dtm(cwm.p, $$0x), a(jp, true).a(eub.n).k().a(dyv.e).b().d(1.0F).a(dsc.b).i());
-   public static final dkm jG = a("red_sandstone", dxu.d.a().a(eub.p).a(dyv.b).n().d(0.8F));
-   public static final dkm jH = a("chiseled_red_sandstone", dxu.d.a().a(eub.p).a(dyv.b).n().d(0.8F));
-   public static final dkm jI = a("cut_red_sandstone", dxu.d.a().a(eub.p).a(dyv.b).n().d(0.8F));
-   public static final dkm jJ = a("red_sandstone_stairs", jG);
-   public static final dkm jK = a("oak_slab", drs::new, dxu.d.a().a(eub.n).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm jL = a("spruce_slab", drs::new, dxu.d.a().a(eub.I).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm jM = a("birch_slab", drs::new, dxu.d.a().a(eub.c).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm jN = a("jungle_slab", drs::new, dxu.d.a().a(eub.k).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm jO = a("acacia_slab", drs::new, dxu.d.a().a(eub.p).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm jP = a("cherry_slab", drs::new, dxu.d.a().a(eub.K).a(dyv.e).a(2.0F, 3.0F).a(dsc.aU).i());
-   public static final dkm jQ = a("dark_oak_slab", drs::new, dxu.d.a().a(eub.A).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm jR = a("pale_oak_slab", drs::new, dxu.d.a().a(v.w()).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i().a(csv.b));
-   public static final dkm jS = a("mangrove_slab", drs::new, dxu.d.a().a(eub.C).a(dyv.e).a(2.0F, 3.0F).a(dsc.b).i());
-   public static final dkm jT = a("bamboo_slab", drs::new, dxu.d.a().a(eub.s).a(dyv.e).a(2.0F, 3.0F).a(dsc.aS).i());
-   public static final dkm jU = a("bamboo_mosaic_slab", drs::new, dxu.d.a().a(eub.s).a(dyv.e).a(2.0F, 3.0F).a(dsc.aS).i());
-   public static final dkm jV = a("stone_slab", drs::new, dxu.d.a().a(eub.l).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm jW = a("smooth_stone_slab", drs::new, dxu.d.a().a(eub.l).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm jX = a("sandstone_slab", drs::new, dxu.d.a().a(eub.c).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm jY = a("cut_sandstone_slab", drs::new, dxu.d.a().a(eub.c).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm jZ = a("petrified_oak_slab", drs::new, dxu.d.a().a(eub.n).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm ka = a("cobblestone_slab", drs::new, dxu.d.a().a(eub.l).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm kb = a("brick_slab", drs::new, dxu.d.a().a(eub.C).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm kc = a("stone_brick_slab", drs::new, dxu.d.a().a(eub.l).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm kd = a("mud_brick_slab", drs::new, dxu.d.a().a(eub.S).a(dyv.b).n().a(1.5F, 3.0F).a(dsc.aN));
-   public static final dkm ke = a("nether_brick_slab", drs::new, dxu.d.a().a(eub.J).a(dyv.b).n().a(2.0F, 6.0F).a(dsc.N));
-   public static final dkm kf = a("quartz_slab", drs::new, dxu.d.a().a(eub.o).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm kg = a("red_sandstone_slab", drs::new, dxu.d.a().a(eub.p).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm kh = a("cut_red_sandstone_slab", drs::new, dxu.d.a().a(eub.p).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm ki = a("purpur_slab", drs::new, dxu.d.a().a(eub.q).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm kj = a("smooth_stone", dxu.d.a().a(eub.l).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm kk = a("smooth_sandstone", dxu.d.a().a(eub.c).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm kl = a("smooth_quartz", dxu.d.a().a(eub.o).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm km = a("smooth_red_sandstone", dxu.d.a().a(eub.p).a(dyv.b).n().a(2.0F, 6.0F));
-   public static final dkm kn = a("spruce_fence_gate", $$0x -> new dnm(dzh.c, $$0x), dxu.d.a().a(o.w()).k().a(dyv.e).a(2.0F, 3.0F).i());
-   public static final dkm ko = a("birch_fence_gate", $$0x -> new dnm(dzh.d, $$0x), dxu.d.a().a(p.w()).k().a(dyv.e).a(2.0F, 3.0F).i());
-   public static final dkm kp = a("jungle_fence_gate", $$0x -> new dnm(dzh.g, $$0x), dxu.d.a().a(q.w()).k().a(dyv.e).a(2.0F, 3.0F).i());
-   public static final dkm kq = a("acacia_fence_gate", $$0x -> new dnm(dzh.e, $$0x), dxu.d.a().a(r.w()).k().a(dyv.e).a(2.0F, 3.0F).i());
-   public static final dkm kr = a("cherry_fence_gate", $$0x -> new dnm(dzh.f, $$0x), dxu.d.a().a(s.w()).k().a(dyv.e).a(2.0F, 3.0F).i());
-   public static final dkm ks = a("dark_oak_fence_gate", $$0x -> new dnm(dzh.h, $$0x), dxu.d.a().a(t.w()).k().a(dyv.e).a(2.0F, 3.0F).i());
-   public static final dkm kt = a("pale_oak_fence_gate", $$0x -> new dnm(dzh.i, $$0x), dxu.d.a().a(v.w()).k().a(dyv.e).a(2.0F, 3.0F).i().a(csv.b));
-   public static final dkm ku = a("mangrove_fence_gate", $$0x -> new dnm(dzh.l, $$0x), dxu.d.a().a(w.w()).k().a(dyv.e).a(2.0F, 3.0F).i());
-   public static final dkm kv = a("bamboo_fence_gate", $$0x -> new dnm(dzh.m, $$0x), dxu.d.a().a(x.w()).k().a(dyv.e).a(2.0F, 3.0F).i());
-   public static final dkm kw = a("spruce_fence", dnl::new, dxu.d.a().a(o.w()).a(dyv.e).a(2.0F, 3.0F).i().a(dsc.b));
-   public static final dkm kx = a("birch_fence", dnl::new, dxu.d.a().a(p.w()).a(dyv.e).a(2.0F, 3.0F).i().a(dsc.b));
-   public static final dkm ky = a("jungle_fence", dnl::new, dxu.d.a().a(q.w()).a(dyv.e).a(2.0F, 3.0F).i().a(dsc.b));
-   public static final dkm kz = a("acacia_fence", dnl::new, dxu.d.a().a(r.w()).a(dyv.e).a(2.0F, 3.0F).i().a(dsc.b));
-   public static final dkm kA = a("cherry_fence", dnl::new, dxu.d.a().a(s.w()).a(dyv.e).a(2.0F, 3.0F).i().a(dsc.aU));
-   public static final dkm kB = a("dark_oak_fence", dnl::new, dxu.d.a().a(t.w()).a(dyv.e).a(2.0F, 3.0F).i().a(dsc.b));
-   public static final dkm kC = a("pale_oak_fence", dnl::new, dxu.d.a().a(v.w()).a(dyv.e).a(2.0F, 3.0F).i().a(dsc.b).a(csv.b));
-   public static final dkm kD = a("mangrove_fence", dnl::new, dxu.d.a().a(w.w()).a(dyv.e).a(2.0F, 3.0F).i().a(dsc.b));
-   public static final dkm kE = a("bamboo_fence", dnl::new, dxu.d.a().a(x.w()).a(dyv.e).a(2.0F, 3.0F).a(dsc.aS).i());
-   public static final dkm kF = a("spruce_door", $$0x -> new dmu(dyk.h, $$0x), dxu.d.a().a(o.w()).a(dyv.e).d(3.0F).c().i().a(euc.b));
-   public static final dkm kG = a("birch_door", $$0x -> new dmu(dyk.i, $$0x), dxu.d.a().a(p.w()).a(dyv.e).d(3.0F).c().i().a(euc.b));
-   public static final dkm kH = a("jungle_door", $$0x -> new dmu(dyk.l, $$0x), dxu.d.a().a(q.w()).a(dyv.e).d(3.0F).c().i().a(euc.b));
-   public static final dkm kI = a("acacia_door", $$0x -> new dmu(dyk.j, $$0x), dxu.d.a().a(r.w()).a(dyv.e).d(3.0F).c().i().a(euc.b));
-   public static final dkm kJ = a("cherry_door", $$0x -> new dmu(dyk.k, $$0x), dxu.d.a().a(s.w()).a(dyv.e).d(3.0F).c().i().a(euc.b));
-   public static final dkm kK = a("dark_oak_door", $$0x -> new dmu(dyk.m, $$0x), dxu.d.a().a(t.w()).a(dyv.e).d(3.0F).c().i().a(euc.b));
-   public static final dkm kL = a("pale_oak_door", $$0x -> new dmu(dyk.n, $$0x), dxu.d.a().a(v.w()).a(dyv.e).d(3.0F).c().i().a(euc.b).a(csv.b));
-   public static final dkm kM = a("mangrove_door", $$0x -> new dmu(dyk.q, $$0x), dxu.d.a().a(w.w()).a(dyv.e).d(3.0F).c().i().a(euc.b));
-   public static final dkm kN = a("bamboo_door", $$0x -> new dmu(dyk.r, $$0x), dxu.d.a().a(x.w()).a(dyv.e).d(3.0F).c().i().a(euc.b));
-   public static final dkm kO = a("end_rod", dne::new, dxu.d.a().l().d().a($$0x -> 14).a(dsc.b).c());
-   public static final dkm kP = a("chorus_plant", dlt::new, dxu.d.a().a(eub.y).l().d(0.4F).a(dsc.b).c().a(euc.b));
-   public static final dkm kQ = a("chorus_flower", $$0x -> new dls(kP, $$0x), dxu.d.a().a(eub.y).l().e().d(0.4F).a(dsc.b).c().a(dko::a).a(euc.b).a(dko::b));
-   public static final dkm kR = a("purpur_block", dxu.d.a().a(eub.q).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm kS = a("purpur_pillar", drb::new, dxu.d.a().a(eub.q).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm kT = a("purpur_stairs", kR);
-   public static final dkm kU = a("end_stone_bricks", dxu.d.a().a(eub.c).a(dyv.b).n().a(3.0F, 9.0F));
-   public static final dkm kV = a("torchflower_crop", dta::new, dxu.d.a().a(eub.h).b().e().d().a(dsc.w).a(euc.b));
-   public static final dkm kW = a("pitcher_crop", dqd::new, dxu.d.a().a(eub.h).b().e().d().a(dsc.w).a(euc.b));
-   public static final dkm kX = a("pitcher_plant", dmw::new, dxu.d.a().a(eub.h).b().d().a(dsc.w).a(dxu.c.b).i().a(euc.b));
-   public static final dkm kY = a("beetroots", dkh::new, dxu.d.a().a(eub.h).b().e().d().a(dsc.w).a(euc.b));
-   public static final dkm kZ = a("dirt_path", dms::new, dxu.d.a().a(eub.k).d(0.65F).a(dsc.d).c(dko::a).b(dko::a));
-   public static final dkm la = a("end_gateway", dnb::new, dxu.d.a().a(eub.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(euc.c));
-   public static final dkm lb = a("repeating_command_block", $$0x -> new dlw(false, $$0x), dxu.d.a().a(eub.y).n().a(-1.0F, 3600000.0F).g());
-   public static final dkm lc = a("chain_command_block", $$0x -> new dlw(true, $$0x), dxu.d.a().a(eub.B).n().a(-1.0F, 3600000.0F).g());
-   public static final dkm ld = a(
-      "frosted_ice", dns::new, dxu.d.a().a(eub.f).a(0.98F).d(0.5F).a(dsc.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bvr.aV).a(dko::b)
-   );
-   public static final dkm le = a(
-      "magma_block", dph::new, dxu.d.a().a(eub.J).a(dyv.b).n().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(dko::a).e(dko::a)
-   );
-   public static final dkm lf = a("nether_wart_block", dxu.d.a().a(eub.C).d(1.0F).a(dsc.L));
-   public static final dkm lg = a("red_nether_bricks", dxu.d.a().a(eub.J).a(dyv.b).n().a(2.0F, 6.0F).a(dsc.N));
-   public static final dkm lh = a("bone_block", drb::new, dxu.d.a().a(eub.c).a(dyv.j).n().d(2.0F).a(dsc.Q));
-   public static final dkm li = a("structure_void", dso::new, dxu.d.a().p().b().g().o().a(euc.b));
-   public static final dkm lj = a("observer", dpz::new, dxu.d.a().a(eub.l).a(dyv.b).d(3.0F).n().a(dko::b));
-   public static final dkm lk = a("shulker_box", $$0x -> new dro(null, $$0x), c(eub.y));
-   public static final dkm ll = a("white_shulker_box", $$0x -> new dro(cwm.a, $$0x), c(eub.i));
-   public static final dkm lm = a("orange_shulker_box", $$0x -> new dro(cwm.b, $$0x), c(eub.p));
-   public static final dkm ln = a("magenta_shulker_box", $$0x -> new dro(cwm.c, $$0x), c(eub.q));
-   public static final dkm lo = a("light_blue_shulker_box", $$0x -> new dro(cwm.d, $$0x), c(eub.r));
-   public static final dkm lp = a("yellow_shulker_box", $$0x -> new dro(cwm.e, $$0x), c(eub.s));
-   public static final dkm lq = a("lime_shulker_box", $$0x -> new dro(cwm.f, $$0x), c(eub.t));
-   public static final dkm lr = a("pink_shulker_box", $$0x -> new dro(cwm.g, $$0x), c(eub.u));
-   public static final dkm ls = a("gray_shulker_box", $$0x -> new dro(cwm.h, $$0x), c(eub.v));
-   public static final dkm lt = a("light_gray_shulker_box", $$0x -> new dro(cwm.i, $$0x), c(eub.w));
-   public static final dkm lu = a("cyan_shulker_box", $$0x -> new dro(cwm.j, $$0x), c(eub.x));
-   public static final dkm lv = a("purple_shulker_box", $$0x -> new dro(cwm.k, $$0x), c(eub.U));
-   public static final dkm lw = a("blue_shulker_box", $$0x -> new dro(cwm.l, $$0x), c(eub.z));
-   public static final dkm lx = a("brown_shulker_box", $$0x -> new dro(cwm.m, $$0x), c(eub.A));
-   public static final dkm ly = a("green_shulker_box", $$0x -> new dro(cwm.n, $$0x), c(eub.B));
-   public static final dkm lz = a("red_shulker_box", $$0x -> new dro(cwm.o, $$0x), c(eub.C));
-   public static final dkm lA = a("black_shulker_box", $$0x -> new dro(cwm.p, $$0x), c(eub.D));
-   public static final dkm lB = a("white_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.a).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lC = a("orange_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.b).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lD = a("magenta_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.c).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lE = a("light_blue_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.d).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lF = a("yellow_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.e).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lG = a("lime_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.f).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lH = a("pink_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.g).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lI = a("gray_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.h).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lJ = a("light_gray_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.i).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lK = a("cyan_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.j).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lL = a("purple_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.k).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lM = a("blue_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.l).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lN = a("brown_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.m).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lO = a("green_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.n).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lP = a("red_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.o).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lQ = a("black_glazed_terracotta", dnw::new, dxu.d.a().a(cwm.p).a(dyv.b).n().d(1.4F).a(euc.e));
-   public static final dkm lR = a("white_concrete", dxu.d.a().a(cwm.a).a(dyv.b).n().d(1.8F));
-   public static final dkm lS = a("orange_concrete", dxu.d.a().a(cwm.b).a(dyv.b).n().d(1.8F));
-   public static final dkm lT = a("magenta_concrete", dxu.d.a().a(cwm.c).a(dyv.b).n().d(1.8F));
-   public static final dkm lU = a("light_blue_concrete", dxu.d.a().a(cwm.d).a(dyv.b).n().d(1.8F));
-   public static final dkm lV = a("yellow_concrete", dxu.d.a().a(cwm.e).a(dyv.b).n().d(1.8F));
-   public static final dkm lW = a("lime_concrete", dxu.d.a().a(cwm.f).a(dyv.b).n().d(1.8F));
-   public static final dkm lX = a("pink_concrete", dxu.d.a().a(cwm.g).a(dyv.b).n().d(1.8F));
-   public static final dkm lY = a("gray_concrete", dxu.d.a().a(cwm.h).a(dyv.b).n().d(1.8F));
-   public static final dkm lZ = a("light_gray_concrete", dxu.d.a().a(cwm.i).a(dyv.b).n().d(1.8F));
-   public static final dkm ma = a("cyan_concrete", dxu.d.a().a(cwm.j).a(dyv.b).n().d(1.8F));
-   public static final dkm mb = a("purple_concrete", dxu.d.a().a(cwm.k).a(dyv.b).n().d(1.8F));
-   public static final dkm mc = a("blue_concrete", dxu.d.a().a(cwm.l).a(dyv.b).n().d(1.8F));
-   public static final dkm md = a("brown_concrete", dxu.d.a().a(cwm.m).a(dyv.b).n().d(1.8F));
-   public static final dkm me = a("green_concrete", dxu.d.a().a(cwm.n).a(dyv.b).n().d(1.8F));
-   public static final dkm mf = a("red_concrete", dxu.d.a().a(cwm.o).a(dyv.b).n().d(1.8F));
-   public static final dkm mg = a("black_concrete", dxu.d.a().a(cwm.p).a(dyv.b).n().d(1.8F));
-   public static final dkm mh = a("white_concrete_powder", $$0x -> new dlz(lR, $$0x), dxu.d.a().a(cwm.a).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mi = a("orange_concrete_powder", $$0x -> new dlz(lS, $$0x), dxu.d.a().a(cwm.b).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mj = a("magenta_concrete_powder", $$0x -> new dlz(lT, $$0x), dxu.d.a().a(cwm.c).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mk = a("light_blue_concrete_powder", $$0x -> new dlz(lU, $$0x), dxu.d.a().a(cwm.d).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm ml = a("yellow_concrete_powder", $$0x -> new dlz(lV, $$0x), dxu.d.a().a(cwm.e).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mm = a("lime_concrete_powder", $$0x -> new dlz(lW, $$0x), dxu.d.a().a(cwm.f).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mn = a("pink_concrete_powder", $$0x -> new dlz(lX, $$0x), dxu.d.a().a(cwm.g).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mo = a("gray_concrete_powder", $$0x -> new dlz(lY, $$0x), dxu.d.a().a(cwm.h).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mp = a("light_gray_concrete_powder", $$0x -> new dlz(lZ, $$0x), dxu.d.a().a(cwm.i).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mq = a("cyan_concrete_powder", $$0x -> new dlz(ma, $$0x), dxu.d.a().a(cwm.j).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mr = a("purple_concrete_powder", $$0x -> new dlz(mb, $$0x), dxu.d.a().a(cwm.k).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm ms = a("blue_concrete_powder", $$0x -> new dlz(mc, $$0x), dxu.d.a().a(cwm.l).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mt = a("brown_concrete_powder", $$0x -> new dlz(md, $$0x), dxu.d.a().a(cwm.m).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mu = a("green_concrete_powder", $$0x -> new dlz(me, $$0x), dxu.d.a().a(cwm.n).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mv = a("red_concrete_powder", $$0x -> new dlz(mf, $$0x), dxu.d.a().a(cwm.o).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mw = a("black_concrete_powder", $$0x -> new dlz(mg, $$0x), dxu.d.a().a(cwm.p).a(dyv.c).d(0.5F).a(dsc.j));
-   public static final dkm mx = a("kelp", dos::new, dxu.d.a().a(eub.m).b().e().d().a(dsc.q).a(euc.b));
-   public static final dkm my = a("kelp_plant", dot::new, dxu.d.a().a(eub.m).b().d().a(dsc.q).a(euc.b));
-   public static final dkm mz = a("dried_kelp_block", dxu.d.a().a(eub.B).a(0.5F, 2.5F).a(dsc.d));
-   public static final dkm mA = a("turtle_egg", dth::new, dxu.d.a().a(eub.c).k().d(0.5F).a(dsc.g).e().c().a(euc.b));
-   public static final dkm mB = a("sniffer_egg", drx::new, dxu.d.a().a(eub.C).d(0.5F).a(dsc.g).c());
-   public static final dkm mC = a("dead_tube_coral_block", dxu.d.a().a(eub.v).k().a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm mD = a("dead_brain_coral_block", dxu.d.a().a(eub.v).k().a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm mE = a("dead_bubble_coral_block", dxu.d.a().a(eub.v).k().a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm mF = a("dead_fire_coral_block", dxu.d.a().a(eub.v).k().a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm mG = a("dead_horn_coral_block", dxu.d.a().a(eub.v).k().a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm mH = a("tube_coral_block", $$0x -> new dmc(mC, $$0x), dxu.d.a().a(eub.z).a(dyv.b).n().a(1.5F, 6.0F).a(dsc.r));
-   public static final dkm mI = a("brain_coral_block", $$0x -> new dmc(mD, $$0x), dxu.d.a().a(eub.u).a(dyv.b).n().a(1.5F, 6.0F).a(dsc.r));
-   public static final dkm mJ = a("bubble_coral_block", $$0x -> new dmc(mE, $$0x), dxu.d.a().a(eub.y).a(dyv.b).n().a(1.5F, 6.0F).a(dsc.r));
-   public static final dkm mK = a("fire_coral_block", $$0x -> new dmc(mF, $$0x), dxu.d.a().a(eub.C).a(dyv.b).n().a(1.5F, 6.0F).a(dsc.r));
-   public static final dkm mL = a("horn_coral_block", $$0x -> new dmc(mG, $$0x), dxu.d.a().a(eub.s).a(dyv.b).n().a(1.5F, 6.0F).a(dsc.r));
-   public static final dkm mM = a("dead_tube_coral", djv::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm mN = a("dead_brain_coral", djv::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm mO = a("dead_bubble_coral", djv::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm mP = a("dead_fire_coral", djv::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm mQ = a("dead_horn_coral", djv::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm mR = a("tube_coral", $$0x -> new dme(mM, $$0x), dxu.d.a().a(eub.z).b().d().a(dsc.q).a(euc.b));
-   public static final dkm mS = a("brain_coral", $$0x -> new dme(mN, $$0x), dxu.d.a().a(eub.u).b().d().a(dsc.q).a(euc.b));
-   public static final dkm mT = a("bubble_coral", $$0x -> new dme(mO, $$0x), dxu.d.a().a(eub.y).b().d().a(dsc.q).a(euc.b));
-   public static final dkm mU = a("fire_coral", $$0x -> new dme(mP, $$0x), dxu.d.a().a(eub.C).b().d().a(dsc.q).a(euc.b));
-   public static final dkm mV = a("horn_coral", $$0x -> new dme(mQ, $$0x), dxu.d.a().a(eub.s).b().d().a(dsc.q).a(euc.b));
-   public static final dkm mW = a("dead_tube_coral_fan", dju::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm mX = a("dead_brain_coral_fan", dju::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm mY = a("dead_bubble_coral_fan", dju::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm mZ = a("dead_fire_coral_fan", dju::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm na = a("dead_horn_coral_fan", dju::new, dxu.d.a().a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm nb = a("tube_coral_fan", $$0x -> new dmd(mW, $$0x), dxu.d.a().a(eub.z).b().d().a(dsc.q).a(euc.b));
-   public static final dkm nc = a("brain_coral_fan", $$0x -> new dmd(mX, $$0x), dxu.d.a().a(eub.u).b().d().a(dsc.q).a(euc.b));
-   public static final dkm nd = a("bubble_coral_fan", $$0x -> new dmd(mY, $$0x), dxu.d.a().a(eub.y).b().d().a(dsc.q).a(euc.b));
-   public static final dkm ne = a("fire_coral_fan", $$0x -> new dmd(mZ, $$0x), dxu.d.a().a(eub.C).b().d().a(dsc.q).a(euc.b));
-   public static final dkm nf = a("horn_coral_fan", $$0x -> new dmd(na, $$0x), dxu.d.a().a(eub.s).b().d().a(dsc.q).a(euc.b));
-   public static final dkm ng = a("dead_tube_coral_wall_fan", djx::new, a(mW, false).a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm nh = a("dead_brain_coral_wall_fan", djx::new, a(mX, false).a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm ni = a("dead_bubble_coral_wall_fan", djx::new, a(mY, false).a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm nj = a("dead_fire_coral_wall_fan", djx::new, a(mZ, false).a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm nk = a("dead_horn_coral_wall_fan", djx::new, a(na, false).a(eub.v).k().a(dyv.b).n().b().d());
-   public static final dkm nl = a("tube_coral_wall_fan", $$0x -> new dmf(ng, $$0x), a(nb, false).a(eub.z).b().d().a(dsc.q).a(euc.b));
-   public static final dkm nm = a("brain_coral_wall_fan", $$0x -> new dmf(nh, $$0x), a(nc, false).a(eub.u).b().d().a(dsc.q).a(euc.b));
-   public static final dkm nn = a("bubble_coral_wall_fan", $$0x -> new dmf(ni, $$0x), a(nd, false).a(eub.y).b().d().a(dsc.q).a(euc.b));
-   public static final dkm no = a("fire_coral_wall_fan", $$0x -> new dmf(nj, $$0x), a(ne, false).a(eub.C).b().d().a(dsc.q).a(euc.b));
-   public static final dkm np = a("horn_coral_wall_fan", $$0x -> new dmf(nk, $$0x), a(nf, false).a(eub.s).b().d().a(dsc.q).a(euc.b));
-   public static final dkm nq = a("sea_pickle", drm::new, dxu.d.a().a(eub.B).a($$0x -> drm.o($$0x) ? 0 : 3 + 3 * $$0x.c(drm.c)).a(dsc.o).c().a(euc.b));
-   public static final dkm nr = a("blue_ice", dod::new, dxu.d.a().a(eub.f).d(2.8F).a(0.989F).a(dsc.h));
-   public static final dkm ns = a("conduit", dma::new, dxu.d.a().a(eub.F).k().a(dyv.d).d(3.0F).a($$0x -> 15).c());
-   public static final dkm nt = a("bamboo_sapling", djp::new, dxu.d.a().a(eub.n).k().e().d().b().d(1.0F).a(dsc.t).a(dxu.c.b).i().a(euc.b));
-   public static final dkm nu = a("bamboo", djq::new, dxu.d.a().a(eub.h).k().e().d().d(1.0F).a(dsc.s).c().f().a(dxu.c.b).i().a(euc.b).a(dko::b));
-   public static final dkm nv = a("potted_bamboo", $$0x -> new dnq(nu, $$0x), c());
-   public static final dkm nw = a("void_air", djj::new, dxu.d.a().p().b().g().m());
-   public static final dkm nx = a("cave_air", djj::new, dxu.d.a().p().b().g().m());
-   public static final dkm ny = a("bubble_column", dkt::new, dxu.d.a().a(eub.m).p().b().g().a(euc.b).j().a(dsc.a));
-   public static final dkm nz = a("polished_granite_stairs", d);
-   public static final dkm nA = a("smooth_red_sandstone_stairs", km);
-   public static final dkm nB = a("mossy_stone_brick_stairs", eW);
-   public static final dkm nC = a("polished_diorite_stairs", f);
-   public static final dkm nD = a("mossy_cobblestone_stairs", cu);
-   public static final dkm nE = a("end_stone_brick_stairs", kU);
-   public static final dkm nF = a("stone_stairs", b);
-   public static final dkm nG = a("smooth_sandstone_stairs", kk);
-   public static final dkm nH = a("smooth_quartz_stairs", kl);
-   public static final dkm nI = a("granite_stairs", c);
-   public static final dkm nJ = a("andesite_stairs", g);
-   public static final dkm nK = a("red_nether_brick_stairs", lg);
-   public static final dkm nL = a("polished_andesite_stairs", h);
-   public static final dkm nM = a("diorite_stairs", e);
-   public static final dkm nN = a("polished_granite_slab", drs::new, dxu.d.b(d));
-   public static final dkm nO = a("smooth_red_sandstone_slab", drs::new, dxu.d.b(km));
-   public static final dkm nP = a("mossy_stone_brick_slab", drs::new, dxu.d.b(eW));
-   public static final dkm nQ = a("polished_diorite_slab", drs::new, dxu.d.b(f));
-   public static final dkm nR = a("mossy_cobblestone_slab", drs::new, dxu.d.b(cu));
-   public static final dkm nS = a("end_stone_brick_slab", drs::new, dxu.d.b(kU));
-   public static final dkm nT = a("smooth_sandstone_slab", drs::new, dxu.d.b(kk));
-   public static final dkm nU = a("smooth_quartz_slab", drs::new, dxu.d.b(kl));
-   public static final dkm nV = a("granite_slab", drs::new, dxu.d.b(c));
-   public static final dkm nW = a("andesite_slab", drs::new, dxu.d.b(g));
-   public static final dkm nX = a("red_nether_brick_slab", drs::new, dxu.d.b(lg));
-   public static final dkm nY = a("polished_andesite_slab", drs::new, dxu.d.b(h));
-   public static final dkm nZ = a("diorite_slab", drs::new, dxu.d.b(e));
-   public static final dkm oa = a("brick_wall", dtn::new, dxu.d.b(cq).k());
-   public static final dkm ob = a("prismarine_wall", dtn::new, dxu.d.b(iq).k());
-   public static final dkm oc = a("red_sandstone_wall", dtn::new, dxu.d.b(jG).k());
-   public static final dkm od = a("mossy_stone_brick_wall", dtn::new, dxu.d.b(eW).k());
-   public static final dkm oe = a("granite_wall", dtn::new, dxu.d.b(c).k());
-   public static final dkm of = a("stone_brick_wall", dtn::new, dxu.d.b(eV).k());
-   public static final dkm og = a("mud_brick_wall", dtn::new, dxu.d.b(fa).k());
-   public static final dkm oh = a("nether_brick_wall", dtn::new, dxu.d.b(fB).k());
-   public static final dkm oi = a("andesite_wall", dtn::new, dxu.d.b(g).k());
-   public static final dkm oj = a("red_nether_brick_wall", dtn::new, dxu.d.b(lg).k());
-   public static final dkm ok = a("sandstone_wall", dtn::new, dxu.d.b(bc).k());
-   public static final dkm ol = a("end_stone_brick_wall", dtn::new, dxu.d.b(kU).k());
-   public static final dkm om = a("diorite_wall", dtn::new, dxu.d.b(e).k());
-   public static final dkm on = a("scaffolding", dre::new, dxu.d.a().a(eub.c).b().a(dsc.u).f().a(dko::a).a(euc.b).a(dko::b));
-   public static final dkm oo = a("loom", dpg::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.5F).a(dsc.b).i());
-   public static final dkm op = a("barrel", djs::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.5F).a(dsc.b).i());
-   public static final dkm oq = a("smoker", drw::new, dxu.d.a().a(eub.l).a(dyv.b).n().d(3.5F).a(a(13)));
-   public static final dkm or = a("blast_furnace", dkl::new, dxu.d.a().a(eub.l).a(dyv.b).n().d(3.5F).a(a(13)));
-   public static final dkm os = a("cartography_table", dlg::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.5F).a(dsc.b).i());
-   public static final dkm ot = a("fletching_table", dno::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.5F).a(dsc.b).i());
-   public static final dkm ou = a("grindstone", dnz::new, dxu.d.a().a(eub.g).n().a(2.0F, 6.0F).a(dsc.f).a(euc.c));
-   public static final dkm ov = a("lectern", doz::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.5F).a(dsc.b).i());
-   public static final dkm ow = a("smithing_table", drv::new, dxu.d.a().a(eub.n).a(dyv.e).d(2.5F).a(dsc.b).i());
-   public static final dkm ox = a("stonecutter", dsm::new, dxu.d.a().a(eub.l).a(dyv.b).n().d(3.5F));
-   public static final dkm oy = a("bell", dki::new, dxu.d.a().a(eub.E).k().n().d(5.0F).a(dsc.n).a(euc.b));
-   public static final dkm oz = a("lantern", dov::new, dxu.d.a().a(eub.g).k().n().d(3.5F).a(dsc.A).a($$0x -> 15).c().a(euc.b));
-   public static final dkm oA = a("soul_lantern", dov::new, dxu.d.a().a(eub.g).k().n().d(3.5F).a(dsc.A).a($$0x -> 10).c().a(euc.b));
-   public static final dkm oB = a("campfire", $$0x -> new dlb(true, 1, $$0x), dxu.d.a().a(eub.I).a(dyv.e).d(2.0F).a(dsc.b).a(a(15)).c().i());
-   public static final dkm oC = a("soul_campfire", $$0x -> new dlb(false, 2, $$0x), dxu.d.a().a(eub.I).a(dyv.e).d(2.0F).a(dsc.b).a(a(10)).c().i());
-   public static final dkm oD = a("sweet_berry_bush", dss::new, dxu.d.a().a(eub.h).e().b().a(dsc.v).a(euc.b));
-   public static final dkm oE = a("warped_stem", drb::new, b(eub.ae));
-   public static final dkm oF = a("stripped_warped_stem", drb::new, b(eub.ae));
-   public static final dkm oG = a("warped_hyphae", drb::new, dxu.d.a().a(eub.af).a(dyv.e).d(2.0F).a(dsc.B));
-   public static final dkm oH = a("stripped_warped_hyphae", drb::new, dxu.d.a().a(eub.af).a(dyv.e).d(2.0F).a(dsc.B));
-   public static final dkm oI = a("warped_nylium", dpy::new, dxu.d.a().a(eub.ad).a(dyv.b).n().d(0.4F).a(dsc.C).e());
-   public static final dkm oJ = a("warped_fungus", $$0x -> new dnt(sr.d, oI, $$0x), dxu.d.a().a(eub.x).d().b().a(dsc.D).a(euc.b));
-   public static final dkm oK = a("warped_wart_block", dxu.d.a().a(eub.ag).d(1.0F).a(dsc.L));
-   public static final dkm oL = a("warped_roots", dra::new, dxu.d.a().a(eub.x).p().b().d().a(dsc.E).a(dxu.c.b).a(euc.b));
-   public static final dkm oM = a("nether_sprouts", dpt::new, dxu.d.a().a(eub.x).p().b().d().a(dsc.O).a(dxu.c.b).a(euc.b));
-   public static final dkm oN = a("crimson_stem", drb::new, b(eub.ab));
-   public static final dkm oO = a("stripped_crimson_stem", drb::new, b(eub.ab));
-   public static final dkm oP = a("crimson_hyphae", drb::new, dxu.d.a().a(eub.ac).a(dyv.e).d(2.0F).a(dsc.B));
-   public static final dkm oQ = a("stripped_crimson_hyphae", drb::new, dxu.d.a().a(eub.ac).a(dyv.e).d(2.0F).a(dsc.B));
-   public static final dkm oR = a("crimson_nylium", dpy::new, dxu.d.a().a(eub.aa).a(dyv.b).n().d(0.4F).a(dsc.C).e());
-   public static final dkm oS = a("crimson_fungus", $$0x -> new dnt(sr.b, oR, $$0x), dxu.d.a().a(eub.J).d().b().a(dsc.D).a(euc.b));
-   public static final dkm oT = a("shroomlight", dxu.d.a().a(eub.C).d(1.0F).a(dsc.F).a($$0x -> 15));
-   public static final dkm oU = a("weeping_vines", dud::new, dxu.d.a().a(eub.J).e().b().d().a(dsc.G).a(euc.b));
-   public static final dkm oV = a("weeping_vines_plant", due::new, dxu.d.a().a(eub.J).b().d().a(dsc.G).a(euc.b));
-   public static final dkm oW = a("twisting_vines", dti::new, dxu.d.a().a(eub.x).e().b().d().a(dsc.G).a(euc.b));
-   public static final dkm oX = a("twisting_vines_plant", dtj::new, dxu.d.a().a(eub.x).b().d().a(dsc.G).a(euc.b));
-   public static final dkm oY = a("crimson_roots", dra::new, dxu.d.a().a(eub.J).p().b().d().a(dsc.E).a(dxu.c.b).a(euc.b));
-   public static final dkm oZ = a("crimson_planks", dxu.d.a().a(eub.ab).a(dyv.e).a(2.0F, 3.0F).a(dsc.aT));
-   public static final dkm pa = a("warped_planks", dxu.d.a().a(eub.ae).a(dyv.e).a(2.0F, 3.0F).a(dsc.aT));
-   public static final dkm pb = a("crimson_slab", drs::new, dxu.d.a().a(oZ.w()).a(dyv.e).a(2.0F, 3.0F).a(dsc.aT));
-   public static final dkm pc = a("warped_slab", drs::new, dxu.d.a().a(pa.w()).a(dyv.e).a(2.0F, 3.0F).a(dsc.aT));
-   public static final dkm pd = a("crimson_pressure_plate", $$0x -> new dqm(dyk.o, $$0x), dxu.d.a().a(oZ.w()).k().a(dyv.e).b().d(0.5F).a(euc.b));
-   public static final dkm pe = a("warped_pressure_plate", $$0x -> new dqm(dyk.p, $$0x), dxu.d.a().a(pa.w()).k().a(dyv.e).b().d(0.5F).a(euc.b));
-   public static final dkm pf = a("crimson_fence", dnl::new, dxu.d.a().a(oZ.w()).a(dyv.e).a(2.0F, 3.0F).a(dsc.aT));
-   public static final dkm pg = a("warped_fence", dnl::new, dxu.d.a().a(pa.w()).a(dyv.e).a(2.0F, 3.0F).a(dsc.aT));
-   public static final dkm ph = a("crimson_trapdoor", $$0x -> new dtc(dyk.o, $$0x), dxu.d.a().a(oZ.w()).a(dyv.e).d(3.0F).c().a(dko::a));
-   public static final dkm pi = a("warped_trapdoor", $$0x -> new dtc(dyk.p, $$0x), dxu.d.a().a(pa.w()).a(dyv.e).d(3.0F).c().a(dko::a));
-   public static final dkm pj = a("crimson_fence_gate", $$0x -> new dnm(dzh.j, $$0x), dxu.d.a().a(oZ.w()).k().a(dyv.e).a(2.0F, 3.0F));
-   public static final dkm pk = a("warped_fence_gate", $$0x -> new dnm(dzh.k, $$0x), dxu.d.a().a(pa.w()).k().a(dyv.e).a(2.0F, 3.0F));
-   public static final dkm pl = a("crimson_stairs", oZ);
-   public static final dkm pm = a("warped_stairs", pa);
-   public static final dkm pn = a("crimson_button", $$0x -> new dkx(dyk.o, 30, $$0x), b());
-   public static final dkm po = a("warped_button", $$0x -> new dkx(dyk.p, 30, $$0x), b());
-   public static final dkm pp = a("crimson_door", $$0x -> new dmu(dyk.o, $$0x), dxu.d.a().a(oZ.w()).a(dyv.e).d(3.0F).c().a(euc.b));
-   public static final dkm pq = a("warped_door", $$0x -> new dmu(dyk.p, $$0x), dxu.d.a().a(pa.w()).a(dyv.e).d(3.0F).c().a(euc.b));
-   public static final dkm pr = a("crimson_sign", $$0x -> new dsk(dzh.j, $$0x), dxu.d.a().a(oZ.w()).a(dyv.e).k().b().d(1.0F));
-   public static final dkm ps = a("warped_sign", $$0x -> new dsk(dzh.k, $$0x), dxu.d.a().a(pa.w()).a(dyv.e).k().b().d(1.0F));
-   public static final dkm pt = a("crimson_wall_sign", $$0x -> new dtp(dzh.j, $$0x), a(pr, true).a(oZ.w()).a(dyv.e).k().b().d(1.0F));
-   public static final dkm pu = a("warped_wall_sign", $$0x -> new dtp(dzh.k, $$0x), a(ps, true).a(pa.w()).a(dyv.e).k().b().d(1.0F));
-   public static final dkm pv = a("structure_block", dsn::new, dxu.d.a().a(eub.w).n().a(-1.0F, 3600000.0F).g());
-   public static final dkm pw = a("jigsaw", doq::new, dxu.d.a().a(eub.w).n().a(-1.0F, 3600000.0F).g());
-   public static final dkm px = a("composter", dly::new, dxu.d.a().a(eub.n).a(dyv.e).d(0.6F).a(dsc.b).i());
-   public static final dkm py = a("target", dsw::new, dxu.d.a().a(eub.o).d(0.5F).a(dsc.d));
-   public static final dkm pz = a("bee_nest", dkg::new, dxu.d.a().a(eub.s).a(dyv.e).d(0.3F).a(dsc.b).i());
-   public static final dkm pA = a("beehive", dkg::new, dxu.d.a().a(eub.n).a(dyv.e).d(0.6F).a(dsc.b).i());
-   public static final dkm pB = a("honey_block", doi::new, dxu.d.a().a(eub.p).b(0.4F).c(0.5F).c().a(dsc.p));
-   public static final dkm pC = a("honeycomb_block", dxu.d.a().a(eub.p).d(0.6F).a(dsc.r));
-   public static final dkm pD = a("netherite_block", dxu.d.a().a(eub.D).n().a(50.0F, 1200.0F).a(dsc.R));
-   public static final dkm pE = a("ancient_debris", dxu.d.a().a(eub.D).n().a(30.0F, 1200.0F).a(dsc.S));
-   public static final dkm pF = a("crying_obsidian", dml::new, dxu.d.a().a(eub.D).a(dyv.b).n().a(50.0F, 1200.0F).a($$0x -> 10));
-   public static final dkm pG = a("respawn_anchor", dqx::new, dxu.d.a().a(eub.D).a(dyv.b).n().a(50.0F, 1200.0F).a($$0x -> dqx.a($$0x, 15)));
-   public static final dkm pH = a("potted_crimson_fungus", $$0x -> new dnq(oS, $$0x), c());
-   public static final dkm pI = a("potted_warped_fungus", $$0x -> new dnq(oJ, $$0x), c());
-   public static final dkm pJ = a("potted_crimson_roots", $$0x -> new dnq(oY, $$0x), c());
-   public static final dkm pK = a("potted_warped_roots", $$0x -> new dnq(oL, $$0x), c());
-   public static final dkm pL = a("lodestone", dxu.d.a().a(eub.g).n().d(3.5F).a(dsc.T).a(euc.c));
-   public static final dkm pM = a("blackstone", dxu.d.a().a(eub.D).a(dyv.b).n().a(1.5F, 6.0F));
-   public static final dkm pN = a("blackstone_stairs", pM);
-   public static final dkm pO = a("blackstone_wall", dtn::new, dxu.d.b(pM).k());
-   public static final dkm pP = a("blackstone_slab", drs::new, dxu.d.b(pM).a(2.0F, 6.0F));
-   public static final dkm pQ = a("polished_blackstone", dxu.d.b(pM).a(2.0F, 6.0F));
-   public static final dkm pR = a("polished_blackstone_bricks", dxu.d.b(pQ).a(1.5F, 6.0F));
-   public static final dkm pS = a("cracked_polished_blackstone_bricks", dxu.d.b(pR));
-   public static final dkm pT = a("chiseled_polished_blackstone", dxu.d.b(pQ).a(1.5F, 6.0F));
-   public static final dkm pU = a("polished_blackstone_brick_slab", drs::new, dxu.d.b(pR).a(2.0F, 6.0F));
-   public static final dkm pV = a("polished_blackstone_brick_stairs", pR);
-   public static final dkm pW = a("polished_blackstone_brick_wall", dtn::new, dxu.d.b(pR).k());
-   public static final dkm pX = a("gilded_blackstone", dxu.d.b(pM).a(dsc.W));
-   public static final dkm pY = a("polished_blackstone_stairs", pQ);
-   public static final dkm pZ = a("polished_blackstone_slab", drs::new, dxu.d.b(pQ));
-   public static final dkm qa = a("polished_blackstone_pressure_plate", $$0x -> new dqm(dyk.f, $$0x), dxu.d.a().a(eub.D).k().a(dyv.b).n().b().d(0.5F).a(euc.b));
-   public static final dkm qb = a("polished_blackstone_button", $$0x -> new dkx(dyk.e, 20, $$0x), b());
-   public static final dkm qc = a("polished_blackstone_wall", dtn::new, dxu.d.b(pQ).k());
-   public static final dkm qd = a("chiseled_nether_bricks", dxu.d.a().a(eub.J).a(dyv.b).n().a(2.0F, 6.0F).a(dsc.N));
-   public static final dkm qe = a("cracked_nether_bricks", dxu.d.a().a(eub.J).a(dyv.b).n().a(2.0F, 6.0F).a(dsc.N));
-   public static final dkm qf = a("quartz_bricks", dxu.d.b(ht));
-   public static final dkm qg = a("candle", dlc::new, d(eub.c));
-   public static final dkm qh = a("white_candle", dlc::new, d(eub.d));
-   public static final dkm qi = a("orange_candle", dlc::new, d(eub.p));
-   public static final dkm qj = a("magenta_candle", dlc::new, d(eub.q));
-   public static final dkm qk = a("light_blue_candle", dlc::new, d(eub.r));
-   public static final dkm ql = a("yellow_candle", dlc::new, d(eub.s));
-   public static final dkm qm = a("lime_candle", dlc::new, d(eub.t));
-   public static final dkm qn = a("pink_candle", dlc::new, d(eub.u));
-   public static final dkm qo = a("gray_candle", dlc::new, d(eub.v));
-   public static final dkm qp = a("light_gray_candle", dlc::new, d(eub.w));
-   public static final dkm qq = a("cyan_candle", dlc::new, d(eub.x));
-   public static final dkm qr = a("purple_candle", dlc::new, d(eub.y));
-   public static final dkm qs = a("blue_candle", dlc::new, d(eub.z));
-   public static final dkm qt = a("brown_candle", dlc::new, d(eub.A));
-   public static final dkm qu = a("green_candle", dlc::new, d(eub.B));
-   public static final dkm qv = a("red_candle", dlc::new, d(eub.C));
-   public static final dkm qw = a("black_candle", dlc::new, d(eub.D));
-   public static final dkm qx = a("candle_cake", $$0x -> new dld(qg, $$0x), dxu.d.b(et).a(a(3)));
-   public static final dkm qy = a("white_candle_cake", $$0x -> new dld(qh, $$0x), dxu.d.b(qx));
-   public static final dkm qz = a("orange_candle_cake", $$0x -> new dld(qi, $$0x), dxu.d.b(qx));
-   public static final dkm qA = a("magenta_candle_cake", $$0x -> new dld(qj, $$0x), dxu.d.b(qx));
-   public static final dkm qB = a("light_blue_candle_cake", $$0x -> new dld(qk, $$0x), dxu.d.b(qx));
-   public static final dkm qC = a("yellow_candle_cake", $$0x -> new dld(ql, $$0x), dxu.d.b(qx));
-   public static final dkm qD = a("lime_candle_cake", $$0x -> new dld(qm, $$0x), dxu.d.b(qx));
-   public static final dkm qE = a("pink_candle_cake", $$0x -> new dld(qn, $$0x), dxu.d.b(qx));
-   public static final dkm qF = a("gray_candle_cake", $$0x -> new dld(qo, $$0x), dxu.d.b(qx));
-   public static final dkm qG = a("light_gray_candle_cake", $$0x -> new dld(qp, $$0x), dxu.d.b(qx));
-   public static final dkm qH = a("cyan_candle_cake", $$0x -> new dld(qq, $$0x), dxu.d.b(qx));
-   public static final dkm qI = a("purple_candle_cake", $$0x -> new dld(qr, $$0x), dxu.d.b(qx));
-   public static final dkm qJ = a("blue_candle_cake", $$0x -> new dld(qs, $$0x), dxu.d.b(qx));
-   public static final dkm qK = a("brown_candle_cake", $$0x -> new dld(qt, $$0x), dxu.d.b(qx));
-   public static final dkm qL = a("green_candle_cake", $$0x -> new dld(qu, $$0x), dxu.d.b(qx));
-   public static final dkm qM = a("red_candle_cake", $$0x -> new dld(qv, $$0x), dxu.d.b(qx));
-   public static final dkm qN = a("black_candle_cake", $$0x -> new dld(qw, $$0x), dxu.d.b(qx));
-   public static final dkm qO = a("amethyst_block", djk::new, dxu.d.a().a(eub.y).d(1.5F).a(dsc.Y).n());
-   public static final dkm qP = a("budding_amethyst", dkv::new, dxu.d.a().a(eub.y).e().d(1.5F).a(dsc.Y).n().a(euc.b));
-   public static final dkm qQ = a("amethyst_cluster", $$0x -> new djl(7.0F, 3.0F, $$0x), dxu.d.a().a(eub.y).k().c().a(dsc.Z).d(1.5F).a($$0x -> 5).a(euc.b));
-   public static final dkm qR = a("large_amethyst_bud", $$0x -> new djl(5.0F, 3.0F, $$0x), dxu.d.b(qQ).a(dsc.ab).a($$0x -> 4));
-   public static final dkm qS = a("medium_amethyst_bud", $$0x -> new djl(4.0F, 3.0F, $$0x), dxu.d.b(qQ).a(dsc.ac).a($$0x -> 2));
-   public static final dkm qT = a("small_amethyst_bud", $$0x -> new djl(3.0F, 4.0F, $$0x), dxu.d.b(qQ).a(dsc.aa).a($$0x -> 1));
-   public static final dkm qU = a("tuff", dxu.d.a().a(eub.R).a(dyv.b).a(dsc.ad).n().a(1.5F, 6.0F));
-   public static final dkm qV = a("tuff_slab", drs::new, dxu.d.b(qU));
-   public static final dkm qW = a("tuff_stairs", $$0x -> new dsj(qU.m(), $$0x), dxu.d.b(qU));
-   public static final dkm qX = a("tuff_wall", dtn::new, dxu.d.b(qU).k());
-   public static final dkm qY = a("polished_tuff", dxu.d.b(qU).a(dsc.af));
-   public static final dkm qZ = a("polished_tuff_slab", drs::new, dxu.d.b(qY));
-   public static final dkm ra = a("polished_tuff_stairs", $$0x -> new dsj(qY.m(), $$0x), dxu.d.b(qY));
-   public static final dkm rb = a("polished_tuff_wall", dtn::new, dxu.d.b(qY).k());
-   public static final dkm rc = a("chiseled_tuff", dxu.d.b(qU));
-   public static final dkm rd = a("tuff_bricks", dxu.d.b(qU).a(dsc.ae));
-   public static final dkm re = a("tuff_brick_slab", drs::new, dxu.d.b(rd));
-   public static final dkm rf = a("tuff_brick_stairs", $$0x -> new dsj(rd.m(), $$0x), dxu.d.b(rd));
-   public static final dkm rg = a("tuff_brick_wall", dtn::new, dxu.d.b(rd).k());
-   public static final dkm rh = a("chiseled_tuff_bricks", dxu.d.b(rd));
-   public static final dkm ri = a("calcite", dxu.d.a().a(eub.K).a(dyv.b).a(dsc.ag).n().d(0.75F));
-   public static final dkm rj = a("tinted_glass", dsx::new, dxu.d.b(aX).a(eub.v).c().a(dko::a).a(dko::b).b(dko::b).c(dko::b));
-   public static final dkm rk = a("powder_snow", dqj::new, dxu.d.a().a(eub.i).d(0.25F).a(dsc.l).f().c().a(dko::b));
-   public static final dkm rl = a("sculk_sensor", dri::new, dxu.d.a().a(eub.x).d(1.5F).a(dsc.ay).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dri.o($$0x) == dzb.b));
-   public static final dkm rm = a("calibrated_sculk_sensor", dla::new, dxu.d.b(rl));
-   public static final dkm rn = a("sculk", drg::new, dxu.d.a().a(eub.D).d(0.2F).a(dsc.aA));
-   public static final dkm ro = a("sculk_vein", drl::new, dxu.d.a().a(eub.D).k().b().d(0.2F).a(dsc.aB).a(euc.b));
-   public static final dkm rp = a("sculk_catalyst", drh::new, dxu.d.a().a(eub.D).a(3.0F, 3.0F).a(dsc.az).a($$0x -> 6));
-   public static final dkm rq = a("sculk_shrieker", drj::new, dxu.d.a().a(eub.D).a(3.0F, 3.0F).a(dsc.aC));
-   public static final dkm rr = a("copper_block", $$0x -> new dtx(dtu.a.a, $$0x), dxu.d.a().a(eub.p).n().a(3.0F, 6.0F).a(dsc.aj));
-   public static final dkm rs = a("exposed_copper", $$0x -> new dtx(dtu.a.b, $$0x), dxu.d.a(rr).a(eub.S));
-   public static final dkm rt = a("weathered_copper", $$0x -> new dtx(dtu.a.c, $$0x), dxu.d.a(rr).a(eub.ae));
-   public static final dkm ru = a("oxidized_copper", $$0x -> new dtx(dtu.a.d, $$0x), dxu.d.a(rr).a(eub.ad));
-   public static final dkm rv = a("copper_ore", $$0x -> new dmy(bsl.a(0), $$0x), dxu.d.b(S));
-   public static final dkm rw = a("deepslate_copper_ore", $$0x -> new dmy(bsl.a(0), $$0x), dxu.d.b(rv).a(eub.ah).a(4.5F, 3.0F).a(dsc.aE));
-   public static final dkm rx = a("oxidized_cut_copper", $$0x -> new dtx(dtu.a.d, $$0x), dxu.d.a(ru));
-   public static final dkm ry = a("weathered_cut_copper", $$0x -> new dtx(dtu.a.c, $$0x), dxu.d.a(rt));
-   public static final dkm rz = a("exposed_cut_copper", $$0x -> new dtx(dtu.a.b, $$0x), dxu.d.a(rs));
-   public static final dkm rA = a("cut_copper", $$0x -> new dtx(dtu.a.a, $$0x), dxu.d.a(rr));
-   public static final dkm rB = a("oxidized_chiseled_copper", $$0x -> new dtx(dtu.a.d, $$0x), dxu.d.a(ru));
-   public static final dkm rC = a("weathered_chiseled_copper", $$0x -> new dtx(dtu.a.c, $$0x), dxu.d.a(rt));
-   public static final dkm rD = a("exposed_chiseled_copper", $$0x -> new dtx(dtu.a.b, $$0x), dxu.d.a(rs));
-   public static final dkm rE = a("chiseled_copper", $$0x -> new dtx(dtu.a.a, $$0x), dxu.d.a(rr));
-   public static final dkm rF = a("waxed_oxidized_chiseled_copper", dxu.d.a(rB));
-   public static final dkm rG = a("waxed_weathered_chiseled_copper", dxu.d.a(rC));
-   public static final dkm rH = a("waxed_exposed_chiseled_copper", dxu.d.a(rD));
-   public static final dkm rI = a("waxed_chiseled_copper", dxu.d.a(rE));
-   public static final dkm rJ = a("oxidized_cut_copper_stairs", $$0x -> new dua(dtu.a.d, rx.m(), $$0x), dxu.d.a(rx));
-   public static final dkm rK = a("weathered_cut_copper_stairs", $$0x -> new dua(dtu.a.c, ry.m(), $$0x), dxu.d.a(rt));
-   public static final dkm rL = a("exposed_cut_copper_stairs", $$0x -> new dua(dtu.a.b, rz.m(), $$0x), dxu.d.a(rs));
-   public static final dkm rM = a("cut_copper_stairs", $$0x -> new dua(dtu.a.a, rA.m(), $$0x), dxu.d.a(rr));
-   public static final dkm rN = a("oxidized_cut_copper_slab", $$0x -> new dtz(dtu.a.d, $$0x), dxu.d.a(rx));
-   public static final dkm rO = a("weathered_cut_copper_slab", $$0x -> new dtz(dtu.a.c, $$0x), dxu.d.a(ry));
-   public static final dkm rP = a("exposed_cut_copper_slab", $$0x -> new dtz(dtu.a.b, $$0x), dxu.d.a(rz));
-   public static final dkm rQ = a("cut_copper_slab", $$0x -> new dtz(dtu.a.a, $$0x), dxu.d.a(rA));
-   public static final dkm rR = a("waxed_copper_block", dxu.d.a(rr));
-   public static final dkm rS = a("waxed_weathered_copper", dxu.d.a(rt));
-   public static final dkm rT = a("waxed_exposed_copper", dxu.d.a(rs));
-   public static final dkm rU = a("waxed_oxidized_copper", dxu.d.a(ru));
-   public static final dkm rV = a("waxed_oxidized_cut_copper", dxu.d.a(ru));
-   public static final dkm rW = a("waxed_weathered_cut_copper", dxu.d.a(rt));
-   public static final dkm rX = a("waxed_exposed_cut_copper", dxu.d.a(rs));
-   public static final dkm rY = a("waxed_cut_copper", dxu.d.a(rr));
-   public static final dkm rZ = b("waxed_oxidized_cut_copper_stairs", rV);
-   public static final dkm sa = b("waxed_weathered_cut_copper_stairs", rW);
-   public static final dkm sb = b("waxed_exposed_cut_copper_stairs", rX);
-   public static final dkm sc = b("waxed_cut_copper_stairs", rY);
-   public static final dkm sd = a("waxed_oxidized_cut_copper_slab", drs::new, dxu.d.a(rV).n());
-   public static final dkm se = a("waxed_weathered_cut_copper_slab", drs::new, dxu.d.a(rW).n());
-   public static final dkm sf = a("waxed_exposed_cut_copper_slab", drs::new, dxu.d.a(rX).n());
-   public static final dkm sg = a("waxed_cut_copper_slab", drs::new, dxu.d.a(rY).n());
-   public static final dkm sh = a("copper_door", $$0x -> new dtw(dyk.c, dtu.a.a, $$0x), dxu.d.a().a(rr.w()).a(3.0F, 6.0F).c().n().a(euc.b));
-   public static final dkm si = a("exposed_copper_door", $$0x -> new dtw(dyk.c, dtu.a.b, $$0x), dxu.d.a(sh).a(rs.w()));
-   public static final dkm sj = a("oxidized_copper_door", $$0x -> new dtw(dyk.c, dtu.a.d, $$0x), dxu.d.a(sh).a(ru.w()));
-   public static final dkm sk = a("weathered_copper_door", $$0x -> new dtw(dyk.c, dtu.a.c, $$0x), dxu.d.a(sh).a(rt.w()));
-   public static final dkm sl = a("waxed_copper_door", $$0x -> new dmu(dyk.c, $$0x), dxu.d.a(sh));
-   public static final dkm sm = a("waxed_exposed_copper_door", $$0x -> new dmu(dyk.c, $$0x), dxu.d.a(si));
-   public static final dkm sn = a("waxed_oxidized_copper_door", $$0x -> new dmu(dyk.c, $$0x), dxu.d.a(sj));
-   public static final dkm so = a("waxed_weathered_copper_door", $$0x -> new dmu(dyk.c, $$0x), dxu.d.a(sk));
-   public static final dkm sp = a("copper_trapdoor", $$0x -> new dub(dyk.c, dtu.a.a, $$0x), dxu.d.a().a(rr.w()).a(3.0F, 6.0F).n().c().a(dko::a));
-   public static final dkm sq = a("exposed_copper_trapdoor", $$0x -> new dub(dyk.c, dtu.a.b, $$0x), dxu.d.a(sp).a(rs.w()));
-   public static final dkm sr = a("oxidized_copper_trapdoor", $$0x -> new dub(dyk.c, dtu.a.d, $$0x), dxu.d.a(sp).a(ru.w()));
-   public static final dkm ss = a("weathered_copper_trapdoor", $$0x -> new dub(dyk.c, dtu.a.c, $$0x), dxu.d.a(sp).a(rt.w()));
-   public static final dkm st = a("waxed_copper_trapdoor", $$0x -> new dtc(dyk.c, $$0x), dxu.d.a(sp));
-   public static final dkm su = a("waxed_exposed_copper_trapdoor", $$0x -> new dtc(dyk.c, $$0x), dxu.d.a(sq));
-   public static final dkm sv = a("waxed_oxidized_copper_trapdoor", $$0x -> new dtc(dyk.c, $$0x), dxu.d.a(sr));
-   public static final dkm sw = a("waxed_weathered_copper_trapdoor", $$0x -> new dtc(dyk.c, $$0x), dxu.d.a(ss));
-   public static final dkm sx = a(
-      "copper_grate", $$0x -> new dty(dtu.a.a, $$0x), dxu.d.a().a(3.0F, 6.0F).a(dsc.al).a(eub.p).c().n().a(dko::a).a(dko::b).b(dko::b).c(dko::b)
-   );
-   public static final dkm sy = a("exposed_copper_grate", $$0x -> new dty(dtu.a.b, $$0x), dxu.d.a(sx).a(eub.S));
-   public static final dkm sz = a("weathered_copper_grate", $$0x -> new dty(dtu.a.c, $$0x), dxu.d.a(sx).a(eub.ae));
-   public static final dkm sA = a("oxidized_copper_grate", $$0x -> new dty(dtu.a.d, $$0x), dxu.d.a(sx).a(eub.ad));
-   public static final dkm sB = a("waxed_copper_grate", dtt::new, dxu.d.a(sx));
-   public static final dkm sC = a("waxed_exposed_copper_grate", dtt::new, dxu.d.a(sy));
-   public static final dkm sD = a("waxed_weathered_copper_grate", dtt::new, dxu.d.a(sz));
-   public static final dkm sE = a("waxed_oxidized_copper_grate", dtt::new, dxu.d.a(sA));
-   public static final dkm sF = a("copper_bulb", $$0x -> new dtv(dtu.a.a, $$0x), dxu.d.a().a(rr.w()).a(3.0F, 6.0F).a(dsc.ak).n().a(dko::b).a(a(15)));
-   public static final dkm sG = a("exposed_copper_bulb", $$0x -> new dtv(dtu.a.b, $$0x), dxu.d.a(sF).a(eub.S).a(a(12)));
-   public static final dkm sH = a("weathered_copper_bulb", $$0x -> new dtv(dtu.a.c, $$0x), dxu.d.a(sF).a(eub.ae).a(a(8)));
-   public static final dkm sI = a("oxidized_copper_bulb", $$0x -> new dtv(dtu.a.d, $$0x), dxu.d.a(sF).a(eub.ad).a(a(4)));
-   public static final dkm sJ = a("waxed_copper_bulb", dmb::new, dxu.d.a(sF));
-   public static final dkm sK = a("waxed_exposed_copper_bulb", dmb::new, dxu.d.a(sG));
-   public static final dkm sL = a("waxed_weathered_copper_bulb", dmb::new, dxu.d.a(sH));
-   public static final dkm sM = a("waxed_oxidized_copper_bulb", dmb::new, dxu.d.a(sI));
-   public static final dkm sN = a("lightning_rod", dpd::new, dxu.d.a().a(eub.p).k().n().a(3.0F, 6.0F).a(dsc.aj).c());
-   public static final dkm sO = a(
-      "pointed_dripstone", dqg::new, dxu.d.a().a(eub.W).k().a(dyv.b).c().a(dsc.ai).e().a(1.5F, 3.0F).f().a(dxu.c.b).a(euc.b).a(dko::b)
-   );
-   public static final dkm sP = a("dripstone_block", dxu.d.a().a(eub.W).a(dyv.b).a(dsc.ah).n().a(1.5F, 1.0F));
-   public static final dkm sQ = a("cave_vines", dlk::new, dxu.d.a().a(eub.h).e().b().a(dlj.i_(14)).d().a(dsc.am).a(euc.b));
-   public static final dkm sR = a("cave_vines_plant", dll::new, dxu.d.a().a(eub.h).b().a(dlj.i_(14)).d().a(dsc.am).a(euc.b));
-   public static final dkm sS = a("spore_blossom", dsf::new, dxu.d.a().a(eub.h).d().b().a(dsc.an).a(euc.b));
-   public static final dkm sT = a("azalea", djo::new, dxu.d.a().a(eub.h).l().d().a(dsc.ao).c().a(euc.b));
-   public static final dkm sU = a("flowering_azalea", djo::new, dxu.d.a().a(eub.h).l().d().a(dsc.ap).c().a(euc.b));
-   public static final dkm sV = a("moss_carpet", dle::new, dxu.d.a().a(eub.B).d(0.1F).a(dsc.aq).a(euc.b));
-   public static final dkm sW = a("pink_petals", dqb::new, dxu.d.a().a(eub.h).b().a(dsc.ar).a(euc.b));
-   public static final dkm sX = a("moss_block", $$0x -> new dkq(sk.n, $$0x), dxu.d.a().a(eub.B).d(0.1F).a(dsc.as).a(euc.b));
-   public static final dkm sY = a("big_dripleaf", dkj::new, dxu.d.a().a(eub.h).l().d(0.1F).a(dsc.at).a(euc.b));
-   public static final dkm sZ = a("big_dripleaf_stem", dkk::new, dxu.d.a().a(eub.h).b().d(0.1F).a(dsc.at).a(euc.b));
-   public static final dkm ta = a("small_dripleaf", dru::new, dxu.d.a().a(eub.h).b().d().a(dsc.au).a(dxu.c.c).a(euc.b));
-   public static final dkm tb = a("hanging_roots", dof::new, dxu.d.a().a(eub.k).p().b().d().a(dsc.aw).a(dxu.c.b).i().a(euc.b));
-   public static final dkm tc = a("rooted_dirt", dqz::new, dxu.d.a().a(eub.k).d(0.5F).a(dsc.av));
-   public static final dkm td = a("mud", dpn::new, dxu.d.b(j).a(eub.T).a(dko::b).a(dko::a).c(dko::a).b(dko::a).a(dsc.aM));
-   public static final dkm te = a("deepslate", drb::new, dxu.d.a().a(eub.ah).a(dyv.b).n().a(3.0F, 6.0F).a(dsc.aE));
-   public static final dkm tf = a("cobbled_deepslate", dxu.d.b(te).a(3.5F, 6.0F));
-   public static final dkm tg = a("cobbled_deepslate_stairs", tf);
-   public static final dkm th = a("cobbled_deepslate_slab", drs::new, dxu.d.b(tf));
-   public static final dkm ti = a("cobbled_deepslate_wall", dtn::new, dxu.d.b(tf).k());
-   public static final dkm tj = a("polished_deepslate", dxu.d.b(tf).a(dsc.aH));
-   public static final dkm tk = a("polished_deepslate_stairs", tj);
-   public static final dkm tl = a("polished_deepslate_slab", drs::new, dxu.d.b(tj));
-   public static final dkm tm = a("polished_deepslate_wall", dtn::new, dxu.d.b(tj).k());
-   public static final dkm tn = a("deepslate_tiles", dxu.d.b(tf).a(dsc.aG));
-   public static final dkm to = a("deepslate_tile_stairs", tn);
-   public static final dkm tp = a("deepslate_tile_slab", drs::new, dxu.d.b(tn));
-   public static final dkm tq = a("deepslate_tile_wall", dtn::new, dxu.d.b(tn).k());
-   public static final dkm tr = a("deepslate_bricks", dxu.d.b(tf).a(dsc.aF));
-   public static final dkm ts = a("deepslate_brick_stairs", tr);
-   public static final dkm tt = a("deepslate_brick_slab", drs::new, dxu.d.b(tr));
-   public static final dkm tu = a("deepslate_brick_wall", dtn::new, dxu.d.b(tr).k());
-   public static final dkm tv = a("chiseled_deepslate", dxu.d.b(tf).a(dsc.aF));
-   public static final dkm tw = a("cracked_deepslate_bricks", dxu.d.b(tr));
-   public static final dkm tx = a("cracked_deepslate_tiles", dxu.d.b(tn));
-   public static final dkm ty = a("infested_deepslate", $$0x -> new doo(te, $$0x), dxu.d.a().a(eub.ah).a(dsc.aE));
-   public static final dkm tz = a("smooth_basalt", dxu.d.b(el));
-   public static final dkm tA = a("raw_iron_block", dxu.d.a().a(eub.ai).a(dyv.b).n().a(5.0F, 6.0F));
-   public static final dkm tB = a("raw_copper_block", dxu.d.a().a(eub.p).a(dyv.b).n().a(5.0F, 6.0F));
-   public static final dkm tC = a("raw_gold_block", dxu.d.a().a(eub.E).a(dyv.b).n().a(5.0F, 6.0F));
-   public static final dkm tD = a("potted_azalea_bush", $$0x -> new dnq(sT, $$0x), c());
-   public static final dkm tE = a("potted_flowering_azalea_bush", $$0x -> new dnq(sU, $$0x), c());
-   public static final dkm tF = a("ochre_froglight", drb::new, dxu.d.a().a(eub.c).d(0.3F).a($$0x -> 15).a(dsc.aI));
-   public static final dkm tG = a("verdant_froglight", drb::new, dxu.d.a().a(eub.aj).d(0.3F).a($$0x -> 15).a(dsc.aI));
-   public static final dkm tH = a("pearlescent_froglight", drb::new, dxu.d.a().a(eub.u).d(0.3F).a($$0x -> 15).a(dsc.aI));
-   public static final dkm tI = a("frogspawn", dnr::new, dxu.d.a().a(eub.m).d().c().b().a(dsc.aJ).a(euc.b));
-   public static final dkm tJ = a("reinforced_deepslate", dxu.d.a().a(eub.ah).a(dyv.b).a(dsc.aE).a(55.0F, 1200.0F));
-   public static final dkm tK = a("decorated_pot", dmo::new, dxu.d.a().a(eub.Y).a(0.0F, 0.0F).a(euc.b).c());
-   public static final dkm tL = a("crafter", dmg::new, dxu.d.a().a(eub.l).a(1.5F, 3.5F));
-   public static final dkm tM = a("trial_spawner", dte::new, dxu.d.a().a(eub.l).a(dyv.b).a($$0x -> $$0x.c(dte.b).a()).d(50.0F).a(dsc.bd).c(dko::b).c());
-   public static final dkm tN = a("vault", dtk::new, dxu.d.a().a(eub.l).a(dyv.b).c().a(dsc.bg).a($$0x -> $$0x.c(dtk.b).a()).d(50.0F).c(dko::b));
-   public static final dkm tO = a("heavy_core", doh::new, dxu.d.a().a(eub.g).a(dyv.c).a(dsc.bi).d(10.0F).a(euc.a).f(1200.0F));
-   public static final dkm tP = a("pale_moss_block", $$0x -> new dkq(ss.D, $$0x), dxu.d.a().a(eub.w).d(0.1F).a(dsc.as).a(euc.b).a(csv.b));
-   public static final dkm tQ = a("pale_moss_carpet", dpm::new, dxu.d.a().a(tP.w()).d(0.1F).a(dsc.aq).a(euc.b).a(csv.b));
-   public static final dkm tR = a("pale_hanging_moss", doe::new, dxu.d.a().a(tP.w()).d(0.1F).b().a(dsc.aq).a(euc.b).a(csv.b));
+   public static final dyf b = dye.B;
+   private static final int M = 1;
+   private static final int N = 2;
+   protected static final int c = 2;
+   protected static final int d = 3;
+   protected static final fcl e = dkd.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final fcl f = dkd.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final fcl g = dkd.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
+   protected static final fcl h = dkd.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
+   protected static final fcl i = dkd.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
+   protected static final fcl j = dkd.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
+   protected static final fcl k = dkd.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final fcl l = dkd.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
+   protected static final fcl m = dkd.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final fcl n = dkd.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final fcl o = dkd.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
+   protected static final fcl G = dkd.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
+   protected static final fcl H = dkd.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
+   protected static final fcl I = dkd.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
+   protected static final fcl J = dkd.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final fcl K = dkd.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+   private final dyd O;
+   private final int P;
 
-   private static ToIntFunction<dxv> a(int $$0) {
-      return $$1 -> $$1.c(dyl.r) ? $$0 : 0;
+   @Override
+   public MapCodec<dko> a() {
+      return a;
    }
 
-   private static Function<dxv, eub> a(eub $$0) {
-      return $$1 -> $$1.c(dyl.D) ? eub.m : $$0;
+   protected dko(dyd $$0, int $$1, dxn.d $$2) {
+      super($$2.a($$0.g()));
+      this.O = $$0;
+      this.l(this.F.b().b(aF, jm.c).b(b, Boolean.valueOf(false)).b(L, dxz.b));
+      this.P = $$1;
    }
 
-   private static Boolean a(dxv $$0, dgn $$1, jh $$2, bvr<?> $$3) {
-      return false;
+   @Override
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      jm $$4 = $$0.c(aF);
+      boolean $$5 = $$0.c(b);
+      switch ((dxz)$$0.c(L)) {
+         case a:
+            if ($$4.o() == jm.a.a) {
+               return $$5 ? o : g;
+            }
+
+            return $$5 ? G : h;
+         case b:
+            return switch ($$4) {
+               case f -> $$5 ? K : l;
+               case e -> $$5 ? J : k;
+               case d -> $$5 ? I : j;
+               case c, b, a -> $$5 ? H : i;
+            };
+         case c:
+         default:
+            if ($$4.o() == jm.a.a) {
+               return $$5 ? m : e;
+            } else {
+               return $$5 ? n : f;
+            }
+      }
    }
 
-   private static Boolean b(dxv $$0, dgn $$1, jh $$2, bvr<?> $$3) {
-      return true;
+   @Override
+   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
+      if ($$0.c(b)) {
+         return bta.c;
+      } else {
+         this.a($$0, $$1, $$2, $$3);
+         return bta.a;
+      }
    }
 
-   private static Boolean c(dxv $$0, dgn $$1, jh $$2, bvr<?> $$3) {
-      return $$3 == bvr.aJ || $$3 == bvr.aP;
-   }
-
-   private static dkm a(String $$0, cwm $$1) {
-      return a($$0, $$1x -> new dkf($$1, $$1x), dxu.d.a().a($$1x -> $$1x.c(dkf.b) == dyi.b ? $$1.e() : eub.d).a(dsc.b).d(0.2F).c().i().a(euc.b));
-   }
-
-   private static dxu.d a(eub $$0, eub $$1, dsc $$2) {
-      return dxu.d.a().a($$2x -> $$2x.c(drb.i) == jm.a.b ? $$0 : $$1).a(dyv.e).d(2.0F).a($$2).i();
-   }
-
-   private static dxu.d b(eub $$0) {
-      return dxu.d.a().a($$1 -> $$0).a(dyv.e).d(2.0F).a(dsc.B);
-   }
-
-   private static boolean a(dxv $$0, dgn $$1, jh $$2) {
-      return true;
-   }
-
-   private static boolean b(dxv $$0, dgn $$1, jh $$2) {
-      return false;
-   }
-
-   private static dkm b(String $$0, cwm $$1) {
-      return a($$0, $$1x -> new dsh($$1, $$1x), dxu.d.a().a($$1).a(dyv.d).d(0.3F).a(dsc.h).c().a(dko::a).a(dko::b).b(dko::b).c(dko::b));
-   }
-
-   private static dxu.d a(dsc $$0) {
-      return dxu.d.a().a(eub.h).d(0.2F).e().a($$0).c().a(dko::c).b(dko::b).c(dko::b).i().a(euc.b).a(dko::b);
-   }
-
-   private static dxu.d c(eub $$0) {
-      return dxu.d.a().a($$0).k().d(2.0F).f().c().b(tS).c(tS).a(euc.b);
-   }
-
-   private static dxu.d a() {
-      return dxu.d.a().a(eub.l).d(1.5F).a(dko::b).b(tT).c(tT).a(euc.c);
-   }
-
-   private static dxu.d b() {
-      return dxu.d.a().b().d(0.5F).a(euc.b);
-   }
-
-   private static dxu.d c() {
-      return dxu.d.a().d().c().a(euc.b);
-   }
-
-   private static dxu.d d(eub $$0) {
-      return dxu.d.a().a($$0).c().d(0.1F).a(dsc.X).a(dlc.i).a(euc.b);
-   }
-
-   @Deprecated
-   private static dkm a(String $$0, dkm $$1) {
-      return a($$0, $$1x -> new dsj($$1.m(), $$1x), dxu.d.b($$1));
-   }
-
-   private static dkm b(String $$0, dkm $$1) {
-      return a($$0, $$1x -> new dsj($$1.m(), $$1x), dxu.d.a($$1));
-   }
-
-   private static dxu.d a(dkm $$0, boolean $$1) {
-      dxu.d $$2 = $$0.s();
-      dxu.d $$3 = dxu.d.a().a($$0.u());
-      if ($$1) {
-         $$3 = $$3.a($$0.v());
+   @Override
+   protected void a(dxo $$0, arx $$1, jh $$2, dgr $$3, BiConsumer<cxg, jh> $$4) {
+      if ($$3.g() && !$$0.c(b)) {
+         this.a($$0, $$1, $$2, null);
       }
 
-      return $$3;
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   private static dkm a(aly<dkm> $$0, Function<dxu.d, dkm> $$1, dxu.d $$2) {
-      dkm $$3 = $$1.apply($$2.a($$0));
-      return kd.a(ma.e, $$0, $$3);
+   public void a(dxo $$0, dgz $$1, jh $$2, @Nullable cpo $$3) {
+      $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
+      this.e($$0, $$1, $$2);
+      $$1.a($$2, this, this.P);
+      this.a($$3, $$1, $$2, true);
+      $$1.a($$3, eck.a, $$2);
    }
 
-   private static dkm a(aly<dkm> $$0, dxu.d $$1) {
-      return a($$0, dkm::new, $$1);
+   protected void a(@Nullable cpo $$0, dha $$1, jh $$2, boolean $$3) {
+      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), aww.e);
    }
 
-   private static aly<dkm> a(String $$0) {
-      return aly.a(mb.f, alz.b($$0));
+   protected awu a(boolean $$0) {
+      return $$0 ? this.O.o() : this.O.n();
    }
 
-   private static dkm a(String $$0, Function<dxu.d, dkm> $$1, dxu.d $$2) {
-      return a(a($$0), $$1, $$2);
-   }
-
-   private static dkm a(String $$0, dxu.d $$1) {
-      return a($$0, dkm::new, $$1);
-   }
-
-   static {
-      for (dkm $$0 : ma.e) {
-         UnmodifiableIterator var2 = $$0.l().a().iterator();
-
-         while (var2.hasNext()) {
-            dxv $$1 = (dxv)var2.next();
-            dkm.q.b($$1);
-            $$1.a();
+   @Override
+   protected void a(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(b)) {
+            this.e($$0, $$1, $$2);
          }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
+   }
+
+   @Override
+   protected int a(dxo $$0, dge $$1, jh $$2, jm $$3) {
+      return $$0.c(b) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(dxo $$0, dge $$1, jh $$2, jm $$3) {
+      return $$0.c(b) && n($$0) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected boolean f_(dxo $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      if ($$0.c(b)) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(dxo $$0, dgz $$1, jh $$2, bvb $$3) {
+      if (!$$1.C && this.O.e() && !$$0.c(b)) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void d(dxo $$0, dgz $$1, jh $$2) {
+      cpv $$3 = this.O.e() ? $$1.a(cpv.class, $$0.f($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
+      boolean $$4 = $$3 != null;
+      boolean $$5 = $$0.c(b);
+      if ($$4 != $$5) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf($$4)), 3);
+         this.e($$0, $$1, $$2);
+         this.a(null, $$1, $$2, $$4);
+         $$1.a($$3, $$4 ? eck.a : eck.e, $$2);
+      }
+
+      if ($$4) {
+         $$1.a(new jh($$2), this, this.P);
+      }
+   }
+
+   private void e(dxo $$0, dgz $$1, jh $$2) {
+      jm $$3 = n($$0).g();
+      euy $$4 = euu.a($$1, $$3, $$3.o().d() ? jm.b : $$0.c(aF));
+      $$1.a($$2, this, $$4);
+      $$1.a($$2.a($$3), this, $$4);
+   }
+
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(aF, b, L);
    }
 }

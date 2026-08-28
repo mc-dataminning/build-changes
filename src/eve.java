@@ -1,46 +1,42 @@
-import java.util.Locale;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface eve {
-   jm[] a = new jm[]{jm.e, jm.f, jm.a, jm.b, jm.c, jm.d};
+public record eve(jq<evf> b, byte c, byte d, byte e, Optional<xk> f) {
+   public static final zi<wv, eve> a = zi.a(evf.c, eve::c, zg.c, eve::d, zg.c, eve::e, zg.c, eve::f, xm.c, eve::g, eve::new);
 
-   void a(jm var1, dxv var2, jh var3, jh var4, int var5, int var6);
-
-   void a(jh var1, dkm var2, @Nullable evf var3);
-
-   void a(dxv var1, jh var2, dkm var3, @Nullable evf var4, boolean var5);
-
-   default void a(jh $$0, dkm $$1, @Nullable jm $$2, @Nullable evf $$3) {
-      for (jm $$4 : a) {
-         if ($$4 != $$2) {
-            this.a($$0.a($$4), $$1, null);
-         }
-      }
+   public eve(jq<evf> b, byte c, byte d, byte e, Optional<xk> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   static void a(dhj $$0, jm $$1, jh $$2, jh $$3, dxv $$4, int $$5, int $$6) {
-      dxv $$7 = $$0.a_($$2);
-      if (($$5 & 128) == 0 || !$$7.a(dko.cE)) {
-         dxv $$8 = $$7.a($$0, $$0, $$2, $$1, $$3, $$4, $$0.H_());
-         dkm.a($$7, $$8, $$0, $$2, $$5, $$6);
-      }
+   public alp a() {
+      return this.b.a().b();
    }
 
-   static void a(dhi $$0, dxv $$1, jh $$2, dkm $$3, @Nullable evf $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", ma.e.b($$3), $$3.v(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + ma.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new z($$7);
-      }
+   public boolean b() {
+      return this.b.a().c();
+   }
+
+   public jq<evf> c() {
+      return this.b;
+   }
+
+   public byte d() {
+      return this.c;
+   }
+
+   public byte e() {
+      return this.d;
+   }
+
+   public byte f() {
+      return this.e;
+   }
+
+   public Optional<xk> g() {
+      return this.f;
    }
 }

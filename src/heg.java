@@ -1,11 +1,7 @@
-import java.util.function.Function;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 
 public interface heg {
-   void a(heg.a var1);
-
-   hdn a(hdw var1, Function<hdu, hbl> var2, hec var3);
-
-   public interface a {
-      heg a(alz var1);
-   }
+   void a(Map<UUID, atr.c> var1, Consumer<atr.b> var2);
 }

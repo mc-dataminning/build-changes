@@ -1,33 +1,37 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class byz {
-   public static bzk<bwg> a(int $$0, float $$1, int $$2) {
-      return cbm.a(
-         (Function<cbm.b<bwg>, ? extends App<cbm.c<bwg>, cbp<bwg>>>)($$3 -> $$3.group(
-                  $$3.c(cfk.m), $$3.a(cfk.b), $$3.a(cfk.C), $$3.a(cfk.t), $$3.a(cfk.n), $$3.a(cfk.r), $$3.a(cfk.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.z()
-                           .d($$0xxxx -> $$0xxxx.a(cho.n), $$0xxxx -> true, $$12.dw(), $$2 + 1, chk.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.du(), (double)$$2))
-                           .or(() -> $$11.z().a($$0xxxxx -> $$0xxxxx.a(cho.n), $$0xxxxx -> true, chk.b.c, $$12.dw(), $$0, $$12.dZ()))
-                           .or(() -> $$3.<jp>a($$5).map(jp::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(jp.a($$11.ah(), $$10xx));
-                              if (!$$10xx.a($$12.du(), (double)$$2)) {
-                                 $$4.a(new cfn($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+   public static bzb<bvx> a(float $$0) {
+      return cbd.a((Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$1 -> $$1.group($$1.c(cfb.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
+               if ($$2.h($$3.dw())) {
+                  return false;
+               } else {
+                  Optional<fbr> $$5 = Optional.ofNullable(a($$2, $$3));
+                  $$5.ifPresent($$2x -> $$1x.a(new cfe($$2x, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
+
+   @Nullable
+   private static fbr a(arx $$0, bvx $$1) {
+      bac $$2 = $$1.dZ();
+      jh $$3 = $$1.dw();
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         jh $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
+         if (a($$0, $$1, $$5)) {
+            return fbr.c($$5);
+         }
+      }
+
+      return null;
+   }
+
+   public static boolean a(arx $$0, bvx $$1, jh $$2) {
+      return $$0.h($$2) && (double)$$0.a(edj.a.e, $$2).v() <= $$1.dD();
    }
 }

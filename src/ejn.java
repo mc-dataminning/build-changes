@@ -1,30 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record ejn(int b, int c, int d, jq<eno> e) implements eja {
+public class ejn implements eit {
    public static final Codec<ejn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               azn.m.fieldOf("tries").orElse(128).forGetter(ejn::a),
-               azn.l.fieldOf("xz_spread").orElse(7).forGetter(ejn::b),
-               azn.l.fieldOf("y_spread").orElse(3).forGetter(ejn::c),
-               eno.b.fieldOf("feature").forGetter(ejn::d)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               ehz.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               jh.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, ejn::new)
    );
+   private final boolean b;
+   private final List<ehz.a> c;
+   @Nullable
+   private final jh d;
 
-   public int a() {
+   public ejn(boolean $$0, List<ehz.a> $$1, @Nullable jh $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
+   }
+
+   private ejn(boolean $$0, List<ehz.a> $$1, Optional<jh> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
+   }
+
+   public boolean a() {
       return this.b;
    }
 
-   public int b() {
+   public List<ehz.a> b() {
       return this.c;
    }
 
-   public int c() {
+   @Nullable
+   public jh c() {
       return this.d;
-   }
-
-   public jq<eno> d() {
-      return this.e;
    }
 }

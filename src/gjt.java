@@ -1,28 +1,54 @@
-public class gjt extends gje {
-   gjt(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjn $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
+public class gjt extends gjn {
+   private final gji a;
+
+   gjt(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gji $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
       this.j = $$4;
       this.k = $$5;
       this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+   }
+
+   @Override
+   public gir b() {
+      return gir.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      int $$0 = 60 - this.t;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
       }
    }
 
-   public static class a implements giv<lw> {
-      private final gjn a;
+   public static class a implements giq<lw> {
+      private final gji a;
 
-      public a(gjn $$0) {
+      public a(gji $$0) {
          this.a = $$0;
       }
 
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new gjt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }

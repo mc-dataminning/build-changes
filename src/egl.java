@@ -1,31 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class egl extends egk {
-   public egl(Codec<ejh> $$0) {
+public class egl extends egp<eis> {
+   public egl(Codec<eis> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dhj $$0, bam $$1, jh $$2, dxv $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      jh.a $$8 = $$2.k();
+   public boolean a(egr<eis> $$0) {
+      jh $$1 = $$0.e();
+      dhx $$2 = $$0.b();
+      eis $$3 = $$0.f();
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(jm.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
+      for (jh $$4 : jh.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            jh $$9 = $$4.j();
+            this.a($$2, $$9, dkf.lh.m());
+            $$3.b().ifPresent($$3x -> {
+               if ($$2.c_($$9) instanceof dwj $$5x) {
+                  $$5x.a($$3x, $$3.c());
                }
-            }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dkf.a.m());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dkf.I.m());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dkf.I.m());
+         } else {
+            this.a($$2, $$4, dkf.a.m());
          }
       }
 

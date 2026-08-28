@@ -1,213 +1,84 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bxk {
-   private static final String b = "base";
-   private static final String c = "modifiers";
-   public static final String a = "id";
-   private final jq<bxj> d;
-   private final Map<bxm.a, Map<alz, bxm>> e = Maps.newEnumMap(bxm.a.class);
-   private final Map<alz, bxm> f = new Object2ObjectArrayMap();
-   private final Map<alz, bxm> g = new Object2ObjectArrayMap();
-   private double h;
-   private boolean i = true;
-   private double j;
-   private final Consumer<bxk> k;
+public class bxk extends bxq<cho> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final bvi<? extends cho> f;
+   private final float g;
+   private final int h;
+   private static final int i = 2;
+   private long j;
 
-   public bxk(jq<bxj> $$0, Consumer<bxk> $$1) {
-      this.d = $$0;
-      this.k = $$1;
-      this.h = $$0.a().a();
+   public bxk(bvi<? extends cho> $$0) {
+      this($$0, 1.0F, 2);
    }
 
-   public jq<bxj> a() {
-      return this.d;
+   public bxk(bvi<? extends cho> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(cfb.h, cfc.a, cfb.r, cfc.b, cfb.m, cfc.c, cfb.n, cfc.c, cfb.Z, cfc.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public double b() {
-      return this.h;
+   protected boolean a(arx $$0, cho $$1) {
+      return $$1.gy() && this.c($$1).isPresent();
    }
 
-   public void a(double $$0) {
-      if ($$0 != this.h) {
-         this.h = $$0;
-         this.e();
-      }
+   protected void a(arx $$0, cho $$1, long $$2) {
+      cho $$3 = this.c($$1).get();
+      $$1.ec().a(cfb.r, $$3);
+      $$3.ec().a(cfb.r, $$1);
+      bxs.a($$1, (bvx)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.dZ().a(50);
+      this.j = $$2 + (long)$$4;
    }
 
-   @VisibleForTesting
-   Map<alz, bxm> a(bxm.a $$0) {
-      return this.e.computeIfAbsent($$0, $$0x -> new Object2ObjectOpenHashMap());
-   }
-
-   public Set<bxm> c() {
-      return ImmutableSet.copyOf(this.f.values());
-   }
-
-   public Set<bxm> d() {
-      return ImmutableSet.copyOf(this.g.values());
-   }
-
-   @Nullable
-   public bxm a(alz $$0) {
-      return this.f.get($$0);
-   }
-
-   public boolean b(alz $$0) {
-      return this.f.get($$0) != null;
-   }
-
-   private void f(bxm $$0) {
-      bxm $$1 = this.f.putIfAbsent($$0.b(), $$0);
-      if ($$1 != null) {
-         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
-      } else {
-         this.a($$0.d()).put($$0.b(), $$0);
-         this.e();
-      }
-   }
-
-   public void a(bxm $$0) {
-      bxm $$1 = this.f.put($$0.b(), $$0);
-      if ($$0 != $$1) {
-         this.a($$0.d()).put($$0.b(), $$0);
-         this.e();
-      }
-   }
-
-   public void b(bxm $$0) {
-      this.f($$0);
-   }
-
-   public void c(bxm $$0) {
-      this.c($$0.b());
-      this.f($$0);
-      this.g.put($$0.b(), $$0);
-   }
-
-   public void d(bxm $$0) {
-      this.f($$0);
-      this.g.put($$0.b(), $$0);
-   }
-
-   public void a(Collection<bxm> $$0) {
-      for (bxm $$1 : $$0) {
-         this.d($$1);
-      }
-   }
-
-   protected void e() {
-      this.i = true;
-      this.k.accept(this);
-   }
-
-   public void e(bxm $$0) {
-      this.c($$0.b());
-   }
-
-   public boolean c(alz $$0) {
-      bxm $$1 = this.f.remove($$0);
-      if ($$1 == null) {
+   protected boolean b(arx $$0, cho $$1, long $$2) {
+      if (!this.b($$1)) {
          return false;
       } else {
-         this.a($$1.d()).remove($$0);
-         this.g.remove($$0);
-         this.e();
-         return true;
+         cho $$3 = this.a($$1);
+         return $$3.bL() && $$1.a($$3) && bxs.a($$1.ec(), $$3) && $$2 <= this.j && !$$1.gl() && !$$3.gl();
       }
    }
 
-   public void f() {
-      for (bxm $$0 : this.c()) {
-         this.e($$0);
-      }
-   }
-
-   public double g() {
-      if (this.i) {
-         this.j = this.i();
-         this.i = false;
-      }
-
-      return this.j;
-   }
-
-   private double i() {
-      double $$0 = this.b();
-
-      for (bxm $$1 : this.b(bxm.a.a)) {
-         $$0 += $$1.c();
-      }
-
-      double $$2 = $$0;
-
-      for (bxm $$3 : this.b(bxm.a.b)) {
-         $$2 += $$0 * $$3.c();
-      }
-
-      for (bxm $$4 : this.b(bxm.a.c)) {
-         $$2 *= 1.0 + $$4.c();
-      }
-
-      return this.d.a().a($$2);
-   }
-
-   private Collection<bxm> b(bxm.a $$0) {
-      return this.e.getOrDefault($$0, Map.of()).values();
-   }
-
-   public void a(bxk $$0) {
-      this.h = $$0.h;
-      this.f.clear();
-      this.f.putAll($$0.f);
-      this.g.clear();
-      this.g.putAll($$0.g);
-      this.e.clear();
-      $$0.e.forEach(($$0x, $$1) -> this.a($$0x).putAll((Map<? extends alz, ? extends bxm>)$$1));
-      this.e();
-   }
-
-   public ux h() {
-      ux $$0 = new ux();
-      aly<bxj> $$1 = this.d.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
-      $$0.a("id", $$1.a().toString());
-      $$0.a("base", this.h);
-      if (!this.g.isEmpty()) {
-         vd $$2 = new vd();
-
-         for (bxm $$3 : this.g.values()) {
-            $$2.add($$3.a());
-         }
-
-         $$0.a("modifiers", $$2);
-      }
-
-      return $$0;
-   }
-
-   public void a(ux $$0) {
-      this.h = $$0.k("base");
-      if ($$0.b("modifiers", 9)) {
-         vd $$1 = $$0.c("modifiers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            bxm $$3 = bxm.a($$1.a($$2));
-            if ($$3 != null) {
-               this.f.put($$3.b(), $$3);
-               this.a($$3.d()).put($$3.b(), $$3);
-               this.g.put($$3.b(), $$3);
-            }
+   protected void c(arx $$0, cho $$1, long $$2) {
+      cho $$3 = this.a($$1);
+      bxs.a($$1, (bvx)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.ec().b(cfb.r);
+            $$3.ec().b(cfb.r);
          }
       }
+   }
 
-      this.e();
+   protected void d(arx $$0, cho $$1, long $$2) {
+      $$1.ec().b(cfb.r);
+      $$1.ec().b(cfb.m);
+      $$1.ec().b(cfb.n);
+      this.j = 0L;
+   }
+
+   private cho a(cho $$0) {
+      return (cho)$$0.ec().c(cfb.r).get();
+   }
+
+   private boolean b(cho $$0) {
+      bwz<?> $$1 = $$0.ec();
+      return $$1.a(cfb.r) && $$1.c(cfb.r).get().aq() == this.f;
+   }
+
+   private Optional<? extends cho> c(cho $$0) {
+      return $$0.ec().c(cfb.h).get().a($$1 -> {
+         if ($$1.aq() == this.f && $$1 instanceof cho $$2 && $$0.a($$2) && !$$2.gl()) {
+            return true;
+         }
+
+         return false;
+      }).map(cho.class::cast);
    }
 }

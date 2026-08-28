@@ -1,20 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cfa<T extends bwg> extends cex<T> {
-   private final bxd i;
+public class cfa<T> {
+   private final T a;
+   private long b;
 
-   public cfa(bxd $$0, Class<T> $$1, boolean $$2, @Nullable cgx.a $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public cfa(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> cfa<T> a(T $$0) {
+      return new cfa<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> cfa<T> a(T $$0, long $$1) {
+      return new cfa<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
    }
 
    @Override
-   public boolean b() {
-      return !this.i.p() && super.b();
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
    }
 
-   @Override
-   public boolean c() {
-      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
+   @bbb
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<cfa<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new cfa<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

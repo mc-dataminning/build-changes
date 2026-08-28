@@ -1,75 +1,61 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class cpf implements dgu {
-   private static final int a = 1200;
-   private int b;
+public final class cpf {
+   public static final cpf a = a("desert");
+   public static final cpf b = a("jungle");
+   public static final cpf c = a("plains");
+   public static final cpf d = a("savanna");
+   public static final cpf e = a("snow");
+   public static final cpf f = a("swamp");
+   public static final cpf g = a("taiga");
+   private final String h;
+   private static final Map<alo<dib>, cpf> i = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dii.B, a);
+      $$0.put(dii.f, a);
+      $$0.put(dii.C, a);
+      $$0.put(dii.D, a);
+      $$0.put(dii.A, b);
+      $$0.put(dii.y, b);
+      $$0.put(dii.z, b);
+      $$0.put(dii.t, d);
+      $$0.put(dii.s, d);
+      $$0.put(dii.x, d);
+      $$0.put(dii.Y, e);
+      $$0.put(dii.X, e);
+      $$0.put(dii.M, e);
+      $$0.put(dii.e, e);
+      $$0.put(dii.O, e);
+      $$0.put(dii.r, e);
+      $$0.put(dii.d, e);
+      $$0.put(dii.G, e);
+      $$0.put(dii.H, e);
+      $$0.put(dii.I, e);
+      $$0.put(dii.J, e);
+      $$0.put(dii.g, f);
+      $$0.put(dii.h, f);
+      $$0.put(dii.p, g);
+      $$0.put(dii.o, g);
+      $$0.put(dii.v, g);
+      $$0.put(dii.u, g);
+      $$0.put(dii.q, g);
+      $$0.put(dii.w, g);
+   });
+
+   private cpf(String $$0) {
+      this.h = $$0;
+   }
 
    @Override
-   public int a(ash $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.N().b(dhe.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
-         } else {
-            this.b = 1200;
-            cpx $$3 = $$0.k();
-            if ($$3 == null) {
-               return 0;
-            } else {
-               bam $$4 = $$0.A;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               jh $$7 = $$3.dw().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (bxc.a(bvr.u, $$0, $$7)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
-                     }
-
-                     if ($$0.b().a($$7, ayg.n).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
-
-                  return 0;
-               }
-            }
-         }
-      } else {
-         return 0;
-      }
+   public String toString() {
+      return this.h;
    }
 
-   private int a(ash $$0, jh $$1) {
-      int $$2 = 48;
-      if ($$0.z().a($$0x -> $$0x.a(cho.n), $$1, 48, chk.b.b) > 4L) {
-         List<cia> $$3 = $$0.a(cia.class, new fbt($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
-         }
-      }
-
-      return 0;
+   private static cpf a(String $$0) {
+      return kd.a(ma.w, alp.b($$0), new cpf($$0));
    }
 
-   private int b(ash $$0, jh $$1) {
-      int $$2 = 16;
-      List<cia> $$3 = $$0.a(cia.class, new fbt($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
-   }
-
-   private int a(jh $$0, ash $$1) {
-      cia $$2 = bvr.u.a($$1, bvq.a);
-      if ($$2 == null) {
-         return 0;
-      } else {
-         $$2.a($$1, $$1.d_($$0), bvq.a, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
-      }
+   public static cpf a(jq<dib> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

@@ -1,60 +1,97 @@
-import java.util.ArrayList;
-import java.util.Collection;
+import com.google.common.collect.ImmutableList;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class uh implements tv.c {
-   private static final int c = 5;
-   private static final int d = 6;
-   private final int e;
-   private int f;
-   private fbt g;
-   private final jh.a h;
-   private final jh i;
-   private final boolean j;
-   private float k = -1.0F;
-   private final Collection<ts> l = new ArrayList<>();
+public abstract class uh {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new Gson();
+   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
+   public static final String a = "en_us";
+   private static volatile uh e = c();
 
-   public uh(jh $$0, int $$1, boolean $$2) {
-      this.e = $$1;
-      this.h = $$0.k();
-      this.g = new fbt(this.h);
-      this.i = $$0;
-      this.j = $$2;
+   private static uh c() {
+      ug $$0 = ug.a();
+      Map<String, String> $$1 = new HashMap<>();
+      BiConsumer<String, String> $$2 = $$1::put;
+      a($$2, "/assets/minecraft/lang/en_us.json");
+      $$0.a($$1);
+      final Map<String, String> $$3 = Map.copyOf($$1);
+      return new uh() {
+         @Override
+         public String a(String $$0, String $$1) {
+            return $$3.getOrDefault($$0, $$1);
+         }
+
+         @Override
+         public boolean b(String $$0) {
+            return $$3.containsKey($$0);
+         }
+
+         @Override
+         public boolean b() {
+            return false;
+         }
+
+         @Override
+         public azg a(xp $$0) {
+            return $$1 -> $$0.a(($$1x, $$2) -> bap.c($$2, $$1x, $$1) ? Optional.empty() : xp.a, yh.a).isPresent();
+         }
+      };
    }
 
-   @Override
-   public void a(ash $$0) {
-      if (this.j) {
-         this.l.forEach($$1 -> {
-            eoc $$2 = ui.b($$1.f());
-            ui.a($$2, $$0);
-         });
-         this.l.clear();
-         this.g = new fbt(this.i);
-         this.h.g(this.i);
+   private static void a(BiConsumer<String, String> $$0, String $$1) {
+      try (InputStream $$2 = uh.class.getResourceAsStream($$1)) {
+         a($$2, $$0);
+      } catch (JsonParseException | IOException var7) {
+         b.error("Couldn't read strings from {}", $$1, var7);
       }
    }
 
-   @Override
-   public Optional<ts> spawnStructure(ts $$0) {
-      jh $$1 = new jh(this.h);
-      $$0.b($$1);
-      $$0.o();
-      fbt $$2 = ui.a($$0.f());
-      this.g = this.g.b($$2);
-      this.h.e((int)$$2.b() + 5, 0, 0);
-      if ((float)this.h.u() > this.k) {
-         this.k = (float)this.h.u();
-      }
+   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
+      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
-      if (++this.f >= this.e) {
-         this.f = 0;
-         this.h.e(0, 0, (int)this.g.d() + 6);
-         this.h.p(this.i.u());
-         this.g = new fbt(this.h);
+      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+         String $$4 = d.matcher(azk.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         $$1.accept($$3.getKey(), $$4);
       }
+   }
 
-      this.l.add($$0);
-      return Optional.of($$0);
+   public static uh a() {
+      return e;
+   }
+
+   public static void a(uh $$0) {
+      e = $$0;
+   }
+
+   public String a(String $$0) {
+      return this.a($$0, $$0);
+   }
+
+   public abstract String a(String var1, String var2);
+
+   public abstract boolean b(String var1);
+
+   public abstract boolean b();
+
+   public abstract azg a(xp var1);
+
+   public List<azg> a(List<xp> $$0) {
+      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

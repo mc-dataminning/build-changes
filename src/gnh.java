@@ -1,51 +1,16 @@
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
+import com.google.common.collect.Streams;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class gnh {
-   private static final Splitter a = Splitter.on(',');
-   private static final Splitter b = Splitter.on('=').limit(2);
+public class gnh implements gne {
+   public static final String a = "OR";
+   private final Iterable<? extends gne> d;
 
-   public static <O, S extends dxx<O, S>> Predicate<dxx<O, S>> a(dxw<O, S> $$0, String $$1) {
-      Map<dyx<?>, Comparable<?>> $$2 = new HashMap<>();
-
-      for (String $$3 : a.split($$1)) {
-         Iterator<String> $$4 = b.split($$3).iterator();
-         if ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            dyx<?> $$6 = $$0.a($$5);
-            if ($$6 != null && $$4.hasNext()) {
-               String $$7 = $$4.next();
-               Comparable<?> $$8 = a((dyx<Comparable<?>>)$$6, $$7);
-               if ($$8 == null) {
-                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
-               }
-
-               $$2.put($$6, $$8);
-            } else if (!$$5.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
-            }
-         }
-      }
-
-      return $$1x -> {
-         for (Entry<dyx<?>, Comparable<?>> $$2x : $$2.entrySet()) {
-            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+   public gnh(Iterable<? extends gne> $$0) {
+      this.d = $$0;
    }
 
-   @Nullable
-   private static <T extends Comparable<T>> T a(dyx<T> $$0, String $$1) {
-      return $$0.b($$1).orElse(null);
+   @Override
+   public Predicate<dxo> getPredicate(dxp<dkd, dxo> $$0) {
+      return ae.b(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
    }
 }

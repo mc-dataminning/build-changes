@@ -1,50 +1,54 @@
-public class gij extends gjs {
-   gij(gfk $$0, double $$1, double $$2, double $$3) {
+public class gij extends gjn {
+   gij(gff $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public giw b() {
-      return giw.b;
+   public gir b() {
+      return gir.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * bae.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
    }
 
-   public static class a implements giv<lw> {
-      private final gjn a;
-
-      public a(gjn $$0) {
-         this.a = $$0;
-      }
-
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gij $$8 = new gij($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(ls.ag, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
       }
    }
 
-   public static class b implements giv<lw> {
-      private final gjn a;
+   public static class a implements giq<lw> {
+      private final gji a;
 
-      public b(gjn $$0) {
+      public a(gji $$0) {
          this.a = $$0;
       }
 
-      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gij $$8 = new gij($$1, $$2, $$3, $$4);
          $$8.a(this.a);
          return $$8;

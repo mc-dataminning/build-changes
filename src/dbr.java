@@ -1,30 +1,95 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public enum dbr implements bba {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+public final class dbr implements Predicate<cxg> {
+   public static final zi<wv, dbr> a = zg.c(mb.K).a(dbr::new, $$0 -> $$0.e);
+   public static final zi<wv, Optional<dbr>> b = zg.c(mb.K)
+      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dbr((ju<cxc>)$$0)), $$0 -> $$0.<ju.a<cxc>>map($$0x -> $$0x.e).orElse(ju.a()));
+   public static final Codec<ju<cxc>> c = alj.a(mb.K, cxc.e, false);
+   public static final Codec<dbr> d = azd.b(c).xmap(dbr::new, $$0 -> $$0.e);
+   private final ju<cxc> e;
+   @Nullable
+   private List<jq<cxc>> f;
 
-   public static final Codec<dbr> e = bba.a(dbr::values);
-   public static final IntFunction<dbr> f = ayv.a(dbr::a, values(), ayv.a.a);
-   public static final zt<ByteBuf, dbr> g = zr.a(f, dbr::a);
-   private final String h;
-   private final int i;
+   private dbr(ju<cxc> $$0) {
+      $$0.d().ifRight($$0x -> {
+         if ($$0x.isEmpty()) {
+            throw new UnsupportedOperationException("Ingredients can't be empty");
+         } else if ($$0x.contains(cxk.a.f())) {
+            throw new UnsupportedOperationException("Ingredient can't contain air");
+         }
+      });
+      this.e = $$0;
+   }
 
-   private dbr(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public static boolean a(Optional<dbr> $$0, cxg $$1) {
+      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
+   }
+
+   public List<jq<cxc>> a() {
+      if (this.f == null) {
+         this.f = ImmutableList.copyOf(this.e);
+      }
+
+      return this.f;
+   }
+
+   public boolean a(cxg $$0) {
+      List<jq<cxc>> $$1 = this.a();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         if ($$0.a($$1.get($$2))) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public boolean equals(Object $$0) {
+      return $$0 instanceof dbr $$1 ? Objects.equals(this.e, $$1.e) : false;
    }
 
-   private int a() {
-      return this.i;
+   public static dbr a(dgy $$0) {
+      return new dbr(ju.a($$0.j().f()));
+   }
+
+   public static dbr a(dgy... $$0) {
+      return a(Arrays.stream($$0));
+   }
+
+   public static dbr a(Stream<? extends dgy> $$0) {
+      return new dbr(ju.a($$0.map($$0x -> $$0x.j().f()).toList()));
+   }
+
+   public static dbr a(ju<cxc> $$0) {
+      return new dbr($$0);
+   }
+
+   public ddg b() {
+      return (ddg)this.e.d().map(ddg.h::new, $$0 -> new ddg.b($$0.stream().map(dbr::a).toList()));
+   }
+
+   public static ddg a(Optional<dbr> $$0) {
+      return $$0.<ddg>map(dbr::b).orElse(ddg.c.c);
+   }
+
+   private static ddg a(jq<cxc> $$0) {
+      ddg $$1 = new ddg.d($$0);
+      cxg $$2 = $$0.a().k();
+      if (!$$2.f()) {
+         ddg $$3 = new ddg.f($$2);
+         return new ddg.j($$1, $$3);
+      } else {
+         return $$1;
+      }
    }
 }

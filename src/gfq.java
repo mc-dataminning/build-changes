@@ -1,28 +1,17 @@
-import java.util.EnumMap;
-
 public class gfq {
-   public static final int a = 5000;
-   private final gfl b;
-   private final fon c;
-   private final EnumMap<boe, Long> d;
+   private final gfg a;
+   private final bnt b;
 
-   public gfq(gfl $$0, fon $$1) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = new EnumMap<>(boe.class);
+   public gfq(gfg $$0, bnt $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    public void a() {
-      if (this.c.g()) {
-         this.a(boe.a);
-      }
+      this.a.b(new aki(ae.c()));
    }
 
-   private void a(boe $$0) {
-      long $$1 = ae.c();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new aif($$0));
-         this.d.put($$0, $$1);
-      }
+   public void a(akf $$0) {
+      this.b.a(ae.c() - $$0.b());
    }
 }

@@ -1,37 +1,23 @@
-public class ahp implements aac<ahm> {
-   public static final zt<ws, ahp> a = aac.a(ahp::a, ahp::new);
-   private final int b;
-   private final jh c;
+import io.netty.buffer.ByteBuf;
 
-   public ahp(int $$0, jh $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class ahp implements zr<ahb> {
+   public static final ahp a = new ahp();
+   public static final zi<ByteBuf, ahp> b = zi.a(a);
 
-   private ahp(ws $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
-   }
-
-   private void a(ws $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private ahp() {
    }
 
    @Override
-   public aae<ahp> a() {
-      return ahk.bl;
+   public zt<ahp> a() {
+      return agz.bx;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public jh e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

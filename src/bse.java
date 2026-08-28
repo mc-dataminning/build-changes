@@ -1,45 +1,14 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import com.mojang.serialization.MapCodec;
 
-public interface bse<R extends Runnable> extends AutoCloseable {
-   String A_();
+public interface bse<P extends bsd> {
+   bse<bsb> a = a("constant", bsb.b);
+   bse<bsk> b = a("uniform", bsk.a);
+   bse<brz> c = a("clamped_normal", brz.a);
+   bse<bsj> d = a("trapezoid", bsj.a);
 
-   void a_(R var1);
+   MapCodec<P> codec();
 
-   @Override
-   default void close() {
-   }
-
-   R f(Runnable var1);
-
-   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      this.a_(this.f(() -> $$0.accept($$1)));
-      return $$1;
-   }
-
-   static bse<Runnable> a(final String $$0, final Executor $$1) {
-      return new bse<Runnable>() {
-         @Override
-         public String A_() {
-            return $$0;
-         }
-
-         @Override
-         public void a_(Runnable $$0x) {
-            $$1.execute($$0);
-         }
-
-         @Override
-         public Runnable f(Runnable $$0x) {
-            return $$0;
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   static <P extends bsd> bse<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.J, $$0, () -> $$1);
    }
 }

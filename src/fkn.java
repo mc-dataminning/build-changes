@@ -1,40 +1,22 @@
-import javax.annotation.Nullable;
+public enum fkn {
+   a(0, ent.a),
+   b(1, ent.b),
+   c(2, ent.c),
+   d(3, ent.d);
 
-public class fkn {
-   public final int a;
-   @Nullable
-   public final String b;
+   private final int e;
+   private final xk f;
 
-   fkn(int $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private fkn(final int $$0, final alo<ens> $$1) {
+      this.e = $$0;
+      this.f = xk.c($$1.a().h("generator"));
    }
 
-   @Nullable
-   public String a() {
-      if (this.a >= 200 && this.a < 300) {
-         return null;
-      } else {
-         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
-      }
+   public xk a() {
+      return this.f;
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
-
-      public fkn.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fkn.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fkn a() {
-         return new fkn(this.a, this.b);
-      }
+   public int b() {
+      return this.e;
    }
 }

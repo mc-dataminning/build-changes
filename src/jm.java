@@ -17,7 +17,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum jm implements bba {
+public enum jm implements baq {
    a(0, 1, -1, "down", jm.b.b, jm.a.b, new kl(0, -1, 0)),
    b(1, 0, -1, "up", jm.b.a, jm.a.b, new kl(0, 1, 0)),
    c(2, 3, 2, "north", jm.b.b, jm.a.c, new kl(0, 0, -1)),
@@ -25,10 +25,10 @@ public enum jm implements bba {
    e(4, 5, 1, "west", jm.b.b, jm.a.a, new kl(-1, 0, 0)),
    f(5, 4, 3, "east", jm.b.a, jm.a.a, new kl(1, 0, 0));
 
-   public static final bba.a<jm> g = bba.a(jm::values);
+   public static final baq.a<jm> g = baq.a(jm::values);
    public static final Codec<jm> h = g.validate(jm::b);
-   public static final IntFunction<jm> i = ayv.a(jm::d, values(), ayv.a.b);
-   public static final zt<ByteBuf, jm> j = zr.a(i, jm::d);
+   public static final IntFunction<jm> i = ayl.a(jm::d, values(), ayl.a.b);
+   public static final zi<ByteBuf, jm> j = zg.a(i, jm::d);
    private final int k;
    private final int l;
    private final int m;
@@ -36,7 +36,7 @@ public enum jm implements bba {
    private final jm.a o;
    private final jm.b p;
    private final kl q;
-   private final fby r;
+   private final fbr r;
    private static final jm[] s = values();
    private static final jm[] t = Arrays.stream(s).sorted(Comparator.comparingInt($$0 -> $$0.k)).toArray(jm[]::new);
    private static final jm[] u = Arrays.stream(s).filter($$0 -> $$0.o().d()).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(jm[]::new);
@@ -49,16 +49,16 @@ public enum jm implements bba {
       this.o = $$5;
       this.p = $$4;
       this.q = $$6;
-      this.r = fby.a($$6);
+      this.r = fbr.a($$6);
    }
 
-   public static jm[] a(bvk $$0) {
+   public static jm[] a(bvb $$0) {
       float $$1 = $$0.h(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.i(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = bae.a($$1);
-      float $$4 = bae.b($$1);
-      float $$5 = bae.a($$2);
-      float $$6 = bae.b($$2);
+      float $$3 = azu.a($$1);
+      float $$4 = azu.b($$1);
+      float $$5 = azu.a($$2);
+      float $$6 = azu.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -93,7 +93,7 @@ public enum jm implements bba {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<jm> a(bam $$0) {
+   public static Collection<jm> a(bac $$0) {
       return ae.b(values(), $$0);
    }
 
@@ -134,7 +134,7 @@ public enum jm implements bba {
       return this.p;
    }
 
-   public static jm a(bvk $$0, jm.a $$1) {
+   public static jm a(bvb $$0, jm.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.i(1.0F)) ? f : e;
          case b -> $$0.h(1.0F) < 0.0F ? b : a;
@@ -252,15 +252,15 @@ public enum jm implements bba {
    }
 
    public static jm a(int $$0) {
-      return t[bae.a($$0 % t.length)];
+      return t[azu.a($$0 % t.length)];
    }
 
    public static jm b(int $$0) {
-      return u[bae.a($$0 % u.length)];
+      return u[azu.a($$0 % u.length)];
    }
 
    public static jm a(double $$0) {
-      return b(bae.a($$0 / 90.0 + 0.5) & 3);
+      return b(azu.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static jm a(jm.a $$0, jm.b $$1) {
@@ -275,7 +275,7 @@ public enum jm implements bba {
       return (float)((this.m & 3) * 90);
    }
 
-   public static jm b(bam $$0) {
+   public static jm b(bac $$0) {
       return ae.a(s, $$0);
    }
 
@@ -298,7 +298,7 @@ public enum jm implements bba {
       return $$3;
    }
 
-   public static jm a(fby $$0) {
+   public static jm a(fbr $$0) {
       return a($$0.d, $$0.e, $$0.f);
    }
 
@@ -353,18 +353,18 @@ public enum jm implements bba {
       return this.q;
    }
 
-   public fby r() {
+   public fbr r() {
       return this.r;
    }
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -bae.a($$1);
-      float $$3 = bae.b($$1);
+      float $$2 = -azu.a($$1);
+      float $$3 = azu.b($$1);
       return (float)this.q.u() * $$2 + (float)this.q.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements bba, Predicate<jm> {
+   public static enum a implements baq, Predicate<jm> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -430,7 +430,7 @@ public enum jm implements bba {
       };
 
       public static final jm.a[] d = values();
-      public static final bba.a<jm.a> e = bba.a(jm.a::values);
+      public static final baq.a<jm.a> e = baq.a(jm.a::values);
       private final String f;
 
       a(final String $$0) {
@@ -467,7 +467,7 @@ public enum jm implements bba {
          return this.f;
       }
 
-      public static jm.a a(bam $$0) {
+      public static jm.a a(bac $$0) {
          return ae.a(d, $$0);
       }
 
@@ -534,11 +534,11 @@ public enum jm implements bba {
          this.d = $$1;
       }
 
-      public jm a(bam $$0) {
+      public jm a(bac $$0) {
          return ae.a(this.c, $$0);
       }
 
-      public jm.a b(bam $$0) {
+      public jm.a b(bac $$0) {
          return ae.a(this.d, $$0);
       }
 
@@ -555,7 +555,7 @@ public enum jm implements bba {
          return Arrays.stream(this.c);
       }
 
-      public List<jm> c(bam $$0) {
+      public List<jm> c(bac $$0) {
          return ae.b(this.c, $$0);
       }
 

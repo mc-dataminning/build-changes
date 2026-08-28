@@ -1,31 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public interface der {
-   Codec<der> c = ma.av.q().dispatch(der::a, Function.identity());
+public record der(alp d) implements deh {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<der> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alp.a.fieldOf("function").forGetter(der::b)).apply($$0, der::new));
 
-   static MapCodec<? extends der> b(kd<MapCodec<? extends der>> $$0) {
-      kd.a($$0, "all_of", dek.b.a);
-      kd.a($$0, "apply_mob_effect", del.a);
-      kd.a($$0, "attribute", dep.a);
-      kd.a($$0, "change_item_damage", dem.a);
-      kd.a($$0, "damage_entity", den.a);
-      kd.a($$0, "explode", det.a);
-      kd.a($$0, "ignite", deu.a);
-      kd.a($$0, "play_sound", dew.a);
-      kd.a($$0, "replace_block", dey.a);
-      kd.a($$0, "replace_disk", dez.a);
-      kd.a($$0, "run_function", dfa.a);
-      kd.a($$0, "set_block_properties", dfb.a);
-      kd.a($$0, "spawn_particles", dfd.a);
-      return kd.a($$0, "summon_entity", dfe.a);
+   @Override
+   public void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4) {
+      MinecraftServer $$5 = $$0.p();
+      ame $$6 = $$5.aE();
+      Optional<ik<ew>> $$7 = $$6.a(this.d);
+      if ($$7.isPresent()) {
+         ew $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bU());
+         $$6.a($$7.get(), $$8);
+      } else {
+         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
+      }
    }
 
-   void a(ash var1, int var2, ddy var3, bvk var4, fby var5, boolean var6);
-
-   default void a(ddy $$0, bvk $$1, fby $$2, int $$3) {
+   @Override
+   public MapCodec<der> a() {
+      return a;
    }
 
-   MapCodec<? extends der> a();
+   public alp b() {
+      return this.d;
+   }
 }

@@ -1,29 +1,60 @@
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public class ell extends elb {
-   public static final MapCodec<ell> b = brr.b(dxv.a).comapFlatMap(ell::a, $$0 -> $$0.c).fieldOf("entries");
-   private final brr<dxv> c;
+public class ell extends eln {
+   public static final MapCodec<ell> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ell::new, $$0 -> $$0.b);
+   private final float b;
 
-   private static DataResult<ell> a(brr<dxv> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new ell($$0));
+   @Override
+   protected elo<?> a() {
+      return elo.b;
    }
 
-   public ell(brr<dxv> $$0) {
-      this.c = $$0;
-   }
-
-   public ell(brr.a<dxv> $$0) {
-      this($$0.a());
+   public ell(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected elc<?> a() {
-      return elc.b;
+   public void a(eln.a $$0) {
+      bac $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            jh $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dte.d, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            jh $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dte.f, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            jh $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dte.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            jh $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dte.c, $$0);
+            }
+         }
+      });
    }
 
-   @Override
-   public dxv a(bam $$0, jh $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   private static void a(jh $$0, dyf $$1, eln.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (jh var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
+      }
    }
 }

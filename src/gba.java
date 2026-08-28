@@ -1,57 +1,48 @@
-import java.util.Set;
+public class gba extends gbh<gxl> {
+   public static final ges a = ges.scaling(0.5F);
+   private final gej b;
+   private final gej c;
+   private final gej d;
 
-public class gba extends gbm<gxm> {
-   public static final String a = "red_thing";
-   public static final gex b = new gan(Set.of("head", "beak", "red_thing"));
-   private final geo c;
-   private final geo d;
-   private final geo e;
-   private final geo f;
-   private final geo g;
-   private final geo i;
-   private final geo j;
-
-   public gba(geo $$0) {
+   public gba(gej $$0) {
       super($$0);
-      this.c = $$0.b("head");
-      this.i = $$0.b("beak");
-      this.j = $$0.b("red_thing");
-      this.d = $$0.b("right_leg");
-      this.e = $$0.b("left_leg");
-      this.f = $$0.b("right_wing");
-      this.g = $$0.b("left_wing");
+      this.b = $$0.b("body");
+      this.c = this.b.b("tail");
+      this.d = this.c.b("tail_fin");
    }
 
-   public static geu a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", get.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), geq.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", get.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), geq.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", get.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), geq.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", get.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), geq.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      get $$3 = get.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, geq.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, geq.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", get.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), geq.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", get.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), geq.a(4.0F, 13.0F, 0.0F));
-      return geu.a($$0, 64, 32);
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      get $$4 = $$1.a("body", geo.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), gel.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", geo.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), gel.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         geo.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gel.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         geo.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gel.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      get $$5 = $$4.a("tail", geo.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), gel.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", geo.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), gel.a(0.0F, 0.0F, 9.0F));
+      get $$6 = $$4.a("head", geo.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), gel.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", geo.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), gel.a);
+      return gep.a($$0, 64, 64);
    }
 
-   public void a(gxm $$0) {
+   public void a(gxl $$0) {
       super.a($$0);
-      float $$1 = (bae.a($$0.a) + 1.0F) * $$0.b;
-      this.c.e = $$0.V * (float) (Math.PI / 180.0);
-      this.c.f = $$0.U * (float) (Math.PI / 180.0);
-      this.i.e = this.c.e;
-      this.i.f = this.c.f;
-      this.j.e = this.c.e;
-      this.j.f = this.c.f;
-      float $$2 = $$0.Y;
-      float $$3 = $$0.X;
-      this.d.e = bae.b($$3 * 0.6662F) * 1.4F * $$2;
-      this.e.e = bae.b($$3 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.f.g = $$1;
-      this.g.g = -$$1;
+      this.b.e = $$0.V * (float) (Math.PI / 180.0);
+      this.b.f = $$0.U * (float) (Math.PI / 180.0);
+      if ($$0.a) {
+         this.b.e = this.b.e + (-0.05F - 0.05F * azu.b($$0.p * 0.3F));
+         this.c.e = -0.1F * azu.b($$0.p * 0.3F);
+         this.d.e = -0.2F * azu.b($$0.p * 0.3F);
+      }
    }
 }

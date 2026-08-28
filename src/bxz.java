@@ -1,101 +1,28 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public abstract class bxz<E extends bwg> implements bya<E> {
-   public static final int a = 60;
-   protected final Map<cfk<?>, cfl> b;
-   private bxz.a c = bxz.a.a;
-   private long d;
-   private final int e;
-   private final int f;
-
-   public bxz(Map<cfk<?>, cfl> $$0) {
-      this($$0, 60);
+public class bxz {
+   public static <E extends bvx> bxr<E> a(int $$0, BiPredicate<E, bvb> $$1) {
+      return cbd.a((Function<cbd.b<E>, ? extends App<cbd.c<E>, cbg<E>>>)($$2 -> $$2.group($$2.a(cfb.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               bvb $$7 = $$5.dl();
+               bvb $$8 = $$2.<bvb>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
+                  return false;
+               } else {
+                  bvb $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.ae();
+                     $$3.b();
+                     return true;
+                  }
+               }
+            })));
    }
 
-   public bxz(Map<cfk<?>, cfl> $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public bxz(Map<cfk<?>, cfl> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
-   }
-
-   @Override
-   public bxz.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(ash $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bxz.a.b;
-         int $$3 = this.e + $$0.H_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(ash $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(ash $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(ash $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(ash $$0, E $$1, long $$2) {
-      this.c = bxz.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(ash $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(ash $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(ash $$0, E $$1) {
-      return true;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<cfk<?>, cfl> $$1 : this.b.entrySet()) {
-         cfk<?> $$2 = $$1.getKey();
-         cfl $$3 = $$1.getValue();
-         if (!$$0.ec().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b;
+   private static boolean a(bvx $$0, bvb $$1, int $$2) {
+      return $$1.bL() && $$1.a($$0, (double)$$2) && $$1.dW() == $$0.dW();
    }
 }

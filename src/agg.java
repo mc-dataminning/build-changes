@@ -1,37 +1,37 @@
-public class agg implements aac<acr> {
-   public static final zt<ws, agg> a = aac.a(agg::a, agg::new);
-   private final float b;
+public class agg implements zr<acg> {
+   public static final zi<wh, agg> a = zr.a(agg::a, agg::new);
+   private final int b;
    private final int c;
-   private final float d;
+   private final int d;
 
-   public agg(float $$0, int $$1, float $$2) {
+   public agg(int $$0, int $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
-   private agg(ws $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
+   private agg(wh $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(wh $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public aae<agg> a() {
-      return ahk.aK;
+   public zt<agg> a() {
+      return agz.aU;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
    }
 
@@ -39,7 +39,7 @@ public class agg implements aac<acr> {
       return this.c;
    }
 
-   public float f() {
+   public int f() {
       return this.d;
    }
 }

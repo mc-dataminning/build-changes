@@ -1,36 +1,26 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record fah(fau b, ewo c) implements ezy {
-   public static final MapCodec<fah> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fav.a.fieldOf("value").forGetter(fah::c), ewo.a.fieldOf("range").forGetter(fah::d)).apply($$0, fah::new)
-   );
+public record fah(alp b) implements faf {
+   public static final MapCodec<fah> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alp.a.fieldOf("source").forGetter(fah::c)).apply($$0, fah::new));
 
    @Override
-   public ezz b() {
-      return faa.r;
+   public fae a() {
+      return fag.b;
    }
 
    @Override
-   public Set<bbn<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public vj a(ewi $$0) {
+      return $$0.d().p().aK().a(this.b);
    }
 
-   public boolean a(ewp $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   @Override
+   public Set<bbd<?>> b() {
+      return Set.of();
    }
 
-   public static ezy.a a(fau $$0, ewo $$1) {
-      return () -> new fah($$0, $$1);
-   }
-
-   public fau c() {
+   public alp c() {
       return this.b;
-   }
-
-   public ewo d() {
-      return this.c;
    }
 }

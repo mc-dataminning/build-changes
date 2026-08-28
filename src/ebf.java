@@ -1,37 +1,49 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.BitSet;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Dynamic;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class ebf {
-   private final BitSet a = new BitSet();
+public class ebf implements AutoCloseable {
+   private final eav a;
+   private final DataFixer b;
+   private final bbi c;
 
-   public void a(int $$0, int $$1) {
-      this.a.set($$0, $$0 + $$1);
+   public ebf(ebc $$0, Path $$1, DataFixer $$2, boolean $$3, bbi $$4) {
+      this.b = $$2;
+      this.c = $$4;
+      this.a = new eav($$0, $$1, $$3);
    }
 
-   public void b(int $$0, int $$1) {
-      this.a.clear($$0, $$0 + $$1);
+   public CompletableFuture<Optional<um>> a(dgf $$0) {
+      return this.a.a($$0);
    }
 
-   public int a(int $$0) {
-      int $$1 = 0;
-
-      while (true) {
-         int $$2 = this.a.nextClearBit($$1);
-         int $$3 = this.a.nextSetBit($$2);
-         if ($$3 == -1 || $$3 - $$2 >= $$0) {
-            this.a($$2, $$0);
-            return $$2;
-         }
-
-         $$1 = $$3;
-      }
+   public CompletableFuture<Void> a(dgf $$0, @Nullable um $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   @VisibleForTesting
-   public IntSet a() {
-      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
+   public um a(um $$0, int $$1) {
+      int $$2 = vb.b($$0, $$1);
+      return this.c.a(this.b, $$0, $$2);
+   }
+
+   public Dynamic<vj> a(Dynamic<vj> $$0, int $$1) {
+      return this.c.a(this.b, $$0, $$1);
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a.close();
+   }
+
+   public ebc a() {
+      return this.a.a();
    }
 }

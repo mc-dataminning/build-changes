@@ -1,18 +1,12 @@
-import io.netty.buffer.ByteBuf;
+public class acc {
+   public static final zt<acb> a = a("cookie_request");
+   public static final zt<ace> b = b("cookie_response");
 
-public class acc implements aac<abz> {
-   public static final acc a = new acc();
-   public static final zt<ByteBuf, acc> b = zt.a(a);
-
-   private acc() {
+   private static <T extends zr<aca>> zt<T> a(String $$0) {
+      return new zt<>(zs.b, alp.b($$0));
    }
 
-   @Override
-   public aae<acc> a() {
-      return acf.e;
-   }
-
-   public void a(abz $$0) {
-      $$0.a(this);
+   private static <T extends zr<acd>> zt<T> b(String $$0) {
+      return new zt<>(zs.a, alp.b($$0));
    }
 }

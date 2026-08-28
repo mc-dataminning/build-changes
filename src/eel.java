@@ -1,167 +1,345 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableDouble;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public record eel(Map<aly<ebr>, ebr> b) {
-   public static final MapCodec<eel> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(aly.a(mb.bf), ebr.a).fieldOf("dimensions").forGetter(eel::d)).apply($$0, $$0.stable(eel::new))
-   );
-   private static final Set<aly<ebr>> c = ImmutableSet.of(ebr.b, ebr.c, ebr.d);
-   private static final int d = c.size();
-
-   public eel(Map<aly<ebr>, ebr> b) {
-      ebr $$1 = b.get(ebr.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.b = b;
+public class eel {
+   private static final eel a = new eel(new Long2ObjectOpenHashMap(), new Long2ObjectOpenHashMap()) {
+      @Override
+      public eel.a a(int $$0, int $$1) {
+         return new eel.a(1.0, 0.0);
       }
+
+      @Override
+      public double a(edc.b $$0, double $$1) {
+         return $$1;
+      }
+
+      @Override
+      public die a(die $$0) {
+         return $$0;
+      }
+   };
+   private static final est b = est.b(new eek(42L), re.a);
+   private static final int c = kb.d(7) - 1;
+   private static final int d = kb.e(c + 3);
+   private static final int e = 2;
+   private static final int f = kb.e(5);
+   private static final double g = 8.0;
+   private final Long2ObjectOpenHashMap<eem> h;
+   private final Long2ObjectOpenHashMap<eem> i;
+
+   public static eel a() {
+      return a;
    }
 
-   public eel(kd<ebr> $$0) {
-      this($$0.c().collect(Collectors.toMap(jq.c::h, jq.c::a)));
-   }
-
-   public static Stream<aly<ebr>> a(Stream<aly<ebr>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
-   }
-
-   public eel a(js.a $$0, dzr $$1) {
-      js<ebq> $$2 = $$0.d(mb.aN);
-      Map<aly<ebr>, ebr> $$3 = a($$2, this.b, $$1);
-      return new eel($$3);
-   }
-
-   public static Map<aly<ebr>, ebr> a(js<ebq> $$0, Map<aly<ebr>, ebr> $$1, dzr $$2) {
-      ebr $$3 = $$1.get(ebr.b);
-      jq<ebq> $$4 = (jq<ebq>)($$3 == null ? $$0.b(ebo.a) : $$3.a());
-      return a($$1, $$4, $$2);
-   }
-
-   public static Map<aly<ebr>, ebr> a(Map<aly<ebr>, ebr> $$0, jq<ebq> $$1, dzr $$2) {
-      Builder<aly<ebr>, ebr> $$3 = ImmutableMap.builder();
-      $$3.putAll($$0);
-      $$3.put(ebr.b, new ebr($$1, $$2));
-      return $$3.buildKeepingLast();
-   }
-
-   public dzr a() {
-      ebr $$0 = this.b.get(ebr.b);
+   public static eel a(@Nullable asf $$0) {
       if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
+         return a;
       } else {
-         return $$0.b();
-      }
-   }
-
-   public Optional<ebr> a(aly<ebr> $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public ImmutableSet<aly<dhi>> b() {
-      return this.d().keySet().stream().map(mb::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof edh;
-   }
-
-   private static ewh.a b(kd<ebr> $$0) {
-      return $$0.f(ebr.b).map($$0x -> {
-         dzr $$1 = $$0x.b();
-         if ($$1 instanceof edh) {
-            return ewh.a.c;
+         dgf $$1 = $$0.b();
+         if (!$$0.a($$1, d)) {
+            return a;
          } else {
-            return $$1 instanceof edl ? ewh.a.b : ewh.a.a;
+            Long2ObjectOpenHashMap<eem> $$2 = new Long2ObjectOpenHashMap();
+            Long2ObjectOpenHashMap<eem> $$3 = new Long2ObjectOpenHashMap();
+            int $$4 = azu.h(d + 1);
+
+            for (int $$5 = -d; $$5 <= d; $$5++) {
+               for (int $$6 = -d; $$6 <= d; $$6++) {
+                  if ($$5 * $$5 + $$6 * $$6 <= $$4) {
+                     int $$7 = $$1.h + $$5;
+                     int $$8 = $$1.i + $$6;
+                     eem $$9 = eem.a($$0, $$7, $$8);
+                     if ($$9 != null) {
+                        $$2.put(dgf.c($$7, $$8), $$9);
+                        if ($$5 >= -f && $$5 <= f && $$6 >= -f && $$6 <= f) {
+                           $$3.put(dgf.c($$7, $$8), $$9);
+                        }
+                     }
+                  }
+               }
+            }
+
+            return $$2.isEmpty() && $$3.isEmpty() ? a : new eel($$2, $$3);
          }
-      }).orElse(ewh.a.a);
+      }
    }
 
-   static Lifecycle a(aly<ebr> $$0, ebr $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
+   eel(Long2ObjectOpenHashMap<eem> $$0, Long2ObjectOpenHashMap<eem> $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   private static boolean b(aly<ebr> $$0, ebr $$1) {
-      if ($$0 == ebr.b) {
-         return a($$1);
-      } else if ($$0 == ebr.c) {
-         return b($$1);
+   public eel.a a(int $$0, int $$1) {
+      int $$2 = kb.a($$0);
+      int $$3 = kb.a($$1);
+      double $$4 = this.a($$2, 0, $$3, eem::a);
+      if ($$4 != Double.MAX_VALUE) {
+         return new eel.a(0.0, a($$4));
       } else {
-         return $$0 == ebr.d ? c($$1) : false;
+         MutableDouble $$5 = new MutableDouble(0.0);
+         MutableDouble $$6 = new MutableDouble(0.0);
+         MutableDouble $$7 = new MutableDouble(Double.POSITIVE_INFINITY);
+         this.h.forEach(($$5x, $$6x) -> $$6x.a(kb.d(dgf.a($$5x)), kb.d(dgf.b($$5x)), ($$5xx, $$6xx, $$7x) -> {
+               double $$8x = (double)azu.f((float)($$2 - $$5xx), (float)($$3 - $$6xx));
+               if (!($$8x > (double)c)) {
+                  if ($$8x < $$7.doubleValue()) {
+                     $$7.setValue($$8x);
+                  }
+
+                  double $$9x = 1.0 / ($$8x * $$8x * $$8x * $$8x);
+                  $$6.add($$7x * $$9x);
+                  $$5.add($$9x);
+               }
+            }));
+         if ($$7.doubleValue() == Double.POSITIVE_INFINITY) {
+            return new eel.a(1.0, 0.0);
+         } else {
+            double $$8 = $$6.doubleValue() / $$5.doubleValue();
+            double $$9 = azu.a($$7.doubleValue() / (double)(c + 1), 0.0, 1.0);
+            $$9 = 3.0 * $$9 * $$9 - 2.0 * $$9 * $$9 * $$9;
+            return new eel.a($$9, a($$8));
+         }
       }
    }
 
-   private static boolean a(ebr $$0) {
-      jq<ebq> $$1 = $$0.a();
-      if (!$$1.a(ebo.a) && !$$1.a(ebo.d)) {
-         return false;
+   private static double a(double $$0) {
+      double $$1 = 1.0;
+      double $$2 = $$0 + 0.5;
+      double $$3 = azu.c($$2, 8.0);
+      return 1.0 * (32.0 * ($$2 - 128.0) - 3.0 * ($$2 - 120.0) * $$3 + 3.0 * $$3 * $$3) / (128.0 * (32.0 - 3.0 * $$3));
+   }
+
+   public double a(edc.b $$0, double $$1) {
+      int $$2 = kb.a($$0.a());
+      int $$3 = $$0.b() / 8;
+      int $$4 = kb.a($$0.c());
+      double $$5 = this.a($$2, $$3, $$4, eem::b);
+      if ($$5 != Double.MAX_VALUE) {
+         return $$5;
       } else {
-         if ($$0.b().d() instanceof dix $$2 && !$$2.a(diz.b)) {
-            return false;
-         }
+         MutableDouble $$6 = new MutableDouble(0.0);
+         MutableDouble $$7 = new MutableDouble(0.0);
+         MutableDouble $$8 = new MutableDouble(Double.POSITIVE_INFINITY);
+         this.i.forEach(($$6x, $$7x) -> $$7x.a(kb.d(dgf.a($$6x)), kb.d(dgf.b($$6x)), $$3 - 1, $$3 + 1, ($$6xx, $$7xx, $$8x, $$9x) -> {
+               double $$10x = azu.g((double)($$2 - $$6xx), (double)(($$3 - $$7xx) * 2), (double)($$4 - $$8x));
+               if (!($$10x > 2.0)) {
+                  if ($$10x < $$8.doubleValue()) {
+                     $$8.setValue($$10x);
+                  }
 
-         return true;
-      }
-   }
-
-   private static boolean b(ebr $$0) {
-      return $$0.a().a(ebo.b) && $$0.b() instanceof edt $$1 && $$1.a(edv.f) && $$1.d() instanceof dix $$2 && $$2.a(diz.a);
-   }
-
-   private static boolean c(ebr $$0) {
-      return $$0.a().a(ebo.c) && $$0.b() instanceof edt $$1 && $$1.a(edv.g) && $$1.d() instanceof djb;
-   }
-
-   public eel.b a(kd<ebr> $$0) {
-      Stream<aly<ebr>> $$1 = Stream.concat($$0.j().stream(), this.b.keySet().stream()).distinct();
-
-      record a(aly<ebr> a, ebr b) {
-
-         kc c() {
-            return new kc(Optional.empty(), eel.a(this.a, this.b));
+                  double $$11 = 1.0 / ($$10x * $$10x * $$10x * $$10x);
+                  $$7.add($$9x * $$11);
+                  $$6.add($$11);
+               }
+            }));
+         if ($$8.doubleValue() == Double.POSITIVE_INFINITY) {
+            return $$1;
+         } else {
+            double $$9 = $$7.doubleValue() / $$6.doubleValue();
+            double $$10 = azu.a($$8.doubleValue() / 3.0, 0.0, 1.0);
+            return azu.d($$10, $$9, $$1);
          }
       }
-
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.f($$2x).or(() -> Optional.ofNullable(this.b.get($$2x))).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      km<ebr> $$4 = new jy<>(mb.bf, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      kd<ebr> $$5 = $$4.n();
-      ewh.a $$6 = b($$5);
-      return new eel.b($$5.n(), $$6);
    }
 
-   public Map<aly<ebr>, ebr> d() {
-      return this.b;
+   private double a(int $$0, int $$1, int $$2, eel.b $$3) {
+      int $$4 = kb.e($$0);
+      int $$5 = kb.e($$2);
+      boolean $$6 = ($$0 & 3) == 0;
+      boolean $$7 = ($$2 & 3) == 0;
+      double $$8 = this.a($$3, $$4, $$5, $$0, $$1, $$2);
+      if ($$8 == Double.MAX_VALUE) {
+         if ($$6 && $$7) {
+            $$8 = this.a($$3, $$4 - 1, $$5 - 1, $$0, $$1, $$2);
+         }
+
+         if ($$8 == Double.MAX_VALUE) {
+            if ($$6) {
+               $$8 = this.a($$3, $$4 - 1, $$5, $$0, $$1, $$2);
+            }
+
+            if ($$8 == Double.MAX_VALUE && $$7) {
+               $$8 = this.a($$3, $$4, $$5 - 1, $$0, $$1, $$2);
+            }
+         }
+      }
+
+      return $$8;
    }
 
-   public static record b(kd<ebr> a, ewh.a b) {
-      public Lifecycle a() {
-         return this.a.h();
+   private double a(eel.b $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      eem $$6 = (eem)this.h.get(dgf.c($$1, $$2));
+      return $$6 != null ? $$0.get($$6, $$3 - kb.d($$1), $$4, $$5 - kb.d($$2)) : Double.MAX_VALUE;
+   }
+
+   public die a(die $$0) {
+      return ($$1, $$2, $$3, $$4) -> {
+         jq<dib> $$5 = this.a($$1, $$2, $$3);
+         return $$5 == null ? $$0.getNoiseBiome($$1, $$2, $$3, $$4) : $$5;
+      };
+   }
+
+   @Nullable
+   private jq<dib> a(int $$0, int $$1, int $$2) {
+      MutableDouble $$3 = new MutableDouble(Double.POSITIVE_INFINITY);
+      MutableObject<jq<dib>> $$4 = new MutableObject();
+      this.h.forEach(($$5x, $$6x) -> $$6x.a(kb.d(dgf.a($$5x)), $$1, kb.d(dgf.b($$5x)), ($$4xx, $$5xx, $$6xx) -> {
+            double $$7 = (double)azu.f((float)($$0 - $$4xx), (float)($$2 - $$5xx));
+            if (!($$7 > (double)c)) {
+               if ($$7 < $$3.doubleValue()) {
+                  $$4.setValue($$6xx);
+                  $$3.setValue($$7);
+               }
+            }
+         }));
+      if ($$3.doubleValue() == Double.POSITIVE_INFINITY) {
+         return null;
+      } else {
+         double $$5 = b.a((double)$$0, 0.0, (double)$$2) * 12.0;
+         double $$6 = azu.a(($$3.doubleValue() + $$5) / (double)(c + 1), 0.0, 1.0);
+         return $$6 > 0.5 ? null : (jq)$$4.getValue();
+      }
+   }
+
+   public static void a(asf $$0, dzj $$1) {
+      dgf $$2 = $$1.f();
+      boolean $$3 = $$1.u();
+      jh.a $$4 = new jh.a();
+      jh $$5 = new jh($$2.d(), 0, $$2.e());
+      eem $$6 = $$1.v();
+      if ($$6 != null) {
+         int $$7 = $$6.b().L_();
+         int $$8 = $$6.b().an();
+         if ($$3) {
+            for (int $$9 = 0; $$9 < 16; $$9++) {
+               for (int $$10 = 0; $$10 < 16; $$10++) {
+                  a($$1, $$4.a($$5, $$9, $$7 - 1, $$10));
+                  a($$1, $$4.a($$5, $$9, $$7, $$10));
+                  a($$1, $$4.a($$5, $$9, $$8, $$10));
+                  a($$1, $$4.a($$5, $$9, $$8 + 1, $$10));
+               }
+            }
+         }
+
+         for (jm $$11 : jm.c.a) {
+            if ($$0.a($$2.h + $$11.j(), $$2.i + $$11.l()).u() != $$3) {
+               int $$12 = $$11 == jm.f ? 15 : 0;
+               int $$13 = $$11 == jm.e ? 0 : 15;
+               int $$14 = $$11 == jm.d ? 15 : 0;
+               int $$15 = $$11 == jm.c ? 0 : 15;
+
+               for (int $$16 = $$12; $$16 <= $$13; $$16++) {
+                  for (int $$17 = $$14; $$17 <= $$15; $$17++) {
+                     int $$18 = Math.min($$8, $$1.a(edj.a.e, $$16, $$17)) + 1;
+
+                     for (int $$19 = $$7; $$19 < $$18; $$19++) {
+                        a($$1, $$4.a($$5, $$16, $$19, $$17));
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private static void a(dzj $$0, jh $$1) {
+      dxo $$2 = $$0.a_($$1);
+      if ($$2.a(axk.Q)) {
+         $$0.e($$1);
       }
 
-      public ke.b b() {
-         return new ke.c(List.of(this.a)).e();
+      etq $$3 = $$0.b_($$1);
+      if (!$$3.c()) {
+         $$0.e($$1);
+      }
+   }
+
+   public static void a(dhx $$0, ead $$1) {
+      dgf $$2 = $$1.f();
+      Builder<jn, eem> $$3 = ImmutableMap.builder();
+
+      for (jn $$4 : jn.values()) {
+         int $$5 = $$2.h + $$4.b();
+         int $$6 = $$2.i + $$4.c();
+         eem $$7 = $$0.a($$5, $$6).v();
+         if ($$7 != null) {
+            $$3.put($$4, $$7);
+         }
       }
 
-      public kd<ebr> c() {
-         return this.a;
+      ImmutableMap<jn, eem> $$8 = $$3.build();
+      if ($$1.u() || !$$8.isEmpty()) {
+         eel.c $$9 = a($$1.v(), $$8);
+         dzi.a $$10 = ($$1x, $$2x, $$3x) -> {
+            double $$4x = (double)$$1x + 0.5 + b.a((double)$$1x, (double)$$2x, (double)$$3x) * 4.0;
+            double $$5x = (double)$$2x + 0.5 + b.a((double)$$2x, (double)$$3x, (double)$$1x) * 4.0;
+            double $$6x = (double)$$3x + 0.5 + b.a((double)$$3x, (double)$$1x, (double)$$2x) * 4.0;
+            return $$9.getDistance($$4x, $$5x, $$6x) < 4.0;
+         };
+         $$1.F().a($$10);
+      }
+   }
+
+   public static eel.c a(@Nullable eem $$0, Map<jn, eem> $$1) {
+      List<eel.c> $$2 = Lists.newArrayList();
+      if ($$0 != null) {
+         $$2.add(a(null, $$0));
       }
 
-      public ewh.a d() {
-         return this.b;
+      $$1.forEach(($$1x, $$2x) -> $$2.add(a($$1x, $$2x)));
+      return ($$1x, $$2x, $$3) -> {
+         double $$4 = Double.POSITIVE_INFINITY;
+
+         for (eel.c $$5 : $$2) {
+            double $$6 = $$5.getDistance($$1x, $$2x, $$3);
+            if ($$6 < $$4) {
+               $$4 = $$6;
+            }
+         }
+
+         return $$4;
+      };
+   }
+
+   private static eel.c a(@Nullable jn $$0, eem $$1) {
+      double $$2 = 0.0;
+      double $$3 = 0.0;
+      if ($$0 != null) {
+         for (jm $$4 : $$0.a()) {
+            $$2 += (double)($$4.j() * 16);
+            $$3 += (double)($$4.l() * 16);
+         }
       }
+
+      double $$5 = $$2;
+      double $$6 = $$3;
+      double $$7 = (double)$$1.b().M_() / 2.0;
+      double $$8 = (double)$$1.b().L_() + $$7;
+      return ($$4x, $$5x, $$6x) -> a($$4x - 8.0 - $$5, $$5x - $$8, $$6x - 8.0 - $$6, 8.0, $$7, 8.0);
+   }
+
+   private static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      double $$6 = Math.abs($$0) - $$3;
+      double $$7 = Math.abs($$1) - $$4;
+      double $$8 = Math.abs($$2) - $$5;
+      return azu.g(Math.max(0.0, $$6), Math.max(0.0, $$7), Math.max(0.0, $$8));
+   }
+
+   public static record a(double a, double b) {
+   }
+
+   interface b {
+      double get(eem var1, int var2, int var3, int var4);
+   }
+
+   public interface c {
+      double getDistance(double var1, double var3, double var5);
    }
 }

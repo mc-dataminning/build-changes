@@ -1,349 +1,67 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+public record gel(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final gel a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-public class gel {
-   private static final ges a = new ges(0.008F);
-   private static final ges b = new ges(1.0F);
-   private static final ges c = new ges(0.5F);
+   public static gel a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
+   }
 
-   public static Map<gem, geu> a() {
-      Builder<gem, geu> $$0 = ImmutableMap.builder();
-      geu $$1 = geu.a(gbz.a(ges.a, 0.0F), 64, 64);
-      geu $$2 = geu.a(gby.a(b), 64, 32);
-      geu $$3 = geu.a(gby.a(new ges(1.02F)), 64, 32);
-      geu $$4 = geu.a(gby.a(c), 64, 32);
-      geu $$5 = gcg.a();
-      geu $$6 = gdi.c();
-      geu $$7 = geu.a(gac.a(ges.a), 64, 64);
-      geu $$8 = geu.a(gac.b(ges.a), 64, 64);
-      gex $$9 = gex.scaling(0.9375F);
-      geu $$10 = gca.a().a($$9);
-      geu $$11 = gam.a();
-      geu $$12 = gap.a();
-      geu $$13 = gbc.a();
-      geu $$14 = $$13.a(gbc.a);
-      geu $$15 = gbi.a();
-      geu $$16 = geu.a(gci.a(ges.a), 64, 32);
-      geu $$17 = $$16.a(gay.a);
-      geu $$18 = geu.a(gci.a(new ges(0.01F)), 64, 32).a(gay.a);
-      geu $$19 = geu.a(gco.a(ges.a), 64, 64);
-      geu $$20 = geu.a(gcn.a(), 64, 64);
-      geu $$21 = gdi.b();
-      geu $$22 = gce.a(ges.a);
-      geu $$23 = gce.a(new ges(0.5F));
-      geu $$24 = gdq.a();
-      geu $$25 = gbw.a();
-      geu $$26 = gbw.b();
-      geu $$27 = gdh.c();
-      geu $$28 = geu.a(gdy.a(), 64, 64).a($$9);
-      geu $$29 = gdn.a();
-      geu $$30 = gah.a();
-      geu $$31 = gax.a();
-      geu $$32 = gba.a();
-      geu $$33 = gbt.a();
-      geu $$34 = gcj.a();
-      geu $$35 = gcm.a(ges.a);
-      geu $$36 = gcm.a(new ges(0.5F));
-      geu $$37 = gcs.a();
-      geu $$38 = gdc.a();
-      geu $$39 = gdb.a();
-      geu $$40 = gdl.a();
-      geu $$41 = gdv.a();
-      geu $$42 = geu.a(ged.a(ges.a), 64, 32);
-      geu $$43 = geu.a(ged.a(new ges(0.2F)), 64, 32);
-      geu $$44 = gef.a();
-      geu $$45 = gak.a();
-      geu $$46 = gaj.a(c);
-      geu $$47 = gaj.a(b);
-      geu $$48 = gbh.a(ges.a);
-      geu $$49 = gbh.a(new ges(0.25F));
-      geu $$50 = gdp.a();
-      geu $$51 = gbf.a();
-      geu $$52 = gda.a();
-      $$0.put(gen.c, gaf.a());
-      $$0.put(gen.d, $$30);
-      $$0.put(gen.e, $$30.a(gah.a));
-      $$0.put(gen.f, $$45);
-      $$0.put(gen.g, $$46);
-      $$0.put(gen.h, $$47);
-      $$0.put(gen.i, $$45.a(gbz.i));
-      $$0.put(gen.j, $$46.a(gbz.i));
-      $$0.put(gen.k, $$47.a(gbz.i));
-      $$0.put(gen.l, gal.a());
-      $$0.put(gen.m, $$11);
-      $$0.put(gen.n, $$11.a(gam.b));
-      $$0.put(gen.q, gnr.a());
-      $$0.put(gen.r, gao.a());
-      $$0.put(gen.s, gnt.c());
-      $$0.put(gen.t, gnt.b());
-      $$0.put(gen.u, $$12);
-      $$0.put(gen.v, $$12.a(gap.a));
-      $$0.put(gen.w, gaq.a());
-      $$0.put(gen.x, gar.a());
-      $$0.put(gen.A, gas.a());
-      $$0.put(gen.B, gat.c());
-      $$0.put(gen.C, gau.a());
-      $$0.put(gen.D, $$4);
-      $$0.put(gen.E, $$2);
-      $$0.put(gen.F, geu.a(gbz.a(new ges(0.2F), 0.0F), 64, 32));
-      $$0.put(gen.G, gav.a());
-      $$0.put(gen.H, gaw.a(32, 32));
-      $$0.put(gen.I, gaw.a(128, 128));
-      $$0.put(gen.L, $$17);
-      $$0.put(gen.M, $$17.a(gay.b));
-      $$0.put(gen.O, $$18);
-      $$0.put(gen.N, $$18.a(gay.b));
-      $$0.put(gen.J, $$31);
-      $$0.put(gen.K, $$31.a(gax.a));
-      $$0.put(gen.P, $$29.a(gex.scaling(0.7F)));
-      $$0.put(gen.S, gaz.a());
-      $$0.put(gen.T, $$5);
-      $$0.put(gen.U, $$32);
-      $$0.put(gen.V, $$32.a(gba.b));
-      $$0.put(gen.W, gbb.a());
-      $$0.put(gen.X, $$5);
-      $$0.put(gen.Z, god.b());
-      $$0.put(gen.ab, god.c());
-      $$0.put(gen.aa, god.d());
-      $$0.put(gen.Y, god.e());
-      $$0.put(gen.ac, $$13);
-      $$0.put(gen.ad, $$14);
-      $$0.put(gen.ae, gbd.a());
-      $$0.put(gen.af, gbe.a(ges.a));
-      $$0.put(gen.ag, gbe.a(new ges(2.0F)));
-      $$0.put(gen.ah, $$6);
-      $$0.put(gen.ak, goe.b());
-      $$0.put(gen.al, goe.c());
-      $$0.put(gen.am, $$51);
-      $$0.put(gen.an, $$51.a(gbf.a));
-      $$0.put(gen.ao, gbg.a());
-      $$0.put(gen.ap, gbg.b());
-      $$0.put(gen.aq, gaz.c());
-      $$0.put(gen.ar, gaz.b());
-      $$0.put(gen.as, geh.a());
-      $$0.put(gen.at, $$48);
-      $$0.put(gen.ay, $$4);
-      $$0.put(gen.az, $$4);
-      $$0.put(gen.aA, $$49);
-      $$0.put(gen.au, $$48.a(gbz.i));
-      $$0.put(gen.av, $$4.a(gbz.i));
-      $$0.put(gen.aw, $$4.a(gbz.i));
-      $$0.put(gen.ax, $$49.a(gbz.i));
-      $$0.put(gen.aB, gbu.b());
-      $$0.put(gen.aC, $$15);
-      $$0.put(gen.aD, $$15.a(gbi.a));
-      $$0.put(gen.aE, gbk.a());
-      $$0.put(gen.aF, gbl.a());
-      $$0.put(gen.aG, gei.a());
-      $$0.put(gen.aH, gbj.a());
-      $$0.put(gen.aI, $$10);
-      $$0.put(gen.aJ, gbn.a());
-      $$0.put(gen.aK, gbp.a());
-      $$0.put(gen.aL, gbp.a().a(gbp.a));
-      $$0.put(gen.aM, gbq.a());
-      $$0.put(gen.aN, $$5);
-      $$0.put(gen.aO, gbr.a());
-      gex $$53 = gex.scaling(6.0F);
-      $$0.put(gen.aP, $$1.a($$53));
-      $$0.put(gen.aQ, $$4.a($$53));
-      $$0.put(gen.aR, $$2.a($$53));
-      $$0.put(gen.aS, $$50);
-      $$0.put(gen.aT, $$50.a(gdp.a));
-      $$0.put(gen.aU, $$33);
-      $$0.put(gen.aV, $$33.a(gbt.a));
-      $$0.put(gen.aW, gbu.a());
-      $$0.put(gen.aX, $$25);
-      $$0.put(gen.aY, $$26);
-      $$0.put(gen.aZ, $$5);
-      $$0.put(gen.ba, $$7);
-      $$0.put(gen.bc, $$8);
-      $$0.put(gen.bb, geu.a(gac.a(new ges(0.1F)), 64, 64));
-      $$0.put(gen.bd, geu.a(gac.b(new ges(0.1F)), 64, 64));
-      gex $$54 = gex.scaling(1.0625F);
-      $$0.put(gen.be, $$1.a($$54));
-      $$0.put(gen.bi, $$4.a($$54));
-      $$0.put(gen.bj, $$2.a($$54));
-      $$0.put(gen.bf, $$1.a(gbz.i).a($$54));
-      $$0.put(gen.bg, $$4.a(gbz.i).a($$54));
-      $$0.put(gen.bh, $$2.a(gbz.i).a($$54));
-      $$0.put(gen.bk, $$10);
-      $$0.put(gen.bl, gcb.a());
-      $$0.put(gen.bo, gcd.a());
-      $$0.put(gen.bp, $$22);
-      $$0.put(gen.bq, $$22.a(gce.a));
-      $$0.put(gen.bs, $$23);
-      $$0.put(gen.br, $$23.a(gce.a));
-      $$0.put(gen.bt, gcf.a());
-      $$0.put(gen.bu, gcc.a());
-      $$0.put(gen.bx, $$5);
-      $$0.put(gen.by, $$13);
-      $$0.put(gen.bz, $$14);
-      $$0.put(gen.bA, gbg.a());
-      $$0.put(gen.bB, gbg.b());
-      $$0.put(gen.bE, $$16);
-      $$0.put(gen.bF, $$16.a(gci.b));
-      $$0.put(gen.bI, $$34);
-      $$0.put(gen.bJ, $$34.a(gcj.a));
-      $$0.put(gen.bK, gck.a());
-      $$0.put(gen.bL, gcl.a());
-      $$0.put(gen.bM, $$35);
-      $$0.put(gen.bX, $$35.a(gcm.a));
-      $$0.put(gen.bZ, $$36);
-      $$0.put(gen.bY, $$36.a(gcm.a));
-      $$0.put(gen.bN, $$19);
-      $$0.put(gen.bV, $$4);
-      $$0.put(gen.bW, $$3);
-      $$0.put(gen.bR, $$19);
-      $$0.put(gen.bS, $$4);
-      $$0.put(gen.bT, $$3);
-      $$0.put(gen.bO, $$19.a(gbz.i));
-      $$0.put(gen.bP, $$4.a(gbz.i));
-      $$0.put(gen.bQ, $$3.a(gbz.i));
-      $$0.put(gen.bU, $$20);
-      $$0.put(gen.ca, $$10);
-      $$0.put(gen.cb, geu.a(gcr.a(ges.a, false), 64, 64));
-      $$0.put(gen.cd, gcq.a());
-      $$0.put(gen.cc, gcp.a());
-      $$0.put(gen.ce, $$21);
-      $$0.put(gen.cf, $$4);
-      $$0.put(gen.cg, $$2);
-      $$0.put(gen.ch, geu.a(gcr.a(ges.a, true), 64, 64));
-      $$0.put(gen.ci, $$4);
-      $$0.put(gen.cj, $$2);
-      $$0.put(gen.ck, gdo.a());
-      $$0.put(gen.cl, $$37);
-      $$0.put(gen.cm, $$37.a(gcs.a));
-      $$0.put(gen.cn, gct.a());
-      $$0.put(gen.co, gcu.a());
-      $$0.put(gen.cp, gcv.a());
-      $$0.put(gen.cq, gcx.a(false));
-      $$0.put(gen.cr, gcx.a(true));
-      $$0.put(gen.cs, gcz.a());
-      $$0.put(gen.ct, $$52);
-      $$0.put(gen.cv, $$52.a(gda.a));
-      $$0.put(gen.cu, $$52.a(gda.b));
-      $$0.put(gen.cw, $$38);
-      $$0.put(gen.cx, $$38.a(gdc.a));
-      $$0.put(gen.cz, $$39);
-      $$0.put(gen.cy, $$39.a(gdc.a));
-      $$0.put(gen.cA, gdd.a());
-      $$0.put(gen.cB, gdf.a());
-      $$0.put(gen.cC, gdf.b());
-      $$0.put(gen.cD, gde.a());
-      $$0.put(gen.cE, gdg.a());
-      $$0.put(gen.cF, $$27);
-      $$0.put(gen.cI, $$4);
-      $$0.put(gen.cJ, $$2);
-      $$0.put(gen.cG, $$7);
-      $$0.put(gen.cH, $$8);
-      $$0.put(gen.cK, $$6);
-      $$0.put(gen.cL, gdk.b());
-      $$0.put(gen.cM, gdk.a());
-      $$0.put(gen.cN, $$40);
-      $$0.put(gen.cO, $$40.a(gdl.a));
-      $$0.put(gen.cP, gdm.a());
-      $$0.put(gen.cQ, $$5);
-      $$0.put(gen.cR, $$29);
-      $$0.put(gen.cU, $$50);
-      $$0.put(gen.cV, $$50.a(gdp.a));
-      $$0.put(gen.cW, $$27);
-      $$0.put(gen.cX, $$4);
-      $$0.put(gen.cY, $$2);
-      $$0.put(gen.cZ, geu.a(gbz.a(new ges(0.25F), 0.0F), 64, 32));
-      $$0.put(gen.da, $$24);
-      $$0.put(gen.db, $$24);
-      $$0.put(gen.dc, gdr.a());
-      $$0.put(gen.dd, $$5);
-      $$0.put(gen.de, $$22);
-      $$0.put(gen.df, $$22.a(gce.a));
-      $$0.put(gen.dg, gds.a());
-      $$0.put(gen.dh, gdu.a(ges.a));
-      $$0.put(gen.di, gdu.a(a));
-      $$0.put(gen.dj, gdt.a(ges.a));
-      $$0.put(gen.dk, gdt.a(a));
-      $$0.put(gen.dl, $$41);
-      $$0.put(gen.dm, $$41.a(gdv.a));
-      $$0.put(gen.dn, gdw.a());
-      $$0.put(gen.do, $$28);
-      $$0.put(gen.dp, $$10);
-      $$0.put(gen.dr, gdz.a());
-      $$0.put(gen.dq, $$28);
-      $$0.put(gen.ds, gea.a());
-      $$0.put(gen.dt, geb.a().a($$9));
-      $$0.put(gen.du, gec.a(ges.a));
-      $$0.put(gen.dv, gec.a(c));
-      $$0.put(gen.dA, guu.a());
-      gex $$55 = gex.scaling(1.2F);
-      $$0.put(gen.dw, $$27.a($$55));
-      $$0.put(gen.dx, $$4.a($$55));
-      $$0.put(gen.dy, $$2.a($$55));
-      $$0.put(gen.dz, $$6);
-      $$0.put(gen.dB, $$42);
-      $$0.put(gen.dC, $$43);
-      $$0.put(gen.dD, $$42.a(ged.a));
-      $$0.put(gen.dE, $$43.a(ged.a));
-      $$0.put(gen.dF, $$25);
-      $$0.put(gen.dG, $$26);
-      $$0.put(gen.dH, $$1);
-      $$0.put(gen.dO, $$4);
-      $$0.put(gen.dP, $$2);
-      $$0.put(gen.dI, $$1.a(gbz.i));
-      $$0.put(gen.dJ, $$4.a(gbz.i));
-      $$0.put(gen.dK, $$2.a(gbz.i));
-      $$0.put(gen.dL, $$21);
-      $$0.put(gen.dM, $$7);
-      $$0.put(gen.dN, $$8);
-      $$0.put(gen.dQ, $$44);
-      $$0.put(gen.dU, gef.a(c));
-      $$0.put(gen.dV, gef.a(b));
-      $$0.put(gen.dR, $$44.a(gbz.i));
-      $$0.put(gen.dS, gef.a(c).a(gbz.i));
-      $$0.put(gen.dT, gef.a(b).a(gbz.i));
-      $$0.put(gen.dW, $$19);
-      $$0.put(gen.ea, $$4);
-      $$0.put(gen.eb, $$3);
-      $$0.put(gen.dX, $$19.a(gbz.i));
-      $$0.put(gen.dY, $$4.a(gbz.i));
-      $$0.put(gen.dZ, $$3.a(gbz.i));
-      $$0.put(gen.p, gcy.a());
-      $$0.put(gen.o, gcy.b());
-      geu $$56 = gat.a();
-      geu $$57 = gat.b();
-      $$0.put(gen.bC, $$56);
-      $$0.put(gen.bD, $$57);
-      $$0.put(gen.cS, $$56);
-      $$0.put(gen.cT, $$57);
-      $$0.put(gen.y, $$56);
-      $$0.put(gen.z, $$57);
-      $$0.put(gen.bm, $$56);
-      $$0.put(gen.bn, $$57);
-      $$0.put(gen.a, $$56);
-      $$0.put(gen.b, $$57);
-      $$0.put(gen.Q, $$56);
-      $$0.put(gen.R, $$57);
-      $$0.put(gen.ai, $$56);
-      $$0.put(gen.aj, $$57);
-      $$0.put(gen.bG, $$56);
-      $$0.put(gen.bH, $$57);
-      $$0.put(gen.bv, $$56);
-      $$0.put(gen.bw, $$57);
-      geu $$58 = gok.a(true);
-      geu $$59 = gok.a(false);
-      geu $$60 = gog.e();
-      dzh.a().forEach($$4x -> {
-         $$0.put(gen.a($$4x), $$58);
-         $$0.put(gen.b($$4x), $$59);
-         $$0.put(gen.c($$4x), $$60);
-      });
-      ImmutableMap<gem, geu> $$61 = $$0.build();
-      List<gem> $$62 = gen.a().filter($$1x -> !$$61.containsKey($$1x)).collect(Collectors.toList());
-      if (!$$62.isEmpty()) {
-         throw new IllegalStateException("Missing layer definitions: " + $$62);
-      } else {
-         return $$61;
-      }
+   public static gel b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   }
+
+   public static gel a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new gel($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
+   }
+
+   public gel c(float $$0, float $$1, float $$2) {
+      return new gel(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
+   }
+
+   public gel a(float $$0) {
+      return new gel(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
+   }
+
+   public gel b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
+   }
+
+   public gel d(float $$0, float $$1, float $$2) {
+      return new gel(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
+   }
+
+   public float a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public float h() {
+      return this.i;
+   }
+
+   public float i() {
+      return this.j;
    }
 }

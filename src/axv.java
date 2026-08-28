@@ -1,11 +1,12 @@
 public class axv {
-   public static final ayk<cib> a = a("default_spawns");
-   public static final ayk<cib> b = a("full_moon_spawns");
+   public static final aya<che> a = a("acquirable_job_site");
+   public static final aya<che> b = a("village");
+   public static final aya<che> c = a("bee_home");
 
    private axv() {
    }
 
-   private static ayk<cib> a(String $$0) {
-      return ayk.a(mb.l, alz.b($$0));
+   private static aya<che> a(String $$0) {
+      return aya.a(mb.aa, alp.b($$0));
    }
 }

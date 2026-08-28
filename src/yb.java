@@ -1,263 +1,44 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public class yb {
-   public static final Codec<yb> a = Codec.withAlternative(yb.e.a.codec(), yb.e.b.codec()).xmap(yb::new, $$0 -> $$0.b);
-   private final yb.e<?> b;
-
-   public <T> yb(yb.a<T> $$0, T $$1) {
-      this(new yb.e<>($$0, $$1));
+public record yb(UUID a, cpr b) {
+   public yg a(Duration $$0) {
+      return new yg.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   private yb(yb.e<?> $$0) {
-      this.b = $$0;
+   public ye.b a(UUID $$0) {
+      return new ye($$0, this.a).a(this.b);
    }
 
-   public yb.a<?> a() {
-      return this.b.c;
+   public yb.a a() {
+      return new yb.a(this.a, this.b.b());
    }
 
-   @Nullable
-   public <T> T a(yb.a<T> $$0) {
-      return this.b.c == $$0 ? $$0.a(this.b.d) : null;
+   public boolean b() {
+      return this.b.b().a();
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? ((yb)$$0).b.equals(this.b) : false;
-      }
+   public UUID c() {
+      return this.a;
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
+   public cpr d() {
+      return this.b;
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static class a<T> implements bba {
-      public static final yb.a<xv> a = new yb.a<>("show_text", true, xx.a, ($$0, $$1) -> DataResult.success($$0));
-      public static final yb.a<yb.c> b = new yb.a<>("show_item", true, yb.c.b, yb.c::a);
-      public static final yb.a<yb.b> c = new yb.a<>("show_entity", true, yb.b.a, yb.b::a);
-      public static final Codec<yb.a<?>> d = bba.b(() -> new yb.a[]{a, b, c});
-      public static final Codec<yb.a<?>> e = d.validate(yb.a::a);
-      private final String f;
-      private final boolean g;
-      final MapCodec<yb.e<T>> h;
-      final MapCodec<yb.e<T>> i;
-
-      public a(String $$0, boolean $$1, Codec<T> $$2, final yb.d<T> $$3) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2.xmap($$0x -> new yb.e<>(this, (T)$$0x), $$0x -> $$0x.d).fieldOf("contents");
-         this.i = (new Codec<yb.e<T>>() {
-            public <D> DataResult<Pair<yb.e<T>, D>> decode(DynamicOps<D> $$0, D $$1) {
-               return xx.a.decode($$0, $$1).flatMap($$2 -> {
-                  DataResult<T> $$4;
-                  if ($$0 instanceof alx<D> $$3xx) {
-                     $$4 = $$3.parse((xv)$$2.getFirst(), $$3xx);
-                  } else {
-                     $$4 = $$3.parse((xv)$$2.getFirst(), null);
-                  }
-
-                  return $$4.map($$1xx -> Pair.of(new yb.e<>(a.this, $$1xx), $$2.getSecond()));
-               });
-            }
-
-            public <D> DataResult<D> a(yb.e<T> $$0, DynamicOps<D> $$1, D $$2) {
-               return DataResult.error(() -> "Can't encode in legacy format");
-            }
-         }).fieldOf("value");
+   public static record a(UUID a, cpr.a b) {
+      public static yb.a a(wh $$0) {
+         return new yb.a($$0.n(), new cpr.a($$0));
       }
 
-      public boolean a() {
-         return this.g;
+      public static void a(wh $$0, yb.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
-
-      T a(Object $$0) {
-         return (T)$$0;
-      }
-
-      @Override
-      public String toString() {
-         return "<action " + this.f + ">";
-      }
-
-      private static DataResult<yb.a<?>> a(@Nullable yb.a<?> $$0) {
-         if ($$0 == null) {
-            return DataResult.error(() -> "Unknown action");
-         } else {
-            return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
-         }
-      }
-   }
-
-   public static class b {
-      public static final Codec<yb.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ma.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                  kk.f.fieldOf("id").forGetter($$0x -> $$0x.c),
-                  xx.a.lenientOptionalFieldOf("name").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, yb.b::new)
-      );
-      public final bvr<?> b;
-      public final UUID c;
-      public final Optional<xv> d;
-      @Nullable
-      private List<xv> e;
-
-      public b(bvr<?> $$0, UUID $$1, @Nullable xv $$2) {
-         this($$0, $$1, Optional.ofNullable($$2));
-      }
-
-      public b(bvr<?> $$0, UUID $$1, Optional<xv> $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public static DataResult<yb.b> a(xv $$0, @Nullable alx<?> $$1) {
-         try {
-            ux $$2 = vv.a($$0.getString());
-            DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
-            DataResult<xv> $$4 = xx.a.parse($$3, JsonParser.parseString($$2.l("name")));
-            bvr<?> $$5 = ma.f.a(alz.a($$2.l("type")));
-            UUID $$6 = UUID.fromString($$2.l("id"));
-            return $$4.map($$2x -> new yb.b($$5, $$6, $$2x));
-         } catch (Exception var7) {
-            return DataResult.error(() -> "Failed to parse tooltip: " + var7.getMessage());
-         }
-      }
-
-      public List<xv> a() {
-         if (this.e == null) {
-            this.e = new ArrayList<>();
-            this.d.ifPresent(this.e::add);
-            this.e.add(xv.a("gui.entity_tooltip.type", this.b.h()));
-            this.e.add(xv.b(this.c.toString()));
-         }
-
-         return this.e;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            yb.b $$1 = (yb.b)$$0;
-            return this.b.equals($$1.b) && this.c.equals($$1.c) && this.d.equals($$1.d);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.b.hashCode();
-         $$0 = 31 * $$0 + this.c.hashCode();
-         return 31 * $$0 + this.d.hashCode();
-      }
-   }
-
-   public static class c {
-      public static final Codec<yb.c> a = cxp.a.xmap(yb.c::new, yb.c::a);
-      private static final Codec<yb.c> c = cxp.f.xmap(yb.c::new, yb.c::a);
-      public static final Codec<yb.c> b = Codec.withAlternative(a, c);
-      private final jq<cxl> d;
-      private final int e;
-      private final kr f;
-      @Nullable
-      private cxp g;
-
-      c(jq<cxl> $$0, int $$1, kr $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
-
-      public c(cxp $$0) {
-         this($$0.i(), $$0.L(), $$0.e());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            yb.c $$1 = (yb.c)$$0;
-            return this.e == $$1.e && this.d.equals($$1.d) && this.f.equals($$1.f);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.d.hashCode();
-         $$0 = 31 * $$0 + this.e;
-         return 31 * $$0 + this.f.hashCode();
-      }
-
-      public cxp a() {
-         if (this.g == null) {
-            this.g = new cxp(this.d, this.e, this.f);
-         }
-
-         return this.g;
-      }
-
-      private static DataResult<yb.c> a(xv $$0, @Nullable alx<?> $$1) {
-         try {
-            ux $$2 = vv.a($$0.getString());
-            DynamicOps<vu> $$3 = (DynamicOps<vu>)($$1 != null ? $$1.a(vl.a) : vl.a);
-            return cxp.a.parse($$3, $$2).map(yb.c::new);
-         } catch (CommandSyntaxException var4) {
-            return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
-         }
-      }
-   }
-
-   public interface d<T> {
-      DataResult<T> parse(xv var1, @Nullable alx<?> var2);
-   }
-
-   static record e<T>(yb.a<T> c, T d) {
-      public static final MapCodec<yb.e<?>> a = yb.a.e.dispatchMap("action", yb.e::a, $$0 -> $$0.h);
-      public static final MapCodec<yb.e<?>> b = yb.a.e.dispatchMap("action", yb.e::a, $$0 -> $$0.i);
-
-      public yb.a<T> a() {
-         return this.c;
-      }
-
-      public T b() {
-         return this.d;
+      public yb a(GameProfile $$0, bah $$1) throws cpr.b {
+         return new yb(this.a, cpr.a($$1, $$0.getId(), this.b));
       }
    }
 }

@@ -1,18 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record den(deg d, deg e, jq<buc> f) implements deq {
+public record den(jq<awu> d, bsd e, bsd f) implements deh {
    public static final MapCodec<den> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               deg.b.fieldOf("min_damage").forGetter(den::b), deg.b.fieldOf("max_damage").forGetter(den::c), buc.b.fieldOf("damage_type").forGetter(den::d)
+               awu.b.fieldOf("sound").forGetter(den::b),
+               bsd.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(den::c),
+               bsd.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(den::d)
             )
             .apply($$0, den::new)
    );
 
    @Override
-   public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4) {
-      float $$5 = bae.b($$3.dZ(), this.d.a($$1), this.e.a($$1));
-      $$3.a($$0, new bua(this.f, $$2.c()), $$5);
+   public void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4) {
+      bac $$5 = $$3.dZ();
+      if (!$$3.bb()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dn(), this.e.a($$5), this.f.a($$5));
+      }
    }
 
    @Override
@@ -20,15 +24,15 @@ public record den(deg d, deg e, jq<buc> f) implements deq {
       return a;
    }
 
-   public deg b() {
+   public jq<awu> b() {
       return this.d;
    }
 
-   public deg c() {
+   public bsd c() {
       return this.e;
    }
 
-   public jq<buc> d() {
+   public bsd d() {
       return this.f;
    }
 }

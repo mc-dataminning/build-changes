@@ -1,71 +1,70 @@
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
-import java.time.Instant;
 import java.util.Optional;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public record yo(String b, Instant c, long d, yc e) {
+public class yo implements xl {
    public static final MapCodec<yo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(yo::a),
-               azn.q.fieldOf("time_stamp").forGetter(yo::b),
-               Codec.LONG.fieldOf("salt").forGetter(yo::c),
-               yc.a.optionalFieldOf("last_seen", yc.b).forGetter(yo::d)
-            )
-            .apply($$0, yo::new)
+      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, yo::new)
    );
+   public static final xl.a<yo> b = new xl.a<>(a, "keybind");
+   private final String c;
+   @Nullable
+   private Supplier<xk> d;
 
-   public static yo a(String $$0) {
-      return new yo($$0, Instant.now(), 0L, yc.b);
+   public yo(String $$0) {
+      this.c = $$0;
    }
 
-   public void a(baq.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
+   private xk c() {
+      if (this.d == null) {
+         this.d = yp.a.apply(this.c);
+      }
+
+      return this.d.get();
    }
 
-   public yo.a a(yi $$0) {
-      return new yo.a(this.b, this.c, this.d, this.e.a($$0));
+   @Override
+   public <T> Optional<T> a(xp.a<T> $$0) {
+      return this.c().a($$0);
    }
 
-   public String a() {
-      return this.b;
+   @Override
+   public <T> Optional<T> a(xp.b<T> $$0, yh $$1) {
+      return this.c().a($$0, $$1);
    }
 
-   public Instant b() {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof yo $$1 && this.c.equals($$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "keybind{" + this.c + "}";
+   }
+
+   public String b() {
       return this.c;
    }
 
-   public long c() {
-      return this.d;
-   }
-
-   public yc d() {
-      return this.e;
-   }
-
-   public static record a(String a, Instant b, long c, yc.a d) {
-      public a(ws $$0) {
-         this($$0.d(256), $$0.t(), $$0.readLong(), new yc.a($$0));
-      }
-
-      public void a(ws $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
-      }
-
-      public Optional<yo> a(yi $$0) {
-         return this.d.a($$0).map($$0x -> new yo(this.a, this.b, this.c, $$0x));
-      }
+   @Override
+   public xl.a<?> a() {
+      return b;
    }
 }

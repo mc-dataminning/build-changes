@@ -1,47 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsd extends djy {
-   public static final MapCodec<dsd> a = b(dsd::new);
+public class dsd extends dri {
+   public static final MapCodec<dsd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dza.a.fieldOf("wood_type").forGetter(dri::d), t()).apply($$0, dsd::new));
+   public static final dyn b = dye.bd;
 
    @Override
    public MapCodec<dsd> a() {
       return a;
    }
 
-   protected dsd(dxu.d $$0) {
-      super($$0);
+   public dsd(dza $$0, dxn.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.F.b().b(b, Integer.valueOf(0)).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public dux a(jh $$0, dxv $$1) {
-      return new dwo($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dux> duy<T> a(dhi $$0, dxv $$1, duz<T> $$2) {
-      return a($$2, duz.j, $$0.C ? dwo::a : dwo::b);
+   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected void a(dxv $$0, ash $$1, jh $$2, cxp $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
-         this.a($$1, $$2, $$5);
-      }
+   public dxo a(dax $$0) {
+      etq $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Integer.valueOf(dyt.a($$0.i() + 180.0F))).b(f, Boolean.valueOf($$1.a() == etr.c));
    }
 
    @Override
-   protected dqv a_(dxv $$0) {
-      return dqv.c;
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      return $$4 == jm.a && !this.a($$0, $$1, $$3) ? dkf.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public void a(cxp $$0, cxl.b $$1, List<xv> $$2, czh $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      did.a($$0, $$2, "SpawnData");
+   public float h(dxo $$0) {
+      return dyt.b($$0.c(b));
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dqv $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected dxo a(dxo $$0, dpc $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(b, f);
    }
 }

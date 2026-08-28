@@ -1,14 +1,8 @@
-public interface akc extends aco {
-   @Override
-   default wq b() {
-      return wq.d;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ake var1);
-
-   void a(akf var1);
-
-   void a(akd var1);
-
-   void a(akg var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface akc {
 }

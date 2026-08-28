@@ -1,103 +1,79 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWMonitorCallback;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
 
-public class fft {
-   private static final Logger a = LogUtils.getLogger();
-   private final Long2ObjectMap<ffq> b = new Long2ObjectOpenHashMap();
-   private final ffr c;
+public class fft implements ffu, AutoCloseable {
+   private final int b;
+   private final Deque<fft.a<?>> c = new ArrayDeque<>();
 
-   public fft(ffr $$0) {
-      this.c = $$0;
-      GLFW.glfwSetMonitorCallback(this::a);
-      PointerBuffer $$1 = GLFW.glfwGetMonitors();
-      if ($$1 != null) {
-         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
-            long $$3 = $$1.get($$2);
-            this.b.put($$3, $$0.createMonitor($$3));
-         }
-      }
-   }
-
-   private void a(long $$0, int $$1) {
-      RenderSystem.assertOnRenderThread();
-      if ($$1 == 262145) {
-         this.b.put($$0, this.c.createMonitor($$0));
-         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
-      } else if ($$1 == 262146) {
-         this.b.remove($$0);
-         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
-      }
-   }
-
-   @Nullable
-   public ffq a(long $$0) {
-      return (ffq)this.b.get($$0);
-   }
-
-   @Nullable
-   public ffq a(ffv $$0) {
-      long $$1 = GLFW.glfwGetWindowMonitor($$0.h());
-      if ($$1 != 0L) {
-         return this.a($$1);
-      } else {
-         int $$2 = $$0.q();
-         int $$3 = $$2 + $$0.m();
-         int $$4 = $$0.r();
-         int $$5 = $$4 + $$0.n();
-         int $$6 = -1;
-         ffq $$7 = null;
-         long $$8 = GLFW.glfwGetPrimaryMonitor();
-         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
-         ObjectIterator var12 = this.b.values().iterator();
-
-         while (var12.hasNext()) {
-            ffq $$9 = (ffq)var12.next();
-            int $$10 = $$9.c();
-            int $$11 = $$10 + $$9.b().a();
-            int $$12 = $$9.d();
-            int $$13 = $$12 + $$9.b().b();
-            int $$14 = a($$2, $$10, $$11);
-            int $$15 = a($$3, $$10, $$11);
-            int $$16 = a($$4, $$12, $$13);
-            int $$17 = a($$5, $$12, $$13);
-            int $$18 = Math.max(0, $$15 - $$14);
-            int $$19 = Math.max(0, $$17 - $$16);
-            int $$20 = $$18 * $$19;
-            if ($$20 > $$6) {
-               $$7 = $$9;
-               $$6 = $$20;
-            } else if ($$20 == $$6 && $$8 == $$9.f()) {
-               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
-               $$7 = $$9;
-            }
-         }
-
-         a.debug("Selected monitor: {}", $$7);
-         return $$7;
-      }
-   }
-
-   public static int a(int $$0, int $$1, int $$2) {
-      if ($$0 < $$1) {
-         return $$1;
-      } else {
-         return $$0 > $$2 ? $$2 : $$0;
-      }
+   public fft(int $$0) {
+      this.b = $$0;
    }
 
    public void a() {
-      RenderSystem.assertOnRenderThread();
-      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
-      if ($$0 != null) {
-         $$0.free();
+      Iterator<? extends fft.a<?>> $$0 = this.c.iterator();
+
+      while ($$0.hasNext()) {
+         fft.a<?> $$1 = (fft.a<?>)$$0.next();
+         if ($$1.c-- == 0) {
+            $$1.close();
+            $$0.remove();
+         }
+      }
+   }
+
+   @Override
+   public <T> T a(ffw<T> $$0) {
+      Iterator<? extends fft.a<?>> $$1 = this.c.iterator();
+
+      while ($$1.hasNext()) {
+         fft.a<?> $$2 = (fft.a<?>)$$1.next();
+         if ($$2.a.equals($$0)) {
+            $$1.remove();
+            return (T)$$2.b;
+         }
+      }
+
+      return $$0.e();
+   }
+
+   @Override
+   public <T> void a(ffw<T> $$0, T $$1) {
+      this.c.addFirst(new fft.a<>($$0, $$1, this.b));
+   }
+
+   public void b() {
+      this.c.forEach(fft.a::close);
+      this.c.clear();
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @VisibleForTesting
+   protected Collection<fft.a<?>> c() {
+      return this.c;
+   }
+
+   @VisibleForTesting
+   protected static final class a<T> implements AutoCloseable {
+      final ffw<T> a;
+      final T b;
+      int c;
+
+      a(ffw<T> $$0, T $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public void close() {
+         this.a.a(this.b);
       }
    }
 }

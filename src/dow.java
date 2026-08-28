@@ -1,36 +1,7 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dow extends djf {
-   public static final MapCodec<dow> d = b(dow::new);
+public interface dow {
+   boolean a(@Nullable cpo var1, dge var2, jh var3, dxo var4, etp var5);
 
-   @Override
-   public MapCodec<dow> a() {
-      return d;
-   }
-
-   public dow(dxu.d $$0) {
-      super($$0, kn.e);
-   }
-
-   @Override
-   protected double b(dxv $$0) {
-      return 0.9375;
-   }
-
-   @Override
-   public boolean d(dxv $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dxv $$0, dhi $$1, jh $$2, bvk $$3) {
-      if (this.a($$0, $$2, $$3)) {
-         $$3.aE();
-      }
-   }
-
-   @Override
-   protected int a(dxv $$0, dhi $$1, jh $$2) {
-      return 3;
-   }
+   boolean a(dha var1, jh var2, dxo var3, etq var4);
 }

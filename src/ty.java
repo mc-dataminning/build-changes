@@ -1,40 +1,41 @@
-import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
-public class ty {
-   public static final ty a = new ty();
-   private final Collection<ts> b = Lists.newCopyOnWriteArrayList();
-   @Nullable
-   private tv c;
+public class ty implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
 
-   private ty() {
-   }
-
-   public void a(ts $$0) {
-      this.b.add($$0);
-   }
-
-   public void a() {
-      this.b.clear();
-      if (this.c != null) {
-         this.c.c();
-         this.c = null;
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (tj.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = xk.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
       }
    }
 
-   public void a(tv $$0) {
-      if (this.c != null) {
-         ae.b("The runner was already set in GameTestTicker");
-      }
-
-      this.c = $$0;
+   public static ty a() {
+      return new ty();
    }
 
-   public void b() {
-      if (this.c != null) {
-         this.b.forEach($$0 -> $$0.a(this.c));
-         this.b.removeIf(ts::k);
-      }
+   public static String a(CommandContext<ew> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return fb.b(tj.b().stream(), $$1);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
    }
 }

@@ -1,55 +1,61 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
+public class bvt {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final akw c;
+   private final aks<Integer> d;
+   private final aks<Boolean> e;
+   private boolean f;
+   private int g;
 
-public enum bvt implements bba {
-   a(0, "any", $$0 -> true),
-   b(1, "mainhand", bvs.a),
-   c(2, "offhand", bvs.b),
-   d(3, "hand", $$0 -> $$0.a() == bvs.a.a),
-   e(4, "feet", bvs.c),
-   f(5, "legs", bvs.d),
-   g(6, "chest", bvs.e),
-   h(7, "head", bvs.f),
-   i(8, "armor", bvs::f),
-   j(9, "body", bvs.g);
-
-   public static final IntFunction<bvt> k = ayv.a($$0 -> $$0.n, values(), ayv.a.a);
-   public static final Codec<bvt> l = bba.a(bvt::values);
-   public static final zt<ByteBuf, bvt> m = zr.a(k, $$0 -> $$0.n);
-   private final int n;
-   private final String o;
-   private final Predicate<bvs> p;
-
-   private bvt(final int $$0, final String $$1, final Predicate<bvs> $$2) {
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
+   public bvt(akw $$0, aks<Integer> $$1, aks<Boolean> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private bvt(final int $$0, final String $$1, final bvs $$2) {
-      this($$0, $$1, $$1x -> $$1x == $$2);
+   public void a() {
+      this.f = true;
+      this.g = 0;
    }
 
-   public static bvt a(bvs $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> c;
-         case c -> e;
-         case d -> f;
-         case e -> g;
-         case f -> h;
-         case g -> j;
-      };
+   public boolean a(bac $$0) {
+      if (this.f) {
+         return false;
+      } else {
+         this.f = true;
+         this.g = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.o;
+   public void b() {
+      if (this.f && this.g++ > this.e()) {
+         this.f = false;
+      }
    }
 
-   public boolean b(bvs $$0) {
-      return this.p.test($$0);
+   public float c() {
+      return this.f ? 1.0F + 1.15F * azu.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   }
+
+   private int e() {
+      return this.c.a(this.d);
+   }
+
+   public void a(um $$0) {
+      $$0.a("Saddle", this.d());
+   }
+
+   public void b(um $$0) {
+      this.a($$0.q("Saddle"));
+   }
+
+   public void a(boolean $$0) {
+      this.c.a(this.e, $$0);
+   }
+
+   public boolean d() {
+      return this.c.a(this.e);
    }
 }

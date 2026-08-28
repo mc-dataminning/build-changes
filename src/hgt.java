@@ -1,33 +1,59 @@
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class hgt implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
-   private final bol<hgs> b;
-   private final brz c;
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final boa d;
+   @Nullable
+   private CompletableFuture<Optional<hgp>> e;
 
-   public hgt(FileChannel $$0, Executor $$1) {
-      this.b = new bol<>(hgs.a, $$0);
-      this.c = new brz($$1, "telemetry-event-log");
+   private hgt(boa $$0) {
+      this.d = $$0;
    }
 
-   public hgu a() {
-      return $$0 -> this.c.a_(() -> {
+   public static CompletableFuture<Optional<hgt>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            boa $$1 = boa.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new hgt($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ae.g());
+   }
+
+   public CompletableFuture<Optional<hgq>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
             try {
-               this.b.a($$0);
+               boa.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new hgp($$1, ae.g()));
             } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
             }
-         });
+         }, ae.g());
+      }
+
+      return this.e.thenApply($$0 -> $$0.map(hgp::a));
    }
 
    @Override
    public void close() {
-      this.c.a_(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+      if (this.e != null) {
+         this.e.thenAccept($$0 -> $$0.ifPresent(hgp::close));
+      }
    }
 }

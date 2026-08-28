@@ -1,12 +1,11 @@
-public class gql extends gsw<cjd, gwz, gaf> {
-   private static final alz a = alz.b("textures/entity/allay/allay.png");
+public class gql extends gsr<chi, gwz, gaj> {
+   private static final alp a = alp.b("textures/entity/bat.png");
 
-   public gql(grq.a $$0) {
-      super($$0, new gaf($$0.a(gen.c)), 0.4F);
-      this.a(new gvx<>(this, $$0.b()));
+   public gql(grl.a $$0) {
+      super($$0, new gaj($$0.a(gei.u)), 0.25F);
    }
 
-   public alz a(gwz $$0) {
+   public alp a(gwz $$0) {
       return a;
    }
 
@@ -14,15 +13,10 @@ public class gql extends gsw<cjd, gwz, gaf> {
       return new gwz();
    }
 
-   public void a(cjd $$0, gwz $$1, float $$2) {
+   public void a(chi $$0, gwz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
-      $$1.b = $$0.go();
-      $$1.c = $$0.K($$2);
-      $$1.d = $$0.J($$2);
-   }
-
-   protected int a(cjd $$0, jh $$1) {
-      return 15;
+      $$1.a = $$0.p();
+      $$1.b.a($$0.c);
+      $$1.c.a($$0.d);
    }
 }

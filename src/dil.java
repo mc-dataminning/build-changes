@@ -1,103 +1,108 @@
-import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.Supplier;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class dil {
-   private static final Logger c = LogUtils.getLogger();
-   public static final dil a = new dil(ju.a(), List.of());
-   public static final MapCodec<dil> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               efu.c.promotePartial(ae.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               eno.d.promotePartial(ae.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dil::new)
-   );
-   private final ju<efu<?>> d;
-   private final List<ju<eno>> e;
-   private final Supplier<List<egi<?, ?>>> f;
-   private final Supplier<Set<eno>> g;
+   public static <T> List<dil.b> a(List<T> $$0, Function<T, List<ju<enh>>> $$1, boolean $$2) {
+      Object2IntMap<enh> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   dil(ju<efu<?>> $$0, List<ju<eno>> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(ju::a).map(jq::a).flatMap(eno::a).filter($$0xx -> $$0xx.b() == egw.g).collect(ImmutableList.toImmutableList())
-      );
-      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ju::a).map(jq::a).collect(Collectors.toSet()));
-   }
-
-   public Iterable<jq<efu<?>>> a() {
-      return this.d;
-   }
-
-   public List<egi<?, ?>> b() {
-      return this.f.get();
-   }
-
-   public List<ju<eno>> c() {
-      return this.e;
-   }
-
-   public boolean a(eno $$0) {
-      return this.g.get().contains($$0);
-   }
-
-   public static class a extends dil.b {
-      private final jr<eno> a;
-      private final jr<efu<?>> b;
-
-      public a(jr<eno> $$0, jr<efu<?>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      record a(int a, int b, enh c) {
       }
 
-      public dil.a a(edm.a $$0, aly<eno> $$1) {
-         this.a($$0.ordinal(), this.a.b($$1));
-         return this;
-      }
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
 
-      public dil.a a(aly<efu<?>> $$0) {
-         this.a(this.b.b($$0));
-         return this;
-      }
-   }
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<ju<enh>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
 
-   public static class b {
-      private final List<jq<efu<?>>> a = new ArrayList<>();
-      private final List<List<jq<eno>>> b = new ArrayList<>();
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (jq<enh> $$12 : $$10.get($$11)) {
+               enh $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
+            }
+         }
 
-      public dil.b a(edm.a $$0, jq<eno> $$1) {
-         return this.a($$0.ordinal(), $$1);
-      }
-
-      public dil.b a(int $$0, jq<eno> $$1) {
-         this.a($$0);
-         this.b.get($$0).add($$1);
-         return this;
-      }
-
-      public dil.b a(jq<efu<?>> $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      private void a(int $$0) {
-         while (this.b.size() <= $$0) {
-            this.b.add(Lists.newArrayList());
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
          }
       }
 
-      public dil a() {
-         return new dil(ju.a(this.a), this.b.stream().map(ju::a).collect(ImmutableList.toImmutableList()));
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && azj.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
+      }
+
+      Collections.reverse($$18);
+      Builder<dil.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<enh> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new dil.b($$28));
+      }
+
+      return $$25.build();
+   }
+
+   public static record b(List<enh> a, ToIntFunction<enh> b) {
+      b(List<enh> $$0) {
+         this($$0, ae.h($$0));
       }
    }
 }

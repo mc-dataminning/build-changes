@@ -1,380 +1,81 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class gld {
-   private static final Map<dkm, glv> a = ae.a(Maps.newHashMap(), $$0 -> {
-      glv $$1 = glv.s();
-      $$0.put(dko.fW, $$1);
-      glv $$2 = glv.d();
-      $$0.put(dko.i, $$2);
-      $$0.put(dko.fk, $$2);
-      $$0.put(dko.fm, $$2);
-      $$0.put(dko.fV, $$2);
-      $$0.put(dko.hs, $$2);
-      $$0.put(dko.fl, $$2);
-      $$0.put(dko.aN, $$2);
-      $$0.put(dko.aK, $$2);
-      $$0.put(dko.aL, $$2);
-      $$0.put(dko.aO, $$2);
-      $$0.put(dko.aP, $$2);
-      $$0.put(dko.aM, $$2);
-      $$0.put(dko.aQ, $$2);
-      $$0.put(dko.aR, $$2);
-      $$0.put(dko.aT, $$2);
-      $$0.put(dko.aU, $$2);
-      $$0.put(dko.ag, $$2);
-      $$0.put(dko.aS, $$2);
-      glv $$3 = glv.e();
-      $$0.put(dko.z, $$3);
-      $$0.put(dko.A, $$3);
-      $$0.put(dko.B, $$3);
-      $$0.put(dko.C, $$3);
-      $$0.put(dko.D, $$3);
-      $$0.put(dko.E, $$3);
-      $$0.put(dko.F, $$3);
-      $$0.put(dko.G, $$3);
-      $$0.put(dko.aX, $$3);
-      $$0.put(dko.bg, $$3);
-      $$0.put(dko.bh, $$3);
-      $$0.put(dko.bi, $$3);
-      $$0.put(dko.bj, $$3);
-      $$0.put(dko.bk, $$3);
-      $$0.put(dko.bl, $$3);
-      $$0.put(dko.bm, $$3);
-      $$0.put(dko.bn, $$3);
-      $$0.put(dko.bo, $$3);
-      $$0.put(dko.bp, $$3);
-      $$0.put(dko.bq, $$3);
-      $$0.put(dko.br, $$3);
-      $$0.put(dko.bs, $$3);
-      $$0.put(dko.bt, $$3);
-      $$0.put(dko.bu, $$3);
-      $$0.put(dko.bv, $$3);
-      $$0.put(dko.bw, $$3);
-      $$0.put(dko.bx, $$3);
-      $$0.put(dko.bz, $$3);
-      $$0.put(dko.bA, $$3);
-      $$0.put(dko.bB, $$3);
-      $$0.put(dko.bC, $$3);
-      $$0.put(dko.bD, $$3);
-      $$0.put(dko.bE, $$3);
-      $$0.put(dko.bY, $$3);
-      $$0.put(dko.ca, $$3);
-      $$0.put(dko.cb, $$3);
-      $$0.put(dko.cc, $$3);
-      $$0.put(dko.cd, $$3);
-      $$0.put(dko.ce, $$3);
-      $$0.put(dko.cf, $$3);
-      $$0.put(dko.cg, $$3);
-      $$0.put(dko.ch, $$3);
-      $$0.put(dko.ci, $$3);
-      $$0.put(dko.cj, $$3);
-      $$0.put(dko.ck, $$3);
-      $$0.put(dko.cl, $$3);
-      $$0.put(dko.cm, $$3);
-      $$0.put(dko.cn, $$3);
-      $$0.put(dko.cw, $$3);
-      $$0.put(dko.cx, $$3);
-      $$0.put(dko.en, $$3);
-      $$0.put(dko.eo, $$3);
-      $$0.put(dko.cy, $$3);
-      $$0.put(dko.cz, $$3);
-      $$0.put(dko.cA, $$3);
-      $$0.put(dko.tM, $$3);
-      $$0.put(dko.tN, $$3);
-      $$0.put(dko.cE, $$3);
-      $$0.put(dko.cJ, $$3);
-      $$0.put(dko.cW, $$3);
-      $$0.put(dko.cX, $$3);
-      $$0.put(dko.cY, $$3);
-      $$0.put(dko.dK, $$3);
-      $$0.put(dko.dX, $$3);
-      $$0.put(dko.dY, $$3);
-      $$0.put(dko.ed, $$3);
-      $$0.put(dko.ef, $$3);
-      $$0.put(dko.eu, $$3);
-      $$0.put(dko.eL, $$3);
-      $$0.put(dko.eM, $$3);
-      $$0.put(dko.eN, $$3);
-      $$0.put(dko.eO, $$3);
-      $$0.put(dko.eP, $$3);
-      $$0.put(dko.eQ, $$3);
-      $$0.put(dko.eR, $$3);
-      $$0.put(dko.eS, $$3);
-      $$0.put(dko.ph, $$3);
-      $$0.put(dko.pi, $$3);
-      $$0.put(dko.eT, $$3);
-      $$0.put(dko.eU, $$3);
-      $$0.put(dko.sp, $$3);
-      $$0.put(dko.sq, $$3);
-      $$0.put(dko.ss, $$3);
-      $$0.put(dko.sr, $$3);
-      $$0.put(dko.st, $$3);
-      $$0.put(dko.su, $$3);
-      $$0.put(dko.sw, $$3);
-      $$0.put(dko.sv, $$3);
-      $$0.put(dko.fp, $$3);
-      $$0.put(dko.fq, $$3);
-      $$0.put(dko.fr, $$3);
-      $$0.put(dko.fs, $$3);
-      $$0.put(dko.ft, $$3);
-      $$0.put(dko.tQ, $$3);
-      $$0.put(dko.tR, $$3);
-      $$0.put(dko.fu, $$3);
-      $$0.put(dko.fA, $$3);
-      $$0.put(dko.fE, $$3);
-      $$0.put(dko.fG, $$3);
-      $$0.put(dko.fQ, $$3);
-      $$0.put(dko.gc, $$3);
-      $$0.put(dko.gf, $$3);
-      $$0.put(dko.gh, $$3);
-      $$0.put(dko.gi, $$3);
-      $$0.put(dko.gj, $$3);
-      $$0.put(dko.gk, $$3);
-      $$0.put(dko.gl, $$3);
-      $$0.put(dko.gm, $$3);
-      $$0.put(dko.gn, $$3);
-      $$0.put(dko.go, $$3);
-      $$0.put(dko.gp, $$3);
-      $$0.put(dko.gq, $$3);
-      $$0.put(dko.gr, $$3);
-      $$0.put(dko.gs, $$3);
-      $$0.put(dko.gt, $$3);
-      $$0.put(dko.gu, $$3);
-      $$0.put(dko.gv, $$3);
-      $$0.put(dko.gw, $$3);
-      $$0.put(dko.gx, $$3);
-      $$0.put(dko.gy, $$3);
-      $$0.put(dko.gz, $$3);
-      $$0.put(dko.gA, $$3);
-      $$0.put(dko.gB, $$3);
-      $$0.put(dko.gC, $$3);
-      $$0.put(dko.gD, $$3);
-      $$0.put(dko.gE, $$3);
-      $$0.put(dko.gF, $$3);
-      $$0.put(dko.gG, $$3);
-      $$0.put(dko.gH, $$3);
-      $$0.put(dko.tD, $$3);
-      $$0.put(dko.tE, $$3);
-      $$0.put(dko.gg, $$3);
-      $$0.put(dko.gI, $$3);
-      $$0.put(dko.gJ, $$3);
-      $$0.put(dko.ho, $$3);
-      $$0.put(dko.hx, $$3);
-      $$0.put(dko.ip, $$3);
-      $$0.put(dko.iU, $$3);
-      $$0.put(dko.iV, $$3);
-      $$0.put(dko.iW, $$3);
-      $$0.put(dko.iX, $$3);
-      $$0.put(dko.iY, $$3);
-      $$0.put(dko.iZ, $$3);
-      $$0.put(dko.kF, $$3);
-      $$0.put(dko.kG, $$3);
-      $$0.put(dko.kH, $$3);
-      $$0.put(dko.kI, $$3);
-      $$0.put(dko.kJ, $$3);
-      $$0.put(dko.kK, $$3);
-      $$0.put(dko.kL, $$3);
-      $$0.put(dko.kM, $$3);
-      $$0.put(dko.kN, $$3);
-      $$0.put(dko.sh, $$3);
-      $$0.put(dko.si, $$3);
-      $$0.put(dko.sk, $$3);
-      $$0.put(dko.sj, $$3);
-      $$0.put(dko.sl, $$3);
-      $$0.put(dko.sm, $$3);
-      $$0.put(dko.so, $$3);
-      $$0.put(dko.sn, $$3);
-      $$0.put(dko.kO, $$3);
-      $$0.put(dko.kP, $$3);
-      $$0.put(dko.kQ, $$3);
-      $$0.put(dko.bZ, $$3);
-      $$0.put(dko.kV, $$3);
-      $$0.put(dko.kX, $$3);
-      $$0.put(dko.kW, $$3);
-      $$0.put(dko.kY, $$3);
-      $$0.put(dko.mx, $$3);
-      $$0.put(dko.my, $$3);
-      $$0.put(dko.mA, $$3);
-      $$0.put(dko.mM, $$3);
-      $$0.put(dko.mN, $$3);
-      $$0.put(dko.mO, $$3);
-      $$0.put(dko.mP, $$3);
-      $$0.put(dko.mQ, $$3);
-      $$0.put(dko.mR, $$3);
-      $$0.put(dko.mS, $$3);
-      $$0.put(dko.mT, $$3);
-      $$0.put(dko.mU, $$3);
-      $$0.put(dko.mV, $$3);
-      $$0.put(dko.mW, $$3);
-      $$0.put(dko.mX, $$3);
-      $$0.put(dko.mY, $$3);
-      $$0.put(dko.mZ, $$3);
-      $$0.put(dko.na, $$3);
-      $$0.put(dko.nb, $$3);
-      $$0.put(dko.nc, $$3);
-      $$0.put(dko.nd, $$3);
-      $$0.put(dko.ne, $$3);
-      $$0.put(dko.nf, $$3);
-      $$0.put(dko.ng, $$3);
-      $$0.put(dko.nh, $$3);
-      $$0.put(dko.ni, $$3);
-      $$0.put(dko.nj, $$3);
-      $$0.put(dko.nk, $$3);
-      $$0.put(dko.nl, $$3);
-      $$0.put(dko.nm, $$3);
-      $$0.put(dko.nn, $$3);
-      $$0.put(dko.no, $$3);
-      $$0.put(dko.np, $$3);
-      $$0.put(dko.nq, $$3);
-      $$0.put(dko.ns, $$3);
-      $$0.put(dko.nt, $$3);
-      $$0.put(dko.nu, $$3);
-      $$0.put(dko.nv, $$3);
-      $$0.put(dko.on, $$3);
-      $$0.put(dko.ox, $$3);
-      $$0.put(dko.oz, $$3);
-      $$0.put(dko.oA, $$3);
-      $$0.put(dko.oB, $$3);
-      $$0.put(dko.oC, $$3);
-      $$0.put(dko.oD, $$3);
-      $$0.put(dko.oU, $$3);
-      $$0.put(dko.oV, $$3);
-      $$0.put(dko.oW, $$3);
-      $$0.put(dko.oX, $$3);
-      $$0.put(dko.oM, $$3);
-      $$0.put(dko.oS, $$3);
-      $$0.put(dko.oJ, $$3);
-      $$0.put(dko.oY, $$3);
-      $$0.put(dko.oL, $$3);
-      $$0.put(dko.pH, $$3);
-      $$0.put(dko.pI, $$3);
-      $$0.put(dko.pJ, $$3);
-      $$0.put(dko.pK, $$3);
-      $$0.put(dko.pp, $$3);
-      $$0.put(dko.pq, $$3);
-      $$0.put(dko.sO, $$3);
-      $$0.put(dko.qT, $$3);
-      $$0.put(dko.qS, $$3);
-      $$0.put(dko.qR, $$3);
-      $$0.put(dko.qQ, $$3);
-      $$0.put(dko.sN, $$3);
-      $$0.put(dko.sQ, $$3);
-      $$0.put(dko.sR, $$3);
-      $$0.put(dko.sS, $$3);
-      $$0.put(dko.sU, $$3);
-      $$0.put(dko.sT, $$3);
-      $$0.put(dko.sW, $$3);
-      $$0.put(dko.sY, $$3);
-      $$0.put(dko.sZ, $$3);
-      $$0.put(dko.ta, $$3);
-      $$0.put(dko.tb, $$3);
-      $$0.put(dko.rl, $$3);
-      $$0.put(dko.rm, $$3);
-      $$0.put(dko.ro, $$3);
-      $$0.put(dko.rq, $$3);
-      $$0.put(dko.H, $$3);
-      $$0.put(dko.tI, $$3);
-      $$0.put(dko.sx, $$3);
-      $$0.put(dko.sy, $$3);
-      $$0.put(dko.sz, $$3);
-      $$0.put(dko.sA, $$3);
-      $$0.put(dko.sB, $$3);
-      $$0.put(dko.sC, $$3);
-      $$0.put(dko.sD, $$3);
-      $$0.put(dko.sE, $$3);
-      glv $$4 = glv.f();
-      $$0.put(dko.eb, $$4);
-      $$0.put(dko.eq, $$4);
-      $$0.put(dko.ev, $$4);
-      $$0.put(dko.ew, $$4);
-      $$0.put(dko.ex, $$4);
-      $$0.put(dko.ey, $$4);
-      $$0.put(dko.ez, $$4);
-      $$0.put(dko.eA, $$4);
-      $$0.put(dko.eB, $$4);
-      $$0.put(dko.eC, $$4);
-      $$0.put(dko.eD, $$4);
-      $$0.put(dko.eE, $$4);
-      $$0.put(dko.eF, $$4);
-      $$0.put(dko.eG, $$4);
-      $$0.put(dko.eH, $$4);
-      $$0.put(dko.eI, $$4);
-      $$0.put(dko.eJ, $$4);
-      $$0.put(dko.eK, $$4);
-      $$0.put(dko.hP, $$4);
-      $$0.put(dko.hQ, $$4);
-      $$0.put(dko.hR, $$4);
-      $$0.put(dko.hS, $$4);
-      $$0.put(dko.hT, $$4);
-      $$0.put(dko.hU, $$4);
-      $$0.put(dko.hV, $$4);
-      $$0.put(dko.hW, $$4);
-      $$0.put(dko.hX, $$4);
-      $$0.put(dko.hY, $$4);
-      $$0.put(dko.hZ, $$4);
-      $$0.put(dko.ia, $$4);
-      $$0.put(dko.ib, $$4);
-      $$0.put(dko.ic, $$4);
-      $$0.put(dko.id, $$4);
-      $$0.put(dko.ie, $$4);
-      $$0.put(dko.im, $$4);
-      $$0.put(dko.pB, $$4);
-      $$0.put(dko.ld, $$4);
-      $$0.put(dko.ny, $$4);
-      $$0.put(dko.rj, $$4);
-   });
-   private static final Map<etw, glv> b = ae.a(Maps.newHashMap(), $$0 -> {
-      glv $$1 = glv.f();
-      $$0.put(ety.b, $$1);
-      $$0.put(ety.c, $$1);
-   });
-   private static boolean c;
+public class gld implements glk.a {
+   public static final alp a = glk.a;
+   public static final alp b = alp.b("translucent");
+   public static final alp c = alp.b("item_entity");
+   public static final alp d = alp.b("particles");
+   public static final alp e = alp.b("weather");
+   public static final alp f = alp.b("clouds");
+   public static final alp g = alp.b("entity_outline");
+   public static final Set<alp> h = Set.of(a);
+   public static final Set<alp> i = Set.of(a, g);
+   public static final Set<alp> j = Set.of(a, b, c, d, e, f);
+   public ffx<fev> k = ffx.a();
+   @Nullable
+   public ffx<fev> l;
+   @Nullable
+   public ffx<fev> m;
+   @Nullable
+   public ffx<fev> n;
+   @Nullable
+   public ffx<fev> o;
+   @Nullable
+   public ffx<fev> p;
+   @Nullable
+   public ffx<fev> q;
 
-   public static glv a(dxv $$0) {
-      dkm $$1 = $$0.b();
-      if ($$1 instanceof doy) {
-         return c ? glv.d() : glv.c();
+   @Override
+   public void a(alp $$0, ffx<fev> $$1) {
+      if ($$0.equals(a)) {
+         this.k = $$1;
+      } else if ($$0.equals(b)) {
+         this.l = $$1;
+      } else if ($$0.equals(c)) {
+         this.m = $$1;
+      } else if ($$0.equals(d)) {
+         this.n = $$1;
+      } else if ($$0.equals(e)) {
+         this.o = $$1;
+      } else if ($$0.equals(f)) {
+         this.p = $$1;
       } else {
-         glv $$2 = a.get($$1);
-         return $$2 != null ? $$2 : glv.c();
-      }
-   }
-
-   public static glv b(dxv $$0) {
-      dkm $$1 = $$0.b();
-      if ($$1 instanceof doy) {
-         return c ? glv.d() : glv.c();
-      } else {
-         glv $$2 = a.get($$1);
-         if ($$2 != null) {
-            return $$2 == glv.f() ? glv.g() : $$2;
-         } else {
-            return glv.c();
+         if (!$$0.equals(g)) {
+            throw new IllegalArgumentException("No target with id " + $$0);
          }
+
+         this.q = $$1;
       }
    }
 
-   public static glv c(dxv $$0) {
-      glv $$1 = a($$0);
-      return $$1 == glv.f() ? gmg.j() : gmg.i();
-   }
-
-   public static glv a(cxp $$0) {
-      if ($$0.h() instanceof cvv $$2) {
-         dkm $$3 = $$2.d();
-         return c($$3.m());
+   @Nullable
+   @Override
+   public ffx<fev> a(alp $$0) {
+      if ($$0.equals(a)) {
+         return this.k;
+      } else if ($$0.equals(b)) {
+         return this.l;
+      } else if ($$0.equals(c)) {
+         return this.m;
+      } else if ($$0.equals(d)) {
+         return this.n;
+      } else if ($$0.equals(e)) {
+         return this.o;
+      } else if ($$0.equals(f)) {
+         return this.p;
       } else {
-         return gmg.j();
+         return $$0.equals(g) ? this.q : null;
       }
    }
 
-   public static glv a(etx $$0) {
-      glv $$1 = b.get($$0.a());
-      return $$1 != null ? $$1 : glv.c();
-   }
-
-   public static void a(boolean $$0) {
-      c = $$0;
+   public void a() {
+      this.k = ffx.a();
+      this.l = null;
+      this.m = null;
+      this.n = null;
+      this.o = null;
+      this.p = null;
+      this.q = null;
    }
 }

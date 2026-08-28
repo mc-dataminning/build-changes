@@ -1,148 +1,85 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.DecoderException;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.zip.DataFormatException;
+import java.util.zip.Inflater;
 
-public class wc implements vr {
-   private String a = "";
-   @Nullable
-   private vu b;
-   private final Deque<Consumer<vu>> c = new ArrayDeque<>();
+public class wc extends ByteToMessageDecoder {
+   public static final int a = 2097152;
+   public static final int b = 8388608;
+   private final Inflater c;
+   private int d;
+   private boolean e;
 
-   @Nullable
-   public vu d() {
-      return this.b;
+   public wc(int $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.c = new Inflater();
    }
 
-   protected int e() {
-      return this.c.size();
-   }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      if ($$1.readableBytes() != 0) {
+         int $$3 = xb.a($$1);
+         if ($$3 == 0) {
+            $$2.add($$1.readBytes($$1.readableBytes()));
+         } else {
+            if (this.e) {
+               if ($$3 < this.d) {
+                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is below server threshold of " + this.d);
+               }
 
-   private void a(vu $$0) {
-      this.c.getLast().accept($$0);
-   }
+               if ($$3 > 8388608) {
+                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is larger than protocol maximum of 8388608");
+               }
+            }
 
-   @Override
-   public vr.b a() {
-      this.a(uz.b);
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(String $$0) {
-      this.a(vs.a($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(byte $$0) {
-      this.a(uv.a($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(short $$0) {
-      this.a(vp.a($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(int $$0) {
-      this.a(vc.a($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(long $$0) {
-      this.a(vf.a($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(float $$0) {
-      this.a(va.a($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(double $$0) {
-      this.a(uy.a($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(byte[] $$0) {
-      this.a(new uu($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(int[] $$0) {
-      this.a(new vb($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(long[] $$0) {
-      this.a(new ve($$0));
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b a(vw<?> $$0, int $$1) {
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.a b(vw<?> $$0, int $$1) {
-      this.c($$0);
-      return vr.a.a;
-   }
-
-   @Override
-   public vr.a a(vw<?> $$0) {
-      return vr.a.a;
-   }
-
-   @Override
-   public vr.a a(vw<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return vr.a.a;
-   }
-
-   private void c(vw<?> $$0) {
-      if ($$0 == vd.a) {
-         vd $$1 = new vd();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == ux.b) {
-         ux $$2 = new ux();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+            this.a($$1);
+            ByteBuf $$4 = this.a($$0, $$3);
+            this.c.reset();
+            $$2.add($$4);
+         }
       }
    }
 
-   @Override
-   public vr.b b() {
-      this.c.removeLast();
-      return vr.b.a;
-   }
-
-   @Override
-   public vr.b b(vw<?> $$0) {
-      if ($$0 == vd.a) {
-         vd $$1 = new vd();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == ux.b) {
-         ux $$2 = new ux();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+   private void a(ByteBuf $$0) {
+      ByteBuffer $$1;
+      if ($$0.nioBufferCount() > 0) {
+         $$1 = $$0.nioBuffer();
+         $$0.skipBytes($$0.readableBytes());
       } else {
-         this.c.addLast($$0x -> this.b = $$0x);
+         $$1 = ByteBuffer.allocateDirect($$0.readableBytes());
+         $$0.readBytes($$1);
+         $$1.flip();
       }
 
-      return vr.b.a;
+      this.c.setInput($$1);
+   }
+
+   private ByteBuf a(ChannelHandlerContext $$0, int $$1) throws DataFormatException {
+      ByteBuf $$2 = $$0.alloc().directBuffer($$1);
+
+      try {
+         ByteBuffer $$3 = $$2.internalNioBuffer(0, $$1);
+         int $$4 = $$3.position();
+         this.c.inflate($$3);
+         int $$5 = $$3.position() - $$4;
+         if ($$5 != $$1) {
+            throw new DecoderException("Badly compressed packet - actual length of uncompressed payload " + $$5 + " is does not match declared size " + $$1);
+         } else {
+            $$2.writerIndex($$2.writerIndex() + $$5);
+            return $$2;
+         }
+      } catch (Exception var7) {
+         $$2.release();
+         throw var7;
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 }

@@ -1,9 +1,37 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface dfi {
-   static MapCodec<? extends dfh> a(kd<MapCodec<? extends dfh>> $$0) {
-      kd.a($$0, "by_cost", dfj.b);
-      kd.a($$0, "by_cost_with_difficulty", dfk.c);
-      return kd.a($$0, "single", dfl.b);
+public enum dfi implements baq {
+   a(bvj.f, 11, "helmet"),
+   b(bvj.e, 16, "chestplate"),
+   c(bvj.d, 15, "leggings"),
+   d(bvj.c, 13, "boots"),
+   e(bvj.g, 16, "body");
+
+   public static final Codec<dfi> f = baq.b(dfi::values);
+   private final bvj g;
+   private final String h;
+   private final int i;
+
+   private dfi(final bvj $$0, final int $$1, final String $$2) {
+      this.g = $$0;
+      this.h = $$2;
+      this.i = $$1;
+   }
+
+   public int a(int $$0) {
+      return this.i * $$0;
+   }
+
+   public bvj a() {
+      return this.g;
+   }
+
+   public String b() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

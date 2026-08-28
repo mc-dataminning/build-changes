@@ -1,29 +1,16 @@
-public class ahq implements aac<ahm> {
-   public static final zt<ws, ahq> a = aac.a(ahq::a, ahq::new);
-   private final btg b;
-
-   public ahq(btg $$0) {
-      this.b = $$0;
-   }
-
-   private ahq(ws $$0) {
-      this.b = btg.a($$0.readUnsignedByte());
-   }
-
-   private void a(ws $$0) {
-      $$0.l(this.b.a());
-   }
+public record ahq(int b, int c) implements zr<ahb> {
+   public static final zi<wh, ahq> a = zi.a(zg.w, ahq::b, zg.h, ahq::e, ahq::new);
 
    @Override
-   public aae<ahq> a() {
-      return ahk.bn;
+   public zt<ahq> a() {
+      return agz.by;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public btg b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

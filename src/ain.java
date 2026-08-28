@@ -1,37 +1,60 @@
-public class ain implements aac<ahm> {
-   public static final zt<ws, ain> a = aac.a(ain::a, ain::new);
-   private final boolean b;
-   private final boolean c;
+import javax.annotation.Nullable;
 
-   public ain(boolean $$0, boolean $$1) {
+public class ain implements zr<ahb> {
+   public static final zi<wh, ain> a = zr.a(ain::a, ain::new);
+   private final ain.a b;
+   @Nullable
+   private final alp c;
+
+   public ain(ain.a $$0, @Nullable alp $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private ain(ws $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   public static ain a(ah $$0) {
+      return new ain(ain.a.a, $$0.a());
    }
 
-   private void a(ws $$0) {
+   public static ain b() {
+      return new ain(ain.a.b, null);
+   }
+
+   private ain(wh $$0) {
+      this.b = $$0.b(ain.a.class);
+      if (this.b == ain.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
+      }
+   }
+
+   private void a(wh $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(ahm $$0) {
-      $$0.a(this);
+      if (this.b == ain.a.a) {
+         $$0.a(this.c);
+      }
    }
 
    @Override
-   public aae<ain> a() {
-      return ahk.bN;
+   public zt<ain> a() {
+      return agz.bY;
    }
 
-   public boolean b() {
+   public void a(ahb $$0) {
+      $$0.a(this);
+   }
+
+   public ain.a e() {
       return this.b;
    }
 
-   public boolean e() {
+   @Nullable
+   public alp f() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

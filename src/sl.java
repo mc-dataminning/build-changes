@@ -1,19 +1,65 @@
-import com.google.common.collect.ImmutableList;
-
 public class sl {
-   public static final aly<egi<?, ?>> a = sm.a("end_platform");
-   public static final aly<egi<?, ?>> b = sm.a("end_spike");
-   public static final aly<egi<?, ?>> c = sm.a("end_gateway_return");
-   public static final aly<egi<?, ?>> d = sm.a("end_gateway_delayed");
-   public static final aly<egi<?, ?>> e = sm.a("chorus_plant");
-   public static final aly<egi<?, ?>> f = sm.a("end_island");
+   public static final alo<enh> a = sq.a("monster_room");
+   public static final alo<enh> b = sq.a("monster_room_deep");
+   public static final alo<enh> c = sq.a("fossil_upper");
+   public static final alo<enh> d = sq.a("fossil_lower");
+   public static final alo<enh> e = sq.a("dripstone_cluster");
+   public static final alo<enh> f = sq.a("large_dripstone");
+   public static final alo<enh> g = sq.a("pointed_dripstone");
+   public static final alo<enh> h = sq.a("underwater_magma");
+   public static final alo<enh> i = sq.a("glow_lichen");
+   public static final alo<enh> j = sq.a("rooted_azalea_tree");
+   public static final alo<enh> k = sq.a("cave_vines");
+   public static final alo<enh> l = sq.a("lush_caves_vegetation");
+   public static final alo<enh> m = sq.a("lush_caves_clay");
+   public static final alo<enh> n = sq.a("lush_caves_ceiling_vegetation");
+   public static final alo<enh> o = sq.a("spore_blossom");
+   public static final alo<enh> p = sq.a("classic_vines_cave_feature");
+   public static final alo<enh> q = sq.a("amethyst_geode");
+   public static final alo<enh> r = sq.a("sculk_patch_deep_dark");
+   public static final alo<enh> s = sq.a("sculk_patch_ancient_city");
+   public static final alo<enh> t = sq.a("sculk_vein");
 
-   public static void a(rk<egi<?, ?>> $$0) {
-      sm.a($$0, a, egw.J);
-      sm.a($$0, b, egw.K, new eju(false, ImmutableList.of(), null));
-      sm.a($$0, c, egw.M, eiz.a(ash.a, true));
-      sm.a($$0, d, egw.M, eiz.a());
-      sm.a($$0, e, egw.l);
-      sm.a($$0, f, egw.L);
+   public static void a(ra<enh> $$0) {
+      jr<egb<?, ?>> $$1 = $$0.a(mb.aL);
+      jq<egb<?, ?>> $$2 = $$1.b(rz.a);
+      jq<egb<?, ?>> $$3 = $$1.b(rz.b);
+      jq<egb<?, ?>> $$4 = $$1.b(rz.c);
+      jq<egb<?, ?>> $$5 = $$1.b(rz.d);
+      jq<egb<?, ?>> $$6 = $$1.b(rz.e);
+      jq<egb<?, ?>> $$7 = $$1.b(rz.f);
+      jq<egb<?, ?>> $$8 = $$1.b(rz.g);
+      jq<egb<?, ?>> $$9 = $$1.b(rz.h);
+      jq<egb<?, ?>> $$10 = $$1.b(rz.i);
+      jq<egb<?, ?>> $$11 = $$1.b(rz.j);
+      jq<egb<?, ?>> $$12 = $$1.b(rz.m);
+      jq<egb<?, ?>> $$13 = $$1.b(rz.r);
+      jq<egb<?, ?>> $$14 = $$1.b(rz.s);
+      jq<egb<?, ?>> $$15 = $$1.b(rz.t);
+      jq<egb<?, ?>> $$16 = $$1.b(sh.c);
+      jq<egb<?, ?>> $$17 = $$1.b(rz.u);
+      jq<egb<?, ?>> $$18 = $$1.b(rz.v);
+      jq<egb<?, ?>> $$19 = $$1.b(rz.w);
+      jq<egb<?, ?>> $$20 = $$1.b(rz.x);
+      sq.a($$0, a, $$2, emz.a(10), ene.a(), enc.a(eed.a(0), eed.b()), emv.a());
+      sq.a($$0, b, $$2, emz.a(4), ene.a(), enc.a(eed.b(6), eed.a(-1)), emv.a());
+      sq.a($$0, c, $$3, enn.a(64), ene.a(), enc.a(eed.a(0), eed.b()), emv.a());
+      sq.a($$0, d, $$4, enn.a(64), ene.a(), enc.a(eed.a(), eed.a(-8)), emv.a());
+      sq.a($$0, e, $$5, emz.a(bsl.a(48, 96)), ene.a(), sq.j, emv.a());
+      sq.a($$0, f, $$6, emz.a(bsl.a(10, 48)), ene.a(), sq.j, emv.a());
+      sq.a($$0, g, $$7, emz.a(bsl.a(192, 256)), ene.a(), sq.j, emz.a(bsl.a(1, 5)), enm.a(bsa.a(0.0F, 3.0F, -10, 10), bsa.a(0.0F, 0.6F, -2, 2)), emv.a());
+      sq.a($$0, h, $$8, emz.a(bsl.a(44, 52)), ene.a(), sq.j, enp.a(edj.a.c, Integer.MIN_VALUE, -2), emv.a());
+      sq.a($$0, i, $$9, emz.a(bsl.a(104, 157)), sq.j, ene.a(), enp.a(edj.a.c, Integer.MIN_VALUE, -13), emv.a());
+      sq.a($$0, j, $$10, emz.a(bsl.a(1, 2)), ene.a(), sq.j, ena.a(jm.b, eeq.c(), eeq.c, 12), enm.a(bsc.a(-1)), emv.a());
+      sq.a($$0, k, $$11, emz.a(188), ene.a(), sq.j, ena.a(jm.b, eeq.a(jm.a), eeq.c, 12), enm.a(bsc.a(-1)), emv.a());
+      sq.a($$0, l, $$12, emz.a(125), ene.a(), sq.j, ena.a(jm.a, eeq.c(), eeq.c, 12), enm.a(bsc.a(1)), emv.a());
+      sq.a($$0, m, $$13, emz.a(62), ene.a(), sq.j, ena.a(jm.a, eeq.c(), eeq.c, 12), enm.a(bsc.a(1)), emv.a());
+      sq.a($$0, n, $$14, emz.a(125), ene.a(), sq.j, ena.a(jm.b, eeq.c(), eeq.c, 12), enm.a(bsc.a(-1)), emv.a());
+      sq.a($$0, o, $$15, emz.a(25), ene.a(), sq.j, ena.a(jm.b, eeq.c(), eeq.c, 12), enm.a(bsc.a(-1)), emv.a());
+      sq.a($$0, p, $$16, emz.a(256), ene.a(), sq.j, emv.a());
+      sq.a($$0, q, $$17, enn.a(24), ene.a(), enc.a(eed.b(6), eed.a(30)), emv.a());
+      sq.a($$0, r, $$18, emz.a(bsc.a(256)), ene.a(), sq.j, emv.a());
+      sq.a($$0, s, $$19);
+      sq.a($$0, t, $$20, emz.a(bsl.a(204, 250)), ene.a(), sq.j, emv.a());
    }
 }

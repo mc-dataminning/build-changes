@@ -1,82 +1,45 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bol<T> implements Closeable {
-   private static final Gson a = new Gson();
-   private final Codec<T> b;
-   final FileChannel c;
-   private final AtomicInteger d = new AtomicInteger(1);
+public interface bol<S> {
+   void a(int var1, boq<S> var2, Object var3);
 
-   public bol(Codec<T> $$0, FileChannel $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default void a(int $$0, Object $$1) {
+      this.a($$0, boq.b(), $$1);
    }
 
-   public static <T> bol<T> a(Codec<T> $$0, Path $$1) throws IOException {
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new bol<>($$0, $$2);
-   }
+   void a(int var1);
 
-   public void a(T $$0) throws IOException {
-      JsonElement $$1 = (JsonElement)this.b.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
-      this.c.position(this.c.size());
-      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
-      a.toJson($$1, a.newJsonWriter($$2));
-      $$2.write(10);
-      $$2.flush();
-   }
+   public static class a<S> implements bol<S> {
+      private final List<bom<S>> a = new ArrayList<>();
+      private int b = -1;
 
-   public bom<T> a() throws IOException {
-      if (this.d.get() <= 0) {
-         throw new IOException("Event log has already been closed");
-      } else {
-         this.d.incrementAndGet();
-         final bom<T> $$0 = bom.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
-         return new bom<T>() {
-            private volatile long c;
-
-            @Nullable
-            @Override
-            public T a() throws IOException {
-               Object var1;
-               try {
-                  bol.this.c.position(this.c);
-                  var1 = $$0.a();
-               } finally {
-                  this.c = bol.this.c.position();
-               }
-
-               return (T)var1;
-            }
-
-            @Override
-            public void close() throws IOException {
-               bol.this.b();
-            }
-         };
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
+         }
       }
-   }
 
-   @Override
-   public void close() throws IOException {
-      this.b();
-   }
+      @Override
+      public void a(int $$0) {
+         this.b($$0);
+      }
 
-   void b() throws IOException {
-      if (this.d.decrementAndGet() <= 0) {
-         this.c.close();
+      @Override
+      public void a(int $$0, boq<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new bom<>($$0, $$1, $$2));
+         }
+      }
+
+      public List<bom<S>> a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
       }
    }
 }

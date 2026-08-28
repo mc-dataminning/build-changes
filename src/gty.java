@@ -1,30 +1,44 @@
-public class gty<T extends cni> extends gsw<T, gyt, gdn> {
-   private static final alz a = alz.b("textures/entity/spider/spider.png");
+public class gty<T extends bvb & cqe> extends grk<T, gzr> {
+   private final gsj a;
+   private final float b;
+   private final boolean h;
 
-   public gty(grq.a $$0) {
-      this($$0, gen.cR);
+   public gty(grl.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.a = $$0.b();
+      this.b = $$1;
+      this.h = $$2;
    }
 
-   public gty(grq.a $$0, gem $$1) {
-      super($$0, new gdn($$0.a($$1)), 0.8F);
-      this.a(new gwl<>(this));
+   public gty(grl.a $$0) {
+      this($$0, 1.0F, false);
    }
 
    @Override
-   protected float aX_() {
-      return 180.0F;
+   protected int a(T $$0, jh $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
-   @Override
-   public alz b(gyt $$0) {
-      return a;
+   public void a(gzr $$0, fgl $$1, glg $$2, int $$3) {
+      $$1.a();
+      $$1.b(this.b, this.b, this.b);
+      $$1.a(this.e.b());
+      if ($$0.a != null) {
+         this.a.a($$0.b, cxe.h, false, $$1, $$2, $$3, hax.d, $$0.a);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gyt b() {
-      return new gyt();
+   public gzr a() {
+      return new gzr();
    }
 
-   public void a(T $$0, gyt $$1, float $$2) {
+   public void a(T $$0, gzr $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      cxg $$3 = $$0.l();
+      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dW(), null, $$0.ar()) : null;
+      $$1.b = $$3.v();
    }
 }

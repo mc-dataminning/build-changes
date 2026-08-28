@@ -1,16 +1,29 @@
-public record abk() implements abf {
-   public static final zt<ws, abk> a = abf.a(abk::a, abk::new);
-   public static final abf.b<abk> b = abf.a("debug/game_test_clear");
+import java.util.HashSet;
+import java.util.Set;
 
-   private abk(ws $$0) {
-      this();
+public record abk(Set<kj> c, Set<kj> d) implements aau {
+   public static final zi<wh, abk> a = aau.a(abk::a, abk::new);
+   public static final aau.b<abk> b = aau.a("debug/village_sections");
+
+   private abk(wh $$0) {
+      this($$0.a(HashSet::new, wh::g), $$0.a(HashSet::new, wh::g));
    }
 
-   private void a(ws $$0) {
+   private void a(wh $$0) {
+      $$0.a(this.c, wh::a);
+      $$0.a(this.d, wh::a);
    }
 
    @Override
-   public abf.b<abk> a() {
+   public aau.b<abk> a() {
       return b;
+   }
+
+   public Set<kj> b() {
+      return this.c;
+   }
+
+   public Set<kj> c() {
+      return this.d;
    }
 }

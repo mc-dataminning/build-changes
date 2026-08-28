@@ -1,11 +1,9 @@
 import javax.annotation.Nullable;
 
-public class gxg extends gxp {
+public class gxg extends gxw {
+   private static final alp j = alp.b("textures/entity/cat/tabby.png");
+   public alp a = j;
+   public boolean b;
    @Nullable
-   public bvi.b.a a;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+   public cwd c;
 }

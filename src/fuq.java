@@ -1,181 +1,96 @@
-import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
 
-public abstract class fuq extends fty {
-   protected final dwk a;
-   private dwl c;
-   private final String[] d;
-   private final boolean s;
-   protected final dzh b;
-   private int u;
-   private int v;
-   @Nullable
-   private frb w;
+public class fuq extends fug<ctb> {
+   private static final alp G = alp.b("container/cartography_table/error");
+   private static final alp H = alp.b("container/cartography_table/scaled_map");
+   private static final alp I = alp.b("container/cartography_table/duplicated_map");
+   private static final alp J = alp.b("container/cartography_table/map");
+   private static final alp K = alp.b("container/cartography_table/locked");
+   private static final alp L = alp.b("textures/gui/container/cartography_table.png");
+   private final hap M = new hap();
 
-   public fuq(dwk $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, xv.c("sign.edit"));
-   }
-
-   public fuq(dwk $$0, boolean $$1, boolean $$2, xv $$3) {
-      super($$3);
-      this.a = $$0;
-      this.c = $$0.a($$1);
-      this.s = $$1;
-      this.b = drp.a($$0.m().b());
-      this.d = IntStream.range(0, 4).mapToObj($$1x -> this.c.a($$1x, $$2)).map(xv::getString).toArray(String[]::new);
+   public fuq(ctb $$0, cpn $$1, xk $$2) {
+      super($$0, $$1, $$2);
+      this.w -= 2;
    }
 
    @Override
-   protected void aT_() {
-      this.c(fof.a(xu.d, $$0 -> this.F()).a(this.n / 2 - 100, this.o / 4 + 144, 200, 20).a());
-      this.w = new frb(() -> this.d[this.v], this::a, frb.a(this.m), frb.c(this.m), $$0 -> this.m.h.b($$0) <= this.a.c());
-   }
-
-   @Override
-   public void e() {
-      this.u++;
-      if (!this.E()) {
-         this.F();
-      }
-   }
-
-   private boolean E() {
-      return this.m != null && this.m.t != null && !this.a.n() && !this.a.b(this.m.t.cG());
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.v = this.v - 1 & 3;
-         this.w.f();
-         return true;
-      } else if ($$0 == 264 || $$0 == 257 || $$0 == 335) {
-         this.v = this.v + 1 & 3;
-         this.w.f();
-         return true;
-      } else {
-         return this.w.a($$0) ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      this.w.a($$0);
-      return true;
-   }
-
-   @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.d();
-      ffo.c();
-      $$0.a(this.p, this.l, this.n / 2, 40, 16777215);
-      this.d($$0);
-      $$0.d();
-      ffo.d();
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public void b(fns $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   @Override
-   public void aP_() {
-      this.F();
-   }
-
-   @Override
-   public void aJ_() {
-      gfl $$0 = this.m.L();
-      if ($$0 != null) {
-         $$0.b(new ajh(this.a.aB_(), this.s, this.d[0], this.d[1], this.d[2], this.d[3]));
-      }
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   protected abstract void c(fns var1);
-
-   protected abstract Vector3f l();
-
-   protected void a(fns $$0, dxv $$1) {
-      $$0.c().a((float)this.n / 2.0F, 90.0F, 50.0F);
-   }
-
-   private void d(fns $$0) {
-      $$0.c().a();
-      this.a($$0, this.a.m());
-      $$0.c().a();
-      this.c($$0);
-      $$0.c().b();
-      this.e($$0);
-      $$0.c().b();
-   }
-
-   private void e(fns $$0) {
-      $$0.c().a(0.0F, 0.0F, 4.0F);
-      Vector3f $$1 = this.l();
-      $$0.c().b($$1.x(), $$1.y(), $$1.z());
-      int $$2 = this.c.a() ? this.c.b().g() : gok.a(this.c);
-      boolean $$3 = this.u / 6 % 2 == 0;
-      int $$4 = this.w.g();
-      int $$5 = this.w.h();
-      int $$6 = 4 * this.a.b() / 2;
-      int $$7 = this.v * this.a.b() - $$6;
-
-      for (int $$8 = 0; $$8 < this.d.length; $$8++) {
-         String $$9 = this.d[$$8];
-         if ($$9 != null) {
-            if (this.p.a()) {
-               $$9 = this.p.a($$9);
-            }
-
-            int $$10 = -this.p.b($$9) / 2;
-            $$0.a(this.p, $$9, $$10, $$8 * this.a.b() - $$6, $$2, false);
-            if ($$8 == this.v && $$4 >= 0 && $$3) {
-               int $$11 = this.p.b($$9.substring(0, Math.max(Math.min($$4, $$9.length()), 0)));
-               int $$12 = $$11 - this.p.b($$9) / 2;
-               if ($$4 >= $$9.length()) {
-                  $$0.a(this.p, "_", $$12, $$7, $$2, false);
+   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(glq::H, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      cxg $$6 = this.z.b(1).g();
+      boolean $$7 = $$6.a(cxk.vi);
+      boolean $$8 = $$6.a(cxk.rv);
+      boolean $$9 = $$6.a(cxk.gi);
+      cxg $$10 = this.z.b(0).g();
+      evi $$11 = $$10.a(ku.L);
+      boolean $$12 = false;
+      evk $$13;
+      if ($$11 != null) {
+         $$13 = cxt.a($$11, this.m.s);
+         if ($$13 != null) {
+            if ($$13.h) {
+               $$12 = true;
+               if ($$8 || $$9) {
+                  $$0.a(glq::H, G, $$4 + 35, $$5 + 31, 28, 21);
                }
             }
+
+            if ($$8 && $$13.f >= 4) {
+               $$12 = true;
+               $$0.a(glq::H, G, $$4 + 35, $$5 + 31, 28, 21);
+            }
          }
+      } else {
+         $$13 = null;
       }
 
-      for (int $$13 = 0; $$13 < this.d.length; $$13++) {
-         String $$14 = this.d[$$13];
-         if ($$14 != null && $$13 == this.v && $$4 >= 0) {
-            int $$15 = this.p.b($$14.substring(0, Math.max(Math.min($$4, $$14.length()), 0)));
-            int $$16 = $$15 - this.p.b($$14) / 2;
-            if ($$3 && $$4 < $$14.length()) {
-               $$0.a($$16, $$7 - 1, $$16 + 1, $$7 + this.a.b(), ayp.f($$2));
-            }
+      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
+   }
 
-            if ($$5 != $$4) {
-               int $$17 = Math.min($$4, $$5);
-               int $$18 = Math.max($$4, $$5);
-               int $$19 = this.p.b($$14.substring(0, $$17)) - this.p.b($$14) / 2;
-               int $$20 = this.p.b($$14.substring(0, $$18)) - this.p.b($$14) / 2;
-               int $$21 = Math.min($$19, $$20);
-               int $$22 = Math.max($$19, $$20);
-               $$0.a(glv.J(), $$21, $$7, $$22, $$7 + this.a.b(), -16776961);
-            }
-         }
+   private void a(fnl $$0, @Nullable evi $$1, @Nullable evk $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
+      int $$7 = this.C;
+      int $$8 = this.D;
+      if ($$4 && !$$6) {
+         $$0.a(glq::H, H, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
+      } else if ($$3) {
+         $$0.a(glq::H, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(glq::H, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
+         $$0.c().b();
+      } else if ($$5) {
+         $$0.a(glq::H, J, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(glq::H, K, $$7 + 118, $$8 + 60, 10, 14);
+         $$0.c().b();
+      } else {
+         $$0.a(glq::H, J, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
       }
    }
 
-   private void a(String $$0) {
-      this.d[this.v] = $$0;
-      this.c = this.c.a(this.v, xv.b($$0));
-      this.a.a(this.c, this.s);
-   }
-
-   private void F() {
-      this.m.a(null);
+   private void a(fnl $$0, @Nullable evi $$1, @Nullable evk $$2, int $$3, int $$4, float $$5) {
+      if ($$1 != null && $$2 != null) {
+         $$0.c().a();
+         $$0.c().a((float)$$3, (float)$$4, 1.0F);
+         $$0.c().b($$5, $$5, 1.0F);
+         glf $$6 = this.m.at();
+         $$6.a($$1, $$2, this.M);
+         $$0.a($$2x -> $$6.a(this.M, $$0.c(), $$2x, true, 15728880));
+         $$0.c().b();
+      }
    }
 }

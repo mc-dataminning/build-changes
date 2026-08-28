@@ -1,63 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public record ddn(int f, int g, List<ddp> h, ddp i, ddp j) implements ddj {
-   public static final MapCodec<ddn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("width").forGetter(ddn::b),
-               Codec.INT.fieldOf("height").forGetter(ddn::c),
-               ddp.a.listOf().fieldOf("ingredients").forGetter(ddn::f),
-               ddp.a.fieldOf("result").forGetter(ddn::d),
-               ddp.a.fieldOf("crafting_station").forGetter(ddn::e)
-            )
-            .apply($$0, ddn::new)
-   );
-   public static final zt<xg, ddn> b = zt.a(zr.h, ddn::b, zr.h, ddn::c, ddp.b.a(zr.a()), ddn::f, ddp.b, ddn::d, ddp.b, ddn::e, ddn::new);
-   public static final ddj.a<ddn> c = new ddj.a<>(a, b);
-
-   public ddn(int f, int g, List<ddp> h, ddp i, ddp j) {
-      if (h.size() != f * g) {
-         throw new IllegalArgumentException("Invalid shaped recipe display contents");
-      } else {
-         this.f = f;
-         this.g = g;
-         this.h = h;
-         this.i = i;
-         this.j = j;
-      }
+public record ddn<T>(T a, Optional<ezr> b) {
+   public static Codec<ezr> a(bbe $$0) {
+      return ezr.e
+         .validate(
+            $$1 -> {
+               baa.a $$2 = new baa.a();
+               ewo $$3 = new ewo($$2, $$0);
+               $$1.a($$3);
+               return $$2.b()
+                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
+                  .orElseGet(() -> DataResult.success($$1));
+            }
+         );
    }
 
-   @Override
-   public ddj.a<ddn> a() {
-      return c;
+   public static <T> Codec<ddn<T>> a(Codec<T> $$0, bbe $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(ddn::a), a($$1).optionalFieldOf("requirements").forGetter(ddn::b)).apply($$2, ddn::new)
+      );
    }
 
-   @Override
-   public boolean a(cst $$0) {
-      return this.h.stream().allMatch($$1 -> $$1.a($$0)) && ddj.super.a($$0);
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public List<ddp> f() {
-      return this.h;
-   }
-
-   @Override
-   public ddp d() {
-      return this.i;
-   }
-
-   @Override
-   public ddp e() {
-      return this.j;
+   public boolean a(ewi $$0) {
+      return this.b.isEmpty() ? true : this.b.get().test($$0);
    }
 }

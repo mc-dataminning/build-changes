@@ -1,221 +1,226 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
 public class dgf {
-   public static final Codec<dgf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dgd.a.fieldOf("buy").forGetter($$0x -> $$0x.c),
-               dgd.a.lenientOptionalFieldOf("buyB").forGetter($$0x -> $$0x.d),
-               cxp.a.fieldOf("sell").forGetter($$0x -> $$0x.e),
-               Codec.INT.lenientOptionalFieldOf("uses", 0).forGetter($$0x -> $$0x.f),
-               Codec.INT.lenientOptionalFieldOf("maxUses", 4).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.lenientOptionalFieldOf("rewardExp", true).forGetter($$0x -> $$0x.h),
-               Codec.INT.lenientOptionalFieldOf("specialPrice", 0).forGetter($$0x -> $$0x.i),
-               Codec.INT.lenientOptionalFieldOf("demand", 0).forGetter($$0x -> $$0x.j),
-               Codec.FLOAT.lenientOptionalFieldOf("priceMultiplier", 0.0F).forGetter($$0x -> $$0x.k),
-               Codec.INT.lenientOptionalFieldOf("xp", 1).forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, dgf::new)
-   );
-   public static final zt<xg, dgf> b = zt.a(dgf::a, dgf::a);
-   private final dgd c;
-   private final Optional<dgd> d;
-   private final cxp e;
-   private int f;
-   private final int g;
-   private final boolean h;
-   private int i;
-   private int j;
-   private final float k;
-   private final int l;
+   public static final Codec<dgf> a = Codec.INT_STREAM
+      .comapFlatMap($$0 -> ae.a($$0, 2).map($$0x -> new dgf($$0x[0], $$0x[1])), $$0 -> IntStream.of($$0.h, $$0.i))
+      .stable();
+   public static final zi<ByteBuf, dgf> b = new zi<ByteBuf, dgf>() {
+      public dgf a(ByteBuf $$0) {
+         return wh.c($$0);
+      }
 
-   private dgf(dgd $$0, Optional<dgd> $$1, cxp $$2, int $$3, int $$4, boolean $$5, int $$6, int $$7, float $$8, int $$9) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
+      public void a(ByteBuf $$0, dgf $$1) {
+         wh.a($$0, $$1);
+      }
+   };
+   private static final int j = 1056;
+   public static final long c = c(1875066, 1875066);
+   private static final int k = (32 + eaj.a.a(eak.n).c().b() + 1) * 2;
+   public static final int d = kj.a(jh.f) - k;
+   public static final dgf e = new dgf(0, 0);
+   private static final long l = 32L;
+   private static final long m = 4294967295L;
+   private static final int n = 5;
+   public static final int f = 32;
+   private static final int o = 31;
+   public static final int g = 31;
+   public final int h;
+   public final int i;
+   private static final int p = 1664525;
+   private static final int q = 1013904223;
+   private static final int r = -559038737;
+
+   public dgf(int $$0, int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   public dgf(dgd $$0, cxp $$1, int $$2, int $$3, float $$4) {
-      this($$0, Optional.empty(), $$1, $$2, $$3, $$4);
+   public dgf(jh $$0) {
+      this.h = kj.a($$0.u());
+      this.i = kj.a($$0.w());
    }
 
-   public dgf(dgd $$0, Optional<dgd> $$1, cxp $$2, int $$3, int $$4, float $$5) {
-      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
+   public dgf(long $$0) {
+      this.h = (int)$$0;
+      this.i = (int)($$0 >> 32);
    }
 
-   public dgf(dgd $$0, Optional<dgd> $$1, cxp $$2, int $$3, int $$4, int $$5, float $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
+   public static dgf a(int $$0, int $$1) {
+      return new dgf($$0 << 5, $$1 << 5);
    }
 
-   public dgf(dgd $$0, Optional<dgd> $$1, cxp $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
-      this($$0, $$1, $$2, $$3, $$4, true, 0, $$7, $$6, $$5);
+   public static dgf b(int $$0, int $$1) {
+      return new dgf(($$0 << 5) + 31, ($$1 << 5) + 31);
    }
 
-   private dgf(dgf $$0) {
-      this($$0.c, $$0.d, $$0.e.v(), $$0.f, $$0.g, $$0.h, $$0.i, $$0.j, $$0.k, $$0.l);
+   public long a() {
+      return c(this.h, this.i);
    }
 
-   public cxp a() {
-      return this.c.d();
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
    }
 
-   public cxp b() {
-      return this.c.d().c(this.a(this.c));
+   public static long a(jh $$0) {
+      return c(kj.a($$0.u()), kj.a($$0.w()));
    }
 
-   private int a(dgd $$0) {
-      int $$1 = $$0.b();
-      int $$2 = Math.max(0, bae.d((float)($$1 * this.j) * this.k));
-      return bae.a($$1 + $$2 + this.i, 1, $$0.d().k());
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
    }
 
-   public cxp c() {
-      return this.d.map(dgd::d).orElse(cxp.j);
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
    }
 
-   public dgd d() {
-      return this.c;
+   @Override
+   public int hashCode() {
+      return d(this.h, this.i);
    }
 
-   public Optional<dgd> e() {
-      return this.d;
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
    }
 
-   public cxp f() {
-      return this.e;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dgf $$1) ? false : this.h == $$1.h && this.i == $$1.i;
+      }
    }
 
-   public void g() {
-      this.j = this.j + this.f - (this.g - this.f);
+   public int b() {
+      return this.a(8);
    }
 
-   public cxp h() {
-      return this.e.v();
+   public int c() {
+      return this.b(8);
+   }
+
+   public int d() {
+      return kj.c(this.h);
+   }
+
+   public int e() {
+      return kj.c(this.i);
+   }
+
+   public int f() {
+      return this.a(15);
+   }
+
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.h >> 5;
    }
 
    public int i() {
-      return this.f;
+      return this.i >> 5;
    }
 
-   public void j() {
-      this.f = 0;
+   public int j() {
+      return this.h & 31;
    }
 
    public int k() {
-      return this.g;
+      return this.i & 31;
    }
 
-   public void l() {
-      this.f++;
+   public jh a(int $$0, int $$1, int $$2) {
+      return new jh(this.a($$0), $$1, this.b($$2));
    }
 
-   public int m() {
-      return this.j;
+   public int a(int $$0) {
+      return kj.a(this.h, $$0);
    }
 
-   public void a(int $$0) {
-      this.i += $$0;
+   public int b(int $$0) {
+      return kj.a(this.i, $$0);
    }
 
-   public void n() {
-      this.i = 0;
+   public jh c(int $$0) {
+      return new jh(this.b(), $$0, this.c());
    }
 
-   public int o() {
-      return this.i;
+   @Override
+   public String toString() {
+      return "[" + this.h + ", " + this.i + "]";
    }
 
-   public void b(int $$0) {
-      this.i = $$0;
+   public jh l() {
+      return new jh(this.d(), 0, this.e());
    }
 
-   public float p() {
-      return this.k;
+   public int a(dgf $$0) {
+      return this.e($$0.h, $$0.i);
    }
 
-   public int q() {
-      return this.l;
+   public int e(int $$0, int $$1) {
+      return Math.max(Math.abs(this.h - $$0), Math.abs(this.i - $$1));
    }
 
-   public boolean r() {
-      return this.f >= this.g;
+   public int b(dgf $$0) {
+      return this.f($$0.h, $$0.i);
    }
 
-   public void s() {
-      this.f = this.g;
+   public int c(long $$0) {
+      return this.f(a($$0), b($$0));
    }
 
-   public boolean t() {
-      return this.f > 0;
+   private int f(int $$0, int $$1) {
+      int $$2 = $$0 - this.h;
+      int $$3 = $$1 - this.i;
+      return $$2 * $$2 + $$3 * $$3;
    }
 
-   public boolean u() {
-      return this.h;
+   public static Stream<dgf> a(dgf $$0, int $$1) {
+      return a(new dgf($$0.h - $$1, $$0.i - $$1), new dgf($$0.h + $$1, $$0.i + $$1));
    }
 
-   public boolean a(cxp $$0, cxp $$1) {
-      if (!this.c.a($$0) || $$0.L() < this.a(this.c)) {
-         return false;
-      } else {
-         return !this.d.isPresent() ? $$1.f() : this.d.get().a($$1) && $$1.L() >= this.d.get().b();
-      }
-   }
+   public static Stream<dgf> a(final dgf $$0, final dgf $$1) {
+      int $$2 = Math.abs($$0.h - $$1.h) + 1;
+      int $$3 = Math.abs($$0.i - $$1.i) + 1;
+      final int $$4 = $$0.h < $$1.h ? 1 : -1;
+      final int $$5 = $$0.i < $$1.i ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<dgf>((long)($$2 * $$3), 64) {
+         @Nullable
+         private dgf e;
 
-   public boolean b(cxp $$0, cxp $$1) {
-      if (!this.a($$0, $$1)) {
-         return false;
-      } else {
-         $$0.h(this.b().L());
-         if (!this.c().f()) {
-            $$1.h(this.c().L());
+         @Override
+         public boolean tryAdvance(Consumer<? super dgf> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.h;
+               int $$2 = this.e.i;
+               if ($$1 == $$1.h) {
+                  if ($$2 == $$1.i) {
+                     return false;
+                  }
+
+                  this.e = new dgf($$0.h, $$2 + $$5);
+               } else {
+                  this.e = new dgf($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
+            return true;
          }
-
-         return true;
-      }
-   }
-
-   public dgf v() {
-      return new dgf(this);
-   }
-
-   private static void a(xg $$0, dgf $$1) {
-      dgd.b.encode($$0, $$1.d());
-      cxp.h.encode($$0, $$1.f());
-      dgd.c.encode($$0, $$1.e());
-      $$0.a($$1.r());
-      $$0.q($$1.i());
-      $$0.q($$1.k());
-      $$0.q($$1.q());
-      $$0.q($$1.o());
-      $$0.a($$1.p());
-      $$0.q($$1.m());
-   }
-
-   public static dgf a(xg $$0) {
-      dgd $$1 = dgd.b.decode($$0);
-      cxp $$2 = cxp.h.decode($$0);
-      Optional<dgd> $$3 = dgd.c.decode($$0);
-      boolean $$4 = $$0.readBoolean();
-      int $$5 = $$0.readInt();
-      int $$6 = $$0.readInt();
-      int $$7 = $$0.readInt();
-      int $$8 = $$0.readInt();
-      float $$9 = $$0.readFloat();
-      int $$10 = $$0.readInt();
-      dgf $$11 = new dgf($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
-      if ($$4) {
-         $$11.s();
-      }
-
-      $$11.b($$8);
-      return $$11;
+      }, false);
    }
 }

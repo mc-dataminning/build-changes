@@ -1,42 +1,93 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cgo extends cgq<cpj> {
-   private static final int a = 40;
+public class cgo {
+   public static final cgo a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
+   @Nullable
+   private cgo.a g;
 
-   public cgo() {
-      super(40);
+   private cgo(boolean $$0) {
+      this.c = $$0;
    }
 
-   protected void a(ash $$0, cpj $$1) {
-      aly<dhi> $$2 = $$0.ah();
-      jh $$3 = $$1.dw();
-      List<jp> $$4 = Lists.newArrayList();
-      int $$5 = 4;
+   public static cgo a() {
+      return new cgo(true);
+   }
 
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               jh $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gy().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jp.a($$2, $$9));
+   public static cgo b() {
+      return new cgo(false);
+   }
+
+   public cgo c() {
+      cgo $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
+   }
+
+   public cgo a(double $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public cgo d() {
+      this.e = false;
+      return this;
+   }
+
+   public cgo e() {
+      this.f = false;
+      return this;
+   }
+
+   public cgo a(@Nullable cgo.a $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(arx $$0, @Nullable bvx $$1, bvx $$2) {
+      if ($$1 == $$2) {
+         return false;
+      } else if (!$$2.ey()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$2, $$0)) {
+         return false;
+      } else {
+         if ($$1 == null) {
+            if (this.c && (!$$2.ex() || $$0.am() == bsx.a)) {
+               return false;
+            }
+         } else {
+            if (this.c && (!$$1.c($$2) || !$$1.a($$2.aq()) || $$1.s($$2))) {
+               return false;
+            }
+
+            if (this.d > 0.0) {
+               double $$3 = this.f ? $$2.C($$1) : 1.0;
+               double $$4 = Math.max(this.d * $$3, 2.0);
+               double $$5 = $$1.i($$2.dB(), $$2.dD(), $$2.dH());
+               if ($$5 > $$4 * $$4) {
+                  return false;
                }
             }
-         }
-      }
 
-      bxi<?> $$10 = $$1.ec();
-      if (!$$4.isEmpty()) {
-         $$10.a(cfk.f, $$4);
-      } else {
-         $$10.b(cfk.f);
+            if (this.e && $$1 instanceof bvz $$6 && !$$6.N().a($$2)) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   @Override
-   public Set<cfk<?>> a() {
-      return ImmutableSet.of(cfk.f);
+   @FunctionalInterface
+   public interface a {
+      boolean test(bvx var1, arx var2);
    }
 }

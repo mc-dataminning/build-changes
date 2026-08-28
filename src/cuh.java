@@ -1,77 +1,73 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cuh {
-   private final List<cuh.b> a;
-   private final cuh.b b;
+public class cuh extends bth {
+   @Nullable
+   private dvn b;
 
-   cuh(List<cuh.b> $$0, cuh.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cuh.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
-      }
+   public cuh() {
+      super(27);
    }
 
-   public static cuh.a a() {
-      return new cuh.a();
+   public void a(dvn $$0) {
+      this.b = $$0;
    }
 
-   public cuh.b a(int $$0) {
-      return this.a.get($$0);
+   public boolean b(dvn $$0) {
+      return this.b == $$0;
    }
 
-   public cuh.b b() {
-      return this.b;
-   }
-
-   public List<cuh.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public static class a {
-      private final List<cuh.b> a = new ArrayList<>();
-      private cuh.b b = cuh.b.e;
-
-      public cuh.a a(int $$0, int $$1, int $$2, Predicate<cxp> $$3) {
-         this.a.add(new cuh.b($$0, $$1, $$2, $$3));
-         return this;
+   @Override
+   public void a(us $$0, js.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, cxg.j);
       }
 
-      public cuh.a a(int $$0, int $$1, int $$2) {
-         this.b = new cuh.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cuh a() {
-         int $$0 = this.a.size();
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            cuh.b $$2 = this.a.get($$1);
-            if ($$2.a != $$1) {
-               throw new IllegalArgumentException("Expected input slots to have continous indexes");
-            }
-         }
-
-         if (this.b.a != $$0) {
-            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
-         } else {
-            return new cuh(this.a, this.b);
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         um $$4 = $$0.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, cxg.a($$1, (vj)$$4).orElse(cxg.j));
          }
       }
    }
 
-   public static record b(int a, int b, int c, Predicate<cxp> d) {
-      static final cuh.b e = new cuh.b(0, 0, 0, $$0 -> true);
+   @Override
+   public us a(js.a $$0) {
+      us $$1 = new us();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cxg $$3 = this.a($$2);
+         if (!$$3.f()) {
+            um $$4 = new um();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(cpo $$0) {
+      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void c_(cpo $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      super.c_($$0);
+   }
+
+   @Override
+   public void c(cpo $$0) {
+      if (this.b != null) {
+         this.b.b($$0);
+      }
+
+      super.c($$0);
+      this.b = null;
    }
 }

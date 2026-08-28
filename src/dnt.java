@@ -1,55 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dnt extends dkw implements dkp {
-   public static final MapCodec<dnt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aly.a(mb.aL).fieldOf("feature").forGetter($$0x -> $$0x.e), ma.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, dnt::new)
-   );
-   protected static final fcs b = dkm.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final dkm d;
-   private final aly<egi<?, ?>> e;
+public abstract class dnt extends dnr implements dkg {
+   public static final dyn e = dye.aA;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<dnt> a() {
-      return a;
-   }
-
-   protected dnt(aly<egi<?, ?>> $$0, dkm $$1, dxu.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
+   protected dnt(dxn.d $$0, jm $$1, fcl $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.l(this.F.b().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return b;
+   protected abstract MapCodec<? extends dnt> a();
+
+   @Override
+   public dxo b(bac $$0) {
+      return this.m().b(e, Integer.valueOf($$0.a(25)));
    }
 
    @Override
-   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
-      return $$0.a(axu.aO) || $$0.a(dko.fz) || $$0.a(dko.ek) || super.b($$0, $$1, $$2);
-   }
-
-   private Optional<? extends jq<egi<?, ?>>> a(dhl $$0) {
-      return $$0.K_().e(mb.aL).a(this.e);
+   protected boolean f(dxo $$0) {
+      return $$0.c(e) < 25;
    }
 
    @Override
-   public boolean b(dhl $$0, jh $$1, dxv $$2) {
-      dxv $$3 = $$0.a_($$1.e());
-      return $$3.a(this.d);
+   protected void b(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         jh $$4 = $$2.a(this.a);
+         if (this.h($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.A));
+         }
+      }
+   }
+
+   protected dxo a(dxo $$0, bac $$1) {
+      return $$0.a(e);
+   }
+
+   public dxo p(dxo $$0) {
+      return $$0.b(e, Integer.valueOf(25));
+   }
+
+   public boolean q(dxo $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dxo a(dxo $$0, dxo $$1) {
+      return $$1;
    }
 
    @Override
-   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
-      return (double)$$1.i() < 0.4;
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      if ($$4 != this.a || !$$6.a(this) && !$$6.a(this.b())) {
+         if (this.b) {
+            $$2.a($$3, etr.c, etr.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      } else {
+         return this.a($$0, this.b().m());
+      }
    }
 
    @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
-      this.a($$0).ifPresent($$3x -> ((egi)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public boolean b(dhc $$0, jh $$1, dxo $$2) {
+      return this.h($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
+      jh $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(bac var1);
+
+   protected abstract boolean h(dxo var1);
+
+   @Override
+   protected dnt c() {
+      return this;
    }
 }

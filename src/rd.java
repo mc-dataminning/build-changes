@@ -1,61 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.OptionalLong;
 
 public class rd {
-   public static void a(rk<epu> $$0) {
-      jr<esk> $$1 = $$0.a(mb.aV);
-      jq<esk> $$2 = $$1.b(rs.y);
-      jq<esk> $$3 = $$1.b(rs.w);
-      jq<esk> $$4 = $$1.b(rs.z);
-      jq<esk> $$5 = $$1.b(rs.x);
-      jr<epu> $$6 = $$0.a(mb.aX);
-      jq<epu> $$7 = $$6.b(rr.a);
-      rr.a(
-         $$0,
-         "bastion/bridge/starting_pieces",
-         new epu(
-            $$7,
-            ImmutableList.of(
-               Pair.of(eps.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(eps.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
-            ),
-            epu.a.b
+   public static void a(ra<ebj> $$0) {
+      $$0.a(
+         ebh.a,
+         new ebj(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, axk.bd, ebh.e, 0.0F, new ebj.a(false, true, bsl.a(0, 7), 0))
+      );
+      $$0.a(
+         ebh.b,
+         new ebj(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, axk.be, ebh.f, 0.1F, new ebj.a(true, false, bsc.a(7), 15))
+      );
+      $$0.a(
+         ebh.c,
+         new ebj(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, axk.bf, ebh.g, 0.0F, new ebj.a(false, true, bsl.a(0, 7), 0)
          )
       );
-      rr.a($$0, "bastion/bridge/bridge_pieces", new epu($$7, ImmutableList.of(Pair.of(eps.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), epu.a.b));
-      rr.a(
-         $$0,
-         "bastion/bridge/legs",
-         new epu($$7, ImmutableList.of(Pair.of(eps.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(eps.b("bastion/bridge/legs/leg_1", $$3), 1)), epu.a.b)
-      );
-      rr.a(
-         $$0,
-         "bastion/bridge/walls",
-         new epu(
-            $$7,
-            ImmutableList.of(Pair.of(eps.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(eps.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
-            epu.a.b
-         )
-      );
-      rr.a(
-         $$0,
-         "bastion/bridge/ramparts",
-         new epu(
-            $$7,
-            ImmutableList.of(Pair.of(eps.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(eps.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
-            epu.a.b
-         )
-      );
-      rr.a($$0, "bastion/bridge/rampart_plates", new epu($$7, ImmutableList.of(Pair.of(eps.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), epu.a.b));
-      rr.a(
-         $$0,
-         "bastion/bridge/connectors",
-         new epu(
-            $$7,
-            ImmutableList.of(
-               Pair.of(eps.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(eps.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
-            ),
-            epu.a.b
-         )
+      $$0.a(
+         ebh.d,
+         new ebj(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, axk.bd, ebh.e, 0.0F, new ebj.a(false, true, bsl.a(0, 7), 0))
       );
    }
 }

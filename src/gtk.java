@@ -1,41 +1,25 @@
-public class gtk extends gqk<cir, gzj, gcx> {
-   private static final alz a = alz.b("textures/entity/rabbit/brown.png");
-   private static final alz b = alz.b("textures/entity/rabbit/white.png");
-   private static final alz k = alz.b("textures/entity/rabbit/black.png");
-   private static final alz l = alz.b("textures/entity/rabbit/gold.png");
-   private static final alz m = alz.b("textures/entity/rabbit/salt.png");
-   private static final alz n = alz.b("textures/entity/rabbit/white_splotched.png");
-   private static final alz o = alz.b("textures/entity/rabbit/toast.png");
-   private static final alz p = alz.b("textures/entity/rabbit/caerbannog.png");
+public class gtk extends gqf<cik, gzi, gcx> {
+   private static final alp a = alp.b("textures/entity/sheep/sheep.png");
 
-   public gtk(grq.a $$0) {
-      super($$0, new gcx($$0.a(gen.cq)), new gcx($$0.a(gen.cr)), 0.3F);
+   public gtk(grl.a $$0) {
+      super($$0, new gcx($$0.a(gei.cz)), new gcx($$0.a(gei.cA)), 0.7F);
+      this.a(new gwc(this, $$0.f()));
    }
 
-   public alz a(gzj $$0) {
-      if ($$0.b) {
-         return o;
-      } else {
-         return switch ($$0.c) {
-            case a -> a;
-            case b -> b;
-            case c -> k;
-            case e -> l;
-            case f -> m;
-            case d -> n;
-            case g -> p;
-         };
-      }
+   public alp a(gzi $$0) {
+      return a;
    }
 
-   public gzj b() {
-      return new gzj();
+   public gzi b() {
+      return new gzi();
    }
 
-   public void a(cir $$0, gzj $$1, float $$2) {
+   public void a(cik $$0, gzi $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.b = $$0.K($$2);
       $$1.a = $$0.J($$2);
-      $$1.b = "Toast".equals(n.a($$0.al().getString()));
-      $$1.c = $$0.go();
+      $$1.c = $$0.x();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ar();
    }
 }

@@ -1,25 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
-public class py implements px.a {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = aui.b.a() + "/minecraft/structure/";
-
-   @Override
-   public ux apply(String $$0, ux $$1) {
-      return $$0.startsWith(b) ? a($$0, $$1) : $$1;
+public abstract class py extends qj<ddq> {
+   public py(mj $$0, CompletableFuture<js.a> $$1) {
+      super($$0, mb.aO, $$1);
    }
 
-   public static ux a(String $$0, ux $$1) {
-      esm $$2 = new esm();
-      int $$3 = vm.b($$1, 500);
-      int $$4 = 4053;
-      if ($$3 < 4053) {
-         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 4053, $$0});
+   protected void a(js.a $$0, alo<ddq>... $$1) {
+      this.b(axn.a).a($$1);
+      Set<alo<ddq>> $$2 = Set.of($$1);
+      List<String> $$3 = $$0.d(mb.aO).c().filter($$1x -> !$$2.contains($$1x.e().get())).map(jq::g).collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         throw new IllegalStateException("Not all enchantments were registered for tooltip ordering. Missing: " + String.join(", ", $$3));
       }
-
-      ux $$5 = bbs.f.a(bbt.a(), $$1, $$3);
-      $$2.a(ma.e, $$5);
-      return $$2.a(new ux());
    }
 }

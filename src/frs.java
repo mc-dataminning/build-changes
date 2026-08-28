@@ -1,111 +1,61 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Consumer;
 
-public class frs extends frp {
-   private final List<frs.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final frx f = frx.i().a(0.5F, 0.5F);
-
-   public frs() {
-      this(0, 0, 0, 0);
-   }
+public class frs implements frp {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
    public frs(int $$0, int $$1) {
       this(0, 0, $$0, $$1);
    }
 
    public frs(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public frs a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public frs a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public frs b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public frx b() {
-      return this.f.g();
-   }
-
-   public frx c() {
-      return this.f;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
-
-      for (frs.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
-      }
-
-      for (frs.a $$3 : this.c) {
-         $$3.a(this.D(), $$0);
-         $$3.b(this.E(), $$1);
-      }
-
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public <T extends frw> T a(T $$0) {
-      return this.a($$0, this.b());
+   public static frs a(int $$0) {
+      return new frs($$0, 0);
    }
 
-   public <T extends frw> T a(T $$0, frx $$1) {
-      this.c.add(new frs.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends frw> T a(T $$0, Consumer<frx> $$1) {
-      return this.a($$0, ae.a(this.b(), $$1));
+   public static frs b(int $$0) {
+      return new frs(0, $$0);
    }
 
    @Override
-   public void b(Consumer<frw> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
+   public void k(int $$0) {
+      this.a = $$0;
    }
 
-   public static void a(frw $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   @Override
+   public void l(int $$0) {
+      this.b = $$0;
    }
 
-   public static void a(frw $$0, fsn $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   @Override
+   public int D() {
+      return this.a;
    }
 
-   public static void a(frw $$0, fsn $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   @Override
+   public int E() {
+      return this.b;
    }
 
-   public static void a(frw $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.y(), $$0::k, $$5);
-      a($$2, $$4, $$0.w(), $$0::l, $$6);
+   @Override
+   public int y() {
+      return this.c;
    }
 
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)bae.h($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
+   @Override
+   public int w() {
+      return this.d;
    }
 
-   static class a extends frp.a {
-      protected a(frw $$0, frx $$1) {
-         super($$0, $$1);
-      }
+   @Override
+   public void a(Consumer<fnw> $$0) {
    }
 }

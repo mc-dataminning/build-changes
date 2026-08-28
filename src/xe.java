@@ -1,18 +1,22 @@
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.handler.codec.EncoderException;
+import io.netty.handler.codec.MessageToByteEncoder;
 
-public interface xe {
-   static void a(ChannelHandlerContext $$0, aac<?> $$1) {
-      if ($$1.d()) {
-         $$0.channel().config().setAutoRead(false);
-         $$0.pipeline().addBefore($$0.name(), "inbound_config", new xk.a());
-         $$0.pipeline().remove($$0.name());
-      }
-   }
+@Sharable
+public class xe extends MessageToByteEncoder<ByteBuf> {
+   public static final int a = 3;
 
-   static void b(ChannelHandlerContext $$0, aac<?> $$1) {
-      if ($$1.d()) {
-         $$0.pipeline().addAfter($$0.name(), "outbound_config", new xk.c());
-         $$0.pipeline().remove($$0.name());
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      int $$4 = xb.a($$3);
+      if ($$4 > 3) {
+         throw new EncoderException("Packet too large: size " + $$3 + " is over 8");
+      } else {
+         $$2.ensureWritable($$4 + $$3);
+         xb.a($$2, $$3);
+         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
       }
    }
 }

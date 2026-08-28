@@ -1,4 +1,7 @@
-public class gzr extends gyt {
-   public float a;
-   public int b = 1;
+import javax.annotation.Nullable;
+
+public class gzr extends gxq {
+   @Nullable
+   public hdi a;
+   public cxg b = cxg.j;
 }

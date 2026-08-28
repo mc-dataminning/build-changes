@@ -1,27 +1,50 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fwk extends ftr {
+   private static final int a = 600;
+   private final we b;
+   private fny c;
+   private int d;
+   private final frr s = frr.d();
 
-public class fwk implements fwj {
-   public static final fwj a = new fwk();
-
-   private fwk() {
+   public fwk(xk $$0, we $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   public boolean aH_() {
+      return false;
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+   @Override
+   protected void aT_() {
+      this.s.c().b().a(10);
+      this.s.a(new fpg(this.l, this.p));
+      this.c = this.s.a(fny.a(xj.p, $$0 -> this.b.a(fsq.a)).a());
+      this.c.j = false;
+      this.s.a();
+      this.s.a($$1 -> {
+         fnw var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      frl.a(this.s, this.H());
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.d++;
+      if (this.d == 600) {
+         this.c.j = true;
       }
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
+      if (this.b.i()) {
+         this.b.b();
+      } else {
+         this.b.n();
       }
    }
 }

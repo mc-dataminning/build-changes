@@ -1,63 +1,102 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class clk<T extends cle> {
-   private static clk<?>[] l = new clk[0];
-   public static final clk<cla> a = a(cla.class, "HoldingPattern");
-   public static final clk<cli> b = a(cli.class, "StrafePlayer");
-   public static final clk<clc> c = a(clc.class, "LandingApproach");
-   public static final clk<cld> d = a(cld.class, "Landing");
-   public static final clk<clj> e = a(clj.class, "Takeoff");
-   public static final clk<clg> f = a(clg.class, "SittingFlaming");
-   public static final clk<clh> g = a(clh.class, "SittingScanning");
-   public static final clk<clf> h = a(clf.class, "SittingAttacking");
-   public static final clk<cky> i = a(cky.class, "ChargingPlayer");
-   public static final clk<ckz> j = a(ckz.class, "Dying");
-   public static final clk<clb> k = a(clb.class, "Hover");
-   private final Class<? extends cle> m;
-   private final int n;
-   private final String o;
+public abstract class clk extends cli {
+   protected static final Predicate<bvb> b = $$0 -> $$0 instanceof clk;
+   protected jm c = jm.d;
 
-   private clk(int $$0, Class<? extends cle> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
+   protected clk(bvi<? extends clk> $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
-   public cle a(cku $$0) {
-      try {
-         Constructor<? extends cle> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
+   protected clk(bvi<? extends clk> $$0, dgz $$1, jh $$2) {
+      this($$0, $$1);
+      this.a = $$2;
    }
 
-   protected Constructor<? extends cle> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cku.class);
-   }
-
-   public int b() {
-      return this.n;
+   protected void a(jm $$0) {
+      Objects.requireNonNull($$0);
+      Validate.isTrue($$0.o().d());
+      this.c = $$0;
+      this.v((float)(this.c.e() * 90));
+      this.N = this.dM();
+      this.l();
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   protected final void l() {
+      if (this.c != null) {
+         fbm $$0 = this.a(this.a, this.c);
+         fbr $$1 = $$0.f();
+         this.o($$1.d, $$1.e, $$1.f);
+         this.a($$0);
+      }
    }
 
-   public static clk<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   protected abstract fbm a(jh var1, jm var2);
+
+   @Override
+   public boolean m() {
+      if (!this.dW().g(this)) {
+         return false;
+      } else {
+         boolean $$0 = jh.b(this.y()).allMatch($$0x -> {
+            dxo $$1 = this.dW().a_($$0x);
+            return $$1.e() || dmg.n($$1);
+         });
+         return !$$0 ? false : this.dW().a(this, this.cR(), b).isEmpty();
+      }
    }
 
-   public static int c() {
-      return l.length;
+   protected fbm y() {
+      return this.cR().a(this.c.m().mul(-0.5F)).h(1.0E-7);
    }
 
-   private static <T extends cle> clk<T> a(Class<T> $$0, String $$1) {
-      clk<T> $$2 = new clk<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public jm cO() {
+      return this.c;
+   }
+
+   public abstract void z();
+
+   @Override
+   public cls a(arx $$0, cxg $$1, float $$2) {
+      cls $$3 = new cls(
+         this.dW(), this.dB() + (double)((float)this.c.j() * 0.15F), this.dD() + (double)$$2, this.dH() + (double)((float)this.c.l() * 0.15F), $$1
+      );
+      $$3.s();
+      this.dW().b($$3);
+      return $$3;
+   }
+
+   @Override
+   public float a(dqv $$0) {
+      if (this.c.o() != jm.a.b) {
+         switch ($$0) {
+            case c:
+               this.c = this.c.g();
+               break;
+            case d:
+               this.c = this.c.i();
+               break;
+            case b:
+               this.c = this.c.h();
+         }
+      }
+
+      float $$1 = azu.h(this.dM());
+
+      return switch ($$0) {
+         case c -> $$1 + 180.0F;
+         case d -> $$1 + 90.0F;
+         case b -> $$1 + 270.0F;
+         default -> $$1;
+      };
+   }
+
+   @Override
+   public float a(dpc $$0) {
+      return this.a($$0.a(this.c));
    }
 }

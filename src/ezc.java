@@ -1,33 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-
-public class ezc extends eyc {
-   public static final MapCodec<ezc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(daw.d.fieldOf("pages").forGetter($$0x -> $$0x.b), eyb.a(100).forGetter($$0x -> $$0x.c))).apply($$0, ezc::new)
-   );
-   private final List<asz<String>> b;
-   private final eyb c;
-
-   protected ezc(List<ezy> $$0, List<asz<String>> $$1, eyb $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   @Override
-   protected cxp a(cxp $$0, ewp $$1) {
-      $$0.a(ku.S, daw.a, this::a);
-      return $$0;
-   }
-
-   public daw a(daw $$0) {
-      List<asz<String>> $$1 = this.c.a($$0.a(), this.b, 100);
-      return $$0.b($$1);
-   }
-
-   @Override
-   public eye<ezc> b() {
-      return eyf.O;
-   }
+public class ezc {
+   public static final bbd<bvb> a = bbd.a("this_entity");
+   public static final bbd<cpo> b = bbd.a("last_damage_player");
+   public static final bbd<btr> c = bbd.a("damage_source");
+   public static final bbd<bvb> d = bbd.a("attacking_entity");
+   public static final bbd<bvb> e = bbd.a("direct_attacking_entity");
+   public static final bbd<fbr> f = bbd.a("origin");
+   public static final bbd<dxo> g = bbd.a("block_state");
+   public static final bbd<duq> h = bbd.a("block_entity");
+   public static final bbd<cxg> i = bbd.a("tool");
+   public static final bbd<Float> j = bbd.a("explosion_radius");
+   public static final bbd<Integer> k = bbd.a("enchantment_level");
+   public static final bbd<Boolean> l = bbd.a("enchantment_active");
 }

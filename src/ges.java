@@ -1,24 +1,9 @@
-public class ges {
-   public static final ges a = new ges(0.0F);
-   final float b;
-   final float c;
-   final float d;
-
-   public ges(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+@FunctionalInterface
+public interface ges {
+   static ges scaling(float $$0) {
+      float $$1 = 24.016F * (1.0F - $$0);
+      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
    }
 
-   public ges(float $$0) {
-      this($$0, $$0, $$0);
-   }
-
-   public ges a(float $$0) {
-      return new ges(this.b + $$0, this.c + $$0, this.d + $$0);
-   }
-
-   public ges a(float $$0, float $$1, float $$2) {
-      return new ges(this.b + $$0, this.c + $$1, this.d + $$2);
-   }
+   ger apply(ger var1);
 }

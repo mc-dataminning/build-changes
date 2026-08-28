@@ -1,27 +1,115 @@
-import com.mojang.datafixers.kinds.App;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public class cot {
-   public static bzk<col> a() {
-      return cbm.a(
-         (Function<cbm.b<col>, ? extends App<cbm.c<col>, cbp<col>>>)($$0 -> $$0.group($$0.b(cfk.ak), $$0.c(cfk.ab), $$0.c(cfk.ah), $$0.a(cfk.ao))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     if (!$$4x.e_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cot::a)).isPresent()) {
-                        cof $$6 = $$0.b($$1);
-                        com.c($$3x, $$4x, $$6);
-                        com.b((cok)$$4x);
-                        com.b($$3x, $$4x, $$6);
-                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(com::b));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public static final Codec<cot> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azd.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               azd.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               azd.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, cot::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
+
+   public cot(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   private static boolean a(cok $$0) {
-      return $$0.ec().a(cfk.ah);
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
+      } else {
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
+      }
+   }
+
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
+   }
+
+   public static OptionalInt a(arx $$0, jh $$1, ary $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<ary> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
+
+         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cot::d).orElse(false))) {
+            return OptionalInt.empty();
+         } else {
+            Optional<cot> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cot::c));
+            if ($$4.isPresent()) {
+               cot $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
+            } else {
+               return OptionalInt.empty();
+            }
+         }
+      }
+   }
+
+   private boolean d() {
+      return this.i > 0;
+   }
+
+   private static boolean a(arx $$0, jh $$1) {
+      fbm $$2 = fbm.a(fbr.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(cor.class, $$2).isEmpty();
+   }
+
+   private static List<ary> b(arx $$0, jh $$1) {
+      fbr $$2 = fbr.b($$1);
+      return $$0.a($$1x -> !$$1x.aa_() && $$1x.du().a((ka)$$2, 16.0) && $$1x.bL());
+   }
+
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
+      }
+   }
+
+   private void f() {
+      this.a(this.c() - 1);
+   }
+
+   public void a(int $$0) {
+      this.h = azu.a($$0, 0, 4);
+   }
+
+   public int c() {
+      return this.h;
+   }
+
+   private void a(cot $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

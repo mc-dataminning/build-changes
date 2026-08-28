@@ -1,52 +1,48 @@
-public class gdh<S extends gzq> extends gbz<S> {
-   public gdh(geo $$0) {
+public class gdh extends gbh<gyo> {
+   private static final String a = "upper_body";
+   private final gej b;
+   private final gej c;
+   private final gej d;
+   private final gej e;
+
+   public gdh(gej $$0) {
       super($$0);
+      this.c = $$0.b("head");
+      this.d = $$0.b("left_arm");
+      this.e = $$0.b("right_arm");
+      this.b = $$0.b("upper_body");
    }
 
-   public static geu c() {
-      gew $$0 = gbz.a(ges.a, 0.0F);
-      gey $$1 = $$0.a();
-      a($$1);
-      return geu.a($$0, 64, 32);
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      float $$2 = 4.0F;
+      gen $$3 = new gen(-0.5F);
+      $$1.a("head", geo.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), gel.a(0.0F, 4.0F, 0.0F));
+      geo $$4 = geo.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, gel.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, gel.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", geo.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), gel.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", geo.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), gel.a(0.0F, 24.0F, 0.0F));
+      return gep.a($$0, 64, 64);
    }
 
-   protected static void a(gey $$0) {
-      $$0.a("right_arm", get.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), geq.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", get.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), geq.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", get.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), geq.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", get.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), geq.a(2.0F, 12.0F, 0.0F));
-   }
-
-   protected gbz.a a(S $$0, bwa $$1) {
-      return $$0.aY_().a(cxt.oR) && $$0.b && $$0.ap == $$1 ? gbz.a.d : gbz.a.a;
-   }
-
-   public void a(S $$0) {
+   public void a(gyo $$0) {
       super.a($$0);
-      cxp $$1 = $$0.aY_();
-      if ($$0.b && !$$1.a(cxt.oR)) {
-         float $$2 = $$0.C;
-         float $$3 = bae.a($$2 * (float) Math.PI);
-         float $$4 = bae.a((1.0F - (1.0F - $$2) * (1.0F - $$2)) * (float) Math.PI);
-         this.r.g = 0.0F;
-         this.s.g = 0.0F;
-         this.r.f = -(0.1F - $$3 * 0.6F);
-         this.s.f = 0.1F - $$3 * 0.6F;
-         this.r.e = (float) (-Math.PI / 2);
-         this.s.e = (float) (-Math.PI / 2);
-         this.r.e -= $$3 * 1.2F - $$4 * 0.4F;
-         this.s.e -= $$3 * 1.2F - $$4 * 0.4F;
-         gag.a(this.r, this.s, $$0.p);
-      }
+      this.c.f = $$0.U * (float) (Math.PI / 180.0);
+      this.c.e = $$0.V * (float) (Math.PI / 180.0);
+      this.b.f = $$0.U * (float) (Math.PI / 180.0) * 0.25F;
+      float $$1 = azu.a(this.b.f);
+      float $$2 = azu.b(this.b.f);
+      this.d.f = this.b.f;
+      this.e.f = this.b.f + (float) Math.PI;
+      this.d.b = $$2 * 5.0F;
+      this.d.d = -$$1 * 5.0F;
+      this.e.b = -$$2 * 5.0F;
+      this.e.d = $$1 * 5.0F;
    }
 
-   @Override
-   public void a(bwa $$0, fgs $$1) {
-      this.e().a($$1);
-      float $$2 = $$0 == bwa.b ? 1.0F : -1.0F;
-      geo $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public gej b() {
+      return this.c;
    }
 }

@@ -1,37 +1,64 @@
-public class gwk extends gwf<gyt, gdm> {
-   private final gmo a;
-   private final gso b;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-   public gwk(gtn<gyt, gdm> $$0, gmo $$1, gso $$2) {
+public class gwk<S extends gyo & gzy, M extends gbh<S> & gds> extends gwa<S, M> {
+   private static final Int2ObjectMap<alp> a = ae.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, alp.b("stone"));
+      $$0.put(2, alp.b("iron"));
+      $$0.put(3, alp.b("gold"));
+      $$0.put(4, alp.b("emerald"));
+      $$0.put(5, alp.b("diamond"));
+   });
+   private final Object2ObjectMap<cpf, hcv.a> b = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<cpd, hcv.a> c = new Object2ObjectOpenHashMap();
+   private final avl d;
+   private final String e;
+
+   public gwk(gti<S, M> $$0, avl $$1, String $$2) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public void a(fgs $$0, gll $$1, int $$2, gyt $$3, float $$4, float $$5) {
-      hdn $$6 = $$3.an;
-      if ($$6 != null) {
-         boolean $$7 = $$3.aj && $$3.u;
-         if (!$$3.u || $$7) {
-            $$0.a();
-            this.d().b().a($$0);
-            float $$8 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            cxp $$9 = $$3.ao;
-            if ($$7 && $$9.h() instanceof cvv $$10) {
-               dxv $$11 = $$10.d().m();
-               hdn $$12 = this.a.a($$11);
-               int $$13 = gsr.a($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(glv.s(hbk.d)), $$11, $$12, 0.0F, 0.0F, 0.0F, $$2, $$13);
-            } else {
-               this.b.a($$9, cxn.f, false, $$0, $$1, $$2, gsr.a($$3, 0.0F), $$6);
+   public void a(fgl $$0, glg $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.u) {
+         cpb $$6 = $$3.a();
+         cpf $$7 = $$6.a();
+         cpd $$8 = $$6.b();
+         hcv.a $$9 = this.a(this.b, "type", ma.w, $$7);
+         hcv.a $$10 = this.a(this.c, "profession", ma.x, $$8);
+         M $$11 = this.d();
+         $$11.a($$10 == hcv.a.a || $$10 == hcv.a.b && $$9 != hcv.a.c);
+         alp $$12 = this.a("type", ma.w.b($$7));
+         b($$11, $$12, $$0, $$1, $$2, $$3, -1);
+         $$11.a(true);
+         if ($$8 != cpd.b && !$$3.ae) {
+            alp $$13 = this.a("profession", ma.x.b($$8));
+            b($$11, $$13, $$0, $$1, $$2, $$3, -1);
+            if ($$8 != cpd.m) {
+               alp $$14 = this.a("profession_level", (alp)a.get(azu.a($$6.c(), 1, a.size())));
+               b($$11, $$14, $$0, $$1, $$2, $$3, -1);
             }
-
-            $$0.b();
          }
       }
+   }
+
+   private alp a(String $$0, alp $$1) {
+      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
+   }
+
+   public <K> hcv.a a(Object2ObjectMap<K, hcv.a> $$0, String $$1, jl<K> $$2, K $$3) {
+      return (hcv.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
+            try {
+               return $$0xx.f().a(hcv.a).map(hcv::a);
+            } catch (IOException var2x) {
+               return Optional.empty();
+            }
+         }).orElse(hcv.a.a));
    }
 }

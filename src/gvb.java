@@ -1,12 +1,20 @@
-public class gvb<M extends gcr> extends gwn<M> {
-   private static final alz a = alz.b("textures/entity/bee/bee_stinger.png");
+public class gvb extends gwa<gxg, gat> {
+   private static final alp a = alp.b("textures/entity/cat/cat_collar.png");
+   private final gat b;
+   private final gat c;
 
-   public gvb(gsr<?, gzg, M> $$0, grq.a $$1) {
-      super($$0, new gaq($$1.a(gen.w)), a, gwn.a.b);
+   public gvb(gti<gxg, gat> $$0, gef $$1) {
+      super($$0);
+      this.b = new gat($$1.a(gei.R));
+      this.c = new gat($$1.a(gei.Q));
    }
 
-   @Override
-   protected int a(gzg $$0) {
-      return $$0.f;
+   public void a(fgl $$0, glg $$1, int $$2, gxg $$3, float $$4, float $$5) {
+      cwd $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         gat $$8 = $$3.ae ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
+      }
    }
 }

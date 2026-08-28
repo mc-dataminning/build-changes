@@ -1,101 +1,168 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.net.URI;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class ftm extends fty {
-   private static final long a = 2000L;
-   private final asv b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<ear> s = ae.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(ear.c, 5526612);
-      $$0.put(ear.d, 10066329);
-      $$0.put(ear.e, 6250897);
-      $$0.put(ear.f, 8434258);
-      $$0.put(ear.g, 13750737);
-      $$0.put(ear.h, 7497737);
-      $$0.put(ear.i, 3159410);
-      $$0.put(ear.j, 2213376);
-      $$0.put(ear.k, 13421772);
-      $$0.put(ear.l, 16769184);
-      $$0.put(ear.m, 15884384);
-      $$0.put(ear.n, 16777215);
-   });
+public class ftm extends ftr {
+   private static final alp a = alp.b("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int d = 4;
+   private static final int s = 204;
+   private static final int u = 98;
+   private static final xk v = xk.c("menu.returnToGame");
+   private static final xk w = xk.c("gui.advancements");
+   private static final xk x = xk.c("gui.stats");
+   private static final xk y = xk.c("menu.sendFeedback");
+   private static final xk z = xk.c("menu.reportBugs");
+   private static final xk A = xk.c("menu.feedback");
+   private static final xk B = xk.c("menu.server_links");
+   private static final xk C = xk.c("menu.options");
+   private static final xk D = xk.c("menu.shareToLan");
+   private static final xk E = xk.c("menu.playerReporting");
+   private static final xk F = xk.c("menu.returnToMenu");
+   private static final xk G = xk.c("menu.savingLevel");
+   private static final xk H = xk.c("menu.game");
+   private static final xk I = xk.c("menu.paused");
+   private final boolean J;
+   @Nullable
+   private fny K;
 
-   public ftm(asv $$0) {
-      super(flx.a);
-      this.b = $$0;
+   public ftm(boolean $$0) {
+      super($$0 ? H : I);
+      this.J = $$0;
+   }
+
+   public boolean l() {
+      return this.J;
    }
 
    @Override
-   public boolean aH_() {
-      return false;
+   protected void aT_() {
+      if (this.J) {
+         this.E();
+      }
+
+      this.c(new fpg(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
    }
 
-   @Override
-   protected boolean aS_() {
-      return false;
-   }
-
-   @Override
-   public void aJ_() {
-      this.d = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fsd $$0) {
-      if (this.d) {
-         $$0.a(fsc.a, xv.c("narrator.loading.done"));
+   private void E() {
+      frm $$0 = new frm();
+      $$0.c().a(4, 4, 4, 0);
+      frm.b $$1 = $$0.d(2);
+      $$1.a(fny.a(v, $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(w, () -> new fub(this.m.t.j.p(), this)));
+      $$1.a(this.a(x, () -> new ftv(this, this.m.t.m())));
+      amh $$2 = this.m.t.j.E();
+      if ($$2.a()) {
+         a(this, $$1);
       } else {
-         $$0.a(fsc.a, this.l());
+         $$1.a(this.a(A, () -> new ftm.a(this)));
+         $$1.a(this.a(B, () -> new fwj(this, $$2)));
       }
+
+      $$1.a(this.a(C, () -> new fwu(this, this.m.n)));
+      if (this.m.U() && !this.m.V().r()) {
+         $$1.a(this.a(D, () -> new fts(this)));
+      } else {
+         $$1.a(this.a(E, () -> new fyj(this)));
+      }
+
+      xk $$3 = this.m.T() ? F : xj.p;
+      this.K = $$1.a(fny.a($$3, $$0x -> {
+         $$0x.j = false;
+         this.m.bb().a(this.m, this, this::F, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      frl.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
+      $$0.a(this::c);
    }
 
-   private xv l() {
-      return xv.a("loading.progress", bae.a(this.b.f(), 0, 100));
+   static void a(ftr $$0, frm.b $$1) {
+      $$1.a(a($$0, y, ab.b().g() ? ayq.i : ayq.h));
+      $$1.a(a($$0, z, ayq.j)).j = !ab.b().d().a();
+   }
+
+   private void F() {
+      boolean $$0 = this.m.T();
+      gfu $$1 = this.m.S();
+      this.m.s.ac();
+      if ($$0) {
+         this.m.b(new ftc(G));
+      } else {
+         this.m.y();
+      }
+
+      ftt $$2 = new ftt();
+      if ($$0) {
+         this.m.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.m.a(new fgw($$2));
+      } else {
+         this.m.a(new fwh($$2));
+      }
    }
 
    @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ae.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.l(), $$5, $$6 - $$7, 16777215);
+   public void e() {
+      super.e();
    }
 
-   public static void a(fns $$0, asv $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      if ($$5 != 0) {
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.J && this.m != null && this.m.bb().c() && this.K != null) {
+         $$0.a(glq::H, a, this.K.D() + this.K.y() - 17, this.K.E() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      if (this.J) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private fny a(xk $$0, Supplier<ftr> $$1) {
+      return fny.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
+   }
+
+   private static fny a(ftr $$0, xk $$1, URI $$2) {
+      return fny.a($$1, fso.b($$0, $$2)).a(98).a();
+   }
+
+   static class a extends ftr {
+      private static final xk b = xk.c("menu.feedback.title");
+      public final ftr a;
+      private final frn c = new frn(this);
+
+      protected a(ftr $$0) {
+         super(b);
+         this.a = $$0;
       }
 
-      for (int $$15 = 0; $$15 < $$9; $$15++) {
-         for (int $$16 = 0; $$16 < $$9; $$16++) {
-            ear $$17 = $$1.a($$15, $$16);
-            int $$18 = $$11 + $$15 * $$6;
-            int $$19 = $$12 + $$16 * $$6;
-            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, ayp.f(s.getInt($$17)));
-         }
+      @Override
+      protected void aT_() {
+         this.c.a(b, this.p);
+         frm $$0 = this.c.c(new frm());
+         $$0.c().a(4, 4, 4, 0);
+         frm.b $$1 = $$0.d(2);
+         ftm.a(this, $$1);
+         this.c.b(fny.a(xj.k, $$0x -> this.aP_()).a(200).a());
+         this.c.a(this::c);
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         this.c.a();
+      }
+
+      @Override
+      public void aP_() {
+         this.m.a(this.a);
       }
    }
 }

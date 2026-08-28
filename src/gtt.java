@@ -1,15 +1,30 @@
-public class gtt extends gqi<cnf, gzq> {
-   private static final alz a = alz.b("textures/entity/skeleton/skeleton.png");
+public class gtt<T extends cmz> extends gsr<T, gyo, gdi> {
+   private static final alp a = alp.b("textures/entity/spider/spider.png");
 
-   public gtt(grq.a $$0) {
-      super($$0, gen.cF, gen.cI, gen.cJ);
+   public gtt(grl.a $$0) {
+      this($$0, gei.cU);
    }
 
-   public alz b(gzq $$0) {
+   public gtt(grl.a $$0, geh $$1) {
+      super($$0, new gdi($$0.a($$1)), 0.8F);
+      this.a(new gwg<>(this));
+   }
+
+   @Override
+   protected float aW_() {
+      return 180.0F;
+   }
+
+   @Override
+   public alp b(gyo $$0) {
       return a;
    }
 
-   public gzq b() {
-      return new gzq();
+   public gyo b() {
+      return new gyo();
+   }
+
+   public void a(T $$0, gyo $$1, float $$2) {
+      super.a($$0, $$1, $$2);
    }
 }

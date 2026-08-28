@@ -1,7 +1,5 @@
-public interface ffw {
-   void a(boolean var1);
+public interface ffw<T> {
+   T e();
 
-   void a();
-
-   void b();
+   void a(T var1);
 }

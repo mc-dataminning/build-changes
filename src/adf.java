@@ -1,20 +1,33 @@
-public record adf(int b) implements aac<acr> {
-   public static final zt<ws, adf> a = aac.a(adf::a, adf::new);
+import java.util.List;
 
-   private adf(ws $$0) {
-      this($$0.l());
+public record adf(adf.a b, List<String> c) implements zr<acg> {
+   public static final zi<wh, adf> a = zr.a(adf::a, adf::new);
+
+   private adf(wh $$0) {
+      this($$0.b(adf.a.class), $$0.a(wh::p));
    }
 
-   private void a(ws $$0) {
-      $$0.c(this.b);
+   private void a(wh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, wh::a);
    }
 
    @Override
-   public aae<adf> a() {
-      return ahk.n;
+   public zt<adf> a() {
+      return agz.y;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
+   }
+
+   public List<String> e() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,34 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class any {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xv.b("commands.difficulty.failure", $$0));
+   public static final int a = 2;
 
    public static void a(CommandDispatcher<ew> $$0) {
-      LiteralArgumentBuilder<ew> $$1 = ex.a("difficulty");
-
-      for (btg $$2 : btg.values()) {
-         $$1.then(ex.a($$2.e()).executes($$1x -> a((ew)$$1x.getSource(), $$2)));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         btg $$1x = ((ew)$$0x.getSource()).e().al();
-         ((ew)$$0x.getSource()).a(() -> xv.a("commands.difficulty.query", $$1x.b()), false);
-         return $$1x.a();
-      }));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("gamemode", fk.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((ew)$$0x.getSource()).h()), fk.a($$0x, "gamemode"))))
+                  .then(ex.a("target", fj.d()).executes($$0x -> a($$0x, fj.f($$0x, "target"), fk.a($$0x, "gamemode"))))
+            )
+      );
    }
 
-   public static int a(ew $$0, btg $$1) throws CommandSyntaxException {
-      MinecraftServer $$2 = $$0.l();
-      if ($$2.aZ().q() == $$1) {
-         throw a.create($$1.e());
+   private static void a(ew $$0, ary $$1, dgw $$2) {
+      xk $$3 = xk.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> xk.a("commands.gamemode.success.self", $$3), true);
       } else {
-         $$2.a($$1, true);
-         $$0.a(() -> xv.a("commands.difficulty.success", $$1.b()), true);
-         return 0;
+         if ($$0.e().O().b(dgv.p)) {
+            $$1.a(xk.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> xk.a("commands.gamemode.success.other", $$1.p_(), $$3), true);
       }
+   }
+
+   private static int a(CommandContext<ew> $$0, Collection<ary> $$1, dgw $$2) {
+      int $$3 = 0;
+
+      for (ary $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((ew)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 }

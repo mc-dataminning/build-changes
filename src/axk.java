@@ -1,153 +1,195 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+public final class axk {
+   public static final aya<dkd> a = a("wool");
+   public static final aya<dkd> b = a("planks");
+   public static final aya<dkd> c = a("stone_bricks");
+   public static final aya<dkd> d = a("wooden_buttons");
+   public static final aya<dkd> e = a("stone_buttons");
+   public static final aya<dkd> f = a("buttons");
+   public static final aya<dkd> g = a("wool_carpets");
+   public static final aya<dkd> h = a("wooden_doors");
+   public static final aya<dkd> i = a("mob_interactable_doors");
+   public static final aya<dkd> j = a("wooden_stairs");
+   public static final aya<dkd> k = a("wooden_slabs");
+   public static final aya<dkd> l = a("wooden_fences");
+   public static final aya<dkd> m = a("pressure_plates");
+   public static final aya<dkd> n = a("wooden_pressure_plates");
+   public static final aya<dkd> o = a("stone_pressure_plates");
+   public static final aya<dkd> p = a("wooden_trapdoors");
+   public static final aya<dkd> q = a("doors");
+   public static final aya<dkd> r = a("saplings");
+   public static final aya<dkd> s = a("logs_that_burn");
+   public static final aya<dkd> t = a("overworld_natural_logs");
+   public static final aya<dkd> u = a("logs");
+   public static final aya<dkd> v = a("dark_oak_logs");
+   public static final aya<dkd> w = a("pale_oak_logs");
+   public static final aya<dkd> x = a("oak_logs");
+   public static final aya<dkd> y = a("birch_logs");
+   public static final aya<dkd> z = a("acacia_logs");
+   public static final aya<dkd> A = a("cherry_logs");
+   public static final aya<dkd> B = a("jungle_logs");
+   public static final aya<dkd> C = a("spruce_logs");
+   public static final aya<dkd> D = a("mangrove_logs");
+   public static final aya<dkd> E = a("crimson_stems");
+   public static final aya<dkd> F = a("warped_stems");
+   public static final aya<dkd> G = a("bamboo_blocks");
+   public static final aya<dkd> H = a("wart_blocks");
+   public static final aya<dkd> I = a("banners");
+   public static final aya<dkd> J = a("sand");
+   public static final aya<dkd> K = a("smelts_to_glass");
+   public static final aya<dkd> L = a("stairs");
+   public static final aya<dkd> M = a("slabs");
+   public static final aya<dkd> N = a("walls");
+   public static final aya<dkd> O = a("anvil");
+   public static final aya<dkd> P = a("rails");
+   public static final aya<dkd> Q = a("leaves");
+   public static final aya<dkd> R = a("trapdoors");
+   public static final aya<dkd> S = a("small_flowers");
+   public static final aya<dkd> T = a("beds");
+   public static final aya<dkd> U = a("fences");
+   public static final aya<dkd> V = a("tall_flowers");
+   public static final aya<dkd> W = a("flowers");
+   public static final aya<dkd> X = a("piglin_repellents");
+   public static final aya<dkd> Y = a("gold_ores");
+   public static final aya<dkd> Z = a("iron_ores");
+   public static final aya<dkd> aa = a("diamond_ores");
+   public static final aya<dkd> ab = a("redstone_ores");
+   public static final aya<dkd> ac = a("lapis_ores");
+   public static final aya<dkd> ad = a("coal_ores");
+   public static final aya<dkd> ae = a("emerald_ores");
+   public static final aya<dkd> af = a("copper_ores");
+   public static final aya<dkd> ag = a("candles");
+   public static final aya<dkd> ah = a("dirt");
+   public static final aya<dkd> ai = a("terracotta");
+   public static final aya<dkd> aj = a("badlands_terracotta");
+   public static final aya<dkd> ak = a("concrete_powder");
+   public static final aya<dkd> al = a("completes_find_tree_tutorial");
+   public static final aya<dkd> am = a("shulker_boxes");
+   public static final aya<dkd> an = a("flower_pots");
+   public static final aya<dkd> ao = a("enderman_holdable");
+   public static final aya<dkd> ap = a("ice");
+   public static final aya<dkd> aq = a("valid_spawn");
+   public static final aya<dkd> ar = a("impermeable");
+   public static final aya<dkd> as = a("underwater_bonemeals");
+   public static final aya<dkd> at = a("coral_blocks");
+   public static final aya<dkd> au = a("wall_corals");
+   public static final aya<dkd> av = a("coral_plants");
+   public static final aya<dkd> aw = a("corals");
+   public static final aya<dkd> ax = a("bamboo_plantable_on");
+   public static final aya<dkd> ay = a("standing_signs");
+   public static final aya<dkd> az = a("wall_signs");
+   public static final aya<dkd> aA = a("signs");
+   public static final aya<dkd> aB = a("ceiling_hanging_signs");
+   public static final aya<dkd> aC = a("wall_hanging_signs");
+   public static final aya<dkd> aD = a("all_hanging_signs");
+   public static final aya<dkd> aE = a("all_signs");
+   public static final aya<dkd> aF = a("dragon_immune");
+   public static final aya<dkd> aG = a("dragon_transparent");
+   public static final aya<dkd> aH = a("wither_immune");
+   public static final aya<dkd> aI = a("wither_summon_base_blocks");
+   public static final aya<dkd> aJ = a("beehives");
+   public static final aya<dkd> aK = a("crops");
+   public static final aya<dkd> aL = a("bee_growables");
+   public static final aya<dkd> aM = a("portals");
+   public static final aya<dkd> aN = a("fire");
+   public static final aya<dkd> aO = a("nylium");
+   public static final aya<dkd> aP = a("beacon_base_blocks");
+   public static final aya<dkd> aQ = a("soul_speed_blocks");
+   public static final aya<dkd> aR = a("wall_post_override");
+   public static final aya<dkd> aS = a("climbable");
+   public static final aya<dkd> aT = a("fall_damage_resetting");
+   public static final aya<dkd> aU = a("hoglin_repellents");
+   public static final aya<dkd> aV = a("soul_fire_base_blocks");
+   public static final aya<dkd> aW = a("strider_warm_blocks");
+   public static final aya<dkd> aX = a("campfires");
+   public static final aya<dkd> aY = a("guarded_by_piglins");
+   public static final aya<dkd> aZ = a("prevent_mob_spawning_inside");
+   public static final aya<dkd> ba = a("fence_gates");
+   public static final aya<dkd> bb = a("unstable_bottom_center");
+   public static final aya<dkd> bc = a("mushroom_grow_block");
+   public static final aya<dkd> bd = a("infiniburn_overworld");
+   public static final aya<dkd> be = a("infiniburn_nether");
+   public static final aya<dkd> bf = a("infiniburn_end");
+   public static final aya<dkd> bg = a("base_stone_overworld");
+   public static final aya<dkd> bh = a("stone_ore_replaceables");
+   public static final aya<dkd> bi = a("deepslate_ore_replaceables");
+   public static final aya<dkd> bj = a("base_stone_nether");
+   public static final aya<dkd> bk = a("overworld_carver_replaceables");
+   public static final aya<dkd> bl = a("nether_carver_replaceables");
+   public static final aya<dkd> bm = a("candle_cakes");
+   public static final aya<dkd> bn = a("cauldrons");
+   public static final aya<dkd> bo = a("crystal_sound_blocks");
+   public static final aya<dkd> bp = a("inside_step_sound_blocks");
+   public static final aya<dkd> bq = a("combination_step_sound_blocks");
+   public static final aya<dkd> br = a("camel_sand_step_sound_blocks");
+   public static final aya<dkd> bs = a("occludes_vibration_signals");
+   public static final aya<dkd> bt = a("dampens_vibrations");
+   public static final aya<dkd> bu = a("dripstone_replaceable_blocks");
+   public static final aya<dkd> bv = a("cave_vines");
+   public static final aya<dkd> bw = a("moss_replaceable");
+   public static final aya<dkd> bx = a("lush_ground_replaceable");
+   public static final aya<dkd> by = a("azalea_root_replaceable");
+   public static final aya<dkd> bz = a("small_dripleaf_placeable");
+   public static final aya<dkd> bA = a("big_dripleaf_placeable");
+   public static final aya<dkd> bB = a("snow");
+   public static final aya<dkd> bC = a("mineable/axe");
+   public static final aya<dkd> bD = a("mineable/hoe");
+   public static final aya<dkd> bE = a("mineable/pickaxe");
+   public static final aya<dkd> bF = a("mineable/shovel");
+   public static final aya<dkd> bG = a("sword_efficient");
+   public static final aya<dkd> bH = a("needs_diamond_tool");
+   public static final aya<dkd> bI = a("needs_iron_tool");
+   public static final aya<dkd> bJ = a("needs_stone_tool");
+   public static final aya<dkd> bK = a("incorrect_for_netherite_tool");
+   public static final aya<dkd> bL = a("incorrect_for_diamond_tool");
+   public static final aya<dkd> bM = a("incorrect_for_iron_tool");
+   public static final aya<dkd> bN = a("incorrect_for_stone_tool");
+   public static final aya<dkd> bO = a("incorrect_for_gold_tool");
+   public static final aya<dkd> bP = a("incorrect_for_wooden_tool");
+   public static final aya<dkd> bQ = a("features_cannot_replace");
+   public static final aya<dkd> bR = a("lava_pool_stone_cannot_replace");
+   public static final aya<dkd> bS = a("geode_invalid_blocks");
+   public static final aya<dkd> bT = a("frog_prefer_jump_to");
+   public static final aya<dkd> bU = a("sculk_replaceable");
+   public static final aya<dkd> bV = a("sculk_replaceable_world_gen");
+   public static final aya<dkd> bW = a("ancient_city_replaceable");
+   public static final aya<dkd> bX = a("vibration_resonators");
+   public static final aya<dkd> bY = a("animals_spawnable_on");
+   public static final aya<dkd> bZ = a("armadillo_spawnable_on");
+   public static final aya<dkd> ca = a("axolotls_spawnable_on");
+   public static final aya<dkd> cb = a("goats_spawnable_on");
+   public static final aya<dkd> cc = a("mooshrooms_spawnable_on");
+   public static final aya<dkd> cd = a("parrots_spawnable_on");
+   public static final aya<dkd> ce = a("polar_bears_spawnable_on_alternate");
+   public static final aya<dkd> cf = a("rabbits_spawnable_on");
+   public static final aya<dkd> cg = a("foxes_spawnable_on");
+   public static final aya<dkd> ch = a("wolves_spawnable_on");
+   public static final aya<dkd> ci = a("frogs_spawnable_on");
+   public static final aya<dkd> cj = a("bats_spawnable_on");
+   public static final aya<dkd> ck = a("azalea_grows_on");
+   public static final aya<dkd> cl = a("convertable_to_mud");
+   public static final aya<dkd> cm = a("mangrove_logs_can_grow_through");
+   public static final aya<dkd> cn = a("mangrove_roots_can_grow_through");
+   public static final aya<dkd> co = a("dead_bush_may_place_on");
+   public static final aya<dkd> cp = a("snaps_goat_horn");
+   public static final aya<dkd> cq = a("replaceable_by_trees");
+   public static final aya<dkd> cr = a("snow_layer_cannot_survive_on");
+   public static final aya<dkd> cs = a("snow_layer_can_survive_on");
+   public static final aya<dkd> ct = a("invalid_spawn_inside");
+   public static final aya<dkd> cu = a("sniffer_diggable_block");
+   public static final aya<dkd> cv = a("sniffer_egg_hatch_boost");
+   public static final aya<dkd> cw = a("trail_ruins_replaceable");
+   public static final aya<dkd> cx = a("replaceable");
+   public static final aya<dkd> cy = a("enchantment_power_provider");
+   public static final aya<dkd> cz = a("enchantment_power_transmitter");
+   public static final aya<dkd> cA = a("maintains_farmland");
+   public static final aya<dkd> cB = a("blocks_wind_charge_explosions");
+   public static final aya<dkd> cC = a("does_not_block_hoppers");
+   public static final aya<dkd> cD = a("air");
 
-public class axk extends axi {
-   public static final String b = "recipeBook";
-   private static final Logger e = LogUtils.getLogger();
-   private final axk.a f;
-   @VisibleForTesting
-   protected final Set<aly<dce<?>>> c = Sets.newIdentityHashSet();
-   @VisibleForTesting
-   protected final Set<aly<dce<?>>> d = Sets.newIdentityHashSet();
-
-   public axk(axk.a $$0) {
-      this.f = $$0;
+   private axk() {
    }
 
-   public void a(aly<dce<?>> $$0) {
-      this.c.add($$0);
-   }
-
-   public boolean b(aly<dce<?>> $$0) {
-      return this.c.contains($$0);
-   }
-
-   public void c(aly<dce<?>> $$0) {
-      this.c.remove($$0);
-      this.d.remove($$0);
-   }
-
-   public void d(aly<dce<?>> $$0) {
-      this.d.remove($$0);
-   }
-
-   private void e(aly<dce<?>> $$0) {
-      this.d.add($$0);
-   }
-
-   public int a(Collection<dcj<?>> $$0, asi $$1) {
-      List<afe.a> $$2 = new ArrayList<>();
-
-      for (dcj<?> $$3 : $$0) {
-         aly<dce<?>> $$4 = $$3.a();
-         if (!this.c.contains($$4) && !$$3.b().aq_()) {
-            this.a($$4);
-            this.e($$4);
-            this.f.displaysForRecipe($$4, $$2x -> $$2.add(new afe.a($$2x, $$3.b().i(), true)));
-            ao.g.a($$1, $$3);
-         }
-      }
-
-      if (!$$2.isEmpty()) {
-         $$1.f.b(new afe($$2, false));
-      }
-
-      return $$2.size();
-   }
-
-   public int b(Collection<dcj<?>> $$0, asi $$1) {
-      List<ddl> $$2 = Lists.newArrayList();
-
-      for (dcj<?> $$3 : $$0) {
-         aly<dce<?>> $$4 = $$3.a();
-         if (this.c.contains($$4)) {
-            this.c($$4);
-            this.f.displaysForRecipe($$4, $$1x -> $$2.add($$1x.a()));
-         }
-      }
-
-      if (!$$2.isEmpty()) {
-         $$1.f.b(new aff($$2));
-      }
-
-      return $$2.size();
-   }
-
-   public ux b() {
-      ux $$0 = new ux();
-      this.a().b($$0);
-      vd $$1 = new vd();
-
-      for (aly<dce<?>> $$2 : this.c) {
-         $$1.add(vs.a($$2.a().toString()));
-      }
-
-      $$0.a("recipes", $$1);
-      vd $$3 = new vd();
-
-      for (aly<dce<?>> $$4 : this.d) {
-         $$3.add(vs.a($$4.a().toString()));
-      }
-
-      $$0.a("toBeDisplayed", $$3);
-      return $$0;
-   }
-
-   public void a(ux $$0, Predicate<aly<dce<?>>> $$1) {
-      this.a(axj.a($$0));
-      vd $$2 = $$0.c("recipes", 8);
-      this.a($$2, this::a, $$1);
-      vd $$3 = $$0.c("toBeDisplayed", 8);
-      this.a($$3, this::e, $$1);
-   }
-
-   private void a(vd $$0, Consumer<aly<dce<?>>> $$1, Predicate<aly<dce<?>>> $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         String $$4 = $$0.j($$3);
-
-         try {
-            aly<dce<?>> $$5 = aly.a(mb.bk, alz.a($$4));
-            if (!$$2.test($$5)) {
-               e.error("Tried to load unrecognized recipe: {} removed now.", $$5);
-            } else {
-               $$1.accept($$5);
-            }
-         } catch (aa var7) {
-            e.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
-         }
-      }
-   }
-
-   public void a(asi $$0) {
-      $$0.f.b(new afg(this.a()));
-      List<afe.a> $$1 = new ArrayList<>(this.c.size());
-
-      for (aly<dce<?>> $$2 : this.c) {
-         this.f.displaysForRecipe($$2, $$2x -> $$1.add(new afe.a($$2x, false, this.d.contains($$2))));
-      }
-
-      $$0.f.b(new afe($$1, true));
-   }
-
-   public void a(axk $$0) {
-      this.c.clear();
-      this.d.clear();
-      this.a.a($$0.a);
-      this.c.addAll($$0.c);
-      this.d.addAll($$0.d);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void displaysForRecipe(aly<dce<?>> var1, Consumer<ddk> var2);
+   private static aya<dkd> a(String $$0) {
+      return aya.a(mb.f, alp.b($$0));
    }
 }

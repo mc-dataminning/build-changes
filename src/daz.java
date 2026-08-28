@@ -1,54 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record daz(List<bup> c, float f) implements dbb {
-   public static final MapCodec<daz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bup.d.listOf().fieldOf("effects").forGetter(daz::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(daz::c))
-            .apply($$0, daz::new)
-   );
-   public static final zt<xg, daz> b = zt.a(bup.e.a(zr.a()), daz::b, zr.l, daz::c, daz::new);
+public class daz {
+   @Nullable
+   private final cpo a;
+   private final bsz b;
+   private final fbn c;
+   private final dgz d;
+   private final cxg e;
 
-   public daz(bup $$0, float $$1) {
-      this(List.of($$0), $$1);
+   public daz(cpo $$0, bsz $$1, fbn $$2) {
+      this($$0.dW(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public daz(List<bup> $$0) {
-      this($$0, 1.0F);
+   protected daz(dgz $$0, @Nullable cpo $$1, bsz $$2, cxg $$3, fbn $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public daz(bup $$0) {
-      this($$0, 1.0F);
-   }
-
-   @Override
-   public dbb.a<daz> a() {
-      return dbb.a.a;
-   }
-
-   @Override
-   public boolean a(dhi $$0, cxp $$1, bwg $$2) {
-      if ($$2.dZ().i() >= this.f) {
-         return false;
-      } else {
-         boolean $$3 = false;
-
-         for (bup $$4 : this.c) {
-            if ($$2.a(new bup($$4))) {
-               $$3 = true;
-            }
-         }
-
-         return $$3;
-      }
-   }
-
-   public List<bup> b() {
+   protected final fbn j() {
       return this.c;
    }
 
-   public float c() {
-      return this.f;
+   public jh a() {
+      return this.c.b();
+   }
+
+   public jm k() {
+      return this.c.c();
+   }
+
+   public fbr l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cxg n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cpo o() {
+      return this.a;
+   }
+
+   public bsz p() {
+      return this.b;
+   }
+
+   public dgz q() {
+      return this.d;
+   }
+
+   public jm g() {
+      return this.a == null ? jm.c : this.a.cO();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fY();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dM();
    }
 }

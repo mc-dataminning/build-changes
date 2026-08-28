@@ -1,74 +1,86 @@
-import java.util.Optional;
+public class agi implements zr<acg> {
+   public static final zi<wv, agi> a = zr.a(agi::a, agi::new);
+   public static final float b = 8.0F;
+   private final jq<awu> c;
+   private final aww d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final float h;
+   private final float i;
+   private final long j;
 
-public class agi implements aac<acr> {
-   public static final zt<xg, agi> a = aac.a(agi::a, agi::new);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   private final String e;
-   private final xv f;
-   private final fdg.a g;
-   private final Optional<zl> h;
-   private final int i;
-
-   public agi(fcv $$0, int $$1) {
-      this.e = $$0.b();
-      this.f = $$0.d();
-      this.g = $$0.h();
-      this.h = Optional.ofNullable($$0.f());
-      this.i = $$1;
+   public agi(jq<awu> $$0, aww $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = (int)($$2 * 8.0);
+      this.f = (int)($$3 * 8.0);
+      this.g = (int)($$4 * 8.0);
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
    }
 
-   private agi(xg $$0) {
-      this.e = $$0.p();
-      this.i = $$0.readByte();
-      if (this.i != 0 && this.i != 2) {
-         this.f = xu.a;
-         this.g = fdg.a.a;
-         this.h = Optional.empty();
-      } else {
-         this.f = xx.d.decode($$0);
-         this.g = $$0.b(fdg.a.class);
-         this.h = zn.d.decode($$0);
-      }
+   private agi(wv $$0) {
+      this.c = awu.d.decode($$0);
+      this.d = $$0.b(aww.class);
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readInt();
+      this.h = $$0.readFloat();
+      this.i = $$0.readFloat();
+      this.j = $$0.readLong();
    }
 
-   private void a(xg $$0) {
-      $$0.a(this.e);
-      $$0.l(this.i);
-      if (this.i == 0 || this.i == 2) {
-         xx.d.encode($$0, this.f);
-         $$0.a(this.g);
-         zn.d.encode($$0, this.h);
-      }
+   private void a(wv $$0) {
+      awu.d.encode($$0, this.c);
+      $$0.a(this.d);
+      $$0.q(this.e);
+      $$0.q(this.f);
+      $$0.q(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.b(this.j);
    }
 
    @Override
-   public aae<agi> a() {
-      return ahk.aM;
+   public zt<agi> a() {
+      return agz.aW;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.e;
+   public jq<awu> b() {
+      return this.c;
    }
 
-   public xv e() {
-      return this.f;
+   public aww e() {
+      return this.d;
    }
 
-   public int f() {
+   public double f() {
+      return (double)((float)this.e / 8.0F);
+   }
+
+   public double g() {
+      return (double)((float)this.f / 8.0F);
+   }
+
+   public double h() {
+      return (double)((float)this.g / 8.0F);
+   }
+
+   public float i() {
+      return this.h;
+   }
+
+   public float j() {
       return this.i;
    }
 
-   public fdg.a g() {
-      return this.g;
-   }
-
-   public Optional<zl> h() {
-      return this.h;
+   public long k() {
+      return this.j;
    }
 }

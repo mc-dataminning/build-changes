@@ -1,155 +1,284 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class goz {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final jm[] l = jm.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ae.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+public class goz implements gpg.a {
+   private static final boolean a = true;
+   private static final boolean b = true;
+   private static final boolean c = true;
+   private static final boolean d = true;
+   private static final boolean e = true;
+   private static final boolean f = false;
+   private static final boolean g = true;
+   private static final boolean h = true;
+   private static final boolean i = true;
+   private static final boolean j = true;
+   private static final boolean k = true;
+   private static final boolean l = true;
+   private static final boolean m = true;
+   private static final boolean n = true;
+   private static final int o = 30;
+   private static final int p = 30;
+   private static final int q = 8;
+   private static final int r = 20;
+   private static final float s = 0.02F;
+   private static final int t = -23296;
+   private static final int u = -3355444;
+   private static final int v = -98404;
+   private final flz w;
+   private final Map<jh, goz.a> x = new HashMap<>();
+   private final Map<UUID, aaq.a> y = new HashMap<>();
+   @Nullable
+   private UUID z;
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
-            }
+   public goz(flz $$0) {
+      this.w = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.x.clear();
+      this.y.clear();
+      this.z = null;
+   }
+
+   public void a(abb.a $$0, long $$1) {
+      this.x.put($$0.a(), new goz.a($$0, $$1));
+   }
+
+   public void a(aaq.a $$0) {
+      this.y.put($$0.b(), $$0);
+   }
+
+   public void a(int $$0) {
+      this.y.values().removeIf($$1 -> $$1.c() == $$0);
+   }
+
+   @Override
+   public void a(fgl $$0, glg $$1, double $$2, double $$3, double $$4) {
+      this.c();
+      this.b();
+      this.a($$0, $$1);
+      if (!this.w.t.aa_()) {
+         this.g();
+      }
+   }
+
+   private void b() {
+      this.y.entrySet().removeIf($$0 -> this.w.s.a($$0.getValue().c()) == null);
+   }
+
+   private void c() {
+      long $$0 = this.w.s.ad() - 20L;
+      this.x.entrySet().removeIf($$1 -> $$1.getValue().b() < $$0);
+   }
+
+   private void a(fgl $$0, glg $$1) {
+      jh $$2 = this.e().c();
+      this.y.values().forEach($$2x -> {
+         if (this.c($$2x)) {
+            this.b($$0, $$1, $$2x);
+         }
+      });
+      this.b($$0, $$1);
+
+      for (jh $$3 : this.x.keySet()) {
+         if ($$2.a($$3, 30.0)) {
+            a($$0, $$1, $$3);
          }
       }
-   });
-   private int o = 4096;
 
-   public void a(jh $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
+      Map<jh, Set<UUID>> $$4 = this.d();
+      this.x.values().forEach($$4x -> {
+         if ($$2.a($$4x.a.a(), 30.0)) {
+            Set<UUID> $$5 = $$4.get($$4x.a.a());
+            this.a($$0, $$1, $$4x.a, (Collection<UUID>)($$5 == null ? Sets.newHashSet() : $$5));
+         }
+      });
+      this.f().forEach(($$3x, $$4x) -> {
+         if ($$2.a($$3x, 30.0)) {
+            this.a($$0, $$1, $$3x, (List<String>)$$4x);
+         }
+      });
    }
 
-   private static int b(jh $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   private Map<jh, Set<UUID>> d() {
+      Map<jh, Set<UUID>> $$0 = Maps.newHashMap();
+      this.y.values().forEach($$1 -> $$1.j().forEach($$2 -> $$0.computeIfAbsent($$2, $$0xxx -> Sets.newHashSet()).add($$1.b())));
+      return $$0;
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   private void b(fgl $$0, glg $$1) {
+      Map<jh, Set<UUID>> $$2 = Maps.newHashMap();
+      this.y.values().forEach($$1x -> {
+         if ($$1x.g() != null) {
+            $$2.computeIfAbsent($$1x.g(), $$0xx -> new HashSet<>()).add($$1x.b());
+         }
+      });
+      $$2.forEach(($$2x, $$3) -> {
+         Set<String> $$4 = $$3.stream().map(agx::a).collect(Collectors.toSet());
+         int $$5 = 1;
+         a($$0, $$1, $$4.toString(), $$2x, $$5++, -256);
+         a($$0, $$1, "Flower", $$2x, $$5++, -1);
+         float $$6 = 0.05F;
+         gpg.a($$0, $$1, $$2x, 0.05F, 0.8F, 0.8F, 0.0F, 0.3F);
+      });
    }
 
-   public gpa a() {
-      gpa $$0 = new gpa();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
+   private static String a(Collection<UUID> $$0) {
+      if ($$0.isEmpty()) {
+         return "-";
       } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
+         return $$0.size() > 3 ? $$0.size() + " bees" : $$0.stream().map(agx::a).collect(Collectors.toSet()).toString();
+      }
+   }
+
+   private static void a(fgl $$0, glg $$1, jh $$2) {
+      float $$3 = 0.05F;
+      gpg.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+   }
+
+   private void a(fgl $$0, glg $$1, jh $$2, List<String> $$3) {
+      float $$4 = 0.05F;
+      gpg.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+      a($$0, $$1, $$3 + "", $$2, 0, -256);
+      a($$0, $$1, "Ghost Hive", $$2, 1, -65536);
+   }
+
+   private void a(fgl $$0, glg $$1, abb.a $$2, Collection<UUID> $$3) {
+      int $$4 = 0;
+      if (!$$3.isEmpty()) {
+         a($$0, $$1, "Blacklisted by " + a($$3), $$2, $$4++, -65536);
+      }
+
+      a($$0, $$1, "Out: " + a(this.a($$2.a())), $$2, $$4++, -3355444);
+      if ($$2.c() == 0) {
+         a($$0, $$1, "In: -", $$2, $$4++, -256);
+      } else if ($$2.c() == 1) {
+         a($$0, $$1, "In: 1 bee", $$2, $$4++, -256);
+      } else {
+         a($$0, $$1, "In: " + $$2.c() + " bees", $$2, $$4++, -256);
+      }
+
+      a($$0, $$1, "Honey: " + $$2.d(), $$2, $$4++, -23296);
+      a($$0, $$1, $$2.b() + ($$2.e() ? " (sedated)" : ""), $$2, $$4++, -1);
+   }
+
+   private void a(fgl $$0, glg $$1, aaq.a $$2) {
+      if ($$2.e() != null) {
+         gpp.a($$0, $$1, $$2.e(), 0.5F, false, false, this.e().b().a(), this.e().b().b(), this.e().b().c());
+      }
+   }
+
+   private void b(fgl $$0, glg $$1, aaq.a $$2) {
+      boolean $$3 = this.b($$2);
+      int $$4 = 0;
+      a($$0, $$1, $$2.d(), $$4++, $$2.toString(), -1, 0.03F);
+      if ($$2.f() == null) {
+         a($$0, $$1, $$2.d(), $$4++, "No hive", -98404, 0.02F);
+      } else {
+         a($$0, $$1, $$2.d(), $$4++, "Hive: " + this.a($$2, $$2.f()), -256, 0.02F);
+      }
+
+      if ($$2.g() == null) {
+         a($$0, $$1, $$2.d(), $$4++, "No flower", -98404, 0.02F);
+      } else {
+         a($$0, $$1, $$2.d(), $$4++, "Flower: " + this.a($$2, $$2.g()), -256, 0.02F);
+      }
+
+      for (String $$5 : $$2.i()) {
+         a($$0, $$1, $$2.d(), $$4++, $$5, -16711936, 0.02F);
+      }
+
+      if ($$3) {
+         this.a($$0, $$1, $$2);
+      }
+
+      if ($$2.h() > 0) {
+         int $$6 = $$2.h() < 2400 ? -3355444 : -23296;
+         a($$0, $$1, $$2.d(), $$4++, "Travelling: " + $$2.h() + " ticks", $$6, 0.02F);
+      }
+   }
+
+   private static void a(fgl $$0, glg $$1, String $$2, abb.a $$3, int $$4, int $$5) {
+      a($$0, $$1, $$2, $$3.a(), $$4, $$5);
+   }
+
+   private static void a(fgl $$0, glg $$1, String $$2, jh $$3, int $$4, int $$5) {
+      double $$6 = 1.3;
+      double $$7 = 0.2;
+      double $$8 = (double)$$3.u() + 0.5;
+      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
+      double $$10 = (double)$$3.w() + 0.5;
+      gpg.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
+   }
+
+   private static void a(fgl $$0, glg $$1, ka $$2, int $$3, String $$4, int $$5, float $$6) {
+      double $$7 = 2.4;
+      double $$8 = 0.25;
+      jh $$9 = jh.a($$2);
+      double $$10 = (double)$$9.u() + 0.5;
+      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
+      double $$12 = (double)$$9.w() + 0.5;
+      float $$13 = 0.5F;
+      gpg.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
+   }
+
+   private fli e() {
+      return this.w.j.k();
+   }
+
+   private Set<String> a(abb.a $$0) {
+      return this.a($$0.a()).stream().map(agx::a).collect(Collectors.toSet());
+   }
+
+   private String a(aaq.a $$0, jh $$1) {
+      double $$2 = Math.sqrt($$1.b($$0.d()));
+      double $$3 = (double)Math.round($$2 * 10.0) / 10.0;
+      return $$1.x() + " (dist " + $$3 + ")";
+   }
+
+   private boolean b(aaq.a $$0) {
+      return Objects.equals(this.z, $$0.b());
+   }
+
+   private boolean c(aaq.a $$0) {
+      cpo $$1 = this.w.t;
+      jh $$2 = jh.a($$1.dB(), $$0.d().b(), $$1.dH());
+      jh $$3 = jh.a((ka)$$0.d());
+      return $$2.a($$3, 30.0);
+   }
+
+   private Collection<UUID> a(jh $$0) {
+      return this.y.values().stream().filter($$1 -> $$1.a($$0)).map(aaq.a::b).collect(Collectors.toSet());
+   }
+
+   private Map<jh, List<String>> f() {
+      Map<jh, List<String>> $$0 = Maps.newHashMap();
+
+      for (aaq.a $$1 : this.y.values()) {
+         if ($$1.f() != null && !this.x.containsKey($$1.f())) {
+            $$0.computeIfAbsent($$1.f(), $$0x -> Lists.newArrayList()).add($$1.a());
          }
       }
 
       return $$0;
    }
 
-   private Set<jm> a(int $$0) {
-      Set<jm> $$1 = EnumSet.noneOf(jm.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (jm $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
+   private void g() {
+      gpg.a(this.w.ao(), 8).ifPresent($$0 -> this.z = $$0.cG());
    }
 
-   private void a(int $$0, Set<jm> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(jm.e);
-      } else if ($$2 == 15) {
-         $$1.add(jm.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(jm.a);
-      } else if ($$3 == 15) {
-         $$1.add(jm.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(jm.c);
-      } else if ($$4 == 15) {
-         $$1.add(jm.d);
-      }
-   }
-
-   private int a(int $$0, jm $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
-      }
+   static record a(abb.a a, long b) {
    }
 }

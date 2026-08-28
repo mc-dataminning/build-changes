@@ -1,86 +1,35 @@
-public class btb implements btc {
-   private final btc b;
-   private final btc c;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-   public btb(btc $$0, btc $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public record btb(cu d) {
+   public static final btb a = new btb(cu.a.a().b());
+   public static final Codec<btb> b = cu.a.xmap(btb::new, btb::a);
+   public static final String c = "lock";
+
+   public boolean a(cxg $$0) {
+      return this.d.a($$0);
    }
 
-   @Override
-   public int b() {
-      return this.b.b() + this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
-   }
-
-   public boolean a(btc $$0) {
-      return this.b == $$0 || this.c == $$0;
-   }
-
-   @Override
-   public cxp a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
-   }
-
-   @Override
-   public cxp a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
-   }
-
-   @Override
-   public cxp b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cxp $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
-      } else {
-         this.b.a($$0, $$1);
+   public void a(um $$0, js.a $$1) {
+      if (this != a) {
+         DataResult<vj> $$2 = b.encode(this, $$1.a(va.a), new um());
+         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
       }
    }
 
-   @Override
-   public int ao_() {
-      return this.b.ao_();
+   public static btb b(um $$0, js.a $$1) {
+      if ($$0.b("lock", 10)) {
+         DataResult<Pair<btb, vj>> $$2 = b.decode($$1.a(va.a), $$0.c("lock"));
+         if ($$2.isSuccess()) {
+            return (btb)((Pair)$$2.getOrThrow()).getFirst();
+         }
+      }
+
+      return a;
    }
 
-   @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
-   }
-
-   @Override
-   public boolean a(cpx $$0) {
-      return this.b.a($$0) && this.c.a($$0);
-   }
-
-   @Override
-   public void c_(cpx $$0) {
-      this.b.c_($$0);
-      this.c.c_($$0);
-   }
-
-   @Override
-   public void c(cpx $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cxp $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
+   public cu a() {
+      return this.d;
    }
 }

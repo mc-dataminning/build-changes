@@ -1,214 +1,317 @@
-public class gei extends gbm<gxt> {
-   private static final int a = 5;
-   private static final int b = 12;
-   private final geo c;
-   private final geo[] d = new geo[5];
-   private final geo[] e = new geo[12];
-   private final geo f;
-   private final geo g;
-   private final geo i;
-   private final geo j;
-   private final geo k;
-   private final geo l;
-   private final geo m;
-   private final geo n;
-   private final geo o;
-   private final geo p;
-   private final geo q;
-   private final geo r;
-   private final geo s;
-   private final geo t;
-   private final geo u;
-   private final geo x;
-   private final geo y;
-   private final geo z;
+import com.google.common.collect.Sets;
+import java.util.Set;
+import java.util.stream.Stream;
 
-   private static String a(int $$0) {
-      return "neck" + $$0;
+public class gei {
+   private static final String ei = "main";
+   private static final Set<geh> ej = Sets.newHashSet();
+   public static final geh a = a("boat/acacia");
+   public static final geh b = a("chest_boat/acacia");
+   public static final geh c = a("allay");
+   public static final geh d = a("armadillo");
+   public static final geh e = a("armadillo_baby");
+   public static final geh f = a("armor_stand");
+   public static final geh g = b("armor_stand");
+   public static final geh h = c("armor_stand");
+   public static final geh i = a("armor_stand_small");
+   public static final geh j = b("armor_stand_small");
+   public static final geh k = c("armor_stand_small");
+   public static final geh l = a("arrow");
+   public static final geh m = a("axolotl");
+   public static final geh n = a("axolotl_baby");
+   public static final geh o = a("chest_boat/bamboo");
+   public static final geh p = a("boat/bamboo");
+   public static final geh q = a("standing_banner");
+   public static final geh r = a("standing_banner", "flag");
+   public static final geh s = a("wall_banner");
+   public static final geh t = a("wall_banner", "flag");
+   public static final geh u = a("bat");
+   public static final geh v = a("bed_foot");
+   public static final geh w = a("bed_head");
+   public static final geh x = a("bee");
+   public static final geh y = a("bee_baby");
+   public static final geh z = a("bee_stinger");
+   public static final geh A = a("bell");
+   public static final geh B = a("boat/birch");
+   public static final geh C = a("chest_boat/birch");
+   public static final geh D = a("blaze");
+   public static final geh E = a("boat", "water_patch");
+   public static final geh F = a("bogged");
+   public static final geh G = b("bogged");
+   public static final geh H = c("bogged");
+   public static final geh I = a("bogged", "outer");
+   public static final geh J = a("book");
+   public static final geh K = a("breeze");
+   public static final geh L = a("breeze_wind");
+   public static final geh M = a("camel");
+   public static final geh N = a("camel_baby");
+   public static final geh O = a("cat");
+   public static final geh P = a("cat_baby");
+   public static final geh Q = a("cat_baby", "collar");
+   public static final geh R = a("cat", "collar");
+   public static final geh S = a("cave_spider");
+   public static final geh T = a("boat/cherry");
+   public static final geh U = a("chest_boat/cherry");
+   public static final geh V = a("chest");
+   public static final geh W = a("chest_minecart");
+   public static final geh X = a("chicken");
+   public static final geh Y = a("chicken_baby");
+   public static final geh Z = a("cod");
+   public static final geh aa = a("command_block_minecart");
+   public static final geh ab = a("conduit", "cage");
+   public static final geh ac = a("conduit", "eye");
+   public static final geh ad = a("conduit", "shell");
+   public static final geh ae = a("conduit", "wind");
+   public static final geh af = a("cow");
+   public static final geh ag = a("cow_baby");
+   public static final geh ah = a("creaking");
+   public static final geh ai = a("creeper");
+   public static final geh aj = a("creeper", "armor");
+   public static final geh ak = a("creeper_head");
+   public static final geh al = a("boat/dark_oak");
+   public static final geh am = a("chest_boat/dark_oak");
+   public static final geh an = a("decorated_pot_base");
+   public static final geh ao = a("decorated_pot_sides");
+   public static final geh ap = a("dolphin");
+   public static final geh aq = a("dolphin_baby");
+   public static final geh ar = a("donkey");
+   public static final geh as = a("donkey_baby");
+   public static final geh at = a("double_chest_left");
+   public static final geh au = a("double_chest_right");
+   public static final geh av = a("dragon_skull");
+   public static final geh aw = a("drowned");
+   public static final geh ax = a("drowned_baby");
+   public static final geh ay = b("drowned_baby");
+   public static final geh az = c("drowned_baby");
+   public static final geh aA = a("drowned_baby", "outer");
+   public static final geh aB = b("drowned");
+   public static final geh aC = c("drowned");
+   public static final geh aD = a("drowned", "outer");
+   public static final geh aE = a("elder_guardian");
+   public static final geh aF = a("elytra");
+   public static final geh aG = a("elytra_baby");
+   public static final geh aH = a("enderman");
+   public static final geh aI = a("endermite");
+   public static final geh aJ = a("ender_dragon");
+   public static final geh aK = a("end_crystal");
+   public static final geh aL = a("evoker");
+   public static final geh aM = a("evoker_fangs");
+   public static final geh aN = a("fox");
+   public static final geh aO = a("fox_baby");
+   public static final geh aP = a("frog");
+   public static final geh aQ = a("furnace_minecart");
+   public static final geh aR = a("ghast");
+   public static final geh aS = a("giant");
+   public static final geh aT = b("giant");
+   public static final geh aU = c("giant");
+   public static final geh aV = a("glow_squid");
+   public static final geh aW = a("glow_squid_baby");
+   public static final geh aX = a("goat");
+   public static final geh aY = a("goat_baby");
+   public static final geh aZ = a("guardian");
+   public static final geh ba = a("hoglin");
+   public static final geh bb = a("hoglin_baby");
+   public static final geh bc = a("hopper_minecart");
+   public static final geh bd = a("horse");
+   public static final geh be = a("horse_armor");
+   public static final geh bf = a("horse_baby");
+   public static final geh bg = a("horse_armor_baby");
+   public static final geh bh = a("husk");
+   public static final geh bi = a("husk_baby");
+   public static final geh bj = b("husk_baby");
+   public static final geh bk = c("husk_baby");
+   public static final geh bl = b("husk");
+   public static final geh bm = c("husk");
+   public static final geh bn = a("illusioner");
+   public static final geh bo = a("iron_golem");
+   public static final geh bp = a("boat/jungle");
+   public static final geh bq = a("chest_boat/jungle");
+   public static final geh br = a("leash_knot");
+   public static final geh bs = a("llama");
+   public static final geh bt = a("llama_baby");
+   public static final geh bu = a("llama_baby", "decor");
+   public static final geh bv = a("llama", "decor");
+   public static final geh bw = a("llama_spit");
+   public static final geh bx = a("magma_cube");
+   public static final geh by = a("boat/mangrove");
+   public static final geh bz = a("chest_boat/mangrove");
+   public static final geh bA = a("minecart");
+   public static final geh bB = a("mooshroom");
+   public static final geh bC = a("mooshroom_baby");
+   public static final geh bD = a("mule");
+   public static final geh bE = a("mule_baby");
+   public static final geh bF = a("boat/oak");
+   public static final geh bG = a("chest_boat/oak");
+   public static final geh bH = a("ocelot");
+   public static final geh bI = a("ocelot_baby");
+   public static final geh bJ = a("boat/pale_oak");
+   public static final geh bK = a("chest_boat/pale_oak");
+   public static final geh bL = a("panda");
+   public static final geh bM = a("panda_baby");
+   public static final geh bN = a("parrot");
+   public static final geh bO = a("phantom");
+   public static final geh bP = a("pig");
+   public static final geh bQ = a("piglin");
+   public static final geh bR = a("piglin_baby");
+   public static final geh bS = b("piglin_baby");
+   public static final geh bT = c("piglin_baby");
+   public static final geh bU = a("piglin_brute");
+   public static final geh bV = b("piglin_brute");
+   public static final geh bW = c("piglin_brute");
+   public static final geh bX = a("piglin_head");
+   public static final geh bY = b("piglin");
+   public static final geh bZ = c("piglin");
+   public static final geh ca = a("pig_baby");
+   public static final geh cb = a("pig_baby", "saddle");
+   public static final geh cc = a("pig", "saddle");
+   public static final geh cd = a("pillager");
+   public static final geh ce = a("player");
+   public static final geh cf = a("player", "cape");
+   public static final geh cg = a("player", "ears");
+   public static final geh ch = a("player_head");
+   public static final geh ci = b("player");
+   public static final geh cj = c("player");
+   public static final geh ck = a("player_slim");
+   public static final geh cl = b("player_slim");
+   public static final geh cm = c("player_slim");
+   public static final geh cn = a("spin_attack");
+   public static final geh co = a("polar_bear");
+   public static final geh cp = a("polar_bear_baby");
+   public static final geh cq = a("pufferfish_big");
+   public static final geh cr = a("pufferfish_medium");
+   public static final geh cs = a("pufferfish_small");
+   public static final geh ct = a("rabbit");
+   public static final geh cu = a("rabbit_baby");
+   public static final geh cv = a("ravager");
+   public static final geh cw = a("salmon");
+   public static final geh cx = a("salmon_large");
+   public static final geh cy = a("salmon_small");
+   public static final geh cz = a("sheep");
+   public static final geh cA = a("sheep_baby");
+   public static final geh cB = a("sheep_baby", "wool");
+   public static final geh cC = a("sheep", "wool");
+   public static final geh cD = a("shield");
+   public static final geh cE = a("shulker");
+   public static final geh cF = a("shulker_box");
+   public static final geh cG = a("shulker_bullet");
+   public static final geh cH = a("silverfish");
+   public static final geh cI = a("skeleton");
+   public static final geh cJ = a("skeleton_horse");
+   public static final geh cK = a("skeleton_horse_baby");
+   public static final geh cL = b("skeleton");
+   public static final geh cM = c("skeleton");
+   public static final geh cN = a("skeleton_skull");
+   public static final geh cO = a("slime");
+   public static final geh cP = a("slime", "outer");
+   public static final geh cQ = a("sniffer");
+   public static final geh cR = a("sniffer_baby");
+   public static final geh cS = a("snow_golem");
+   public static final geh cT = a("spawner_minecart");
+   public static final geh cU = a("spider");
+   public static final geh cV = a("boat/spruce");
+   public static final geh cW = a("chest_boat/spruce");
+   public static final geh cX = a("squid");
+   public static final geh cY = a("squid_baby");
+   public static final geh cZ = a("stray");
+   public static final geh da = b("stray");
+   public static final geh db = c("stray");
+   public static final geh dc = a("stray", "outer");
+   public static final geh dd = a("strider");
+   public static final geh de = a("strider", "saddle");
+   public static final geh df = a("strider_baby");
+   public static final geh dg = a("strider_baby", "saddle");
+   public static final geh dh = a("tadpole");
+   public static final geh di = a("tnt_minecart");
+   public static final geh dj = a("trader_llama");
+   public static final geh dk = a("trader_llama_baby");
+   public static final geh dl = a("trident");
+   public static final geh dm = a("tropical_fish_large");
+   public static final geh dn = a("tropical_fish_large", "pattern");
+   public static final geh do = a("tropical_fish_small");
+   public static final geh dp = a("tropical_fish_small", "pattern");
+   public static final geh dq = a("turtle");
+   public static final geh dr = a("turtle_baby");
+   public static final geh ds = a("vex");
+   public static final geh dt = a("villager");
+   public static final geh du = a("villager_baby");
+   public static final geh dv = a("vindicator");
+   public static final geh dw = a("wandering_trader");
+   public static final geh dx = a("warden");
+   public static final geh dy = a("wind_charge");
+   public static final geh dz = a("witch");
+   public static final geh dA = a("wither");
+   public static final geh dB = a("wither", "armor");
+   public static final geh dC = a("wither_skeleton");
+   public static final geh dD = b("wither_skeleton");
+   public static final geh dE = c("wither_skeleton");
+   public static final geh dF = a("wither_skeleton_skull");
+   public static final geh dG = a("wither_skull");
+   public static final geh dH = a("wolf");
+   public static final geh dI = a("wolf_armor");
+   public static final geh dJ = a("wolf_baby");
+   public static final geh dK = a("wolf_baby_armor");
+   public static final geh dL = a("zoglin");
+   public static final geh dM = a("zoglin_baby");
+   public static final geh dN = a("zombie");
+   public static final geh dO = a("zombie_baby");
+   public static final geh dP = b("zombie_baby");
+   public static final geh dQ = c("zombie_baby");
+   public static final geh dR = a("zombie_head");
+   public static final geh dS = a("zombie_horse");
+   public static final geh dT = a("zombie_horse_baby");
+   public static final geh dU = b("zombie");
+   public static final geh dV = c("zombie");
+   public static final geh dW = a("zombie_villager");
+   public static final geh dX = a("zombie_villager_baby");
+   public static final geh dY = b("zombie_villager_baby");
+   public static final geh dZ = c("zombie_villager_baby");
+   public static final geh ea = b("zombie_villager");
+   public static final geh eb = c("zombie_villager");
+   public static final geh ec = a("zombified_piglin");
+   public static final geh ed = a("zombified_piglin_baby");
+   public static final geh ee = b("zombified_piglin_baby");
+   public static final geh ef = c("zombified_piglin_baby");
+   public static final geh eg = b("zombified_piglin");
+   public static final geh eh = c("zombified_piglin");
+
+   private static geh a(String $$0) {
+      return a($$0, "main");
    }
 
-   private static String b(int $$0) {
-      return "tail" + $$0;
-   }
-
-   public gei(geo $$0) {
-      super($$0);
-      this.c = $$0.b("head");
-      this.f = this.c.b("jaw");
-
-      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         this.d[$$1] = $$0.b(a($$1));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.length; $$2++) {
-         this.e[$$2] = $$0.b(b($$2));
-      }
-
-      this.g = $$0.b("body");
-      this.i = this.g.b("left_wing");
-      this.j = this.i.b("left_wing_tip");
-      this.k = this.g.b("left_front_leg");
-      this.l = this.k.b("left_front_leg_tip");
-      this.m = this.l.b("left_front_foot");
-      this.n = this.g.b("left_hind_leg");
-      this.o = this.n.b("left_hind_leg_tip");
-      this.p = this.o.b("left_hind_foot");
-      this.q = this.g.b("right_wing");
-      this.r = this.q.b("right_wing_tip");
-      this.s = this.g.b("right_front_leg");
-      this.t = this.s.b("right_front_leg_tip");
-      this.u = this.t.b("right_front_foot");
-      this.x = this.g.b("right_hind_leg");
-      this.y = this.x.b("right_hind_leg_tip");
-      this.z = this.y.b("right_hind_foot");
-   }
-
-   public static geu a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      float $$2 = -16.0F;
-      gey $$3 = $$1.a(
-         "head",
-         get.c()
-            .a("upperlip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
-            .a("upperhead", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
-            .a()
-            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
-            .a()
-            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
-         geq.a(0.0F, 20.0F, -62.0F)
-      );
-      $$3.a("jaw", get.c().a("jaw", -6.0F, 0.0F, -16.0F, 12, 4, 16, 176, 65), geq.a(0.0F, 4.0F, -8.0F));
-      get $$4 = get.c().a("box", -5.0F, -5.0F, -5.0F, 10, 10, 10, 192, 104).a("scale", -1.0F, -9.0F, -3.0F, 2, 4, 6, 48, 0);
-
-      for (int $$5 = 0; $$5 < 5; $$5++) {
-         $$1.a(a($$5), $$4, geq.a(0.0F, 20.0F, -12.0F - (float)$$5 * 10.0F));
-      }
-
-      for (int $$6 = 0; $$6 < 12; $$6++) {
-         $$1.a(b($$6), $$4, geq.a(0.0F, 10.0F, 60.0F + (float)$$6 * 10.0F));
-      }
-
-      gey $$7 = $$1.a(
-         "body",
-         get.c()
-            .a("body", -12.0F, 1.0F, -16.0F, 24, 24, 64, 0, 0)
-            .a("scale", -1.0F, -5.0F, -10.0F, 2, 6, 12, 220, 53)
-            .a("scale", -1.0F, -5.0F, 10.0F, 2, 6, 12, 220, 53)
-            .a("scale", -1.0F, -5.0F, 30.0F, 2, 6, 12, 220, 53),
-         geq.a(0.0F, 3.0F, 8.0F)
-      );
-      gey $$8 = $$7.a(
-         "left_wing", get.c().a().a("bone", 0.0F, -4.0F, -4.0F, 56, 8, 8, 112, 88).a("skin", 0.0F, 0.0F, 2.0F, 56, 0, 56, -56, 88), geq.a(12.0F, 2.0F, -6.0F)
-      );
-      $$8.a(
-         "left_wing_tip",
-         get.c().a().a("bone", 0.0F, -2.0F, -2.0F, 56, 4, 4, 112, 136).a("skin", 0.0F, 0.0F, 2.0F, 56, 0, 56, -56, 144),
-         geq.a(56.0F, 0.0F, 0.0F)
-      );
-      gey $$9 = $$7.a("left_front_leg", get.c().a("main", -4.0F, -4.0F, -4.0F, 8, 24, 8, 112, 104), geq.a(12.0F, 17.0F, -6.0F, 1.3F, 0.0F, 0.0F));
-      gey $$10 = $$9.a("left_front_leg_tip", get.c().a("main", -3.0F, -1.0F, -3.0F, 6, 24, 6, 226, 138), geq.a(0.0F, 20.0F, -1.0F, -0.5F, 0.0F, 0.0F));
-      $$10.a("left_front_foot", get.c().a("main", -4.0F, 0.0F, -12.0F, 8, 4, 16, 144, 104), geq.a(0.0F, 23.0F, 0.0F, 0.75F, 0.0F, 0.0F));
-      gey $$11 = $$7.a("left_hind_leg", get.c().a("main", -8.0F, -4.0F, -8.0F, 16, 32, 16, 0, 0), geq.a(16.0F, 13.0F, 34.0F, 1.0F, 0.0F, 0.0F));
-      gey $$12 = $$11.a("left_hind_leg_tip", get.c().a("main", -6.0F, -2.0F, 0.0F, 12, 32, 12, 196, 0), geq.a(0.0F, 32.0F, -4.0F, 0.5F, 0.0F, 0.0F));
-      $$12.a("left_hind_foot", get.c().a("main", -9.0F, 0.0F, -20.0F, 18, 6, 24, 112, 0), geq.a(0.0F, 31.0F, 4.0F, 0.75F, 0.0F, 0.0F));
-      gey $$13 = $$7.a(
-         "right_wing", get.c().a("bone", -56.0F, -4.0F, -4.0F, 56, 8, 8, 112, 88).a("skin", -56.0F, 0.0F, 2.0F, 56, 0, 56, -56, 88), geq.a(-12.0F, 2.0F, -6.0F)
-      );
-      $$13.a(
-         "right_wing_tip",
-         get.c().a("bone", -56.0F, -2.0F, -2.0F, 56, 4, 4, 112, 136).a("skin", -56.0F, 0.0F, 2.0F, 56, 0, 56, -56, 144),
-         geq.a(-56.0F, 0.0F, 0.0F)
-      );
-      gey $$14 = $$7.a("right_front_leg", get.c().a("main", -4.0F, -4.0F, -4.0F, 8, 24, 8, 112, 104), geq.a(-12.0F, 17.0F, -6.0F, 1.3F, 0.0F, 0.0F));
-      gey $$15 = $$14.a("right_front_leg_tip", get.c().a("main", -3.0F, -1.0F, -3.0F, 6, 24, 6, 226, 138), geq.a(0.0F, 20.0F, -1.0F, -0.5F, 0.0F, 0.0F));
-      $$15.a("right_front_foot", get.c().a("main", -4.0F, 0.0F, -12.0F, 8, 4, 16, 144, 104), geq.a(0.0F, 23.0F, 0.0F, 0.75F, 0.0F, 0.0F));
-      gey $$16 = $$7.a("right_hind_leg", get.c().a("main", -8.0F, -4.0F, -8.0F, 16, 32, 16, 0, 0), geq.a(-16.0F, 13.0F, 34.0F, 1.0F, 0.0F, 0.0F));
-      gey $$17 = $$16.a("right_hind_leg_tip", get.c().a("main", -6.0F, -2.0F, 0.0F, 12, 32, 12, 196, 0), geq.a(0.0F, 32.0F, -4.0F, 0.5F, 0.0F, 0.0F));
-      $$17.a("right_hind_foot", get.c().a("main", -9.0F, 0.0F, -20.0F, 18, 6, 24, 112, 0), geq.a(0.0F, 31.0F, 4.0F, 0.75F, 0.0F, 0.0F));
-      return geu.a($$0, 256, 256);
-   }
-
-   public void a(gxt $$0) {
-      super.a($$0);
-      float $$1 = $$0.a * (float) (Math.PI * 2);
-      this.f.e = (bae.a($$1) + 1.0F) * 0.2F;
-      float $$2 = bae.a($$1 - 1.0F) + 1.0F;
-      $$2 = ($$2 * $$2 + $$2 * 2.0F) * 0.05F;
-      this.v.c = ($$2 - 2.0F) * 16.0F;
-      this.v.d = -48.0F;
-      this.v.e = $$2 * 2.0F * (float) (Math.PI / 180.0);
-      float $$3 = this.d[0].b;
-      float $$4 = this.d[0].c;
-      float $$5 = this.d[0].d;
-      float $$6 = 1.5F;
-      cks.a $$7 = $$0.a(6);
-      float $$8 = bae.h($$0.a(5).b() - $$0.a(10).b());
-      float $$9 = bae.h($$0.a(5).b() + $$8 / 2.0F);
-
-      for (int $$10 = 0; $$10 < 5; $$10++) {
-         geo $$11 = this.d[$$10];
-         cks.a $$12 = $$0.a(5 - $$10);
-         float $$13 = bae.b((float)$$10 * 0.45F + $$1) * 0.15F;
-         $$11.f = bae.h($$12.b() - $$7.b()) * (float) (Math.PI / 180.0) * 1.5F;
-         $$11.e = $$13 + $$0.a($$10, $$7, $$12) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
-         $$11.g = -bae.h($$12.b() - $$9) * (float) (Math.PI / 180.0) * 1.5F;
-         $$11.c = $$4;
-         $$11.d = $$5;
-         $$11.b = $$3;
-         $$3 -= bae.a($$11.f) * bae.b($$11.e) * 10.0F;
-         $$4 += bae.a($$11.e) * 10.0F;
-         $$5 -= bae.b($$11.f) * bae.b($$11.e) * 10.0F;
-      }
-
-      this.c.c = $$4;
-      this.c.d = $$5;
-      this.c.b = $$3;
-      cks.a $$14 = $$0.a(0);
-      this.c.f = bae.h($$14.b() - $$7.b()) * (float) (Math.PI / 180.0);
-      this.c.e = bae.h($$0.a(6, $$7, $$14)) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
-      this.c.g = -bae.h($$14.b() - $$9) * (float) (Math.PI / 180.0);
-      this.g.g = -$$8 * 1.5F * (float) (Math.PI / 180.0);
-      this.i.e = 0.125F - bae.b($$1) * 0.2F;
-      this.i.f = -0.25F;
-      this.i.g = -(bae.a($$1) + 0.125F) * 0.8F;
-      this.j.g = (bae.a($$1 + 2.0F) + 0.5F) * 0.75F;
-      this.q.e = this.i.e;
-      this.q.f = -this.i.f;
-      this.q.g = -this.i.g;
-      this.r.g = -this.j.g;
-      this.a($$2, this.k, this.l, this.m, this.n, this.o, this.p);
-      this.a($$2, this.s, this.t, this.u, this.x, this.y, this.z);
-      float $$15 = 0.0F;
-      $$4 = this.e[0].c;
-      $$5 = this.e[0].d;
-      $$3 = this.e[0].b;
-      $$7 = $$0.a(11);
-
-      for (int $$16 = 0; $$16 < 12; $$16++) {
-         cks.a $$17 = $$0.a(12 + $$16);
-         $$15 += bae.a((float)$$16 * 0.45F + $$1) * 0.05F;
-         geo $$18 = this.e[$$16];
-         $$18.f = (bae.h($$17.b() - $$7.b()) * 1.5F + 180.0F) * (float) (Math.PI / 180.0);
-         $$18.e = $$15 + (float)($$17.a() - $$7.a()) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
-         $$18.g = bae.h($$17.b() - $$9) * (float) (Math.PI / 180.0) * 1.5F;
-         $$18.c = $$4;
-         $$18.d = $$5;
-         $$18.b = $$3;
-         $$4 += bae.a($$18.e) * 10.0F;
-         $$5 -= bae.b($$18.f) * bae.b($$18.e) * 10.0F;
-         $$3 -= bae.a($$18.f) * bae.b($$18.e) * 10.0F;
+   private static geh a(String $$0, String $$1) {
+      geh $$2 = b($$0, $$1);
+      if (!ej.add($$2)) {
+         throw new IllegalStateException("Duplicate registration for " + $$2);
+      } else {
+         return $$2;
       }
    }
 
-   private void a(float $$0, geo $$1, geo $$2, geo $$3, geo $$4, geo $$5, geo $$6) {
-      $$4.e = 1.0F + $$0 * 0.1F;
-      $$5.e = 0.5F + $$0 * 0.1F;
-      $$6.e = 0.75F + $$0 * 0.1F;
-      $$1.e = 1.3F + $$0 * 0.1F;
-      $$2.e = -0.5F - $$0 * 0.1F;
-      $$3.e = 0.75F + $$0 * 0.1F;
+   private static geh b(String $$0, String $$1) {
+      return new geh(alp.b($$0), $$1);
+   }
+
+   private static geh b(String $$0) {
+      return a($$0, "inner_armor");
+   }
+
+   private static geh c(String $$0) {
+      return a($$0, "outer_armor");
+   }
+
+   public static geh a(dza $$0) {
+      return b("sign/standing/" + $$0.b(), "main");
+   }
+
+   public static geh b(dza $$0) {
+      return b("sign/wall/" + $$0.b(), "main");
+   }
+
+   public static geh a(dza $$0, gob.a $$1) {
+      return b("hanging_sign/" + $$0.b() + "/" + $$1.c(), "main");
+   }
+
+   public static Stream<geh> a() {
+      return ej.stream();
    }
 }

@@ -1,44 +1,172 @@
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
-public class ehz extends egw<eji> {
-   private static final int a = 7;
+public class ehz extends egp<ejn> {
+   public static final int a = 10;
+   private static final int b = 42;
+   private static final LoadingCache<Long, List<ehz.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new ehz.b());
 
-   ehz(Codec<eji> $$0) {
+   public ehz(Codec<ejn> $$0) {
       super($$0);
    }
 
+   public static List<ehz.a> a(dhx $$0) {
+      bac $$1 = bac.a($$0.E());
+      long $$2 = $$1.g() & 65535L;
+      return (List<ehz.a>)c.getUnchecked($$2);
+   }
+
    @Override
-   public boolean a(egy<eji> $$0) {
-      dig $$1 = $$0.b();
-      bam $$2 = $$0.d();
-      eji $$3 = $$0.f();
+   public boolean a(egr<ejn> $$0) {
+      ejn $$1 = $$0.f();
+      dhx $$2 = $$0.b();
+      bac $$3 = $$0.d();
       jh $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      jh.a $$6 = new jh.a();
+      List<ehz.a> $$5 = $$1.b();
+      if ($$5.isEmpty()) {
+         $$5 = a($$2);
+      }
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dxv $$8 = $$1.a_($$6);
-
-         for (eji.a $$9 : $$3.b) {
-            if (ehr.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
+      for (ehz.a $$6 : $$5) {
+         if ($$6.a($$4)) {
+            this.a($$2, $$3, $$1, $$6);
          }
       }
 
       return true;
    }
 
-   private void a(jh.a $$0, bam $$1, jh $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
+   private void a(dhq $$0, bac $$1, ejn $$2, ehz.a $$3) {
+      int $$4 = $$3.c();
+
+      for (jh $$5 : jh.c(new jh($$3.a() - $$4, $$0.L_(), $$3.b() - $$4), new jh($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
+         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
+            this.a($$0, $$5, dkf.cv.m());
+         } else if ($$5.v() > 65) {
+            this.a($$0, $$5, dkf.a.m());
+         }
+      }
+
+      if ($$3.e()) {
+         int $$6 = -2;
+         int $$7 = 2;
+         int $$8 = 3;
+         jh.a $$9 = new jh.a();
+
+         for (int $$10 = -2; $$10 <= 2; $$10++) {
+            for (int $$11 = -2; $$11 <= 2; $$11++) {
+               for (int $$12 = 0; $$12 <= 3; $$12++) {
+                  boolean $$13 = azu.a($$10) == 2;
+                  boolean $$14 = azu.a($$11) == 2;
+                  boolean $$15 = $$12 == 3;
+                  if ($$13 || $$14 || $$15) {
+                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
+                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
+                     dxo $$18 = dkf.fk
+                        .m()
+                        .b(dog.a, Boolean.valueOf($$16 && $$11 != -2))
+                        .b(dog.c, Boolean.valueOf($$16 && $$11 != 2))
+                        .b(dog.d, Boolean.valueOf($$17 && $$10 != -2))
+                        .b(dog.b, Boolean.valueOf($$17 && $$10 != 2));
+                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
+                  }
+               }
+            }
+         }
+      }
+
+      ckk $$19 = bvi.S.a($$0.a(), bvh.d);
+      if ($$19 != null) {
+         $$19.a($$2.c());
+         $$19.n($$2.a());
+         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
+         $$0.b($$19);
+         jh $$20 = $$19.dw();
+         this.a($$0, $$20.e(), dkf.I.m());
+         this.a($$0, $$20, dne.a($$0, $$20));
+      }
    }
 
-   private int a(bam $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+   public static class a {
+      public static final Codec<ehz.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
+                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
+                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, ehz.a::new)
+      );
+      private final int b;
+      private final int c;
+      private final int d;
+      private final int e;
+      private final boolean f;
+      private final fbm g;
+
+      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = new fbm((double)($$0 - $$2), (double)ebj.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)ebj.d, (double)($$1 + $$2));
+      }
+
+      public boolean a(jh $$0) {
+         return kj.a($$0.u()) == kj.a(this.b) && kj.a($$0.w()) == kj.a(this.c);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public fbm f() {
+         return this.g;
+      }
+   }
+
+   static class b extends CacheLoader<Long, List<ehz.a>> {
+      public List<ehz.a> a(Long $$0) {
+         IntArrayList $$1 = ae.a(IntStream.range(0, 10), bac.a($$0));
+         List<ehz.a> $$2 = Lists.newArrayList();
+
+         for (int $$3 = 0; $$3 < 10; $$3++) {
+            int $$4 = azu.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$5 = azu.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$6 = $$1.get($$3);
+            int $$7 = 2 + $$6 / 3;
+            int $$8 = 76 + $$6 * 3;
+            boolean $$9 = $$6 == 1 || $$6 == 2;
+            $$2.add(new ehz.a($$4, $$5, $$7, $$8, $$9));
+         }
+
+         return $$2;
+      }
    }
 }

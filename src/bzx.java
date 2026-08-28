@@ -1,65 +1,22 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzx {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private static final int d = 4;
+   public static bzb<bvx> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
+   }
 
-   public static bya<bwo> a(float $$0) {
-      Long2LongMap $$1 = new Long2LongOpenHashMap();
-      MutableLong $$2 = new MutableLong(0L);
-      return cbm.a(
-         (Function<cbm.b<bwo>, ? extends App<cbm.c<bwo>, cbp<bwo>>>)($$3 -> $$3.group($$3.c(cfk.m), $$3.c(cfk.b))
-               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
-                     if ($$4x.ac() - $$2.getValue() < 20L) {
-                        return false;
-                     } else {
-                        chk $$7 = $$4x.z();
-                        Optional<jh> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(cho.n), $$5.dw(), 48, chk.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.dw()) <= 4.0)) {
-                           MutableInt $$9 = new MutableInt(0);
-                           $$2.setValue($$4x.ac() + (long)$$4x.H_().a(20));
-                           Predicate<jh> $$10 = $$3xxx -> {
-                              long $$4xx = $$3xxx.a();
-                              if ($$1.containsKey($$4xx)) {
-                                 return false;
-                              } else if ($$9.incrementAndGet() >= 5) {
-                                 return false;
-                              } else {
-                                 $$1.put($$4xx, $$2.getValue() + 40L);
-                                 return true;
-                              }
-                           };
-                           Set<Pair<jq<chn>, jh>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(cho.n), $$10, $$5.dw(), 48, chk.b.c).collect(Collectors.toSet());
-                           eul $$12 = bxs.a($$5, $$11);
-                           if ($$12 != null && $$12.j()) {
-                              jh $$13 = $$12.l();
-                              Optional<jq<chn>> $$14 = $$7.c($$13);
-                              if ($$14.isPresent()) {
-                                 $$3x.a(new cfn($$13, $$0, 1));
-                                 ahj.c($$4x, $$13);
-                              }
-                           } else if ($$9.getValue() < 5) {
-                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
+   public static bzb<bvx> a(Predicate<bvx> $$0, Function<bvx, Float> $$1, int $$2) {
+      return cbd.a(
+         (Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$3 -> $$3.group($$3.c(cfb.m), $$3.b(cfb.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
+                     return false;
+                  } else {
+                     $$4.a(new cfe($$3.b($$5), $$1.apply($$7), $$2));
+                     return true;
+                  }
+               }))
       );
    }
 }

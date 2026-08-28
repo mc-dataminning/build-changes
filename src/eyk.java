@@ -1,44 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
 import java.util.Optional;
 
-public class eyk extends eyc {
+public class eyk extends exv {
    public static final MapCodec<eyk> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  asz.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  azn.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
+                  czv.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  czv.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  czv.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
                )
             )
             .apply($$0, eyk::new)
    );
-   private final Optional<String> b;
-   private final Optional<asz<String>> c;
-   private final Optional<Integer> d;
+   public static final czv b = new czv(czv.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<czv.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   public eyk(List<ezy> $$0, Optional<asz<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+   public eyk(List<ezr> $$0, Optional<czv.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
-      this.b = $$2;
       this.c = $$1;
-      this.d = $$3;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   protected cxp a(cxp $$0, ewp $$1) {
-      $$0.a(ku.T, dax.a, this::a);
+   protected cxg a(cxg $$0, ewi $$1) {
+      $$0.a(ku.ae, b, this::a);
       return $$0;
    }
 
-   private dax a(dax $$0) {
-      return new dax(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   private czv a(czv $$0) {
+      return new czv(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
    @Override
-   public eye<eyk> b() {
-      return eyf.M;
+   public exx<eyk> b() {
+      return exy.L;
    }
 }

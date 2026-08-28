@@ -1,15 +1,25 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public interface ept<P extends eps> {
-   ept<epr> a = a("single_pool_element", epr.b);
-   ept<epq> b = a("list_pool_element", epq.a);
-   ept<epm> c = a("feature_pool_element", epm.a);
-   ept<epl> d = a("empty_pool_element", epl.a);
-   ept<epp> e = a("legacy_single_pool_element", epp.a);
+record ept(bri<List<epp>> c) implements epp {
+   static MapCodec<ept> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bri.b(Codec.list(epp.b)).fieldOf("groups").forGetter(ept::c)).apply($$0, ept::new));
 
-   MapCodec<P> codec();
+   @Override
+   public void a(bac $$0, BiConsumer<alo<epn>, alo<epn>> $$1) {
+      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   }
 
-   static <P extends eps> ept<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.ag, $$0, () -> $$1);
+   @Override
+   public Stream<alo<epn>> a() {
+      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(epp::a);
+   }
+
+   @Override
+   public MapCodec<ept> b() {
+      return a;
    }
 }

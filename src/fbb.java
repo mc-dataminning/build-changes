@@ -1,31 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import net.minecraft.server.MinecraftServer;
 
-public record fbb(String b) implements fbd {
-   public static final MapCodec<fbb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(fbb::c)).apply($$0, fbb::new));
+public class fbb implements fbc<MinecraftServer> {
+   final alp a;
 
-   public static fbd a(String $$0) {
-      return new fbb($$0);
+   public fbb(alp $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public fbc a() {
-      return fbe.b;
+   public void a(MinecraftServer $$0, fbe<MinecraftServer> $$1, long $$2) {
+      ame $$3 = $$0.aE();
+
+      for (ik<ew> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
    }
 
-   @Override
-   public fdc a(ewp $$0) {
-      return fdc.c(this.b);
-   }
+   public static class a extends fbc.a<MinecraftServer, fbb> {
+      public a() {
+         super(alp.b("function_tag"), fbb.class);
+      }
 
-   @Override
-   public Set<bbn<?>> b() {
-      return Set.of();
-   }
+      public void a(um $$0, fbb $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   public String c() {
-      return this.b;
+      public fbb a(um $$0) {
+         alp $$1 = alp.a($$0.l("Name"));
+         return new fbb($$1);
+      }
    }
 }

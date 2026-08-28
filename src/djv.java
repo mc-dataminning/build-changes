@@ -1,21 +1,46 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class djv extends djw {
+public class djv extends djp implements dju {
    public static final MapCodec<djv> a = b(djv::new);
-   protected static final float b = 6.0F;
-   protected static final fcs c = dkm.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
    @Override
    public MapCodec<djv> a() {
       return a;
    }
 
-   protected djv(dxu.d $$0) {
+   public djv(dxn.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      return c;
+   public cwd b() {
+      return cwd.a;
+   }
+
+   @Override
+   public duq a(jh $$0, dxo $$1) {
+      return new dul($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
+      return a($$2, dus.p, dul::a);
+   }
+
+   @Override
+   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dul $$5) {
+         $$3.a($$5);
+         $$3.a(axf.ab);
+      }
+
+      return bta.a;
+   }
+
+   @Override
+   protected dqo a_(dxo $$0) {
+      return dqo.c;
    }
 }

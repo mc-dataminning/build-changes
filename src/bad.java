@@ -1,49 +1,37 @@
-import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-public record bad(bad.a a, String b) {
-   public static bad a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
-      String $$4 = $$1.get();
-      if (!$$0.equals($$4)) {
-         return new bad(bad.a.c, $$2 + " brand changed to '" + $$4 + "'");
-      } else {
-         return $$3.getSigners() == null
-            ? new bad(bad.a.b, $$2 + " jar signature invalidated")
-            : new bad(bad.a.a, $$2 + " jar signature and brand is untouched");
-      }
+public class bad {
+   public static final Codec<bad> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(azd.p.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), azd.p.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, bad::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<alp> f;
+
+   private bad(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   public boolean a() {
-      return this.a.e;
+   public Predicate<String> a() {
+      return this.c;
    }
 
-   public bad a(bad $$0) {
-      return new bad((bad.a)ObjectUtils.max(new bad.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   public Predicate<String> b() {
+      return this.e;
    }
 
-   public String b() {
-      return this.a.d + " " + this.b;
-   }
-
-   public bad.a c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public static enum a {
-      a("Probably not.", false),
-      b("Very likely;", true),
-      c("Definitely;", true);
-
-      final String d;
-      final boolean e;
-
-      private a(final String $$0, final boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public Predicate<alp> c() {
+      return this.f;
    }
 }

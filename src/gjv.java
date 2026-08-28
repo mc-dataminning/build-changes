@@ -1,19 +1,17 @@
-public class gjv extends gjs {
-   private final fby a;
-
-   gjv(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fby $$7, int $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      $$8 = ayp.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
-      this.v = (float)ayp.b($$8) / 255.0F;
-      this.w = (float)ayp.c($$8) / 255.0F;
-      this.x = (float)ayp.d($$8) / 255.0F;
-      this.D = 0.26F;
-      this.a = $$7;
+public class gjv extends gjn {
+   protected gjv(gff $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public giw b() {
-      return giw.b;
+   public gir b() {
+      return gir.b;
    }
 
    @Override
@@ -21,33 +19,43 @@ public class gjv extends gjs {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.t-- <= 0) {
          this.k();
       } else {
-         int $$0 = this.t - this.s;
-         double $$1 = 1.0 / (double)$$0;
-         this.g = bae.d($$1, this.g, this.a.a());
-         this.h = bae.d($$1, this.h, this.a.b());
-         this.i = bae.d($$1, this.i, this.a.c());
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         jh $$0 = jh.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).g(this.c, $$0).b(jm.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a(this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
+         }
       }
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public static class a implements giq<lw> {
+      private final gji a;
 
-   public static class a implements giv<lx> {
-      private final gjn a;
-
-      public a(gjn $$0) {
+      public a(gji $$0) {
          this.a = $$0;
       }
 
-      public gis a(lx $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjv $$8 = new gjv($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjv $$8 = new gjv($$1, $$2, $$3, $$4);
          $$8.a(this.a);
-         $$8.a($$1.A.a(40) + 10);
          return $$8;
       }
    }

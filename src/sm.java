@@ -1,54 +1,21 @@
-import java.util.List;
-
 public class sm {
-   public static void a(rk<egi<?, ?>> $$0) {
-      sj.a($$0);
-      sk.a($$0);
-      sl.a($$0);
-      sn.a($$0);
-      so.a($$0);
-      sp.a($$0);
-      sq.a($$0);
-      sr.a($$0);
-      ss.a($$0);
-   }
+   public static final alo<enh> a = sq.a("end_platform");
+   public static final alo<enh> b = sq.a("end_spike");
+   public static final alo<enh> c = sq.a("end_gateway_return");
+   public static final alo<enh> d = sq.a("chorus_plant");
+   public static final alo<enh> e = sq.a("end_island_decorated");
 
-   private static eex a(List<dkm> $$0) {
-      eex $$1;
-      if (!$$0.isEmpty()) {
-         $$1 = eex.a(eex.c, eex.a(jm.a.q(), $$0));
-      } else {
-         $$1 = eex.c;
-      }
-
-      return $$1;
-   }
-
-   public static ejn a(int $$0, jq<eno> $$1) {
-      return new ejn($$0, 7, 3, $$1);
-   }
-
-   public static <FC extends eja, F extends egw<FC>> ejn a(F $$0, FC $$1, List<dkm> $$2, int $$3) {
-      return a($$3, tb.a($$0, $$1, a($$2)));
-   }
-
-   public static <FC extends eja, F extends egw<FC>> ejn a(F $$0, FC $$1, List<dkm> $$2) {
-      return a($$0, $$1, $$2, 96);
-   }
-
-   public static <FC extends eja, F extends egw<FC>> ejn a(F $$0, FC $$1) {
-      return a($$0, $$1, List.of(), 96);
-   }
-
-   public static aly<egi<?, ?>> a(String $$0) {
-      return aly.a(mb.aL, alz.b($$0));
-   }
-
-   public static void a(rk<egi<?, ?>> $$0, aly<egi<?, ?>> $$1, egw<ejh> $$2) {
-      a($$0, $$1, $$2, eja.m);
-   }
-
-   public static <FC extends eja, F extends egw<FC>> void a(rk<egi<?, ?>> $$0, aly<egi<?, ?>> $$1, F $$2, FC $$3) {
-      $$0.a($$1, new egi($$2, $$3));
+   public static void a(ra<enh> $$0) {
+      jr<egb<?, ?>> $$1 = $$0.a(mb.aL);
+      jq<egb<?, ?>> $$2 = $$1.b(sa.a);
+      jq<egb<?, ?>> $$3 = $$1.b(sa.b);
+      jq<egb<?, ?>> $$4 = $$1.b(sa.c);
+      jq<egb<?, ?>> $$5 = $$1.b(sa.e);
+      jq<egb<?, ?>> $$6 = $$1.b(sa.f);
+      sq.a($$0, a, $$2, enb.a(arx.a.e()), emv.a());
+      sq.a($$0, b, $$3, emv.a());
+      sq.a($$0, c, $$4, enn.a(700), ene.a(), sq.a, enm.a(bsl.a(3, 9)), emv.a());
+      sq.a($$0, d, $$5, emz.a(bsl.a(0, 4)), ene.a(), sq.a, emv.a());
+      sq.a($$0, e, $$6, enn.a(14), sq.a(1, 0.25F, 1), ene.a(), enc.a(eed.a(55), eed.a(70)), emv.a());
    }
 }

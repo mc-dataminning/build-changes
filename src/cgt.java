@@ -1,28 +1,33 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
-
-public class cgt extends cgq<bwg> {
-   @Override
-   public Set<cfk<?>> a() {
-      return ImmutableSet.of(cfk.i);
+public class cgt {
+   public static boolean a(bvz $$0) {
+      return $$0.L() instanceof cfi;
    }
 
-   @Override
-   protected void a(ash $$0, bwg $$1) {
-      $$1.ec().a(cfk.i, this.a($$1));
+   public static boolean a(bwf $$0, int $$1) {
+      return $$0.ga() && $$0.fX().a($$0.du(), (double)($$0.fY() + (float)$$1) + 1.0);
    }
 
-   private List<bwg> a(bwg $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   public static boolean a(jh $$0, bwf $$1) {
+      return $$1.dW().e($$0.v());
    }
 
-   private boolean b(bwg $$0) {
-      return $$0.aq() == bvr.bD && $$0.e_();
+   public static boolean a(boolean $$0, bwf $$1, jh $$2) {
+      return $$0 && !$$1.a($$2);
    }
 
-   private cfm c(bwg $$0) {
-      return $$0.ec().c(cfk.h).orElse(cfm.a());
+   public static boolean a(cfj $$0, jh $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(bwf $$0, jh $$1) {
+      return $$0.dW().b_($$1).a(axq.a);
+   }
+
+   public static boolean b(bwf $$0, jh $$1) {
+      return $$0.a(eum.b($$0, $$1)) != 0.0F;
+   }
+
+   public static boolean c(bwf $$0, jh $$1) {
+      return $$0.dW().a_($$1).e();
    }
 }

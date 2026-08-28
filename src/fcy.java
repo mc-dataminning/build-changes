@@ -1,177 +1,83 @@
-import com.google.common.collect.Sets;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Set;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fcy extends fdf {
-   private static final int a = 0;
-   private static final int b = 1;
-   private final fdd c;
-   private final String d;
-   private final Set<String> e = Sets.newHashSet();
-   private xv f;
-   private xv g = xu.a;
-   private xv h = xu.a;
-   private boolean i = true;
-   private boolean j = true;
-   private fdf.b k = fdf.b.a;
-   private fdf.b l = fdf.b.a;
-   private n m = n.v;
-   private fdf.a n = fdf.a.a;
-   private final ys o;
-
-   public fcy(fdd $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = xv.b($$1);
-      this.o = ys.a.a($$1).a(new yb(yb.a.a, xv.b($$1)));
+public abstract class fcy {
+   public boolean a(@Nullable fcy $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   public fdd a() {
-      return this.c;
-   }
+   public abstract String b();
 
-   @Override
-   public String b() {
-      return this.d;
-   }
+   public abstract xy d(xk var1);
 
-   public xv c() {
-      return this.f;
-   }
+   public abstract boolean i();
 
-   public yj d() {
-      yj $$0 = xy.a((xv)this.f.f().c(this.o));
-      n $$1 = this.n();
-      if ($$1 != n.v) {
-         $$0.a($$1);
+   public abstract boolean h();
+
+   public abstract fcy.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract fcy.b k();
+
+   public abstract fcy.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, fcy.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fcy.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static fcy.a a(String $$0) {
+         return g.get($$0);
       }
 
-      return $$0;
-   }
+      private a(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
 
-   public void a(xv $$0) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Name cannot be null");
-      } else {
-         this.f = $$0;
-         this.c.b(this);
+      public xk a() {
+         return xk.c("team.collision." + this.e);
       }
    }
 
-   public void b(@Nullable xv $$0) {
-      this.g = $$0 == null ? xu.a : $$0;
-      this.c.b(this);
-   }
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   public xv e() {
-      return this.g;
-   }
+      private static final Map<String, fcy.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fcy.b)$$0));
+      public final String e;
+      public final int f;
 
-   public void c(@Nullable xv $$0) {
-      this.h = $$0 == null ? xu.a : $$0;
-      this.c.b(this);
-   }
-
-   public xv f() {
-      return this.h;
-   }
-
-   @Override
-   public Collection<String> g() {
-      return this.e;
-   }
-
-   @Override
-   public yj d(xv $$0) {
-      yj $$1 = xv.i().b(this.g).b($$0).b(this.h);
-      n $$2 = this.n();
-      if ($$2 != n.v) {
-         $$1.a($$2);
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
       }
 
-      return $$1;
-   }
-
-   public static yj a(@Nullable fdf $$0, xv $$1) {
-      return $$0 == null ? $$1.f() : $$0.d($$1);
-   }
-
-   @Override
-   public boolean h() {
-      return this.i;
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public boolean i() {
-      return this.j;
-   }
-
-   public void b(boolean $$0) {
-      this.j = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public fdf.b j() {
-      return this.k;
-   }
-
-   @Override
-   public fdf.b k() {
-      return this.l;
-   }
-
-   public void a(fdf.b $$0) {
-      this.k = $$0;
-      this.c.b(this);
-   }
-
-   public void b(fdf.b $$0) {
-      this.l = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public fdf.a l() {
-      return this.n;
-   }
-
-   public void a(fdf.a $$0) {
-      this.n = $$0;
-      this.c.b(this);
-   }
-
-   public int m() {
-      int $$0 = 0;
-      if (this.h()) {
-         $$0 |= 1;
+      @Nullable
+      public static fcy.b a(String $$0) {
+         return g.get($$0);
       }
 
-      if (this.i()) {
-         $$0 |= 2;
+      private b(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      return $$0;
-   }
-
-   public void a(int $$0) {
-      this.a(($$0 & 1) > 0);
-      this.b(($$0 & 2) > 0);
-   }
-
-   public void a(n $$0) {
-      this.m = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public n n() {
-      return this.m;
+      public xk b() {
+         return xk.c("team.visibility." + this.e);
+      }
    }
 }

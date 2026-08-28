@@ -1,10 +1,4 @@
-public class gxh extends gxv {
+public class gxh extends gyo {
    public float a;
-   public int b;
-   public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
+   public float b;
 }

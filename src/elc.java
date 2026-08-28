@@ -1,24 +1,49 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class elc<P extends elb> {
-   public static final elc<elk> a = a("simple_state_provider", elk.b);
-   public static final elc<ell> b = a("weighted_state_provider", ell.b);
-   public static final elc<elg> c = a("noise_threshold_provider", elg.b);
-   public static final elc<elf> d = a("noise_provider", elf.g);
-   public static final elc<eld> e = a("dual_noise_provider", eld.b);
-   public static final elc<eli> f = a("rotated_block_provider", eli.b);
-   public static final elc<elh> g = a("randomized_int_state_provider", elh.b);
-   private final MapCodec<P> h;
+public record elc(eku b, List<elc.a> c) {
+   public static final Codec<elc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eku.a.fieldOf("fallback").forGetter(elc::a), elc.a.a.listOf().fieldOf("rules").forGetter(elc::b)).apply($$0, elc::new)
+   );
 
-   private static <P extends elb> elc<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.T, $$0, new elc<>($$1));
+   public static elc a(eku $$0) {
+      return new elc($$0, List.of());
    }
 
-   private elc(MapCodec<P> $$0) {
-      this.h = $$0;
+   public static elc a(dkd $$0) {
+      return a(eku.a($$0));
    }
 
-   public MapCodec<P> a() {
-      return this.h;
+   public dxo a(dhx $$0, bac $$1, jh $$2) {
+      for (elc.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
+      }
+
+      return this.b.a($$1, $$2);
+   }
+
+   public eku a() {
+      return this.b;
+   }
+
+   public List<elc.a> b() {
+      return this.c;
+   }
+
+   public static record a(eeq b, eku c) {
+      public static final Codec<elc.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eeq.b.fieldOf("if_true").forGetter(elc.a::a), eku.a.fieldOf("then").forGetter(elc.a::b)).apply($$0, elc.a::new)
+      );
+
+      public eeq a() {
+         return this.b;
+      }
+
+      public eku b() {
+         return this.c;
+      }
    }
 }

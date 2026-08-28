@@ -1,56 +1,35 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
+import java.time.Duration;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.concurrent.TimeUnit;
 
-public class fja extends fix {
-   private static final Logger e = LogUtils.getLogger();
-   public List<fiz> a;
-   public int b;
-   public int c;
-   public int d;
+public class fja {
+   public final fki a = new fki(ae.h(), TimeUnit.MILLISECONDS, ae.c);
+   private final List<fki.e<?>> i;
+   public final fki.e<List<fib>> b;
+   public final fki.e<fja.a> c;
+   public final fki.e<Integer> d;
+   public final fki.e<Boolean> e;
+   public final fki.e<fia> f;
+   public final fki.e<fif> g;
+   public final fjb h = new fjb(new fko());
 
-   public fja() {
+   public fja(fhb $$0) {
+      this.c = this.a.a("server list", () -> {
+         fie $$1 = $$0.b();
+         return fgw.b() ? new fja.a($$1.a, $$0.c()) : new fja.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), fkj.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fkj.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fkj.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fkj.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fkj.a);
+      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), fkj.a);
+      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   public fja(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
-      this.c = $$0;
-      this.d = -1;
+   public List<fki.e<?>> a() {
+      return this.i;
    }
 
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
-   }
-
-   public static fja a(String $$0) {
-      fja $$1 = new fja();
-      $$1.a = Lists.newArrayList();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(fiz.a($$4.next().getAsJsonObject()));
-            }
-         }
-
-         $$1.b = fkt.a("page", $$3, 0);
-         $$1.c = fkt.a("size", $$3, 0);
-         $$1.d = fkt.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
-      }
-
-      return $$1;
+   public static record a(List<fic> a, List<fic> b) {
    }
 }

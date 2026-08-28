@@ -1,102 +1,51 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+public class fsw extends ftr {
+   private static final alp a = alp.b("textures/gui/demo_background.png");
+   private static final int b = 256;
+   private static final int c = 256;
+   private fos d = fos.a;
+   private fos s = fos.a;
 
-public class fsw extends fty {
-   private static final int d = 20;
-   private final xv s;
-   private foz u = foz.a;
-   protected xv a;
-   protected xv b;
-   private int v;
-   protected final BooleanConsumer c;
-   private final List<fof> w = Lists.newArrayList();
-
-   public fsw(BooleanConsumer $$0, xv $$1, xv $$2) {
-      this($$0, $$1, $$2, xu.f, xu.g);
-   }
-
-   public fsw(BooleanConsumer $$0, xv $$1, xv $$2, xv $$3, xv $$4) {
-      super($$1);
-      this.c = $$0;
-      this.s = $$2;
-      this.a = $$3;
-      this.b = $$4;
-   }
-
-   @Override
-   public xv i() {
-      return xu.a(super.i(), this.s);
+   public fsw() {
+      super(xk.c("demo.help.title"));
    }
 
    @Override
    protected void aT_() {
-      super.aT_();
-      this.u = foz.a(this.p, this.s, this.n - 50);
-      int $$0 = bae.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
-      this.w.clear();
-      this.a($$0);
-   }
-
-   protected void a(int $$0) {
-      this.a(fof.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
-      this.a(fof.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
-   }
-
-   protected void a(fof $$0) {
-      this.w.add(this.c($$0));
+      int $$0 = -16;
+      this.c(fny.a(xk.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ae.m().a(ayq.f);
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(fny.a(xk.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      fmd $$1 = this.m.n;
+      this.d = fos.a(
+         this.p,
+         xk.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
+         xk.c("demo.help.movementMouse"),
+         xk.a("demo.help.jump", $$1.z.k()),
+         xk.a("demo.help.inventory", $$1.C.k())
+      );
+      this.s = fos.a(this.p, xk.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void a(fns $$0, int $$1, int $$2, float $$3) {
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(glq::H, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.l(), 16777215);
-      this.u.a($$0, this.n / 2, this.E());
-   }
-
-   private int l() {
-      int $$0 = (this.o - this.F()) / 2;
-      return bae.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int E() {
-      return this.l() + 20;
-   }
-
-   private int F() {
-      return this.u.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.v = $$0;
-
-      for (fof $$1 : this.w) {
-         $$1.j = false;
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (--this.v == 0) {
-         for (fof $$0 : this.w) {
-            $$0.j = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean aH_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

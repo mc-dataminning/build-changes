@@ -1,18 +1,11 @@
-public class giq extends gis {
-   protected giq(gfk $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
+import javax.annotation.Nullable;
 
-   protected giq(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
+public interface giq<T extends lq> {
+   @Nullable
+   gin createParticle(T var1, gff var2, double var3, double var5, double var7, double var9, double var11, double var13);
 
-   @Override
-   public final void a(fgw $$0, flp $$1, float $$2) {
-   }
-
-   @Override
-   public giw b() {
-      return giw.e;
+   public interface a<T extends lq> {
+      @Nullable
+      gjn createParticle(T var1, gff var2, double var3, double var5, double var7, double var9, double var11, double var13);
    }
 }

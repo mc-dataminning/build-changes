@@ -1,70 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-public record edy(int g, int h, int i, int j) {
-   public static final Codec<edy> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(ebq.e, ebq.d).fieldOf("min_y").forGetter(edy::c),
-                  Codec.intRange(0, ebq.c).fieldOf("height").forGetter(edy::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(edy::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(edy::f)
-               )
-               .apply($$0, edy::new)
-      )
-      .comapFlatMap(edy::a, Function.identity());
-   protected static final edy b = a(-64, 384, 1, 2);
-   protected static final edy c = a(0, 128, 1, 2);
-   protected static final edy d = a(0, 128, 2, 1);
-   protected static final edy e = a(-64, 192, 1, 2);
-   protected static final edy f = a(0, 256, 2, 1);
+public final class edy {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
 
-   private static DataResult<edy> a(edy $$0) {
-      if ($$0.c() + $$0.d() > ebq.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (ebq.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
+   }
+
+   public static edy.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new edy.a($$1, $$2);
+   }
+
+   public static edy.a c(long $$0) {
+      return b($$0).a();
+   }
+
+   public static edy.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new edy.a($$2, $$3);
+   }
+
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   }
+
+   public static record a(long a, long b) {
+      public edy.a a(long $$0, long $$1) {
+         return new edy.a(this.a ^ $$0, this.b ^ $$1);
       }
-   }
 
-   public static edy a(int $$0, int $$1, int $$2, int $$3) {
-      edy $$4 = new edy($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
-   }
+      public edy.a a(edy.a $$0) {
+         return this.a($$0.a, $$0.b);
+      }
 
-   public int a() {
-      return kb.c(this.f());
-   }
+      public edy.a a() {
+         return new edy.a(edy.a(this.a), edy.a(this.b));
+      }
 
-   public int b() {
-      return kb.c(this.e());
-   }
+      public long b() {
+         return this.a;
+      }
 
-   public edy a(dhk $$0) {
-      int $$1 = Math.max(this.g, $$0.L_());
-      int $$2 = Math.min(this.g + this.h, $$0.am() + 1) - $$1;
-      return new edy($$1, $$2, this.i, this.j);
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public int e() {
-      return this.i;
-   }
-
-   public int f() {
-      return this.j;
+      public long c() {
+         return this.b;
+      }
    }
 }

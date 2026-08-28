@@ -1,30 +1,49 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+public class ghe extends gjn {
+   private final gji a;
 
-public class ghe {
-   public static final ghe a = new ghe(ghd.b, ghf.createDnsSrvRedirectHandler(), gha.a());
-   private final ghd b;
-   private final ghf c;
-   private final gha d;
-
-   @VisibleForTesting
-   ghe(ghd $$0, ghf $$1, gha $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   ghe(gff $$0, double $$1, double $$2, double $$3, double $$4, gji $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
-   public Optional<ghb> a(ghc $$0) {
-      Optional<ghb> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<ghc> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
 
-         return $$1;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         return Optional.empty();
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public gir b() {
+      return gir.b;
+   }
+
+   public static class a implements giq<lw> {
+      private final gji a;
+
+      public a(gji $$0) {
+         this.a = $$0;
+      }
+
+      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghe($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

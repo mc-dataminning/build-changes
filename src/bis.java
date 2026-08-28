@@ -1,32 +1,12 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bis extends DataFix {
-   public bis(Schema $$0) {
-      super($$0, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.B);
-      Type<?> $$1 = this.getOutputSchema().getType(bix.B);
-      return this.fixTypeEverywhereTyped("Fix Arrow stored weapon", $$0, $$1, bbu.a(this.a("minecraft:arrow"), this.a("minecraft:spectral_arrow")));
-   }
-
-   private Function<Typed<?>, Typed<?>> a(String $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bix.B, $$0);
-      Type<?> $$2 = this.getOutputSchema().getChoiceType(bix.B, $$0);
-      return a($$0, $$1, $$2);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, Type<?> $$1, Type<T> $$2) {
-      OpticFinder<?> $$3 = DSL.namedChoice($$0, $$1);
-      return $$2x -> $$2x.updateTyped($$3, $$2, $$1xx -> ae.a($$1xx, $$2, UnaryOperator.identity()));
-   }
+public class bis {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
+      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
+      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
+      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
+      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
+      .build();
 }

@@ -1,18 +1,41 @@
-import java.util.function.BiConsumer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
-public record nv(js.a a) implements nh {
+public class nv implements mh {
+   private final mj d;
+   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
+
+   public nv(mj $$0) {
+      this.d = $$0;
+   }
+
+   public <T> nv a(auk<T> $$0, T $$1) {
+      this.e.put($$0.a(), () -> $$0.a($$1));
+      return this;
+   }
+
    @Override
-   public void generate(BiConsumer<aly<ewu>, ewu.a> $$0) {
-      $$0.accept(ewl.aQ, ewu.b().a(ewt.a().a(far.a(2.0F)).a(exc.a(cxt.dH).a(eyu.a(far.a(1.0F)))).a(exc.a(cxt.dI).a(eyu.a(far.a(1.0F))))));
-      nj.a.forEach(($$1, $$2) -> $$0.accept(ewl.aW.get($$1), ewu.b().a(ewt.a().a(fay.a(1.0F, 3.0F)).a(exc.a($$2)))));
-      $$0.accept(ewl.aV, ewu.b().a(nf.a(ewl.aW)));
-      $$0.accept(
-         ewl.aR,
-         ewu.b()
-            .a(ewt.a().a(eww.a(exi.a(ewl.aS).a(fab.a(ewp.b.a, bw.a.a().a(by.i.a(cik.a.a)))), exi.a(ewl.aT).a(fab.a(ewp.b.a, bw.a.a().a(by.i.a(cik.a.b)))))))
-      );
-      $$0.accept(ewl.aS, ewu.b().a(ewt.a().a(far.a(5.0F)).a(exc.a(cxt.dI))));
-      $$0.accept(ewl.aT, ewu.b().a(ewt.a().a(far.a(5.0F)).a(exc.a(cxt.dH))));
-      $$0.accept(ewl.aU, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.fy))));
+   public CompletableFuture<?> a(mf $$0) {
+      JsonObject $$1 = new JsonObject();
+      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
+      return mh.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
+   }
+
+   @Override
+   public final String a() {
+      return "Pack Metadata";
+   }
+
+   public static nv a(mj $$0, xk $$1) {
+      return new nv($$0).a(aul.b, new aul($$1, t.a.a(aty.b), Optional.empty()));
+   }
+
+   public static nv a(mj $$0, xk $$1, csk $$2) {
+      return a($$0, $$1).a(ats.a, new ats($$2));
    }
 }

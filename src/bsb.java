@@ -1,20 +1,45 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class bsb extends brx<bsd.c> {
-   public bsb(int $$0, Executor $$1, String $$2) {
-      super(new bsd.a($$0), $$1, $$2);
-      brd.a.a(this);
+public class bsb extends bsd {
+   public static final bsb a = new bsb(0.0F);
+   public static final MapCodec<bsb> b = Codec.FLOAT.fieldOf("value").xmap(bsb::a, bsb::d);
+   private final float d;
+
+   public static bsb a(float $$0) {
+      return $$0 == 0.0F ? a : new bsb($$0);
    }
 
-   public bsd.c b(Runnable $$0) {
-      return new bsd.c(0, $$0);
+   private bsb(float $$0) {
+      this.d = $$0;
    }
 
-   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
-      CompletableFuture<Source> $$2 = new CompletableFuture<>();
-      this.a_(new bsd.c($$0, () -> $$1.accept($$2)));
-      return $$2;
+   public float d() {
+      return this.d;
+   }
+
+   @Override
+   public float a(bac $$0) {
+      return this.d;
+   }
+
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bse<?> c() {
+      return bse.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

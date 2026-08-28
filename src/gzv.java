@@ -1,13 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gzv extends gxp {
-   @Nullable
-   public bvi.l.e a;
-   @Nullable
-   public bvi.l.b f;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class gzv extends gyo {
+   public cio.b a = cio.b.g;
+   public int b = -1;
+   public int c = -1;
 }

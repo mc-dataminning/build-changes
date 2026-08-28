@@ -1,37 +1,31 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
-public record hcm(alz a, @Nullable String b, @Nullable alz c, @Nullable alz d, hcm.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+public class hcm {
+   public static azg a(xp $$0, boolean $$1) {
+      yi $$2 = yi.a($$0, UCharacter::getMirror, hcm::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<azg> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
       }
 
-      public static hcm.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
+      return azg.composite($$4);
+   }
 
-      public String a() {
-         return this.c;
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
       }
    }
 }

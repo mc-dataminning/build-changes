@@ -1,113 +1,153 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class axa extends awx {
-   private static final Logger d = LogUtils.getLogger();
-   private final ServerSocket e;
-   private final String f;
-   private final List<awz> g = Lists.newArrayList();
-   private final amq h;
+public class axa extends awy {
+   public static final String b = "recipeBook";
+   private static final Logger e = LogUtils.getLogger();
+   private final axa.a f;
+   @VisibleForTesting
+   protected final Set<alo<dbv<?>>> c = Sets.newIdentityHashSet();
+   @VisibleForTesting
+   protected final Set<alo<dbv<?>>> d = Sets.newIdentityHashSet();
 
-   private axa(amq $$0, ServerSocket $$1, String $$2) {
-      super("RCON Listener");
-      this.h = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public axa(axa.a $$0) {
+      this.f = $$0;
    }
 
-   private void d() {
-      this.g.removeIf($$0 -> !$$0.c());
+   public void a(alo<dbv<?>> $$0) {
+      this.c.add($$0);
    }
 
-   @Override
-   public void run() {
-      try {
-         while (this.a) {
-            try {
-               Socket $$0 = this.e.accept();
-               awz $$1 = new awz(this.h, this.f, $$0);
-               $$1.a();
-               this.g.add($$1);
-               this.d();
-            } catch (SocketTimeoutException var7) {
-               this.d();
-            } catch (IOException var8) {
-               if (this.a) {
-                  d.info("IO exception: ", var8);
-               }
+   public boolean b(alo<dbv<?>> $$0) {
+      return this.c.contains($$0);
+   }
+
+   public void c(alo<dbv<?>> $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   public void d(alo<dbv<?>> $$0) {
+      this.d.remove($$0);
+   }
+
+   private void e(alo<dbv<?>> $$0) {
+      this.d.add($$0);
+   }
+
+   public int a(Collection<dca<?>> $$0, ary $$1) {
+      List<aet.a> $$2 = new ArrayList<>();
+
+      for (dca<?> $$3 : $$0) {
+         alo<dbv<?>> $$4 = $$3.a();
+         if (!this.c.contains($$4) && !$$3.b().aq_()) {
+            this.a($$4);
+            this.e($$4);
+            this.f.displaysForRecipe($$4, $$2x -> $$2.add(new aet.a($$2x, $$3.b().i(), true)));
+            ao.g.a($$1, $$3);
+         }
+      }
+
+      if (!$$2.isEmpty()) {
+         $$1.f.b(new aet($$2, false));
+      }
+
+      return $$2.size();
+   }
+
+   public int b(Collection<dca<?>> $$0, ary $$1) {
+      List<ddc> $$2 = Lists.newArrayList();
+
+      for (dca<?> $$3 : $$0) {
+         alo<dbv<?>> $$4 = $$3.a();
+         if (this.c.contains($$4)) {
+            this.c($$4);
+            this.f.displaysForRecipe($$4, $$1x -> $$2.add($$1x.a()));
+         }
+      }
+
+      if (!$$2.isEmpty()) {
+         $$1.f.b(new aeu($$2));
+      }
+
+      return $$2.size();
+   }
+
+   public um b() {
+      um $$0 = new um();
+      this.a().b($$0);
+      us $$1 = new us();
+
+      for (alo<dbv<?>> $$2 : this.c) {
+         $$1.add(vh.a($$2.a().toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      us $$3 = new us();
+
+      for (alo<dbv<?>> $$4 : this.d) {
+         $$3.add(vh.a($$4.a().toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(um $$0, Predicate<alo<dbv<?>>> $$1) {
+      this.a(awz.a($$0));
+      us $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      us $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::e, $$1);
+   }
+
+   private void a(us $$0, Consumer<alo<dbv<?>>> $$1, Predicate<alo<dbv<?>>> $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            alo<dbv<?>> $$5 = alo.a(mb.bk, alp.a($$4));
+            if (!$$2.test($$5)) {
+               e.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$5);
             }
+         } catch (aa var7) {
+            e.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
          }
-      } finally {
-         this.a(this.e);
       }
    }
 
-   @Nullable
-   public static axa a(amq $$0) {
-      aqz $$1 = $$0.a();
-      String $$2 = $$0.b();
-      if ($$2.isEmpty()) {
-         $$2 = "0.0.0.0";
+   public void a(ary $$0) {
+      $$0.f.b(new aev(this.a()));
+      List<aet.a> $$1 = new ArrayList<>(this.c.size());
+
+      for (alo<dbv<?>> $$2 : this.c) {
+         this.f.displaysForRecipe($$2, $$2x -> $$1.add(new aet.a($$2x, false, this.d.contains($$2))));
       }
 
-      int $$3 = $$1.r;
-      if (0 < $$3 && 65535 >= $$3) {
-         String $$4 = $$1.s;
-         if ($$4.isEmpty()) {
-            d.warn("No rcon password set in server.properties, rcon disabled!");
-            return null;
-         } else {
-            try {
-               ServerSocket $$5 = new ServerSocket($$3, 0, InetAddress.getByName($$2));
-               $$5.setSoTimeout(500);
-               axa $$6 = new axa($$0, $$5, $$4);
-               if (!$$6.a()) {
-                  return null;
-               } else {
-                  d.info("RCON running on {}:{}", $$2, $$3);
-                  return $$6;
-               }
-            } catch (IOException var7) {
-               d.warn("Unable to initialise RCON on {}:{}", new Object[]{$$2, $$3, var7});
-               return null;
-            }
-         }
-      } else {
-         d.warn("Invalid rcon port {} found in server.properties, rcon disabled!", $$3);
-         return null;
-      }
+      $$0.f.b(new aet($$1, true));
    }
 
-   @Override
-   public void b() {
-      this.a = false;
-      this.a(this.e);
-      super.b();
-
-      for (awz $$0 : this.g) {
-         if ($$0.c()) {
-            $$0.b();
-         }
-      }
-
-      this.g.clear();
+   public void a(axa $$0) {
+      this.c.clear();
+      this.d.clear();
+      this.a.a($$0.a);
+      this.c.addAll($$0.c);
+      this.d.addAll($$0.d);
    }
 
-   private void a(ServerSocket $$0) {
-      d.debug("closeSocket: {}", $$0);
-
-      try {
-         $$0.close();
-      } catch (IOException var3) {
-         d.warn("Failed to close socket", var3);
-      }
+   @FunctionalInterface
+   public interface a {
+      void displaysForRecipe(alo<dbv<?>> var1, Consumer<ddb> var2);
    }
 }

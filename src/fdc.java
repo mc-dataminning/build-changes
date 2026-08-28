@@ -1,53 +1,45 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
-
-public interface fdc {
-   String cA = "*";
-   fdc cB = new fdc() {
+public class fdc {
+   private static final fdm<Object> a = new fdm<Object>() {
       @Override
-      public String cI() {
-         return "*";
+      public void a(fdj<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(jh $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final fdf<Object> b = new fdf<Object>() {
+      @Override
+      public void a(fdj<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(jh $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(jh $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
       }
    };
 
-   String cI();
-
-   @Nullable
-   default xv p_() {
-      return null;
+   public static <T> fdm<T> a() {
+      return (fdm<T>)a;
    }
 
-   default xv hc() {
-      xv $$0 = this.p_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new yb(yb.a.a, xv.b(this.cI())))) : xv.b(this.cI());
-   }
-
-   static fdc c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cB;
-      } else {
-         final xv $$1 = xv.b($$0);
-         return new fdc() {
-            @Override
-            public String cI() {
-               return $$0;
-            }
-
-            @Override
-            public xv hc() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static fdc a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new fdc() {
-         @Override
-         public String cI() {
-            return $$1;
-         }
-      };
+   public static <T> fdf<T> b() {
+      return (fdf<T>)b;
    }
 }

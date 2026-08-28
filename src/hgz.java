@@ -1,109 +1,53 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-public class hgz {
-   final Map<hgy<?>, Object> a;
+public final class hgz extends hgx {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
-   hgz(Map<hgy<?>, Object> $$0) {
-      this.a = $$0;
+   @Override
+   public void a(hgr $$0) {
+      if (flz.Q().C()) {
+         super.a($$0);
+      }
    }
 
-   public static hgz.a a() {
-      return new hgz.a();
-   }
-
-   public static MapCodec<hgz> a(final List<hgy<?>> $$0) {
-      return new MapCodec<hgz>() {
-         public <T> RecordBuilder<T> a(hgz $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
-
-            for (hgy<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
-            }
-
-            return $$3;
-         }
-
-         private <T, V> RecordBuilder<T> a(hgz $$0x, RecordBuilder<T> $$1, hgy<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
-
-         public <T> DataResult<hgz> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<hgz.a> $$2 = DataResult.success(new hgz.a());
-
-            for (hgy<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
-            }
-
-            return $$2.map(hgz.a::a);
-         }
-
-         private <T, V> DataResult<hgz.a> a(DataResult<hgz.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, hgy<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
-            }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(hgy::b).map($$0::createString);
-         }
-      };
-   }
-
-   @Nullable
-   public <T> T a(hgy<T> $$0) {
-      return (T)this.a.get($$0);
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
    @Override
-   public String toString() {
-      return this.a.toString();
+   public void f() {
+      this.b.add((long)flz.Q().o());
+      this.h();
+      this.c.add(flz.Q().p());
    }
 
-   public Set<hgy<?>> b() {
-      return this.a.keySet();
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
    }
 
-   public static class a {
-      private final Map<hgy<?>, Object> a = new Reference2ObjectOpenHashMap();
+   @Override
+   public void b(hgr $$0) {
+      $$0.send(hgs.c, $$0x -> {
+         $$0x.a(hgu.r, new LongArrayList(this.b));
+         $$0x.a(hgu.s, new LongArrayList(this.c));
+         $$0x.a(hgu.t, new LongArrayList(this.d));
+         $$0x.a(hgu.u, this.e());
+         $$0x.a(hgu.v, flz.Q().n.aH());
+         $$0x.a(hgu.w, (int)a);
+      });
+      this.g();
+   }
 
-      a() {
-      }
-
-      public <T> hgz.a a(hgy<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public <T> hgz.a b(hgy<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public hgz.a a(hgz $$0) {
-         this.a.putAll($$0.a);
-         return this;
-      }
-
-      public hgz a() {
-         return new hgz(this.a);
-      }
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

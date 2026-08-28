@@ -1,5 +1,4 @@
-public class hab extends gyt {
-   public boolean a;
+public class hab extends gyo {
+   public int a;
    public boolean b;
-   public boolean c;
 }

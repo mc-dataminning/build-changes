@@ -1,35 +1,39 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
 import javax.annotation.Nullable;
 
-public class eva extends evh {
-   public eva(dqr $$0) {
-      super($$0);
+public abstract class eva {
+   protected final dqk a;
+
+   protected eva(dqk $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a(dhi $$0, jh $$1, dxv $$2, @Nullable evf $$3, boolean $$4) {
-      int $$5 = this.c($$0, $$1);
-      if ($$2.c(dqr.f) != $$5) {
-         if ($$0.a_($$1) == $$2) {
-            $$0.a($$1, $$2.b(dqr.f, Integer.valueOf($$5)), 2);
-         }
+   public abstract void a(dgz var1, jh var2, dxo var3, @Nullable euy var4, boolean var5);
 
-         Set<jh> $$6 = Sets.newHashSet();
-         $$6.add($$1);
+   protected int a(dgz $$0, jh $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-         for (jm $$7 : jm.values()) {
-            $$6.add($$1.a($$7));
-         }
+   protected int a(jh $$0, dxo $$1) {
+      return $$1.a(this.a) ? $$1.c(dqk.f) : 0;
+   }
 
-         for (jh $$8 : $$6) {
-            $$0.a($$8, this.a);
+   protected int b(dgz $$0, jh $$1) {
+      int $$2 = 0;
+
+      for (jm $$3 : jm.c.a) {
+         jh $$4 = $$1.a($$3);
+         dxo $$5 = $$0.a_($$4);
+         $$2 = Math.max($$2, this.a($$4, $$5));
+         jh $$6 = $$1.d();
+         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
+            jh $$7 = $$4.d();
+            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
+         } else if (!$$5.d($$0, $$4)) {
+            jh $$8 = $$4.e();
+            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
          }
       }
-   }
 
-   private int c(dhi $$0, jh $$1) {
-      int $$2 = this.a($$0, $$1);
-      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
+      return Math.max(0, $$2 - 1);
    }
 }

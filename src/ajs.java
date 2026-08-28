@@ -1,8 +1,14 @@
-public interface ajs extends ahn {
+public interface ajs extends acd {
    @Override
-   default wq b() {
-      return wq.a;
+   default wf b() {
+      return wf.d;
    }
 
-   void a(ajp var1);
+   void a(aju var1);
+
+   void a(ajv var1);
+
+   void a(ajt var1);
+
+   void a(ajw var1);
 }

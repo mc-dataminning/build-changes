@@ -1,25 +1,77 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
-public class elv<P extends elu> {
-   public static final elv<elw> a = a("trunk_vine", elw.a);
-   public static final elv<els> b = a("leave_vine", els.a);
-   public static final elv<elt> c = a("pale_moss", elt.a);
-   public static final elv<elr> d = a("creaking_heart", elr.a);
-   public static final elv<elq> e = a("cocoa", elq.a);
-   public static final elv<elp> f = a("beehive", elp.a);
-   public static final elv<eln> g = a("alter_ground", eln.a);
-   public static final elv<elo> h = a("attached_to_leaves", elo.a);
-   private final MapCodec<P> i;
+public class elv extends elz {
+   public static final MapCodec<elv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elv::new));
 
-   private static <P extends elu> elv<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.X, $$0, new elv<>($$1));
+   public elv(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private elv(MapCodec<P> $$0) {
-      this.i = $$0;
+   @Override
+   protected ema<?> a() {
+      return ema.b;
    }
 
-   public MapCodec<P> a() {
-      return this.i;
+   @Override
+   public List<ekf.a> a(dhf $$0, BiConsumer<jh, dxo> $$1, bac $$2, int $$3, jh $$4, ejp $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
+      List<ekf.a> $$6 = Lists.newArrayList();
+      jm $$7 = jm.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      jh.a $$10 = new jh.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
+
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
+         }
+
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
+         }
+      }
+
+      if ($$13.isPresent()) {
+         $$6.add(new ekf.a(new jh($$11, $$13.getAsInt(), $$12), 1, false));
+      }
+
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      jm $$16 = jm.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
+
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
+            }
+
+            $$19++;
+         }
+
+         if ($$13.isPresent()) {
+            $$6.add(new ekf.a(new jh($$11, $$13.getAsInt(), $$12), 0, false));
+         }
+      }
+
+      return $$6;
    }
 }

@@ -1,8 +1,8 @@
-public interface akx extends ahn, akr {
-   @Override
-   default wq b() {
-      return wq.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aky var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface akx {
 }

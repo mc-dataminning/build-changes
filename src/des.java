@@ -1,19 +1,45 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface des {
-   Codec<des> b = ma.aw.q().dispatch(des::a, Function.identity());
+public record des(czi d, kl e, Optional<jq<eck>> f) implements deh {
+   public static final MapCodec<des> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               czi.b.fieldOf("properties").forGetter(des::b),
+               kl.g.optionalFieldOf("offset", kl.h).forGetter(des::c),
+               eck.aj.optionalFieldOf("trigger_game_event").forGetter(des::d)
+            )
+            .apply($$0, des::new)
+   );
 
-   static MapCodec<? extends des> a(kd<MapCodec<? extends des>> $$0) {
-      kd.a($$0, "add", dej.a);
-      kd.a($$0, "all_of", dek.c.a);
-      kd.a($$0, "multiply", dev.a);
-      kd.a($$0, "remove_binomial", dex.a);
-      return kd.a($$0, "set", dfc.a);
+   public des(czi $$0) {
+      this($$0, kl.h, Optional.of(eck.c));
    }
 
-   float a(int var1, bam var2, float var3);
+   @Override
+   public void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4) {
+      jh $$5 = jh.a((ka)$$4).a(this.e);
+      dxo $$6 = $$3.dW().a_($$5);
+      dxo $$7 = this.d.a($$6);
+      if (!$$6.equals($$7) && $$3.dW().a($$5, $$7, 3)) {
+         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+      }
+   }
 
-   MapCodec<? extends des> a();
+   @Override
+   public MapCodec<des> a() {
+      return a;
+   }
+
+   public czi b() {
+      return this.d;
+   }
+
+   public kl c() {
+      return this.e;
+   }
+
+   public Optional<jq<eck>> d() {
+      return this.f;
+   }
 }

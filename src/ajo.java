@@ -1,26 +1,29 @@
-public enum ajo {
-   a,
-   b,
-   c;
+public class ajo implements zr<ajk> {
+   public static final zi<wh, ajo> a = zr.a(ajo::a, ajo::new);
+   private final xk b;
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static ajo a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public ajo(xk $$0) {
+      this.b = $$0;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   private ajo(wh $$0) {
+      this.b = xk.a.b($$0.d(262144), ke.b);
+   }
+
+   private void a(wh $$0) {
+      $$0.a(xk.a.a(this.b, ke.b));
+   }
+
+   @Override
+   public zt<ajo> a() {
+      return ajq.e;
+   }
+
+   public void a(ajk $$0) {
+      $$0.a(this);
+   }
+
+   public xk b() {
+      return this.b;
    }
 }

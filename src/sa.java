@@ -1,168 +1,19 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 public class sa {
-   public static final aly<epu> a = rr.a("trail_ruins/tower");
+   public static final alo<egb<?, ?>> a = sb.a("end_platform");
+   public static final alo<egb<?, ?>> b = sb.a("end_spike");
+   public static final alo<egb<?, ?>> c = sb.a("end_gateway_return");
+   public static final alo<egb<?, ?>> d = sb.a("end_gateway_delayed");
+   public static final alo<egb<?, ?>> e = sb.a("chorus_plant");
+   public static final alo<egb<?, ?>> f = sb.a("end_island");
 
-   public static void a(rk<epu> $$0) {
-      jr<epu> $$1 = $$0.a(mb.aX);
-      jq<epu> $$2 = $$1.b(rr.a);
-      jr<esk> $$3 = $$0.a(mb.aV);
-      jq<esk> $$4 = $$3.b(rs.J);
-      jq<esk> $$5 = $$3.b(rs.K);
-      jq<esk> $$6 = $$3.b(rs.L);
-      $$0.a(
-         a,
-         new epu(
-            $$2,
-            List.of(
-               Pair.of(eps.b("trail_ruins/tower/tower_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/tower_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/tower_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/tower_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/tower_5", $$4), 1)
-            ),
-            epu.a.b
-         )
-      );
-      rr.a(
-         $$0,
-         "trail_ruins/tower/tower_top",
-         new epu(
-            $$2,
-            List.of(
-               Pair.of(eps.b("trail_ruins/tower/tower_top_1", $$6), 1),
-               Pair.of(eps.b("trail_ruins/tower/tower_top_2", $$6), 1),
-               Pair.of(eps.b("trail_ruins/tower/tower_top_3", $$6), 1),
-               Pair.of(eps.b("trail_ruins/tower/tower_top_4", $$6), 1),
-               Pair.of(eps.b("trail_ruins/tower/tower_top_5", $$6), 1)
-            ),
-            epu.a.b
-         )
-      );
-      rr.a(
-         $$0,
-         "trail_ruins/tower/additions",
-         new epu(
-            $$2,
-            List.of(
-               Pair.of(eps.b("trail_ruins/tower/hall_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/hall_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/hall_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/hall_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/hall_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/large_hall_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/large_hall_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/large_hall_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/large_hall_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/large_hall_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/one_room_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/one_room_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/one_room_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/one_room_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/one_room_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/platform_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/platform_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/platform_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/platform_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/platform_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/stable_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/stable_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/stable_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/stable_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/tower/stable_5", $$4), 1)
-            ),
-            epu.a.b
-         )
-      );
-      rr.a(
-         $$0,
-         "trail_ruins/roads",
-         new epu(
-            $$2,
-            List.of(
-               Pair.of(eps.b("trail_ruins/roads/long_road_end", $$5), 1),
-               Pair.of(eps.b("trail_ruins/roads/road_end_1", $$5), 1),
-               Pair.of(eps.b("trail_ruins/roads/road_section_1", $$5), 1),
-               Pair.of(eps.b("trail_ruins/roads/road_section_2", $$5), 1),
-               Pair.of(eps.b("trail_ruins/roads/road_section_3", $$5), 1),
-               Pair.of(eps.b("trail_ruins/roads/road_section_4", $$5), 1),
-               Pair.of(eps.b("trail_ruins/roads/road_spacer_1", $$5), 1)
-            ),
-            epu.a.b
-         )
-      );
-      rr.a(
-         $$0,
-         "trail_ruins/buildings",
-         new epu(
-            $$2,
-            List.of(
-               Pair.of(eps.b("trail_ruins/buildings/group_hall_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_hall_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_hall_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_hall_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_hall_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/large_room_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/large_room_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/large_room_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/large_room_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/large_room_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/one_room_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/one_room_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/one_room_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/one_room_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/one_room_5", $$4), 1)
-            ),
-            epu.a.b
-         )
-      );
-      rr.a(
-         $$0,
-         "trail_ruins/buildings/grouped",
-         new epu(
-            $$2,
-            List.of(
-               Pair.of(eps.b("trail_ruins/buildings/group_full_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_full_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_full_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_full_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_full_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_lower_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_lower_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_lower_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_lower_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_lower_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_upper_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_upper_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_upper_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_upper_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_upper_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_room_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_room_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_room_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_room_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/buildings/group_room_5", $$4), 1)
-            ),
-            epu.a.b
-         )
-      );
-      rr.a(
-         $$0,
-         "trail_ruins/decor",
-         new epu(
-            $$2,
-            List.of(
-               Pair.of(eps.b("trail_ruins/decor/decor_1", $$4), 1),
-               Pair.of(eps.b("trail_ruins/decor/decor_2", $$4), 1),
-               Pair.of(eps.b("trail_ruins/decor/decor_3", $$4), 1),
-               Pair.of(eps.b("trail_ruins/decor/decor_4", $$4), 1),
-               Pair.of(eps.b("trail_ruins/decor/decor_5", $$4), 1),
-               Pair.of(eps.b("trail_ruins/decor/decor_6", $$4), 1),
-               Pair.of(eps.b("trail_ruins/decor/decor_7", $$4), 1)
-            ),
-            epu.a.b
-         )
-      );
+   public static void a(ra<egb<?, ?>> $$0) {
+      sb.a($$0, a, egp.J);
+      sb.a($$0, b, egp.K, new ejn(false, ImmutableList.of(), null));
+      sb.a($$0, c, egp.M, eis.a(arx.a, true));
+      sb.a($$0, d, egp.M, eis.a());
+      sb.a($$0, e, egp.l);
+      sb.a($$0, f, egp.L);
    }
 }

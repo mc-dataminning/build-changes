@@ -1,44 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class eni extends enr {
-   public static final MapCodec<eni> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(jh.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eni::new)
-   );
-   private final List<jh> c;
+public class eni extends eeg {
+   private final dhx a;
+   private final dzk b;
+   private final Optional<enh> c;
 
-   public static eni a(jh... $$0) {
-      return new eni(List.of($$0));
+   public eni(dhx $$0, dzk $$1, Optional<enh> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private eni(List<jh> $$0) {
-      this.c = $$0;
+   public int a(edj.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   public Stream<jh> a_(enp $$0, bam $$1, jh $$2) {
-      int $$3 = kj.a($$2.u());
-      int $$4 = kj.a($$2.w());
-      boolean $$5 = false;
-
-      for (jh $$6 : this.c) {
-         if (a($$3, $$4, $$6)) {
-            $$5 = true;
-            break;
-         }
-      }
-
-      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+   public dzi a(dgf $$0) {
+      return ((ead)this.a.a($$0.h, $$0.i)).F();
    }
 
-   private static boolean a(int $$0, int $$1, jh $$2) {
-      return $$0 == kj.a($$2.u()) && $$1 == kj.a($$2.w());
+   public dxo a(jh $$0) {
+      return this.a.a_($$0);
    }
 
-   @Override
-   public ens<?> b() {
-      return ens.o;
+   public int c() {
+      return this.a.L_();
+   }
+
+   public dhx d() {
+      return this.a;
+   }
+
+   public Optional<enh> e() {
+      return this.c;
+   }
+
+   public dzk f() {
+      return this.b;
    }
 }

@@ -1,50 +1,46 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cao {
-   private static final int a = 200;
+   public static bxr<bwf> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return cbd.a(
+         (Function<cbd.b<bwf>, ? extends App<cbd.c<bwf>, cbg<bwf>>>)($$3 -> $$3.group($$3.c(cfb.o), $$3.c(cfb.m), $$3.a(cfb.n))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.dw()).a(axq.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           fbw $$8 = fbw.a($$6);
+                           jh $$9 = $$6.dw();
+                           jh.a $$10 = new jh.a();
 
-   public static <E extends bwi> bya<E> a(cao.b<E> $$0) {
-      return a(($$0x, $$1) -> false, $$0, true);
-   }
+                           label45:
+                           for (jh $$11 : jh.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, jm.a)).b($$5x, $$11, $$8).c()) {
+                                 for (jm $$12 : jm.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jm.a)).a(dkf.J)) {
+                                       $$5.a(new bxt($$11));
+                                       $$4.a(new cfe(new bxt($$11), $$1, 0));
+                                       break label45;
+                                    }
+                                 }
+                              }
+                           }
 
-   public static <E extends bwi> bya<E> a(cao.a $$0) {
-      return a($$0, ($$0x, $$1, $$2) -> {
-      }, true);
-   }
-
-   public static <E extends bwi> bya<E> a() {
-      return a(($$0, $$1) -> false, ($$0, $$1, $$2) -> {
-      }, true);
-   }
-
-   public static <E extends bwi> bya<E> a(cao.a $$0, cao.b<E> $$1, boolean $$2) {
-      return cbm.a(
-         (Function<cbm.b<E>, ? extends App<cbm.c<E>, cbp<E>>>)($$3 -> $$3.group($$3.b(cfk.o), $$3.a(cfk.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bwg $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bL() && $$9.dW() == $$7.dW() && !$$0.test($$6, $$9)) {
-                     return true;
-                  } else {
-                     $$1.accept($$6, (E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        }
+                     }
+               ))
       );
-   }
-
-   private static boolean a(bwg $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dW().ac() - $$1.get() > 200L;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      boolean test(ash var1, bwg var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      void accept(ash var1, E var2, bwg var3);
    }
 }

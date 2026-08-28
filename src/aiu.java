@@ -1,45 +1,20 @@
-public class aiu implements aac<ahm> {
-   public static final zt<ws, aiu> a = aac.a(aiu::a, aiu::new);
-   private final cus b;
-   private final boolean c;
-   private final boolean d;
+public record aiu(short b, cxg c) implements zr<ahb> {
+   public static final zi<wv, aiu> a = zi.a(zg.e, aiu::b, cxg.a(cxg.g), aiu::e, aiu::new);
 
-   public aiu(cus $$0, boolean $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private aiu(ws $$0) {
-      this.b = $$0.b(cus.class);
-      this.c = $$0.readBoolean();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   public aiu(int $$0, cxg $$1) {
+      this((short)$$0, $$1);
    }
 
    @Override
-   public aae<aiu> a() {
-      return ahk.bU;
+   public zt<aiu> a() {
+      return agz.ce;
    }
 
-   public void a(ahm $$0) {
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public cus b() {
-      return this.b;
-   }
-
-   public boolean e() {
+   public cxg e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

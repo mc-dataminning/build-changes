@@ -1,92 +1,42 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+public class fst extends ftr {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xk c = xk.c("credits_and_attribution.screen.title");
+   private static final xk d = xk.c("credits_and_attribution.button.credits");
+   private static final xk s = xk.c("credits_and_attribution.button.attribution");
+   private static final xk u = xk.c("credits_and_attribution.button.licenses");
+   private final ftr v;
+   private final frn w = new frn(this);
 
-public class fst {
-   private static final xv b = xv.c("gui.banned.title.temporary").a(n.r);
-   private static final xv c = xv.c("gui.banned.title.permanent").a(n.r);
-   public static final xv a = xv.c("gui.banned.name.title").a(n.r);
-   private static final xv d = xv.c("gui.banned.skin.title").a(n.r);
-   private static final xv e = xv.a("gui.banned.skin.description", xv.a(aza.n));
-
-   public static fsv a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fsv($$0, a($$1), b($$1), aza.n, xu.m, true);
+   public fst(ftr $$0) {
+      super(c);
+      this.v = $$0;
    }
 
-   public static fsv a(Runnable $$0) {
-      URI $$1 = aza.n;
-      return new fsv($$2 -> {
-         if ($$2) {
-            ae.m().a($$1);
-         }
-
-         $$0.run();
-      }, d, e, $$1, xu.m, true);
+   @Override
+   protected void aT_() {
+      this.w.a(c, this.p);
+      frr $$0 = this.w.c(frr.d()).a(8);
+      $$0.c().b();
+      $$0.a(fny.a(d, $$0x -> this.l()).a(210).a());
+      $$0.a(fny.a(s, fso.b(this, ayq.d)).a(210).a());
+      $$0.a(fny.a(u, fso.b(this, ayq.e)).a(210).a());
+      this.w.b(fny.a(xj.d, $$0x -> this.aP_()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
-   public static fsv a(String $$0, Runnable $$1) {
-      URI $$2 = aza.n;
-      return new fsv($$2x -> {
-         if ($$2x) {
-            ae.m().a($$2);
-         }
-
-         $$1.run();
-      }, a, xv.a("gui.banned.name.description", xv.b($$0).a(n.o), xv.a(aza.n)), $$2, xu.m, true);
+   @Override
+   protected void c() {
+      this.w.a();
    }
 
-   private static xv a(BanDetails $$0) {
-      return f($$0) ? b : c;
+   private void l() {
+      this.m.a(new ftu(false, () -> this.m.a(this)));
    }
 
-   private static xv b(BanDetails $$0) {
-      return xv.a("gui.banned.description", c($$0), d($$0), xv.a(aza.n));
-   }
-
-   private static xv c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         ggl $$4 = ggl.a($$3);
-         xv $$5;
-         if ($$4 != null) {
-            $$5 = xy.a($$4.a().f(), ys.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = xv.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = xv.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
-
-         return xv.a("gui.banned.description.reason", $$5);
-      } else {
-         return xv.c("gui.banned.description.unknownreason");
-      }
-   }
-
-   private static xv d(BanDetails $$0) {
-      if (f($$0)) {
-         xv $$1 = e($$0);
-         return xv.a("gui.banned.description.temporary", xv.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return xv.c("gui.banned.description.permanent").a(n.r);
-      }
-   }
-
-   private static xv e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return xu.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? xu.c($$1.toMinutes()) : xu.b($$1.toHours());
-      }
-   }
-
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+   @Override
+   public void aP_() {
+      this.m.a(this.v);
    }
 }

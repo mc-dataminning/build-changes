@@ -1,54 +1,97 @@
-import com.google.common.collect.Lists;
 import java.io.IOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringEscapeUtils;
+import java.io.InputStream;
 
-public class aze {
-   private static final String a = "\r\n";
-   private static final String b = ",";
-   private final Writer c;
-   private final int d;
+public class aze extends InputStream {
+   private static final int a = 8192;
+   private final InputStream b;
+   private final byte[] c;
+   private int d;
+   private int e;
 
-   aze(Writer $$0, List<String> $$1) throws IOException {
-      this.c = $$0;
-      this.d = $$1.size();
-      this.a($$1.stream());
+   public aze(InputStream $$0) {
+      this($$0, 8192);
    }
 
-   public static aze.a a() {
-      return new aze.a();
+   public aze(InputStream $$0, int $$1) {
+      this.b = $$0;
+      this.c = new byte[$$1];
    }
 
-   public void a(Object... $$0) throws IOException {
-      if ($$0.length != this.d) {
-         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
+   @Override
+   public int read() throws IOException {
+      if (this.e >= this.d) {
+         this.b();
+         if (this.e >= this.d) {
+            return -1;
+         }
+      }
+
+      return Byte.toUnsignedInt(this.c[this.e++]);
+   }
+
+   @Override
+   public int read(byte[] $$0, int $$1, int $$2) throws IOException {
+      int $$3 = this.a();
+      if ($$3 <= 0) {
+         if ($$2 >= this.c.length) {
+            return this.b.read($$0, $$1, $$2);
+         }
+
+         this.b();
+         $$3 = this.a();
+         if ($$3 <= 0) {
+            return -1;
+         }
+      }
+
+      if ($$2 > $$3) {
+         $$2 = $$3;
+      }
+
+      System.arraycopy(this.c, this.e, $$0, $$1, $$2);
+      this.e += $$2;
+      return $$2;
+   }
+
+   @Override
+   public long skip(long $$0) throws IOException {
+      if ($$0 <= 0L) {
+         return 0L;
       } else {
-         this.a(Stream.of($$0));
+         long $$1 = (long)this.a();
+         if ($$1 <= 0L) {
+            return this.b.skip($$0);
+         } else {
+            if ($$0 > $$1) {
+               $$0 = $$1;
+            }
+
+            this.e = (int)((long)this.e + $$0);
+            return $$0;
+         }
       }
    }
 
-   private void a(Stream<?> $$0) throws IOException {
-      this.c.write($$0.<CharSequence>map(aze::a).collect(Collectors.joining(",")) + "\r\n");
+   @Override
+   public int available() throws IOException {
+      return this.a() + this.b.available();
    }
 
-   private static String a(@Nullable Object $$0) {
-      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
+   @Override
+   public void close() throws IOException {
+      this.b.close();
    }
 
-   public static class a {
-      private final List<String> a = Lists.newArrayList();
+   private int a() {
+      return this.d - this.e;
+   }
 
-      public aze.a a(String $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public aze a(Writer $$0) throws IOException {
-         return new aze($$0, this.a);
+   private void b() throws IOException {
+      this.d = 0;
+      this.e = 0;
+      int $$0 = this.b.read(this.c, 0, this.c.length);
+      if ($$0 > 0) {
+         this.d = $$0;
       }
    }
 }

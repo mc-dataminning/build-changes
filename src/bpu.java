@@ -1,11 +1,4 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-
+@FunctionalInterface
 public interface bpu {
-   long a();
-
-   long b();
-
-   long c();
-
-   Object2LongMap<String> d();
+   void finish(boolean var1);
 }

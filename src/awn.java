@@ -1,129 +1,58 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class awn<K, V extends awm<K>> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
-   private final File c;
-   private final Map<String, V> d = Maps.newHashMap();
-
-   public awn(File $$0) {
-      this.c = $$0;
-   }
-
-   public File b() {
-      return this.c;
-   }
-
-   public void a(V $$0) {
-      this.d.put(this.a($$0.g()), $$0);
-
-      try {
-         this.e();
-      } catch (IOException var3) {
-         a.warn("Could not save the list after adding a user.", var3);
-      }
-   }
-
+public abstract class awn implements Runnable {
+   private static final Logger d = LogUtils.getLogger();
+   private static final AtomicInteger e = new AtomicInteger(0);
+   private static final int f = 5;
+   protected volatile boolean a;
+   protected final String b;
    @Nullable
-   public V b(K $$0) {
-      this.g();
-      return this.d.get(this.a($$0));
+   protected Thread c;
+
+   protected awn(String $$0) {
+      this.b = $$0;
    }
 
-   public void c(K $$0) {
-      this.d.remove(this.a($$0));
-
-      try {
-         this.e();
-      } catch (IOException var3) {
-         a.warn("Could not save the list after removing a user.", var3);
+   public synchronized boolean a() {
+      if (this.a) {
+         return true;
+      } else {
+         this.a = true;
+         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
+         this.c.setUncaughtExceptionHandler(new s(d));
+         this.c.start();
+         d.info("Thread {} started", this.b);
+         return true;
       }
    }
 
-   public void b(awm<K> $$0) {
-      this.c($$0.g());
-   }
+   public synchronized void b() {
+      this.a = false;
+      if (null != this.c) {
+         int $$0 = 0;
 
-   public String[] a() {
-      return this.d.keySet().toArray(new String[0]);
+         while (this.c.isAlive()) {
+            try {
+               this.c.join(1000L);
+               if (++$$0 >= 5) {
+                  d.warn("Waited {} seconds attempting force stop!", $$0);
+               } else if (this.c.isAlive()) {
+                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
+                  this.c.interrupt();
+               }
+            } catch (InterruptedException var3) {
+            }
+         }
+
+         d.info("Thread {} stopped", this.b);
+         this.c = null;
+      }
    }
 
    public boolean c() {
-      return this.d.size() < 1;
-   }
-
-   protected String a(K $$0) {
-      return $$0.toString();
-   }
-
-   protected boolean d(K $$0) {
-      return this.d.containsKey(this.a($$0));
-   }
-
-   private void g() {
-      List<K> $$0 = Lists.newArrayList();
-
-      for (V $$1 : this.d.values()) {
-         if ($$1.f()) {
-            $$0.add($$1.g());
-         }
-      }
-
-      for (K $$2 : $$0) {
-         this.d.remove(this.a($$2));
-      }
-   }
-
-   protected abstract awm<K> a(JsonObject var1);
-
-   public Collection<V> d() {
-      return this.d.values();
-   }
-
-   public void e() throws IOException {
-      JsonArray $$0 = new JsonArray();
-      this.d.values().stream().map($$0x -> ae.a(new JsonObject(), $$0x::a)).forEach($$0::add);
-
-      try (BufferedWriter $$1 = Files.newWriter(this.c, StandardCharsets.UTF_8)) {
-         b.toJson($$0, b.newJsonWriter($$1));
-      }
-   }
-
-   public void f() throws IOException {
-      if (this.c.exists()) {
-         try (BufferedReader $$0 = Files.newReader(this.c, StandardCharsets.UTF_8)) {
-            this.d.clear();
-            JsonArray $$1 = (JsonArray)b.fromJson($$0, JsonArray.class);
-            if ($$1 == null) {
-               return;
-            }
-
-            for (JsonElement $$2 : $$1) {
-               JsonObject $$3 = azu.m($$2, "entry");
-               awm<K> $$4 = this.a($$3);
-               if ($$4.g() != null) {
-                  this.d.put(this.a($$4.g()), (V)$$4);
-               }
-            }
-         }
-      }
+      return this.a;
    }
 }

@@ -1,62 +1,58 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class fpw extends fpv {
-   private static final int f = -16711681;
-   private static final int g = -6250241;
-   private static final int h = -65536;
-   private static final int i = 1024;
-   private static final int j = 1048576;
-   private static final int k = 1048576;
+public interface fpw extends fpj {
+   long t = 250L;
 
-   public fpw(fnq $$0, boh $$1) {
-      super($$0, $$1);
+   default void f(double $$0, double $$1) {
    }
 
-   @Override
-   protected void d(fns $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 64);
-      this.a($$0, $$1, $$2, $$3, 1024);
-      this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   private void a(fns $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   private void a(fns $$0, int $$1, int $$2, int $$3, String $$4) {
-      this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(glv.H(), $$1, $$1 + $$2 - 1, $$3, -1);
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
    }
 
-   @Override
-   protected String a(double $$0) {
-      return c(e($$0));
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
    }
 
-   private static String c(double $$0) {
-      if ($$0 >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
-      } else {
-         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", bae.a($$0));
-      }
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
    }
 
-   @Override
-   protected int b(double $$0) {
-      return d(e($$0));
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
    }
 
-   private static int d(double $$0) {
-      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
+   default boolean a(char $$0, int $$1) {
+      return false;
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
+   @Nullable
+   default fni a(fsc $$0) {
+      return null;
    }
 
-   private static double e(double $$0) {
-      return $$0 * 20.0;
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aN_();
+
+   @Nullable
+   default fni aO_() {
+      return this.aN_() ? fni.a(this) : null;
+   }
+
+   default fsg H() {
+      return fsg.a();
    }
 }

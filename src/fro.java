@@ -1,8 +1,18 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fro {
+public interface fro extends frp {
+   void b(Consumer<frp> var1);
+
+   @Override
+   default void a(Consumer<fnw> $$0) {
+      this.b($$1 -> $$1.a($$0));
+   }
+
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof fro $$1) {
+            $$1.a();
+         }
+      });
+   }
 }

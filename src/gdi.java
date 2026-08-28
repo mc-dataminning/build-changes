@@ -1,33 +1,84 @@
-public class gdi extends gdj {
-   protected final geo a;
+public class gdi extends gbh<gyo> {
+   private static final String a = "body0";
+   private static final String b = "body1";
+   private static final String c = "right_middle_front_leg";
+   private static final String d = "left_middle_front_leg";
+   private static final String e = "right_middle_hind_leg";
+   private static final String f = "left_middle_hind_leg";
+   private final gej g;
+   private final gej i;
+   private final gej j;
+   private final gej k;
+   private final gej l;
+   private final gej m;
+   private final gej n;
+   private final gej o;
+   private final gej p;
 
-   public gdi(geo $$0) {
+   public gdi(gej $$0) {
       super($$0);
-      this.a = $$0.b("head");
+      this.g = $$0.b("head");
+      this.i = $$0.b("right_hind_leg");
+      this.j = $$0.b("left_hind_leg");
+      this.k = $$0.b("right_middle_hind_leg");
+      this.l = $$0.b("left_middle_hind_leg");
+      this.m = $$0.b("right_middle_front_leg");
+      this.n = $$0.b("left_middle_front_leg");
+      this.o = $$0.b("right_front_leg");
+      this.p = $$0.b("left_front_leg");
    }
 
-   public static gew a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      $$1.a("head", get.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), geq.a);
-      return $$0;
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      int $$2 = 15;
+      $$1.a("head", geo.c().a(32, 4).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), gel.a(0.0F, 15.0F, -3.0F));
+      $$1.a("body0", geo.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gel.a(0.0F, 15.0F, 0.0F));
+      $$1.a("body1", geo.c().a(0, 12).a(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), gel.a(0.0F, 15.0F, 9.0F));
+      geo $$3 = geo.c().a(18, 0).a(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      geo $$4 = geo.c().a(18, 0).a().a(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      float $$5 = (float) (Math.PI / 4);
+      float $$6 = (float) (Math.PI / 8);
+      $$1.a("right_hind_leg", $$3, gel.a(-4.0F, 15.0F, 2.0F, 0.0F, (float) (Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_hind_leg", $$4, gel.a(4.0F, 15.0F, 2.0F, 0.0F, (float) (-Math.PI / 4), (float) (Math.PI / 4)));
+      $$1.a("right_middle_hind_leg", $$3, gel.a(-4.0F, 15.0F, 1.0F, 0.0F, (float) (Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_hind_leg", $$4, gel.a(4.0F, 15.0F, 1.0F, 0.0F, (float) (-Math.PI / 8), 0.58119464F));
+      $$1.a("right_middle_front_leg", $$3, gel.a(-4.0F, 15.0F, 0.0F, 0.0F, (float) (-Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_front_leg", $$4, gel.a(4.0F, 15.0F, 0.0F, 0.0F, (float) (Math.PI / 8), 0.58119464F));
+      $$1.a("right_front_leg", $$3, gel.a(-4.0F, 15.0F, -1.0F, 0.0F, (float) (-Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_front_leg", $$4, gel.a(4.0F, 15.0F, -1.0F, 0.0F, (float) (Math.PI / 4), (float) (Math.PI / 4)));
+      return gep.a($$0, 64, 32);
    }
 
-   public static geu b() {
-      gew $$0 = a();
-      gey $$1 = $$0.a();
-      $$1.b("head").a("hat", get.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new ges(0.25F)), geq.a);
-      return geu.a($$0, 64, 64);
-   }
-
-   public static geu c() {
-      gew $$0 = a();
-      return geu.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(gyo $$0) {
+      super.a($$0);
+      this.g.f = $$0.U * (float) (Math.PI / 180.0);
+      this.g.e = $$0.V * (float) (Math.PI / 180.0);
+      float $$1 = $$0.X * 0.6662F;
+      float $$2 = $$0.Y;
+      float $$3 = -(azu.b($$1 * 2.0F + 0.0F) * 0.4F) * $$2;
+      float $$4 = -(azu.b($$1 * 2.0F + (float) Math.PI) * 0.4F) * $$2;
+      float $$5 = -(azu.b($$1 * 2.0F + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$6 = -(azu.b($$1 * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      float $$7 = Math.abs(azu.a($$1 + 0.0F) * 0.4F) * $$2;
+      float $$8 = Math.abs(azu.a($$1 + (float) Math.PI) * 0.4F) * $$2;
+      float $$9 = Math.abs(azu.a($$1 + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$10 = Math.abs(azu.a($$1 + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      this.i.f += $$3;
+      this.j.f -= $$3;
+      this.k.f += $$4;
+      this.l.f -= $$4;
+      this.m.f += $$5;
+      this.n.f -= $$5;
+      this.o.f += $$6;
+      this.p.f -= $$6;
+      this.i.g += $$7;
+      this.j.g -= $$7;
+      this.k.g += $$8;
+      this.l.g -= $$8;
+      this.m.g += $$9;
+      this.n.g -= $$9;
+      this.o.g += $$10;
+      this.p.g -= $$10;
    }
 }

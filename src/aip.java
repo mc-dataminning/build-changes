@@ -1,20 +1,29 @@
-public record aip(int b, ddl c, boolean d) implements aac<ahm> {
-   public static final zt<ws, aip> a = zt.a(zr.w, aip::b, ddl.a, aip::e, zr.b, aip::f, aip::new);
+public class aip implements zr<ahb> {
+   public static final zi<wh, aip> a = zr.a(aip::a, aip::new);
+   private final int b;
 
-   @Override
-   public aae<aip> a() {
-      return ahk.bP;
+   public aip(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(ahm $$0) {
+   private aip(wh $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(wh $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zt<aip> a() {
+      return agz.bZ;
+   }
+
+   public void a(ahb $$0) {
       $$0.a(this);
    }
 
-   public ddl e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

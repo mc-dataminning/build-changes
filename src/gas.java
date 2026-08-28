@@ -1,88 +1,121 @@
-import java.util.Arrays;
+public class gas extends gbh<gxf> {
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   public static final ges a = ges.scaling(0.45F);
+   private static final String d = "saddle";
+   private static final String e = "bridle";
+   private static final String f = "reins";
+   private final gej g;
+   private final gej[] i;
+   private final gej[] j;
 
-public class gas extends gbm<gyt> {
-   private final geo[] a;
-   private final geo b;
-
-   public gas(geo $$0) {
+   public gas(gej $$0) {
       super($$0);
-      this.b = $$0.b("head");
-      this.a = new geo[12];
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+      gej $$1 = $$0.b("body");
+      this.g = $$1.b("head");
+      this.i = new gej[]{$$1.b("saddle"), this.g.b("bridle")};
+      this.j = new gej[]{this.g.b("reins")};
    }
 
-   private static String a(int $$0) {
-      return "part" + $$0;
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      gen $$2 = new gen(0.05F);
+      get $$3 = $$1.a("body", geo.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), gel.a(0.0F, 4.0F, 9.5F));
+      $$3.a("hump", geo.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), gel.a(0.0F, -12.0F, -10.0F));
+      $$3.a("tail", geo.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), gel.a(0.0F, -9.0F, 3.5F));
+      get $$4 = $$3.a(
+         "head",
+         geo.c()
+            .a(60, 24)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
+            .a(21, 0)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
+            .a(50, 0)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
+         gel.a(0.0F, -3.0F, -19.5F)
+      );
+      $$4.a("left_ear", geo.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gel.a(2.5F, -21.0F, -9.5F));
+      $$4.a("right_ear", geo.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gel.a(-2.5F, -21.0F, -9.5F));
+      $$1.a("left_hind_leg", geo.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gel.a(4.9F, 1.0F, 9.5F));
+      $$1.a("right_hind_leg", geo.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gel.a(-4.9F, 1.0F, 9.5F));
+      $$1.a("left_front_leg", geo.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gel.a(4.9F, 1.0F, -10.5F));
+      $$1.a("right_front_leg", geo.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gel.a(-4.9F, 1.0F, -10.5F));
+      $$3.a(
+         "saddle",
+         geo.c()
+            .a(74, 64)
+            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
+            .a(92, 114)
+            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
+            .a(0, 89)
+            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
+         gel.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a(
+         "reins",
+         geo.c()
+            .a(98, 42)
+            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
+            .a(84, 57)
+            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
+            .a(98, 42)
+            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
+         gel.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a(
+         "bridle",
+         geo.c()
+            .a(60, 87)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
+            .a(21, 64)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
+            .a(50, 64)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
+            .a(74, 70)
+            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
+            .a(74, 70)
+            .a()
+            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
+         gel.a(0.0F, 0.0F, 0.0F)
+      );
+      return gep.a($$0, 128, 128);
    }
 
-   public static geu a() {
-      gew $$0 = new gew();
-      gey $$1 = $$0.a();
-      $$1.a("head", get.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), geq.a);
-      float $$2 = 0.0F;
-      get $$3 = get.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = bae.b($$2) * 9.0F;
-         float $$6 = -2.0F + bae.b((float)($$4 * 2) * 0.25F);
-         float $$7 = bae.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, geq.a($$5, $$6, $$7));
-         $$2++;
-      }
-
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = bae.b($$2) * 7.0F;
-         float $$10 = 2.0F + bae.b((float)($$8 * 2) * 0.25F);
-         float $$11 = bae.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, geq.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = bae.b($$2) * 5.0F;
-         float $$14 = 11.0F + bae.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = bae.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, geq.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return geu.a($$0, 64, 32);
-   }
-
-   public void a(gyt $$0) {
+   public void a(gxf $$0) {
       super.a($$0);
-      float $$1 = $$0.p * (float) Math.PI * -0.1F;
+      this.a($$0, $$0.U, $$0.V);
+      this.b($$0);
+      this.a(fmt.a, $$0.X, $$0.Y, 2.0F, 2.5F);
+      this.a($$0.d, fmt.b, $$0.p, 1.0F);
+      this.a($$0.e, fmt.c, $$0.p, 1.0F);
+      this.a($$0.f, fmt.d, $$0.p, 1.0F);
+      this.a($$0.g, fmt.f, $$0.p, 1.0F);
+      this.a($$0.h, fmt.e, $$0.p, 1.0F);
+   }
 
-      for (int $$2 = 0; $$2 < 4; $$2++) {
-         this.a[$$2].c = -2.0F + bae.b(((float)($$2 * 2) + $$0.p) * 0.25F);
-         this.a[$$2].b = bae.b($$1) * 9.0F;
-         this.a[$$2].d = bae.a($$1) * 9.0F;
-         $$1++;
+   private void a(gxf $$0, float $$1, float $$2) {
+      $$1 = azu.a($$1, -30.0F, 30.0F);
+      $$2 = azu.a($$2, -25.0F, 45.0F);
+      if ($$0.c > 0.0F) {
+         float $$3 = 45.0F * $$0.c / 55.0F;
+         $$2 = azu.a($$2 + $$3, -25.0F, 70.0F);
       }
 
-      $$1 = (float) (Math.PI / 4) + $$0.p * (float) Math.PI * 0.03F;
+      this.g.f = $$1 * (float) (Math.PI / 180.0);
+      this.g.e = $$2 * (float) (Math.PI / 180.0);
+   }
 
-      for (int $$3 = 4; $$3 < 8; $$3++) {
-         this.a[$$3].c = 2.0F + bae.b(((float)($$3 * 2) + $$0.p) * 0.25F);
-         this.a[$$3].b = bae.b($$1) * 7.0F;
-         this.a[$$3].d = bae.a($$1) * 7.0F;
-         $$1++;
+   private void b(gxf $$0) {
+      boolean $$1 = $$0.a;
+      boolean $$2 = $$0.b;
+
+      for (gej $$3 : this.i) {
+         $$3.k = $$1;
       }
 
-      $$1 = 0.47123894F + $$0.p * (float) Math.PI * -0.05F;
-
-      for (int $$4 = 8; $$4 < 12; $$4++) {
-         this.a[$$4].c = 11.0F + bae.b(((float)$$4 * 1.5F + $$0.p) * 0.5F);
-         this.a[$$4].b = bae.b($$1) * 5.0F;
-         this.a[$$4].d = bae.a($$1) * 5.0F;
-         $$1++;
+      for (gej $$4 : this.j) {
+         $$4.k = $$2 && $$1;
       }
-
-      this.b.f = $$0.U * (float) (Math.PI / 180.0);
-      this.b.e = $$0.V * (float) (Math.PI / 180.0);
    }
 }

@@ -1,23 +1,36 @@
-public enum dyr implements bba {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+public enum dyr implements baq {
+   a("north_south"),
+   b("east_west"),
+   c("ascending_east"),
+   d("ascending_west"),
+   e("ascending_north"),
+   f("ascending_south"),
+   g("south_east"),
+   h("south_west"),
+   i("north_west"),
+   j("north_east");
 
-   private final String f;
+   private final String k;
 
    private dyr(final String $$0) {
-      this.f = $$0;
+      this.k = $$0;
+   }
+
+   public String a() {
+      return this.k;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.k;
+   }
+
+   public boolean b() {
+      return this == e || this == c || this == f || this == d;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.k;
    }
 }

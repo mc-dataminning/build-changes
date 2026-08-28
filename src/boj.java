@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface boj {
+   boj a = () -> {
+   };
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface boj {
+   void cut();
 }

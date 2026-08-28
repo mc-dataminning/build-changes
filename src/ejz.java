@@ -1,43 +1,34 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejz implements eja {
-   public static final Codec<ejz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayk.b(mb.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
-               elb.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
-               eno.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
-               ene.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
-               bso.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
-               bso.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
-            )
-            .apply($$0, ejz::new)
-   );
-   public final ayk<dkm> b;
-   public final elb c;
-   public final jq<eno> d;
-   public final ene e;
-   public final bso f;
-   public final float g;
-   public final int h;
-   public final float i;
-   public final bso j;
-   public final float k;
+public class ejz extends ekf {
+   public static final MapCodec<ejz> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ejz::new));
 
-   public ejz(ayk<dkm> $$0, elb $$1, jq<eno> $$2, ene $$3, bso $$4, float $$5, int $$6, float $$7, bso $$8, float $$9) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
+   public ejz(bsf $$0, bsf $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected ekg<?> a() {
+      return ekg.d;
+   }
+
+   @Override
+   protected void a(dhf $$0, ekf.b $$1, bac $$2, ejp $$3, int $$4, ekf.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      jh $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
+
+   @Override
+   public int a(bac $$0, int $$1, ejp $$2) {
+      return 0;
+   }
+
+   @Override
+   protected boolean a(bac $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

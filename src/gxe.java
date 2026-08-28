@@ -1,5 +1,8 @@
-public class gxe extends gyt {
-   public boolean a;
-   public final bvc b = new bvc();
-   public final bvc c = new bvc();
+public class gxe extends gyo {
+   public final but a = new but();
+   public final but b = new but();
+   public final but c = new but();
+   public final but d = new but();
+   public final but e = new but();
+   public final but f = new but();
 }

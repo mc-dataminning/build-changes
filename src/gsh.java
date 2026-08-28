@@ -1,57 +1,106 @@
-public abstract class gsh<T extends bwi, S extends gyl, M extends gbz<S>> extends gqk<T, S, M> {
-   public gsh(grq.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$1, $$2);
+import com.google.common.annotations.VisibleForTesting;
+
+public class gsh extends grk<cls, gyl> {
+   private static final float a = 0.15F;
+   private static final float b = 0.0F;
+   private static final float h = 0.0F;
+   private static final float i = 0.09375F;
+   private final gsj j;
+   private final bac k = bac.a();
+
+   public gsh(grl.a $$0) {
+      super($$0);
+      this.j = $$0.b();
+      this.f = 0.15F;
+      this.g = 0.75F;
    }
 
-   public gsh(grq.a $$0, M $$1, M $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, gvj.a.a);
+   public gyl a() {
+      return new gyl();
    }
 
-   public gsh(grq.a $$0, M $$1, M $$2, float $$3, gvj.a $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(new gvj<>(this, $$0.f(), $$4, $$0.b()));
-      this.a(new gwq<>(this, $$0.f(), $$0.h()));
-      this.a(new gvx<>(this, $$0.b()));
-   }
-
-   public void a(T $$0, S $$1, float $$2) {
+   public void a(cls $$0, gyl $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      a($$0, $$1, $$2);
+      $$1.p = (float)$$0.m() + $$2;
+      $$1.a = $$0.b;
+      cxg $$3 = $$0.l();
+      $$1.c = $$3.v();
+      $$1.b = this.j.a($$3, $$0.dW(), null, $$0.ar());
    }
 
-   public static void a(bwg $$0, gyl $$1, float $$2) {
-      $$1.I = $$0.ci();
-      $$1.J = $$0.fJ();
-      $$1.K = $$0.cl();
-      $$1.L = $$0.bZ();
-      $$1.D = 1.0F;
-      if ($$1.J) {
-         $$1.D = (float)$$0.dz().h();
-         $$1.D /= 0.2F;
-         $$1.D = $$1.D * $$1.D * $$1.D;
+   public void a(gyl $$0, fgl $$1, glg $$2, int $$3) {
+      hdi $$4 = $$0.b;
+      if ($$4 != null) {
+         $$1.a();
+         cxg $$5 = $$0.c;
+         this.k.b((long)a($$5));
+         boolean $$6 = $$4.b();
+         float $$7 = 0.25F;
+         float $$8 = azu.a($$0.p / 10.0F + $$0.a) * 0.1F + 0.1F;
+         float $$9 = $$4.f().a(cxe.h).d.y();
+         $$1.a(0.0F, $$8 + 0.25F * $$9, 0.0F);
+         float $$10 = cls.f($$0.p, $$0.a);
+         $$1.a(a.d.rotation($$10));
+         a(this.j, $$1, $$2, $$3, $$5, $$4, $$6, this.k);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
       }
-
-      if ($$1.D < 1.0F) {
-         $$1.D = 1.0F;
-      }
-
-      $$1.C = $$0.D($$2);
-      $$1.B = $$0.a($$2);
-      $$1.G = c($$0);
-      $$1.H = $$0.fA();
-      $$1.E = (float)cwg.b($$0.fB(), $$0);
-      $$1.F = $$0.fD();
-      $$1.M = $$0.fz();
-      $$1.N = $$0.bb.a($$2);
-      $$1.O = $$0.bb.b($$2);
-      $$1.P = $$0.bb.c($$2);
-      $$1.Q = $$0.a(bvs.e).v();
-      $$1.R = $$0.a(bvs.d).v();
-      $$1.S = $$0.a(bvs.c).v();
    }
 
-   private static bwa c(bwg $$0) {
-      bwa $$1 = $$0.fy();
-      return $$0.aJ == bti.a ? $$1 : $$1.e();
+   public static int a(cxg $$0) {
+      return $$0.f() ? 187 : cxc.a($$0.h()) + $$0.o();
+   }
+
+   @VisibleForTesting
+   static int a(int $$0) {
+      if ($$0 <= 1) {
+         return 1;
+      } else if ($$0 <= 16) {
+         return 2;
+      } else if ($$0 <= 32) {
+         return 3;
+      } else {
+         return $$0 <= 48 ? 4 : 5;
+      }
+   }
+
+   public static void a(gsj $$0, fgl $$1, glg $$2, int $$3, cxg $$4, bac $$5, dgz $$6) {
+      hdi $$7 = $$0.a($$4, $$6, null, 0);
+      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
+   }
+
+   public static void a(gsj $$0, fgl $$1, glg $$2, int $$3, cxg $$4, hdi $$5, boolean $$6, bac $$7) {
+      int $$8 = a($$4.M());
+      float $$9 = $$5.f().h.d.x();
+      float $$10 = $$5.f().h.d.y();
+      float $$11 = $$5.f().h.d.z();
+      if (!$$6) {
+         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
+         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
+         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
+         $$1.a($$12, $$13, $$14);
+      }
+
+      for (int $$15 = 0; $$15 < $$8; $$15++) {
+         $$1.a();
+         if ($$15 > 0) {
+            if ($$6) {
+               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               $$1.a($$16, $$17, $$18);
+            } else {
+               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               $$1.a($$19, $$20, 0.0F);
+            }
+         }
+
+         $$0.a($$4, cxe.h, false, $$1, $$2, $$3, hax.d, $$5);
+         $$1.b();
+         if (!$$6) {
+            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
+         }
+      }
    }
 }

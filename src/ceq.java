@@ -1,16 +1,36 @@
 import javax.annotation.Nullable;
 
-public class ceq extends cer {
-   public ceq(bwo $$0, double $$1) {
-      super($$0, $$1);
+public class ceq<T extends bvx> extends ceo<T> {
+   private static final int i = 200;
+   private int j = 0;
+
+   public ceq(crc $$0, Class<T> $$1, boolean $$2, @Nullable cgo.a $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
    }
 
-   @Nullable
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
+   }
+
    @Override
-   protected fby h() {
-      fby $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      fby $$2 = chd.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cgz.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      if (this.j > 0 || !this.e.dZ().h()) {
+         return false;
+      } else if (!((crc)this.e).gE()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   @Override
+   public void d() {
+      this.j = b(200);
+      super.d();
    }
 }

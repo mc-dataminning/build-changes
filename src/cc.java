@@ -20,11 +20,11 @@ public record cc(Optional<Boolean> d) implements bx {
    }
 
    @Override
-   public boolean a(bvk $$0, ash $$1, @Nullable fby $$2) {
+   public boolean a(bvb $$0, arx $$1, @Nullable fbr $$2) {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof cqm $$3 ? this.d.get() == $$3.l() : false;
+         return $$0 instanceof cqd $$3 ? this.d.get() == $$3.l() : false;
       }
    }
 

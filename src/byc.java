@@ -1,34 +1,16 @@
-public class byc implements bzn {
-   private final jh a;
-   private final fby b;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public byc(jh $$0) {
-      this.a = $$0.j();
-      this.b = fby.b($$0);
-   }
-
-   public byc(fby $$0) {
-      this.a = jh.a((ka)$$0);
-      this.b = $$0;
-   }
-
-   @Override
-   public fby a() {
-      return this.b;
-   }
-
-   @Override
-   public jh b() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(bwg $$0) {
-      return true;
-   }
-
-   @Override
-   public String toString() {
-      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
+public class byc {
+   public static <E extends bvx> bxr<E> a(Predicate<E> $$0, cfb<?> $$1) {
+      return cbd.a((Function<cbd.b<E>, ? extends App<cbd.c<E>, cbg<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
+               if ($$0.test((E)$$3)) {
+                  $$1xx.b();
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

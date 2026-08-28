@@ -1,54 +1,88 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dnj extends dkm implements dni {
-   public dnj(dxu.d $$0) {
+public class dnj extends dod {
+   public static final MapCodec<dnj> a = b(dnj::new);
+   public static final int b = 3;
+   public static final dyn c = dye.av;
+   private static final int f = 4;
+   private static final int g = 2;
+
+   @Override
+   public MapCodec<dnj> a() {
+      return a;
+   }
+
+   public dnj(dxn.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dnj> a();
-
-   @Override
-   protected void b(dxv $$0, dhi $$1, jh $$2, dxv $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   public void b(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
+      $$1.a($$2, this, azu.a($$1.H_(), 60, 120));
    }
 
    @Override
-   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
-      $$2.a($$3, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.f($$0, $$1, $$2)) {
+         jh.a $$4 = new jh.a();
 
-   @Override
-   protected void a(dxv $$0, ash $$1, jh $$2, bam $$3) {
-      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.L_()) {
-         cma $$4 = cma.a($$1, $$2, $$0);
-         this.a($$4);
+         for (jm $$5 : jm.values()) {
+            $$4.a($$2, $$5);
+            dxo $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.f($$6, $$1, $$4)) {
+               $$1.a($$4, this, azu.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, azu.a($$3, 20, 40));
       }
    }
 
-   protected void a(cma $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean n(dxv $$0) {
-      return $$0.l() || $$0.a(axu.aN) || $$0.n() || $$0.v();
+   private boolean f(dxo $$0, dgz $$1, jh $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.e($$0, $$1, $$2);
+         return true;
+      }
    }
 
    @Override
-   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
-      if ($$3.a(16) == 0) {
-         jh $$4 = $$2.e();
-         if (n($$1.a_($$4))) {
-            bai.a($$1, $$2, $$3, new lk(ls.C, $$0));
+   protected void a(dxo $$0, dgz $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
+      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
+         this.e($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(dge $$0, jh $$1, int $$2) {
+      int $$3 = 0;
+      jh.a $$4 = new jh.a();
+
+      for (jm $$5 : jm.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
          }
       }
+
+      return true;
    }
 
-   public int b(dxv $$0, dgn $$1, jh $$2) {
-      return -16777216;
+   @Override
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
+      return cxg.j;
    }
 }

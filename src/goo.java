@@ -1,41 +1,69 @@
-public class goo extends gop<dwq> {
-   private static final alz c = alz.b("textures/entity/end_gateway_beam.png");
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import javax.annotation.Nullable;
 
-   public goo(gnx.a $$0) {
-      super($$0);
+public class goo {
+   private static final int a = 2;
+   private int b = 2;
+   private final List<got.b.a> c = new ObjectArrayList();
+
+   public synchronized void a(got.b.a $$0) {
+      this.c.add($$0);
    }
 
-   public void a(dwq $$0, float $$1, fgs $$2, gll $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().am() : 50.0;
-         $$6 = bae.a($$6 * (float) Math.PI);
-         int $$8 = bae.a((double)$$6 * $$7);
-         int $$9 = $$0.b() ? cwm.c.d() : cwm.k.d();
-         long $$10 = $$0.i().ac();
-         gns.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   @Nullable
+   public synchronized got.b.a a(fbr $$0) {
+      int $$1 = -1;
+      int $$2 = -1;
+      double $$3 = Double.MAX_VALUE;
+      double $$4 = Double.MAX_VALUE;
+      ListIterator<got.b.a> $$5 = this.c.listIterator();
+
+      while ($$5.hasNext()) {
+         int $$6 = $$5.nextIndex();
+         got.b.a $$7 = $$5.next();
+         if ($$7.a.get()) {
+            $$5.remove();
+         } else {
+            double $$8 = $$7.d().b($$0);
+            if (!$$7.c() && $$8 < $$3) {
+               $$3 = $$8;
+               $$1 = $$6;
+            }
+
+            if ($$7.c() && $$8 < $$4) {
+               $$4 = $$8;
+               $$2 = $$6;
+            }
+         }
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      boolean $$9 = $$2 >= 0;
+      boolean $$10 = $$1 >= 0;
+      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
+         this.b = 2;
+         return this.a($$1);
+      } else {
+         this.b--;
+         return this.a($$2);
+      }
    }
 
-   @Override
-   protected float b() {
-      return 1.0F;
+   public int a() {
+      return this.c.size();
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
+   @Nullable
+   private got.b.a a(int $$0) {
+      return $$0 >= 0 ? this.c.remove($$0) : null;
    }
 
-   @Override
-   protected glv d() {
-      return glv.u();
-   }
+   public synchronized void b() {
+      for (got.b.a $$0 : this.c) {
+         $$0.a();
+      }
 
-   @Override
-   public int aW_() {
-      return 256;
+      this.c.clear();
    }
 }

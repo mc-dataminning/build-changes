@@ -1,16 +1,39 @@
-public class crh extends crg {
-   private static final float f = 3.0F;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-   public crh(bvr<? extends crg> $$0, dhi $$1) {
-      super($$0, $$1);
+public class crh {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final crh c = a("empty").a(0, crf.b).a();
+   public static final crh d = a("simple").a(5000, crf.c).a(11000, crf.e).a();
+   public static final crh e = a("villager_baby").a(10, crf.b).a(3000, crf.d).a(6000, crf.b).a(10000, crf.d).a(12000, crf.e).a();
+   public static final crh f = a("villager_default").a(10, crf.b).a(2000, crf.c).a(9000, crf.f).a(11000, crf.b).a(12000, crf.e).a();
+   private final Map<crf, crj> g = Maps.newHashMap();
+
+   protected static cri a(String $$0) {
+      crh $$1 = kd.a(ma.B, $$0, new crh());
+      return new cri($$1);
    }
 
-   public crh(cnt $$0, dhi $$1) {
-      super(bvr.s, $$1, $$0, $$0.dB(), $$0.gp(), $$0.dH());
+   protected void a(crf $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new crj());
+      }
    }
 
-   @Override
-   protected void a(fby $$0) {
-      this.dW().a(this, null, d, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, dhi.a.e, ls.A, ls.z, axf.cQ);
+   protected crj b(crf $$0) {
+      return this.g.get($$0);
+   }
+
+   protected List<crj> c(crf $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
+
+   public crf a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(crf.b);
    }
 }

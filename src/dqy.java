@@ -1,44 +1,52 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public abstract class dqy extends dmr {
-   protected static final float f = 6.0F;
-   protected static final float g = 10.0F;
-   protected static final fcs h = dkm.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final fcs i = dkm.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
-   protected static final fcs j = dkm.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
-
-   protected dqy(dxu.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dqy> a();
-
-   @Override
-   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
-      switch ($$0.c(a).o()) {
-         case a:
-         default:
-            return j;
-         case c:
-            return i;
-         case b:
-            return h;
+public interface dqy {
+   dqy u_ = new dqy() {
+      @Override
+      public boolean a(dha $$0, jh $$1, dxo $$2, @Nullable Collection<jm> $$3, boolean $$4) {
+         if ($$3 == null) {
+            return ((dre)dkf.rv).q().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
+         } else if (!$$3.isEmpty()) {
+            return !$$2.l() && !$$2.y().b(etr.c) ? false : dre.a($$0, $$1, $$2, $$3);
+         } else {
+            return dqy.super.a($$0, $$1, $$2, $$3, $$4);
+         }
       }
+
+      @Override
+      public int a(drd.a $$0, dha $$1, jh $$2, bac $$3, drd $$4, boolean $$5) {
+         return $$0.c() > 0 ? $$0.b() : 0;
+      }
+
+      @Override
+      public int j_(int $$0) {
+         return Math.max($$0 - 1, 0);
+      }
+   };
+
+   default byte b() {
+      return 1;
    }
 
-   @Override
-   protected dxv a(dxv $$0, drc $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
+   default void a(dha $$0, dxo $$1, jh $$2, bac $$3) {
    }
 
-   @Override
-   protected dxv a(dxv $$0, dpl $$1) {
-      return $$0.b(a, $$1.b($$0.c(a)));
-   }
-
-   @Override
-   protected boolean a(dxv $$0, eum $$1) {
+   default boolean a(dha $$0, jh $$1, bac $$2) {
       return false;
    }
+
+   default boolean a(dha $$0, jh $$1, dxo $$2, @Nullable Collection<jm> $$3, boolean $$4) {
+      return ((dpg)dkf.rv).c().a($$2, $$0, $$1, $$4) > 0L;
+   }
+
+   default boolean d() {
+      return true;
+   }
+
+   default int j_(int $$0) {
+      return 1;
+   }
+
+   int a(drd.a var1, dha var2, jh var3, bac var4, drd var5, boolean var6);
 }

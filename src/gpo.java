@@ -1,52 +1,38 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class gpo implements gpl.a {
-   private static final int a = 160;
-   private final fmg b;
-   private final Int2ObjectMap<gpo.a> c = new Int2ObjectOpenHashMap();
+public class gpo {
+   private final flz a;
 
-   @Override
-   public void a() {
-      this.c.clear();
+   public gpo(flz $$0) {
+      this.a = $$0;
    }
 
-   public void a(int $$0, jh $$1, List<abl.a> $$2) {
-      this.c.put($$0, new gpo.a($$1, $$2));
+   public void a(fgl $$0, gox $$1, glg $$2, double $$3, double $$4, double $$5) {
+      glh $$6 = this.a.f.x().c();
+      MutableInt $$7 = new MutableInt(0);
+      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
    }
 
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public gpo(fmg $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(fgs $$0, gll $$1, double $$2, double $$3, double $$4) {
-      flp $$5 = this.b.j.k();
-      jh $$6 = jh.a($$5.b().d, 0.0, $$5.b().f);
-      ObjectIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         gpo.a $$7 = (gpo.a)var11.next();
-         jh $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               abl.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               gpl.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
-            }
-         }
+   private void a(glh.d $$0, fgl $$1, glg $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
+      fbm $$10 = $$0.b();
+      double $$11 = $$10.b();
+      long $$12 = Math.round($$11 / 16.0);
+      if ($$12 == 1L) {
+         $$8.add(1);
+         double $$13 = $$10.f().d;
+         double $$14 = $$10.f().e;
+         double $$15 = $$10.f().f;
+         int $$16 = $$9 ? -16711936 : -1;
+         gpg.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
       }
+
+      fgp $$17 = $$2.getBuffer(glq.y());
+      long $$18 = $$12 + 5L;
+      gma.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
    }
 
-   static record a(jh a, List<abl.a> b) {
+   private static float a(long $$0, float $$1) {
+      float $$2 = 0.1F;
+      return azu.i($$1 * (float)$$0) * 0.9F + 0.1F;
    }
 }

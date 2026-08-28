@@ -1,65 +1,49 @@
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record ezx(jq<dkm> b, Optional<ee> c) implements ezy {
+public record ezx(float b, ddx c, jq<ddq> g) implements ezr {
    public static final MapCodec<ezx> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ma.e.r().fieldOf("block").forGetter(ezx::c), ee.a.optionalFieldOf("properties").forGetter(ezx::d)).apply($$0, ezx::new)
-      )
-      .validate(ezx::a);
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(ezx::c),
+               ddx.b.fieldOf("enchanted_chance").forGetter(ezx::d),
+               ddq.c.fieldOf("enchantment").forGetter(ezx::e)
+            )
+            .apply($$0, ezx::new)
+   );
 
-   private static DataResult<ezx> a(ezx $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   @Override
+   public ezs b() {
+      return ezt.e;
    }
 
    @Override
-   public ezz b() {
-      return faa.i;
+   public Set<bbd<?>> a() {
+      return Set.of(ezc.d);
    }
 
-   @Override
-   public Set<bbn<?>> a() {
-      return Set.of(ezj.g);
+   public boolean a(ewi $$0) {
+      bvb $$1 = $$0.c(ezc.d);
+      int $$3 = $$1 instanceof bvx $$2 ? dds.a(this.g, $$2) : 0;
+      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
+      return $$0.b().i() < $$4;
    }
 
-   public boolean a(ewp $$0) {
-      dxv $$1 = $$0.c(ezj.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   public static ezr.a a(js.a $$0, float $$1, float $$2) {
+      js.b<ddq> $$3 = $$0.d(mb.aO);
+      return () -> new ezx($$1, new ddx.e($$1 + $$2, $$2), $$3.b(ddv.s));
    }
 
-   public static ezx.a a(dkm $$0) {
-      return new ezx.a($$0);
-   }
-
-   public jq<dkm> c() {
+   public float c() {
       return this.b;
    }
 
-   public Optional<ee> d() {
+   public ddx d() {
       return this.c;
    }
 
-   public static class a implements ezy.a {
-      private final jq<dkm> a;
-      private Optional<ee> b = Optional.empty();
-
-      public a(dkm $$0) {
-         this.a = $$0.p();
-      }
-
-      public ezx.a a(ee.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public ezy build() {
-         return new ezx(this.a, this.b);
-      }
+   public jq<ddq> e() {
+      return this.g;
    }
 }

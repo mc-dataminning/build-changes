@@ -2,19 +2,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
 public class lk implements lq {
-   private static final Codec<dxv> a = Codec.withAlternative(dxv.a, ma.e.q(), dkm::m);
+   private static final Codec<dxo> a = Codec.withAlternative(dxo.a, ma.e.q(), dkd::m);
    private final lr<lk> b;
-   private final dxv c;
+   private final dxo c;
 
    public static MapCodec<lk> a(lr<lk> $$0) {
       return a.xmap($$1 -> new lk($$0, $$1), $$0x -> $$0x.c).fieldOf("block_state");
    }
 
-   public static zt<? super xg, lk> b(lr<lk> $$0) {
-      return zr.a(dkm.q).a($$1 -> new lk($$0, $$1), $$0x -> $$0x.c);
+   public static zi<? super wv, lk> b(lr<lk> $$0) {
+      return zg.a(dkd.q).a($$1 -> new lk($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public lk(lr<lk> $$0, dxv $$1) {
+   public lk(lr<lk> $$0, dxo $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -24,7 +24,7 @@ public class lk implements lq {
       return this.b;
    }
 
-   public dxv b() {
+   public dxo b() {
       return this.c;
    }
 }

@@ -1,120 +1,61 @@
-import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.BitSet;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class hdy {
-   static final Logger b = LogUtils.getLogger();
-   public static final String a = "item/";
-   private final Map<alz, heg> c;
-   final heg d;
-   private final Map<heb, heg> e = new HashMap<>();
-   private final Map<alz, heg> f = new HashMap<>();
+public class hdy extends hdm {
+   private final List<hdy.a> b;
+   private final Map<dxo, BitSet> c = new Reference2ObjectOpenHashMap();
 
-   public hdy(Map<alz, heg> $$0, heg $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a(hdv.c, $$1);
-      this.f.put(hdv.b, $$1);
-   }
-
-   private static Set<heb> d() {
-      Set<heb> $$0 = new HashSet<>();
-      ma.g.c().forEach($$1 -> {
-         alz $$2 = $$1.a().g().a(ku.i);
-         if ($$2 != null) {
-            $$0.add(heb.a($$2));
-         }
-
-         if ($$1.a() instanceof cwc $$4) {
-            $$0.add(heb.a($$4.b()));
-            $$0.add(heb.a($$4.c()));
-         }
-      });
-      $$0.add(gso.i);
-      $$0.add(gso.j);
-      return $$0;
-   }
-
-   private void a(heb $$0, heg $$1) {
-      this.e.put($$0, $$1);
-   }
-
-   public void a(hdp.c $$0) {
-      this.f.put(hef.a, hef.c);
-      this.f.put(hef.b, hef.d);
-      Set<heb> $$1 = d();
-      $$0.a().forEach(($$1x, $$2) -> {
-         this.a($$1x, $$2.b());
-         $$1.remove($$1x);
-      });
-      this.c.keySet().forEach($$1x -> {
-         if ($$1x.a().startsWith("item/")) {
-            heb $$2 = heb.a($$1x.a((UnaryOperator<String>)($$0xx -> $$0xx.substring("item/".length()))));
-            this.a($$2, new hdt($$1x));
-            $$1.remove($$2);
-         }
-      });
-      if (!$$1.isEmpty()) {
-         b.warn("Missing mandatory models: {}", $$1.stream().map($$0x -> "\n\t" + $$0x).collect(Collectors.joining()));
-      }
-   }
-
-   public void a() {
-      this.e.values().forEach($$0 -> $$0.a(new hdy.a()));
-   }
-
-   public Map<heb, heg> b() {
-      return this.e;
-   }
-
-   public Map<alz, heg> c() {
-      return this.f;
-   }
-
-   heg a(alz $$0) {
-      return this.f.computeIfAbsent($$0, this::b);
-   }
-
-   private heg b(alz $$0) {
-      heg $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         b.warn("Missing block model: '{}'", $$0);
-         return this.d;
+   private static hdi a(List<hdy.a> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Model must have at least one selector");
       } else {
-         return $$1;
+         return $$0.getFirst().b();
       }
    }
 
-   class a implements heg.a {
-      private final List<alz> b = new ArrayList<>();
-      private final Set<alz> c = new HashSet<>();
+   public hdy(List<hdy.a> $$0) {
+      super(a($$0));
+      this.b = $$0;
+   }
 
-      @Override
-      public heg a(alz $$0) {
-         if (this.b.contains($$0)) {
-            hdy.b.warn("Detected model loading loop: {}->{}", this.a(), $$0);
-            return hdy.this.d;
-         } else {
-            heg $$1 = hdy.this.a($$0);
-            if (this.c.add($$0)) {
-               this.b.add($$0);
-               $$1.a(this);
-               this.b.remove($$0);
+   @Override
+   public List<gmn> a(@Nullable dxo $$0, @Nullable jm $$1, bac $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
+      } else {
+         BitSet $$3 = this.c.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
+
+            for (int $$4 = 0; $$4 < this.b.size(); $$4++) {
+               if (this.b.get($$4).a.test($$0)) {
+                  $$3.set($$4);
+               }
             }
 
-            return $$1;
+            this.c.put($$0, $$3);
          }
-      }
 
-      private String a() {
-         return this.b.stream().map(alz::toString).collect(Collectors.joining("->"));
+         List<gmn> $$5 = new ArrayList<>();
+         long $$6 = $$2.g();
+
+         for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
+            if ($$3.get($$7)) {
+               $$2.b($$6);
+               $$5.addAll(this.b.get($$7).b.a($$0, $$1, $$2));
+            }
+         }
+
+         return $$5;
       }
+   }
+
+   public static record a(Predicate<dxo> a, hdi b) {
    }
 }

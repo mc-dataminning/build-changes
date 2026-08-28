@@ -76,29 +76,29 @@ public class Main {
       String $$35 = "Pre-bootstrap";
 
       Logger $$39;
-      fzy $$71;
+      fzr $$71;
       try {
          if ($$32.has($$2)) {
-            bqb.f.a(bpz.a);
+            bpr.f.a(bpp.a);
          }
 
          if ($$32.has($$3)) {
-            fec.a();
+            fdv.a();
          }
 
          Stopwatch $$36 = Stopwatch.createStarted(Ticker.systemTicker());
          Stopwatch $$37 = Stopwatch.createStarted(Ticker.systemTicker());
-         hhc.a.a(hgy.z, $$36);
-         hhc.a.a(hgy.A, $$37);
+         hgy.a.a(hgu.z, $$36);
+         hgy.a.a(hgu.A, $$37);
          ab.a();
          TracyClient.reportAppInfo("Minecraft Java Edition " + ab.b().c());
-         CompletableFuture<?> $$38 = bbt.a(bbs.t);
+         CompletableFuture<?> $$38 = bbj.a(bbi.t);
          o.g();
          $$39 = LogUtils.getLogger();
          $$35 = "Bootstrap";
-         amb.a();
-         hhc.a.a(amb.b.get());
-         amb.c();
+         alr.a();
+         hgy.a.a(alr.b.get());
+         alr.c();
          $$35 = "Argument parsing";
          List<String> $$40 = $$32.valuesOf($$31);
          if (!$$40.isEmpty()) {
@@ -106,7 +106,7 @@ public class Main {
          }
 
          String $$41 = (String)$$29.value($$32);
-         fms.a $$42 = fms.a.a($$41);
+         fml.a $$42 = fml.a.a($$41);
          if ($$42 == null) {
             $$39.warn("Unrecognized user type: {}", $$41);
          }
@@ -141,8 +141,8 @@ public class Main {
          boolean $$54 = $$32.has("disableChat");
          boolean $$55 = !$$32.has($$4);
          Gson $$56 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-         PropertyMap $$57 = azu.a($$56, a($$32, $$26), PropertyMap.class);
-         PropertyMap $$58 = azu.a($$56, a($$32, $$27), PropertyMap.class);
+         PropertyMap $$57 = azk.a($$56, a($$32, $$26), PropertyMap.class);
+         PropertyMap $$58 = azk.a($$56, a($$32, $$27), PropertyMap.class);
          String $$59 = a($$32, $$30);
          File $$60 = $$32.has($$10) ? a($$32, $$10) : new File($$33, "assets/");
          File $$61 = $$32.has($$11) ? a($$32, $$11) : new File($$33, "resourcepacks/");
@@ -154,31 +154,31 @@ public class Main {
          String $$67 = a(a($$32, $$6));
          String $$68 = a(a($$32, $$7));
          String $$69 = a(a($$32, $$8));
-         fms $$70 = new fms((String)$$16.value($$32), $$62, (String)$$20.value($$32), b($$64), b($$65), $$42);
-         $$71 = new fzy(
-            new fzy.d($$70, $$57, $$58, $$44),
-            new ffi($$47, $$48, $$49, $$50, $$51),
-            new fzy.a($$33, $$61, $$60, $$63),
-            new fzy.b($$52, $$34, $$59, $$53, $$54, $$55),
-            new fzy.c($$66, $$67, $$68, $$69)
+         fml $$70 = new fml((String)$$16.value($$32), $$62, (String)$$20.value($$32), b($$64), b($$65), $$42);
+         $$71 = new fzr(
+            new fzr.d($$70, $$57, $$58, $$44),
+            new ffb($$47, $$48, $$49, $$50, $$51),
+            new fzr.a($$33, $$61, $$60, $$63),
+            new fzr.b($$52, $$34, $$59, $$53, $$54, $$55),
+            new fzr.c($$66, $$67, $$68, $$69)
          );
          ae.o();
          $$38.join();
       } catch (Throwable var82) {
          o $$73 = o.a(var82, $$35);
          p $$74 = $$73.a("Initialization");
-         baf.a($$74);
-         fmg.a(null, null, $$34, null, $$73);
-         fmg.a(null, $$33, $$73);
+         azv.a($$74);
+         flz.a(null, null, $$34, null, $$73);
+         flz.a(null, $$33, $$73);
          return;
       }
 
       Thread $$77 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fmg $$0 = fmg.Q();
+            flz $$0 = flz.Q();
             if ($$0 != null) {
-               hfw $$1 = $$0.V();
+               hfr $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -187,30 +187,30 @@ public class Main {
       };
       $$77.setUncaughtExceptionHandler(new r($$39));
       Runtime.getRuntime().addShutdownHook($$77);
-      fmg $$78 = null;
+      flz $$78 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$78 = new fmg($$71);
+         $$78 = new flz($$71);
          RenderSystem.finishInitialization();
-      } catch (fzz var79) {
+      } catch (fzs var79) {
          ae.j();
          $$39.warn("Failed to create window: ", var79);
          return;
       } catch (Throwable var80) {
          o $$81 = o.a(var80, "Initializing game");
          p $$82 = $$81.a("Initialization");
-         baf.a($$82);
-         fmg.a($$78, null, $$71.d.b, null, $$81);
-         fmg.a($$78, $$71.c.a, $$81);
+         azv.a($$82);
+         flz.a($$78, null, $$71.d.b, null, $$81);
+         flz.a($$78, $$71.c.a, $$81);
          return;
       }
 
-      fmg $$83 = $$78;
+      flz $$83 = $$78;
       $$78.f();
-      fgo.a();
+      fgh.a();
 
       try {
          $$83.q();

@@ -1,42 +1,54 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class egc extends egw<eit> {
-   public egc(Codec<eit> $$0) {
+public class egc extends egd {
+   public egc(Codec<eja> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egy<eit> $$0) {
-      jh $$1 = $$0.e();
-      dig $$2 = $$0.b();
-      bam $$3 = $$0.d();
-
-      eit $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.L_() + 3; $$1 = $$1.e()) {
-         if (!$$2.u($$1.e())) {
-            dxv $$5 = $$2.a_($$1.e());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
-
-      if ($$1.v() <= $$2.L_() + 3) {
+   protected boolean a(dha $$0, bac $$1, jh $$2, dxo $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
          return false;
       } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+         jm $$4 = jm.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jm> $$6 = ae.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-            for (jh $$11 : jh.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
+         for (jm $$8 : $$6.subList(0, $$5)) {
+            jh.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jm $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jm.b);
+               jm[] $$13 = new jm[]{$$8, jm.b};
+               $$11 = ae.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
             }
 
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(jm.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jm.b);
+               }
+            }
          }
 
          return true;

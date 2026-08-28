@@ -1,37 +1,45 @@
-public class gau extends gdh<gxi> {
-   private final geo a;
+public class gau extends gcc {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final gej d;
+   private final gej e;
 
-   public gau(geo $$0) {
-      super($$0);
-      this.a = $$0.b("head").b("mushrooms");
+   public gau(gej $$0) {
+      super($$0, glq::d);
+      this.d = $$0.b("lid");
+      this.e = $$0.b("lock");
    }
 
-   public static geu a() {
-      gew $$0 = gbz.a(ges.a, 0.0F);
-      gey $$1 = $$0.a();
-      gdh.a($$1);
-      gey $$2 = $$1.b("head").a("mushrooms");
-      $$2.a("red_mushroom_1", get.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), geq.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("red_mushroom_2", get.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), geq.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
-      $$2.a("brown_mushroom_1", get.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), geq.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a(
-         "brown_mushroom_2", get.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), geq.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      $$2.a(
-         "brown_mushroom_3",
-         get.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         geq.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      $$2.a(
-         "brown_mushroom_4",
-         get.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         geq.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return geu.a($$0, 64, 32);
+   public static gep a() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("bottom", geo.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), gel.a);
+      $$1.a("lid", geo.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), gel.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", geo.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), gel.a(0.0F, 9.0F, 1.0F));
+      return gep.a($$0, 64, 64);
    }
 
-   public void a(gxi $$0) {
-      super.a($$0);
-      this.a.k = !$$0.a;
+   public static gep b() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("bottom", geo.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gel.a);
+      $$1.a("lid", geo.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gel.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", geo.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gel.a(0.0F, 9.0F, 1.0F));
+      return gep.a($$0, 64, 64);
+   }
+
+   public static gep c() {
+      ger $$0 = new ger();
+      get $$1 = $$0.a();
+      $$1.a("bottom", geo.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gel.a);
+      $$1.a("lid", geo.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gel.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", geo.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gel.a(0.0F, 9.0F, 1.0F));
+      return gep.a($$0, 64, 64);
+   }
+
+   public void a(float $$0) {
+      this.d.e = -($$0 * (float) (Math.PI / 2));
+      this.e.e = this.d.e;
    }
 }

@@ -1,44 +1,23 @@
-import java.util.List;
+import io.netty.buffer.ByteBuf;
 
-public class agj implements aac<acr> {
-   public static final zt<ws, agj> a = aac.a(agj::a, agj::new);
-   private final int b;
-   private final int[] c;
+public class agj implements zr<acg> {
+   public static final agj a = new agj();
+   public static final zi<ByteBuf, agj> b = zi.a(a);
 
-   public agj(bvk $$0) {
-      this.b = $$0.ar();
-      List<bvk> $$1 = $$0.cZ();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).ar();
-      }
-   }
-
-   private agj(ws $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
-   }
-
-   private void a(ws $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private agj() {
    }
 
    @Override
-   public aae<agj> a() {
-      return ahk.aN;
+   public zt<agj> a() {
+      return agz.aX;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
-   }
-
-   public int e() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

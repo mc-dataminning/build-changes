@@ -1,130 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
 
 public class aoy {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.particle.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xk.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xk.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xk.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xk.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xk.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(xk.c("commands.ride.mount.failure.wrong_dimension"));
 
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("particle").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("ride").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)ex.a("name", ft.a($$1))
-                     .executes(
-                        $$0x -> a(
-                              (ew)$$0x.getSource(), ft.a($$0x, "name"), ((ew)$$0x.getSource()).d(), fby.c, 0.0F, 0, false, ((ew)$$0x.getSource()).l().ag().t()
-                           )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("pos", gz.a())
-                           .executes(
-                              $$0x -> a((ew)$$0x.getSource(), ft.a($$0x, "name"), gz.a($$0x, "pos"), fby.c, 0.0F, 0, false, ((ew)$$0x.getSource()).l().ag().t())
-                           ))
-                        .then(
-                           ex.a("delta", gz.a(false))
-                              .then(
-                                 ex.a("speed", FloatArgumentType.floatArg(0.0F))
-                                    .then(
-                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("count", IntegerArgumentType.integer(0))
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (ew)$$0x.getSource(),
-                                                         ft.a($$0x, "name"),
-                                                         gz.a($$0x, "pos"),
-                                                         gz.a($$0x, "delta"),
-                                                         FloatArgumentType.getFloat($$0x, "speed"),
-                                                         IntegerArgumentType.getInteger($$0x, "count"),
-                                                         false,
-                                                         ((ew)$$0x.getSource()).l().ag().t()
-                                                      )
-                                                ))
-                                             .then(
-                                                ((LiteralArgumentBuilder)ex.a("force")
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ew)$$0x.getSource(),
-                                                               ft.a($$0x, "name"),
-                                                               gz.a($$0x, "pos"),
-                                                               gz.a($$0x, "delta"),
-                                                               FloatArgumentType.getFloat($$0x, "speed"),
-                                                               IntegerArgumentType.getInteger($$0x, "count"),
-                                                               true,
-                                                               ((ew)$$0x.getSource()).l().ag().t()
-                                                            )
-                                                      ))
-                                                   .then(
-                                                      ex.a("viewers", fj.d())
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (ew)$$0x.getSource(),
-                                                                  ft.a($$0x, "name"),
-                                                                  gz.a($$0x, "pos"),
-                                                                  gz.a($$0x, "delta"),
-                                                                  FloatArgumentType.getFloat($$0x, "speed"),
-                                                                  IntegerArgumentType.getInteger($$0x, "count"),
-                                                                  true,
-                                                                  fj.f($$0x, "viewers")
-                                                               )
-                                                         )
-                                                   )
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)ex.a("normal")
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ew)$$0x.getSource(),
-                                                            ft.a($$0x, "name"),
-                                                            gz.a($$0x, "pos"),
-                                                            gz.a($$0x, "delta"),
-                                                            FloatArgumentType.getFloat($$0x, "speed"),
-                                                            IntegerArgumentType.getInteger($$0x, "count"),
-                                                            false,
-                                                            ((ew)$$0x.getSource()).l().ag().t()
-                                                         )
-                                                   ))
-                                                .then(
-                                                   ex.a("viewers", fj.d())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ew)$$0x.getSource(),
-                                                               ft.a($$0x, "name"),
-                                                               gz.a($$0x, "pos"),
-                                                               gz.a($$0x, "delta"),
-                                                               FloatArgumentType.getFloat($$0x, "speed"),
-                                                               IntegerArgumentType.getInteger($$0x, "count"),
-                                                               false,
-                                                               fj.f($$0x, "viewers")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+               ((RequiredArgumentBuilder)ex.a("target", fj.a())
+                     .then(ex.a("mount").then(ex.a("vehicle", fj.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), fj.a($$0x, "vehicle"))))))
+                  .then(ex.a("dismount").executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"))))
             )
       );
    }
 
-   private static int a(ew $$0, lq $$1, fby $$2, fby $$3, float $$4, int $$5, boolean $$6, Collection<asi> $$7) throws CommandSyntaxException {
-      int $$8 = 0;
-
-      for (asi $$9 : $$7) {
-         if ($$0.e().a($$9, $$1, $$6, $$2.d, $$2.e, $$2.f, $$5, $$3.d, $$3.e, $$3.f, (double)$$4)) {
-            $$8++;
-         }
-      }
-
-      if ($$8 == 0) {
-         throw a.create();
+   private static int a(ew $$0, bvb $$1, bvb $$2) throws CommandSyntaxException {
+      bvb $$3 = $$1.dl();
+      if ($$3 != null) {
+         throw b.create($$1.p_(), $$3.p_());
+      } else if ($$2.aq() == bvi.bS) {
+         throw d.create();
+      } else if ($$1.db().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dW() != $$2.dW()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.p_(), $$2.p_());
       } else {
-         $$0.a(() -> xv.a("commands.particle.success", ma.i.b($$1.a()).toString()), true);
-         return $$8;
+         $$0.a(() -> xk.a("commands.ride.mount.success", $$1.p_(), $$2.p_()), true);
+         return 1;
+      }
+   }
+
+   private static int a(ew $$0, bvb $$1) throws CommandSyntaxException {
+      bvb $$2 = $$1.dl();
+      if ($$2 == null) {
+         throw a.create($$1.p_());
+      } else {
+         $$1.ae();
+         $$0.a(() -> xk.a("commands.ride.dismount.success", $$1.p_(), $$2.p_()), true);
+         return 1;
       }
    }
 }

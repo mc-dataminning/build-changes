@@ -1,103 +1,115 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
 
-public class fqs implements fqq {
-   private static final alz h = alz.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final int g = 28;
-   private final fqs.a i;
-   private final xv j;
+public class fqs extends har implements has {
+   private static final int d = 256;
+   private final fqt e;
+   private final boolean f;
+   private final fqs.a g;
+
+   public fqs(fqt $$0, boolean $$1) {
+      this.f = $$1;
+      this.g = new fqs.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? ffl.b.a : ffl.b.d, this.a(), 256, 256);
+      this.e = $$0;
+   }
+
+   @Override
+   public void a(avl $$0) {
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
    @Nullable
-   private final xv k;
-   private fqq.a l = fqq.a.a;
-   private long m;
-   private float n;
-   private float o;
-   private final boolean p;
-   private final int q;
-
-   public fqs(fqs.a $$0, xv $$1, @Nullable xv $$2, boolean $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.p = $$3;
-      this.q = $$4;
-   }
-
-   public fqs(fqs.a $$0, xv $$1, @Nullable xv $$2, boolean $$3) {
-      this($$0, $$1, $$2, $$3, 0);
-   }
-
-   @Override
-   public fqq.a a() {
-      return this.l;
-   }
-
-   @Override
-   public void a(fqr $$0, long $$1) {
-      if (this.q > 0) {
-         this.o = Math.min((float)$$1 / (float)this.q, 1.0F);
-         this.n = this.o;
-         this.m = $$1;
-         if ($$1 > (long)this.q) {
-            this.d();
-         }
-      } else if (this.p) {
-         this.n = bae.b(this.n, this.o, (float)($$1 - this.m) / 100.0F);
-         this.m = $$1;
-      }
-   }
-
-   @Override
-   public void a(fns $$0, fnq $$1, long $$2) {
-      $$0.a(glv::C, h, 0, 0, this.b(), this.c());
-      this.i.a($$0, 6, 6);
-      if (this.k == null) {
-         $$0.a($$1, this.j, 30, 12, -11534256, false);
+   public fqv a(fel $$0) {
+      if ($$0.c() != this.f) {
+         return null;
       } else {
-         $$0.a($$1, this.j, 30, 7, -11534256, false);
-         $$0.a($$1, this.k, 30, 18, -16777216, false);
-      }
-
-      if (this.p) {
-         $$0.a(3, 28, 157, 29, -1);
-         int $$3;
-         if (this.o >= this.n) {
-            $$3 = -16755456;
+         fqs.a $$1 = this.g.a($$0);
+         if ($$1 != null) {
+            this.d();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fqv(
+               this.e,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
          } else {
-            $$3 = -11206656;
+            return null;
          }
-
-         $$0.a(3, 28, (int)(3.0F + 154.0F * this.n), 29, $$3);
       }
    }
 
-   public void d() {
-      this.l = fqq.a.b;
+   @Override
+   public void a(alp $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
    }
 
-   public void a(float $$0) {
-      this.o = $$0;
-   }
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private fqs.a e;
+      @Nullable
+      private fqs.a f;
+      private boolean g;
 
-   public static enum a {
-      a(alz.b("toast/movement_keys")),
-      b(alz.b("toast/mouse")),
-      c(alz.b("toast/tree")),
-      d(alz.b("toast/recipe_book")),
-      e(alz.b("toast/wooden_planks")),
-      f(alz.b("toast/social_interactions")),
-      g(alz.b("toast/right_click"));
-
-      private final alz h;
-
-      private a(final alz $$0) {
-         this.h = $$0;
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      public void a(fns $$0, int $$1, int $$2) {
-         $$0.a(glv::C, this.h, $$1, $$2, 20, 20);
+      @Nullable
+      fqs.a a(fel $$0) {
+         if (this.e != null && this.f != null) {
+            fqs.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
+
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new fqs.a(this.a, this.b, $$2, this.d);
+                  this.f = new fqs.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new fqs.a(this.a, this.b, this.c, $$3);
+                  this.f = new fqs.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
+
+               return this.e.a($$0);
+            }
+         }
       }
    }
 }

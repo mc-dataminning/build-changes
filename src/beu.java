@@ -1,33 +1,35 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.List;
 
-public class beu extends bff {
+public class beu extends DataFix {
+   private static final Codec<List<Float>> a = Codec.FLOAT.listOf();
+
    public beu(Schema $$0, boolean $$1) {
-      super("EntityHorseSplitFix", $$0, $$1);
+      super($$0, $$1);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (Objects.equals("EntityHorse", $$0)) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-         int $$3 = $$2.get("Type").asInt(0);
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "EntityRedundantChanceTagsFix", this.getInputSchema().getType(bin.B), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               if (a($$0x.get("HandDropChances"), 2)) {
+                  $$0x = $$0x.remove("HandDropChances");
+               }
 
-         String $$4 = switch ($$3) {
-            case 1 -> "Donkey";
-            case 2 -> "Mule";
-            case 3 -> "ZombieHorse";
-            case 4 -> "SkeletonHorse";
-            default -> "Horse";
-         };
-         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bix.B).types().get($$4);
-         return Pair.of($$4, ae.a($$1, $$5, $$0x -> $$0x.remove("Type")));
-      } else {
-         return Pair.of($$0, $$1);
-      }
+               if (a($$0x.get("ArmorDropChances"), 4)) {
+                  $$0x = $$0x.remove("ArmorDropChances");
+               }
+
+               return $$0x;
+            })
+      );
+   }
+
+   private static boolean a(OptionalDynamic<?> $$0, int $$1) {
+      return $$0.flatMap(a::parse).map($$1x -> $$1x.size() == $$1 && $$1x.stream().allMatch($$0xx -> $$0xx == 0.0F)).result().orElse(false);
    }
 }

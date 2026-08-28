@@ -1,52 +1,26 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class aaj {
+   public static final zt<zy> a = a("custom_payload");
+   public static final zt<zz> b = a("custom_report_details");
+   public static final zt<aaa> c = a("disconnect");
+   public static final zt<aab> d = a("keep_alive");
+   public static final zt<aac> e = a("ping");
+   public static final zt<aad> f = a("resource_pack_pop");
+   public static final zt<aae> g = a("resource_pack_push");
+   public static final zt<aaf> h = a("server_links");
+   public static final zt<aag> i = a("store_cookie");
+   public static final zt<aah> j = a("transfer");
+   public static final zt<aai> k = a("update_tags");
+   public static final zt<aal> l = b("client_information");
+   public static final zt<aam> m = b("custom_payload");
+   public static final zt<aan> n = b("keep_alive");
+   public static final zt<aao> o = b("pong");
+   public static final zt<aap> p = b("resource_pack");
 
-public record aaj(abf c) implements aac<aai> {
-   private static final int d = 1048576;
-   public static final zt<xg, aaj> a = abf.<xg>a(
-         $$0 -> abg.a($$0, 1048576),
-         ae.a(
-            Lists.newArrayList(
-               new abf.c[]{
-                  new abf.c<>(abd.b, abd.a),
-                  new abf.c<>(abb.b, abb.a),
-                  new abf.c<>(abc.b, abc.a),
-                  new abf.c<>(abe.b, abe.a),
-                  new abf.c<>(abh.b, abh.a),
-                  new abf.c<>(abi.b, abi.a),
-                  new abf.c<>(abj.b, abj.a),
-                  new abf.c<>(abk.b, abk.a),
-                  new abf.c<>(abl.b, abl.a),
-                  new abf.c<>(abm.b, abm.a),
-                  new abf.c<>(abn.b, abn.a),
-                  new abf.c<>(abo.b, abo.a),
-                  new abf.c<>(abp.b, abp.a),
-                  new abf.c<>(abq.b, abq.a),
-                  new abf.c<>(abr.b, abr.a),
-                  new abf.c<>(abs.b, abs.a),
-                  new abf.c<>(abt.a, abt.b),
-                  new abf.c<>(abu.b, abu.a),
-                  new abf.c<>(abv.b, abv.a),
-                  new abf.c<>(abw.b, abw.a)
-               }
-            ),
-            $$0 -> {
-            }
-         )
-      )
-      .a(aaj::new, aaj::b);
-   public static final zt<ws, aaj> b = abf.<ws>a($$0 -> abg.a($$0, 1048576), List.of(new abf.c<>(abd.b, abd.a))).a(aaj::new, aaj::b);
-
-   @Override
-   public aae<aaj> a() {
-      return aau.a;
+   private static <T extends zr<zx>> zt<T> a(String $$0) {
+      return new zt<>(zs.b, alp.b($$0));
    }
 
-   public void a(aai $$0) {
-      $$0.a(this);
-   }
-
-   public abf b() {
-      return this.c;
+   private static <T extends zr<aak>> zt<T> b(String $$0) {
+      return new zt<>(zs.a, alp.b($$0));
    }
 }

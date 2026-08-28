@@ -1,30 +1,16 @@
-import java.util.Optional;
-
-public record agm(String b, String c, int d, Optional<xv> e, Optional<zl> f) implements aac<acr> {
-   public static final zt<xg, agm> a = zt.a(zr.o, agm::b, zr.o, agm::e, zr.h, agm::f, xx.e, agm::g, zn.d, agm::h, agm::new);
+public record agm(xk b, xk c) implements zr<acg> {
+   public static final zi<wv, agm> a = zi.a(xm.d, agm::b, xm.d, agm::e, agm::new);
 
    @Override
-   public aae<agm> a() {
-      return ahk.aP;
+   public zt<agm> a() {
+      return agz.ba;
    }
 
-   public void a(acr $$0) {
+   public void a(acg $$0) {
       $$0.a(this);
    }
 
-   public String e() {
+   public xk e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<xv> g() {
-      return this.e;
-   }
-
-   public Optional<zl> h() {
-      return this.f;
    }
 }

@@ -1,22 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dok extends dkm {
-   public static final dys<jm> aF = dyl.S;
+public class dok extends dns implements dow {
+   public static final MapCodec<dok> c = b(dok::new);
 
-   protected dok(dxu.d $$0) {
-      super($$0);
+   @Override
+   public MapCodec<dok> a() {
+      return c;
+   }
+
+   protected dok(dxn.d $$0) {
+      super($$0, jm.b, fci.b(), true);
    }
 
    @Override
-   protected abstract MapCodec<? extends dok> a();
-
-   @Override
-   protected dxv a(dxv $$0, drc $$1) {
-      return $$0.b(aF, $$1.a($$0.c(aF)));
+   protected dnt c() {
+      return (dnt)dkf.mE;
    }
 
    @Override
-   protected dxv a(dxv $$0, dpl $$1) {
-      return $$0.a($$1.a($$0.c(aF)));
+   protected etq b_(dxo $$0) {
+      return etr.c.a(false);
+   }
+
+   @Override
+   protected boolean o(dxo $$0) {
+      return this.c().o($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable cpo $$0, dge $$1, jh $$2, dxo $$3, etp $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dha $$0, jh $$1, dxo $$2, etq $$3) {
+      return false;
    }
 }

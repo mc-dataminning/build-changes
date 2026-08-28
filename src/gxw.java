@@ -1,8 +1,8 @@
-public class gxw extends gyt {
-   public boolean b;
-   public boolean c;
+public class gxw extends gyo {
    public boolean d;
-   public float e;
-   public float f;
+   public boolean e;
+   public boolean f;
    public float g;
+   public float h;
+   public float i;
 }

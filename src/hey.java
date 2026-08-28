@@ -1,44 +1,58 @@
-public class hey extends her {
-   public static final int n = 20;
-   private final gkh o;
-   private int p;
-
-   public hey(gkh $$0) {
-      super(axf.iq, axg.h, hfi.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class hey extends hel {
+   public hey(awu $$0, aww $$1, float $$2, float $$3, bac $$4, jh $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
    }
 
-   @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dR() && (this.p <= 20 || this.o.fJ())) {
-         this.f = (double)((float)this.o.dB());
-         this.g = (double)((float)this.o.dD());
-         this.h = (double)((float)this.o.dH());
-         float $$0 = (float)this.o.dz().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = bae.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
+   public static hey a(awu $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
+   }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
+   public static hey a(jq<awu> $$0, float $$1) {
+      return a($$0.a(), $$1);
+   }
 
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
-      } else {
-         this.n();
-      }
+   public static hey a(awu $$0, float $$1, float $$2) {
+      return new hey($$0.a(), aww.a, $$2, $$1, hfd.t(), false, 0, hfd.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static hey a(awu $$0) {
+      return new hey($$0.a(), aww.b, 1.0F, 1.0F, hfd.t(), false, 0, hfd.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static hey a(awu $$0, fbr $$1) {
+      return new hey($$0, aww.c, 4.0F, 1.0F, hfd.t(), false, 0, hfd.a.b, $$1.d, $$1.e, $$1.f);
+   }
+
+   public static hey b(awu $$0, float $$1, float $$2) {
+      return new hey($$0.a(), aww.i, $$2, $$1, hfd.t(), false, 0, hfd.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static hey b(awu $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
+
+   public static hey a(awu $$0, bac $$1, double $$2, double $$3, double $$4) {
+      return new hey($$0, aww.i, 1.0F, 1.0F, $$1, false, 0, hfd.a.b, $$2, $$3, $$4);
+   }
+
+   public hey(awu $$0, aww $$1, float $$2, float $$3, bac $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, hfd.a.b, $$5, $$6, $$7);
+   }
+
+   private hey(awu $$0, aww $$1, float $$2, float $$3, bac $$4, boolean $$5, int $$6, hfd.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public hey(alp $$0, aww $$1, float $$2, float $$3, bac $$4, boolean $$5, int $$6, hfd.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

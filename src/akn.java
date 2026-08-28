@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface akn extends ahc, akh {
+   @Override
+   default wf b() {
+      return wf.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface akn {
+   void a(ako var1);
 }

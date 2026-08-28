@@ -1,69 +1,72 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class elh extends elb {
-   public static final MapCodec<elh> b = RecordCodecBuilder.mapCodec(
+public class elh extends eln {
+   public static final MapCodec<elh> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               elb.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bso.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               eku.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               azd.a(jm.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
             )
             .apply($$0, elh::new)
    );
-   private final elb c;
-   private final String d;
-   @Nullable
-   private dyu e;
-   private final bso f;
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final eku e;
+   protected final int f;
+   protected final List<jm> g;
 
-   public elh(elb $$0, dyu $$1, bso $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
+   public elh(float $$0, int $$1, int $$2, eku $$3, int $$4, List<jm> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+   }
 
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+   @Override
+   public void a(eln.a $$0) {
+      Set<jh> $$1 = new HashSet<>();
+      bac $$2 = $$0.b();
+
+      for (jh $$3 : ae.a($$0.d(), $$2)) {
+         jm $$4 = ae.a(this.g, $$2);
+         jh $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            jh $$6 = $$5.b(-this.c, -this.d, -this.c);
+            jh $$7 = $$5.b(this.c, this.d, this.c);
+
+            for (jh $$8 : jh.c($$6, $$7)) {
+               $$1.add($$8.j());
+            }
+
+            $$0.a($$5, this.e.a($$2, $$5));
          }
       }
    }
 
-   public elh(elb $$0, String $$1, bso $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   protected elc<?> a() {
-      return elc.g;
-   }
-
-   @Override
-   public dxv a(bam $$0, jh $$1) {
-      dxv $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         dyu $$3 = a($$2, this.d);
-         if ($$3 == null) {
-            return $$2;
+   private boolean a(eln.a $$0, jh $$1, jm $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         jh $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
          }
-
-         this.e = $$3;
       }
 
-      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+      return true;
    }
 
-   @Nullable
-   private static dyu a(dxv $$0, String $$1) {
-      Collection<dyx<?>> $$2 = $$0.F();
-      Optional<dyu> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dyu).map($$0x -> (dyu)$$0x).findAny();
-      return $$3.orElse(null);
+   @Override
+   protected elo<?> a() {
+      return elo.h;
    }
 }

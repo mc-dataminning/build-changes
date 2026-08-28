@@ -1,89 +1,113 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
 import javax.annotation.Nullable;
 
-public class dnb extends djy implements dqh {
+public class dnb extends dkd {
    public static final MapCodec<dnb> a = b(dnb::new);
+   public static final dyn b = dye.aT;
+   protected static final fcl c = dkd.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
+   public static final int d = 7;
 
    @Override
    public MapCodec<dnb> a() {
       return a;
    }
 
-   protected dnb(dxu.d $$0) {
+   protected dnb(dxn.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   public dux a(jh $$0, dxv $$1) {
-      return new dwq($$0, $$1);
-   }
+   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
+      if ($$4 == jm.b && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
 
-   @Nullable
-   @Override
-   public <T extends dux> duy<T> a(dhi $$0, dxv $$1, duz<T> $$2) {
-      return a($$2, duz.w, $$0.C ? dwq::a : dwq::b);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
-      dux $$4 = $$1.c_($$2);
-      if ($$4 instanceof dwq) {
-         int $$5 = ((dwq)$$4).f();
+   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
+      dxo $$3 = $$1.a_($$2.d());
+      return !$$3.e() || $$3.b() instanceof dnd || $$3.b() instanceof dxg;
+   }
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
-            }
+   @Override
+   public dxo a(dax $$0) {
+      return !this.m().a((dhc)$$0.q(), $$0.a()) ? dkf.j.m() : super.a($$0);
+   }
 
-            $$1.a(ls.ad, $$7, $$8, $$9, $$10, $$11, $$12);
-         }
+   @Override
+   protected boolean g_(dxo $$0) {
+      return true;
+   }
+
+   @Override
+   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
+      return c;
+   }
+
+   @Override
+   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      if (!$$0.a($$1, $$2)) {
+         a(null, $$0, $$1, $$2);
       }
    }
 
    @Override
-   public cxp a(dhl $$0, jh $$1, dxv $$2) {
-      return cxp.j;
+   protected void b(dxo $$0, arx $$1, jh $$2, bac $$3) {
+      int $$4 = $$0.c(b);
+      if (!a((dhc)$$1, $$2) && !$$1.r($$2.d())) {
+         if ($$4 > 0) {
+            $$1.a($$2, $$0.b(b, Integer.valueOf($$4 - 1)), 2);
+         } else if (!a((dge)$$1, $$2)) {
+            a(null, $$0, $$1, $$2);
+         }
+      } else if ($$4 < 7) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf(7)), 2);
+      }
    }
 
    @Override
-   protected boolean a(dxv $$0, etw $$1) {
+   public void a(dgz $$0, dxo $$1, jh $$2, bvb $$3, float $$4) {
+      if ($$0 instanceof arx $$5
+         && $$0.A.i() < $$4 - 0.5F
+         && $$3 instanceof bvx
+         && ($$3 instanceof cpo || $$5.O().b(dgv.c))
+         && $$3.dr() * $$3.dr() * $$3.ds() > 0.512F) {
+         a($$3, $$1, $$0, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static void a(@Nullable bvb $$0, dxo $$1, dgz $$2, jh $$3) {
+      dxo $$4 = a($$1, dkf.j.m(), $$2, $$3);
+      $$2.b($$3, $$4);
+      $$2.a(eck.c, $$3, eck.a.a($$0, $$4));
+   }
+
+   private static boolean a(dge $$0, jh $$1) {
+      return $$0.a_($$1.d()).a(axk.cA);
+   }
+
+   private static boolean a(dhc $$0, jh $$1) {
+      for (jh $$2 : jh.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
+         if ($$0.b_($$2).a(axq.a)) {
+            return true;
+         }
+      }
+
       return false;
    }
 
    @Override
-   protected void a(dxv $$0, dhi $$1, jh $$2, bvk $$3) {
-      if ($$3.o(false) && !$$1.C && $$1.c_($$2) instanceof dwq $$5 && !$$5.c()) {
-         $$3.a(this, $$2);
-         dwq.c($$1, $$2, $$0, $$5);
-      }
+   protected void a(dxp.a<dkd, dxo> $$0) {
+      $$0.a(b);
    }
 
-   @Nullable
    @Override
-   public eux a(ash $$0, bvk $$1, jh $$2) {
-      if ($$0.c_($$2) instanceof dwq $$4) {
-         fby $$6 = $$4.a($$0, $$2);
-         if ($$6 == null) {
-            return null;
-         } else {
-            return $$1 instanceof cra
-               ? new eux($$0, $$6, fby.c, 0.0F, 0.0F, Set.of(), eux.c)
-               : new eux($$0, $$6, fby.c, 0.0F, 0.0F, bwu.a(bwu.l, bwu.k), eux.c);
-         }
-      } else {
-         return null;
-      }
+   protected boolean a(dxo $$0, euf $$1) {
+      return false;
    }
 }
