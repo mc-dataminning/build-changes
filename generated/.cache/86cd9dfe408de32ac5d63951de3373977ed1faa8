@@ -1,4 +1,4 @@
-// 1.20.6 Release Candidate 1	2026-08-28T02:19:53.0285401	vanilla/Tags for minecraft:block
+// 1.20.6	2026-08-28T02:22:43.8300136	vanilla/Tags for minecraft:block
 882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
@@ -48,8 +48,8 @@ d89ad094b9c42adca9e4e2addfcde9c9e6b76c08 data\minecraft\tags\blocks\bamboo_plant
 31c793313c9b85d3bd3d53198d21098ea2adaf78 data\minecraft\tags\blocks\camel_sand_step_sound_blocks.json
 a5350542ad1610ab7b06a994e138612b780495e3 data\minecraft\tags\blocks\base_stone_nether.json
 51d8bf3885db56e8d2baea74147e7db3db031d51 data\minecraft\tags\blocks\maintains_farmland.json
-e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\blocks\smelts_to_glass.json
 45aac43b276cae0f4b4ca7dccad68ee2cf4f1ca9 data\minecraft\tags\blocks\sand.json
+e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\blocks\smelts_to_glass.json
 47430d117fba512dfb622420bab8681888a6f36b data\minecraft\tags\blocks\sniffer_diggable_block.json
 dcfcde0b3716705215c339c3ed7bb1fe6da2cdb2 data\minecraft\tags\blocks\vibration_resonators.json
 2f6f453e3ae95b8921ba5b843b704a77117e01a7 data\minecraft\tags\blocks\climbable.json
@@ -140,8 +140,8 @@ da1d12f678963493519caaff63a76241b220579f data\minecraft\tags\blocks\axolotls_spa
 12567916f0340a8d2a6baf0d253dcc8f8b4817b5 data\minecraft\tags\blocks\overworld_natural_logs.json
 0cc76a2a135e15e63ba435b9ae22e215cc9637fb data\minecraft\tags\blocks\replaceable.json
 6434eab593808ccdda380aa89dbf4977e908d7b4 data\minecraft\tags\blocks\mangrove_roots_can_grow_through.json
-fef1644c33bdd401b55824ed29a4df7cd9464fd0 data\minecraft\tags\blocks\wool.json
 042f4a31ec358e6815cd7410f054de80cc7c8fb7 data\minecraft\tags\blocks\cherry_logs.json
+fef1644c33bdd401b55824ed29a4df7cd9464fd0 data\minecraft\tags\blocks\wool.json
 35fe618c61441f3d81e2e483e2ab88847ac90a63 data\minecraft\tags\blocks\ceiling_hanging_signs.json
 65111dce44b1fa957a52d1cce0ae3f4eebfe803f data\minecraft\tags\blocks\frog_prefer_jump_to.json
 64b66f0912167ef1fa6a5673e31b46d65e27c9af data\minecraft\tags\blocks\dragon_immune.json

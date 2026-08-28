@@ -1,4 +1,4 @@
-// 1.20.6 Release Candidate 1	2026-08-28T02:19:53.0258719	vanilla/Tags for minecraft:worldgen/biome
+// 1.20.6	2026-08-28T02:22:43.8269907	vanilla/Tags for minecraft:worldgen/biome
 15343ca7e7931ca3b093f52c77b5d7fae920fed9 data\minecraft\tags\worldgen\biome\has_structure\nether_fossil.json
 ec7bbb0c9b5fc5378f8716f54862806404f04360 data\minecraft\tags\worldgen\biome\has_structure\ocean_monument.json
 068e9616fd14b1280352ffc9d66cc3846c00a5e4 data\minecraft\tags\worldgen\biome\is_ocean.json
@@ -10,9 +10,9 @@ ec7bbb0c9b5fc5378f8716f54862806404f04360 data\minecraft\tags\worldgen\biome\has_
 b020f6cdcd2d955793278b2f89a178a1d31e599a data\minecraft\tags\worldgen\biome\has_structure\stronghold.json
 45e2314b6fbf2e847bd70c163e678e0e756a1640 data\minecraft\tags\worldgen\biome\has_structure\ancient_city.json
 65aef629239b5fa923be6767bb43c837ebb35e8a data\minecraft\tags\worldgen\biome\plays_underwater_music.json
-1d08d3b15c59b4c742161ec69693b66fc2ef75d6 data\minecraft\tags\worldgen\biome\has_structure\ocean_ruin_cold.json
-ff13fafcc6c847d2ce8a4262842bf1316dc580ea data\minecraft\tags\worldgen\biome\has_structure\buried_treasure.json
 f3ef2895c49e29111297e950661e5bc71a79989e data\minecraft\tags\worldgen\biome\has_structure\desert_pyramid.json
+ff13fafcc6c847d2ce8a4262842bf1316dc580ea data\minecraft\tags\worldgen\biome\has_structure\buried_treasure.json
+1d08d3b15c59b4c742161ec69693b66fc2ef75d6 data\minecraft\tags\worldgen\biome\has_structure\ocean_ruin_cold.json
 c06b5e8bd8ff65b18bb22032fe23b338919aa311 data\minecraft\tags\worldgen\biome\is_overworld.json
 f3ef2895c49e29111297e950661e5bc71a79989e data\minecraft\tags\worldgen\biome\spawns_gold_rabbits.json
 cfdcb319da5d14a39f3b32e5f0e83e496eee9e43 data\minecraft\tags\worldgen\biome\snow_golem_melts.json
@@ -41,8 +41,8 @@ bedc0e33282a8fb53f5a5a3285d91db0b9ac5ff1 data\minecraft\tags\worldgen\biome\has_
 6525dda69924a36f16797ed873bffc083e1f4de5 data\minecraft\tags\worldgen\biome\has_structure\ruined_portal_swamp.json
 7ab168754d6e78ecef39a6d1baa046622304b683 data\minecraft\tags\worldgen\biome\polar_bears_spawn_on_alternate_blocks.json
 becbb3e6d736ab8feb41683bc5afacce936c4825 data\minecraft\tags\worldgen\biome\has_structure\village_plains.json
-45e2314b6fbf2e847bd70c163e678e0e756a1640 data\minecraft\tags\worldgen\biome\mineshaft_blocking.json
 92d2cbd84ddef8c77972b539dd8c7cffaa131aed data\minecraft\tags\worldgen\biome\more_frequent_drowned_spawns.json
+45e2314b6fbf2e847bd70c163e678e0e756a1640 data\minecraft\tags\worldgen\biome\mineshaft_blocking.json
 e230510c9f5c1188c61cd1ad728a3d9a6bd3125f data\minecraft\tags\worldgen\biome\without_patrol_spawns.json
 f813468c93191d40d0ec09e399b71a5f9c33ce5d data\minecraft\tags\worldgen\biome\has_structure\ocean_ruin_warm.json
 f3ef2895c49e29111297e950661e5bc71a79989e data\minecraft\tags\worldgen\biome\has_structure\ruined_portal_desert.json
@@ -50,8 +50,8 @@ c3d4e55bd4ed5d178abb10df76626eccdab7c209 data\minecraft\tags\worldgen\biome\has_
 de5384c32afb2e47687069231890d76a1c6681c4 data\minecraft\tags\worldgen\biome\stronghold_biased_to.json
 6525dda69924a36f16797ed873bffc083e1f4de5 data\minecraft\tags\worldgen\biome\allows_surface_slime_spawns.json
 3fa322f81d21600f5bd69c9cc2d314568a07b192 data\minecraft\tags\worldgen\biome\spawns_warm_variant_frogs.json
-47f02d647a88fb06b4299217e2a5e87c598bc56a data\minecraft\tags\worldgen\biome\is_forest.json
 f435c629c4e64303cb04329925903bda3d917ba9 data\minecraft\tags\worldgen\biome\is_hill.json
+47f02d647a88fb06b4299217e2a5e87c598bc56a data\minecraft\tags\worldgen\biome\is_forest.json
 eac36e45c24e9f2ff3c1f50ad2ea4fc921892916 data\minecraft\tags\worldgen\biome\has_structure\village_taiga.json
 d8269ffe956b3bf8819c11c41e405d3331434e8e data\minecraft\tags\worldgen\biome\has_structure\mineshaft.json
 f3ef2895c49e29111297e950661e5bc71a79989e data\minecraft\tags\worldgen\biome\has_structure\village_desert.json
@@ -59,8 +59,8 @@ f3ef2895c49e29111297e950661e5bc71a79989e data\minecraft\tags\worldgen\biome\has_
 66e7b7e8a1eeff59655dd708585483f40385eab1 data\minecraft\tags\worldgen\biome\water_on_map_outlines.json
 325e601b9c75d59207dfffc1a0149d9e965bd45e data\minecraft\tags\worldgen\biome\has_structure\ruined_portal_mountain.json
 91b0eb2c9a1bca9eaa7aeb065cf6566cc9ef4ef6 data\minecraft\tags\worldgen\biome\has_structure\end_city.json
-e986c1b86e1b4d4abe4912ecfcabc31d8d7d576e data\minecraft\tags\worldgen\biome\is_nether.json
 f85bfa0d4b462706e486bac541e720ebc630330c data\minecraft\tags\worldgen\biome\is_jungle.json
+e986c1b86e1b4d4abe4912ecfcabc31d8d7d576e data\minecraft\tags\worldgen\biome\is_nether.json
 6410267e4c6c6e433ffa5df5cb5f1fefed919409 data\minecraft\tags\worldgen\biome\produces_corals_from_bonemeal.json
 45707864d688ef531d52bd0287366ea1e7736874 data\minecraft\tags\worldgen\biome\has_structure\mineshaft_mesa.json
 f3dc9f00fb98a763e374de9b2aa55e6707d3a6f3 data\minecraft\tags\worldgen\biome\is_taiga.json

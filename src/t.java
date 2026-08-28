@@ -23,9 +23,9 @@ public class t implements ad {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "1.20.6-rc1";
-      this.e = false;
-      this.f = new epq(3838, "main");
+      this.d = "1.20.6";
+      this.e = true;
+      this.f = new epq(3839, "main");
       this.g = aa.c();
       this.h = 32;
       this.i = 41;
