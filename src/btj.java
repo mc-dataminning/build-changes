@@ -1,35 +1,75 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import javax.annotation.Nullable;
 
-public record btj(cu d) {
-   public static final btj a = new btj(cu.a.a().b());
-   public static final Codec<btj> b = cu.a.xmap(btj::new, btj::a);
-   public static final String c = "lock";
+public sealed interface btj permits btj.d, btj.a, btj.c, btj.f {
+   btj.d a = new btj.d(btj.e.b, btj.b.b);
+   btj.d b = new btj.d(btj.e.c, btj.b.b);
+   btj.d c = new btj.d(btj.e.a, btj.b.b);
+   btj.a d = new btj.a();
+   btj.c e = new btj.c();
+   btj.f f = new btj.f();
 
-   public boolean a(cxo $$0) {
-      return this.d.a($$0);
+   default boolean a() {
+      return false;
    }
 
-   public void a(ux $$0, js.a $$1) {
-      if (this != a) {
-         DataResult<vu> $$2 = b.encode(this, $$1.a(vl.a), new ux());
-         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
+   public static record a() implements btj {
+   }
+
+   public static record b(boolean c, @Nullable cxp d) {
+      static btj.b a = new btj.b(false, null);
+      static btj.b b = new btj.b(true, null);
+
+      public boolean a() {
+         return this.c;
+      }
+
+      @Nullable
+      public cxp b() {
+         return this.d;
       }
    }
 
-   public static btj b(ux $$0, js.a $$1) {
-      if ($$0.b("lock", 10)) {
-         DataResult<Pair<btj, vu>> $$2 = b.decode($$1.a(vl.a), $$0.c("lock"));
-         if ($$2.isSuccess()) {
-            return (btj)((Pair)$$2.getOrThrow()).getFirst();
-         }
-      }
-
-      return a;
+   public static record c() implements btj {
    }
 
-   public cu a() {
-      return this.d;
+   public static record d(btj.e g, btj.b h) implements btj {
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      public btj.d a(cxp $$0) {
+         return new btj.d(this.g, new btj.b(true, $$0));
+      }
+
+      public btj.d b() {
+         return new btj.d(this.g, btj.b.a);
+      }
+
+      public boolean c() {
+         return this.h.c;
+      }
+
+      @Nullable
+      public cxp d() {
+         return this.h.d;
+      }
+
+      public btj.e e() {
+         return this.g;
+      }
+
+      public btj.b f() {
+         return this.h;
+      }
+   }
+
+   public static enum e {
+      a,
+      b,
+      c;
+   }
+
+   public static record f() implements btj {
    }
 }

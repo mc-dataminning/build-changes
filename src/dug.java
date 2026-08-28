@@ -1,45 +1,61 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dug extends dno {
-   public static final MapCodec<dug> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dno::b), t()).apply($$0, dug::new));
+public class dug extends dkm {
+   public static final MapCodec<dug> a = b(dug::new);
 
    @Override
    public MapCodec<dug> a() {
-      return e;
+      return a;
    }
 
-   public dug(jq<bum> $$0, float $$1, dxt.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dug(dap $$0, dxt.d $$1) {
-      super($$0, $$1);
+   protected dug(dxu.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dkn.ei) || $$0.a(dkn.ej) || $$0.a(dkn.ek);
-   }
-
-   @Override
-   public void a(dxu $$0, dhh $$1, jh $$2, bam $$3) {
-      fcr $$4 = this.a($$0, $$1, $$2, fcc.a());
-      fbx $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.d;
-      double $$7 = (double)$$2.w() + $$5.f;
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(ls.af, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
-         }
+   protected void b(dxv $$0, dhi $$1, jh $$2, dxv $$3, boolean $$4) {
+      if ($$1.G_().i()) {
+         $$1.a($$2, dko.aV.m(), 3);
+         $$1.c(2009, $$2, 0);
+         $$1.a(null, $$2, axf.CK, axg.e, 1.0F, (1.0F + $$1.H_().i() * 0.2F) * 0.7F);
       }
    }
 
    @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, bvj $$3) {
-      if ($$1 instanceof ash $$4 && $$1.al() != btf.a && $$3 instanceof bwf $$5 && !$$5.a($$4, $$1.aj().r())) {
-         $$5.a(new buo(buq.t, 40));
+   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
+      jm $$4 = jm.b($$3);
+      if ($$4 != jm.b) {
+         jh $$5 = $$2.a($$4);
+         dxv $$6 = $$1.a_($$5);
+         if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
+            double $$7 = (double)$$2.u();
+            double $$8 = (double)$$2.v();
+            double $$9 = (double)$$2.w();
+            if ($$4 == jm.a) {
+               $$8 -= 0.05;
+               $$7 += $$3.j();
+               $$9 += $$3.j();
+            } else {
+               $$8 += $$3.j() * 0.8;
+               if ($$4.o() == jm.a.a) {
+                  $$9 += $$3.j();
+                  if ($$4 == jm.f) {
+                     $$7++;
+                  } else {
+                     $$7 += 0.05;
+                  }
+               } else {
+                  $$7 += $$3.j();
+                  if ($$4 == jm.d) {
+                     $$9++;
+                  } else {
+                     $$9 += 0.05;
+                  }
+               }
+            }
+
+            $$1.a(ls.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+         }
       }
    }
 }

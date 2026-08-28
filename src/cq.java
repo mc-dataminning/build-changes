@@ -3,15 +3,15 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cq(cq.a c) implements dz<dad> {
+public record cq(cq.a c) implements dz<dae> {
    public static final Codec<cq> a = cq.a.a.xmap(cq::new, cq::b);
 
    @Override
-   public kt<dad> a() {
+   public kt<dae> a() {
       return ku.ae;
    }
 
-   public boolean a(cxo $$0, dad $$1) {
+   public boolean a(cxp $$0, dae $$1) {
       return this.c.a($$1);
    }
 
@@ -19,17 +19,17 @@ public record cq(cq.a c) implements dz<dad> {
       return this.c;
    }
 
-   public static record a(Optional<dad.a> b, Optional<Boolean> c, Optional<Boolean> d) implements Predicate<dad> {
+   public static record a(Optional<dae.a> b, Optional<Boolean> c, Optional<Boolean> d) implements Predicate<dae> {
       public static final Codec<cq.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  dad.a.g.optionalFieldOf("shape").forGetter(cq.a::a),
+                  dae.a.g.optionalFieldOf("shape").forGetter(cq.a::a),
                   Codec.BOOL.optionalFieldOf("has_twinkle").forGetter(cq.a::b),
                   Codec.BOOL.optionalFieldOf("has_trail").forGetter(cq.a::c)
                )
                .apply($$0, cq.a::new)
       );
 
-      public boolean a(dad $$0) {
+      public boolean a(dae $$0) {
          if (this.b.isPresent() && this.b.get() != $$0.a()) {
             return false;
          } else {
@@ -37,7 +37,7 @@ public record cq(cq.a c) implements dz<dad> {
          }
       }
 
-      public Optional<dad.a> a() {
+      public Optional<dae.a> a() {
          return this.b;
       }
 

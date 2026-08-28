@@ -1,95 +1,41 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class ewr {
-   private final ash a;
-   private final bbp b;
-   private final Map<alz, ewr.b> c;
-   private final float d;
+public record ewr<T>(aly<kd<T>> d, Codec<T> e, ewr.a<T> f) {
+   public static final ewr<ezy> a = new ewr<>(mb.bi, ezy.e, e());
+   public static final ewr<eyd> b = new ewr<>(mb.bh, eyf.c, e());
+   public static final ewr<ewu> c = new ewr<>(mb.bg, ewu.d, f());
 
-   public ewr(ash $$0, bbp $$1, Map<alz, ewr.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public void a(ewv $$0, aly<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   public ash a() {
-      return this.a;
+   public static Stream<ewr<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public bbp b() {
-      return this.b;
+   private static <T extends ewq> ewr.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public void a(alz $$0, Consumer<cxo> $$1) {
-      ewr.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
+   private static ewr.a<ewu> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public float c() {
+   public aly<kd<T>> b() {
       return this.d;
    }
 
-   public static class a {
-      private final ash a;
-      private final bbp.a b = new bbp.a();
-      private final Map<alz, ewr.b> c = Maps.newHashMap();
-      private float d;
+   public Codec<T> c() {
+      return this.e;
+   }
 
-      public a(ash $$0) {
-         this.a = $$0;
-      }
-
-      public ash a() {
-         return this.a;
-      }
-
-      public <T> ewr.a a(bbn<T> $$0, T $$1) {
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      public <T> ewr.a b(bbn<T> $$0, @Nullable T $$1) {
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      public <T> T a(bbn<T> $$0) {
-         return this.b.a($$0);
-      }
-
-      @Nullable
-      public <T> T b(bbn<T> $$0) {
-         return this.b.b($$0);
-      }
-
-      public ewr.a a(alz $$0, ewr.b $$1) {
-         ewr.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public ewr.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ewr a(bbo $$0) {
-         bbp $$1 = this.b.a($$0);
-         return new ewr(this.a, $$1, this.c, this.d);
-      }
+   public ewr.a<T> d() {
+      return this.f;
    }
 
    @FunctionalInterface
-   public interface b {
-      void add(Consumer<cxo> var1);
+   public interface a<T> {
+      void run(ewv var1, aly<T> var2, T var3);
    }
 }

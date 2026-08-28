@@ -22,16 +22,16 @@ public class amb {
          if (ma.aC.i().isEmpty()) {
             throw new IllegalStateException("Unable to load registries");
          } else {
-            dnm.b();
-            dlx.b();
-            if (bvq.a(bvq.bS) == null) {
+            dnn.b();
+            dly.b();
+            if (bvr.a(bvr.bS) == null) {
                throw new IllegalStateException("Failed loading EntityTypes");
             } else {
                ho.a();
                lb.a();
                kn.a();
                ma.a();
-               cwe.a();
+               cwf.a();
                d();
                b.set(Duration.between($$0, Instant.now()).toMillis());
             }
@@ -51,10 +51,10 @@ public class amb {
 
    private static void a(final Set<String> $$0) {
       final us $$1 = us.a();
-      dhd $$2 = new dhd(csu.f.a());
-      $$2.a(new dhd.c() {
+      dhe $$2 = new dhe(csv.f.a());
+      $$2.a(new dhe.c() {
          @Override
-         public <T extends dhd.g<T>> void a(dhd.e<T> $$0x, dhd.f<T> $$1x) {
+         public <T extends dhe.g<T>> void a(dhe.e<T> $$0x, dhe.f<T> $$1x) {
             if (!$$1.b($$0.b())) {
                $$0.add($$0.a());
             }
@@ -64,11 +64,11 @@ public class amb {
 
    public static Set<String> b() {
       Set<String> $$0 = new TreeSet<>();
-      a(ma.s, bxi::c, $$0);
-      a(ma.f, bvq::g, $$0);
-      a(ma.d, bum::d, $$0);
-      a(ma.g, cxk::l, $$0);
-      a(ma.e, dxt::v, $$0);
+      a(ma.s, bxj::c, $$0);
+      a(ma.f, bvr::g, $$0);
+      a(ma.d, bun::d, $$0);
+      a(ma.g, cxl::l, $$0);
+      a(ma.e, dxu::v, $$0);
       a(ma.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
       a($$0);
       return $$0;
@@ -98,7 +98,7 @@ public class amb {
          ex.b();
       }
 
-      bxo.a();
+      bxp.a();
    }
 
    private static void d() {

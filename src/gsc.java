@@ -1,22 +1,17 @@
-public class gsc extends gqj<cjw, gyg, gbs> {
-   private static final alz a = alz.b("textures/entity/goat/goat.png");
+public class gsc extends gtz<bvy> {
+   private static final alz a = alz.b("textures/entity/squid/glow_squid.png");
 
-   public gsc(grp.a $$0) {
-      super($$0, new gbs($$0.a(gem.aU)), new gbs($$0.a(gem.aV)), 0.7F);
+   public gsc(grq.a $$0, gdp $$1, gdp $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public alz a(gyg $$0) {
+   @Override
+   public alz a(gzt $$0) {
       return a;
    }
 
-   public gyg b() {
-      return new gyg();
-   }
-
-   public void a(cjw $$0, gyg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.go();
-      $$1.b = $$0.gp();
-      $$1.c = $$0.gB();
+   protected int a(bvy $$0, jh $$1) {
+      int $$2 = (int)bae.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

@@ -34,7 +34,7 @@ public class adb implements aac<acr> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static adb a(bsy $$0) {
+   public static adb a(bsz $$0) {
       return new adb($$0.h(), new adb.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class adb implements aac<acr> {
       return new adb($$0, g);
    }
 
-   public static adb b(bsy $$0) {
+   public static adb b(bsz $$0) {
       return new adb($$0.h(), new adb.f($$0.j()));
    }
 
-   public static adb c(bsy $$0) {
+   public static adb c(bsz $$0) {
       return new adb($$0.h(), new adb.e($$0.i()));
    }
 
-   public static adb d(bsy $$0) {
+   public static adb d(bsz $$0) {
       return new adb($$0.h(), new adb.h($$0.k(), $$0.l()));
    }
 
-   public static adb e(bsy $$0) {
+   public static adb e(bsz $$0) {
       return new adb($$0.h(), new adb.g($$0.m(), $$0.n(), $$0.o()));
    }
 
@@ -97,13 +97,13 @@ public class adb implements aac<acr> {
    static class a implements adb.c {
       private final xv a;
       private final float b;
-      private final bsy.a c;
-      private final bsy.b d;
+      private final bsz.a c;
+      private final bsz.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(bsy $$0) {
+      a(bsz $$0) {
          this.a = $$0.i();
          this.b = $$0.j();
          this.c = $$0.k();
@@ -116,8 +116,8 @@ public class adb implements aac<acr> {
       private a(xg $$0) {
          this.a = xx.d.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(bsy.a.class);
-         this.d = $$0.b(bsy.b.class);
+         this.c = $$0.b(bsz.a.class);
+         this.d = $$0.b(bsz.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class adb implements aac<acr> {
    }
 
    public interface b {
-      default void a(UUID $$0, xv $$1, float $$2, bsy.a $$3, bsy.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, xv $$1, float $$2, bsz.a $$3, bsz.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class adb implements aac<acr> {
       default void a(UUID $$0, xv $$1) {
       }
 
-      default void a(UUID $$0, bsy.a $$1, bsy.b $$2) {
+      default void a(UUID $$0, bsz.a $$1, bsz.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class adb implements aac<acr> {
    }
 
    static class h implements adb.c {
-      private final bsy.a a;
-      private final bsy.b b;
+      private final bsz.a a;
+      private final bsz.b b;
 
-      h(bsy.a $$0, bsy.b $$1) {
+      h(bsz.a $$0, bsz.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(xg $$0) {
-         this.a = $$0.b(bsy.a.class);
-         this.b = $$0.b(bsy.b.class);
+         this.a = $$0.b(bsz.a.class);
+         this.b = $$0.b(bsz.b.class);
       }
 
       @Override

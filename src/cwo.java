@@ -1,48 +1,23 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Function;
-
-public record cwo<T>(Optional<jq<T>> a, aly<T> b) {
-   public cwo(jq<T> $$0) {
-      this(Optional.of($$0), $$0.e().orElseThrow());
+public class cwo extends cxl implements cyk {
+   public cwo(cxl.a $$0) {
+      super($$0);
    }
 
-   public cwo(aly<T> $$0) {
-      this(Optional.empty(), $$0);
+   @Override
+   public btj a(dhi $$0, cpx $$1, bti $$2) {
+      cxp $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), axf.ih, axg.h, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ash $$4) {
+         cqq.a(cqz::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
+      }
+
+      $$1.b(axp.c.b(this));
+      $$3.a(1, $$1);
+      return btj.a;
    }
 
-   public static <T> Codec<cwo<T>> a(aly<kd<T>> $$0, Codec<jq<T>> $$1) {
-      return Codec.either($$1, aly.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
-         .xmap(cwo::a, cwo::a);
-   }
-
-   public static <T> zt<xg, cwo<T>> a(aly<kd<T>> $$0, zt<xg, jq<T>> $$1) {
-      return zt.a(zr.a($$1, aly.b($$0)), cwo::a, cwo::a);
-   }
-
-   public Either<jq<T>, aly<T>> a() {
-      return this.a.<Either<jq<T>, aly<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
-   }
-
-   public static <T> cwo<T> a(Either<jq<T>, aly<T>> $$0) {
-      return (cwo<T>)$$0.map(cwo::new, cwo::new);
-   }
-
-   public Optional<T> a(kd<T> $$0) {
-      return this.a.<T>map(jq::a).or(() -> $$0.f(this.b));
-   }
-
-   public Optional<jq<T>> a(js.a $$0) {
-      return this.a.or(() -> $$0.d(this.b.c()).a(this.b));
-   }
-
-   public Optional<jq<T>> b() {
-      return this.a;
-   }
-
-   public aly<T> c() {
-      return this.b;
+   @Override
+   public cqq a(dhi $$0, ka $$1, cxp $$2, jm $$3) {
+      return new cqz($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

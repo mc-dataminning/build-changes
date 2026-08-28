@@ -16,7 +16,7 @@ public class apa {
    private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xv.b("commands.place.template.invalid", $$0));
    private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xv.c("commands.place.template.failed"));
    private static final SuggestionProvider<ew> f = ($$0, $$1) -> {
-      esm $$2 = ((ew)$$0.getSource()).e().r();
+      esn $$2 = ((ew)$$0.getSource()).e().r();
       return fb.a($$2.a(), $$1);
    };
 
@@ -78,14 +78,14 @@ public class apa {
                   .then(
                      ((RequiredArgumentBuilder)ex.a("template", fx.a())
                            .suggests(f)
-                           .executes($$0x -> a((ew)$$0x.getSource(), fx.a($$0x, "template"), jh.a((ka)((ew)$$0x.getSource()).d()), drb.a, dpk.a, 1.0F, 0)))
+                           .executes($$0x -> a((ew)$$0x.getSource(), fx.a($$0x, "template"), jh.a((ka)((ew)$$0x.getSource()).d()), drc.a, dpl.a, 1.0F, 0)))
                         .then(
                            ((RequiredArgumentBuilder)ex.a("pos", gs.a())
-                                 .executes($$0x -> a((ew)$$0x.getSource(), fx.a($$0x, "template"), gs.a($$0x, "pos"), drb.a, dpk.a, 1.0F, 0)))
+                                 .executes($$0x -> a((ew)$$0x.getSource(), fx.a($$0x, "template"), gs.a($$0x, "pos"), drc.a, dpl.a, 1.0F, 0)))
                               .then(
                                  ((RequiredArgumentBuilder)ex.a("rotation", gk.a())
                                        .executes(
-                                          $$0x -> a((ew)$$0x.getSource(), fx.a($$0x, "template"), gs.a($$0x, "pos"), gk.a($$0x, "rotation"), dpk.a, 1.0F, 0)
+                                          $$0x -> a((ew)$$0x.getSource(), fx.a($$0x, "template"), gs.a($$0x, "pos"), gk.a($$0x, "rotation"), dpl.a, 1.0F, 0)
                                        ))
                                     .then(
                                        ((RequiredArgumentBuilder)ex.a("mirror", gj.a())
@@ -136,11 +136,11 @@ public class apa {
       );
    }
 
-   public static int a(ew $$0, jq.c<egh<?, ?>> $$1, jh $$2) throws CommandSyntaxException {
+   public static int a(ew $$0, jq.c<egi<?, ?>> $$1, jh $$2) throws CommandSyntaxException {
       ash $$3 = $$0.e();
-      egh<?, ?> $$4 = $$1.a();
-      dgn $$5 = new dgn($$2);
-      a($$3, new dgn($$5.h - 1, $$5.i - 1), new dgn($$5.h + 1, $$5.i + 1));
+      egi<?, ?> $$4 = $$1.a();
+      dgo $$5 = new dgo($$2);
+      a($$3, new dgo($$5.h - 1, $$5.i - 1), new dgo($$5.h + 1, $$5.i + 1));
       if (!$$4.a($$3, $$3.m().g(), $$3.H_(), $$2)) {
          throw a.create();
       } else {
@@ -150,11 +150,11 @@ public class apa {
       }
    }
 
-   public static int a(ew $$0, jq<ept> $$1, alz $$2, int $$3, jh $$4) throws CommandSyntaxException {
+   public static int a(ew $$0, jq<epu> $$1, alz $$2, int $$3, jh $$4) throws CommandSyntaxException {
       ash $$5 = $$0.e();
-      dgn $$6 = new dgn($$4);
+      dgo $$6 = new dgo($$4);
       a($$5, $$6, $$6);
-      if (!epn.a($$5, $$1, $$2, $$3, $$4, false)) {
+      if (!epo.a($$5, $$1, $$2, $$3, $$4, false)) {
          throw b.create();
       } else {
          $$0.a(() -> xv.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
@@ -162,30 +162,30 @@ public class apa {
       }
    }
 
-   public static int b(ew $$0, jq.c<eoj> $$1, jh $$2) throws CommandSyntaxException {
+   public static int b(ew $$0, jq.c<eok> $$1, jh $$2) throws CommandSyntaxException {
       ash $$3 = $$0.e();
-      eoj $$4 = $$1.a();
-      dzq $$5 = $$3.m().g();
-      eor $$6 = $$4.a($$0.u(), $$5, $$5.d(), $$3.m().i(), $$3.r(), $$3.D(), new dgn($$2), 0, $$3, $$0x -> true);
+      eok $$4 = $$1.a();
+      dzr $$5 = $$3.m().g();
+      eos $$6 = $$4.a($$0.u(), $$5, $$5.d(), $$3.m().i(), $$3.r(), $$3.D(), new dgo($$2), 0, $$3, $$0x -> true);
       if (!$$6.b()) {
          throw c.create();
       } else {
-         eob $$7 = $$6.a();
-         dgn $$8 = new dgn(kj.a($$7.h()), kj.a($$7.j()));
-         dgn $$9 = new dgn(kj.a($$7.k()), kj.a($$7.m()));
+         eoc $$7 = $$6.a();
+         dgo $$8 = new dgo(kj.a($$7.h()), kj.a($$7.j()));
+         dgo $$9 = new dgo(kj.a($$7.k()), kj.a($$7.m()));
          a($$3, $$8, $$9);
-         dgn.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.b(), $$5, $$3.H_(), new eob($$3x.d(), $$3.L_(), $$3x.e(), $$3x.f(), $$3.am() + 1, $$3x.g()), $$3x));
+         dgo.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.b(), $$5, $$3.H_(), new eoc($$3x.d(), $$3.L_(), $$3x.e(), $$3x.f(), $$3.am() + 1, $$3x.g()), $$3x));
          String $$10 = $$1.h().a().toString();
          $$0.a(() -> xv.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
          return 1;
       }
    }
 
-   public static int a(ew $$0, alz $$1, jh $$2, drb $$3, dpk $$4, float $$5, int $$6) throws CommandSyntaxException {
+   public static int a(ew $$0, alz $$1, jh $$2, drc $$3, dpl $$4, float $$5, int $$6) throws CommandSyntaxException {
       ash $$7 = $$0.e();
-      esm $$8 = $$7.r();
+      esn $$8 = $$7.r();
 
-      Optional<esl> $$9;
+      Optional<esm> $$9;
       try {
          $$9 = $$8.b($$1);
       } catch (aa var13) {
@@ -195,14 +195,14 @@ public class apa {
       if ($$9.isEmpty()) {
          throw d.create($$1);
       } else {
-         esl $$12 = $$9.get();
-         a($$7, new dgn($$2), new dgn($$2.a($$12.a())));
-         esh $$13 = new esh().a($$4).a($$3);
+         esm $$12 = $$9.get();
+         a($$7, new dgo($$2), new dgo($$2.a($$12.a())));
+         esi $$13 = new esi().a($$4).a($$3);
          if ($$5 < 1.0F) {
-            $$13.b().a(new ero($$5)).a(dwo.b((long)$$6));
+            $$13.b().a(new erp($$5)).a(dwp.b((long)$$6));
          }
 
-         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dwo.b((long)$$6), 2);
+         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dwp.b((long)$$6), 2);
          if (!$$14) {
             throw e.create();
          } else {
@@ -212,8 +212,8 @@ public class apa {
       }
    }
 
-   private static void a(ash $$0, dgn $$1, dgn $$2) throws CommandSyntaxException {
-      if (dgn.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
+   private static void a(ash $$0, dgo $$1, dgo $$2) throws CommandSyntaxException {
+      if (dgo.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
          throw gs.a.create();
       }
    }

@@ -1,98 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gof implements gnw<dvt> {
+   public static final hdu a = new hdu(hbk.d, alz.b("entity/enchanting_table_book"));
+   private final gav b;
 
-public class gof extends goj {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final fbx k = new fbx(0.0, -0.32F, 0.073F);
-   private final Map<dzg, gof.a> l;
-
-   public gof(gnw.a $$0) {
-      super($$0);
-      this.l = dzg.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gof.a($$0.a(gem.c($$1)))));
+   public gof(gnx.a $$0) {
+      this.b = new gav($$0.a(gen.G));
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
-   }
+   public void a(dvt $$0, float $$1, fgs $$2, gll $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + bae.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-   @Override
-   public float c() {
-      return 0.9F;
-   }
-
-   @Override
-   public void a(dwj $$0, float $$1, fgr $$2, glk $$3, int $$4, int $$5) {
-      dxu $$6 = $$0.m();
-      dro $$7 = (dro)$$6.b();
-      dzg $$8 = dro.a($$7);
-      gof.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   @Override
-   void a(fgr $$0, float $$1, dxu $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   hdt a(dzg $$0) {
-      return gmf.b($$0);
-   }
-
-   @Override
-   fbx d() {
-      return k;
-   }
-
-   public static get e() {
-      gev $$0 = new gev();
-      gex $$1 = $$0.a();
-      $$1.a("board", ges.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), gep.a);
-      $$1.a("plank", ges.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), gep.a);
-      gex $$2 = $$1.a("normalChains", ges.c(), gep.a);
-      $$2.a("chainL1", ges.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gep.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", ges.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gep.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", ges.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gep.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", ges.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gep.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", ges.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), gep.a);
-      return get.a($$0, 64, 32);
-   }
-
-   public static final class a extends gcg {
-      public final gen a;
-      public final gen b;
-      public final gen c;
-
-      public a(gen $$0) {
-         super($$0, glu::g);
-         this.a = $$0.b("plank");
-         this.c = $$0.b("normalChains");
-         this.b = $$0.b("vChains");
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
 
-      public void a(dxu $$0) {
-         boolean $$1 = !($$0.b() instanceof dll);
-         this.a.k = $$1;
-         this.b.k = false;
-         this.c.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dyk.a);
-            this.c.k = !$$2;
-            this.b.k = $$2;
-         }
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
       }
+
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = bae.h($$1, $$0.c, $$0.b);
+      float $$10 = bae.i($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = bae.i($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = bae.h($$1, $$0.g, $$0.f);
+      this.b.a($$6, bae.a($$10, 0.0F, 1.0F), bae.a($$11, 0.0F, 1.0F), $$12);
+      fgw $$13 = a.a($$3, glv::d);
+      this.b.a($$2, $$13, $$4, $$5);
+      $$2.b();
    }
 }

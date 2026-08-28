@@ -1,63 +1,80 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class clj<T extends cld> {
-   private static clj<?>[] l = new clj[0];
-   public static final clj<ckz> a = a(ckz.class, "HoldingPattern");
-   public static final clj<clh> b = a(clh.class, "StrafePlayer");
-   public static final clj<clb> c = a(clb.class, "LandingApproach");
-   public static final clj<clc> d = a(clc.class, "Landing");
-   public static final clj<cli> e = a(cli.class, "Takeoff");
-   public static final clj<clf> f = a(clf.class, "SittingFlaming");
-   public static final clj<clg> g = a(clg.class, "SittingScanning");
-   public static final clj<cle> h = a(cle.class, "SittingAttacking");
-   public static final clj<ckx> i = a(ckx.class, "ChargingPlayer");
-   public static final clj<cky> j = a(cky.class, "Dying");
-   public static final clj<cla> k = a(cla.class, "Hover");
-   private final Class<? extends cld> m;
-   private final int n;
-   private final String o;
+public class clj extends ckw {
+   private boolean b;
+   @Nullable
+   private eul c;
+   @Nullable
+   private fby d;
 
-   private clj(int $$0, Class<? extends cld> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cld a(ckt $$0) {
-      try {
-         Constructor<? extends cld> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cld> a() throws NoSuchMethodException {
-      return this.m.getConstructor(ckt.class);
-   }
-
-   public int b() {
-      return this.n;
+   public clj(cku $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void a(ash $$0) {
+      if (!this.b && this.c != null) {
+         jh $$1 = $$0.a(edq.a.f, egv.a(this.a.m()));
+         if (!$$1.a(this.a.du(), 10.0)) {
+            this.a.gk().a(clk.a);
+         }
+      } else {
+         this.b = false;
+         this.i();
+      }
    }
 
-   public static clj<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void c() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
    }
 
-   public static int c() {
-      return l.length;
+   private void i() {
+      int $$0 = this.a.t();
+      fby $$1 = this.a.J(1.0F);
+      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
+      if (this.a.gl() != null && this.a.gl().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.j();
    }
 
-   private static <T extends cld> clj<T> a(Class<T> $$0, String $$1) {
-      clj<T> $$2 = new clj<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   private void j() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            kl $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new fby((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public fby f() {
+      return this.d;
+   }
+
+   @Override
+   public clk<clj> h() {
+      return clk.e;
    }
 }

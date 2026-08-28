@@ -3,9 +3,9 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bey extends bhr {
+public class bey extends bhs {
    public bey(Schema $$0) {
-      super($$0, false, "EntityPaintingFieldsRenameFix", biw.B, "minecraft:painting");
+      super($$0, false, "EntityPaintingFieldsRenameFix", bix.B, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -1,48 +1,76 @@
-public class cjb {
-   public static final aly<cja> a = a("pale");
-   public static final aly<cja> b = a("spotted");
-   public static final aly<cja> c = a("snowy");
-   public static final aly<cja> d = a("black");
-   public static final aly<cja> e = a("ashen");
-   public static final aly<cja> f = a("rusty");
-   public static final aly<cja> g = a("woods");
-   public static final aly<cja> h = a("chestnut");
-   public static final aly<cja> i = a("striped");
-   public static final aly<cja> j = a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-   private static aly<cja> a(String $$0) {
-      return aly.a(mb.m, alz.b($$0));
+public final class cjb {
+   public static final Codec<cjb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alz.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.e),
+               alz.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.f),
+               alz.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.g),
+               kf.a(mb.aI).fieldOf("biomes").forGetter(cjb::d)
+            )
+            .apply($$0, cjb::new)
+   );
+   public static final zt<xg, cjb> b = zt.a(alz.b, cjb::a, alz.b, cjb::b, alz.b, cjb::c, zr.c(mb.aI), cjb::d, cjb::new);
+   public static final Codec<jq<cjb>> c = alv.a(mb.m, a);
+   public static final zt<xg, jq<cjb>> d = zr.a(mb.m, b);
+   private final alz e;
+   private final alz f;
+   private final alz g;
+   private final alz h;
+   private final alz i;
+   private final alz j;
+   private final ju<dik> k;
+
+   public cjb(alz $$0, alz $$1, alz $$2, ju<dik> $$3) {
+      this.e = $$0;
+      this.h = a($$0);
+      this.f = $$1;
+      this.i = a($$1);
+      this.g = $$2;
+      this.j = a($$2);
+      this.k = $$3;
    }
 
-   static void a(rk<cja> $$0, aly<cja> $$1, String $$2, aly<dij> $$3) {
-      a($$0, $$1, $$2, ju.a($$0.a(mb.aI).b($$3)));
+   private static alz a(alz $$0) {
+      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
    }
 
-   static void a(rk<cja> $$0, aly<cja> $$1, String $$2, ayk<dij> $$3) {
-      a($$0, $$1, $$2, $$0.a(mb.aI).b($$3));
+   public alz a() {
+      return this.h;
    }
 
-   static void a(rk<cja> $$0, aly<cja> $$1, String $$2, ju<dij> $$3) {
-      alz $$4 = alz.b("entity/wolf/" + $$2);
-      alz $$5 = alz.b("entity/wolf/" + $$2 + "_tame");
-      alz $$6 = alz.b("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new cja($$4, $$5, $$6, $$3));
+   public alz b() {
+      return this.i;
    }
 
-   public static jq<cja> a(ke $$0, jq<dij> $$1) {
-      kd<cja> $$2 = $$0.e(mb.m);
-      return $$2.c().filter($$1x -> ((cja)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.a(j)).or($$2::a).orElseThrow();
+   public alz c() {
+      return this.j;
    }
 
-   public static void a(rk<cja> $$0) {
-      a($$0, a, "wolf", diq.p);
-      a($$0, b, "wolf_spotted", axt.k);
-      a($$0, c, "wolf_snowy", diq.F);
-      a($$0, d, "wolf_black", diq.n);
-      a($$0, e, "wolf_ashen", diq.q);
-      a($$0, f, "wolf_rusty", axt.i);
-      a($$0, g, "wolf_woods", diq.i);
-      a($$0, h, "wolf_chestnut", diq.o);
-      a($$0, i, "wolf_striped", axt.f);
+   public ju<dik> d() {
+      return this.k;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof cjb $$1)
+            ? false
+            : Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Objects.equals(this.g, $$1.g) && Objects.equals(this.k, $$1.k);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = 1;
+      $$0 = 31 * $$0 + this.e.hashCode();
+      $$0 = 31 * $$0 + this.f.hashCode();
+      $$0 = 31 * $$0 + this.g.hashCode();
+      return 31 * $$0 + this.k.hashCode();
    }
 }

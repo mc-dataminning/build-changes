@@ -1,15 +1,12 @@
-public class gho extends gjr {
-   private final gjm a;
-
-   gho(gfj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjm $$7) {
+public class gho extends gjs {
+   gho(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
@@ -17,29 +14,36 @@ public class gho extends gjr {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.t-- <= 0) {
          this.k();
       } else {
-         this.k = this.k - (double)this.u;
+         this.k += 0.002;
          this.a(this.j, this.k, this.l);
-         this.b(this.a);
+         this.j *= 0.85F;
+         this.k *= 0.85F;
+         this.l *= 0.85F;
+         if (!this.c.b_(jh.a(this.g, this.h, this.i)).a(aya.a)) {
+            this.k();
+         }
       }
    }
 
    @Override
-   public giv b() {
-      return giv.b;
+   public giw b() {
+      return giw.b;
    }
 
-   public static class a implements giu<lw> {
-      private final gjm a;
+   public static class a implements giv<lw> {
+      private final gjn a;
 
-      public a(gjm $$0) {
+      public a(gjn $$0) {
          this.a = $$0;
       }
 
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gho($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gho $$8 = new gho($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

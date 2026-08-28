@@ -1,14 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class erw extends esi {
-   public static final MapCodec<erw> a = MapCodec.unit(() -> erw.b);
-   public static final erw b = new erw();
+public enum erw implements bba {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   private erw() {
+   public static Codec<erw> c = bba.b(erw::values);
+   private final String d;
+
+   private erw(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected esk<?> a() {
-      return esk.j;
+   public String c() {
+      return this.d;
    }
 }

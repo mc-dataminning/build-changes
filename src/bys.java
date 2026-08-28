@@ -1,27 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bys {
-   public static bxz<bwf> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+   private static jh a(bwi $$0, jh $$1) {
+      bam $$2 = $$0.dW().A;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   public static <E extends bwf> bxz<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return cbl.a((Function<cbl.b<E>, ? extends App<cbl.c<E>, cbo<E>>>)($$4 -> {
-         cbl<E, ? extends cbm<? extends K1, cfm>> $$5 = $$2 ? $$4.a(cfj.m) : $$4.c(cfj.m);
-         return $$4.group($$4.a(cfj.n), $$5, $$4.b(cfj.L), $$4.a(cfj.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               cma $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dW().F_().a($$11.dw()) && $$9.fN()) {
-                  cfm $$12 = new cfm(new byj($$11, false), $$1, 0);
-                  $$4x.a(new byj($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   private static int a(bam $$0) {
+      return $$0.a(3) - 1;
+   }
+
+   public static <E extends bwi> bzk<E> a(cfk<jh> $$0, int $$1, float $$2) {
+      return cbm.a(
+         (Function<cbm.b<E>, ? extends App<cbm.c<E>, cbp<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cfk.o), $$3.c(cfk.m), $$3.a(cfk.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     jh $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dw(), (double)$$1);
+                     if (!$$8) {
+                        byb.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
+
+                     return true;
+                  }))
+      );
    }
 }

@@ -1,33 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record eoq(eoq.a b, bru<div.c> c) {
+public record eoq(List<eoq.a> c, eph d) {
    public static final Codec<eoq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eoq.a.c.fieldOf("bounding_box").forGetter(eoq::a), bru.c(div.c.a).fieldOf("spawns").forGetter(eoq::b)).apply($$0, eoq::new)
+      $$0 -> $$0.group(eoq.a.a.listOf().fieldOf("structures").forGetter(eoq::a), eph.b.fieldOf("placement").forGetter(eoq::b)).apply($$0, eoq::new)
    );
+   public static final Codec<jq<eoq>> b = alv.a(mb.aW, a);
 
-   public eoq.a a() {
-      return this.b;
+   public eoq(jq<eok> $$0, eph $$1) {
+      this(List.of(new eoq.a($$0, 1)), $$1);
    }
 
-   public bru<div.c> b() {
+   public static eoq.a a(jq<eok> $$0, int $$1) {
+      return new eoq.a($$0, $$1);
+   }
+
+   public static eoq.a a(jq<eok> $$0) {
+      return new eoq.a($$0, 1);
+   }
+
+   public List<eoq.a> a() {
       return this.c;
    }
 
-   public static enum a implements bba {
-      a("piece"),
-      b("full");
+   public eph b() {
+      return this.d;
+   }
 
-      public static final Codec<eoq.a> c = bba.a(eoq.a::values);
-      private final String d;
+   public static record a(jq<eok> b, int c) {
+      public static final Codec<eoq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eok.b.fieldOf("structure").forGetter(eoq.a::a), azn.m.fieldOf("weight").forGetter(eoq.a::b)).apply($$0, eoq.a::new)
+      );
 
-      private a(final String $$0) {
-         this.d = $$0;
+      public jq<eok> a() {
+         return this.b;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      public int b() {
+         return this.c;
       }
    }
 }

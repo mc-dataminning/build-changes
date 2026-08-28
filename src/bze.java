@@ -1,19 +1,44 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bze extends bxy<bwh> {
-   public bze(int $$0, int $$1) {
-      super(ImmutableMap.of(cfj.n, cfk.a), $$0, $$1);
+public class bze extends bxz<cpj> {
+   private final float c;
+
+   public bze(float $$0) {
+      super(ImmutableMap.of(cfk.m, cfl.c, cfk.n, cfl.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   protected boolean a(ash $$0, bwh $$1, long $$2) {
-      return $$1.ec().c(cfj.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   protected boolean a(ash $$0, cpj $$1) {
+      cpx $$2 = $$1.go();
+      return $$1.bL() && $$2 != null && !$$1.bj() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.cd != null;
    }
 
-   protected void b(ash $$0, bwh $$1, long $$2) {
-      $$1.ec().b(cfj.n);
+   protected boolean a(ash $$0, cpj $$1, long $$2) {
+      return this.a($$0, $$1);
    }
 
-   protected void c(ash $$0, bwh $$1, long $$2) {
-      $$1.ec().c(cfj.n).ifPresent($$1x -> $$1.H().a($$1x.a()));
+   protected void b(ash $$0, cpj $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(ash $$0, cpj $$1, long $$2) {
+      bxi<?> $$3 = $$1.ec();
+      $$3.b(cfk.m);
+      $$3.b(cfk.n);
+   }
+
+   protected void d(ash $$0, cpj $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cpj $$0) {
+      bxi<?> $$1 = $$0.ec();
+      $$1.a(cfk.m, new cfn(new byk($$0.go(), false), this.c, 2));
+      $$1.a(cfk.n, new byk($$0.go(), true));
    }
 }

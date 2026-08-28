@@ -1,32 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
 
-public record ezq(Optional<bl> b) implements ezx {
-   public static final MapCodec<ezq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bl.a.optionalFieldOf("predicate").forGetter(ezq::c)).apply($$0, ezq::new));
+public interface ezq<T extends ezq<T>> {
+   T b(ezy.a var1);
 
-   @Override
-   public ezy b() {
-      return ezz.m;
+   default <E> T a_(Iterable<E> $$0, Function<E, ezy.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public Set<bbn<?>> a() {
-      return Set.of(ezi.f, ezi.c);
-   }
-
-   public boolean a(ewo $$0) {
-      btz $$1 = $$0.c(ezi.c);
-      fbx $$2 = $$0.c(ezi.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
-   }
-
-   public static ezx.a a(bl.a $$0) {
-      return () -> new ezq(Optional.of($$0.b()));
-   }
-
-   public Optional<bl> c() {
-      return this.b;
-   }
+   T d();
 }

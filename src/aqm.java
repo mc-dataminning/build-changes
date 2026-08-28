@@ -21,8 +21,8 @@ public class aqm {
       );
    }
 
-   private static int a(ew $$0, Collection<? extends cpw> $$1, int $$2) {
-      for (cpw $$3 : $$1) {
+   private static int a(ew $$0, Collection<? extends cpx> $$1, int $$2) {
+      for (cpx $$3 : $$1) {
          $$3.ac().ifPresent($$1x -> $$1x.a($$2));
       }
 
@@ -35,9 +35,9 @@ public class aqm {
       return $$1.size();
    }
 
-   private static int a(ew $$0, Collection<? extends cpw> $$1) {
-      for (cpw $$2 : $$1) {
-         $$2.ac().ifPresent(cpb::b);
+   private static int a(ew $$0, Collection<? extends cpx> $$1) {
+      for (cpx $$2 : $$1) {
+         $$2.ac().ifPresent(cpc::b);
       }
 
       if ($$1.size() == 1) {

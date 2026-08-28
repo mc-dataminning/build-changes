@@ -1,152 +1,54 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public class coc extends coa {
-   public static final int cb = 8;
-   private int cc;
-   @Nullable
-   jh cd;
+public class coc {
+   protected static final ImmutableList<? extends cgr<? extends cgq<? super cob>>> a = ImmutableList.of(cgr.c, cgr.d);
+   protected static final ImmutableList<? extends cfk<?>> b = ImmutableList.of(cfk.g, cfk.h, cfk.k, cfk.l, cfk.n, cfk.m, cfk.E, cfk.t, cfk.o, cfk.p);
 
-   public coc(bvq<? extends coa> $$0, dhh $$1) {
-      super($$0, $$1);
-   }
-
-   public void h(jh $$0) {
-      this.cd = $$0;
-   }
-
-   @Override
-   public boolean a(ash $$0, btz $$1, float $$2) {
-      if (this.dW().C) {
-         return super.a($$0, $$1, $$2);
-      } else if ($$1.a(axw.d)) {
-         return super.a($$0, $$1, $$2);
-      } else if (!this.a($$0, $$1) && this.cc <= 0) {
-         this.cc = 8;
-         this.dW().a(this, (byte)66);
-         if (this.dW().c_(this.cd) instanceof dvl $$3 && $$3.a(this)) {
-            if ($$1.d() instanceof cpw) {
-               $$3.c();
-            }
-
-            this.f($$1);
+   static void a(bxi<cob> $$0) {
+      $$0.a(cro.a, 0, ImmutableList.of(new cat<cob>(0.8F) {
+         protected boolean a(ash $$0, cob $$1) {
+            return $$1.p() && super.a($$0, (bwg)$$1);
          }
+      }, new bzf(45, 90), new bzj()));
+   }
 
-         return true;
+   static void b(bxi<cob> $$0) {
+      $$0.a(
+         cro.b,
+         10,
+         ImmutableList.of(
+            cal.a(($$0x, $$1) -> $$1.x(), ($$0x, $$1) -> $$1.ec().c(cfk.l)),
+            bzz.a(8.0F, bsu.a(30, 60)),
+            new bzw(ImmutableList.of(Pair.of(bzr.a(0.2F), 2), Pair.of(cag.a(0.2F, 3), 2), Pair.of(new byj(30, 60), 1)))
+         )
+      );
+   }
+
+   static void c(bxi<cob> $$0) {
+      $$0.a(cro.k, 10, ImmutableList.of(cae.a(1.0F), bzg.a(cob::p, 40), cao.a()), cfk.o);
+   }
+
+   public static bxi.b<cob> a() {
+      return bxi.a(b, a);
+   }
+
+   public static bxi<cob> d(bxi<cob> $$0) {
+      a($$0);
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cro.a));
+      $$0.b(cro.b);
+      $$0.f();
+      return $$0;
+   }
+
+   public static void a(cob $$0) {
+      if (!$$0.p()) {
+         $$0.ec().f();
       } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void d_() {
-      if (this.cc > 0) {
-         this.cc--;
-      }
-
-      super.d_();
-   }
-
-   @Override
-   public void h() {
-      if (this.dW().C || this.cd != null && this.dW().c_(this.cd) instanceof dvl $$0 && $$0.a(this)) {
-         super.h();
-         if (this.dW().C) {
-            this.go();
-         }
-      } else {
-         this.c(bvj.d.b);
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 66) {
-         this.cc = 8;
-         this.f(this.dX().p());
-      } else {
-         super.b($$0);
-      }
-   }
-
-   private void go() {
-      this.ca.a(this.cc > 0, this.af);
-   }
-
-   public void h(@Nullable btz $$0) {
-      if (this.dW() instanceof ash $$1) {
-         fbs $$2 = this.cR();
-         fbx $$3 = $$2.f();
-         double $$4 = $$2.b() * 0.3;
-         double $$5 = $$2.c() * 0.3;
-         double $$6 = $$2.d() * 0.3;
-         $$1.a(new lk(ls.bg, dkn.u.m()), $$3.d, $$3.e, $$3.f, 100, $$4, $$5, $$6, 0.0);
-         $$1.a(new lk(ls.bg, dkn.cB.m().b(dmh.c, dmh.a.c)), $$3.d, $$3.e, $$3.f, 10, $$4, $$5, $$6, 0.0);
-      }
-
-      this.b(this.o_());
-      if (this.bl >= 0 && $$0 != null && $$0.d() instanceof bwf $$7) {
-         $$7.a(this, this.bl, $$0);
-      }
-
-      this.a(bvj.d.b);
-   }
-
-   @Override
-   protected boolean r(bvj $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bR() {
-      return false;
-   }
-
-   @Override
-   protected void p(bvj $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public boolean o(boolean $$0) {
-      return false;
-   }
-
-   @Override
-   protected cfr b(dhh $$0) {
-      return new coc.a(this, $$0);
-   }
-
-   class a extends cfq {
-      a(final coa $$0, final dhh $$1) {
-         super($$0, $$1);
-      }
-
-      @Override
-      public void c() {
-         if (coc.this.p()) {
-            super.c();
-         }
-      }
-
-      @Override
-      protected eum a(int $$0) {
-         this.o = coc.this.new b();
-         return new eum(this.o, $$0);
-      }
-   }
-
-   class b extends eus {
-      private static final int m = 1024;
-
-      @Override
-      public eun a(eup $$0, int $$1, int $$2, int $$3) {
-         jh $$4 = coc.this.cd;
-         if ($$4 == null) {
-            return super.a($$0, $$1, $$2, $$3);
-         } else {
-            double $$5 = $$4.j(new kl($$1, $$2, $$3));
-            return $$5 > 1024.0 && $$5 >= $$4.j($$0.b()) ? eun.a : super.a($$0, $$1, $$2, $$3);
-         }
+         $$0.ec().a(ImmutableList.of(cro.k, cro.b));
       }
    }
 }

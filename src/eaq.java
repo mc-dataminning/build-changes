@@ -1,102 +1,63 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.function.UnaryOperator;
 
-public class eaq {
-   public static final int a = 8;
-   private static final EnumSet<edp.a> o = EnumSet.of(edp.a.c, edp.a.a);
-   public static final EnumSet<edp.a> b = EnumSet.of(edp.a.d, edp.a.b, edp.a.e, edp.a.f);
-   public static final eaq c = a("empty", null, o, eau.a);
-   public static final eaq d = a("structure_starts", c, o, eau.a);
-   public static final eaq e = a("structure_references", d, o, eau.a);
-   public static final eaq f = a("biomes", e, o, eau.a);
-   public static final eaq g = a("noise", f, o, eau.a);
-   public static final eaq h = a("surface", g, o, eau.a);
-   public static final eaq i = a("carvers", h, b, eau.a);
-   public static final eaq j = a("features", i, b, eau.a);
-   public static final eaq k = a("initialize_light", j, b, eau.a);
-   public static final eaq l = a("light", k, b, eau.a);
-   public static final eaq m = a("spawn", l, b, eau.a);
-   public static final eaq n = a("full", m, b, eau.b);
-   private final int p;
-   private final eaq q;
-   private final eau r;
-   private final EnumSet<edp.a> s;
+public record eaq(ImmutableList<eau> c) {
+   public static final eaq a = new eaq.a()
+      .a(ear.c, $$0 -> $$0)
+      .a(ear.d, $$0 -> $$0.a(eat::b))
+      .a(ear.e, $$0 -> $$0.a(ear.d, 8).a(eat::d))
+      .a(ear.f, $$0 -> $$0.a(ear.d, 8).a(eat::e))
+      .a(ear.g, $$0 -> $$0.a(ear.d, 8).a(ear.f, 1).a(0).a(eat::f))
+      .a(ear.h, $$0 -> $$0.a(ear.d, 8).a(ear.f, 1).a(0).a(eat::g))
+      .a(ear.i, $$0 -> $$0.a(ear.d, 8).a(0).a(eat::h))
+      .a(ear.j, $$0 -> $$0.a(ear.d, 8).a(ear.i, 1).a(1).a(eat::i))
+      .a(ear.k, $$0 -> $$0.a(eat::j))
+      .a(ear.l, $$0 -> $$0.a(ear.k, 1).a(eat::k))
+      .a(ear.m, $$0 -> $$0.a(ear.f, 1).a(eat::l))
+      .a(ear.n, $$0 -> $$0.a(eat::m))
+      .a();
+   public static final eaq b = new eaq.a()
+      .a(ear.c, $$0 -> $$0)
+      .a(ear.d, $$0 -> $$0.a(eat::c))
+      .a(ear.e, $$0 -> $$0)
+      .a(ear.f, $$0 -> $$0)
+      .a(ear.g, $$0 -> $$0)
+      .a(ear.h, $$0 -> $$0)
+      .a(ear.i, $$0 -> $$0)
+      .a(ear.j, $$0 -> $$0)
+      .a(ear.k, $$0 -> $$0.a(eat::j))
+      .a(ear.l, $$0 -> $$0.a(ear.k, 1).a(eat::k))
+      .a(ear.m, $$0 -> $$0)
+      .a(ear.n, $$0 -> $$0.a(eat::m))
+      .a();
 
-   private static eaq a(String $$0, @Nullable eaq $$1, EnumSet<edp.a> $$2, eau $$3) {
-      return kd.a(ma.l, $$0, new eaq($$1, $$2, $$3));
+   public eau a(ear $$0) {
+      return (eau)this.c.get($$0.b());
    }
 
-   public static List<eaq> a() {
-      List<eaq> $$0 = Lists.newArrayList();
+   public ImmutableList<eau> a() {
+      return this.c;
+   }
 
-      eaq $$1;
-      for ($$1 = n; $$1.c() != $$1; $$1 = $$1.c()) {
-         $$0.add($$1);
+   public static class a {
+      private final List<eau> a = new ArrayList<>();
+
+      public eaq a() {
+         return new eaq(ImmutableList.copyOf(this.a));
       }
 
-      $$0.add($$1);
-      Collections.reverse($$0);
-      return $$0;
-   }
+      public eaq.a a(ear $$0, UnaryOperator<eau.a> $$1) {
+         eau.a $$2;
+         if (this.a.isEmpty()) {
+            $$2 = new eau.a($$0);
+         } else {
+            $$2 = new eau.a($$0, this.a.getLast());
+         }
 
-   @VisibleForTesting
-   protected eaq(@Nullable eaq $$0, EnumSet<edp.a> $$1, eau $$2) {
-      this.q = $$0 == null ? this : $$0;
-      this.r = $$2;
-      this.s = $$1;
-      this.p = $$0 == null ? 0 : $$0.b() + 1;
-   }
-
-   public int b() {
-      return this.p;
-   }
-
-   public eaq c() {
-      return this.q;
-   }
-
-   public eau d() {
-      return this.r;
-   }
-
-   public static eaq a(String $$0) {
-      return ma.l.a(alz.c($$0));
-   }
-
-   public EnumSet<edp.a> e() {
-      return this.s;
-   }
-
-   public boolean a(eaq $$0) {
-      return this.b() >= $$0.b();
-   }
-
-   public boolean b(eaq $$0) {
-      return this.b() > $$0.b();
-   }
-
-   public boolean c(eaq $$0) {
-      return this.b() <= $$0.b();
-   }
-
-   public boolean d(eaq $$0) {
-      return this.b() < $$0.b();
-   }
-
-   public static eaq a(eaq $$0, eaq $$1) {
-      return $$0.b($$1) ? $$0 : $$1;
-   }
-
-   @Override
-   public String toString() {
-      return this.f();
-   }
-
-   public String f() {
-      return ma.l.b(this).toString();
+         this.a.add($$1.apply($$2).a());
+         return this;
+      }
    }
 }

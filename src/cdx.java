@@ -1,56 +1,90 @@
-import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class cdx<T extends crk> extends cdd {
-   private static final int a = 20;
-   private static final float b = 1.0F;
-   private final T c;
-   private int d;
+public class cdx extends cde {
+   public static final int b = 1;
+   protected final bwo c;
+   protected final double d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected boolean h;
+   private final Function<bwo, ayk<buc>> a;
 
-   public cdx(T $$0) {
+   public cdx(bwo $$0, double $$1) {
+      this($$0, $$1, axw.F);
+   }
+
+   public cdx(bwo $$0, double $$1, ayk<buc> $$2) {
+      this($$0, $$1, $$1x -> $$2);
+   }
+
+   public cdx(bwo $$0, double $$1, Function<bwo, ayk<buc>> $$2) {
       this.c = $$0;
-      this.a(EnumSet.of(cdd.a.a));
+      this.d = $$1;
+      this.a = $$2;
+      this.a(EnumSet.of(cde.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.c.O_() == null && !this.c.cY() && this.c.gE() && !this.c.gB().a() && !((ash)this.c.dW()).c(this.c.dw());
+      if (!this.h()) {
+         return false;
+      } else {
+         if (this.c.bY()) {
+            jh $$0 = this.a(this.c.dW(), this.c, 5);
+            if ($$0 != null) {
+               this.e = (double)$$0.u();
+               this.f = (double)$$0.v();
+               this.g = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
+      }
+   }
+
+   protected boolean h() {
+      return this.c.eG() != null && this.c.eG().a(this.a.apply(this.c));
+   }
+
+   protected boolean i() {
+      fby $$0 = chb.a(this.c, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.e = $$0.d;
+         this.f = $$0.e;
+         this.g = $$0.f;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.h;
+   }
+
+   @Override
+   public void d() {
+      this.c.L().a(this.e, this.f, this.g, this.d);
+      this.h = true;
+   }
+
+   @Override
+   public void e() {
+      this.h = false;
    }
 
    @Override
    public boolean c() {
-      return this.c.gE() && !this.c.gB().a() && this.c.dW() instanceof ash && !((ash)this.c.dW()).c(this.c.dw());
+      return !this.c.L().m();
    }
 
-   @Override
-   public void a() {
-      if (this.c.gE()) {
-         crj $$0 = this.c.gB();
-         if (this.c.af > this.d) {
-            this.d = this.c.af + 20;
-            this.a($$0);
-         }
-
-         if (!this.c.gk()) {
-            fbx $$1 = cha.a(this.c, 15, 4, fbx.c($$0.s()), (float) (Math.PI / 2));
-            if ($$1 != null) {
-               this.c.L().a($$1.d, $$1.e, $$1.f, 1.0);
-            }
-         }
-      }
-   }
-
-   private void a(crj $$0) {
-      if ($$0.u()) {
-         Set<crk> $$1 = Sets.newHashSet();
-         List<crk> $$2 = this.c.dW().a(crk.class, this.c.cR().g(16.0), $$1x -> !$$1x.gE() && crl.a($$1x, $$0));
-         $$1.addAll($$2);
-
-         for (crk $$3 : $$1) {
-            $$0.a($$0.k(), $$3, null, true);
-         }
-      }
+   @Nullable
+   protected jh a(dgn $$0, bvk $$1, int $$2) {
+      jh $$3 = $$1.dw();
+      return !$$0.a_($$3).g($$0, $$3).c() ? null : jh.a($$1.dw(), $$2, 1, $$1x -> $$0.b_($$1x).a(aya.a)).orElse(null);
    }
 }

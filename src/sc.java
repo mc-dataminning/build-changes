@@ -1,5 +1,5 @@
 public class sc {
-   public static void a(rk<ept> $$0) {
+   public static void a(rk<epu> $$0) {
       rq.a($$0);
       ru.a($$0);
       rt.a($$0);

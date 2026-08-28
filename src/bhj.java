@@ -1,29 +1,53 @@
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import org.slf4j.Logger;
 
-public class bhj extends bgp {
-   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
+public class bhj extends bbz {
+   private static final Logger b = LogUtils.getLogger();
 
    public bhj(Schema $$0) {
-      super($$0, "LockComponentPredicateFix", "minecraft:lock");
+      super($$0, bix.a);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b($$0);
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "LevelUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.updateTyped(DSL.remainderFinder(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+                  $$0xx = this.d($$0xx);
+                  $$0xx = this.c($$0xx);
+                  return this.b($$0xx);
+               }))
+      );
    }
 
-   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<String> $$1 = $$0.asString().result();
-      if ($$1.isPresent()) {
-         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
-         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
-         return $$0.emptyMap().set("components", $$3);
-      } else {
-         return $$0.emptyMap();
-      }
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update(
+         "DimensionData",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
+            )
+      );
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.update(
+         "CustomBossEvents",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.update("Players", $$1 -> $$0xxx.createList($$1.asStream().map($$0xxxxx -> (Dynamic)a($$0xxxxx).orElseGet(() -> {
+                                 b.warn("CustomBossEvents contains invalid UUIDs.");
+                                 return $$0xxxxx;
+                              }))))
+                  )
+            )
+      );
    }
 }

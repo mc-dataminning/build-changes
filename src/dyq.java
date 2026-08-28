@@ -1,23 +1,28 @@
 public enum dyq implements bba {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+   a(jm.a),
+   b(jm.b);
 
-   private final String f;
+   private final jm c;
 
-   private dyq(final String $$0) {
-      this.f = $$0;
+   private dyq(final jm $$0) {
+      this.c = $$0;
+   }
+
+   public jm a() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this == a ? "upper" : "lower";
+   }
+
+   public dyq b() {
+      return this == a ? b : a;
    }
 }

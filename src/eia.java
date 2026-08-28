@@ -1,30 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class eia extends egv<eiu> {
-   public eia(Codec<eiu> $$0) {
+public class eia extends egw<ejr> {
+   public eia(Codec<ejr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egx<eiu> $$0) {
-      int $$1 = 0;
-      bam $$2 = $$0.d();
-      dif $$3 = $$0.b();
-      jh $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(egy<ejr> $$0) {
+      dig $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         ejr $$3 = $$0.f();
+         bam $$4 = $$0.d();
+         drk $$5 = drk.b();
+         int $$6 = $$3.f() + $$3.d();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(edp.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         jh $$10 = new jh($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dxu $$11 = dkn.nq.m().b(drl.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(dkn.J) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
          }
-      }
 
-      return $$1 > 0;
+         jh $$11 = $$2.e();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
+            $$1.a($$2, dko.rp.m(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            jh $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jm.b)) {
+               $$1.a($$14, dko.rq.m().b(drj.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(dhj $$0, jh $$1) {
+      dxv $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof drf) {
+         return true;
+      } else {
+         return !$$2.l() && (!$$2.a(dko.J) || !$$2.y().b()) ? false : jm.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
+      }
    }
 }

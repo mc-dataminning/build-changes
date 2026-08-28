@@ -51,14 +51,14 @@ public class aql {
    }
 
    public static CompletableFuture<Suggestions> a(ew $$0, SuggestionsBuilder $$1) {
-      fdb $$2 = $$0.f();
+      fdc $$2 = $$0.f();
       List<String> $$3 = Lists.newArrayList();
       if ($$2 != null) {
-         fdc $$4 = $$0.l().aJ();
+         fdd $$4 = $$0.l().aJ();
 
-         for (fcu $$5 : $$4.c()) {
-            if ($$5.c() == fdf.c) {
-               fcy $$6 = $$4.d($$2, $$5);
+         for (fcv $$5 : $$4.c()) {
+            if ($$5.c() == fdg.c) {
+               fcz $$6 = $$4.d($$2, $$5);
                if ($$6 != null && !$$6.b()) {
                   $$3.add($$5.b());
                }
@@ -69,34 +69,34 @@ public class aql {
       return fb.b($$3, $$1);
    }
 
-   private static int a(ew $$0, asi $$1, fcu $$2, int $$3) throws CommandSyntaxException {
-      fda $$4 = a($$0.l().aJ(), $$1, $$2);
+   private static int a(ew $$0, asi $$1, fcv $$2, int $$3) throws CommandSyntaxException {
+      fdb $$4 = a($$0.l().aJ(), $$1, $$2);
       int $$5 = $$4.b($$3);
       $$0.a(() -> xv.a("commands.trigger.add.success", $$2.g(), $$3), true);
       return $$5;
    }
 
-   private static int b(ew $$0, asi $$1, fcu $$2, int $$3) throws CommandSyntaxException {
-      fda $$4 = a($$0.l().aJ(), $$1, $$2);
+   private static int b(ew $$0, asi $$1, fcv $$2, int $$3) throws CommandSyntaxException {
+      fdb $$4 = a($$0.l().aJ(), $$1, $$2);
       $$4.a($$3);
       $$0.a(() -> xv.a("commands.trigger.set.success", $$2.g(), $$3), true);
       return $$3;
    }
 
-   private static int a(ew $$0, asi $$1, fcu $$2) throws CommandSyntaxException {
-      fda $$3 = a($$0.l().aJ(), $$1, $$2);
+   private static int a(ew $$0, asi $$1, fcv $$2) throws CommandSyntaxException {
+      fdb $$3 = a($$0.l().aJ(), $$1, $$2);
       int $$4 = $$3.b(1);
       $$0.a(() -> xv.a("commands.trigger.simple.success", $$2.g()), true);
       return $$4;
    }
 
-   private static fda a(fdc $$0, fdb $$1, fcu $$2) throws CommandSyntaxException {
-      if ($$2.c() != fdf.c) {
+   private static fdb a(fdd $$0, fdc $$1, fcv $$2) throws CommandSyntaxException {
+      if ($$2.c() != fdg.c) {
          throw b.create();
       } else {
-         fcy $$3 = $$0.d($$1, $$2);
+         fcz $$3 = $$0.d($$1, $$2);
          if ($$3 != null && !$$3.b()) {
-            fda $$4 = $$0.c($$1, $$2);
+            fdb $$4 = $$0.c($$1, $$2);
             $$4.f();
             return $$4;
          } else {

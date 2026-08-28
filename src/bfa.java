@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
-public class bfa extends bhr {
+public class bfa extends bhs {
    private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
       $$0.put("donkeykong", "donkey_kong");
       $$0.put("burningskull", "burning_skull");
@@ -16,14 +16,14 @@ public class bfa extends bhr {
    });
 
    public bfa(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityPaintingMotiveFix", biw.B, "minecraft:painting");
+      super($$0, $$1, "EntityPaintingMotiveFix", bix.B, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
       Optional<String> $$1 = $$0.get("Motive").asString().result();
       if ($$1.isPresent()) {
          String $$2 = $$1.get().toLowerCase(Locale.ROOT);
-         return $$0.set("Motive", $$0.createString(bkk.a(a.getOrDefault($$2, $$2))));
+         return $$0.set("Motive", $$0.createString(bkl.a(a.getOrDefault($$2, $$2))));
       } else {
          return $$0;
       }

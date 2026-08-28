@@ -1,68 +1,71 @@
-public final class edz {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+public class edz {
+   public static final aly<eta.a> a = a("temperature");
+   public static final aly<eta.a> b = a("vegetation");
+   public static final aly<eta.a> c = a("continentalness");
+   public static final aly<eta.a> d = a("erosion");
+   public static final aly<eta.a> e = a("temperature_large");
+   public static final aly<eta.a> f = a("vegetation_large");
+   public static final aly<eta.a> g = a("continentalness_large");
+   public static final aly<eta.a> h = a("erosion_large");
+   public static final aly<eta.a> i = a("ridge");
+   public static final aly<eta.a> j = a("offset");
+   public static final aly<eta.a> k = a("aquifer_barrier");
+   public static final aly<eta.a> l = a("aquifer_fluid_level_floodedness");
+   public static final aly<eta.a> m = a("aquifer_lava");
+   public static final aly<eta.a> n = a("aquifer_fluid_level_spread");
+   public static final aly<eta.a> o = a("pillar");
+   public static final aly<eta.a> p = a("pillar_rareness");
+   public static final aly<eta.a> q = a("pillar_thickness");
+   public static final aly<eta.a> r = a("spaghetti_2d");
+   public static final aly<eta.a> s = a("spaghetti_2d_elevation");
+   public static final aly<eta.a> t = a("spaghetti_2d_modulator");
+   public static final aly<eta.a> u = a("spaghetti_2d_thickness");
+   public static final aly<eta.a> v = a("spaghetti_3d_1");
+   public static final aly<eta.a> w = a("spaghetti_3d_2");
+   public static final aly<eta.a> x = a("spaghetti_3d_rarity");
+   public static final aly<eta.a> y = a("spaghetti_3d_thickness");
+   public static final aly<eta.a> z = a("spaghetti_roughness");
+   public static final aly<eta.a> A = a("spaghetti_roughness_modulator");
+   public static final aly<eta.a> B = a("cave_entrance");
+   public static final aly<eta.a> C = a("cave_layer");
+   public static final aly<eta.a> D = a("cave_cheese");
+   public static final aly<eta.a> E = a("ore_veininess");
+   public static final aly<eta.a> F = a("ore_vein_a");
+   public static final aly<eta.a> G = a("ore_vein_b");
+   public static final aly<eta.a> H = a("ore_gap");
+   public static final aly<eta.a> I = a("noodle");
+   public static final aly<eta.a> J = a("noodle_thickness");
+   public static final aly<eta.a> K = a("noodle_ridge_a");
+   public static final aly<eta.a> L = a("noodle_ridge_b");
+   public static final aly<eta.a> M = a("jagged");
+   public static final aly<eta.a> N = a("surface");
+   public static final aly<eta.a> O = a("surface_secondary");
+   public static final aly<eta.a> P = a("clay_bands_offset");
+   public static final aly<eta.a> Q = a("badlands_pillar");
+   public static final aly<eta.a> R = a("badlands_pillar_roof");
+   public static final aly<eta.a> S = a("badlands_surface");
+   public static final aly<eta.a> T = a("iceberg_pillar");
+   public static final aly<eta.a> U = a("iceberg_pillar_roof");
+   public static final aly<eta.a> V = a("iceberg_surface");
+   public static final aly<eta.a> W = a("surface_swamp");
+   public static final aly<eta.a> X = a("calcite");
+   public static final aly<eta.a> Y = a("gravel");
+   public static final aly<eta.a> Z = a("powder_snow");
+   public static final aly<eta.a> aa = a("packed_ice");
+   public static final aly<eta.a> ab = a("ice");
+   public static final aly<eta.a> ac = a("soul_sand_layer");
+   public static final aly<eta.a> ad = a("gravel_layer");
+   public static final aly<eta.a> ae = a("patch");
+   public static final aly<eta.a> af = a("netherrack");
+   public static final aly<eta.a> ag = a("nether_wart");
+   public static final aly<eta.a> ah = a("nether_state_selector");
 
-   private edz() {
+   private static aly<eta.a> a(String $$0) {
+      return aly.a(mb.aS, alz.b($$0));
    }
 
-   protected static edt.c a(edi $$0, edi $$1, edi $$2, eec $$3) {
-      dxu $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         edz.a $$8 = $$6 > 0.0 ? edz.a.a : edz.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = bae.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               bam $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = bae.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
-   }
-
-   protected static enum a {
-      a(dkn.rv.m(), dkn.tB.m(), dkn.c.m(), 0, 50),
-      b(dkn.T.m(), dkn.tA.m(), dkn.qU.m(), -60, -8);
-
-      final dxu e;
-      final dxu f;
-      final dxu g;
-      protected final int c;
-      protected final int d;
-
-      private a(final dxu $$0, final dxu $$1, final dxu $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
-      }
+   public static eta a(jr<eta.a> $$0, eed $$1, aly<eta.a> $$2) {
+      jq<eta.a> $$3 = $$0.b($$2);
+      return eta.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

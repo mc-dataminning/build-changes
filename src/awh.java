@@ -405,7 +405,7 @@ public class awh {
    }
 
    private static File g(MinecraftServer $$0) {
-      return $$0.a(ewa.d).toFile();
+      return $$0.a(ewb.d).toFile();
    }
 
    private static void b(File $$0) {

@@ -1,24 +1,125 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dlu extends dni {
-   public static final MapCodec<dlu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayy.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), t()).apply($$0, dlu::new)
-   );
-   private final ayy b;
+public class dlu extends dok implements dkp {
+   public static final MapCodec<dlu> a = b(dlu::new);
+   public static final int b = 2;
+   public static final dyu c = dyl.as;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final fcs[] m = new fcs[]{
+      dkm.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dkm.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dkm.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final fcs[] n = new fcs[]{
+      dkm.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dkm.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dkm.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final fcs[] o = new fcs[]{
+      dkm.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dkm.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dkm.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final fcs[] G = new fcs[]{
+      dkm.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dkm.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dkm.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
    @Override
    public MapCodec<dlu> a() {
       return a;
    }
 
-   public dlu(ayy $$0, dxt.d $$1) {
-      super($$1);
-      this.b = $$0;
+   public dlu(dxu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(aF, jm.c).b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public int b(dxu $$0, dgm $$1, jh $$2) {
-      return this.b.a();
+   protected boolean f(dxv $$0) {
+      return $$0.c(c) < 2;
+   }
+
+   @Override
+   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$1.A.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.b(c, Integer.valueOf($$4 + 1)), 2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
+      dxv $$3 = $$1.a_($$2.a($$0.c(aF)));
+      return $$3.a(axu.B);
+   }
+
+   @Override
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      int $$4 = $$0.c(c);
+      switch ((jm)$$0.c(aF)) {
+         case d:
+            return G[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
+      }
+   }
+
+   @Nullable
+   @Override
+   public dxv a(dbg $$0) {
+      dxv $$1 = this.m();
+      dhl $$2 = $$0.q();
+      jh $$3 = $$0.a();
+
+      for (jm $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.b(aF, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      return $$4 == $$0.c(aF) && !$$0.a($$1, $$3) ? dko.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public boolean b(dhl $$0, jh $$1, dxv $$2) {
+      return $$2.c(c) < 2;
+   }
+
+   @Override
+   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(aF, c);
+   }
+
+   @Override
+   protected boolean a(dxv $$0, eum $$1) {
+      return false;
    }
 }

@@ -1,37 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class eho extends egv<ejf> {
+public class eho extends egw<ejf> {
    public eho(Codec<ejf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egx<ejf> $$0) {
-      dif $$1 = $$0.b();
+   public boolean a(egy<ejf> $$0) {
+      dig $$1 = $$0.b();
       jh $$2 = $$0.e();
-      dxu $$3 = $$1.a_($$2.e());
+      bam $$3 = $$0.d();
       ejf $$4 = $$0.f();
-      bam $$5 = $$0.d();
-      if (!$$3.a(axu.aO)) {
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.L_() + 1 && $$6 + 1 <= $$1.am()) {
-            int $$7 = 0;
+         List<jm> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            jh.a $$6 = $$2.k();
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               jh $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dxu $$10 = $$4.b.a($$5, $$9);
-               if ($$1.u($$9) && $$9.v() > $$1.L_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
+            for (jm $$7 : $$5) {
+               $$6.g($$2);
+               List<jm> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dxv $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
                }
             }
 
-            return $$7 > 0;
-         } else {
             return false;
          }
       }
+   }
+
+   public static boolean a(dig $$0, jh $$1, dxv $$2, ejf $$3, bam $$4, List<jm> $$5) {
+      jh.a $$6 = $$1.k();
+
+      for (jm $$7 : $$5) {
+         dxv $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dxv $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean c(dxv $$0) {
+      return $$0.l() || $$0.a(dko.J);
    }
 }

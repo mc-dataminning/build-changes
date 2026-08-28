@@ -1,27 +1,65 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public interface ezx extends ewp, Predicate<ewo> {
-   Codec<ezx> d = ma.F.q().dispatch("condition", ezx::b, ezy::a);
-   Codec<ezx> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, ezk.b));
-   Codec<jq<ezx>> f = alv.a(mb.bi, e);
+public record ezx(jq<dkm> b, Optional<ee> c) implements ezy {
+   public static final MapCodec<ezx> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ma.e.r().fieldOf("block").forGetter(ezx::c), ee.a.optionalFieldOf("properties").forGetter(ezx::d)).apply($$0, ezx::new)
+      )
+      .validate(ezx::a);
 
-   ezy b();
+   private static DataResult<ezx> a(ezx $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().l()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
+   }
 
-   @FunctionalInterface
-   public interface a {
-      ezx build();
+   @Override
+   public ezz b() {
+      return faa.i;
+   }
 
-      default ezx.a invert() {
-         return ezu.a(this);
+   @Override
+   public Set<bbn<?>> a() {
+      return Set.of(ezj.g);
+   }
+
+   public boolean a(ewp $$0) {
+      dxv $$1 = $$0.c(ezj.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   }
+
+   public static ezx.a a(dkm $$0) {
+      return new ezx.a($$0);
+   }
+
+   public jq<dkm> c() {
+      return this.b;
+   }
+
+   public Optional<ee> d() {
+      return this.c;
+   }
+
+   public static class a implements ezy.a {
+      private final jq<dkm> a;
+      private Optional<ee> b = Optional.empty();
+
+      public a(dkm $$0) {
+         this.a = $$0.p();
       }
 
-      default ezl.a or(ezx.a $$0) {
-         return ezl.a(this, $$0);
+      public ezx.a a(ee.a $$0) {
+         this.b = $$0.b();
+         return this;
       }
 
-      default ezk.a and(ezx.a $$0) {
-         return ezk.a(this, $$0);
+      @Override
+      public ezy build() {
+         return new ezx(this.a, this.b);
       }
    }
 }

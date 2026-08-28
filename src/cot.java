@@ -1,24 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Function;
 
-public class cot<E extends cok> {
-   public static bxz<bwf> a(int $$0) {
-      return cbl.a(
-         (Function<cbl.b<bwf>, ? extends App<cbl.c<bwf>, cbo<bwf>>>)($$1 -> $$1.group($$1.b(cfj.ad), $$1.a(cfj.L))
-               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
-                     if (!$$5.fa().f()) {
-                        return false;
+public class cot {
+   public static bzk<col> a() {
+      return cbm.a(
+         (Function<cbm.b<col>, ? extends App<cbm.c<col>, cbp<col>>>)($$0 -> $$0.group($$0.b(cfk.ak), $$0.c(cfk.ab), $$0.c(cfk.ah), $$0.a(cfk.ao))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     if (!$$4x.e_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cot::a)).isPresent()) {
+                        cof $$6 = $$0.b($$1);
+                        com.c($$3x, $$4x, $$6);
+                        com.b((cok)$$4x);
+                        com.b($$3x, $$4x, $$6);
+                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(com::b));
+                        return true;
                      } else {
-                        Optional<cma> $$7 = $$1.a($$3);
-                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
-                           return false;
-                        } else {
-                           $$2.b();
-                           return true;
-                        }
+                        return false;
                      }
                   }))
       );
+   }
+
+   private static boolean a(cok $$0) {
+      return $$0.ec().a(cfk.ah);
    }
 }

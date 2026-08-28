@@ -1,107 +1,41 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class gpq implements gpk.a {
-   private static final Duration a = Duration.ofMillis(500L);
+public class gpq implements gpl.a {
+   private final fmg a;
    private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final fmf e;
-   private final dhq f;
-   private Instant g = Instant.now();
-   @Nullable
-   private gpq.a h;
 
-   public gpq(fmf $$0, dhq $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public gpq(fmg $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fgr $$0, glk $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new gpq.a(this.e.s.C_(), kj.a(this.e.t.dw()), 10, this.f);
-      }
+   public void a(fgs $$0, gll $$1, double $$2, double $$3, double $$4) {
+      dhi $$5 = this.a.s;
+      jh $$6 = jh.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      fgv $$6 = $$1.getBuffer(glu.F());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
-   }
-
-   private static void a(fgr $$0, fcg $$1, kj $$2, fgv $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
-   }
-
-   private static void a(fgr $$0, fcg $$1, kj $$2, glk $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         fgv $$19 = $$3.getBuffer(glu.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
-   }
-
-   private static void a(fgr $$0, fgv $$1, jm $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)kj.c($$6) - $$3);
-      float $$11 = (float)((double)kj.c($$7) - $$4);
-      float $$12 = (float)((double)kj.c($$8) - $$5);
-      gme.a($$0, $$1, $$2, $$10, $$11, $$12, $$10 + 16.0F, $$11 + 16.0F, $$12 + 16.0F, $$9.x(), $$9.y(), $$9.z(), $$9.w());
-   }
-
-   private static void a(fgr $$0, fgv $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)kj.c($$5) - $$2);
-      float $$13 = (float)((double)kj.c($$6) - $$3);
-      float $$14 = (float)((double)kj.c($$7) - $$4);
-      float $$15 = (float)((double)kj.c($$8) - $$2);
-      float $$16 = (float)((double)kj.c($$9) - $$3);
-      float $$17 = (float)((double)kj.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
-   }
-
-   static final class a {
-      final fcg a;
-      final fcg b;
-      final kj c;
-
-      a(etl $$0, kj $$1, int $$2, dhq $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new fca($$4, $$4, $$4);
-         this.b = new fca($$4, $$4, $$4);
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  kj $$8 = kj.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  etk.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == etk.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == etk.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
-            }
+      for (jh $$8 : jh.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(dhr.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = bae.g($$10, 0.9F, 0.9F);
+         long $$12 = kj.e($$8.a());
+         if ($$7.add($$12)) {
+            gpl.a(
+               $$0,
+               $$1,
+               $$5.R().p().a(dhr.a, kj.a($$12)),
+               (double)kj.a(kj.b($$12), 8),
+               (double)kj.a(kj.c($$12), 8),
+               (double)kj.a(kj.d($$12), 8),
+               16711680,
+               0.3F
+            );
          }
 
-         this.c = kj.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+         if ($$9 != 15) {
+            gpl.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
       }
    }
 }

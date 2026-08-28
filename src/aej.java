@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record aej(int b, boolean c, Set<aly<dhh>> d, int e, int f, int g, boolean h, boolean i, boolean j, ahh k, boolean l) implements aac<acr> {
+public record aej(int b, boolean c, Set<aly<dhi>> d, int e, int f, int g, boolean h, boolean i, boolean j, ahh k, boolean l) implements aac<acr> {
    public static final zt<xg, aej> a = aac.a(aej::a, aej::new);
 
    private aej(xg $$0) {
@@ -47,7 +47,7 @@ public record aej(int b, boolean c, Set<aly<dhh>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<aly<dhh>> f() {
+   public Set<aly<dhi>> f() {
       return this.d;
    }
 

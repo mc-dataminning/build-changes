@@ -22,7 +22,7 @@ public class xa<T extends xb> extends MessageToByteEncoder<aac<T>> {
             a.debug(wp.d, "OUT: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName(), $$4});
          }
 
-         bqa.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
+         bqb.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
       } catch (Throwable var9) {
          a.error("Error sending packet {}", $$3, var9);
          if ($$1.c()) {

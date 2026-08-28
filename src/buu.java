@@ -1,20 +1,24 @@
-class buu extends bum {
-   protected buu(bun $$0, int $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public boolean a(ash $$0, bwf $$1, int $$2) {
-      if ($$1.eE() < $$1.eS()) {
-         $$1.c(1.0F);
-      }
-
-      return true;
+class buu extends bun {
+   protected buu(buo $$0, int $$1, lq $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      int $$2 = 50 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return $$0 == 1;
+   }
+
+   @Override
+   public boolean a(ash $$0, bwg $$1, int $$2) {
+      if ($$1 instanceof asi $$3 && !$$1.aa_()) {
+         jh $$4 = $$3.ag();
+         if ($$4 != null) {
+            $$0.A().a($$3, $$4);
+            $$3.af();
+            return false;
+         }
+      }
+
+      return true;
    }
 }

@@ -1,173 +1,75 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-class fzf {
-   private static final int a = 44;
-   private final List<fzf.c> b;
+public class fzf extends fty {
+   private static final Logger d = LogUtils.getLogger();
+   public static final eeo a = new eeo((long)"test1".hashCode(), true, false);
+   protected final fty b;
+   private fof s;
+   private fof u;
+   private fof v;
+   private fof w;
+   protected foo c;
+   private fzl x;
 
-   fzf(List<fzf.c> $$0) {
+   public fzf(fty $$0) {
+      super(xv.c("selectWorld.title"));
       this.b = $$0;
    }
 
-   public void a() {
-      this.b.forEach(fzf.c::a);
+   @Override
+   protected void aT_() {
+      this.c = new foo(this.p, this.n / 2 - 100, 22, 200, 20, this.c, xv.c("selectWorld.search"));
+      this.c.b($$0 -> this.x.a($$0));
+      this.d(this.c);
+      this.x = this.c(new fzl(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
+      this.u = this.c(fof.a(ewe.a, $$0 -> this.x.b().ifPresent(fzl.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
+      this.c(fof.a(xv.c("selectWorld.create"), $$0 -> fyx.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
+      this.v = this.c(fof.a(xv.c("selectWorld.edit"), $$0 -> this.x.b().ifPresent(fzl.c::g)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
+      this.s = this.c(fof.a(xv.c("selectWorld.delete"), $$0 -> this.x.b().ifPresent(fzl.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
+      this.w = this.c(fof.a(xv.c("selectWorld.recreate"), $$0 -> this.x.b().ifPresent(fzl.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
+      this.c(fof.a(xu.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
+      this.a(null);
    }
 
-   public static fzf.a a(int $$0) {
-      return new fzf.a($$0);
+   @Override
+   protected void aG_() {
+      this.b(this.c);
    }
 
-   public static class a {
-      final int a;
-      private final List<fzf.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fzf.b> f = Optional.empty();
+   @Override
+   public void aP_() {
+      this.m.a(this.b);
+   }
 
-      public a(int $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public void a(fns $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+   }
 
-      void a() {
-         this.e++;
-      }
-
-      public fzf.d a(xv $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fzf.d $$3 = new fzf.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fzf.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fzf.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fzf a(Consumer<frv> $$0) {
-         frs $$1 = new frs().b(this.d);
-         $$1.a(fry.a(this.a - 44), 0, 0);
-         $$1.a(fry.a(44), 0, 1);
-         List<fzf.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fzf.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
-         }
-
-         $$1.a();
-         $$0.accept($$1);
-         fzf $$4 = new fzf($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public fzf.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fzf.b($$0, $$1));
-         return this;
+   public void a(@Nullable ewe $$0) {
+      if ($$0 == null) {
+         this.u.b(ewe.a);
+         this.u.j = false;
+         this.v.j = false;
+         this.w.j = false;
+         this.s.j = false;
+      } else {
+         this.u.b($$0.t());
+         this.u.j = $$0.u();
+         this.v.j = $$0.w();
+         this.w.j = $$0.x();
+         this.s.j = $$0.y();
       }
    }
 
-   static record b(int a, boolean b) {
-   }
-
-   static record c(fol<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
-      }
-
-      public fol<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
-   }
-
-   public static class d {
-      private final xv a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private xv d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
-
-      d(xv $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public fzf.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fzf.d a(xv $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      fzf.c a(fzf.a $$0, frs $$1, int $$2) {
-         $$0.a();
-         fpm $$3 = new fpm(this.a, fmf.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fzf.b> $$4 = $$0.f;
-         fol.a<Boolean> $$5 = fol.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fpq $$7 = fpq.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
-
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> xu.a(this.a, $$0x.c(), this.d));
-         } else {
-            $$5.a($$0x -> xu.a(this.a, $$0x.c()));
-         }
-
-         fol<Boolean> $$8 = $$5.a(0, 0, this.f, 20, xv.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               xv $$4x = this.d.f().a(n.h);
-               fnp $$5x = fmf.Q().h;
-               foz $$6x = new foz($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.w() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new fzf.c($$8, this.b, this.e);
+   @Override
+   public void aJ_() {
+      if (this.x != null) {
+         this.x.aI_().forEach(fzl.a::close);
       }
    }
 }

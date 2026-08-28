@@ -1,257 +1,167 @@
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fyp extends ftx {
-   private static final xv c = xv.c("gui.socialInteractions.title");
-   private static final alz d = alz.b("social_interactions/background");
-   private static final alz s = alz.b("icon/search");
-   private static final xv u = xv.c("gui.socialInteractions.tab_all");
-   private static final xv v = xv.c("gui.socialInteractions.tab_hidden");
-   private static final xv w = xv.c("gui.socialInteractions.tab_blocked");
-   private static final xv x = u.e().a(n.t);
-   private static final xv y = v.e().a(n.t);
-   private static final xv z = w.e().a(n.t);
-   private static final xv A = xv.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
-   static final xv B = xv.c("gui.socialInteractions.search_empty").a(n.h);
-   private static final xv C = xv.c("gui.socialInteractions.empty_hidden").a(n.h);
-   private static final xv D = xv.c("gui.socialInteractions.empty_blocked").a(n.h);
-   private static final xv E = xv.c("gui.socialInteractions.blocking_hint");
-   private static final int F = 8;
-   private static final int G = 236;
-   private static final int H = 16;
-   private static final int I = 64;
-   public static final int a = 72;
-   public static final int b = 88;
-   private static final int J = 238;
-   private static final int K = 20;
-   private static final int L = 36;
-   private final frt M = new frt(this);
+public class fyp extends fol<fyn> {
+   private final fyq a;
+   private final List<fyn> m = Lists.newArrayList();
    @Nullable
-   private final ftx N;
-   fyo O;
-   fon P;
-   private String Q = "";
-   private fyp.a R = fyp.a.a;
-   private foe S;
-   private foe T;
-   private foe U;
-   private foe V;
-   @Nullable
-   private xv W;
-   private int X;
+   private String n;
 
-   public fyp() {
-      this(null);
-   }
-
-   public fyp(@Nullable ftx $$0) {
-      super(c);
-      this.N = $$0;
-      this.a(fmf.Q());
-   }
-
-   private int l() {
-      return Math.max(52, this.o - 128 - 16);
-   }
-
-   private int E() {
-      return 80 + this.l() - 8;
-   }
-
-   private int F() {
-      return (this.n - 238) / 2;
+   public fyp(fyq $$0, fmg $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
    }
 
    @Override
-   public xv i() {
-      return (xv)(this.W != null ? xu.a(super.i(), this.W) : super.i());
+   protected void b(fns $$0) {
    }
 
    @Override
-   protected void aT_() {
-      this.M.a(c, this.p);
-      this.O = new fyo(this, this.m, this.n, this.E() - 88, 88, 36);
-      int $$0 = this.O.a() / 3;
-      int $$1 = this.O.s();
-      int $$2 = this.O.t();
-      this.S = this.c(foe.a(u, $$0x -> this.a(fyp.a.a)).a($$1, 45, $$0, 20).a());
-      this.T = this.c(foe.a(v, $$0x -> this.a(fyp.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
-      this.U = this.c(foe.a(w, $$0x -> this.a(fyp.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
-      String $$3 = this.P != null ? this.P.a() : "";
-      this.P = new fon(this.p, this.F() + 28, 74, 200, 15, A) {
-         @Override
-         protected yj aR_() {
-            return !fyp.this.P.a().isEmpty() && fyp.this.O.b() ? super.aR_().f(", ").b(fyp.B) : super.aR_();
-         }
-      };
-      this.P.f(16);
-      this.P.g(true);
-      this.P.g(-1);
-      this.P.a($$3);
-      this.P.c(A);
-      this.P.b(this::a);
-      this.c(this.P);
-      this.d(this.O);
-      this.V = this.c(foe.a(E, fsu.b(this, aza.o)).a(this.n / 2 - 100, 64 + this.l(), 200, 20).a());
-      this.a(this.R);
-      this.M.b(foe.a(xu.d, $$0x -> this.aP_()).a(200).a());
-      this.M.a($$1x -> {
-         foc var10000 = this.c($$1x);
-      });
-      this.c();
+   protected void a(fns $$0) {
    }
 
    @Override
-   protected void c() {
-      this.M.a();
-      this.O.b(this.n, this.E() - 88, 88);
-      this.P.c(this.F() + 28, 74);
-      int $$0 = this.O.s();
-      int $$1 = this.O.t();
-      int $$2 = this.O.a() / 3;
-      this.S.c($$0, 45);
-      this.T.c(($$0 + $$1 - $$2) / 2 + 1, 45);
-      this.U.c($$1 - $$2 + 1, 45);
-      this.V.c(this.n / 2 - 100, 64 + this.l());
+   protected void c(fns $$0) {
+      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
    }
 
-   @Override
-   protected void aG_() {
-      this.b(this.P);
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fyn> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
    }
 
-   @Override
-   public void aP_() {
-      this.m.a(this.N);
-   }
+   private void a(Collection<UUID> $$0, Map<UUID, fyn> $$1) {
+      gfl $$2 = this.c.t.i;
 
-   private void a(fyp.a $$0) {
-      this.R = $$0;
-      this.S.b(u);
-      this.T.b(v);
-      this.U.b(w);
-      boolean $$1 = false;
-      switch ($$0) {
-         case a:
-            this.S.b(x);
-            Collection<UUID> $$2 = this.m.t.i.n();
-            this.O.a($$2, this.O.n(), true);
-            break;
-         case b:
-            this.T.b(y);
-            Set<UUID> $$3 = this.m.aN().c();
-            $$1 = $$3.isEmpty();
-            this.O.a($$3, this.O.n(), false);
-            break;
-         case c:
-            this.U.b(z);
-            fyn $$4 = this.m.aN();
-            Set<UUID> $$5 = this.m.t.i.n().stream().filter($$4::e).collect(Collectors.toSet());
-            $$1 = $$5.isEmpty();
-            this.O.a($$5, this.O.n(), false);
-      }
-
-      flw $$6 = this.m.aZ();
-      if (!this.P.a().isEmpty() && this.O.b() && !this.P.aN_()) {
-         $$6.c(B);
-      } else if ($$1) {
-         if ($$0 == fyp.a.b) {
-            $$6.c(C);
-         } else if ($$0 == fyp.a.c) {
-            $$6.c(D);
+      for (UUID $$3 : $$0) {
+         gfw $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fyn(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
          }
       }
    }
 
-   @Override
-   public void b(fnr $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = this.F() + 3;
-      $$0.a(glu::C, d, $$4, 64, 236, this.l() + 16);
-      $$0.a(glu::C, s, $$4 + 10, 76, 12, 12);
-   }
-
-   @Override
-   public void a(fnr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a(this.m);
-      if (this.W != null) {
-         $$0.b(this.m.h, this.W, this.F() + 8, 35, -1);
-      }
-
-      if (!this.O.b()) {
-         this.O.a($$0, $$1, $$2, $$3);
-      } else if (!this.P.a().isEmpty()) {
-         $$0.a(this.m.h, B, this.n / 2, (72 + this.E()) / 2, -1);
-      } else if (this.R == fyp.a.b) {
-         $$0.a(this.m.h, C, this.n / 2, (72 + this.E()) / 2, -1);
-      } else if (this.R == fyp.a.c) {
-         $$0.a(this.m.h, D, this.n / 2, (72 + this.E()) / 2, -1);
-      }
-
-      this.V.k = this.R == fyp.a.c;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.P.aN_() && this.m.n.L.a($$0, $$1)) {
-         this.aP_();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   private void a(String $$0) {
-      $$0 = $$0.toLowerCase(Locale.ROOT);
-      if (!$$0.equals(this.Q)) {
-         this.O.a($$0);
-         this.Q = $$0;
-         this.a(this.R);
-      }
-   }
-
-   private void a(fmf $$0) {
-      int $$1 = $$0.L().m().size();
-      if (this.X != $$1) {
-         String $$2 = "";
-         gfy $$3 = $$0.S();
-         if ($$0.T()) {
-            $$2 = $$0.V().ae();
-         } else if ($$3 != null) {
-            $$2 = $$3.a;
-         }
-
-         if ($$1 > 1) {
-            this.W = xv.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
+   private void a(Map<UUID, fyn> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.bb().b())) {
+         fyn $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fyn $$2 = new fyn(this.c, this.a, $$3.getId(), $$3.getName(), this.c.an().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
          } else {
-            this.W = xv.a("gui.socialInteractions.server_label.single", $$2, $$1);
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
          }
 
-         this.X = $$1;
+         $$4.d(true);
       }
    }
 
-   public void a(gfv $$0) {
-      this.O.a($$0, this.R);
+   private static Collection<GameProfile> a(ggf $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         ggh $$3 = $$0.b($$2);
+         if ($$3 instanceof ggi.a) {
+            ggi.a $$4 = (ggi.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void c() {
+      this.m.sort(Comparator.<fyn, Integer>comparing($$0 -> {
+         if (this.c.b($$0.g())) {
+            return 0;
+         } else if (this.c.bb().a($$0.g())) {
+            return 1;
+         } else if ($$0.g().version() == 2) {
+            return 4;
+         } else {
+            return $$0.j() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.c().isBlank()) {
+            int $$1 = $$0.c().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fyn::c, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<fyn> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.c();
+      this.J();
+      this.a(this.m);
+      this.b($$1);
+   }
+
+   private void J() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean b() {
+      return this.m.isEmpty();
+   }
+
+   public void a(gfw $$0, fyq.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fyn $$3 : this.m) {
+         if ($$3.g().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fyq.a.a || this.c.aN().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fyn $$5 = new fyn(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b((fyn)$$5);
+         this.m.add($$5);
+      }
    }
 
    public void a(UUID $$0) {
-      this.O.a($$0);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+      for (fyn $$1 : this.m) {
+         if ($$1.g().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
+      }
    }
 }

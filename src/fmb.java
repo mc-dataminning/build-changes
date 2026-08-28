@@ -1,32 +1,66 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-public enum fmb implements bah, bba {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public class fmb {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gkj[] e = new gkj[9];
+   private boolean f;
 
-   public static final Codec<fmb> c = bba.a(fmb::values);
-   private final int d;
-   private final String e;
-   private final String f;
+   public fmb(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-   private fmb(final int $$0, final String $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gkj();
+      }
    }
 
-   @Override
-   public int b() {
-      return this.d;
+   private void b() {
+      try {
+         ux $$0 = vk.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = vm.b($$0, 1343);
+         $$0 = bbs.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gkj.a.parse(vl.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gkj::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   public void a() {
+      try {
+         ux $$0 = vm.e(new ux());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gkj $$2 = this.a($$1);
+            DataResult<vu> $$3 = gkj.a.encodeStart(vl.a, $$2);
+            $$0.a(String.valueOf($$1), (vu)$$3.getOrThrow());
+         }
+
+         vk.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public gkj a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
    }
 }

@@ -9,10 +9,10 @@ public class ay extends dy<ay.a> {
       return ay.a.a;
    }
 
-   public void a(asi $$0, chw $$1, chw $$2, @Nullable bva $$3) {
-      ewo $$4 = bw.b($$0, $$1);
-      ewo $$5 = bw.b($$0, $$2);
-      ewo $$6 = $$3 != null ? bw.b($$0, $$3) : null;
+   public void a(asi $$0, chx $$1, chx $$2, @Nullable bvb $$3) {
+      ewp $$4 = bw.b($$0, $$1);
+      ewp $$5 = bw.b($$0, $$2);
+      ewp $$6 = $$3 != null ? bw.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -39,11 +39,11 @@ public class ay extends dy<ay.a> {
          return ao.p.a(new ay.a(Optional.empty(), bw.a($$0), bw.a($$1), bw.a($$2)));
       }
 
-      public boolean a(ewo $$0, ewo $$1, @Nullable ewo $$2) {
+      public boolean a(ewp $$0, ewp $$1, @Nullable ewp $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bh> $$0, ewo $$1) {
+      private static boolean a(Optional<bh> $$0, ewp $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

@@ -1,10 +1,10 @@
-import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public abstract class enq {
-   public static final Codec<enq> b = ma.S.q().dispatch(enq::b, enr::codec);
+public abstract class enq extends enr {
+   @Override
+   public final Stream<jh> a_(enp $$0, bam $$1, jh $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+   }
 
-   public abstract Stream<jh> a_(eno var1, bam var2, jh var3);
-
-   public abstract enr<?> b();
+   protected abstract boolean a(enp var1, bam var2, jh var3);
 }

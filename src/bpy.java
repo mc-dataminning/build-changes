@@ -1,20 +1,51 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public enum bpy {
-   a("client"),
-   b("server");
+public class bpy implements AutoCloseable {
+   public static final bpy a = new bpy(null);
+   @Nullable
+   private final bpt b;
 
-   private final String c;
-
-   private bpy(final String $$0) {
-      this.c = $$0;
+   bpy(@Nullable bpt $$0) {
+      this.b = $$0;
    }
 
-   public static bpy a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
+   public bpy a(String $$0) {
+      if (this.b != null) {
+         this.b.e($$0);
+      }
+
+      return this;
    }
 
-   public String a() {
-      return this.c;
+   public bpy a(Supplier<String> $$0) {
+      if (this.b != null) {
+         this.b.e($$0.get());
+      }
+
+      return this;
+   }
+
+   public bpy a(long $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      return this;
+   }
+
+   public bpy a(int $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void close() {
+      if (this.b != null) {
+         this.b.c();
+      }
    }
 }

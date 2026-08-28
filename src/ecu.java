@@ -1,11 +1,34 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-
 public interface ecu {
-   Codec<ecu> c = ma.t.q().dispatch(ecu::a, ecv::a);
-   zt<xg, ecu> d = zr.a(mb.ab).b(ecu::a, ecv::b);
+   ecu a = new ecu() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-   Optional<fbx> a(dhh var1);
+      @Override
+      public void a(ect $$0) {
+      }
 
-   ecv<? extends ecu> a();
+      @Override
+      public void b(ect $$0) {
+      }
+
+      @Override
+      public boolean a(jq<ecr> $$0, fby $$1, ecr.a $$2, ecu.a $$3) {
+         return false;
+      }
+   };
+
+   boolean a();
+
+   void a(ect var1);
+
+   void b(ect var1);
+
+   boolean a(jq<ecr> var1, fby var2, ecr.a var3, ecu.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(ect var1, fby var2);
+   }
 }

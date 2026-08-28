@@ -5,11 +5,11 @@ public class agd implements aac<acr> {
    private final int d;
    private final int e;
 
-   public agd(bvj $$0) {
+   public agd(bvk $$0) {
       this($$0.ar(), $$0.dz());
    }
 
-   public agd(int $$0, fbx $$1) {
+   public agd(int $$0, fby $$1) {
       this.b = $$0;
       double $$2 = 3.9;
       double $$3 = bae.a($$1.d, -3.9, 3.9);

@@ -1,44 +1,31 @@
-public class hex extends heq {
-   public static final int n = 20;
-   private final gkg o;
-   private int p;
+public class hex implements hes {
+   private final gkh a;
+   private boolean b;
+   private boolean c = true;
 
-   public hex(gkg $$0) {
-      super(axf.iq, axg.h, hfh.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+   public hex(gkh $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dR() && (this.p <= 20 || this.o.fJ())) {
-         this.f = (double)((float)this.o.dB());
-         this.g = (double)((float)this.o.dD());
-         this.h = (double)((float)this.o.dH());
-         float $$0 = (float)this.o.dz().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = bae.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
+   public void a() {
+      dhi $$0 = this.a.dW();
+      dxv $$1 = $$0.c(this.a.cR().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dko.ny)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dko.ny) && !this.a.aa_()) {
+            boolean $$2 = $$1.c(dkt.b);
+            if ($$2) {
+               this.a.a(axf.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(axf.cZ, 1.0F, 1.0F);
+            }
          }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
+         this.b = true;
       } else {
-         this.n();
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

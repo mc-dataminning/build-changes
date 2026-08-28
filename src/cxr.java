@@ -1,39 +1,36 @@
-public class cxr {
-   public static bti a(dhh $$0, cpw $$1, bth $$2) {
-      $$1.c($$2);
-      return bti.c;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+
+public enum cxr implements bba {
+   a(0, "none"),
+   b(1, "eat"),
+   c(2, "drink"),
+   d(3, "block"),
+   e(4, "bow"),
+   f(5, "spear"),
+   g(6, "crossbow"),
+   h(7, "spyglass"),
+   i(8, "toot_horn"),
+   j(9, "brush");
+
+   private static final IntFunction<cxr> m = ayv.a(cxr::a, values(), ayv.a.a);
+   public static final Codec<cxr> k = bba.a(cxr::values);
+   public static final zt<ByteBuf, cxr> l = zr.a(m, cxr::a);
+   private final int n;
+   private final String o;
+
+   private cxr(final int $$0, final String $$1) {
+      this.n = $$0;
+      this.o = $$1;
    }
 
-   public static cxo a(cxo $$0, cpw $$1, cxo $$2, boolean $$3) {
-      boolean $$4 = $$1.fV();
-      if ($$3 && $$4) {
-         if (!$$1.gi().i($$2)) {
-            $$1.gi().f($$2);
-         }
-
-         return $$0;
-      } else {
-         $$0.a(1, $$1);
-         if ($$0.f()) {
-            return $$2;
-         } else {
-            if (!$$1.gi().f($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
-      }
+   public int a() {
+      return this.n;
    }
 
-   public static cxo a(cxo $$0, cpw $$1, cxo $$2) {
-      return a($$0, $$1, $$2, true);
-   }
-
-   public static void a(cma $$0, Iterable<cxo> $$1) {
-      dhh $$2 = $$0.dW();
-      if (!$$2.C) {
-         $$1.forEach($$2x -> $$2.b(new cma($$2, $$0.dB(), $$0.dD(), $$0.dH(), $$2x)));
-      }
+   @Override
+   public String c() {
+      return this.o;
    }
 }

@@ -1,132 +1,84 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ftw extends ftx {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final xv c = xv.c("recover_world.title").a(n.r);
-   private static final xv d = xv.c("recover_world.bug_tracker");
-   private static final xv s = xv.c("recover_world.restore");
-   private static final xv u = xv.c("recover_world.no_fallback");
-   private static final xv v = xv.c("recover_world.done.title");
-   private static final xv w = xv.c("recover_world.done.success");
-   private static final xv x = xv.c("recover_world.done.failed");
-   private static final xv y = xv.c("recover_world.issue.none").a(n.k);
-   private static final xv z = xv.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer A;
-   private final frx B = frx.d().a(8);
-   private final xv C;
-   private final foz D;
-   private final foz E;
-   private final ewc.c F;
-
-   public ftw(fmf $$0, BooleanConsumer $$1, ewc.c $$2) {
-      super(c);
-      this.A = $$1;
-      this.C = xv.a("recover_world.message", xv.b($$2.f()).a(n.h));
-      this.D = new foz(this.C, $$0.h);
-      this.F = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      xv $$5 = xv.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.E = new foz($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.B.c().b();
-      this.B.a(new fpm(this.l, $$0.h));
-      this.B.a(this.D.b(true));
-      this.B.a(this.E);
-      frx $$7 = frx.e().a(5);
-      $$7.a(foe.a(d, fsu.b(this, aza.j)).b(120, 20).a());
-      $$7.a(foe.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fpq.a(u)).a()).j = $$6;
-      this.B.a($$7);
-      this.B.a(foe.a(xu.k, $$0x -> this.aP_()).b(120, 20).a());
-      this.B.a(this::c);
-   }
-
-   private void a(fmf $$0) {
-      Exception $$1 = this.a(this.F, false);
-      Exception $$2 = this.a(this.F, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new fti(xv.c("recover_world.restoring")));
-         fyz.a(this.F);
-         if (this.F.n()) {
-            $$0.a(new fsv(this.A, v, w, xu.j, xu.k));
-         } else {
-            $$0.a(new fsq(() -> this.A.accept(false), v, x));
-         }
-      } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new fsq(() -> this.A.accept(false), v, x));
-      }
-   }
-
-   private xv a(ewc.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return xv.i();
-      } else {
-         yj $$3 = xv.i();
-         Instant $$4 = $$0.a($$1);
-         yj $$5 = $$4 != null ? xv.b(fzk.a.format($$4)) : xv.c("recover_world.state_entry.unknown");
-         $$3.b(xv.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(y);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(z);
-         } else if ($$2 instanceof vo) {
-            $$3.b(xv.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(xv.b($$2.toString()).a(n.m));
-         }
-
-         return $$3;
-      }
-   }
-
+public class ftw extends fty {
+   private static final xv a = xv.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier d;
+   private final ftw.a s;
    @Nullable
-   private Exception a(ewc.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.h());
-         } else {
-            $$0.a($$0.i());
-         }
+   private hbl u;
 
-         return null;
-      } catch (vi | vo | IOException var4) {
-         return var4;
+   public ftw(BooleanSupplier $$0, ftw.a $$1) {
+      super(flx.a);
+      this.d = $$0;
+      this.s = $$1;
+      this.c = ae.c();
+   }
+
+   @Override
+   public boolean aH_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aS_() {
+      return false;
+   }
+
+   @Override
+   public void a(fns $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, -1);
+   }
+
+   @Override
+   public void b(fns $$0, int $$1, int $$2, float $$3) {
+      switch (this.s) {
+         case a:
+            $$0.a(glv::B, this.l(), 0, 0, $$0.a(), $$0.b());
+            break;
+         case b:
+            $$0.b(glv.t(), 0, 0, this.n, this.o, 0);
+            break;
+         case c:
+            this.a($$0, $$3);
+            this.q();
+            this.a($$0);
+      }
+   }
+
+   private hbl l() {
+      if (this.u != null) {
+         return this.u;
+      } else {
+         this.u = this.m.ap().a().a(dko.eq.m());
+         return this.u;
       }
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.E.d(this.n - 50);
-      this.D.d(this.n - 50);
-      this.B.a();
-      frr.a(this.B, this.H());
-   }
-
-   @Override
-   public xv i() {
-      return xu.a(super.i(), this.C);
+   public void e() {
+      if (this.d.getAsBoolean() || ae.c() > this.c + 30000L) {
+         this.aP_();
+      }
    }
 
    @Override
    public void aP_() {
-      this.A.accept(false);
+      this.m.aZ().c(xv.c("narrator.ready_to_play"));
+      super.aP_();
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

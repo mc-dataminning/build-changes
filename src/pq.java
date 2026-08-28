@@ -10,10 +10,10 @@ public class pq {
          alu.a.forEach($$1xx -> $$1xx.a($$3::a));
          kg.g $$4 = $$1.a($$2, $$1x, $$3);
          js.a $$5 = $$4.a();
-         Optional<? extends js.b<dij>> $$6 = $$5.a(mb.aI);
-         Optional<? extends js.b<enn>> $$7 = $$5.a(mb.aT);
+         Optional<? extends js.b<dik>> $$6 = $$5.a(mb.aI);
+         Optional<? extends js.b<eno>> $$7 = $$5.a(mb.aT);
          if ($$6.isPresent() || $$7.isPresent()) {
-            ps.a((jr<enn>)DataFixUtils.orElseGet($$7, () -> $$1x.d(mb.aT)), (js<dij>)DataFixUtils.orElseGet($$6, () -> $$1x.d(mb.aI)));
+            ps.a((jr<eno>)DataFixUtils.orElseGet($$7, () -> $$1x.d(mb.aT)), (js<dik>)DataFixUtils.orElseGet($$6, () -> $$1x.d(mb.aI)));
          }
 
          return $$4;

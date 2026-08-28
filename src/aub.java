@@ -24,13 +24,13 @@ public class aub implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 20;
    private final Path c;
-   private final bok<aub.e> d;
-   private final bry e = new bry(ae.i(), "download-queue");
+   private final bol<aub.e> d;
+   private final brz e = new brz(ae.i(), "download-queue");
 
    public aub(Path $$0) throws IOException {
       this.c = $$0;
       v.c($$0);
-      this.d = bok.a(aub.e.a, $$0.resolve("log.json"));
+      this.d = bol.a(aub.e.a, $$0.resolve("log.json"));
       aua.a($$0, 20);
    }
 

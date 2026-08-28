@@ -1,14 +1,11 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public interface ecv<T extends ecu> {
-   ecv<ecm> a = a("block", new ecm.a());
-   ecv<eco> b = a("entity", new eco.a());
+public interface ecv {
+   Codec<ecv> c = ma.t.q().dispatch(ecv::a, ecw::a);
+   zt<xg, ecv> d = zr.a(mb.ab).b(ecv::a, ecw::b);
 
-   MapCodec<T> a();
+   Optional<fby> a(dhi var1);
 
-   zt<? super xg, T> b();
-
-   static <S extends ecv<T>, T extends ecu> S a(String $$0, S $$1) {
-      return kd.a(ma.t, $$0, $$1);
-   }
+   ecw<? extends ecv> a();
 }

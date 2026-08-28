@@ -1,43 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dts extends dta implements drp {
+public class dts extends dkw {
    public static final MapCodec<dts> a = b(dts::new);
-   public static final dyl c = dyk.D;
+   protected static final fcs b = dkm.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
-   protected MapCodec<? extends dts> a() {
+   public MapCodec<dts> a() {
       return a;
    }
 
-   protected dts(dxt.d $$0) {
+   protected dts(dxu.d $$0) {
       super($$0);
-      this.l(this.m().b(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dxu a(dbf $$0) {
-      etw $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).b(c, Boolean.valueOf($$1.b(etx.c)));
    }
 
    @Override
-   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
+   protected void a(dxv $$0, dhi $$1, jh $$2, bvk $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof ash && $$3 instanceof cru) {
+         $$1.a(new jh($$2), true, $$3);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected etw b_(dxu $$0) {
-      return $$0.c(c) ? etx.c.a(true) : super.b_($$0);
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
-      $$0.a(c);
+   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
+      etx $$3 = $$1.b_($$2);
+      etx $$4 = $$1.b_($$2.d());
+      return ($$3.a() == ety.c || $$0.b() instanceof dom) && $$4.a() == ety.a;
    }
 }

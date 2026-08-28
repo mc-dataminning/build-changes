@@ -1,19 +1,28 @@
 import com.mojang.serialization.Codec;
 
 public enum bty implements bba {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
+   a("hurt", axf.uF),
+   b("thorns", axf.zW),
+   c("drowning", axf.uG),
+   d("burning", axf.uI),
+   e("poking", axf.uJ),
+   f("freezing", axf.uH);
 
-   public static final Codec<bty> d = bba.a(bty::values);
-   private final String e;
+   public static final Codec<bty> g = bba.a(bty::values);
+   private final String h;
+   private final axe i;
 
-   private bty(final String $$0) {
-      this.e = $$0;
+   private bty(final String $$0, final axe $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.h;
+   }
+
+   public axe a() {
+      return this.i;
    }
 }

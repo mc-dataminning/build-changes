@@ -1,22 +1,38 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
 public class edn {
-   public static final Codec<edn> a = RecordCodecBuilder.create(
+   public final elb a;
+   public final elb b;
+   public final elb c;
+   public final elb d;
+   public final elb e;
+   public final List<dxv> f;
+   public final ayk<dkm> g;
+   public final ayk<dkm> h;
+   public static final Codec<edn> i = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eja.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
-               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
+               elb.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
+               elb.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
+               elb.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
+               elb.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
+               elb.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
+               azn.a(dxv.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
+               ayk.b(mb.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
+               ayk.b(mb.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, edn::new)
    );
-   public final double b;
-   public final double c;
-   public final int d;
 
-   public edn(double $$0, double $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public edn(elb $$0, elb $$1, elb $$2, elb $$3, elb $$4, List<dxv> $$5, ayk<dkm> $$6, ayk<dkm> $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 }

@@ -1,63 +1,54 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.UnaryOperator;
+import java.util.Locale;
 
-public record eap(ImmutableList<eat> c) {
-   public static final eap a = new eap.a()
-      .a(eaq.c, $$0 -> $$0)
-      .a(eaq.d, $$0 -> $$0.a(eas::b))
-      .a(eaq.e, $$0 -> $$0.a(eaq.d, 8).a(eas::d))
-      .a(eaq.f, $$0 -> $$0.a(eaq.d, 8).a(eas::e))
-      .a(eaq.g, $$0 -> $$0.a(eaq.d, 8).a(eaq.f, 1).a(0).a(eas::f))
-      .a(eaq.h, $$0 -> $$0.a(eaq.d, 8).a(eaq.f, 1).a(0).a(eas::g))
-      .a(eaq.i, $$0 -> $$0.a(eaq.d, 8).a(0).a(eas::h))
-      .a(eaq.j, $$0 -> $$0.a(eaq.d, 8).a(eaq.i, 1).a(1).a(eas::i))
-      .a(eaq.k, $$0 -> $$0.a(eas::j))
-      .a(eaq.l, $$0 -> $$0.a(eaq.k, 1).a(eas::k))
-      .a(eaq.m, $$0 -> $$0.a(eaq.f, 1).a(eas::l))
-      .a(eaq.n, $$0 -> $$0.a(eas::m))
-      .a();
-   public static final eap b = new eap.a()
-      .a(eaq.c, $$0 -> $$0)
-      .a(eaq.d, $$0 -> $$0.a(eas::c))
-      .a(eaq.e, $$0 -> $$0)
-      .a(eaq.f, $$0 -> $$0)
-      .a(eaq.g, $$0 -> $$0)
-      .a(eaq.h, $$0 -> $$0)
-      .a(eaq.i, $$0 -> $$0)
-      .a(eaq.j, $$0 -> $$0)
-      .a(eaq.k, $$0 -> $$0.a(eas::j))
-      .a(eaq.l, $$0 -> $$0.a(eaq.k, 1).a(eas::k))
-      .a(eaq.m, $$0 -> $$0)
-      .a(eaq.n, $$0 -> $$0.a(eas::m))
-      .a();
+public final class eap {
+   private final ImmutableList<ear> a;
+   private final int[] b;
 
-   public eat a(eaq $$0) {
-      return (eat)this.c.get($$0.b());
-   }
+   public eap(ImmutableList<ear> $$0) {
+      this.a = $$0;
+      int $$1 = $$0.isEmpty() ? 0 : ((ear)$$0.getFirst()).b() + 1;
+      this.b = new int[$$1];
 
-   public ImmutableList<eat> a() {
-      return this.c;
-   }
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         ear $$3 = (ear)$$0.get($$2);
+         int $$4 = $$3.b();
 
-   public static class a {
-      private final List<eat> a = new ArrayList<>();
-
-      public eap a() {
-         return new eap(ImmutableList.copyOf(this.a));
-      }
-
-      public eap.a a(eaq $$0, UnaryOperator<eat.a> $$1) {
-         eat.a $$2;
-         if (this.a.isEmpty()) {
-            $$2 = new eat.a($$0);
-         } else {
-            $$2 = new eat.a($$0, this.a.getLast());
+         for (int $$5 = 0; $$5 <= $$4; $$5++) {
+            this.b[$$5] = $$2;
          }
-
-         this.a.add($$1.apply($$2).a());
-         return this;
       }
+   }
+
+   @VisibleForTesting
+   public ImmutableList<ear> a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.a.size();
+   }
+
+   public int a(ear $$0) {
+      int $$1 = $$0.b();
+      if ($$1 >= this.b.length) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
+      } else {
+         return this.b[$$1];
+      }
+   }
+
+   public int c() {
+      return Math.max(0, this.a.size() - 1);
+   }
+
+   public ear a(int $$0) {
+      return (ear)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
    }
 }

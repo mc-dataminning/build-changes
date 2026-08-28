@@ -1,41 +1,68 @@
-public class gfs {
-   private final gkg a;
-   private final gfj b;
-   private final glg c;
-   private gfs.a d = gfs.a.a;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
 
-   public gfs(gkg $$0, gfj $$1, glg $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class gfs extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final ghc b;
+   private final gfs.a c;
+
+   public gfs(ghc $$0, gfs.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            jh $$0 = this.a.dw();
-            boolean $$1 = this.b.e($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.aa_() || !this.a.bL()) {
-               this.d = gfs.a.c;
-            }
-         case a:
-         case c:
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
+
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         atb.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         atb.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
       }
    }
 
-   public boolean b() {
-      return this.d == gfs.a.c;
-   }
-
-   public void c() {
-      if (this.d == gfs.a.a) {
-         this.d = gfs.a.b;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = atb.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = bae.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = bae.a($$4.get(4), -1);
+            int $$9 = bae.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+         }
       }
+
+      $$0.close();
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

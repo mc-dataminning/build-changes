@@ -1,18 +1,21 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-class efi implements eew {
-   public static efi a = new efi();
-   public static final MapCodec<efi> e = MapCodec.unit(() -> a);
+public abstract class efi implements eex {
+   protected final kl f;
 
-   private efi() {
+   protected static <P extends efi> P1<Mu<P>, kl> a(Instance<P> $$0) {
+      return $$0.group(kl.v(16).optionalFieldOf("offset", kl.h).forGetter($$0x -> $$0x.f));
    }
 
-   public boolean a(dif $$0, jh $$1) {
-      return true;
+   protected efi(kl $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public eex<?> a() {
-      return eex.l;
+   public final boolean a(dig $$0, jh $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(dxv var1);
 }

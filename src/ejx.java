@@ -1,22 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejx implements eiz {
+public record ejx(int b, int c, int d) implements eja {
    public static final Codec<ejx> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               azn.m.fieldOf("spread_width").forGetter(ejx::a), azn.m.fieldOf("spread_height").forGetter(ejx::b), azn.m.fieldOf("max_height").forGetter(ejx::c)
             )
             .apply($$0, ejx::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
 
-   public ejx(int $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

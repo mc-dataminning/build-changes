@@ -1,60 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-public class elr extends elt {
+public class elr extends elu {
    public static final MapCodec<elr> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(elr::new, $$0 -> $$0.b);
    private final float b;
-
-   @Override
-   protected elu<?> a() {
-      return elu.b;
-   }
 
    public elr(float $$0) {
       this.b = $$0;
    }
 
    @Override
-   public void a(elt.a $$0) {
-      bam $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            jh $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               a($$3, dtk.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jh $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               a($$4, dtk.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jh $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               a($$5, dtk.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jh $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               a($$6, dtk.c, $$0);
-            }
-         }
-      });
+   protected elv<?> a() {
+      return elv.d;
    }
 
-   private static void a(jh $$0, dyl $$1, elt.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
+   @Override
+   public void a(elu.a $$0) {
+      bam $$1 = $$0.b();
+      List<jh> $$2 = $$0.c();
+      if (!$$2.isEmpty()) {
+         if (!($$1.i() >= this.b)) {
+            List<jh> $$3 = new ArrayList<>($$2);
+            ae.c($$3, $$1);
+            Optional<jh> $$4 = $$3.stream().filter($$1x -> {
+               for (jm $$2x : jm.values()) {
+                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(axu.u))) {
+                     return false;
+                  }
+               }
 
-      for (jh var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.e();
+               return true;
+            }).findFirst();
+            if (!$$4.isEmpty()) {
+               $$0.a($$4.get(), dko.cB.m().b(dmi.c, dmi.a.b));
+            }
+         }
       }
    }
 }

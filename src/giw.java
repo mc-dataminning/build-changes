@@ -1,79 +1,80 @@
-public class giw extends gjr {
-   private final gjm a;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   giw(gfj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjm $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.a = $$7;
-      float $$8 = 2.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
-      this.v = $$9;
-      this.w = $$9;
-      this.x = $$9;
-      this.D *= 1.875F;
-      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
-      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public giv b() {
-      return giv.c;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * bae.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         cpw $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
-         if ($$0 != null) {
-            double $$1 = $$0.dD();
-            if (this.h > $$1) {
-               this.h = this.h + ($$1 - this.h) * 0.2;
-               this.k = this.k + ($$0.dz().e - this.k) * 0.2;
-               this.c(this.g, this.h, this.i);
-            }
-         }
-      }
-   }
-
-   public static class a implements giu<lw> {
-      private final gjm a;
-
-      public a(gjm $$0) {
-         this.a = $$0;
+public interface giw {
+   giw a = new giw() {
+      @Override
+      public fgn a(fgu $$0, hbm $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gkv.c);
+         RenderSystem.setShaderTexture(0, hbk.d);
+         return $$0.a(fgx.c.h, fgq.d);
       }
 
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new giw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
       }
-   }
-
-   public static class b implements giu<lw> {
-      private final gjm a;
-
-      public b(gjm $$0) {
-         this.a = $$0;
+   };
+   giw b = new giw() {
+      @Override
+      public fgn a(fgu $$0, hbm $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gkv.c);
+         RenderSystem.setShaderTexture(0, hbk.e);
+         return $$0.a(fgx.c.h, fgq.d);
       }
 
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gir $$8 = new giw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(200.0F, 50.0F, 120.0F);
-         $$8.e(0.4F);
-         return $$8;
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
       }
-   }
+   };
+   giw c = new giw() {
+      @Override
+      public fgn a(fgu $$0, hbm $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gkv.c);
+         RenderSystem.setShaderTexture(0, hbk.e);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         return $$0.a(fgx.c.h, fgq.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   giw d = new giw() {
+      @Override
+      public fgn a(fgu $$0, hbm $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+         return $$0.a(fgx.c.h, fgq.d);
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   giw e = new giw() {
+      @Nullable
+      @Override
+      public fgn a(fgu $$0, hbm $$1) {
+         return null;
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   @Nullable
+   fgn a(fgu var1, hbm var2);
 }

@@ -5,25 +5,25 @@ public interface bam {
    double a = 2.297;
 
    static bam a() {
-      return a(eee.a());
+      return a(eef.a());
    }
 
    @Deprecated
    static bam b() {
-      return new eei(eee.a());
+      return new eej(eef.a());
    }
 
    static bam a(long $$0) {
-      return new edq($$0);
+      return new edr($$0);
    }
 
    static bam c() {
-      return new eef(ThreadLocalRandom.current().nextLong());
+      return new eeg(ThreadLocalRandom.current().nextLong());
    }
 
    bam d();
 
-   eec e();
+   eed e();
 
    void b(long var1);
 

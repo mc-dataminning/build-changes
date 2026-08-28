@@ -1,39 +1,125 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
 
-public class exv extends eyb {
-   public static final MapCodec<exv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ewo.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, exv::new)
+public class exv extends eyc {
+   public static final ayk<eok> a = ayg.l;
+   public static final jq<evm> b = evn.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final MapCodec<exv> f = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ayk.a(mb.aU).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
+                  evm.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
+                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
+                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, exv::new)
    );
-   private final ewo.b b;
+   private final ayk<eok> h;
+   private final jq<evm> i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   public exv(List<ezx> $$0, ewo.b $$1) {
+   exv(List<ezy> $$0, ayk<eok> $$1, jq<evm> $$2, byte $$3, int $$4, boolean $$5) {
       super($$0);
-      this.b = $$1;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
 
    @Override
-   public eyd<exv> b() {
-      return eye.B;
+   public eye<exv> b() {
+      return eyf.q;
    }
 
    @Override
    public Set<bbn<?>> a() {
-      return Set.of(this.b.a());
+      return Set.of(ezj.f);
    }
 
    @Override
-   public cxo a(cxo $$0, ewo $$1) {
-      if ($$0.a(cxs.vd) && $$1.c(this.b.a()) instanceof cpw $$2) {
-         $$0.b(ku.ag, new dan($$2.gh()));
-      }
+   public cxp a(cxp $$0, ewp $$1) {
+      if (!$$0.a(cxt.uZ)) {
+         return $$0;
+      } else {
+         fby $$2 = $$1.c(ezj.f);
+         if ($$2 != null) {
+            ash $$3 = $$1.d();
+            jh $$4 = $$3.a(this.h, jh.a((ka)$$2), this.k, this.l);
+            if ($$4 != null) {
+               cxp $$5 = cyc.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               cyc.a($$3, $$5);
+               evr.a($$5, $$4, "+", this.i);
+               return $$5;
+            }
+         }
 
-      return $$0;
+         return $$0;
+      }
    }
 
-   public static eyb.a<?> a(ewo.b $$0) {
-      return a($$1 -> new exv($$1, $$0));
+   public static exv.a c() {
+      return new exv.a();
+   }
+
+   public static class a extends eyc.a<exv.a> {
+      private ayk<eok> a;
+      private jq<evm> b;
+      private byte c;
+      private int d;
+      private boolean e;
+
+      public a() {
+         this.a = exv.a;
+         this.b = exv.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
+      }
+
+      protected exv.a a() {
+         return this;
+      }
+
+      public exv.a a(ayk<eok> $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public exv.a a(jq<evm> $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public exv.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public exv.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public exv.a a(boolean $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      @Override
+      public eyd b() {
+         return new exv(this.g(), this.a, this.b, this.c, this.d, this.e);
+      }
    }
 }

@@ -1,78 +1,26 @@
-public interface dfl {
-   aly<dfg> a = dfm.a("trades/desert_armorer_boots_4");
-   aly<dfg> b = dfm.a("trades/desert_armorer_leggings_4");
-   aly<dfg> c = dfm.a("trades/desert_armorer_chestplate_4");
-   aly<dfg> d = dfm.a("trades/desert_armorer_helmet_4");
-   aly<dfg> e = dfm.a("trades/desert_armorer_leggings_5");
-   aly<dfg> f = dfm.a("trades/desert_armorer_chestplate_5");
-   aly<dfg> g = dfm.a("trades/plains_armorer_boots_4");
-   aly<dfg> h = dfm.a("trades/plains_armorer_leggings_4");
-   aly<dfg> i = dfm.a("trades/plains_armorer_chestplate_4");
-   aly<dfg> j = dfm.a("trades/plains_armorer_helmet_4");
-   aly<dfg> k = dfm.a("trades/plains_armorer_boots_5");
-   aly<dfg> l = dfm.a("trades/plains_armorer_leggings_5");
-   aly<dfg> m = dfm.a("trades/savanna_armorer_boots_4");
-   aly<dfg> n = dfm.a("trades/savanna_armorer_leggings_4");
-   aly<dfg> o = dfm.a("trades/savanna_armorer_chestplate_4");
-   aly<dfg> p = dfm.a("trades/savanna_armorer_helmet_4");
-   aly<dfg> q = dfm.a("trades/savanna_armorer_chestplate_5");
-   aly<dfg> r = dfm.a("trades/savanna_armorer_helmet_5");
-   aly<dfg> s = dfm.a("trades/snow_armorer_boots_4");
-   aly<dfg> t = dfm.a("trades/snow_armorer_helmet_4");
-   aly<dfg> u = dfm.a("trades/snow_armorer_boots_5");
-   aly<dfg> v = dfm.a("trades/snow_armorer_helmet_5");
-   aly<dfg> w = dfm.a("trades/jungle_armorer_boots_4");
-   aly<dfg> x = dfm.a("trades/jungle_armorer_leggings_4");
-   aly<dfg> y = dfm.a("trades/jungle_armorer_chestplate_4");
-   aly<dfg> z = dfm.a("trades/jungle_armorer_helmet_4");
-   aly<dfg> A = dfm.a("trades/jungle_armorer_boots_5");
-   aly<dfg> B = dfm.a("trades/jungle_armorer_helmet_5");
-   aly<dfg> C = dfm.a("trades/swamp_armorer_boots_4");
-   aly<dfg> D = dfm.a("trades/swamp_armorer_leggings_4");
-   aly<dfg> E = dfm.a("trades/swamp_armorer_chestplate_4");
-   aly<dfg> F = dfm.a("trades/swamp_armorer_helmet_4");
-   aly<dfg> G = dfm.a("trades/swamp_armorer_boots_5");
-   aly<dfg> H = dfm.a("trades/swamp_armorer_helmet_5");
-   aly<dfg> I = dfm.a("trades/taiga_armorer_leggings_5");
-   aly<dfg> J = dfm.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(rk<dfg> $$0) {
-      jr<ddy> $$1 = $$0.a(mb.aO);
-      $$0.a(a, new dfk($$1.b(ded.h), bsk.a(1)));
-      $$0.a(b, new dfk($$1.b(ded.h), bsk.a(1)));
-      $$0.a(c, new dfk($$1.b(ded.h), bsk.a(1)));
-      $$0.a(d, new dfk($$1.b(ded.h), bsk.a(1)));
-      $$0.a(e, new dfk($$1.b(ded.h), bsk.a(1)));
-      $$0.a(f, new dfk($$1.b(ded.h), bsk.a(1)));
-      $$0.a(g, new dfk($$1.b(ded.a), bsk.a(1)));
-      $$0.a(h, new dfk($$1.b(ded.a), bsk.a(1)));
-      $$0.a(i, new dfk($$1.b(ded.a), bsk.a(1)));
-      $$0.a(j, new dfk($$1.b(ded.a), bsk.a(1)));
-      $$0.a(k, new dfk($$1.b(ded.a), bsk.a(1)));
-      $$0.a(l, new dfk($$1.b(ded.a), bsk.a(1)));
-      $$0.a(m, new dfk($$1.b(ded.k), bsk.a(1)));
-      $$0.a(n, new dfk($$1.b(ded.k), bsk.a(1)));
-      $$0.a(o, new dfk($$1.b(ded.k), bsk.a(1)));
-      $$0.a(p, new dfk($$1.b(ded.k), bsk.a(1)));
-      $$0.a(q, new dfk($$1.b(ded.k), bsk.a(1)));
-      $$0.a(r, new dfk($$1.b(ded.k), bsk.a(1)));
-      $$0.a(s, new dfk($$1.b(ded.j), bsk.a(1)));
-      $$0.a(t, new dfk($$1.b(ded.g), bsk.a(1)));
-      $$0.a(u, new dfk($$1.b(ded.j), bsk.a(1)));
-      $$0.a(v, new dfk($$1.b(ded.g), bsk.a(1)));
-      $$0.a(w, new dfk($$1.b(ded.w), bsk.a(1)));
-      $$0.a(x, new dfk($$1.b(ded.w), bsk.a(1)));
-      $$0.a(y, new dfk($$1.b(ded.w), bsk.a(1)));
-      $$0.a(z, new dfk($$1.b(ded.w), bsk.a(1)));
-      $$0.a(A, new dfk($$1.b(ded.c), bsk.a(1)));
-      $$0.a(B, new dfk($$1.b(ded.e), bsk.a(1)));
-      $$0.a(C, new dfk($$1.b(ded.O), bsk.a(1)));
-      $$0.a(D, new dfk($$1.b(ded.O), bsk.a(1)));
-      $$0.a(E, new dfk($$1.b(ded.O), bsk.a(1)));
-      $$0.a(F, new dfk($$1.b(ded.O), bsk.a(1)));
-      $$0.a(G, new dfk($$1.b(ded.i), bsk.a(1)));
-      $$0.a(H, new dfk($$1.b(ded.f), bsk.a(1)));
-      $$0.a(I, new dfk($$1.b(ded.d), bsk.a(1)));
-      $$0.a(J, new dfk($$1.b(ded.d), bsk.a(1)));
+public record dfl(jq<ddz> c, bso d) implements dfh {
+   public static final MapCodec<dfl> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ddz.c.fieldOf("enchantment").forGetter(dfl::b), bso.c.fieldOf("level").forGetter(dfl::c)).apply($$0, dfl::new)
+   );
+
+   @Override
+   public void a(cxp $$0, def.a $$1, bam $$2, bth $$3) {
+      $$1.b(this.c, bae.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   }
+
+   @Override
+   public MapCodec<dfl> a() {
+      return b;
+   }
+
+   public jq<ddz> b() {
+      return this.c;
+   }
+
+   public bso c() {
+      return this.d;
    }
 }

@@ -1,17 +1,12 @@
-public abstract class gsi<T extends cmd, S extends gyl> extends gsv<T, S, gbz<S>> {
-   protected gsi(grp.a $$0, gbz<S> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gvi<>(this, $$0.f(), $$0.b()));
+public class gsi extends gux {
+   private static final alz a = alz.b("textures/entity/zombie/husk.png");
+
+   public gsi(grq.a $$0) {
+      super($$0, gen.be, gen.bf, gen.bi, gen.bj, gen.bg, gen.bh);
    }
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.bZ();
-      $$1.d = $$0.fy();
-      $$1.e = $$0.m();
-      $$1.f = $$1.e == cmd.a.f ? cwf.b($$0.fB(), $$0) : 0;
-      $$1.g = $$0.fD();
-      $$1.h = $$0.D($$2);
-      $$1.c = $$0.gd();
+   @Override
+   public alz a(hak $$0) {
+      return a;
    }
 }

@@ -1,84 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class djr extends djx {
-   public static final MapCodec<djr> a = b(djr::new);
-   public static final dyr<jm> b = dyk.Q;
-   public static final dyl c = dyk.v;
+public class djr extends djd {
+   public static final MapCodec<djr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwm.q.fieldOf("color").forGetter(djd::b), t()).apply($$0, djr::new));
+   public static final dyu b = dyl.bb;
+   private static final Map<cwm, dkm> c = Maps.newHashMap();
+   private static final fcs d = dkm.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<djr> a() {
       return a;
    }
 
-   public djr(dxt.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jm.c).b(c, Boolean.valueOf(false)));
+   public djr(cwm $$0, dxu.d $$1) {
+      super($$0, $$1);
+      this.l(this.F.b().b(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if ($$1 instanceof ash $$5 && $$1.c_($$2) instanceof dup $$6) {
-         $$3.a($$6);
-         $$3.a(axp.ar);
-         col.a($$5, $$3, true);
-      }
-
-      return bti.a;
+   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
-      bte.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return d;
    }
 
    @Override
-   protected void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
-      duw $$4 = $$1.c_($$2);
-      if ($$4 instanceof dup) {
-         ((dup)$$4).k();
-      }
-   }
-
-   @Nullable
-   @Override
-   public duw a(jh $$0, dxu $$1) {
-      return new dup($$0, $$1);
+   public dxv a(dbg $$0) {
+      return this.m().b(b, Integer.valueOf(dza.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected dqu a_(dxu $$0) {
-      return dqu.c;
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      return $$4 == jm.a && !$$0.a($$1, $$3) ? dko.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean c_(dxu $$0) {
-      return true;
+   protected dxv a(dxv $$0, drc $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected int a(dxu $$0, dhh $$1, jh $$2) {
-      return ctb.a($$1.c_($$2));
+   protected dxv a(dxv $$0, dpl $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dxu a(dxu $$0, drb $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   protected dxu a(dxu $$0, dpk $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dxu a(dbf $$0) {
-      return this.m().b(b, $$0.d().g());
+   public static dkm a(cwm $$0) {
+      return c.getOrDefault($$0, dko.ja);
    }
 }

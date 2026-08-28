@@ -1,7 +1,7 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class axm<T> extends fdf {
+public class axm<T> extends fdg {
    public static final zt<xg, axm<?>> a = zr.a(mb.am).b(axm::a, axo::a);
    private final axn o;
    private final T p;

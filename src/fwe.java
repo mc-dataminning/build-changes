@@ -1,44 +1,26 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.List;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fwe implements fwh {
-   private static final int a = 10;
-   private static final int b = 2;
-   private final List<ProfileResult> c;
+public class fwe implements fwj {
+   private final fsn a;
 
-   public fwe(fwe.a $$0) {
-      this.c = $$0.a();
+   public fwe(fsn $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public int a(fnp $$0) {
-      return this.c.size() * 12 + 2;
-   }
-
-   @Override
-   public int b(fnp $$0) {
-      int $$1 = 0;
-
-      for (ProfileResult $$2 : this.c) {
-         int $$3 = $$0.b($$2.profile().getName());
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
       }
 
-      return $$1 + 10 + 6;
-   }
-
-   @Override
-   public void a(fnp $$0, int $$1, int $$2, int $$3, int $$4, fnr $$5) {
-      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
-         ProfileResult $$7 = this.c.get($$6);
-         int $$8 = $$2 + 2 + $$6 * 12;
-         fpe.a($$5, fmf.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
-         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
       }
-   }
 
-   public static record a(List<ProfileResult> a) implements cvi {
+      return $$6;
    }
 }

@@ -1,13 +1,3 @@
-import javax.annotation.Nullable;
-
 public interface bwv {
-   boolean f();
-
-   void a(cxo var1, @Nullable axg var2);
-
-   default axe ac_() {
-      return axf.ni;
-   }
-
-   boolean j();
+   void a(chh var1, bvk var2);
 }

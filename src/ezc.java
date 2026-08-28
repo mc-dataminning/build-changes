@@ -1,38 +1,33 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class ezc extends eyb {
-   public static final Codec<xv> a = xx.a.validate($$0 -> daw.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<ezc> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(daw.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), eya.a.forGetter($$0x -> $$0x.d))).apply($$0, ezc::new)
+public class ezc extends eyc {
+   public static final MapCodec<ezc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(daw.d.fieldOf("pages").forGetter($$0x -> $$0x.b), eyb.a(100).forGetter($$0x -> $$0x.c))).apply($$0, ezc::new)
    );
-   private final List<asz<xv>> c;
-   private final eya d;
+   private final List<asz<String>> b;
+   private final eyb c;
 
-   protected ezc(List<ezx> $$0, List<asz<xv>> $$1, eya $$2) {
+   protected ezc(List<ezy> $$0, List<asz<String>> $$1, eyb $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cxo a(cxo $$0, ewo $$1) {
-      $$0.a(ku.T, daw.a, this::a);
+   protected cxp a(cxp $$0, ewp $$1) {
+      $$0.a(ku.S, daw.a, this::a);
       return $$0;
    }
 
-   @VisibleForTesting
    public daw a(daw $$0) {
-      List<asz<xv>> $$1 = this.d.a($$0.a(), this.c);
+      List<asz<String>> $$1 = this.c.a($$0.a(), this.b, 100);
       return $$0.b($$1);
    }
 
    @Override
-   public eyd<ezc> b() {
-      return eye.N;
+   public eye<ezc> b() {
+      return eyf.O;
    }
 }

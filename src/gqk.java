@@ -1,28 +1,17 @@
-public class gqk extends gsv<cjc, gwy, gae> {
-   private static final alz a = alz.b("textures/entity/allay/allay.png");
+@Deprecated
+public abstract class gqk<T extends bwi, S extends gyt, M extends gbm<? super S>> extends gsw<T, S, M> {
+   private final M a;
+   private final M b;
 
-   public gqk(grp.a $$0) {
-      super($$0, new gae($$0.a(gem.c)), 0.4F);
-      this.a(new gvw<>(this, $$0.b()));
+   public gqk(grq.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public alz a(gwy $$0) {
-      return a;
-   }
-
-   public gwy a() {
-      return new gwy();
-   }
-
-   public void a(cjc $$0, gwy $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
-      $$1.b = $$0.go();
-      $$1.c = $$0.K($$2);
-      $$1.d = $$0.J($$2);
-   }
-
-   protected int a(cjc $$0, jh $$1) {
-      return 15;
+   @Override
+   public void a(S $$0, fgs $$1, gll $$2, int $$3) {
+      this.h = $$0.ae ? this.b : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

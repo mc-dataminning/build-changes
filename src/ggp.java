@@ -1,67 +1,101 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record ggp(String a, @Nullable ggp.a b) {
-   public static ggp a() {
-      return a(null);
-   }
-
-   public static ggp a(String $$0) {
-      return a(new ggp.a.b($$0));
-   }
-
-   public static ggp a(fii $$0) {
-      return a(new ggp.a.a($$0));
-   }
-
-   public static ggp a(@Nullable ggp.a $$0) {
-      return new ggp(g(), $$0);
-   }
-
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
+public abstract class ggp {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
    @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof ggp.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   protected ggr e;
+   protected boolean f;
+
+   public ggp(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof ggp.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.21.2");
-      if (fmf.e().a()) {
-         $$0.append(" (modded)");
+   public abstract ggp b();
+
+   public abstract fty a(fty var1, ggt var2);
+
+   public abstract static class a<R extends ggp> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$0.toString();
-   }
-
-   public String e() {
-      return this.a;
-   }
-
-   @Nullable
-   public ggp.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements ggp.a {
-         public a(fii $$0) {
-            this($$0.a, $$0.p);
-         }
+      public R e() {
+         return this.a;
       }
 
-      public static record b(String a) implements ggp.a {
+      public UUID f() {
+         return this.a.c;
       }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public ggr i() {
+         return this.a.e;
+      }
+
+      public void a(ggr $$0) {
+         this.a.e = $$0;
+      }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public ggp.b c() {
+         return !this.e().f ? ggp.b.e : null;
+      }
+
+      public abstract Either<ggp.c, ggp.b> a(ggt var1);
+   }
+
+   public static record b(xv f) {
+      public static final ggp.b a = new ggp.b(xv.c("gui.abuseReport.send.no_reason"));
+      public static final ggp.b b = new ggp.b(xv.c("gui.chatReport.send.no_reported_messages"));
+      public static final ggp.b c = new ggp.b(xv.c("gui.chatReport.send.too_many_messages"));
+      public static final ggp.b d = new ggp.b(xv.c("gui.abuseReport.send.comment_too_long"));
+      public static final ggp.b e = new ggp.b(xv.c("gui.abuseReport.send.not_attested"));
+
+      public fpr a() {
+         return fpr.a(this.f);
+      }
+
+      public xv b() {
+         return this.f;
+      }
+   }
+
+   public static record c(UUID a, ggs b, AbuseReport c) {
    }
 }

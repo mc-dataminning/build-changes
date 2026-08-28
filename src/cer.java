@@ -1,99 +1,26 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cer extends cdd {
-   private final cdd a;
-   private final int b;
-   private boolean c;
+public class cer extends ceb {
+   public static final float i = 0.001F;
+   protected final float j;
 
-   public cer(int $$0, cdd $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   public cer(bwo $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
-   public boolean a(cer $$0) {
-      return this.U_() && $$0.i() < this.i();
+   public cer(bwo $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean U_() {
-      return this.a.U_();
-   }
-
-   @Override
-   public void d() {
-      if (!this.c) {
-         this.c = true;
-         this.a.d();
-      }
-   }
-
-   @Override
-   public void e() {
-      if (this.c) {
-         this.c = false;
-         this.a.e();
-      }
-   }
-
-   @Override
-   public boolean V_() {
-      return this.a.V_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public void a(EnumSet<cdd.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<cdd.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public cdd k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
+   protected fby h() {
+      if (this.b.bm()) {
+         fby $$0 = che.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cer)$$0).a) : false;
+         return this.b.dZ().i() >= this.j ? che.a(this.b, 10, 7) : super.h();
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
    }
 }

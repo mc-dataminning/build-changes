@@ -1,45 +1,36 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eko extends ekl {
+public class eko extends ekm {
    public static final MapCodec<eko> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bsn.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, eko::new)
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eko::new)
    );
-   private final bsn b;
+   protected final int b;
 
-   public eko(bsn $$0, bsn $$1, bsn $$2) {
+   public eko(bso $$0, bso $$1, int $$2) {
       super($$0, $$1);
       this.b = $$2;
    }
 
    @Override
-   protected ekm<?> a() {
-      return ekm.h;
+   protected ekn<?> a() {
+      return ekn.g;
    }
 
    @Override
-   protected void a(dhn $$0, ekl.b $$1, bam $$2, ejv $$3, int $$4, ekl.a $$5, int $$6, int $$7, int $$8) {
-      jh $$9 = $$5.a();
-      int $$10 = 0;
+   protected void a(dho $$0, ekm.b $$1, bam $$2, ejw $$3, int $$4, ekm.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
 
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + bae.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new jh($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
       }
    }
 
    @Override
-   public int a(bam $$0, int $$1, ejv $$2) {
-      return this.b.a($$0);
+   public int a(bam $$0, int $$1, ejw $$2) {
+      return this.b;
    }
 
    @Override

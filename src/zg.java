@@ -180,7 +180,7 @@ public class zg implements xw {
    }
 
    @Override
-   public yj a(@Nullable ew $$0, @Nullable bvj $$1, int $$2) throws CommandSyntaxException {
+   public yj a(@Nullable ew $$0, @Nullable bvk $$1, int $$2) throws CommandSyntaxException {
       Object[] $$3 = new Object[this.j.length];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {

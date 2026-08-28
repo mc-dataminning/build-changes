@@ -1,8 +1,13 @@
 import javax.annotation.Nullable;
 
-public class gyp extends gxu {
-   public float a;
+public class gyp extends gxp {
    @Nullable
-   public hdm b;
-   public cxo c = cxo.j;
+   public bvi.g.a a;
+   @Nullable
+   public hdn f;
+
+   @Override
+   public boolean a() {
+      return this.a != null && this.f != null;
+   }
 }

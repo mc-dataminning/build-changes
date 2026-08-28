@@ -2,22 +2,22 @@ import com.google.common.collect.Maps;
 import java.util.Map;
 
 public interface nj {
-   Map<cwl, dhg> a = ae.a(Maps.newEnumMap(cwl.class), $$0 -> {
-      $$0.put(cwl.a, dkn.bH);
-      $$0.put(cwl.b, dkn.bI);
-      $$0.put(cwl.c, dkn.bJ);
-      $$0.put(cwl.d, dkn.bK);
-      $$0.put(cwl.e, dkn.bL);
-      $$0.put(cwl.f, dkn.bM);
-      $$0.put(cwl.g, dkn.bN);
-      $$0.put(cwl.h, dkn.bO);
-      $$0.put(cwl.i, dkn.bP);
-      $$0.put(cwl.j, dkn.bQ);
-      $$0.put(cwl.k, dkn.bR);
-      $$0.put(cwl.l, dkn.bS);
-      $$0.put(cwl.m, dkn.bT);
-      $$0.put(cwl.n, dkn.bU);
-      $$0.put(cwl.o, dkn.bV);
-      $$0.put(cwl.p, dkn.bW);
+   Map<cwm, dhh> a = ae.a(Maps.newEnumMap(cwm.class), $$0 -> {
+      $$0.put(cwm.a, dko.bH);
+      $$0.put(cwm.b, dko.bI);
+      $$0.put(cwm.c, dko.bJ);
+      $$0.put(cwm.d, dko.bK);
+      $$0.put(cwm.e, dko.bL);
+      $$0.put(cwm.f, dko.bM);
+      $$0.put(cwm.g, dko.bN);
+      $$0.put(cwm.h, dko.bO);
+      $$0.put(cwm.i, dko.bP);
+      $$0.put(cwm.j, dko.bQ);
+      $$0.put(cwm.k, dko.bR);
+      $$0.put(cwm.l, dko.bS);
+      $$0.put(cwm.m, dko.bT);
+      $$0.put(cwm.n, dko.bU);
+      $$0.put(cwm.o, dko.bV);
+      $$0.put(cwm.p, dko.bW);
    });
 }

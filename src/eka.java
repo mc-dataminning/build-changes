@@ -1,29 +1,8 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class eka {
-   public static final Codec<eka> a = ma.Y.q().dispatch(eka::b, ekb::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
-
-   protected static <S extends eka> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
-   }
-
-   public eka(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract ekb<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eka {
 }

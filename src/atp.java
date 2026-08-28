@@ -233,7 +233,7 @@ public abstract class atp implements AutoCloseable {
 
       protected c(final GameProfile $$1) {
          this.b = $$1;
-         bry $$2 = new bry(atp.this.g, "chat stream for " + $$1.getName());
+         brz $$2 = new brz(atp.this.g, "chat stream for " + $$1.getName());
          this.c = $$2::a_;
       }
 

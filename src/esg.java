@@ -1,16 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface esg<P extends esf> {
-   esg<eri> a = a("always_true", eri.a);
-   esg<ern> b = a("block_match", ern.a);
-   esg<erp> c = a("blockstate_match", erp.a);
-   esg<esn> d = a("tag_match", esn.a);
-   esg<esc> e = a("random_block_match", esc.a);
-   esg<esd> f = a("random_blockstate_match", esd.a);
+public abstract class esg {
+   public static final Codec<esg> c = ma.m.q().dispatch("predicate_type", esg::a, esh::codec);
 
-   MapCodec<P> codec();
+   public abstract boolean a(dxv var1, bam var2);
 
-   static <P extends esf> esg<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.m, $$0, () -> $$1);
-   }
+   protected abstract esh<?> a();
 }

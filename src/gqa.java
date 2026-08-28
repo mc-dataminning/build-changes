@@ -1,44 +1,37 @@
-public class gqa implements gpk.a {
-   private final fmf a;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gqa(fmf $$0) {
-      this.a = $$0;
+public class gqa implements gpl.a {
+   private static final int a = 60;
+   private final Set<kj> b = Sets.newHashSet();
+
+   gqa() {
    }
 
    @Override
-   public void a(fgr $$0, glk $$1, double $$2, double $$3, double $$4) {
-      jh $$5 = this.a.t.dw();
-      dhk $$6 = this.a.t.dW();
+   public void a() {
+      this.b.clear();
+   }
 
-      for (jh $$7 : jh.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         etw $$8 = $$6.b_($$7);
-         if ($$8.a(aya.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            gpk.a(
-               $$0,
-               $$1,
-               new fbs(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
-         }
-      }
+   public void a(kj $$0) {
+      this.b.add($$0);
+   }
 
-      for (jh $$10 : jh.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         etw $$11 = $$6.b_($$10);
-         if ($$11.a(aya.a)) {
-            gpk.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+   public void b(kj $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fgs $$0, gll $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = jh.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
          }
-      }
+      });
+   }
+
+   private static void a(fgs $$0, gll $$1, kj $$2) {
+      gpl.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

@@ -10,14 +10,14 @@ public class aro implements ark.a, AutoCloseable {
    public static final int a = 4;
    private static final Logger c = LogUtils.getLogger();
    private final arp d;
-   private final bsd<Runnable> e;
-   private final bsa f;
+   private final bse<Runnable> e;
+   private final bsb f;
    protected boolean b;
 
-   public aro(bsd<Runnable> $$0, Executor $$1) {
+   public aro(bse<Runnable> $$0, Executor $$1) {
       this.d = new arp($$0.A_() + "_queue");
       this.e = $$0;
-      this.f = new bsa(4, $$1, "dispatcher");
+      this.f = new bsb(4, $$1, "dispatcher");
       this.b = true;
    }
 
@@ -26,8 +26,8 @@ public class aro implements ark.a, AutoCloseable {
    }
 
    @Override
-   public void onLevelChange(dgn $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
-      this.f.a_(new bsc.c(0, () -> {
+   public void onLevelChange(dgo $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.f.a_(new bsd.c(0, () -> {
          int $$4 = $$1.getAsInt();
          this.d.a($$4, $$0, $$2);
          $$3.accept($$2);
@@ -35,7 +35,7 @@ public class aro implements ark.a, AutoCloseable {
    }
 
    public void a(long $$0, Runnable $$1, boolean $$2) {
-      this.f.a_(new bsc.c(1, () -> {
+      this.f.a_(new bsd.c(1, () -> {
          this.d.a($$0, $$2);
          this.a($$0);
          if (this.b) {
@@ -48,7 +48,7 @@ public class aro implements ark.a, AutoCloseable {
    }
 
    public void a(Runnable $$0, long $$1, IntSupplier $$2) {
-      this.f.a_(new bsc.c(2, () -> {
+      this.f.a_(new bsd.c(2, () -> {
          int $$3 = $$2.getAsInt();
          this.d.a($$0, $$1, $$3);
          if (this.b) {
@@ -59,7 +59,7 @@ public class aro implements ark.a, AutoCloseable {
    }
 
    protected void b() {
-      this.f.a_(new bsc.c(3, () -> {
+      this.f.a_(new bsd.c(3, () -> {
          arp.a $$0 = this.c();
          if ($$0 == null) {
             this.b = true;

@@ -1,23 +1,21 @@
-public class grf<T extends cjz> extends gqf<T, gxq, gbf> {
-   public static final alz a = alz.b("textures/entity/horse/donkey.png");
-   public static final alz b = alz.b("textures/entity/horse/mule.png");
-   private final alz k;
+public class grf extends gqk<cif, gxq, gbf> {
+   private static final alz a = alz.b("textures/entity/dolphin.png");
 
-   public grf(grp.a $$0, float $$1, gel $$2, gel $$3, boolean $$4) {
-      super($$0, new gbf($$0.a($$2)), new gbf($$0.a($$3)), $$1);
-      this.k = $$4 ? b : a;
+   public grf(grq.a $$0) {
+      super($$0, new gbf($$0.a(gen.am)), new gbf($$0.a(gen.an)), 0.7F);
+      this.a(new gvl(this, $$0.b()));
    }
 
    public alz a(gxq $$0) {
-      return this.k;
+      return a;
    }
 
    public gxq a() {
       return new gxq();
    }
 
-   public void a(T $$0, gxq $$1, float $$2) {
+   public void a(cif $$0, gxq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.dz().j() > 1.0E-7;
    }
 }

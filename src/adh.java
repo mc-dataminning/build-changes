@@ -10,7 +10,7 @@ public record adh(List<adh.a> b) implements aac<acr> {
       this($$0.a(adh.a::new));
    }
 
-   public static adh a(List<dzz> $$0) {
+   public static adh a(List<eaa> $$0) {
       return new adh($$0.stream().map(adh.a::new).toList());
    }
 
@@ -27,8 +27,8 @@ public record adh(List<adh.a> b) implements aac<acr> {
       $$0.a(this);
    }
 
-   public static record a(dgn a, byte[] b) {
-      public a(dzz $$0) {
+   public static record a(dgo a, byte[] b) {
+      public a(eaa $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new ws(this.d()), $$0);
       }
@@ -37,10 +37,10 @@ public record adh(List<adh.a> b) implements aac<acr> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(dzz $$0) {
+      private static int a(eaa $$0) {
          int $$1 = 0;
 
-         for (eaa $$2 : $$0.d()) {
+         for (eab $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -57,8 +57,8 @@ public record adh(List<adh.a> b) implements aac<acr> {
          return $$0;
       }
 
-      public static void a(ws $$0, dzz $$1) {
-         for (eaa $$2 : $$1.d()) {
+      public static void a(ws $$0, eaa $$1) {
+         for (eab $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -68,7 +68,7 @@ public record adh(List<adh.a> b) implements aac<acr> {
          $$0.a(this.b);
       }
 
-      public dgn b() {
+      public dgo b() {
          return this.a;
       }
 

@@ -40,7 +40,7 @@ public abstract class awi {
    private final awq q = new awq(d);
    private final Map<UUID, axl> r = Maps.newHashMap();
    private final Map<UUID, amh> s = Maps.newHashMap();
-   private final ewf t;
+   private final ewg t;
    private boolean u;
    private final jx<ami> v;
    protected final int g;
@@ -50,7 +50,7 @@ public abstract class awi {
    private static final boolean z = false;
    private int A;
 
-   public awi(MinecraftServer $$0, jx<ami> $$1, ewf $$2, int $$3) {
+   public awi(MinecraftServer $$0, jx<ami> $$1, ewg $$2, int $$3) {
       this.k = $$0;
       this.v = $$1;
       this.g = $$3;
@@ -70,7 +70,7 @@ public abstract class awi {
       }
 
       Optional<ux> $$8 = this.a($$1);
-      aly<dhh> $$9 = $$8.<aly<dhh>>flatMap($$0x -> ebp.a(new Dynamic(vl.a, $$0x.c("Dimension"))).resultOrPartial(h::error)).orElse(dhh.i);
+      aly<dhi> $$9 = $$8.<aly<dhi>>flatMap($$0x -> ebq.a(new Dynamic(vl.a, $$0x.c("Dimension"))).resultOrPartial(h::error)).orElse(dhi.i);
       ash $$10 = this.k.a($$9);
       ash $$11;
       if ($$10 == null) {
@@ -83,19 +83,19 @@ public abstract class awi {
       $$1.a($$11);
       String $$13 = $$0.a(this.k.bl());
       h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.al().getString(), $$13, $$1.ar(), $$1.dB(), $$1.dD(), $$1.dH()});
-      evy $$14 = $$11.D_();
+      evz $$14 = $$11.D_();
       $$1.c($$8.orElse(null));
       atk $$15 = new atk(this.k, $$0, $$1, $$2);
       $$0.a(ahl.a.a(xg.a(this.k.ba())), $$15);
-      dhd $$16 = $$11.N();
-      boolean $$17 = $$16.b(dhd.E);
-      boolean $$18 = $$16.b(dhd.q);
-      boolean $$19 = $$16.b(dhd.x);
+      dhe $$16 = $$11.N();
+      boolean $$17 = $$16.b(dhe.E);
+      boolean $$18 = $$16.b(dhe.q);
+      boolean $$19 = $$16.b(dhe.x);
       $$15.b(new aej($$1.ar(), $$14.l(), this.k.K(), this.n(), this.w, this.x, $$18, !$$17, $$19, $$1.b($$11), this.k.aA()));
       $$15.b(new ade($$14.q(), $$14.r()));
       $$15.b(new aet($$1.gj()));
       $$15.b(new agh($$1.gi().j));
-      dck $$20 = this.k.aI();
+      dcl $$20 = this.k.aI();
       $$15.b(new ahg($$20.b(), $$20.d()));
       this.e($$1);
       $$1.I().c();
@@ -130,14 +130,14 @@ public abstract class awi {
    }
 
    protected void a(ams $$0, asi $$1) {
-      Set<fcu> $$2 = Sets.newHashSet();
+      Set<fcv> $$2 = Sets.newHashSet();
 
-      for (fcx $$3 : $$0.g()) {
+      for (fcy $$3 : $$0.g()) {
          $$1.f.b(agl.a($$3, true));
       }
 
-      for (fct $$4 : fct.values()) {
-         fcu $$5 = $$0.a($$4);
+      for (fcu $$4 : fcu.values()) {
+         fcv $$5 = $$0.a($$4);
          if ($$5 != null && !$$2.contains($$5)) {
             for (aac<?> $$7 : $$0.d($$5)) {
                $$1.f.b($$7);
@@ -149,38 +149,38 @@ public abstract class awi {
    }
 
    public void a(ash $$0) {
-      $$0.F_().a(new dzi() {
+      $$0.F_().a(new dzj() {
          @Override
-         public void a(dzk $$0, double $$1) {
+         public void a(dzl $$0, double $$1) {
             awi.this.a(new afs($$0));
          }
 
          @Override
-         public void a(dzk $$0, double $$1, double $$2, long $$3) {
+         public void a(dzl $$0, double $$1, double $$2, long $$3) {
             awi.this.a(new afr($$0));
          }
 
          @Override
-         public void a(dzk $$0, double $$1, double $$2) {
+         public void a(dzl $$0, double $$1, double $$2) {
             awi.this.a(new afq($$0));
          }
 
          @Override
-         public void a(dzk $$0, int $$1) {
+         public void a(dzl $$0, int $$1) {
             awi.this.a(new aft($$0));
          }
 
          @Override
-         public void b(dzk $$0, int $$1) {
+         public void b(dzl $$0, int $$1) {
             awi.this.a(new afu($$0));
          }
 
          @Override
-         public void b(dzk $$0, double $$1) {
+         public void b(dzl $$0, double $$1) {
          }
 
          @Override
-         public void c(dzk $$0, double $$1) {
+         public void c(dzl $$0, double $$1) {
          }
       });
    }
@@ -217,21 +217,21 @@ public abstract class awi {
       $$0.a(axp.j);
       this.b($$0);
       if ($$0.bZ()) {
-         bvj $$2 = $$0.dg();
+         bvk $$2 = $$0.dg();
          if ($$2.df()) {
             h.debug("Removing player mount");
             $$0.ae();
-            $$2.dc().forEach($$0x -> $$0x.c(bvj.d.d));
+            $$2.dc().forEach($$0x -> $$0x.c(bvk.d.d));
          }
       }
 
       $$0.ao();
 
-      for (cqz $$3 : $$0.ak()) {
-         $$3.c(bvj.d.d);
+      for (cra $$3 : $$0.ak()) {
+         $$3.c(bvk.d.d);
       }
 
-      $$1.a($$0, bvj.d.d);
+      $$1.a($$0, bvk.d.d);
       $$0.S().a();
       this.l.remove($$0);
       this.k.aM().b($$0);
@@ -297,10 +297,10 @@ public abstract class awi {
       return !$$2.isEmpty();
    }
 
-   public asi a(asi $$0, boolean $$1, bvj.d $$2) {
+   public asi a(asi $$0, boolean $$1, bvk.d $$2) {
       this.l.remove($$0);
       $$0.y().a($$0, $$2);
-      euw $$3 = $$0.a(!$$1, euw.a);
+      eux $$3 = $$0.a(!$$1, eux.a);
       ash $$4 = $$3.b();
       asi $$5 = new asi(this.k, $$4, $$0.gh(), $$0.C());
       $$5.f = $$0.f;
@@ -315,7 +315,7 @@ public abstract class awi {
          $$5.a($$6);
       }
 
-      fbx $$7 = $$3.c();
+      fby $$7 = $$3.c();
       $$5.b($$7.d, $$7.e, $$7.f, $$3.e(), $$3.f());
       if ($$3.g()) {
          $$5.f.b(new adz(adz.b, 0.0F));
@@ -323,7 +323,7 @@ public abstract class awi {
 
       byte $$8 = (byte)($$1 ? 1 : 0);
       ash $$9 = $$5.y();
-      evy $$10 = $$9.D_();
+      evz $$10 = $$9.D_();
       $$5.f.b(new afk($$5.b($$9), $$8));
       $$5.f.a($$5.dB(), $$5.dD(), $$5.dH(), $$5.dM(), $$5.dO());
       $$5.f.b(new afz($$4.Y(), $$4.Z()));
@@ -340,8 +340,8 @@ public abstract class awi {
       jh $$11 = $$5.T();
       ash $$12 = this.k.a($$5.V());
       if (!$$1 && $$11 != null && $$12 != null) {
-         dxu $$13 = $$12.a_($$11);
-         if ($$13.a(dkn.pG)) {
+         dxv $$13 = $$12.a_($$11);
+         if ($$13.a(dko.pG)) {
             $$5.f.b(new agt(axf.vS, axg.e, (double)$$11.u(), (double)$$11.v(), (double)$$11.w(), 1.0F, 1.0F, $$4.H_().g()));
          }
       }
@@ -353,8 +353,8 @@ public abstract class awi {
       this.a($$0, $$0.f);
    }
 
-   public void a(bwf $$0, atk $$1) {
-      for (buo $$2 : $$0.eB()) {
+   public void a(bwg $$0, atk $$1) {
+      for (bup $$2 : $$0.eB()) {
          $$1.b(new ahf($$0.ar(), $$2, false));
       }
    }
@@ -378,7 +378,7 @@ public abstract class awi {
       }
    }
 
-   public void a(aac<?> $$0, aly<dhh> $$1) {
+   public void a(aac<?> $$0, aly<dhi> $$1) {
       for (asi $$2 : this.l) {
          if ($$2.dW().ah() == $$1) {
             $$2.f.b($$0);
@@ -386,8 +386,8 @@ public abstract class awi {
       }
    }
 
-   public void a(cpw $$0, xv $$1) {
-      fde $$2 = $$0.cr();
+   public void a(cpx $$0, xv $$1) {
+      fdf $$2 = $$0.cr();
       if ($$2 != null) {
          for (String $$4 : $$2.g()) {
             asi $$5 = this.a($$4);
@@ -398,8 +398,8 @@ public abstract class awi {
       }
    }
 
-   public void b(cpw $$0, xv $$1) {
-      fde $$2 = $$0.cr();
+   public void b(cpx $$0, xv $$1) {
+      fdf $$2 = $$0.cr();
       if ($$2 == null) {
          this.a($$1, false);
       } else {
@@ -485,7 +485,7 @@ public abstract class awi {
       return null;
    }
 
-   public void a(@Nullable cpw $$0, double $$1, double $$2, double $$3, double $$4, aly<dhh> $$5, aac<?> $$6) {
+   public void a(@Nullable cpx $$0, double $$1, double $$2, double $$3, double $$4, aly<dhi> $$5, aac<?> $$6) {
       for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
          asi $$8 = this.l.get($$7);
          if ($$8 != $$0 && $$8.dW().ah() == $$5) {
@@ -525,9 +525,9 @@ public abstract class awi {
    }
 
    public void a(asi $$0, ash $$1) {
-      dzk $$2 = this.k.J().F_();
+      dzl $$2 = this.k.J().F_();
       $$0.f.b(new aec($$2));
-      $$0.f.b(new agp($$1.ac(), $$1.ad(), $$1.N().b(dhd.l)));
+      $$0.f.b(new agp($$1.ac(), $$1.ad(), $$1.N().b(dhe.l)));
       $$0.f.b(new afz($$1.Y(), $$1.Z()));
       if ($$1.af()) {
          $$0.f.b(new adz(adz.c, 0.0F));
@@ -644,11 +644,11 @@ public abstract class awi {
       return $$0.i() && !$$0.a(Instant.now());
    }
 
-   public axl a(cpw $$0) {
+   public axl a(cpx $$0) {
       UUID $$1 = $$0.cG();
       axl $$2 = this.r.get($$1);
       if ($$2 == null) {
-         File $$3 = this.k.a(ewa.b).toFile();
+         File $$3 = this.k.a(ewb.b).toFile();
          File $$4 = new File($$3, $$1 + ".json");
          if (!$$4.exists()) {
             File $$5 = new File($$3, $$0.al().getString() + ".json");
@@ -669,7 +669,7 @@ public abstract class awi {
       UUID $$1 = $$0.cG();
       amh $$2 = this.s.get($$1);
       if ($$2 == null) {
-         Path $$3 = this.k.a(ewa.a).resolve($$1 + ".json");
+         Path $$3 = this.k.a(ewb.a).resolve($$1 + ".json");
          $$2 = new amh(this.k.aC(), this, this.k.aD(), $$3, $$0);
          this.s.put($$1, $$2);
       }
@@ -719,7 +719,7 @@ public abstract class awi {
       }
 
       this.a(new aat(aym.a(this.v)));
-      dck $$1 = this.k.aI();
+      dcl $$1 = this.k.aI();
       ahg $$2 = new ahg($$1.b(), $$1.d());
 
       for (asi $$3 : this.l) {

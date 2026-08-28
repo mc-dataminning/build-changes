@@ -1,287 +1,121 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class fur extends fvp<ctf> {
+   private static final alz G = alz.b("container/anvil/text_field");
+   private static final alz H = alz.b("container/anvil/text_field_disabled");
+   private static final alz I = alz.b("container/anvil/error");
+   private static final alz J = alz.b("textures/gui/container/anvil.png");
+   private static final xv K = xv.c("container.repair.expensive");
+   private foo L;
+   private final cpx M;
 
-public class fur extends fum<ctg> {
-   private static final alz G = alz.b("textures/gui/container/beacon.png");
-   static final alz H = alz.b("container/beacon/button_disabled");
-   static final alz I = alz.b("container/beacon/button_selected");
-   static final alz J = alz.b("container/beacon/button_highlighted");
-   static final alz K = alz.b("container/beacon/button");
-   static final alz L = alz.b("container/beacon/confirm");
-   static final alz M = alz.b("container/beacon/cancel");
-   private static final xv N = xv.c("block.minecraft.beacon.primary");
-   private static final xv O = xv.c("block.minecraft.beacon.secondary");
-   private final List<fur.a> P = Lists.newArrayList();
-   @Nullable
-   jq<bum> Q;
-   @Nullable
-   jq<bum> R;
+   public fur(ctf $$0, cpw $$1, xv $$2) {
+      super($$0, $$1, $$2, J);
+      this.M = $$1.k;
+      this.v = 60;
+   }
 
-   public fur(final ctg $$0, cpv $$1, xv $$2) {
-      super($$0, $$1, $$2);
-      this.s = 230;
-      this.u = 219;
-      $$0.a(new ctp() {
-         @Override
-         public void a(ctb $$0x, int $$1, cxo $$2) {
+   @Override
+   protected void G() {
+      int $$0 = (this.n - this.s) / 2;
+      int $$1 = (this.o - this.u) / 2;
+      this.L = new foo(this.p, $$0 + 62, $$1 + 24, 103, 12, xv.c("container.repair"));
+      this.L.f(false);
+      this.L.g(-1);
+      this.L.n(-1);
+      this.L.d(false);
+      this.L.f(50);
+      this.L.b(this::a);
+      this.L.a("");
+      this.d(this.L);
+      this.L.e(this.z.b(0).h());
+   }
+
+   @Override
+   protected void aG_() {
+      this.b(this.L);
+   }
+
+   @Override
+   public void a(fmg $$0, int $$1, int $$2) {
+      String $$3 = this.L.a();
+      this.b($$0, $$1, $$2);
+      this.L.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.t.p();
+      }
+
+      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cuz $$1 = this.z.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().b(ku.g) && $$0.equals($$1.g().y().getString())) {
+            $$2 = "";
          }
 
-         @Override
-         public void a(ctb $$0x, int $$1, int $$2) {
-            fur.this.Q = $$0.m();
-            fur.this.R = $$0.n();
-         }
-      });
-   }
-
-   private <T extends foc & fur.a> void a(T $$0) {
-      this.c($$0);
-      this.P.add($$0);
-   }
-
-   @Override
-   protected void aT_() {
-      super.aT_();
-      this.P.clear();
-      this.a(new fur.c(this.C + 164, this.D + 107));
-      this.a(new fur.b(this.C + 190, this.D + 107));
-
-      for (int $$0 = 0; $$0 <= 2; $$0++) {
-         int $$1 = dur.a.get($$0).size();
-         int $$2 = $$1 * 22 + ($$1 - 1) * 2;
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            jq<bum> $$4 = dur.a.get($$0).get($$3);
-            fur.d $$5 = new fur.d(this.C + 76 + $$3 * 24 - $$2 / 2, this.D + 22 + $$0 * 25, $$4, true, $$0);
-            $$5.j = false;
-            this.a($$5);
+         if (this.z.a($$2)) {
+            this.m.t.i.b(new aiw($$2));
          }
       }
-
-      int $$6 = 3;
-      int $$7 = dur.a.get(3).size() + 1;
-      int $$8 = $$7 * 22 + ($$7 - 1) * 2;
-
-      for (int $$9 = 0; $$9 < $$7 - 1; $$9++) {
-         jq<bum> $$10 = dur.a.get(3).get($$9);
-         fur.d $$11 = new fur.d(this.C + 167 + $$9 * 24 - $$8 / 2, this.D + 47, $$10, false, 3);
-         $$11.j = false;
-         this.a($$11);
-      }
-
-      jq<bum> $$12 = dur.a.get(0).get(0);
-      fur.d $$13 = new fur.g(this.C + 167 + ($$7 - 1) * 24 - $$8 / 2, this.D + 47, $$12);
-      $$13.k = false;
-      this.a($$13);
    }
 
    @Override
-   public void E() {
-      super.E();
-      this.G();
-   }
-
-   @Override
-   void G() {
-      int $$0 = this.z.l();
-      this.P.forEach($$1 -> $$1.a($$0));
-   }
-
-   @Override
-   protected void b(fnr $$0, int $$1, int $$2) {
-      $$0.a(this.p, N, 62, 10, 14737632);
-      $$0.a(this.p, O, 169, 10, 14737632);
-   }
-
-   @Override
-   protected void a(fnr $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(glu::C, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      $$0.a(new cxo(cxs.pg), $$4 + 20, $$5 + 109);
-      $$0.a(new cxo(cxs.oW), $$4 + 41, $$5 + 109);
-      $$0.a(new cxo(cxs.oV), $$4 + 41 + 22, $$5 + 109);
-      $$0.a(new cxo(cxs.pf), $$4 + 42 + 44, $$5 + 109);
-      $$0.a(new cxo(cxs.pb), $$4 + 42 + 66, $$5 + 109);
-      $$0.c().b();
-   }
-
-   @Override
-   public void a(fnr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   interface a {
-      void a(int var1);
-   }
-
-   class b extends fur.f {
-      public b(final int $$0, final int $$1) {
-         super($$0, $$1, fur.M, xu.e);
-      }
-
-      @Override
-      public void b() {
-         fur.this.m.t.p();
-      }
-
-      @Override
-      public void a(int $$0) {
-      }
-   }
-
-   class c extends fur.f {
-      public c(final int $$0, final int $$1) {
-         super($$0, $$1, fur.L, xu.d);
-      }
-
-      @Override
-      public void b() {
-         fur.this.m.L().b(new aja(Optional.ofNullable(fur.this.Q), Optional.ofNullable(fur.this.R)));
-         fur.this.m.t.p();
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.j = fur.this.z.o() && fur.this.Q != null;
-      }
-   }
-
-   class d extends fur.e {
-      private final boolean c;
-      protected final int a;
-      private jq<bum> d;
-      private hbk f;
-
-      public d(final int $$0, final int $$1, final jq<bum> $$2, final boolean $$3, final int $$4) {
-         super($$0, $$1);
-         this.c = $$3;
-         this.a = $$4;
-         this.a($$2);
-      }
-
-      protected void a(jq<bum> $$0) {
-         this.d = $$0;
-         this.f = fmf.Q().aG().a($$0);
-         this.a(fpq.a(this.b($$0), null));
-      }
-
-      protected yj b(jq<bum> $$0) {
-         return xv.c($$0.a().d());
-      }
-
-      @Override
-      public void b() {
-         if (!this.a()) {
-            if (this.c) {
-               fur.this.Q = this.d;
-            } else {
-               fur.this.R = this.d;
+   protected void b(fns $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.z.m();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         xv $$5;
+         if ($$3 >= 40 && !this.m.t.gj().d) {
+            $$5 = K;
+            $$4 = 16736352;
+         } else if (!this.z.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = xv.a("container.repair.cost", $$3);
+            if (!this.z.b(2).a(this.M)) {
+               $$4 = 16736352;
             }
-
-            fur.this.G();
          }
-      }
 
-      @Override
-      protected void a(fnr $$0) {
-         $$0.a(glu::C, this.f, this.D() + 2, this.E() + 2, 18, 18);
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.j = this.a < $$0;
-         this.b(this.d.equals(this.c ? fur.this.Q : fur.this.R));
-      }
-
-      @Override
-      protected yj aR_() {
-         return this.b(this.d);
+         if ($$5 != null) {
+            int $$8 = this.s - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
+         }
       }
    }
 
-   abstract static class e extends fnv implements fur.a {
-      private boolean a;
+   @Override
+   protected void a(fns $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(glv::C, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
+   }
 
-      protected e(int $$0, int $$1) {
-         super($$0, $$1, 22, 22, xu.a);
-      }
+   @Override
+   public void d(fns $$0, int $$1, int $$2, float $$3) {
+      this.L.a($$0, $$1, $$2, $$3);
+   }
 
-      protected e(int $$0, int $$1, xv $$2) {
-         super($$0, $$1, 22, 22, $$2);
-      }
-
-      @Override
-      public void b(fnr $$0, int $$1, int $$2, float $$3) {
-         alz $$4;
-         if (!this.j) {
-            $$4 = fur.H;
-         } else if (this.a) {
-            $$4 = fur.I;
-         } else if (this.B()) {
-            $$4 = fur.J;
-         } else {
-            $$4 = fur.K;
-         }
-
-         $$0.a(glu::C, $$4, this.D(), this.E(), this.g, this.h);
-         this.a($$0);
-      }
-
-      protected abstract void a(fnr var1);
-
-      public boolean a() {
-         return this.a;
-      }
-
-      public void b(boolean $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(fsc $$0) {
-         this.c($$0);
+   @Override
+   protected void c(fns $$0, int $$1, int $$2) {
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
+         $$0.a(glv::C, I, $$1 + 99, $$2 + 45, 28, 21);
       }
    }
 
-   abstract static class f extends fur.e {
-      private final alz a;
-
-      protected f(int $$0, int $$1, alz $$2, xv $$3) {
-         super($$0, $$1, $$3);
-         this.a = $$2;
-      }
-
-      @Override
-      protected void a(fnr $$0) {
-         $$0.a(glu::C, this.a, this.D() + 2, this.E() + 2, 18, 18);
-      }
-   }
-
-   class g extends fur.d {
-      public g(final int $$0, final int $$1, final jq<bum> $$2) {
-         super($$0, $$1, $$2, false, 3);
-      }
-
-      @Override
-      protected yj b(jq<bum> $$0) {
-         return xv.c($$0.a().d()).f(" II");
-      }
-
-      @Override
-      public void a(int $$0) {
-         if (fur.this.Q != null) {
-            this.k = true;
-            this.a(fur.this.Q);
-            super.a($$0);
-         } else {
-            this.k = false;
-         }
+   @Override
+   public void a(ctc $$0, int $$1, cxp $$2) {
+      if ($$1 == 0) {
+         this.L.a($$2.f() ? "" : $$2.y().getString());
+         this.L.e(!$$2.f());
+         this.a(this.L);
       }
    }
 }

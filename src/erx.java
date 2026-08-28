@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class erx extends ery {
+public class erx extends esj {
    public static final MapCodec<erx> a = MapCodec.unit(() -> erx.b);
    public static final erx b = new erx();
 
@@ -8,12 +8,7 @@ public class erx extends ery {
    }
 
    @Override
-   public boolean a(jh $$0, jh $$1, jh $$2, bam $$3) {
-      return true;
-   }
-
-   @Override
-   protected erz<?> a() {
-      return erz.a;
+   protected esl<?> a() {
+      return esl.j;
    }
 }

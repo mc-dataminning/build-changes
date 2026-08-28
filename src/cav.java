@@ -1,42 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cav {
-   private static final int a = 60;
+   public static <E extends bwg> bzk<E> a(List<Pair<? extends cbp<? super E>, Integer>> $$0) {
+      return a($$0, byn.a.b, byn.b.a);
+   }
 
-   public static bxz<bwn> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return cbl.a(
-         (Function<cbl.b<bwn>, ? extends App<cbl.c<bwn>, cbo<bwn>>>)($$3 -> $$3.group($$3.c(cfj.o), $$3.c(cfj.m), $$3.a(cfj.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dw()).a(aya.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     } else {
-                        jh $$8 = $$6.dw();
-                        jh.a $$9 = new jh.a();
-                        fcc $$10 = fcc.a($$6);
+   public static <E extends bwg> bzk<E> a(List<Pair<? extends cbp<? super E>, Integer>> $$0, byn.a $$1, byn.b $$2) {
+      cai<cbp<? super E>> $$3 = new cai<>();
+      $$0.forEach($$1x -> $$3.a((cbp<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return cbm.a((Function<cbm.b<E>, ? extends App<cbm.c<E>, cbp<E>>>)($$3x -> $$3x.a((cbp<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == byn.a.b) {
+               $$3.a();
+            }
 
-                        for (jh $$11 : jh.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dxu $$12 = $$5x.a_($$11);
-                              dxu $$13 = $$5x.a_($$9.a($$11, jm.a));
-                              if (!$$12.a(dkn.J) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, jm.b)) {
-                                 jh $$14 = $$11.j();
-                                 $$5.a(new byb($$14));
-                                 $$4.a(new cfm(new byb($$14), $$1, 1));
-                                 break;
-                              }
-                           }
-                        }
+            for (cbp<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == byn.b.a) {
+                  break;
+               }
+            }
 
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     }
-                  }))
-      );
+            return true;
+         }))));
    }
 }

@@ -1,139 +1,201 @@
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
+import javax.annotation.Nullable;
 import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryStack;
 
-public interface fgv {
-   fgv a(float var1, float var2, float var3);
+public class fgv implements AutoCloseable {
+   private final fem a;
+   private final fen b;
+   @Nullable
+   private fen c = null;
+   private int d;
+   @Nullable
+   private fgx e;
+   @Nullable
+   private RenderSystem.a f;
+   private fgx.b g;
+   private int h;
+   private fgx.c i;
 
-   fgv a(int var1, int var2, int var3, int var4);
-
-   fgv a(float var1, float var2);
-
-   fgv a(int var1, int var2);
-
-   fgv b(int var1, int var2);
-
-   fgv b(float var1, float var2, float var3);
-
-   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a($$0, $$1, $$2);
-      this.a($$3);
-      this.a($$4, $$5);
-      this.b($$6);
-      this.c($$7);
-      this.b($$8, $$9, $$10);
+   public fgv(fem $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = new fen(fel.a, $$0, 0);
+      this.d = GlStateManager._glGenVertexArrays();
    }
 
-   default fgv a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
-   }
+   public void a(fgr $$0) {
+      fgr var2 = $$0;
 
-   default fgv a(int $$0) {
-      return this.a(ayp.b($$0), ayp.c($$0), ayp.d($$0), ayp.a($$0));
-   }
-
-   default fgv d(int $$0) {
-      return this.a(ayp.c($$0, -1));
-   }
-
-   default fgv c(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default fgv b(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(fgr.a $$0, gmr $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
-   }
-
-   default void a(fgr.a $$0, gmr $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      int[] $$10 = $$1.b();
-      kl $$11 = $$1.e().q();
-      Matrix4f $$12 = $$0.a();
-      Vector3f $$13 = $$0.a((float)$$11.u(), (float)$$11.v(), (float)$$11.w(), new Vector3f());
-      int $$14 = 8;
-      int $$15 = $$10.length / 8;
-      int $$16 = (int)($$6 * 255.0F);
-      int $$17 = $$1.g();
-      MemoryStack $$18 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$19 = $$18.malloc(fgp.b.b());
-         IntBuffer $$20 = $$19.asIntBuffer();
-
-         for (int $$21 = 0; $$21 < $$15; $$21++) {
-            $$20.clear();
-            $$20.put($$10, $$21 * 8, 8);
-            float $$22 = $$19.getFloat(0);
-            float $$23 = $$19.getFloat(4);
-            float $$24 = $$19.getFloat(8);
-            float $$28;
-            float $$29;
-            float $$30;
-            if ($$9) {
-               float $$25 = (float)($$19.get(12) & 255);
-               float $$26 = (float)($$19.get(13) & 255);
-               float $$27 = (float)($$19.get(14) & 255);
-               $$28 = $$25 * $$2[$$21] * $$3;
-               $$29 = $$26 * $$2[$$21] * $$4;
-               $$30 = $$27 * $$2[$$21] * $$5;
-            } else {
-               $$28 = $$2[$$21] * $$3 * 255.0F;
-               $$29 = $$2[$$21] * $$4 * 255.0F;
-               $$30 = $$2[$$21] * $$5 * 255.0F;
+      label40: {
+         try {
+            if (this.e()) {
+               break label40;
             }
 
-            int $$34 = ayp.a($$16, (int)$$28, (int)$$29, (int)$$30);
-            int $$35 = gli.b($$7[$$21], $$17);
-            float $$36 = $$19.getFloat(16);
-            float $$37 = $$19.getFloat(20);
-            Vector3f $$38 = $$12.transformPosition($$22, $$23, $$24, new Vector3f());
-            this.a($$38.x(), $$38.y(), $$38.z(), $$34, $$36, $$37, $$8, $$35, $$13.x(), $$13.y(), $$13.z());
-         }
-      } catch (Throwable var35) {
-         if ($$18 != null) {
-            try {
-               $$18.close();
-            } catch (Throwable var34) {
-               var35.addSuppressed(var34);
+            RenderSystem.assertOnRenderThread();
+            fgr.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.c();
+            this.g = $$1.e();
+            this.i = $$1.d();
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
             }
+
+            throw var6;
          }
 
-         throw var35;
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return;
       }
 
-      if ($$18 != null) {
-         $$18.close();
+      if ($$0 != null) {
+         $$0.close();
       }
    }
 
-   default fgv a(Vector3f $$0) {
-      return this.a($$0.x(), $$0.y(), $$0.z());
+   public void a(fgp.a $$0) {
+      fgp.a var2 = $$0;
+
+      label46: {
+         try {
+            if (this.e()) {
+               break label46;
+            }
+
+            RenderSystem.assertOnRenderThread();
+            if (this.c != null) {
+               this.c.close();
+            }
+
+            this.c = new fen(fel.b, this.a, $$0.a());
+            this.f = null;
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+            }
+
+            throw var6;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return;
+      }
+
+      if ($$0 != null) {
+         $$0.close();
+      }
    }
 
-   default fgv a(fgr.a $$0, Vector3f $$1) {
-      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
+   private fgx a(fgr.a $$0, @Nullable ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.a().equals(this.e)) {
+         if (this.e != null) {
+            this.e.h();
+         }
+
+         this.b.b();
+         $$0.a().g();
+         $$2 = true;
+      }
+
+      if ($$1 != null) {
+         if (!$$2) {
+            this.b.b();
+         }
+
+         this.b.a($$1.remaining());
+         this.b.a($$1, 0);
+      }
+
+      return $$0.a();
    }
 
-   default fgv a(fgr.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
+   @Nullable
+   private RenderSystem.a b(fgr.a $$0, @Nullable ByteBuffer $$1) {
+      if ($$1 != null) {
+         if (this.c != null) {
+            this.c.close();
+         }
+
+         this.c = new fen(fel.b, this.a, $$1);
+         return null;
+      } else {
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
+         if ($$2 != this.f || !$$2.a($$0.c())) {
+            $$2.b($$0.c());
+         }
+
+         return $$2;
+      }
    }
 
-   default fgv a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   public void a() {
+      fgo.b();
+      GlStateManager._glBindVertexArray(this.d);
    }
 
-   default fgv b(fgr.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.b($$4.x(), $$4.y(), $$4.z());
+   public static void b() {
+      fgo.b();
+      GlStateManager._glBindVertexArray(0);
    }
 
-   default fgv b(fgr.a $$0, Vector3f $$1) {
-      return this.b($$0, $$1.x(), $$1.y(), $$1.z());
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private fgx.b f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, @Nullable gku $$2) {
+      if ($$2 != null) {
+         RenderSystem.assertOnRenderThread();
+         $$2.a(this.i, $$0, $$1, fmg.Q().aO());
+         $$2.b();
+         this.c();
+         $$2.a();
+      }
+   }
+
+   @Override
+   public void close() {
+      this.b.close();
+      if (this.c != null) {
+         this.c.close();
+         this.c = null;
+      }
+
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
+      }
+   }
+
+   public fgx d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.d == -1;
    }
 }

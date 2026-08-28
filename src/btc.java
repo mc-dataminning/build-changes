@@ -1,77 +1,86 @@
-import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
-public class btc {
-   public static final String a = "Items";
+public interface btc extends bta {
+   float r_ = 4.0F;
 
-   public static cxo a(List<cxo> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : cxo.j;
+   int b();
+
+   boolean c();
+
+   cxp a(int var1);
+
+   cxp a(int var1, int var2);
+
+   cxp b(int var1);
+
+   void a(int var1, cxp var2);
+
+   default int ao_() {
+      return 99;
    }
 
-   public static cxo a(List<cxo> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cxo.j) : cxo.j;
+   default int e_(cxp $$0) {
+      return Math.min(this.ao_(), $$0.k());
    }
 
-   public static ux a(ux $$0, jz<cxo> $$1, js.a $$2) {
-      return a($$0, $$1, true, $$2);
+   void e();
+
+   boolean a(cpx var1);
+
+   default void c_(cpx $$0) {
    }
 
-   public static ux a(ux $$0, jz<cxo> $$1, boolean $$2, js.a $$3) {
-      vd $$4 = new vd();
+   default void c(cpx $$0) {
+   }
 
-      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
-         cxo $$6 = $$1.get($$5);
-         if (!$$6.f()) {
-            ux $$7 = new ux();
-            $$7.a("Slot", (byte)$$5);
-            $$4.add($$6.b($$3, $$7));
+   default boolean b(int $$0, cxp $$1) {
+      return true;
+   }
+
+   default boolean a(btc $$0, int $$1, cxp $$2) {
+      return true;
+   }
+
+   default int a_(cxl $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cxp $$3 = this.a($$2);
+         if ($$3.h().equals($$0)) {
+            $$1 += $$3.L();
          }
       }
 
-      if (!$$4.isEmpty() || $$2) {
-         $$0.a("Items", $$4);
-      }
-
-      return $$0;
+      return $$1;
    }
 
-   public static void b(ux $$0, jz<cxo> $$1, js.a $$2) {
-      vd $$3 = $$0.c("Items", 10);
+   default boolean a(Set<cxl> $$0) {
+      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
+   }
 
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         ux $$5 = $$3.a($$4);
-         int $$6 = $$5.f("Slot") & 255;
-         if ($$6 >= 0 && $$6 < $$1.size()) {
-            $$1.set($$6, cxo.a($$2, (vu)$$5).orElse(cxo.j));
+   default boolean a_(Predicate<cxp> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cxp $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
          }
       }
+
+      return false;
    }
 
-   public static int a(btb $$0, Predicate<cxo> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cxo $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.f()) {
-            $$0.a($$5, cxo.j);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
+   static boolean a(dux $$0, cpx $$1) {
+      return a($$0, $$1, 4.0F);
    }
 
-   public static int a(cxo $$0, Predicate<cxo> $$1, int $$2, boolean $$3) {
-      if ($$0.f() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.L();
+   static boolean a(dux $$0, cpx $$1, float $$2) {
+      dhi $$3 = $$0.i();
+      jh $$4 = $$0.aB_();
+      if ($$3 == null) {
+         return false;
       } else {
-         int $$4 = $$2 < 0 ? $$0.L() : Math.min($$2, $$0.L());
-         $$0.h($$4);
-         return $$4;
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

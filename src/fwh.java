@@ -1,32 +1,24 @@
-import java.util.Objects;
 import org.joml.Matrix4f;
 
-public interface fwh {
-   static fwh a(azq $$0) {
-      return new fwg($$0);
+public class fwh implements fwi {
+   private final azq a;
+
+   public fwh(azq $$0) {
+      this.a = $$0;
    }
 
-   static fwh a(cvi $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fwh)(switch ($$0) {
-         case cvh $$1 -> new fwf($$1.a());
-         case fwe.a $$2 -> new fwe($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+   @Override
+   public int b(fnq $$0) {
+      return $$0.a(this.a);
    }
 
-   int a(fnp var1);
-
-   int b(fnp var1);
-
-   default boolean a() {
-      return false;
+   @Override
+   public int a(fnq $$0) {
+      return 10;
    }
 
-   default void a(fnp $$0, int $$1, int $$2, Matrix4f $$3, glk.a $$4) {
-   }
-
-   default void a(fnp $$0, int $$1, int $$2, int $$3, int $$4, fnr $$5) {
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, Matrix4f $$3, gll.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fnq.a.a, 0, 15728880);
    }
 }

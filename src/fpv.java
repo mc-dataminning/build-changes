@@ -1,62 +1,93 @@
-import java.util.Locale;
+public abstract class fpv {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final fnq d;
+   protected final boh e;
 
-public class fpv extends fpu {
-   private static final int f = -16711681;
-   private static final int g = -6250241;
-   private static final int h = -65536;
-   private static final int i = 1024;
-   private static final int j = 1048576;
-   private static final int k = 1048576;
-
-   public fpv(fnp $$0, bog $$1) {
-      super($$0, $$1);
+   protected fpv(fnq $$0, boh $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   protected void d(fnr $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 64);
-      this.a($$0, $$1, $$2, $$3, 1024);
-      this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
    }
 
-   private void a(fnr $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
+   public int a() {
+      return 60 + 9;
    }
 
-   private void a(fnr $$0, int $$1, int $$2, int $$3, String $$4) {
-      this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(glu.H(), $$1, $$1 + $$2 - 1, $$3, -1);
-   }
+   public void a(fns $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(glv.H(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
 
-   @Override
-   protected String a(double $$0) {
-      return c(e($$0));
-   }
-
-   private static String c(double $$0) {
-      if ($$0 >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
-      } else {
-         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", bae.a($$0));
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
+
+      $$0.a(glv.H(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(glv.H(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(glv.H(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(glv.H(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      }
+
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected int b(double $$0) {
-      return d(e($$0));
+   protected void a(fns $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   private static int d(double $$0) {
-      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
+   protected void b(fns $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(glv.H(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
+   protected void c(fns $$0, int $$1, int $$2, int $$3) {
    }
 
-   private static double e(double $$0) {
-      return $$0 * 20.0;
+   protected long b(int $$0) {
+      return this.e.a($$0);
+   }
+
+   protected void d(fns $$0, int $$1, int $$2, int $$3) {
+   }
+
+   protected void a(fns $$0, String $$1, int $$2, int $$3) {
+      $$0.a(glv.H(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   }
+
+   protected abstract String a(double var1);
+
+   protected abstract int b(double var1);
+
+   protected abstract int a(long var1);
+
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = bae.a($$0, $$1, $$5);
+      return $$0 < $$3 ? ayp.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : ayp.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

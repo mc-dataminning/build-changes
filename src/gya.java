@@ -1,8 +1,51 @@
-public class gya extends gys {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+import javax.annotation.Nullable;
+
+public class gya extends gxv implements dgk {
+   public jh a = jh.c;
+   public jh b = jh.c;
+   public dxv c = dko.L.m();
+   @Nullable
+   public jq<dik> d;
+   public dgk e = dgw.a;
+
+   @Override
+   public float a(jm $$0, boolean $$1) {
+      return this.e.a($$0, $$1);
+   }
+
+   @Override
+   public etm C_() {
+      return this.e.C_();
+   }
+
+   @Override
+   public int a(jh $$0, dgs $$1) {
+      return this.d == null ? -1 : $$1.getColor(this.d.a(), (double)$$0.u(), (double)$$0.w());
+   }
+
+   @Nullable
+   @Override
+   public dux c_(jh $$0) {
+      return null;
+   }
+
+   @Override
+   public dxv a_(jh $$0) {
+      return $$0.equals(this.b) ? this.c : dko.a.m();
+   }
+
+   @Override
+   public etx b_(jh $$0) {
+      return this.a_($$0).y();
+   }
+
+   @Override
+   public int M_() {
+      return 1;
+   }
+
+   @Override
+   public int L_() {
+      return this.b.v();
+   }
 }

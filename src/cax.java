@@ -3,51 +3,44 @@ import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cax {
-   public static bxz<bwn> a(int $$0, float $$1) {
+   public static bya<bwo> a(int $$0, float $$1) {
       MutableLong $$2 = new MutableLong(0L);
-      return cbl.a(
-         (Function<cbl.b<bwn>, ? extends App<cbl.c<bwn>, cbo<bwn>>>)($$3 -> $$3.group($$3.c(cfj.o), $$3.c(cfj.m), $$3.a(cfj.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dw()).a(aya.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        jh $$8 = null;
-                        jh $$9 = null;
-                        jh $$10 = $$6.dw();
+      return cbm.a(
+         (Function<cbm.b<bwo>, ? extends App<cbm.c<bwo>, cbp<bwo>>>)($$3 -> $$3.group($$3.c(cfk.o), $$3.c(cfk.m), $$3.a(cfk.n))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.dw()).a(aya.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           fcd $$8 = fcd.a($$6);
+                           jh $$9 = $$6.dw();
+                           jh.a $$10 = new jh.a();
 
-                        for (jh $$12 : jh.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dxu $$13 = $$6.dW().a_($$12.d());
-                              dxu $$14 = $$6.dW().a_($$12);
-                              if ($$14.a(dkn.J)) {
-                                 if ($$13.l()) {
-                                    $$8 = $$12.j();
-                                    break;
-                                 }
-
-                                 if ($$9 == null && !$$12.a($$6.du(), 1.5)) {
-                                    $$9 = $$12.j();
+                           label45:
+                           for (jh $$11 : jh.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, jm.a)).b($$5x, $$11, $$8).c()) {
+                                 for (jm $$12 : jm.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jm.a)).a(dko.J)) {
+                                       $$5.a(new byc($$11));
+                                       $$4.a(new cfn(new byc($$11), $$1, 0));
+                                       break label45;
+                                    }
                                  }
                               }
                            }
-                        }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
+                           $$2.setValue($$7 + 40L);
+                           return true;
                         }
-
-                        if ($$8 != null) {
-                           $$5.a(new byb($$8));
-                           $$4.a(new cfm(new byb($$8), $$1, 0));
-                        }
-
-                        $$2.setValue($$7 + 40L);
-                        return true;
                      }
-                  }))
+               ))
       );
    }
 }

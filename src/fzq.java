@@ -1,9 +1,7 @@
+import java.util.List;
+
 public interface fzq {
-   void a(fzo var1);
+   List<fzr> a();
 
-   xv aU_();
-
-   void a(fnr var1, float var2, float var3);
-
-   boolean aV_();
+   xv b();
 }

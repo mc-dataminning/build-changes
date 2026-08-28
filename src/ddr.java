@@ -1,44 +1,12 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record ddr(ddo f, ddo g, ddo h, ddo i, ddo j) implements ddi {
-   public static final MapCodec<ddr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ddo.a.fieldOf("template").forGetter(ddr::b),
-               ddo.a.fieldOf("base").forGetter(ddr::c),
-               ddo.a.fieldOf("addition").forGetter(ddr::f),
-               ddo.a.fieldOf("result").forGetter(ddr::d),
-               ddo.a.fieldOf("crafting_station").forGetter(ddr::e)
-            )
-            .apply($$0, ddr::new)
-   );
-   public static final zt<xg, ddr> b = zt.a(ddo.b, ddr::b, ddo.b, ddr::c, ddo.b, ddr::f, ddo.b, ddr::d, ddo.b, ddr::e, ddr::new);
-   public static final ddi.a<ddr> c = new ddi.a<>(a, b);
-
-   @Override
-   public ddi.a<ddr> a() {
-      return c;
-   }
-
-   public ddo b() {
-      return this.f;
-   }
-
-   public ddo c() {
-      return this.g;
-   }
-
-   public ddo f() {
-      return this.h;
-   }
-
-   @Override
-   public ddo d() {
-      return this.i;
-   }
-
-   @Override
-   public ddo e() {
-      return this.j;
+public class ddr {
+   public static ddp.i<?> a(kd<ddp.i<?>> $$0) {
+      kd.a($$0, "empty", ddp.c.f);
+      kd.a($$0, "any_fuel", ddp.a.f);
+      kd.a($$0, "item", ddp.d.e);
+      kd.a($$0, "item_stack", ddp.f.e);
+      kd.a($$0, "tag", ddp.h.e);
+      kd.a($$0, "smithing_trim", ddp.g.e);
+      kd.a($$0, "with_remainder", ddp.j.e);
+      return kd.a($$0, "composite", ddp.b.e);
    }
 }

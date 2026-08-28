@@ -6,14 +6,14 @@ import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class bcs extends bhr {
+public class bcs extends bhs {
    public bcs(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBlockStateFix", biw.s, "minecraft:piston");
+      super($$0, $$1, "BlockEntityBlockStateFix", bix.s, "minecraft:piston");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(biw.s, "minecraft:piston");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bix.s, "minecraft:piston");
       Type<?> $$2 = $$1.findFieldType("blockState");
       OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
       Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());

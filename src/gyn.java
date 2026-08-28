@@ -1,5 +1,4 @@
-public class gyn extends gys {
-   public float a;
-   public int b;
-   public bvg.a c = bvg.a.a;
+public class gyn extends gym {
+   public fby[] a = new fby[0];
+   public boolean i;
 }

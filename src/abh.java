@@ -1,4 +1,4 @@
-public record abh(aly<ecq> c, fbx d) implements abf {
+public record abh(aly<ecr> c, fby d) implements abf {
    public static final zt<ws, abh> a = abf.a(abh::a, abh::new);
    public static final abf.b<abh> b = abf.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record abh(aly<ecq> c, fbx d) implements abf {
       return b;
    }
 
-   public aly<ecq> b() {
+   public aly<ecr> b() {
       return this.c;
    }
 
-   public fbx c() {
+   public fby c() {
       return this.d;
    }
 }

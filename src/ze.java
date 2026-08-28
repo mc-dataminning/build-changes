@@ -16,12 +16,12 @@ public record ze(hn c, Optional<xv> d) implements xw {
    }
 
    @Override
-   public yj a(@Nullable ew $$0, @Nullable bvj $$1, int $$2) throws CommandSyntaxException {
+   public yj a(@Nullable ew $$0, @Nullable bvk $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return xv.i();
       } else {
          Optional<? extends xv> $$3 = xy.a($$0, this.d, $$1, $$2);
-         return xy.a(this.c.b().b($$0), $$3, bvj::p_);
+         return xy.a(this.c.b().b($$0), $$3, bvk::p_);
       }
    }
 

@@ -1,8 +1,7 @@
 import javax.annotation.Nullable;
 
-public class gyz extends gxu {
-   public jm a = jm.c;
+public class gyz extends gxv {
    @Nullable
-   public clw b;
-   public int[] c = new int[0];
+   public hdn a;
+   public cxp b = cxp.j;
 }

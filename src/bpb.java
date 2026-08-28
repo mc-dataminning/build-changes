@@ -1,65 +1,156 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record bpb<T>(bot<StringReader> a, bor<T> b) {
-   public Optional<T> a(bow<StringReader> $$0) {
-      return $$0.a(this.b);
+public interface bpb<S> {
+   boolean a(box<S> var1, boz var2, bot var3);
+
+   static <S> bpb<S> a(bos<?> $$0) {
+      return new bpb.d<>($$0);
    }
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bou.a<StringReader> $$1 = new bou.a<>();
-      bpf $$2 = new bpf(this.a(), $$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
-      } else {
-         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
-            if ($$0x.c() instanceof Exception $$3x) {
-               $$1x.accept($$3x);
-            }
-         }).toList();
+   static <S, T> bpb<S> a(bos<T> $$0, T $$1) {
+      return new bpb.b<>($$0, $$1);
+   }
 
-         for (Exception $$5 : $$4) {
-            if ($$5 instanceof CommandSyntaxException $$6) {
-               throw $$6;
-            }
+   @SafeVarargs
+   static <S> bpb<S> a(bpb<S>... $$0) {
+      return new bpb.e<>(List.of($$0));
+   }
+
+   @SafeVarargs
+   static <S> bpb<S> b(bpb<S>... $$0) {
+      return new bpb.a<>(List.of($$0));
+   }
+
+   static <S> bpb<S> a(bpb<S> $$0) {
+      return new bpb.c<>($$0);
+   }
+
+   static <S> bpb<S> a() {
+      return new bpb<S>() {
+         @Override
+         public boolean a(box<S> $$0, boz $$1, bot $$2) {
+            $$2.cut();
+            return true;
          }
 
-         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
-            throw $$7;
-         } else {
-            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bov::toString).collect(Collectors.joining(", ")));
+         @Override
+         public String toString() {
+            return "↑";
          }
+      };
+   }
+
+   static <S> bpb<S> b() {
+      return new bpb<S>() {
+         @Override
+         public boolean a(box<S> $$0, boz $$1, bot $$2) {
+            return true;
+         }
+
+         @Override
+         public String toString() {
+            return "ε";
+         }
+      };
+   }
+
+   public static record a<S>(List<bpb<S>> a) implements bpb<S> {
+      @Override
+      public boolean a(box<S> $$0, boz $$1, bot $$2) {
+         MutableBoolean $$3 = new MutableBoolean();
+         bot $$4 = $$3::setTrue;
+         int $$5 = $$0.c();
+
+         for (bpb<S> $$6 : this.a) {
+            if ($$3.isTrue()) {
+               break;
+            }
+
+            boz $$7 = new boz();
+            if ($$6.a($$0, $$7, $$4)) {
+               $$1.a($$7);
+               return true;
+            }
+
+            $$0.a($$5);
+         }
+
+         return false;
+      }
+
+      public List<bpb<S>> c() {
+         return this.a;
       }
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bou.a<StringReader> $$2 = new bou.a<>();
-      bpf $$3 = new bpf(this.a(), $$2, $$1);
-      this.a($$3);
-      List<bov<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
+   public static record b<S, T>(bos<T> a, T b) implements bpb<S> {
+      @Override
+      public boolean a(box<S> $$0, boz $$1, bot $$2) {
+         $$1.a(this.a, this.b);
+         return true;
+      }
 
-         for (bov<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bpe $$7) {
-               fb.a($$7.a(), $$5);
-            } else {
-               fb.b($$6.b().possibleValues($$3), $$5);
+      public bos<T> c() {
+         return this.a;
+      }
+
+      public T d() {
+         return this.b;
+      }
+   }
+
+   public static record c<S>(bpb<S> a) implements bpb<S> {
+      @Override
+      public boolean a(box<S> $$0, boz $$1, bot $$2) {
+         int $$3 = $$0.c();
+         if (!this.a.a($$0, $$1, $$2)) {
+            $$0.a($$3);
+         }
+
+         return true;
+      }
+
+      public bpb<S> c() {
+         return this.a;
+      }
+   }
+
+   public static record d<S, T>(bos<T> a) implements bpb<S> {
+      @Override
+      public boolean a(box<S> $$0, boz $$1, bot $$2) {
+         Optional<T> $$3 = $$0.b(this.a);
+         if ($$3.isEmpty()) {
+            return false;
+         } else {
+            $$1.a(this.a, $$3.get());
+            return true;
+         }
+      }
+
+      public bos<T> c() {
+         return this.a;
+      }
+   }
+
+   public static record e<S>(List<bpb<S>> a) implements bpb<S> {
+      @Override
+      public boolean a(box<S> $$0, boz $$1, bot $$2) {
+         int $$3 = $$0.c();
+
+         for (bpb<S> $$4 : this.a) {
+            if (!$$4.a($$0, $$1, $$2)) {
+               $$0.a($$3);
+               return false;
             }
          }
 
-         return $$5.buildFuture();
+         return true;
+      }
+
+      public List<bpb<S>> c() {
+         return this.a;
       }
    }
 }

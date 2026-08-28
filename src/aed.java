@@ -12,10 +12,10 @@ public class aed {
    private final byte[] c;
    private final List<aed.a> d;
 
-   public aed(dzz $$0) {
+   public aed(eaa $$0) {
       this.b = new ux();
 
-      for (Entry<edp.a, edp> $$1 : $$0.e()) {
+      for (Entry<edq.a, edq> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new ve($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class aed {
       a(new ws(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<jh, duw> $$2 : $$0.I().entrySet()) {
+      for (Entry<jh, dux> $$2 : $$0.I().entrySet()) {
          this.d.add(aed.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class aed {
       aed.a.b.encode($$0, this.d);
    }
 
-   private static int a(dzz $$0) {
+   private static int a(eaa $$0) {
       int $$1 = 0;
 
-      for (eaa $$2 : $$0.d()) {
+      for (eab $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class aed {
       return $$0;
    }
 
-   public static void a(ws $$0, dzz $$1) {
-      for (eaa $$2 : $$1.d()) {
+   public static void a(ws $$0, eaa $$1) {
+      for (eab $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -105,11 +105,11 @@ public class aed {
       public static final zt<xg, List<aed.a>> b = a.a(zr.a());
       final int c;
       final int d;
-      final duy<?> e;
+      final duz<?> e;
       @Nullable
       final ux f;
 
-      private a(int $$0, int $$1, duy<?> $$2, @Nullable ux $$3) {
+      private a(int $$0, int $$1, duz<?> $$2, @Nullable ux $$3) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
@@ -130,7 +130,7 @@ public class aed {
          $$0.a(this.f);
       }
 
-      static aed.a a(duw $$0) {
+      static aed.a a(dux $$0) {
          ux $$1 = $$0.a($$0.i().K_());
          jh $$2 = $$0.aB_();
          int $$3 = kj.b($$2.u()) << 4 | kj.b($$2.w());
@@ -140,6 +140,6 @@ public class aed {
 
    @FunctionalInterface
    public interface b {
-      void accept(jh var1, duy<?> var2, @Nullable ux var3);
+      void accept(jh var1, duz<?> var2, @Nullable ux var3);
    }
 }

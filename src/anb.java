@@ -10,7 +10,7 @@ public class anb extends asd {
    private int k = 100;
 
    public anb(alz $$0, xv $$1) {
-      super($$1, bsy.a.g, bsy.b.a);
+      super($$1, bsz.a.g, bsz.b.a);
       this.h = $$0;
       this.a(0.0F);
    }
@@ -141,8 +141,8 @@ public class anb extends asd {
       $$3.d($$0.q("Visible"));
       $$3.a($$0.h("Value"));
       $$3.b($$0.h("Max"));
-      $$3.a(bsy.a.a($$0.l("Color")));
-      $$3.a(bsy.b.a($$0.l("Overlay")));
+      $$3.a(bsz.a.a($$0.l("Color")));
+      $$3.a(bsz.b.a($$0.l("Overlay")));
       $$3.a($$0.q("DarkenScreen"));
       $$3.b($$0.q("PlayBossMusic"));
       $$3.c($$0.q("CreateWorldFog"));

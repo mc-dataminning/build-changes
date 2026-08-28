@@ -1,52 +1,43 @@
-public class guh extends gsv<ciw, gzz, gbl<gzz>> {
-   private final gbl<gzz> a = this.c();
-   private final gbl<gzz> b;
-   private static final alz k = alz.b("textures/entity/fish/tropical_a.png");
-   private static final alz l = alz.b("textures/entity/fish/tropical_b.png");
+public class guh extends grp<cmc, gzz> {
+   private final gmo a;
 
-   public guh(grp.a $$0) {
-      super($$0, new gds($$0.a(gem.dj)), 0.15F);
-      this.b = new gdt($$0.a(gem.dh));
-      this.a(new gwn(this, $$0.f()));
+   public guh(grq.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   public alz a(gzz $$0) {
-      return switch ($$0.a.a()) {
-         case a -> k;
-         case b -> l;
-      };
+   public void a(gzz $$0, fgs $$1, gll $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.5F, 0.0F);
+      float $$4 = $$0.a;
+      if ($$0.a < 10.0F) {
+         float $$5 = 1.0F - $$0.a / 10.0F;
+         $$5 = bae.a($$5, 0.0F, 1.0F);
+         $$5 *= $$5;
+         $$5 *= $$5;
+         float $$6 = 1.0F + $$5 * 0.3F;
+         $$1.b($$6, $$6, $$6);
+      }
+
+      $$1.a(a.d.rotationDegrees(-90.0F));
+      $$1.a(-0.5F, -0.5F, 0.5F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      if ($$0.b != null) {
+         gug.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gzz b() {
+   public gzz a() {
       return new gzz();
    }
 
-   public void a(ciw $$0, gzz $$1, float $$2) {
+   public void a(cmc $$0, gzz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gy();
-      $$1.b = $$0.gw().d();
-      $$1.c = $$0.gx().d();
-   }
-
-   public void a(gzz $$0, fgr $$1, glk $$2, int $$3) {
-      this.h = switch ($$0.a.a()) {
-         case a -> this.a;
-         case b -> this.b;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected int b(gzz $$0) {
-      return $$0.b;
-   }
-
-   protected void a(gzz $$0, fgr $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * bae.a(0.6F * $$0.p);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.af) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+      $$1.a = (float)$$0.m() - $$2 + 1.0F;
+      $$1.b = $$0.s();
    }
 }

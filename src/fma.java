@@ -1,66 +1,74 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fma {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final gki[] e = new gki[9];
-   private boolean f;
+public record fma(int a, @Nullable fma.a b, @Nullable xv c, @Nullable String d) {
+   private static final xv e = xv.c("chat.tag.system");
+   private static final xv f = xv.c("chat.tag.system_single_player");
+   private static final xv g = xv.c("chat.tag.not_secure");
+   private static final xv h = xv.c("chat.tag.modified");
+   private static final xv i = xv.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final fma l = new fma(13684944, null, e, "System");
+   private static final fma m = new fma(13684944, null, f, "System");
+   private static final fma n = new fma(13684944, null, g, "Not Secure");
+   private static final fma o = new fma(16733525, null, i, "Chat Error");
 
-   public fma(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new gki();
-      }
+   public static fma a() {
+      return l;
    }
 
-   private void b() {
-      try {
-         ux $$0 = vk.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = vm.b($$0, 1343);
-         $$0 = bbs.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = gki.a.parse(vl.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gki::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
+   public static fma b() {
+      return m;
    }
 
-   public void a() {
-      try {
-         ux $$0 = vm.e(new ux());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            gki $$2 = this.a($$1);
-            DataResult<vu> $$3 = gki.a.encodeStart(vl.a, $$2);
-            $$0.a(String.valueOf($$1), (vu)$$3.getOrThrow());
-         }
-
-         vk.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
-      }
+   public static fma c() {
+      return n;
    }
 
-   public gki a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
+   public static fma a(String $$0) {
+      xv $$1 = xv.b($$0).a(n.h);
+      xv $$2 = xv.i().b(h).b(xu.s).b($$1);
+      return new fma(6316128, fma.a.a, $$2, "Modified");
+   }
+
+   public static fma d() {
+      return o;
+   }
+
+   public int e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fma.a f() {
+      return this.b;
+   }
+
+   @Nullable
+   public xv g() {
+      return this.c;
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(alz.b("icon/chat_modified"), 9, 9);
+
+      public final alz b;
+      public final int c;
+      public final int d;
+
+      private a(final alz $$0, final int $$1, final int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      return this.e[$$0];
+      public void a(fns $$0, int $$1, int $$2) {
+         $$0.a(glv::C, this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

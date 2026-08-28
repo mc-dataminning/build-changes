@@ -1,21 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class duj extends dld {
-   public static final MapCodec<duj> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwl.q.fieldOf("color").forGetter(duj::b), t()).apply($$0, duj::new));
-   private final cwl d;
+public class duj extends dtq {
+   public static final MapCodec<duj> b = b(duj::new);
 
    @Override
    public MapCodec<duj> a() {
-      return c;
+      return b;
    }
 
-   protected duj(cwl $$0, dxt.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected duj(dxu.d $$0) {
+      super(drr.b.d, $$0);
    }
 
-   public cwl b() {
-      return this.d;
+   @Override
+   public void a(dhi $$0, jh $$1, dxv $$2, @Nullable bwg $$3, cxp $$4) {
+      dui.a($$0, $$1);
    }
 }

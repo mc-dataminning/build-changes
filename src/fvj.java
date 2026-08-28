@@ -1,24 +1,13 @@
-public class fvj extends fum<cub> {
-   private static final alz G = alz.b("container/grindstone/error");
-   private static final alz H = alz.b("textures/gui/container/grindstone.png");
+import java.util.List;
 
-   public fvj(cub $$0, cpv $$1, xv $$2) {
-      super($$0, $$1, $$2);
-   }
+public class fvj extends fuo<cua> {
+   private static final alz G = alz.b("container/furnace/lit_progress");
+   private static final alz H = alz.b("container/furnace/burn_progress");
+   private static final alz I = alz.b("textures/gui/container/furnace.png");
+   private static final xv J = xv.c("gui.recipebook.toggleRecipes.smeltable");
+   private static final List<fxv.a> K = List.of(new fxv.a(fyb.b), new fxv.a(cxt.qt, dcg.e), new fxv.a(cxt.b, dcg.f), new fxv.a(cxt.qY, cxt.oW, dcg.g));
 
-   @Override
-   public void a(fnr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fnr $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(glu::C, H, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(2).h()) {
-         $$0.a(glu::C, G, $$4 + 92, $$5 + 31, 28, 21);
-      }
+   public fvj(cua $$0, cpw $$1, xv $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

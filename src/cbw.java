@@ -3,15 +3,16 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class cbw {
-   public static bxz<bwf> a() {
-      return cbl.a(
-         (Function<cbl.b<bwf>, ? extends App<cbl.c<bwf>, cbo<bwf>>>)($$0 -> $$0.group($$0.a(cfj.n), $$0.a(cfj.az), $$0.a(cfj.ay), $$0.c(cfj.o))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<jh> $$7 = $$0.<bwf>a($$3).map(bvj::dw).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
+   public static <E extends cpa> bya<E> a(Function<E, Optional<? extends bwg>> $$0) {
+      return cbm.a(
+         (Function<cbm.b<E>, ? extends App<cbm.c<E>, cbp<E>>>)($$1 -> $$1.group($$1.c(cfk.ay), $$1.c(cfk.o), $$1.a(cfk.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bwg> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::b).isEmpty()) {
                         return false;
                      } else {
-                        $$1.a(new byb($$7.get()));
+                        $$1x.a($$6.get());
+                        $$3.b();
                         return true;
                      }
                   }))

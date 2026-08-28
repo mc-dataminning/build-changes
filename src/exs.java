@@ -1,64 +1,101 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class exs extends eyb {
+public class exs extends eyc {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<exs> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(fau.a.fieldOf("levels").forGetter($$0x -> $$0x.b), kf.a(mb.aO).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  kf.a(mb.aO).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
+                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, exs::new)
    );
-   private final fat b;
-   private final Optional<ju<ddy>> c;
+   private final Optional<ju<ddz>> c;
+   private final boolean d;
 
-   exs(List<ezx> $$0, fat $$1, Optional<ju<ddy>> $$2) {
+   exs(List<ezy> $$0, Optional<ju<ddz>> $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public eyd<exs> b() {
-      return eye.g;
+   public eye<exs> b() {
+      return eyf.h;
    }
 
    @Override
-   public Set<bbn<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public cxo a(cxo $$0, ewo $$1) {
+   public cxp a(cxp $$0, ewp $$1) {
       bam $$2 = $$1.b();
-      ke $$3 = $$1.d().K_();
-      return dea.a($$2, $$0, this.b.a($$1), $$3, this.c);
-   }
-
-   public static exs.a a(js.a $$0, fat $$1) {
-      return new exs.a($$1).a($$0.d(mb.aO).b(axx.n));
-   }
-
-   public static class a extends eyb.a<exs.a> {
-      private final fat a;
-      private Optional<ju<ddy>> b = Optional.empty();
-
-      public a(fat $$0) {
-         this.a = $$0;
+      boolean $$3 = $$0.a(cxt.rn);
+      boolean $$4 = !$$3 && this.d;
+      Stream<jq<ddz>> $$5 = this.c
+         .<Stream<jq<ddz>>>map(ju::a)
+         .orElseGet(() -> $$1.d().K_().e(mb.aO).c().map(Function.identity()))
+         .filter($$2x -> !$$4 || ((ddz)$$2x.a()).c($$0));
+      List<jq<ddz>> $$6 = $$5.toList();
+      Optional<jq<ddz>> $$7 = ae.b($$6, $$2);
+      if ($$7.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
+         return $$0;
+      } else {
+         return a($$0, $$7.get(), $$2);
       }
+   }
+
+   private static cxp a(cxp $$0, jq<ddz> $$1, bam $$2) {
+      int $$3 = bae.a($$2, $$1.a().d(), $$1.a().e());
+      if ($$0.a(cxt.rn)) {
+         $$0 = new cxp(cxt.vm);
+      }
+
+      $$0.a($$1, $$3);
+      return $$0;
+   }
+
+   public static exs.a c() {
+      return new exs.a();
+   }
+
+   public static exs.a a(js.a $$0) {
+      return c().a($$0.d(mb.aO).b(axx.n));
+   }
+
+   public static class a extends eyc.a<exs.a> {
+      private Optional<ju<ddz>> a = Optional.empty();
+      private boolean b = true;
 
       protected exs.a a() {
          return this;
       }
 
-      public exs.a a(ju<ddy> $$0) {
-         this.b = Optional.of($$0);
+      public exs.a a(jq<ddz> $$0) {
+         this.a = Optional.of(ju.a($$0));
+         return this;
+      }
+
+      public exs.a a(ju<ddz> $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public exs.a e() {
+         this.b = false;
          return this;
       }
 
       @Override
-      public eyc b() {
+      public eyd b() {
          return new exs(this.g(), this.a, this.b);
       }
    }

@@ -1,84 +1,75 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dsm extends djx implements dnu {
+public class dsm extends dkm {
    public static final MapCodec<dsm> a = b(dsm::new);
-   public static final dyr<dzd> b = dyk.bk;
+   private static final xv d = xv.c("container.stonecutter");
+   public static final dys<jm> b = dok.aF;
+   protected static final fcs c = dkm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dsm> a() {
       return a;
    }
 
-   protected dsm(dxt.d $$0) {
+   public dsm(dxu.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dzd.b));
+      this.l(this.F.b().b(b, jm.c));
    }
 
    @Override
-   public duw a(jh $$0, dxu $$1) {
-      return new dwo($$0, $$1);
+   public dxv a(dbg $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      duw $$5 = $$1.c_($$2);
-      if ($$5 instanceof dwo) {
-         return (bti)(((dwo)$$5).a($$3) ? bti.a : bti.e);
-      } else {
-         return bti.e;
+   protected btj a(dxv $$0, dhi $$1, jh $$2, cpx $$3, fbu $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(axp.ay);
       }
+
+      return btj.a;
+   }
+
+   @Nullable
+   @Override
+   protected btl b(dxv $$0, dhi $$1, jh $$2) {
+      return new btr(($$2x, $$3, $$4) -> new cvf($$2x, $$3, ctp.a($$1, $$2)), d);
    }
 
    @Override
-   public void a(dhh $$0, jh $$1, dxu $$2, @Nullable bwf $$3, cxo $$4) {
-      if (!$$0.C) {
-         if ($$3 != null) {
-            duw $$5 = $$0.c_($$1);
-            if ($$5 instanceof dwo) {
-               ((dwo)$$5).a($$3);
-            }
-         }
-      }
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return c;
    }
 
    @Override
-   protected dqu a_(dxu $$0) {
-      return dqu.c;
+   protected boolean g_(dxv $$0) {
+      return true;
    }
 
    @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
+   protected dqv a_(dxv $$0) {
+      return dqv.c;
+   }
+
+   @Override
+   protected dxv a(dxv $$0, drc $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dxv a(dxv $$0, dpl $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dxw.a<dkm, dxv> $$0) {
       $$0.a(b);
    }
 
    @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, dkl $$3, @Nullable eve $$4, boolean $$5) {
-      if ($$1 instanceof ash) {
-         if ($$1.c_($$2) instanceof dwo $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.D();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((ash)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(ash $$0, dwo $$1) {
-      switch ($$1.v()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.B();
-         case d:
-      }
+   protected boolean a(dxv $$0, eum $$1) {
+      return false;
    }
 }

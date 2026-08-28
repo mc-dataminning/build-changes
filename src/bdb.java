@@ -4,7 +4,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bdb extends bbz {
    public bdb(Schema $$0) {
-      super($$0, biw.s);
+      super($$0, bix.s);
    }
 
    protected TypeRewriteRule makeRule() {

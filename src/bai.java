@@ -1,13 +1,13 @@
 import java.util.function.Supplier;
 
 public class bai {
-   public static void a(dhh $$0, jh $$1, lq $$2, bsn $$3) {
+   public static void a(dhi $$0, jh $$1, lq $$2, bso $$3) {
       for (jm $$4 : jm.values()) {
          a($$0, $$1, $$2, $$3, $$4, () -> a($$0.A), 0.55);
       }
    }
 
-   public static void a(dhh $$0, jh $$1, lq $$2, bsn $$3, jm $$4, Supplier<fbx> $$5, double $$6) {
+   public static void a(dhi $$0, jh $$1, lq $$2, bso $$3, jm $$4, Supplier<fby> $$5, double $$6) {
       int $$7 = $$3.a($$0.A);
 
       for (int $$8 = 0; $$8 < $$7; $$8++) {
@@ -15,12 +15,12 @@ public class bai {
       }
    }
 
-   private static fbx a(bam $$0) {
-      return new fbx(bae.a($$0, -0.5, 0.5), bae.a($$0, -0.5, 0.5), bae.a($$0, -0.5, 0.5));
+   private static fby a(bam $$0) {
+      return new fby(bae.a($$0, -0.5, 0.5), bae.a($$0, -0.5, 0.5), bae.a($$0, -0.5, 0.5));
    }
 
-   public static void a(jm.a $$0, dhh $$1, jh $$2, double $$3, lq $$4, bst $$5) {
-      fbx $$6 = fbx.b($$2);
+   public static void a(jm.a $$0, dhi $$1, jh $$2, double $$3, lq $$4, bsu $$5) {
+      fby $$6 = fby.b($$2);
       boolean $$7 = $$0 == jm.a.a;
       boolean $$8 = $$0 == jm.a.b;
       boolean $$9 = $$0 == jm.a.c;
@@ -37,8 +37,8 @@ public class bai {
       }
    }
 
-   public static void a(dhh $$0, jh $$1, jm $$2, lq $$3, fbx $$4, double $$5) {
-      fbx $$6 = fbx.b($$1);
+   public static void a(dhi $$0, jh $$1, jm $$2, lq $$3, fby $$4, double $$5) {
+      fby $$6 = fby.b($$1);
       int $$7 = $$2.j();
       int $$8 = $$2.k();
       int $$9 = $$2.l();
@@ -51,21 +51,21 @@ public class bai {
       $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
    }
 
-   public static void a(dhh $$0, jh $$1, bam $$2, lq $$3) {
+   public static void a(dhi $$0, jh $$1, bam $$2, lq $$3) {
       double $$4 = (double)$$1.u() + $$2.j();
       double $$5 = (double)$$1.v() - 0.05;
       double $$6 = (double)$$1.w() + $$2.j();
       $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
-   public static void a(dhi $$0, jh $$1, int $$2, lq $$3) {
+   public static void a(dhj $$0, jh $$1, int $$2, lq $$3) {
       double $$4 = 0.5;
-      dxu $$5 = $$0.a_($$1);
+      dxv $$5 = $$0.a_($$1);
       double $$6 = $$5.l() ? 1.0 : $$5.f($$0, $$1).c(jm.a.b);
       a($$0, $$1, $$2, 0.5, $$6, true, $$3);
    }
 
-   public static void a(dhi $$0, jh $$1, int $$2, double $$3, double $$4, boolean $$5, lq $$6) {
+   public static void a(dhj $$0, jh $$1, int $$2, double $$3, double $$4, boolean $$5, lq $$6) {
       bam $$7 = $$0.H_();
 
       for (int $$8 = 0; $$8 < $$2; $$8++) {
@@ -82,8 +82,8 @@ public class bai {
       }
    }
 
-   public static void a(dhi $$0, jh $$1, int $$2) {
-      fbx $$3 = $$1.b().b(0.0, 0.5, 0.0);
+   public static void a(dhj $$0, jh $$1, int $$2) {
+      fby $$3 = $$1.b().b(0.0, 0.5, 0.0);
       lk $$4 = new lk(ls.bc, $$0.a_($$1));
 
       for (int $$5 = 0; (float)$$5 < (float)$$2 / 3.0F; $$5++) {

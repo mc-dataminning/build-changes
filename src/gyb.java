@@ -1,8 +1,8 @@
-import javax.annotation.Nullable;
-
-public class gyb extends gxu {
-   public boolean a;
-   @Nullable
-   public hdm b;
-   public cxo c = cxo.j;
+public class gyb extends gyt {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

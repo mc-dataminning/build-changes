@@ -64,20 +64,20 @@ public class aru extends asj {
    }
 
    @Override
-   public bti a(asi $$0, dhh $$1, cxo $$2, bth $$3) {
+   public btj a(asi $$0, dhi $$1, cxp $$2, bti $$3) {
       if (this.f) {
          this.f();
-         return bti.e;
+         return btj.e;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bti a(asi $$0, dhh $$1, cxo $$2, bth $$3, fbt $$4) {
+   public btj a(asi $$0, dhi $$1, cxp $$2, bti $$3, fbu $$4) {
       if (this.f) {
          this.f();
-         return bti.e;
+         return btj.e;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

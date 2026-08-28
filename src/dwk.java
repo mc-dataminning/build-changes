@@ -1,127 +1,251 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.UUID;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dwk {
-   private static final Codec<xv[]> c = xx.g
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ae.a($$0, 4).map($$0x -> new xv[]{(xv)$$0x.get(0), (xv)$$0x.get(1), (xv)$$0x.get(2), (xv)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dwk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dwk::d),
-               cwl.q.fieldOf("color").orElse(cwl.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dwk::a)
-   );
-   public static final int b = 4;
-   private final xv[] d;
-   private final xv[] e;
-   private final cwl f;
-   private final boolean g;
+public class dwk extends dux {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 90;
+   private static final int c = 10;
    @Nullable
-   private azq[] h;
-   private boolean i;
+   private UUID d;
+   private dwl e = this.f();
+   private dwl f = this.f();
+   private boolean g;
 
-   public dwk() {
-      this(c(), c(), cwl.p, false);
+   public dwk(jh $$0, dxv $$1) {
+      this(duz.h, $$0, $$1);
    }
 
-   public dwk(xv[] $$0, xv[] $$1, cwl $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public dwk(duz $$0, jh $$1, dxv $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static xv[] c() {
-      return new xv[]{xu.a, xu.a, xu.a, xu.a};
+   protected dwl f() {
+      return new dwl();
    }
 
-   private static dwk a(xv[] $$0, Optional<xv[]> $$1, cwl $$2, boolean $$3) {
-      return new dwk($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   public boolean a(cpx $$0) {
+      if (this.m().b() instanceof drp $$1) {
+         fby $$2 = $$1.o(this.m());
+         double $$3 = $$0.dB() - ((double)this.aB_().u() + $$2.d);
+         double $$4 = $$0.dH() - ((double)this.aB_().w() + $$2.f);
+         float $$5 = $$1.h(this.m());
+         float $$6 = (float)(bae.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
+         return bae.d($$5, $$6) <= 90.0F;
+      } else {
+         return false;
+      }
    }
 
-   public boolean a() {
-      return this.g;
+   public dwl a(boolean $$0) {
+      return $$0 ? this.e : this.f;
    }
 
-   public dwk a(boolean $$0) {
-      return $$0 == this.g ? this : new dwk(this.d, this.e, this.f, $$0);
+   public dwl j() {
+      return this.e;
    }
 
-   public cwl b() {
+   public dwl k() {
       return this.f;
    }
 
-   public dwk a(cwl $$0) {
-      return $$0 == this.b() ? this : new dwk(this.d, this.e, $$0, this.g);
+   public int b() {
+      return 10;
    }
 
-   public xv a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
+   public int c() {
+      return 90;
    }
 
-   public dwk a(int $$0, xv $$1) {
-      return this.a($$0, $$1, $$1);
+   @Override
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      DynamicOps<vu> $$2 = $$1.a(vl.a);
+      dwl.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
+      dwl.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
+      $$0.a("is_waxed", this.g);
    }
 
-   public dwk a(int $$0, xv $$1, xv $$2) {
-      xv[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      xv[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dwk($$3, $$4, this.f, this.g);
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      DynamicOps<vu> $$2 = $$1.a(vl.a);
+      if ($$0.e("front_text")) {
+         dwl.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
+      }
+
+      if ($$0.e("back_text")) {
+         dwl.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
+      }
+
+      this.g = $$0.q("is_waxed");
    }
 
-   public boolean a(cpw $$0) {
-      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   private dwl a(dwl $$0) {
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         xv $$2 = this.a($$0.a($$1, false));
+         xv $$3 = this.a($$0.a($$1, true));
+         $$0 = $$0.a($$1, $$2, $$3);
+      }
+
+      return $$0;
    }
 
-   public xv[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public azq[] a(boolean $$0, Function<xv, azq> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new azq[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+   private xv a(xv $$0) {
+      if (this.o instanceof ash $$1) {
+         try {
+            return xy.a(a(null, $$1, this.p), $$0, null, 0);
+         } catch (CommandSyntaxException var4) {
          }
       }
 
-      return this.h;
+      return $$0;
    }
 
-   private Optional<xv[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
+   public void a(cpx $$0, boolean $$1, List<ata> $$2) {
+      if (!this.v() && $$0.cG().equals(this.u()) && this.o != null) {
+         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
+         this.a(null);
+         this.o.a(this.aB_(), this.m(), this.m(), 3);
+      } else {
+         a.warn("Player {} just tried to change non-editable sign", $$0.al().getString());
+      }
+   }
+
+   public boolean a(UnaryOperator<dwl> $$0, boolean $$1) {
+      dwl $$2 = this.a($$1);
+      return this.a($$0.apply($$2), $$1);
+   }
+
+   private dwl a(cpx $$0, List<ata> $$1, dwl $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         ata $$4 = $$1.get($$3);
+         ys $$5 = $$2.a($$3, $$0.aa()).a();
+         if ($$0.aa()) {
+            $$2 = $$2.a($$3, xv.b($$4.b()).b($$5));
+         } else {
+            $$2 = $$2.a($$3, xv.b($$4.d()).b($$5), xv.b($$4.b()).b($$5));
          }
       }
 
-      return Optional.empty();
+      return $$2;
    }
 
-   public boolean b(cpw $$0) {
-      for (xv $$1 : this.b($$0.aa())) {
-         ys $$2 = $$1.a();
-         xt $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == xt.a.c) {
-            return true;
+   public boolean a(dwl $$0, boolean $$1) {
+      return $$1 ? this.c($$0) : this.b($$0);
+   }
+
+   private boolean b(dwl $$0) {
+      if ($$0 != this.f) {
+         this.f = $$0;
+         this.w();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean c(dwl $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.w();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(boolean $$0, cpx $$1) {
+      return this.v() && this.a($$0).b($$1);
+   }
+
+   public boolean a(cpx $$0, dhi $$1, jh $$2, boolean $$3) {
+      boolean $$4 = false;
+
+      for (xv $$5 : this.a($$3).b($$0.aa())) {
+         ys $$6 = $$5.a();
+         xt $$7 = $$6.h();
+         if ($$7 != null && $$7.a() == xt.a.c) {
+            $$0.cV().aG().a(a($$0, $$1, $$2), $$7.b());
+            $$4 = true;
          }
       }
 
-      return false;
+      return $$4;
+   }
+
+   private static ew a(@Nullable cpx $$0, dhi $$1, jh $$2) {
+      String $$3 = $$0 == null ? "Sign" : $$0.al().getString();
+      xv $$4 = (xv)($$0 == null ? xv.b("Sign") : $$0.p_());
+      return new ew(ev.a, fby.b($$2), fbx.a, (ash)$$1, 2, $$3, $$4, $$1.p(), $$0);
+   }
+
+   public acy t() {
+      return acy.a(this);
+   }
+
+   @Override
+   public ux a(js.a $$0) {
+      return this.e($$0);
+   }
+
+   @Override
+   public boolean p() {
+      return true;
+   }
+
+   public void a(@Nullable UUID $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public UUID u() {
+      return this.d;
+   }
+
+   private void w() {
+      this.e();
+      this.o.a(this.aB_(), this.m(), this.m(), 3);
+   }
+
+   public boolean v() {
+      return this.g;
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.g != $$0) {
+         this.g = $$0;
+         this.w();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(UUID $$0) {
+      cpx $$1 = this.o.b($$0);
+      return $$1 == null || !$$1.a(this.aB_(), 4.0);
+   }
+
+   public static void a(dhi $$0, jh $$1, dxv $$2, dwk $$3) {
+      UUID $$4 = $$3.u();
+      if ($$4 != null) {
+         $$3.a($$3, $$0, $$4);
+      }
+   }
+
+   private void a(dwk $$0, dhi $$1, UUID $$2) {
+      if ($$0.b($$2)) {
+         $$0.a(null);
+      }
+   }
+
+   public axe d() {
+      return axf.CA;
    }
 }

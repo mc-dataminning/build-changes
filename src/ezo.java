@@ -1,59 +1,60 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record ezo(aly<ezx> b) implements ezx {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<ezo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aly.a(mb.bi).fieldOf("name").forGetter(ezo::c)).apply($$0, ezo::new));
+public abstract class ezo implements ezy {
+   protected final List<ezy> c;
+   private final Predicate<ewp> a;
 
-   @Override
-   public ezy b() {
-      return ezz.p;
+   protected ezo(List<ezy> $$0, Predicate<ewp> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends ezo> MapCodec<T> a(Function<List<ezy>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ezy.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends ezo> Codec<T> b(Function<List<ezy>, T> $$0) {
+      return ezy.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(ewp $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public void a(ewu $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         ezx.super.a($$0);
-         $$0.a()
-            .c(this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+   public void a(ewv $$0) {
+      ezy.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
       }
    }
 
-   public boolean a(ewo $$0) {
-      ezx $$1 = $$0.a().c(this.b).map(jq.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         ewo.c<?> $$2 = ewo.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
+   public abstract static class a implements ezy.a {
+      private final Builder<ezy> a = ImmutableList.builder();
 
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
+      protected a(ezy.a... $$0) {
+         for (ezy.a $$1 : $$0) {
+            this.a.add($$1.build());
          }
       }
-   }
 
-   public static ezx.a a(aly<ezx> $$0) {
-      return () -> new ezo($$0);
-   }
+      public void a(ezy.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public aly<ezx> c() {
-      return this.b;
+      @Override
+      public ezy build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract ezy a(List<ezy> var1);
    }
 }

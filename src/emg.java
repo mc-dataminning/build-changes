@@ -1,26 +1,76 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class emg<P extends emf> {
-   public static final emg<eme> a = a("straight_trunk_placer", eme.a);
-   public static final emg<emb> b = a("forking_trunk_placer", emb.a);
-   public static final emg<emc> c = a("giant_trunk_placer", emc.a);
-   public static final emg<emd> d = a("mega_jungle_trunk_placer", emd.b);
-   public static final emg<elz> e = a("dark_oak_trunk_placer", elz.a);
-   public static final emg<ema> f = a("fancy_trunk_placer", ema.a);
-   public static final emg<elx> g = a("bending_trunk_placer", elx.a);
-   public static final emg<emh> h = a("upwards_branching_trunk_placer", emh.a);
-   public static final emg<ely> i = a("cherry_trunk_placer", ely.a);
-   private final MapCodec<P> j;
+public abstract class emg {
+   public static final Codec<emg> c = ma.V.q().dispatch(emg::a, emh::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   private static <P extends emf> emg<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.V, $$0, new emg<>($$1));
+   protected static <P extends emg> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   private emg(MapCodec<P> $$0) {
-      this.j = $$0;
+   public emg(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   protected abstract emh<?> a();
+
+   public abstract List<ekm.a> a(dho var1, BiConsumer<jh, dxv> var2, bam var3, int var4, jh var5, ejw var6);
+
+   public int a(bam $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   }
+
+   private static boolean c(dho $$0, jh $$1) {
+      return $$0.a($$1, $$0x -> egw.b($$0x) && !$$0x.a(dko.i) && !$$0x.a(dko.fz));
+   }
+
+   protected static void a(dho $$0, BiConsumer<jh, dxv> $$1, bam $$2, jh $$3, ejw $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
+      }
+   }
+
+   protected boolean b(dho $$0, BiConsumer<jh, dxv> $$1, bam $$2, jh $$3, ejw $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(dho $$0, BiConsumer<jh, dxv> $$1, bam $$2, jh $$3, ejw $$4, Function<dxv, dxv> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(dho $$0, BiConsumer<jh, dxv> $$1, bam $$2, jh.a $$3, ejw $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(dho $$0, jh $$1) {
+      return eii.c($$0, $$1);
+   }
+
+   public boolean b(dho $$0, jh $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(axu.u));
    }
 }

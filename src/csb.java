@@ -1,89 +1,145 @@
-import java.util.function.Function;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class csb {
-   public static int[][] a(jm $$0) {
-      jm $$1 = $$0.h();
-      jm $$2 = $$1.g();
-      jm $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
-      };
+public interface csb extends btc, btl {
+   fby du();
+
+   fbt cR();
+
+   @Nullable
+   aly<ewu> v();
+
+   void a(@Nullable aly<ewu> var1);
+
+   long x();
+
+   void a(long var1);
+
+   jz<cxp> B();
+
+   void C();
+
+   dhi dW();
+
+   boolean dR();
+
+   @Override
+   default boolean c() {
+      return this.g();
    }
 
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
+   default void a(ux $$0, js.a $$1) {
+      if (this.v() != null) {
+         $$0.a("LootTable", this.v().a().toString());
+         if (this.x() != 0L) {
+            $$0.a("LootTableSeed", this.x());
+         }
+      } else {
+         btd.a($$0, this.B(), $$1);
+      }
    }
 
-   public static boolean a(dgq $$0, bwf $$1, fbs $$2) {
-      for (fcr $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
+   default void b(ux $$0, js.a $$1) {
+      this.C();
+      if ($$0.b("LootTable", 8)) {
+         this.a(aly.a(mb.bg, alz.a($$0.l("LootTable"))));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         btd.b($$0, this.B(), $$1);
+      }
+   }
+
+   default void a(bua $$0, ash $$1, bvk $$2) {
+      if ($$1.N().b(dhe.i)) {
+         btf.a($$1, $$2, this);
+         bvk $$3 = $$0.c();
+         if ($$3 != null && $$3.aq() == bvr.bS) {
+            com.a($$1, (cpx)$$3, true);
+         }
+      }
+   }
+
+   default btj b_(cpx $$0) {
+      $$0.a(this);
+      return btj.a;
+   }
+
+   default void f(@Nullable cpx $$0) {
+      MinecraftServer $$1 = this.dW().p();
+      if (this.v() != null && $$1 != null) {
+         ewu $$2 = $$1.bc().b(this.v());
+         if ($$0 != null) {
+            ao.Q.a((asi)$$0, this.v());
+         }
+
+         this.a(null);
+         ews.a $$3 = new ews.a((ash)this.dW()).a(ezj.f, this.du());
+         if ($$0 != null) {
+            $$3.a($$0.gF()).a(ezj.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(ezi.c), this.x());
+      }
+   }
+
+   default void f() {
+      this.f(null);
+      this.B().clear();
+   }
+
+   default boolean g() {
+      for (cxp $$0 : this.B()) {
+         if (!$$0.f()) {
             return false;
          }
       }
 
-      return $$0.F_().a($$2);
+      return true;
    }
 
-   public static boolean a(dgq $$0, fbx $$1, bwf $$2, bwr $$3) {
-      return a($$0, $$2, $$2.f($$3).c($$1));
-   }
-
-   public static fcr a(dgm $$0, jh $$1) {
-      dxu $$2 = $$0.a_($$1);
-      return !$$2.a(axu.aS) && (!($$2.b() instanceof dtb) || !$$2.c(dtb.b)) ? $$2.g($$0, $$1) : fco.a();
-   }
-
-   public static double a(jh $$0, int $$1, Function<jh, fcr> $$2) {
-      jh.a $$3 = $$0.k();
-      int $$4 = 0;
-
-      while ($$4 < $$1) {
-         fcr $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(jm.a.b);
-         }
-
-         $$4++;
-         $$3.c(jm.b);
-      }
-
-      return Double.POSITIVE_INFINITY;
-   }
-
-   @Nullable
-   public static fbx a(bvq<?> $$0, dgq $$1, jh $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
-         return null;
+   default cxp f_(int $$0) {
+      this.f(null);
+      cxp $$1 = this.B().get($$0);
+      if ($$1.f()) {
+         return cxp.j;
       } else {
-         double $$4 = $$1.a(a((dgm)$$1, $$2), () -> a((dgm)$$1, $$2.e()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
-            return null;
-         } else {
-            fbx $$5 = fbx.a($$2, $$4);
-            fbs $$6 = $$0.n().a($$5);
-
-            for (fcr $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
-            }
-
-            if ($$0 != bvq.bS || !$$1.a_($$2).a(axu.ct) && !$$1.a_($$2.d()).a(axu.ct)) {
-               return !$$1.F_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
-         }
+         this.B().set($$0, cxp.j);
+         return $$1;
       }
+   }
+
+   default cxp g_(int $$0) {
+      this.f(null);
+      return this.B().get($$0);
+   }
+
+   default cxp b(int $$0, int $$1) {
+      this.f(null);
+      return btd.a(this.B(), $$0, $$1);
+   }
+
+   default void c(int $$0, cxp $$1) {
+      this.f(null);
+      this.B().set($$0, $$1);
+      $$1.f(this.e_($$1));
+   }
+
+   default bwy h_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bwy() {
+         @Override
+         public cxp a() {
+            return csb.this.g_($$0);
+         }
+
+         @Override
+         public boolean a(cxp $$0x) {
+            csb.this.c($$0, $$0);
+            return true;
+         }
+      } : bwy.a;
+   }
+
+   default boolean g(cpx $$0) {
+      return !this.dR() && $$0.a(this.cR(), 4.0);
    }
 }

@@ -1,95 +1,78 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult.Error;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bxm {
-   private final Map<jq<bxi>, bxj> a;
+public record bxm(alz d, double e, bxm.a f) {
+   private static final Logger g = LogUtils.getLogger();
+   public static final MapCodec<bxm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alz.a.fieldOf("id").forGetter(bxm::b), Codec.DOUBLE.fieldOf("amount").forGetter(bxm::c), bxm.a.f.fieldOf("operation").forGetter(bxm::d))
+            .apply($$0, bxm::new)
+   );
+   public static final Codec<bxm> b = a.codec();
+   public static final zt<ByteBuf, bxm> c = zt.a(alz.b, bxm::b, zr.m, bxm::c, bxm.a.e, bxm::d, bxm::new);
 
-   bxm(Map<jq<bxi>, bxj> $$0) {
-      this.a = $$0;
-   }
-
-   private bxj d(jq<bxi> $$0) {
-      bxj $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
-      }
-   }
-
-   public double a(jq<bxi> $$0) {
-      return this.d($$0).g();
-   }
-
-   public double b(jq<bxi> $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(jq<bxi> $$0, alz $$1) {
-      bxl $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.c();
-      }
+   public ux a() {
+      DataResult<vu> $$0 = b.encode(this, vl.a, new ux());
+      return (ux)$$0.getOrThrow();
    }
 
    @Nullable
-   public bxj a(Consumer<bxj> $$0, jq<bxi> $$1) {
-      bxj $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
+   public static bxm a(ux $$0) {
+      DataResult<bxm> $$1 = b.parse(vl.a, $$0);
+      if ($$1.isSuccess()) {
+         return (bxm)$$1.getOrThrow();
       } else {
-         bxj $$3 = new bxj($$1, $$0);
-         $$3.a($$2);
-         return $$3;
+         g.warn("Unable to create attribute: {}", ((Error)$$1.error().get()).message());
+         return null;
       }
    }
 
-   public static bxm.a a() {
-      return new bxm.a();
+   public boolean a(alz $$0) {
+      return $$0.equals(this.d);
    }
 
-   public boolean c(jq<bxi> $$0) {
-      return this.a.containsKey($$0);
+   public alz b() {
+      return this.d;
    }
 
-   public boolean b(jq<bxi> $$0, alz $$1) {
-      bxj $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
+   public double c() {
+      return this.e;
    }
 
-   public static class a {
-      private final Builder<jq<bxi>, bxj> a = ImmutableMap.builder();
-      private boolean b;
+   public bxm.a d() {
+      return this.f;
+   }
 
-      private bxj b(jq<bxi> $$0) {
-         bxj $$1 = new bxj($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+   public static enum a implements bba {
+      a("add_value", 0),
+      b("add_multiplied_base", 1),
+      c("add_multiplied_total", 2);
+
+      public static final IntFunction<bxm.a> d = ayv.a(bxm.a::a, values(), ayv.a.a);
+      public static final zt<ByteBuf, bxm.a> e = zr.a(d, bxm.a::a);
+      public static final Codec<bxm.a> f = bba.a(bxm.a::values);
+      private final String g;
+      private final int h;
+
+      private a(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
       }
 
-      public bxm.a a(jq<bxi> $$0) {
-         this.b($$0);
-         return this;
+      public int a() {
+         return this.h;
       }
 
-      public bxm.a a(jq<bxi> $$0, double $$1) {
-         bxj $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public bxm a() {
-         this.b = true;
-         return new bxm(this.a.buildKeepingLast());
+      @Override
+      public String c() {
+         return this.g;
       }
    }
 }

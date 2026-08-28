@@ -19,29 +19,29 @@ public class tx extends MinecraftServer {
    private static final int m = 20;
    private static final int n = 14999992;
    private static final amu o = new amu(null, ServicesKeySet.EMPTY, null, null);
-   private static final css p = csu.f.a().d(css.a(csu.d, csu.e));
-   private final boc q = new boc(4);
+   private static final cst p = csv.f.a().d(cst.a(csv.d, csv.e));
+   private final bod q = new bod(4);
    private List<tm> r = new ArrayList<>();
    private final List<um> s;
    private final jh t;
    private final Stopwatch u = Stopwatch.createUnstarted();
-   private static final dhd v = ae.a(new dhd(p), $$0 -> {
-      $$0.a(dhd.e).a(false, null);
-      $$0.a(dhd.w).a(false, null);
-      $$0.a(dhd.o).a(0, null);
-      $$0.a(dhd.b).a(false, null);
+   private static final dhe v = ae.a(new dhe(p), $$0 -> {
+      $$0.a(dhe.e).a(false, null);
+      $$0.a(dhe.w).a(false, null);
+      $$0.a(dhe.o).a(0, null);
+      $$0.a(dhe.b).a(false, null);
    });
-   private static final een w = new een(0L, false, false);
+   private static final eeo w = new eeo(0L, false, false);
    @Nullable
    private ud x;
 
-   public static tx a(Thread $$0, ewc.c $$1, avg $$2, Collection<um> $$3, jh $$4) {
+   public static tx a(Thread $$0, ewd.c $$1, avg $$2, Collection<um> $$3, jh $$4) {
       if ($$3.isEmpty()) {
          throw new IllegalArgumentException("No test functions were given!");
       } else {
          $$2.a();
-         die $$5 = new die(new dgu(new ArrayList<>($$2.c()), List.of()), p);
-         dhl $$6 = new dhl("Test Level", dhe.b, false, btf.c, true, v, $$5);
+         dif $$5 = new dif(new dgv(new ArrayList<>($$2.c()), List.of()), p);
+         dhm $$6 = new dhm("Test Level", dhf.b, false, btg.c, true, v, $$5);
          amx.d $$7 = new amx.d($$2, $$5, false, true);
          amx.c $$8 = new amx.c($$7, ex.a.b, 4);
 
@@ -49,9 +49,9 @@ public class tx extends MinecraftServer {
             l.debug("Starting resource loading");
             Stopwatch $$9 = Stopwatch.createStarted();
             amy $$10 = ae.<amy>c($$2x -> amx.a($$8, $$1xx -> {
-                  kd<ebq> $$2xx = new jy<>(mb.bf, Lifecycle.stable()).n();
-                  eek.b $$3x = $$1xx.c().d(mb.bb).b(enz.b).a().a().a($$2xx);
-                  return new amx.b<>(new ewg($$6, w, $$3x.d(), $$3x.a()), $$3x.b());
+                  kd<ebr> $$2xx = new jy<>(mb.bf, Lifecycle.stable()).n();
+                  eel.b $$3x = $$1xx.c().d(mb.bb).b(eoa.b).a().a().a($$2xx);
+                  return new amx.b<>(new ewh($$6, w, $$3x.d(), $$3x.a()), $$3x.b());
                }, amy::new, ae.g(), $$2x)).get();
             $$9.stop();
             l.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
@@ -64,7 +64,7 @@ public class tx extends MinecraftServer {
       }
    }
 
-   private tx(Thread $$0, ewc.c $$1, avg $$2, amy $$3, Collection<um> $$4, jh $$5) {
+   private tx(Thread $$0, ewd.c $$1, avg $$2, amy $$3, Collection<um> $$4, jh $$5) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bbt.a(), o, ast::b);
       this.s = Lists.newArrayList($$4);
       this.t = $$5;
@@ -118,7 +118,7 @@ public class tx extends MinecraftServer {
    }
 
    @Override
-   public bof f() {
+   public bog f() {
       return this.q;
    }
 

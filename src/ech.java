@@ -2,44 +2,18 @@ import java.util.UUID;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class ech<T extends ebx> implements ecg<T> {
-   private final ebz<T> a;
-   private final ecc<T> b;
-
-   public ech(ebz<T> $$0, ecc<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public interface ech<T extends eby> {
+   @Nullable
+   T a(int var1);
 
    @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
-   }
+   T a(UUID var1);
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
+   Iterable<T> a();
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
+   <U extends T> void a(ecf<T, U> var1, ayq<U> var2);
 
-   @Override
-   public <U extends T> void a(ece<T, U> $$0, ayq<U> $$1) {
-      this.a.a($$0, $$1);
-   }
+   void a(fbt var1, Consumer<T> var2);
 
-   @Override
-   public void a(fbs $$0, Consumer<T> $$1) {
-      this.b.b($$0, ayq.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(ece<T, U> $$0, fbs $$1, ayq<U> $$2) {
-      this.b.a($$0, $$1, $$2);
-   }
+   <U extends T> void a(ecf<T, U> var1, fbt var2, ayq<U> var3);
 }

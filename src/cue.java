@@ -1,143 +1,96 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
-
 public class cue extends ctc {
-   public static final int o = 0;
-   public static final int p = 0;
-   private static final int I = 2;
-   private static final int J = 2;
-   public static final int q = 1;
-   public static final int r = 4;
-   public static final int s = 5;
-   public static final int t = 5;
-   public static final int u = 4;
-   public static final int v = 9;
-   public static final int w = 9;
-   public static final int x = 36;
-   public static final int y = 36;
-   public static final int z = 45;
-   public static final int A = 45;
-   public static final alz B = alz.b("textures/atlas/blocks.png");
-   public static final alz C = alz.b("item/empty_armor_slot_helmet");
-   public static final alz D = alz.b("item/empty_armor_slot_chestplate");
-   public static final alz E = alz.b("item/empty_armor_slot_leggings");
-   public static final alz F = alz.b("item/empty_armor_slot_boots");
-   public static final alz G = alz.b("item/empty_armor_slot_shield");
-   private static final Map<bvr, alz> K = Map.of(bvr.c, F, bvr.d, E, bvr.e, D, bvr.f, C);
-   private static final bvr[] L = new bvr[]{bvr.f, bvr.e, bvr.d, bvr.c};
-   public final boolean H;
-   private final cpw M;
+   private final btc m;
+   private final btc n;
+   private final ckb o;
+   private static final int p = 1;
+   private static final int q = 2;
 
-   public cue(cpv $$0, boolean $$1, final cpw $$2) {
-      super(null, 0, 2, 2);
-      this.H = $$1;
-      this.M = $$2;
-      this.a($$2, 154, 28);
-      this.d(98, 18);
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         bvr $$4 = L[$$3];
-         alz $$5 = K.get($$4);
-         this.a(new ctf($$0, $$2, $$4, 39 - $$3, 8, 8 + $$3 * 18, $$5));
-      }
-
-      this.c($$0, 8, 84);
-      this.a(new cuy($$0, 40, 77, 62) {
+   public cue(int $$0, cpw $$1, btc $$2, final ckb $$3, int $$4) {
+      super(null, $$0);
+      this.m = $$2;
+      this.n = $$3.gZ();
+      this.o = $$3;
+      $$2.c_($$1.k);
+      this.a(new cuz($$2, 0, 8, 18) {
          @Override
-         public void a(cxo $$0, cxo $$1) {
-            $$2.a(bvr.b, $$1, $$0);
-            super.a($$0, $$1);
+         public boolean a(cxp $$0) {
+            return $$0.a(cxt.oe) && !this.h() && $$3.f();
          }
 
          @Override
-         public Pair<alz, alz> b() {
-            return Pair.of(cue.B, cue.G);
+         public boolean d() {
+            return $$3.f();
          }
       });
-   }
+      this.a(new ctg(this.n, $$3, bvs.g, 0, 8, 36, null) {
+         @Override
+         public boolean a(cxp $$0) {
+            return $$3.a($$0, bvs.g);
+         }
 
-   public static boolean e(int $$0) {
-      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
-   }
-
-   @Override
-   public void a(btb $$0) {
-      if (this.M.dW() instanceof ash $$1) {
-         ctu.a(this, $$1, this.M, this.m, this.n, null);
+         @Override
+         public boolean d() {
+            return $$3.e(bvs.g);
+         }
+      });
+      if ($$4 > 0) {
+         for (int $$5 = 0; $$5 < 3; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               this.a(new cuz($$2, 1 + $$6 + $$5 * $$4, 80 + $$6 * 18, 18 + $$5 * 18));
+            }
+         }
       }
+
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public void a(cpw $$0) {
-      super.a($$0);
-      this.n.a();
-      if (!$$0.dW().C) {
-         this.a($$0, this.m);
-      }
+   public boolean b(cpx $$0) {
+      return !this.o.b(this.m) && this.m.a($$0) && this.n.a($$0) && this.o.bL() && $$0.b(this.o, 4.0);
    }
 
    @Override
-   public boolean b(cpw $$0) {
-      return true;
-   }
-
-   @Override
-   public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.j;
-      cuy $$3 = this.k.get($$1);
-      if ($$3.h()) {
-         cxo $$4 = $$3.g();
+   public cxp b(cpx $$0, int $$1) {
+      cxp $$2 = cxp.j;
+      cuz $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxp $$4 = $$3.g();
          $$2 = $$4.v();
-         bvr $$5 = $$0.f($$2);
-         if ($$1 == 0) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cxo.j;
+         int $$5 = this.m.b() + 1;
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.k.size(), true)) {
+               return cxp.j;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).h()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return cxp.j;
+            }
+         } else if (this.b(0).a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cxp.j;
+            }
+         } else if ($$5 <= 1 || !this.a($$4, 2, $$5, false)) {
+            int $$7 = $$5 + 27;
+            int $$9 = $$7 + 9;
+            if ($$1 >= $$7 && $$1 < $$9) {
+               if (!this.a($$4, $$5, $$7, false)) {
+                  return cxp.j;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$7) {
+               if (!this.a($$4, $$7, $$9, false)) {
+                  return cxp.j;
+               }
+            } else if (!this.a($$4, $$7, $$7, false)) {
+               return cxp.j;
             }
 
-            $$3.b($$4, $$2);
-         } else if ($$1 >= 1 && $$1 < 5) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cxo.j;
-            }
-         } else if ($$1 >= 5 && $$1 < 9) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cxo.j;
-            }
-         } else if ($$5.a() == bvr.a.b && !this.k.get(8 - $$5.b()).h()) {
-            int $$6 = 8 - $$5.b();
-            if (!this.a($$4, $$6, $$6 + 1, false)) {
-               return cxo.j;
-            }
-         } else if ($$5 == bvr.b && !this.k.get(45).h()) {
-            if (!this.a($$4, 45, 46, false)) {
-               return cxo.j;
-            }
-         } else if ($$1 >= 9 && $$1 < 36) {
-            if (!this.a($$4, 36, 45, false)) {
-               return cxo.j;
-            }
-         } else if ($$1 >= 36 && $$1 < 45) {
-            if (!this.a($$4, 9, 36, false)) {
-               return cxo.j;
-            }
-         } else if (!this.a($$4, 9, 45, false)) {
-            return cxo.j;
+            return cxp.j;
          }
 
          if ($$4.f()) {
-            $$3.a(cxo.j, $$2);
+            $$3.e(cxp.j);
          } else {
             $$3.c();
-         }
-
-         if ($$4.L() == $$2.L()) {
-            return cxo.j;
-         }
-
-         $$3.a($$0, $$4);
-         if ($$1 == 0) {
-            $$0.a($$4, false);
          }
       }
 
@@ -145,31 +98,8 @@ public class cue extends ctc {
    }
 
    @Override
-   public boolean a(cxo $$0, cuy $$1) {
-      return $$1.c != this.n && super.a($$0, $$1);
-   }
-
-   @Override
-   public cuy m() {
-      return this.k.get(0);
-   }
-
-   @Override
-   public List<cuy> n() {
-      return this.k.subList(1, 5);
-   }
-
-   public ctt r() {
-      return this.m;
-   }
-
-   @Override
-   public cur an_() {
-      return cur.a;
-   }
-
-   @Override
-   protected cpw q() {
-      return this.M;
+   public void a(cpx $$0) {
+      super.a($$0);
+      this.m.c($$0);
    }
 }

@@ -9,48 +9,48 @@ import javax.annotation.Nullable;
 
 public class hl {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<fbx, List<? extends bvj>> b = ($$0, $$1) -> {
+   public static final BiConsumer<fby, List<? extends bvk>> b = ($$0, $$1) -> {
    };
-   private static final ece<bvj, ?> c = new ece<bvj, bvj>() {
-      public bvj a(bvj $$0) {
+   private static final ecf<bvk, ?> c = new ecf<bvk, bvk>() {
+      public bvk a(bvk $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends bvj> a() {
-         return bvj.class;
+      public Class<? extends bvk> a() {
+         return bvk.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final List<Predicate<bvj>> g;
+   private final List<Predicate<bvk>> g;
    private final dj.c h;
-   private final Function<fbx, fbx> i;
+   private final Function<fby, fby> i;
    @Nullable
-   private final fbs j;
-   private final BiConsumer<fbx, List<? extends bvj>> k;
+   private final fbt j;
+   private final BiConsumer<fby, List<? extends bvk>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final ece<bvj, ?> o;
+   private final ecf<bvk, ?> o;
    private final boolean p;
 
    public hl(
       int $$0,
       boolean $$1,
       boolean $$2,
-      List<Predicate<bvj>> $$3,
+      List<Predicate<bvk>> $$3,
       dj.c $$4,
-      Function<fbx, fbx> $$5,
-      @Nullable fbs $$6,
-      BiConsumer<fbx, List<? extends bvj>> $$7,
+      Function<fby, fby> $$5,
+      @Nullable fbt $$6,
+      BiConsumer<fby, List<? extends bvk>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable bvq<?> $$11,
+      @Nullable bvr<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -64,7 +64,7 @@ public class hl {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (ece<bvj, ?>)($$11 == null ? c : $$11);
+      this.o = (ecf<bvk, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -94,9 +94,9 @@ public class hl {
       }
    }
 
-   public bvj a(ew $$0) throws CommandSyntaxException {
+   public bvk a(ew $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends bvj> $$1 = this.b($$0);
+      List<? extends bvk> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw fj.d.create();
       } else if ($$1.size() > 1) {
@@ -106,7 +106,7 @@ public class hl {
       }
    }
 
-   public List<? extends bvj> b(ew $$0) throws CommandSyntaxException {
+   public List<? extends bvk> b(ew $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
@@ -115,7 +115,7 @@ public class hl {
          return $$1 == null ? List.of() : List.of($$1);
       } else if (this.n != null) {
          for (ash $$2 : $$0.l().L()) {
-            bvj $$3 = $$2.a(this.n);
+            bvk $$3 = $$2.a(this.n);
             if ($$3 != null) {
                if ($$3.aq().a($$0.v())) {
                   return List.of($$3);
@@ -126,14 +126,14 @@ public class hl {
 
          return List.of();
       } else {
-         fbx $$4 = this.i.apply($$0.d());
-         fbs $$5 = this.a($$4);
+         fby $$4 = this.i.apply($$0.d());
+         fbt $$5 = this.a($$4);
          if (this.l) {
-            Predicate<bvj> $$6 = this.a($$4, $$5, null);
+            Predicate<bvk> $$6 = this.a($$4, $$5, null);
             return $$0.f() != null && $$6.test($$0.f()) ? List.of($$0.f()) : List.of();
          } else {
-            Predicate<bvj> $$7 = this.a($$4, $$5, $$0.v());
-            List<bvj> $$8 = new ObjectArrayList();
+            Predicate<bvk> $$7 = this.a($$4, $$5, $$0.v());
+            List<bvk> $$8 = new ObjectArrayList();
             if (this.d()) {
                this.a($$8, $$0.e(), $$5, $$7);
             } else {
@@ -147,7 +147,7 @@ public class hl {
       }
    }
 
-   private void a(List<bvj> $$0, ash $$1, @Nullable fbs $$2, Predicate<bvj> $$3) {
+   private void a(List<bvk> $$0, ash $$1, @Nullable fbt $$2, Predicate<bvk> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if ($$2 != null) {
@@ -181,9 +181,9 @@ public class hl {
          asi $$2 = $$0.l().ag().a(this.n);
          return $$2 == null ? List.of() : List.of($$2);
       } else {
-         fbx $$3 = this.i.apply($$0.d());
-         fbs $$4 = this.a($$3);
-         Predicate<bvj> $$5 = this.a($$3, $$4, null);
+         fby $$3 = this.i.apply($$0.d());
+         fbt $$4 = this.a($$3);
+         Predicate<bvk> $$5 = this.a($$3, $$4, null);
          if (this.l) {
             if ($$0.f() instanceof asi $$6 && $$5.test($$6)) {
                return List.of($$6);
@@ -214,20 +214,20 @@ public class hl {
    }
 
    @Nullable
-   private fbs a(fbx $$0) {
+   private fbt a(fby $$0) {
       return this.j != null ? this.j.c($$0) : null;
    }
 
-   private Predicate<bvj> a(fbx $$0, @Nullable fbs $$1, @Nullable css $$2) {
+   private Predicate<bvk> a(fby $$0, @Nullable fbt $$1, @Nullable cst $$2) {
       boolean $$3 = $$2 != null;
       boolean $$4 = $$1 != null;
       boolean $$5 = !this.h.c();
       int $$6 = ($$3 ? 1 : 0) + ($$4 ? 1 : 0) + ($$5 ? 1 : 0);
-      List<Predicate<bvj>> $$7;
+      List<Predicate<bvk>> $$7;
       if ($$6 == 0) {
          $$7 = this.g;
       } else {
-         List<Predicate<bvj>> $$8 = new ObjectArrayList(this.g.size() + $$6);
+         List<Predicate<bvk>> $$8 = new ObjectArrayList(this.g.size() + $$6);
          $$8.addAll(this.g);
          if ($$3) {
             $$8.add($$1x -> $$1x.aq().a($$2));
@@ -247,7 +247,7 @@ public class hl {
       return ae.a($$7);
    }
 
-   private <T extends bvj> List<T> a(fbx $$0, List<T> $$1) {
+   private <T extends bvk> List<T> a(fby $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -255,7 +255,7 @@ public class hl {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static xv a(List<? extends bvj> $$0) {
-      return xy.b($$0, bvj::p_);
+   public static xv a(List<? extends bvk> $$0) {
+      return xy.b($$0, bvk::p_);
    }
 }

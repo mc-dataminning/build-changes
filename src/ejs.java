@@ -1,16 +1,10 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejs implements eiz {
-   public static final Codec<ejs> a = azn.b(enn.c).fieldOf("features").xmap(ejs::new, $$0 -> $$0.b).codec();
-   public final ju<enn> b;
+public record ejs(elb b) implements eja {
+   public static final Codec<ejs> a = RecordCodecBuilder.create($$0 -> $$0.group(elb.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, ejs::new));
 
-   public ejs(ju<enn> $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public Stream<egh<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public elb a() {
+      return this.b;
    }
 }

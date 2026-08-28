@@ -1,34 +1,45 @@
-import java.util.EnumSet;
+public class ccs extends cdr {
+   private final cia g;
 
-public class ccs extends cdd {
-   private final bwh a;
-   private final dhh b;
-
-   public ccs(bwh $$0, dhh $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cdd.a.c));
+   public ccs(cia $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean b() {
-      boolean $$0 = this.a.aw || this.a.av;
-      if ($$0 && this.a.aq().a(axy.h)) {
-         jh $$1 = this.a.dw().d();
-         dxu $$2 = this.b.a_($$1);
-         return $$2.a(dkn.rk) || $$2.g(this.b, $$1) == fco.a();
-      } else {
-         return false;
-      }
+      return this.g.p() && !this.g.go() && super.b();
    }
 
    @Override
-   public boolean V_() {
-      return true;
+   public void d() {
+      super.d();
+      this.g.y(false);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.g.y(false);
    }
 
    @Override
    public void a() {
-      this.a.J().a();
+      super.a();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(dhl $$0, jh $$1) {
+      if (!$$0.u($$1.d())) {
+         return false;
+      } else {
+         dxv $$2 = $$0.a_($$1);
+         if ($$2.a(dko.cD)) {
+            return dve.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dko.cL) && $$2.c(dnu.b) ? true : $$2.a(axu.T, $$0x -> $$0x.d(dkf.b).map($$0xx -> $$0xx != dyi.a).orElse(true));
+         }
+      }
    }
 }

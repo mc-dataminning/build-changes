@@ -1,12 +1,12 @@
 public class axp {
-   public static final axo<dkl> a = a("mined", ma.e);
-   public static final axo<cxk> b = a("crafted", ma.g);
-   public static final axo<cxk> c = a("used", ma.g);
-   public static final axo<cxk> d = a("broken", ma.g);
-   public static final axo<cxk> e = a("picked_up", ma.g);
-   public static final axo<cxk> f = a("dropped", ma.g);
-   public static final axo<bvq<?>> g = a("killed", ma.f);
-   public static final axo<bvq<?>> h = a("killed_by", ma.f);
+   public static final axo<dkm> a = a("mined", ma.e);
+   public static final axo<cxl> b = a("crafted", ma.g);
+   public static final axo<cxl> c = a("used", ma.g);
+   public static final axo<cxl> d = a("broken", ma.g);
+   public static final axo<cxl> e = a("picked_up", ma.g);
+   public static final axo<cxl> f = a("dropped", ma.g);
+   public static final axo<bvr<?>> g = a("killed", ma.f);
+   public static final axo<bvr<?>> h = a("killed_by", ma.f);
    public static final axo<alz> i = a("custom", ma.k);
    public static final alz j = a("leave_game", axn.b);
    public static final alz k = a("play_time", axn.e);

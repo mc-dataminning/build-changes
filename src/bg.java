@@ -8,7 +8,7 @@ public class bg extends dy<bg.a> {
       return bg.a.a;
    }
 
-   public void a(asi $$0, cxo $$1) {
+   public void a(asi $$0, cxp $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class bg extends dy<bg.a> {
          return ao.A.a(new bg.a(Optional.empty(), Optional.empty()));
       }
 
-      public static ap<bg.a> a(jr<cxk> $$0, dhg $$1) {
+      public static ap<bg.a> a(jr<cxl> $$0, dhh $$1) {
          return a(cu.a.a().a($$0, $$1.j()));
       }
 
@@ -29,7 +29,7 @@ public class bg extends dy<bg.a> {
          return ao.A.a(new bg.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cxo $$0) {
+      public boolean a(cxp $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

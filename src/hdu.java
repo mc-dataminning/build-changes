@@ -1,25 +1,67 @@
-import com.mojang.datafixers.util.Either;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import org.joml.Vector3f;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class hdu {
-   public static final String a = "missing";
-   public static final alz b = hee.a("missing");
-   public static final hea c = new hea(b, "missing");
+   public static final Comparator<hdu> a = Comparator.<hdu, alz>comparing(hdu::a).thenComparing(hdu::b);
+   private final alz b;
+   private final alz c;
+   @Nullable
+   private glv d;
 
-   public static hef a() {
-      gmv $$0 = new gmv(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0);
-      Map<jm, gmt> $$1 = new EnumMap<>(jm.class);
+   public hdu(alz $$0, alz $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-      for (jm $$2 : jm.values()) {
-         $$1.put($$2, new gmt($$2, 0, hba.b().a(), $$0));
+   public alz a() {
+      return this.b;
+   }
+
+   public alz b() {
+      return this.c;
+   }
+
+   public hbl c() {
+      return fmg.Q().a(this.a()).apply(this.b());
+   }
+
+   public glv a(Function<alz, glv> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
       }
 
-      gms $$3 = new gms(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
-      gmw $$4 = new gmw(null, List.of($$3), Map.of("particle", Either.left(gmw.c)), null, null, gnc.a, List.of());
-      $$4.d = "missingno";
-      return $$4;
+      return this.d;
+   }
+
+   public fgw a(gll $$0, Function<alz, glv> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public fgw a(gll $$0, Function<alz, glv> $$1, boolean $$2, boolean $$3) {
+      return this.c().a(gso.a($$0, this.a($$1), $$2, $$3));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         hdu $$1 = (hdu)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

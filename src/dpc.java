@@ -1,106 +1,82 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class dpc extends dqx implements drp {
-   public static final MapCodec<dpc> b = b(dpc::new);
-   public static final dyl c = dyk.D;
-   public static final dyl d = dyk.x;
-   private static final int k = 8;
-   public static final int e = 128;
-   private static final int l = 200;
+public class dpc extends dkm implements drq {
+   public static final MapCodec<dpc> a = b(dpc::new);
+   public static final int b = 15;
+   public static final dyu c = dyl.aQ;
+   public static final dym d = dyl.D;
+   public static final ToIntFunction<dxv> e = $$0 -> $$0.c(c);
 
    @Override
    public MapCodec<dpc> a() {
-      return b;
+      return a;
    }
 
-   public dpc(dxt.d $$0) {
+   public dpc(dxu.d $$0) {
       super($$0);
-      this.l(this.F.b().b(a, jm.b).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+      this.l(this.F.b().b(c, Integer.valueOf(15)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public dxu a(dbf $$0) {
-      etw $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == etx.c;
-      return this.m().b(a, $$0.k()).b(c, Boolean.valueOf($$2));
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
+   protected btj a(dxv $$0, dhi $$1, jh $$2, cpx $$3, fbu $$4) {
+      if (!$$1.C && $$3.gG()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return btj.b;
+      } else {
+         return btj.c;
+      }
+   }
+
+   @Override
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return $$3.a(cxt.hQ) ? fcp.b() : fcp.a();
+   }
+
+   @Override
+   protected boolean e_(dxv $$0) {
+      return $$0.y().c();
+   }
+
+   @Override
+   protected dqv a_(dxv $$0) {
+      return dqv.a;
+   }
+
+   @Override
+   protected float c(dxv $$0, dgn $$1, jh $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, ety.c, ety.c.a($$1));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected etw b_(dxu $$0) {
-      return $$0.c(c) ? etx.c.a(false) : super.b_($$0);
+   protected etx b_(dxv $$0) {
+      return $$0.c(d) ? ety.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected int a(dxu $$0, dgm $$1, jh $$2, jm $$3) {
-      return $$0.c(d) ? 15 : 0;
+   public cxp a(dhl $$0, jh $$1, dxv $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(c));
    }
 
-   @Override
-   protected int b(dxu $$0, dgm $$1, jh $$2, jm $$3) {
-      return $$0.c(d) && $$0.c(a) == $$3 ? 15 : 0;
-   }
-
-   public void e(dxu $$0, dhh $$1, jh $$2) {
-      $$1.a($$2, $$0.b(d, Boolean.valueOf(true)), 3);
-      this.f($$0, $$1, $$2);
-      $$1.a($$2, this, 8);
-      $$1.c(3002, $$2, $$0.c(a).o().ordinal());
-   }
-
-   private void f(dxu $$0, dhh $$1, jh $$2) {
-      jm $$3 = $$0.c(a).g();
-      $$1.a($$2.a($$3), this, eva.a($$1, $$3, null));
-   }
-
-   @Override
-   protected void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
-      $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 3);
-      this.f($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(dxu $$0, dhh $$1, jh $$2, bam $$3) {
-      if ($$1.ae() && (long)$$1.A.a(200) <= $$1.ac() % 200L && $$2.v() == $$1.a(edp.a.b, $$2.u(), $$2.w()) - 1) {
-         bai.a($$0.c(a).o(), $$1, $$2, 0.125, ls.aU, bst.a(1, 2));
+   public static cxp a(cxp $$0, int $$1) {
+      if ($$1 != 15) {
+         $$0.b(ku.am, czr.a.a(c, $$1));
       }
-   }
 
-   @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$0.c(d)) {
-            this.f($$0, $$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected void b(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$0.c(d) && !$$1.T().a($$2, this)) {
-            $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 18);
-         }
-      }
-   }
-
-   @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
-      $$0.a(a, d, c);
-   }
-
-   @Override
-   protected boolean f_(dxu $$0) {
-      return true;
+      return $$0;
    }
 }

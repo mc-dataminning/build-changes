@@ -1,10 +1,8 @@
-public record bor<T>(String a) {
-   @Override
-   public String toString() {
-      return "<" + this.a + ">";
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static <T> bor<T> a(String $$0) {
-      return new bor<>($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bor {
 }

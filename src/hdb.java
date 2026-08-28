@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.JsonObject;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hdb {
+public class hdb implements aut<hda> {
+   public hda b(JsonObject $$0) {
+      return new hda(hda.a.a(azu.a($$0, "hat", "none")));
+   }
+
+   @Override
+   public String a() {
+      return "villager";
+   }
 }

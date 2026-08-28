@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class gn implements Predicate<dxy> {
-   private final dxu a;
-   private final Set<dyw<?>> b;
+public class gn implements Predicate<dxz> {
+   private final dxv a;
+   private final Set<dyx<?>> b;
    @Nullable
    private final ux c;
 
-   public gn(dxu $$0, Set<dyw<?>> $$1, @Nullable ux $$2) {
+   public gn(dxv $$0, Set<dyx<?>> $$1, @Nullable ux $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dxu a() {
+   public dxv a() {
       return this.a;
    }
 
-   public Set<dyw<?>> b() {
+   public Set<dyx<?>> b() {
       return this.b;
    }
 
-   public boolean a(dxy $$0) {
-      dxu $$1 = $$0.a();
+   public boolean a(dxz $$0) {
+      dxv $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (dyw<?> $$2 : this.b) {
+         for (dyx<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,18 +36,18 @@ public class gn implements Predicate<dxy> {
          if (this.c == null) {
             return true;
          } else {
-            duw $$3 = $$0.b();
+            dux $$3 = $$0.b();
             return $$3 != null && vm.a(this.c, $$3.b($$0.c().K_()), true);
          }
       }
    }
 
    public boolean a(ash $$0, jh $$1) {
-      return this.a(new dxy($$0, $$1, false));
+      return this.a(new dxz($$0, $$1, false));
    }
 
    public boolean a(ash $$0, jh $$1, int $$2) {
-      dxu $$3 = dkl.b(this.a, $$0, $$1);
+      dxv $$3 = dkm.b(this.a, $$0, $$1);
       if ($$3.l()) {
          $$3 = this.a;
       }
@@ -56,7 +56,7 @@ public class gn implements Predicate<dxy> {
          return false;
       } else {
          if (this.c != null) {
-            duw $$4 = $$0.c_($$1);
+            dux $$4 = $$0.c_($$1);
             if ($$4 != null) {
                $$4.c(this.c, $$0.K_());
             }

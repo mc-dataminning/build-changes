@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqe extends dtp {
+public class dqe extends drr {
    public static final MapCodec<dqe> b = b(dqe::new);
 
    @Override
@@ -8,7 +8,7 @@ public class dqe extends dtp {
       return b;
    }
 
-   protected dqe(dxt.d $$0) {
-      super(drq.b.e, $$0);
+   protected dqe(dxu.d $$0) {
+      super(drr.b.e, $$0);
    }
 }

@@ -1,62 +1,21 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record fav(fbc b, String c, float d) implements fat {
-   public static final MapCodec<fav> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               fbd.a.fieldOf("target").forGetter(fav::c),
-               Codec.STRING.fieldOf("score").forGetter(fav::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(fav::e)
-            )
-            .apply($$0, fav::new)
-   );
+public class fav {
+   private static final Codec<fau> h = ma.G.q().dispatch(fau::b, fat::a);
+   public static final Codec<fau> a = Codec.lazyInitialized(() -> {
+      Codec<fau> $$0 = Codec.withAlternative(h, fay.a.codec());
+      return Codec.either(far.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof far $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final fat b = a("constant", far.a);
+   public static final fat c = a("uniform", fay.a);
+   public static final fat d = a("binomial", faq.a);
+   public static final fat e = a("score", faw.a);
+   public static final fat f = a("storage", fax.a);
+   public static final fat g = a("enchantment_level", fas.a);
 
-   @Override
-   public fas b() {
-      return fau.e;
-   }
-
-   @Override
-   public Set<bbn<?>> a() {
-      return this.b.b();
-   }
-
-   public static fav a(ewo.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static fav a(ewo.b $$0, String $$1, float $$2) {
-      return new fav(faz.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(ewo $$0) {
-      fdb $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         fdc $$2 = $$0.d().g();
-         fcu $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            fcy $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
-      }
-   }
-
-   public fbc c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.d;
+   private static fat a(String $$0, MapCodec<? extends fau> $$1) {
+      return kd.a(ma.G, alz.b($$0), new fat($$1));
    }
 }

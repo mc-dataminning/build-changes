@@ -1,226 +1,117 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
-import org.slf4j.Logger;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class ewt {
-   private static final Logger f = LogUtils.getLogger();
-   public static final ewt a = new ewt(ezh.b, Optional.empty(), List.of(), List.of());
-   public static final bbo b = ezh.q;
-   public static final long c = 0L;
-   public static final Codec<ewt> d = RecordCodecBuilder.create(
+   public static final Codec<ewt> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ezh.a.lenientOptionalFieldOf("type", b).forGetter($$0x -> $$0x.g),
-               alz.a.optionalFieldOf("random_sequence").forGetter($$0x -> $$0x.h),
-               ews.a.listOf().optionalFieldOf("pools", List.of()).forGetter($$0x -> $$0x.i),
-               eye.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.j)
+               exd.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               ezy.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
+               eyf.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
+               fav.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               fav.a.fieldOf("bonus_rolls").orElse(far.a(0.0F)).forGetter($$0x -> $$0x.h)
             )
             .apply($$0, ewt::new)
    );
-   public static final Codec<jq<ewt>> e = alv.a(mb.bg, d);
-   private final bbo g;
-   private final Optional<alz> h;
-   private final List<ews> i;
-   private final List<eyc> j;
-   private final BiFunction<cxo, ewo, cxo> k;
+   private final List<exf> b;
+   private final List<ezy> c;
+   private final Predicate<ewp> d;
+   private final List<eyd> e;
+   private final BiFunction<cxp, ewp, cxp> f;
+   private final fau g;
+   private final fau h;
 
-   ewt(bbo $$0, Optional<alz> $$1, List<ews> $$2, List<eyc> $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = eye.a($$3);
+   ewt(List<exf> $$0, List<ezy> $$1, List<eyd> $$2, fau $$3, fau $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = ae.a($$1);
+      this.e = $$2;
+      this.f = eyf.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   public static Consumer<cxo> a(ash $$0, Consumer<cxo> $$1) {
-      return $$2 -> {
-         if ($$2.a($$0.J())) {
-            if ($$2.L() < $$2.k()) {
-               $$1.accept($$2);
-            } else {
-               int $$3 = $$2.L();
+   private void b(Consumer<cxp> $$0, ewp $$1) {
+      bam $$2 = $$1.b();
+      List<exe> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
 
-               while ($$3 > 0) {
-                  cxo $$4 = $$2.c(Math.min($$2.k(), $$3));
-                  $$3 -= $$4.L();
-                  $$1.accept($$4);
+      for (exf $$5 : this.b) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
+            }
+         });
+      }
+
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
+
+            for (exe $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
                }
             }
          }
-      };
-   }
-
-   public void a(ewr $$0, Consumer<cxo> $$1) {
-      this.a(new ewo.a($$0).a(this.h), $$1);
-   }
-
-   public void a(ewo $$0, Consumer<cxo> $$1) {
-      ewo.c<?> $$2 = ewo.a(this);
-      if ($$0.b($$2)) {
-         Consumer<cxo> $$3 = eyc.a(this.k, $$1, $$0);
-
-         for (ews $$4 : this.i) {
-            $$4.a($$3, $$0);
-         }
-
-         $$0.c($$2);
-      } else {
-         f.warn("Detected infinite loop in loot tables");
       }
    }
 
-   public void a(ewr $$0, long $$1, Consumer<cxo> $$2) {
-      this.a(new ewo.a($$0).a($$1).a(this.h), a($$0.a(), $$2));
-   }
+   public void a(Consumer<cxp> $$0, ewp $$1) {
+      if (this.d.test($$1)) {
+         Consumer<cxp> $$2 = eyd.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + bae.d(this.h.b($$1) * $$1.c());
 
-   public void b(ewr $$0, Consumer<cxo> $$1) {
-      this.a($$0, a($$0.a(), $$1));
-   }
-
-   public void b(ewo $$0, Consumer<cxo> $$1) {
-      this.a($$0, a($$0.d(), $$1));
-   }
-
-   public ObjectArrayList<cxo> a(ewr $$0, bam $$1) {
-      return this.a(new ewo.a($$0).a($$1).a(this.h));
-   }
-
-   public ObjectArrayList<cxo> a(ewr $$0, long $$1) {
-      return this.a(new ewo.a($$0).a($$1).a(this.h));
-   }
-
-   public ObjectArrayList<cxo> a(ewr $$0) {
-      return this.a(new ewo.a($$0).a(this.h));
-   }
-
-   private ObjectArrayList<cxo> a(ewo $$0) {
-      ObjectArrayList<cxo> $$1 = new ObjectArrayList();
-      this.b($$0, $$1::add);
-      return $$1;
-   }
-
-   public bbo a() {
-      return this.g;
-   }
-
-   public void a(ewu $$0) {
-      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
-         this.i.get($$1).a($$0.a(".pools[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.j.size(); $$2++) {
-         this.j.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-   }
-
-   public void a(btb $$0, ewr $$1, long $$2) {
-      ewo $$3 = new ewo.a($$1).a($$2).a(this.h);
-      ObjectArrayList<cxo> $$4 = this.a($$3);
-      bam $$5 = $$3.b();
-      List<Integer> $$6 = this.a($$0, $$5);
-      this.a($$4, $$6.size(), $$5);
-      ObjectListIterator var9 = $$4.iterator();
-
-      while (var9.hasNext()) {
-         cxo $$7 = (cxo)var9.next();
-         if ($$6.isEmpty()) {
-            f.warn("Tried to over-fill a container");
-            return;
-         }
-
-         if ($$7.f()) {
-            $$0.a($$6.remove($$6.size() - 1), cxo.j);
-         } else {
-            $$0.a($$6.remove($$6.size() - 1), $$7);
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
          }
       }
    }
 
-   private void a(ObjectArrayList<cxo> $$0, int $$1, bam $$2) {
-      List<cxo> $$3 = Lists.newArrayList();
-      Iterator<cxo> $$4 = $$0.iterator();
-
-      while ($$4.hasNext()) {
-         cxo $$5 = $$4.next();
-         if ($$5.f()) {
-            $$4.remove();
-         } else if ($$5.L() > 1) {
-            $$3.add($$5);
-            $$4.remove();
-         }
+   public void a(ewv $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
 
-      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
-         cxo $$6 = $$3.remove(bae.a($$2, 0, $$3.size() - 1));
-         int $$7 = bae.a($$2, 1, $$6.L() / 2);
-         cxo $$8 = $$6.a($$7);
-         if ($$6.L() > 1 && $$2.h()) {
-            $$3.add($$6);
-         } else {
-            $$0.add($$6);
-         }
-
-         if ($$8.L() > 1 && $$2.h()) {
-            $$3.add($$8);
-         } else {
-            $$0.add($$8);
-         }
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
       }
 
-      $$0.addAll($$3);
-      ae.c($$0, $$2);
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
+      }
+
+      this.g.a($$0.a(".rolls"));
+      this.h.a($$0.a(".bonusRolls"));
    }
 
-   private List<Integer> a(btb $$0, bam $$1) {
-      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         if ($$0.a($$3).f()) {
-            $$2.add($$3);
-         }
-      }
-
-      ae.c($$2, $$1);
-      return $$2;
-   }
-
-   public static ewt.a b() {
+   public static ewt.a a() {
       return new ewt.a();
    }
 
-   public static class a implements exy<ewt.a> {
-      private final Builder<ews> a = ImmutableList.builder();
-      private final Builder<eyc> b = ImmutableList.builder();
-      private bbo c = ewt.b;
-      private Optional<alz> d = Optional.empty();
+   public static class a implements exz<ewt.a>, ezq<ewt.a> {
+      private final Builder<exf> a = ImmutableList.builder();
+      private final Builder<ezy> b = ImmutableList.builder();
+      private final Builder<eyd> c = ImmutableList.builder();
+      private fau d = far.a(1.0F);
+      private fau e = far.a(0.0F);
 
-      public ewt.a a(ews.a $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ewt.a a(bbo $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ewt.a a(alz $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public ewt.a a(eyc.a $$0) {
-         this.b.add($$0.b());
+      public ewt.a a(fau $$0) {
+         this.d = $$0;
          return this;
       }
 
@@ -228,8 +119,28 @@ public class ewt {
          return this;
       }
 
+      public ewt.a b(fau $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ewt.a a(exf.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public ewt.a a(ezy.a $$0) {
+         this.b.add($$0.build());
+         return this;
+      }
+
+      public ewt.a a(eyd.a $$0) {
+         this.c.add($$0.b());
+         return this;
+      }
+
       public ewt b() {
-         return new ewt(this.c, this.d, this.a.build(), this.b.build());
+         return new ewt(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
       }
    }
 }

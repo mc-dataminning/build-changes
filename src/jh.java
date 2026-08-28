@@ -111,12 +111,12 @@ public class jh extends kl {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new jh(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public fbx b() {
-      return fbx.b(this);
+   public fby b() {
+      return fby.b(this);
    }
 
-   public fbx c() {
-      return fbx.c(this);
+   public fby c() {
+      return fby.c(this);
    }
 
    public jh a(kl $$0) {
@@ -202,7 +202,7 @@ public class jh extends kl {
       }
    }
 
-   public jh a(drb $$0) {
+   public jh a(drc $$0) {
       switch ($$0) {
          case a:
          default:
@@ -232,8 +232,8 @@ public class jh extends kl {
       return new jh.a(this.u(), this.v(), this.w());
    }
 
-   public fbx a(fbx $$0) {
-      return new fbx(
+   public fby a(fby $$0) {
+      return new fby(
          bae.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
          bae.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
          bae.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
@@ -336,7 +336,7 @@ public class jh extends kl {
       return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
    }
 
-   public static Iterable<jh> a(fbs $$0) {
+   public static Iterable<jh> a(fbt $$0) {
       jh $$1 = a($$0.a, $$0.b, $$0.c);
       jh $$2 = a($$0.d, $$0.e, $$0.f);
       return c($$1, $$2);
@@ -357,7 +357,7 @@ public class jh extends kl {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<jh> a(eob $$0) {
+   public static Stream<jh> a(eoc $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -368,7 +368,7 @@ public class jh extends kl {
       );
    }
 
-   public static Stream<jh> b(fbs $$0) {
+   public static Stream<jh> b(fbt $$0) {
       return a(bae.a($$0.a), bae.a($$0.b), bae.a($$0.c), bae.a($$0.d), bae.a($$0.e), bae.a($$0.f));
    }
 
@@ -493,7 +493,7 @@ public class jh extends kl {
       }
 
       @Override
-      public jh a(drb $$0) {
+      public jh a(drc $$0) {
          return super.a($$0).j();
       }
 

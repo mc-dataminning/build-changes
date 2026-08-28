@@ -1,9 +1,22 @@
-@FunctionalInterface
-public interface gew {
-   static gew scaling(float $$0) {
-      float $$1 = 24.016F * (1.0F - $$0);
-      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
+import com.google.common.collect.ImmutableList;
+import java.util.function.UnaryOperator;
+
+public class gew {
+   private final gey a;
+
+   public gew() {
+      this(new gey(ImmutableList.of(), geq.a));
    }
 
-   gev apply(gev var1);
+   private gew(gey $$0) {
+      this.a = $$0;
+   }
+
+   public gey a() {
+      return this.a;
+   }
+
+   public gew a(UnaryOperator<geq> $$0) {
+      return new gew(this.a.a($$0));
+   }
 }

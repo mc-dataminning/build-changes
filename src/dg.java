@@ -10,9 +10,9 @@ public class dg extends dy<dg.a> {
       return dg.a.a;
    }
 
-   public void a(asi $$0, bwe $$1, List<bvj> $$2) {
-      List<ewo> $$3 = $$2.stream().map($$1x -> bw.b($$0, $$1x)).collect(Collectors.toList());
-      ewo $$4 = bw.b($$0, $$1);
+   public void a(asi $$0, bwf $$1, List<bvk> $$2) {
+      List<ewp> $$3 = $$2.stream().map($$1x -> bw.b($$0, $$1x)).collect(Collectors.toList());
+      ewp $$4 = bw.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
@@ -30,7 +30,7 @@ public class dg extends dy<dg.a> {
          return ao.V.a(new dg.a(Optional.empty(), bw.a($$0), bw.a($$1)));
       }
 
-      public boolean a(ewo $$0, List<ewo> $$1) {
+      public boolean a(ewp $$0, List<ewp> $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 

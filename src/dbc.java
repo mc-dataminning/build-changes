@@ -1,33 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dbc(ju<bum> c) implements dba {
-   public static final MapCodec<dbc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.a(mb.W).fieldOf("effects").forGetter(dbc::b)).apply($$0, dbc::new));
-   public static final zt<xg, dbc> b = zt.a(zr.c(mb.W), dbc::b, dbc::new);
+public record dbc(jq<axe> c) implements dbb {
+   public static final MapCodec<dbc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(axe.b.fieldOf("sound").forGetter(dbc::b)).apply($$0, dbc::new));
+   public static final zt<xg, dbc> b = zt.a(axe.d, dbc::b, dbc::new);
 
-   public dbc(jq<bum> $$0) {
-      this(ju.a($$0));
+   @Override
+   public dbb.a<dbc> a() {
+      return dbb.a.e;
    }
 
    @Override
-   public dba.a<dbc> a() {
-      return dba.a.b;
+   public boolean a(dhi $$0, cxp $$1, bwg $$2) {
+      $$0.a(null, $$2.dw(), this.c.a(), $$2.dn(), 1.0F, 1.0F);
+      return true;
    }
 
-   @Override
-   public boolean a(dhh $$0, cxo $$1, bwf $$2) {
-      boolean $$3 = false;
-
-      for (jq<bum> $$4 : this.c) {
-         if ($$2.e($$4)) {
-            $$3 = true;
-         }
-      }
-
-      return $$3;
-   }
-
-   public ju<bum> b() {
+   public jq<axe> b() {
       return this.c;
    }
 }

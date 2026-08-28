@@ -1,28 +1,40 @@
-public class cwz<T extends bvj & bwc> extends cxk {
-   private final bvq<T> a;
-   private final int b;
-
-   public cwz(bvq<T> $$0, int $$1, cxk.a $$2) {
-      super($$2);
-      this.a = $$0;
-      this.b = $$1;
+public class cwz extends cxl {
+   public cwz(cxl.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bti a(dhh $$0, cpw $$1, bth $$2) {
-      cxo $$3 = $$1.b($$2);
-      if ($$0.C) {
-         return bti.e;
+   public btj a(dbi $$0) {
+      cpx $$1 = $$0.o();
+      dhi $$2 = $$0.q();
+      jh $$3 = $$0.a();
+      dxv $$4 = $$2.a_($$3);
+      if (!dlb.i($$4) && !dlc.h($$4) && !dld.h($$4)) {
+         jh $$5 = $$3.a($$0.k());
+         if (djz.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, axf.jt, axg.e, 1.0F, $$2.H_().i() * 0.4F + 0.8F);
+            dxv $$6 = djz.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, ecr.i, $$3);
+            cxp $$7 = $$0.n();
+            if ($$1 instanceof asi) {
+               ao.z.a((asi)$$1, $$5, $$7);
+               $$7.a(1, $$1, bwg.d($$0.p()));
+            }
+
+            return btj.a;
+         } else {
+            return btj.d;
+         }
       } else {
-         bvj $$4 = $$1.dm();
-         if ($$1.bZ() && $$4 instanceof bwc $$5 && $$4.aq() == this.a && $$5.a()) {
-            bvr $$6 = bwf.d($$2);
-            cxo $$7 = $$3.a(this.b, cxs.rJ, $$1, $$6);
-            return bti.b.a($$7);
+         $$2.a($$1, $$3, axf.jt, axg.e, 1.0F, $$2.H_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.b(dyl.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, ecr.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, bwg.d($$0.p()));
          }
 
-         $$1.b(axp.c.b(this));
-         return bti.e;
+         return btj.a;
       }
    }
 }

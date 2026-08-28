@@ -1,15 +1,12 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public record czz(ayk<bub> c) {
-   public static final Codec<czz> a = RecordCodecBuilder.create($$0 -> $$0.group(ayk.b(mb.s).fieldOf("types").forGetter(czz::a)).apply($$0, czz::new));
-   public static final zt<xg, czz> b = zt.a(ayk.c(mb.s), czz::a, czz::new);
+public record czz(int d) {
+   public static final czz a = new czz(0);
+   public static final Codec<czz> b = Codec.INT.xmap(czz::new, czz::a);
+   public static final zt<ByteBuf, czz> c = zr.h.a(czz::new, czz::a);
 
-   public boolean a(btz $$0) {
-      return $$0.a(this.c);
-   }
-
-   public ayk<bub> a() {
-      return this.c;
+   public int a() {
+      return this.d;
    }
 }

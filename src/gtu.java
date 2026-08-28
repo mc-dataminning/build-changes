@@ -1,8 +1,24 @@
-public class gtu extends gqj<ckn, gzr, gdk> {
-   private static final alz a = alz.b("textures/entity/sniffer/sniffer.png");
+public class gtu extends gsw<cng, gzr, gdk> {
+   public static final alz a = alz.b("textures/entity/slime/slime.png");
 
-   public gtu(grp.a $$0) {
-      super($$0, new gdk($$0.a(gem.cN)), new gdk($$0.a(gem.cO)), 1.1F);
+   public gtu(grq.a $$0) {
+      super($$0, new gdk($$0.a(gen.cL)), 0.25F);
+      this.a(new gwj(this, $$0.f()));
+   }
+
+   public void a(gzr $$0, fgs $$1, gll $$2, int $$3) {
+      this.f = 0.25F * (float)$$0.b;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(gzr $$0, fgs $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
    }
 
    public alz a(gzr $$0) {
@@ -13,17 +29,9 @@ public class gtu extends gqj<ckn, gzr, gdk> {
       return new gzr();
    }
 
-   public void a(ckn $$0, gzr $$1, float $$2) {
+   public void a(cng $$0, gzr $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.cd);
-      $$1.c.a($$0.cb);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.bZ);
-      $$1.f.a($$0.ca);
-   }
-
-   protected fbs a(ckn $$0) {
-      return super.a($$0).g(0.6F);
+      $$1.a = bae.h($$2, $$0.bZ, $$0.bY);
+      $$1.b = $$0.go();
    }
 }

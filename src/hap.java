@@ -1,163 +1,100 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class hap {
-   private static final Map<alz, haq> a = Maps.newHashMap();
-   private static final alz b = alz.b("damaged");
-   private static final alz c = alz.b("damage");
-   private static final han d = ($$0x, $$1x, $$2, $$3) -> $$0x.n() ? 1.0F : 0.0F;
-   private static final han e = ($$0x, $$1x, $$2, $$3) -> bae.a((float)$$0x.o() / (float)$$0x.p(), 0.0F, 1.0F);
-   private static final Map<cxk, Map<alz, haq>> f = Maps.newHashMap();
+public class hap implements hao {
+   public static final int a = 0;
+   private final hap.b c = new hap.b();
+   private final hap.b d = new hap.b();
+   public final hap.a b;
 
-   private static han a(alz $$0, han $$1) {
-      a.put($$0, $$1);
-      return $$1;
+   public hap(hap.a $$0) {
+      this.b = $$0;
    }
 
-   private static void a(haq $$0) {
-      a.put(alz.b("custom_model_data"), $$0);
+   @Override
+   public float unclampedCall(cxp $$0, @Nullable gfk $$1, @Nullable bwg $$2, int $$3) {
+      bvk $$4 = (bvk)($$2 != null ? $$2 : $$0.I());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
    }
 
-   private static void a(cxk $$0, alz $$1, han $$2) {
-      f.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
+   private float a(cxp $$0, gfk $$1, int $$2, bvk $$3) {
+      jp $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.ac();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
    }
 
-   private static int a(cxo $$0) {
-      czq $$1 = $$0.a(ku.am, czq.a);
-      Integer $$2 = $$1.a(dkf.c);
-      return $$2 != null && $$2 == 5 ? 1 : 0;
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return bae.b((float)$$2, 1.0F);
+   }
+
+   private float a(bvk $$0, long $$1, jh $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cpx $$5 && $$5.c() && $$5.dW().t().i()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
+         }
+
+         double $$6 = $$3 + this.c.a;
+         return bae.b((float)$$6, 1.0F);
+      }
+
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return bae.b((float)$$7, 1.0F);
    }
 
    @Nullable
-   public static haq a(cxo $$0, alz $$1) {
-      if ($$0.p() > 0) {
-         if (c.equals($$1)) {
-            return e;
-         }
-
-         if (b.equals($$1)) {
-            return d;
-         }
-      }
-
-      haq $$2 = a.get($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         Map<alz, haq> $$3 = f.get($$0.h());
-         return $$3 == null ? null : $$3.get($$1);
-      }
+   private gfk a(bvk $$0, @Nullable gfk $$1) {
+      return $$1 == null && $$0.dW() instanceof gfk ? (gfk)$$0.dW() : $$1;
    }
 
-   static {
-      a(alz.b("lefthanded"), ($$0x, $$1x, $$2, $$3) -> $$2 != null && $$2.fy() != bvz.b ? 1.0F : 0.0F);
-      a(alz.b("cooldown"), ($$0x, $$1x, $$2, $$3) -> $$2 instanceof cpw ? ((cpw)$$2).gE().a($$0x, 0.0F) : 0.0F);
-      han $$0 = ($$0x, $$1x, $$2, $$3) -> {
-         dfv $$4 = $$0x.a(ku.U);
-         return $$4 != null ? $$4.a().a().c() : Float.NEGATIVE_INFINITY;
-      };
-      a(od.a, $$0);
-      a(alz.b("broken"), ($$0x, $$1x, $$2, $$3) -> $$0x.r() ? 1.0F : 0.0F);
-      a(($$0x, $$1x, $$2, $$3) -> (float)$$0x.a(ku.p, czy.a).a());
-      a(cxs.oR, alz.b("pull"), ($$0x, $$1x, $$2, $$3) -> {
-         if ($$2 == null) {
-            return 0.0F;
-         } else {
-            return $$2.fB() != $$0x ? 0.0F : (float)($$0x.a($$2) - $$2.fC()) / 20.0F;
-         }
-      });
-      a(cxs.yl, alz.b("brushing"), ($$0x, $$1x, $$2, $$3) -> $$2 != null && $$2.fB() == $$0x ? (float)($$2.fC() % 10) / 10.0F : 0.0F);
-      a(cxs.oR, alz.b("pulling"), ($$0x, $$1x, $$2, $$3) -> $$2 != null && $$2.fz() && $$2.fB() == $$0x ? 1.0F : 0.0F);
+   private boolean a(bvk $$0, @Nullable jp $$1) {
+      return $$1 != null && $$1.a() == $$0.dW().ah() && !($$1.b().b($$0.du()) < 1.0E-5F);
+   }
 
-      for (cwb $$1 : cwb.d()) {
-         a($$1.j(), alz.b("filled"), ($$0x, $$1x, $$2, $$3) -> cwb.c($$0x));
+   private double a(bvk $$0, jh $$1) {
+      fby $$2 = fby.b($$1);
+      return Math.atan2($$2.c() - $$0.dH(), $$2.a() - $$0.dB()) / (float) (Math.PI * 2);
+   }
+
+   private double a(bvk $$0) {
+      return bae.c((double)($$0.dN() / 360.0F), 1.0);
+   }
+
+   private int a(int $$0) {
+      return $$0 * 1327217883;
+   }
+
+   public interface a {
+      @Nullable
+      jp getPos(gfk var1, cxp var2, bvk var3);
+   }
+
+   static class b {
+      double a;
+      private double b;
+      private long c;
+
+      boolean a(long $$0) {
+         return this.c != $$0;
       }
 
-      a(cxs.rK, alz.b("time"), new han() {
-         private double a;
-         private double b;
-         private long c;
-
-         @Override
-         public float unclampedCall(cxo $$0, @Nullable gfj $$1, @Nullable bwf $$2, int $$3) {
-            bvj $$4 = (bvj)($$2 != null ? $$2 : $$0.I());
-            if ($$4 == null) {
-               return 0.0F;
-            } else {
-               if ($$1 == null && $$4.dW() instanceof gfj) {
-                  $$1 = (gfj)$$4.dW();
-               }
-
-               if ($$1 == null) {
-                  return 0.0F;
-               } else {
-                  double $$5;
-                  if ($$1.G_().j()) {
-                     $$5 = (double)$$1.f(1.0F);
-                  } else {
-                     $$5 = Math.random();
-                  }
-
-                  $$5 = this.a($$1, $$5);
-                  return (float)$$5;
-               }
-            }
-         }
-
-         private double a(dhh $$0, double $$1) {
-            if ($$0.ac() != this.c) {
-               this.c = $$0.ac();
-               double $$2 = $$1 - this.a;
-               $$2 = bae.c($$2 + 0.5, 1.0) - 0.5;
-               this.b += $$2 * 0.1;
-               this.b *= 0.9;
-               this.a = bae.c(this.a + this.b, 1.0);
-            }
-
-            return this.a;
-         }
-      });
-      a(cxs.rq, alz.b("angle"), new hao(($$0x, $$1x, $$2) -> {
-         dai $$3 = $$1x.a(ku.ad);
-         return $$3 != null ? $$3.a().orElse(null) : cwc.a($$0x);
-      }));
-      a(cxs.rr, alz.b("angle"), new hao(($$0x, $$1x, $$2) -> $$2 instanceof cpw $$3 ? $$3.gI().orElse(null) : null));
-      a(cxs.wL, alz.b("pull"), ($$0x, $$1x, $$2, $$3) -> {
-         if ($$2 == null) {
-            return 0.0F;
-         } else {
-            return cwf.g($$0x) ? 0.0F : (float)($$0x.a($$2) - $$2.fC()) / (float)cwf.b($$0x, $$2);
-         }
-      });
-      a(cxs.wL, alz.b("pulling"), ($$0x, $$1x, $$2, $$3) -> $$2 != null && $$2.fz() && $$2.fB() == $$0x && !cwf.g($$0x) ? 1.0F : 0.0F);
-      a(cxs.wL, alz.b("charged"), ($$0x, $$1x, $$2, $$3) -> cwf.g($$0x) ? 1.0F : 0.0F);
-      a(cxs.wL, alz.b("firework"), ($$0x, $$1x, $$2, $$3) -> {
-         czt $$4 = $$0x.a(ku.O);
-         return $$4 != null && $$4.a(cxs.vk) ? 1.0F : 0.0F;
-      });
-      a(cxs.rJ, alz.b("cast"), ($$0x, $$1x, $$2, $$3) -> {
-         if ($$2 == null) {
-            return 0.0F;
-         } else {
-            boolean $$4 = $$2.eZ() == $$0x;
-            boolean $$5 = $$2.fa() == $$0x;
-            if ($$2.eZ().h() instanceof cwx) {
-               $$5 = false;
-            }
-
-            return ($$4 || $$5) && $$2 instanceof cpw && ((cpw)$$2).cv != null ? 1.0F : 0.0F;
-         }
-      });
-      a(cxs.wi, alz.b("blocking"), ($$0x, $$1x, $$2, $$3) -> $$2 != null && $$2.fz() && $$2.fB() == $$0x ? 1.0F : 0.0F);
-      a(cxs.wI, alz.b("throwing"), ($$0x, $$1x, $$2, $$3) -> $$2 != null && $$2.fz() && $$2.fB() == $$0x ? 1.0F : 0.0F);
-      a(cxs.hQ, alz.b("level"), ($$0x, $$1x, $$2, $$3) -> {
-         czq $$4 = $$0x.a(ku.am, czq.a);
-         Integer $$5 = $$4.a(dpb.c);
-         return $$5 != null ? (float)$$5.intValue() / 16.0F : 1.0F;
-      });
-      a(cxs.wY, alz.b("tooting"), ($$0x, $$1x, $$2, $$3) -> $$2 != null && $$2.fz() && $$2.fB() == $$0x ? 1.0F : 0.0F);
-      a(cxs.xr, alz.b("honey_level"), ($$0x, $$1x, $$2, $$3) -> (float)a($$0x));
-      a(cxs.xs, alz.b("honey_level"), ($$0x, $$1x, $$2, $$3) -> (float)a($$0x));
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = bae.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = bae.c(this.a + this.b, 1.0);
+      }
    }
 }

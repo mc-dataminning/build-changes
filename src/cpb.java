@@ -1,115 +1,158 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.function.Function;
 
 public class cpb {
-   public static final Codec<cpb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               azn.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               azn.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               azn.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cpb::new)
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = bae.f(100.0F);
+   public static final int a = bae.f(133.59999F);
+   public static final int b = bae.f(84.0F);
+   private static final int i = bae.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cgr<? extends cgq<? super cpa>>> k = List.of(cgr.d, cgr.x);
+   private static final List<cfk<?>> l = List.of(
+      cfk.g,
+      cfk.h,
+      cfk.k,
+      cfk.l,
+      cfk.M,
+      cfk.n,
+      cfk.m,
+      cfk.E,
+      cfk.t,
+      cfk.o,
+      cfk.p,
+      cfk.B,
+      cfk.ay,
+      cfk.az,
+      cfk.aA,
+      cfk.aB,
+      cfk.aC,
+      cfk.aD,
+      cfk.aE,
+      cfk.aF,
+      cfk.aG,
+      cfk.aH,
+      cfk.aI,
+      cfk.aJ,
+      cfk.aK,
+      cfk.aL
    );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
+   private static final bya<cpa> m = cbm.a(
+      (Function<cbm.b<cpa>, ? extends App<cbm.c<cpa>, cbp<cpa>>>)($$0 -> $$0.group($$0.a(cfk.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(bbk.a, 1200L);
+               }
 
-   public cpb(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+               return true;
+            }))
+   );
+
+   public static void a(cpa $$0) {
+      $$0.ec().a(ImmutableList.of(cro.y, cro.z, cro.x, cro.k, cro.w, cro.v, cro.b));
    }
 
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
-      } else {
-         this.g++;
+   protected static bxi<?> a(cpa $$0, Dynamic<?> $$1) {
+      bxi.b<cpa> $$2 = bxi.a(l, k);
+      bxi<cpa> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(cro.a));
+      $$3.b(cro.b);
+      $$3.f();
+      return $$3;
+   }
+
+   private static void a(bxi<cpa> $$0) {
+      $$0.a(cro.a, 0, ImmutableList.of(new cat(0.8F), cbx.a(), new bzf(45, 90), new bzj()));
+   }
+
+   private static void b(bxi<cpa> $$0) {
+      $$0.a(cro.y, 5, ImmutableList.of(new cbt(a)), cfk.aC);
+   }
+
+   private static void c(bxi<cpa> $$0) {
+      $$0.a(cro.z, ImmutableList.of(Pair.of(0, new cbu()), Pair.of(1, new cbs(h))), ImmutableSet.of(Pair.of(cfk.ay, cfl.b), Pair.of(cfk.aE, cfl.b)));
+   }
+
+   private static void d(bxi<cpa> $$0) {
+      $$0.a(
+         cro.b,
+         10,
+         ImmutableList.of(
+            cbw.a(cpa::x), cca.a(), new bzw(ImmutableMap.of(cfk.aB, cfl.b), ImmutableList.of(Pair.of(bzr.a(0.5F), 2), Pair.of(new byj(30, 60), 1)))
+         )
+      );
+   }
+
+   private static void e(bxi<cpa> $$0) {
+      $$0.a(cro.w, 5, ImmutableList.of(cbw.a(cpa::x), bys.a(cfk.az, 2, 0.7F)), cfk.az);
+   }
+
+   private static void f(bxi<cpa> $$0) {
+      $$0.a(cro.v, 5, ImmutableList.of(cbw.a(cpa::x), new cby(i)), cfk.aB);
+   }
+
+   private static void g(bxi<cpa> $$0) {
+      $$0.a(cro.x, 10, ImmutableList.of(new cbv()), cfk.ay);
+   }
+
+   private static void a(cpa $$0, bxi<cpa> $$1) {
+      $$1.a(
+         cro.k,
+         10,
+         ImmutableList.of(
+            m,
+            cao.a(($$1x, $$2) -> !$$0.t().d() || !$$0.b($$2), cpb::a, false),
+            bzy.a($$1x -> a($$0, $$1x), (float)$$0.h(bxo.m)),
+            cae.a(1.2F),
+            new cbz(),
+            bzg.a(18)
+         ),
+         cfk.o
+      );
+   }
+
+   private static boolean a(cpa $$0, bwg $$1) {
+      return $$0.ec().c(cfk.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void a(ash $$0, cpa $$1, bwg $$2) {
+      if (!$$1.b($$2)) {
+         $$1.c($$2);
       }
 
-      if (this.i > 0) {
-         this.i--;
+      a((bwg)$$1);
+   }
+
+   public static void a(bwg $$0) {
+      if ($$0.ec().a(cfk.aE)) {
+         $$0.ec().a(cfk.aE, bbk.a, 1200L);
       }
    }
 
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(ash $$0, jh $$1, asi $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<asi> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cpb::d).orElse(false))) {
-            return OptionalInt.empty();
-         } else {
-            Optional<cpb> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cpb::c));
-            if ($$4.isPresent()) {
-               cpb $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
-         }
+   public static void a(cpa $$0, jh $$1) {
+      if ($$0.dW().F_().a($$1) && !$$0.x().isPresent() && !$$0.ec().c(cfk.o).isPresent()) {
+         a((bwg)$$0);
+         $$0.ec().a(cfk.aG, bbk.a, 100L);
+         $$0.ec().a(cfk.n, new byc($$1), 100L);
+         $$0.ec().a(cfk.az, $$1, 100L);
+         $$0.ec().b(cfk.m);
       }
-   }
-
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(ash $$0, jh $$1) {
-      fbs $$2 = fbs.a(fbx.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(coz.class, $$2).isEmpty();
-   }
-
-   private static List<asi> b(ash $$0, jh $$1) {
-      fbx $$2 = fbx.b($$1);
-      return $$0.a($$1x -> !$$1x.aa_() && $$1x.du().a((ka)$$2, 16.0) && $$1x.bL());
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
-      }
-   }
-
-   private void f() {
-      this.a(this.c() - 1);
-   }
-
-   public void a(int $$0) {
-      this.h = bae.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(cpb $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
    }
 }

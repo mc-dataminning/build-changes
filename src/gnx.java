@@ -1,51 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+@FunctionalInterface
+public interface gnx<T extends dux> {
+   gnw<T> create(gnx.a var1);
 
-public class gnx {
-   private static final Map<duy<?>, gnw<?>> a = Maps.newHashMap();
+   public static class a {
+      private final gnv a;
+      private final gmo b;
+      private final gso c;
+      private final gro d;
+      private final gek e;
+      private final fnq f;
 
-   private static <T extends duw> void a(duy<? extends T> $$0, gnw<T> $$1) {
-      a.put($$0, $$1);
-   }
+      public a(gnv $$0, gmo $$1, gso $$2, gro $$3, gek $$4, fnq $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-   public static Map<duy<?>, gnv<?>> a(gnw.a $$0) {
-      Builder<duy<?>, gnv<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + ma.j.b((duy<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
-   }
+      public gnv a() {
+         return this.a;
+      }
 
-   static {
-      a(duy.h, goj::new);
-      a(duy.i, gof::new);
-      a(duy.j, gol::new);
-      a(duy.l, goh::new);
-      a(duy.b, gob::new);
-      a(duy.d, gob::new);
-      a(duy.c, gob::new);
-      a(duy.n, goe::new);
-      a(duy.E, gog::new);
-      a(duy.o, goo::new);
-      a(duy.w, gon::new);
-      a(duy.p, gnr::new);
-      a(duy.q, gok::new);
-      a(duy.u, gnq::new);
-      a(duy.v, gom::new);
-      a(duy.y, goi::new);
-      a(duy.z, gns::new);
-      a(duy.A, goc::new);
-      a(duy.F, gnt::new);
-      a(duy.H, goa::new);
-      a(duy.O, gnz::new);
-      a(duy.P, god::new);
-      a(duy.R, gop::new);
-      a(duy.S, goq::new);
+      public gmo b() {
+         return this.b;
+      }
+
+      public gro c() {
+         return this.d;
+      }
+
+      public gso d() {
+         return this.c;
+      }
+
+      public gek e() {
+         return this.e;
+      }
+
+      public geo a(gem $$0) {
+         return this.e.a($$0);
+      }
+
+      public fnq f() {
+         return this.f;
+      }
    }
 }

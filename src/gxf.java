@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
-
-public class gxf extends gxo {
-   @Nullable
-   public bvh.b.a a;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class gxf extends gyt {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

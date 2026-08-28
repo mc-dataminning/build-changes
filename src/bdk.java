@@ -21,6 +21,6 @@ public class bdk extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(biw.u), $$0 -> $$0.update(DSL.remainderFinder(), bdk::a));
+      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bix.u), $$0 -> $$0.update(DSL.remainderFinder(), bdk::a));
    }
 }

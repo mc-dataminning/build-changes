@@ -11,13 +11,13 @@ public class oc implements mh {
 
    @Override
    public CompletableFuture<?> a(mf $$0) {
-      Map<alz, dfr> $$1 = new HashMap<>();
-      dfs.a(($$1x, $$2) -> {
+      Map<alz, dfs> $$1 = new HashMap<>();
+      dft.a(($$1x, $$2) -> {
          if ($$1.putIfAbsent($$1x, $$2) != null) {
             throw new IllegalStateException("Tried to register equipment model twice for id: " + $$1x);
          }
       });
-      return mh.a($$0, dfr.a, this.d, $$1);
+      return mh.a($$0, dfs.a, this.d, $$1);
    }
 
    @Override

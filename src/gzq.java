@@ -1,4 +1,4 @@
-public class gzq extends gys {
-   public float a;
-   public int b = 1;
+public class gzq extends gyl {
+   public boolean b;
+   public boolean c;
 }

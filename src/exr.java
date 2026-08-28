@@ -1,102 +1,61 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class exr extends eyb {
-   private static final Logger b = LogUtils.getLogger();
+public class exr extends eyc {
    public static final MapCodec<exr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  kf.a(mb.aO).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, exr::new)
+      $$0 -> a($$0).and(exr.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, exr::new)
    );
-   private final Optional<ju<ddy>> c;
-   private final boolean d;
+   private final exr.a b;
 
-   exr(List<ezx> $$0, Optional<ju<ddy>> $$1, boolean $$2) {
+   private exr(List<ezy> $$0, exr.a $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   public eyd<exr> b() {
-      return eye.h;
+   public eye<exr> b() {
+      return eyf.s;
    }
 
    @Override
-   public cxo a(cxo $$0, ewo $$1) {
-      bam $$2 = $$1.b();
-      boolean $$3 = $$0.a(cxs.rn);
-      boolean $$4 = !$$3 && this.d;
-      Stream<jq<ddy>> $$5 = this.c
-         .<Stream<jq<ddy>>>map(ju::a)
-         .orElseGet(() -> $$1.d().K_().e(mb.aO).c().map(Function.identity()))
-         .filter($$2x -> !$$4 || ((ddy)$$2x.a()).c($$0));
-      List<jq<ddy>> $$6 = $$5.toList();
-      Optional<jq<ddy>> $$7 = ae.b($$6, $$2);
-      if ($$7.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$7.get(), $$2);
-      }
+   public Set<bbn<?>> a() {
+      return Set.of(this.b.g);
    }
 
-   private static cxo a(cxo $$0, jq<ddy> $$1, bam $$2) {
-      int $$3 = bae.a($$2, $$1.a().d(), $$1.a().e());
-      if ($$0.a(cxs.rn)) {
-         $$0 = new cxo(cxs.vm);
+   @Override
+   public cxp a(cxp $$0, ewp $$1) {
+      if ($$1.c(this.b.g) instanceof btm $$3) {
+         $$0.b(ku.g, $$3.an());
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static exr.a c() {
-      return new exr.a();
+   public static eyc.a<?> a(exr.a $$0) {
+      return a($$1 -> new exr($$1, $$0));
    }
 
-   public static exr.a a(js.a $$0) {
-      return c().a($$0.d(mb.aO).b(axx.n));
-   }
+   public static enum a implements bba {
+      a("this", ezj.a),
+      b("attacking_entity", ezj.d),
+      c("last_damage_player", ezj.b),
+      d("block_entity", ezj.h);
 
-   public static class a extends eyb.a<exr.a> {
-      private Optional<ju<ddy>> a = Optional.empty();
-      private boolean b = true;
+      public static final Codec<exr.a> e = bba.a(exr.a::values);
+      private final String f;
+      final bbn<?> g;
 
-      protected exr.a a() {
-         return this;
-      }
-
-      public exr.a a(jq<ddy> $$0) {
-         this.a = Optional.of(ju.a($$0));
-         return this;
-      }
-
-      public exr.a a(ju<ddy> $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public exr.a e() {
-         this.b = false;
-         return this;
+      private a(final String $$0, final bbn<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public eyc b() {
-         return new exr(this.g(), this.a, this.b);
+      public String c() {
+         return this.f;
       }
    }
 }

@@ -1,145 +1,100 @@
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class eug {
-   private eui[] a = new eui[128];
-   private int b;
+public class eug extends eut {
+   private final boolean a;
+   private float m;
+   private float n;
 
-   public eui a(eui $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
+   public eug(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(dhv $$0, bwi $$1) {
+      super.a($$0, $$1);
+      $$1.a(euo.j, 0.0F);
+      this.m = $$1.a(euo.c);
+      $$1.a(euo.c, 6.0F);
+      this.n = $$1.a(euo.k);
+      $$1.a(euo.k, 4.0F);
+   }
+
+   @Override
+   public void b() {
+      this.c.a(euo.c, this.m);
+      this.c.a(euo.k, this.n);
+      super.b();
+   }
+
+   @Override
+   public euj a() {
+      return !this.c.bj() ? super.a() : this.c(new jh(bae.a(this.c.cR().a), bae.a(this.c.cR().b + 0.5), bae.a(this.c.cR().c)));
+   }
+
+   @Override
+   public eus a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1 + 0.5, $$2);
+   }
+
+   @Override
+   public int a(euj[] $$0, euj $$1) {
+      int $$2 = super.a($$0, $$1);
+      euo $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
+      euo $$4 = this.b($$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.c.a($$3) >= 0.0F && $$4 != euo.w) {
+         $$5 = bae.d(Math.max(1.0F, this.c.dQ()));
       } else {
-         if (this.b == this.a.length) {
-            eui[] $$1 = new eui[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
-         }
-
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
-      }
-   }
-
-   public void a() {
-      this.b = 0;
-   }
-
-   public eui b() {
-      return this.a[0];
-   }
-
-   public eui c() {
-      eui $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
+         $$5 = 0;
       }
 
-      $$0.d = -1;
-      return $$0;
-   }
+      double $$7 = this.d(new jh($$1.a, $$1.b, $$1.c));
+      euj $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jm.b, $$4);
+      euj $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jm.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
 
-   public void b(eui $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
+      if (this.b($$9, $$1) && $$4 != euo.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         euj $$11 = $$0[$$10];
+         if ($$11.l == euo.j && this.a && $$11.b < this.c.dW().O() - 10) {
+            $$11.k++;
          }
       }
 
-      $$0.d = -1;
+      return $$2;
    }
 
-   public void a(eui $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
+   private boolean b(@Nullable euj $$0, euj $$1) {
+      return this.a($$0, $$1) && $$0.l == euo.j;
+   }
+
+   @Override
+   protected boolean c() {
+      return true;
+   }
+
+   @Override
+   public euo a(euq $$0, int $$1, int $$2, int $$3) {
+      euo $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == euo.j) {
+         jh.a $$5 = new jh.a();
+
+         for (jm $$6 : jm.values()) {
+            $$5.d($$1, $$2, $$3).c($$6);
+            euo $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
+            if ($$7 == euo.a) {
+               return euo.k;
+            }
+         }
+
+         return euo.j;
       } else {
-         this.b($$0.d);
+         return super.a($$0, $$1, $$2, $$3);
       }
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   private void a(int $$0) {
-      eui $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         eui $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      eui $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         eui $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         eui $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
-         }
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   public boolean e() {
-      return this.b == 0;
-   }
-
-   public eui[] f() {
-      return Arrays.copyOf(this.a, this.b);
    }
 }

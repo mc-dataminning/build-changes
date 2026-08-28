@@ -1,21 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cjl {
-   public static bxz<bwf> a() {
-      return cbl.a(
-         (Function<cbl.b<bwf>, ? extends App<cbl.c<bwf>, cbo<bwf>>>)($$0 -> $$0.group($$0.b(cfj.N), $$0.a(cfj.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.ec().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+public class cjl extends bxz<cjj> {
+   public cjl() {
+      super(ImmutableMap.of(cfk.N, cfl.a, cfk.y, cfl.a), 200);
+   }
 
-                  return true;
-               }))
-      );
+   protected boolean a(ash $$0, cjj $$1) {
+      return $$1.bm();
+   }
+
+   protected boolean a(ash $$0, cjj $$1, long $$2) {
+      return $$1.bm() && $$1.ec().a(cfk.N);
+   }
+
+   protected void b(ash $$0, cjj $$1, long $$2) {
+      bxi<cjj> $$3 = $$1.ec();
+      $$3.b(cfk.m);
+      $$3.b(cfk.n);
+      $$1.a(new bup(bur.j, 200, 0));
    }
 }

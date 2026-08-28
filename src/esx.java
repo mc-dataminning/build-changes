@@ -1,194 +1,159 @@
 import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
+import java.util.stream.IntStream;
 
-public final class esx {
-   private static final float d = 1.0E-7F;
-   private final byte[] e;
-   public final double a;
-   public final double b;
-   public final double c;
+public class esx implements edj.d {
+   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
+   private static final MapCodec<esx> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
+               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
+               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
+               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
+               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, esx::a)
+   );
+   public static final azx<esx> a = azx.a(f);
+   private final etb g;
+   private final etb h;
+   private final etb i;
+   private final double j;
+   private final double k;
+   private final double l;
+   private final double m;
+   private final double n;
+   private final double o;
+   private final double p;
+   private final double q;
 
-   public esx(bam $$0) {
-      this.a = $$0.j() * 256.0;
-      this.b = $$0.j() * 256.0;
-      this.c = $$0.j() * 256.0;
-      this.e = new byte[256];
-
-      for (int $$1 = 0; $$1 < 256; $$1++) {
-         this.e[$$1] = (byte)$$1;
-      }
-
-      for (int $$2 = 0; $$2 < 256; $$2++) {
-         int $$3 = $$0.a(256 - $$2);
-         byte $$4 = this.e[$$2];
-         this.e[$$2] = this.e[$$2 + $$3];
-         this.e[$$2 + $$3] = $$4;
-      }
+   public static esx a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return new esx(new eer(0L), $$0, $$1, $$2, $$3, $$4);
    }
 
-   public double a(double $$0, double $$1, double $$2) {
-      return this.a($$0, $$1, $$2, 0.0, 0.0);
+   private esx(etb $$0, etb $$1, etb $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.l = $$5;
+      this.m = $$6;
+      this.n = $$7;
+      this.j = 684.412 * this.p;
+      this.k = 684.412 * this.q;
+      this.o = $$0.a(this.k);
    }
 
-   @Deprecated
-   public double a(double $$0, double $$1, double $$2, double $$3, double $$4) {
-      double $$5 = $$0 + this.a;
-      double $$6 = $$1 + this.b;
-      double $$7 = $$2 + this.c;
-      int $$8 = bae.a($$5);
-      int $$9 = bae.a($$6);
-      int $$10 = bae.a($$7);
-      double $$11 = $$5 - (double)$$8;
-      double $$12 = $$6 - (double)$$9;
-      double $$13 = $$7 - (double)$$10;
-      double $$16;
-      if ($$3 != 0.0) {
-         double $$14;
-         if ($$4 >= 0.0 && $$4 < $$12) {
-            $$14 = $$4;
-         } else {
-            $$14 = $$12;
+   @VisibleForTesting
+   public esx(bam $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this(
+         etb.a($$0, IntStream.rangeClosed(-15, 0)),
+         etb.a($$0, IntStream.rangeClosed(-15, 0)),
+         etb.a($$0, IntStream.rangeClosed(-7, 0)),
+         $$1,
+         $$2,
+         $$3,
+         $$4,
+         $$5
+      );
+   }
+
+   public esx a(bam $$0) {
+      return new esx($$0, this.p, this.q, this.l, this.m, this.n);
+   }
+
+   @Override
+   public double a(edj.b $$0) {
+      double $$1 = (double)$$0.a() * this.j;
+      double $$2 = (double)$$0.b() * this.k;
+      double $$3 = (double)$$0.c() * this.j;
+      double $$4 = $$1 / this.l;
+      double $$5 = $$2 / this.m;
+      double $$6 = $$3 / this.l;
+      double $$7 = this.k * this.n;
+      double $$8 = $$7 / this.m;
+      double $$9 = 0.0;
+      double $$10 = 0.0;
+      double $$11 = 0.0;
+      boolean $$12 = true;
+      double $$13 = 1.0;
+
+      for (int $$14 = 0; $$14 < 8; $$14++) {
+         esy $$15 = this.i.a($$14);
+         if ($$15 != null) {
+            $$11 += $$15.a(etb.b($$4 * $$13), etb.b($$5 * $$13), etb.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
          }
 
-         $$16 = (double)bae.a($$14 / $$3 + 1.0E-7F) * $$3;
-      } else {
-         $$16 = 0.0;
+         $$13 /= 2.0;
       }
 
-      return this.a($$8, $$9, $$10, $$11, $$12 - $$16, $$13, $$12);
+      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
+      boolean $$17 = $$16 >= 1.0;
+      boolean $$18 = $$16 <= 0.0;
+      $$13 = 1.0;
+
+      for (int $$19 = 0; $$19 < 16; $$19++) {
+         double $$20 = etb.b($$1 * $$13);
+         double $$21 = etb.b($$2 * $$13);
+         double $$22 = etb.b($$3 * $$13);
+         double $$23 = $$7 * $$13;
+         if (!$$17) {
+            esy $$24 = this.g.a($$19);
+            if ($$24 != null) {
+               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
+            }
+         }
+
+         if (!$$18) {
+            esy $$25 = this.h.a($$19);
+            if ($$25 != null) {
+               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
+            }
+         }
+
+         $$13 /= 2.0;
+      }
+
+      return bae.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
    }
 
-   public double a(double $$0, double $$1, double $$2, double[] $$3) {
-      double $$4 = $$0 + this.a;
-      double $$5 = $$1 + this.b;
-      double $$6 = $$2 + this.c;
-      int $$7 = bae.a($$4);
-      int $$8 = bae.a($$5);
-      int $$9 = bae.a($$6);
-      double $$10 = $$4 - (double)$$7;
-      double $$11 = $$5 - (double)$$8;
-      double $$12 = $$6 - (double)$$9;
-      return this.a($$7, $$8, $$9, $$10, $$11, $$12, $$3);
+   @Override
+   public double a() {
+      return -this.b();
    }
 
-   private static double a(int $$0, double $$1, double $$2, double $$3) {
-      return etc.a(etc.a[$$0 & 15], $$1, $$2, $$3);
-   }
-
-   private int a(int $$0) {
-      return this.e[$$0 & 0xFF] & 0xFF;
-   }
-
-   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double $$6) {
-      int $$7 = this.a($$0);
-      int $$8 = this.a($$0 + 1);
-      int $$9 = this.a($$7 + $$1);
-      int $$10 = this.a($$7 + $$1 + 1);
-      int $$11 = this.a($$8 + $$1);
-      int $$12 = this.a($$8 + $$1 + 1);
-      double $$13 = a(this.a($$9 + $$2), $$3, $$4, $$5);
-      double $$14 = a(this.a($$11 + $$2), $$3 - 1.0, $$4, $$5);
-      double $$15 = a(this.a($$10 + $$2), $$3, $$4 - 1.0, $$5);
-      double $$16 = a(this.a($$12 + $$2), $$3 - 1.0, $$4 - 1.0, $$5);
-      double $$17 = a(this.a($$9 + $$2 + 1), $$3, $$4, $$5 - 1.0);
-      double $$18 = a(this.a($$11 + $$2 + 1), $$3 - 1.0, $$4, $$5 - 1.0);
-      double $$19 = a(this.a($$10 + $$2 + 1), $$3, $$4 - 1.0, $$5 - 1.0);
-      double $$20 = a(this.a($$12 + $$2 + 1), $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
-      double $$21 = bae.h($$3);
-      double $$22 = bae.h($$6);
-      double $$23 = bae.h($$5);
-      return bae.a($$21, $$22, $$23, $$13, $$14, $$15, $$16, $$17, $$18, $$19, $$20);
-   }
-
-   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double[] $$6) {
-      int $$7 = this.a($$0);
-      int $$8 = this.a($$0 + 1);
-      int $$9 = this.a($$7 + $$1);
-      int $$10 = this.a($$7 + $$1 + 1);
-      int $$11 = this.a($$8 + $$1);
-      int $$12 = this.a($$8 + $$1 + 1);
-      int $$13 = this.a($$9 + $$2);
-      int $$14 = this.a($$11 + $$2);
-      int $$15 = this.a($$10 + $$2);
-      int $$16 = this.a($$12 + $$2);
-      int $$17 = this.a($$9 + $$2 + 1);
-      int $$18 = this.a($$11 + $$2 + 1);
-      int $$19 = this.a($$10 + $$2 + 1);
-      int $$20 = this.a($$12 + $$2 + 1);
-      int[] $$21 = etc.a[$$13 & 15];
-      int[] $$22 = etc.a[$$14 & 15];
-      int[] $$23 = etc.a[$$15 & 15];
-      int[] $$24 = etc.a[$$16 & 15];
-      int[] $$25 = etc.a[$$17 & 15];
-      int[] $$26 = etc.a[$$18 & 15];
-      int[] $$27 = etc.a[$$19 & 15];
-      int[] $$28 = etc.a[$$20 & 15];
-      double $$29 = etc.a($$21, $$3, $$4, $$5);
-      double $$30 = etc.a($$22, $$3 - 1.0, $$4, $$5);
-      double $$31 = etc.a($$23, $$3, $$4 - 1.0, $$5);
-      double $$32 = etc.a($$24, $$3 - 1.0, $$4 - 1.0, $$5);
-      double $$33 = etc.a($$25, $$3, $$4, $$5 - 1.0);
-      double $$34 = etc.a($$26, $$3 - 1.0, $$4, $$5 - 1.0);
-      double $$35 = etc.a($$27, $$3, $$4 - 1.0, $$5 - 1.0);
-      double $$36 = etc.a($$28, $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
-      double $$37 = bae.h($$3);
-      double $$38 = bae.h($$4);
-      double $$39 = bae.h($$5);
-      double $$40 = bae.a(
-         $$37,
-         $$38,
-         $$39,
-         (double)$$21[0],
-         (double)$$22[0],
-         (double)$$23[0],
-         (double)$$24[0],
-         (double)$$25[0],
-         (double)$$26[0],
-         (double)$$27[0],
-         (double)$$28[0]
-      );
-      double $$41 = bae.a(
-         $$37,
-         $$38,
-         $$39,
-         (double)$$21[1],
-         (double)$$22[1],
-         (double)$$23[1],
-         (double)$$24[1],
-         (double)$$25[1],
-         (double)$$26[1],
-         (double)$$27[1],
-         (double)$$28[1]
-      );
-      double $$42 = bae.a(
-         $$37,
-         $$38,
-         $$39,
-         (double)$$21[2],
-         (double)$$22[2],
-         (double)$$23[2],
-         (double)$$24[2],
-         (double)$$25[2],
-         (double)$$26[2],
-         (double)$$27[2],
-         (double)$$28[2]
-      );
-      double $$43 = bae.a($$38, $$39, $$30 - $$29, $$32 - $$31, $$34 - $$33, $$36 - $$35);
-      double $$44 = bae.a($$39, $$37, $$31 - $$29, $$35 - $$33, $$32 - $$30, $$36 - $$34);
-      double $$45 = bae.a($$37, $$38, $$33 - $$29, $$34 - $$30, $$35 - $$31, $$36 - $$32);
-      double $$46 = bae.i($$3);
-      double $$47 = bae.i($$4);
-      double $$48 = bae.i($$5);
-      double $$49 = $$40 + $$46 * $$43;
-      double $$50 = $$41 + $$47 * $$44;
-      double $$51 = $$42 + $$48 * $$45;
-      $$6[0] += $$49;
-      $$6[1] += $$50;
-      $$6[2] += $$51;
-      return bae.a($$37, $$38, $$39, $$29, $$30, $$31, $$32, $$33, $$34, $$35, $$36);
+   @Override
+   public double b() {
+      return this.o;
    }
 
    @VisibleForTesting
    public void a(StringBuilder $$0) {
-      esy.a($$0, this.a, this.b, this.c, this.e);
+      $$0.append("BlendedNoise{minLimitNoise=");
+      this.g.a($$0);
+      $$0.append(", maxLimitNoise=");
+      this.h.a($$0);
+      $$0.append(", mainNoise=");
+      this.i.a($$0);
+      $$0.append(
+            String.format(
+               Locale.ROOT,
+               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
+               684.412,
+               684.412,
+               8.555150000000001,
+               4.277575000000001
+            )
+         )
+         .append('}');
+   }
+
+   @Override
+   public azx<? extends edj> c() {
+      return a;
    }
 }

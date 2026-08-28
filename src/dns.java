@@ -1,55 +1,88 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dns extends dkv implements dko {
-   public static final MapCodec<dns> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aly.a(mb.aL).fieldOf("feature").forGetter($$0x -> $$0x.e), ma.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, dns::new)
-   );
-   protected static final fcr b = dkl.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final dkl d;
-   private final aly<egh<?, ?>> e;
+public class dns extends dom {
+   public static final MapCodec<dns> a = b(dns::new);
+   public static final int b = 3;
+   public static final dyu c = dyl.at;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
    public MapCodec<dns> a() {
       return a;
    }
 
-   protected dns(aly<egh<?, ?>> $$0, dkl $$1, dxt.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
+   public dns(dxu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      return b;
+   public void b(dxv $$0, dhi $$1, jh $$2, dxv $$3, boolean $$4) {
+      $$1.a($$2, this, bae.a($$1.H_(), 60, 120));
    }
 
    @Override
-   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
-      return $$0.a(axu.aO) || $$0.a(dkn.fz) || $$0.a(dkn.ek) || super.b($$0, $$1, $$2);
+   protected void a(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.f($$0, $$1, $$2)) {
+         jh.a $$4 = new jh.a();
+
+         for (jm $$5 : jm.values()) {
+            $$4.a($$2, $$5);
+            dxv $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.f($$6, $$1, $$4)) {
+               $$1.a($$4, this, bae.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, bae.a($$3, 20, 40));
+      }
    }
 
-   private Optional<? extends jq<egh<?, ?>>> a(dhk $$0) {
-      return $$0.K_().e(mb.aL).a(this.e);
+   private boolean f(dxv $$0, dhi $$1, jh $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.e($$0, $$1, $$2);
+         return true;
+      }
    }
 
    @Override
-   public boolean b(dhk $$0, jh $$1, dxu $$2) {
-      dxu $$3 = $$0.a_($$1.e());
-      return $$3.a(this.d);
+   protected void a(dxv $$0, dhi $$1, jh $$2, dkm $$3, @Nullable evf $$4, boolean $$5) {
+      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
+         this.e($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(dgn $$0, jh $$1, int $$2) {
+      int $$3 = 0;
+      jh.a $$4 = new jh.a();
+
+      for (jm $$5 : jm.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
-      return (double)$$1.i() < 0.4;
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
-      this.a($$0).ifPresent($$3x -> ((egh)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
+   public cxp a(dhl $$0, jh $$1, dxv $$2) {
+      return cxp.j;
    }
 }

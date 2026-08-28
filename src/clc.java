@@ -1,69 +1,80 @@
 import javax.annotation.Nullable;
 
-public class clc extends ckv {
+public class clc extends ckw {
+   private static final cgx b = cgx.a().d();
    @Nullable
-   private fbx b;
+   private eul c;
+   @Nullable
+   private fby d;
 
-   public clc(ckt $$0) {
+   public clc(cku $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      fbx $$0 = this.a.J(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.c.dB();
-      double $$2 = this.a.c.e(0.5);
-      double $$3 = this.a.c.dH();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         bam $$5 = this.a.dZ();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         fbx $$9 = this.a.dz();
-         this.a.dW().a(ls.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
-         $$0.b((float) (Math.PI / 16));
-      }
-   }
-
-   @Override
-   public void a(ash $$0) {
-      if (this.b == null) {
-         this.b = fbx.c($$0.a(edp.a.f, egu.a(this.a.m())));
-      }
-
-      if (this.b.c(this.a.dB(), this.a.dD(), this.a.dH()) < 1.0) {
-         this.a.gk().b(clj.f).i();
-         this.a.gk().a(clj.g);
-      }
-   }
-
-   @Override
-   public float e() {
-      return 1.5F;
-   }
-
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dz().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
+   public clk<clc> h() {
+      return clk.c;
    }
 
    @Override
    public void c() {
-      this.b = null;
+      this.c = null;
+      this.d = null;
+   }
+
+   @Override
+   public void a(ash $$0) {
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
+      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+         this.b($$0);
+      }
    }
 
    @Nullable
    @Override
-   public fbx f() {
-      return this.b;
+   public fby f() {
+      return this.d;
    }
 
-   @Override
-   public clj<clc> h() {
-      return clj.d;
+   private void b(ash $$0) {
+      if (this.c == null || this.c.c()) {
+         int $$1 = this.a.t();
+         jh $$2 = $$0.a(edq.a.f, egv.a(this.a.m()));
+         cpx $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
+         int $$5;
+         if ($$3 != null) {
+            fby $$4 = new fby($$3.dB(), 0.0, $$3.dH()).d();
+            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
+         } else {
+            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
+         }
+
+         euj $$7 = new euj($$2.u(), $$2.v(), $$2.w());
+         this.c = this.a.a($$1, $$5, $$7);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.i();
+      if (this.c != null && this.c.c()) {
+         this.a.gk().a(clk.d);
+      }
+   }
+
+   private void i() {
+      if (this.c != null && !this.c.c()) {
+         kl $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new fby($$1, $$3, $$2);
+      }
    }
 }

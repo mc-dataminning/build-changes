@@ -1,22 +1,23 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class flj extends fle {
+public abstract class flj extends flf {
    private static final Logger b = LogUtils.getLogger();
-   private static final xv c = xv.c("mco.backup.restoring");
-   private final fhx d;
-   private final long e;
-   private final fjr f;
+   private final long c;
+   private final xv d;
+   private final Runnable e;
 
-   public flj(fhx $$0, long $$1, fjr $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public flj(long $$0, xv $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
+
+   protected abstract void a(fhi var1, long var2) throws fje;
 
    @Override
    public void run() {
-      fhh $$0 = fhh.a();
+      fhi $$0 = fhi.a();
       int $$1 = 0;
 
       while ($$1 < 25) {
@@ -25,36 +26,27 @@ public class flj extends fle {
                return;
             }
 
-            $$0.b(this.e, this.d.a);
-            a(1L);
+            this.a($$0, this.c);
             if (this.d()) {
                return;
             }
 
-            a(this.f.g());
+            this.e.run();
             return;
-         } catch (fje var4) {
+         } catch (fjf var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
             $$1++;
-         } catch (fjd var5) {
+         } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't restore backup", var5);
-            a(new fjv(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
+            b.error("Couldn't reset world");
+            this.a(var5);
             return;
          }
       }
@@ -62,6 +54,6 @@ public class flj extends fle {
 
    @Override
    public xv a() {
-      return c;
+      return this.d;
    }
 }

@@ -1,22 +1,26 @@
-public class guq extends gsv<cnm, haf, gea> {
-   private static final alz a = alz.b("textures/entity/witch.png");
+public class guq extends grp<crg, gxv> {
+   private static final alz a = alz.b("textures/entity/projectiles/wind_charge.png");
+   private final gea b;
 
-   public guq(grp.a $$0) {
-      super($$0, new gea($$0.a(gem.dt)), 0.5F);
-      this.a(new gwq(this, $$0.b()));
+   public guq(grq.a $$0) {
+      super($$0);
+      this.b = new gea($$0.a(gen.ds));
    }
 
-   public alz a(haf $$0) {
-      return a;
+   @Override
+   public void a(gxv $$0, fgs $$1, gll $$2, int $$3) {
+      fgw $$4 = $$2.getBuffer(glv.a(a, this.a($$0.p) % 1.0F, 0.0F));
+      this.b.a($$0);
+      this.b.a($$1, $$4, $$3, hbc.d);
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public haf b() {
-      return new haf();
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
    }
 
-   public void a(cnm $$0, haf $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.ar();
-      $$1.b = !$$0.eZ().f();
+   @Override
+   public gxv d() {
+      return new gxv();
    }
 }

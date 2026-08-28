@@ -1,10 +1,8 @@
-public class gxj extends gys {
-   public boolean a;
-   public boolean b;
-   public float c;
-   public final bvb d = new bvb();
-   public final bvb e = new bvb();
-   public final bvb f = new bvb();
-   public final bvb g = new bvb();
-   public final bvb h = new bvb();
+public class gxj extends gyt {
+   public final bvc a = new bvc();
+   public final bvc b = new bvc();
+   public final bvc c = new bvc();
+   public final bvc d = new bvc();
+   public final bvc e = new bvc();
+   public final bvc f = new bvc();
 }

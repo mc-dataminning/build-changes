@@ -5,7 +5,7 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Map;
 
-public class bck extends bhr {
+public class bck extends bhs {
    private static final Map<String, String> a = Map.ofEntries(
       Map.entry("b", "minecraft:base"),
       Map.entry("bl", "minecraft:square_bottom_left"),
@@ -51,7 +51,7 @@ public class bck extends bhr {
    );
 
    public bck(Schema $$0) {
-      super($$0, false, "BannerPatternFormatFix", biw.s, "minecraft:banner");
+      super($$0, false, "BannerPatternFormatFix", bix.s, "minecraft:banner");
    }
 
    @Override

@@ -15,27 +15,27 @@ public class gv implements gu {
    }
 
    @Override
-   public fbx a(ew $$0) {
-      fbw $$1 = $$0.k();
-      fbx $$2 = $$0.m().a($$0);
+   public fby a(ew $$0) {
+      fbx $$1 = $$0.k();
+      fby $$2 = $$0.m().a($$0);
       float $$3 = bae.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$4 = bae.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$5 = bae.b(-$$1.i * (float) (Math.PI / 180.0));
       float $$6 = bae.a(-$$1.i * (float) (Math.PI / 180.0));
       float $$7 = bae.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
       float $$8 = bae.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      fbx $$9 = new fbx((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      fbx $$10 = new fbx((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      fbx $$11 = $$9.c($$10).c(-1.0);
+      fby $$9 = new fby((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      fby $$10 = new fby((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      fby $$11 = $$9.c($$10).c(-1.0);
       double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
       double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
-      return new fbx($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
+      return new fby($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
    @Override
-   public fbw b(ew $$0) {
-      return fbw.a;
+   public fbx b(ew $$0) {
+      return fbx.a;
    }
 
    @Override

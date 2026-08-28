@@ -1,61 +1,46 @@
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface bvu {
-   void a(bvr var1, cxo var2);
+public record bvu(aly<ewu> c, Map<bvs, Float> d) {
+   public static final Codec<Map<bvs, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bvs.k, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bvu::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(bvs.i);
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bvu> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aly.a(mb.bg).fieldOf("loot_table").forGetter(bvu::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bvu::b))
+            .apply($$0, bvu::new)
+   );
 
-   cxo a(bvr var1);
-
-   void a(bvr var1, float var2);
-
-   default void a(bvt $$0, ewr $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   public bvu(aly<ewu> $$0, float $$1) {
+      this($$0, a($$1));
    }
 
-   default void a(aly<ewt> $$0, ewr $$1, Map<bvr, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
+   private static Map<bvs, Float> a(float $$0) {
+      return a(List.of(bvs.values()), $$0);
    }
 
-   default void a(aly<ewt> $$0, ewr $$1, long $$2, Map<bvr, Float> $$3) {
-      ewt $$4 = $$1.a().p().bc().b($$0);
-      if ($$4 != ewt.a) {
-         List<cxo> $$5 = $$4.a($$1, $$2);
-         List<bvr> $$6 = new ArrayList<>();
+   private static Map<bvs, Float> a(List<bvs> $$0, float $$1) {
+      Map<bvs, Float> $$2 = Maps.newHashMap();
 
-         for (cxo $$7 : $$5) {
-            bvr $$8 = this.a($$7, $$6);
-            if ($$8 != null) {
-               cxo $$9 = $$8.a($$7);
-               this.a($$8, $$9);
-               Float $$10 = $$3.get($$8);
-               if ($$10 != null) {
-                  this.a($$8, $$10);
-               }
-
-               $$6.add($$8);
-            }
-         }
+      for (bvs $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   @Nullable
-   default bvr a(cxo $$0, List<bvr> $$1) {
-      if ($$0.f()) {
-         return null;
-      } else {
-         dft $$2 = $$0.a(ku.D);
-         if ($$2 != null) {
-            bvr $$3 = $$2.a();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(bvr.a)) {
-            return bvr.a;
-         }
+   public aly<ewu> a() {
+      return this.c;
+   }
 
-         return null;
-      }
+   public Map<bvs, Float> b() {
+      return this.d;
    }
 }

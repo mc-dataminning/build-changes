@@ -1,28 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eju implements eiz {
+public class eju implements eja {
    public static final Codec<eju> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               etw.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               kf.a(mb.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               eig.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               jh.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, eju::new)
    );
-   public final etw b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final ju<dkl> f;
+   private final boolean b;
+   private final List<eig.a> c;
+   @Nullable
+   private final jh d;
 
-   public eju(etw $$0, boolean $$1, int $$2, int $$3, ju<dkl> $$4) {
+   public eju(boolean $$0, List<eig.a> $$1, @Nullable jh $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
+   }
+
+   private eju(boolean $$0, List<eig.a> $$1, Optional<jh> $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+      this.d = $$2.orElse(null);
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   public List<eig.a> b() {
+      return this.c;
+   }
+
+   @Nullable
+   public jh c() {
+      return this.d;
    }
 }

@@ -1,36 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class cgt extends cgj {
-   private static final ImmutableMap<bvq<?>, Float> a = ImmutableMap.builder()
-      .put(bvq.L, 8.0F)
-      .put(bvq.T, 12.0F)
-      .put(bvq.an, 8.0F)
-      .put(bvq.ao, 12.0F)
-      .put(bvq.aU, 15.0F)
-      .put(bvq.aZ, 12.0F)
-      .put(bvq.bC, 8.0F)
-      .put(bvq.bE, 10.0F)
-      .put(bvq.bN, 10.0F)
-      .put(bvq.bO, 8.0F)
-      .put(bvq.bQ, 8.0F)
-      .build();
-
+public class cgt extends cgq<bwg> {
    @Override
-   protected boolean a(ash $$0, bwf $$1, bwf $$2) {
-      return this.b($$2) && this.a($$1, $$2);
-   }
-
-   private boolean a(bwf $$0, bwf $$1) {
-      float $$2 = (Float)a.get($$1.aq());
-      return $$1.g((bvj)$$0) <= (double)($$2 * $$2);
+   public Set<cfk<?>> a() {
+      return ImmutableSet.of(cfk.i);
    }
 
    @Override
-   protected cfj<bwf> b() {
-      return cfj.A;
+   protected void a(ash $$0, bwg $$1) {
+      $$1.ec().a(cfk.i, this.a($$1));
    }
 
-   private boolean b(bwf $$0) {
-      return a.containsKey($$0.aq());
+   private List<bwg> a(bwg $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   }
+
+   private boolean b(bwg $$0) {
+      return $$0.aq() == bvr.bD && $$0.e_();
+   }
+
+   private cfm c(bwg $$0) {
+      return $$0.ec().c(cfk.h).orElse(cfm.a());
    }
 }

@@ -1,44 +1,41 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+public class czb extends cxl {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class czb extends cvu {
-   protected final dkl a;
-   private final jm b;
-
-   public czb(dkl $$0, dkl $$1, jm $$2, cxk.a $$3) {
-      super($$0, $$3);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   protected boolean a(dhk $$0, dxu $$1, jh $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
-   @Override
-   protected dxu c(dbf $$0) {
-      dxu $$1 = this.a.a($$0);
-      dxu $$2 = null;
-      dhk $$3 = $$0.q();
-      jh $$4 = $$0.a();
-
-      for (jm $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            dxu $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
-      }
-
-      return $$2 != null && $$3.a($$2, $$4, fcc.a()) ? $$2 : null;
+   public czb(cxl.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(Map<dkl, cxk> $$0, cxk $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   public int a(cxp $$0, bwg $$1) {
+      return 1200;
+   }
+
+   @Override
+   public cxr b(cxp $$0) {
+      return cxr.h;
+   }
+
+   @Override
+   public btj a(dhi $$0, cpx $$1, bti $$2) {
+      $$1.a(axf.zw, 1.0F, 1.0F);
+      $$1.b(axp.c.b(this));
+      return cxs.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cxp a(cxp $$0, dhi $$1, bwg $$2) {
+      this.b($$2);
+      return $$0;
+   }
+
+   @Override
+   public boolean a(cxp $$0, dhi $$1, bwg $$2, int $$3) {
+      this.b($$2);
+      return true;
+   }
+
+   private void b(bwg $$0) {
+      $$0.a(axf.zx, 1.0F, 1.0F);
    }
 }

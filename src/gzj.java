@@ -1,5 +1,5 @@
-public class gzj extends gys {
+public class gzj extends gyt {
    public float a;
-   public float b;
-   public float c;
+   public boolean b;
+   public cir.g c = cir.g.a;
 }

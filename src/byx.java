@@ -1,101 +1,136 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.OptionalBox.Mu;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class byx extends bxy<bwh> {
-   private static final int c = 100;
-   private static final int d = 3;
-   private static final int e = 6;
-   private static final int f = 5;
-   private final float g;
-   @Nullable
-   private jh h;
-   private int i;
-   private int j;
-   private int k;
+public class byx {
+   private static final int a = 20;
+   private static final double b = 3.0;
+   private static final double c = 2.0;
 
-   public byx(float $$0) {
-      super(ImmutableMap.of(cfj.w, cfk.a, cfj.m, cfk.b));
-      this.g = $$0;
+   public static bya<bwg> a() {
+      MutableObject<euj> $$0 = new MutableObject(null);
+      MutableInt $$1 = new MutableInt(0);
+      return cbm.a(
+         (Function<cbm.b<bwg>, ? extends App<cbm.c<bwg>, cbp<bwg>>>)($$2 -> $$2.group($$2.b(cfk.t), $$2.a(cfk.v), $$2.a(cfk.g))
+               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     eul $$9 = $$2.b($$3);
+                     Optional<Set<jp>> $$10 = $$2.a($$4);
+                     if (!$$9.b() && !$$9.c()) {
+                        if (Objects.equals($$0.getValue(), $$9.h())) {
+                           $$1.setValue(20);
+                        } else if ($$1.decrementAndGet() > 0) {
+                           return false;
+                        }
+
+                        $$0.setValue($$9.h());
+                        euj $$11 = $$9.i();
+                        euj $$12 = $$9.h();
+                        jh $$13 = $$11.a();
+                        dxv $$14 = $$6.a_($$13);
+                        if ($$14.a(axu.i, $$0xxxx -> $$0xxxx.b() instanceof dmu)) {
+                           dmu $$15 = (dmu)$$14.b();
+                           if (!$$15.n($$14)) {
+                              $$15.a($$7, $$6, $$14, $$13, true);
+                           }
+
+                           $$10 = a($$4, $$10, $$6, $$13);
+                        }
+
+                        jh $$16 = $$12.a();
+                        dxv $$17 = $$6.a_($$16);
+                        if ($$17.a(axu.i, $$0xxxx -> $$0xxxx.b() instanceof dmu)) {
+                           dmu $$18 = (dmu)$$17.b();
+                           if (!$$18.n($$17)) {
+                              $$18.a($$7, $$6, $$17, $$16, true);
+                              $$10 = a($$4, $$10, $$6, $$16);
+                           }
+                        }
+
+                        $$10.ifPresent($$6x -> a($$6, $$7, $$11, $$12, $$6x, $$2.a($$5)));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   protected boolean a(ash $$0, bwh $$1) {
-      return $$1.e_() && this.b($$0, $$1);
-   }
+   public static void a(ash $$0, bwg $$1, @Nullable euj $$2, @Nullable euj $$3, Set<jp> $$4, Optional<List<bwg>> $$5) {
+      Iterator<jp> $$6 = $$4.iterator();
 
-   protected void a(ash $$0, bwh $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.a($$1).ifPresent($$2x -> {
-         this.h = $$2x;
-         this.i = 100;
-         this.j = 3 + $$0.A.a(4);
-         this.k = 0;
-         this.a($$1, $$2x);
-      });
-   }
-
-   protected void b(ash $$0, bwh $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      this.h = null;
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   protected boolean c(ash $$0, bwh $$1, long $$2) {
-      return $$1.e_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected void d(ash $$0, bwh $$1, long $$2) {
-      if (!this.c($$0, $$1)) {
-         this.i--;
-      } else if (this.k > 0) {
-         this.k--;
-      } else {
-         if (this.d($$0, $$1)) {
-            $$1.J().a();
-            this.j--;
-            this.k = 5;
+      while ($$6.hasNext()) {
+         jp $$7 = $$6.next();
+         jh $$8 = $$7.b();
+         if (($$2 == null || !$$2.a().equals($$8)) && ($$3 == null || !$$3.a().equals($$8))) {
+            if (a($$0, $$1, $$7)) {
+               $$6.remove();
+            } else {
+               dxv $$9 = $$0.a_($$8);
+               if (!$$9.a(axu.i, $$0x -> $$0x.b() instanceof dmu)) {
+                  $$6.remove();
+               } else {
+                  dmu $$10 = (dmu)$$9.b();
+                  if (!$$10.n($$9)) {
+                     $$6.remove();
+                  } else if (a($$1, $$8, $$5)) {
+                     $$6.remove();
+                  } else {
+                     $$10.a($$1, $$0, $$9, $$8, false);
+                     $$6.remove();
+                  }
+               }
+            }
          }
       }
    }
 
-   private void a(bwh $$0, jh $$1) {
-      $$0.ec().a(cfj.m, new cfm($$1, this.g, 0));
+   private static boolean a(bwg $$0, jh $$1, Optional<List<bwg>> $$2) {
+      return $$2.isEmpty()
+         ? false
+         : $$2.get().stream().filter($$1x -> $$1x.aq() == $$0.aq()).filter($$1x -> $$1.a($$1x.du(), 2.0)).anyMatch($$1x -> a($$1x.ec(), $$1));
    }
 
-   private boolean b(ash $$0, bwh $$1) {
-      return this.c($$0, $$1) || this.a($$1).isPresent();
+   private static boolean a(bxi<?> $$0, jh $$1) {
+      if (!$$0.a(cfk.t)) {
+         return false;
+      } else {
+         eul $$2 = $$0.c(cfk.t).get();
+         if ($$2.c()) {
+            return false;
+         } else {
+            euj $$3 = $$2.i();
+            if ($$3 == null) {
+               return false;
+            } else {
+               euj $$4 = $$2.h();
+               return $$1.equals($$3.a()) || $$1.equals($$4.a());
+            }
+         }
+      }
    }
 
-   private boolean c(ash $$0, bwh $$1) {
-      jh $$2 = $$1.dw();
-      jh $$3 = $$2.e();
-      return this.a($$0, $$2) || this.a($$0, $$3);
+   private static boolean a(ash $$0, bwg $$1, jp $$2) {
+      return $$2.a() != $$0.ah() || !$$2.b().a($$1.du(), 3.0);
    }
 
-   private boolean d(ash $$0, bwh $$1) {
-      return this.a($$0, $$1.dw());
-   }
-
-   private boolean a(ash $$0, jh $$1) {
-      return $$0.a_($$1).a(axu.T);
-   }
-
-   private Optional<jh> a(bwh $$0) {
-      return $$0.ec().c(cfj.w);
-   }
-
-   private boolean e(ash $$0, bwh $$1) {
-      return !this.c($$0, $$1) && this.i <= 0;
-   }
-
-   private boolean f(ash $$0, bwh $$1) {
-      return this.c($$0, $$1) && this.j <= 0;
+   private static Optional<Set<jp>> a(cbn<Mu, Set<jp>> $$0, Optional<Set<jp>> $$1, ash $$2, jh $$3) {
+      jp $$4 = jp.a($$2.ah(), $$3);
+      return Optional.of($$1.<Set<jp>>map($$1x -> {
+         $$1x.add($$4);
+         return $$1x;
+      }).orElseGet(() -> {
+         Set<jp> $$2x = Sets.newHashSet(new jp[]{$$4});
+         $$0.a($$2x);
+         return $$2x;
+      }));
    }
 }

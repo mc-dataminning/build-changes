@@ -1,160 +1,82 @@
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class gme {
-   public static void a(fgr $$0, fgv $$1, fcr $$2, double $$3, double $$4, double $$5, int $$6) {
-      fgr.a $$7 = $$0.c();
-      $$2.a(($$6x, $$7x, $$8, $$9, $$10, $$11) -> {
-         Vector3f $$12 = new Vector3f((float)($$9 - $$6x), (float)($$10 - $$7x), (float)($$11 - $$8)).normalize();
-         $$1.a($$7, (float)($$6x + $$3), (float)($$7x + $$4), (float)($$8 + $$5)).a($$6).b($$7, $$12);
-         $$1.a($$7, (float)($$9 + $$3), (float)($$10 + $$4), (float)($$11 + $$5)).a($$6).b($$7, $$12);
-      });
+public record gme(alz b, alz c, List<gme.a> d, List<gme.b> e, gmb f) {
+   public static final Codec<gme> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alz.a.fieldOf("vertex").forGetter(gme::a),
+               alz.a.fieldOf("fragment").forGetter(gme::b),
+               gme.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(gme::c),
+               gme.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gme::d),
+               gmb.b.optionalFieldOf("defines", gmb.a).forGetter(gme::e)
+            )
+            .apply($$0, gme::new)
+   );
+
+   public alz a() {
+      return this.b;
    }
 
-   public static void a(fgr $$0, fgv $$1, fbs $$2, float $$3, float $$4, float $$5, float $$6) {
-      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6, $$3, $$4, $$5);
+   public alz b() {
+      return this.c;
    }
 
-   public static void a(fgr $$0, fgv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$8, $$9, $$10);
+   public List<gme.a> c() {
+      return this.d;
    }
 
-   public static void a(
-      fgr $$0,
-      fgv $$1,
-      double $$2,
-      double $$3,
-      double $$4,
-      double $$5,
-      double $$6,
-      double $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14
-   ) {
-      fgr.a $$15 = $$0.c();
-      float $$16 = (float)$$2;
-      float $$17 = (float)$$3;
-      float $$18 = (float)$$4;
-      float $$19 = (float)$$5;
-      float $$20 = (float)$$6;
-      float $$21 = (float)$$7;
-      $$1.a($$15, $$16, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$18).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
+   public List<gme.b> d() {
+      return this.e;
    }
 
-   public static void b(fgr $$0, fgv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, (float)$$2, (float)$$3, (float)$$4, (float)$$5, (float)$$6, (float)$$7, $$8, $$9, $$10, $$11);
+   public gmb e() {
+      return this.f;
    }
 
-   public static void a(fgr $$0, fgv $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      Matrix4f $$12 = $$0.c().a();
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-   }
+   public static record a(String b) {
+      public static final Codec<gme.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gme.a::a)).apply($$0, gme.a::new));
 
-   public static void a(
-      fgr $$0, fgv $$1, jm $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      Matrix4f $$13 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            break;
-         case b:
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case c:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case d:
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            break;
-         case e:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case f:
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
+      public String a() {
+         return this.b;
       }
    }
 
-   public static void a(fgr $$0, fgv $$1, Vector3f $$2, fbx $$3, int $$4) {
-      fgr.a $$5 = $$0.c();
-      $$1.a($$5, $$2).a($$4).b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
-      $$1.a($$5, (float)((double)$$2.x() + $$3.d), (float)((double)$$2.y() + $$3.e), (float)((double)$$2.z() + $$3.f))
-         .a($$4)
-         .b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
+   public static record b(String b, String c, int d, List<Float> e) {
+      public static final Codec<gme.b> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.STRING.fieldOf("name").forGetter(gme.b::a),
+                     Codec.STRING.fieldOf("type").forGetter(gme.b::b),
+                     Codec.INT.fieldOf("count").forGetter(gme.b::c),
+                     Codec.FLOAT.listOf().fieldOf("values").forGetter(gme.b::d)
+                  )
+                  .apply($$0, gme.b::new)
+         )
+         .validate(gme.b::a);
+
+      private static DataResult<gme.b> a(gme.b $$0) {
+         int $$1 = $$0.d;
+         int $$2 = $$0.e.size();
+         return $$2 != $$1 && $$2 > 1
+            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
+            : DataResult.success($$0);
+      }
+
+      public String a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public List<Float> d() {
+         return this.e;
+      }
    }
 }

@@ -1,26 +1,16 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record fan(alz b) implements fal {
-   public static final MapCodec<fan> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alz.a.fieldOf("source").forGetter(fan::c)).apply($$0, fan::new));
+public class fan {
+   private static final Codec<fam> d = ma.H.q().dispatch(fam::a, fal::a);
+   public static final Codec<fam> a = Codec.lazyInitialized(
+      () -> Codec.either(fak.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fak $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final fal b = a("storage", fao.a);
+   public static final fal c = a("context", fak.b);
 
-   @Override
-   public fak a() {
-      return fam.b;
-   }
-
-   @Override
-   public vu a(ewo $$0) {
-      return $$0.d().p().aK().a(this.b);
-   }
-
-   @Override
-   public Set<bbn<?>> b() {
-      return Set.of();
-   }
-
-   public alz c() {
-      return this.b;
+   private static fal a(String $$0, MapCodec<? extends fam> $$1) {
+      return kd.a(ma.H, alz.b($$0), new fal($$1));
    }
 }

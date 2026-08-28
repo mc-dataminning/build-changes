@@ -1,34 +1,31 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public class dhc {
+   private static int[] a = new int[65536];
 
-public class dhc extends evi {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static evi.a<dhc> a() {
-      return new evi.a<>(dhc::new, dhc::b, bbs.i);
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   private dhc(LongSet $$0) {
-      this.c = $$0;
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   public dhc() {
-      this(new LongOpenHashSet());
+   public static int a() {
+      return -10380959;
    }
 
-   public static dhc b(ux $$0, js.a $$1) {
-      return new dhc(new LongOpenHashSet($$0.o("Forced")));
+   public static int b() {
+      return -8345771;
    }
 
-   @Override
-   public ux a(ux $$0, js.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public static int c() {
+      return -12012264;
    }
 
-   public LongSet b() {
-      return this.c;
+   public static int d() {
+      return -7158200;
    }
 }

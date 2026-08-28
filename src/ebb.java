@@ -1,266 +1,122 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.SequencedMap;
-import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class ebb implements eay, AutoCloseable {
+public class ebb implements ecb<bvk> {
    private static final Logger a = LogUtils.getLogger();
-   private final AtomicBoolean b = new AtomicBoolean();
-   private final bsa c;
-   private final ebg d;
-   private final SequencedMap<dgn, ebb.a> e = new LinkedHashMap<>();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
-   private static final int g = 1024;
+   private static final String b = "Entities";
+   private static final String c = "Position";
+   private final ash d;
+   private final ebm e;
+   private final LongSet f = new LongOpenHashSet();
+   private final brz g;
 
-   protected ebb(ebi $$0, Path $$1, boolean $$2) {
-      this.d = new ebg($$0, $$1, $$2);
-      this.c = new bsa(ebb.b.values().length, ae.h(), "IOWorker-" + $$0.c());
-   }
-
-   public boolean a(dgn $$0, int $$1) {
-      dgn $$2 = new dgn($$0.h - $$1, $$0.i - $$1);
-      dgn $$3 = new dgn($$0.h + $$1, $$0.i + $$1);
-
-      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
-         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
-            BitSet $$6 = this.a($$4, $$5).join();
-            if (!$$6.isEmpty()) {
-               dgn $$7 = dgn.a($$4, $$5);
-               int $$8 = Math.max($$2.h - $$7.h, 0);
-               int $$9 = Math.max($$2.i - $$7.i, 0);
-               int $$10 = Math.min($$3.h - $$7.h, 31);
-               int $$11 = Math.min($$3.i - $$7.i, 31);
-
-               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
-                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
-                     int $$14 = $$13 * 32 + $$12;
-                     if ($$6.get($$14)) {
-                        return true;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private CompletableFuture<BitSet> a(int $$0, int $$1) {
-      long $$2 = dgn.c($$0, $$1);
-      synchronized (this.f) {
-         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
-         if ($$3 == null) {
-            $$3 = this.b($$0, $$1);
-            this.f.putAndMoveToFirst($$2, $$3);
-            if (this.f.size() > 1024) {
-               this.f.removeLast();
-            }
-         }
-
-         return $$3;
-      }
-   }
-
-   private CompletableFuture<BitSet> b(int $$0, int $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         dgn $$2 = dgn.a($$0, $$1);
-         dgn $$3 = dgn.b($$0, $$1);
-         BitSet $$4 = new BitSet();
-         dgn.a($$2, $$3).forEach($$1xx -> {
-            wb $$2x = new wb(new wd(vc.a, "DataVersion"), new wd(ux.b, "blending_data"));
-
-            try {
-               this.a($$1xx, $$2x).join();
-            } catch (Exception var7) {
-               a.warn("Failed to scan chunk {}", $$1xx, var7);
-               return;
-            }
-
-            if ($$2x.d() instanceof ux $$5 && this.a($$5)) {
-               int $$6 = $$1xx.k() * 32 + $$1xx.j();
-               $$4.set($$6);
-            }
-         });
-         return $$4;
-      }, ae.g());
-   }
-
-   private boolean a(ux $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
-   }
-
-   public CompletableFuture<Void> a(dgn $$0, @Nullable ux $$1) {
-      return this.a($$0, () -> $$1);
-   }
-
-   public CompletableFuture<Void> a(dgn $$0, Supplier<ux> $$1) {
-      return this.<CompletableFuture<Void>>a((Supplier<CompletableFuture<Void>>)(() -> {
-         ux $$2 = $$1.get();
-         ebb.a $$3 = this.e.computeIfAbsent($$0, $$1xx -> new ebb.a($$2));
-         $$3.a = $$2;
-         return $$3.b;
-      })).thenCompose(Function.identity());
-   }
-
-   public CompletableFuture<Optional<ux>> a(dgn $$0) {
-      return this.a((ebb.c<Optional<ux>>)(() -> {
-         ebb.a $$1 = this.e.get($$0);
-         if ($$1 != null) {
-            return Optional.ofNullable($$1.a());
-         } else {
-            try {
-               ux $$2 = this.d.a($$0);
-               return Optional.ofNullable($$2);
-            } catch (Exception var4) {
-               a.warn("Failed to read chunk {}", $$0, var4);
-               throw var4;
-            }
-         }
-      }));
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      CompletableFuture<Void> $$1 = this.<CompletableFuture<Void>>a(
-            (Supplier<CompletableFuture<Void>>)(() -> CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
-         )
-         .thenCompose(Function.identity());
-      return $$0 ? $$1.thenCompose($$0x -> this.a((ebb.c<Void>)(() -> {
-            try {
-               this.d.a();
-               return null;
-            } catch (Exception var2x) {
-               a.warn("Failed to synchronize chunks", var2x);
-               throw var2x;
-            }
-         }))) : $$1.thenCompose($$0x -> this.a((Supplier<Void>)(() -> null)));
+   public ebb(ebm $$0, ash $$1, Executor $$2) {
+      this.e = $$0;
+      this.d = $$1;
+      this.g = new brz($$2, "entity-deserializer");
    }
 
    @Override
-   public CompletableFuture<Void> a(dgn $$0, vr $$1) {
-      return this.a((ebb.c<Void>)(() -> {
-         try {
-            ebb.a $$2 = this.e.get($$0);
-            if ($$2 != null) {
-               if ($$2.a != null) {
-                  $$2.a.b($$1);
-               }
+   public CompletableFuture<ebw<bvk>> a(dgo $$0) {
+      if (this.f.contains($$0.a())) {
+         return CompletableFuture.completedFuture(b($$0));
+      } else {
+         CompletableFuture<Optional<ux>> $$1 = this.e.a($$0);
+         this.b($$1, $$0);
+         return $$1.thenApplyAsync($$1x -> {
+            if ($$1x.isEmpty()) {
+               this.f.add($$0.a());
+               return b($$0);
             } else {
-               this.d.a($$0, $$1);
+               try {
+                  dgo $$2 = a((ux)$$1x.get());
+                  if (!Objects.equals($$0, $$2)) {
+                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
+                     this.d.p().a($$2, $$0, this.e.a());
+                  }
+               } catch (Exception var6) {
+                  a.warn("Failed to parse chunk {} position info", $$0, var6);
+                  this.d.p().a(var6, this.e.a(), $$0);
+               }
+
+               ux $$4 = this.e.a((ux)$$1x.get(), -1);
+               vd $$5 = $$4.c("Entities", 10);
+               List<bvk> $$6 = bvr.a($$5, this.d, bvq.r).collect(ImmutableList.toImmutableList());
+               return new ebw<>($$0, $$6);
             }
-
-            return null;
-         } catch (Exception var4) {
-            a.warn("Failed to bulk scan chunk {}", $$0, var4);
-            throw var4;
-         }
-      }));
-   }
-
-   private <T> CompletableFuture<T> a(ebb.c<T> $$0) {
-      return this.c.a(ebb.b.a.ordinal(), $$1 -> {
-         if (!this.b.get()) {
-            try {
-               $$1.complete($$0.get());
-            } catch (Exception var4) {
-               $$1.completeExceptionally(var4);
-            }
-         }
-
-         this.c();
-      });
-   }
-
-   private <T> CompletableFuture<T> a(Supplier<T> $$0) {
-      return this.c.a(ebb.b.a.ordinal(), $$1 -> {
-         if (!this.b.get()) {
-            $$1.complete($$0.get());
-         }
-
-         this.c();
-      });
-   }
-
-   private void b() {
-      Entry<dgn, ebb.a> $$0 = this.e.pollFirstEntry();
-      if ($$0 != null) {
-         this.a($$0.getKey(), $$0.getValue());
-         this.c();
+         }, this.g::a_);
       }
    }
 
-   private void c() {
-      this.c.a_(new bsc.c(ebb.b.b.ordinal(), this::b));
+   private static dgo a(ux $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new dgo($$1[0], $$1[1]);
    }
 
-   private void a(dgn $$0, ebb.a $$1) {
-      try {
-         this.d.a($$0, $$1.a);
-         $$1.b.complete(null);
-      } catch (Exception var4) {
-         a.error("Failed to store chunk {}", $$0, var4);
-         $$1.b.completeExceptionally(var4);
+   private static void a(ux $$0, dgo $$1) {
+      $$0.a("Position", new vb(new int[]{$$1.h, $$1.i}));
+   }
+
+   private static ebw<bvk> b(dgo $$0) {
+      return new ebw<>($$0, ImmutableList.of());
+   }
+
+   @Override
+   public void a(ebw<bvk> $$0) {
+      dgo $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.f.add($$1.a())) {
+            this.a(this.e.a($$1, null), $$1);
+         }
+      } else {
+         vd $$2 = new vd();
+         $$0.b().forEach($$1x -> {
+            ux $$2x = new ux();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         ux $$3 = vm.e(new ux());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.a(this.e.a($$1, $$3), $$1);
+         this.f.remove($$1.a());
       }
+   }
+
+   private void a(CompletableFuture<?> $$0, dgo $$1) {
+      $$0.exceptionally($$1x -> {
+         a.error("Failed to store entity chunk {}", $$1, $$1x);
+         this.d.p().b($$1x, this.e.a(), $$1);
+         return null;
+      });
+   }
+
+   private void b(CompletableFuture<?> $$0, dgo $$1) {
+      $$0.exceptionally($$1x -> {
+         a.error("Failed to load entity chunk {}", $$1, $$1x);
+         this.d.p().a($$1x, this.e.a(), $$1);
+         return null;
+      });
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.e.a($$0).join();
+      this.g.a();
    }
 
    @Override
    public void close() throws IOException {
-      if (this.b.compareAndSet(false, true)) {
-         this.d();
-         this.c.close();
-
-         try {
-            this.d.close();
-         } catch (Exception var2) {
-            a.error("Failed to close storage", var2);
-         }
-      }
-   }
-
-   private void d() {
-      this.c.a(ebb.b.c.ordinal(), $$0 -> $$0.complete(bbk.a)).join();
-   }
-
-   public ebi a() {
-      return this.d.b();
-   }
-
-   static class a {
-      @Nullable
-      ux a;
-      final CompletableFuture<Void> b = new CompletableFuture<>();
-
-      public a(@Nullable ux $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      ux a() {
-         ux $$0 = this.a;
-         return $$0 == null ? null : $$0.i();
-      }
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
-   }
-
-   @FunctionalInterface
-   interface c<T> {
-      @Nullable
-      T get() throws Exception;
+      this.e.close();
    }
 }

@@ -1,38 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
-public interface epv {
-   Codec<epv> b = ma.ah.q().dispatch(epv::b, Function.identity());
+record epv(aly<epu> c, aly<epu> d) implements epw {
+   static MapCodec<epv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aly.a(mb.aX).fieldOf("alias").forGetter(epv::c), aly.a(mb.aX).fieldOf("target").forGetter(epv::d)).apply($$0, epv::new)
+   );
 
-   void a(bam var1, BiConsumer<aly<ept>, aly<ept>> var2);
-
-   Stream<aly<ept>> a();
-
-   static epu a(String $$0, String $$1) {
-      return a(rr.a($$0), rr.a($$1));
+   @Override
+   public void a(bam $$0, BiConsumer<aly<epu>, aly<epu>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
-   static epu a(aly<ept> $$0, aly<ept> $$1) {
-      return new epu($$0, $$1);
+   @Override
+   public Stream<aly<epu>> a() {
+      return Stream.of(this.d);
    }
 
-   static epy a(String $$0, brq<String> $$1) {
-      brq.a<aly<ept>> $$2 = brq.a();
-      $$1.e().forEach($$1x -> $$2.a(rr.a((String)$$1x.b()), $$1x.a().a()));
-      return a(rr.a($$0), $$2.a());
+   @Override
+   public MapCodec<epv> b() {
+      return a;
    }
-
-   static epy a(aly<ept> $$0, brq<aly<ept>> $$1) {
-      return new epy($$0, $$1);
-   }
-
-   static epz a(brq<List<epv>> $$0) {
-      return new epz($$0);
-   }
-
-   MapCodec<? extends epv> b();
 }

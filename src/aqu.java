@@ -17,14 +17,14 @@ public class aqu implements aqr {
             return $$0.then(ex.a("storage").then($$1.apply(ex.a($$0, fx.a()).suggests(aqu.b))));
          }
       };
-   private final evt c;
+   private final evu c;
    private final alz d;
 
-   static evt a(CommandContext<ew> $$0) {
+   static evu a(CommandContext<ew> $$0) {
       return ((ew)$$0.getSource()).l().aK();
    }
 
-   aqu(evt $$0, alz $$1) {
+   aqu(evu $$0, alz $$1) {
       this.c = $$0;
       this.d = $$1;
    }

@@ -1,35 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dkv extends dkl {
-   protected dkv(dxt.d $$0) {
+public class dkv extends djk {
+   public static final MapCodec<dkv> b = b(dkv::new);
+   public static final int c = 5;
+   private static final jm[] d = jm.values();
+
+   @Override
+   public MapCodec<dkv> a() {
+      return b;
+   }
+
+   public dkv(dxu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dkv> a();
+   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$3.a(5) == 0) {
+         jm $$4 = d[$$3.a(d.length)];
+         jh $$5 = $$2.a($$4);
+         dxv $$6 = $$1.a_($$5);
+         dkm $$7 = null;
+         if (h($$6)) {
+            $$7 = dko.qT;
+         } else if ($$6.a(dko.qT) && $$6.c(djl.d) == $$4) {
+            $$7 = dko.qS;
+         } else if ($$6.a(dko.qS) && $$6.c(djl.d) == $$4) {
+            $$7 = dko.qR;
+         } else if ($$6.a(dko.qR) && $$6.c(djl.d) == $$4) {
+            $$7 = dko.qQ;
+         }
 
-   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
-      return $$0.a(axu.ah) || $$0.a(dkn.cK);
+         if ($$7 != null) {
+            dxv $$8 = $$7.m().b(djl.d, $$4).b(djl.c, Boolean.valueOf($$6.y().a() == ety.c));
+            $$1.b($$5, $$8);
+         }
+      }
    }
 
-   @Override
-   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
-      return !$$0.a($$1, $$3) ? dkn.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      return this.b($$1.a_($$3), $$1, $$3);
-   }
-
-   @Override
-   protected boolean e_(dxu $$0) {
-      return $$0.y().c();
-   }
-
-   @Override
-   protected boolean a(dxu $$0, eul $$1) {
-      return $$1 == eul.c && !this.aH ? true : super.a($$0, $$1);
+   public static boolean h(dxv $$0) {
+      return $$0.l() || $$0.a(dko.J) && $$0.y().e() == 8;
    }
 }

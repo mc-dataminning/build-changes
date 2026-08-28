@@ -1,49 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dtd extends djx {
-   public static final MapCodec<dtd> a = b(dtd::new);
-   public static final dyr<dxa> b = dyk.bz;
-   public static final dyl c = dyk.bC;
+public class dtd extends dlq {
+   public static final MapCodec<dtd> n = b(dtd::new);
 
    @Override
    public MapCodec<dtd> a() {
-      return a;
+      return n;
    }
 
-   public dtd(dxt.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, dxa.a).b(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
-      $$0.a(b, c);
+   public dtd(dxu.d $$0) {
+      super(() -> duz.c, $$0);
    }
 
    @Override
-   protected dqu a_(dxu $$0) {
-      return dqu.c;
-   }
-
-   @Nullable
-   @Override
-   public duw a(jh $$0, dxu $$1) {
+   public dux a(jh $$0, dxv $$1) {
       return new dwt($$0, $$1);
    }
 
-   @Nullable
    @Override
-   public <T extends duw> dux<T> a(dhh $$0, dxu $$1, duy<T> $$2) {
-      return $$0 instanceof ash $$3
-         ? a($$2, duy.R, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dyk.bC).orElse(false)))
-         : a($$2, duy.R, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dyk.bC).orElse(false)));
+   protected axm<alz> c() {
+      return axp.i.b(axp.ai);
    }
 
    @Override
-   public void a(cxo $$0, cxk.b $$1, List<xv> $$2, czg $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dic.a($$0, $$2, "spawn_data");
+   protected boolean f_(dxv $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dxv $$0, dgn $$1, jh $$2, jm $$3) {
+      return bae.a(dve.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   protected int b(dxv $$0, dgn $$1, jh $$2, jm $$3) {
+      return $$3 == jm.b ? $$0.a($$1, $$2, $$3) : 0;
    }
 }

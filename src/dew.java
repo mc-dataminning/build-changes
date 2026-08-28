@@ -1,21 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dew(def c) implements der {
-   public static final MapCodec<dew> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(def.b.fieldOf("chance").forGetter(dew::b)).apply($$0, dew::new));
+public record dew(jq<axe> d, bsm e, bsm f) implements deq {
+   public static final MapCodec<dew> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               axe.b.fieldOf("sound").forGetter(dew::b),
+               bsm.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dew::c),
+               bsm.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dew::d)
+            )
+            .apply($$0, dew::new)
+   );
 
    @Override
-   public float a(int $$0, bam $$1, float $$2) {
-      float $$3 = this.c.a($$0);
-      int $$4 = 0;
-
-      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
-         if ($$1.i() < $$3) {
-            $$4++;
-         }
+   public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4) {
+      bam $$5 = $$3.dZ();
+      if (!$$3.bb()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dn(), this.e.a($$5), this.f.a($$5));
       }
-
-      return $$2 - (float)$$4;
    }
 
    @Override
@@ -23,7 +24,15 @@ public record dew(def c) implements der {
       return a;
    }
 
-   public def b() {
-      return this.c;
+   public jq<axe> b() {
+      return this.d;
+   }
+
+   public bsm c() {
+      return this.e;
+   }
+
+   public bsm d() {
+      return this.f;
    }
 }

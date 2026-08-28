@@ -1,19 +1,25 @@
-public class dpt {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dxu $$0) {
-      return $$0.l();
+public class dpt extends dkw {
+   public static final MapCodec<dpt> a = b(dpt::new);
+   protected static final fcs b = dkm.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+
+   @Override
+   public MapCodec<dpt> a() {
+      return a;
    }
 
-   public static int a(bam $$0) {
-      double $$1 = 1.0;
+   public dpt(dxu.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return b;
+   }
 
-      return $$2;
+   @Override
+   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
+      return $$0.a(axu.aO) || $$0.a(dko.ek) || super.b($$0, $$1, $$2);
    }
 }

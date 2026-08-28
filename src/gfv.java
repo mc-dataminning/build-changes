@@ -1,110 +1,17 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.GameProfile;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-
 public class gfv {
-   private final GameProfile a;
-   private final Supplier<hcl> b;
-   private dhe c = dhe.e;
-   private int d;
-   @Nullable
-   private xv e;
-   @Nullable
-   private ym f;
-   private yr g;
-   private int h;
+   private final gfl a;
+   private final bod b;
 
-   public gfv(GameProfile $$0, boolean $$1) {
+   public gfv(gfl $$0, bod $$1) {
       this.a = $$0;
-      this.g = b($$1);
-      Supplier<Supplier<hcl>> $$2 = Suppliers.memoize(() -> a($$0));
-      this.b = () -> $$2.get().get();
+      this.b = $$1;
    }
 
-   private static Supplier<hcl> a(GameProfile $$0) {
-      fmf $$1 = fmf.Q();
-      hcm $$2 = $$1.an();
-      CompletableFuture<hcl> $$3 = $$2.c($$0);
-      boolean $$4 = !$$1.b($$0.getId());
-      hcl $$5 = hcc.a($$0);
-      return () -> {
-         hcl $$3x = $$3.getNow($$5);
-         return $$4 && !$$3x.f() ? $$5 : $$3x;
-      };
+   public void a() {
+      this.a.b(new aks(ae.c()));
    }
 
-   public GameProfile a() {
-      return this.a;
-   }
-
-   @Nullable
-   public ym b() {
-      return this.f;
-   }
-
-   public yr c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.f != null;
-   }
-
-   protected void a(ym $$0) {
-      this.f = $$0;
-      this.g = $$0.a(cpz.b);
-   }
-
-   protected void a(boolean $$0) {
-      this.f = null;
-      this.g = b($$0);
-   }
-
-   private static yr b(boolean $$0) {
-      return $$0 ? yr.c : yr.b;
-   }
-
-   public dhe e() {
-      return this.c;
-   }
-
-   protected void a(dhe $$0) {
-      this.c = $$0;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   protected void a(int $$0) {
-      this.d = $$0;
-   }
-
-   public hcl g() {
-      return this.b.get();
-   }
-
-   @Nullable
-   public fcx h() {
-      return fmf.Q().s.Q().e(this.a().getName());
-   }
-
-   public void a(@Nullable xv $$0) {
-      this.e = $$0;
-   }
-
-   @Nullable
-   public xv i() {
-      return this.e;
-   }
-
-   public void b(int $$0) {
-      this.h = $$0;
-   }
-
-   public int j() {
-      return this.h;
+   public void a(akp $$0) {
+      this.b.a(ae.c() - $$0.b());
    }
 }

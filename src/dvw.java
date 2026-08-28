@@ -1,23 +1,15 @@
-public class dvw extends dwj {
-   private static final int a = 60;
-   private static final int b = 9;
-
-   public dvw(jh $$0, dxu $$1) {
-      super(duy.i, $$0, $$1);
+public class dvw extends dul {
+   public dvw(jh $$0, dxv $$1) {
+      super(duz.a, $$0, $$1, dcp.b);
    }
 
    @Override
-   public int b() {
-      return 9;
+   protected xv j() {
+      return xv.c("container.furnace");
    }
 
    @Override
-   public int c() {
-      return 60;
-   }
-
-   @Override
-   public axe d() {
-      return axf.Cz;
+   protected ctc a(int $$0, cpw $$1) {
+      return new cua($$0, $$1, this, this.n);
    }
 }

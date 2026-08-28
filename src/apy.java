@@ -81,7 +81,7 @@ public class apy {
       );
    }
 
-   private static int a(ew $$0, fbw $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bvj> $$6) throws CommandSyntaxException {
+   private static int a(ew $$0, fbx $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bvk> $$6) throws CommandSyntaxException {
       ash $$7 = $$0.e();
       int $$8 = $$7.L_();
       if ($$4 < $$8) {
@@ -103,11 +103,11 @@ public class apy {
       }
    }
 
-   private static int a(Collection<? extends bvj> $$0) {
-      Set<fde> $$1 = Sets.newHashSet();
+   private static int a(Collection<? extends bvk> $$0) {
+      Set<fdf> $$1 = Sets.newHashSet();
 
-      for (bvj $$2 : $$0) {
-         if ($$2 instanceof cpw) {
+      for (bvk $$2 : $$0) {
+         if ($$2 instanceof cpx) {
             $$1.add($$2.cr());
          } else {
             $$1.add(null);
@@ -117,7 +117,7 @@ public class apy {
       return $$1.size();
    }
 
-   private static void a(fbw $$0, double $$1, ash $$2, bam $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apy.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(fbx $$0, double $$1, ash $$2, bam $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apy.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -186,15 +186,15 @@ public class apy {
       }
    }
 
-   private static double a(Collection<? extends bvj> $$0, ash $$1, apy.a[] $$2, int $$3, boolean $$4) {
+   private static double a(Collection<? extends bvk> $$0, ash $$1, apy.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<fde, apy.a> $$7 = Maps.newHashMap();
+      Map<fdf, apy.a> $$7 = Maps.newHashMap();
 
-      for (bvj $$8 : $$0) {
+      for (bvk $$8 : $$0) {
          apy.a $$10;
          if ($$4) {
-            fde $$9 = $$8 instanceof cpw ? $$8.cr() : null;
+            fdf $$9 = $$8 instanceof cpx ? $$8.cr() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -278,7 +278,7 @@ public class apy {
          return $$4;
       }
 
-      public int a(dgm $$0, int $$1) {
+      public int a(dgn $$0, int $$1) {
          jh.a $$2 = new jh.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).l();
          $$2.c(jm.a);
@@ -298,9 +298,9 @@ public class apy {
          return $$1 + 1;
       }
 
-      public boolean b(dgm $$0, int $$1) {
+      public boolean b(dgn $$0, int $$1) {
          jh $$2 = jh.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dxu $$3 = $$0.a_($$2);
+         dxv $$3 = $$0.a_($$2);
          return $$2.v() < $$1 && !$$3.n() && !$$3.a(axu.aN);
       }
 

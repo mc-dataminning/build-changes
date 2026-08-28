@@ -6,9 +6,9 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class ams extends fdc {
+public class ams extends fdd {
    private final MinecraftServer b;
-   private final Set<fcu> c = Sets.newHashSet();
+   private final Set<fcv> c = Sets.newHashSet();
    private final List<Runnable> d = Lists.newArrayList();
 
    public ams(MinecraftServer $$0) {
@@ -16,7 +16,7 @@ public class ams extends fdc {
    }
 
    @Override
-   protected void a(fdb $$0, fcu $$1, fcz $$2) {
+   protected void a(fdc $$0, fcv $$1, fda $$2) {
       super.a($$0, $$1, $$2);
       if (this.c.contains($$1)) {
          this.b.ag().a(new agm($$0.cI(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
@@ -26,20 +26,20 @@ public class ams extends fdc {
    }
 
    @Override
-   protected void a(fdb $$0, fcu $$1) {
+   protected void a(fdc $$0, fcv $$1) {
       super.a($$0, $$1);
       this.a();
    }
 
    @Override
-   public void a(fdb $$0) {
+   public void a(fdc $$0) {
       super.a($$0);
       this.b.ag().a(new afj($$0.cI(), null));
       this.a();
    }
 
    @Override
-   public void b(fdb $$0, fcu $$1) {
+   public void b(fdc $$0, fcv $$1) {
       super.b($$0, $$1);
       if (this.c.contains($$1)) {
          this.b.ag().a(new afj($$0.cI(), $$1.b()));
@@ -49,8 +49,8 @@ public class ams extends fdc {
    }
 
    @Override
-   public void a(fct $$0, @Nullable fcu $$1) {
-      fcu $$2 = this.a($$0);
+   public void a(fcu $$0, @Nullable fcv $$1) {
+      fcv $$2 = this.a($$0);
       super.a($$0, $$1);
       if ($$2 != $$1 && $$2 != null) {
          if (this.h($$2) > 0) {
@@ -72,7 +72,7 @@ public class ams extends fdc {
    }
 
    @Override
-   public boolean a(String $$0, fcx $$1) {
+   public boolean a(String $$0, fcy $$1) {
       if (super.a($$0, $$1)) {
          this.b.ag().a(agl.a($$1, $$0, agl.a.a));
          this.a();
@@ -83,20 +83,20 @@ public class ams extends fdc {
    }
 
    @Override
-   public void b(String $$0, fcx $$1) {
+   public void b(String $$0, fcy $$1) {
       super.b($$0, $$1);
       this.b.ag().a(agl.a($$1, $$0, agl.a.b));
       this.a();
    }
 
    @Override
-   public void a(fcu $$0) {
+   public void a(fcv $$0) {
       super.a($$0);
       this.a();
    }
 
    @Override
-   public void b(fcu $$0) {
+   public void b(fcv $$0) {
       super.b($$0);
       if (this.c.contains($$0)) {
          this.b.ag().a(new agi($$0, 2));
@@ -106,7 +106,7 @@ public class ams extends fdc {
    }
 
    @Override
-   public void c(fcu $$0) {
+   public void c(fcv $$0) {
       super.c($$0);
       if (this.c.contains($$0)) {
          this.g($$0);
@@ -116,21 +116,21 @@ public class ams extends fdc {
    }
 
    @Override
-   public void a(fcx $$0) {
+   public void a(fcy $$0) {
       super.a($$0);
       this.b.ag().a(agl.a($$0, true));
       this.a();
    }
 
    @Override
-   public void b(fcx $$0) {
+   public void b(fcy $$0) {
       super.b($$0);
       this.b.ag().a(agl.a($$0, false));
       this.a();
    }
 
    @Override
-   public void c(fcx $$0) {
+   public void c(fcy $$0) {
       super.c($$0);
       this.b.ag().a(agl.a($$0));
       this.a();
@@ -146,24 +146,24 @@ public class ams extends fdc {
       }
    }
 
-   public List<aac<?>> d(fcu $$0) {
+   public List<aac<?>> d(fcv $$0) {
       List<aac<?>> $$1 = Lists.newArrayList();
       $$1.add(new agi($$0, 0));
 
-      for (fct $$2 : fct.values()) {
+      for (fcu $$2 : fcu.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new aga($$2, $$0));
          }
       }
 
-      for (fcv $$3 : this.i($$0)) {
+      for (fcw $$3 : this.i($$0)) {
          $$1.add(new agm($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
       }
 
       return $$1;
    }
 
-   public void e(fcu $$0) {
+   public void e(fcv $$0) {
       List<aac<?>> $$1 = this.d($$0);
 
       for (asi $$2 : this.b.ag().t()) {
@@ -175,11 +175,11 @@ public class ams extends fdc {
       this.c.add($$0);
    }
 
-   public List<aac<?>> f(fcu $$0) {
+   public List<aac<?>> f(fcv $$0) {
       List<aac<?>> $$1 = Lists.newArrayList();
       $$1.add(new agi($$0, 1));
 
-      for (fct $$2 : fct.values()) {
+      for (fcu $$2 : fcu.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new aga($$2, $$0));
          }
@@ -188,7 +188,7 @@ public class ams extends fdc {
       return $$1;
    }
 
-   public void g(fcu $$0) {
+   public void g(fcv $$0) {
       List<aac<?>> $$1 = this.f($$0);
 
       for (asi $$2 : this.b.ag().t()) {
@@ -200,10 +200,10 @@ public class ams extends fdc {
       this.c.remove($$0);
    }
 
-   public int h(fcu $$0) {
+   public int h(fcv $$0) {
       int $$1 = 0;
 
-      for (fct $$2 : fct.values()) {
+      for (fcu $$2 : fcu.values()) {
          if (this.a($$2) == $$0) {
             $$1++;
          }
@@ -212,17 +212,17 @@ public class ams extends fdc {
       return $$1;
    }
 
-   public evi.a<fdd> b() {
-      return new evi.a<>(this::h, this::a, bbs.n);
+   public evj.a<fde> b() {
+      return new evj.a<>(this::h, this::a, bbs.n);
    }
 
-   private fdd h() {
-      fdd $$0 = new fdd(this);
+   private fde h() {
+      fde $$0 = new fde(this);
       this.a($$0::c);
       return $$0;
    }
 
-   private fdd a(ux $$0, js.a $$1) {
+   private fde a(ux $$0, js.a $$1) {
       return this.h().b($$0, $$1);
    }
 

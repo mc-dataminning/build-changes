@@ -1,17 +1,8 @@
-public class gza extends gys {
-   public cil.a a;
-   public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float i;
-   public float j;
-   public float k;
+import javax.annotation.Nullable;
 
-   public gza() {
-      this.a = cil.a.a;
-   }
+public class gza extends gxv {
+   public jm a = jm.c;
+   @Nullable
+   public clx b;
+   public int[] c = new int[0];
 }

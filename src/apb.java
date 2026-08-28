@@ -85,7 +85,7 @@ public class apb {
       return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(ew $$0, Collection<asi> $$1, alz $$2, axg $$3, fbx $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+   private static int a(ew $$0, Collection<asi> $$1, alz $$2, axg $$3, fby $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
       jq<axe> $$8 = jq.a(axe.a($$2));
       double $$9 = (double)bae.l($$8.a().a($$5));
       int $$10 = 0;
@@ -96,7 +96,7 @@ public class apb {
          double $$14 = $$4.e - $$12.dD();
          double $$15 = $$4.f - $$12.dH();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         fbx $$17 = $$4;
+         fby $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -104,7 +104,7 @@ public class apb {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new fbx($$12.dB() + $$13 / $$19 * 2.0, $$12.dD() + $$14 / $$19 * 2.0, $$12.dH() + $$15 / $$19 * 2.0);
+            $$17 = new fby($$12.dB() + $$13 / $$19 * 2.0, $$12.dD() + $$14 / $$19 * 2.0, $$12.dH() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

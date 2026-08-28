@@ -11,13 +11,13 @@ public class bds extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.c);
+      Type<?> $$0 = this.getInputSchema().getType(bix.c);
       Type<?> $$1 = $$0.findFieldType("Level");
       OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
       return this.fixTypeEverywhereTyped(
          "ChunkLightRemoveFix",
          $$0,
-         this.getOutputSchema().getType(biw.c),
+         this.getOutputSchema().getType(bix.c),
          $$1x -> $$1x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("isLightOn")))
       );
    }

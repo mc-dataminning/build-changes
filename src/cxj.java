@@ -1,32 +1,83 @@
-public interface cxj {
-   int a = 256;
-   float b = 7.0F;
-   aly<cxh> c = a("ponder_goat_horn");
-   aly<cxh> d = a("sing_goat_horn");
-   aly<cxh> e = a("seek_goat_horn");
-   aly<cxh> f = a("feel_goat_horn");
-   aly<cxh> g = a("admire_goat_horn");
-   aly<cxh> h = a("call_goat_horn");
-   aly<cxh> i = a("yearn_goat_horn");
-   aly<cxh> j = a("dream_goat_horn");
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 
-   private static aly<cxh> a(String $$0) {
-      return aly.a(mb.I, alz.b($$0));
+public class cxj extends cxl {
+   private final ayk<cxi> a;
+
+   public cxj(ayk<cxi> $$0, cxl.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   static void a(rk<cxh> $$0) {
-      a($$0, c, (jq<axe>)axf.mX.get(0), 7.0F, 256.0F);
-      a($$0, d, (jq<axe>)axf.mX.get(1), 7.0F, 256.0F);
-      a($$0, e, (jq<axe>)axf.mX.get(2), 7.0F, 256.0F);
-      a($$0, f, (jq<axe>)axf.mX.get(3), 7.0F, 256.0F);
-      a($$0, g, (jq<axe>)axf.mX.get(4), 7.0F, 256.0F);
-      a($$0, h, (jq<axe>)axf.mX.get(5), 7.0F, 256.0F);
-      a($$0, i, (jq<axe>)axf.mX.get(6), 7.0F, 256.0F);
-      a($$0, j, (jq<axe>)axf.mX.get(7), 7.0F, 256.0F);
+   @Override
+   public void a(cxp $$0, cxl.b $$1, List<xv> $$2, czh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      js.a $$4 = $$1.a();
+      if ($$4 != null) {
+         Optional<jq<cxi>> $$5 = this.a($$0, $$4);
+         if ($$5.isPresent()) {
+            yj $$6 = $$5.get().a().d().f();
+            xy.a($$6, ys.a.a(n.h));
+            $$2.add($$6);
+         }
+      }
    }
 
-   static void a(rk<cxh> $$0, aly<cxh> $$1, jq<axe> $$2, float $$3, float $$4) {
-      yj $$5 = xv.c(ae.a("instrument", $$1.a()));
-      $$0.a($$1, new cxh($$2, $$3, $$4, $$5));
+   public static cxp a(cxl $$0, jq<cxi> $$1) {
+      cxp $$2 = new cxp($$0);
+      $$2.b(ku.Z, $$1);
+      return $$2;
+   }
+
+   @Override
+   public btj a(dhi $$0, cpx $$1, bti $$2) {
+      cxp $$3 = $$1.b($$2);
+      Optional<? extends jq<cxi>> $$4 = this.a($$3, $$1.dY());
+      if ($$4.isPresent()) {
+         cxi $$5 = $$4.get().a();
+         $$1.c($$2);
+         a($$0, $$1, $$5);
+         $$1.gE().a($$3, bae.d($$5.b() * 20.0F));
+         $$1.b(axp.c.b(this));
+         return btj.c;
+      } else {
+         return btj.d;
+      }
+   }
+
+   @Override
+   public int a(cxp $$0, bwg $$1) {
+      Optional<jq<cxi>> $$2 = this.a($$0, $$1.dY());
+      return $$2.<Integer>map($$0x -> bae.d(((cxi)$$0x.a()).b() * 20.0F)).orElse(0);
+   }
+
+   private Optional<jq<cxi>> a(cxp $$0, js.a $$1) {
+      jq<cxi> $$2 = $$0.a(ku.Z);
+      if ($$2 != null) {
+         return Optional.of($$2);
+      } else {
+         Optional<ju.c<cxi>> $$3 = $$1.d(mb.I).a(this.a);
+         if ($$3.isPresent()) {
+            Iterator<jq<cxi>> $$4 = $$3.get().iterator();
+            if ($$4.hasNext()) {
+               return Optional.of($$4.next());
+            }
+         }
+
+         return Optional.empty();
+      }
+   }
+
+   @Override
+   public cxr b(cxp $$0) {
+      return cxr.i;
+   }
+
+   private static void a(dhi $$0, cpx $$1, cxi $$2) {
+      axe $$3 = $$2.a().a();
+      float $$4 = $$2.c() / 16.0F;
+      $$0.a($$1, $$1, $$3, axg.c, $$4, 1.0F);
+      $$0.a(ecr.B, $$1.du(), ecr.a.a($$1));
    }
 }

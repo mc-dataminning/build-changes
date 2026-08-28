@@ -1,29 +1,19 @@
-public class dcx extends dbj {
-   public dcx(String $$0, dbp $$1, dbz $$2, cxo $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public record dcx(cxp a) implements dck {
+   @Override
+   public cxp a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   protected cxk f() {
-      return cxs.fc;
+   public int a() {
+      return 1;
    }
 
-   @Override
-   public dcn<dcx> a() {
-      return dcn.o;
-   }
-
-   @Override
-   public dco<dcx> b() {
-      return dco.b;
-   }
-
-   @Override
-   public dcg h() {
-      return switch (this.e()) {
-         case b -> dcf.f;
-         case a -> dcf.e;
-         case c -> dcf.g;
-      };
+   public cxp c() {
+      return this.a;
    }
 }

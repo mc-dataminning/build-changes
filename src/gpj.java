@@ -1,29 +1,104 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class gpj implements gpk.a {
-   private final fmf a;
+public class gpj implements gpl.a {
+   final fmg a;
    private double b = Double.MIN_VALUE;
-   private List<fcr> c = Collections.emptyList();
+   private final int c = 12;
+   @Nullable
+   private gpj.a d;
 
-   public gpj(fmf $$0) {
+   public gpj(fmg $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fgr $$0, glk $$1, double $$2, double $$3, double $$4) {
+   public void a(fgs $$0, gll $$1, double $$2, double $$3, double $$4) {
       double $$5 = (double)ae.d();
-      if ($$5 - this.b > 1.0E8) {
+      if ($$5 - this.b > 3.0E9) {
          this.b = $$5;
-         bvj $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dW().d($$6, $$6.cR().g(6.0)));
+         hfw $$6 = this.a.V();
+         if ($$6 != null) {
+            this.d = new gpj.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
+         }
       }
 
-      fgv $$7 = $$1.getBuffer(glu.y());
+      if (this.d != null) {
+         Map<dgo, String> $$7 = this.d.b.getNow(null);
+         double $$8 = this.a.j.k().b().e * 0.85;
 
-      for (fcr $$8 : this.c) {
-         gpk.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+         for (Entry<dgo, String> $$9 : this.d.a.entrySet()) {
+            dgo $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               gpl.a($$0, $$1, $$14, (double)kj.a($$10.h, 8), $$8 + (double)$$13, (double)kj.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
+         }
+      }
+   }
+
+   final class a {
+      final Map<dgo, String> a;
+      final CompletableFuture<Map<dgo, String>> b;
+
+      a(final hfw $$0, final double $$1, final double $$2) {
+         gfk $$3 = gpj.this.a.s;
+         aly<dhi> $$4 = $$3.ah();
+         int $$5 = kj.a($$1);
+         int $$6 = kj.a($$2);
+         Builder<dgo, String> $$7 = ImmutableMap.builder();
+         gfg $$8 = $$3.h();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               dgo $$11 = new dgo($$9, $$10);
+               String $$12 = "";
+               eaa $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.E() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.a = $$7.build();
+         this.b = $$0.a(() -> {
+            ash $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<dgo, String> $$5x = ImmutableMap.builder();
+               ase $$6x = $$4x.m();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     dgo $$9x = new dgo($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
       }
    }
 }

@@ -1,31 +1,46 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehe implements eiz {
-   public static final Codec<ehe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dxu.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dxu.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dxu.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dxu.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               eew.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ehe::new)
-   );
-   public final dxu b;
-   public final dxu c;
-   public final dxu d;
-   public final dxu e;
-   public final eew f;
-   public final boolean g;
+public class ehe extends efy {
+   public ehe(Codec<ejc> $$0) {
+      super($$0);
+   }
 
-   public ehe(dxu $$0, dxu $$1, dxu $$2, dxu $$3, eew $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   protected void a(dhj $$0, bam $$1, jh $$2, int $$3, jh.a $$4, ejc $$5) {
+      int $$6 = $$5.d;
+
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).s()) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dxv $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(dol.e) && $$19.b(dol.c) && $$19.b(dol.b) && $$19.b(dol.d)) {
+                     $$19 = $$19.b(dol.e, Boolean.valueOf($$15))
+                        .b(dol.c, Boolean.valueOf($$16))
+                        .b(dol.b, Boolean.valueOf($$17))
+                        .b(dol.d, Boolean.valueOf($$18));
+                  }
+
+                  this.a($$0, $$4, $$19);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

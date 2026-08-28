@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface emz {
+public interface emz {
+   @Nullable
+   dxv a(edu var1, int var2, int var3, int var4);
 }

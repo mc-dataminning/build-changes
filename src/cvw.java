@@ -1,127 +1,71 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cvw extends cxk {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+public class cvw extends cxl {
+   private final bvr<? extends cru> a;
 
-   public cvw(cxk.a $$0) {
-      super($$0);
+   public cvw(bvr<? extends cru> $$0, cxl.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public bti a(dbh $$0) {
-      dhh $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      jh $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.C) {
-            $$0.o().a(ecq.C);
-            $$1.c(1505, $$2, 15);
-         }
-
-         return bti.a;
+   public btj a(dhi $$0, cpx $$1, bti $$2) {
+      cxp $$3 = $$1.b($$2);
+      fbw $$4 = a($$0, $$1, dgq.b.c);
+      if ($$4.d() == fbw.a.a) {
+         return btj.e;
       } else {
-         dxu $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.c($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.C) {
-               $$0.o().a(ecq.C);
-               $$1.c(1505, $$3, 15);
-            }
+         fby $$5 = $$1.g(1.0F);
+         double $$6 = 5.0;
+         List<bvk> $$7 = $$0.a($$1, $$1.cR().b($$5.c(5.0)).g(1.0), bvp.h);
+         if (!$$7.isEmpty()) {
+            fby $$8 = $$1.bF();
 
-            return bti.a;
+            for (bvk $$9 : $$7) {
+               fbt $$10 = $$9.cR().g((double)$$9.bS());
+               if ($$10.d($$8)) {
+                  return btj.e;
+               }
+            }
+         }
+
+         if ($$4.d() == fbw.a.b) {
+            cru $$11 = this.a($$0, $$4, $$3, $$1);
+            if ($$11 == null) {
+               return btj.d;
+            } else {
+               $$11.v($$1.dM());
+               if (!$$0.a($$11, $$11.cR())) {
+                  return btj.d;
+               } else {
+                  if (!$$0.C) {
+                     $$0.b($$11);
+                     $$0.a($$1, ecr.t, $$4.g());
+                     $$3.a(1, $$1);
+                  }
+
+                  $$1.b(axp.c.b(this));
+                  return btj.a;
+               }
+            }
          } else {
-            return bti.e;
+            return btj.e;
          }
       }
    }
 
-   public static boolean a(cxo $$0, dhh $$1, jh $$2) {
-      dxu $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dko $$4 && $$4.b($$1, $$2, $$3)) {
-         if ($$1 instanceof ash) {
-            if ($$4.a($$1, $$1.A, $$2, $$3)) {
-               $$4.a((ash)$$1, $$1.A, $$2, $$3);
-            }
-
-            $$0.h(1);
+   @Nullable
+   private cru a(dhi $$0, fbw $$1, cxp $$2, cpx $$3) {
+      cru $$4 = this.a.a($$0, bvq.m);
+      if ($$4 != null) {
+         fby $$5 = $$1.g();
+         $$4.p($$5.d, $$5.e, $$5.f);
+         if ($$0 instanceof ash $$6) {
+            bvr.<cru>a($$6, $$2, $$3).accept($$4);
          }
-
-         return true;
       }
 
-      return false;
-   }
-
-   public static boolean a(cxo $$0, dhh $$1, jh $$2, @Nullable jm $$3) {
-      if ($$1.a_($$2).a(dkn.J) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof ash)) {
-            return true;
-         } else {
-            bam $$4 = $$1.H_();
-
-            label80:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               jh $$6 = $$2;
-               dxu $$7 = dkn.bD.m();
-
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).m($$1, $$6)) {
-                     continue label80;
-                  }
-               }
-
-               jq<dij> $$9 = $$1.t($$6);
-               if ($$9.a(axt.ac)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = ma.e.a(axu.au, $$1.A).map($$0x -> ((dkl)$$0x.a()).m()).orElse($$7);
-                     if ($$7.b(djw.c)) {
-                        $$7 = $$7.b(djw.c, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = ma.e.a(axu.as, $$1.A).map($$0x -> ((dkl)$$0x.a()).m()).orElse($$7);
-                  }
-               }
-
-               if ($$7.a(axu.au, $$0x -> $$0x.b(djw.c))) {
-                  for (int $$10 = 0; !$$7.a((dhk)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.b(djw.c, jm.c.a.a($$4));
-                  }
-               }
-
-               if ($$7.a((dhk)$$1, $$6)) {
-                  dxu $$11 = $$1.a_($$6);
-                  if ($$11.a(dkn.J) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(dkn.bD) && ((dko)dkn.bD).b($$1, $$6, $$11) && $$4.a(10) == 0) {
-                     ((dko)dkn.bD).a((ash)$$1, $$4, $$6, $$11);
-                  }
-               }
-            }
-
-            $$0.h(1);
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public static void a(dhi $$0, jh $$1, int $$2) {
-      dxu $$3 = $$0.a_($$1);
-      if ($$3.b() instanceof dko $$4) {
-         jh $$5 = $$4.a($$1);
-         switch ($$4.ar_()) {
-            case a:
-               bai.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, ls.O);
-               break;
-            case b:
-               bai.a($$0, $$5, $$2, ls.O);
-         }
-      } else if ($$3.a(dkn.J)) {
-         bai.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, ls.O);
-      }
+      return $$4;
    }
 }

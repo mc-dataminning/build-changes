@@ -10,18 +10,18 @@ public class any {
    public static void a(CommandDispatcher<ew> $$0) {
       LiteralArgumentBuilder<ew> $$1 = ex.a("difficulty");
 
-      for (btf $$2 : btf.values()) {
+      for (btg $$2 : btg.values()) {
          $$1.then(ex.a($$2.e()).executes($$1x -> a((ew)$$1x.getSource(), $$2)));
       }
 
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         btf $$1x = ((ew)$$0x.getSource()).e().al();
+         btg $$1x = ((ew)$$0x.getSource()).e().al();
          ((ew)$$0x.getSource()).a(() -> xv.a("commands.difficulty.query", $$1x.b()), false);
          return $$1x.a();
       }));
    }
 
-   public static int a(ew $$0, btf $$1) throws CommandSyntaxException {
+   public static int a(ew $$0, btg $$1) throws CommandSyntaxException {
       MinecraftServer $$2 = $$0.l();
       if ($$2.aZ().q() == $$1) {
          throw a.create($$1.e());

@@ -1,24 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+public class cfy extends cgk {
+   public static final float a = 8.0F;
 
-public class cfy extends cgi<cns> {
    @Override
-   public Set<cfj<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cfj.B)));
+   protected boolean a(ash $$0, bwg $$1, bwg $$2) {
+      return this.b($$1, $$2) && $$2.bm() && (this.b($$2) || this.a($$1, $$2)) && cgq.c($$0, $$1, $$2);
    }
 
-   protected void a(ash $$0, cns $$1) {
-      super.a($$0, $$1);
-      $$1.ec()
-         .c(cfj.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bvo.e)
-         .filter($$2 -> cgp.c($$0, $$1, $$2))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.ec().a(cfj.B, $$1x), () -> $$1.ec().b(cfj.B));
+   private boolean a(bwg $$0, bwg $$1) {
+      return !$$0.ec().a(cfk.U) && $$1.aq().a(axy.j);
+   }
+
+   private boolean b(bwg $$0) {
+      return $$0.aq().a(axy.i);
+   }
+
+   private boolean b(bwg $$0, bwg $$1) {
+      return $$1.g((bvk)$$0) <= 64.0;
+   }
+
+   @Override
+   protected cfk<bwg> b() {
+      return cfk.B;
    }
 }

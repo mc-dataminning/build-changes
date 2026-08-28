@@ -10,11 +10,11 @@ public class anx {
       );
    }
 
-   private static int a(ew $$0, dhe $$1) {
+   private static int a(ew $$0, dhf $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      dhe $$4 = $$3.bd();
+      dhf $$4 = $$3.bd();
       if ($$4 != null) {
          for (asi $$5 : $$3.ag().t()) {
             if ($$5.a($$4)) {

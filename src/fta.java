@@ -1,31 +1,42 @@
-public class fta extends ftx {
-   private foy a;
-   private final Runnable b;
-   private final Runnable c;
+public class fta extends fty {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xv c = xv.c("credits_and_attribution.screen.title");
+   private static final xv d = xv.c("credits_and_attribution.button.credits");
+   private static final xv s = xv.c("credits_and_attribution.button.attribution");
+   private static final xv u = xv.c("credits_and_attribution.button.licenses");
+   private final fty v;
+   private final fru w = new fru(this);
 
-   public fta(Runnable $$0, Runnable $$1) {
-      super(xv.c("datapackFailure.title"));
-      this.a = foy.a;
-      this.b = $$0;
-      this.c = $$1;
+   public fta(fty $$0) {
+      super(c);
+      this.v = $$0;
    }
 
    @Override
    protected void aT_() {
-      super.aT_();
-      this.a = foy.a(this.p, this.m(), this.n - 50);
-      this.c(foe.a(xv.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
-      this.c(foe.a(xu.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
+      this.w.a(c, this.p);
+      fry $$0 = this.w.c(fry.d()).a(8);
+      $$0.c().b();
+      $$0.a(fof.a(d, $$0x -> this.l()).a(210).a());
+      $$0.a(fof.a(s, fsv.b(this, aza.d)).a(210).a());
+      $$0.a(fof.a(u, fsv.b(this, aza.e)).a(210).a());
+      this.w.b(fof.a(xu.d, $$0x -> this.aP_()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
    @Override
-   public void a(fnr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.n / 2, 70);
+   protected void c() {
+      this.w.a();
+   }
+
+   private void l() {
+      this.m.a(new fub(false, () -> this.m.a(this)));
    }
 
    @Override
-   public boolean aH_() {
-      return false;
+   public void aP_() {
+      this.m.a(this.v);
    }
 }

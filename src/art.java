@@ -2,8 +2,8 @@ public record art(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public dgn a() {
-      return new dgn(kj.a(this.a), kj.a(this.b));
+   public dgo a() {
+      return new dgo(kj.a(this.a), kj.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record art(int a, int b) {
 
    @Override
    public int hashCode() {
-      return dgn.d(this.a, this.b);
+      return dgo.d(this.a, this.b);
    }
 
    public int c() {

@@ -1,58 +1,74 @@
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dzw<T> implements eaf<T> {
-   private final jv<T> a;
+public class dzw extends eaa {
+   private final jq<dik> n;
 
-   public dzw(jv<T> $$0) {
-      this.a = $$0;
-   }
-
-   public static <A> eaf<A> a(int $$0, jv<A> $$1, eag<A> $$2, List<A> $$3) {
-      return new dzw<>($$1);
+   public dzw(dhi $$0, dgo $$1, jq<dik> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
    @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
+   public dxv a_(jh $$0) {
+      return dko.nw.m();
+   }
+
+   @Nullable
+   @Override
+   public dxv a(jh $$0, dxv $$1, boolean $$2) {
+      return null;
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
+   public etx b_(jh $$0) {
+      return ety.a.g();
+   }
+
+   @Override
+   public int i(jh $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public dux a(jh $$0, eaa.b $$1) {
+      return null;
+   }
+
+   @Override
+   public void b(dux $$0) {
+   }
+
+   @Override
+   public void a(dux $$0) {
+   }
+
+   @Override
+   public void d(jh $$0) {
+   }
+
+   @Override
+   public boolean E() {
       return true;
    }
 
    @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new eae($$0);
-      } else {
-         return $$1;
-      }
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
    @Override
-   public void a(ws $$0) {
+   public boolean c(int $$0) {
+      return true;
    }
 
    @Override
-   public void b(ws $$0) {
+   public arw F() {
+      return arw.b;
    }
 
    @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return this.a.d();
-   }
-
-   @Override
-   public eaf<T> a(eag<T> $$0) {
-      return this;
+   public jq<dik> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

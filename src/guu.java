@@ -1,33 +1,46 @@
-public class guu extends gqj<ciz, hai, gec> {
-   public guu(grp.a $$0) {
-      super($$0, new gec($$0.a(gem.dB)), new gec($$0.a(gem.dD)), 0.5F);
-      this.a(new gws(this, $$0.f(), $$0.h()));
-      this.a(new gwt(this));
+public class guu extends grp<cre, hai> {
+   private static final alz a = alz.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alz b = alz.b("textures/entity/wither/wither.png");
+   private final gdi h;
+
+   public guu(grq.a $$0) {
+      super($$0);
+      this.h = new gdi($$0.a(gen.dA));
    }
 
-   protected int a(hai $$0) {
-      float $$1 = $$0.f;
-      return $$1 == 1.0F ? -1 : ayp.a(1.0F, $$1, $$1, $$1);
+   public static geu a() {
+      gew $$0 = new gew();
+      gey $$1 = $$0.a();
+      $$1.a("head", get.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), geq.a);
+      return geu.a($$0, 64, 64);
    }
 
-   public alz b(hai $$0) {
-      return $$0.g;
+   protected int a(cre $$0, jh $$1) {
+      return 15;
+   }
+
+   public void a(hai $$0, fgs $$1, gll $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      fgw $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
+      this.h.a(0.0F, $$0.c, $$0.b);
+      this.h.a($$1, $$4, $$3, hbc.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private alz a(hai $$0) {
+      return $$0.a ? a : b;
    }
 
    public hai b() {
       return new hai();
    }
 
-   public void a(ciz $$0, hai $$1, float $$2) {
+   public void a(cre $$0, hai $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.ad_();
-      $$1.b = $$0.x();
-      $$1.c = $$0.gD();
-      $$1.d = $$0.L($$2);
-      $$1.e = $$0.K($$2);
-      $$1.g = $$0.gA();
-      $$1.f = $$0.J($$2);
-      $$1.h = $$0.p() ? $$0.gE() : null;
-      $$1.i = $$0.af().v();
+      $$1.a = $$0.v();
+      $$1.c = $$0.k($$2);
+      $$1.b = $$0.j($$2);
    }
 }

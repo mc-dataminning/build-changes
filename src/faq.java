@@ -1,36 +1,53 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record faq(float c) implements fat {
-   public static final MapCodec<faq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(faq::c)).apply($$0, faq::new));
-   public static final Codec<faq> b = Codec.FLOAT.xmap(faq::new, faq::c);
+public record faq(fau b, fau c) implements fau {
+   public static final MapCodec<faq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fav.a.fieldOf("n").forGetter(faq::c), fav.a.fieldOf("p").forGetter(faq::d)).apply($$0, faq::new)
+   );
 
    @Override
-   public fas b() {
-      return fau.b;
+   public fat b() {
+      return fav.d;
    }
 
    @Override
-   public float b(ewo $$0) {
-      return this.c;
-   }
+   public int a(ewp $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      bam $$3 = $$0.b();
+      int $$4 = 0;
 
-   public static faq a(float $$0) {
-      return new faq($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((faq)$$0).c, this.c) == 0 : false;
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
       }
+
+      return $$4;
    }
 
    @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public float b(ewp $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static faq a(int $$0, float $$1) {
+      return new faq(far.a((float)$$0), far.a($$1));
+   }
+
+   @Override
+   public Set<bbn<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public fau c() {
+      return this.b;
+   }
+
+   public fau d() {
+      return this.c;
    }
 }

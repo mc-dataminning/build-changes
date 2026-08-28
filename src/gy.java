@@ -27,9 +27,9 @@ public class gy implements ArgumentType<gu> {
       return new gy($$0);
    }
 
-   public static fbw a(CommandContext<ew> $$0, String $$1) {
-      fbx $$2 = ((gu)$$0.getArgument($$1, gu.class)).a((ew)$$0.getSource());
-      return new fbw((float)$$2.d, (float)$$2.f);
+   public static fbx a(CommandContext<ew> $$0, String $$1) {
+      fby $$2 = ((gu)$$0.getArgument($$1, gu.class)).a((ew)$$0.getSource());
+      return new fbx((float)$$2.d, (float)$$2.f);
    }
 
    public gu a(StringReader $$0) throws CommandSyntaxException {

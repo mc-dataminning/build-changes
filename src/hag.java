@@ -1,6 +1,4 @@
-public class hag extends gys {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+public class hag extends gyt {
+   public int a;
+   public boolean b;
 }

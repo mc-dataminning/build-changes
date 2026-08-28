@@ -1,59 +1,80 @@
-public interface dhj {
-   int M_();
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   int L_();
-
-   default int am() {
-      return this.L_() + this.M_() - 1;
+public interface dhj extends dgt, dhp, dhx {
+   @Override
+   default long ak() {
+      return this.D_().d();
    }
 
-   default int an() {
-      return this.ap() - this.ao() + 1;
+   long J_();
+
+   @Override
+   default <T> fdq<T> a(jh $$0, T $$1, int $$2, fdu $$3) {
+      return new fdq<>($$1, $$0, this.D_().c() + (long)$$2, $$3, this.J_());
    }
 
-   default int ao() {
-      return kj.a(this.L_());
+   @Override
+   default <T> fdq<T> a(jh $$0, T $$1, int $$2) {
+      return new fdq<>($$1, $$0, this.D_().c() + (long)$$2, this.J_());
    }
 
-   default int ap() {
-      return kj.a(this.am());
+   evz D_();
+
+   bth d_(jh var1);
+
+   @Nullable
+   MinecraftServer p();
+
+   default btg al() {
+      return this.D_().q();
    }
 
-   default boolean d(int $$0) {
-      return $$0 >= this.L_() && $$0 <= this.am();
+   dzu R();
+
+   @Override
+   default boolean b(int $$0, int $$1) {
+      return this.R().b($$0, $$1);
    }
 
-   default boolean s(jh $$0) {
-      return this.e($$0.v());
+   bam H_();
+
+   default void b(jh $$0, dkm $$1) {
    }
 
-   default boolean e(int $$0) {
-      return $$0 < this.L_() || $$0 > this.am();
+   default void a(jm $$0, jh $$1, jh $$2, dxv $$3, int $$4, int $$5) {
+      eve.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   default int f(int $$0) {
-      return this.g(kj.a($$0));
+   default void a(@Nullable cpx $$0, jh $$1, axe $$2, axg $$3) {
+      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
    }
 
-   default int g(int $$0) {
-      return $$0 - this.ao();
+   void a(@Nullable cpx var1, jh var2, axe var3, axg var4, float var5, float var6);
+
+   void a(lq var1, double var2, double var4, double var6, double var8, double var10, double var12);
+
+   void a(@Nullable cpx var1, int var2, jh var3, int var4);
+
+   default void c(int $$0, jh $$1, int $$2) {
+      this.a(null, $$0, $$1, $$2);
    }
 
-   default int h(int $$0) {
-      return $$0 + this.ao();
+   void a(jq<ecr> var1, fby var2, ecr.a var3);
+
+   default void a(@Nullable bvk $$0, jq<ecr> $$1, fby $$2) {
+      this.a($$1, $$2, new ecr.a($$0, null));
    }
 
-   static dhj e(final int $$0, final int $$1) {
-      return new dhj() {
-         @Override
-         public int M_() {
-            return $$1;
-         }
+   default void a(@Nullable bvk $$0, jq<ecr> $$1, jh $$2) {
+      this.a($$1, $$2, new ecr.a($$0, null));
+   }
 
-         @Override
-         public int L_() {
-            return $$0;
-         }
-      };
+   default void a(jq<ecr> $$0, jh $$1, ecr.a $$2) {
+      this.a($$0, fby.b($$1), $$2);
+   }
+
+   default void a(aly<ecr> $$0, jh $$1, ecr.a $$2) {
+      this.a(this.K_().e(mb.G).b($$0), $$1, $$2);
    }
 }

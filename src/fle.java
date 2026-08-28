@@ -1,56 +1,131 @@
 import com.mojang.logging.LogUtils;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public abstract class fle implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fle extends flf {
+   private static final xv b = xv.c("multiplayer.applyingPack");
+   private static final Logger c = LogUtils.getLogger();
+   private static final xv d = xv.c("mco.connect.connecting");
+   private final fij e;
+   private final fty f;
 
-   protected static void a(long $$0) {
+   public fle(fty $$0, fij $$1) {
+      this.f = $$0;
+      this.e = $$1;
+   }
+
+   @Override
+   public void run() {
+      fik $$0;
       try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+         $$0 = this.f();
+      } catch (CancellationException var4) {
+         c.info("User aborted connecting to realms");
+         return;
+      } catch (fje var5) {
+         switch (var5.a.a()) {
+            case 6002:
+               a(new fkl(this.f, this.e));
+               return;
+            case 6006:
+               boolean $$3 = fmg.Q().b(this.e.g);
+               a(
+                  (fty)($$3
+                     ? new fjq(this.f, this.e.a, this.e.i())
+                     : new fjw(xv.c("mco.brokenworld.nonowner.title"), xv.c("mco.brokenworld.nonowner.error"), this.f))
+               );
+               return;
+            default:
+               this.a(var5);
+               c.error("Couldn't connect to world", var5);
+               return;
+         }
+      } catch (TimeoutException var6) {
+         this.a(xv.c("mco.errorMessage.connectionFailure"));
+         return;
+      } catch (Exception var7) {
+         c.error("Couldn't connect to world", var7);
+         this.a(var7);
+         return;
       }
-   }
 
-   public static void a(ftx $$0) {
-      fmf $$1 = fmf.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(xv $$0) {
-      this.b();
-      fmf $$1 = fmf.Q();
-      $$1.execute(() -> $$1.a(new fjv($$0, new fhc(new ftz()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fjd $$1) {
-         this.a($$1.a.b());
+      if ($$0.a == null) {
+         this.a(xv.c("mco.errorMessage.connectionFailure"));
       } else {
-         this.a(xv.b($$0.getMessage()));
+         boolean $$7 = $$0.b != null && $$0.c != null;
+         fty $$8 = (fty)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
+         a($$8);
       }
    }
 
-   protected void a(fjd $$0) {
-      this.a($$0.a.b());
+   private static UUID a(fij $$0) {
+      return $$0.q != null
+         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.q).getBytes(StandardCharsets.UTF_8))
+         : UUID.nameUUIDFromBytes(("realms:" + Objects.requireNonNullElse($$0.c, "") + ":" + $$0.p).getBytes(StandardCharsets.UTF_8));
    }
 
-   public abstract xv a();
-
-   public boolean d() {
-      return this.c;
+   @Override
+   public xv a() {
+      return d;
    }
 
-   public void c() {
+   private fik f() throws fje, TimeoutException, CancellationException {
+      fhi $$0 = fhi.a();
+
+      for (int $$1 = 0; $$1 < 40; $$1++) {
+         if (this.d()) {
+            throw new CancellationException();
+         }
+
+         try {
+            return $$0.c(this.e.a);
+         } catch (fjf var4) {
+            a((long)var4.c);
+         }
+      }
+
+      throw new TimeoutException();
    }
 
-   public void e() {
+   public fjy a(fik $$0) {
+      return new fjz(this.f, new flc(this.f, this.e, $$0));
    }
 
-   public void b() {
-      this.c = true;
+   private fpi a(fik $$0, UUID $$1, Function<fik, fty> $$2) {
+      xv $$3 = xv.c("mco.configure.world.resourcepack.question");
+      return fke.a(this.f, $$3, $$3x -> {
+         a(new ftj(b));
+         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
+            fmg.Q().af().i();
+            c.error("Failed to download resource pack from {}", $$0, $$1xx);
+            a(new fjw(xv.c("mco.download.resourcePack.fail"), this.f));
+            return null;
+         });
+      });
+   }
+
+   private CompletableFuture<?> a(fik $$0, UUID $$1) {
+      try {
+         if ($$0.b == null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
+         } else if ($$0.c == null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
+         } else {
+            hek $$2 = fmg.Q().af();
+            CompletableFuture<Void> $$3 = $$2.b($$1);
+            $$2.g();
+            $$2.a($$1, new URL($$0.b), $$0.c);
+            return $$3;
+         }
+      } catch (Exception var5) {
+         return CompletableFuture.failedFuture(var5);
+      }
    }
 }

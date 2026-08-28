@@ -1,39 +1,57 @@
-public class gio extends gir {
-   private final gcg a;
-   private final glu b = glu.j(gri.a);
-
-   gio(gfj $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new gbt(fmf.Q().aS().a(gem.aB));
-      this.u = 0.0F;
-      this.t = 30;
+public class gio extends gjs {
+   gio(gfk $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public giv b() {
-      return giv.d;
+   public giw b() {
+      return giw.b;
    }
 
    @Override
-   public void a(fgv $$0, flo $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * bae.a($$3 * (float) Math.PI);
-      int $$5 = ayp.a($$4, 1.0F, 1.0F, 1.0F);
-      fgr $$6 = new fgr();
-      $$6.a($$1.f());
-      $$6.a(a.b.rotationDegrees(60.0F - 150.0F * $$3));
-      float $$7 = 0.42553192F;
-      $$6.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$6.a(0.0F, -0.56F, 3.5F);
-      glk.a $$8 = fmf.Q().aR().c();
-      fgv $$9 = $$8.getBuffer(this.b);
-      this.a.a($$6, $$9, 15728880, hbb.d, $$5);
-      $$8.b();
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
    }
 
-   public static class a implements giu<lw> {
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gio($$1, $$2, $$3, $$4);
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(ls.af, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+   }
+
+   public static class a implements giv<lw> {
+      private final gjn a;
+
+      public a(gjn $$0) {
+         this.a = $$0;
+      }
+
+      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gio $$8 = new gio($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,24 +1,56 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cgh extends cgp<bwh> {
-   private static final long b = 32L;
-   private static final long c = 16L;
-   public static final int a = 32;
+public class cgh extends cgq<bwi> {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final Long2LongMap d = new Long2LongOpenHashMap();
+   private int e;
+   private long f;
 
-   @Override
-   public Set<cfj<?>> a() {
-      return ImmutableSet.of(cfj.L);
+   public cgh() {
+      super(20);
    }
 
-   protected void a(ash $$0, bwh $$1) {
-      bxh<?> $$2 = $$1.ec();
-      List<cma> $$3 = $$0.a(cma.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<cma> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.l())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(cfj.L, $$4);
+   @Override
+   public Set<cfk<?>> a() {
+      return ImmutableSet.of(cfk.w);
+   }
+
+   protected void a(ash $$0, bwi $$1) {
+      if ($$1.e_()) {
+         this.e = 0;
+         this.f = $$0.ac() + (long)$$0.H_().a(20);
+         chk $$2 = $$0.z();
+         Predicate<jh> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.d.containsKey($$1x)) {
+               return false;
+            } else if (++this.e >= 5) {
+               return false;
+            } else {
+               this.d.put($$1x, this.f + 40L);
+               return true;
+            }
+         };
+         Set<Pair<jq<chn>, jh>> $$4 = $$2.b($$0x -> $$0x.a(cho.n), $$3, $$1.dw(), 48, chk.b.c).collect(Collectors.toSet());
+         eul $$5 = bxs.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            jh $$6 = $$5.l();
+            Optional<jq<chn>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.ec().a(cfk.w, $$6);
+            }
+         } else if (this.e < 5) {
+            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
+         }
+      }
    }
 }

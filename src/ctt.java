@@ -1,17 +1,19 @@
-import java.util.List;
+public class ctt extends cuz {
+   private final cts a;
 
-public interface ctt extends btb, cvd {
-   int az_();
-
-   int g();
-
-   List<cxo> h();
-
-   default dbr aC_() {
-      return this.aD_().a();
+   public ctt(btc $$0, int $$1, int $$2, int $$3, cts $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   default dbr.a aD_() {
-      return dbr.b(this.az_(), this.g(), this.h());
+   @Override
+   public boolean a(cxp $$0) {
+      return !this.a.e(this.d) && super.a($$0);
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      this.a.a(this.c);
    }
 }

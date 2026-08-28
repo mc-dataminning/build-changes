@@ -25,7 +25,7 @@ public class ayp {
       return a(255, $$0, $$1, $$2);
    }
 
-   public static int a(fbx $$0) {
+   public static int a(fby $$0) {
       return a(b((float)$$0.a()), b((float)$$0.b()), b((float)$$0.c()));
    }
 

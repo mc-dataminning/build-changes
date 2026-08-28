@@ -1,20 +1,7 @@
+import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 public interface hel {
-   void a(UUID var1, hel.b var2);
-
-   void a(UUID var1, hel.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum b {
-      a,
-      b;
-   }
+   void a(Map<UUID, aub.c> var1, Consumer<aub.b> var2);
 }

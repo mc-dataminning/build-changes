@@ -1,49 +1,41 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public class elf extends eld {
-   public static final MapCodec<elf> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dxu.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dxu.a).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dxu.a).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, elf::new)
-   );
-   private final float g;
-   private final float h;
-   private final dxu i;
-   private final List<dxu> j;
-   private final List<dxu> k;
+public class elf extends ele {
+   public static final MapCodec<elf> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, elf::new));
+   protected final List<dxv> h;
 
-   public elf(long $$0, esz.a $$1, float $$2, float $$3, float $$4, dxu $$5, List<dxu> $$6, List<dxu> $$7) {
+   protected static <P extends elf> P4<Mu<P>, Long, eta.a, Float, List<dxv>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dxv.a).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public elf(long $$0, eta.a $$1, float $$2, List<dxv> $$3) {
       super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+      this.h = $$3;
    }
 
    @Override
-   protected elb<?> a() {
-      return elb.c;
+   protected elc<?> a() {
+      return elc.d;
    }
 
    @Override
-   public dxu a(bam $$0, jh $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ae.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ae.a(this.k, $$0) : this.i;
-      }
+   public dxv a(bam $$0, jh $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
+
+   protected dxv a(List<dxv> $$0, jh $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dxv a(List<dxv> $$0, double $$1) {
+      double $$2 = bae.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

@@ -1,17 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record emk(jq<cxk> c, emm d) {
+public class emk {
    public static final Codec<emk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cxk.e.fieldOf("display").forGetter($$0x -> $$0x.c), emm.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, emk::new)
+      $$0 -> $$0.group(Codec.intRange(0, ebq.c).fieldOf("height").forGetter(emk::a), ma.e.q().fieldOf("block").orElse(dko.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, emk::new)
    );
-   public static final Codec<jq<emk>> b = alv.a(mb.aQ, a);
+   private final dkm b;
+   private final int c;
 
-   public jq<cxk> a() {
+   public emk(int $$0, dkm $$1) {
+      this.c = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
       return this.c;
    }
 
-   public emm b() {
-      return this.d;
+   public dxv b() {
+      return this.b.m();
+   }
+
+   @Override
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + ma.e.b(this.b);
    }
 }

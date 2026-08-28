@@ -3,9 +3,9 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bda extends bhr {
+public class bda extends bhs {
    public bda(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", biw.s, "Sign");
+      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bix.s, "Sign");
    }
 
    private Dynamic<?> a(Dynamic<?> $$0, String $$1) {

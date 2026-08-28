@@ -1,5 +1,5 @@
-public record aiv(ddk b) implements aac<ahm> {
-   public static final zt<ws, aiv> a = zt.a(ddk.a, aiv::b, aiv::new);
+public record aiv(ddl b) implements aac<ahm> {
+   public static final zt<ws, aiv> a = zt.a(ddl.a, aiv::b, aiv::new);
 
    @Override
    public aae<aiv> a() {

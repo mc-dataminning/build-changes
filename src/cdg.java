@@ -1,13 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cdg extends cdl {
-   public cdg(bwh $$0, Class<? extends bwf> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(cdd.a.b, cdd.a.a));
+public class cdg extends ceb {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
+
+   public cdg(bwo $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
-   public cdg(bwh $$0, Class<? extends bwf> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(cdd.a.b, cdd.a.a));
+   @Nullable
+   @Override
+   protected fby h() {
+      float $$0 = this.b.dW().A.i();
+      if (this.b.dW().A.i() < 0.3F) {
+         return this.k();
+      } else {
+         fby $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
+         } else {
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
+         }
+
+         return $$1 == null ? this.k() : $$1;
+      }
+   }
+
+   @Nullable
+   private fby k() {
+      return che.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private fby l() {
+      ash $$0 = (ash)this.b.dW();
+      List<cpj> $$1 = $$0.a(bvr.bD, this.b.cR().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         cpj $$2 = $$1.get(this.b.dW().A.a($$1.size()));
+         fby $$3 = $$2.du();
+         return che.a(this.b, 10, 7, $$3);
+      }
+   }
+
+   @Nullable
+   private fby m() {
+      kj $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         jh $$1 = this.a($$0);
+         return $$1 == null ? null : che.a(this.b, 10, 7, fby.c($$1));
+      }
+   }
+
+   @Nullable
+   private kj n() {
+      ash $$0 = (ash)this.b.dW();
+      List<kj> $$1 = kj.a(kj.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   }
+
+   @Nullable
+   private jh a(kj $$0) {
+      ash $$1 = (ash)this.b.dW();
+      chk $$2 = $$1.z();
+      List<jh> $$3 = $$2.c($$0x -> true, $$0.k(), 8, chk.b.b).map(chl::g).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
+   }
+
+   private boolean a(cpj $$0) {
+      return $$0.a(this.b.dW().ac());
    }
 }

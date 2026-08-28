@@ -1,29 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class egy extends egv<ejd> {
-   public egy(Codec<ejd> $$0) {
-      super($$0);
+public class egy<FC extends eja> {
+   private final Optional<egi<?, ?>> a;
+   private final dig b;
+   private final dzr c;
+   private final bam d;
+   private final jh e;
+   private final FC f;
+
+   public egy(Optional<egi<?, ?>> $$0, dig $$1, dzr $$2, bam $$3, jh $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(egx<ejd> $$0) {
-      jh $$1 = $$0.e();
-      ejd $$2 = $$0.f();
-      dif $$3 = $$0.b();
-      jh.a $$4 = new jh.a();
+   public Optional<egi<?, ?>> a() {
+      return this.a;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.L_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).l()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
-      }
+   public dig b() {
+      return this.b;
+   }
 
-      return true;
+   public dzr c() {
+      return this.c;
+   }
+
+   public bam d() {
+      return this.d;
+   }
+
+   public jh e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

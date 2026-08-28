@@ -16,12 +16,12 @@ public record afe(List<afe.a> b, boolean c) implements aac<acr> {
       return this.c;
    }
 
-   public static record a(ddj d, byte e) {
+   public static record a(ddk d, byte e) {
       public static final byte a = 1;
       public static final byte b = 2;
-      public static final zt<xg, afe.a> c = zt.a(ddj.a, afe.a::c, zr.c, afe.a::d, afe.a::new);
+      public static final zt<xg, afe.a> c = zt.a(ddk.a, afe.a::c, zr.c, afe.a::d, afe.a::new);
 
-      public a(ddj $$0, boolean $$1, boolean $$2) {
+      public a(ddk $$0, boolean $$1, boolean $$2) {
          this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
       }
 
@@ -33,7 +33,7 @@ public record afe(List<afe.a> b, boolean c) implements aac<acr> {
          return (this.e & 2) != 0;
       }
 
-      public ddj c() {
+      public ddk c() {
          return this.d;
       }
 

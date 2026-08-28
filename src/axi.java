@@ -1,19 +1,19 @@
 public class axi {
    protected final axj a = new axj();
 
-   public boolean a(cur $$0) {
+   public boolean a(cus $$0) {
       return this.a.a($$0);
    }
 
-   public void a(cur $$0, boolean $$1) {
+   public void a(cus $$0, boolean $$1) {
       this.a.a($$0, $$1);
    }
 
-   public boolean b(cur $$0) {
+   public boolean b(cus $$0) {
       return this.a.b($$0);
    }
 
-   public void b(cur $$0, boolean $$1) {
+   public void b(cus $$0, boolean $$1) {
       this.a.b($$0, $$1);
    }
 
@@ -25,7 +25,7 @@ public class axi {
       return this.a.a();
    }
 
-   public void a(cur $$0, boolean $$1, boolean $$2) {
+   public void a(cus $$0, boolean $$1, boolean $$2) {
       this.a.a($$0, $$1);
       this.a.b($$0, $$2);
    }

@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ham {
+public class ham extends gyl {
+   public boolean a;
 }

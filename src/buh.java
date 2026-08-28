@@ -1,6 +1,11 @@
-class buh extends bum {
-   protected buh(bun $$0, int $$1) {
+class buh extends bun {
+   protected buh(buo $$0, int $$1) {
       super($$0, $$1);
+   }
+
+   @Override
+   public boolean a(ash $$0, bwg $$1, int $$2) {
+      return $$1.fw() > 0.0F;
    }
 
    @Override
@@ -9,16 +14,8 @@ class buh extends bum {
    }
 
    @Override
-   public boolean a(ash $$0, bwf $$1, int $$2) {
-      if ($$1 instanceof asi $$3 && !$$3.aa_() && $$0.al() != btf.a && $$0.c($$3.dw())) {
-         crj $$4 = $$0.d($$3.dw());
-         if ($$4 == null || $$4.m() < $$4.l()) {
-            $$3.a(new buo(buq.I, 600, $$2));
-            $$3.c($$3.dw());
-            return false;
-         }
-      }
-
-      return true;
+   public void a(bwg $$0, int $$1) {
+      super.a($$0, $$1);
+      $$0.E(Math.max($$0.fw(), (float)(4 * (1 + $$1))));
    }
 }

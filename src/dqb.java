@@ -1,88 +1,89 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import java.util.function.BiFunction;
 
-public abstract class dqb extends dkl {
-   private static final jm[] a = jm.values();
-   public static final dyl b = dyk.M;
-   public static final dyl c = dyk.N;
-   public static final dyl d = dyk.O;
-   public static final dyl e = dyk.P;
-   public static final dyl f = dyk.K;
-   public static final dyl g = dyk.L;
-   public static final Map<jm, dyl> h = ImmutableMap.copyOf(ae.a(Maps.newEnumMap(jm.class), $$0 -> {
-      $$0.put(jm.c, b);
-      $$0.put(jm.f, c);
-      $$0.put(jm.d, d);
-      $$0.put(jm.e, e);
-      $$0.put(jm.b, f);
-      $$0.put(jm.a, g);
-   }));
-   protected final fcr[] i;
+public class dqb extends dkw implements dkp {
+   public static final MapCodec<dqb> a = b(dqb::new);
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dys<jm> d = dyl.S;
+   public static final dyu e = dyl.T;
+   private static final BiFunction<jm, Integer, fcs> f = ae.a(
+      ($$0, $$1) -> {
+         fcs[] $$2 = new fcs[]{
+            dkm.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            dkm.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            dkm.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            dkm.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         fcs $$3 = fcp.a();
 
-   protected dqb(float $$0, dxt.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dqb> a();
-
-   private fcr[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      fcr $$3 = dkl.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      fcr[] $$4 = new fcr[a.length];
-
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         jm $$6 = a[$$5];
-         $$4[$$5] = fco.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
-      }
-
-      fcr[] $$7 = new fcr[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         fcr $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = fco.a($$9, $$4[$$10]);
-            }
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = fcp.a($$3, $$2[$$5]);
          }
 
-         $$7[$$8] = $$9;
+         return $$3.b();
       }
+   );
 
-      return $$7;
+   @Override
+   public MapCodec<dqb> a() {
+      return a;
+   }
+
+   protected dqb(dxu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(d, jm.c).b(e, Integer.valueOf(1)));
    }
 
    @Override
-   protected boolean e_(dxu $$0) {
-      return false;
+   public dxv a(dxv $$0, drc $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      return this.i[this.o($$0)];
+   public dxv a(dxv $$0, dpl $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
-   protected int o(dxu $$0) {
-      int $$1 = 0;
+   @Override
+   public boolean a(dxv $$0, dbg $$1) {
+      return !$$1.h() && $$1.n().a(this.j()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   }
 
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
-         }
+   @Override
+   public fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public dxv a(dbg $$0) {
+      dxv $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.b(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.m().b(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(dhl $$0, jh $$1, dxv $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.b(e, Integer.valueOf($$4 + 1)), 2);
+      } else {
+         a($$0, $$2, new cxp(this));
       }
-
-      return $$1;
    }
 }

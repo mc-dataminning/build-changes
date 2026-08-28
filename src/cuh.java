@@ -1,88 +1,77 @@
-public class cuh extends ctb {
-   private static final int q = 1;
-   private static final int r = 1;
-   public static final int m = 1;
-   public static final int n = 2;
-   public static final int o = 3;
-   public static final int p = 100;
-   private final btb s;
-   private final ctn t;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-   public cuh(int $$0) {
-      this($$0, new btp(1), new cux(1));
-   }
+public class cuh {
+   private final List<cuh.b> a;
+   private final cuh.b b;
 
-   public cuh(int $$0, btb $$1, ctn $$2) {
-      super(cuk.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.s = $$1;
-      this.t = $$2;
-      this.a(new cuy($$1, 0, 0, 0) {
-         @Override
-         public void c() {
-            super.c();
-            cuh.this.a(this.c);
-         }
-      });
-      this.a($$2);
-   }
-
-   @Override
-   public boolean a(cpw $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.b(0, $$2);
-         return true;
+   cuh(List<cuh.b> $$0, cuh.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cuh.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
       } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.t.a(0);
-               this.b(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.t.a(0);
-               this.b(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gv()) {
-                  return false;
-               }
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+      }
+   }
 
-               cxo $$5 = this.s.b(0);
-               this.s.e();
-               if (!$$0.gi().f($$5)) {
-                  $$0.a($$5, false);
-               }
+   public static cuh.a a() {
+      return new cuh.a();
+   }
 
-               return true;
-            default:
-               return false;
+   public cuh.b a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public cuh.b b() {
+      return this.b;
+   }
+
+   public List<cuh.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public static class a {
+      private final List<cuh.b> a = new ArrayList<>();
+      private cuh.b b = cuh.b.e;
+
+      public cuh.a a(int $$0, int $$1, int $$2, Predicate<cxp> $$3) {
+         this.a.add(new cuh.b($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      public cuh.a a(int $$0, int $$1, int $$2) {
+         this.b = new cuh.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public cuh a() {
+         int $$0 = this.a.size();
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            cuh.b $$2 = this.a.get($$1);
+            if ($$2.a != $$1) {
+               throw new IllegalArgumentException("Expected input slots to have continous indexes");
+            }
+         }
+
+         if (this.b.a != $$0) {
+            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
+         } else {
+            return new cuh(this.a, this.b);
          }
       }
    }
 
-   @Override
-   public cxo b(cpw $$0, int $$1) {
-      return cxo.j;
-   }
-
-   @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
-   }
-
-   @Override
-   public boolean b(cpw $$0) {
-      return this.s.a($$0);
-   }
-
-   public cxo l() {
-      return this.s.a(0);
-   }
-
-   public int m() {
-      return this.t.a(0);
+   public static record b(int a, int b, int c, Predicate<cxp> d) {
+      static final cuh.b e = new cuh.b(0, 0, 0, $$0 -> true);
    }
 }

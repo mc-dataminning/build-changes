@@ -1,67 +1,22 @@
-public class ghs extends gjr {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final gjm M;
-
-   ghs(gfj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjm $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = bae.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = bae.a(this.r, 0.0F, 0.0F);
-      this.x = bae.a(this.r, 0.8235294F, 0.9764706F);
+public class ghs extends gjs {
+   ghs(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
+      this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
       this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
       this.n = false;
-      this.M = $$7;
-      this.b($$7);
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
-
-         if (this.L) {
-            this.k += 0.002;
-         }
-
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
-         }
-      }
-   }
-
-   @Override
-   public giv b() {
-      return giv.b;
+      this.a();
    }
 
    @Override
@@ -69,15 +24,60 @@ public class ghs extends gjr {
       return this.D * bae.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements giu<lw> {
-      private final gjm a;
+   @Override
+   public void a() {
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
+   }
 
-      public a(gjm $$0) {
+   @Override
+   public giw b() {
+      return giw.b;
+   }
+
+   public static class a implements giv<lw> {
+      private final gjn a;
+
+      public a(gjn $$0) {
          this.a = $$0;
       }
 
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghs($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghs $$8 = new ghs($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements giv<lw> {
+      private final gjn a;
+
+      public b(gjn $$0) {
+         this.a = $$0;
+      }
+
+      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghs $$8 = new ghs($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements giv<lw> {
+      private final gjn a;
+
+      public c(gjn $$0) {
+         this.a = $$0;
+      }
+
+      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghs $$8 = new ghs($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

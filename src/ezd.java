@@ -1,43 +1,38 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class ezd extends eyb {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<ezd> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ezd::new));
+public class ezd extends eyc {
+   public static final Codec<xv> a = xx.a.validate($$0 -> dax.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
+   public static final MapCodec<ezd> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(dax.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), eyb.a.forGetter($$0x -> $$0x.d))).apply($$0, ezd::new)
+   );
+   private final List<asz<xv>> c;
+   private final eyb d;
 
-   private ezd(List<ezx> $$0) {
+   protected ezd(List<ezy> $$0, List<asz<xv>> $$1, eyb $$2) {
       super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public eyd<ezd> b() {
-      return eye.l;
+   protected cxp a(cxp $$0, ewp $$1) {
+      $$0.a(ku.T, dax.a, this::a);
+      return $$0;
+   }
+
+   @VisibleForTesting
+   public dax a(dax $$0) {
+      List<asz<xv>> $$1 = this.d.a($$0.a(), this.c);
+      return $$0.b($$1);
    }
 
    @Override
-   public cxo a(cxo $$0, ewo $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         dcw $$2 = new dcw($$0);
-         Optional<dci<dcx>> $$3 = $$1.d().s().a(dco.b, $$2, $$1.d());
-         if ($$3.isPresent()) {
-            cxo $$4 = $$3.get().b().a($$2, $$1.d().K_());
-            if (!$$4.f()) {
-               return $$4.c($$0.L());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
-   }
-
-   public static eyb.a<?> c() {
-      return a(ezd::new);
+   public eye<ezd> b() {
+      return eyf.N;
    }
 }

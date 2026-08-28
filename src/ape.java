@@ -149,7 +149,7 @@ public class ape {
    }
 
    private static int a(ew $$0, int $$1, boolean $$2, boolean $$3) {
-      btn $$4 = $$0.e().M();
+      bto $$4 = $$0.e().M();
       $$4.a($$1, $$2, $$3);
       int $$5 = $$4.a();
       $$0.a(() -> xv.a("commands.random.reset.all.success", $$5), false);

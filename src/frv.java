@@ -1,26 +1,18 @@
 import java.util.function.Consumer;
 
-public interface frv {
-   void k(int var1);
+public interface frv extends frw {
+   void b(Consumer<frw> var1);
 
-   void l(int var1);
-
-   int D();
-
-   int E();
-
-   int y();
-
-   int w();
-
-   default fsm H() {
-      return new fsm(this.D(), this.E(), this.y(), this.w());
+   @Override
+   default void a(Consumer<fod> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   default void c(int $$0, int $$1) {
-      this.k($$0);
-      this.l($$1);
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof frv $$1) {
+            $$1.a();
+         }
+      });
    }
-
-   void a(Consumer<foc> var1);
 }

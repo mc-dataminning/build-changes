@@ -1,42 +1,33 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class cgn extends cgp<cpi> {
-   private static final int a = 40;
-
-   public cgn() {
-      super(40);
-   }
-
-   protected void a(ash $$0, cpi $$1) {
-      aly<dhh> $$2 = $$0.ah();
-      jh $$3 = $$1.dw();
-      List<jp> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               jh $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gy().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jp.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bxh<?> $$10 = $$1.ec();
-      if (!$$4.isEmpty()) {
-         $$10.a(cfj.f, $$4);
-      } else {
-         $$10.b(cfj.f);
-      }
+public class cgn extends cgq<bwg> {
+   @Override
+   public Set<cfk<?>> a() {
+      return ImmutableSet.of(cfk.j, cfk.k, cfk.l);
    }
 
    @Override
-   public Set<cfj<?>> a() {
-      return ImmutableSet.of(cfj.f);
+   protected void a(ash $$0, bwg $$1) {
+      List<cpx> $$2 = $$0.y()
+         .stream()
+         .filter(bvp.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      bxi<?> $$3 = $$1.ec();
+      $$3.a(cfk.j, $$2);
+      List<cpx> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
+      $$3.a(cfk.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cpx> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).findFirst();
+      $$3.a(cfk.l, $$5);
+   }
+
+   protected double a(bwg $$0) {
+      return $$0.h(bxo.m);
    }
 }

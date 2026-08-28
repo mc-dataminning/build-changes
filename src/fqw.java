@@ -1,48 +1,318 @@
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum fqw implements bba {
-   a("uniform"),
-   b("jp");
+public class fqw implements avp, AutoCloseable {
+   static final Logger b = LogUtils.getLogger();
+   private static final String c = "fonts.json";
+   public static final alz a = alz.b("missing");
+   private static final als d = als.a("font");
+   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private final fqy f;
+   private final List<fer> g = new ArrayList<>();
+   private final Map<alz, fqy> h = new HashMap<>();
+   private final hbm i;
+   @Nullable
+   private volatile fqy j;
 
-   public static final Codec<fqw> c = bba.a(fqw::values);
-   private final String d;
+   public fqw(hbm $$0) {
+      this.i = $$0;
+      this.f = ae.a(new fqy($$0, a), $$0x -> $$0x.a(List.of(d()), Set.of()));
+   }
 
-   private fqw(final String $$0) {
-      this.d = $$0;
+   private static fer.a d() {
+      return new fer.a(new fqu(), fqx.a.b);
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public CompletableFuture<Void> a(avp.a $$0, avv $$1, Executor $$2, Executor $$3) {
+      return this.a($$1, $$2).thenCompose($$0::a).thenAcceptAsync($$0x -> this.a($$0x, bps.a()), $$3);
    }
 
-   public static class a {
-      private final Map<fqw, Boolean> c;
-      public static final Codec<fqw.a> a = Codec.unboundedMap(fqw.c, Codec.BOOL).xmap(fqw.a::new, $$0 -> $$0.c);
-      public static final fqw.a b = new fqw.a(Map.of());
+   private CompletableFuture<fqw.d> a(avv $$0, Executor $$1) {
+      List<CompletableFuture<fqw.e>> $$2 = new ArrayList<>();
 
-      public a(Map<fqw, Boolean> $$0) {
-         this.c = $$0;
+      for (Entry<alz, List<avt>> $$3 : d.b($$0).entrySet()) {
+         alz $$4 = d.b($$3.getKey());
+         $$2.add(CompletableFuture.supplyAsync(() -> {
+            List<Pair<fqw.a, frj.a>> $$4x = a($$3.getValue(), $$4);
+            fqw.e $$5 = new fqw.e($$4);
+
+            for (Pair<fqw.a, frj.a> $$6 : $$4x) {
+               fqw.a $$7 = (fqw.a)$$6.getFirst();
+               fqx.a $$8 = ((frj.a)$$6.getSecond()).b();
+               ((frj.a)$$6.getSecond()).a().b().ifLeft($$5x -> {
+                  CompletableFuture<Optional<fer>> $$6x = this.a($$7, $$5x, $$0, $$1);
+                  $$5.a($$7, $$8, $$6x);
+               }).ifRight($$3xx -> $$5.a($$7, $$8, $$3xx));
+            }
+
+            return $$5;
+         }, $$1));
       }
 
-      public boolean a(Set<fqw> $$0) {
-         for (Entry<fqw, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
+      return ae.d($$2)
+         .thenCompose(
+            $$1x -> {
+               List<CompletableFuture<Optional<fer>>> $$2x = $$1x.stream().flatMap(fqw.e::d).collect(ae.b());
+               fer.a $$3x = d();
+               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x.a())));
+               return ae.d($$2x)
+                  .thenCompose(
+                     $$3xx -> {
+                        Map<alz, List<fer.a>> $$4x = this.a($$1x);
+                        CompletableFuture<?>[] $$5 = $$4x.values()
+                           .stream()
+                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
+                           .toArray(CompletableFuture[]::new);
+                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
+                           List<fer> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
+                           return new fqw.d($$4x, $$3xxx);
+                        });
+                     }
+                  );
+            }
+         );
+   }
+
+   private CompletableFuture<Optional<fer>> a(fqw.a $$0, frj.b $$1, avv $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            return Optional.of($$1.load($$2));
+         } catch (Exception var4x) {
+            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
+            return Optional.empty();
+         }
+      }, $$3);
+   }
+
+   private Map<alz, List<fer.a>> a(List<fqw.e> $$0) {
+      Map<alz, List<fer.a>> $$1 = new HashMap<>();
+      azj<alz, fqw.e> $$2 = new azj<>();
+      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
+      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
+      return $$1;
+   }
+
+   private void a(List<fer.a> $$0, fer.a $$1) {
+      $$0.add(0, $$1);
+      IntSet $$2 = new IntOpenHashSet();
+
+      for (fer.a $$3 : $$0) {
+         $$2.addAll($$3.a().a());
+      }
+
+      $$2.forEach($$1x -> {
+         if ($$1x != 32) {
+            for (fer.a $$2x : Lists.reverse($$0)) {
+               if ($$2x.a().a($$1x) != null) {
+                  break;
+               }
             }
          }
+      });
+   }
 
-         return true;
+   private static Set<fqx> b(fmk $$0) {
+      Set<fqx> $$1 = EnumSet.noneOf(fqx.class);
+      if ($$0.S().c()) {
+         $$1.add(fqx.a);
       }
 
-      public fqw.a a(fqw.a $$0) {
-         Map<fqw, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new fqw.a(Map.copyOf($$1));
+      if ($$0.T().c()) {
+         $$1.add(fqx.b);
+      }
+
+      return $$1;
+   }
+
+   private void a(fqw.d $$0, bpt $$1) {
+      $$1.a("closing");
+      this.j = null;
+      this.h.values().forEach(fqy::close);
+      this.h.clear();
+      this.g.forEach(fer::close);
+      this.g.clear();
+      Set<fqx> $$2 = b(fmg.Q().n);
+      $$1.b("reloading");
+      $$0.a().forEach(($$1x, $$2x) -> {
+         fqy $$3 = new fqy(this.i, $$1x);
+         $$3.a(Lists.reverse($$2x), $$2);
+         this.h.put($$1x, $$3);
+      });
+      this.g.addAll($$0.b);
+      $$1.c();
+      if (!this.h.containsKey(fmg.b)) {
+         throw new IllegalStateException("Default font failed to load");
+      }
+   }
+
+   public void a(fmk $$0) {
+      Set<fqx> $$1 = b($$0);
+
+      for (fqy $$2 : this.h.values()) {
+         $$2.a($$1);
+      }
+   }
+
+   private static List<Pair<fqw.a, frj.a>> a(List<avt> $$0, alz $$1) {
+      List<Pair<fqw.a, frj.a>> $$2 = new ArrayList<>();
+
+      for (avt $$3 : $$0) {
+         try (Reader $$4 = $$3.e()) {
+            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
+            fqw.c $$6 = (fqw.c)fqw.c.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonParseException::new);
+            List<frj.a> $$7 = $$6.b;
+
+            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
+               fqw.a $$9 = new fqw.a($$1, $$3.b(), $$8);
+               $$2.add(Pair.of($$9, $$7.get($$8)));
+            }
+         } catch (Exception var13) {
+            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
+         }
+      }
+
+      return $$2;
+   }
+
+   public fnq a() {
+      return new fnq(this::b, false);
+   }
+
+   public fnq b() {
+      return new fnq(this::b, true);
+   }
+
+   private fqy a(alz $$0) {
+      return this.h.getOrDefault($$0, this.f);
+   }
+
+   private fqy b(alz $$0) {
+      fqy $$1 = this.j;
+      if ($$1 != null && $$0.equals($$1.a())) {
+         return $$1;
+      } else {
+         fqy $$2 = this.a($$0);
+         this.j = $$2;
+         return $$2;
+      }
+   }
+
+   @Override
+   public void close() {
+      this.h.values().forEach(fqy::close);
+      this.g.forEach(fer::close);
+      this.f.close();
+   }
+
+   static record a(alz a, String b, int c) {
+      @Override
+      public String toString() {
+         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
+      }
+   }
+
+   static record b(fqw.a a, fqx.a b, Either<CompletableFuture<Optional<fer>>, alz> c) {
+
+      public Optional<List<fer.a>> a(Function<alz, List<fer.a>> $$0) {
+         return (Optional<List<fer.a>>)this.c.map($$0x -> ((Optional)$$0x.join()).map($$0xx -> List.of(new fer.a($$0xx, this.b))), $$1 -> {
+            List<fer.a> $$2 = $$0.apply($$1);
+            if ($$2 == null) {
+               fqw.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
+               return Optional.empty();
+            } else {
+               return Optional.of($$2.stream().map(this::a).toList());
+            }
+         });
+      }
+
+      private fer.a a(fer.a $$0) {
+         return new fer.a($$0.a(), this.b.a($$0.b()));
+      }
+   }
+
+   static record c(List<frj.a> b) {
+      public static final Codec<fqw.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(frj.a.a.listOf().fieldOf("providers").forGetter(fqw.c::a)).apply($$0, fqw.c::new)
+      );
+
+      public List<frj.a> a() {
+         return this.b;
+      }
+   }
+
+   static record d(Map<alz, List<fer.a>> a, List<fer> b) {
+   }
+
+   static record e(alz a, List<fqw.b> b, Set<alz> c) implements azj.a<alz> {
+
+      public e(alz $$0) {
+         this($$0, new ArrayList<>(), new HashSet<>());
+      }
+
+      public void a(fqw.a $$0, fqx.a $$1, frj.c $$2) {
+         this.b.add(new fqw.b($$0, $$1, Either.right($$2.a())));
+         this.c.add($$2.a());
+      }
+
+      public void a(fqw.a $$0, fqx.a $$1, CompletableFuture<Optional<fer>> $$2) {
+         this.b.add(new fqw.b($$0, $$1, Either.left($$2)));
+      }
+
+      private Stream<CompletableFuture<Optional<fer>>> d() {
+         return this.b.stream().flatMap($$0 -> $$0.c.left().stream());
+      }
+
+      public Optional<List<fer.a>> a(Function<alz, List<fer.a>> $$0) {
+         List<fer.a> $$1 = new ArrayList<>();
+
+         for (fqw.b $$2 : this.b) {
+            Optional<List<fer.a>> $$3 = $$2.a($$0);
+            if (!$$3.isPresent()) {
+               return Optional.empty();
+            }
+
+            $$1.addAll($$3.get());
+         }
+
+         return Optional.of($$1);
+      }
+
+      @Override
+      public void a(Consumer<alz> $$0) {
+         this.c.forEach($$0);
+      }
+
+      @Override
+      public void b(Consumer<alz> $$0) {
       }
    }
 }

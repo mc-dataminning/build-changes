@@ -1,61 +1,64 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class exj extends exg {
-   public static final MapCodec<exj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayk.a(mb.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, exj::new)
-   );
-   private final ayk<cxk> j;
-   private final boolean k;
+public class exj extends ewy {
+   public static final MapCodec<exj> a = a(exj::new);
 
-   private exj(ayk<cxk> $$0, boolean $$1, int $$2, int $$3, List<ezx> $$4, List<eyc> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   exj(List<exf> $$0, List<ezy> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public exf a() {
-      return exc.f;
+   public exg a() {
+      return exd.h;
    }
 
    @Override
-   public void a(Consumer<cxo> $$0, ewo $$1) {
-      ma.g.c(this.j).forEach($$1x -> $$0.accept(new cxo($$1x)));
-   }
-
-   private boolean a(ewo $$0, Consumer<exd> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jq<cxk> $$2 : ma.g.c(this.j)) {
-            $$1.accept(new exg.c() {
-               @Override
-               public void a(Consumer<cxo> $$0, ewo $$1) {
-                  $$0.accept(new cxo($$2));
-               }
-            });
+   protected ewx a(List<? extends ewx> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ewx)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ewx $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
          }
 
          return true;
+      };
+      };
+   }
+
+   public static exj.a a(exf.a<?>... $$0) {
+      return new exj.a($$0);
+   }
+
+   public static class a extends exf.a<exj.a> {
+      private final Builder<exf> a = ImmutableList.builder();
+
+      public a(exf.a<?>... $$0) {
+         for (exf.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
-   }
 
-   @Override
-   public boolean expand(ewo $$0, Consumer<exd> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
+      protected exj.a a() {
+         return this;
+      }
 
-   public static exg.a<?> a(ayk<cxk> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new exj($$0, false, $$1, $$2, $$3, $$4));
-   }
+      @Override
+      public exj.a c(exf.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static exg.a<?> b(ayk<cxk> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new exj($$0, true, $$1, $$2, $$3, $$4));
+      @Override
+      public exf b() {
+         return new exj(this.a.build(), this.f());
+      }
    }
 }

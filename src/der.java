@@ -3,17 +3,29 @@ import com.mojang.serialization.MapCodec;
 import java.util.function.Function;
 
 public interface der {
-   Codec<der> b = ma.aw.q().dispatch(der::a, Function.identity());
+   Codec<der> c = ma.av.q().dispatch(der::a, Function.identity());
 
-   static MapCodec<? extends der> a(kd<MapCodec<? extends der>> $$0) {
-      kd.a($$0, "add", dei.a);
-      kd.a($$0, "all_of", dej.c.a);
-      kd.a($$0, "multiply", deu.a);
-      kd.a($$0, "remove_binomial", dew.a);
-      return kd.a($$0, "set", dfb.a);
+   static MapCodec<? extends der> b(kd<MapCodec<? extends der>> $$0) {
+      kd.a($$0, "all_of", dek.b.a);
+      kd.a($$0, "apply_mob_effect", del.a);
+      kd.a($$0, "attribute", dep.a);
+      kd.a($$0, "change_item_damage", dem.a);
+      kd.a($$0, "damage_entity", den.a);
+      kd.a($$0, "explode", det.a);
+      kd.a($$0, "ignite", deu.a);
+      kd.a($$0, "play_sound", dew.a);
+      kd.a($$0, "replace_block", dey.a);
+      kd.a($$0, "replace_disk", dez.a);
+      kd.a($$0, "run_function", dfa.a);
+      kd.a($$0, "set_block_properties", dfb.a);
+      kd.a($$0, "spawn_particles", dfd.a);
+      return kd.a($$0, "summon_entity", dfe.a);
    }
 
-   float a(int var1, bam var2, float var3);
+   void a(ash var1, int var2, ddy var3, bvk var4, fby var5, boolean var6);
+
+   default void a(ddy $$0, bvk $$1, fby $$2, int $$3) {
+   }
 
    MapCodec<? extends der> a();
 }

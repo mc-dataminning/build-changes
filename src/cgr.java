@@ -1,47 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 
-public class cgr extends cgp<bwn> {
-   private static final cgw a = cgw.b().d();
-   private final Predicate<cxo> b;
+public class cgr<U extends cgq<?>> {
+   public static final cgr<cga> a = a("dummy", cga::new);
+   public static final cgr<cgi> b = a("nearest_items", cgi::new);
+   public static final cgr<cgj<bwg>> c = a("nearest_living_entities", cgj::new);
+   public static final cgr<cgn> d = a("nearest_players", cgn::new);
+   public static final cgr<cgh> e = a("nearest_bed", cgh::new);
+   public static final cgr<cge> f = a("hurt_by", cge::new);
+   public static final cgr<cgu> g = a("villager_hostiles", cgu::new);
+   public static final cgr<cgt> h = a("villager_babies", cgt::new);
+   public static final cgr<cgo> i = a("secondary_pois", cgo::new);
+   public static final cgr<cgc> j = a("golem_detected", cgc::new);
+   public static final cgr<cgg<cjg>> k = a("armadillo_scare_detected", () -> new cgg<>(5, cjg::j, cjg::gA, cfk.G, 80));
+   public static final cgr<cgm> l = a("piglin_specific_sensor", cgm::new);
+   public static final cgr<cgl> m = a("piglin_brute_specific_sensor", cgl::new);
+   public static final cgr<cgd> n = a("hoglin_specific_sensor", cgd::new);
+   public static final cgr<cfx> o = a("nearest_adult", cfx::new);
+   public static final cgr<cfy> p = a("axolotl_attackables", cfy::new);
+   public static final cgr<cgs> q = a("axolotl_temptations", () -> new cgs(cjk.a()));
+   public static final cgr<cgs> r = a("goat_temptations", () -> new cgs(cjy.a()));
+   public static final cgr<cgs> s = a("frog_temptations", () -> new cgs(cjs.a()));
+   public static final cgr<cgs> t = a("camel_temptations", () -> new cgs(cjp.b()));
+   public static final cgr<cgs> u = a("armadillo_temptations", () -> new cgs(cjh.b()));
+   public static final cgr<cgb> v = a("frog_attackables", cgb::new);
+   public static final cgr<cgf> w = a("is_in_water", cgf::new);
+   public static final cgr<cgv> x = a("warden_entity_sensor", cgv::new);
+   public static final cgr<cgs> y = a("sniffer_temptations", () -> new cgs(ckp.a()));
+   public static final cgr<cfz> z = a("breeze_attack_entity_sensor", cfz::new);
+   private final Supplier<U> A;
 
-   public cgr(Predicate<cxo> $$0) {
-      this.b = $$0;
+   private cgr(Supplier<U> $$0) {
+      this.A = $$0;
    }
 
-   protected void a(ash $$0, bwn $$1) {
-      bxh<?> $$2 = $$1.ec();
-      cgw $$3 = a.c().a((double)((float)$$1.h(bxn.E)));
-      List<cpw> $$4 = $$0.y()
-         .stream()
-         .filter(bvo.f)
-         .filter($$3x -> $$3.a($$0, $$1, $$3x))
-         .filter(this::a)
-         .filter($$1x -> !$$1.y($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$4.isEmpty()) {
-         cpw $$5 = $$4.get(0);
-         $$2.a(cfj.O, $$5);
-      } else {
-         $$2.b(cfj.O);
-      }
+   public U a() {
+      return this.A.get();
    }
 
-   private boolean a(cpw $$0) {
-      return this.a($$0.eZ()) || this.a($$0.fa());
-   }
-
-   private boolean a(cxo $$0) {
-      return this.b.test($$0);
-   }
-
-   @Override
-   public Set<cfj<?>> a() {
-      return ImmutableSet.of(cfj.O);
+   private static <U extends cgq<?>> cgr<U> a(String $$0, Supplier<U> $$1) {
+      return kd.a(ma.A, alz.b($$0), new cgr<>($$1));
    }
 }

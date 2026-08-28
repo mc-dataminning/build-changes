@@ -1,36 +1,25 @@
-import java.util.function.Function;
-
-public enum hhq {
-   a("movement", hhl::new),
-   b("find_tree", hhk::new),
-   c("punch_tree", hhn::new),
-   d("open_inventory", hhm::new),
-   e("craft_planks", hhj::new),
-   f("none", hhi::new);
-
-   private final String g;
-   private final Function<hho, ? extends hhp> h;
-
-   private <T extends hhp> hhq(final String $$0, final Function<hho, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+public interface hhq {
+   default void b() {
    }
 
-   public hhp a(hho $$0) {
-      return this.h.apply($$0);
+   default void a() {
    }
 
-   public String a() {
-      return this.g;
+   default void a(gkf $$0) {
    }
 
-   public static hhq a(String $$0) {
-      for (hhq $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
-      }
+   default void a(double $$0, double $$1) {
+   }
 
-      return f;
+   default void a(gfk $$0, fbw $$1) {
+   }
+
+   default void a(gfk $$0, jh $$1, dxv $$2, float $$3) {
+   }
+
+   default void c() {
+   }
+
+   default void a(cxp $$0) {
    }
 }

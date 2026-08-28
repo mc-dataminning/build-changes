@@ -1,75 +1,89 @@
-public class csc extends crv {
-   private float b;
-   private float c;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public csc(bvq<?> $$0, dhh $$1) {
-      super($$0, $$1);
+public class csc {
+   public static int[][] a(jm $$0) {
+      jm $$1 = $$0.h();
+      jm $$2 = $$1.g();
+      jm $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   @Override
-   public bti a(cpw $$0, bth $$1) {
-      if (!$$0.fY() && !this.ca() && (this.dW().C || $$0.n(this))) {
-         this.c = this.b;
-         if (!this.dW().C) {
-            return (bti)($$0.n(this) ? bti.c : bti.e);
-         } else {
-            return bti.a;
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
+   }
+
+   public static boolean a(dgr $$0, bwg $$1, fbt $$2) {
+      for (fcs $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
+      }
+
+      return $$0.F_().a($$2);
+   }
+
+   public static boolean a(dgr $$0, fby $$1, bwg $$2, bws $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
+   }
+
+   public static fcs a(dgn $$0, jh $$1) {
+      dxv $$2 = $$0.a_($$1);
+      return !$$2.a(axu.aS) && (!($$2.b() instanceof dtc) || !$$2.c(dtc.b)) ? $$2.g($$0, $$1) : fcp.a();
+   }
+
+   public static double a(jh $$0, int $$1, Function<jh, fcs> $$2) {
+      jh.a $$3 = $$0.k();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         fcs $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(jm.a.b);
+         }
+
+         $$4++;
+         $$3.c(jm.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
+   @Nullable
+   public static fby a(bvr<?> $$0, dgr $$1, jh $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
       } else {
-         return bti.e;
-      }
-   }
+         double $$4 = $$1.a(a((dgn)$$1, $$2), () -> a((dgn)$$1, $$2.e()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
+            return null;
+         } else {
+            fby $$5 = fby.a($$2, $$4);
+            fbt $$6 = $$0.n().a($$5);
 
-   @Override
-   protected cxk u() {
-      return cxs.of;
-   }
+            for (fcs $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-   @Override
-   public cxo dJ() {
-      return new cxo(cxs.of);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3) {
-         if (this.ca()) {
-            this.bP();
+            if ($$0 != bvr.bS || !$$1.a_($$2).a(axu.ct) && !$$1.a_($$2.d()).a(axu.ct)) {
+               return !$$1.F_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
          }
-
-         if (this.N() == 0) {
-            this.l(-this.O());
-            this.d(10);
-            this.b(50.0F);
-            this.bD();
-         }
-      }
-   }
-
-   @Override
-   public boolean D() {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      double $$0 = (double)this.dM();
-      fbx $$1 = this.du();
-      super.h();
-      double $$2 = ((double)this.dM() - $$0) % 360.0;
-      if (this.dW().C && $$1.f(this.du()) > 0.01) {
-         this.b += (float)$$2;
-         this.b %= 360.0F;
-      }
-   }
-
-   @Override
-   protected void a(bvj $$0, bvj.a $$1) {
-      super.a($$0, $$1);
-      if (this.dW().C && $$0 instanceof cpw $$2 && $$2.gO() && b(this.dW())) {
-         float $$3 = (float)bae.e(0.5, (double)this.c, (double)this.b);
-         $$2.v($$2.dM() - ($$3 - this.c));
-         this.c = $$3;
       }
    }
 }

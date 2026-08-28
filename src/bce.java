@@ -4,9 +4,9 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class bce extends bhr {
+public class bce extends bhs {
    public bce(Schema $$0) {
-      super($$0, false, "AreaEffectCloudPotionFix", biw.B, "minecraft:area_effect_cloud");
+      super($$0, false, "AreaEffectCloudPotionFix", bix.B, "minecraft:area_effect_cloud");
    }
 
    @Override

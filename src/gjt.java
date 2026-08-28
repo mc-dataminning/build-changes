@@ -1,42 +1,29 @@
-public class gjt extends gip {
-   private final bvj a;
-   private int b;
-   private final int D;
-   private final lq E;
-
-   public gjt(gfj $$0, bvj $$1, lq $$2) {
-      this($$0, $$1, $$2, 3);
+public class gjt extends gje {
+   gjt(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjn $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      } else {
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
    }
 
-   public gjt(gfj $$0, bvj $$1, lq $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dz());
-   }
+   public static class a implements giv<lw> {
+      private final gjn a;
 
-   private gjt(gfj $$0, bvj $$1, lq $$2, int $$3, fbx $$4) {
-      super($$0, $$1.dB(), $$1.e(0.5), $$1.dH(), $$4.d, $$4.e, $$4.f);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
-   }
-
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+      public a(gjn $$0) {
+         this.a = $$0;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

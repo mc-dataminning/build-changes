@@ -1,69 +1,51 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class dom extends dkl {
-   public static final MapCodec<dom> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ma.e.q().fieldOf("host").forGetter(dom::b), t()).apply($$0, dom::new));
-   private final dkl b;
-   private static final Map<dkl, dkl> c = Maps.newIdentityHashMap();
-   private static final Map<dxu, dxu> d = Maps.newIdentityHashMap();
-   private static final Map<dxu, dxu> e = Maps.newIdentityHashMap();
+public class dom extends dod {
+   public static final MapCodec<dom> e = b(dom::new);
 
    @Override
    public MapCodec<? extends dom> a() {
-      return a;
+      return e;
    }
 
-   public dom(dkl $$0, dxt.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
+   public dom(dxu.d $$0) {
+      super($$0);
    }
 
-   public dkl b() {
-      return this.b;
+   public static dxv b() {
+      return dko.J.m();
    }
 
-   public static boolean o(dxu $$0) {
-      return c.containsKey($$0.b());
-   }
+   @Override
+   public void a(dhi $$0, cpx $$1, jh $$2, dxv $$3, @Nullable dux $$4, cxp $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!deb.a($$5, axx.s)) {
+         if ($$0.G_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
 
-   private void a(ash $$0, jh $$1) {
-      cnd $$2 = bvq.be.a($$0, bvp.k);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.S();
+         dxv $$6 = $$0.a_($$2.e());
+         if ($$6.d() || $$6.n()) {
+            $$0.b($$2, b());
+         }
       }
    }
 
    @Override
-   protected void a(dxu $$0, ash $$1, jh $$2, cxo $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.N().b(dhd.h) && !dea.a($$3, axx.t)) {
-         this.a($$1, $$2);
+   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$1.a(dhr.b, $$2) > 11 - $$0.g()) {
+         this.e($$0, $$1, $$2);
       }
    }
 
-   public static dxu p(dxu $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).m());
-   }
-
-   public dxu q(dxu $$0) {
-      return a(e, $$0, () -> this.b().m());
-   }
-
-   private static dxu a(Map<dxu, dxu> $$0, dxu $$1, Supplier<dxu> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dxu $$2x = $$2.get();
-
-         for (dyw $$3 : $$1x.F()) {
-            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
-         }
-
-         return $$2x;
-      });
+   protected void e(dxv $$0, dhi $$1, jh $$2) {
+      if ($$1.G_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.b($$2, b().b(), null);
+      }
    }
 }

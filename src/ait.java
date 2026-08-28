@@ -1,5 +1,5 @@
-public record ait(cpu b) implements aac<ahm> {
-   public static final zt<ws, ait> a = zt.a(cpu.a, ait::b, ait::new);
+public record ait(cpv b) implements aac<ahm> {
+   public static final zt<ws, ait> a = zt.a(cpv.a, ait::b, ait::new);
 
    @Override
    public aae<ait> a() {

@@ -1,37 +1,69 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public enum cxm implements bba {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
+public class cxm {
+   private final Map<alz, cxm.a> a = Maps.newHashMap();
+   private int b;
 
-   public static final Codec<cxm> j = bba.a(cxm::values);
-   public static final IntFunction<cxm> k = ayv.a(cxm::a, values(), ayv.a.a);
-   private final byte l;
-   private final String m;
-
-   private cxm(final int $$0, final String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+   public boolean a(cxp $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   public float a(cxp $$0, float $$1) {
+      alz $$2 = this.b($$0);
+      cxm.a $$3 = this.a.get($$2);
+      if ($$3 != null) {
+         float $$4 = (float)($$3.b - $$3.a);
+         float $$5 = (float)$$3.b - ((float)this.b + $$1);
+         return bae.a($$5 / $$4, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
+      }
    }
 
-   public byte a() {
-      return this.l;
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<alz, cxm.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<alz, cxm.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.b($$1.getKey());
+            }
+         }
+      }
    }
 
-   public boolean b() {
-      return this == d || this == e;
+   public alz b(cxp $$0) {
+      dau $$1 = $$0.a(ku.z);
+      alz $$2 = ma.g.b($$0.h());
+      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   }
+
+   public void a(cxp $$0, int $$1) {
+      this.a(this.b($$0), $$1);
+   }
+
+   public void a(alz $$0, int $$1) {
+      this.a.put($$0, new cxm.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void a(alz $$0) {
+      this.a.remove($$0);
+      this.b($$0);
+   }
+
+   protected void b(alz $$0, int $$1) {
+   }
+
+   protected void b(alz $$0) {
+   }
+
+   static record a(int a, int b) {
    }
 }

@@ -1,70 +1,38 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class flc extends flf {
+   private static final xv b = xv.c("mco.connect.connecting");
+   private final hhu c;
+   private final fij d;
+   private final fik e;
 
-public class flc extends fle {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xv c = xv.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final ftx f;
-   private final String g;
-
-   public flc(long $$0, int $$1, String $$2, ftx $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public flc(fty $$0, fij $$1, fik $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new hhu($$0);
    }
 
    @Override
    public void run() {
-      fhh $$0 = fhh.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            fix $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fju(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (fje var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fjd var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fjv(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
-         }
+      if (this.e.a != null) {
+         this.c.a(this.d, ghc.a(this.e.a));
+      } else {
+         this.b();
       }
    }
 
    @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      fmg.Q().af().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
    public xv a() {
-      return c;
+      return b;
    }
 }

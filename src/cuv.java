@@ -1,61 +1,101 @@
-public class cuv extends ctb {
-   private static final int m = 27;
-   private final btb n;
+public class cuv extends cuz {
+   private final ctu a;
+   private final cpx b;
+   private int g;
 
-   public cuv(int $$0, cpv $$1) {
-      this($$0, $$1, new btp(27));
+   public cuv(cpx $$0, ctu $$1, btc $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public cuv(int $$0, cpv $$1, btb $$2) {
-      super(cuk.u, $$0);
-      a($$2, 27);
-      this.n = $$2;
-      $$2.c_($$1.k);
-      int $$3 = 3;
-      int $$4 = 9;
+   @Override
+   public boolean a(cxp $$0) {
+      return false;
+   }
 
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cuw($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
+   @Override
+   public cxp a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().L());
       }
 
-      this.c($$1, 8, 84);
+      return super.a($$0);
    }
 
    @Override
-   public boolean b(cpw $$0) {
-      return this.n.a($$0);
+   protected void a(cxp $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
    }
 
    @Override
-   public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.j;
-      cuy $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cxo $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n.b()) {
-            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
-               return cxo.j;
+   protected void b(int $$0) {
+      this.g += $$0;
+   }
+
+   @Override
+   protected void b_(cxp $$0) {
+      if (this.g > 0) {
+         $$0.a(this.b.dW(), this.b, this.g);
+      }
+
+      if (this.c instanceof cut $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.g = 0;
+   }
+
+   private static jz<cxp> a(dbs $$0) {
+      jz<cxp> $$1 = jz.a($$0.a(), cxp.j);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.set($$2, $$0.a($$2));
+      }
+
+      return $$1;
+   }
+
+   private jz<cxp> a(dbs $$0, dhi $$1) {
+      return $$1 instanceof ash $$2 ? $$2.s().a(dcp.a, $$0, $$2).map($$1x -> ((dbt)$$1x.b()).a($$0)).orElseGet(() -> a($$0)) : dbt.b($$0);
+   }
+
+   @Override
+   public void a(cpx $$0, cxp $$1) {
+      this.b_($$1);
+      dbs.a $$2 = this.a.aD_();
+      dbs $$3 = $$2.a();
+      int $$4 = $$2.b();
+      int $$5 = $$2.c();
+      jz<cxp> $$6 = this.a($$3, $$0.dW());
+
+      for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
+         for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
+            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.az_();
+            cxp $$10 = this.a.a($$9);
+            cxp $$11 = $$6.get($$8 + $$7 * $$3.f());
+            if (!$$10.f()) {
+               this.a.a($$9, 1);
+               $$10 = this.a.a($$9);
             }
-         } else if (!this.a($$4, 0, this.n.b(), false)) {
-            return cxo.j;
-         }
 
-         if ($$4.f()) {
-            $$3.e(cxo.j);
-         } else {
-            $$3.c();
+            if (!$$11.f()) {
+               if ($$10.f()) {
+                  this.a.a($$9, $$11);
+               } else if (cxp.c($$10, $$11)) {
+                  $$11.g($$10.L());
+                  this.a.a($$9, $$11);
+               } else if (!this.b.gi().f($$11)) {
+                  this.b.a($$11, false);
+               }
+            }
          }
       }
-
-      return $$2;
    }
 
    @Override
-   public void a(cpw $$0) {
-      super.a($$0);
-      this.n.c($$0);
+   public boolean f() {
+      return true;
    }
 }

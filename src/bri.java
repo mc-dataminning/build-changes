@@ -1,13 +1,29 @@
-public interface bri {
-   void a();
+public class bri implements brj {
+   public static final brj a = new bri();
 
-   void b();
+   @Override
+   public void a() {
+   }
 
-   void c();
+   @Override
+   public void b() {
+   }
 
-   boolean e();
+   @Override
+   public void c() {
+   }
 
-   bps f();
+   @Override
+   public boolean e() {
+      return false;
+   }
 
-   void d();
+   @Override
+   public bpt f() {
+      return bpp.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

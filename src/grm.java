@@ -1,21 +1,35 @@
-public class grm extends gsv<cmn, gys, gbk> {
-   private static final alz a = alz.b("textures/entity/endermite.png");
+public class grm extends gsw<cmn, gxu, gbk<gxu>> {
+   private static final alz a = alz.b("textures/entity/enderman/enderman.png");
+   private final bam b = bam.a();
 
-   public grm(grp.a $$0) {
-      super($$0, new gbk($$0.a(gem.aF)), 0.3F);
+   public grm(grq.a $$0) {
+      super($$0, new gbk<>($$0.a(gen.aE)), 0.5F);
+      this.a(new gvn(this));
+      this.a(new gvf(this, $$0.d()));
    }
 
-   @Override
-   protected float aX_() {
-      return 180.0F;
+   public fby a(gxu $$0) {
+      fby $$1 = super.a($$0);
+      if ($$0.a) {
+         double $$2 = 0.02 * (double)$$0.aa;
+         return $$1.b(this.b.k() * $$2, 0.0, this.b.k() * $$2);
+      } else {
+         return $$1;
+      }
    }
 
-   @Override
-   public alz b(gys $$0) {
+   public alz b(gxu $$0) {
       return a;
    }
 
-   public gys b() {
-      return new gys();
+   public gxu a() {
+      return new gxu();
+   }
+
+   public void a(cmn $$0, gxu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gsh.a($$0, $$1, $$2);
+      $$1.a = $$0.go();
+      $$1.b = $$0.x();
    }
 }

@@ -5,17 +5,17 @@ public class nt {
    public static ng a(mj $$0, CompletableFuture<js.a> $$1) {
       return new ng(
          $$0,
-         ewk.a(),
+         ewl.a(),
          List.of(
-            new ng.a(nr::new, ezh.f),
-            new ng.a(no::new, ezh.c),
-            new ng.a(np::new, ezh.g),
-            new ng.a(nq::new, ezh.h),
-            new ng.a(nn::new, ezh.r),
-            new ng.a(nu::new, ezh.k),
-            new ng.a(ns::new, ezh.j),
-            new ng.a(nm::new, ezh.i),
-            new ng.a(nv::new, ezh.s)
+            new ng.a(nr::new, ezi.f),
+            new ng.a(no::new, ezi.c),
+            new ng.a(np::new, ezi.g),
+            new ng.a(nq::new, ezi.h),
+            new ng.a(nn::new, ezi.r),
+            new ng.a(nu::new, ezi.k),
+            new ng.a(ns::new, ezi.j),
+            new ng.a(nm::new, ezi.i),
+            new ng.a(nv::new, ezi.s)
          ),
          $$1
       );

@@ -1,160 +1,263 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dpo {
-   public static final dpo.e[] a = new dpo.e[]{dpo.e.a, dpo.e.b, dpo.e.c};
-   private final dpo.b b;
+public abstract class dpo extends dkm {
+   private static final float a = 1.0F;
+   private static final fcs c = dkm.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final fcs d = dkm.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final fcs e = dkm.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final fcs f = dkm.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final fcs g = dkm.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final fcs h = dkm.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final Map<jm, dym> i = dqc.h;
+   private static final Map<jm, fcs> j = ae.a(Maps.newEnumMap(jm.class), $$0 -> {
+      $$0.put(jm.c, g);
+      $$0.put(jm.f, f);
+      $$0.put(jm.d, h);
+      $$0.put(jm.e, e);
+      $$0.put(jm.b, c);
+      $$0.put(jm.a, d);
+   });
+   protected static final jm[] b = jm.values();
+   private final ImmutableMap<dxv, fcs> k;
+   private final boolean l;
+   private final boolean m;
+   private final boolean n;
 
-   public dpo(dpn $$0) {
-      this(new dpo.a($$0));
+   public dpo(dxu.d $$0) {
+      super($$0);
+      this.l(a(this.F));
+      this.k = this.a(dpo::r);
+      this.l = jm.c.a.a().allMatch(this::a);
+      this.m = jm.c.a.a().filter(jm.a.a).filter(this::a).count() % 2L == 0L;
+      this.n = jm.c.a.a().filter(jm.a.c).filter(this::a).count() % 2L == 0L;
    }
 
-   public dpo(dpo.b $$0) {
-      this.b = $$0;
-   }
+   @Override
+   protected abstract MapCodec<? extends dpo> a();
 
-   public boolean a(dxu $$0, dgm $$1, jh $$2, jm $$3) {
-      return jm.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
-   }
+   public static Set<jm> o(dxv $$0) {
+      if (!($$0.b() instanceof dpo)) {
+         return Set.of();
+      } else {
+         Set<jm> $$1 = EnumSet.noneOf(jm.class);
 
-   public Optional<dpo.c> a(dxu $$0, dhi $$1, jh $$2, bam $$3) {
-      return jm.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
-   }
-
-   public long a(dxu $$0, dhi $$1, jh $$2, boolean $$3) {
-      return jm.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
-   }
-
-   public Optional<dpo.c> a(dxu $$0, dhi $$1, jh $$2, jm $$3, bam $$4, boolean $$5) {
-      return jm.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
-   }
-
-   private long a(dxu $$0, dhi $$1, jh $$2, jm $$3, boolean $$4) {
-      return jm.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
-   }
-
-   @VisibleForTesting
-   public Optional<dpo.c> a(dxu $$0, dhi $$1, jh $$2, jm $$3, jm $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
-   }
-
-   public Optional<dpo.c> a(dxu $$0, dgm $$1, jh $$2, jm $$3, jm $$4, dpo.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (dpo.e $$6 : this.b.a()) {
-            dpo.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
+         for (jm $$2 : jm.values()) {
+            if (a($$0, $$2)) {
+               $$1.add($$2);
             }
          }
 
-         return Optional.empty();
+         return $$1;
+      }
+   }
+
+   public static Set<jm> a(byte $$0) {
+      Set<jm> $$1 = EnumSet.noneOf(jm.class);
+
+      for (jm $$2 : jm.values()) {
+         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public static byte a(Collection<jm> $$0) {
+      byte $$1 = 0;
+
+      for (jm $$2 : $$0) {
+         $$1 = (byte)($$1 | 1 << $$2.ordinal());
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(jm $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      for (jm $$1 : b) {
+         if (this.a($$1)) {
+            $$0.a(b($$1));
+         }
+      }
+   }
+
+   @Override
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      if (!q($$0)) {
+         return dko.a.m();
       } else {
-         return Optional.empty();
+         return a($$0, $$4) && !a($$1, $$4, $$5, $$6) ? a($$0, b($$4)) : $$0;
       }
    }
 
-   public Optional<dpo.c> a(dhi $$0, dpo.c $$1, boolean $$2) {
-      dxu $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   @Override
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return (fcs)this.k.get($$0);
    }
 
-   public static class a implements dpo.b {
-      protected dpn a;
+   @Override
+   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
+      boolean $$3 = false;
 
-      public a(dpn $$0) {
-         this.a = $$0;
+      for (jm $$4 : b) {
+         if (a($$0, $$4)) {
+            jh $$5 = $$2.a($$4);
+            if (!a($$1, $$4, $$5, $$1.a_($$5))) {
+               return false;
+            }
+
+            $$3 = true;
+         }
       }
 
-      @Nullable
-      @Override
-      public dxu a(dxu $$0, dgm $$1, jh $$2, jm $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(dgm $$0, jh $$1, jh $$2, jm $$3, dxu $$4) {
-         return $$4.l() || $$4.a(this.a) || $$4.a(dkn.J) && $$4.y().b();
-      }
-
-      @Override
-      public boolean a(dgm $$0, jh $$1, dpo.c $$2) {
-         dxu $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
+      return $$3;
    }
 
-   public interface b {
-      @Nullable
-      dxu a(dxu var1, dgm var2, jh var3, jm var4);
+   @Override
+   protected boolean a(dxv $$0, dbg $$1) {
+      return s($$0);
+   }
 
-      boolean a(dgm var1, jh var2, dpo.c var3);
+   @Nullable
+   @Override
+   public dxv a(dbg $$0) {
+      dhi $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dxv $$3 = $$1.a_($$2);
+      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
+   }
 
-      default dpo.e[] a() {
-         return dpo.a;
-      }
-
-      default boolean a(dxu $$0, jm $$1) {
-         return dpn.a($$0, $$1);
-      }
-
-      default boolean a(dxu $$0) {
+   public boolean a(dgn $$0, dxv $$1, jh $$2, jm $$3) {
+      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
+         jh $$4 = $$2.a($$3);
+         return a($$0, $$3, $$4, $$0.a_($$4));
+      } else {
          return false;
       }
+   }
 
-      default boolean b(dxu $$0, jm $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(dhi $$0, dpo.c $$1, dxu $$2, boolean $$3) {
-         dxu $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.y($$1.a()).e($$1.a());
-            }
-
-            return $$0.a($$1.a(), $$4, 2);
+   @Nullable
+   public dxv c(dxv $$0, dgn $$1, jh $$2, jm $$3) {
+      if (!this.a($$1, $$0, $$2, $$3)) {
+         return null;
+      } else {
+         dxv $$4;
+         if ($$0.a(this)) {
+            $$4 = $$0;
+         } else if (this.q() && $$0.y().a(ety.c)) {
+            $$4 = this.m().b(dyl.D, Boolean.valueOf(true));
          } else {
-            return false;
+            $$4 = this.m();
          }
+
+         return $$4.b(b($$3), Boolean.valueOf(true));
       }
    }
 
-   public static record c(jh a, jm b) {
+   @Override
+   protected dxv a(dxv $$0, drc $$1) {
+      return !this.l ? $$0 : this.a($$0, $$1::a);
    }
 
-   @FunctionalInterface
-   public interface d {
-      boolean test(dgm var1, jh var2, dpo.c var3);
+   @Override
+   protected dxv a(dxv $$0, dpl $$1) {
+      if ($$1 == dpl.c && !this.m) {
+         return $$0;
+      } else {
+         return $$1 == dpl.b && !this.n ? $$0 : this.a($$0, $$1::b);
+      }
    }
 
-   public static enum e {
-      a {
-         @Override
-         public dpo.c a(jh $$0, jm $$1, jm $$2) {
-            return new dpo.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public dpo.c a(jh $$0, jm $$1, jm $$2) {
-            return new dpo.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public dpo.c a(jh $$0, jm $$1, jm $$2) {
-            return new dpo.c($$0.a($$1).a($$2), $$1.g());
-         }
-      };
+   private dxv a(dxv $$0, Function<jm, jm> $$1) {
+      dxv $$2 = $$0;
 
-      public abstract dpo.c a(jh var1, jm var2, jm var3);
+      for (jm $$3 : b) {
+         if (this.a($$3)) {
+            $$2 = $$2.b(b($$1.apply($$3)), $$0.c(b($$3)));
+         }
+      }
+
+      return $$2;
    }
+
+   public static boolean a(dxv $$0, jm $$1) {
+      dym $$2 = b($$1);
+      return $$0.a($$2, Boolean.valueOf(false));
+   }
+
+   public static boolean a(dgn $$0, jm $$1, jh $$2, dxv $$3) {
+      return dkm.a($$3.h($$0, $$2), $$1.g()) || dkm.a($$3.g($$0, $$2), $$1.g());
+   }
+
+   private boolean q() {
+      return this.F.d().contains(dyl.D);
+   }
+
+   private static dxv a(dxv $$0, dym $$1) {
+      dxv $$2 = $$0.b($$1, Boolean.valueOf(false));
+      return q($$2) ? $$2 : dko.a.m();
+   }
+
+   public static dym b(jm $$0) {
+      return i.get($$0);
+   }
+
+   private static dxv a(dxw<dkm, dxv> $$0) {
+      dxv $$1 = $$0.b();
+
+      for (dym $$2 : i.values()) {
+         $$1 = $$1.c($$2, Boolean.valueOf(false));
+      }
+
+      return $$1;
+   }
+
+   private static fcs r(dxv $$0) {
+      fcs $$1 = fcp.a();
+
+      for (jm $$2 : b) {
+         if (a($$0, $$2)) {
+            $$1 = fcp.a($$1, j.get($$2));
+         }
+      }
+
+      return $$1.c() ? fcp.b() : $$1;
+   }
+
+   protected static boolean q(dxv $$0) {
+      for (jm $$1 : b) {
+         if (a($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean s(dxv $$0) {
+      for (jm $$1 : b) {
+         if (!a($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public abstract dpp c();
 }

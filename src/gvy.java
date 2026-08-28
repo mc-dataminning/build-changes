@@ -1,28 +1,52 @@
-public class gvy extends gwe<gyt, gcd> {
-   private final gcd a;
-   private final gcd b;
-   private final gvo c;
+import java.util.List;
+import java.util.function.Function;
 
-   public gvy(gtm<gyt, gcd> $$0, gej $$1, gvo $$2) {
+public class gvy<S extends gyt, M extends gbm<S>> extends gwf<S, M> {
+   private final alz a;
+   private final gvy.a<S> b;
+   private final gvy.b<S, M> c;
+   private final Function<alz, glv> d;
+
+   public gvy(gtn<S, M> $$0, alz $$1, gvy.a<S> $$2, gvy.b<S, M> $$3, Function<alz, glv> $$4) {
       super($$0);
-      this.c = $$2;
-      this.a = new gcd($$1.a(gem.bs));
-      this.b = new gcd($$1.a(gem.br));
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
    }
 
-   public void a(fgr $$0, glk $$1, int $$2, gyt $$3, float $$4, float $$5) {
-      cxo $$6 = $$3.c;
-      dft $$7 = $$6.a(ku.D);
-      if ($$7 != null && $$7.c().isPresent()) {
-         this.a($$0, $$1, $$3, $$6, $$7.c().get(), $$2);
-      } else if ($$3.d) {
-         this.a($$0, $$1, $$3, cxo.j, dfs.k, $$2);
+   public void a(fgs $$0, gll $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.u) {
+         if (this.a($$3)) {
+            fgw $$6 = $$1.getBuffer(this.d.apply(this.a));
+            float $$7 = this.b.apply($$3, $$3.p);
+            int $$8 = ayp.a(bae.d($$7 * 255.0F), 255, 255, 255);
+            this.d().a($$0, $$6, $$2, gsr.a($$3, 0.0F), $$8);
+            this.a();
+         }
       }
    }
 
-   private void a(fgr $$0, glk $$1, gyt $$2, cxo $$3, alz $$4, int $$5) {
-      gcd $$6 = $$2.ae ? this.b : this.a;
-      $$6.a($$2);
-      this.c.a(dfr.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
+   private boolean a(S $$0) {
+      List<geo> $$1 = this.c.getPartsToDraw(this.d(), $$0);
+      if ($$1.isEmpty()) {
+         return false;
+      } else {
+         this.d().f().forEach($$0x -> $$0x.l = true);
+         $$1.forEach($$0x -> $$0x.l = false);
+         return true;
+      }
+   }
+
+   private void a() {
+      this.d().f().forEach($$0 -> $$0.l = false);
+   }
+
+   public interface a<S extends gyt> {
+      float apply(S var1, float var2);
+   }
+
+   public interface b<S extends gyt, M extends gbm<S>> {
+      List<geo> getPartsToDraw(M var1, S var2);
    }
 }

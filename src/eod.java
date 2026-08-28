@@ -1,40 +1,26 @@
 public interface eod {
-   aly<eoj> a = a("pillager_outpost");
-   aly<eoj> b = a("mineshaft");
-   aly<eoj> c = a("mineshaft_mesa");
-   aly<eoj> d = a("mansion");
-   aly<eoj> e = a("jungle_pyramid");
-   aly<eoj> f = a("desert_pyramid");
-   aly<eoj> g = a("igloo");
-   aly<eoj> h = a("shipwreck");
-   aly<eoj> i = a("shipwreck_beached");
-   aly<eoj> j = a("swamp_hut");
-   aly<eoj> k = a("stronghold");
-   aly<eoj> l = a("monument");
-   aly<eoj> m = a("ocean_ruin_cold");
-   aly<eoj> n = a("ocean_ruin_warm");
-   aly<eoj> o = a("fortress");
-   aly<eoj> p = a("nether_fossil");
-   aly<eoj> q = a("end_city");
-   aly<eoj> r = a("buried_treasure");
-   aly<eoj> s = a("bastion_remnant");
-   aly<eoj> t = a("village_plains");
-   aly<eoj> u = a("village_desert");
-   aly<eoj> v = a("village_savanna");
-   aly<eoj> w = a("village_snowy");
-   aly<eoj> x = a("village_taiga");
-   aly<eoj> y = a("ruined_portal");
-   aly<eoj> z = a("ruined_portal_desert");
-   aly<eoj> A = a("ruined_portal_jungle");
-   aly<eoj> B = a("ruined_portal_swamp");
-   aly<eoj> C = a("ruined_portal_mountain");
-   aly<eoj> D = a("ruined_portal_ocean");
-   aly<eoj> E = a("ruined_portal_nether");
-   aly<eoj> F = a("ancient_city");
-   aly<eoj> G = a("trail_ruins");
-   aly<eoj> H = a("trial_chambers");
+   aly<eoq> a = a("villages");
+   aly<eoq> b = a("desert_pyramids");
+   aly<eoq> c = a("igloos");
+   aly<eoq> d = a("jungle_temples");
+   aly<eoq> e = a("swamp_huts");
+   aly<eoq> f = a("pillager_outposts");
+   aly<eoq> g = a("ocean_monuments");
+   aly<eoq> h = a("woodland_mansions");
+   aly<eoq> i = a("buried_treasures");
+   aly<eoq> j = a("mineshafts");
+   aly<eoq> k = a("ruined_portals");
+   aly<eoq> l = a("shipwrecks");
+   aly<eoq> m = a("ocean_ruins");
+   aly<eoq> n = a("nether_complexes");
+   aly<eoq> o = a("nether_fossils");
+   aly<eoq> p = a("end_cities");
+   aly<eoq> q = a("ancient_cities");
+   aly<eoq> r = a("strongholds");
+   aly<eoq> s = a("trail_ruins");
+   aly<eoq> t = a("trial_chambers");
 
-   private static aly<eoj> a(String $$0) {
-      return aly.a(mb.aU, alz.b($$0));
+   private static aly<eoq> a(String $$0) {
+      return aly.a(mb.aW, alz.b($$0));
    }
 }

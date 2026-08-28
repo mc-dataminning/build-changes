@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fhw {
+   fhm b();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fhw {
+   void d();
+
+   static fhw f() {
+      return new fhw() {
+         private final fhm a = new fhm();
+
+         @Override
+         public fhm b() {
+            return this.a;
+         }
+
+         @Override
+         public void d() {
+         }
+      };
+   }
 }

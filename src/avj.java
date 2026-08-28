@@ -5,14 +5,14 @@ import javax.annotation.Nullable;
 
 public class avj extends ava {
    private static final auv c = new auv(xv.c("dataPack.vanilla.description"), ab.b().a(aui.b), Optional.empty());
-   private static final auc d = new auc(csu.i);
+   private static final auc d = new auc(csv.i);
    private static final aty e = aty.a(auv.b, c, auc.a, d);
    private static final auf f = new auf("vanilla", xv.c("dataPack.vanilla.name"), avh.c, Optional.of(b));
    private static final auh g = new auh(false, avd.b.b, false);
    private static final auh h = new auh(false, avd.b.a, false);
    private static final alz i = alz.b("datapacks");
 
-   public avj(fbn $$0) {
+   public avj(fbo $$0) {
       super(aui.b, b(), i, $$0);
    }
 
@@ -42,15 +42,15 @@ public class avj extends ava {
       return avd.a(a($$0, $$2), $$1, aui.b, h);
    }
 
-   public static avg a(Path $$0, fbn $$1) {
+   public static avg a(Path $$0, fbo $$1) {
       return new avg(new avj($$1), new avb($$0, aui.b, avh.e, $$1));
    }
 
    public static avg c() {
-      return new avg(new avj(new fbn($$0 -> true)));
+      return new avg(new avj(new fbo($$0 -> true)));
    }
 
-   public static avg a(ewc.c $$0) {
-      return a($$0.a(ewa.j), $$0.d().e());
+   public static avg a(ewd.c $$0) {
+      return a($$0.a(ewb.j), $$0.d().e());
    }
 }

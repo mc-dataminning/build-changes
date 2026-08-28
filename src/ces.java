@@ -1,32 +1,99 @@
-public class ces extends cdn {
-   private final cnp b;
-   private int c;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public ces(cnp $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+public class ces extends cde {
+   private final cde a;
+   private final int b;
+   private boolean c;
+
+   public ces(int $$0, cde $$1) {
       this.b = $$0;
+      this.a = $$1;
+   }
+
+   public boolean a(ces $$0) {
+      return this.U_() && $$0.i() < this.i();
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean U_() {
+      return this.a.U_();
    }
 
    @Override
    public void d() {
-      super.d();
-      this.c = 0;
+      if (!this.c) {
+         this.c = true;
+         this.a.d();
+      }
    }
 
    @Override
    public void e() {
-      super.e();
-      this.b.w(false);
+      if (this.c) {
+         this.c = false;
+         this.a.e();
+      }
+   }
+
+   @Override
+   public boolean V_() {
+      return this.a.V_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
    }
 
    @Override
    public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.w(true);
+      this.a.a();
+   }
+
+   @Override
+   public void a(EnumSet<cde.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<cde.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public cde k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         this.b.w(false);
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((ces)$$0).a) : false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

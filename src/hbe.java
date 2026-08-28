@@ -1,303 +1,117 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class hbe implements hbh.a, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final alz b;
-   final int c;
-   final int d;
-   private final ffr e;
-   ffr[] f;
-   @Nullable
-   private final hbe.a g;
-   private final avx h;
+public class hbe extends haw {
+   static final Logger e = LogUtils.getLogger();
+   protected final alz d;
 
-   public hbe(alz $$0, hcy $$1, ffr $$2, avx $$3) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$1.b();
-      this.h = $$3;
-      hcw $$4 = $$3.a(hcw.a).orElse(hcw.e);
-      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
-      this.e = $$2;
-      this.f = new ffr[]{this.e};
+   public hbe(alz $$0) {
+      this.d = $$0;
    }
 
-   public void a(int $$0) {
-      try {
-         this.f = haz.a(this.f, $$0);
-      } catch (Throwable var6) {
-         o $$2 = o.a(var6, "Generating mipmaps for frame");
-         p $$3 = $$2.a("Sprite being mipmapped");
-         $$3.a("First frame", () -> {
-            StringBuilder $$0x = new StringBuilder();
-            if ($$0x.length() > 0) {
-               $$0x.append(", ");
-            }
-
-            $$0x.append(this.e.a()).append("x").append(this.e.b());
-            return $$0x.toString();
-         });
-         p $$4 = $$2.a("Frame being iterated");
-         $$4.a("Sprite name", this.b);
-         $$4.a("Sprite size", () -> this.c + " x " + this.d);
-         $$4.a("Sprite frames", () -> this.g() + " frames");
-         $$4.a("Mipmap levels", $$0);
-         throw new z($$2);
-      }
-   }
-
-   private int g() {
-      return this.g != null ? this.g.b.size() : 1;
-   }
-
-   @Nullable
-   private hbe.a a(hcy $$0, int $$1, int $$2, hcw $$3) {
-      int $$4 = $$1 / $$0.a();
-      int $$5 = $$2 / $$0.b();
-      int $$6 = $$4 * $$5;
-      List<hbe.b> $$7 = new ArrayList<>();
-      $$3.a(($$1x, $$2x) -> $$7.add(new hbe.b($$1x, $$2x)));
-      if ($$7.isEmpty()) {
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$7.add(new hbe.b($$8, $$3.a()));
-         }
+   @Override
+   public void a(avv $$0) throws IOException {
+      hbe.a $$1 = this.b($$0);
+      $$1.c();
+      hdj $$2 = $$1.a();
+      boolean $$3;
+      if ($$2 != null) {
+         this.c = $$2.a();
+         $$3 = $$2.b();
       } else {
-         int $$9 = 0;
-         IntSet $$10 = new IntOpenHashSet();
-
-         for (Iterator<hbe.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
-            hbe.b $$12 = $$11.next();
-            boolean $$13 = true;
-            if ($$12.b <= 0) {
-               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
-               $$13 = false;
-            }
-
-            if ($$12.a < 0 || $$12.a >= $$6) {
-               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
-               $$13 = false;
-            }
-
-            if ($$13) {
-               $$10.add($$12.a);
-            } else {
-               $$11.remove();
-            }
-         }
-
-         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
-         if ($$14.length > 0) {
-            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
-         }
+         this.c = false;
+         $$3 = false;
       }
 
-      return $$7.size() <= 1 ? null : new hbe.a(ImmutableList.copyOf($$7), $$4, $$3.b());
-   }
-
-   void a(int $$0, int $$1, int $$2, int $$3, ffr[] $$4) {
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
-      }
-   }
-
-   @Override
-   public int a() {
-      return this.c;
-   }
-
-   @Override
-   public int b() {
-      return this.d;
-   }
-
-   @Override
-   public alz c() {
-      return this.b;
-   }
-
-   public IntStream d() {
-      return this.g != null ? this.g.b() : IntStream.of(1);
-   }
-
-   @Nullable
-   public hbg e() {
-      return this.g != null ? this.g.a() : null;
-   }
-
-   public avx f() {
-      return this.h;
-   }
-
-   @Override
-   public void close() {
-      for (ffr $$0 : this.f) {
-         $$0.close();
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
-   }
-
-   public boolean a(int $$0, int $$1, int $$2) {
-      int $$3 = $$1;
-      int $$4 = $$2;
-      if (this.g != null) {
-         $$3 = $$1 + this.g.a($$0) * this.c;
-         $$4 = $$2 + this.g.b($$0) * this.d;
-      }
-
-      return ayp.a(this.e.a($$3, $$4)) == 0;
-   }
-
-   public void a(int $$0, int $$1) {
-      if (this.g != null) {
-         this.g.a($$0, $$1);
+      ffs $$5 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$5, this.c, $$3));
       } else {
-         this.a($$0, $$1, 0, 0, this.f);
+         this.a($$5, this.c, $$3);
       }
    }
 
-   class a {
-      final List<hbe.b> b;
-      private final int c;
-      private final boolean d;
-
-      a(final List<hbe.b> $$0, final int $$1, final boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      int a(int $$0) {
-         return $$0 % this.c;
-      }
-
-      int b(int $$0) {
-         return $$0 / this.c;
-      }
-
-      void a(int $$0, int $$1, int $$2) {
-         int $$3 = this.a($$2) * hbe.this.c;
-         int $$4 = this.b($$2) * hbe.this.d;
-         hbe.this.a($$0, $$1, $$3, $$4, hbe.this.f);
-      }
-
-      public hbg a() {
-         return hbe.this.new d(this, this.d ? hbe.this.new c() : null);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.a($$0, $$1, this.b.get(0).a);
-      }
-
-      public IntStream b() {
-         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
-      }
+   private void a(ffs $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
    }
 
-   static class b {
-      final int a;
-      final int b;
+   protected hbe.a b(avv $$0) {
+      return hbe.a.a($$0, this.d);
+   }
 
-      b(int $$0, int $$1) {
+   protected static class a implements Closeable {
+      @Nullable
+      private final hdj a;
+      @Nullable
+      private final ffs b;
+      @Nullable
+      private final IOException c;
+
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
+
+      public a(@Nullable hdj $$0, ffs $$1) {
+         this.c = null;
          this.a = $$0;
          this.b = $$1;
       }
-   }
 
-   final class c implements AutoCloseable {
-      private final ffr[] b = new ffr[hbe.this.f.length];
+      public static hbe.a a(avv $$0, alz $$1) {
+         try {
+            avt $$2 = $$0.getResourceOrThrow($$1);
 
-      c() {
-         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
-            int $$1 = hbe.this.c >> $$0;
-            int $$2 = hbe.this.d >> $$0;
-            this.b[$$0] = new ffr($$1, $$2, false);
-         }
-      }
-
-      void a(int $$0, int $$1, hbe.d $$2) {
-         hbe.a $$3 = $$2.c;
-         List<hbe.b> $$4 = $$3.b;
-         hbe.b $$5 = $$4.get($$2.a);
-         float $$6 = (float)$$2.b / (float)$$5.b;
-         int $$7 = $$5.a;
-         int $$8 = $$4.get(($$2.a + 1) % $$4.size()).a;
-         if ($$7 != $$8) {
-            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
-               int $$10 = hbe.this.c >> $$9;
-               int $$11 = hbe.this.d >> $$9;
-
-               for (int $$12 = 0; $$12 < $$11; $$12++) {
-                  for (int $$13 = 0; $$13 < $$10; $$13++) {
-                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
-                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
-                     this.b[$$9].a($$13, $$12, ayp.a($$6, $$14, $$15));
-                  }
-               }
+            ffs $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = ffs.a($$3);
             }
 
-            hbe.this.a($$0, $$1, 0, 0, this.b);
+            hdj $$6 = null;
+
+            try {
+               $$6 = $$2.f().a(hdj.a).orElse(null);
+            } catch (RuntimeException var8) {
+               hbe.e.warn("Failed reading metadata of: {}", $$1, var8);
+            }
+
+            return new hbe.a($$6, $$4);
+         } catch (IOException var10) {
+            return new hbe.a(var10);
          }
       }
 
-      private int a(hbe.a $$0, int $$1, int $$2, int $$3, int $$4) {
-         return hbe.this.f[$$2].a($$3 + ($$0.a($$1) * hbe.this.c >> $$2), $$4 + ($$0.b($$1) * hbe.this.d >> $$2));
-      }
-
-      @Override
-      public void close() {
-         for (ffr $$0 : this.b) {
-            $$0.close();
-         }
-      }
-   }
-
-   class d implements hbg {
-      int a;
-      int b;
-      final hbe.a c;
       @Nullable
-      private final hbe.c d;
-
-      d(final hbe.a $$0, @Nullable final hbe.c $$1) {
-         this.c = $$0;
-         this.d = $$1;
+      public hdj a() {
+         return this.a;
       }
 
-      @Override
-      public void a(int $$0, int $$1) {
-         this.b++;
-         hbe.b $$2 = this.c.b.get(this.a);
-         if (this.b >= $$2.b) {
-            int $$3 = $$2.a;
-            this.a = (this.a + 1) % this.c.b.size();
-            this.b = 0;
-            int $$4 = this.c.b.get(this.a).a;
-            if ($$3 != $$4) {
-               this.c.a($$0, $$1, $$4);
-            }
-         } else if (this.d != null) {
-            this.d.a($$0, $$1, this);
+      public ffs b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         } else {
+            return this.b;
          }
       }
 
       @Override
       public void close() {
-         if (this.d != null) {
-            this.d.close();
+         if (this.b != null) {
+            this.b.close();
+         }
+      }
+
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
          }
       }
    }

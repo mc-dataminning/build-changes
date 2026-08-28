@@ -1,40 +1,38 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import org.jetbrains.annotations.Nullable;
+public enum euo {
+   a(-1.0F),
+   b(0.0F),
+   c(0.0F),
+   d(0.0F),
+   e(0.0F),
+   f(-1.0F),
+   g(0.0F),
+   h(-1.0F),
+   i(-1.0F),
+   j(8.0F),
+   k(8.0F),
+   l(0.0F),
+   m(-1.0F),
+   n(8.0F),
+   o(16.0F),
+   p(8.0F),
+   q(-1.0F),
+   r(0.0F),
+   s(-1.0F),
+   t(-1.0F),
+   u(4.0F),
+   v(-1.0F),
+   w(8.0F),
+   x(0.0F),
+   y(0.0F),
+   z(0.0F);
 
-public class euo {
-   private static final int a = 4096;
-   private static final int b = 4095;
-   private final long[] c = new long[4096];
-   private final eun[] d = new eun[4096];
+   private final float A;
 
-   public eun a(dgm $$0, jh $$1) {
-      long $$2 = $$1.a();
-      int $$3 = a($$2);
-      eun $$4 = this.a($$3, $$2);
-      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
+   private euo(final float $$0) {
+      this.A = $$0;
    }
 
-   @Nullable
-   private eun a(int $$0, long $$1) {
-      return this.c[$$0] == $$1 ? this.d[$$0] : null;
-   }
-
-   private eun a(dgm $$0, jh $$1, int $$2, long $$3) {
-      eun $$4 = eus.b($$0, $$1);
-      this.c[$$2] = $$3;
-      this.d[$$2] = $$4;
-      return $$4;
-   }
-
-   public void a(jh $$0) {
-      long $$1 = $$0.a();
-      int $$2 = a($$1);
-      if (this.c[$$2] == $$1) {
-         this.d[$$2] = null;
-      }
-   }
-
-   private static int a(long $$0) {
-      return (int)HashCommon.mix($$0) & 4095;
+   public float a() {
+      return this.A;
    }
 }

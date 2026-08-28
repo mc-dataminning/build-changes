@@ -1,73 +1,65 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cup extends btp {
-   @Nullable
-   private dvt b;
-
-   public cup() {
-      super(27);
-   }
-
-   public void a(dvt $$0) {
-      this.b = $$0;
-   }
-
-   public boolean b(dvt $$0) {
-      return this.b == $$0;
+public class cup extends cuz {
+   public cup(btc $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(vd $$0, js.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, cxo.j);
-      }
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         ux $$4 = $$0.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, cxo.a($$1, (vu)$$4).orElse(cxo.j));
-         }
-      }
+   public void b(cxp $$0, cxp $$1) {
    }
 
    @Override
-   public vd a(js.a $$0) {
-      vd $$1 = new vd();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cxo $$3 = this.a($$2);
-         if (!$$3.f()) {
-            ux $$4 = new ux();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
-         }
-      }
-
-      return $$1;
+   public boolean a(cpx $$0) {
+      return false;
    }
 
    @Override
-   public boolean a(cpw $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   public Optional<cxp> a(int $$0, int $$1, cpx $$2) {
+      return Optional.empty();
    }
 
    @Override
-   public void c_(cpw $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      super.c_($$0);
+   public cxp b(int $$0, int $$1, cpx $$2) {
+      return cxp.j;
    }
 
    @Override
-   public void c(cpw $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
-      }
+   public cxp d(cxp $$0) {
+      return $$0;
+   }
 
-      super.c($$0);
-      this.b = null;
+   @Override
+   public cxp b(cxp $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(cpx $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cxp $$0) {
+      return false;
+   }
+
+   @Override
+   public cxp a(int $$0) {
+      return cxp.j;
+   }
+
+   @Override
+   public void a(cpx $$0, cxp $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

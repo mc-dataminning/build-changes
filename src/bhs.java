@@ -5,8 +5,6 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
 
 public abstract class bhs extends DataFix {
    private final String a;
@@ -21,24 +19,14 @@ public abstract class bhs extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(this.c);
-      Type<?> $$1 = this.getInputSchema().getChoiceType(this.c, this.b);
-      Type<?> $$2 = this.getOutputSchema().getType(this.c);
-      Type<?> $$3 = this.getOutputSchema().getChoiceType(this.c, this.b);
-      OpticFinder<?> $$4 = DSL.namedChoice(this.b, $$1);
-      Type<?> $$5 = bbu.a($$1, $$0, $$2);
-      return this.a($$0, $$2, $$4, $$3, $$5);
+      OpticFinder<?> $$0 = DSL.namedChoice(this.b, this.getInputSchema().getChoiceType(this.c, this.b));
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         this.getInputSchema().getType(this.c),
+         this.getOutputSchema().getType(this.c),
+         $$1 -> $$1.updateTyped($$0, this.getOutputSchema().getChoiceType(this.c, this.b), this::a)
+      );
    }
 
-   private <S, T, A, B> TypeRewriteRule a(Type<S> $$0, Type<T> $$1, OpticFinder<A> $$2, Type<B> $$3, Type<?> $$4) {
-      return this.fixTypeEverywhere(this.a, $$0, $$1, $$4x -> $$5 -> {
-            Typed<S> $$6 = new Typed($$0, $$4x, $$5);
-            return $$6.update($$2, $$3, $$3xxx -> {
-               Typed<A> $$4xxx = new Typed($$4, $$4x, $$3xxx);
-               return ae.a($$4xxx, $$3, this::a).getValue();
-            }).getValue();
-         });
-   }
-
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
+   protected abstract Typed<?> a(Typed<?> var1);
 }

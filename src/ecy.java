@@ -1,60 +1,70 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class ecy {
+public record ecy(jq<ecr> b, float c, fby d, @Nullable UUID e, @Nullable UUID f, @Nullable bvk g) {
    public static final Codec<ecy> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ecx.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+               ecr.aj.fieldOf("game_event").forGetter(ecy::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(ecy::b),
+               fby.a.fieldOf("pos").forGetter(ecy::c),
+               kk.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               kk.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
             )
-            .apply($$0, ecy::new)
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new ecy($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
    );
-   private Optional<Pair<ecx, Long>> b;
 
-   public ecy(Optional<ecx> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
+   public ecy(jq<ecr> $$0, float $$1, fby $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   public ecy() {
-      this.b = Optional.empty();
+   public ecy(jq<ecr> $$0, float $$1, fby $$2, @Nullable bvk $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cG(), a($$3), $$3);
    }
 
-   public void a(ecx $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
+   @Nullable
+   private static UUID a(@Nullable bvk $$0) {
+      if ($$0 instanceof cqq $$1 && $$1.p() != null) {
+         return $$1.p().cG();
       }
+
+      return null;
    }
 
-   private boolean b(ecx $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
-      } else {
-         Pair<ecx, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            ecx $$4 = (ecx)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : ecz.a_($$0.a()) > ecz.a_($$4.a());
-            }
-         }
-      }
+   public Optional<bvk> a(ash $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
    }
 
-   public Optional<ecx> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((ecx)this.b.get().getLeft()) : Optional.empty();
-      }
+   public Optional<bvk> b(ash $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cqq).map($$0x -> (cqq)$$0x).map(cqq::p).or(() -> Optional.ofNullable(this.f).map($$0::a));
    }
 
-   public void a() {
-      this.b = Optional.empty();
+   public jq<ecr> a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public fby c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public bvk f() {
+      return this.g;
    }
 }

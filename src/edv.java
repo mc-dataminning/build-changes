@@ -1,110 +1,117 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
 
-public record edv(edi b, edi c, edi d, edi e, edi f, edi g, edi h, edi i, edi j, edi k, edi l, edi m, edi n, edi o, edi p) {
+public record edv(edy j, dxv k, dxv l, edw m, eeh.o n, List<dit.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
    public static final Codec<edv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               a("barrier", edv::a),
-               a("fluid_level_floodedness", edv::b),
-               a("fluid_level_spread", edv::c),
-               a("lava", edv::d),
-               a("temperature", edv::e),
-               a("vegetation", edv::f),
-               a("continents", edv::g),
-               a("erosion", edv::h),
-               a("depth", edv::i),
-               a("ridges", edv::j),
-               a("initial_density_without_jaggedness", edv::k),
-               a("final_density", edv::l),
-               a("vein_toggle", edv::m),
-               a("vein_ridged", edv::n),
-               a("vein_gap", edv::o)
+               edy.a.fieldOf("noise").forGetter(edv::f),
+               dxv.a.fieldOf("default_block").forGetter(edv::g),
+               dxv.a.fieldOf("default_fluid").forGetter(edv::h),
+               edw.a.fieldOf("noise_router").forGetter(edv::i),
+               eeh.o.b.fieldOf("surface_rule").forGetter(edv::j),
+               dit.d.a.listOf().fieldOf("spawn_target").forGetter(edv::k),
+               Codec.INT.fieldOf("sea_level").forGetter(edv::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(edv::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(edv::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(edv::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(edv::n)
             )
             .apply($$0, edv::new)
    );
+   public static final Codec<jq<edv>> b = alv.a(mb.aR, a);
+   public static final aly<edv> c = aly.a(mb.aR, alz.b("overworld"));
+   public static final aly<edv> d = aly.a(mb.aR, alz.b("large_biomes"));
+   public static final aly<edv> e = aly.a(mb.aR, alz.b("amplified"));
+   public static final aly<edv> f = aly.a(mb.aR, alz.b("nether"));
+   public static final aly<edv> g = aly.a(mb.aR, alz.b("end"));
+   public static final aly<edv> h = aly.a(mb.aR, alz.b("caves"));
+   public static final aly<edv> i = aly.a(mb.aR, alz.b("floating_islands"));
 
-   private static RecordCodecBuilder<edv, edi> a(String $$0, Function<edv, edi> $$1) {
-      return edi.d.fieldOf($$0).forGetter($$1);
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   public edv a(edi.f $$0) {
-      return new edv(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   public boolean b() {
+      return this.r;
    }
 
-   public edi a() {
-      return this.b;
+   public boolean c() {
+      return this.s;
    }
 
-   public edi b() {
-      return this.c;
+   public eep.a d() {
+      return this.t ? eep.a.a : eep.a.b;
    }
 
-   public edi c() {
-      return this.d;
+   public static void a(rk<edv> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   public edi d() {
-      return this.e;
+   private static edv b(rk<?> $$0) {
+      return new edv(edy.d, dko.fN.m(), dko.a.m(), edx.a($$0.a(mb.aM)), rx.c(), List.of(), 0, true, false, false, true);
    }
 
-   public edi e() {
-      return this.f;
+   private static edv c(rk<?> $$0) {
+      return new edv(edy.c, dko.ei.m(), dko.K.m(), edx.a($$0.a(mb.aM), $$0.a(mb.aS)), rx.b(), List.of(), 32, false, false, false, true);
    }
 
-   public edi f() {
-      return this.g;
+   private static edv a(rk<?> $$0, boolean $$1, boolean $$2) {
+      return new edv(edy.b, dko.b.m(), dko.J.m(), edx.a($$0.a(mb.aM), $$0.a(mb.aS), $$2, $$1), rx.a(), new dja().a(), 63, false, true, true, false);
    }
 
-   public edi g() {
-      return this.h;
+   private static edv d(rk<?> $$0) {
+      return new edv(edy.e, dko.b.m(), dko.J.m(), edx.b($$0.a(mb.aM), $$0.a(mb.aS)), rx.a(false, true, true), List.of(), 32, false, false, false, true);
    }
 
-   public edi h() {
-      return this.i;
+   private static edv e(rk<?> $$0) {
+      return new edv(edy.f, dko.b.m(), dko.J.m(), edx.c($$0.a(mb.aM), $$0.a(mb.aS)), rx.a(false, false, false), List.of(), -64, false, false, false, true);
    }
 
-   public edi i() {
+   public static edv e() {
+      return new edv(edy.b, dko.b.m(), dko.a.m(), edx.a(), rx.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public edy f() {
       return this.j;
    }
 
-   public edi j() {
+   public dxv g() {
       return this.k;
    }
 
-   public edi k() {
+   public dxv h() {
       return this.l;
    }
 
-   public edi l() {
+   public edw i() {
       return this.m;
    }
 
-   public edi m() {
+   public eeh.o j() {
       return this.n;
    }
 
-   public edi n() {
+   public List<dit.d> k() {
       return this.o;
    }
 
-   public edi o() {
+   public int l() {
       return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

@@ -1,19 +1,36 @@
+import javax.annotation.Nullable;
+
 class buj extends bum {
-   protected buj(bun $$0, int $$1) {
+   private final boolean c;
+
+   public buj(buo $$0, int $$1, boolean $$2) {
       super($$0, $$1);
+      this.c = $$2;
    }
 
    @Override
-   public boolean a(ash $$0, bwf $$1, int $$2) {
-      if ($$1 instanceof cpw $$3) {
-         $$3.G(0.005F * (float)($$2 + 1));
+   public boolean a(ash $$0, bwg $$1, int $$2) {
+      if (this.c == $$1.eD()) {
+         $$1.c((float)Math.max(4 << $$2, 0));
+      } else {
+         $$1.a($$0, $$1.dX().q(), (float)(6 << $$2));
       }
 
       return true;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public void a(ash $$0, @Nullable bvk $$1, @Nullable bvk $$2, bwg $$3, int $$4, double $$5) {
+      if (this.c == $$3.eD()) {
+         int $$6 = (int)($$5 * (double)(4 << $$4) + 0.5);
+         $$3.c((float)$$6);
+      } else {
+         int $$7 = (int)($$5 * (double)(6 << $$4) + 0.5);
+         if ($$1 == null) {
+            $$3.a($$0, $$3.dX().q(), (float)$$7);
+         } else {
+            $$3.a($$0, $$3.dX().c($$1, $$2), (float)$$7);
+         }
+      }
    }
 }

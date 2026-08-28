@@ -1,93 +1,95 @@
-public class dvq extends dwe {
-   public static final int d = 9;
-   private jz<cxo> e = jz.a(9, cxo.j);
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   protected dvq(duy<?> $$0, jh $$1, dxu $$2) {
-      super($$0, $$1, $$2);
+public class dvq {
+   public static final aly<dvp> a = a("blank");
+   public static final aly<dvp> b = a("angler");
+   public static final aly<dvp> c = a("archer");
+   public static final aly<dvp> d = a("arms_up");
+   public static final aly<dvp> e = a("blade");
+   public static final aly<dvp> f = a("brewer");
+   public static final aly<dvp> g = a("burn");
+   public static final aly<dvp> h = a("danger");
+   public static final aly<dvp> i = a("explorer");
+   public static final aly<dvp> j = a("flow");
+   public static final aly<dvp> k = a("friend");
+   public static final aly<dvp> l = a("guster");
+   public static final aly<dvp> m = a("heart");
+   public static final aly<dvp> n = a("heartbreak");
+   public static final aly<dvp> o = a("howl");
+   public static final aly<dvp> p = a("miner");
+   public static final aly<dvp> q = a("mourner");
+   public static final aly<dvp> r = a("plenty");
+   public static final aly<dvp> s = a("prize");
+   public static final aly<dvp> t = a("scrape");
+   public static final aly<dvp> u = a("sheaf");
+   public static final aly<dvp> v = a("shelter");
+   public static final aly<dvp> w = a("skull");
+   public static final aly<dvp> x = a("snort");
+   private static final Map<cxl, aly<dvp>> y = Map.ofEntries(
+      Map.entry(cxt.rj, a),
+      Map.entry(cxt.yF, b),
+      Map.entry(cxt.yG, c),
+      Map.entry(cxt.yH, d),
+      Map.entry(cxt.yI, e),
+      Map.entry(cxt.yJ, f),
+      Map.entry(cxt.yK, g),
+      Map.entry(cxt.yL, h),
+      Map.entry(cxt.yM, i),
+      Map.entry(cxt.yN, j),
+      Map.entry(cxt.yO, k),
+      Map.entry(cxt.yP, l),
+      Map.entry(cxt.yQ, m),
+      Map.entry(cxt.yR, n),
+      Map.entry(cxt.yS, o),
+      Map.entry(cxt.yT, p),
+      Map.entry(cxt.yU, q),
+      Map.entry(cxt.yV, r),
+      Map.entry(cxt.yW, s),
+      Map.entry(cxt.yX, t),
+      Map.entry(cxt.yY, u),
+      Map.entry(cxt.yZ, v),
+      Map.entry(cxt.za, w),
+      Map.entry(cxt.zb, x)
+   );
+
+   @Nullable
+   public static aly<dvp> a(cxl $$0) {
+      return y.get($$0);
    }
 
-   public dvq(jh $$0, dxu $$1) {
-      this(duy.f, $$0, $$1);
+   private static aly<dvp> a(String $$0) {
+      return aly.a(mb.ax, alz.b($$0));
    }
 
-   @Override
-   public int b() {
-      return 9;
+   public static dvp a(kd<dvp> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   public int a(bam $$0) {
-      this.d_(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
-         if (!this.e.get($$3).f() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1;
-   }
-
-   public cxo b(cxo $$0) {
-      int $$1 = this.e_($$0);
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         cxo $$3 = this.e.get($$2);
-         if ($$3.f() || cxo.c($$0, $$3)) {
-            int $$4 = Math.min($$0.L(), $$1 - $$3.L());
-            if ($$4 > 0) {
-               if ($$3.f()) {
-                  this.a($$2, $$0.a($$4));
-               } else {
-                  $$0.h($$4);
-                  $$3.g($$4);
-               }
-            }
-
-            if ($$0.f()) {
-               break;
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   @Override
-   protected xv j() {
-      return xv.c("container.dispenser");
-   }
-
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.e = jz.a(this.b(), cxo.j);
-      if (!this.b_($$0)) {
-         btc.b($$0, this.e, $$1);
-      }
-   }
-
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         btc.a($$0, this.e, $$1);
-      }
-   }
-
-   @Override
-   protected jz<cxo> f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(jz<cxo> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected ctb a(int $$0, cpv $$1) {
-      return new ctw($$0, $$1, this);
+   private static dvp a(kd<dvp> $$0, aly<dvp> $$1, String $$2) {
+      return kd.a($$0, $$1, new dvp(alz.b($$2)));
    }
 }

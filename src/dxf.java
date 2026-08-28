@@ -1,124 +1,62 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.Optional;
 
-public class dxf {
-   static final String a = "server_data";
-   static Codec<dxf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kk.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cxo.a.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dxf::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cxo> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public record dxf(aly<ewu> d, double e, double f, cxp g, Optional<aly<ewu>> h, dww i, dww.a j) {
+   static final String a = "config";
+   static dxf b = new dxf();
+   static Codec<dxf> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  aly.a(mb.bg).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dxf::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dxf::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dxf::d),
+                  cxp.a("key_item").forGetter(dxf::e),
+                  aly.a(mb.bg).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dxf::f)
+               )
+               .apply($$0, dxf::new)
+      )
+      .validate(dxf::h);
 
-   dxf(Set<UUID> $$0, long $$1, List<cxo> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
+   private dxf() {
+      this(ewl.R, 4.0, 4.5, new cxp(cxt.zt), Optional.empty(), dww.b, dww.a.a);
    }
 
-   dxf() {
+   public dxf(aly<ewu> $$0, double $$1, double $$2, cxp $$3, Optional<aly<ewu>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
    }
 
-   void a(long $$0) {
-      this.h = $$0;
+   public dww a() {
+      return this.i;
    }
 
-   long a() {
-      return this.h;
+   private DataResult<dxf> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
    }
 
-   Set<UUID> b() {
+   public aly<ewu> b() {
+      return this.d;
+   }
+
+   public double c() {
       return this.e;
    }
 
-   boolean a(cpw $$0) {
-      return this.e.contains($$0.cG());
-   }
-
-   @VisibleForTesting
-   public void b(cpw $$0) {
-      this.e.add($$0.cG());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
-         }
-      }
-
-      this.i();
-   }
-
-   long c() {
+   public double d() {
       return this.f;
    }
 
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<cxo> d() {
+   public cxp e() {
       return this.g;
    }
 
-   void e() {
-      this.i = 0;
-      this.i();
+   public Optional<aly<ewu>> f() {
+      return this.h;
    }
 
-   void a(List<cxo> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   cxo f() {
-      return this.g.isEmpty() ? cxo.j : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cxo.j);
-   }
-
-   cxo g() {
-      if (this.g.isEmpty()) {
-         return cxo.j;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cxo.j);
-      }
-   }
-
-   void a(dxf $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
-   }
-
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - bae.f((float)this.d().size(), 1.0F, (float)this.i);
+   public dww.a g() {
+      return this.j;
    }
 }

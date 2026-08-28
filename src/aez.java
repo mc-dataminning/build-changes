@@ -89,7 +89,7 @@ public class aez implements aac<acr> {
          zr.x.encode($$0, $$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.h = $$1.c(ym.a::a), ($$0, $$1) -> $$0.a($$1.h, ym.a::a)),
-      c(($$0, $$1) -> $$0.e = dhe.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = dhf.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = ws.a($$1, xx.d), ($$0, $$1) -> ws.a($$0, $$1.f(), xx.d)),
@@ -112,7 +112,7 @@ public class aez implements aac<acr> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dhe e, @Nullable xv f, int g, @Nullable ym.a h) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dhf e, @Nullable xv f, int g, @Nullable ym.a h) {
 
       b(asi $$0) {
          this($$0.cG(), $$0.gh(), true, $$0.f.k(), $$0.h.b(), $$0.O(), $$0.P(), x.a($$0.ad(), ym::a));
@@ -125,7 +125,7 @@ public class aez implements aac<acr> {
       GameProfile b;
       boolean c;
       int d;
-      dhe e;
+      dhf e;
       @Nullable
       xv f;
       int g;
@@ -133,7 +133,7 @@ public class aez implements aac<acr> {
       ym.a h;
 
       c(UUID $$0) {
-         this.e = dhe.e;
+         this.e = dhf.e;
          this.a = $$0;
       }
 

@@ -1,22 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class djj extends dkl {
+public class djj extends dkm {
    public static final MapCodec<djj> a = b(djj::new);
 
    @Override
-   public MapCodec<? extends djj> a() {
+   public MapCodec<djj> a() {
       return a;
    }
 
-   public djj(dxt.d $$0) {
+   public djj(dxu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dhh $$0, dxu $$1, fbt $$2, cqp $$3) {
-      if (!$$0.C) {
-         jh $$4 = $$2.b();
-         $$0.a(null, $$4, axf.E, axg.e, 1.0F, 0.5F + $$0.A.i() * 1.2F);
-      }
+   protected dqv a_(dxv $$0) {
+      return dqv.a;
+   }
+
+   @Override
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return fcp.a();
    }
 }

@@ -18,8 +18,8 @@ public abstract class bby extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(biw.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(biw.q))) {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bix.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bix.q))) {
          throw new IllegalStateException("Poi type is not what was expected.");
       } else {
          return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));

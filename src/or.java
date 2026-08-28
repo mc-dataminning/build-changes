@@ -22,19 +22,19 @@ public class or {
       this.b = ImmutableSet.copyOf($$2);
    }
 
-   public alz a(dkl $$0) {
+   public alz a(dkm $$0) {
       return oq.a($$0, this.c.orElse(""));
    }
 
-   public alz a(dkl $$0, ot $$1, BiConsumer<alz, Supplier<JsonElement>> $$2) {
+   public alz a(dkm $$0, ot $$1, BiConsumer<alz, Supplier<JsonElement>> $$2) {
       return this.a(oq.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public alz a(dkl $$0, String $$1, ot $$2, BiConsumer<alz, Supplier<JsonElement>> $$3) {
+   public alz a(dkm $$0, String $$1, ot $$2, BiConsumer<alz, Supplier<JsonElement>> $$3) {
       return this.a(oq.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public alz b(dkl $$0, String $$1, ot $$2, BiConsumer<alz, Supplier<JsonElement>> $$3) {
+   public alz b(dkm $$0, String $$1, ot $$2, BiConsumer<alz, Supplier<JsonElement>> $$3) {
       return this.a(oq.a($$0, $$1), $$2, $$3);
    }
 

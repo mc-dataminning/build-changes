@@ -10,10 +10,10 @@ public class beb extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("ContainerBlockEntityLockPredicateFix", this.getInputSchema().findChoiceType(biw.s), beb::a);
+      return this.fixTypeEverywhereTyped("ContainerBlockEntityLockPredicateFix", this.getInputSchema().findChoiceType(bix.s), beb::a);
    }
 
    private static Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.renameAndFixField("Lock", "lock", bhj::b));
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.renameAndFixField("Lock", "lock", bhk::b));
    }
 }

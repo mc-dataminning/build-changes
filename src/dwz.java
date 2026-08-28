@@ -1,283 +1,105 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Function;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class dwz {
-   public static final String a = "spawn_data";
-   private static final String m = "next_mob_spawns_at";
-   private static final int n = 20;
-   private static final int o = 18000;
-   public static MapCodec<dwz> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kk.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
-               kk.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
-               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
-               dib.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
-               aly.a(mb.bg).lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dwz::new)
-   );
-   protected final Set<UUID> c = new HashSet<>();
-   protected final Set<UUID> d = new HashSet<>();
-   protected long e;
-   protected long f;
-   protected int g;
-   protected Optional<dib> h;
-   protected Optional<aly<ewt>> i;
-   @Nullable
-   protected bvj j;
-   @Nullable
-   private brq<cxo> p;
-   protected double k;
-   protected double l;
+   private static final dwz.a a = dwz.a.a("trial_chamber/breeze");
+   private static final dwz.a b = dwz.a.a("trial_chamber/melee/husk");
+   private static final dwz.a c = dwz.a.a("trial_chamber/melee/spider");
+   private static final dwz.a d = dwz.a.a("trial_chamber/melee/zombie");
+   private static final dwz.a e = dwz.a.a("trial_chamber/ranged/poison_skeleton");
+   private static final dwz.a f = dwz.a.a("trial_chamber/ranged/skeleton");
+   private static final dwz.a g = dwz.a.a("trial_chamber/ranged/stray");
+   private static final dwz.a h = dwz.a.a("trial_chamber/slow_ranged/poison_skeleton");
+   private static final dwz.a i = dwz.a.a("trial_chamber/slow_ranged/skeleton");
+   private static final dwz.a j = dwz.a.a("trial_chamber/slow_ranged/stray");
+   private static final dwz.a k = dwz.a.a("trial_chamber/small_melee/baby_zombie");
+   private static final dwz.a l = dwz.a.a("trial_chamber/small_melee/cave_spider");
+   private static final dwz.a m = dwz.a.a("trial_chamber/small_melee/silverfish");
+   private static final dwz.a n = dwz.a.a("trial_chamber/small_melee/slime");
 
-   public dwz() {
-      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
+   public static void a(rk<dwy> $$0) {
+      a(
+         $$0,
+         a,
+         dwy.b().b(1.0F).d(0.5F).b(20).a(2.0F).c(1.0F).a(brr.a(a(bvr.r))).a(),
+         dwy.b().d(0.5F).b(20).a(4.0F).c(1.0F).a(brr.a(a(bvr.r))).b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a()
+      );
+      a($$0, b, c().a(brr.a(a(bvr.an))).a(), c().a(brr.a(a(bvr.an, ewl.ak))).b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a());
+      a($$0, c, c().a(brr.a(a(bvr.bo))).a(), a().a(brr.a(a(bvr.bo))).b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a());
+      a($$0, d, c().a(brr.a(a(bvr.bO))).a(), c().b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.bO, ewl.ak))).a());
+      a($$0, e, c().a(brr.a(a(bvr.q))).a(), c().b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.q, ewl.aj))).a());
+      a($$0, f, c().a(brr.a(a(bvr.bf))).a(), c().b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.bf, ewl.aj))).a());
+      a($$0, g, c().a(brr.a(a(bvr.bs))).a(), c().b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.bs, ewl.aj))).a());
+      a($$0, h, b().a(brr.a(a(bvr.q))).a(), b().b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.q, ewl.aj))).a());
+      a($$0, i, b().a(brr.a(a(bvr.bf))).a(), b().b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.bf, ewl.aj))).a());
+      a($$0, j, b().a(brr.a(a(bvr.bs))).a(), b().b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.bs, ewl.aj))).a());
+      a(
+         $$0,
+         k,
+         dwy.b().d(0.5F).b(20).a(brr.a(a(bvr.bO, $$0x -> $$0x.a("IsBaby", true), null))).a(),
+         dwy.b().d(0.5F).b(20).b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.bO, $$0x -> $$0x.a("IsBaby", true), ewl.ak))).a()
+      );
+      a($$0, l, c().a(brr.a(a(bvr.v))).a(), a().b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.v))).a());
+      a($$0, m, c().a(brr.a(a(bvr.be))).a(), a().b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a()).a(brr.a(a(bvr.be))).a());
+      a(
+         $$0,
+         n,
+         c().a(brr.<dic>a().a(a(bvr.bh, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bvr.bh, $$0x -> $$0x.a("Size", (byte)2)), 1).a()).a(),
+         a()
+            .b(brr.<aly<ewu>>a().a(ewl.aN, 3).a(ewl.aO, 7).a())
+            .a(brr.<dic>a().a(a(bvr.bh, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bvr.bh, $$0x -> $$0x.a("Size", (byte)2)), 1).a())
+            .a()
+      );
    }
 
-   public dwz(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<dib> $$5, Optional<aly<ewt>> $$6) {
-      this.c.addAll($$0);
-      this.d.addAll($$1);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+   private static <T extends bvk> dic a(bvr<T> $$0) {
+      return a($$0, $$0x -> {
+      }, null);
    }
 
-   public void a() {
-      this.d.clear();
-      this.h = Optional.empty();
-      this.b();
+   private static <T extends bvk> dic a(bvr<T> $$0, Consumer<ux> $$1) {
+      return a($$0, $$1, null);
    }
 
-   public void b() {
-      this.c.clear();
-      this.g = 0;
-      this.f = 0L;
-      this.e = 0L;
+   private static <T extends bvk> dic a(bvr<T> $$0, aly<ewu> $$1) {
+      return a($$0, $$0x -> {
+      }, $$1);
    }
 
-   public boolean a(dww $$0, bam $$1) {
-      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
-      return $$2 || !$$0.b().i().d();
+   private static <T extends bvk> dic a(bvr<T> $$0, Consumer<ux> $$1, @Nullable aly<ewu> $$2) {
+      ux $$3 = new ux();
+      $$3.a("id", ma.f.b($$0).toString());
+      $$1.accept($$3);
+      Optional<bvu> $$4 = Optional.ofNullable($$2).map($$0x -> new bvu($$0x, 0.0F));
+      return new dic($$3, Optional.empty(), $$4);
    }
 
-   public boolean a(dwx $$0, int $$1) {
-      return this.g >= $$0.a($$1);
+   private static void a(rk<dwy> $$0, dwz.a $$1, dwy $$2, dwy $$3) {
+      $$0.a($$1.a, $$2);
+      $$0.a($$1.b, $$3);
    }
 
-   public boolean c() {
-      return this.d.isEmpty();
+   static aly<dwy> a(String $$0) {
+      return aly.a(mb.bd, alz.b($$0));
    }
 
-   public boolean a(ash $$0, dwx $$1, int $$2) {
-      return $$0.ac() >= this.f && this.d.size() < $$1.b($$2);
+   private static dwy.a a() {
+      return dwy.b().b(4.0F).d(0.5F).b(20).a(12.0F);
    }
 
-   public int a(jh $$0) {
-      if (this.c.isEmpty()) {
-         ae.b("Trial Spawner at " + $$0 + " has no detected players");
+   private static dwy.a b() {
+      return dwy.b().b(4.0F).d(2.0F).b(160);
+   }
+
+   private static dwy.a c() {
+      return dwy.b().b(3.0F).d(0.5F).b(20);
+   }
+
+   static record a(aly<dwy> a, aly<dwy> b) {
+
+      public static dwz.a a(String $$0) {
+         return new dwz.a(dwz.a($$0 + "/normal"), dwz.a($$0 + "/ominous"));
       }
-
-      return Math.max(0, this.c.size() - 1);
-   }
-
-   public void a(ash $$0, jh $$1, dww $$2) {
-      boolean $$3 = ($$1.a() + $$0.ac()) % 20L != 0L;
-      if (!$$3) {
-         if (!$$2.i().equals(dxa.f) || !$$2.e()) {
-            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
-            boolean $$7;
-            if (!$$2.e() && !$$4.isEmpty()) {
-               Optional<Pair<cpw, jq<bum>>> $$6 = a($$0, $$4);
-               $$6.ifPresent($$3x -> {
-                  cpw $$4x = (cpw)$$3x.getFirst();
-                  if ($$3x.getSecond() == buq.E) {
-                     a($$4x);
-                  }
-
-                  $$0.c(3020, jh.a((ka)$$4x.bF()), 0);
-                  $$2.a($$0, $$1);
-               });
-               $$7 = $$6.isPresent();
-            } else {
-               $$7 = false;
-            }
-
-            if (!$$2.i().equals(dxa.f) || $$7) {
-               boolean $$8 = $$2.f().c.isEmpty();
-               List<UUID> $$9 = $$8 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
-               if (this.c.addAll($$9)) {
-                  this.f = Math.max($$0.ac() + 40L, this.f);
-                  if (!$$7) {
-                     int $$10 = $$2.e() ? 3019 : 3013;
-                     $$0.c($$10, $$1, this.c.size());
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static Optional<Pair<cpw, jq<bum>>> a(ash $$0, List<UUID> $$1) {
-      cpw $$2 = null;
-
-      for (UUID $$3 : $$1) {
-         cpw $$4 = $$0.b($$3);
-         if ($$4 != null) {
-            jq<bum> $$5 = buq.H;
-            if ($$4.b($$5)) {
-               return Optional.of(Pair.of($$4, $$5));
-            }
-
-            if ($$4.b(buq.E)) {
-               $$2 = $$4;
-            }
-         }
-      }
-
-      return Optional.ofNullable($$2).map($$0x -> Pair.of($$0x, buq.E));
-   }
-
-   public void a(dww $$0, ash $$1) {
-      this.d.stream().map($$1::a).forEach($$1x -> {
-         if ($$1x != null) {
-            $$1.c(3012, $$1x.dw(), dww.a.a.a());
-            if ($$1x instanceof bwh $$2) {
-               $$2.b($$1);
-            }
-
-            $$1x.a(bvj.d.b);
-         }
-      });
-      if (!$$0.d().i().d()) {
-         this.h = Optional.empty();
-      }
-
-      this.g = 0;
-      this.d.clear();
-      this.f = $$1.ac() + (long)$$0.d().h();
-      $$0.j();
-      this.e = $$1.ac() + $$0.d().a();
-   }
-
-   private static void a(cpw $$0) {
-      buo $$1 = $$0.c(buq.E);
-      if ($$1 != null) {
-         int $$2 = $$1.e() + 1;
-         int $$3 = 18000 * $$2;
-         $$0.e(buq.E);
-         $$0.a(new buo(buq.H, $$3, 0));
-      }
-   }
-
-   public boolean a(ash $$0, float $$1, int $$2) {
-      long $$3 = this.e - (long)$$2;
-      return (float)$$0.ac() >= (float)$$3 + $$1;
-   }
-
-   public boolean b(ash $$0, float $$1, int $$2) {
-      long $$3 = this.e - (long)$$2;
-      return (float)($$0.ac() - $$3) % $$1 == 0.0F;
-   }
-
-   public boolean a(ash $$0) {
-      return $$0.ac() >= this.e;
-   }
-
-   public void a(dww $$0, bam $$1, bvq<?> $$2) {
-      this.b($$0, $$1).a().a("id", ma.f.b($$2).toString());
-   }
-
-   protected dib b(dww $$0, bam $$1) {
-      if (this.h.isPresent()) {
-         return this.h.get();
-      } else {
-         brq<dib> $$2 = $$0.b().i();
-         Optional<dib> $$3 = $$2.d() ? this.h : $$2.b($$1).map(brs.b::b);
-         this.h = Optional.of($$3.orElseGet(dib::new));
-         $$0.j();
-         return this.h.get();
-      }
-   }
-
-   @Nullable
-   public bvj a(dww $$0, dhh $$1, dxa $$2) {
-      if (!$$2.d()) {
-         return null;
-      } else {
-         if (this.j == null) {
-            ux $$3 = this.b($$0, $$1.H_()).a();
-            if ($$3.b("id", 8)) {
-               this.j = bvq.a($$3, $$1, bvp.q, Function.identity());
-            }
-         }
-
-         return this.j;
-      }
-   }
-
-   public ux a(dxa $$0) {
-      ux $$1 = new ux();
-      if ($$0 == dxa.c) {
-         $$1.a("next_mob_spawns_at", this.f);
-      }
-
-      this.h
-         .ifPresent($$1x -> $$1.a("spawn_data", (vu)dib.b.encodeStart(vl.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
-      return $$1;
-   }
-
-   public double d() {
-      return this.k;
-   }
-
-   public double e() {
-      return this.l;
-   }
-
-   brq<cxo> a(ash $$0, dwx $$1, jh $$2) {
-      if (this.p != null) {
-         return this.p;
-      } else {
-         ewt $$3 = $$0.p().bc().b($$1.k());
-         ewr $$4 = new ewr.a($$0).a(ezh.b);
-         long $$5 = a($$0, $$2);
-         ObjectArrayList<cxo> $$6 = $$3.a($$4, $$5);
-         if ($$6.isEmpty()) {
-            return brq.b();
-         } else {
-            brq.a<cxo> $$7 = new brq.a<>();
-            ObjectListIterator var10 = $$6.iterator();
-
-            while (var10.hasNext()) {
-               cxo $$8 = (cxo)var10.next();
-               $$7.a($$8.c(1), $$8.L());
-            }
-
-            this.p = $$7.a();
-            return this.p;
-         }
-      }
-   }
-
-   private static long a(ash $$0, jh $$1) {
-      jh $$2 = new jh(bae.d((float)$$1.u() / 30.0F), bae.d((float)$$1.v() / 20.0F), bae.d((float)$$1.w() / 30.0F));
-      return $$0.D() + $$2.a();
    }
 }

@@ -1,13 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gyo extends gxo {
-   @Nullable
-   public bvh.g.a a;
-   @Nullable
-   public hdm f;
-
-   @Override
-   public boolean a() {
-      return this.a != null && this.f != null;
-   }
+public class gyo extends gyt {
+   public float a;
+   public int b;
+   public bvh.a c = bvh.a.a;
 }

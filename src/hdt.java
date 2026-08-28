@@ -1,67 +1,44 @@
-import java.util.Comparator;
-import java.util.Objects;
+import java.util.List;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class hdt {
-   public static final Comparator<hdt> a = Comparator.<hdt, alz>comparing(hdt::a).thenComparing(hdt::b);
-   private final alz b;
-   private final alz c;
-   @Nullable
-   private glu d;
+public class hdt implements heg {
+   private final alz a;
+   private List<gnb> b = List.of();
 
-   public hdt(alz $$0, alz $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public alz a() {
-      return this.b;
-   }
-
-   public alz b() {
-      return this.c;
-   }
-
-   public hbk c() {
-      return fmf.Q().a(this.a()).apply(this.b());
-   }
-
-   public glu a(Function<alz, glu> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
-      }
-
-      return this.d;
-   }
-
-   public fgv a(glk $$0, Function<alz, glu> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public fgv a(glk $$0, Function<alz, glu> $$1, boolean $$2, boolean $$3) {
-      return this.c().a(gsn.a($$0, this.a($$1), $$2, $$3));
+   public hdt(alz $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         hdt $$1 = (hdt)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
+   public void a(heg.a $$0) {
+      if ($$0.a(this.a) instanceof gmx $$2) {
+         this.b = $$2.e();
+         this.b.forEach($$1 -> $$0.a($$1.a()));
+      }
+   }
+
+   @Override
+   public hdn a(hdw $$0, Function<hdu, hbl> $$1, hec $$2) {
+      hdn $$3 = $$0.a(this.a, $$2);
+      if (this.b.isEmpty()) {
+         return $$3;
       } else {
-         return false;
+         gmr $$4 = new gmr($$0, this.b);
+         return new hdt.a($$3, $$4);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
+   static class a extends hdr {
+      private final gmr b;
 
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+      public a(hdn $$0, gmr $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+
+      @Override
+      public gmr g() {
+         return this.b;
+      }
    }
 }

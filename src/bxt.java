@@ -1,79 +1,84 @@
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class bxt<E extends bwn> extends bxy<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
+public class bxt extends bxz<chx> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final bvr<? extends chx> f;
    private final float g;
-   private final Function<bwn, ayk<bub>> h;
+   private final int h;
+   private static final int i = 2;
+   private long j;
 
-   public bxt(float $$0) {
-      this($$0, $$0x -> axw.F);
+   public bxt(bvr<? extends chx> $$0) {
+      this($$0, 1.0F, 2);
    }
 
-   public bxt(float $$0, Function<bwn, ayk<bub>> $$1) {
-      super(Map.of(cfj.Z, cfk.c, cfj.x, cfk.c), 100, 120);
-      this.g = $$0;
-      this.h = $$1;
+   public bxt(bvr<? extends chx> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(cfk.h, cfl.a, cfk.r, cfl.b, cfk.m, cfl.c, cfk.n, cfl.c, cfk.Z, cfl.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   protected boolean a(ash $$0, E $$1) {
-      return $$1.ec().c(cfj.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.ec().a(cfj.Z);
+   protected boolean a(ash $$0, chx $$1) {
+      return $$1.gy() && this.c($$1).isPresent();
    }
 
-   protected boolean a(ash $$0, E $$1, long $$2) {
-      return true;
+   protected void a(ash $$0, chx $$1, long $$2) {
+      chx $$3 = this.c($$1).get();
+      $$1.ec().a(cfk.r, $$3);
+      $$3.ec().a(cfk.r, $$1);
+      byb.a($$1, (bwg)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.dZ().a(50);
+      this.j = $$2 + (long)$$4;
    }
 
-   protected void b(ash $$0, E $$1, long $$2) {
-      $$1.ec().a(cfj.Z, true);
-      $$1.ec().b(cfj.m);
-   }
-
-   protected void c(ash $$0, E $$1, long $$2) {
-      bxh<?> $$3 = $$1.ec();
-      $$3.b(cfj.Z);
-   }
-
-   protected void d(ash $$0, E $$1, long $$2) {
-      if ($$1.L().m()) {
-         fbx $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.ec().a(cfj.m, new cfm($$3, this.g, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private fbx a(E $$0, ash $$1) {
-      if ($$0.bY()) {
-         Optional<fbx> $$2 = this.a((dgm)$$1, $$0).map(fbx::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return chd.a($$0, 5, 4);
-   }
-
-   private Optional<jh> a(dgm $$0, bvj $$1) {
-      jh $$2 = $$1.dw();
-      if (!$$0.a_($$2).g($$0, $$2).c()) {
-         return Optional.empty();
+   protected boolean b(ash $$0, chx $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
       } else {
-         Predicate<jh> $$3;
-         if (bae.f($$1.dr()) == 2) {
-            $$3 = $$1x -> jh.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(aya.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(aya.a);
+         chx $$3 = this.a($$1);
+         return $$3.bL() && $$1.a($$3) && byb.a($$1.ec(), $$3) && $$2 <= this.j && !$$1.gl() && !$$3.gl();
+      }
+   }
+
+   protected void c(ash $$0, chx $$1, long $$2) {
+      chx $$3 = this.a($$1);
+      byb.a($$1, (bwg)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.ec().b(cfk.r);
+            $$3.ec().b(cfk.r);
+         }
+      }
+   }
+
+   protected void d(ash $$0, chx $$1, long $$2) {
+      $$1.ec().b(cfk.r);
+      $$1.ec().b(cfk.m);
+      $$1.ec().b(cfk.n);
+      this.j = 0L;
+   }
+
+   private chx a(chx $$0) {
+      return (chx)$$0.ec().c(cfk.r).get();
+   }
+
+   private boolean b(chx $$0) {
+      bxi<?> $$1 = $$0.ec();
+      return $$1.a(cfk.r) && $$1.c(cfk.r).get().aq() == this.f;
+   }
+
+   private Optional<? extends chx> c(chx $$0) {
+      return $$0.ec().c(cfk.h).get().a($$1 -> {
+         if ($$1.aq() == this.f && $$1 instanceof chx $$2 && $$0.a($$2) && !$$2.gl()) {
+            return true;
          }
 
-         return jh.a($$2, 5, 1, $$3);
-      }
+         return false;
+      }).map(chx.class::cast);
    }
 }

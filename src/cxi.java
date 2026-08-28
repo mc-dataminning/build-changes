@@ -1,83 +1,33 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cxi extends cxk {
-   private final ayk<cxh> a;
+public record cxi(jq<axe> e, float f, float g, xv h) {
+   public static final Codec<cxi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axe.b.fieldOf("sound_event").forGetter(cxi::a),
+               azn.o.fieldOf("use_duration").forGetter(cxi::b),
+               azn.o.fieldOf("range").forGetter(cxi::c),
+               xx.a.fieldOf("description").forGetter(cxi::d)
+            )
+            .apply($$0, cxi::new)
+   );
+   public static final zt<xg, cxi> b = zt.a(axe.d, cxi::a, zr.l, cxi::b, zr.l, cxi::c, xx.b, cxi::d, cxi::new);
+   public static final Codec<jq<cxi>> c = alv.a(mb.I, a);
+   public static final zt<xg, jq<cxi>> d = zr.a(mb.I, b);
 
-   public cxi(ayk<cxh> $$0, cxk.a $$1) {
-      super($$1);
-      this.a = $$0;
+   public jq<axe> a() {
+      return this.e;
    }
 
-   @Override
-   public void a(cxo $$0, cxk.b $$1, List<xv> $$2, czg $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      js.a $$4 = $$1.a();
-      if ($$4 != null) {
-         Optional<jq<cxh>> $$5 = this.a($$0, $$4);
-         if ($$5.isPresent()) {
-            yj $$6 = $$5.get().a().d().f();
-            xy.a($$6, ys.a.a(n.h));
-            $$2.add($$6);
-         }
-      }
+   public float b() {
+      return this.f;
    }
 
-   public static cxo a(cxk $$0, jq<cxh> $$1) {
-      cxo $$2 = new cxo($$0);
-      $$2.b(ku.Z, $$1);
-      return $$2;
+   public float c() {
+      return this.g;
    }
 
-   @Override
-   public bti a(dhh $$0, cpw $$1, bth $$2) {
-      cxo $$3 = $$1.b($$2);
-      Optional<? extends jq<cxh>> $$4 = this.a($$3, $$1.dY());
-      if ($$4.isPresent()) {
-         cxh $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gE().a($$3, bae.d($$5.b() * 20.0F));
-         $$1.b(axp.c.b(this));
-         return bti.c;
-      } else {
-         return bti.d;
-      }
-   }
-
-   @Override
-   public int a(cxo $$0, bwf $$1) {
-      Optional<jq<cxh>> $$2 = this.a($$0, $$1.dY());
-      return $$2.<Integer>map($$0x -> bae.d(((cxh)$$0x.a()).b() * 20.0F)).orElse(0);
-   }
-
-   private Optional<jq<cxh>> a(cxo $$0, js.a $$1) {
-      jq<cxh> $$2 = $$0.a(ku.Z);
-      if ($$2 != null) {
-         return Optional.of($$2);
-      } else {
-         Optional<ju.c<cxh>> $$3 = $$1.d(mb.I).a(this.a);
-         if ($$3.isPresent()) {
-            Iterator<jq<cxh>> $$4 = $$3.get().iterator();
-            if ($$4.hasNext()) {
-               return Optional.of($$4.next());
-            }
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   @Override
-   public cxq b(cxo $$0) {
-      return cxq.i;
-   }
-
-   private static void a(dhh $$0, cpw $$1, cxh $$2) {
-      axe $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, axg.c, $$4, 1.0F);
-      $$0.a(ecq.B, $$1.du(), ecq.a.a($$1));
+   public xv d() {
+      return this.h;
    }
 }

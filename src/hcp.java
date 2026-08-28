@@ -1,69 +1,40 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class hcp extends us {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public abstract class hcp implements avp, AutoCloseable {
+   private final hbk a;
+   private final alz b;
+   private final Set<aut<?>> c;
 
-   private hcp(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public hcp(hbm $$0, alz $$1, alz $$2) {
+      this($$0, $$1, $$2, hbg.a);
    }
 
-   public static hcp a(avv $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = new HashMap<>();
-
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               alz $$7 = alz.a($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
-            }
-         }
-      }
-
-      ur.a().a($$3);
-      return new hcp(Map.copyOf($$3), $$2);
+   public hcp(hbm $$0, alz $$1, alz $$2, Set<aut<?>> $$3) {
+      this.b = $$2;
+      this.a = new hbk($$1);
+      $$0.a(this.a.h(), this.a);
+      this.c = $$3;
    }
 
-   private static void a(String $$0, List<avt> $$1, Map<String, String> $$2) {
-      for (avt $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            us.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
+   protected hbl a(alz $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public final CompletableFuture<Void> a(avp.a $$0, avv $$1, Executor $$2, Executor $$3) {
+      return hbg.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hbg.a::a).thenCompose($$0::a).thenAcceptAsync(this::a, $$3);
+   }
+
+   private void a(hbg.a $$0) {
+      try (bpy $$1 = bps.a().d("upload")) {
+         this.a.a($$0);
       }
    }
 
    @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public azq a(ya $$0) {
-      return hcq.a($$0, this.d);
+   public void close() {
+      this.a.g();
    }
 }

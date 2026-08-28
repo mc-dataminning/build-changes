@@ -1,83 +1,62 @@
-public class ghr extends gjr {
-   ghr(gfj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
+public class ghr extends gjs {
+   private static final float a = 0.0025F;
+   private static final int b = 300;
+   private static final int F = 300;
+   private static final float G = 0.25F;
+   private static final float H = 2.0F;
+   private float I;
+   private final float J;
+   private final float K;
+
+   protected ghr(gfk $$0, double $$1, double $$2, double $$3, gjn $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$4.a(this.r.a(12), 12));
+      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
+      this.J = this.r.i();
+      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
+      this.t = 300;
+      this.u = 7.5E-4F;
+      float $$5 = this.r.h() ? 0.05F : 0.075F;
+      this.D = $$5;
+      this.b($$5, $$5);
+      this.B = 1.0F;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * bae.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public giw b() {
+      return giw.b;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
-   }
-
-   @Override
-   public giv b() {
-      return giv.b;
-   }
-
-   public static class a implements giu<lw> {
-      private final gjm a;
-
-      public a(gjm $$0) {
-         this.a = $$0;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
       }
 
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghr $$8 = new ghr($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
+      if (!this.o) {
+         float $$0 = (float)(300 - this.t);
+         float $$1 = Math.min($$0 / 300.0F, 1.0F);
+         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         this.j += $$2 * 0.0025F;
+         this.l += $$3 * 0.0025F;
+         this.k = this.k - (double)this.u;
+         this.I = this.I + this.K / 20.0F;
+         this.A = this.z;
+         this.z = this.z + this.I / 20.0F;
+         this.a(this.j, this.k, this.l);
+         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
+            this.k();
+         }
 
-   public static class b implements giu<lw> {
-      private final gjm a;
-
-      public b(gjm $$0) {
-         this.a = $$0;
-      }
-
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghr $$8 = new ghr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements giu<lw> {
-      private final gjm a;
-
-      public c(gjm $$0) {
-         this.a = $$0;
-      }
-
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghr $$8 = new ghr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+         if (!this.o) {
+            this.j = this.j * (double)this.B;
+            this.k = this.k * (double)this.B;
+            this.l = this.l * (double)this.B;
+         }
       }
    }
 }

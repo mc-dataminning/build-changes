@@ -1,4 +1,9 @@
-public class gxl extends gys {
-   public float a;
-   public float b;
+import javax.annotation.Nullable;
+
+public class gxl extends gyb {
+   private static final alz j = alz.b("textures/entity/cat/tabby.png");
+   public alz a = j;
+   public boolean b;
+   @Nullable
+   public cwm c;
 }

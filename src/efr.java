@@ -1,32 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class efr extends efo {
-   public static final Codec<efr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               efo.d.forGetter($$0x -> $$0x),
-               bsl.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bsl.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bsl.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, efr::new)
-   );
-   public final bsl b;
-   public final bsl c;
-   final bsl j;
+public class efr extends een {
+   private final ke a;
+   private final edu b;
+   private final eee c;
+   private final eeh.o d;
 
-   public efr(float $$0, emq $$1, bsl $$2, eej $$3, efp $$4, ju<dkl> $$5, bsl $$6, bsl $$7, bsl $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   public efr(edt $$0, ke $$1, dhk $$2, edu $$3, eee $$4, eeh.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   public efr(float $$0, emq $$1, bsl $$2, eej $$3, ju<dkl> $$4, bsl $$5, bsl $$6, bsl $$7) {
-      this($$0, $$1, $$2, $$3, efp.a, $$4, $$5, $$6, $$7);
+   @Deprecated
+   public Optional<dxv> a(Function<jh, jq<dik>> $$0, dzq $$1, jh $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   public efr(efo $$0, bsl $$1, bsl $$2, bsl $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   @Deprecated
+   public ke c() {
+      return this.a;
+   }
+
+   public eee d() {
+      return this.c;
    }
 }

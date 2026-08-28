@@ -1,40 +1,43 @@
-public class gbh extends gbl<gyk> {
-   public static final gew a = gew.scaling(0.5F);
-   private final gen b;
-   private final gen c;
-
-   public gbh(gen $$0) {
+public class gbh extends gee<hak> {
+   public gbh(geo $$0) {
       super($$0);
-      this.c = $$0.b("left_wing");
-      this.b = $$0.b("right_wing");
    }
 
-   public static get a() {
-      gev $$0 = new gev();
-      gex $$1 = $$0.a();
-      ger $$2 = new ger(1.0F);
-      $$1.a(
-         "left_wing",
-         ges.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gep.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
-      );
-      $$1.a(
-         "right_wing",
-         ges.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gep.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
-      );
-      return get.a($$0, 64, 32);
+   public static geu a(ges $$0) {
+      gew $$1 = gbz.a($$0, 0.0F);
+      gey $$2 = $$1.a();
+      $$2.a("left_arm", get.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), geq.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", get.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), geq.a(1.9F, 12.0F, 0.0F));
+      return geu.a($$1, 64, 64);
    }
 
-   public void a(gyk $$0) {
+   protected gbz.a a(hak $$0, bwa $$1) {
+      cxp $$2 = $$1 == bwa.b ? $$0.ar : $$0.at;
+      return $$2.a(cxt.wI) && $$0.a && $$0.ap == $$1 ? gbz.a.e : gbz.a.a;
+   }
+
+   @Override
+   public void a(hak $$0) {
       super.a($$0);
-      this.c.c = $$0.I ? 3.0F : 0.0F;
-      this.c.e = $$0.N;
-      this.c.g = $$0.P;
-      this.c.f = $$0.O;
-      this.b.f = -this.c.f;
-      this.b.c = this.c.c;
-      this.b.e = this.c.e;
-      this.b.g = -this.c.g;
+      if (this.a($$0, bwa.a) == gbz.a.e) {
+         this.s.e = this.s.e * 0.5F - (float) Math.PI;
+         this.s.f = 0.0F;
+      }
+
+      if (this.a($$0, bwa.b) == gbz.a.e) {
+         this.r.e = this.r.e * 0.5F - (float) Math.PI;
+         this.r.f = 0.0F;
+      }
+
+      float $$1 = $$0.B;
+      if ($$1 > 0.0F) {
+         this.r.e = bae.j($$1, this.r.e, (float) (-Math.PI * 4.0 / 5.0)) + $$1 * 0.35F * bae.a(0.1F * $$0.p);
+         this.s.e = bae.j($$1, this.s.e, (float) (-Math.PI * 4.0 / 5.0)) - $$1 * 0.35F * bae.a(0.1F * $$0.p);
+         this.r.g = bae.j($$1, this.r.g, -0.15F);
+         this.s.g = bae.j($$1, this.s.g, 0.15F);
+         this.u.e = this.u.e - $$1 * 0.55F * bae.a(0.1F * $$0.p);
+         this.t.e = this.t.e + $$1 * 0.55F * bae.a(0.1F * $$0.p);
+         this.o.e = 0.0F;
+      }
    }
 }

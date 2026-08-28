@@ -14,7 +14,7 @@ public class iw {
    public static final SuggestionProvider<ew> b = a(alz.b("available_sounds"), ($$0, $$1) -> fb.a(((fb)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<ew> c = a(
       alz.b("summonable_entities"),
-      ($$0, $$1) -> fb.a(ma.f.s().filter($$1x -> $$1x.a(((fb)$$0.getSource()).v()) && $$1x.c()), $$1, bvq::a, $$0x -> xv.c(ae.a("entity", bvq.a($$0x))))
+      ($$0, $$1) -> fb.a(ma.f.s().filter($$1x -> $$1x.a(((fb)$$0.getSource()).v()) && $$1x.c()), $$1, bvr::a, $$0x -> xv.c(ae.a("entity", bvr.a($$0x))))
    );
 
    public static <S extends fb> SuggestionProvider<S> a(alz $$0, SuggestionProvider<fb> $$1) {

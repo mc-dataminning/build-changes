@@ -1,66 +1,56 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class flf extends fle {
+public abstract class flf implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   private static final xv c = xv.c("mco.configure.world.opening");
-   private final fii d;
-   private final ftx e;
-   private final boolean f;
-   private final fmf g;
+   private boolean c = false;
 
-   public flf(fii $$0, ftx $$1, boolean $$2, fmf $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   @Override
-   public void run() {
-      fhh $$0 = fhh.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof fjr) {
-                     ((fjr)this.e).f();
-                  }
-
-                  this.d.e = fii.c.b;
-                  if (this.f) {
-                     fhc.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
-               break;
-            }
-         } catch (fje var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to open server", var5);
-            this.a(var5);
-         }
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   @Override
-   public xv a() {
-      return c;
+   public static void a(fty $$0) {
+      fmg $$1 = fmg.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(xv $$0) {
+      this.b();
+      fmg $$1 = fmg.Q();
+      $$1.execute(() -> $$1.a(new fjw($$0, new fhd(new fua()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fje $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(xv.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(fje $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract xv a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

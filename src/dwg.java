@@ -1,124 +1,98 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dwg extends duw implements ecs.b<ecz.b>, ecz {
-   private static final Logger a = LogUtils.getLogger();
-   private ecz.a b;
-   private final ecz.b c;
-   private final ecz.d d = this.b();
-   private int h;
+public class dwg extends dux implements ect.b<dwg.a> {
+   private final dwg.a a;
 
-   protected dwg(duy<?> $$0, jh $$1, dxu $$2) {
-      super($$0, $$1, $$2);
-      this.b = new ecz.a();
-      this.c = new ecz.b(this);
+   public dwg(jh $$0, dxv $$1) {
+      super(duz.L, $$0, $$1);
+      this.a = new dwg.a($$1, new ecn($$0));
    }
 
-   public dwg(jh $$0, dxu $$1) {
-      this(duy.J, $$0, $$1);
-   }
-
-   public ecz.d b() {
-      return new dwg.a(this.aB_());
+   public static void a(dhi $$0, jh $$1, dxv $$2, dwg $$3) {
+      $$3.a.d().a($$0, $$1, $$0.H_(), true);
    }
 
    @Override
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      alx<vu> $$2 = $$1.a(vl.a);
-      if ($$0.b("listener", 10)) {
-         ecz.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
-            .ifPresent($$0x -> this.b = $$0x);
-      }
+      this.a.b.a($$0);
    }
 
    @Override
    protected void b(ux $$0, js.a $$1) {
+      this.a.b.b($$0);
       super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      alx<vu> $$2 = $$1.a(vl.a);
-      ecz.a.a
-         .encodeStart($$2, this.b)
-         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
    }
 
-   @Override
-   public ecz.a gp() {
-      return this.b;
+   public dwg.a b() {
+      return this.a;
    }
 
-   @Override
-   public ecz.d gq() {
-      return this.d;
-   }
+   public static class a implements ect {
+      public static final int a = 8;
+      final drk b;
+      private final dxv c;
+      private final ecv d;
 
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public ecz.b f() {
-      return this.c;
-   }
-
-   protected class a implements ecz.d {
-      public static final int b = 8;
-      protected final jh c;
-      private final ecu a;
-
-      public a(final jh $$1) {
-         this.c = $$1;
-         this.a = new ecm($$1);
+      public a(dxv $$0, ecv $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = drk.a();
       }
 
       @Override
-      public int a() {
+      public ecv a() {
+         return this.d;
+      }
+
+      @Override
+      public int b() {
          return 8;
       }
 
       @Override
-      public ecu b() {
-         return this.a;
+      public ect.a c() {
+         return ect.a.b;
       }
 
       @Override
-      public boolean d() {
-         return true;
-      }
+      public boolean a(ash $$0, jq<ecr> $$1, ecr.a $$2, fby $$3) {
+         if ($$1.a(ecr.p) && $$2.a() instanceof bwg $$4) {
+            if (!$$4.eJ()) {
+               bua $$5 = $$4.eG();
+               int $$6 = $$4.a($$0, x.a($$5, bua::d));
+               if ($$4.en() && $$6 > 0) {
+                  this.b.a(jh.a((ka)$$3.a(jm.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
 
-      @Override
-      public boolean a(ash $$0, jh $$1, jq<ecq> $$2, @Nullable ecq.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(ecq.f) && !$$2.a(ecq.i) ? drh.q(dwg.this.m()) : false;
-      }
-
-      @Override
-      public void a(ash $$0, jh $$1, jq<ecq> $$2, @Nullable bvj $$3, @Nullable bvj $$4, float $$5) {
-         dxu $$6 = dwg.this.m();
-         if (drh.q($$6)) {
-            dwg.this.a(ecz.a_($$2));
-            int $$7 = ecz.a_($$5, this.a());
-            if ($$6.b() instanceof drh $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dwg.this.d());
+               $$4.eI();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, jh.a((ka)$$1x), this.c, $$0.H_()));
             }
+
+            return true;
+         } else {
+            return false;
          }
       }
 
-      @Override
-      public void e() {
-         dwg.this.e();
+      @VisibleForTesting
+      public drk d() {
+         return this.b;
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      private void a(ash $$0, jh $$1, dxv $$2, bam $$3) {
+         $$0.a($$1, $$2.b(drh.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(ls.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, axf.wu, axg.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(dhi $$0, bwg $$1) {
+         if ($$1.eq() instanceof asi $$3) {
+            bua $$4 = $$1.eG() == null ? $$0.aj().a((cpx)$$3) : $$1.eG();
+            ao.Z.a($$3, $$1, $$4);
+         }
       }
    }
 }

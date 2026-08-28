@@ -1,24 +1,11 @@
 import com.mojang.brigadier.StringReader;
+import java.util.stream.Stream;
 
-public class bpf extends bow<StringReader> {
-   private final StringReader a;
-
-   public bpf(bot<StringReader> $$0, bou<StringReader> $$1, StringReader $$2) {
-      super($$0, $$1);
-      this.a = $$2;
-   }
-
-   public StringReader d() {
-      return this.a;
-   }
+public interface bpf extends bpa<StringReader> {
+   Stream<alz> a();
 
    @Override
-   public int c() {
-      return this.a.getCursor();
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.a.setCursor($$0);
+   default Stream<String> possibleValues(box<StringReader> $$0) {
+      return this.a().map(alz::toString);
    }
 }

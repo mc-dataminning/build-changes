@@ -9,10 +9,10 @@ public class bcf extends bch {
    }
 
    private static String a(String $$0) {
-      String $$1 = bkk.a($$0);
+      String $$1 = bkl.a($$0);
 
       for (String $$2 : a) {
-         String $$3 = bkk.a($$2);
+         String $$3 = bkl.a($$2);
          if ($$1.startsWith($$3)) {
             return "minecraft:" + $$1.substring($$3.length());
          }

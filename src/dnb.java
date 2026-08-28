@@ -1,94 +1,89 @@
 import com.mojang.serialization.MapCodec;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public class dnb extends djx implements dqg {
+public class dnb extends djy implements dqh {
    public static final MapCodec<dnb> a = b(dnb::new);
-   protected static final fcr b = dkl.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
 
    @Override
    public MapCodec<dnb> a() {
       return a;
    }
 
-   protected dnb(dxt.d $$0) {
+   protected dnb(dxu.d $$0) {
       super($$0);
    }
 
    @Override
-   public duw a(jh $$0, dxu $$1) {
+   public dux a(jh $$0, dxv $$1) {
       return new dwq($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      return b;
+   public <T extends dux> duy<T> a(dhi $$0, dxv $$1, duz<T> $$2) {
+      return a($$2, duz.w, $$0.C ? dwq::a : dwq::b);
    }
 
    @Override
-   protected fcr a_(dxu $$0, dhh $$1, jh $$2) {
-      return $$0.f($$1, $$2);
-   }
+   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
+      dux $$4 = $$1.c_($$2);
+      if ($$4 instanceof dwq) {
+         int $$5 = ((dwq)$$4).f();
 
-   @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, bvj $$3) {
-      if ($$3.o(false)) {
-         if (!$$1.C && $$1.ah() == dhh.k && $$3 instanceof asi $$4 && !$$4.i) {
-            $$4.n();
-            return;
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j();
+            double $$9 = (double)$$2.w() + $$3.j();
+            double $$10 = ($$3.j() - 0.5) * 0.5;
+            double $$11 = ($$3.j() - 0.5) * 0.5;
+            double $$12 = ($$3.j() - 0.5) * 0.5;
+            int $$13 = $$3.a(2) * 2 - 1;
+            if ($$3.h()) {
+               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
+               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+            } else {
+               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
+               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+            }
+
+            $$1.a(ls.ad, $$7, $$8, $$9, $$10, $$11, $$12);
          }
-
-         $$3.a(this, $$2);
       }
    }
 
    @Override
-   public euw a(ash $$0, bvj $$1, jh $$2) {
-      aly<dhh> $$3 = $$0.ah() == dhh.k ? dhh.i : dhh.k;
-      ash $$4 = $$0.p().a($$3);
-      if ($$4 == null) {
-         return null;
-      } else {
-         boolean $$5 = $$3 == dhh.k;
-         jh $$6 = $$5 ? ash.a : $$4.Y();
-         fbx $$7 = $$6.c();
-         float $$8;
-         Set<bwt> $$9;
-         if ($$5) {
-            egt.a($$4, jh.a((ka)$$7).e(), true);
-            $$8 = jm.e.p();
-            $$9 = bwt.a(bwt.l, Set.of(bwt.e));
-            if ($$1 instanceof asi) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
-         } else {
-            $$8 = 0.0F;
-            $$9 = bwt.a(bwt.l, bwt.k);
-            if ($$1 instanceof asi $$12) {
-               return $$12.a(false, euw.a);
-            }
-
-            $$7 = $$1.a($$4, $$6).c();
-         }
-
-         return new euw($$4, $$7, fbx.c, $$8, 0.0F, $$9, euw.b.then(euw.c));
-      }
+   public cxp a(dhl $$0, jh $$1, dxv $$2) {
+      return cxp.j;
    }
 
    @Override
-   public void a(dxu $$0, dhh $$1, jh $$2, bam $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(ls.af, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public cxo a(dhk $$0, jh $$1, dxu $$2) {
-      return cxo.j;
-   }
-
-   @Override
-   protected boolean a(dxu $$0, etv $$1) {
+   protected boolean a(dxv $$0, etw $$1) {
       return false;
+   }
+
+   @Override
+   protected void a(dxv $$0, dhi $$1, jh $$2, bvk $$3) {
+      if ($$3.o(false) && !$$1.C && $$1.c_($$2) instanceof dwq $$5 && !$$5.c()) {
+         $$3.a(this, $$2);
+         dwq.c($$1, $$2, $$0, $$5);
+      }
+   }
+
+   @Nullable
+   @Override
+   public eux a(ash $$0, bvk $$1, jh $$2) {
+      if ($$0.c_($$2) instanceof dwq $$4) {
+         fby $$6 = $$4.a($$0, $$2);
+         if ($$6 == null) {
+            return null;
+         } else {
+            return $$1 instanceof cra
+               ? new eux($$0, $$6, fby.c, 0.0F, 0.0F, Set.of(), eux.c)
+               : new eux($$0, $$6, fby.c, 0.0F, 0.0F, bwu.a(bwu.l, bwu.k), eux.c);
+         }
+      } else {
+         return null;
+      }
    }
 }

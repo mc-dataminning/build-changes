@@ -1,66 +1,70 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
 
-public class dbx extends dbt {
-   private static final dbz c = dbz.a(cxs.vl);
+public class dbx extends dbu {
+   private static final dca c = dca.a(cxt.rm);
+   private static final dca d = dca.a(cxt.pQ);
+   private static final dca e = dca.a(cxt.vl);
 
-   public dbx(dbq $$0) {
+   public dbx(dbr $$0) {
       super($$0);
    }
 
-   public boolean a(dbr $$0, dhh $$1) {
+   public boolean a(dbs $$0, dhi $$1) {
       if ($$0.e() < 2) {
          return false;
       } else {
          boolean $$2 = false;
-         boolean $$3 = false;
+         int $$3 = 0;
 
          for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxo $$5 = $$0.a($$4);
+            cxp $$5 = $$0.a($$4);
             if (!$$5.f()) {
-               if ($$5.h() instanceof cwm) {
+               if (c.a($$5)) {
+                  if ($$2) {
+                     return false;
+                  }
+
                   $$2 = true;
-               } else {
-                  if (!c.a($$5)) {
+               } else if (d.a($$5)) {
+                  if (++$$3 > 3) {
                      return false;
                   }
-
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
+               } else if (!e.a($$5)) {
+                  return false;
                }
             }
          }
 
-         return $$3 && $$2;
+         return $$2 && $$3 >= 1;
       }
    }
 
-   public cxo a(dbr $$0, js.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cxo $$3 = null;
+   public cxp a(dbs $$0, js.a $$1) {
+      List<dae> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxo $$5 = $$0.a($$4);
-         if ($$5.h() instanceof cwm $$7) {
-            $$2.add($$7.b().f());
-         } else if (c.a($$5)) {
-            $$3 = $$5.c(1);
+         cxp $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (d.a($$5)) {
+               $$3++;
+            } else if (e.a($$5)) {
+               dae $$6 = $$5.a(ku.ae);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
          }
       }
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(ku.ae, dad.a, $$2, dad::a);
-         return $$3;
-      } else {
-         return cxo.j;
-      }
+      cxp $$7 = new cxp(cxt.vk, 3);
+      $$7.b(ku.af, new daf($$3, $$2));
+      return $$7;
    }
 
    @Override
-   public dcn<dbx> a() {
-      return dcn.i;
+   public dco<dbx> a() {
+      return dco.g;
    }
 }

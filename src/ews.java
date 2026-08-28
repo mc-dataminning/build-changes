@@ -1,146 +1,95 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
 public class ews {
-   public static final Codec<ews> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               exc.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               ezx.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               eye.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               fau.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               fau.a.fieldOf("bonus_rolls").orElse(faq.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ews::new)
-   );
-   private final List<exe> b;
-   private final List<ezx> c;
-   private final Predicate<ewo> d;
-   private final List<eyc> e;
-   private final BiFunction<cxo, ewo, cxo> f;
-   private final fat g;
-   private final fat h;
+   private final ash a;
+   private final bbp b;
+   private final Map<alz, ews.b> c;
+   private final float d;
 
-   ews(List<exe> $$0, List<ezx> $$1, List<eyc> $$2, fat $$3, fat $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ae.a($$1);
-      this.e = $$2;
-      this.f = eye.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   public ews(ash $$0, bbp $$1, Map<alz, ews.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private void b(Consumer<cxo> $$0, ewo $$1) {
-      bam $$2 = $$1.b();
-      List<exd> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   public ash a() {
+      return this.a;
+   }
 
-      for (exe $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public bbp b() {
+      return this.b;
+   }
+
+   public void a(alz $$0, Consumer<cxp> $$1) {
+      ews.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public static class a {
+      private final ash a;
+      private final bbp.a b = new bbp.a();
+      private final Map<alz, ews.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(ash $$0) {
+         this.a = $$0;
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      public ash a() {
+         return this.a;
+      }
+
+      public <T> ews.a a(bbn<T> $$0, T $$1) {
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      public <T> ews.a b(bbn<T> $$0, @Nullable T $$1) {
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      public <T> T a(bbn<T> $$0) {
+         return this.b.a($$0);
+      }
+
+      @Nullable
+      public <T> T b(bbn<T> $$0) {
+         return this.b.b($$0);
+      }
+
+      public ews.a a(alz $$0, ews.b $$1) {
+         ews.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
          } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (exd $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+            return this;
          }
       }
-   }
 
-   public void a(Consumer<cxo> $$0, ewo $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cxo> $$2 = eyc.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + bae.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
-   }
-
-   public void a(ewu $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static ews.a a() {
-      return new ews.a();
-   }
-
-   public static class a implements exy<ews.a>, ezp<ews.a> {
-      private final Builder<exe> a = ImmutableList.builder();
-      private final Builder<ezx> b = ImmutableList.builder();
-      private final Builder<eyc> c = ImmutableList.builder();
-      private fat d = faq.a(1.0F);
-      private fat e = faq.a(0.0F);
-
-      public ews.a a(fat $$0) {
+      public ews.a a(float $$0) {
          this.d = $$0;
          return this;
       }
 
-      public ews.a a() {
-         return this;
+      public ews a(bbo $$0) {
+         bbp $$1 = this.b.a($$0);
+         return new ews(this.a, $$1, this.c, this.d);
       }
+   }
 
-      public ews.a b(fat $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ews.a a(exe.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ews.a a(ezx.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ews.a a(eyc.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ews b() {
-         return new ews(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cxp> var1);
    }
 }

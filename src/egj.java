@@ -1,52 +1,57 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Stream;
 
-public abstract class egj extends egv<ejg> {
-   public egj(Codec<ejg> $$0) {
+public class egj extends egk {
+   public egj(Codec<ejh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egx<ejg> $$0) {
-      bam $$1 = $$0.d();
-      dif $$2 = $$0.b();
-      jh $$3 = $$0.e();
-      Optional<dkl> $$4 = ma.e.a(axu.at, $$1).map(jq::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
-   }
+   protected boolean a(dhj $$0, bam $$1, jh $$2, dxv $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         jm $$4 = jm.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jm> $$6 = ae.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-   protected abstract boolean a(dhi var1, bam var2, jh var3, dxu var4);
+         for (jm $$8 : $$6.subList(0, $$5)) {
+            jh.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jm $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jm.b);
+               jm[] $$13 = new jm[]{$$8, jm.b};
+               $$11 = ae.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
 
-   protected boolean b(dhi $$0, bam $$1, jh $$2, dxu $$3) {
-      jh $$4 = $$2.d();
-      dxu $$5 = $$0.a_($$2);
-      if (($$5.a(dkn.J) || $$5.a(axu.aw)) && $$0.a_($$4).a(dkn.J)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            ma.e.a(axu.aw, $$1).map(jq::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dkn.nq.m().b(drl.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
 
-         for (jm $$6 : jm.c.a) {
-            if ($$1.i() < 0.2F) {
-               jh $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dkn.J)) {
-                  ma.e.a(axu.au, $$1).map(jq::a).ifPresent($$3x -> {
-                     dxu $$4x = $$3x.m();
-                     if ($$4x.b(djw.c)) {
-                        $$4x = $$4x.b(djw.c, $$6);
-                     }
+            $$9.c($$11.g());
+            $$9.c(jm.b);
 
-                     $$0.a($$7, $$4x, 2);
-                  });
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jm.b);
                }
             }
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 }

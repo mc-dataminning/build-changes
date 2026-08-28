@@ -1,14 +1,20 @@
-import com.google.gson.JsonObject;
+public class hdj {
+   public static final hdk a = new hdk();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-public class hdj implements aut<hdi> {
-   public hdi b(JsonObject $$0) {
-      boolean $$1 = azu.a($$0, "blur", false);
-      boolean $$2 = azu.a($$0, "clamp", false);
-      return new hdi($$1, $$2);
+   public hdj(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public String a() {
-      return "texture";
+   public boolean a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return this.e;
    }
 }

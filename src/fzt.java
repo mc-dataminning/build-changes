@@ -1,49 +1,21 @@
-import java.util.Collection;
-import java.util.Comparator;
+import com.google.common.base.MoreObjects;
 import java.util.List;
 
-public class fzt implements fzp, fzq {
-   private static final alz a = alz.b("spectator/teleport_to_player");
-   private static final Comparator<gfv> b = Comparator.comparing($$0 -> $$0.a().getId());
-   private static final xv c = xv.c("spectatorMenu.teleport");
-   private static final xv d = xv.c("spectatorMenu.teleport.prompt");
-   private final List<fzq> e;
+public class fzt {
+   public static final int a = -1;
+   private final List<fzr> b;
+   private final int c;
 
-   public fzt() {
-      this(fmf.Q().L().l());
+   public fzt(List<fzr> $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fzt(Collection<gfv> $$0) {
-      this.e = $$0.stream().filter($$0x -> $$0x.e() != dhe.d).sorted(b).map($$0x -> new fzm($$0x.a())).toList();
+   public fzr a(int $$0) {
+      return $$0 >= 0 && $$0 < this.b.size() ? (fzr)MoreObjects.firstNonNull(this.b.get($$0), fzp.a) : fzp.a;
    }
 
-   @Override
-   public List<fzq> a() {
-      return this.e;
-   }
-
-   @Override
-   public xv b() {
-      return d;
-   }
-
-   @Override
-   public void a(fzo $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public xv aU_() {
-      return c;
-   }
-
-   @Override
-   public void a(fnr $$0, float $$1, float $$2) {
-      $$0.a(glu::C, a, 0, 0, 16, 16, ayp.a($$2, $$1, $$1, $$1));
-   }
-
-   @Override
-   public boolean aV_() {
-      return !this.e.isEmpty();
+   public int a() {
+      return this.c;
    }
 }

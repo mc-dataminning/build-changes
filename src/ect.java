@@ -1,34 +1,20 @@
 public interface ect {
-   ect a = new ect() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   ecv a();
 
-      @Override
-      public void a(ecs $$0) {
-      }
+   int b();
 
-      @Override
-      public void b(ecs $$0) {
-      }
+   boolean a(ash var1, jq<ecr> var2, ecr.a var3, fby var4);
 
-      @Override
-      public boolean a(jq<ecq> $$0, fbx $$1, ecq.a $$2, ect.a $$3) {
-         return false;
-      }
-   };
+   default ect.a c() {
+      return ect.a.a;
+   }
 
-   boolean a();
+   public static enum a {
+      a,
+      b;
+   }
 
-   void a(ecs var1);
-
-   void b(ecs var1);
-
-   boolean a(jq<ecq> var1, fbx var2, ecq.a var3, ect.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(ecs var1, fbx var2);
+   public interface b<T extends ect> {
+      T c();
    }
 }

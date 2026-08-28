@@ -2,9 +2,9 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 
-public class ber extends bhr {
+public class ber extends bhs {
    public ber(Schema $$0) {
-      super($$0, false, "EntityGoatMissingStateFix", biw.B, "minecraft:goat");
+      super($$0, false, "EntityGoatMissingStateFix", bix.B, "minecraft:goat");
    }
 
    @Override

@@ -1,33 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class egt extends egv<ejg> {
-   public egt(Codec<ejg> $$0) {
+public class egt extends egw<ejh> {
+   public egt(Codec<ejh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egx<ejg> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
-   }
+   public boolean a(egy<ejh> $$0) {
+      dig $$1 = $$0.b();
+      bam $$2 = $$0.d();
+      jh $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-   public static void a(dhy $$0, jh $$1, boolean $$2) {
-      jh.a $$3 = $$1.k();
-
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               jh $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               dkl $$8 = $$6 == -1 ? dkn.cv : dkn.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
-                  }
-
-                  $$0.a($$7, $$8.m(), 3);
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = bae.d(-$$4); $$6 <= bae.f($$4); $$6++) {
+            for (int $$7 = bae.d(-$$4); $$7 <= bae.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dko.fN.m());
                }
             }
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
+
+      return true;
    }
 }

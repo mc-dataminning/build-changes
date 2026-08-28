@@ -1,57 +1,58 @@
-import com.google.common.collect.Maps;
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
 public class fkv {
-   private static final Map<String, fkv.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final alz c = alz.b("textures/gui/presets/isles.png");
+   private static final String a = "realms_persistence.json";
+   private static final fia b = new fia();
+   private static final Logger c = LogUtils.getLogger();
 
-   public static alz a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+   public fkv.a a() {
+      return b();
    }
 
-   private static alz b(String $$0, String $$1) {
-      fkv.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         ffr $$3 = a($$1);
-         if ($$3 == null) {
-            alz $$4 = hba.b();
-            a.put($$0, new fkv.a($$1, $$4));
-            return $$4;
-         } else {
-            alz $$5 = alz.a("realms", "dynamic/" + $$0);
-            fmf.Q().aa().a($$5, new hax($$3));
-            a.put($$0, new fkv.a($$1, $$5));
-            return $$5;
-         }
-      }
+   public void a(fkv.a $$0) {
+      b($$0);
    }
 
-   @Nullable
-   private static ffr a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+   public static fkv.a b() {
+      Path $$0 = c();
 
       try {
-         return ffr.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fkv.a $$2 = b.a($$1, fkv.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
       }
 
-      return null;
+      return new fkv.a();
    }
 
-   public static record a(String a, alz b) {
+   public static void b(fkv.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
+      }
+   }
+
+   private static Path c() {
+      return fmg.Q().q.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements fir {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

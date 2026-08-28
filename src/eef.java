@@ -1,40 +1,63 @@
-public class eef implements ede {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final edr i = new edr(this);
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-   public eef(long $$0) {
-      this.b($$0);
+public final class eef {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
    }
 
-   @Override
-   public bam d() {
-      return new eef(this.g());
+   public static eef.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new eef.a($$1, $$2);
    }
 
-   @Override
-   public eec e() {
-      return new edq.a(this.g());
+   public static eef.a c(long $$0) {
+      return b($$0).a();
    }
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
+   public static eef.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new eef.a($$2, $$3);
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   public static record a(long a, long b) {
+      public eef.a a(long $$0, long $$1) {
+         return new eef.a(this.a ^ $$0, this.b ^ $$1);
+      }
+
+      public eef.a a(eef.a $$0) {
+         return this.a($$0.a, $$0.b);
+      }
+
+      public eef.a a() {
+         return new eef.a(eef.a(this.a), eef.a(this.b));
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
+      }
    }
 }

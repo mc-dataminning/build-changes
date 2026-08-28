@@ -4,8 +4,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class me {
-   private final dkl a;
-   final Map<me.b, dkl> b = Maps.newHashMap();
+   private final dkm a;
+   final Map<me.b, dkm> b = Maps.newHashMap();
    boolean c = true;
    boolean d = true;
    @Nullable
@@ -13,19 +13,19 @@ public class me {
    @Nullable
    String f;
 
-   me(dkl $$0) {
+   me(dkm $$0) {
       this.a = $$0;
    }
 
-   public dkl a() {
+   public dkm a() {
       return this.a;
    }
 
-   public Map<me.b, dkl> b() {
+   public Map<me.b, dkm> b() {
       return this.b;
    }
 
-   public dkl a(me.b $$0) {
+   public dkm a(me.b $$0) {
       return this.b.get($$0);
    }
 
@@ -48,7 +48,7 @@ public class me {
    public static class a {
       private final me a;
 
-      public a(dkl $$0) {
+      public a(dkm $$0) {
          this.a = new me($$0);
       }
 
@@ -56,88 +56,88 @@ public class me {
          return this.a;
       }
 
-      public me.a a(dkl $$0) {
+      public me.a a(dkm $$0) {
          this.a.b.put(me.b.a, $$0);
          return this;
       }
 
-      public me.a b(dkl $$0) {
+      public me.a b(dkm $$0) {
          this.a.b.put(me.b.b, $$0);
          return this;
       }
 
-      public me.a c(dkl $$0) {
+      public me.a c(dkm $$0) {
          this.a.b.put(me.b.j, $$0);
          return this;
       }
 
-      public me.a d(dkl $$0) {
+      public me.a d(dkm $$0) {
          this.a.b.put(me.b.c, $$0);
          return this;
       }
 
-      public me.a e(dkl $$0) {
+      public me.a e(dkm $$0) {
          this.a.b.put(me.b.d, $$0);
          return this;
       }
 
-      public me.a f(dkl $$0) {
+      public me.a f(dkm $$0) {
          this.a.b.put(me.b.e, $$0);
          return this;
       }
 
-      public me.a g(dkl $$0) {
+      public me.a g(dkm $$0) {
          this.a.b.put(me.b.f, $$0);
          return this;
       }
 
-      public me.a h(dkl $$0) {
+      public me.a h(dkm $$0) {
          this.a.b.put(me.b.g, $$0);
          return this;
       }
 
-      public me.a i(dkl $$0) {
+      public me.a i(dkm $$0) {
          this.a.b.put(me.b.h, $$0);
          return this;
       }
 
-      public me.a j(dkl $$0) {
+      public me.a j(dkm $$0) {
          this.a.b.put(me.b.i, $$0);
          return this;
       }
 
-      public me.a a(dkl $$0, dkl $$1) {
+      public me.a a(dkm $$0, dkm $$1) {
          this.a.b.put(me.b.k, $$0);
          this.a.b.put(me.b.r, $$1);
          return this;
       }
 
-      public me.a k(dkl $$0) {
+      public me.a k(dkm $$0) {
          this.a.b.put(me.b.l, $$0);
          return this;
       }
 
-      public me.a l(dkl $$0) {
+      public me.a l(dkm $$0) {
          this.a.b.put(me.b.m, $$0);
          return this;
       }
 
-      public me.a m(dkl $$0) {
+      public me.a m(dkm $$0) {
          this.a.b.put(me.b.n, $$0);
          return this;
       }
 
-      public me.a n(dkl $$0) {
+      public me.a n(dkm $$0) {
          this.a.b.put(me.b.o, $$0);
          return this;
       }
 
-      public me.a o(dkl $$0) {
+      public me.a o(dkm $$0) {
          this.a.b.put(me.b.p, $$0);
          return this;
       }
 
-      public me.a p(dkl $$0) {
+      public me.a p(dkm $$0) {
          this.a.b.put(me.b.q, $$0);
          return this;
       }

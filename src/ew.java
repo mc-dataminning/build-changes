@@ -21,7 +21,7 @@ public class ew implements ey<ew>, fb {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("permissions.requires.entity"));
    private final ev c;
-   private final fbx d;
+   private final fby d;
    private final ash e;
    private final int f;
    private final String g;
@@ -29,27 +29,27 @@ public class ew implements ey<ew>, fb {
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final bvj k;
+   private final bvk k;
    private final et l;
    private final fi.a m;
-   private final fbw n;
+   private final fbx n;
    private final eu o;
    private final bbc p;
 
-   public ew(ev $$0, fbx $$1, fbw $$2, ash $$3, int $$4, String $$5, xv $$6, MinecraftServer $$7, @Nullable bvj $$8) {
+   public ew(ev $$0, fby $$1, fbx $$2, ash $$3, int $$4, String $$5, xv $$6, MinecraftServer $$7, @Nullable bvk $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, et.a, fi.a.a, eu.a, bbc.immediate($$7));
    }
 
    protected ew(
       ev $$0,
-      fbx $$1,
-      fbw $$2,
+      fby $$1,
+      fbx $$2,
       ash $$3,
       int $$4,
       String $$5,
       xv $$6,
       MinecraftServer $$7,
-      @Nullable bvj $$8,
+      @Nullable bvk $$8,
       boolean $$9,
       et $$10,
       fi.a $$11,
@@ -76,17 +76,17 @@ public class ew implements ey<ew>, fb {
       return this.c == $$0 ? this : new ew($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ew a(bvj $$0) {
+   public ew a(bvk $$0) {
       return this.k == $$0
          ? this
          : new ew(this.c, this.d, this.n, this.e, this.f, $$0.al().getString(), $$0.p_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ew a(fbx $$0) {
+   public ew a(fby $$0) {
       return this.d.equals($$0) ? this : new ew(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ew a(fbw $$0) {
+   public ew a(fbx $$0) {
       return this.n.c($$0) ? this : new ew(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
@@ -123,25 +123,25 @@ public class ew implements ey<ew>, fb {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = ebp.a(this.e.G_(), $$0.G_());
-         fbx $$2 = new fbx(this.d.d * $$1, this.d.e, this.d.f * $$1);
+         double $$1 = ebq.a(this.e.G_(), $$0.G_());
+         fby $$2 = new fby(this.d.d * $$1, this.d.e, this.d.f * $$1);
          return new ew(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
       }
    }
 
-   public ew a(bvj $$0, fi.a $$1) {
+   public ew a(bvk $$0, fi.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public ew b(fbx $$0) {
-      fbx $$1 = this.m.a(this);
+   public ew b(fby $$0) {
+      fby $$1 = this.m.a(this);
       double $$2 = $$0.d - $$1.d;
       double $$3 = $$0.e - $$1.e;
       double $$4 = $$0.f - $$1.f;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
       float $$6 = bae.h((float)(-(bae.d($$3, $$5) * 180.0F / (float)Math.PI)));
       float $$7 = bae.h((float)(bae.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new fbw($$6, $$7));
+      return this.a(new fbx($$6, $$7));
    }
 
    public ew a(eu $$0, bbc $$1) {
@@ -163,7 +163,7 @@ public class ew implements ey<ew>, fb {
       return this.f >= $$0;
    }
 
-   public fbx d() {
+   public fby d() {
       return this.d;
    }
 
@@ -172,11 +172,11 @@ public class ew implements ey<ew>, fb {
    }
 
    @Nullable
-   public bvj f() {
+   public bvk f() {
       return this.k;
    }
 
-   public bvj g() throws CommandSyntaxException {
+   public bvk g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -185,7 +185,7 @@ public class ew implements ey<ew>, fb {
    }
 
    public asi h() throws CommandSyntaxException {
-      bvj var2 = this.k;
+      bvk var2 = this.k;
       if (var2 instanceof asi) {
          return (asi)var2;
       } else {
@@ -202,7 +202,7 @@ public class ew implements ey<ew>, fb {
       return this.k instanceof asi;
    }
 
-   public fbw k() {
+   public fbx k() {
       return this.n;
    }
 
@@ -266,7 +266,7 @@ public class ew implements ey<ew>, fb {
 
    private void c(xv $$0) {
       xv $$1 = xv.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aL().b(dhd.p)) {
+      if (this.i.aL().b(dhe.p)) {
          for (asi $$2 : this.i.ag().t()) {
             if ($$2.z() != this.c && this.i.ag().f($$2.gh())) {
                $$2.a($$1);
@@ -274,7 +274,7 @@ public class ew implements ey<ew>, fb {
          }
       }
 
-      if (this.c != this.i && this.i.aL().b(dhd.m)) {
+      if (this.c != this.i && this.i.aL().b(dhe.m)) {
          this.i.a($$1);
       }
    }
@@ -326,7 +326,7 @@ public class ew implements ey<ew>, fb {
    }
 
    @Override
-   public Set<aly<dhh>> t() {
+   public Set<aly<dhi>> t() {
       return this.i.K();
    }
 
@@ -336,7 +336,7 @@ public class ew implements ey<ew>, fb {
    }
 
    @Override
-   public css v() {
+   public cst v() {
       return this.e.J();
    }
 

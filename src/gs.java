@@ -42,7 +42,7 @@ public class gs implements ArgumentType<gu> {
 
    public static jh c(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
       jh $$2 = b($$0, $$1);
-      if (!dhh.l($$2)) {
+      if (!dhi.l($$2)) {
          throw c.create();
       } else {
          return $$2;

@@ -1,46 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public enum dgv implements dgj {
-   a;
+public class dgv {
+   public static final dgv a = new dgv(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dgv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dgv::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   @Override
-   public float a(jm $$0, boolean $$1) {
-      return 1.0F;
+   public dgv(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Override
-   public etl C_() {
-      return etl.c;
+   public List<String> a() {
+      return this.c;
    }
 
-   @Override
-   public int a(jh $$0, dgr $$1) {
-      return -1;
-   }
-
-   @Nullable
-   @Override
-   public duw c_(jh $$0) {
-      return null;
-   }
-
-   @Override
-   public dxu a_(jh $$0) {
-      return dkn.a.m();
-   }
-
-   @Override
-   public etw b_(jh $$0) {
-      return etx.a.g();
-   }
-
-   @Override
-   public int M_() {
-      return 0;
-   }
-
-   @Override
-   public int L_() {
-      return 0;
+   public List<String> b() {
+      return this.d;
    }
 }

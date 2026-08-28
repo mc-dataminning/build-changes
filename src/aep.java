@@ -1,13 +1,13 @@
 public class aep implements aac<acr> {
    public static final zt<ws, aep> a = aac.a(aep::a, aep::new);
-   private final bth b;
+   private final bti b;
 
-   public aep(bth $$0) {
+   public aep(bti $$0) {
       this.b = $$0;
    }
 
    private aep(ws $$0) {
-      this.b = $$0.b(bth.class);
+      this.b = $$0.b(bti.class);
    }
 
    private void a(ws $$0) {
@@ -23,7 +23,7 @@ public class aep implements aac<acr> {
       $$0.a(this);
    }
 
-   public bth b() {
+   public bti b() {
       return this.b;
    }
 }

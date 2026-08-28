@@ -1,63 +1,117 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-public class exh extends exg {
-   public static final MapCodec<exh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.either(aly.a(mb.bg), ewt.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, exh::new)
-   );
-   private final Either<aly<ewt>, ewt> j;
+public abstract class exh extends exf {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<eyd> i;
+   final BiFunction<cxp, ewp, cxp> a;
+   private final exe j = new exh.c() {
+      @Override
+      public void a(Consumer<cxp> $$0, ewp $$1) {
+         exh.this.a(eyd.a(exh.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   private exh(Either<aly<ewt>, ewt> $$0, int $$1, int $$2, List<ezx> $$3, List<eyc> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected exh(int $$0, int $$1, List<ezy> $$2, List<eyd> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = eyf.a($$3);
+   }
+
+   protected static <T extends exh> P4<Mu<T>, Integer, Integer, List<ezy>, List<eyd>> b(Instance<T> $$0) {
+      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
+         .and(a($$0).t1())
+         .and(eyf.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public exf a() {
-      return exc.d;
+   public void a(ewv $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
 
+   protected abstract void a(Consumer<cxp> var1, ewp var2);
+
    @Override
-   public void a(Consumer<cxo> $$0, ewo $$1) {
-      ((ewt)this.j.map($$1x -> $$1.a().c($$1x).map(jq::a).orElse(ewt.a), $$0x -> $$0x)).a($$1, $$0);
+   public boolean expand(ewp $$0, Consumer<exe> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public void a(ewu $$0) {
-      Optional<aly<ewt>> $$1 = this.j.left();
-      if ($$1.isPresent()) {
-         aly<ewt> $$2 = $$1.get();
-         if (!$$0.b()) {
-            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
-            return;
-         }
+   public static exh.a<?> a(exh.d $$0) {
+      return new exh.b($$0);
+   }
 
-         if ($$0.a($$2)) {
-            $$0.b("Table " + $$2.a() + " is recursively called");
-            return;
-         }
+   public abstract static class a<T extends exh.a<T>> extends exf.a<T> implements exz<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<eyd> c = ImmutableList.builder();
+
+      public T a(eyd.a $$0) {
+         this.c.add($$0.b());
+         return this.aF_();
       }
 
-      super.a($$0);
-      this.j
-         .ifLeft(
-            $$1x -> $$0.a()
-                  .c($$1x)
-                  .ifPresentOrElse($$2x -> ((ewt)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
-         )
-         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+      protected List<eyd> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.aF_();
+      }
+
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aF_();
+      }
    }
 
-   public static exg.a<?> a(aly<ewt> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new exh(Either.left($$0), $$1, $$2, $$3, $$4));
+   static class b extends exh.a<exh.b> {
+      private final exh.d c;
+
+      public b(exh.d $$0) {
+         this.c = $$0;
+      }
+
+      protected exh.b g() {
+         return this;
+      }
+
+      @Override
+      public exf b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
+      }
    }
 
-   public static exg.a<?> a(ewt $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new exh(Either.right($$0), $$1, $$2, $$3, $$4));
+   protected abstract class c implements exe {
+      @Override
+      public int a(float $$0) {
+         return Math.max(bae.d((float)exh.this.g + (float)exh.this.h * $$0), 0);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface d {
+      exh build(int var1, int var2, List<ezy> var3, List<eyd> var4);
    }
 }

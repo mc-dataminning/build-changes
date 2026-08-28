@@ -1,17 +1,17 @@
 public class ajk implements aac<ahm> {
    public static final zt<ws, ajk> a = aac.a(ajk::a, ajk::new);
-   private final fbt b;
-   private final bth c;
+   private final fbu b;
+   private final bti c;
    private final int d;
 
-   public ajk(bth $$0, fbt $$1, int $$2) {
+   public ajk(bti $$0, fbu $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
    }
 
    private ajk(ws $$0) {
-      this.c = $$0.b(bth.class);
+      this.c = $$0.b(bti.class);
       this.b = $$0.v();
       this.d = $$0.l();
    }
@@ -31,11 +31,11 @@ public class ajk implements aac<ahm> {
       $$0.a(this);
    }
 
-   public bth b() {
+   public bti b() {
       return this.c;
    }
 
-   public fbt e() {
+   public fbu e() {
       return this.b;
    }
 

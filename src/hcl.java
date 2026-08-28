@@ -1,37 +1,15 @@
-import javax.annotation.Nullable;
+public class hcl extends hcp {
+   private static final alz a = alz.b("back");
 
-public record hcl(alz a, @Nullable String b, @Nullable alz c, @Nullable alz d, hcl.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+   public hcl(hbm $$0) {
+      super($$0, alz.b("textures/atlas/paintings.png"), alz.b("paintings"));
+   }
 
-      private final String c;
+   public hbl a(clx $$0) {
+      return this.a($$0.d());
+   }
 
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static hcl.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   public hbl a() {
+      return this.a(a);
    }
 }

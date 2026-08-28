@@ -1,39 +1,27 @@
 import org.joml.Vector2i;
 import org.joml.Vector2ic;
 
-public class fwk implements fwi {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final fsm e;
+public class fwk implements fwj {
+   public static final fwj a = new fwk();
 
-   public fwk(fsm $$0) {
-      this.e = $$0;
+   private fwk() {
    }
 
    @Override
    public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
-      }
-
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
-      } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
-      }
-
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
       return $$6;
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(bae.h((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+      }
+
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
+      }
    }
 }

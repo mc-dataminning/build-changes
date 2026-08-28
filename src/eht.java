@@ -1,28 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class eht extends egv<ejm> {
-   public eht(Codec<ejm> $$0) {
+public class eht extends egw<ejl> {
+   public eht(Codec<ejl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egx<ejm> $$0) {
-      ejm $$1 = $$0.f();
-      bam $$2 = $$0.d();
-      jh $$3 = $$0.e();
-      dif $$4 = $$0.b();
-      int $$5 = 0;
-      jh.a $$6 = new jh.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
-
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
-         }
-      }
-
-      return $$5 > 0;
+   public boolean a(egy<ejl> $$0) {
+      bam $$1 = $$0.d();
+      ejl $$2 = $$0.f();
+      dig $$3 = $$0.b();
+      dzr $$4 = $$0.c();
+      jh $$5 = $$0.e();
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

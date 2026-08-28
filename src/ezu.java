@@ -1,36 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record ezu(ezx b) implements ezx {
-   public static final MapCodec<ezu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezx.e.fieldOf("term").forGetter(ezu::c)).apply($$0, ezu::new));
+public class ezu implements ezy {
+   private static final ezu b = new ezu();
+   public static final MapCodec<ezu> a = MapCodec.unit(b);
 
-   @Override
-   public ezy b() {
-      return ezz.a;
+   private ezu() {
    }
 
-   public boolean a(ewo $$0) {
-      return !this.b.test($$0);
+   @Override
+   public ezz b() {
+      return faa.l;
    }
 
    @Override
    public Set<bbn<?>> a() {
-      return this.b.a();
+      return Set.of(ezj.j);
    }
 
-   @Override
-   public void a(ewu $$0) {
-      ezx.super.a($$0);
-      this.b.a($$0);
+   public boolean a(ewp $$0) {
+      Float $$1 = $$0.c(ezj.j);
+      if ($$1 != null) {
+         bam $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public static ezx.a a(ezx.a $$0) {
-      ezu $$1 = new ezu($$0.build());
-      return () -> $$1;
-   }
-
-   public ezx c() {
-      return this.b;
+   public static ezy.a c() {
+      return () -> b;
    }
 }

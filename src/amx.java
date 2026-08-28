@@ -12,7 +12,7 @@ public class amx {
 
    public static <D, R> CompletableFuture<R> a(amx.c $$0, amx.f<D> $$1, amx.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         Pair<die, avl> $$5 = $$0.a.a();
+         Pair<dif, avl> $$5 = $$0.a.a();
          avl $$6 = (avl)$$5.getSecond();
          jx<ami> $$7 = ami.a();
          List<kd.a<?>> $$8 = ayl.a($$6, $$7.a(ami.a));
@@ -21,7 +21,7 @@ public class amx {
          ke.b $$11 = alu.a($$6, $$10, alu.a);
          List<js.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
          ke.b $$13 = alu.a($$6, $$12, alu.b);
-         die $$14 = (die)$$5.getFirst();
+         dif $$14 = (dif)$$5.getFirst();
          js.a $$15 = js.a.a($$12.stream());
          amx.b<D> $$16 = $$1.get(new amx.a($$6, $$14, $$15, $$13));
          jx<ami> $$17 = $$7.a(ami.b, $$11, $$16.b);
@@ -38,7 +38,7 @@ public class amx {
       }
    }
 
-   public static record a(avv a, die b, js.a c, ke.b d) {
+   public static record a(avv a, dif b, js.a c, ke.b d) {
    }
 
    public static record b<D>(D a, ke.b b) {
@@ -47,9 +47,9 @@ public class amx {
    public static record c(amx.d a, ex.a b, int c) {
    }
 
-   public static record d(avg a, die b, boolean c, boolean d) {
-      public Pair<die, avl> a() {
-         die $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+   public static record d(avg a, dif b, boolean c, boolean d) {
+      public Pair<dif, avl> a() {
+         dif $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
          List<aug> $$1 = this.a.h();
          avl $$2 = new avo(aui.b, $$1);
          return Pair.of($$0, $$2);
@@ -59,7 +59,7 @@ public class amx {
          return this.a;
       }
 
-      public die c() {
+      public dif c() {
          return this.b;
       }
 

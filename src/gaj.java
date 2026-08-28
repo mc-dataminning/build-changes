@@ -1,62 +1,37 @@
-public class gaj extends gai {
-   private static final String a = "right_body_stick";
-   private static final String b = "left_body_stick";
-   private static final String c = "shoulder_stick";
-   private static final String d = "base_plate";
-   private final gen e;
-   private final gen f;
-   private final gen g;
-   private final gen x;
-
-   public gaj(gen $$0) {
+public class gaj extends gbz<gxb> {
+   public gaj(geo $$0) {
       super($$0);
-      this.e = $$0.b("right_body_stick");
-      this.f = $$0.b("left_body_stick");
-      this.g = $$0.b("shoulder_stick");
-      this.x = $$0.b("base_plate");
-      this.p.k = false;
    }
 
-   public static get a() {
-      gev $$0 = gby.a(ger.a, 0.0F);
-      gex $$1 = $$0.a();
-      $$1.a("head", ges.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), gep.a(0.0F, 1.0F, 0.0F));
-      $$1.a("body", ges.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), gep.a);
-      $$1.a("right_arm", ges.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gep.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", ges.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gep.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", ges.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gep.a(-1.9F, 12.0F, 0.0F));
-      $$1.a("left_leg", ges.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gep.a(1.9F, 12.0F, 0.0F));
-      $$1.a("right_body_stick", ges.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gep.a);
-      $$1.a("left_body_stick", ges.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gep.a);
-      $$1.a("shoulder_stick", ges.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), gep.a);
-      $$1.a("base_plate", ges.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), gep.a(0.0F, 12.0F, 0.0F));
-      return get.a($$0, 64, 64);
+   public static geu a(ges $$0) {
+      gew $$1 = gbz.a($$0, 0.0F);
+      gey $$2 = $$1.a();
+      gey $$3 = $$2.a("head", get.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), geq.a(0.0F, 1.0F, 0.0F));
+      $$3.a("hat", get.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), geq.a);
+      $$2.a("right_leg", get.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), geq.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", get.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), geq.a(1.9F, 11.0F, 0.0F));
+      return geu.a($$1, 64, 32);
    }
 
-   @Override
-   public void a(gxa $$0) {
+   public void a(gxb $$0) {
       super.a($$0);
-      this.x.f = (float) (Math.PI / 180.0) * -$$0.a;
-      this.s.k = $$0.e;
-      this.r.k = $$0.e;
-      this.x.k = $$0.f;
-      this.e.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.e.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.e.g = (float) (Math.PI / 180.0) * $$0.h.d();
-      this.f.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.f.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.f.g = (float) (Math.PI / 180.0) * $$0.h.d();
-      this.g.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.g.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.g.g = (float) (Math.PI / 180.0) * $$0.h.d();
-   }
-
-   @Override
-   public void a(bvz $$0, fgr $$1) {
-      gen $$2 = this.a($$0);
-      boolean $$3 = $$2.k;
-      $$2.k = true;
-      super.a($$0, $$1);
-      $$2.k = $$3;
+      this.o.e = (float) (Math.PI / 180.0) * $$0.g.b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.g.c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.g.d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.h.b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.h.c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.h.d();
+      this.s.e = (float) (Math.PI / 180.0) * $$0.i.b();
+      this.s.f = (float) (Math.PI / 180.0) * $$0.i.c();
+      this.s.g = (float) (Math.PI / 180.0) * $$0.i.d();
+      this.r.e = (float) (Math.PI / 180.0) * $$0.j.b();
+      this.r.f = (float) (Math.PI / 180.0) * $$0.j.c();
+      this.r.g = (float) (Math.PI / 180.0) * $$0.j.d();
+      this.u.e = (float) (Math.PI / 180.0) * $$0.k.b();
+      this.u.f = (float) (Math.PI / 180.0) * $$0.k.c();
+      this.u.g = (float) (Math.PI / 180.0) * $$0.k.d();
+      this.t.e = (float) (Math.PI / 180.0) * $$0.l.b();
+      this.t.f = (float) (Math.PI / 180.0) * $$0.l.c();
+      this.t.g = (float) (Math.PI / 180.0) * $$0.l.d();
    }
 }

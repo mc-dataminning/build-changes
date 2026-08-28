@@ -2,84 +2,84 @@ import java.util.function.BiConsumer;
 
 public record ns(js.a a) implements nh {
    @Override
-   public void generate(BiConsumer<aly<ewt>, ewt.a> $$0) {
+   public void generate(BiConsumer<aly<ewu>, ewu.a> $$0) {
       $$0.accept(
-         ewk.aq,
-         ewt.b()
+         ewl.aq,
+         ewu.b()
             .a(
-               ews.a()
-                  .a(faq.a(1.0F))
-                  .a(exb.a(cxs.vu).a(10))
-                  .a(exb.a(cxs.vt).a(10))
-                  .a(exb.a(cxs.sQ).a(10))
-                  .a(exb.a(cxs.pP).a(10))
-                  .a(exb.a(cxs.sS).a(10))
-                  .a(exb.a(cxs.pO).a(10))
-                  .a(exb.a(cxs.om).a(2))
+               ewt.a()
+                  .a(far.a(1.0F))
+                  .a(exc.a(cxt.vu).a(10))
+                  .a(exc.a(cxt.vt).a(10))
+                  .a(exc.a(cxt.sQ).a(10))
+                  .a(exc.a(cxt.pP).a(10))
+                  .a(exc.a(cxt.sS).a(10))
+                  .a(exc.a(cxt.pO).a(10))
+                  .a(exc.a(cxt.om).a(2))
             )
       );
-      $$0.accept(ewk.ar, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.pY)).a(exb.a(cxs.pZ)).a(exb.a(cxs.qa)).a(exb.a(cxs.qb))));
-      $$0.accept(ewk.as, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.vr)).a(exb.a(cxs.sR)).a(exb.a(cxs.qu)).a(exb.a(cxs.sP)).a(exb.a(cxs.vE))));
-      $$0.accept(ewk.at, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.uZ)).a(exb.a(cxs.rm))));
-      $$0.accept(ewk.au, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.lV)).a(exb.a(cxs.oX))));
-      $$0.accept(ewk.av, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.pT)).a(exb.a(cxs.vj)).a(exb.a(cxs.sG))));
-      $$0.accept(ewk.aw, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.rN)).a(exb.a(cxs.rO))));
+      $$0.accept(ewl.ar, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.pY)).a(exc.a(cxt.pZ)).a(exc.a(cxt.qa)).a(exc.a(cxt.qb))));
+      $$0.accept(ewl.as, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.vr)).a(exc.a(cxt.sR)).a(exc.a(cxt.qu)).a(exc.a(cxt.sP)).a(exc.a(cxt.vE))));
+      $$0.accept(ewl.at, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.uZ)).a(exc.a(cxt.rm))));
+      $$0.accept(ewl.au, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.lV)).a(exc.a(cxt.oX))));
+      $$0.accept(ewl.av, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.pT)).a(exc.a(cxt.vj)).a(exc.a(cxt.sG))));
+      $$0.accept(ewl.aw, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.rN)).a(exc.a(cxt.rO))));
       $$0.accept(
-         ewk.ax,
-         ewt.b()
+         ewl.ax,
+         ewu.b()
             .a(
-               ews.a()
-                  .a(faq.a(1.0F))
-                  .a(exb.a(cxs.oS).a(26))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.n)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.q)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.I)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.y)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.A)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.i)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.F)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.l)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.w)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.g)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.e)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.L)))
-                  .a(exb.a(cxs.wg).a(eyt.a(fax.a(0.0F, 1.0F))).a(eyz.a(czo.C)))
+               ewt.a()
+                  .a(far.a(1.0F))
+                  .a(exc.a(cxt.oS).a(26))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.n)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.q)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.I)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.y)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.A)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.i)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.F)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.l)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.w)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.g)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.e)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.L)))
+                  .a(exc.a(cxt.wg).a(eyu.a(fay.a(0.0F, 1.0F))).a(eza.a(czp.C)))
             )
       );
-      $$0.accept(ewk.ay, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.rb))));
-      $$0.accept(ewk.az, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.rn))));
-      $$0.accept(ewk.aA, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.fj))));
+      $$0.accept(ewl.ay, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.rb))));
+      $$0.accept(ewl.az, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.rn))));
+      $$0.accept(ewl.aA, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.fj))));
       $$0.accept(
-         ewk.aB,
-         ewt.b()
+         ewl.aB,
+         ewu.b()
             .a(
-               ews.a()
-                  .a(faq.a(1.0F))
-                  .a(exb.a(cxs.db))
-                  .a(exb.a(cxs.dc))
-                  .a(exb.a(cxs.dd))
-                  .a(exb.a(cxs.de))
-                  .a(exb.a(cxs.df))
-                  .a(exb.a(cxs.dg))
-                  .a(exb.a(cxs.dh))
-                  .a(exb.a(cxs.di))
-                  .a(exb.a(cxs.dj))
-                  .a(exb.a(cxs.dk))
-                  .a(exb.a(cxs.dl))
-                  .a(exb.a(cxs.dm))
-                  .a(exb.a(cxs.dn))
-                  .a(exb.a(cxs.do))
-                  .a(exb.a(cxs.dp))
-                  .a(exb.a(cxs.dq))
+               ewt.a()
+                  .a(far.a(1.0F))
+                  .a(exc.a(cxt.db))
+                  .a(exc.a(cxt.dc))
+                  .a(exc.a(cxt.dd))
+                  .a(exc.a(cxt.de))
+                  .a(exc.a(cxt.df))
+                  .a(exc.a(cxt.dg))
+                  .a(exc.a(cxt.dh))
+                  .a(exc.a(cxt.di))
+                  .a(exc.a(cxt.dj))
+                  .a(exc.a(cxt.dk))
+                  .a(exc.a(cxt.dl))
+                  .a(exc.a(cxt.dm))
+                  .a(exc.a(cxt.dn))
+                  .a(exc.a(cxt.do))
+                  .a(exc.a(cxt.dp))
+                  .a(exc.a(cxt.dq))
             )
       );
-      $$0.accept(ewk.aC, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.pp)).a(exb.a(cxs.pq)).a(exb.a(cxs.pr)).a(exb.a(cxs.po))));
-      $$0.accept(ewk.aD, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.pq)).a(exb.a(cxs.pv)).a(exb.a(cxs.pA))));
-      $$0.accept(ewk.aE, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.pR))));
-      $$0.accept(ewk.aF, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.ds))));
-      $$0.accept(ewk.aG, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.vY)).a(exb.a(cxs.vZ))));
-      $$0.accept(ewk.aH, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.ro).a(1)).a(ewz.b().a(699))));
-      $$0.accept(ewk.aI, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.rp))));
-      $$0.accept(ewk.aJ, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxs.oM))));
+      $$0.accept(ewl.aC, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.pp)).a(exc.a(cxt.pq)).a(exc.a(cxt.pr)).a(exc.a(cxt.po))));
+      $$0.accept(ewl.aD, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.pq)).a(exc.a(cxt.pv)).a(exc.a(cxt.pA))));
+      $$0.accept(ewl.aE, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.pR))));
+      $$0.accept(ewl.aF, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.ds))));
+      $$0.accept(ewl.aG, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.vY)).a(exc.a(cxt.vZ))));
+      $$0.accept(ewl.aH, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.ro).a(1)).a(exa.b().a(699))));
+      $$0.accept(ewl.aI, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.rp))));
+      $$0.accept(ewl.aJ, ewu.b().a(ewt.a().a(far.a(1.0F)).a(exc.a(cxt.oM))));
    }
 }

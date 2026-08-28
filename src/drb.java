@@ -1,105 +1,48 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum drb implements bba {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class drb extends dkm {
+   public static final MapCodec<drb> h = b(drb::new);
+   public static final dys<jm.a> i = dyl.J;
 
-   public static final Codec<drb> e = bba.a(drb::values);
-   private final String f;
-   private final h g;
-
-   private drb(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<? extends drb> a() {
+      return h;
    }
 
-   public drb a(drb $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
+   public drb(dxu.d $$0) {
+      super($$0);
+      this.l(this.m().b(i, jm.a.b));
+   }
+
+   @Override
+   protected dxv a(dxv $$0, drc $$1) {
+      return b($$0, $$1);
+   }
+
+   public static dxv b(dxv $$0, drc $$1) {
+      switch ($$1) {
          case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
          case b:
-            switch (this) {
+            switch ((jm.a)$$0.c(i)) {
                case a:
-                  return b;
-               case b:
-                  return c;
+                  return $$0.b(i, jm.a.c);
                case c:
-                  return d;
-               case d:
-                  return a;
+                  return $$0.b(i, jm.a.a);
+               default:
+                  return $$0;
             }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public jm a(jm $$0) {
-      if ($$0.o() == jm.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
          default:
             return $$0;
       }
    }
 
-   public static drb a(bam $$0) {
-      return ae.a(values(), $$0);
-   }
-
-   public static List<drb> b(bam $$0) {
-      return ae.b(values(), $$0);
+   @Override
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public dxv a(dbg $$0) {
+      return this.m().b(i, $$0.k().o());
    }
 }

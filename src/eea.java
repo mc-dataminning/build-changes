@@ -1,95 +1,68 @@
-public class eea implements dgt {
-   private int a;
+public final class eea {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-   @Override
-   public int a(ash $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.N().b(dhd.L)) {
-         return 0;
-      } else {
-         bam $$3 = $$0.A;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.ad() / 24000L;
-            if ($$4 < 5L || !$$0.U()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
+   private eea() {
+   }
+
+   protected static edu.c a(edj $$0, edj $$1, edj $$2, eed $$3) {
+      dxv $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         eea.a $$8 = $$6 > 0.0 ? eea.a.a : eea.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = bae.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
             } else {
-               int $$5 = $$0.y().size();
-               if ($$5 < 1) {
-                  return 0;
+               bam $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
                } else {
-                  cpw $$6 = $$0.y().get($$3.a($$5));
-                  if ($$6.aa_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dw(), 2)) {
-                     return 0;
+                  double $$15 = bae.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
                   } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     jh.a $$9 = $$6.dw().k().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        jq<dij> $$11 = $$0.t($$9);
-                        if ($$11.a(axt.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
-
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(edp.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
+                     return $$8.g;
                   }
                }
             }
+         } else {
+            return $$4;
          }
-      }
+      };
    }
 
-   private boolean a(ash $$0, jh $$1, bam $$2, boolean $$3) {
-      dxu $$4 = $$0.a_($$1);
-      if (!dhs.a($$0, $$1, $$4, $$4.y(), bvq.aU)) {
-         return false;
-      } else if (!cmx.b(bvq.aU, $$0, bvp.p, $$1, $$2)) {
-         return false;
-      } else {
-         cmx $$5 = bvq.aU.a($$0, bvp.p);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.x(true);
-               $$5.gv();
-            }
+   protected static enum a {
+      a(dko.rv.m(), dko.tB.m(), dko.c.m(), 0, 50),
+      b(dko.T.m(), dko.tA.m(), dko.qU.m(), -60, -8);
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bvp.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
+      final dxv e;
+      final dxv f;
+      final dxv g;
+      protected final int c;
+      protected final int d;
+
+      private a(final dxv $$0, final dxv $$1, final dxv $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
    }
 }

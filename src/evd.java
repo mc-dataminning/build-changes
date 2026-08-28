@@ -1,46 +1,25 @@
-import java.util.Locale;
 import javax.annotation.Nullable;
 
-public interface evd {
-   jm[] a = new jm[]{jm.e, jm.f, jm.a, jm.b, jm.c, jm.d};
+public class evd implements eve {
+   private final dhi b;
 
-   void a(jm var1, dxu var2, jh var3, jh var4, int var5, int var6);
-
-   void a(jh var1, dkl var2, @Nullable eve var3);
-
-   void a(dxu var1, jh var2, dkl var3, @Nullable eve var4, boolean var5);
-
-   default void a(jh $$0, dkl $$1, @Nullable jm $$2, @Nullable eve $$3) {
-      for (jm $$4 : a) {
-         if ($$4 != $$2) {
-            this.a($$0.a($$4), $$1, null);
-         }
-      }
+   public evd(dhi $$0) {
+      this.b = $$0;
    }
 
-   static void a(dhi $$0, jm $$1, jh $$2, jh $$3, dxu $$4, int $$5, int $$6) {
-      dxu $$7 = $$0.a_($$2);
-      if (($$5 & 128) == 0 || !$$7.a(dkn.cE)) {
-         dxu $$8 = $$7.a($$0, $$0, $$2, $$1, $$3, $$4, $$0.H_());
-         dkl.a($$7, $$8, $$0, $$2, $$5, $$6);
-      }
+   @Override
+   public void a(jm $$0, dxv $$1, jh $$2, jh $$3, int $$4, int $$5) {
+      eve.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
    }
 
-   static void a(dhh $$0, dxu $$1, jh $$2, dkl $$3, @Nullable eve $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", ma.e.b($$3), $$3.v(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + ma.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new z($$7);
-      }
+   @Override
+   public void a(jh $$0, dkm $$1, @Nullable evf $$2) {
+      dxv $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
+   }
+
+   @Override
+   public void a(dxv $$0, jh $$1, dkm $$2, @Nullable evf $$3, boolean $$4) {
+      eve.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

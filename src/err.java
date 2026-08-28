@@ -1,45 +1,64 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public class err extends esi {
+public class err extends esj {
    public static final MapCodec<err> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(edp.a.g.fieldOf("heightmap").orElse(edp.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, err::new)
+      $$0 -> $$0.group(esl.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bso.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, err::new)
    );
-   private final edp.a b;
-   private final int c;
+   private final esj b;
+   private final bso c;
 
-   public err(edp.a $$0, int $$1) {
+   public err(esj $$0, bso $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   @Nullable
    @Override
-   public esl.d a(dhk $$0, jh $$1, jh $$2, esl.d $$3, esl.d $$4, esh $$5) {
-      edp.a $$6;
-      if ($$0 instanceof ash) {
-         if (this.b == edp.a.a) {
-            $$6 = edp.a.b;
-         } else if (this.b == edp.a.c) {
-            $$6 = edp.a.d;
-         } else {
-            $$6 = this.b;
-         }
-      } else {
-         $$6 = this.b;
-      }
-
-      jh $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new esl.d(new jh($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+   protected esl<?> a() {
+      return esl.o;
    }
 
    @Override
-   protected esk<?> a() {
-      return esk.g;
+   public final List<esm.d> a(dhz $$0, jh $$1, jh $$2, List<esm.d> $$3, List<esm.d> $$4, esi $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ae.b(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            bam $$6 = bam.a($$0.a().D()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ae.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
+
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  esm.d $$12 = $$3.get($$11);
+                  esm.d $$13 = $$4.get($$11);
+                  esm.d $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
+            }
+         }
+      } else {
+         return $$4;
+      }
    }
 }

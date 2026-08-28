@@ -1,67 +1,24 @@
-import java.util.EnumSet;
+public class ceh extends cde {
+   private final bwo a;
 
-public class ceh extends cdd {
-   private final cka a;
-   private final double b;
-   private double c;
-   private double d;
-   private double e;
-
-   public ceh(cka $$0, double $$1) {
+   public ceh(bwo $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cdd.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.a.gF() && this.a.ca()) {
-         fbx $$0 = cha.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            return true;
-         }
-      } else {
-         return false;
-      }
+      return this.a.dW().U() && this.a.a(bvs.f).f() && chc.a(this.a);
    }
 
    @Override
    public void d() {
-      this.a.L().a(this.c, this.d, this.e, this.b);
+      ((cfr)this.a.L()).d(true);
    }
 
    @Override
-   public boolean c() {
-      return !this.a.gF() && !this.a.L().m() && this.a.ca();
-   }
-
-   @Override
-   public void a() {
-      if (!this.a.gF() && this.a.dZ().a(this.a(50)) == 0) {
-         bvj $$0 = this.a.da();
-         if ($$0 == null) {
-            return;
-         }
-
-         if ($$0 instanceof cpw $$1) {
-            int $$2 = this.a.gL();
-            int $$3 = this.a.gR();
-            if ($$3 > 0 && this.a.dZ().a($$3) < $$2) {
-               this.a.g($$1);
-               return;
-            }
-
-            this.a.u(5);
-         }
-
-         this.a.bP();
-         this.a.gV();
-         this.a.dW().a(this.a, (byte)6);
+   public void e() {
+      if (chc.a(this.a)) {
+         ((cfr)this.a.L()).d(false);
       }
    }
 }

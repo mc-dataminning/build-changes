@@ -1,4 +1,3 @@
-import javax.annotation.Nullable;
-
-public record btu(btz a, float b, @Nullable bue c, float d) {
+public interface btu {
+   btt a(dxv var1, dhj var2, jh var3);
 }

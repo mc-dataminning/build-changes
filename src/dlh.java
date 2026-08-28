@@ -1,62 +1,130 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dlh extends dje {
-   public static final MapCodec<dlh> d = b(dlh::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class dlh extends dok {
+   public static final MapCodec<dlh> a = b(dlh::new);
+   public static final dys<jm> b = dok.aF;
+   @Nullable
+   private dya c;
+   @Nullable
+   private dya d;
+   @Nullable
+   private dya e;
+   @Nullable
+   private dya f;
+   private static final Predicate<dxv> g = $$0 -> $$0 != null && ($$0.a(dko.er) || $$0.a(dko.es));
 
    @Override
-   public MapCodec<dlh> a() {
-      return d;
+   public MapCodec<? extends dlh> a() {
+      return a;
    }
 
-   public dlh(dxt.d $$0) {
-      super($$0, kn.c);
+   protected dlh(dxu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jm.c));
    }
 
    @Override
-   public boolean d(dxu $$0) {
-      return false;
-   }
-
-   protected static boolean a(dhh $$0, dij.c $$1) {
-      if ($$1 == dij.c.b) {
-         return $$0.H_().i() < 0.05F;
-      } else {
-         return $$1 == dij.c.c ? $$0.H_().i() < 0.1F : false;
+   protected void b(dxv $$0, dhi $$1, jh $$2, dxv $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
-   @Override
-   public void a(dxu $$0, dhh $$1, jh $$2, dij.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == dij.c.b) {
-            $$1.b($$2, dkn.fI.m());
-            $$1.a(null, ecq.c, $$2);
-         } else if ($$3 == dij.c.c) {
-            $$1.b($$2, dkn.fK.m());
-            $$1.a(null, ecq.c, $$2);
+   public boolean a(dhl $$0, jh $$1) {
+      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
+   }
+
+   private void a(dhi $$0, jh $$1) {
+      dya.b $$2 = this.q().a($$0, $$1);
+      if ($$2 != null) {
+         civ $$3 = bvr.bl.a($$0, bvq.k);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
+      } else {
+         dya.b $$4 = this.y().a($$0, $$1);
+         if ($$4 != null) {
+            cij $$5 = bvr.aq.a($$0, bvq.k);
+            if ($$5 != null) {
+               $$5.y(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
+            }
+         }
+      }
+   }
+
+   private static void a(dhi $$0, dya.b $$1, bvk $$2, jh $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (asi $$4 : $$0.a(asi.class, $$2.cR().g(5.0))) {
+         ao.o.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(dhi $$0, dya.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dxz $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dko.a.m(), 2);
+            $$0.c(2001, $$4.d(), dkm.j($$4.a()));
+         }
+      }
+   }
+
+   public static void b(dhi $$0, dya.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dxz $$4 = $$1.a($$2, $$3, 0);
+            $$0.b($$4.d(), dko.a);
          }
       }
    }
 
    @Override
-   protected boolean a(etv $$0) {
-      return true;
+   public dxv a(dbg $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, etv $$3) {
-      if ($$3 == etx.c) {
-         dxu $$4 = dkn.fI.m();
-         $$1.b($$2, $$4);
-         $$1.a(ecq.c, $$2, ecq.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == etx.e) {
-         dxu $$5 = dkn.fJ.m();
-         $$1.b($$2, $$5);
-         $$1.a(ecq.c, $$2, ecq.a.a($$5));
-         $$1.c(1046, $$2, 0);
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(b);
+   }
+
+   private dya b() {
+      if (this.c == null) {
+         this.c = dyb.a().a(" ", "#", "#").a('#', dxz.a(dye.a(dko.ec))).b();
       }
+
+      return this.c;
+   }
+
+   private dya q() {
+      if (this.d == null) {
+         this.d = dyb.a().a("^", "#", "#").a('^', dxz.a(g)).a('#', dxz.a(dye.a(dko.ec))).b();
+      }
+
+      return this.d;
+   }
+
+   private dya r() {
+      if (this.e == null) {
+         this.e = dyb.a().a("~ ~", "###", "~#~").a('#', dxz.a(dye.a(dko.cp))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.e;
+   }
+
+   private dya y() {
+      if (this.f == null) {
+         this.f = dyb.a().a("~^~", "###", "~#~").a('^', dxz.a(g)).a('#', dxz.a(dye.a(dko.cp))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.f;
    }
 }

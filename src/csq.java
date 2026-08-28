@@ -1,9 +1,11 @@
-public class csq {
-   final cst a;
-   final long b;
+import java.util.Set;
 
-   csq(cst $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
+public interface csq {
+   Set<aly<? extends kd<? extends csq>>> bU = Set.of(mb.K, mb.f, mb.z, mb.V, mb.ad, mb.W);
+
+   cst i();
+
+   default boolean a(cst $$0) {
+      return this.i().a($$0);
    }
 }

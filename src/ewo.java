@@ -1,147 +1,109 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
 public class ewo {
-   private final ewr a;
-   private final bam b;
-   private final jr.a c;
-   private final Set<ewo.c<?>> d = Sets.newLinkedHashSet();
-
-   ewo(ewr $$0, bam $$1, jr.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public boolean a(bbn<?> $$0) {
-      return this.a.b().a($$0);
-   }
-
-   public <T> T b(bbn<T> $$0) {
-      return this.a.b().b($$0);
-   }
-
+   private static final Codec<ewo> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               fav.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               fav.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, ewo::new)
+   );
+   public static final Codec<ewo> a = Codec.either(Codec.INT, b).xmap($$0 -> (ewo)$$0.map(ewo::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
    @Nullable
-   public <T> T c(bbn<T> $$0) {
-      return this.a.b().c($$0);
-   }
+   private final fau c;
+   @Nullable
+   private final fau d;
+   private final ewo.b e;
+   private final ewo.a f;
 
-   public void a(alz $$0, Consumer<cxo> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   public boolean a(ewo.c<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean b(ewo.c<?> $$0) {
-      return this.d.add($$0);
-   }
-
-   public void c(ewo.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public jr.a a() {
-      return this.c;
-   }
-
-   public bam b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.c();
-   }
-
-   public ash d() {
-      return this.a.a();
-   }
-
-   public static ewo.c<ewt> a(ewt $$0) {
-      return new ewo.c<>(ewq.c, $$0);
-   }
-
-   public static ewo.c<ezx> a(ezx $$0) {
-      return new ewo.c<>(ewq.a, $$0);
-   }
-
-   public static ewo.c<eyc> a(eyc $$0) {
-      return new ewo.c<>(ewq.b, $$0);
-   }
-
-   public static class a {
-      private final ewr a;
-      @Nullable
-      private bam b;
-
-      public a(ewr $$0) {
-         this.a = $$0;
+   public Set<bbn<?>> a() {
+      Builder<bbn<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
 
-      public ewo.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = bam.a($$0);
-         }
-
-         return this;
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
       }
 
-      public ewo.a a(bam $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public ash a() {
-         return this.a.a();
-      }
-
-      public ewo a(Optional<alz> $$0) {
-         ash $$1 = this.a();
-         MinecraftServer $$2 = $$1.p();
-         bam $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::H_);
-         return new ewo(this.a, $$3, $$2.bc().a());
-      }
+      return $$0.build();
    }
 
-   public static enum b implements bba {
-      a("this", ezi.a),
-      b("attacker", ezi.d),
-      c("direct_attacker", ezi.e),
-      d("attacking_player", ezi.b);
+   private ewo(Optional<fau> $$0, Optional<fau> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
 
-      public static final bba.a<ewo.b> e = bba.a(ewo.b::values);
-      private final String f;
-      private final bbn<? extends bvj> g;
-
-      private b(final String $$0, final bbn<? extends bvj> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public bbn<? extends bvj> a() {
-         return this.g;
-      }
-
-      public static ewo.b a(String $$0) {
-         ewo.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
+   private ewo(@Nullable fau $$0, @Nullable fau $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
          } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-      }
-
-      @Override
-      public String c() {
-         return this.f;
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> bae.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static record c<T>(ewq<T> a, T b) {
+   public static ewo a(int $$0) {
+      far $$1 = far.a((float)$$0);
+      return new ewo(Optional.of($$1), Optional.of($$1));
+   }
+
+   public static ewo a(int $$0, int $$1) {
+      return new ewo(Optional.of(far.a((float)$$0)), Optional.of(far.a((float)$$1)));
+   }
+
+   public static ewo b(int $$0) {
+      return new ewo(Optional.of(far.a((float)$$0)), Optional.empty());
+   }
+
+   public static ewo c(int $$0) {
+      return new ewo(Optional.empty(), Optional.of(far.a((float)$$0)));
+   }
+
+   public int a(ewp $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(ewp $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof far $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(ewp var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(ewp var1, int var2);
    }
 }

@@ -1,65 +1,35 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
 
-public class exx extends eyb {
-   private static final Logger b = LogUtils.getLogger();
+public class exx extends eyc {
    public static final MapCodec<exx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(aly.a(mb.bh).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, exx::new)
+      $$0 -> a($$0)
+            .and($$0.group(cu.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), eyf.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, exx::new)
    );
-   private final aly<eyc> c;
+   private final cu b;
+   private final eyd c;
 
-   private exx(List<ezx> $$0, aly<eyc> $$1) {
+   private exx(List<ezy> $$0, cu $$1, eyd $$2) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public eyd<exx> b() {
-      return eye.H;
+   public eye<exx> b() {
+      return eyf.v;
    }
 
    @Override
-   public void a(ewu $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .c(this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
-      }
+   public cxp a(cxp $$0, ewp $$1) {
+      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
    }
 
    @Override
-   protected cxo a(cxo $$0, ewo $$1) {
-      eyc $$2 = $$1.a().c(this.c).map(jq::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         ewo.c<?> $$3 = ewo.a($$2);
-         if ($$1.b($$3)) {
-            cxo var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
-   }
-
-   public static eyb.a<?> a(aly<eyc> $$0) {
-      return a($$1 -> new exx($$1, $$0));
+   public void a(ewv $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

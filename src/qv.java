@@ -1,7 +1,7 @@
 import java.util.concurrent.CompletableFuture;
 
-public class qv extends qp<dij> {
-   public qv(mj $$0, CompletableFuture<js.a> $$1, CompletableFuture<qp.c<dij>> $$2) {
+public class qv extends qp<dik> {
+   public qv(mj $$0, CompletableFuture<js.a> $$1, CompletableFuture<qp.c<dik>> $$2) {
       super($$0, mb.aI, $$1, $$2);
    }
 

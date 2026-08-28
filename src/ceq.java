@@ -1,26 +1,16 @@
 import javax.annotation.Nullable;
 
-public class ceq extends cea {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public ceq(bwn $$0, double $$1) {
-      this($$0, $$1, 0.001F);
-   }
-
-   public ceq(bwn $$0, double $$1, float $$2) {
+public class ceq extends cer {
+   public ceq(bwo $$0, double $$1) {
       super($$0, $$1);
-      this.j = $$2;
    }
 
    @Nullable
    @Override
-   protected fbx h() {
-      if (this.b.bm()) {
-         fbx $$0 = chd.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.dZ().i() >= this.j ? chd.a(this.b, 10, 7) : super.h();
-      }
+   protected fby h() {
+      fby $$0 = this.b.g(0.0F);
+      int $$1 = 8;
+      fby $$2 = chd.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cgz.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

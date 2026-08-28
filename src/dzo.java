@@ -1,51 +1,59 @@
-import java.util.BitSet;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class dzo {
-   private final int a;
-   private final BitSet b;
-   private dzo.a c = ($$0x, $$1x, $$2) -> false;
+public class dzo implements AutoCloseable {
+   private final dhj a;
+   private final Long2ObjectMap<eab> b = new Long2ObjectOpenHashMap();
+   @Nullable
+   private eab c;
+   private long d;
 
-   public dzo(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
+   public dzo(dhj $$0) {
+      this.a = $$0;
    }
 
-   public void a(dzo.a $$0) {
-      this.c = $$0;
+   @Nullable
+   public eab a(jh $$0) {
+      int $$1 = this.a.f($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.an()) {
+         long $$2 = kj.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (eab)this.b.computeIfAbsent($$2, $$2x -> {
+               dzq $$3 = this.a.a(kj.a($$0.u()), kj.a($$0.w()));
+               eab $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
+         }
+
+         return this.c;
+      } else {
+         return null;
+      }
    }
 
-   public dzo(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
+   public dxv b(jh $$0) {
+      eab $$1 = this.a($$0);
+      if ($$1 == null) {
+         return dko.a.m();
+      } else {
+         int $$2 = kj.b($$0.u());
+         int $$3 = kj.b($$0.v());
+         int $$4 = kj.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
+      }
    }
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
-   }
+   @Override
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
-   }
-
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
-   }
-
-   public Stream<jh> a(dgn $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
-   }
-
-   public long[] a() {
-      return this.b.toLongArray();
-   }
-
-   public interface a {
-      boolean test(int var1, int var2, int var3);
+      while (var1.hasNext()) {
+         eab $$0 = (eab)var1.next();
+         $$0.b();
+      }
    }
 }

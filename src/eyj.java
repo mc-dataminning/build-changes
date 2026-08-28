@@ -2,43 +2,62 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public class eyj extends eyb {
+public class eyj extends eyc {
    public static final MapCodec<eyj> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  asz.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  azn.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(duo.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, eyj::new)
    );
-   private final Optional<String> b;
-   private final Optional<asz<String>> c;
-   private final Optional<Integer> d;
+   private final duo b;
+   private final boolean c;
 
-   public eyj(List<ezx> $$0, Optional<asz<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+   eyj(List<ezy> $$0, duo $$1, boolean $$2) {
       super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cxo a(cxo $$0, ewo $$1) {
-      $$0.a(ku.T, daw.a, this::a);
+   protected cxp a(cxp $$0, ewp $$1) {
+      if (this.c) {
+         $$0.a(ku.ai, duo.a, this.b, ($$0x, $$1x) -> new duo.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(ku.ai, this.b);
+      }
+
       return $$0;
    }
 
-   private daw a(daw $$0) {
-      return new daw(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   @Override
+   public eye<eyj> b() {
+      return eyf.E;
    }
 
-   @Override
-   public eyd<eyj> b() {
-      return eye.M;
+   public static eyj.a a(boolean $$0) {
+      return new eyj.a($$0);
+   }
+
+   public static class a extends eyc.a<eyj.a> {
+      private final duo.a a = new duo.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected eyj.a a() {
+         return this;
+      }
+
+      @Override
+      public eyd b() {
+         return new eyj(this.g(), this.a.a(), this.b);
+      }
+
+      public eyj.a a(jq<dun> $$0, cwm $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

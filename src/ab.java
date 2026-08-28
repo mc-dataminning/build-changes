@@ -8,11 +8,11 @@ public class ab {
    @Deprecated
    public static final boolean a = false;
    @Deprecated
-   public static final int b = 4080;
+   public static final int b = 4082;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.21.2";
+   public static final String d = "1.21.3";
    @Deprecated
    public static final int e = 768;
    @Deprecated
@@ -159,7 +159,7 @@ public class ab {
       return 768;
    }
 
-   public static boolean a(dgn $$0) {
+   public static boolean a(dgo $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !ar ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;

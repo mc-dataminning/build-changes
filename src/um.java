@@ -1,11 +1,11 @@
 import java.util.function.Consumer;
 
-public record um(String a, String b, String c, drb d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<tr> l) {
+public record um(String a, String b, String c, drc d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<tr> l) {
    public um(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<tr> $$6) {
-      this($$0, $$1, $$2, drb.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
+      this($$0, $$1, $$2, drc.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
    }
 
-   public um(String $$0, String $$1, String $$2, drb $$3, int $$4, long $$5, boolean $$6, Consumer<tr> $$7) {
+   public um(String $$0, String $$1, String $$2, drc $$3, int $$4, long $$5, boolean $$6, Consumer<tr> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
    }
 
@@ -34,7 +34,7 @@ public record um(String a, String b, String c, drb d, int e, long f, boolean g, 
       return this.c;
    }
 
-   public drb e() {
+   public drc e() {
       return this.d;
    }
 

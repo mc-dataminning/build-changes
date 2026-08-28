@@ -1,25 +1,36 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class cgu extends cgi<coz> {
+public class cgu extends cgk {
+   private static final ImmutableMap<bvr<?>, Float> a = ImmutableMap.builder()
+      .put(bvr.L, 8.0F)
+      .put(bvr.T, 12.0F)
+      .put(bvr.an, 8.0F)
+      .put(bvr.ao, 12.0F)
+      .put(bvr.aU, 15.0F)
+      .put(bvr.aZ, 12.0F)
+      .put(bvr.bC, 8.0F)
+      .put(bvr.bE, 10.0F)
+      .put(bvr.bN, 10.0F)
+      .put(bvr.bO, 8.0F)
+      .put(bvr.bQ, 8.0F)
+      .build();
+
    @Override
-   public Set<cfj<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cfj.B)));
+   protected boolean a(ash $$0, bwg $$1, bwg $$2) {
+      return this.b($$2) && this.a($$1, $$2);
    }
 
-   protected void a(ash $$0, coz $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.aq() == bvq.bS)
-         .or(() -> a($$1, $$0xx -> $$0xx.aq() != bvq.bS))
-         .ifPresentOrElse($$1x -> $$1.ec().a(cfj.B, $$1x), () -> $$1.ec().b(cfj.B));
+   private boolean a(bwg $$0, bwg $$1) {
+      float $$2 = (Float)a.get($$1.aq());
+      return $$1.g((bvk)$$0) <= (double)($$2 * $$2);
    }
 
-   private static Optional<bwf> a(coz $$0, Predicate<bwf> $$1) {
-      return $$0.ec().c(cfj.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   @Override
+   protected cfk<bwg> b() {
+      return cfk.A;
+   }
+
+   private boolean b(bwg $$0) {
+      return a.containsKey($$0.aq());
    }
 }

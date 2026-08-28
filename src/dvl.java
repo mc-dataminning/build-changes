@@ -1,186 +1,245 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class dvl extends duw {
-   private static final int b = 32;
-   public static final int a = 32;
-   private static final int c = 34;
-   private static final int d = 16;
-   private static final int e = 8;
-   private static final int f = 5;
-   private static final int g = 20;
-   private static final int h = 100;
-   private static final int i = 10;
-   private static final int j = 10;
-   private static final int k = 50;
-   @Nullable
-   private coc l;
-   private int m;
-   private int n;
-   @Nullable
-   private fbx r;
-   private int s;
+public class dvl extends dwf implements ctu {
+   public static final int d = 3;
+   public static final int e = 3;
+   public static final int f = 9;
+   public static final int g = 1;
+   public static final int h = 0;
+   public static final int i = 9;
+   public static final int j = 10;
+   private jz<cxp> n = jz.a(9, cxp.j);
+   private int r = 0;
+   protected final cto k = new cto() {
+      private final int[] a = new int[9];
+      private int b = 0;
 
-   public dvl(jh $$0, dxu $$1) {
-      super(duy.k, $$0, $$1);
-   }
-
-   public static void a(dhh $$0, jh $$1, dxu $$2, dvl $$3) {
-      int $$4 = $$3.f();
-      if ($$3.s != $$4) {
-         $$3.s = $$4;
-         $$0.c($$1, dkn.cB);
+      @Override
+      public int a(int $$0) {
+         return $$0 == 9 ? this.b : this.a[$$0];
       }
 
-      if ($$3.n > 0) {
-         if ($$3.n > 50) {
-            $$3.a((ash)$$0, 1, true);
-            $$3.a((ash)$$0, 1, false);
-         }
-
-         if ($$3.n % 10 == 0 && $$0 instanceof ash $$5 && $$3.r != null) {
-            if ($$3.l != null) {
-               $$3.r = $$3.l.cR().f();
-            }
-
-            fbx $$6 = fbx.b($$1);
-            float $$7 = 0.2F + 0.8F * (float)(100 - $$3.n) / 100.0F;
-            fbx $$8 = $$6.d($$3.r).c((double)$$7).e($$3.r);
-            jh $$9 = jh.a((ka)$$8);
-            float $$10 = (float)$$3.n / 2.0F / 100.0F + 0.5F;
-            $$5.a(null, $$9, axf.gx, axg.e, $$10, 1.0F);
-         }
-
-         $$3.n--;
-      }
-
-      if ($$3.m-- < 0) {
-         $$3.m = 20;
-         if ($$3.l != null) {
-            if (dmh.a($$0) && !($$3.j() > 34.0)) {
-               if ($$3.l.dR()) {
-                  $$3.l = null;
-               }
-
-               if (!dmh.b($$2, $$0, $$1) && $$3.l == null) {
-                  $$0.a($$1, $$2.b(dmh.c, dmh.a.a), 3);
-               }
-            } else {
-               $$3.a(null);
-            }
-         } else if (!dmh.b($$2, $$0, $$1)) {
-            $$0.a($$1, $$2.b(dmh.c, dmh.a.a), 3);
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 9) {
+            this.b = $$1;
          } else {
-            if (!dmh.a($$0)) {
-               if ($$2.c(dmh.c) == dmh.a.c) {
-                  $$0.a($$1, $$2.b(dmh.c, dmh.a.b), 3);
-                  return;
-               }
-            } else if ($$2.c(dmh.c) == dmh.a.b) {
-               $$0.a($$1, $$2.b(dmh.c, dmh.a.c), 3);
-               return;
-            }
-
-            if ($$2.c(dmh.c) == dmh.a.c) {
-               if ($$0.al() != btf.a) {
-                  if ($$0 instanceof ash $$11 && !$$11.N().b(dhd.e)) {
-                     return;
-                  }
-
-                  cpw $$12 = $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 32.0, false);
-                  if ($$12 != null) {
-                     $$3.l = a((ash)$$0, $$3);
-                     if ($$3.l != null) {
-                        $$3.l.b(axf.gs);
-                        $$0.a(null, $$3.aB_(), axf.gB, axg.e, 1.0F, 1.0F);
-                     }
-                  }
-               }
-            }
+            this.a[$$0] = $$1;
          }
       }
-   }
 
-   private double j() {
-      return this.l == null ? 0.0 : Math.sqrt(this.l.f(fbx.c(this.aB_())));
-   }
-
-   @Nullable
-   private static coc a(ash $$0, dvl $$1) {
-      jh $$2 = $$1.aB_();
-      Optional<coc> $$3 = bax.a(bvq.E, bvp.c, $$0, $$2, 5, 16, 8, bax.a.c);
-      if ($$3.isEmpty()) {
-         return null;
-      } else {
-         coc $$4 = $$3.get();
-         $$0.a($$4, ecq.t, $$4.du());
-         $$0.a($$4, (byte)60);
-         $$4.h($$2);
-         return $$4;
+      @Override
+      public int a() {
+         return 10;
       }
-   }
+   };
 
-   public acy b() {
-      return acy.a(this);
+   public dvl(jh $$0, dxv $$1) {
+      super(duz.Q, $$0, $$1);
    }
 
    @Override
-   public ux a(js.a $$0) {
-      return this.e($$0);
+   protected xv j() {
+      return xv.c("container.crafter");
    }
 
-   public void c() {
-      if (this.l != null) {
-         if (this.o instanceof ash $$0) {
-            this.a($$0, 20, false);
-            this.n = 100;
-            this.r = this.l.cR().f();
-         }
+   @Override
+   protected ctc a(int $$0, cpw $$1) {
+      return new cts($$0, $$1, this, this.k);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.e($$0)) {
+         this.k.a($$0, $$1 ? 0 : 1);
+         this.e();
       }
    }
 
-   private void a(ash $$0, int $$1, boolean $$2) {
-      if (this.l != null) {
-         int $$3 = $$2 ? 16545810 : 6250335;
-         bam $$4 = $$0.A;
-
-         for (double $$5 = 0.0; $$5 < (double)$$1; $$5++) {
-            fbx $$6 = this.l.cR().h().b($$4.j() * this.l.cR().b(), $$4.j() * this.l.cR().c(), $$4.j() * this.l.cR().d());
-            fbx $$7 = fbx.a(this.aB_()).b($$4.j(), $$4.j(), $$4.j());
-            if ($$2) {
-               fbx $$8 = $$6;
-               $$6 = $$7;
-               $$7 = $$8;
-            }
-
-            lx $$9 = new lx($$7, $$3);
-            $$0.a($$9, $$6.d, $$6.e, $$6.f, 1, 0.0, 0.0, 0.0, 0.0);
-         }
-      }
+   public boolean c(int $$0) {
+      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
    }
 
-   public void a(@Nullable btz $$0) {
-      if (this.l != null) {
-         this.l.h($$0);
-         this.l = null;
-      }
-   }
-
-   public boolean a(coa $$0) {
-      return this.l == $$0;
-   }
-
-   public int d() {
-      return this.s;
-   }
-
-   public int f() {
-      if (this.l == null) {
-         return 0;
+   @Override
+   public boolean b(int $$0, cxp $$1) {
+      if (this.k.a($$0) == 1) {
+         return false;
       } else {
-         double $$0 = this.j();
-         double $$1 = Math.clamp($$0, 0.0, 32.0) / 32.0;
-         return 15 - (int)Math.floor($$1 * 15.0);
+         cxp $$2 = this.n.get($$0);
+         int $$3 = $$2.L();
+         if ($$3 >= $$2.k()) {
+            return false;
+         } else {
+            return $$2.f() ? true : !this.a($$3, $$2, $$0);
+         }
       }
+   }
+
+   private boolean a(int $$0, cxp $$1, int $$2) {
+      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
+         if (!this.c($$3)) {
+            cxp $$4 = this.a($$3);
+            if ($$4.f() || $$4.L() < $$0 && cxp.c($$4, $$1)) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.r = $$0.h("crafting_ticks_remaining");
+      this.n = jz.a(this.b(), cxp.j);
+      if (!this.b_($$0)) {
+         btd.b($$0, this.n, $$1);
+      }
+
+      int[] $$2 = $$0.n("disabled_slots");
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         this.k.a($$3, 0);
+      }
+
+      for (int $$4 : $$2) {
+         if (this.e($$4)) {
+            this.k.a($$4, 1);
+         }
+      }
+
+      this.k.a(9, $$0.h("triggered"));
+   }
+
+   @Override
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("crafting_ticks_remaining", this.r);
+      if (!this.c_($$0)) {
+         btd.a($$0, this.n, $$1);
+      }
+
+      this.c($$0);
+      this.d($$0);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   @Override
+   public boolean c() {
+      for (cxp $$0 : this.n) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cxp a(int $$0) {
+      return this.n.get($$0);
+   }
+
+   @Override
+   public void a(int $$0, cxp $$1) {
+      if (this.c($$0)) {
+         this.a($$0, true);
+      }
+
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(cpx $$0) {
+      return btc.a(this, $$0);
+   }
+
+   @Override
+   public jz<cxp> f() {
+      return this.n;
+   }
+
+   @Override
+   protected void a(jz<cxp> $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   public int az_() {
+      return 3;
+   }
+
+   @Override
+   public int g() {
+      return 3;
+   }
+
+   @Override
+   public void fillStackedContents(cqc $$0) {
+      for (cxp $$1 : this.n) {
+         $$0.a($$1);
+      }
+   }
+
+   private void c(ux $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         if (this.c($$2)) {
+            $$1.add($$2);
+         }
+      }
+
+      $$0.b("disabled_slots", $$1);
+   }
+
+   private void d(ux $$0) {
+      $$0.a("triggered", this.k.a(9));
+   }
+
+   public void a(boolean $$0) {
+      this.k.a(9, $$0 ? 1 : 0);
+   }
+
+   @VisibleForTesting
+   public boolean k() {
+      return this.k.a(9) == 1;
+   }
+
+   public static void a(dhi $$0, jh $$1, dxv $$2, dvl $$3) {
+      int $$4 = $$3.r - 1;
+      if ($$4 >= 0) {
+         $$3.r = $$4;
+         if ($$4 == 0) {
+            $$0.a($$1, $$2.b(dmg.b, Boolean.valueOf(false)), 3);
+         }
+      }
+   }
+
+   public void d(int $$0) {
+      this.r = $$0;
+   }
+
+   public int t() {
+      int $$0 = 0;
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cxp $$2 = this.a($$1);
+         if (!$$2.f() || this.c($$1)) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 && this.n.get($$0).f();
    }
 }

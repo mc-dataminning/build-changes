@@ -1,29 +1,32 @@
-public enum fsj {
-   a,
-   b;
+public interface fsj {
+   fsl a();
 
-   public fsj a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+   public static record a(fsl a) implements fsj {
+      @Override
+      public fsl a() {
+         return this.a.a() == fsk.b ? this.a : fsl.b;
+      }
+
+      public fsl b() {
+         return this.a;
+      }
    }
 
-   public fsk b() {
-      return switch (this) {
-         case a -> fsk.d;
-         case b -> fsk.b;
-      };
+   public static class b implements fsj {
+      @Override
+      public fsl a() {
+         return fsl.b;
+      }
    }
 
-   public fsk c() {
-      return switch (this) {
-         case a -> fsk.c;
-         case b -> fsk.a;
-      };
-   }
+   public static record c(boolean a) implements fsj {
+      @Override
+      public fsl a() {
+         return this.a ? fsl.b : fsl.a;
+      }
 
-   public fsk a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+      public boolean b() {
+         return this.a;
+      }
    }
 }

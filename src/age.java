@@ -6,9 +6,9 @@ public class age implements aac<acr> {
    public static final zt<xg, age> a = aac.a(age::a, age::new);
    private static final byte b = -128;
    private final int c;
-   private final List<Pair<bvr, cxo>> d;
+   private final List<Pair<bvs, cxp>> d;
 
-   public age(int $$0, List<Pair<bvr, cxo>> $$1) {
+   public age(int $$0, List<Pair<bvs, cxp>> $$1) {
       this.c = $$0;
       this.d = $$1;
    }
@@ -20,8 +20,8 @@ public class age implements aac<acr> {
       int $$1;
       do {
          $$1 = $$0.readByte();
-         bvr $$2 = bvr.i.get($$1 & 127);
-         cxo $$3 = cxo.g.decode($$0);
+         bvs $$2 = bvs.i.get($$1 & 127);
+         cxp $$3 = cxp.g.decode($$0);
          this.d.add(Pair.of($$2, $$3));
       } while (($$1 & -128) != 0);
    }
@@ -31,12 +31,12 @@ public class age implements aac<acr> {
       int $$1 = this.d.size();
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bvr, cxo> $$3 = this.d.get($$2);
-         bvr $$4 = (bvr)$$3.getFirst();
+         Pair<bvs, cxp> $$3 = this.d.get($$2);
+         bvs $$4 = (bvs)$$3.getFirst();
          boolean $$5 = $$2 != $$1 - 1;
          int $$6 = $$4.ordinal();
          $$0.l($$5 ? $$6 | -128 : $$6);
-         cxo.g.encode($$0, (cxo)$$3.getSecond());
+         cxp.g.encode($$0, (cxp)$$3.getSecond());
       }
    }
 
@@ -53,7 +53,7 @@ public class age implements aac<acr> {
       return this.c;
    }
 
-   public List<Pair<bvr, cxo>> e() {
+   public List<Pair<bvs, cxp>> e() {
       return this.d;
    }
 }

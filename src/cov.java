@@ -1,15 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class cov {
-   public static bxz<cok> a() {
-      return cbl.a((Function<cbl.b<cok>, ? extends App<cbl.c<cok>, cbo<cok>>>)($$0 -> $$0.group($$0.c(cfj.ad)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               if (!$$1.fa().f() && !$$1.fa().a(cxs.wi)) {
-                  col.a($$0xx, $$1, true);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static bya<bwg> a(int $$0, int $$1) {
+      return cbm.a(
+         (Function<cbm.b<bwg>, ? extends App<cbm.c<bwg>, cbp<bwg>>>)($$2 -> $$2.group($$2.b(cfk.ad), $$2.b(cfk.L), $$2.a(cfk.ae), $$2.a(cfk.af))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.fa().f()) {
+                        return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
+
+                        return true;
+                     }
+                  }))
+      );
    }
 }

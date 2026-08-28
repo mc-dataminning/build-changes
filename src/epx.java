@@ -1,24 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
-@FunctionalInterface
-public interface epx {
-   epx a = $$0 -> $$0;
+public class epx {
+   public static MapCodec<? extends epw> a(kd<MapCodec<? extends epw>> $$0) {
+      kd.a($$0, "random", epz.a);
+      kd.a($$0, "random_group", eqa.a);
+      return kd.a($$0, "direct", epv.a);
+   }
 
-   aly<ept> lookup(aly<ept> var1);
-
-   static epx create(List<epv> $$0, jh $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         bam $$3 = bam.a($$2).e().a($$1);
-         Builder<aly<ept>, aly<ept>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<aly<ept>, aly<ept>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x.a() + " was mapped to null value");
-      }
+   public static void a(rk<epu> $$0, jq<epu> $$1, List<epw> $$2) {
+      $$2.stream().flatMap(epw::a).map($$0x -> $$0x.a().a()).forEach($$2x -> rr.a($$0, $$2x, new epu($$1, List.of(Pair.of(eps.b($$2x), 1)), epu.a.b)));
    }
 }

@@ -1,121 +1,94 @@
-public class gaw extends gbl<gxj> {
-   private static final float b = 2.0F;
-   private static final float c = 2.5F;
-   public static final gew a = gew.scaling(0.45F);
-   private static final String d = "saddle";
-   private static final String e = "bridle";
-   private static final String f = "reins";
-   private final gen g;
-   private final gen[] i;
-   private final gen[] j;
+public class gaw extends gbm<gxj> {
+   private static final float a = 0.6F;
+   private static final float b = 0.8F;
+   private static final float c = 1.0F;
+   private final geo d;
+   private final geo e;
+   private final geo f;
+   private final geo g;
+   private final geo i;
+   private final geo j;
+   private final geo k;
 
-   public gaw(gen $$0) {
-      super($$0);
-      gen $$1 = $$0.b("body");
-      this.g = $$1.b("head");
-      this.i = new gen[]{$$1.b("saddle"), this.g.b("bridle")};
-      this.j = new gen[]{this.g.b("reins")};
+   public gaw(geo $$0) {
+      super($$0, glv::j);
+      this.f = $$0.b("wind_body");
+      this.j = this.f.b("wind_bottom");
+      this.i = this.j.b("wind_mid");
+      this.g = this.i.b("wind_top");
+      this.d = $$0.b("body").b("head");
+      this.e = this.d.b("eyes");
+      this.k = $$0.b("body").b("rods");
    }
 
-   public static get a() {
-      gev $$0 = new gev();
-      gex $$1 = $$0.a();
-      ger $$2 = new ger(0.05F);
-      gex $$3 = $$1.a("body", ges.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), gep.a(0.0F, 4.0F, 9.5F));
-      $$3.a("hump", ges.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), gep.a(0.0F, -12.0F, -10.0F));
-      $$3.a("tail", ges.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), gep.a(0.0F, -9.0F, 3.5F));
-      gex $$4 = $$3.a(
+   public static geu a(int $$0, int $$1) {
+      gew $$2 = new gew();
+      gey $$3 = $$2.a();
+      gey $$4 = $$3.a("body", get.c(), geq.a(0.0F, 0.0F, 0.0F));
+      gey $$5 = $$4.a("rods", get.c(), geq.a(0.0F, 8.0F, 0.0F));
+      $$5.a("rod_1", get.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new ges(0.0F)), geq.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
+      $$5.a("rod_2", get.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new ges(0.0F)), geq.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
+      $$5.a("rod_3", get.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new ges(0.0F)), geq.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
+      gey $$6 = $$4.a(
          "head",
-         ges.c()
-            .a(60, 24)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
-            .a(21, 0)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
-            .a(50, 0)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
-         gep.a(0.0F, -3.0F, -19.5F)
+         get.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new ges(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new ges(0.0F)),
+         geq.a(0.0F, 4.0F, 0.0F)
       );
-      $$4.a("left_ear", ges.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gep.a(2.5F, -21.0F, -9.5F));
-      $$4.a("right_ear", ges.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gep.a(-2.5F, -21.0F, -9.5F));
-      $$1.a("left_hind_leg", ges.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gep.a(4.9F, 1.0F, 9.5F));
-      $$1.a("right_hind_leg", ges.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gep.a(-4.9F, 1.0F, 9.5F));
-      $$1.a("left_front_leg", ges.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gep.a(4.9F, 1.0F, -10.5F));
-      $$1.a("right_front_leg", ges.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gep.a(-4.9F, 1.0F, -10.5F));
-      $$3.a(
-         "saddle",
-         ges.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
-         gep.a(0.0F, 0.0F, 0.0F)
+      $$6.a(
+         "eyes",
+         get.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new ges(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new ges(0.0F)),
+         geq.a(0.0F, 0.0F, 0.0F)
       );
-      $$4.a(
-         "reins",
-         ges.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         gep.a(0.0F, 0.0F, 0.0F)
+      gey $$7 = $$3.a("wind_body", get.c(), geq.a(0.0F, 0.0F, 0.0F));
+      gey $$8 = $$7.a("wind_bottom", get.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new ges(0.0F)), geq.a(0.0F, 24.0F, 0.0F));
+      gey $$9 = $$8.a(
+         "wind_mid",
+         get.c()
+            .a(74, 28)
+            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new ges(0.0F))
+            .a(78, 32)
+            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new ges(0.0F))
+            .a(49, 71)
+            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new ges(0.0F)),
+         geq.a(0.0F, -7.0F, 0.0F)
       );
-      $$4.a(
-         "bridle",
-         ges.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         gep.a(0.0F, 0.0F, 0.0F)
+      $$9.a(
+         "wind_top",
+         get.c()
+            .a(0, 0)
+            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new ges(0.0F))
+            .a(6, 6)
+            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new ges(0.0F))
+            .a(105, 57)
+            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new ges(0.0F)),
+         geq.a(0.0F, -6.0F, 0.0F)
       );
-      return get.a($$0, 128, 128);
+      return geu.a($$2, $$0, $$1);
    }
 
    public void a(gxj $$0) {
       super.a($$0);
-      this.a($$0, $$0.U, $$0.V);
-      this.b($$0);
-      this.a(fmz.a, $$0.X, $$0.Y, 2.0F, 2.5F);
-      this.a($$0.d, fmz.b, $$0.p, 1.0F);
-      this.a($$0.e, fmz.c, $$0.p, 1.0F);
-      this.a($$0.f, fmz.d, $$0.p, 1.0F);
-      this.a($$0.g, fmz.f, $$0.p, 1.0F);
-      this.a($$0.h, fmz.e, $$0.p, 1.0F);
+      this.a($$0.a, fmz.a, $$0.p);
+      this.a($$0.b, fmz.b, $$0.p);
+      this.a($$0.c, fmz.e, $$0.p);
+      this.a($$0.d, fmz.f, $$0.p);
+      this.a($$0.e, fmz.d, $$0.p);
+      this.a($$0.f, fmz.c, $$0.p);
    }
 
-   private void a(gxj $$0, float $$1, float $$2) {
-      $$1 = bae.a($$1, -30.0F, 30.0F);
-      $$2 = bae.a($$2, -25.0F, 45.0F);
-      if ($$0.c > 0.0F) {
-         float $$3 = 45.0F * $$0.c / 55.0F;
-         $$2 = bae.a($$2 + $$3, -25.0F, 70.0F);
-      }
-
-      this.g.f = $$1 * (float) (Math.PI / 180.0);
-      this.g.e = $$2 * (float) (Math.PI / 180.0);
+   public geo a() {
+      return this.d;
    }
 
-   private void b(gxj $$0) {
-      boolean $$1 = $$0.a;
-      boolean $$2 = $$0.b;
+   public geo b() {
+      return this.e;
+   }
 
-      for (gen $$3 : this.i) {
-         $$3.k = $$1;
-      }
+   public geo c() {
+      return this.k;
+   }
 
-      for (gen $$4 : this.j) {
-         $$4.k = $$2 && $$1;
-      }
+   public geo d() {
+      return this.f;
    }
 }

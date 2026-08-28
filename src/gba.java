@@ -1,28 +1,57 @@
-public class gba extends gbl<gys> {
-   private final gen a;
+import java.util.Set;
 
-   public gba(gen $$0) {
+public class gba extends gbm<gxm> {
+   public static final String a = "red_thing";
+   public static final gex b = new gan(Set.of("head", "beak", "red_thing"));
+   private final geo c;
+   private final geo d;
+   private final geo e;
+   private final geo f;
+   private final geo g;
+   private final geo i;
+   private final geo j;
+
+   public gba(geo $$0) {
       super($$0);
-      this.a = $$0.b("tail_fin");
+      this.c = $$0.b("head");
+      this.i = $$0.b("beak");
+      this.j = $$0.b("red_thing");
+      this.d = $$0.b("right_leg");
+      this.e = $$0.b("left_leg");
+      this.f = $$0.b("right_wing");
+      this.g = $$0.b("left_wing");
    }
 
-   public static get a() {
-      gev $$0 = new gev();
-      gex $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", ges.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), gep.a(0.0F, 22.0F, 0.0F));
-      $$1.a("head", ges.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), gep.a(0.0F, 22.0F, 0.0F));
-      $$1.a("nose", ges.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), gep.a(0.0F, 22.0F, -3.0F));
-      $$1.a("right_fin", ges.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gep.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", ges.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gep.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      $$1.a("tail_fin", ges.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), gep.a(0.0F, 22.0F, 7.0F));
-      $$1.a("top_fin", ges.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), gep.a(0.0F, 20.0F, 0.0F));
-      return get.a($$0, 32, 32);
+   public static geu a() {
+      gew $$0 = new gew();
+      gey $$1 = $$0.a();
+      int $$2 = 16;
+      $$1.a("head", get.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), geq.a(0.0F, 15.0F, -4.0F));
+      $$1.a("beak", get.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), geq.a(0.0F, 15.0F, -4.0F));
+      $$1.a("red_thing", get.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), geq.a(0.0F, 15.0F, -4.0F));
+      $$1.a("body", get.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), geq.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      get $$3 = get.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$3, geq.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$3, geq.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", get.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), geq.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", get.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), geq.a(4.0F, 13.0F, 0.0F));
+      return geu.a($$0, 64, 32);
    }
 
-   public void a(gys $$0) {
+   public void a(gxm $$0) {
       super.a($$0);
-      float $$1 = $$0.af ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * bae.a(0.6F * $$0.p);
+      float $$1 = (bae.a($$0.a) + 1.0F) * $$0.b;
+      this.c.e = $$0.V * (float) (Math.PI / 180.0);
+      this.c.f = $$0.U * (float) (Math.PI / 180.0);
+      this.i.e = this.c.e;
+      this.i.f = this.c.f;
+      this.j.e = this.c.e;
+      this.j.f = this.c.f;
+      float $$2 = $$0.Y;
+      float $$3 = $$0.X;
+      this.d.e = bae.b($$3 * 0.6662F) * 1.4F * $$2;
+      this.e.e = bae.b($$3 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.g = $$1;
+      this.g.g = -$$1;
    }
 }

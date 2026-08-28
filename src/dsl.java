@@ -1,75 +1,112 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dsl extends dkl {
-   public static final MapCodec<dsl> a = b(dsl::new);
-   private static final xv d = xv.c("container.stonecutter");
-   public static final dyr<jm> b = doj.aF;
-   protected static final fcr c = dkl.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+public class dsl extends dkw implements dkp {
+   public static final MapCodec<dsl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               aly.a(mb.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
+               aly.a(mb.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
+               aly.a(mb.K).fieldOf("seed").forGetter($$0x -> $$0x.h),
+               t()
+            )
+            .apply($$0, dsl::new)
+   );
+   public static final int b = 7;
+   public static final dyu c = dyl.aw;
+   protected static final float d = 1.0F;
+   protected static final fcs[] e = new fcs[]{
+      dkm.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      dkm.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      dkm.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      dkm.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      dkm.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      dkm.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      dkm.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      dkm.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final aly<dkm> f;
+   private final aly<dkm> g;
+   private final aly<cxl> h;
 
    @Override
    public MapCodec<dsl> a() {
       return a;
    }
 
-   public dsl(dxt.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jm.c));
+   protected dsl(aly<dkm> $$0, aly<dkm> $$1, aly<cxl> $$2, dxu.d $$3) {
+      super($$3);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dxu a(dbf $$0) {
-      return this.m().b(b, $$0.g().g());
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return e[$$0.c(c)];
    }
 
    @Override
-   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(axp.ay);
+   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
+      return $$0.a(dko.cK);
+   }
+
+   @Override
+   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = dmj.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(c);
+            if ($$5 < 7) {
+               $$0 = $$0.b(c, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
+            } else {
+               jm $$6 = jm.c.a.a($$3);
+               jh $$7 = $$2.a($$6);
+               dxv $$8 = $$1.a_($$7.e());
+               if ($$1.a_($$7).l() && ($$8.a(dko.cK) || $$8.a(axu.ah))) {
+                  kd<dkm> $$9 = $$1.K_().e(mb.f);
+                  Optional<dkm> $$10 = $$9.f(this.f);
+                  Optional<dkm> $$11 = $$9.f(this.g);
+                  if ($$10.isPresent() && $$11.isPresent()) {
+                     $$1.b($$7, $$10.get().m());
+                     $$1.b($$2, $$11.get().m().b(dok.aF, $$6));
+                  }
+               }
+            }
+         }
       }
-
-      return bti.a;
-   }
-
-   @Nullable
-   @Override
-   protected btk b(dxu $$0, dhh $$1, jh $$2) {
-      return new btq(($$2x, $$3, $$4) -> new cve($$2x, $$3, cto.a($$1, $$2)), d);
    }
 
    @Override
-   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      return c;
+   public cxp a(dhl $$0, jh $$1, dxv $$2) {
+      return new cxp((dhh)DataFixUtils.orElse($$0.K_().e(mb.K).f(this.h), this));
    }
 
    @Override
-   protected boolean g_(dxu $$0) {
+   public boolean b(dhl $$0, jh $$1, dxv $$2) {
+      return $$2.c(c) != 7;
+   }
+
+   @Override
+   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
       return true;
    }
 
    @Override
-   protected dqu a_(dxu $$0) {
-      return dqu.c;
+   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
+      int $$4 = Math.min(7, $$3.c(c) + bae.a($$0.A, 2, 5));
+      dxv $$5 = $$3.b(c, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.A);
+      }
    }
 
    @Override
-   protected dxu a(dxu $$0, drb $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dxu a(dxu $$0, dpk $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dxu $$0, eul $$1) {
-      return false;
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(c);
    }
 }

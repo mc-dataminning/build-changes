@@ -16,32 +16,32 @@ public class ale {
    public static final ald<String> e = ald.a(zr.o);
    public static final ald<xv> f = ald.a(xx.d);
    public static final ald<Optional<xv>> g = ald.a(xx.e);
-   public static final ald<cxo> h = new ald<cxo>() {
+   public static final ald<cxp> h = new ald<cxp>() {
       @Override
-      public zt<? super xg, cxo> codec() {
-         return cxo.g;
+      public zt<? super xg, cxp> codec() {
+         return cxp.g;
       }
 
-      public cxo a(cxo $$0) {
+      public cxp a(cxp $$0) {
          return $$0.v();
       }
    };
-   public static final ald<dxu> i = ald.a(zr.a(dkl.q));
-   private static final zt<ByteBuf, Optional<dxu>> G = new zt<ByteBuf, Optional<dxu>>() {
-      public void a(ByteBuf $$0, Optional<dxu> $$1) {
+   public static final ald<dxv> i = ald.a(zr.a(dkm.q));
+   private static final zt<ByteBuf, Optional<dxv>> G = new zt<ByteBuf, Optional<dxv>>() {
+      public void a(ByteBuf $$0, Optional<dxv> $$1) {
          if ($$1.isPresent()) {
-            xm.a($$0, dkl.j($$1.get()));
+            xm.a($$0, dkm.j($$1.get()));
          } else {
             xm.a($$0, 0);
          }
       }
 
-      public Optional<dxu> a(ByteBuf $$0) {
+      public Optional<dxv> a(ByteBuf $$0) {
          int $$1 = xm.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dkl.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(dkm.a($$1));
       }
    };
-   public static final ald<Optional<dxu>> j = ald.a(G);
+   public static final ald<Optional<dxv>> j = ald.a(G);
    public static final ald<Boolean> k = ald.a(zr.b);
    public static final ald<lq> l = ald.a(ls.bi);
    public static final ald<List<lq>> m = ald.a(ls.bi.a(zr.a()));
@@ -61,7 +61,7 @@ public class ale {
          return $$0.i();
       }
    };
-   public static final ald<cpj> u = ald.a(cpj.d);
+   public static final ald<cpk> u = ald.a(cpk.d);
    private static final zt<ByteBuf, OptionalInt> H = new zt<ByteBuf, OptionalInt>() {
       public OptionalInt a(ByteBuf $$0) {
          int $$1 = xm.a($$0);
@@ -73,13 +73,13 @@ public class ale {
       }
    };
    public static final ald<OptionalInt> v = ald.a(H);
-   public static final ald<bwr> w = ald.a(bwr.t);
-   public static final ald<jq<cia>> x = ald.a(cia.a);
-   public static final ald<jq<cja>> y = ald.a(cja.d);
-   public static final ald<jq<cih>> z = ald.a(cih.a);
-   public static final ald<jq<clw>> A = ald.a(clw.d);
-   public static final ald<cjf.a> B = ald.a(cjf.a.e);
-   public static final ald<ckn.a> C = ald.a(ckn.a.i);
+   public static final ald<bws> w = ald.a(bws.t);
+   public static final ald<jq<cib>> x = ald.a(cib.a);
+   public static final ald<jq<cjb>> y = ald.a(cjb.d);
+   public static final ald<jq<cii>> z = ald.a(cii.a);
+   public static final ald<jq<clx>> A = ald.a(clx.d);
+   public static final ald<cjg.a> B = ald.a(cjg.a.e);
+   public static final ald<cko.a> C = ald.a(cko.a.i);
    public static final ald<Vector3f> D = ald.a(zr.u);
    public static final ald<Quaternionf> E = ald.a(zr.v);
 

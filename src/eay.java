@@ -1,5 +1,16 @@
-import java.util.concurrent.CompletableFuture;
-
 public interface eay {
-   CompletableFuture<Void> a(dgn var1, vr var2);
+   void a(Throwable var1, ebj var2, dgo var3);
+
+   void b(Throwable var1, ebj var2, dgo var3);
+
+   static z a(dgo $$0, dgo $$1) {
+      o $$2 = o.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
+      p $$3 = $$2.a("Misplaced Chunk");
+      $$3.a("Stored Position", $$0::toString);
+      return new z($$2);
+   }
+
+   default void a(dgo $$0, dgo $$1, ebj $$2) {
+      this.a(a($$0, $$1), $$2, $$1);
+   }
 }

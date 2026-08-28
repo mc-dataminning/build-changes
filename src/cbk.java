@@ -1,67 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class cbk {
-   public static bxz<cpi> a(float $$0) {
-      return cbl.a(
-         (Function<cbl.b<cpi>, ? extends App<cbl.c<cpi>, cbo<cpi>>>)($$1 -> $$1.group($$1.b(cfj.d), $$1.c(cfj.c), $$1.b(cfj.g), $$1.a(cfj.m), $$1.a(cfj.n))
-               .apply(
-                  $$1,
-                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                        if ($$7.e_()) {
-                           return false;
-                        } else if ($$7.gy().b() != cpl.b) {
-                           return false;
-                        } else {
-                           jh $$9 = $$1.<jp>b($$2).b();
-                           Optional<jq<chm>> $$10 = $$6x.z().c($$9);
-                           if ($$10.isEmpty()) {
-                              return true;
-                           } else {
-                              $$1.<List<bwf>>b($$4)
-                                 .stream()
-                                 .filter($$1xxx -> $$1xxx instanceof cpi && $$1xxx != $$7)
-                                 .map($$0xxxx -> (cpi)$$0xxxx)
-                                 .filter(bwf::bL)
-                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
-                                 .findFirst()
-                                 .ifPresent($$6xx -> {
-                                    $$5.b();
-                                    $$6.b();
-                                    $$2.b();
-                                    if ($$6xx.ec().c(cfj.c).isEmpty()) {
-                                       bya.a($$6xx, $$9, $$0, 1);
-                                       $$6xx.ec().a(cfj.d, jp.a($$6x.ah(), $$9));
-                                       ahj.c($$6x, $$9);
-                                    }
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class cbk extends bxz<cpj> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
+
+   public cbk() {
+      super(ImmutableMap.of(cfk.c, cfl.a, cfk.n, cfl.c));
    }
 
-   private static boolean a(jq<chm> $$0, cpi $$1, jh $$2) {
-      boolean $$3 = $$1.ec().c(cfj.d).isPresent();
-      if ($$3) {
+   protected boolean b(ash $$0, cpj $$1) {
+      if ($$0.ac() - this.e < 300L) {
+         return false;
+      } else if ($$0.A.a(2) != 0) {
          return false;
       } else {
-         Optional<jp> $$4 = $$1.ec().c(cfj.c);
-         cpl $$5 = $$1.gy().b();
-         if ($$5.b().test($$0)) {
-            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
-         } else {
-            return false;
-         }
+         this.e = $$0.ac();
+         jp $$2 = $$1.ec().c(cfk.c).get();
+         return $$2.a() == $$0.ah() && $$2.b().a($$1.du(), 1.73);
       }
    }
 
-   private static boolean a(bwn $$0, jh $$1, chm $$2) {
-      euk $$3 = $$0.L().a($$1, $$2.c());
-      return $$3 != null && $$3.j();
+   protected void a(ash $$0, cpj $$1, long $$2) {
+      bxi<cpj> $$3 = $$1.ec();
+      $$3.a(cfk.J, $$2);
+      $$3.c(cfk.c).ifPresent($$1x -> $$3.a(cfk.n, new byc($$1x.b())));
+      $$1.gD();
+      this.a($$0, $$1);
+      if ($$1.gC()) {
+         $$1.gB();
+      }
+   }
+
+   protected void a(ash $$0, cpj $$1) {
+   }
+
+   protected boolean b(ash $$0, cpj $$1, long $$2) {
+      Optional<jp> $$3 = $$1.ec().c(cfk.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jp $$4 = $$3.get();
+         return $$4.a() == $$0.ah() && $$4.b().a($$1.du(), 1.73);
+      }
    }
 }

@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class oi implements of {
-   private final dkl a;
+   private final dkm a;
    private final List<ol> b;
-   private final Set<dyw<?>> c = Sets.newHashSet();
+   private final Set<dyx<?>> c = Sets.newHashSet();
    private final List<oj> d = Lists.newArrayList();
 
-   private oi(dkl $$0, List<ol> $$1) {
+   private oi(dkm $$0, List<ol> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -60,19 +60,19 @@ public class oi implements of {
    }
 
    @Override
-   public dkl a() {
+   public dkm a() {
       return this.a;
    }
 
-   public static oi a(dkl $$0) {
+   public static oi a(dkm $$0) {
       return new oi($$0, ImmutableList.of(ol.a()));
    }
 
-   public static oi a(dkl $$0, ol $$1) {
+   public static oi a(dkm $$0, ol $$1) {
       return new oi($$0, ImmutableList.of($$1));
    }
 
-   public static oi a(dkl $$0, ol... $$1) {
+   public static oi a(dkm $$0, ol... $$1) {
       return new oi($$0, ImmutableList.copyOf($$1));
    }
 }

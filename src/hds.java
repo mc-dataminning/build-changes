@@ -1,44 +1,18 @@
-import java.util.List;
-import java.util.function.Function;
+import java.util.Map;
 
-public class hds implements hef {
-   private final alz a;
-   private List<gna> b = List.of();
+public class hds extends avz<dfs> {
+   public static final dfs a = new dfs(Map.of());
+   private Map<alz, dfs> b = Map.of();
 
-   public hds(alz $$0) {
-      this.a = $$0;
+   public hds() {
+      super(dfs.a, "models/equipment");
    }
 
-   @Override
-   public void a(hef.a $$0) {
-      if ($$0.a(this.a) instanceof gmw $$2) {
-         this.b = $$2.e();
-         this.b.forEach($$1 -> $$0.a($$1.a()));
-      }
+   protected void a(Map<alz, dfs> $$0, avv $$1, bpt $$2) {
+      this.b = Map.copyOf($$0);
    }
 
-   @Override
-   public hdm a(hdv $$0, Function<hdt, hbk> $$1, heb $$2) {
-      hdm $$3 = $$0.a(this.a, $$2);
-      if (this.b.isEmpty()) {
-         return $$3;
-      } else {
-         gmq $$4 = new gmq($$0, this.b);
-         return new hds.a($$3, $$4);
-      }
-   }
-
-   static class a extends hdq {
-      private final gmq b;
-
-      public a(hdm $$0, gmq $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-
-      @Override
-      public gmq g() {
-         return this.b;
-      }
+   public dfs a(alz $$0) {
+      return this.b.getOrDefault($$0, a);
    }
 }

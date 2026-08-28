@@ -1,20 +1,33 @@
-import com.google.gson.Gson;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
-import javax.annotation.Nullable;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class fhz {
-   private final Gson a = new Gson();
+public class fhz extends fix {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fhy> a;
 
-   public String a(fiq $$0) {
-      return this.a.toJson($$0);
-   }
+   public static fhz a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      fhz $$2 = new fhz();
+      $$2.a = Lists.newArrayList();
 
-   public String a(JsonElement $$0) {
-      return this.a.toJson($$0);
-   }
+      try {
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
 
-   @Nullable
-   public <T extends fiq> T a(String $$0, Class<T> $$1) {
-      return (T)this.a.fromJson($$0, $$1);
+            while ($$4.hasNext()) {
+               $$2.a.add(fhy.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
+      }
+
+      return $$2;
    }
 }

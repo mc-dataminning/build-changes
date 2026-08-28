@@ -1,20 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class egg extends egv<ejg> {
-   public egg(Codec<ejg> $$0) {
+public class egg extends egw<ejh> {
+   public egg(Codec<ejh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egx<ejg> $$0) {
-      dif $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      bam $$3 = $$0.d();
-      if ($$1.u($$2) && $$1.a_($$2.e()).a(dkn.fN)) {
-         dlr.a($$1, $$2, $$3, 8);
-         return true;
-      } else {
-         return false;
+   public boolean a(egy<ejh> $$0) {
+      bam $$1 = $$0.d();
+      dig $$2 = $$0.b();
+      dgo $$3 = new dgo($$0.e());
+      IntArrayList $$4 = ae.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ae.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      jh.a $$6 = new jh.a();
+      IntListIterator var8 = $$4.iterator();
+
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            jh $$9 = $$2.a(edq.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
+               $$2.a($$9, dko.cD.m(), 2);
+               btp.a($$2, $$1, $$9, ewl.a);
+               dxv $$10 = dko.cw.m();
+
+               for (jm $$11 : jm.c.a) {
+                  jh $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
+            }
+         }
       }
+
+      return false;
    }
 }

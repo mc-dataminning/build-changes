@@ -84,7 +84,7 @@ public abstract class ath implements aav {
    }
 
    protected void e() {
-      bpr.a().a("keepAlive");
+      bps.a().a("keepAlive");
       long $$0 = ae.c();
       if (!this.h() && $$0 - this.j >= 15000L) {
          if (this.k) {
@@ -97,7 +97,7 @@ public abstract class ath implements aav {
          }
       }
 
-      bpr.a().c();
+      bps.a().c();
    }
 
    private boolean a(long $$0) {

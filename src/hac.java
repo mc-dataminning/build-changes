@@ -1,3 +1,3 @@
-public interface hac {
-   cpj a();
+public class hac extends gyt {
+   public boolean a;
 }

@@ -3,7 +3,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class bep extends bjh {
+public class bep extends bji {
    public bep(Schema $$0, boolean $$1) {
       super("EntityElderGuardianSplitFix", $$0, $$1);
    }

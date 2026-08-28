@@ -1,15 +1,24 @@
+import java.util.UUID;
+import java.util.stream.Stream;
+
 public interface eby {
-   eby a = new eby() {
-      @Override
-      public void a() {
-      }
+   int ar();
 
-      @Override
-      public void a(bvj.d $$0) {
-      }
-   };
+   UUID cG();
 
-   void a();
+   jh dw();
 
-   void a(bvj.d var1);
+   fbt cR();
+
+   void a(ebz var1);
+
+   Stream<? extends eby> db();
+
+   Stream<? extends eby> dc();
+
+   void c(bvk.d var1);
+
+   boolean dU();
+
+   boolean dV();
 }

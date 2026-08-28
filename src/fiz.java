@@ -1,56 +1,46 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fiz extends fiw {
-   private static final Logger e = LogUtils.getLogger();
-   public List<fiy> a;
-   public int b;
-   public int c;
-   public int d;
+public class fiz extends fix {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
+   @Nullable
+   public String f;
+   public String g = "";
+   public String h = "";
+   public fiz.a i = fiz.a.a;
 
-   public fiz() {
-   }
-
-   public fiz(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
-      this.c = $$0;
-      this.d = -1;
-   }
-
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
-   }
-
-   public static fiz a(String $$0) {
+   public static fiz a(JsonObject $$0) {
       fiz $$1 = new fiz();
-      $$1.a = Lists.newArrayList();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(fiy.a($$4.next().getAsJsonObject()));
-            }
-         }
-
-         $$1.b = fks.a("page", $$3, 0);
-         $$1.c = fks.a("size", $$3, 0);
-         $$1.d = fks.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+         $$1.a = fkt.b("id", $$0, "");
+         $$1.b = fkt.b("name", $$0, "");
+         $$1.c = fkt.b("version", $$0, "");
+         $$1.d = fkt.b("author", $$0, "");
+         $$1.e = fkt.b("link", $$0, "");
+         $$1.f = fkt.b("image", $$0, null);
+         $$1.g = fkt.b("trailer", $$0, "");
+         $$1.h = fkt.b("recommendedPlayers", $$0, "");
+         $$1.i = fiz.a.valueOf(fkt.b("type", $$0, fiz.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
       }
 
       return $$1;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

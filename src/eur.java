@@ -1,38 +1,122 @@
-public class eur extends eui {
-   private float m = Float.MAX_VALUE;
-   private eui n;
-   private boolean o;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public eur(eui $$0) {
-      super($$0.a, $$0.b, $$0.c);
+public class eur extends euk {
+   private final boolean a;
+   private final Long2ObjectMap<euo> l = new Long2ObjectOpenHashMap();
+
+   public eur(boolean $$0) {
+      this.a = $$0;
    }
 
-   public eur(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   public void a(dhv $$0, bwi $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
    }
 
-   public void a(float $$0, eui $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+   @Override
+   public void b() {
+      super.b();
+      this.l.clear();
+   }
+
+   @Override
+   public euj a() {
+      return this.c(bae.a(this.c.cR().a), bae.a(this.c.cR().b + 0.5), bae.a(this.c.cR().c));
+   }
+
+   @Override
+   public eus a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(euj[] $$0, euj $$1) {
+      int $$2 = 0;
+      Map<jm, euj> $$3 = Maps.newEnumMap(jm.class);
+
+      for (jm $$4 : jm.values()) {
+         euj $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.a($$5)) {
+            $$0[$$2++] = $$5;
+         }
       }
+
+      for (jm $$6 : jm.c.a) {
+         jm $$7 = $$6.h();
+         if (b($$3.get($$6)) && b($$3.get($$7))) {
+            euj $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+            if (this.a($$8)) {
+               $$0[$$2++] = $$8;
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   public eui d() {
-      return this.n;
+   protected boolean a(@Nullable euj $$0) {
+      return $$0 != null && !$$0.i;
    }
 
-   public void e() {
-      this.o = true;
+   private static boolean b(@Nullable euj $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
    }
 
-   public boolean f() {
-      return this.o;
+   @Nullable
+   protected euj a(int $$0, int $$1, int $$2) {
+      euj $$3 = null;
+      euo $$4 = this.b($$0, $$1, $$2);
+      if (this.a && $$4 == euo.u || $$4 == euo.j) {
+         float $$5 = this.c.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.c($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.b.a().b_(new jh($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
+            }
+         }
+      }
+
+      return $$3;
    }
 
-   public static eur c(ws $$0) {
-      eur $$1 = new eur($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   protected euo b(int $$0, int $$1, int $$2) {
+      return (euo)this.l.computeIfAbsent(jh.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2));
+   }
+
+   @Override
+   public euo a(euq $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.c);
+   }
+
+   @Override
+   public euo a(euq $$0, int $$1, int $$2, int $$3, bwi $$4) {
+      jh.a $$5 = new jh.a();
+
+      for (int $$6 = $$1; $$6 < $$1 + this.e; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.f; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.g; $$8++) {
+               dxv $$9 = $$0.a($$5.d($$6, $$7, $$8));
+               etx $$10 = $$9.y();
+               if ($$10.c() && $$9.a(eum.b) && $$9.l()) {
+                  return euo.u;
+               }
+
+               if (!$$10.a(aya.a)) {
+                  return euo.a;
+               }
+            }
+         }
+      }
+
+      dxv $$11 = $$0.a($$5);
+      return $$11.a(eum.b) ? euo.j : euo.a;
    }
 }

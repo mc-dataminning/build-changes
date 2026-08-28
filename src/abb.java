@@ -26,9 +26,9 @@ public record abb(abb.a c) implements abf {
       return this.c;
    }
 
-   public static record a(UUID a, int b, fbx c, @Nullable euk d, @Nullable jh e, @Nullable jh f, int g, Set<String> h, List<jh> i) {
+   public static record a(UUID a, int b, fby c, @Nullable eul d, @Nullable jh e, @Nullable jh f, int g, Set<String> h, List<jh> i) {
       public a(ws $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(euk::b), $$0.c(jh.b), $$0.c(jh.b), $$0.readInt(), $$0.a(HashSet::new, ws::p), $$0.a(jh.b));
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eul::b), $$0.c(jh.b), $$0.c(jh.b), $$0.readInt(), $$0.a(HashSet::new, ws::p), $$0.a(jh.b));
       }
 
       public void a(ws $$0) {
@@ -64,12 +64,12 @@ public record abb(abb.a c) implements abf {
          return this.b;
       }
 
-      public fbx d() {
+      public fby d() {
          return this.c;
       }
 
       @Nullable
-      public euk e() {
+      public eul e() {
          return this.d;
       }
 

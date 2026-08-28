@@ -1,15 +1,15 @@
 public enum dze implements bba {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
    private final String e;
-   private final boolean f;
+   private final xv f;
 
-   private dze(final String $$0, final boolean $$1) {
+   private dze(final String $$0) {
       this.e = $$0;
-      this.f = $$1;
+      this.f = xv.c("structure_block.mode_info." + $$0);
    }
 
    @Override
@@ -17,7 +17,7 @@ public enum dze implements bba {
       return this.e;
    }
 
-   public boolean a() {
+   public xv a() {
       return this.f;
    }
 }

@@ -1,135 +1,102 @@
-public class dyk {
-   public static final dyl a = dyl.a("attached");
-   public static final dyl b = dyl.a("bottom");
-   public static final dyl c = dyl.a("conditional");
-   public static final dyl d = dyl.a("disarmed");
-   public static final dyl e = dyl.a("drag");
-   public static final dyl f = dyl.a("enabled");
-   public static final dyl g = dyl.a("extended");
-   public static final dyl h = dyl.a("eye");
-   public static final dyl i = dyl.a("falling");
-   public static final dyl j = dyl.a("hanging");
-   public static final dyl k = dyl.a("has_bottle_0");
-   public static final dyl l = dyl.a("has_bottle_1");
-   public static final dyl m = dyl.a("has_bottle_2");
-   public static final dyl n = dyl.a("has_record");
-   public static final dyl o = dyl.a("has_book");
-   public static final dyl p = dyl.a("inverted");
-   public static final dyl q = dyl.a("in_wall");
-   public static final dyl r = dyl.a("lit");
-   public static final dyl s = dyl.a("tip");
-   public static final dyl t = dyl.a("locked");
-   public static final dyl u = dyl.a("occupied");
-   public static final dyl v = dyl.a("open");
-   public static final dyl w = dyl.a("persistent");
-   public static final dyl x = dyl.a("powered");
-   public static final dyl y = dyl.a("short");
-   public static final dyl z = dyl.a("signal_fire");
-   public static final dyl A = dyl.a("snowy");
-   public static final dyl B = dyl.a("triggered");
-   public static final dyl C = dyl.a("unstable");
-   public static final dyl D = dyl.a("waterlogged");
-   public static final dyl E = dyl.a("berries");
-   public static final dyl F = dyl.a("bloom");
-   public static final dyl G = dyl.a("shrieking");
-   public static final dyl H = dyl.a("can_summon");
-   public static final dyr<jm.a> I = dyr.a("axis", jm.a.class, jm.a.a, jm.a.c);
-   public static final dyr<jm.a> J = dyr.a("axis", jm.a.class);
-   public static final dyl K = dyl.a("up");
-   public static final dyl L = dyl.a("down");
-   public static final dyl M = dyl.a("north");
-   public static final dyl N = dyl.a("east");
-   public static final dyl O = dyl.a("south");
-   public static final dyl P = dyl.a("west");
-   public static final dyr<jm> Q = dyr.a("facing", jm.class, jm.c, jm.f, jm.d, jm.e, jm.b, jm.a);
-   public static final dyr<jm> R = dyr.a("facing", jm.class, $$0 -> $$0 != jm.b);
-   public static final dyr<jm> S = dyr.a("facing", jm.class, jm.c.a);
-   public static final dyt T = dyt.a("flower_amount", 1, 4);
-   public static final dyr<jo> U = dyr.a("orientation", jo.class);
-   public static final dyr<dyf> V = dyr.a("face", dyf.class);
-   public static final dyr<dyi> W = dyr.a("attachment", dyi.class);
-   public static final dyr<dzf> X = dyr.a("east", dzf.class);
-   public static final dyr<dzf> Y = dyr.a("north", dzf.class);
-   public static final dyr<dzf> Z = dyr.a("south", dzf.class);
-   public static final dyr<dzf> aa = dyr.a("west", dzf.class);
-   public static final dyr<dyy> ab = dyr.a("east", dyy.class);
-   public static final dyr<dyy> ac = dyr.a("north", dyy.class);
-   public static final dyr<dyy> ad = dyr.a("south", dyy.class);
-   public static final dyr<dyy> ae = dyr.a("west", dyy.class);
-   public static final dyr<dyp> af = dyr.a("half", dyp.class);
-   public static final dyr<dys> ag = dyr.a("half", dys.class);
-   public static final dyr<dyx> ah = dyr.a("shape", dyx.class);
-   public static final dyr<dyx> ai = dyr.a("shape", dyx.class, $$0 -> $$0 != dyx.j && $$0 != dyx.i && $$0 != dyx.g && $$0 != dyx.h);
-   public static final int aj = 1;
-   public static final int ak = 2;
-   public static final int al = 3;
-   public static final int am = 4;
-   public static final int an = 5;
-   public static final int ao = 7;
-   public static final int ap = 15;
-   public static final int aq = 25;
-   public static final dyt ar = dyt.a("age", 0, 1);
-   public static final dyt as = dyt.a("age", 0, 2);
-   public static final dyt at = dyt.a("age", 0, 3);
-   public static final dyt au = dyt.a("age", 0, 4);
-   public static final dyt av = dyt.a("age", 0, 5);
-   public static final dyt aw = dyt.a("age", 0, 7);
-   public static final dyt ax = dyt.a("age", 0, 15);
-   public static final dyt ay = dyt.a("age", 0, 25);
-   public static final dyt az = dyt.a("bites", 0, 6);
-   public static final dyt aA = dyt.a("candles", 1, 4);
-   public static final dyt aB = dyt.a("delay", 1, 4);
-   public static final int aC = 7;
-   public static final dyt aD = dyt.a("distance", 1, 7);
-   public static final dyt aE = dyt.a("eggs", 1, 4);
-   public static final dyt aF = dyt.a("hatch", 0, 2);
-   public static final dyt aG = dyt.a("layers", 1, 8);
-   public static final int aH = 0;
-   public static final int aI = 1;
-   public static final int aJ = 3;
-   public static final int aK = 8;
-   public static final dyt aL = dyt.a("level", 1, 3);
-   public static final dyt aM = dyt.a("level", 0, 8);
-   public static final dyt aN = dyt.a("level", 1, 8);
-   public static final dyt aO = dyt.a("honey_level", 0, 5);
-   public static final int aP = 15;
-   public static final dyt aQ = dyt.a("level", 0, 15);
-   public static final dyt aR = dyt.a("moisture", 0, 7);
-   public static final dyt aS = dyt.a("note", 0, 24);
-   public static final dyt aT = dyt.a("pickles", 1, 4);
-   public static final dyt aU = dyt.a("power", 0, 15);
-   public static final dyt aV = dyt.a("stage", 0, 1);
-   public static final int aW = 7;
-   public static final dyt aX = dyt.a("distance", 0, 7);
-   public static final int aY = 0;
-   public static final int aZ = 4;
-   public static final dyt ba = dyt.a("charges", 0, 4);
-   public static final dyt bb = dyt.a("rotation", 0, dyz.a());
-   public static final dyr<dyh> bc = dyr.a("part", dyh.class);
-   public static final dyr<dym> bd = dyr.a("type", dym.class);
-   public static final dyr<dyn> be = dyr.a("mode", dyn.class);
-   public static final dyr<dyo> bf = dyr.a("hinge", dyo.class);
-   public static final dyr<dyu> bg = dyr.a("instrument", dyu.class);
-   public static final dyr<dyv> bh = dyr.a("type", dyv.class);
-   public static final dyr<dzb> bi = dyr.a("type", dzb.class);
-   public static final dyr<dzc> bj = dyr.a("shape", dzc.class);
-   public static final dyr<dzd> bk = dyr.a("mode", dzd.class);
-   public static final dyr<dyg> bl = dyr.a("leaves", dyg.class);
-   public static final dyr<dze> bm = dyr.a("tilt", dze.class);
-   public static final dyr<jm> bn = dyr.a("vertical_direction", jm.class, jm.b, jm.a);
-   public static final dyr<dyq> bo = dyr.a("thickness", dyq.class);
-   public static final dyr<dza> bp = dyr.a("sculk_sensor_phase", dza.class);
-   public static final dyl bq = dyl.a("slot_0_occupied");
-   public static final dyl br = dyl.a("slot_1_occupied");
-   public static final dyl bs = dyl.a("slot_2_occupied");
-   public static final dyl bt = dyl.a("slot_3_occupied");
-   public static final dyl bu = dyl.a("slot_4_occupied");
-   public static final dyl bv = dyl.a("slot_5_occupied");
-   public static final dyt bw = dyt.a("dusted", 0, 3);
-   public static final dyl bx = dyl.a("cracked");
-   public static final dyl by = dyl.a("crafting");
-   public static final dyr<dxa> bz = dyr.a("trial_spawner_state", dxa.class);
-   public static final dyr<dxh> bA = dyr.a("vault_state", dxh.class);
-   public static final dyr<dmh.a> bB = dyr.a("creaking", dmh.a.class);
-   public static final dyl bC = dyl.a("ominous");
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
+
+public record dyk(String s, boolean t, boolean u, boolean v, dyk.a w, dsc x, axe y, axe z, axe A, axe B, axe C, axe D, axe E, axe F) {
+   private static final Map<String, dyk> G = new Object2ObjectArrayMap();
+   public static final Codec<dyk> a = Codec.stringResolver(dyk::b, G::get);
+   public static final dyk b = a(new dyk("iron", false, false, false, dyk.a.a, dsc.g, axf.nE, axf.nF, axf.nM, axf.nN, axf.pa, axf.pb, axf.zD, axf.zE));
+   public static final dyk c = a(new dyk("copper", true, true, false, dyk.a.a, dsc.aj, axf.fP, axf.fQ, axf.fW, axf.fX, axf.pa, axf.pb, axf.zD, axf.zE));
+   public static final dyk d = a(new dyk("gold", false, true, false, dyk.a.a, dsc.g, axf.nE, axf.nF, axf.nM, axf.nN, axf.pa, axf.pb, axf.zD, axf.zE));
+   public static final dyk e = a(new dyk("stone", true, true, false, dyk.a.b, dsc.f, axf.nE, axf.nF, axf.nM, axf.nN, axf.zI, axf.zJ, axf.zD, axf.zE));
+   public static final dyk f = a(
+      new dyk("polished_blackstone", true, true, false, dyk.a.b, dsc.f, axf.nE, axf.nF, axf.nM, axf.nN, axf.zI, axf.zJ, axf.zD, axf.zE)
+   );
+   public static final dyk g = a(new dyk("oak"));
+   public static final dyk h = a(new dyk("spruce"));
+   public static final dyk i = a(new dyk("birch"));
+   public static final dyk j = a(new dyk("acacia"));
+   public static final dyk k = a(new dyk("cherry", true, true, true, dyk.a.a, dsc.aU, axf.eG, axf.eH, axf.eI, axf.eJ, axf.eM, axf.eN, axf.eK, axf.eL));
+   public static final dyk l = a(new dyk("jungle"));
+   public static final dyk m = a(new dyk("dark_oak"));
+   public static final dyk n = a(new dyk("pale_oak"));
+   public static final dyk o = a(new dyk("crimson", true, true, true, dyk.a.a, dsc.aT, axf.rg, axf.rh, axf.ri, axf.rj, axf.rm, axf.rn, axf.rk, axf.rl));
+   public static final dyk p = a(new dyk("warped", true, true, true, dyk.a.a, dsc.aT, axf.rg, axf.rh, axf.ri, axf.rj, axf.rm, axf.rn, axf.rk, axf.rl));
+   public static final dyk q = a(new dyk("mangrove"));
+   public static final dyk r = a(new dyk("bamboo", true, true, true, dyk.a.a, dsc.aS, axf.bo, axf.bp, axf.bq, axf.br, axf.bu, axf.bv, axf.bs, axf.bt));
+
+   public dyk(String $$0) {
+      this($$0, true, true, true, dyk.a.a, dsc.b, axf.Du, axf.Dv, axf.Dw, axf.Dx, axf.DA, axf.DB, axf.Dy, axf.Dz);
+   }
+
+   private static dyk a(dyk $$0) {
+      G.put($$0.s, $$0);
+      return $$0;
+   }
+
+   public static Stream<dyk> a() {
+      return G.values().stream();
+   }
+
+   public String b() {
+      return this.s;
+   }
+
+   public boolean c() {
+      return this.t;
+   }
+
+   public boolean d() {
+      return this.u;
+   }
+
+   public boolean e() {
+      return this.v;
+   }
+
+   public dyk.a f() {
+      return this.w;
+   }
+
+   public dsc g() {
+      return this.x;
+   }
+
+   public axe h() {
+      return this.y;
+   }
+
+   public axe i() {
+      return this.z;
+   }
+
+   public axe j() {
+      return this.A;
+   }
+
+   public axe k() {
+      return this.B;
+   }
+
+   public axe l() {
+      return this.C;
+   }
+
+   public axe m() {
+      return this.D;
+   }
+
+   public axe n() {
+      return this.E;
+   }
+
+   public axe o() {
+      return this.F;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
 }

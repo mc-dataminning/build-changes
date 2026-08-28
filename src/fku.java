@@ -1,58 +1,22 @@
-import com.google.gson.annotations.SerializedName;
-import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+public enum fku {
+   a(0, eoa.a),
+   b(1, eoa.b),
+   c(2, eoa.c),
+   d(3, eoa.d);
 
-public class fku {
-   private static final String a = "realms_persistence.json";
-   private static final fhz b = new fhz();
-   private static final Logger c = LogUtils.getLogger();
+   private final int e;
+   private final xv f;
 
-   public fku.a a() {
-      return b();
+   private fku(final int $$0, final aly<enz> $$1) {
+      this.e = $$0;
+      this.f = xv.c($$1.a().h("generator"));
    }
 
-   public void a(fku.a $$0) {
-      b($$0);
+   public xv a() {
+      return this.f;
    }
 
-   public static fku.a b() {
-      Path $$0 = c();
-
-      try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         fku.a $$2 = b.a($$1, fku.a.class);
-         if ($$2 != null) {
-            return $$2;
-         }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
-      }
-
-      return new fku.a();
-   }
-
-   public static void b(fku.a $$0) {
-      Path $$1 = c();
-
-      try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
-      }
-   }
-
-   private static Path c() {
-      return fmf.Q().q.toPath().resolve("realms_persistence.json");
-   }
-
-   public static class a implements fiq {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+   public int b() {
+      return this.e;
    }
 }

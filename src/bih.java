@@ -2,25 +2,20 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import java.util.Locale;
+import java.util.Optional;
 
 public class bih extends DataFix {
-   public bih(Schema $$0) {
-      super($$0, false);
+   public bih(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsMenuBlurrinessFix",
-         this.getInputSchema().getType(biw.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("menuBackgroundBlurriness", $$0xx -> $$0xx.createInt(this.a($$0xx.asString("0.5")))))
+         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(bix.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Optional<String> $$1 = $$0x.get("lang").asString().result();
+               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
+            })
       );
-   }
-
-   private int a(String $$0) {
-      try {
-         return Math.round(Float.parseFloat($$0) * 10.0F);
-      } catch (NumberFormatException var3) {
-         return 5;
-      }
    }
 }

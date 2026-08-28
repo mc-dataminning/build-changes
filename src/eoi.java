@@ -1,29 +1,84 @@
-import java.util.Optional;
+public abstract class eoi extends eoo {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public abstract class eoi extends eoj {
-   private final eoi.a d;
-   private final int e;
-   private final int f;
+   protected eoi(epb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, jm $$7) {
+      super($$0, 0, eoo.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
+   }
 
-   protected eoi(eoi.a $$0, int $$1, int $$2, eoj.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   protected eoi(epb $$0, ux $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
    }
 
    @Override
-   public Optional<eoj.b> a(eoj.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, edp.a.a, $$1 -> this.a($$1, $$0));
+   protected void a(epa $$0, ux $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
    }
 
-   private void a(epb $$0, eoj.a $$1) {
-      dgn $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   protected boolean a(dhj $$0, eoc $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         jh.a $$5 = new jh.a();
+
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(edq.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
+         }
+      }
    }
 
-   @FunctionalInterface
-   protected interface a {
-      eon construct(eeo var1, int var2, int var3);
+   protected boolean a(dhj $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.am() + 1;
+         boolean $$3 = false;
+         jh.a $$4 = new jh.a();
+
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(edq.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
+
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

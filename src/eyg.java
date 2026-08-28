@@ -1,41 +1,40 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
 
-public class eyg implements eyc {
+public class eyg extends eyc {
    public static final MapCodec<eyg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eye.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eyg::new)
+      $$0 -> a($$0)
+            .and($$0.group(ewn.e.fieldOf("component").forGetter($$0x -> $$0x.b), eyf.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eyg::new)
    );
-   public static final Codec<eyg> b = eye.b.listOf().xmap(eyg::new, $$0 -> $$0.c);
-   private final List<eyc> c;
-   private final BiFunction<cxo, ewo, cxo> d;
+   private final ewm<?> b;
+   private final eyd c;
 
-   private eyg(List<eyc> $$0) {
-      this.c = $$0;
-      this.d = eye.a($$0);
-   }
-
-   public static eyg a(List<eyc> $$0) {
-      return new eyg(List.copyOf($$0));
-   }
-
-   public cxo a(cxo $$0, ewo $$1) {
-      return this.d.apply($$0, $$1);
+   private eyg(List<ezy> $$0, ewm<?> $$1, eyd $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void a(ewu $$0) {
-      eyc.super.a($$0);
+   public eye<eyg> b() {
+      return eyf.u;
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+   @Override
+   public cxp a(cxp $$0, ewp $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
       }
    }
 
    @Override
-   public eyd<eyg> b() {
-      return eye.I;
+   public void a(ewv $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

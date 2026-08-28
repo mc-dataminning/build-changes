@@ -1,70 +1,43 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class eco implements ecu {
-   public static final MapCodec<eco> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kk.a.fieldOf("source_entity").forGetter(eco::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
-            .apply($$0, ($$0x, $$1) -> new eco(Either.right(Either.left($$0x)), $$1))
-   );
-   public static final zt<ByteBuf, eco> b = zt.a(zr.h, eco::c, zr.l, $$0 -> $$0.f, ($$0, $$1) -> new eco(Either.right(Either.right($$0)), $$1));
-   private Either<bvj, Either<UUID, Integer>> e;
-   private final float f;
+public class eco<T extends ect> {
+   private final T a;
+   @Nullable
+   private kj b;
 
-   public eco(bvj $$0, float $$1) {
-      this(Either.left($$0), $$1);
+   public eco(T $$0) {
+      this.a = $$0;
    }
 
-   private eco(Either<bvj, Either<UUID, Integer>> $$0, float $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public void a(ash $$0) {
+      this.c($$0);
    }
 
-   @Override
-   public Optional<fbx> a(dhh $$0) {
-      if (this.e.left().isEmpty()) {
-         this.b($$0);
-      }
-
-      return this.e.left().map($$0x -> $$0x.du().b(0.0, (double)this.f, 0.0));
+   public T a() {
+      return this.a;
    }
 
-   private void b(dhh $$0) {
-      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bvj)$$1.map($$1x -> $$0 instanceof ash $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.e = Either.left($$0x));
+   public void b(ash $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
    }
 
-   private UUID b() {
-      return (UUID)this.e.map(bvj::cG, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
+   public void c(ash $$0) {
+      this.a.a().a($$0).map(kj::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
    }
 
-   private int c() {
-      return (Integer)this.e.map(bvj::ar, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
-   }
-
-   @Override
-   public ecv<eco> a() {
-      return ecv.b;
-   }
-
-   public static class a implements ecv<eco> {
-      @Override
-      public MapCodec<eco> a() {
-         return eco.a;
-      }
-
-      @Override
-      public zt<ByteBuf, eco> b() {
-         return eco.b;
+   private static void a(dhl $$0, @Nullable kj $$1, Consumer<ecu> $$2) {
+      if ($$1 != null) {
+         dzq $$3 = $$0.a($$1.a(), $$1.c(), ear.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
       }
    }
 }

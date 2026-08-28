@@ -1,40 +1,19 @@
-public class gvd extends gwe<gzf, gcq> {
-   private final gby<gzf> a;
-   private final hdr b;
+public class gvd extends gwf<gxj, gaw> {
+   private static final alz a = alz.b("textures/entity/breeze/breeze_wind.png");
+   private final gaw b;
 
-   public gvd(gtm<gzf, gcq> $$0, gej $$1, hdr $$2) {
-      super($$0);
-      this.a = new gco<>($$1.a(gem.cc));
-      this.b = $$2;
+   public gvd(grq.a $$0, gtn<gxj, gaw> $$1) {
+      super($$1);
+      this.b = new gaw($$0.a(gen.I));
    }
 
-   private boolean a(cxo $$0, dfr.d $$1) {
-      dft $$2 = $$0.a(ku.D);
-      if ($$2 != null && !$$2.c().isEmpty()) {
-         dfr $$3 = this.b.a($$2.c().get());
-         return !$$3.a($$1).isEmpty();
-      } else {
-         return false;
-      }
+   public void a(fgs $$0, gll $$1, int $$2, gxj $$3, float $$4, float $$5) {
+      fgw $$6 = $$1.getBuffer(glv.a(a, this.a($$3.p) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gqv.a(this.b, this.b.d()).a($$0, $$6, $$2, hbc.d);
    }
 
-   public void a(fgr $$0, glk $$1, int $$2, gzf $$3, float $$4, float $$5) {
-      if (!$$3.u && $$3.aw) {
-         hcl $$6 = $$3.a;
-         if ($$6.c() != null) {
-            if (!this.a($$3.Q, dfr.d.c)) {
-               $$0.a();
-               if (this.a($$3.Q, dfr.d.a)) {
-                  $$0.a(0.0F, -0.053125F, 0.06875F);
-               }
-
-               fgv $$7 = $$1.getBuffer(glu.d($$6.c()));
-               this.d().a(this.a);
-               this.a.a($$3);
-               this.a.a($$0, $$7, $$2, hbb.d);
-               $$0.b();
-            }
-         }
-      }
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

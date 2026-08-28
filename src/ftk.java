@@ -1,64 +1,82 @@
-public class ftk extends fst {
-   private foe c;
+import javax.annotation.Nullable;
 
-   public ftk() {
-      super("");
+public class ftk extends fty {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
+   @Nullable
+   private final xv d;
+   private final xv s;
+   private final Runnable u;
+   @Nullable
+   private foz v;
+   private fof w;
+   private int x;
+
+   public static ftk a(xv $$0, xv $$1, Runnable $$2) {
+      return new ftk($$0, null, $$1, $$2, 0);
+   }
+
+   public static ftk a(xv $$0, xv $$1, xv $$2, Runnable $$3) {
+      return new ftk($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected ftk(xv $$0, @Nullable xv $$1, xv $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.d = $$1;
+      this.s = $$2;
+      this.u = $$3;
+      this.x = $$4;
    }
 
    @Override
    protected void aT_() {
       super.aT_();
-      this.c = foe.a(xv.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
-      this.c(this.c);
+      if (this.d != null) {
+         this.v = foz.a(this.p, this.d, 360);
+      }
+
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.v != null ? this.v.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.o - 40);
+      this.w = this.c(fof.a(this.s, $$0x -> this.aP_()).a((this.n - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
-   public void a(fnr $$0, int $$1, int $$2, float $$3) {
-      if (!this.m.J().a(this.m.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
+   public void e() {
+      if (this.x > 0) {
+         this.x--;
       }
+
+      this.w.j = this.x == 0;
+   }
+
+   @Override
+   public void a(fns $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
+      if (this.v == null) {
+         String $$4 = ftn.a(ae.c());
+         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+      } else {
+         this.v.a($$0, this.n / 2, 120);
+      }
+   }
+
+   @Override
+   public boolean aH_() {
+      return this.v != null && this.w.j;
    }
 
    @Override
    public void aP_() {
-      this.E();
+      this.u.run();
    }
 
    @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.E();
-      }
-
-      if (!this.m.J().a(this.m.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.m.m.d().d();
-         return true;
-      }
-   }
-
-   private void E() {
-      gfk $$0 = this.m.t.i;
-      $$0.b(new ais(this.m.t, ais.a.c));
-   }
-
-   public void l() {
-      if (this.b.a().isEmpty()) {
-         this.m.a(null);
-      } else {
-         this.m.a(new fst(this.b.a()));
-      }
+   public xv i() {
+      return xu.a(this.l, this.d != null ? this.d : xu.a);
    }
 }

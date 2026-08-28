@@ -1,86 +1,73 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+public class dcv extends dbu {
+   public dcv(dbr $$0) {
+      super($$0);
+   }
 
-public abstract class dcv implements dcd<dcw> {
-   private final dbz c;
-   private final cxo d;
-   private final String e;
-   @Nullable
-   private dcc f;
+   public boolean a(dbs $$0, dhi $$1) {
+      if ($$0.e() != 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   public dcv(String $$0, dbz $$1, cxo $$2) {
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxp $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cvs) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(cxt.wi)) {
+                     return false;
+                  }
+
+                  if ($$2) {
+                     return false;
+                  }
+
+                  duo $$6 = $$5.a(ku.ai, duo.a);
+                  if (!$$6.b().isEmpty()) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$2 && $$3;
+      }
+   }
+
+   public cxp a(dbs $$0, js.a $$1) {
+      cxp $$2 = cxp.j;
+      cxp $$3 = cxp.j;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxp $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.h() instanceof cvs) {
+               $$2 = $$5;
+            } else if ($$5.a(cxt.wi)) {
+               $$3 = $$5.v();
+            }
+         }
+      }
+
+      if ($$3.f()) {
+         return $$3;
+      } else {
+         $$3.b(ku.ai, $$2.a(ku.ai));
+         $$3.b(ku.aj, ((cvs)$$2.h()).b());
+         return $$3;
+      }
    }
 
    @Override
-   public abstract dcn<? extends dcv> a();
-
-   @Override
-   public abstract dco<? extends dcv> b();
-
-   public boolean a(dcw $$0, dhh $$1) {
-      return this.c.a($$0.c());
-   }
-
-   @Override
-   public String j() {
-      return this.e;
-   }
-
-   public dbz k() {
-      return this.c;
-   }
-
-   protected cxo l() {
-      return this.d;
-   }
-
-   @Override
-   public dcc ap_() {
-      if (this.f == null) {
-         this.f = dcc.b(this.c);
-      }
-
-      return this.f;
-   }
-
-   public cxo a(dcw $$0, js.a $$1) {
-      return this.d.v();
-   }
-
-   @FunctionalInterface
-   public interface a<T extends dcv> {
-      T create(String var1, dbz var2, cxo var3);
-   }
-
-   public static class b<T extends dcv> implements dcn<T> {
-      private final MapCodec<T> w;
-      private final zt<xg, T> x;
-
-      protected b(dcv.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(dcv::j),
-                     dbz.d.fieldOf("ingredient").forGetter(dcv::k),
-                     cxo.c.fieldOf("result").forGetter(dcv::l)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.x = zt.a(zr.o, dcv::j, dbz.a, dcv::k, cxo.h, dcv::l, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public zt<xg, T> b() {
-         return this.x;
-      }
+   public dco<dcv> a() {
+      return dco.l;
    }
 }

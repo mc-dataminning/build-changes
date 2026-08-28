@@ -1,100 +1,30 @@
-import javax.annotation.Nullable;
+public class clf extends ckx {
+   private static final int b = 40;
+   private int c;
 
-public class clf extends ckw {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
-   @Nullable
-   private bvc g;
-
-   public clf(ckt $$0) {
+   public clf(cku $$0) {
       super($$0);
    }
 
    @Override
    public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         fbx $$0 = this.a.J(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.c.dB();
-         double $$2 = this.a.c.e(0.5);
-         double $$3 = this.a.c.dH();
-
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.dZ().k() / 2.0;
-            double $$6 = $$2 + this.a.dZ().k() / 2.0;
-            double $$7 = $$3 + this.a.dZ().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dW().a(ls.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
-      }
+      this.a.dW().a(this.a.dB(), this.a.dD(), this.a.dH(), axf.iy, this.a.dn(), 2.5F, 0.8F + this.a.dZ().i() * 0.3F, false);
    }
 
    @Override
    public void a(ash $$0) {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.gk().a(clj.e);
-         } else {
-            this.a.gk().a(clj.g);
-         }
-      } else if (this.e == 10) {
-         fbx $$1 = new fbx(this.a.c.dB() - this.a.dB(), 0.0, this.a.c.dH() - this.a.dH()).d();
-         float $$2 = 5.0F;
-         double $$3 = this.a.c.dB() + $$1.d * 5.0 / 2.0;
-         double $$4 = this.a.c.dH() + $$1.f * 5.0 / 2.0;
-         double $$5 = this.a.c.e(0.5);
-         double $$6 = $$5;
-         jh.a $$7 = new jh.a($$3, $$5, $$4);
-
-         while ($$0.u($$7)) {
-            if (--$$6 < 0.0) {
-               $$6 = $$5;
-               break;
-            }
-
-            $$7.b($$3, $$6, $$4);
-         }
-
-         $$6 = (double)(bae.a($$6) + 1);
-         this.g = new bvc($$0, $$3, $$6, $$4);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.a(200);
-         this.g.a(ls.h);
-         this.g.a(new buo(buq.g));
-         $$0.b(this.g);
+      if (this.c++ >= 40) {
+         this.a.gk().a(clk.f);
       }
    }
 
    @Override
    public void c() {
-      this.e = 0;
-      this.f++;
+      this.c = 0;
    }
 
    @Override
-   public void d() {
-      if (this.g != null) {
-         this.g.at();
-         this.g = null;
-      }
-   }
-
-   @Override
-   public clj<clf> h() {
-      return clj.f;
-   }
-
-   public void i() {
-      this.f = 0;
+   public clk<clf> h() {
+      return clk.h;
    }
 }

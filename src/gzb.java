@@ -1,10 +1,17 @@
-public class gzb extends gys {
-   public cim.b a;
-   public float b;
-   public gcj.a c;
+public class gzb extends gyt {
+   public cim.a a;
+   public boolean b;
+   public boolean c;
+   public int d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public float h;
+   public float i;
+   public float j;
+   public float k;
 
    public gzb() {
-      this.a = cim.b.a;
-      this.c = gcj.a.a;
+      this.a = cim.a.a;
    }
 }

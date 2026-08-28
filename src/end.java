@@ -1,30 +1,27 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum end implements bba {
-   a(jm.b, 1, "ceiling"),
-   b(jm.a, -1, "floor");
+public class end extends enq {
+   public static final MapCodec<end> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eex.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, end::new)
+   );
+   private final eex c;
 
-   public static final Codec<end> c = bba.a(end::values);
-   private final jm d;
-   private final int e;
-   private final String f;
-
-   private end(final jm $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private end(eex $$0) {
+      this.c = $$0;
    }
 
-   public jm a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static end a(eex $$0) {
+      return new end($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected boolean a(enp $$0, bam $$1, jh $$2) {
+      return this.c.test($$0.d(), $$2);
+   }
+
+   @Override
+   public ens<?> b() {
+      return ens.a;
    }
 }

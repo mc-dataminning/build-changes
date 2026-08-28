@@ -1,41 +1,28 @@
-import java.util.Set;
+public class gbb extends gbm<gyt> {
+   private final geo a;
 
-public class gbb extends gcv<gys> {
-   public static final gew a = new gam(false, 10.0F, 4.0F, Set.of("head"));
-
-   public gbb(gen $$0) {
+   public gbb(geo $$0) {
       super($$0);
+      this.a = $$0.b("tail_fin");
    }
 
-   public static get a() {
-      gev $$0 = new gev();
-      gex $$1 = $$0.a();
-      int $$2 = 12;
-      $$1.a(
-         "head",
-         ges.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-            .a(22, 0)
-            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
-            .a(22, 0)
-            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
-         gep.a(0.0F, 4.0F, -8.0F)
-      );
-      $$1.a(
-         "body",
-         ges.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
-         gep.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      ges $$3 = ges.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      $$1.a("right_hind_leg", $$3, gep.a(-4.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$3, gep.a(4.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$3, gep.a(-4.0F, 12.0F, -6.0F));
-      $$1.a("left_front_leg", $$3, gep.a(4.0F, 12.0F, -6.0F));
-      return get.a($$0, 64, 32);
+   public static geu a() {
+      gew $$0 = new gew();
+      gey $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", get.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), geq.a(0.0F, 22.0F, 0.0F));
+      $$1.a("head", get.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), geq.a(0.0F, 22.0F, 0.0F));
+      $$1.a("nose", get.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), geq.a(0.0F, 22.0F, -3.0F));
+      $$1.a("right_fin", get.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), geq.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", get.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), geq.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      $$1.a("tail_fin", get.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), geq.a(0.0F, 22.0F, 7.0F));
+      $$1.a("top_fin", get.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), geq.a(0.0F, 20.0F, 0.0F));
+      return geu.a($$0, 32, 32);
    }
 
-   public gen b() {
-      return this.b;
+   public void a(gyt $$0) {
+      super.a($$0);
+      float $$1 = $$0.af ? 1.0F : 1.5F;
+      this.a.f = -$$1 * 0.45F * bae.a(0.6F * $$0.p);
    }
 }

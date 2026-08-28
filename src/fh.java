@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class fh implements ArgumentType<alz> {
-   private static final Collection<String> a = Stream.of(dhh.i, dhh.j).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
+   private static final Collection<String> a = Stream.of(dhi.i, dhi.j).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xv.b("argument.dimension.invalid", $$0));
 
    public alz a(StringReader $$0) throws CommandSyntaxException {
@@ -32,7 +32,7 @@ public class fh implements ArgumentType<alz> {
 
    public static ash a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
       alz $$2 = (alz)$$0.getArgument($$1, alz.class);
-      aly<dhh> $$3 = aly.a(mb.be, $$2);
+      aly<dhi> $$3 = aly.a(mb.be, $$2);
       ash $$4 = ((ew)$$0.getSource()).l().a($$3);
       if ($$4 == null) {
          throw b.create($$2);

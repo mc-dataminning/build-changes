@@ -25,10 +25,10 @@ public abstract class oj {
    }
 
    private void c() {
-      List<dyw<?>> $$0 = this.b();
+      List<dyx<?>> $$0 = this.b();
       Stream<ok> $$1 = Stream.of(ok.a());
 
-      for (dyw<?> $$2 : $$0) {
+      for (dyx<?> $$2 : $$0) {
          $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
       }
 
@@ -38,41 +38,41 @@ public abstract class oj {
       }
    }
 
-   abstract List<dyw<?>> b();
+   abstract List<dyx<?>> b();
 
-   public static <T1 extends Comparable<T1>> oj.a<T1> a(dyw<T1> $$0) {
+   public static <T1 extends Comparable<T1>> oj.a<T1> a(dyx<T1> $$0) {
       return new oj.a<>($$0);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> oj.b<T1, T2> a(dyw<T1> $$0, dyw<T2> $$1) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> oj.b<T1, T2> a(dyx<T1> $$0, dyx<T2> $$1) {
       return new oj.b<>($$0, $$1);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> oj.c<T1, T2, T3> a(dyw<T1> $$0, dyw<T2> $$1, dyw<T3> $$2) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> oj.c<T1, T2, T3> a(dyx<T1> $$0, dyx<T2> $$1, dyx<T3> $$2) {
       return new oj.c<>($$0, $$1, $$2);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> oj.d<T1, T2, T3, T4> a(
-      dyw<T1> $$0, dyw<T2> $$1, dyw<T3> $$2, dyw<T4> $$3
+      dyx<T1> $$0, dyx<T2> $$1, dyx<T3> $$2, dyx<T4> $$3
    ) {
       return new oj.d<>($$0, $$1, $$2, $$3);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> oj.e<T1, T2, T3, T4, T5> a(
-      dyw<T1> $$0, dyw<T2> $$1, dyw<T3> $$2, dyw<T4> $$3, dyw<T5> $$4
+      dyx<T1> $$0, dyx<T2> $$1, dyx<T3> $$2, dyx<T4> $$3, dyx<T5> $$4
    ) {
       return new oj.e<>($$0, $$1, $$2, $$3, $$4);
    }
 
    public static class a<T1 extends Comparable<T1>> extends oj {
-      private final dyw<T1> a;
+      private final dyx<T1> a;
 
-      a(dyw<T1> $$0) {
+      a(dyx<T1> $$0) {
          this.a = $$0;
       }
 
       @Override
-      public List<dyw<?>> b() {
+      public List<dyx<?>> b() {
          return ImmutableList.of(this.a);
       }
 
@@ -98,16 +98,16 @@ public abstract class oj {
    }
 
    public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends oj {
-      private final dyw<T1> a;
-      private final dyw<T2> b;
+      private final dyx<T1> a;
+      private final dyx<T2> b;
 
-      b(dyw<T1> $$0, dyw<T2> $$1) {
+      b(dyx<T1> $$0, dyx<T2> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       @Override
-      public List<dyw<?>> b() {
+      public List<dyx<?>> b() {
          return ImmutableList.of(this.a, this.b);
       }
 
@@ -133,18 +133,18 @@ public abstract class oj {
    }
 
    public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends oj {
-      private final dyw<T1> a;
-      private final dyw<T2> b;
-      private final dyw<T3> c;
+      private final dyx<T1> a;
+      private final dyx<T2> b;
+      private final dyx<T3> c;
 
-      c(dyw<T1> $$0, dyw<T2> $$1, dyw<T3> $$2) {
+      c(dyx<T1> $$0, dyx<T2> $$1, dyx<T3> $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
       @Override
-      public List<dyw<?>> b() {
+      public List<dyx<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c);
       }
 
@@ -174,12 +174,12 @@ public abstract class oj {
    }
 
    public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends oj {
-      private final dyw<T1> a;
-      private final dyw<T2> b;
-      private final dyw<T3> c;
-      private final dyw<T4> d;
+      private final dyx<T1> a;
+      private final dyx<T2> b;
+      private final dyx<T3> c;
+      private final dyx<T4> d;
 
-      d(dyw<T1> $$0, dyw<T2> $$1, dyw<T3> $$2, dyw<T4> $$3) {
+      d(dyx<T1> $$0, dyx<T2> $$1, dyx<T3> $$2, dyx<T4> $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -187,7 +187,7 @@ public abstract class oj {
       }
 
       @Override
-      public List<dyw<?>> b() {
+      public List<dyx<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d);
       }
 
@@ -238,13 +238,13 @@ public abstract class oj {
 
    public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
       extends oj {
-      private final dyw<T1> a;
-      private final dyw<T2> b;
-      private final dyw<T3> c;
-      private final dyw<T4> d;
-      private final dyw<T5> e;
+      private final dyx<T1> a;
+      private final dyx<T2> b;
+      private final dyx<T3> c;
+      private final dyx<T4> d;
+      private final dyx<T5> e;
 
-      e(dyw<T1> $$0, dyw<T2> $$1, dyw<T3> $$2, dyw<T4> $$3, dyw<T5> $$4) {
+      e(dyx<T1> $$0, dyx<T2> $$1, dyx<T3> $$2, dyx<T4> $$3, dyx<T5> $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -253,7 +253,7 @@ public abstract class oj {
       }
 
       @Override
-      public List<dyw<?>> b() {
+      public List<dyx<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
       }
 

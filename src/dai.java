@@ -1,32 +1,42 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record dai(Optional<jp> c, boolean d) {
-   public static final Codec<dai> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jp.b.optionalFieldOf("target").forGetter(dai::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(dai::b)).apply($$0, dai::new)
-   );
-   public static final zt<ByteBuf, dai> b = zt.a(jp.c.a(zr::a), dai::a, zr.b, dai::b, dai::new);
+public record dai(List<xv> e, List<xv> f) implements das {
+   public static final dai a = new dai(List.of());
+   public static final int b = 256;
+   private static final ys g = ys.a.a(n.f).b(true);
+   public static final Codec<dai> c = xx.g.sizeLimitedListOf(256).xmap(dai::new, dai::a);
+   public static final zt<xg, dai> d = xx.b.a(zr.c(256)).a(dai::new, dai::a);
 
-   public dai a(ash $$0) {
-      if (this.d && !this.c.isEmpty()) {
-         if (this.c.get().a() != $$0.ah()) {
-            return this;
-         } else {
-            jh $$1 = this.c.get().b();
-            return $$0.k($$1) && $$0.z().a(chn.s, $$1) ? this : new dai(Optional.empty(), true);
-         }
+   public dai(List<xv> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> xy.a($$0x.f(), g)));
+   }
+
+   public dai(List<xv> e, List<xv> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
       } else {
-         return this;
+         this.e = e;
+         this.f = f;
       }
    }
 
-   public Optional<jp> a() {
-      return this.c;
+   public dai a(xv $$0) {
+      return new dai(ae.a(this.e, $$0));
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   public void a(cxl.b $$0, Consumer<xv> $$1, czh $$2) {
+      this.f.forEach($$1);
+   }
+
+   public List<xv> a() {
+      return this.e;
+   }
+
+   public List<xv> b() {
+      return this.f;
    }
 }

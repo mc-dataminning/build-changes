@@ -1,135 +1,55 @@
-import javax.annotation.Nullable;
+public class cul<T extends ctc> implements csq {
+   public static final cul<ctl> a = a("generic_9x1", ctl::a);
+   public static final cul<ctl> b = a("generic_9x2", ctl::b);
+   public static final cul<ctl> c = a("generic_9x3", ctl::c);
+   public static final cul<ctl> d = a("generic_9x4", ctl::d);
+   public static final cul<ctl> e = a("generic_9x5", ctl::e);
+   public static final cul<ctl> f = a("generic_9x6", ctl::f);
+   public static final cul<ctx> g = a("generic_3x3", ctx::new);
+   public static final cul<cts> h = a("crafter_3x3", cts::new);
+   public static final cul<ctf> i = a("anvil", ctf::new);
+   public static final cul<cth> j = a("beacon", cth::new);
+   public static final cul<cti> k = a("blast_furnace", cti::new);
+   public static final cul<ctj> l = a("brewing_stand", ctj::new);
+   public static final cul<ctv> m = a("crafting", ctv::new);
+   public static final cul<cty> n = a("enchantment", cty::new);
+   public static final cul<cua> o = a("furnace", cua::new);
+   public static final cul<cuc> p = a("grindstone", cuc::new);
+   public static final cul<cud> q = a("hopper", cud::new);
+   public static final cul<cui> r = a("lectern", ($$0, $$1) -> new cui($$0));
+   public static final cul<cuj> s = a("loom", cuj::new);
+   public static final cul<cun> t = a("merchant", cun::new);
+   public static final cul<cuw> u = a("shulker_box", cuw::new);
+   public static final cul<cvc> v = a("smithing", cvc::new);
+   public static final cul<cvd> w = a("smoker", cvd::new);
+   public static final cul<ctk> x = a("cartography_table", ctk::new);
+   public static final cul<cvf> y = a("stonecutter", cvf::new);
+   private final cst z;
+   private final cul.a<T> A;
 
-public class cul implements btb {
-   private final dgd b;
-   private final jz<cxo> c = jz.a(3, cxo.j);
-   @Nullable
-   private dge d;
-   private int e;
-   private int f;
+   private static <T extends ctc> cul<T> a(String $$0, cul.a<T> $$1) {
+      return kd.a(ma.p, $$0, new cul<>($$1, csv.h));
+   }
 
-   public cul(dgd $$0) {
-      this.b = $$0;
+   private static <T extends ctc> cul<T> a(String $$0, cul.a<T> $$1, csr... $$2) {
+      return kd.a(ma.p, $$0, new cul<>($$1, csv.f.a($$2)));
+   }
+
+   private cul(cul.a<T> $$0, cst $$1) {
+      this.A = $$0;
+      this.z = $$1;
+   }
+
+   public T a(int $$0, cpw $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public int b() {
-      return this.c.size();
+   public cst i() {
+      return this.z;
    }
 
-   @Override
-   public boolean c() {
-      for (cxo $$0 : this.c) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cxo a(int $$0) {
-      return this.c.get($$0);
-   }
-
-   @Override
-   public cxo a(int $$0, int $$1) {
-      cxo $$2 = this.c.get($$0);
-      if ($$0 == 2 && !$$2.f()) {
-         return btc.a(this.c, $$0, $$2.L());
-      } else {
-         cxo $$3 = btc.a(this.c, $$0, $$1);
-         if (!$$3.f() && this.d($$0)) {
-            this.f();
-         }
-
-         return $$3;
-      }
-   }
-
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   @Override
-   public cxo b(int $$0) {
-      return btc.a(this.c, $$0);
-   }
-
-   @Override
-   public void a(int $$0, cxo $$1) {
-      this.c.set($$0, $$1);
-      $$1.f(this.e_($$1));
-      if (this.d($$0)) {
-         this.f();
-      }
-   }
-
-   @Override
-   public boolean a(cpw $$0) {
-      return this.b.go() == $$0;
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.d = null;
-      cxo $$0;
-      cxo $$1;
-      if (this.c.get(0).f()) {
-         $$0 = this.c.get(1);
-         $$1 = cxo.j;
-      } else {
-         $$0 = this.c.get(0);
-         $$1 = this.c.get(1);
-      }
-
-      if ($$0.f()) {
-         this.a(2, cxo.j);
-         this.f = 0;
-      } else {
-         dgf $$4 = this.b.gq();
-         if (!$$4.isEmpty()) {
-            dge $$5 = $$4.a($$0, $$1, this.e);
-            if ($$5 == null || $$5.r()) {
-               this.d = $$5;
-               $$5 = $$4.a($$1, $$0, this.e);
-            }
-
-            if ($$5 != null && !$$5.r()) {
-               this.d = $$5;
-               this.a(2, $$5.h());
-               this.f = $$5.q();
-            } else {
-               this.a(2, cxo.j);
-               this.f = 0;
-            }
-         }
-
-         this.b.i(this.a(2));
-      }
-   }
-
-   @Nullable
-   public dge g() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.e = $$0;
-      this.f();
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public int h() {
-      return this.f;
+   interface a<T extends ctc> {
+      T create(int var1, cpw var2);
    }
 }

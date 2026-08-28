@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class bee extends bhr {
+public class bee extends bhs {
    private static final String[] a = new String[]{
       "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
    };
 
    public bee(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, biw.s, $$2);
+      super($$0, false, $$1, bix.s, $$2);
    }
 
    private static <T> Dynamic<T> a(Dynamic<T> $$0) {

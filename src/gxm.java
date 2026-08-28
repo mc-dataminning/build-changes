@@ -1,6 +1,4 @@
-public class gxm extends gys {
-   public bvb a = new bvb();
-   public bvb b = new bvb();
-   public boolean c;
-   public boolean d;
+public class gxm extends gyt {
+   public float a;
+   public float b;
 }

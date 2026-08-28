@@ -6,31 +6,31 @@ import java.util.function.UnaryOperator;
 
 public final class axj {
    public static final zt<ws, axj> a = zt.a(axj::b, axj::a);
-   private static final Map<cur, Pair<String, String>> b = ImmutableMap.of(
-      cur.a,
+   private static final Map<cus, Pair<String, String>> b = ImmutableMap.of(
+      cus.a,
       Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cur.b,
+      cus.b,
       Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cur.c,
+      cus.c,
       Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cur.d,
+      cus.d,
       Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
    );
-   private final Map<cur, axj.a> c;
+   private final Map<cus, axj.a> c;
 
-   private axj(Map<cur, axj.a> $$0) {
+   private axj(Map<cus, axj.a> $$0) {
       this.c = $$0;
    }
 
    public axj() {
-      this(new EnumMap<>(cur.class));
+      this(new EnumMap<>(cus.class));
    }
 
-   private axj.a c(cur $$0) {
+   private axj.a c(cus $$0) {
       return this.c.getOrDefault($$0, axj.a.a);
    }
 
-   private void a(cur $$0, UnaryOperator<axj.a> $$1) {
+   private void a(cus $$0, UnaryOperator<axj.a> $$1) {
       this.c.compute($$0, ($$1x, $$2) -> {
          if ($$2 == null) {
             $$2 = axj.a.a;
@@ -45,26 +45,26 @@ public final class axj {
       });
    }
 
-   public boolean a(cur $$0) {
+   public boolean a(cus $$0) {
       return this.c($$0).b;
    }
 
-   public void a(cur $$0, boolean $$1) {
+   public void a(cus $$0, boolean $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public boolean b(cur $$0) {
+   public boolean b(cus $$0) {
       return this.c($$0).c;
    }
 
-   public void b(cur $$0, boolean $$1) {
+   public void b(cus $$0, boolean $$1) {
       this.a($$0, $$1x -> $$1x.b($$1));
    }
 
    private static axj a(ws $$0) {
-      Map<cur, axj.a> $$1 = new EnumMap<>(cur.class);
+      Map<cus, axj.a> $$1 = new EnumMap<>(cus.class);
 
-      for (cur $$2 : cur.values()) {
+      for (cus $$2 : cus.values()) {
          boolean $$3 = $$0.readBoolean();
          boolean $$4 = $$0.readBoolean();
          if ($$3 || $$4) {
@@ -76,7 +76,7 @@ public final class axj {
    }
 
    private void b(ws $$0) {
-      for (cur $$1 : cur.values()) {
+      for (cus $$1 : cus.values()) {
          axj.a $$2 = this.c.getOrDefault($$1, axj.a.a);
          $$0.a($$2.b);
          $$0.a($$2.c);
@@ -84,7 +84,7 @@ public final class axj {
    }
 
    public static axj a(ux $$0) {
-      Map<cur, axj.a> $$1 = new EnumMap<>(cur.class);
+      Map<cus, axj.a> $$1 = new EnumMap<>(cus.class);
       b.forEach(($$2, $$3) -> {
          boolean $$4 = $$0.q((String)$$3.getFirst());
          boolean $$5 = $$0.q((String)$$3.getSecond());

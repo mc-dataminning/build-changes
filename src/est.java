@@ -1,11 +1,18 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface est {
-   Codec<est> c = ma.n.q().dispatch(est::a, esu::codec);
+public class est implements esu {
+   public static final est a = new est();
+   public static final MapCodec<est> b = MapCodec.unit(a);
 
    @Nullable
-   ux a(bam var1, @Nullable ux var2);
+   @Override
+   public ux a(bam $$0, @Nullable ux $$1) {
+      return $$1;
+   }
 
-   esu<?> a();
+   @Override
+   public esv<?> a() {
+      return esv.b;
+   }
 }

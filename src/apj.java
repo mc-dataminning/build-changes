@@ -37,14 +37,14 @@ public class apj {
       );
    }
 
-   private static int a(ew $$0, bvj $$1, gu $$2) {
-      fbw $$3 = $$2.b($$0);
+   private static int a(ew $$0, bvk $$1, gu $$2) {
+      fbx $$3 = $$2.b($$0);
       $$1.a($$3.j, $$3.i);
       $$0.a(() -> xv.a("commands.rotate.success", $$1.p_()), true);
       return 1;
    }
 
-   private static int a(ew $$0, bvj $$1, aos $$2) {
+   private static int a(ew $$0, bvk $$1, aos $$2) {
       $$2.perform($$0, $$1);
       $$0.a(() -> xv.a("commands.rotate.success", $$1.p_()), true);
       return 1;

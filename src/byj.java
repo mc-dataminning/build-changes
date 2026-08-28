@@ -1,44 +1,41 @@
-import java.util.Optional;
+public class byj implements bya<bwg> {
+   private final int a;
+   private final int b;
+   private bxz.a c = bxz.a.a;
+   private long d;
 
-public class byj implements bzm {
-   private final bvj a;
-   private final boolean b;
-
-   public byj(bvj $$0, boolean $$1) {
+   public byj(int $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public fbx a() {
-      return this.b ? this.a.du().b(0.0, (double)this.a.cS(), 0.0) : this.a.du();
+   public bxz.a a() {
+      return this.c;
    }
 
    @Override
-   public jh b() {
-      return this.a.dw();
+   public final boolean e(ash $$0, bwg $$1, long $$2) {
+      this.c = bxz.a.b;
+      int $$3 = this.a + $$0.H_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
    }
 
    @Override
-   public boolean a(bwf $$0) {
-      if (this.a instanceof bwf $$1) {
-         if (!$$1.bL()) {
-            return false;
-         } else {
-            Optional<cfl> $$3 = $$0.ec().c(cfj.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   public final void f(ash $$0, bwg $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   public bvj c() {
-      return this.a;
+   @Override
+   public final void g(ash $$0, bwg $$1, long $$2) {
+      this.c = bxz.a.a;
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

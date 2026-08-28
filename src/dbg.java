@@ -1,62 +1,77 @@
-public class dbg extends dbf {
-   private final jm b;
+import javax.annotation.Nullable;
 
-   public dbg(dhh $$0, jh $$1, jm $$2, cxo $$3, jm $$4) {
-      super($$0, null, bth.a, $$3, new fbt(fbx.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public class dbg extends dbi {
+   private final jh b;
+   protected boolean a = true;
+
+   public dbg(cpx $$0, bti $$1, cxp $$2, fbu $$3) {
+      this($$0.dW(), $$0, $$1, $$2, $$3);
+   }
+
+   public dbg(dbi $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
+
+   protected dbg(dhi $$0, @Nullable cpx $$1, bti $$2, cxp $$3, fbu $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.b().a($$4.c());
+      this.a = $$0.a_($$4.b()).a(this);
+   }
+
+   public static dbg a(dbg $$0, jh $$1, jm $$2) {
+      return new dbg(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new fbu(
+            new fby((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
    public jh a() {
-      return this.j().b();
+      return this.a ? super.a() : this.b;
    }
 
-   @Override
    public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
+      return this.a || this.q().a_(this.a()).a(this);
    }
 
-   @Override
    public boolean c() {
-      return this.b();
+      return this.a;
    }
 
-   @Override
    public jm d() {
-      return jm.a;
+      return jm.a(this.o())[0];
    }
 
-   @Override
+   public jm e() {
+      return jm.a(this.o(), jm.a.b);
+   }
+
    public jm[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jm[]{jm.a, jm.c, jm.f, jm.d, jm.e, jm.b};
-         case b:
-            return new jm[]{jm.a, jm.b, jm.c, jm.f, jm.d, jm.e};
-         case c:
-            return new jm[]{jm.a, jm.c, jm.f, jm.e, jm.b, jm.d};
-         case d:
-            return new jm[]{jm.a, jm.d, jm.f, jm.e, jm.b, jm.c};
-         case e:
-            return new jm[]{jm.a, jm.e, jm.d, jm.b, jm.c, jm.f};
-         case f:
-            return new jm[]{jm.a, jm.f, jm.d, jm.b, jm.c, jm.e};
+      jm[] $$0 = jm.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         jm $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
       }
-   }
-
-   @Override
-   public jm g() {
-      return this.b.o() == jm.a.b ? jm.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
    }
 }

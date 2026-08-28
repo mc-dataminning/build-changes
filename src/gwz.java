@@ -1,6 +1,6 @@
-public class gwz extends gys {
+public class gwz extends gyt {
    public boolean a;
-   public final bvb b = new bvb();
-   public final bvb c = new bvb();
-   public final bvb d = new bvb();
+   public boolean b;
+   public float c;
+   public float d;
 }

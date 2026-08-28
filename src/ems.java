@@ -1,63 +1,16 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class ems extends emq {
-   public static final MapCodec<ems> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eej.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               eej.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ems::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final eej d;
-   private final eej e;
-   private final int f;
+public interface ems<P extends emr> {
+   ems<emq> a = a("constant", emq.b);
+   ems<emu> b = a("uniform", emu.a);
+   ems<emp> c = a("biased_to_bottom", emp.a);
+   ems<emv> d = a("very_biased_to_bottom", emv.a);
+   ems<emt> e = a("trapezoid", emt.a);
+   ems<emw> f = a("weighted_list", emw.a);
 
-   private ems(eej $$0, eej $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+   MapCodec<P> codec();
 
-   public static ems a(eej $$0, eej $$1, int $$2) {
-      return new ems($$0, $$1, $$2);
-   }
-
-   public static ems a(eej $$0, eej $$1) {
-      return a($$0, $$1, 0);
-   }
-
-   @Override
-   public int a(bam $$0, eem $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return bae.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + bae.b($$0, 0, $$6) + bae.b($$0, 0, $$5);
-         }
-      }
-   }
-
-   @Override
-   public emr<?> a() {
-      return emr.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+   private static <P extends emr> ems<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.L, $$0, () -> $$1);
    }
 }

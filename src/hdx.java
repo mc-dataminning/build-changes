@@ -1,120 +1,105 @@
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import org.slf4j.Logger;
 
 public class hdx {
-   static final Logger b = LogUtils.getLogger();
-   public static final String a = "item/";
-   private final Map<alz, hef> c;
-   final hef d;
-   private final Map<hea, hef> e = new HashMap<>();
-   private final Map<alz, hef> f = new HashMap<>();
+   public static final hdu a = new hdu(hbk.d, alz.b("block/fire_0"));
+   public static final hdu b = new hdu(hbk.d, alz.b("block/fire_1"));
+   public static final hdu c = new hdu(hbk.d, alz.b("block/lava_flow"));
+   public static final hdu d = new hdu(hbk.d, alz.b("block/water_flow"));
+   public static final hdu e = new hdu(hbk.d, alz.b("block/water_overlay"));
+   public static final hdu f = new hdu(gmg.c, alz.b("entity/banner_base"));
+   public static final hdu g = new hdu(gmg.d, alz.b("entity/shield_base"));
+   public static final hdu h = new hdu(gmg.d, alz.b("entity/shield_base_nopattern"));
+   public static final int i = 10;
+   public static final List<alz> j = IntStream.range(0, 10).mapToObj($$0 -> alz.b("block/destroy_stage_" + $$0)).collect(Collectors.toList());
+   public static final List<alz> k = j.stream().map($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).collect(Collectors.toList());
+   public static final List<glv> l = k.stream().map(glv::t).collect(Collectors.toList());
+   static final Logger m = LogUtils.getLogger();
+   static final gna n = new gna();
+   final Map<hdx.a, hdn> o = new HashMap<>();
+   private final Map<heb, hdn> p = new HashMap<>();
+   private final Map<heb, heg> q;
+   final Map<alz, heg> r;
+   final heg s;
 
-   public hdx(Map<alz, hef> $$0, hef $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a(hdu.c, $$1);
-      this.f.put(hdu.b, $$1);
+   public hdx(Map<heb, heg> $$0, Map<alz, heg> $$1, heg $$2) {
+      this.q = $$0;
+      this.r = $$1;
+      this.s = $$2;
    }
 
-   private static Set<hea> d() {
-      Set<hea> $$0 = new HashSet<>();
-      ma.g.c().forEach($$1 -> {
-         alz $$2 = $$1.a().g().a(ku.i);
-         if ($$2 != null) {
-            $$0.add(hea.a($$2));
+   public void a(hdx.c $$0) {
+      this.q.forEach(($$1, $$2) -> {
+         hdn $$3 = null;
+
+         try {
+            $$3 = new hdx.b($$0, $$1).a($$2, hdo.a);
+         } catch (Exception var6) {
+            m.warn("Unable to bake model: '{}': {}", $$1, var6);
          }
 
-         if ($$1.a() instanceof cwb $$4) {
-            $$0.add(hea.a($$4.b()));
-            $$0.add(hea.a($$4.c()));
+         if ($$3 != null) {
+            this.p.put($$1, $$3);
          }
       });
-      $$0.add(gsn.i);
-      $$0.add(gsn.j);
-      return $$0;
    }
 
-   private void a(hea $$0, hef $$1) {
-      this.e.put($$0, $$1);
+   public Map<heb, hdn> a() {
+      return this.p;
    }
 
-   public void a(hdo.c $$0) {
-      this.f.put(hee.a, hee.c);
-      this.f.put(hee.b, hee.d);
-      Set<hea> $$1 = d();
-      $$0.a().forEach(($$1x, $$2) -> {
-         this.a($$1x, $$2.b());
-         $$1.remove($$1x);
-      });
-      this.c.keySet().forEach($$1x -> {
-         if ($$1x.a().startsWith("item/")) {
-            hea $$2 = hea.a($$1x.a((UnaryOperator<String>)($$0xx -> $$0xx.substring("item/".length()))));
-            this.a($$2, new hds($$1x));
-            $$1.remove($$2);
-         }
-      });
-      if (!$$1.isEmpty()) {
-         b.warn("Missing mandatory models: {}", $$1.stream().map($$0x -> "\n\t" + $$0x).collect(Collectors.joining()));
+   static record a(alz a, j b, boolean c) {
+   }
+
+   class b implements hdw {
+      private final Function<hdu, hbl> b;
+
+      b(final hdx.c $$0, final heb $$1) {
+         this.b = $$2 -> $$0.get($$1, $$2);
       }
-   }
 
-   public void a() {
-      this.e.values().forEach($$0 -> $$0.a(new hdx.a()));
-   }
-
-   public Map<hea, hef> b() {
-      return this.e;
-   }
-
-   public Map<alz, hef> c() {
-      return this.f;
-   }
-
-   hef a(alz $$0) {
-      return this.f.computeIfAbsent($$0, this::b);
-   }
-
-   private hef b(alz $$0) {
-      hef $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         b.warn("Missing block model: '{}'", $$0);
-         return this.d;
-      } else {
-         return $$1;
-      }
-   }
-
-   class a implements hef.a {
-      private final List<alz> b = new ArrayList<>();
-      private final Set<alz> c = new HashSet<>();
-
-      @Override
-      public hef a(alz $$0) {
-         if (this.b.contains($$0)) {
-            hdx.b.warn("Detected model loading loop: {}->{}", this.a(), $$0);
-            return hdx.this.d;
+      private heg a(alz $$0) {
+         heg $$1 = hdx.this.r.get($$0);
+         if ($$1 == null) {
+            hdx.m.warn("Requested a model that was not discovered previously: {}", $$0);
+            return hdx.this.s;
          } else {
-            hef $$1 = hdx.this.a($$0);
-            if (this.c.add($$0)) {
-               this.b.add($$0);
-               $$1.a(this);
-               this.b.remove($$0);
-            }
-
             return $$1;
          }
       }
 
-      private String a() {
-         return this.b.stream().map(alz::toString).collect(Collectors.joining("->"));
+      @Override
+      public hdn a(alz $$0, hec $$1) {
+         hdx.a $$2 = new hdx.a($$0, $$1.b(), $$1.c());
+         hdn $$3 = hdx.this.o.get($$2);
+         if ($$3 != null) {
+            return $$3;
+         } else {
+            heg $$4 = this.a($$0);
+            hdn $$5 = this.a($$4, $$1);
+            hdx.this.o.put($$2, $$5);
+            return $$5;
+         }
       }
+
+      hdn a(heg $$0, hec $$1) {
+         if ($$0 instanceof gmx $$2 && $$2.f() == hef.c) {
+            return hdx.n.a(this.b, $$2).a(this.b, $$1, false);
+         }
+
+         return $$0.a(this, this.b, $$1);
+      }
+   }
+
+   @FunctionalInterface
+   public interface c {
+      hbl get(heb var1, hdu var2);
    }
 }

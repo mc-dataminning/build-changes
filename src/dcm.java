@@ -1,35 +1,48 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class dcm {
-   public static final aly<? extends kd<dcm>> a = aly.a(alz.b("recipe_property_set"));
-   public static final aly<dcm> b = a("smithing_base");
-   public static final aly<dcm> c = a("smithing_template");
-   public static final aly<dcm> d = a("smithing_addition");
-   public static final aly<dcm> e = a("furnace_input");
-   public static final aly<dcm> f = a("blast_furnace_input");
-   public static final aly<dcm> g = a("smoker_input");
-   public static final aly<dcm> h = a("campfire_input");
-   public static final zt<xg, dcm> i = zr.b(mb.K).a(zr.a()).a($$0 -> new dcm(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
-   public static final dcm j = new dcm(Set.of());
-   private final Set<jq<cxk>> k;
+   public static final dcm a = new dcm(ImmutableMultimap.of(), Map.of());
+   private final Multimap<dcp<?>, dcj<?>> b;
+   private final Map<aly<dce<?>>, dcj<?>> c;
 
-   private dcm(Set<jq<cxk>> $$0) {
-      this.k = $$0;
+   private dcm(Multimap<dcp<?>, dcj<?>> $$0, Map<aly<dce<?>>, dcj<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static aly<dcm> a(String $$0) {
-      return aly.a(a, alz.b($$0));
+   public static dcm a(Iterable<dcj<?>> $$0) {
+      Builder<dcp<?>, dcj<?>> $$1 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<aly<dce<?>>, dcj<?>> $$2 = ImmutableMap.builder();
+
+      for (dcj<?> $$3 : $$0) {
+         $$1.put($$3.b().b(), $$3);
+         $$2.put($$3.a(), $$3);
+      }
+
+      return new dcm($$1.build(), $$2.build());
    }
 
-   public boolean a(cxo $$0) {
-      return this.k.contains($$0.i());
+   public <I extends dck, T extends dce<I>> Collection<dcj<T>> a(dcp<T> $$0) {
+      return this.b.get($$0);
    }
 
-   static dcm a(Collection<dbz> $$0) {
-      Set<jq<cxk>> $$1 = $$0.stream().flatMap($$0x -> $$0x.a().stream()).collect(Collectors.toUnmodifiableSet());
-      return new dcm($$1);
+   public Collection<dcj<?>> a() {
+      return this.c.values();
+   }
+
+   @Nullable
+   public dcj<?> a(aly<dce<?>> $$0) {
+      return this.c.get($$0);
+   }
+
+   public <I extends dck, T extends dce<I>> Stream<dcj<T>> a(dcp<T> $$0, I $$1, dhi $$2) {
+      return $$1.b() ? Stream.empty() : this.a($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2));
    }
 }

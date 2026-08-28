@@ -1,67 +1,84 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class djs extends dkl implements drp {
+public class djs extends djy {
    public static final MapCodec<djs> a = b(djs::new);
-   public static final dyl b = dyk.D;
+   public static final dys<jm> b = dyl.Q;
+   public static final dym c = dyl.v;
 
    @Override
    public MapCodec<djs> a() {
       return a;
    }
 
-   protected djs(dxt.d $$0) {
+   public djs(dxu.d $$0) {
       super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
+      this.l(this.F.b().b(b, jm.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean e_(dxu $$0) {
-      return $$0.y().c();
-   }
-
-   @Override
-   protected dqu a_(dxu $$0) {
-      return dqu.a;
-   }
-
-   @Override
-   protected float c(dxu $$0, dgm $$1, jh $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
+   protected btj a(dxv $$0, dhi $$1, jh $$2, cpx $$3, fbu $$4) {
+      if ($$1 instanceof ash $$5 && $$1.c_($$2) instanceof duq $$6) {
+         $$3.a($$6);
+         $$3.a(axp.ar);
+         com.a($$5, $$3, true);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return btj.a;
    }
 
    @Override
-   protected etw b_(dxu $$0) {
-      return $$0.c(b) ? etx.c.a(false) : super.b_($$0);
+   protected void a(dxv $$0, dhi $$1, jh $$2, dxv $$3, boolean $$4) {
+      btf.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      dux $$4 = $$1.c_($$2);
+      if ($$4 instanceof duq) {
+         ((duq)$$4).k();
+      }
    }
 
    @Nullable
    @Override
-   public dxu a(dbf $$0) {
-      return this.m().b(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == etx.c));
+   public dux a(jh $$0, dxv $$1) {
+      return new duq($$0, $$1);
    }
 
    @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
-      $$0.a(b);
+   protected dqv a_(dxv $$0) {
+      return dqv.c;
    }
 
    @Override
-   public cxo a(@Nullable cpw $$0, dhi $$1, jh $$2, dxu $$3) {
-      return $$0 != null && $$0.b() ? drp.super.a($$0, $$1, $$2, $$3) : cxo.j;
+   protected boolean c_(dxv $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(@Nullable cpw $$0, dgm $$1, jh $$2, dxu $$3, etv $$4) {
-      return $$0 != null && $$0.b() ? drp.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   protected int a(dxv $$0, dhi $$1, jh $$2) {
+      return ctc.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dxv a(dxv $$0, drc $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dxv a(dxv $$0, dpl $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dxv a(dbg $$0) {
+      return this.m().b(b, $$0.d().g());
    }
 }

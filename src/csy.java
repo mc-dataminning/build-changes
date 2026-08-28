@@ -1,62 +1,101 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class csy {
+   private int a = 20;
+   private float b = 5.0F;
+   private float c;
+   private int d;
 
-public record csy(int c, float d, boolean e) implements czv {
-   public static final Codec<csy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               azn.l.fieldOf("nutrition").forGetter(csy::a),
-               Codec.FLOAT.fieldOf("saturation").forGetter(csy::b),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(csy::c)
-            )
-            .apply($$0, csy::new)
-   );
-   public static final zt<xg, csy> b = zt.a(zr.h, csy::a, zr.l, csy::b, zr.b, csy::c, csy::new);
+   private void b(int $$0, float $$1) {
+      this.a = bae.a($$0 + this.a, 0, 20);
+      this.b = bae.a($$1 + this.b, 0.0F, (float)this.a);
+   }
 
-   @Override
-   public void a(dhh $$0, bwf $$1, cxo $$2, czu $$3) {
-      bam $$4 = $$1.dZ();
-      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), $$3.e().a(), axg.g, 1.0F, $$4.a(1.0F, 0.4F));
-      if ($$1 instanceof cpw $$5) {
-         $$5.gt().a(this);
-         $$0.a(null, $$5.dB(), $$5.dD(), $$5.dH(), axf.uD, axg.h, 0.5F, bae.b($$4, 0.9F, 1.0F));
+   public void a(int $$0, float $$1) {
+      this.b($$0, csx.a($$0, $$1));
+   }
+
+   public void a(csz $$0) {
+      this.b($$0.a(), $$0.b());
+   }
+
+   public void a(asi $$0) {
+      ash $$1 = $$0.y();
+      btg $$2 = $$1.al();
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$2 != btg.a) {
+            this.a = Math.max(this.a - 1, 0);
+         }
       }
+
+      boolean $$3 = $$1.N().b(dhe.k);
+      if ($$3 && this.b > 0.0F && $$0.gu() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$4 = Math.min(this.b, 6.0F);
+            $$0.c($$4 / 6.0F);
+            this.a($$4);
+            this.d = 0;
+         }
+      } else if ($$3 && this.a >= 18 && $$0.gu()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.eE() > 10.0F || $$2 == btg.d || $$0.eE() > 1.0F && $$2 == btg.c) {
+               $$0.a($$1, $$0.dX().j(), 1.0F);
+            }
+
+            this.d = 0;
+         }
+      } else {
+         this.d = 0;
+      }
+   }
+
+   public void a(ux $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
+      }
+   }
+
+   public void b(ux $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
    }
 
    public int a() {
-      return this.c;
+      return this.a;
    }
 
-   public float b() {
-      return this.d;
+   public boolean b() {
+      return this.a < 20;
    }
 
-   public boolean c() {
-      return this.e;
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
+   public float c() {
+      return this.b;
+   }
 
-      public csy.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public void a(int $$0) {
+      this.a = $$0;
+   }
 
-      public csy.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public csy.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public csy b() {
-         float $$0 = csw.a(this.a, this.b);
-         return new csy(this.a, $$0, this.c);
-      }
+   public void b(float $$0) {
+      this.b = $$0;
    }
 }

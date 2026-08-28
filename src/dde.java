@@ -1,46 +1,31 @@
-public class dde extends dbt {
-   public dde(dbq $$0) {
-      super($$0);
-   }
+import java.util.List;
 
-   public boolean a(dbr $$0, dhh $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               cxo $$4 = $$0.a($$3, $$2);
-               if ($$4.f()) {
-                  return false;
-               }
-
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(cxs.wh)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cxs.oS)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public cxo a(dbr $$0, js.a $$1) {
-      cxo $$2 = $$0.a(1, 1);
-      if (!$$2.a(cxs.wh)) {
-         return cxo.j;
-      } else {
-         cxo $$3 = new cxo(cxs.wg, 8);
-         $$3.b(ku.Q, $$2.a(ku.Q));
-         return $$3;
-      }
+public class dde extends dcw {
+   public dde(String $$0, dca $$1, cxp $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public dcn<dde> a() {
-      return dcn.j;
+   public dcp<dde> b() {
+      return dcp.f;
+   }
+
+   @Override
+   public dco<dde> a() {
+      return dco.s;
+   }
+
+   @Override
+   public List<ddj> g() {
+      return List.of(new ddt(this.k().b(), this.c(), new ddp.d(cxt.xh)));
+   }
+
+   public ddp c() {
+      return new ddp.f(this.l());
+   }
+
+   @Override
+   public dch h() {
+      return dcg.k;
    }
 }

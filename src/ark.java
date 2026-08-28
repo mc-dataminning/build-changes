@@ -10,12 +10,12 @@ import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
 
 public class ark extends ary {
-   public static final arn<dzz> a = arn.a("Unloaded level chunk");
-   private static final CompletableFuture<arn<dzz>> e = CompletableFuture.completedFuture(a);
-   private final dhj f;
-   private volatile CompletableFuture<arn<dzz>> g = e;
-   private volatile CompletableFuture<arn<dzz>> h = e;
-   private volatile CompletableFuture<arn<dzz>> i = e;
+   public static final arn<eaa> a = arn.a("Unloaded level chunk");
+   private static final CompletableFuture<arn<eaa>> e = CompletableFuture.completedFuture(a);
+   private final dhk f;
+   private volatile CompletableFuture<arn<eaa>> g = e;
+   private volatile CompletableFuture<arn<eaa>> h = e;
+   private volatile CompletableFuture<arn<eaa>> i = e;
    private int j;
    private int k;
    private int l;
@@ -23,7 +23,7 @@ public class ark extends ary {
    private final ShortSet[] n;
    private final BitSet o = new BitSet();
    private final BitSet p = new BitSet();
-   private final etl q;
+   private final etm q;
    private final ark.a r;
    private final ark.b s;
    private boolean t;
@@ -31,7 +31,7 @@ public class ark extends ary {
    private CompletableFuture<?> v = CompletableFuture.completedFuture(null);
    private CompletableFuture<?> w = CompletableFuture.completedFuture(null);
 
-   public ark(dgn $$0, int $$1, dhj $$2, etl $$3, ark.a $$4, ark.b $$5) {
+   public ark(dgo $$0, int $$1, dhk $$2, etm $$3, ark.a $$4, ark.b $$5) {
       super($$0);
       this.f = $$2;
       this.q = $$3;
@@ -44,25 +44,25 @@ public class ark extends ary {
       this.n = new ShortSet[$$2.an()];
    }
 
-   public CompletableFuture<arn<dzz>> a() {
+   public CompletableFuture<arn<eaa>> a() {
       return this.h;
    }
 
-   public CompletableFuture<arn<dzz>> b() {
+   public CompletableFuture<arn<eaa>> b() {
       return this.i;
    }
 
-   public CompletableFuture<arn<dzz>> c() {
+   public CompletableFuture<arn<eaa>> c() {
       return this.g;
    }
 
    @Nullable
-   public dzz d() {
+   public eaa d() {
       return this.a().getNow(a).b(null);
    }
 
    @Nullable
-   public dzz e() {
+   public eaa e() {
       return !this.v.isDone() ? null : this.d();
    }
 
@@ -96,7 +96,7 @@ public class ark extends ary {
    }
 
    public boolean a(jh $$0) {
-      dzz $$1 = this.d();
+      eaa $$1 = this.d();
       if ($$1 == null) {
          return false;
       } else {
@@ -112,20 +112,20 @@ public class ark extends ary {
       }
    }
 
-   public boolean a(dhq $$0, int $$1) {
-      dzp $$2 = this.b(eaq.k);
+   public boolean a(dhr $$0, int $$1) {
+      dzq $$2 = this.b(ear.k);
       if ($$2 == null) {
          return false;
       } else {
          $$2.i();
-         dzz $$3 = this.d();
+         eaa $$3 = this.d();
          if ($$3 == null) {
             return false;
          } else {
             int $$4 = this.q.d();
             int $$5 = this.q.e();
             if ($$1 >= $$4 && $$1 <= $$5) {
-               BitSet $$6 = $$0 == dhq.a ? this.p : this.o;
+               BitSet $$6 = $$0 == dhr.a ? this.p : this.o;
                int $$7 = $$1 - $$4;
                if (!$$6.get($$7)) {
                   $$6.set($$7);
@@ -144,9 +144,9 @@ public class ark extends ary {
       return this.m || !this.p.isEmpty() || !this.o.isEmpty();
    }
 
-   public void a(dzz $$0) {
+   public void a(eaa $$0) {
       if (this.i()) {
-         dhh $$1 = $$0.H();
+         dhi $$1 = $$0.H();
          if (!this.p.isEmpty() || !this.o.isEmpty()) {
             List<asi> $$2 = this.s.a(this.d, true);
             if (!$$2.isEmpty()) {
@@ -170,11 +170,11 @@ public class ark extends ary {
                      kj $$8 = kj.a($$0.f(), $$7);
                      if ($$6.size() == 1) {
                         jh $$9 = $$8.g($$6.iterator().nextShort());
-                        dxu $$10 = $$1.a_($$9);
+                        dxv $$10 = $$1.a_($$9);
                         this.a($$4, new ada($$9, $$10));
                         this.a($$4, $$1, $$9, $$10);
                      } else {
-                        eaa $$11 = $$0.b($$5);
+                        eab $$11 = $$0.b($$5);
                         afm $$12 = new afm($$8, $$6, $$11);
                         this.a($$4, $$12);
                         $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
@@ -188,14 +188,14 @@ public class ark extends ary {
       }
    }
 
-   private void a(List<asi> $$0, dhh $$1, jh $$2, dxu $$3) {
+   private void a(List<asi> $$0, dhi $$1, jh $$2, dxv $$3) {
       if ($$3.x()) {
          this.a($$0, $$1, $$2);
       }
    }
 
-   private void a(List<asi> $$0, dhh $$1, jh $$2) {
-      duw $$3 = $$1.c_($$2);
+   private void a(List<asi> $$0, dhi $$1, jh $$2) {
+      dux $$3 = $$1.c_($$2);
       if ($$3 != null) {
          aac<?> $$4 = $$3.ay_();
          if ($$4 != null) {
@@ -226,7 +226,7 @@ public class ark extends ary {
       this.k = $$0;
    }
 
-   private void a(arm $$0, CompletableFuture<arn<dzz>> $$1, Executor $$2, arw $$3) {
+   private void a(arm $$0, CompletableFuture<arn<eaa>> $$1, Executor $$2, arw $$3) {
       this.u.cancel(false);
       CompletableFuture<Void> $$4 = new CompletableFuture<>();
       $$4.thenRunAsync(() -> $$0.a(this.d, $$3), $$2);
@@ -304,10 +304,10 @@ public class ark extends ary {
 
    @FunctionalInterface
    public interface a {
-      void onLevelChange(dgn var1, IntSupplier var2, int var3, IntConsumer var4);
+      void onLevelChange(dgo var1, IntSupplier var2, int var3, IntConsumer var4);
    }
 
    public interface b {
-      List<asi> a(dgn var1, boolean var2);
+      List<asi> a(dgo var1, boolean var2);
    }
 }

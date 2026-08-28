@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record dh(
    Optional<dh.b> b,
-   Optional<ju<dij>> c,
-   Optional<ju<eoj>> d,
-   Optional<aly<dhh>> e,
+   Optional<ju<dik>> c,
+   Optional<ju<eok>> d,
+   Optional<aly<dhi>> e,
    Optional<Boolean> f,
    Optional<de> g,
    Optional<ax> h,
@@ -38,7 +38,7 @@ public record dh(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.b().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dla.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dlb.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record dh(
       return this.b;
    }
 
-   public Optional<ju<dij>> b() {
+   public Optional<ju<dik>> b() {
       return this.c;
    }
 
-   public Optional<ju<eoj>> c() {
+   public Optional<ju<eok>> c() {
       return this.d;
    }
 
-   public Optional<aly<dhh>> d() {
+   public Optional<aly<dhi>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record dh(
       private dj.c a;
       private dj.c b;
       private dj.c c;
-      private Optional<ju<dij>> d;
-      private Optional<ju<eoj>> e;
-      private Optional<aly<dhh>> f;
+      private Optional<ju<dik>> d;
+      private Optional<ju<eok>> e;
+      private Optional<aly<dhi>> f;
       private Optional<Boolean> g;
       private Optional<de> h;
       private Optional<ax> i;
@@ -125,15 +125,15 @@ public record dh(
          return new dh.a();
       }
 
-      public static dh.a a(jq<dij> $$0) {
+      public static dh.a a(jq<dik> $$0) {
          return a().a(ju.a($$0));
       }
 
-      public static dh.a a(aly<dhh> $$0) {
+      public static dh.a a(aly<dhi> $$0) {
          return a().b($$0);
       }
 
-      public static dh.a b(jq<eoj> $$0) {
+      public static dh.a b(jq<eok> $$0) {
          return a().b(ju.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record dh(
          return this;
       }
 
-      public dh.a a(ju<dij> $$0) {
+      public dh.a a(ju<dik> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public dh.a b(ju<eoj> $$0) {
+      public dh.a b(ju<eok> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public dh.a b(aly<dhh> $$0) {
+      public dh.a b(aly<dhi> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

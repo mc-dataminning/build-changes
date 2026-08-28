@@ -19,12 +19,12 @@ public class aoi {
       );
    }
 
-   private static void a(ew $$0, asi $$1, dhe $$2) {
+   private static void a(ew $$0, asi $$1, dhf $$2) {
       xv $$3 = xv.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> xv.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().N().b(dhd.p)) {
+         if ($$0.e().N().b(dhe.p)) {
             $$1.a(xv.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class aoi {
       }
    }
 
-   private static int a(CommandContext<ew> $$0, Collection<asi> $$1, dhe $$2) {
+   private static int a(CommandContext<ew> $$0, Collection<asi> $$1, dhf $$2) {
       int $$3 = 0;
 
       for (asi $$4 : $$1) {

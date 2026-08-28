@@ -1,67 +1,44 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class egm extends egv<eiv> {
-   private static final ImmutableList<dkl> a = ImmutableList.of(dkn.I, dkn.fB, dkn.fC, dkn.fD, dkn.fE, dkn.cD, dkn.cA);
-   private static final jm[] b = jm.values();
-   private static final double c = 0.9;
-
-   public egm(Codec<eiv> $$0) {
+public class egm extends egk {
+   public egm(Codec<ejh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egx<eiv> $$0) {
-      boolean $$1 = false;
-      bam $$2 = $$0.d();
-      dif $$3 = $$0.b();
-      eiv $$4 = $$0.f();
-      jh $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
+   protected boolean a(dhj $$0, bam $$1, jh $$2, dxv $$3) {
+      jh.a $$4 = $$2.k();
+      int $$5 = $$1.a(3) + 1;
 
-      for (jh $$13 : jh.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
          }
 
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
+         $$4.c(jm.b);
+      }
 
-            jh $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
+      jh $$7 = $$4.j();
+      int $$8 = $$1.a(3) + 2;
+      List<jm> $$9 = jm.c.a.c($$1);
+
+      for (jm $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(jm.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
          }
       }
 
-      return $$1;
-   }
-
-   private static boolean a(dhi $$0, jh $$1, eiv $$2) {
-      dxu $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (jm $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).l();
-            if ($$5 && $$4 != jm.b || !$$5 && $$4 == jm.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+      return true;
    }
 }

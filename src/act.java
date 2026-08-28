@@ -6,9 +6,9 @@ public class act implements aac<acr> {
    private final double e;
    private final int f;
 
-   public act(bvv $$0, asf $$1) {
+   public act(bvw $$0, asf $$1) {
       this.b = $$0.ar();
-      fbx $$2 = $$1.b();
+      fby $$2 = $$1.b();
       this.c = $$2.a();
       this.d = $$2.b();
       this.e = $$2.c();

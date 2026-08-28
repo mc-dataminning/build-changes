@@ -1,67 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class bru<E extends brs> {
-   private final int a;
-   private final ImmutableList<E> b;
-
-   bru(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = brt.a($$0);
+public class bru {
+   private bru() {
    }
 
-   public static <E extends brs> bru<E> c() {
-      return new bru<>(ImmutableList.of());
+   public static int a(List<? extends brt> $$0) {
+      long $$1 = 0L;
+
+      for (brt $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
+      }
    }
 
-   @SafeVarargs
-   public static <E extends brs> bru<E> a(E... $$0) {
-      return new bru<>(ImmutableList.copyOf($$0));
-   }
-
-   public static <E extends brs> bru<E> a(List<E> $$0) {
-      return new bru<>($$0);
-   }
-
-   public boolean d() {
-      return this.b.isEmpty();
-   }
-
-   public Optional<E> b(bam $$0) {
-      if (this.a == 0) {
+   public static <T extends brt> Optional<T> a(bam $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ae.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
          return Optional.empty();
       } else {
-         int $$1 = $$0.a(this.a);
-         return brt.a(this.b, $$1);
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
       }
    }
 
-   public List<E> e() {
-      return this.b;
-   }
-
-   public static <E extends brs> Codec<bru<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bru::a, bru::e);
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         bru<?> $$1 = (bru<?>)$$0;
-         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
-      } else {
-         return false;
+   public static <T extends brt> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
       }
+
+      return Optional.empty();
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
+   public static <T extends brt> Optional<T> a(bam $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

@@ -1,65 +1,66 @@
-public class boc extends boa implements bog {
-   public static final int c = 240;
-   private final long[][] d;
-   private int e;
-   private int f;
+import com.google.common.collect.Maps;
+import java.util.EnumMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
-   public boc(int $$0) {
-      this($$0, new long[$$0]);
-   }
+public class boc {
+   public static final int a = 200;
+   public static final int b = 10000;
+   private final awi c;
+   private final EnumMap<boe, Map<asi, boc.b>> d;
+   private final Queue<boc.a> e = new LinkedList<>();
 
-   public boc(int $$0, long[] $$1) {
-      super($$0, $$1);
-      this.d = new long[240][$$0];
-   }
+   public boc(awi $$0) {
+      this.c = $$0;
+      this.d = new EnumMap<>(boe.class);
 
-   @Override
-   protected void a() {
-      int $$0 = this.b(this.e + this.f);
-      System.arraycopy(this.b, 0, this.d[$$0], 0, this.b.length);
-      if (this.f < 240) {
-         this.f++;
-      } else {
-         this.e = this.b(this.e + 1);
+      for (boe $$1 : boe.values()) {
+         this.d.put($$1, Maps.newHashMap());
       }
    }
 
-   @Override
-   public int c() {
-      return this.d.length;
+   public boolean a(boe $$0) {
+      return !this.d.get($$0).isEmpty();
    }
 
-   @Override
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public long a(int $$0) {
-      return this.a($$0, 0);
-   }
-
-   @Override
-   public long a(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 < this.f) {
-         long[] $$2 = this.d[this.b(this.e + $$0)];
-         if ($$1 >= 0 && $$1 < $$2.length) {
-            return $$2[$$1];
-         } else {
-            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
-         }
-      } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.f);
+   public void a(ads $$0) {
+      for (asi $$2 : this.d.get($$0.e()).keySet()) {
+         $$2.f.b($$0);
       }
    }
 
-   private int b(int $$0) {
-      return $$0 % 240;
+   public void a(asi $$0, boe $$1) {
+      if (this.c.f($$0.gh())) {
+         this.e.add(new boc.a($$0, $$1));
+      }
    }
 
-   @Override
-   public void e() {
-      this.e = 0;
-      this.f = 0;
+   public void a(int $$0) {
+      long $$1 = ae.c();
+      this.a($$1, $$0);
+      this.b($$1, $$0);
+   }
+
+   private void a(long $$0, int $$1) {
+      for (boc.a $$2 : this.e) {
+         this.d.get($$2.b()).put($$2.a(), new boc.b($$0, $$1));
+      }
+   }
+
+   private void b(long $$0, int $$1) {
+      for (Map<asi, boc.b> $$2 : this.d.values()) {
+         $$2.entrySet().removeIf($$2x -> {
+            boolean $$3 = !this.c.f(((asi)$$2x.getKey()).gh());
+            boc.b $$4 = (boc.b)$$2x.getValue();
+            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
+         });
+      }
+   }
+
+   static record a(asi a, boe b) {
+   }
+
+   static record b(long a, int b) {
    }
 }

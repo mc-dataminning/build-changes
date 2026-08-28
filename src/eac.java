@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-public interface eac {
-   @Nullable
-   eab c(int var1, int var2);
+public interface eac extends dgn {
+   void a(BiConsumer<jh, dxv> var1);
 
-   default void a(dhq $$0, kj $$1) {
-   }
-
-   dgm q();
+   eth D();
 }

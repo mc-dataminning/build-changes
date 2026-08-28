@@ -8,14 +8,14 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public abstract class avf<T> {
-   private final fbn a;
+   private final fbo a;
 
-   protected avf(fbn $$0) {
+   protected avf(fbo $$0) {
       this.a = $$0;
    }
 
    @Nullable
-   public T a(Path $$0, List<fbo> $$1) throws IOException {
+   public T a(Path $$0, List<fbp> $$1) throws IOException {
       Path $$2 = $$0;
 
       BasicFileAttributes $$3;

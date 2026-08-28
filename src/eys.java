@@ -3,34 +3,39 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public class eys extends eyb {
+public class eys extends eyc {
    public static final MapCodec<eys> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ayk.b(mb.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eys::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  eyb.e.a(dae.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  azn.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, eys::new)
    );
-   private final ayk<cxh> b;
+   public static final daf b = new daf(0, List.of());
+   private final Optional<eyb.e<dae>> c;
+   private final Optional<Integer> d;
 
-   private eys(List<ezx> $$0, ayk<cxh> $$1) {
+   protected eys(List<ezy> $$0, Optional<eyb.e<dae>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public eyd<eys> b() {
-      return eye.G;
-   }
-
-   @Override
-   public cxo a(cxo $$0, ewo $$1) {
-      kd<cxh> $$2 = $$1.d().K_().e(mb.I);
-      Optional<jq<cxh>> $$3 = $$2.a(this.b, $$1.b());
-      if ($$3.isPresent()) {
-         $$0.b(ku.Z, $$3.get());
-      }
-
+   protected cxp a(cxp $$0, ewp $$1) {
+      $$0.a(ku.af, b, this::a);
       return $$0;
    }
 
-   public static eyb.a<?> a(ayk<cxh> $$0) {
-      return a($$1 -> new eys($$1, $$0));
+   private daf a(daf $$0) {
+      return new daf(this.d.orElseGet($$0::a), this.c.<List<dae>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
+   }
+
+   @Override
+   public eye<eys> b() {
+      return eyf.K;
    }
 }

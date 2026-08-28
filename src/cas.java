@@ -1,28 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class cas<T extends bwh> extends bxy<T> {
-   private final float c;
+public class cas {
+   public static bya<cpj> a(cfk<List<jp>> $$0, float $$1, int $$2, int $$3, cfk<jp> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return cbm.a(
+         (Function<cbm.b<cpj>, ? extends App<cbm.c<cpj>, cbp<cpj>>>)($$6 -> $$6.group($$6.a(cfk.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<jp> $$11 = $$6.b($$6x);
+                     jp $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        jp $$13 = $$11.get($$8.H_().a($$11.size()));
+                        if ($$13 != null && $$8.ah() == $$13.a() && $$12.b().a($$9.du(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new cfn($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   public cas(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   public static <T extends bwh> boolean a(T $$0) {
-      return $$0.bj() && $$0.b(aya.a) > $$0.dq() || $$0.bx();
-   }
-
-   protected boolean a(ash $$0, bwh $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(ash $$0, bwh $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(ash $$0, bwh $$1, long $$2) {
-      if ($$1.dZ().i() < this.c) {
-         $$1.J().a();
-      }
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

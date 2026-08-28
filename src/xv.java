@@ -204,7 +204,7 @@ public interface xv extends Message, ya {
       return b($$0.toString());
    }
 
-   static xv a(dgn $$0) {
+   static xv a(dgo $$0) {
       return b($$0.toString());
    }
 

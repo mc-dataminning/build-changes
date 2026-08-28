@@ -1,61 +1,61 @@
 import java.util.List;
 
 public class sk {
-   public static final aly<egh<?, ?>> a = sm.a("monster_room");
-   public static final aly<egh<?, ?>> b = sm.a("fossil_coal");
-   public static final aly<egh<?, ?>> c = sm.a("fossil_diamonds");
-   public static final aly<egh<?, ?>> d = sm.a("dripstone_cluster");
-   public static final aly<egh<?, ?>> e = sm.a("large_dripstone");
-   public static final aly<egh<?, ?>> f = sm.a("pointed_dripstone");
-   public static final aly<egh<?, ?>> g = sm.a("underwater_magma");
-   public static final aly<egh<?, ?>> h = sm.a("glow_lichen");
-   public static final aly<egh<?, ?>> i = sm.a("rooted_azalea_tree");
-   public static final aly<egh<?, ?>> j = sm.a("cave_vine");
-   public static final aly<egh<?, ?>> k = sm.a("cave_vine_in_moss");
-   public static final aly<egh<?, ?>> l = sm.a("moss_vegetation");
-   public static final aly<egh<?, ?>> m = sm.a("moss_patch");
-   public static final aly<egh<?, ?>> n = sm.a("moss_patch_bonemeal");
-   public static final aly<egh<?, ?>> o = sm.a("dripleaf");
-   public static final aly<egh<?, ?>> p = sm.a("clay_with_dripleaves");
-   public static final aly<egh<?, ?>> q = sm.a("clay_pool_with_dripleaves");
-   public static final aly<egh<?, ?>> r = sm.a("lush_caves_clay");
-   public static final aly<egh<?, ?>> s = sm.a("moss_patch_ceiling");
-   public static final aly<egh<?, ?>> t = sm.a("spore_blossom");
-   public static final aly<egh<?, ?>> u = sm.a("amethyst_geode");
-   public static final aly<egh<?, ?>> v = sm.a("sculk_patch_deep_dark");
-   public static final aly<egh<?, ?>> w = sm.a("sculk_patch_ancient_city");
-   public static final aly<egh<?, ?>> x = sm.a("sculk_vein");
+   public static final aly<egi<?, ?>> a = sm.a("monster_room");
+   public static final aly<egi<?, ?>> b = sm.a("fossil_coal");
+   public static final aly<egi<?, ?>> c = sm.a("fossil_diamonds");
+   public static final aly<egi<?, ?>> d = sm.a("dripstone_cluster");
+   public static final aly<egi<?, ?>> e = sm.a("large_dripstone");
+   public static final aly<egi<?, ?>> f = sm.a("pointed_dripstone");
+   public static final aly<egi<?, ?>> g = sm.a("underwater_magma");
+   public static final aly<egi<?, ?>> h = sm.a("glow_lichen");
+   public static final aly<egi<?, ?>> i = sm.a("rooted_azalea_tree");
+   public static final aly<egi<?, ?>> j = sm.a("cave_vine");
+   public static final aly<egi<?, ?>> k = sm.a("cave_vine_in_moss");
+   public static final aly<egi<?, ?>> l = sm.a("moss_vegetation");
+   public static final aly<egi<?, ?>> m = sm.a("moss_patch");
+   public static final aly<egi<?, ?>> n = sm.a("moss_patch_bonemeal");
+   public static final aly<egi<?, ?>> o = sm.a("dripleaf");
+   public static final aly<egi<?, ?>> p = sm.a("clay_with_dripleaves");
+   public static final aly<egi<?, ?>> q = sm.a("clay_pool_with_dripleaves");
+   public static final aly<egi<?, ?>> r = sm.a("lush_caves_clay");
+   public static final aly<egi<?, ?>> s = sm.a("moss_patch_ceiling");
+   public static final aly<egi<?, ?>> t = sm.a("spore_blossom");
+   public static final aly<egi<?, ?>> u = sm.a("amethyst_geode");
+   public static final aly<egi<?, ?>> v = sm.a("sculk_patch_deep_dark");
+   public static final aly<egi<?, ?>> w = sm.a("sculk_patch_ancient_city");
+   public static final aly<egi<?, ?>> x = sm.a("sculk_vein");
 
-   private static jq<enn> a(jm $$0) {
+   private static jq<eno> a(jm $$0) {
       return tb.a(
-         egv.w,
-         new eiq(
+         egw.w,
+         new eir(
             List.of(
-               eiq.a(new bsu(brq.<bsn>a().a(bst.a(0, 4), 2).a(bsk.a(0), 1).a()), ela.a(dkn.sZ.m().b(dyk.S, $$0))),
-               eiq.a(bsk.a(1), ela.a(dkn.sY.m().b(dyk.S, $$0)))
+               eir.a(new bsv(brr.<bso>a().a(bsu.a(0, 4), 2).a(bsl.a(0), 1).a()), elb.a(dko.sZ.m().b(dyl.S, $$0))),
+               eir.a(bsl.a(1), elb.a(dko.sY.m().b(dyl.S, $$0)))
             ),
             jm.b,
-            eew.d,
+            eex.d,
             true
          )
       );
    }
 
-   private static jq<enn> a() {
+   private static jq<eno> a() {
       return tb.a(
-         egv.T,
-         new ejr(
-            new elk(
-               brq.<dxu>a().a(dkn.ta.m().b(drt.d, jm.f), 1).a(dkn.ta.m().b(drt.d, jm.e), 1).a(dkn.ta.m().b(drt.d, jm.c), 1).a(dkn.ta.m().b(drt.d, jm.d), 1)
+         egw.T,
+         new ejs(
+            new ell(
+               brr.<dxv>a().a(dko.ta.m().b(dru.d, jm.f), 1).a(dko.ta.m().b(dru.d, jm.e), 1).a(dko.ta.m().b(dru.d, jm.c), 1).a(dko.ta.m().b(dru.d, jm.d), 1)
             )
          )
       );
    }
 
-   public static void a(rk<egh<?, ?>> $$0) {
-      jr<egh<?, ?>> $$1 = $$0.a(mb.aL);
-      jr<esj> $$2 = $$0.a(mb.aV);
-      sm.a($$0, a, egv.C);
+   public static void a(rk<egi<?, ?>> $$0) {
+      jr<egi<?, ?>> $$1 = $$0.a(mb.aL);
+      jr<esk> $$2 = $$0.a(mb.aV);
+      sm.a($$0, a, egw.C);
       List<alz> $$3 = List.of(
          alz.b("fossil/spine_1"),
          alz.b("fossil/spine_2"),
@@ -76,97 +76,97 @@ public class sk {
          alz.b("fossil/skull_3_coal"),
          alz.b("fossil/skull_4_coal")
       );
-      jq<esj> $$5 = $$2.b(rs.D);
-      sm.a($$0, b, egv.p, new eha($$3, $$4, $$5, $$2.b(rs.E), 4));
-      sm.a($$0, c, egv.p, new eha($$3, $$4, $$5, $$2.b(rs.F), 4));
-      sm.a($$0, d, egv.ak, new eix(12, bst.a(3, 6), bst.a(2, 8), 1, 3, bst.a(2, 4), bss.b(0.3F, 0.7F), bsh.a(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
-      sm.a($$0, e, egv.al, new ejc(30, bst.a(3, 19), bss.b(0.4F, 2.0F), 0.33F, bss.b(0.3F, 0.9F), bss.b(0.4F, 1.0F), bss.b(0.0F, 0.3F), 4, 0.6F));
+      jq<esk> $$5 = $$2.b(rs.D);
+      sm.a($$0, b, egw.p, new ehb($$3, $$4, $$5, $$2.b(rs.E), 4));
+      sm.a($$0, c, egw.p, new ehb($$3, $$4, $$5, $$2.b(rs.F), 4));
+      sm.a($$0, d, egw.ak, new eiy(12, bsu.a(3, 6), bsu.a(2, 8), 1, 3, bsu.a(2, 4), bst.b(0.3F, 0.7F), bsi.a(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
+      sm.a($$0, e, egw.al, new ejd(30, bsu.a(3, 19), bst.b(0.4F, 2.0F), 0.33F, bst.b(0.3F, 0.9F), bst.b(0.4F, 1.0F), bst.b(0.0F, 0.3F), 4, 0.6F));
       sm.a(
          $$0,
          f,
-         egv.ah,
-         new ejs(
+         egw.ah,
+         new ejt(
             ju.a(
-               tb.a(egv.am, new eji(0.2F, 0.7F, 0.5F, 0.5F), eng.a(jm.a, eew.c(), eew.d, 12), ens.a(bsk.a(1))),
-               tb.a(egv.am, new eji(0.2F, 0.7F, 0.5F, 0.5F), eng.a(jm.b, eew.c(), eew.d, 12), ens.a(bsk.a(-1)))
+               tb.a(egw.am, new ejj(0.2F, 0.7F, 0.5F, 0.5F), enh.a(jm.a, eex.c(), eex.d, 12), ent.a(bsl.a(1))),
+               tb.a(egw.am, new ejj(0.2F, 0.7F, 0.5F, 0.5F), enh.a(jm.b, eex.c(), eex.d, 12), ent.a(bsl.a(-1)))
             )
          )
       );
-      sm.a($$0, g, egv.B, new ejx(5, 1, 0.5F));
-      dpn $$6 = (dpn)dkn.fu;
-      sm.a($$0, h, egv.A, new eje($$6, 20, false, true, true, 0.5F, ju.a(dkl::p, dkn.b, dkn.g, dkn.e, dkn.c, dkn.sP, dkn.ri, dkn.qU, dkn.te)));
+      sm.a($$0, g, egw.B, new ejy(5, 1, 0.5F));
+      dpo $$6 = (dpo)dko.fu;
+      sm.a($$0, h, egw.A, new ejf($$6, 20, false, true, true, 0.5F, ju.a(dkm::p, dko.b, dko.g, dko.e, dko.c, dko.sP, dko.ri, dko.qU, dko.te)));
       sm.a(
          $$0,
          i,
-         egv.z,
-         new ejp(
+         egw.z,
+         new ejq(
             tb.a($$1.b(sr.y)),
             3,
             3,
             axu.by,
-            ela.a(dkn.tc),
+            elb.a(dko.tc),
             20,
             100,
             3,
             2,
-            ela.a(dkn.tb),
+            elb.a(dko.tb),
             20,
             2,
-            eew.a(eew.b(eew.c(List.of(dkn.a, dkn.nx, dkn.nw)), eew.a(axu.cq)), eew.a(jm.a.q(), axu.ck))
+            eex.a(eex.b(eex.c(List.of(dko.a, dko.nx, dko.nw)), eex.a(axu.cq)), eex.a(jm.a.q(), axu.ck))
          )
       );
-      elk $$7 = new elk(brq.<dxu>a().a(dkn.sR.m(), 4).a(dkn.sR.m().b(dli.t_, Boolean.valueOf(true)), 1));
-      elg $$8 = new elg(new elk(brq.<dxu>a().a(dkn.sQ.m(), 4).a(dkn.sQ.m().b(dli.t_, Boolean.valueOf(true)), 1)), dlj.e, bst.a(23, 25));
+      ell $$7 = new ell(brr.<dxv>a().a(dko.sR.m(), 4).a(dko.sR.m().b(dlj.t_, Boolean.valueOf(true)), 1));
+      elh $$8 = new elh(new ell(brr.<dxv>a().a(dko.sQ.m(), 4).a(dko.sQ.m().b(dlj.t_, Boolean.valueOf(true)), 1)), dlk.e, bsu.a(23, 25));
       sm.a(
          $$0,
          j,
-         egv.w,
-         new eiq(
-            List.of(eiq.a(new bsu(brq.<bsn>a().a(bst.a(0, 19), 2).a(bst.a(0, 2), 3).a(bst.a(0, 6), 10).a()), $$7), eiq.a(bsk.a(1), $$8)), jm.a, eew.c, true
+         egw.w,
+         new eir(
+            List.of(eir.a(new bsv(brr.<bso>a().a(bsu.a(0, 19), 2).a(bsu.a(0, 2), 3).a(bsu.a(0, 6), 10).a()), $$7), eir.a(bsl.a(1), $$8)), jm.a, eex.c, true
          )
       );
-      sm.a($$0, k, egv.w, new eiq(List.of(eiq.a(new bsu(brq.<bsn>a().a(bst.a(0, 3), 5).a(bst.a(1, 7), 1).a()), $$7), eiq.a(bsk.a(1), $$8)), jm.a, eew.c, true));
-      sm.a($$0, l, egv.T, new ejr(new elk(brq.<dxu>a().a(dkn.sU.m(), 4).a(dkn.sT.m(), 7).a(dkn.sV.m(), 25).a(dkn.bA.m(), 50).a(dkn.iY.m(), 10))));
-      sm.a($$0, m, egv.x, new ejy(axu.bw, ela.a(dkn.sX), tb.a($$1.b(l)), end.b, bsk.a(1), 0.0F, 5, 0.8F, bst.a(4, 7), 0.3F));
-      sm.a($$0, n, egv.x, new ejy(axu.bw, ela.a(dkn.sX), tb.a($$1.b(l)), end.b, bsk.a(1), 0.0F, 5, 0.6F, bst.a(1, 2), 0.75F));
-      sm.a($$0, o, egv.ah, new ejs(ju.a(a(), a(jm.f), a(jm.e), a(jm.d), a(jm.c))));
-      sm.a($$0, p, egv.x, new ejy(axu.bx, ela.a(dkn.ee), tb.a($$1.b(o)), end.b, bsk.a(3), 0.8F, 2, 0.05F, bst.a(4, 7), 0.7F));
-      sm.a($$0, q, egv.y, new ejy(axu.bx, ela.a(dkn.ee), tb.a($$1.b(o)), end.b, bsk.a(3), 0.8F, 5, 0.1F, bst.a(4, 7), 0.7F));
-      sm.a($$0, r, egv.ai, new ejk(tb.a($$1.b(p)), tb.a($$1.b(q))));
-      sm.a($$0, s, egv.x, new ejy(axu.bw, ela.a(dkn.sX), tb.a($$1.b(k)), end.a, bst.a(1, 2), 0.0F, 5, 0.08F, bst.a(4, 7), 0.3F));
-      sm.a($$0, t, egv.T, new ejr(ela.a(dkn.sS)));
+      sm.a($$0, k, egw.w, new eir(List.of(eir.a(new bsv(brr.<bso>a().a(bsu.a(0, 3), 5).a(bsu.a(1, 7), 1).a()), $$7), eir.a(bsl.a(1), $$8)), jm.a, eex.c, true));
+      sm.a($$0, l, egw.T, new ejs(new ell(brr.<dxv>a().a(dko.sU.m(), 4).a(dko.sT.m(), 7).a(dko.sV.m(), 25).a(dko.bA.m(), 50).a(dko.iY.m(), 10))));
+      sm.a($$0, m, egw.x, new ejz(axu.bw, elb.a(dko.sX), tb.a($$1.b(l)), ene.b, bsl.a(1), 0.0F, 5, 0.8F, bsu.a(4, 7), 0.3F));
+      sm.a($$0, n, egw.x, new ejz(axu.bw, elb.a(dko.sX), tb.a($$1.b(l)), ene.b, bsl.a(1), 0.0F, 5, 0.6F, bsu.a(1, 2), 0.75F));
+      sm.a($$0, o, egw.ah, new ejt(ju.a(a(), a(jm.f), a(jm.e), a(jm.d), a(jm.c))));
+      sm.a($$0, p, egw.x, new ejz(axu.bx, elb.a(dko.ee), tb.a($$1.b(o)), ene.b, bsl.a(3), 0.8F, 2, 0.05F, bsu.a(4, 7), 0.7F));
+      sm.a($$0, q, egw.y, new ejz(axu.bx, elb.a(dko.ee), tb.a($$1.b(o)), ene.b, bsl.a(3), 0.8F, 5, 0.1F, bsu.a(4, 7), 0.7F));
+      sm.a($$0, r, egw.ai, new ejl(tb.a($$1.b(p)), tb.a($$1.b(q))));
+      sm.a($$0, s, egw.x, new ejz(axu.bw, elb.a(dko.sX), tb.a($$1.b(k)), ene.a, bsu.a(1, 2), 0.0F, 5, 0.08F, bsu.a(4, 7), 0.3F));
+      sm.a($$0, t, egw.T, new ejs(elb.a(dko.sS)));
       sm.a(
          $$0,
          u,
-         egv.aj,
-         new eja(
-            new edm(
-               ela.a(dkn.a),
-               ela.a(dkn.qO),
-               ela.a(dkn.qP),
-               ela.a(dkn.ri),
-               ela.a(dkn.tz),
-               List.of(dkn.qT.m(), dkn.qS.m(), dkn.qR.m(), dkn.qQ.m()),
+         egw.aj,
+         new ejb(
+            new edn(
+               elb.a(dko.a),
+               elb.a(dko.qO),
+               elb.a(dko.qP),
+               elb.a(dko.ri),
+               elb.a(dko.tz),
+               List.of(dko.qT.m(), dko.qS.m(), dko.qR.m(), dko.qQ.m()),
                axu.bQ,
                axu.bS
             ),
-            new edo(1.7, 2.2, 3.2, 4.2),
-            new edn(0.95, 2.0, 2),
+            new edp(1.7, 2.2, 3.2, 4.2),
+            new edo(0.95, 2.0, 2),
             0.35,
             0.083,
             true,
-            bst.a(4, 6),
-            bst.a(3, 4),
-            bst.a(1, 2),
+            bsu.a(4, 6),
+            bsu.a(3, 4),
+            bsu.a(1, 2),
             -16,
             16,
             0.05,
             1
          )
       );
-      sm.a($$0, v, egv.an, new ejq(10, 32, 64, 0, 1, bsk.a(0), 0.5F));
-      sm.a($$0, w, egv.an, new ejq(10, 32, 64, 0, 1, bst.a(1, 3), 0.5F));
-      dpn $$9 = (dpn)dkn.ro;
-      sm.a($$0, x, egv.A, new eje($$9, 20, true, true, true, 1.0F, ju.a(dkl::p, dkn.b, dkn.g, dkn.e, dkn.c, dkn.sP, dkn.ri, dkn.qU, dkn.te)));
+      sm.a($$0, v, egw.an, new ejr(10, 32, 64, 0, 1, bsl.a(0), 0.5F));
+      sm.a($$0, w, egw.an, new ejr(10, 32, 64, 0, 1, bsu.a(1, 3), 0.5F));
+      dpo $$9 = (dpo)dko.ro;
+      sm.a($$0, x, egw.A, new ejf($$9, 20, true, true, true, 1.0F, ju.a(dkm::p, dko.b, dko.g, dko.e, dko.c, dko.sP, dko.ri, dko.qU, dko.te)));
    }
 }

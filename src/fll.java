@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fll extends fle {
+public class fll extends flf {
    private static final Logger b = LogUtils.getLogger();
-   private static final xv c = xv.c("mco.minigame.world.slot.screen.title");
+   private static final xv c = xv.c("mco.minigame.world.starting.screen.title");
    private final long d;
-   private final int e;
-   private final Runnable f;
+   private final fiz e;
+   private final fjs f;
 
-   public fll(long $$0, int $$1, Runnable $$2) {
+   public fll(long $$0, fiz $$1, fjs $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,7 +16,7 @@ public class fll extends fle {
 
    @Override
    public void run() {
-      fhh $$0 = fhh.a();
+      fhi $$0 = fhi.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
          try {
@@ -24,11 +24,11 @@ public class fll extends fle {
                return;
             }
 
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
                break;
             }
-         } catch (fje var4) {
+         } catch (fjf var4) {
             if (this.d()) {
                return;
             }
@@ -39,7 +39,7 @@ public class fll extends fle {
                return;
             }
 
-            b.error("Couldn't switch world!");
+            b.error("Couldn't start mini game!");
             this.a(var5);
          }
       }

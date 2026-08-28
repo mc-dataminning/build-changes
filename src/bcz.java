@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class bcz extends bhr {
+public class bcz extends bhs {
    public static final String a = "_filtered_correct";
    private static final String b = "black";
 
    public bcz(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, biw.s, $$2);
+      super($$0, false, $$1, bix.s, $$2);
    }
 
    private static <T> Dynamic<T> a(Dynamic<T> $$0) {

@@ -3,10 +3,10 @@ import javax.annotation.Nullable;
 
 public class aga implements aac<acr> {
    public static final zt<ws, aga> a = aac.a(aga::a, aga::new);
-   private final fct b;
+   private final fcu b;
    private final String c;
 
-   public aga(fct $$0, @Nullable fcu $$1) {
+   public aga(fcu $$0, @Nullable fcv $$1) {
       this.b = $$0;
       if ($$1 == null) {
          this.c = "";
@@ -16,12 +16,12 @@ public class aga implements aac<acr> {
    }
 
    private aga(ws $$0) {
-      this.b = $$0.a(fct.u);
+      this.b = $$0.a(fcu.u);
       this.c = $$0.p();
    }
 
    private void a(ws $$0) {
-      $$0.a(fct::a, this.b);
+      $$0.a(fcu::a, this.b);
       $$0.a(this.c);
    }
 
@@ -34,7 +34,7 @@ public class aga implements aac<acr> {
       $$0.a(this);
    }
 
-   public fct b() {
+   public fcu b() {
       return this.b;
    }
 

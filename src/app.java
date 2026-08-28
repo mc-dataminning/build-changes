@@ -280,23 +280,23 @@ public class app {
    private static LiteralArgumentBuilder<ew> a() {
       LiteralArgumentBuilder<ew> $$0 = ex.a("rendertype");
 
-      for (fdf.a $$1 : fdf.a.values()) {
+      for (fdg.a $$1 : fdg.a.values()) {
          $$0.then(ex.a($$1.a()).executes($$1x -> a((ew)$$1x.getSource(), fq.a($$1x, "objective"), $$1)));
       }
 
       return $$0;
    }
 
-   private static CompletableFuture<Suggestions> a(ew $$0, Collection<fdb> $$1, SuggestionsBuilder $$2) {
+   private static CompletableFuture<Suggestions> a(ew $$0, Collection<fdc> $$1, SuggestionsBuilder $$2) {
       List<String> $$3 = Lists.newArrayList();
-      fdc $$4 = $$0.l().aJ();
+      fdd $$4 = $$0.l().aJ();
 
-      for (fcu $$5 : $$4.c()) {
-         if ($$5.c() == fdf.c) {
+      for (fcv $$5 : $$4.c()) {
+         if ($$5.c() == fdg.c) {
             boolean $$6 = false;
 
-            for (fdb $$7 : $$1) {
-               fcy $$8 = $$4.d($$7, $$5);
+            for (fdc $$7 : $$1) {
+               fcz $$8 = $$4.d($$7, $$5);
                if ($$8 == null || $$8.b()) {
                   $$6 = true;
                   break;
@@ -312,9 +312,9 @@ public class app {
       return fb.b($$3, $$2);
    }
 
-   private static int a(ew $$0, fdb $$1, fcu $$2) throws CommandSyntaxException {
-      fdc $$3 = $$0.l().aJ();
-      fcy $$4 = $$3.d($$1, $$2);
+   private static int a(ew $$0, fdc $$1, fcv $$2) throws CommandSyntaxException {
+      fdd $$3 = $$0.l().aJ();
+      fcz $$4 = $$3.d($$1, $$2);
       if ($$4 == null) {
          throw f.create($$2.b(), $$1.hc());
       } else {
@@ -323,19 +323,19 @@ public class app {
       }
    }
 
-   private static xv a(Collection<fdb> $$0) {
+   private static xv a(Collection<fdc> $$0) {
       return $$0.iterator().next().hc();
    }
 
-   private static int a(ew $$0, Collection<fdb> $$1, fcu $$2, fs.a $$3, Collection<fdb> $$4, fcu $$5) throws CommandSyntaxException {
-      fdc $$6 = $$0.l().aJ();
+   private static int a(ew $$0, Collection<fdc> $$1, fcv $$2, fs.a $$3, Collection<fdc> $$4, fcv $$5) throws CommandSyntaxException {
+      fdd $$6 = $$0.l().aJ();
       int $$7 = 0;
 
-      for (fdb $$8 : $$1) {
-         fda $$9 = $$6.c($$8, $$2);
+      for (fdc $$8 : $$1) {
+         fdb $$9 = $$6.c($$8, $$2);
 
-         for (fdb $$10 : $$4) {
-            fda $$11 = $$6.c($$10, $$5);
+         for (fdc $$10 : $$4) {
+            fdb $$11 = $$6.c($$10, $$5);
             $$3.apply($$9, $$11);
          }
 
@@ -352,15 +352,15 @@ public class app {
       return $$7;
    }
 
-   private static int a(ew $$0, Collection<fdb> $$1, fcu $$2) throws CommandSyntaxException {
-      if ($$2.c() != fdf.c) {
+   private static int a(ew $$0, Collection<fdc> $$1, fcv $$2) throws CommandSyntaxException {
+      if ($$2.c() != fdg.c) {
          throw e.create();
       } else {
-         fdc $$3 = $$0.l().aJ();
+         fdd $$3 = $$0.l().aJ();
          int $$4 = 0;
 
-         for (fdb $$5 : $$1) {
-            fda $$6 = $$3.c($$5, $$2);
+         for (fdc $$5 : $$1) {
+            fdb $$6 = $$3.c($$5, $$2);
             if ($$6.d()) {
                $$6.e();
                $$4++;
@@ -381,10 +381,10 @@ public class app {
       }
    }
 
-   private static int a(ew $$0, Collection<fdb> $$1) {
-      fdc $$2 = $$0.l().aJ();
+   private static int a(ew $$0, Collection<fdc> $$1) {
+      fdd $$2 = $$0.l().aJ();
 
-      for (fdb $$3 : $$1) {
+      for (fdc $$3 : $$1) {
          $$2.b($$3);
       }
 
@@ -397,10 +397,10 @@ public class app {
       return $$1.size();
    }
 
-   private static int b(ew $$0, Collection<fdb> $$1, fcu $$2) {
-      fdc $$3 = $$0.l().aJ();
+   private static int b(ew $$0, Collection<fdc> $$1, fcv $$2) {
+      fdd $$3 = $$0.l().aJ();
 
-      for (fdb $$4 : $$1) {
+      for (fdc $$4 : $$1) {
          $$3.e($$4, $$2);
       }
 
@@ -413,10 +413,10 @@ public class app {
       return $$1.size();
    }
 
-   private static int a(ew $$0, Collection<fdb> $$1, fcu $$2, int $$3) {
-      fdc $$4 = $$0.l().aJ();
+   private static int a(ew $$0, Collection<fdc> $$1, fcv $$2, int $$3) {
+      fdd $$4 = $$0.l().aJ();
 
-      for (fdb $$5 : $$1) {
+      for (fdc $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -429,10 +429,10 @@ public class app {
       return $$3 * $$1.size();
    }
 
-   private static int a(ew $$0, Collection<fdb> $$1, fcu $$2, @Nullable xv $$3) {
-      fdc $$4 = $$0.l().aJ();
+   private static int a(ew $$0, Collection<fdc> $$1, fcv $$2, @Nullable xv $$3) {
+      fdd $$4 = $$0.l().aJ();
 
-      for (fdb $$5 : $$1) {
+      for (fdc $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -451,10 +451,10 @@ public class app {
       return $$1.size();
    }
 
-   private static int a(ew $$0, Collection<fdb> $$1, fcu $$2, @Nullable zl $$3) {
-      fdc $$4 = $$0.l().aJ();
+   private static int a(ew $$0, Collection<fdc> $$1, fcv $$2, @Nullable zl $$3) {
+      fdd $$4 = $$0.l().aJ();
 
-      for (fdb $$5 : $$1) {
+      for (fdc $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -473,12 +473,12 @@ public class app {
       return $$1.size();
    }
 
-   private static int b(ew $$0, Collection<fdb> $$1, fcu $$2, int $$3) {
-      fdc $$4 = $$0.l().aJ();
+   private static int b(ew $$0, Collection<fdc> $$1, fcv $$2, int $$3) {
+      fdd $$4 = $$0.l().aJ();
       int $$5 = 0;
 
-      for (fdb $$6 : $$1) {
-         fda $$7 = $$4.c($$6, $$2);
+      for (fdc $$6 : $$1) {
+         fdb $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() + $$3);
          $$5 += $$7.a();
       }
@@ -493,12 +493,12 @@ public class app {
       return $$5;
    }
 
-   private static int c(ew $$0, Collection<fdb> $$1, fcu $$2, int $$3) {
-      fdc $$4 = $$0.l().aJ();
+   private static int c(ew $$0, Collection<fdc> $$1, fcv $$2, int $$3) {
+      fdd $$4 = $$0.l().aJ();
       int $$5 = 0;
 
-      for (fdb $$6 : $$1) {
-         fda $$7 = $$4.c($$6, $$2);
+      for (fdc $$6 : $$1) {
+         fdb $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() - $$3);
          $$5 += $$7.a();
       }
@@ -514,32 +514,32 @@ public class app {
    }
 
    private static int a(ew $$0) {
-      Collection<fdb> $$1 = $$0.l().aJ().e();
+      Collection<fdc> $$1 = $$0.l().aJ().e();
       if ($$1.isEmpty()) {
          $$0.a(() -> xv.c("commands.scoreboard.players.list.empty"), false);
       } else {
-         $$0.a(() -> xv.a("commands.scoreboard.players.list.success", $$1.size(), xy.b($$1, fdb::hc)), false);
+         $$0.a(() -> xv.a("commands.scoreboard.players.list.success", $$1.size(), xy.b($$1, fdc::hc)), false);
       }
 
       return $$1.size();
    }
 
-   private static int a(ew $$0, fdb $$1) {
-      Object2IntMap<fcu> $$2 = $$0.l().aJ().c($$1);
+   private static int a(ew $$0, fdc $$1) {
+      Object2IntMap<fcv> $$2 = $$0.l().aJ().c($$1);
       if ($$2.isEmpty()) {
          $$0.a(() -> xv.a("commands.scoreboard.players.list.entity.empty", $$1.hc()), false);
       } else {
          $$0.a(() -> xv.a("commands.scoreboard.players.list.entity.success", $$1.hc(), $$2.size()), false);
          Object2IntMaps.fastForEach(
-            $$2, $$1x -> $$0.a(() -> xv.a("commands.scoreboard.players.list.entity.entry", ((fcu)$$1x.getKey()).g(), $$1x.getIntValue()), false)
+            $$2, $$1x -> $$0.a(() -> xv.a("commands.scoreboard.players.list.entity.entry", ((fcv)$$1x.getKey()).g(), $$1x.getIntValue()), false)
          );
       }
 
       return $$2.size();
    }
 
-   private static int a(ew $$0, fct $$1) throws CommandSyntaxException {
-      fdc $$2 = $$0.l().aJ();
+   private static int a(ew $$0, fcu $$1) throws CommandSyntaxException {
+      fdd $$2 = $$0.l().aJ();
       if ($$2.a($$1) == null) {
          throw b.create();
       } else {
@@ -549,8 +549,8 @@ public class app {
       }
    }
 
-   private static int a(ew $$0, fct $$1, fcu $$2) throws CommandSyntaxException {
-      fdc $$3 = $$0.l().aJ();
+   private static int a(ew $$0, fcu $$1, fcv $$2) throws CommandSyntaxException {
+      fdd $$3 = $$0.l().aJ();
       if ($$3.a($$1) == $$2) {
          throw c.create();
       } else {
@@ -560,7 +560,7 @@ public class app {
       }
    }
 
-   private static int a(ew $$0, fcu $$1, xv $$2) {
+   private static int a(ew $$0, fcv $$1, xv $$2) {
       if (!$$1.d().equals($$2)) {
          $$1.a($$2);
          $$0.a(() -> xv.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.g()), true);
@@ -569,7 +569,7 @@ public class app {
       return 0;
    }
 
-   private static int a(ew $$0, fcu $$1, boolean $$2) {
+   private static int a(ew $$0, fcv $$1, boolean $$2) {
       if ($$1.e() != $$2) {
          $$1.a($$2);
          if ($$2) {
@@ -582,7 +582,7 @@ public class app {
       return 0;
    }
 
-   private static int a(ew $$0, fcu $$1, @Nullable zl $$2) {
+   private static int a(ew $$0, fcv $$1, @Nullable zl $$2) {
       $$1.b($$2);
       if ($$2 != null) {
          $$0.a(() -> xv.a("commands.scoreboard.objectives.modify.objectiveFormat.set", $$1.b()), true);
@@ -593,7 +593,7 @@ public class app {
       return 0;
    }
 
-   private static int a(ew $$0, fcu $$1, fdf.a $$2) {
+   private static int a(ew $$0, fcv $$1, fdg.a $$2) {
       if ($$1.h() != $$2) {
          $$1.a($$2);
          $$0.a(() -> xv.a("commands.scoreboard.objectives.modify.rendertype", $$1.g()), true);
@@ -602,31 +602,31 @@ public class app {
       return 0;
    }
 
-   private static int a(ew $$0, fcu $$1) {
-      fdc $$2 = $$0.l().aJ();
+   private static int a(ew $$0, fcv $$1) {
+      fdd $$2 = $$0.l().aJ();
       $$2.j($$1);
       $$0.a(() -> xv.a("commands.scoreboard.objectives.remove.success", $$1.g()), true);
       return $$2.c().size();
    }
 
-   private static int a(ew $$0, String $$1, fdf $$2, xv $$3) throws CommandSyntaxException {
-      fdc $$4 = $$0.l().aJ();
+   private static int a(ew $$0, String $$1, fdg $$2, xv $$3) throws CommandSyntaxException {
+      fdd $$4 = $$0.l().aJ();
       if ($$4.a($$1) != null) {
          throw a.create();
       } else {
          $$4.a($$1, $$2, $$3, $$2.f(), false, null);
-         fcu $$5 = $$4.a($$1);
+         fcv $$5 = $$4.a($$1);
          $$0.a(() -> xv.a("commands.scoreboard.objectives.add.success", $$5.g()), true);
          return $$4.c().size();
       }
    }
 
    private static int b(ew $$0) {
-      Collection<fcu> $$1 = $$0.l().aJ().c();
+      Collection<fcv> $$1 = $$0.l().aJ().c();
       if ($$1.isEmpty()) {
          $$0.a(() -> xv.c("commands.scoreboard.objectives.list.empty"), false);
       } else {
-         $$0.a(() -> xv.a("commands.scoreboard.objectives.list.success", $$1.size(), xy.b($$1, fcu::g)), false);
+         $$0.a(() -> xv.a("commands.scoreboard.objectives.list.success", $$1.size(), xy.b($$1, fcv::g)), false);
       }
 
       return $$1.size();

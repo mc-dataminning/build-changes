@@ -1,22 +1,34 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import java.util.function.Supplier;
 
-public class fzn implements fzp {
-   private static final xv a = xv.c("spectatorMenu.root.prompt");
-   private final List<fzq> b = Lists.newArrayList();
+public class fzn implements fzr {
+   private final GameProfile a;
+   private final Supplier<hcm> b;
+   private final xv c;
 
-   public fzn() {
-      this.b.add(new fzt());
-      this.b.add(new fzu());
+   public fzn(GameProfile $$0) {
+      this.a = $$0;
+      this.b = fmg.Q().an().a($$0);
+      this.c = xv.b($$0.getName());
    }
 
    @Override
-   public List<fzq> a() {
-      return this.b;
+   public void a(fzp $$0) {
+      fmg.Q().L().b(new ajj(this.a.getId()));
    }
 
    @Override
-   public xv b() {
-      return a;
+   public xv aU_() {
+      return this.c;
+   }
+
+   @Override
+   public void a(fns $$0, float $$1, float $$2) {
+      fpf.a($$0, this.b.get(), 2, 2, 12, ayp.a($$2));
+   }
+
+   @Override
+   public boolean aV_() {
+      return true;
    }
 }

@@ -1,60 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class ezn implements ezx {
-   protected final List<ezx> c;
-   private final Predicate<ewo> a;
+public record ezn(jq<ddz> b, List<Float> c) implements ezy {
+   public static final MapCodec<ezn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ddz.c.fieldOf("enchantment").forGetter(ezn::c), azn.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(ezn::d)).apply($$0, ezn::new)
+   );
 
-   protected ezn(List<ezx> $$0, Predicate<ewo> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends ezn> MapCodec<T> a(Function<List<ezx>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ezx.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends ezn> Codec<T> b(Function<List<ezx>, T> $$0) {
-      return ezx.e.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(ewo $$0) {
-      return this.a.test($$0);
+   @Override
+   public ezz b() {
+      return faa.k;
    }
 
    @Override
-   public void a(ewu $$0) {
-      ezx.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public Set<bbn<?>> a() {
+      return Set.of(ezj.i);
    }
 
-   public abstract static class a implements ezx.a {
-      private final Builder<ezx> a = ImmutableList.builder();
+   public boolean a(ewp $$0) {
+      cxp $$1 = $$0.c(ezj.i);
+      int $$2 = $$1 != null ? deb.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
 
-      protected a(ezx.a... $$0) {
-         for (ezx.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
+   public static ezy.a a(jq<ddz> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
 
-      public void a(ezx.a $$0) {
-         this.a.add($$0.build());
-      }
+      return () -> new ezn($$0, $$2);
+   }
 
-      @Override
-      public ezx build() {
-         return this.a(this.a.build());
-      }
+   public jq<ddz> c() {
+      return this.b;
+   }
 
-      protected abstract ezx a(List<ezx> var1);
+   public List<Float> d() {
+      return this.c;
    }
 }

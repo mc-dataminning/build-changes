@@ -110,7 +110,7 @@ public class ane {
    }
 
    private Optional<ane.a> b(Scanner $$0) {
-      aly<dhh> $$1 = (aly<dhh>)ann.a.get($$0.next());
+      aly<dhi> $$1 = (aly<dhi>)ann.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,7 +119,7 @@ public class ane {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new ane.a($$1, new fbx((double)$$2, (double)$$3, (double)$$4), new fbw($$6, $$5)));
+         return Optional.of(new ane.a($$1, new fby((double)$$2, (double)$$3, (double)$$4), new fbx($$6, $$5)));
       }
    }
 
@@ -129,13 +129,13 @@ public class ane {
          if (!$$1.isEmpty()) {
             asi $$2 = $$1.get(0);
             ash $$3 = this.e.J();
-            ew $$4 = new ew($$2.z(), fbx.a($$3.Y()), fbw.a, $$3, 4, "", xu.a, this.e, $$2);
+            ew $$4 = new ew($$2.z(), fby.a($$3.Y()), fbx.a, $$3, 4, "", xu.a, this.e, $$2);
             ex $$5 = this.e.aG();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(aly<dhh> a, fbx b, fbw c) {
+   static record a(aly<dhi> a, fby b, fbx c) {
    }
 }

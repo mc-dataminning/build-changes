@@ -1,19 +1,10 @@
-import com.mojang.serialization.Codec;
+public class dec extends brt.a {
+   public final jq<ddz> a;
+   public final int b;
 
-public enum dec implements bba {
-   a("attacker"),
-   b("damaging_entity"),
-   c("victim");
-
-   public static final Codec<dec> d = bba.a(dec::values);
-   private final String e;
-
-   private dec(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   public dec(jq<ddz> $$0, int $$1) {
+      super($$0.a().b());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

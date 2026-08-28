@@ -1,9 +1,11 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
 public interface dfh {
-   static MapCodec<? extends dfg> a(kd<MapCodec<? extends dfg>> $$0) {
-      kd.a($$0, "by_cost", dfi.b);
-      kd.a($$0, "by_cost_with_difficulty", dfj.c);
-      return kd.a($$0, "single", dfk.b);
-   }
+   Codec<dfh> a = ma.ax.q().dispatch(dfh::a, Function.identity());
+
+   void a(cxp var1, def.a var2, bam var3, bth var4);
+
+   MapCodec<? extends dfh> a();
 }

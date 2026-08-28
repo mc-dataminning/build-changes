@@ -1,7 +1,13 @@
 import javax.annotation.Nullable;
 
-public class gzv extends gxu {
+public class gzv extends gxp {
    @Nullable
-   public hdm a;
-   public cxo b = cxo.j;
+   public bvi.l.e a;
+   @Nullable
+   public bvi.l.b f;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

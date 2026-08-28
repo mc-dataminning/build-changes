@@ -1,146 +1,201 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import java.util.List;
 import java.util.Map;
-import org.joml.Matrix4f;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
 
-public class glq {
-   private final String a;
-   private final gkt b;
-   private final alz c;
-   private final List<glp.h> d;
-   private final List<glq.a> e = new ArrayList<>();
+public record glq(Map<alz, glq.d> b, List<glq.e> c) {
+   public static final Codec<glq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(alz.a, glq.d.b).optionalFieldOf("targets", Map.of()).forGetter(glq::a),
+               glq.e.a.listOf().optionalFieldOf("passes", List.of()).forGetter(glq::b)
+            )
+            .apply($$0, glq::new)
+   );
 
-   public glq(String $$0, gkt $$1, alz $$2, List<glp.h> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public void a(glq.a $$0) {
-      this.e.add($$0);
-   }
-
-   public void a(fev $$0, Map<alz, fgd<ffb>> $$1, Matrix4f $$2) {
-      few $$3 = $$0.a(this.a);
-
-      for (glq.a $$4 : this.e) {
-         $$4.a($$3, $$1);
-      }
-
-      fgd<ffb> $$5 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$3.b($$2x));
-      if ($$5 == null) {
-         throw new IllegalStateException("Missing handle for target " + this.c);
-      } else {
-         $$3.a(() -> {
-            ffb $$3x = $$5.get();
-            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
-
-            for (glq.a $$4x : this.e) {
-               $$4x.a(this.b, $$1);
-            }
-
-            this.b.c("OutSize").a((float)$$3x.c, (float)$$3x.d);
-
-            for (glp.h $$5x : this.d) {
-               fgi $$6 = this.b.a($$5x.a());
-               if ($$6 != null) {
-                  $$6.a($$5x.b(), $$5x.b().size());
-               }
-            }
-
-            $$3x.a(0.0F, 0.0F, 0.0F, 0.0F);
-            $$3x.f();
-            $$3x.a(false);
-            RenderSystem.depthFunc(519);
-            RenderSystem.setShader(this.b);
-            RenderSystem.backupProjectionMatrix();
-            RenderSystem.setProjectionMatrix($$2, fea.b);
-            fgm $$7 = fgt.b().a(fgw.c.h, fgp.e);
-            $$7.a(0.0F, 0.0F, 500.0F);
-            $$7.a((float)$$3x.c, 0.0F, 500.0F);
-            $$7.a((float)$$3x.c, (float)$$3x.d, 500.0F);
-            $$7.a(0.0F, (float)$$3x.d, 500.0F);
-            fgn.a($$7.b());
-            RenderSystem.depthFunc(515);
-            RenderSystem.restoreProjectionMatrix();
-            $$3x.e();
-
-            for (glq.a $$8 : this.e) {
-               $$8.a($$1);
-            }
-
-            this.b();
-         });
-      }
-   }
-
-   private void b() {
-      for (glp.h $$0 : this.d) {
-         String $$1 = $$0.a();
-         fgi $$2 = this.b.a($$1);
-         gmd.b $$3 = this.b.b($$1);
-         if ($$2 != null && $$3 != null && !$$0.b().equals($$3.d())) {
-            $$2.a($$3);
-         }
-      }
-   }
-
-   public gkt a() {
+   public Map<alz, glq.d> a() {
       return this.b;
    }
 
-   public interface a {
-      void a(few var1, Map<alz, fgd<ffb>> var2);
+   public List<glq.e> b() {
+      return this.c;
+   }
 
-      void a(gkt var1, Map<alz, fgd<ffb>> var2);
+   public static record a(int c, int d) implements glq.d {
+      public static final Codec<glq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(azn.m.fieldOf("width").forGetter(glq.a::a), azn.m.fieldOf("height").forGetter(glq.a::b)).apply($$0, glq.a::new)
+      );
 
-      default void a(Map<alz, fgd<ffb>> $$0) {
+      public int a() {
+         return this.c;
+      }
+
+      public int b() {
+         return this.d;
       }
    }
 
-   public static record b(String a, alz b, boolean c, boolean d) implements glq.a {
-      private fgd<ffb> b(Map<alz, fgd<ffb>> $$0) {
-         fgd<ffb> $$1 = $$0.get(this.b);
-         if ($$1 == null) {
-            throw new IllegalStateException("Missing handle for target " + this.b);
-         } else {
-            return $$1;
+   public static record b() implements glq.d {
+      public static final Codec<glq.b> a = Codec.unit(glq.b::new);
+   }
+
+   public sealed interface c permits glq.g, glq.f {
+      Codec<glq.c> a = Codec.xor(glq.g.b, glq.f.b).xmap($$0 -> (glq.c)$$0.map(Function.identity(), Function.identity()), $$0 -> {
+         Objects.requireNonNull($$0);
+
+         return switch ($$0) {
+            case glq.g $$3 -> Either.left($$3);
+            case glq.f $$4 -> Either.right($$4);
+            default -> throw new MatchException(null, null);
+         };
+      });
+
+      String a();
+
+      Set<alz> b();
+   }
+
+   public sealed interface d permits glq.b, glq.a {
+      Codec<glq.d> b = Codec.either(glq.a.a, glq.b.a).xmap($$0 -> (glq.d)$$0.map(Function.identity(), Function.identity()), $$0 -> {
+         Objects.requireNonNull($$0);
+
+         return switch ($$0) {
+            case glq.a $$3 -> Either.left($$3);
+            case glq.b $$4 -> Either.right($$4);
+            default -> throw new MatchException(null, null);
+         };
+      });
+   }
+
+   public static record e(alz b, List<glq.c> c, alz d, List<glq.h> e) {
+      private static final Codec<List<glq.c>> f = glq.c.a.listOf().validate($$0 -> {
+         Set<String> $$1 = new ObjectArraySet($$0.size());
+
+         for (glq.c $$2 : $$0) {
+            if (!$$1.add($$2.a())) {
+               return DataResult.error(() -> "Encountered repeated sampler name: " + $$2.a());
+            }
          }
+
+         return DataResult.success($$0);
+      });
+      public static final Codec<glq.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alz.a.fieldOf("program").forGetter(glq.e::a),
+                  f.optionalFieldOf("inputs", List.of()).forGetter(glq.e::b),
+                  alz.a.fieldOf("output").forGetter(glq.e::c),
+                  glq.h.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(glq.e::d)
+               )
+               .apply($$0, glq.e::new)
+      );
+
+      public alz a() {
+         return this.b;
       }
 
-      @Override
-      public void a(few $$0, Map<alz, fgd<ffb>> $$1) {
-         $$0.a(this.b($$1));
+      public List<glq.c> b() {
+         return this.c;
       }
 
-      @Override
-      public void a(gkt $$0, Map<alz, fgd<ffb>> $$1) {
-         fgd<ffb> $$2 = this.b($$1);
-         ffb $$3 = $$2.get();
-         $$3.a(this.d ? 9729 : 9728);
-         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
-         $$0.c(this.a + "Size").a((float)$$3.c, (float)$$3.d);
+      public alz c() {
+         return this.d;
       }
 
-      @Override
-      public void a(Map<alz, fgd<ffb>> $$0) {
-         if (this.d) {
-            this.b($$0).get().a(9728);
-         }
+      public List<glq.h> d() {
+         return this.e;
       }
    }
 
-   public static record c(String a, hav b, int c, int d) implements glq.a {
+   public static record f(String c, alz d, boolean e, boolean f) implements glq.c {
+      public static final Codec<glq.f> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("sampler_name").forGetter(glq.f::a),
+                  alz.a.fieldOf("target").forGetter(glq.f::c),
+                  Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(glq.f::d),
+                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(glq.f::e)
+               )
+               .apply($$0, glq.f::new)
+      );
+
       @Override
-      public void a(few $$0, Map<alz, fgd<ffb>> $$1) {
+      public Set<alz> b() {
+         return Set.of(this.d);
       }
 
       @Override
-      public void a(gkt $$0, Map<alz, fgd<ffb>> $$1) {
-         $$0.a(this.a + "Sampler", this.b.a());
-         $$0.c(this.a + "Size").a((float)this.c, (float)this.d);
+      public String a() {
+         return this.c;
+      }
+
+      public alz c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+   }
+
+   public static record g(String c, alz d, int e, int f, boolean g) implements glq.c {
+      public static final Codec<glq.g> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("sampler_name").forGetter(glq.g::a),
+                  alz.a.fieldOf("location").forGetter(glq.g::c),
+                  azn.m.fieldOf("width").forGetter(glq.g::d),
+                  azn.m.fieldOf("height").forGetter(glq.g::e),
+                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(glq.g::f)
+               )
+               .apply($$0, glq.g::new)
+      );
+
+      @Override
+      public Set<alz> b() {
+         return Set.of();
+      }
+
+      @Override
+      public String a() {
+         return this.c;
+      }
+
+      public alz c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public int e() {
+         return this.f;
+      }
+
+      public boolean f() {
+         return this.g;
+      }
+   }
+
+   public static record h(String b, List<Float> c) {
+      public static final Codec<glq.h> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(glq.h::a), Codec.FLOAT.sizeLimitedListOf(4).fieldOf("values").forGetter(glq.h::b))
+               .apply($$0, glq.h::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public List<Float> b() {
+         return this.c;
       }
    }
 }

@@ -1,21 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bhl extends DataFix {
+public class bhl extends bgq {
    public bhl(Schema $$0) {
-      super($$0, false);
+      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("banners", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> $$0xx.update("Pos", bbu::a))));
-   }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
+      $$0 = $$0.remove("pos").remove("dimension");
+      if ($$1.isPresent() && $$2.isPresent()) {
+         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
+      }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "MapBannerBlockPosFormatFix", this.getInputSchema().getType(biw.j), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bhl::a))
-      );
+      return $$0;
    }
 }

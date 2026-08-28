@@ -53,15 +53,15 @@ public class ov {
       return this;
    }
 
-   public alz a(dkl $$0, BiConsumer<alz, Supplier<JsonElement>> $$1) {
+   public alz a(dkm $$0, BiConsumer<alz, Supplier<JsonElement>> $$1) {
       return this.C.a($$0, this.B, $$1);
    }
 
-   public alz a(dkl $$0, String $$1, BiConsumer<alz, Supplier<JsonElement>> $$2) {
+   public alz a(dkm $$0, String $$1, BiConsumer<alz, Supplier<JsonElement>> $$2) {
       return this.C.a($$0, $$1, this.B, $$2);
    }
 
-   private static ov.a a(Function<dkl, ot> $$0, or $$1) {
+   private static ov.a a(Function<dkm, ot> $$0, or $$1) {
       return $$2 -> new ov($$0.apply($$2), $$1);
    }
 
@@ -71,13 +71,13 @@ public class ov {
 
    @FunctionalInterface
    public interface a {
-      ov get(dkl var1);
+      ov get(dkm var1);
 
-      default alz create(dkl $$0, BiConsumer<alz, Supplier<JsonElement>> $$1) {
+      default alz create(dkm $$0, BiConsumer<alz, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default alz createWithSuffix(dkl $$0, String $$1, BiConsumer<alz, Supplier<JsonElement>> $$2) {
+      default alz createWithSuffix(dkm $$0, String $$1, BiConsumer<alz, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

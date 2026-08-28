@@ -1,46 +1,62 @@
-public class csz {
-   public static final csy a = new csy.a().a(4).a(0.3F).b();
-   public static final csy b = new csy.a().a(5).a(0.6F).b();
-   public static final csy c = new csy.a().a(3).a(0.3F).b();
-   public static final csy d = new csy.a().a(1).a(0.6F).b();
-   public static final csy e = a(6).b();
-   public static final csy f = new csy.a().a(5).a(0.6F).b();
-   public static final csy g = new csy.a().a(3).a(0.6F).b();
-   public static final csy h = new csy.a().a(2).a(0.3F).b();
-   public static final csy i = new csy.a().a(4).a(0.3F).a().b();
-   public static final csy j = new csy.a().a(2).a(0.1F).b();
-   public static final csy k = new csy.a().a(8).a(0.8F).b();
-   public static final csy l = new csy.a().a(6).a(0.6F).b();
-   public static final csy m = new csy.a().a(5).a(0.6F).b();
-   public static final csy n = new csy.a().a(6).a(0.8F).b();
-   public static final csy o = new csy.a().a(8).a(0.8F).b();
-   public static final csy p = new csy.a().a(5).a(0.6F).b();
-   public static final csy q = new csy.a().a(6).a(0.8F).b();
-   public static final csy r = new csy.a().a(2).a(0.1F).b();
-   public static final csy s = new csy.a().a(1).a(0.3F).b();
-   public static final csy t = new csy.a().a(4).a(1.2F).a().b();
-   public static final csy u = new csy.a().a(4).a(1.2F).a().b();
-   public static final csy v = new csy.a().a(6).a(1.2F).b();
-   public static final csy w = new csy.a().a(6).a(0.1F).a().b();
-   public static final csy x = new csy.a().a(2).a(0.3F).b();
-   public static final csy y = a(6).b();
-   public static final csy z = new csy.a().a(2).a(0.3F).b();
-   public static final csy A = new csy.a().a(2).a(0.3F).b();
-   public static final csy B = new csy.a().a(3).a(0.3F).b();
-   public static final csy C = new csy.a().a(1).a(0.3F).b();
-   public static final csy D = new csy.a().a(1).a(0.1F).b();
-   public static final csy E = new csy.a().a(8).a(0.3F).b();
-   public static final csy F = new csy.a().a(3).a(0.3F).b();
-   public static final csy G = a(10).b();
-   public static final csy H = new csy.a().a(4).a(0.1F).b();
-   public static final csy I = new csy.a().a(2).a(0.1F).b();
-   public static final csy J = new csy.a().a(2).a(0.8F).b();
-   public static final csy K = a(6).a().b();
-   public static final csy L = new csy.a().a(2).a(0.1F).b();
-   public static final csy M = new csy.a().a(2).a(0.1F).b();
-   public static final csy N = new csy.a().a(1).a(0.1F).b();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static csy.a a(int $$0) {
-      return new csy.a().a($$0).a(0.6F);
+public record csz(int c, float d, boolean e) implements czw {
+   public static final Codec<csz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azn.l.fieldOf("nutrition").forGetter(csz::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(csz::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(csz::c)
+            )
+            .apply($$0, csz::new)
+   );
+   public static final zt<xg, csz> b = zt.a(zr.h, csz::a, zr.l, csz::b, zr.b, csz::c, csz::new);
+
+   @Override
+   public void a(dhi $$0, bwg $$1, cxp $$2, czv $$3) {
+      bam $$4 = $$1.dZ();
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), $$3.e().a(), axg.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof cpx $$5) {
+         $$5.gt().a(this);
+         $$0.a(null, $$5.dB(), $$5.dD(), $$5.dH(), axf.uD, axg.h, 0.5F, bae.b($$4, 0.9F, 1.0F));
+      }
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public boolean c() {
+      return this.e;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+
+      public csz.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public csz.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public csz.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public csz b() {
+         float $$0 = csx.a(this.a, this.b);
+         return new csz(this.a, $$0, this.c);
+      }
    }
 }

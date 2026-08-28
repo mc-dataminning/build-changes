@@ -1,95 +1,118 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
 
-public final class dbz implements Predicate<cxo> {
-   public static final zt<xg, dbz> a = zr.c(mb.K).a(dbz::new, $$0 -> $$0.e);
-   public static final zt<xg, Optional<dbz>> b = zr.c(mb.K)
-      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dbz((ju<cxk>)$$0)), $$0 -> $$0.<ju.a<cxk>>map($$0x -> $$0x.e).orElse(ju.a()));
-   public static final Codec<ju<cxk>> c = alt.a(mb.K, cxk.e, false);
-   public static final Codec<dbz> d = azn.b(c).xmap(dbz::new, $$0 -> $$0.e);
-   private final ju<cxk> e;
-   @Nullable
-   private List<jq<cxk>> f;
+public class dbz extends dbu {
+   private static final Map<cxl, dae.a> c = Map.of(
+      cxt.uM,
+      dae.a.b,
+      cxt.pP,
+      dae.a.e,
+      cxt.sW,
+      dae.a.c,
+      cxt.vb,
+      dae.a.d,
+      cxt.vc,
+      dae.a.d,
+      cxt.vf,
+      dae.a.d,
+      cxt.vd,
+      dae.a.d,
+      cxt.vg,
+      dae.a.d,
+      cxt.ve,
+      dae.a.d,
+      cxt.vh,
+      dae.a.d
+   );
+   private static final dca d = dca.a(cxt.oV);
+   private static final dca e = dca.a(cxt.rM);
+   private static final dca f = dca.a(cxt.pQ);
 
-   private dbz(ju<cxk> $$0) {
-      $$0.d().ifRight($$0x -> {
-         if ($$0x.isEmpty()) {
-            throw new UnsupportedOperationException("Ingredients can't be empty");
-         } else if ($$0x.contains(cxs.a.f())) {
-            throw new UnsupportedOperationException("Ingredient can't contain air");
+   public dbz(dbr $$0) {
+      super($$0);
+   }
+
+   public boolean a(dbs $$0, dhi $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+         boolean $$4 = false;
+         boolean $$5 = false;
+         boolean $$6 = false;
+
+         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
+            cxp $$8 = $$0.a($$7);
+            if (!$$8.f()) {
+               if (c.containsKey($$8.h())) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else if (e.a($$8)) {
+                  if ($$6) {
+                     return false;
+                  }
+
+                  $$6 = true;
+               } else if (d.a($$8)) {
+                  if ($$5) {
+                     return false;
+                  }
+
+                  $$5 = true;
+               } else if (f.a($$8)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$8.h() instanceof cwn)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
          }
-      });
-      this.e = $$0;
+
+         return $$2 && $$3;
+      }
    }
 
-   public static boolean a(Optional<dbz> $$0, cxo $$1) {
-      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
-   }
+   public cxp a(dbs $$0, js.a $$1) {
+      dae.a $$2 = dae.a.a;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      IntList $$5 = new IntArrayList();
 
-   public List<jq<cxk>> a() {
-      if (this.f == null) {
-         this.f = ImmutableList.copyOf(this.e);
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cxp $$7 = $$0.a($$6);
+         if (!$$7.f()) {
+            dae.a $$8 = c.get($$7.h());
+            if ($$8 != null) {
+               $$2 = $$8;
+            } else if (e.a($$7)) {
+               $$3 = true;
+            } else if (d.a($$7)) {
+               $$4 = true;
+            } else if ($$7.h() instanceof cwn $$9) {
+               $$5.add($$9.b().f());
+            }
+         }
       }
 
-      return this.f;
-   }
-
-   public boolean a(cxo $$0) {
-      List<jq<cxk>> $$1 = this.a();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$0.a($$1.get($$2))) {
-            return true;
-         }
-      }
-
-      return false;
+      cxp $$10 = new cxp(cxt.vl);
+      $$10.b(ku.ae, new dae($$2, $$5, IntList.of(), $$4, $$3));
+      return $$10;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return $$0 instanceof dbz $$1 ? Objects.equals(this.e, $$1.e) : false;
-   }
-
-   public static dbz a(dhg $$0) {
-      return new dbz(ju.a($$0.j().f()));
-   }
-
-   public static dbz a(dhg... $$0) {
-      return a(Arrays.stream($$0));
-   }
-
-   public static dbz a(Stream<? extends dhg> $$0) {
-      return new dbz(ju.a($$0.map($$0x -> $$0x.j().f()).toList()));
-   }
-
-   public static dbz a(ju<cxk> $$0) {
-      return new dbz($$0);
-   }
-
-   public ddo b() {
-      return (ddo)this.e.d().map(ddo.h::new, $$0 -> new ddo.b($$0.stream().map(dbz::a).toList()));
-   }
-
-   public static ddo a(Optional<dbz> $$0) {
-      return $$0.<ddo>map(dbz::b).orElse(ddo.c.c);
-   }
-
-   private static ddo a(jq<cxk> $$0) {
-      ddo $$1 = new ddo.d($$0);
-      cxo $$2 = $$0.a().k();
-      if (!$$2.f()) {
-         ddo $$3 = new ddo.f($$2);
-         return new ddo.j($$1, $$3);
-      } else {
-         return $$1;
-      }
+   public dco<dbz> a() {
+      return dco.h;
    }
 }

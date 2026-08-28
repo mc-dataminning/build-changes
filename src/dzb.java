@@ -1,7 +1,7 @@
 public enum dzb implements bba {
-   a("top"),
-   b("bottom"),
-   c("double");
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 

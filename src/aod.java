@@ -115,7 +115,7 @@ public class aod {
    }
 
    static enum a {
-      a("points", cpw::d, ($$0, $$1) -> {
+      a("points", cpx::d, ($$0, $$1) -> {
          if ($$1 >= $$0.gs()) {
             return false;
          } else {

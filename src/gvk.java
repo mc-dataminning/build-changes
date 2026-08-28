@@ -1,27 +1,18 @@
-public class gvk extends gwe<gxp, gbe> {
-   private final gsn a;
+public class gvk extends gwf<gzg, gcr> {
+   private final gbz<gzg> a;
 
-   public gvk(gtm<gxp, gbe> $$0, gsn $$1) {
+   public gvk(gtn<gzg, gcr> $$0, gek $$1) {
       super($$0);
-      this.a = $$1;
+      this.a = new gcq($$1.a(gen.cd));
    }
 
-   public void a(fgr $$0, glk $$1, int $$2, gxp $$3, float $$4, float $$5) {
-      cxo $$6 = $$3.aY_();
-      hdm $$7 = $$3.b();
-      if ($$7 != null) {
-         $$0.a();
-         float $$8 = 1.0F;
-         float $$9 = -1.0F;
-         float $$10 = bae.e($$3.V) / 60.0F;
-         if ($$3.V < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$10 * 0.5F, -1.0F + $$10 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$10 * 0.8F, -1.0F + $$10 * 0.2F);
-         }
-
-         this.a.a($$6, cxm.h, false, $$0, $$1, $$2, hbb.d, $$7);
-         $$0.b();
+   public void a(fgs $$0, gll $$1, int $$2, gzg $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.u) {
+         fgw $$6 = $$1.getBuffer(glv.d($$3.a.a()));
+         int $$7 = gsr.a($$3, 0.0F);
+         this.d().a(this.a);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
       }
    }
 }

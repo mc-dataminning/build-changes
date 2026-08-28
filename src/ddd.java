@@ -1,31 +1,25 @@
-import java.util.List;
-
-public class ddd extends dcv {
-   public ddd(String $$0, dbz $$1, cxo $$2) {
-      super($$0, $$1, $$2);
+public class ddd extends dbk {
+   public ddd(String $$0, dbq $$1, dca $$2, cxp $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dco<ddd> b() {
-      return dco.f;
+   protected cxl f() {
+      return cxt.xb;
    }
 
    @Override
-   public dcn<ddd> a() {
-      return dcn.s;
+   public dcp<ddd> b() {
+      return dcp.d;
    }
 
    @Override
-   public List<ddi> g() {
-      return List.of(new dds(this.k().b(), this.c(), new ddo.d(cxs.xh)));
-   }
-
-   public ddo c() {
-      return new ddo.f(this.l());
+   public dco<ddd> a() {
+      return dco.q;
    }
 
    @Override
-   public dcg h() {
-      return dcf.k;
+   public dch h() {
+      return dcg.j;
    }
 }

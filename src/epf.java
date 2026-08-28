@@ -1,25 +1,72 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public enum epf implements bba {
-   a("linear"),
-   b("triangular");
+public class epf extends eph {
+   public static final MapCodec<epf> a = RecordCodecBuilder.mapCodec(
+         $$0 -> a($$0)
+               .and(
+                  $$0.group(
+                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(epf::a),
+                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(epf::b),
+                     epg.c.optionalFieldOf("spread_type", epg.a).forGetter(epf::c)
+                  )
+               )
+               .apply($$0, epf::new)
+      )
+      .validate(epf::a);
+   private final int c;
+   private final int d;
+   private final epg e;
 
-   public static final Codec<epf> c = bba.a(epf::values);
-   private final String d;
-
-   private epf(final String $$0) {
-      this.d = $$0;
+   private static DataResult<epf> a(epf $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
    }
 
-   @Override
-   public String c() {
+   public epf(kl $$0, eph.c $$1, float $$2, int $$3, Optional<eph.a> $$4, int $$5, int $$6, epg $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
+
+   public epf(int $$0, int $$1, epg $$2, int $$3) {
+      this(kl.h, eph.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
       return this.d;
    }
 
-   public int a(bam $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+   public epg c() {
+      return this.e;
+   }
+
+   public dgo a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      eep $$5 = new eep(new edr(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new dgo($$3 * this.c + $$7, $$4 * this.c + $$8);
+   }
+
+   @Override
+   protected boolean a(dzs $$0, int $$1, int $$2) {
+      dgo $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.h == $$1 && $$3.i == $$2;
+   }
+
+   @Override
+   public epi<?> e() {
+      return epi.a;
    }
 }

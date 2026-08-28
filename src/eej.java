@@ -1,93 +1,47 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import java.util.concurrent.atomic.AtomicLong;
 
-public interface eej {
-   Codec<eej> a = Codec.xor(eej.b.d, Codec.xor(eej.a.d, eej.c.d)).xmap(eej::a, eej::a);
-   eej b = b(0);
-   eej c = c(0);
+@Deprecated
+public class eej implements edf {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final eds i = new eds(this);
 
-   static eej a(int $$0) {
-      return new eej.b($$0);
+   public eej(long $$0) {
+      this.b($$0);
    }
 
-   static eej b(int $$0) {
-      return new eej.a($$0);
+   @Override
+   public bam d() {
+      return new eej(this.g());
    }
 
-   static eej c(int $$0) {
-      return new eej.c($$0);
+   @Override
+   public eed e() {
+      return new edr.a(this.g());
    }
 
-   static eej a() {
-      return b;
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
    }
 
-   static eej b() {
-      return c;
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
    }
 
-   private static eej a(Either<eej.b, Either<eej.a, eej.c>> $$0) {
-      return (eej)$$0.map(Function.identity(), Either::unwrap);
-   }
-
-   private static Either<eej.b, Either<eej.a, eej.c>> a(eej $$0) {
-      return $$0 instanceof eej.b ? Either.left((eej.b)$$0) : Either.right($$0 instanceof eej.a ? Either.left((eej.a)$$0) : Either.right((eej.c)$$0));
-   }
-
-   int a(eem var1);
-
-   public static record a(int e) implements eej {
-      public static final Codec<eej.a> d = Codec.intRange(ebp.e, ebp.d).fieldOf("above_bottom").xmap(eej.a::new, eej.a::c).codec();
-
-      @Override
-      public int a(eem $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements eej {
-      public static final Codec<eej.b> d = Codec.intRange(ebp.e, ebp.d).fieldOf("absolute").xmap(eej.b::new, eej.b::c).codec();
-
-      @Override
-      public int a(eem $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements eej {
-      public static final Codec<eej.c> d = Codec.intRange(ebp.e, ebp.d).fieldOf("below_top").xmap(eej.c::new, eej.c::c).codec();
-
-      @Override
-      public int a(eem $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
-      }
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

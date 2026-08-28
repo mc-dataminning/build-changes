@@ -1,99 +1,62 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fjw extends hhw {
+   private final fty a;
+   private final fjw.a b;
+   private foz c = foz.a;
 
-public class fjw extends hhv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final xv b = xv.c("mco.configure.world.buttons.invite");
-   private static final xv c = xv.c("mco.configure.world.invite.profile.name").b(-6250336);
-   private static final xv C = xv.c("mco.configure.world.players.inviting").b(-6250336);
-   private static final xv D = xv.c("mco.configure.world.players.error").b(-65536);
-   private final frt E = new frt(this);
-   private fon F;
-   private foe G;
-   private final fii H;
-   private final fjr I;
-   private final ftx J;
-   @Nullable
-   private xv K;
+   public fjw(fje $$0, fty $$1) {
+      super(flx.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-   public fjw(fjr $$0, ftx $$1, fii $$2) {
-      super(b);
-      this.I = $$0;
-      this.J = $$1;
-      this.H = $$2;
+   public fjw(xv $$0, fty $$1) {
+      super(flx.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
+
+   public fjw(xv $$0, xv $$1, fty $$2) {
+      super(flx.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
+   }
+
+   private static fjw.a a(fje $$0) {
+      fhk $$1 = $$0.a;
+      return a(xv.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
+
+   private static fjw.a a(xv $$0) {
+      return a(xv.c("mco.errorMessage.generic"), $$0);
+   }
+
+   private static fjw.a a(xv $$0, xv $$1) {
+      return new fjw.a($$0, $$1);
    }
 
    @Override
    public void aT_() {
-      this.E.a(b, this.p);
-      frx $$0 = this.E.c(frx.d().a(8));
-      this.F = new fon(this.m.h, 200, 20, xv.c("mco.configure.world.invite.profile.name"));
-      $$0.a(frp.a(this.p, this.F, c));
-      this.G = $$0.a(foe.a(b, $$0x -> this.E()).a(200).a());
-      this.E.b(foe.a(xu.k, $$0x -> this.aP_()).a(200).a());
-      this.E.a($$1 -> {
-         foc var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.E.a();
-   }
-
-   @Override
-   protected void aG_() {
-      this.b(this.F);
-   }
-
-   private void E() {
-      if (bbb.h(this.F.a())) {
-         this.a(D);
-      } else {
-         long $$0 = this.H.a;
-         String $$1 = this.F.a().trim();
-         this.G.j = false;
-         this.F.e(false);
-         this.a(C);
-         CompletableFuture.<fii>supplyAsync(() -> {
-            try {
-               return fhh.a().a($$0, $$1);
-            } catch (Exception var4) {
-               a.error("Couldn't invite user");
-               return null;
-            }
-         }, ae.h()).thenAcceptAsync($$0x -> {
-            if ($$0x != null) {
-               this.H.h = $$0x.h;
-               this.m.a(new fkc(this.I, this.H));
-            } else {
-               this.a(D);
-            }
-
-            this.F.e(true);
-            this.G.j = true;
-         }, this.r);
-      }
-   }
-
-   private void a(xv $$0) {
-      this.K = $$0;
-      this.m.aZ().c($$0);
+      this.c(fof.a(xu.h, $$0 -> this.aP_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
+      this.c = foz.a(this.p, this.b.b, this.n * 3 / 4);
    }
 
    @Override
    public void aP_() {
-      this.m.a(this.J);
+      this.m.a(this.a);
    }
 
    @Override
-   public void a(fnr $$0, int $$1, int $$2, float $$3) {
+   public xv i() {
+      return xv.i().b(this.b.a).f(": ").b(this.b.b);
+   }
+
+   @Override
+   public void a(fns $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.K != null) {
-         $$0.a(this.p, this.K, this.n / 2, this.G.E() + this.G.w() + 8, -1);
-      }
+      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
+      this.c.a($$0, this.n / 2, 100, 9, -2142128);
+   }
+
+   static record a(xv a, xv b) {
    }
 }

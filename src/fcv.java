@@ -1,34 +1,87 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public record fcv(String a, int b, @Nullable xv c, @Nullable zl d) {
-   public boolean a() {
-      return this.a.startsWith("#");
+public class fcv {
+   private final fdd a;
+   private final String b;
+   private final fdg c;
+   private xv d;
+   private xv e;
+   private fdg.a f;
+   private boolean g;
+   @Nullable
+   private zl h;
+
+   public fcv(fdd $$0, String $$1, fdg $$2, xv $$3, fdg.a $$4, boolean $$5, @Nullable zl $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.i();
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   public xv b() {
-      return (xv)(this.c != null ? this.c : xv.b(this.c()));
-   }
-
-   public yj a(zl $$0) {
-      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
-   }
-
-   public String c() {
+   public fdd a() {
       return this.a;
    }
 
-   public int d() {
+   public String b() {
       return this.b;
    }
 
-   @Nullable
-   public xv e() {
+   public fdg c() {
       return this.c;
+   }
+
+   public xv d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.g;
    }
 
    @Nullable
    public zl f() {
-      return this.d;
+      return this.h;
+   }
+
+   public zl a(zl $$0) {
+      return Objects.requireNonNullElse(this.h, $$0);
+   }
+
+   private xv i() {
+      return xy.a((xv)this.d.f().a($$0 -> $$0.a(new yb(yb.a.a, xv.b(this.b)))));
+   }
+
+   public xv g() {
+      return this.e;
+   }
+
+   public void a(xv $$0) {
+      this.d = $$0;
+      this.e = this.i();
+      this.a.b(this);
+   }
+
+   public fdg.a h() {
+      return this.f;
+   }
+
+   public void a(fdg.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+      this.a.b(this);
+   }
+
+   public void b(@Nullable zl $$0) {
+      this.h = $$0;
+      this.a.b(this);
    }
 }

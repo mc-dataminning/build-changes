@@ -1,9 +1,4 @@
-public interface fat extends ewp {
-   float b(ewo var1);
+import com.mojang.serialization.MapCodec;
 
-   default int a(ewo $$0) {
-      return Math.round(this.b($$0));
-   }
-
-   fas b();
+public record fat(MapCodec<? extends fau> a) {
 }

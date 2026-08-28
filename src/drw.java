@@ -1,79 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class drw extends dkl {
-   public static final MapCodec<drw> a = b(drw::new);
-   public static final int b = 2;
-   public static final dyt c = dyk.aF;
-   private static final int d = 24000;
-   private static final int e = 12000;
-   private static final int f = 300;
-   private static final fcr g = dkl.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+public class drw extends djh {
+   public static final MapCodec<drw> c = b(drw::new);
 
    @Override
    public MapCodec<drw> a() {
-      return a;
+      return c;
    }
 
-   public drw(dxt.d $$0) {
+   protected drw(dxu.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
-      $$0.a(c);
+   public dux a(jh $$0, dxv $$1) {
+      return new dwn($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dux> duy<T> a(dhi $$0, dxv $$1, duz<T> $$2) {
+      return a($$0, $$2, duz.C);
    }
 
    @Override
-   public fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      return g;
-   }
-
-   public int o(dxu $$0) {
-      return $$0.c(c);
-   }
-
-   private boolean q(dxu $$0) {
-      return this.o($$0) == 2;
+   protected void a(dhi $$0, jh $$1, cpx $$2) {
+      dux $$3 = $$0.c_($$1);
+      if ($$3 instanceof dwn) {
+         $$2.a((btl)$$3);
+         $$2.a(axp.at);
+      }
    }
 
    @Override
-   public void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
-      if (!this.q($$0)) {
-         $$1.a(null, $$2, axf.yX, axg.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.b(c, Integer.valueOf(this.o($$0) + 1)), 2);
-      } else {
-         $$1.a(null, $$2, axf.yY, axg.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         ckn $$4 = bvq.bj.a($$1, bvp.e);
-         if ($$4 != null) {
-            fbx $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), bae.h($$1.A.i() * 360.0F), 0.0F);
-            $$1.b($$4);
+   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, axf.yJ, axg.e, 1.0F, 1.0F, false);
          }
+
+         $$1.a(ls.af, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   public void b(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.B_() && $$5) {
-         $$1.c(3009, $$2, 0);
-      }
-
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(ecq.i, $$2, ecq.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.A.a(300));
-   }
-
-   @Override
-   public boolean a(dxu $$0, eul $$1) {
-      return false;
-   }
-
-   public static boolean a(dgm $$0, jh $$1) {
-      return $$0.a_($$1.e()).a(axu.cv);
    }
 }

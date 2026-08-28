@@ -1,25 +1,71 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public class elu<P extends elt> {
-   public static final elu<elv> a = a("trunk_vine", elv.a);
-   public static final elu<elr> b = a("leave_vine", elr.a);
-   public static final elu<els> c = a("pale_moss", els.a);
-   public static final elu<elq> d = a("creaking_heart", elq.a);
-   public static final elu<elp> e = a("cocoa", elp.a);
-   public static final elu<elo> f = a("beehive", elo.a);
-   public static final elu<elm> g = a("alter_ground", elm.a);
-   public static final elu<eln> h = a("attached_to_leaves", eln.a);
-   private final MapCodec<P> i;
+public abstract class elu {
+   public static final Codec<elu> h = ma.X.q().dispatch(elu::a, elv::a);
 
-   private static <P extends elt> elu<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.X, $$0, new elu<>($$1));
-   }
+   protected abstract elv<?> a();
 
-   private elu(MapCodec<P> $$0) {
-      this.i = $$0;
-   }
+   public abstract void a(elu.a var1);
 
-   public MapCodec<P> a() {
-      return this.i;
+   public static final class a {
+      private final dho a;
+      private final BiConsumer<jh, dxv> b;
+      private final bam c;
+      private final ObjectArrayList<jh> d;
+      private final ObjectArrayList<jh> e;
+      private final ObjectArrayList<jh> f;
+
+      public a(dho $$0, BiConsumer<jh, dxv> $$1, bam $$2, Set<jh> $$3, Set<jh> $$4, Set<jh> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(kl::v));
+         this.e.sort(Comparator.comparingInt(kl::v));
+         this.f.sort(Comparator.comparingInt(kl::v));
+      }
+
+      public void a(jh $$0, dym $$1) {
+         this.a($$0, dko.ft.m().b($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(jh $$0, dxv $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(jh $$0) {
+         return this.a.a($$0, dxu.a::l);
+      }
+
+      public boolean a(jh $$0, Predicate<dxv> $$1) {
+         return this.a.a($$0, $$1);
+      }
+
+      public dho a() {
+         return this.a;
+      }
+
+      public bam b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<jh> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<jh> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<jh> e() {
+         return this.f;
+      }
    }
 }

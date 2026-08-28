@@ -1,22 +1,99 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dpq extends dsf {
-   public static final MapCodec<dpq> a = b(dpq::new);
+public class dpq extends dkw implements dkp {
+   public static final MapCodec<dpq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aly.a(mb.aL).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, dpq::new)
+   );
+   protected static final float b = 3.0F;
+   protected static final fcs c = dkm.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final aly<egi<?, ?>> d;
 
    @Override
    public MapCodec<dpq> a() {
       return a;
    }
 
-   public dpq(dxt.d $$0) {
-      super($$0);
+   public dpq(aly<egi<?, ?>> $$0, dxu.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   public void a(dxu $$0, dhh $$1, jh $$2, bam $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(ls.aa, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return c;
+   }
+
+   @Override
+   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
+
+         for (jh $$6 : jh.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
+         }
+
+         jh $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.u($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.u($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
+   }
+
+   @Override
+   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
+      return $$0.s();
+   }
+
+   @Override
+   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
+      jh $$3 = $$2.e();
+      dxv $$4 = $$1.a_($$3);
+      return $$4.a(axu.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   }
+
+   public boolean a(ash $$0, jh $$1, dxv $$2, bam $$3) {
+      Optional<? extends jq<egi<?, ?>>> $$4 = $$0.K_().e(mb.aL).a(this.d);
+      if ($$4.isEmpty()) {
+         return false;
+      } else {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
+            return false;
+         }
+      }
+   }
+
+   @Override
+   public boolean b(dhl $$0, jh $$1, dxv $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

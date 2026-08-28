@@ -1,124 +1,114 @@
-public class csg extends crv {
-   private static final alc<Boolean> c = alg.a(csg.class, ale.k);
-   private static final int d = 3600;
-   private static final int h = 32000;
+public class csg extends crw {
+   static final alc<String> b = alg.a(csg.class, ale.e);
+   static final alc<xv> c = alg.a(csg.class, ale.f);
+   private final dgi d = new csg.a();
+   private static final int h = 4;
    private int i;
-   public fbx b = fbx.c;
 
-   public csg(bvq<? extends csg> $$0, dhh $$1) {
+   public csg(bvr<? extends csg> $$0, dhi $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean E() {
-      return true;
+   protected cxl u() {
+      return cxt.of;
+   }
+
+   @Override
+   public cxp dJ() {
+      return new cxp(cxt.vC);
    }
 
    @Override
    protected void a(alg.a $$0) {
       super.a($$0);
-      $$0.a(c, false);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (!this.dW().B_()) {
-         if (this.i > 0) {
-            this.i--;
-         }
-
-         if (this.i <= 0) {
-            this.b = fbx.c;
-         }
-
-         this.s(this.i > 0);
-      }
-
-      if (this.v() && this.ae.a(4) == 0) {
-         this.dW().a(ls.Y, this.dB(), this.dD() + 0.8, this.dH(), 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected double a(ash $$0) {
-      return this.bj() ? super.a($$0) * 0.75 : super.a($$0) * 0.5;
-   }
-
-   @Override
-   protected cxk u() {
-      return cxs.oh;
-   }
-
-   @Override
-   public cxo dJ() {
-      return new cxo(cxs.oh);
-   }
-
-   @Override
-   protected fbx a(fbx $$0) {
-      fbx $$1;
-      if (this.b.h() > 1.0E-7) {
-         this.b = this.j($$0);
-         $$1 = $$0.d(0.8, 0.0, 0.8).e(this.b);
-         if (this.bj()) {
-            $$1 = $$1.c(0.1);
-         }
-      } else {
-         $$1 = $$0.d(0.98, 0.0, 0.98);
-      }
-
-      return super.a($$1);
-   }
-
-   private fbx j(fbx $$0) {
-      double $$1 = 1.0E-4;
-      double $$2 = 0.001;
-      return this.b.j() > 1.0E-4 && $$0.j() > 0.001 ? this.b.i($$0).d().c(this.b.g()) : this.b;
-   }
-
-   @Override
-   public bti a(cpw $$0, bth $$1) {
-      cxo $$2 = $$0.b($$1);
-      if ($$2.a(ayd.bS) && this.i + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.i += 3600;
-      }
-
-      if (this.i > 0) {
-         this.b = this.du().d($$0.du()).f();
-      }
-
-      return bti.a;
-   }
-
-   @Override
-   protected void b(ux $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.b.d);
-      $$0.a("PushZ", this.b.f);
-      $$0.a("Fuel", (short)this.i);
+      $$0.a(b, "");
+      $$0.a(c, xu.a);
    }
 
    @Override
    protected void a(ux $$0) {
       super.a($$0);
-      double $$1 = $$0.k("PushX");
-      double $$2 = $$0.k("PushZ");
-      this.b = new fbx($$1, 0.0, $$2);
-      this.i = $$0.g("Fuel");
-   }
-
-   protected boolean v() {
-      return this.al.a(c);
-   }
-
-   protected void s(boolean $$0) {
-      this.al.a(c, $$0);
+      this.d.b($$0, this.dY());
+      this.au().a(b, this.v().m());
+      this.au().a(c, this.v().l());
    }
 
    @Override
-   public dxu w() {
-      return dkn.cL.m().b(dnt.a, jm.c).b(dnt.b, Boolean.valueOf(this.v()));
+   protected void b(ux $$0) {
+      super.b($$0);
+      this.d.a($$0, this.dY());
+   }
+
+   @Override
+   public dxv w() {
+      return dko.gb.m();
+   }
+
+   public dgi v() {
+      return this.d;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.af - this.i >= 4) {
+         this.v().a(this.dW());
+         this.i = this.af;
+      }
+   }
+
+   @Override
+   public btj a(cpx $$0, bti $$1) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public void a(alc<?> $$0) {
+      super.a($$0);
+      if (c.equals($$0)) {
+         try {
+            this.d.c(this.au().a(c));
+         } catch (Throwable var3) {
+         }
+      } else if (b.equals($$0)) {
+         this.d.a(this.au().a(b));
+      }
+   }
+
+   @Override
+   public boolean cW() {
+      return true;
+   }
+
+   public class a extends dgi {
+      @Override
+      public ash e() {
+         return (ash)csg.this.dW();
+      }
+
+      @Override
+      public void f() {
+         csg.this.au().a(csg.b, this.m());
+         csg.this.au().a(csg.c, this.l());
+      }
+
+      @Override
+      public fby g() {
+         return csg.this.du();
+      }
+
+      public csg h() {
+         return csg.this;
+      }
+
+      @Override
+      public ew i() {
+         return new ew(this, csg.this.du(), csg.this.bU(), this.e(), 2, this.n().getString(), csg.this.p_(), this.e().p(), csg.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !csg.this.dR();
+      }
    }
 }

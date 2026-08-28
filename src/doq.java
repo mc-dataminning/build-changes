@@ -1,103 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class doq extends djx {
+public class doq extends dkm implements dng, dnv {
    public static final MapCodec<doq> a = b(doq::new);
-   public static final dyl b = dyk.n;
+   public static final dys<jo> b = dyl.U;
 
    @Override
    public MapCodec<doq> a() {
       return a;
    }
 
-   protected doq(dxt.d $$0) {
+   protected doq(dxu.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
+      this.l(this.F.b().b(b, jo.k));
    }
 
    @Override
-   public void a(dhh $$0, jh $$1, dxu $$2, @Nullable bwf $$3, cxo $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      czx $$5 = $$4.a(ku.Y, czx.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
-      }
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dwa $$5) {
-         $$5.t();
-         return bti.a;
+   protected dxv a(dxv $$0, drc $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   protected dxv a(dxv $$0, dpl $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public dxv a(dbg $$0) {
+      jm $$1 = $$0.k();
+      jm $$2;
+      if ($$1.o() == jm.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         return bti.e;
+         $$2 = jm.b;
       }
+
+      return this.m().b(b, jo.a($$1, $$2));
    }
 
    @Override
-   protected bti a(cxo $$0, dxu $$1, dhh $$2, jh $$3, cpw $$4, bth $$5, fbt $$6) {
-      if ($$1.c(b)) {
-         return bti.f;
-      } else {
-         cxo $$7 = $$4.b($$5);
-         bti $$8 = cxt.a($$2, $$3, $$7, $$4);
-         return (bti)(!$$8.a() ? bti.f : $$8);
-      }
-   }
-
-   @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dwa $$5) {
-            $$5.t();
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public duw a(jh $$0, dxu $$1) {
+   public dux a(jh $$0, dxv $$1) {
       return new dwa($$0, $$1);
    }
 
    @Override
-   public boolean f_(dxu $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dxu $$0, dgm $$1, jh $$2, jm $$3) {
-      if ($$1.c_($$2) instanceof dwa $$4 && $$4.j().a()) {
-         return 15;
+   protected btj a(dxv $$0, dhi $$1, jh $$2, cpx $$3, fbu $$4) {
+      dux $$5 = $$1.c_($$2);
+      if ($$5 instanceof dwa && $$3.gG()) {
+         $$3.a((dwa)$$5);
+         return btj.a;
+      } else {
+         return btj.e;
       }
-
-      return 0;
    }
 
-   @Override
-   protected boolean c_(dxu $$0) {
-      return true;
+   public static boolean a(esm.a $$0, esm.a $$1) {
+      jm $$2 = o($$0.a().b());
+      jm $$3 = o($$1.a().b());
+      jm $$4 = p($$0.a().b());
+      jm $$5 = p($$1.a().b());
+      dwa.a $$6 = $$0.b();
+      boolean $$7 = $$6 == dwa.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.e().equals($$1.c());
    }
 
-   @Override
-   protected int a(dxu $$0, dhh $$1, jh $$2) {
-      return $$1.c_($$2) instanceof dwa $$3 ? $$3.u() : 0;
+   public static jm o(dxv $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   protected dqu a_(dxu $$0) {
-      return dqu.c;
-   }
-
-   @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends duw> dux<T> a(dhh $$0, dxu $$1, duy<T> $$2) {
-      return $$1.c(b) ? a($$2, duy.e, dwa::a) : null;
+   public static jm p(dxv $$0) {
+      return $$0.c(b).b();
    }
 }

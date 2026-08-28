@@ -1,88 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class exo extends eyb {
+public class exo extends eyc {
    public static final MapCodec<exo> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  exo.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  kt.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  kt.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
+                  ma.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dyx::f).toList())
                )
             )
             .apply($$0, exo::new)
    );
-   private final exo.b b;
-   private final Optional<List<kt<?>>> c;
-   private final Optional<List<kt<?>>> d;
-   private final Predicate<kt<?>> e;
+   private final jq<dkm> b;
+   private final Set<dyx<?>> c;
 
-   exo(List<ezx> $$0, exo.b $$1, Optional<List<kt<?>>> $$2, Optional<List<kt<?>>> $$3) {
+   exo(List<ezy> $$0, jq<dkm> $$1, Set<dyx<?>> $$2) {
       super($$0);
       this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<kt<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = ae.a($$4);
+      this.c = $$2;
+   }
+
+   private exo(List<ezy> $$0, jq<dkm> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public eyd<exo> b() {
-      return eye.J;
+   public eye<exo> b() {
+      return eyf.D;
    }
 
    @Override
    public Set<bbn<?>> a() {
-      return this.b.a();
+      return Set.of(ezj.g);
    }
 
    @Override
-   public cxo a(cxo $$0, ewo $$1) {
-      kq $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
+   protected cxp a(cxp $$0, ewp $$1) {
+      dxv $$2 = $$1.c(ezj.g);
+      if ($$2 != null) {
+         $$0.a(ku.am, czr.a, $$1x -> {
+            for (dyx<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
+      }
+
       return $$0;
    }
 
-   public static exo.a a(exo.b $$0) {
+   public static exo.a a(dkm $$0) {
       return new exo.a($$0);
    }
 
-   public static class a extends eyb.a<exo.a> {
-      private final exo.b a;
-      private Optional<Builder<kt<?>>> b = Optional.empty();
-      private Optional<Builder<kt<?>>> c = Optional.empty();
+   public static class a extends eyc.a<exo.a> {
+      private final jq<dkm> a;
+      private final Builder<dyx<?>> b = ImmutableSet.builder();
 
-      a(exo.b $$0) {
-         this.a = $$0;
+      a(dkm $$0) {
+         this.a = $$0.p();
       }
 
-      public exo.a a(kt<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
+      public exo.a a(dyx<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
          }
-
-         this.b.get().add($$0);
-         return this;
-      }
-
-      public exo.a b(kt<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
       }
 
       protected exo.a a() {
@@ -90,43 +86,8 @@ public class exo extends eyb {
       }
 
       @Override
-      public eyc b() {
-         return new exo(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
-      }
-   }
-
-   public static enum b implements bba {
-      a("block_entity");
-
-      public static final Codec<exo.b> b = bba.b(exo.b::values);
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public kq a(ewo $$0) {
-         switch (this) {
-            case a:
-               duw $$1 = $$0.c(ezi.h);
-               return $$1 != null ? $$1.r() : kq.a;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      public Set<bbn<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(ezi.h);
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.c;
+      public eyd b() {
+         return new exo(this.g(), this.a, this.b.build());
       }
    }
 }

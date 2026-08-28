@@ -89,24 +89,24 @@ public class aqd {
                                        ))
                                     .then(
                                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("nametagVisibility")
-                                                   .then(ex.a("never").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.b.b))))
-                                                .then(ex.a("hideForOtherTeams").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.b.c))))
-                                             .then(ex.a("hideForOwnTeam").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.b.d))))
-                                          .then(ex.a("always").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.b.a)))
+                                                   .then(ex.a("never").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.b.b))))
+                                                .then(ex.a("hideForOtherTeams").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.b.c))))
+                                             .then(ex.a("hideForOwnTeam").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.b.d))))
+                                          .then(ex.a("always").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.b.a)))
                                     ))
                                  .then(
                                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("deathMessageVisibility")
-                                                .then(ex.a("never").executes($$0x -> b((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.b.b))))
-                                             .then(ex.a("hideForOtherTeams").executes($$0x -> b((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.b.c))))
-                                          .then(ex.a("hideForOwnTeam").executes($$0x -> b((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.b.d))))
-                                       .then(ex.a("always").executes($$0x -> b((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.b.a)))
+                                                .then(ex.a("never").executes($$0x -> b((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.b.b))))
+                                             .then(ex.a("hideForOtherTeams").executes($$0x -> b((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.b.c))))
+                                          .then(ex.a("hideForOwnTeam").executes($$0x -> b((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.b.d))))
+                                       .then(ex.a("always").executes($$0x -> b((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.b.a)))
                                  ))
                               .then(
                                  ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("collisionRule")
-                                             .then(ex.a("never").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.a.b))))
-                                          .then(ex.a("pushOwnTeam").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.a.d))))
-                                       .then(ex.a("pushOtherTeams").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.a.c))))
-                                    .then(ex.a("always").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fde.a.a)))
+                                             .then(ex.a("never").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.a.b))))
+                                          .then(ex.a("pushOwnTeam").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.a.d))))
+                                       .then(ex.a("pushOtherTeams").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.a.c))))
+                                    .then(ex.a("always").executes($$0x -> a((ew)$$0x.getSource(), gi.a($$0x, "team"), fdf.a.a)))
                               ))
                            .then(
                               ex.a("prefix")
@@ -120,14 +120,14 @@ public class aqd {
       );
    }
 
-   private static xv a(Collection<fdb> $$0) {
+   private static xv a(Collection<fdc> $$0) {
       return $$0.iterator().next().hc();
    }
 
-   private static int a(ew $$0, Collection<fdb> $$1) {
-      fdc $$2 = $$0.l().aJ();
+   private static int a(ew $$0, Collection<fdc> $$1) {
+      fdd $$2 = $$0.l().aJ();
 
-      for (fdb $$3 : $$1) {
+      for (fdc $$3 : $$1) {
          $$2.d($$3.cI());
       }
 
@@ -140,10 +140,10 @@ public class aqd {
       return $$1.size();
    }
 
-   private static int a(ew $$0, fcx $$1, Collection<fdb> $$2) {
-      fdc $$3 = $$0.l().aJ();
+   private static int a(ew $$0, fcy $$1, Collection<fdc> $$2) {
+      fdd $$3 = $$0.l().aJ();
 
-      for (fdb $$4 : $$2) {
+      for (fdc $$4 : $$2) {
          $$3.a($$4.cI(), $$1);
       }
 
@@ -156,7 +156,7 @@ public class aqd {
       return $$2.size();
    }
 
-   private static int a(ew $$0, fcx $$1, fde.b $$2) throws CommandSyntaxException {
+   private static int a(ew $$0, fcy $$1, fdf.b $$2) throws CommandSyntaxException {
       if ($$1.j() == $$2) {
          throw i.create();
       } else {
@@ -166,7 +166,7 @@ public class aqd {
       }
    }
 
-   private static int b(ew $$0, fcx $$1, fde.b $$2) throws CommandSyntaxException {
+   private static int b(ew $$0, fcy $$1, fdf.b $$2) throws CommandSyntaxException {
       if ($$1.k() == $$2) {
          throw j.create();
       } else {
@@ -176,7 +176,7 @@ public class aqd {
       }
    }
 
-   private static int a(ew $$0, fcx $$1, fde.a $$2) throws CommandSyntaxException {
+   private static int a(ew $$0, fcy $$1, fdf.a $$2) throws CommandSyntaxException {
       if ($$1.l() == $$2) {
          throw k.create();
       } else {
@@ -186,7 +186,7 @@ public class aqd {
       }
    }
 
-   private static int a(ew $$0, fcx $$1, boolean $$2) throws CommandSyntaxException {
+   private static int a(ew $$0, fcy $$1, boolean $$2) throws CommandSyntaxException {
       if ($$1.i() == $$2) {
          if ($$2) {
             throw g.create();
@@ -200,7 +200,7 @@ public class aqd {
       }
    }
 
-   private static int b(ew $$0, fcx $$1, boolean $$2) throws CommandSyntaxException {
+   private static int b(ew $$0, fcy $$1, boolean $$2) throws CommandSyntaxException {
       if ($$1.h() == $$2) {
          if ($$2) {
             throw e.create();
@@ -214,7 +214,7 @@ public class aqd {
       }
    }
 
-   private static int a(ew $$0, fcx $$1, xv $$2) throws CommandSyntaxException {
+   private static int a(ew $$0, fcy $$1, xv $$2) throws CommandSyntaxException {
       if ($$1.c().equals($$2)) {
          throw c.create();
       } else {
@@ -224,7 +224,7 @@ public class aqd {
       }
    }
 
-   private static int a(ew $$0, fcx $$1, n $$2) throws CommandSyntaxException {
+   private static int a(ew $$0, fcy $$1, n $$2) throws CommandSyntaxException {
       if ($$1.n() == $$2) {
          throw d.create();
       } else {
@@ -234,8 +234,8 @@ public class aqd {
       }
    }
 
-   private static int a(ew $$0, fcx $$1) throws CommandSyntaxException {
-      fdc $$2 = $$0.l().aJ();
+   private static int a(ew $$0, fcy $$1) throws CommandSyntaxException {
+      fdd $$2 = $$0.l().aJ();
       Collection<String> $$3 = Lists.newArrayList($$1.g());
       if ($$3.isEmpty()) {
          throw b.create();
@@ -249,8 +249,8 @@ public class aqd {
       }
    }
 
-   private static int b(ew $$0, fcx $$1) {
-      fdc $$2 = $$0.l().aJ();
+   private static int b(ew $$0, fcy $$1) {
+      fdd $$2 = $$0.l().aJ();
       $$2.d($$1);
       $$0.a(() -> xv.a("commands.team.remove.success", $$1.d()), true);
       return $$2.g().size();
@@ -261,18 +261,18 @@ public class aqd {
    }
 
    private static int a(ew $$0, String $$1, xv $$2) throws CommandSyntaxException {
-      fdc $$3 = $$0.l().aJ();
+      fdd $$3 = $$0.l().aJ();
       if ($$3.b($$1) != null) {
          throw a.create();
       } else {
-         fcx $$4 = $$3.c($$1);
+         fcy $$4 = $$3.c($$1);
          $$4.a($$2);
          $$0.a(() -> xv.a("commands.team.add.success", $$4.d()), true);
          return $$3.g().size();
       }
    }
 
-   private static int c(ew $$0, fcx $$1) {
+   private static int c(ew $$0, fcy $$1) {
       Collection<String> $$2 = $$1.g();
       if ($$2.isEmpty()) {
          $$0.a(() -> xv.a("commands.team.list.members.empty", $$1.d()), false);
@@ -284,23 +284,23 @@ public class aqd {
    }
 
    private static int a(ew $$0) {
-      Collection<fcx> $$1 = $$0.l().aJ().g();
+      Collection<fcy> $$1 = $$0.l().aJ().g();
       if ($$1.isEmpty()) {
          $$0.a(() -> xv.c("commands.team.list.teams.empty"), false);
       } else {
-         $$0.a(() -> xv.a("commands.team.list.teams.success", $$1.size(), xy.b($$1, fcx::d)), false);
+         $$0.a(() -> xv.a("commands.team.list.teams.success", $$1.size(), xy.b($$1, fcy::d)), false);
       }
 
       return $$1.size();
    }
 
-   private static int b(ew $$0, fcx $$1, xv $$2) {
+   private static int b(ew $$0, fcy $$1, xv $$2) {
       $$1.b($$2);
       $$0.a(() -> xv.a("commands.team.option.prefix.success", $$2), false);
       return 1;
    }
 
-   private static int c(ew $$0, fcx $$1, xv $$2) {
+   private static int c(ew $$0, fcy $$1, xv $$2) {
       $$1.c($$2);
       $$0.a(() -> xv.a("commands.team.option.suffix.success", $$2), false);
       return 1;

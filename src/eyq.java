@@ -1,52 +1,83 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
 
-public class eyq extends eyb {
+public class eyq extends eyc {
    public static final MapCodec<eyq> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  dad.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  dad.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  dad.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+                  Codec.unboundedMap(ddz.c, fav.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
                )
             )
             .apply($$0, eyq::new)
    );
-   public static final dad b = new dad(dad.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<dad.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final Map<jq<ddz>, fau> b;
+   private final boolean c;
 
-   public eyq(List<ezx> $$0, Optional<dad.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   eyq(List<ezy> $$0, Map<jq<ddz>, fau> $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   protected cxo a(cxo $$0, ewo $$1) {
-      $$0.a(ku.ae, b, this::a);
+   public eye<eyq> b() {
+      return eyf.i;
+   }
+
+   @Override
+   public Set<bbn<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cxp a(cxp $$0, ewp $$1) {
+      if ($$0.a(cxt.rn)) {
+         $$0 = $$0.a((dhh)cxt.vm);
+      }
+
+      deb.a($$0, $$1x -> {
+         if (this.c) {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jq<ddz>)$$2, bae.a($$1x.a((jq<ddz>)$$2) + $$3.a($$1), 0, 255)));
+         } else {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jq<ddz>)$$2, bae.a($$3.a($$1), 0, 255)));
+         }
+      });
       return $$0;
    }
 
-   private dad a(dad $$0) {
-      return new dad(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
-   }
+   public static class a extends eyc.a<eyq.a> {
+      private final Builder<jq<ddz>, fau> a = ImmutableMap.builder();
+      private final boolean b;
 
-   @Override
-   public eyd<eyq> b() {
-      return eye.L;
+      public a() {
+         this(false);
+      }
+
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected eyq.a a() {
+         return this;
+      }
+
+      public eyq.a a(jq<ddz> $$0, fau $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public eyd b() {
+         return new eyq(this.g(), this.a.build(), this.b);
+      }
    }
 }

@@ -1,25 +1,16 @@
-import java.util.Arrays;
+import com.mojang.serialization.MapCodec;
 
-public class bsp implements bsq {
-   private final bsq[] a;
+public interface bsp<P extends bso> {
+   bsp<bsl> a = a("constant", bsl.b);
+   bsp<bsu> b = a("uniform", bsu.a);
+   bsp<bsg> c = a("biased_to_bottom", bsg.a);
+   bsp<bsh> d = a("clamped", bsh.a);
+   bsp<bsv> e = a("weighted_list", bsv.a);
+   bsp<bsj> f = a("clamped_normal", bsj.a);
 
-   public bsp(bsq... $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public float a(bam $$0) {
-      float $$1 = 1.0F;
-
-      for (bsq $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bso> bsp<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.K, $$0, () -> $$1);
    }
 }

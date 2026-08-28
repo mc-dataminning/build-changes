@@ -8,7 +8,7 @@ public class acu implements aac<acr> {
    private final int g;
    private final int h;
 
-   public acu(bvj $$0, int $$1) {
+   public acu(bvk $$0, int $$1) {
       this.g = $$0.ar();
       this.h = $$1;
    }

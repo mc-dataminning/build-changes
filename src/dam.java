@@ -1,26 +1,19 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public record dam(int f) implements czv, dar {
-   public static final int a = 120000;
-   public static final int b = 0;
-   public static final int c = 4;
-   public static final Codec<dam> d = azn.a(0, 4).xmap(dam::new, dam::a);
-   public static final zt<xg, dam> e = zt.a(zr.h, dam::a, dam::new);
+public enum dam {
+   a(0),
+   b(1);
 
-   @Override
-   public void a(dhh $$0, bwf $$1, cxo $$2, czu $$3) {
-      $$1.a(new buo(buq.E, 120000, this.f, false, false, true));
-   }
+   public static final IntFunction<dam> c = ayv.a(dam::a, values(), ayv.a.a);
+   public static final zt<ByteBuf, dam> d = zr.a(c, dam::a);
+   private final int e;
 
-   @Override
-   public void a(cxk.b $$0, Consumer<xv> $$1, czg $$2) {
-      List<buo> $$3 = List.of(new buo(buq.E, 120000, this.f, false, false, true));
-      czn.a($$3, $$1, 1.0F, $$0.b());
+   private dam(final int $$0) {
+      this.e = $$0;
    }
 
    public int a() {
-      return this.f;
+      return this.e;
    }
 }

@@ -1,19 +1,13 @@
-public class gvc extends gwe<gxi, gav> {
-   private static final alz a = alz.b("textures/entity/breeze/breeze_wind.png");
-   private final gav b;
+public class gvc extends gwf<gxj, gaw> {
+   private static final glv a = glv.r(alz.b("textures/entity/breeze/breeze_eyes.png"));
 
-   public gvc(grp.a $$0, gtm<gxi, gav> $$1) {
-      super($$1);
-      this.b = new gav($$0.a(gem.I));
+   public gvc(gtn<gxj, gaw> $$0) {
+      super($$0);
    }
 
-   public void a(fgr $$0, glk $$1, int $$2, gxi $$3, float $$4, float $$5) {
-      fgv $$6 = $$1.getBuffer(glu.a(a, this.a($$3.p) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gqu.a(this.b, this.b.d()).a($$0, $$6, $$2, hbb.d);
-   }
-
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public void a(fgs $$0, gll $$1, int $$2, gxj $$3, float $$4, float $$5) {
+      fgw $$6 = $$1.getBuffer(a);
+      gaw $$7 = this.d();
+      gqv.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hbc.d);
    }
 }

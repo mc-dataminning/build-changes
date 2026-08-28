@@ -1,347 +1,311 @@
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import com.google.common.collect.Sets;
 import java.util.Set;
 import java.util.stream.Stream;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public final class gen {
-   public static final float a = 1.0F;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h = 1.0F;
-   public float i = 1.0F;
-   public float j = 1.0F;
-   public boolean k = true;
-   public boolean l;
-   private final List<gen.a> m;
-   private final Map<String, gen> n;
-   private gep o = gep.a;
+public class gen {
+   private static final String ec = "main";
+   private static final Set<gem> ed = Sets.newHashSet();
+   public static final gem a = a("boat/acacia");
+   public static final gem b = a("chest_boat/acacia");
+   public static final gem c = a("allay");
+   public static final gem d = a("armadillo");
+   public static final gem e = a("armadillo_baby");
+   public static final gem f = a("armor_stand");
+   public static final gem g = b("armor_stand");
+   public static final gem h = c("armor_stand");
+   public static final gem i = a("armor_stand_small");
+   public static final gem j = b("armor_stand_small");
+   public static final gem k = c("armor_stand_small");
+   public static final gem l = a("arrow");
+   public static final gem m = a("axolotl");
+   public static final gem n = a("axolotl_baby");
+   public static final gem o = a("chest_boat/bamboo");
+   public static final gem p = a("boat/bamboo");
+   public static final gem q = a("banner");
+   public static final gem r = a("bat");
+   public static final gem s = a("bed_foot");
+   public static final gem t = a("bed_head");
+   public static final gem u = a("bee");
+   public static final gem v = a("bee_baby");
+   public static final gem w = a("bee_stinger");
+   public static final gem x = a("bell");
+   public static final gem y = a("boat/birch");
+   public static final gem z = a("chest_boat/birch");
+   public static final gem A = a("blaze");
+   public static final gem B = a("boat", "water_patch");
+   public static final gem C = a("bogged");
+   public static final gem D = b("bogged");
+   public static final gem E = c("bogged");
+   public static final gem F = a("bogged", "outer");
+   public static final gem G = a("book");
+   public static final gem H = a("breeze");
+   public static final gem I = a("breeze_wind");
+   public static final gem J = a("camel");
+   public static final gem K = a("camel_baby");
+   public static final gem L = a("cat");
+   public static final gem M = a("cat_baby");
+   public static final gem N = a("cat_baby", "collar");
+   public static final gem O = a("cat", "collar");
+   public static final gem P = a("cave_spider");
+   public static final gem Q = a("boat/cherry");
+   public static final gem R = a("chest_boat/cherry");
+   public static final gem S = a("chest");
+   public static final gem T = a("chest_minecart");
+   public static final gem U = a("chicken");
+   public static final gem V = a("chicken_baby");
+   public static final gem W = a("cod");
+   public static final gem X = a("command_block_minecart");
+   public static final gem Y = a("conduit", "cage");
+   public static final gem Z = a("conduit", "eye");
+   public static final gem aa = a("conduit", "shell");
+   public static final gem ab = a("conduit", "wind");
+   public static final gem ac = a("cow");
+   public static final gem ad = a("cow_baby");
+   public static final gem ae = a("creaking");
+   public static final gem af = a("creeper");
+   public static final gem ag = a("creeper", "armor");
+   public static final gem ah = a("creeper_head");
+   public static final gem ai = a("boat/dark_oak");
+   public static final gem aj = a("chest_boat/dark_oak");
+   public static final gem ak = a("decorated_pot_base");
+   public static final gem al = a("decorated_pot_sides");
+   public static final gem am = a("dolphin");
+   public static final gem an = a("dolphin_baby");
+   public static final gem ao = a("donkey");
+   public static final gem ap = a("donkey_baby");
+   public static final gem aq = a("double_chest_left");
+   public static final gem ar = a("double_chest_right");
+   public static final gem as = a("dragon_skull");
+   public static final gem at = a("drowned");
+   public static final gem au = a("drowned_baby");
+   public static final gem av = b("drowned_baby");
+   public static final gem aw = c("drowned_baby");
+   public static final gem ax = a("drowned_baby", "outer");
+   public static final gem ay = b("drowned");
+   public static final gem az = c("drowned");
+   public static final gem aA = a("drowned", "outer");
+   public static final gem aB = a("elder_guardian");
+   public static final gem aC = a("elytra");
+   public static final gem aD = a("elytra_baby");
+   public static final gem aE = a("enderman");
+   public static final gem aF = a("endermite");
+   public static final gem aG = a("ender_dragon");
+   public static final gem aH = a("end_crystal");
+   public static final gem aI = a("evoker");
+   public static final gem aJ = a("evoker_fangs");
+   public static final gem aK = a("fox");
+   public static final gem aL = a("fox_baby");
+   public static final gem aM = a("frog");
+   public static final gem aN = a("furnace_minecart");
+   public static final gem aO = a("ghast");
+   public static final gem aP = a("giant");
+   public static final gem aQ = b("giant");
+   public static final gem aR = c("giant");
+   public static final gem aS = a("glow_squid");
+   public static final gem aT = a("glow_squid_baby");
+   public static final gem aU = a("goat");
+   public static final gem aV = a("goat_baby");
+   public static final gem aW = a("guardian");
+   public static final gem aX = a("hoglin");
+   public static final gem aY = a("hoglin_baby");
+   public static final gem aZ = a("hopper_minecart");
+   public static final gem ba = a("horse");
+   public static final gem bb = a("horse_armor");
+   public static final gem bc = a("horse_baby");
+   public static final gem bd = a("horse_armor_baby");
+   public static final gem be = a("husk");
+   public static final gem bf = a("husk_baby");
+   public static final gem bg = b("husk_baby");
+   public static final gem bh = c("husk_baby");
+   public static final gem bi = b("husk");
+   public static final gem bj = c("husk");
+   public static final gem bk = a("illusioner");
+   public static final gem bl = a("iron_golem");
+   public static final gem bm = a("boat/jungle");
+   public static final gem bn = a("chest_boat/jungle");
+   public static final gem bo = a("leash_knot");
+   public static final gem bp = a("llama");
+   public static final gem bq = a("llama_baby");
+   public static final gem br = a("llama_baby", "decor");
+   public static final gem bs = a("llama", "decor");
+   public static final gem bt = a("llama_spit");
+   public static final gem bu = a("magma_cube");
+   public static final gem bv = a("boat/mangrove");
+   public static final gem bw = a("chest_boat/mangrove");
+   public static final gem bx = a("minecart");
+   public static final gem by = a("mooshroom");
+   public static final gem bz = a("mooshroom_baby");
+   public static final gem bA = a("mule");
+   public static final gem bB = a("mule_baby");
+   public static final gem bC = a("boat/oak");
+   public static final gem bD = a("chest_boat/oak");
+   public static final gem bE = a("ocelot");
+   public static final gem bF = a("ocelot_baby");
+   public static final gem bG = a("boat/pale_oak");
+   public static final gem bH = a("chest_boat/pale_oak");
+   public static final gem bI = a("panda");
+   public static final gem bJ = a("panda_baby");
+   public static final gem bK = a("parrot");
+   public static final gem bL = a("phantom");
+   public static final gem bM = a("pig");
+   public static final gem bN = a("piglin");
+   public static final gem bO = a("piglin_baby");
+   public static final gem bP = b("piglin_baby");
+   public static final gem bQ = c("piglin_baby");
+   public static final gem bR = a("piglin_brute");
+   public static final gem bS = b("piglin_brute");
+   public static final gem bT = c("piglin_brute");
+   public static final gem bU = a("piglin_head");
+   public static final gem bV = b("piglin");
+   public static final gem bW = c("piglin");
+   public static final gem bX = a("pig_baby");
+   public static final gem bY = a("pig_baby", "saddle");
+   public static final gem bZ = a("pig", "saddle");
+   public static final gem ca = a("pillager");
+   public static final gem cb = a("player");
+   public static final gem cc = a("player", "cape");
+   public static final gem cd = a("player", "ears");
+   public static final gem ce = a("player_head");
+   public static final gem cf = b("player");
+   public static final gem cg = c("player");
+   public static final gem ch = a("player_slim");
+   public static final gem ci = b("player_slim");
+   public static final gem cj = c("player_slim");
+   public static final gem ck = a("spin_attack");
+   public static final gem cl = a("polar_bear");
+   public static final gem cm = a("polar_bear_baby");
+   public static final gem cn = a("pufferfish_big");
+   public static final gem co = a("pufferfish_medium");
+   public static final gem cp = a("pufferfish_small");
+   public static final gem cq = a("rabbit");
+   public static final gem cr = a("rabbit_baby");
+   public static final gem cs = a("ravager");
+   public static final gem ct = a("salmon");
+   public static final gem cu = a("salmon_large");
+   public static final gem cv = a("salmon_small");
+   public static final gem cw = a("sheep");
+   public static final gem cx = a("sheep_baby");
+   public static final gem cy = a("sheep_baby", "wool");
+   public static final gem cz = a("sheep", "wool");
+   public static final gem cA = a("shield");
+   public static final gem cB = a("shulker");
+   public static final gem cC = a("shulker_box");
+   public static final gem cD = a("shulker_bullet");
+   public static final gem cE = a("silverfish");
+   public static final gem cF = a("skeleton");
+   public static final gem cG = a("skeleton_horse");
+   public static final gem cH = a("skeleton_horse_baby");
+   public static final gem cI = b("skeleton");
+   public static final gem cJ = c("skeleton");
+   public static final gem cK = a("skeleton_skull");
+   public static final gem cL = a("slime");
+   public static final gem cM = a("slime", "outer");
+   public static final gem cN = a("sniffer");
+   public static final gem cO = a("sniffer_baby");
+   public static final gem cP = a("snow_golem");
+   public static final gem cQ = a("spawner_minecart");
+   public static final gem cR = a("spider");
+   public static final gem cS = a("boat/spruce");
+   public static final gem cT = a("chest_boat/spruce");
+   public static final gem cU = a("squid");
+   public static final gem cV = a("squid_baby");
+   public static final gem cW = a("stray");
+   public static final gem cX = b("stray");
+   public static final gem cY = c("stray");
+   public static final gem cZ = a("stray", "outer");
+   public static final gem da = a("strider");
+   public static final gem db = a("strider", "saddle");
+   public static final gem dc = a("tadpole");
+   public static final gem dd = a("tnt_minecart");
+   public static final gem de = a("trader_llama");
+   public static final gem df = a("trader_llama_baby");
+   public static final gem dg = a("trident");
+   public static final gem dh = a("tropical_fish_large");
+   public static final gem di = a("tropical_fish_large", "pattern");
+   public static final gem dj = a("tropical_fish_small");
+   public static final gem dk = a("tropical_fish_small", "pattern");
+   public static final gem dl = a("turtle");
+   public static final gem dm = a("turtle_baby");
+   public static final gem dn = a("vex");
+   public static final gem do = a("villager");
+   public static final gem dp = a("vindicator");
+   public static final gem dq = a("wandering_trader");
+   public static final gem dr = a("warden");
+   public static final gem ds = a("wind_charge");
+   public static final gem dt = a("witch");
+   public static final gem du = a("wither");
+   public static final gem dv = a("wither", "armor");
+   public static final gem dw = a("wither_skeleton");
+   public static final gem dx = b("wither_skeleton");
+   public static final gem dy = c("wither_skeleton");
+   public static final gem dz = a("wither_skeleton_skull");
+   public static final gem dA = a("wither_skull");
+   public static final gem dB = a("wolf");
+   public static final gem dC = a("wolf_armor");
+   public static final gem dD = a("wolf_baby");
+   public static final gem dE = a("wolf_baby_armor");
+   public static final gem dF = a("zoglin");
+   public static final gem dG = a("zoglin_baby");
+   public static final gem dH = a("zombie");
+   public static final gem dI = a("zombie_baby");
+   public static final gem dJ = b("zombie_baby");
+   public static final gem dK = c("zombie_baby");
+   public static final gem dL = a("zombie_head");
+   public static final gem dM = a("zombie_horse");
+   public static final gem dN = a("zombie_horse_baby");
+   public static final gem dO = b("zombie");
+   public static final gem dP = c("zombie");
+   public static final gem dQ = a("zombie_villager");
+   public static final gem dR = a("zombie_villager_baby");
+   public static final gem dS = b("zombie_villager_baby");
+   public static final gem dT = c("zombie_villager_baby");
+   public static final gem dU = b("zombie_villager");
+   public static final gem dV = c("zombie_villager");
+   public static final gem dW = a("zombified_piglin");
+   public static final gem dX = a("zombified_piglin_baby");
+   public static final gem dY = b("zombified_piglin_baby");
+   public static final gem dZ = c("zombified_piglin_baby");
+   public static final gem ea = b("zombified_piglin");
+   public static final gem eb = c("zombified_piglin");
 
-   public gen(List<gen.a> $$0, Map<String, gen> $$1) {
-      this.m = $$0;
-      this.n = $$1;
+   private static gem a(String $$0) {
+      return a($$0, "main");
    }
 
-   public gep a() {
-      return gep.a(this.b, this.c, this.d, this.e, this.f, this.g);
-   }
-
-   public gep b() {
-      return this.o;
-   }
-
-   public void a(gep $$0) {
-      this.o = $$0;
-   }
-
-   public void c() {
-      this.b(this.o);
-   }
-
-   public void b(gep $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-      this.d = $$0.c();
-      this.e = $$0.d();
-      this.f = $$0.e();
-      this.g = $$0.f();
-      this.h = $$0.g();
-      this.i = $$0.h();
-      this.j = $$0.i();
-   }
-
-   public void a(gen $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.j = $$0.j;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-   }
-
-   public boolean a(String $$0) {
-      return this.n.containsKey($$0);
-   }
-
-   public gen b(String $$0) {
-      gen $$1 = this.n.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException("Can't find part " + $$0);
+   private static gem a(String $$0, String $$1) {
+      gem $$2 = b($$0, $$1);
+      if (!ed.add($$2)) {
+         throw new IllegalStateException("Duplicate registration for " + $$2);
       } else {
-         return $$1;
+         return $$2;
       }
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private static gem b(String $$0, String $$1) {
+      return new gem(alz.b($$0), $$1);
    }
 
-   public void b(float $$0, float $$1, float $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private static gem b(String $$0) {
+      return a($$0, "inner_armor");
    }
 
-   public void a(fgr $$0, fgv $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
+   private static gem c(String $$0) {
+      return a($$0, "outer_armor");
    }
 
-   public void a(fgr $$0, fgv $$1, int $$2, int $$3, int $$4) {
-      if (this.k) {
-         if (!this.m.isEmpty() || !this.n.isEmpty()) {
-            $$0.a();
-            this.a($$0);
-            if (!this.l) {
-               this.a($$0.c(), $$1, $$2, $$3, $$4);
-            }
-
-            for (gen $$5 : this.n.values()) {
-               $$5.a($$0, $$1, $$2, $$3, $$4);
-            }
-
-            $$0.b();
-         }
-      }
+   public static gem a(dzh $$0) {
+      return b("sign/standing/" + $$0.b(), "main");
    }
 
-   public void a(Quaternionf $$0) {
-      Matrix3f $$1 = new Matrix3f().rotationZYX(this.g, this.f, this.e);
-      Matrix3f $$2 = $$1.rotate($$0);
-      Vector3f $$3 = $$2.getEulerAnglesZYX(new Vector3f());
-      this.b($$3.x, $$3.y, $$3.z);
+   public static gem b(dzh $$0) {
+      return b("sign/wall/" + $$0.b(), "main");
    }
 
-   public void a(fgr $$0, gen.d $$1) {
-      this.a($$0, $$1, "");
+   public static gem c(dzh $$0) {
+      return b("hanging_sign/" + $$0.b(), "main");
    }
 
-   private void a(fgr $$0, gen.d $$1, String $$2) {
-      if (!this.m.isEmpty() || !this.n.isEmpty()) {
-         $$0.a();
-         this.a($$0);
-         fgr.a $$3 = $$0.c();
-
-         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
-            $$1.visit($$3, $$2, $$4, this.m.get($$4));
-         }
-
-         String $$5 = $$2 + "/";
-         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
-         $$0.b();
-      }
-   }
-
-   public void a(fgr $$0) {
-      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
-      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
-         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
-      }
-
-      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
-         $$0.b(this.h, this.i, this.j);
-      }
-   }
-
-   private void a(fgr.a $$0, fgv $$1, int $$2, int $$3, int $$4) {
-      for (gen.a $$5 : this.m) {
-         $$5.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   public gen.a a(bam $$0) {
-      return this.m.get($$0.a(this.m.size()));
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(Vector3f $$0) {
-      this.b = this.b + $$0.x();
-      this.c = this.c + $$0.y();
-      this.d = this.d + $$0.z();
-   }
-
-   public void b(Vector3f $$0) {
-      this.e = this.e + $$0.x();
-      this.f = this.f + $$0.y();
-      this.g = this.g + $$0.z();
-   }
-
-   public void c(Vector3f $$0) {
-      this.h = this.h + $$0.x();
-      this.i = this.i + $$0.y();
-      this.j = this.j + $$0.z();
-   }
-
-   public Stream<gen> e() {
-      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(gen::e));
-   }
-
-   public static class a {
-      public final gen.b[] a;
-      public final float b;
-      public final float c;
-      public final float d;
-      public final float e;
-      public final float f;
-      public final float g;
-
-      public a(
-         int $$0,
-         int $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         float $$9,
-         float $$10,
-         boolean $$11,
-         float $$12,
-         float $$13,
-         Set<jm> $$14
-      ) {
-         this.b = $$2;
-         this.c = $$3;
-         this.d = $$4;
-         this.e = $$2 + $$5;
-         this.f = $$3 + $$6;
-         this.g = $$4 + $$7;
-         this.a = new gen.b[$$14.size()];
-         float $$15 = $$2 + $$5;
-         float $$16 = $$3 + $$6;
-         float $$17 = $$4 + $$7;
-         $$2 -= $$8;
-         $$3 -= $$9;
-         $$4 -= $$10;
-         $$15 += $$8;
-         $$16 += $$9;
-         $$17 += $$10;
-         if ($$11) {
-            float $$18 = $$15;
-            $$15 = $$2;
-            $$2 = $$18;
-         }
-
-         gen.c $$19 = new gen.c($$2, $$3, $$4, 0.0F, 0.0F);
-         gen.c $$20 = new gen.c($$15, $$3, $$4, 0.0F, 8.0F);
-         gen.c $$21 = new gen.c($$15, $$16, $$4, 8.0F, 8.0F);
-         gen.c $$22 = new gen.c($$2, $$16, $$4, 8.0F, 0.0F);
-         gen.c $$23 = new gen.c($$2, $$3, $$17, 0.0F, 0.0F);
-         gen.c $$24 = new gen.c($$15, $$3, $$17, 0.0F, 8.0F);
-         gen.c $$25 = new gen.c($$15, $$16, $$17, 8.0F, 8.0F);
-         gen.c $$26 = new gen.c($$2, $$16, $$17, 8.0F, 0.0F);
-         float $$27 = (float)$$0;
-         float $$28 = (float)$$0 + $$7;
-         float $$29 = (float)$$0 + $$7 + $$5;
-         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
-         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
-         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
-         float $$33 = (float)$$1;
-         float $$34 = (float)$$1 + $$7;
-         float $$35 = (float)$$1 + $$7 + $$6;
-         int $$36 = 0;
-         if ($$14.contains(jm.a)) {
-            this.a[$$36++] = new gen.b(new gen.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, jm.a);
-         }
-
-         if ($$14.contains(jm.b)) {
-            this.a[$$36++] = new gen.b(new gen.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, jm.b);
-         }
-
-         if ($$14.contains(jm.e)) {
-            this.a[$$36++] = new gen.b(new gen.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, jm.e);
-         }
-
-         if ($$14.contains(jm.c)) {
-            this.a[$$36++] = new gen.b(new gen.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, jm.c);
-         }
-
-         if ($$14.contains(jm.f)) {
-            this.a[$$36++] = new gen.b(new gen.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, jm.f);
-         }
-
-         if ($$14.contains(jm.d)) {
-            this.a[$$36] = new gen.b(new gen.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, jm.d);
-         }
-      }
-
-      public void a(fgr.a $$0, fgv $$1, int $$2, int $$3, int $$4) {
-         Matrix4f $$5 = $$0.a();
-         Vector3f $$6 = new Vector3f();
-
-         for (gen.b $$7 : this.a) {
-            Vector3f $$8 = $$0.a($$7.b, $$6);
-            float $$9 = $$8.x();
-            float $$10 = $$8.y();
-            float $$11 = $$8.z();
-
-            for (gen.c $$12 : $$7.a) {
-               float $$13 = $$12.a.x() / 16.0F;
-               float $$14 = $$12.a.y() / 16.0F;
-               float $$15 = $$12.a.z() / 16.0F;
-               Vector3f $$16 = $$5.transformPosition($$13, $$14, $$15, $$6);
-               $$1.a($$16.x(), $$16.y(), $$16.z(), $$4, $$12.b, $$12.c, $$3, $$2, $$9, $$10, $$11);
-            }
-         }
-      }
-   }
-
-   public static record b(gen.c[] a, Vector3f b) {
-
-      public b(gen.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, jm $$8) {
-         this($$0, $$8.m());
-         float $$9 = 0.0F / $$5;
-         float $$10 = 0.0F / $$6;
-         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
-         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
-         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
-         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
-         if ($$7) {
-            int $$11 = $$0.length;
-
-            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
-               gen.c $$13 = $$0[$$12];
-               $$0[$$12] = $$0[$$11 - 1 - $$12];
-               $$0[$$11 - 1 - $$12] = $$13;
-            }
-         }
-
-         if ($$7) {
-            this.b.mul(-1.0F, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   public static record c(Vector3f a, float b, float c) {
-
-      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
-         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
-      }
-
-      public gen.c a(float $$0, float $$1) {
-         return new gen.c(this.a, $$0, $$1);
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void visit(fgr.a var1, String var2, int var3, gen.a var4);
+   public static Stream<gem> a() {
+      return ed.stream();
    }
 }

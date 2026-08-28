@@ -30,13 +30,13 @@ public class ts {
    private final uf o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final drb r;
+   private final drc r;
    @Nullable
    private Throwable s;
    @Nullable
-   private dwo t;
+   private dwp t;
 
-   public ts(um $$0, drb $$1, ash $$2, uf $$3) {
+   public ts(um $$0, drc $$1, ash $$2, uf $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class ts {
       } else {
          this.j = 0;
          this.k = true;
-         dwo $$0 = this.f();
+         dwp $$0 = this.f();
          $$0.c(this.d);
-         eob $$1 = ui.b($$0);
+         eoc $$1 = ui.b($$0);
          this.d.n().a($$1);
          this.d.a($$1);
          return this;
@@ -169,18 +169,18 @@ public class ts {
       return ui.c(this.t);
    }
 
-   public fbs e() {
-      dwo $$0 = this.f();
+   public fbt e() {
+      dwp $$0 = this.f();
       return ui.a($$0);
    }
 
-   public dwo f() {
+   public dwp f() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (dwo)this.d.c_(this.b);
+         this.t = (dwp)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -225,9 +225,9 @@ public class ts {
    public void m() {
       if (this.s == null) {
          this.H();
-         fbs $$0 = this.e();
-         List<bvj> $$1 = this.g().a(bvj.class, $$0.g(1.0), $$0x -> !($$0x instanceof cpw));
-         $$1.forEach($$0x -> $$0x.a(bvj.d.b));
+         fbt $$0 = this.e();
+         List<bvk> $$1 = this.g().a(bvk.class, $$0.g(1.0), $$0x -> !($$0x instanceof cpx));
+         $$1.forEach($$0x -> $$0x.a(bvk.d.b));
       }
    }
 
@@ -282,7 +282,7 @@ public class ts {
       return this.a.d();
    }
 
-   public drb u() {
+   public drc u() {
       return this.r;
    }
 
@@ -329,7 +329,7 @@ public class ts {
 
    public jh D() {
       if (this.c == null) {
-         eob $$0 = ui.b(this.f());
+         eoc $$0 = ui.b(this.f());
          this.c = new jh($$0.h(), $$0.i(), $$0.j());
       }
 

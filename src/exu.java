@@ -1,125 +1,95 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
 
-public class exu extends eyb {
-   public static final ayk<eoj> a = ayg.l;
-   public static final jq<evl> b = evm.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<exu> f = RecordCodecBuilder.mapCodec(
+public class exu extends eyc {
+   public static final int a = 0;
+   public static final MapCodec<exu> b = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  ayk.a(mb.aU).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  evl.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+                  ddz.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
+                  fav.a.fieldOf("count").forGetter($$0x -> $$0x.d),
+                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
                )
             )
             .apply($$0, exu::new)
    );
-   private final ayk<eoj> h;
-   private final jq<evl> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final jq<ddz> c;
+   private final fau d;
+   private final int e;
 
-   exu(List<ezx> $$0, ayk<eoj> $$1, jq<evl> $$2, byte $$3, int $$4, boolean $$5) {
+   exu(List<ezy> $$0, jq<ddz> $$1, fau $$2, int $$3) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   public eyd<exu> b() {
-      return eye.q;
+   public eye<exu> b() {
+      return eyf.m;
    }
 
    @Override
    public Set<bbn<?>> a() {
-      return Set.of(ezi.f);
+      return Sets.union(ImmutableSet.of(ezj.d), this.d.a());
+   }
+
+   private boolean c() {
+      return this.e > 0;
    }
 
    @Override
-   public cxo a(cxo $$0, ewo $$1) {
-      if (!$$0.a(cxs.uZ)) {
-         return $$0;
-      } else {
-         fbx $$2 = $$1.c(ezi.f);
-         if ($$2 != null) {
-            ash $$3 = $$1.d();
-            jh $$4 = $$3.a(this.h, jh.a((ka)$$2), this.k, this.l);
-            if ($$4 != null) {
-               cxo $$5 = cyb.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cyb.a($$3, $$5);
-               evq.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
+   public cxp a(cxp $$0, ewp $$1) {
+      bvk $$2 = $$1.c(ezj.d);
+      if ($$2 instanceof bwg $$3) {
+         int $$4 = deb.a(this.c, $$3);
+         if ($$4 == 0) {
+            return $$0;
          }
 
-         return $$0;
+         float $$5 = (float)$$4 * this.d.b($$1);
+         $$0.g(Math.round($$5));
+         if (this.c()) {
+            $$0.f(this.e);
+         }
       }
+
+      return $$0;
    }
 
-   public static exu.a c() {
-      return new exu.a();
+   public static exu.a a(js.a $$0, fau $$1) {
+      js.b<ddz> $$2 = $$0.d(mb.aO);
+      return new exu.a($$2.b(dee.s), $$1);
    }
 
-   public static class a extends eyb.a<exu.a> {
-      private ayk<eoj> a;
-      private jq<evl> b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public static class a extends eyc.a<exu.a> {
+      private final jq<ddz> a;
+      private final fau b;
+      private int c = 0;
 
-      public a() {
-         this.a = exu.a;
-         this.b = exu.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+      public a(jq<ddz> $$0, fau $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
       protected exu.a a() {
          return this;
       }
 
-      public exu.a a(ayk<eoj> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public exu.a a(jq<evl> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public exu.a a(byte $$0) {
+      public exu.a a(int $$0) {
          this.c = $$0;
          return this;
       }
 
-      public exu.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public exu.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
       @Override
-      public eyc b() {
-         return new exu(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public eyd b() {
+         return new exu(this.g(), this.a, this.b, this.c);
       }
    }
 }

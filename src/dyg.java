@@ -1,17 +1,12 @@
 public enum dyg implements bba {
-   a("none"),
-   b("small"),
-   c("large");
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
    private final String d;
 
    private dyg(final String $$0) {
       this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
    }
 
    @Override

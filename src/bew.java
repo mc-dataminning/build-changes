@@ -3,9 +3,9 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bew extends bhr {
+public class bew extends bhs {
    public bew(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityItemFrameDirectionFix", biw.B, "minecraft:item_frame");
+      super($$0, $$1, "EntityItemFrameDirectionFix", bix.B, "minecraft:item_frame");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -1,101 +1,66 @@
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
 import com.mojang.datafixers.util.Either;
 import java.time.Instant;
 import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public abstract class ggo {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected ggq e;
-   protected boolean f;
+public class ggo extends ggp {
+   private final String g;
 
-   public ggo(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   ggo(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   public String a() {
+      return this.g;
    }
 
-   public abstract ggo b();
+   public ggo c() {
+      ggo $$0 = new ggo(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
+      return $$0;
+   }
 
-   public abstract ftx a(ftx var1, ggs var2);
+   @Override
+   public fty a(fty $$0, ggt $$1) {
+      return new fyi($$0, $$1, this);
+   }
 
-   public abstract static class a<R extends ggo> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static class a extends ggp.a<ggo> {
+      public a(ggo $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      public R e() {
-         return this.a;
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new ggo(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
       }
 
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public boolean h() {
-         return this.e().f;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
       }
 
       @Nullable
-      public ggq i() {
-         return this.a.e;
+      @Override
+      public ggp.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ggp.b.d : super.c();
       }
 
-      public void a(ggq $$0) {
-         this.a.e = $$0;
+      @Override
+      public Either<ggp.c, ggp.b> a(ggt $$0) {
+         ggp.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new ggp.c(this.a.a, ggs.c, $$3));
+         }
       }
-
-      public void a(boolean $$0) {
-         this.a.f = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public ggo.b c() {
-         return !this.e().f ? ggo.b.e : null;
-      }
-
-      public abstract Either<ggo.c, ggo.b> a(ggs var1);
-   }
-
-   public static record b(xv f) {
-      public static final ggo.b a = new ggo.b(xv.c("gui.abuseReport.send.no_reason"));
-      public static final ggo.b b = new ggo.b(xv.c("gui.chatReport.send.no_reported_messages"));
-      public static final ggo.b c = new ggo.b(xv.c("gui.chatReport.send.too_many_messages"));
-      public static final ggo.b d = new ggo.b(xv.c("gui.abuseReport.send.comment_too_long"));
-      public static final ggo.b e = new ggo.b(xv.c("gui.abuseReport.send.not_attested"));
-
-      public fpq a() {
-         return fpq.a(this.f);
-      }
-
-      public xv b() {
-         return this.f;
-      }
-   }
-
-   public static record c(UUID a, ggr b, AbuseReport c) {
    }
 }

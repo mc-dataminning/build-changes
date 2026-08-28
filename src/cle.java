@@ -1,30 +1,26 @@
-public class cle extends ckw {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cle(ckt $$0) {
-      super($$0);
-   }
+public interface cle {
+   boolean a();
 
-   @Override
-   public void b() {
-      this.a.dW().a(this.a.dB(), this.a.dD(), this.a.dH(), axf.iy, this.a.dn(), 2.5F, 0.8F + this.a.dZ().i() * 0.3F, false);
-   }
+   void b();
 
-   @Override
-   public void a(ash $$0) {
-      if (this.c++ >= 40) {
-         this.a.gk().a(clj.f);
-      }
-   }
+   void a(ash var1);
 
-   @Override
-   public void c() {
-      this.c = 0;
-   }
+   void a(ckt var1, jh var2, bua var3, @Nullable cpx var4);
 
-   @Override
-   public clj<cle> h() {
-      return clj.h;
-   }
+   void c();
+
+   void d();
+
+   float e();
+
+   float g();
+
+   clk<? extends cle> h();
+
+   @Nullable
+   fby f();
+
+   float a(bua var1, float var2);
 }

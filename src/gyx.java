@@ -1,7 +1,3 @@
-public class gyx extends gys {
-   public cij.a a;
-
-   public gyx() {
-      this.a = cij.a.a;
-   }
+public class gyx extends gyw {
+   public float C = -1.0F;
 }

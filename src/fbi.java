@@ -1,26 +1,32 @@
-@FunctionalInterface
-public interface fbi<T> {
-   void handle(T var1, fbk<T> var2, long var3);
+import net.minecraft.server.MinecraftServer;
 
-   public abstract static class a<T, C extends fbi<T>> {
-      private final alz a;
-      private final Class<?> b;
+public class fbi implements fbj<MinecraftServer> {
+   final alz a;
 
-      public a(alz $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public fbi(alz $$0) {
+      this.a = $$0;
+   }
+
+   public void a(MinecraftServer $$0, fbl<MinecraftServer> $$1, long $$2) {
+      amo $$3 = $$0.aE();
+
+      for (ik<ew> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
+   }
+
+   public static class a extends fbj.a<MinecraftServer, fbi> {
+      public a() {
+         super(alz.b("function_tag"), fbi.class);
       }
 
-      public alz a() {
-         return this.a;
+      public void a(ux $$0, fbi $$1) {
+         $$0.a("Name", $$1.a.toString());
       }
 
-      public Class<?> b() {
-         return this.b;
+      public fbi a(ux $$0) {
+         alz $$1 = alz.a($$0.l("Name"));
+         return new fbi($$1);
       }
-
-      public abstract void a(ux var1, C var2);
-
-      public abstract C b(ux var1);
    }
 }

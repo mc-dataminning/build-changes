@@ -1,5 +1,5 @@
-public record ky(ash a, jh b, dxu c, dvq d) {
-   public fbx a() {
+public record ky(ash a, jh b, dxv c, dvr d) {
+   public fby a() {
       return this.b.b();
    }
 
@@ -11,11 +11,11 @@ public record ky(ash a, jh b, dxu c, dvq d) {
       return this.b;
    }
 
-   public dxu d() {
+   public dxv d() {
       return this.c;
    }
 
-   public dvq e() {
+   public dvr e() {
       return this.d;
    }
 }

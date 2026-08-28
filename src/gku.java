@@ -1,76 +1,262 @@
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
+import org.joml.Matrix4f;
 
-public class gku {
-   private static final List<gmc> ae = new ArrayList<>();
-   public static final gmc a = a("blit_screen", fgp.a);
-   public static final gmc b = a("lightmap", fgp.a);
-   public static final gmc c = a("particle", fgp.d);
-   public static final gmc d = a("position", fgp.e);
-   public static final gmc e = a("position_color", fgp.f);
-   public static final gmc f = a("position_color_lightmap", fgp.h);
-   public static final gmc g = a("position_color_tex_lightmap", fgp.k);
-   public static final gmc h = a("position_tex", fgp.i);
-   public static final gmc i = a("position_tex_color", fgp.j);
-   public static final gmc j = a("rendertype_solid", fgp.b);
-   public static final gmc k = a("rendertype_cutout_mipped", fgp.b);
-   public static final gmc l = a("rendertype_cutout", fgp.b);
-   public static final gmc m = a("rendertype_translucent", fgp.b);
-   public static final gmc n = a("rendertype_translucent_moving_block", fgp.b);
-   public static final gmc o = a("rendertype_armor_cutout_no_cull", fgp.c);
-   public static final gmc p = a("rendertype_armor_translucent", fgp.c);
-   public static final gmc q = a("rendertype_entity_solid", fgp.c);
-   public static final gmc r = a("rendertype_entity_cutout", fgp.c);
-   public static final gmc s = a("rendertype_entity_cutout_no_cull", fgp.c);
-   public static final gmc t = a("rendertype_entity_cutout_no_cull_z_offset", fgp.c);
-   public static final gmc u = a("rendertype_item_entity_translucent_cull", fgp.c);
-   public static final gmc v = a("rendertype_entity_translucent", fgp.c);
-   public static final gmc w = a("rendertype_entity_translucent_emissive", fgp.c);
-   public static final gmc x = a("rendertype_entity_smooth_cutout", fgp.c);
-   public static final gmc y = a("rendertype_beacon_beam", fgp.b);
-   public static final gmc z = a("rendertype_entity_decal", fgp.c);
-   public static final gmc A = a("rendertype_entity_no_outline", fgp.c);
-   public static final gmc B = a("rendertype_entity_shadow", fgp.c);
-   public static final gmc C = a("rendertype_entity_alpha", fgp.c);
-   public static final gmc D = a("rendertype_eyes", fgp.c);
-   public static final gmc E = a("rendertype_energy_swirl", fgp.c);
-   public static final gmc F = a("rendertype_leash", fgp.h);
-   public static final gmc G = a("rendertype_water_mask", fgp.e);
-   public static final gmc H = a("rendertype_outline", fgp.j);
-   public static final gmc I = a("rendertype_armor_entity_glint", fgp.i);
-   public static final gmc J = a("rendertype_glint_translucent", fgp.i);
-   public static final gmc K = a("rendertype_glint", fgp.i);
-   public static final gmc L = a("rendertype_entity_glint", fgp.i);
-   public static final gmc M = a("rendertype_text", fgp.k);
-   public static final gmc N = a("rendertype_text_background", fgp.h);
-   public static final gmc O = a("rendertype_text_intensity", fgp.k);
-   public static final gmc P = a("rendertype_text_see_through", fgp.k);
-   public static final gmc Q = a("rendertype_text_background_see_through", fgp.h);
-   public static final gmc R = a("rendertype_text_intensity_see_through", fgp.k);
-   public static final gmc S = a("rendertype_lightning", fgp.f);
-   public static final gmc T = a("rendertype_tripwire", fgp.b);
-   public static final gmc U = a("rendertype_end_portal", fgp.e);
-   public static final gmc V = a("rendertype_end_gateway", fgp.e);
-   public static final gmc W = a("rendertype_clouds", fgp.f);
-   public static final gmc X = a("rendertype_lines", fgp.g);
-   public static final gmc Y = a("rendertype_crumbling", fgp.b);
-   public static final gmc Z = a("rendertype_gui", fgp.f);
-   public static final gmc aa = a("rendertype_gui_overlay", fgp.f);
-   public static final gmc ab = a("rendertype_gui_text_highlight", fgp.f);
-   public static final gmc ac = a("rendertype_gui_ghost_recipe_overlay", fgp.f);
-   public static final gmc ad = a("rendertype_breeze_wind", fgp.c);
+public class gku implements AutoCloseable {
+   private static final fgg p = new fgg();
+   private static final int q = -1;
+   private final List<gme.a> r = new ArrayList<>();
+   private final Object2IntMap<String> s = new Object2IntArrayMap();
+   private final IntList t = new IntArrayList();
+   private final List<fgj> u = new ArrayList<>();
+   private final Map<String, fgj> v = new HashMap<>();
+   private final Map<String, gme.b> w = new HashMap<>();
+   private final int x;
+   @Nullable
+   public fgj a;
+   @Nullable
+   public fgj b;
+   @Nullable
+   public fgj c;
+   @Nullable
+   public fgj d;
+   @Nullable
+   public fgj e;
+   @Nullable
+   public fgj f;
+   @Nullable
+   public fgj g;
+   @Nullable
+   public fgj h;
+   @Nullable
+   public fgj i;
+   @Nullable
+   public fgj j;
+   @Nullable
+   public fgj k;
+   @Nullable
+   public fgj l;
+   @Nullable
+   public fgj m;
+   @Nullable
+   public fgj n;
+   @Nullable
+   public fgj o;
 
-   private static gmc a(String $$0, fgw $$1) {
-      return a($$0, $$1, gma.a);
+   private gku(int $$0) {
+      this.x = $$0;
+      this.s.defaultReturnValue(-1);
    }
 
-   private static gmc a(String $$0, fgw $$1, gma $$2) {
-      gmc $$3 = new gmc(alz.b("core/" + $$0), $$1, $$2);
-      ae.add($$3);
-      return $$3;
+   public static gku a(fgh $$0, fgh $$1, fgx $$2) throws gmc.b {
+      int $$3 = GlStateManager.glCreateProgram();
+      if ($$3 <= 0) {
+         throw new gmc.b("Could not create shader program (returned program ID " + $$3 + ")");
+      } else {
+         $$2.a($$3);
+         GlStateManager.glAttachShader($$3, $$0.b());
+         GlStateManager.glAttachShader($$3, $$1.b());
+         GlStateManager.glLinkProgram($$3);
+         int $$4 = GlStateManager.glGetProgrami($$3, 35714);
+         if ($$4 == 0) {
+            String $$5 = GlStateManager.glGetProgramInfoLog($$3, 32768);
+            throw new gmc.b("Error encountered when linking program containing VS " + $$0.a() + " and FS " + $$1.a() + ". Log output: " + $$5);
+         } else {
+            return new gku($$3);
+         }
+      }
    }
 
-   public static List<gmc> a() {
-      return ae;
+   public void a(List<gme.b> $$0, List<gme.a> $$1) {
+      RenderSystem.assertOnRenderThread();
+
+      for (gme.b $$2 : $$0) {
+         String $$3 = $$2.a();
+         int $$4 = fgj.a(this.x, $$3);
+         if ($$4 != -1) {
+            fgj $$5 = this.a($$2);
+            $$5.b($$4);
+            this.u.add($$5);
+            this.v.put($$3, $$5);
+            this.w.put($$3, $$2);
+         }
+      }
+
+      for (gme.a $$6 : $$1) {
+         int $$7 = fgj.a(this.x, $$6.a());
+         if ($$7 != -1) {
+            this.r.add($$6);
+            this.t.add($$7);
+         }
+      }
+
+      this.a = this.a("ModelViewMat");
+      this.b = this.a("ProjMat");
+      this.c = this.a("TextureMat");
+      this.d = this.a("ScreenSize");
+      this.e = this.a("ColorModulator");
+      this.f = this.a("Light0_Direction");
+      this.g = this.a("Light1_Direction");
+      this.h = this.a("GlintAlpha");
+      this.i = this.a("FogStart");
+      this.j = this.a("FogEnd");
+      this.k = this.a("FogColor");
+      this.l = this.a("FogShape");
+      this.m = this.a("LineWidth");
+      this.n = this.a("GameTime");
+      this.o = this.a("ModelOffset");
+   }
+
+   @Override
+   public void close() {
+      this.u.forEach(fgj::close);
+      GlStateManager.glDeleteProgram(this.x);
+   }
+
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram(0);
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
+         gme.a $$2 = this.r.get($$1);
+         if (!this.s.containsKey($$2.a())) {
+            GlStateManager._activeTexture(33984 + $$1);
+            GlStateManager._bindTexture(0);
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+   }
+
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram(this.x);
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
+         String $$2 = this.r.get($$1).a();
+         int $$3 = this.s.getInt($$2);
+         if ($$3 != -1) {
+            int $$4 = this.t.getInt($$1);
+            fgj.b($$4, $$1);
+            RenderSystem.activeTexture(33984 + $$1);
+            RenderSystem.bindTexture($$3);
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+
+      for (fgj $$5 : this.u) {
+         $$5.b();
+      }
+   }
+
+   @Nullable
+   public fgj a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.v.get($$0);
+   }
+
+   @Nullable
+   public gme.b b(String $$0) {
+      return this.w.get($$0);
+   }
+
+   public fgg c(String $$0) {
+      fgj $$1 = this.a($$0);
+      return (fgg)($$1 == null ? p : $$1);
+   }
+
+   public void a(String $$0, int $$1) {
+      this.s.put($$0, $$1);
+   }
+
+   private fgj a(gme.b $$0) {
+      int $$1 = fgj.a($$0.b());
+      int $$2 = $$0.c();
+      int $$3 = $$2 > 1 && $$2 <= 4 && $$1 < 8 ? $$2 - 1 : 0;
+      fgj $$4 = new fgj($$0.a(), $$1 + $$3, $$2);
+      $$4.a($$0);
+      return $$4;
+   }
+
+   public void a(fgx.c $$0, Matrix4f $$1, Matrix4f $$2, ffv $$3) {
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         int $$5 = RenderSystem.getShaderTexture($$4);
+         this.a("Sampler" + $$4, $$5);
+      }
+
+      if (this.a != null) {
+         this.a.a($$1);
+      }
+
+      if (this.b != null) {
+         this.b.a($$2);
+      }
+
+      if (this.e != null) {
+         this.e.a(RenderSystem.getShaderColor());
+      }
+
+      if (this.h != null) {
+         this.h.a(RenderSystem.getShaderGlintAlpha());
+      }
+
+      gkz $$6 = RenderSystem.getShaderFog();
+      if (this.i != null) {
+         this.i.a($$6.a());
+      }
+
+      if (this.j != null) {
+         this.j.a($$6.b());
+      }
+
+      if (this.k != null) {
+         this.k.a($$6.d(), $$6.e(), $$6.f(), $$6.g());
+      }
+
+      if (this.l != null) {
+         this.l.a($$6.c().a());
+      }
+
+      if (this.c != null) {
+         this.c.a(RenderSystem.getTextureMatrix());
+      }
+
+      if (this.n != null) {
+         this.n.a(RenderSystem.getShaderGameTime());
+      }
+
+      if (this.d != null) {
+         this.d.a((float)$$3.k(), (float)$$3.l());
+      }
+
+      if (this.m != null && ($$0 == fgx.c.a || $$0 == fgx.c.b)) {
+         this.m.a(RenderSystem.getShaderLineWidth());
+      }
+
+      RenderSystem.setupShaderLights(this);
+   }
+
+   @VisibleForTesting
+   public void a(fgj $$0) {
+      this.u.add($$0);
+      this.v.put($$0.a(), $$0);
+   }
+
+   @VisibleForTesting
+   public int c() {
+      return this.x;
    }
 }

@@ -1,93 +1,65 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class erl extends esi {
-   public static final MapCodec<erl> a = Codec.FLOAT.fieldOf("mossiness").xmap(erl::new, $$0 -> $$0.f);
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final dxu[] e = new dxu[]{dkn.jV.m(), dkn.kc.m()};
-   private final float f;
+public class erl extends esj {
+   public static final MapCodec<erl> a = MapCodec.unit(() -> erl.b);
+   public static final erl b = new erl();
+   private final Map<dkm, dkm> c = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dko.m, dko.pM);
+      $$0.put(dko.cu, dko.pM);
+      $$0.put(dko.b, dko.pQ);
+      $$0.put(dko.eV, dko.pR);
+      $$0.put(dko.eW, dko.pR);
+      $$0.put(dko.cZ, dko.pN);
+      $$0.put(dko.nD, dko.pN);
+      $$0.put(dko.nF, dko.pY);
+      $$0.put(dko.fx, dko.pV);
+      $$0.put(dko.nB, dko.pV);
+      $$0.put(dko.ka, dko.pP);
+      $$0.put(dko.nR, dko.pP);
+      $$0.put(dko.jW, dko.pZ);
+      $$0.put(dko.jV, dko.pZ);
+      $$0.put(dko.kc, dko.pU);
+      $$0.put(dko.nP, dko.pU);
+      $$0.put(dko.of, dko.pW);
+      $$0.put(dko.od, dko.pW);
+      $$0.put(dko.gd, dko.pO);
+      $$0.put(dko.ge, dko.pO);
+      $$0.put(dko.eY, dko.pT);
+      $$0.put(dko.eX, dko.pS);
+      $$0.put(dko.fk, dko.fl);
+   });
 
-   public erl(float $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   @Override
-   public esl.d a(dhk $$0, jh $$1, jh $$2, esl.d $$3, esl.d $$4, esh $$5) {
-      bam $$6 = $$5.b($$4.a());
-      dxu $$7 = $$4.b();
-      jh $$8 = $$4.a();
-      dxu $$9 = null;
-      if ($$7.a(dkn.eV) || $$7.a(dkn.b) || $$7.a(dkn.eY)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(axu.L)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(axu.M)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(axu.N)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(dkn.cv)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new esl.d($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private dxu a(bam $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dxu[] $$1 = new dxu[]{dkn.eX.m(), a($$0, dkn.fx)};
-         dxu[] $$2 = new dxu[]{dkn.eW.m(), a($$0, dkn.nB)};
-         return this.a($$0, $$1, $$2);
-      }
-   }
-
-   @Nullable
-   private dxu a(bam $$0, dxu $$1) {
-      jm $$2 = $$1.c(dsi.b);
-      dys $$3 = $$1.c(dsi.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dxu[] $$4 = new dxu[]{dkn.nB.m().b(dsi.b, $$2).b(dsi.c, $$3), dkn.nP.m()};
-         return this.a($$0, e, $$4);
-      }
-   }
-
-   @Nullable
-   private dxu b(bam $$0) {
-      return $$0.i() < this.f ? dkn.nP.m() : null;
-   }
-
-   @Nullable
-   private dxu c(bam $$0) {
-      return $$0.i() < this.f ? dkn.od.m() : null;
-   }
-
-   @Nullable
-   private dxu d(bam $$0) {
-      return $$0.i() < 0.15F ? dkn.pF.m() : null;
-   }
-
-   private static dxu a(bam $$0, dkl $$1) {
-      return $$1.m().b(dsi.b, jm.c.a.a($$0)).b(dsi.c, ae.a(dys.values(), $$0));
-   }
-
-   private dxu a(bam $$0, dxu[] $$1, dxu[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static dxu a(bam $$0, dxu[] $$1) {
-      return $$1[$$0.a($$1.length)];
+   private erl() {
    }
 
    @Override
-   protected esk<?> a() {
-      return esk.k;
+   public esm.d a(dhl $$0, jh $$1, jh $$2, esm.d $$3, esm.d $$4, esi $$5) {
+      dkm $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
+      } else {
+         dxv $$7 = $$4.b();
+         dxv $$8 = $$6.m();
+         if ($$7.b(dsj.b)) {
+            $$8 = $$8.b(dsj.b, $$7.c(dsj.b));
+         }
+
+         if ($$7.b(dsj.c)) {
+            $$8 = $$8.b(dsj.c, $$7.c(dsj.c));
+         }
+
+         if ($$7.b(drs.b)) {
+            $$8 = $$8.b(drs.b, $$7.c(drs.b));
+         }
+
+         return new esm.d($$4.a(), $$8, $$4.c());
+      }
+   }
+
+   @Override
+   protected esl<?> a() {
+      return esl.l;
    }
 }

@@ -1,58 +1,23 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class fwz extends fxb {
-   private static final xv a = xv.c("options.online.title");
-   @Nullable
-   private fmi<Unit> u;
+public class fwz extends fxc {
+   private static final xv a = xv.c("options.mouse_settings.title");
 
-   public fwz(ftx $$0, fmj $$1) {
+   private static fmj<?>[] a(fmk $$0) {
+      return new fmj[]{$$0.d(), $$0.U(), $$0.H(), $$0.V(), $$0.ac()};
+   }
+
+   public fwz(fty $$0, fmk $$1) {
       super($$0, $$1, a);
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      if (this.u != null) {
-         foc $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private fmi<?>[] a(fmj $$0, fmf $$1) {
-      List<fmi<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.W());
-      $$2.add($$0.X());
-      fmi<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            btf $$1x = $$0x.al();
-            return new fmi<>(
-               "options.difficulty.online",
-               fmi.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fmi.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
-      }
-
-      return $$2.toArray(new fmi[0]);
-   }
-
-   @Override
    protected void l() {
-      this.d.a(this.a(this.c, this.m));
+      if (ffn.a()) {
+         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.I())).toArray(fmj[]::new));
+      } else {
+         this.d.a(a(this.c));
+      }
    }
 }

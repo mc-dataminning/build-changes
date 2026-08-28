@@ -18,7 +18,7 @@ public record ch(
             .apply($$0, ch::new)
    );
 
-   public boolean a(cpu $$0) {
+   public boolean a(cpv $$0) {
       return this.a(this.b, $$0.a())
          && this.a(this.c, $$0.b())
          && this.a(this.d, $$0.c())

@@ -1,14 +1,28 @@
-import javax.annotation.Nullable;
+public class cxa<T extends bvk & bwd> extends cxl {
+   private final bvr<T> a;
+   private final int b;
 
-public class cxa extends cvu {
-   public cxa(dkl $$0, cxk.a $$1) {
-      super($$0, $$1);
+   public cxa(bvr<T> $$0, int $$1, cxl.a $$2) {
+      super($$2);
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
    @Override
-   protected dxu c(dbf $$0) {
-      cpw $$1 = $$0.o();
-      return $$1 != null && !$$1.gG() ? null : super.c($$0);
+   public btj a(dhi $$0, cpx $$1, bti $$2) {
+      cxp $$3 = $$1.b($$2);
+      if ($$0.C) {
+         return btj.e;
+      } else {
+         bvk $$4 = $$1.dm();
+         if ($$1.bZ() && $$4 instanceof bwd $$5 && $$4.aq() == this.a && $$5.a()) {
+            bvs $$6 = bwg.d($$2);
+            cxp $$7 = $$3.a(this.b, cxt.rJ, $$1, $$6);
+            return btj.b.a($$7);
+         }
+
+         $$1.b(axp.c.b(this));
+         return btj.e;
+      }
    }
 }

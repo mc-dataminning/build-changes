@@ -2,30 +2,29 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record fba(String b) implements fbc {
-   public static final MapCodec<fba> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(fba::c)).apply($$0, fba::new));
+public record fba(ewp.b c) implements fbd {
+   public static final MapCodec<fba> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ewp.b.e.fieldOf("target").forGetter(fba::c)).apply($$0, fba::new));
+   public static final Codec<fba> b = ewp.b.e.xmap(fba::new, fba::c);
 
-   public static fbc a(String $$0) {
+   public static fbd a(ewp.b $$0) {
       return new fba($$0);
    }
 
    @Override
-   public fbb a() {
-      return fbd.b;
+   public fbc a() {
+      return fbe.c;
    }
 
+   @Nullable
    @Override
-   public fdb a(ewo $$0) {
-      return fdb.c(this.b);
+   public fdc a(ewp $$0) {
+      return $$0.c(this.c.a());
    }
 
    @Override
    public Set<bbn<?>> b() {
-      return Set.of();
-   }
-
-   public String c() {
-      return this.b;
+      return Set.of(this.c.a());
    }
 }

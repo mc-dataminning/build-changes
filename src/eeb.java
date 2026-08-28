@@ -1,11 +1,11 @@
-public class eeb implements dgt {
+public class eeb implements dgu {
    private int a;
 
    @Override
    public int a(ash $$0, boolean $$1, boolean $$2) {
       if (!$$1) {
          return 0;
-      } else if (!$$0.N().b(dhd.D)) {
+      } else if (!$$0.N().b(dhe.L)) {
          return 0;
       } else {
          bam $$3 = $$0.A;
@@ -13,47 +13,82 @@ public class eeb implements dgt {
          if (this.a > 0) {
             return 0;
          } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.E_() < 5 && $$0.G_().g()) {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.ad() / 24000L;
+            if ($$4 < 5L || !$$0.U()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
                return 0;
             } else {
-               int $$4 = 0;
+               int $$5 = $$0.y().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cpx $$6 = $$0.y().get($$3.a($$5));
+                  if ($$6.aa_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dw(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     jh.a $$9 = $$6.dw().k().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        jq<dik> $$11 = $$0.t($$9);
+                        if ($$11.a(axt.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-               for (asi $$5 : $$0.y()) {
-                  if (!$$5.aa_()) {
-                     jh $$6 = $$5.dw();
-                     if (!$$0.G_().g() || $$6.v() >= $$0.O() && $$0.h($$6)) {
-                        btg $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           axl $$8 = $$5.I();
-                           int $$9 = bae.a($$8.a(axp.i.b(axp.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              jh $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dxu $$12 = $$0.a_($$11);
-                              etw $$13 = $$0.b_($$11);
-                              if (dhs.a($$0, $$11, $$12, $$13, bvq.aQ)) {
-                                 bwy $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
-
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    cmy $$17 = bvq.aQ.a($$0, bvp.a);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, bvp.a, $$14);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(edq.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
                                  }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
                               }
+
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
                            }
+
+                           return $$12;
                         }
                      }
                   }
                }
-
-               return $$4;
             }
+         }
+      }
+   }
+
+   private boolean a(ash $$0, jh $$1, bam $$2, boolean $$3) {
+      dxv $$4 = $$0.a_($$1);
+      if (!dht.a($$0, $$1, $$4, $$4.y(), bvr.aU)) {
+         return false;
+      } else if (!cmy.b(bvr.aU, $$0, bvq.p, $$1, $$2)) {
+         return false;
+      } else {
+         cmy $$5 = bvr.aU.a($$0, bvq.p);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.x(true);
+               $$5.gv();
+            }
+
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bvq.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
          }
       }
    }

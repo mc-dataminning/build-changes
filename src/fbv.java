@@ -1,26 +1,21 @@
-public abstract class fbv {
-   protected final fbx a;
+public class fbv extends fbw {
+   private final bvk b;
 
-   protected fbv(fbx $$0) {
-      this.a = $$0;
+   public fbv(bvk $$0) {
+      this($$0, $$0.du());
    }
 
-   public double a(bvj $$0) {
-      double $$1 = this.a.d - $$0.dB();
-      double $$2 = this.a.e - $$0.dD();
-      double $$3 = this.a.f - $$0.dH();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public fbv(bvk $$0, fby $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public abstract fbv.a d();
-
-   public fbx g() {
-      return this.a;
+   public bvk a() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public fbw.a d() {
+      return fbw.a.c;
    }
 }

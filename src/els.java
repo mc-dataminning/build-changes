@@ -1,83 +1,60 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import org.apache.commons.lang3.mutable.Mutable;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class els extends elt {
-   public static final MapCodec<els> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, els::new)
-   );
+public class els extends elu {
+   public static final MapCodec<els> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(els::new, $$0 -> $$0.b);
    private final float b;
-   private final float c;
-   private final float d;
 
    @Override
-   protected elu<?> a() {
-      return elu.c;
+   protected elv<?> a() {
+      return elv.b;
    }
 
-   public els(float $$0, float $$1, float $$2) {
+   public els(float $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
    @Override
-   public void a(elt.a $$0) {
+   public void a(elu.a $$0) {
       bam $$1 = $$0.b();
-      dif $$2 = (dif)$$0.a();
-      List<jh> $$3 = ae.a($$0.c(), $$1);
-      if (!$$3.isEmpty()) {
-         Mutable<jh> $$4 = new MutableObject($$3.getFirst());
-         $$3.forEach($$1x -> {
-            if ($$1x.v() < ((jh)$$4.getValue()).v()) {
-               $$4.setValue($$1x);
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            jh $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dtl.d, $$0);
             }
-         });
-         jh $$5 = (jh)$$4.getValue();
-         if ($$1.i() < this.d) {
-            $$2.K_().a(mb.aL).flatMap($$0x -> $$0x.a(ss.D)).ifPresent($$3x -> ((egh)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
          }
 
-         $$0.c().forEach($$2x -> {
-            if ($$1.i() < this.c) {
-               jh $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
+         if ($$1.i() < this.b) {
+            jh $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dtl.f, $$0);
             }
+         }
 
-            if ($$1.i() < this.c) {
-               jh $$4x = $$2x.d();
-               if ($$0.a($$4x)) {
-                  dpl.a((dif)$$0.a(), $$4x, $$0.b(), 3);
-               }
+         if ($$1.i() < this.b) {
+            jh $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dtl.e, $$0);
             }
-         });
-         $$0.d().forEach($$2x -> {
-            if ($$1.i() < this.b) {
-               jh $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
+         }
+
+         if ($$1.i() < this.b) {
+            jh $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dtl.c, $$0);
             }
-         });
-      }
+         }
+      });
    }
 
-   private static void a(jh $$0, elt.a $$1) {
-      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
-         $$1.a($$0, dkn.tR.m().b(dod.b, Boolean.valueOf(false)));
-         $$0 = $$0.e();
-      }
+   private static void a(jh $$0, dym $$1, elu.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
 
-      $$1.a($$0, dkn.tR.m().b(dod.b, Boolean.valueOf(true)));
+      for (jh var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
+      }
    }
 }

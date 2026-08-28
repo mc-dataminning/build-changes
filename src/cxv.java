@@ -1,85 +1,48 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cxv {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private jq<cxu> c;
-   private final jh d;
-   private final cxv.a e;
+public record cxv(jq<axe> e, xv f, float g, int h) {
+   public static final Codec<cxv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axe.b.fieldOf("sound_event").forGetter(cxv::b),
+               xx.a.fieldOf("description").forGetter(cxv::c),
+               azn.o.fieldOf("length_in_seconds").forGetter(cxv::d),
+               azn.a(0, 15).fieldOf("comparator_output").forGetter(cxv::e)
+            )
+            .apply($$0, cxv::new)
+   );
+   public static final zt<xg, cxv> b = zt.a(axe.d, cxv::b, xx.b, cxv::c, zr.l, cxv::d, zr.h, cxv::e, cxv::new);
+   public static final Codec<jq<cxv>> c = alw.a(mb.L);
+   public static final zt<xg, jq<cxv>> d = zr.a(mb.L, b);
+   private static final int i = 20;
 
-   public cxv(cxv.a $$0, jh $$1) {
-      this.e = $$0;
-      this.d = $$1;
+   public int a() {
+      return bae.f(this.g * 20.0F);
    }
 
-   public boolean a() {
-      return this.c != null;
+   public boolean a(long $$0) {
+      return $$0 >= (long)(this.a() + 20);
    }
 
-   @Nullable
-   public cxu b() {
-      return this.c == null ? null : this.c.a();
+   public static Optional<jq<cxv>> a(js.a $$0, cxp $$1) {
+      cxu $$2 = $$1.a(ku.ab);
+      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
    }
 
-   public long c() {
-      return this.b;
+   public jq<axe> b() {
+      return this.e;
    }
 
-   public void a(jq<cxu> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
-      }
+   public xv c() {
+      return this.f;
    }
 
-   public void a(dhi $$0, jq<cxu> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.K_().e(mb.L).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
+   public float d() {
+      return this.g;
    }
 
-   public void a(dhi $$0, @Nullable dxu $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(ecq.F, this.d, ecq.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(dhi $$0, @Nullable dxu $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
-         } else {
-            if (this.d()) {
-               $$0.a(ecq.E, this.d, ecq.a.a($$1));
-               a($$0, this.d);
-            }
-
-            this.b++;
-         }
-      }
-   }
-
-   private boolean d() {
-      return this.b % 20L == 0L;
-   }
-
-   private static void a(dhi $$0, jh $$1) {
-      if ($$0 instanceof ash $$2) {
-         fbx $$3 = fbx.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.H_().a(4) / 24.0F;
-         $$2.a(ls.ab, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
+   public int e() {
+      return this.h;
    }
 }

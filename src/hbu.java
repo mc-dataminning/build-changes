@@ -1,46 +1,30 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hbu {
-   private final alz a;
-   private final avt b;
-   private final AtomicReference<ffr> c = new AtomicReference<>();
-   private final AtomicInteger d;
+public class hbu implements hbp {
+   public static final MapCodec<hbu> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, hbu::new)
+   );
+   private final String c;
+   private final String d;
 
-   public hbu(alz $$0, avt $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
+   public hbu(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public ffr a() throws IOException {
-      ffr $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = ffr.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
-            }
-         }
-      }
-
-      return $$0;
+   @Override
+   public void a(avv $$0, hbp.a $$1) {
+      als $$2 = new als("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         alz $$4 = $$2.b($$2x).f(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         ffr $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
-         }
-      }
+   @Override
+   public hbr a() {
+      return hbs.b;
    }
 }

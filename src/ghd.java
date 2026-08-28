@@ -1,30 +1,22 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
 import java.util.Optional;
+import org.slf4j.Logger;
 
-public class ghd {
-   public static final ghd a = new ghd(ghc.b, ghe.createDnsSrvRedirectHandler(), ggz.a());
-   private final ghc b;
-   private final ghe c;
-   private final ggz d;
-
-   @VisibleForTesting
-   ghd(ghc $$0, ghe $$1, ggz $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   public Optional<gha> a(ghb $$0) {
-      Optional<gha> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<ghb> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
-
-         return $$1;
-      } else {
+@FunctionalInterface
+public interface ghd {
+   Logger a = LogUtils.getLogger();
+   ghd b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(ghb.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
          return Optional.empty();
       }
-   }
+   };
+
+   Optional<ghb> resolve(ghc var1);
 }

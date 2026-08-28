@@ -1,56 +1,110 @@
-public abstract class chv extends bva {
-   protected chv(bvq<? extends chv> $$0, dhh $$1) {
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+
+public abstract class chv extends cht {
+   @Nullable
+   private chv a;
+   private int b = 1;
+
+   public chv(bvr<? extends chv> $$0, dhi $$1) {
       super($$0, $$1);
-      this.a(eun.j, 0.0F);
    }
 
    @Override
-   public boolean a(dhk $$0) {
-      return $$0.f(this);
+   protected void B() {
+      super.B();
+      this.bT.a(5, new cda(this));
    }
 
    @Override
-   public int Q() {
-      return 120;
+   public int ad() {
+      return this.gp();
+   }
+
+   public int gp() {
+      return super.ad();
    }
 
    @Override
-   public int e(ash $$0) {
-      return 1 + this.ae.a(3);
+   protected boolean x() {
+      return !this.gq();
    }
 
-   protected void r(int $$0) {
-      if (this.bL() && !this.bm()) {
-         this.j($$0 - 1);
-         if (this.ct() == -20) {
-            this.j(0);
-            this.a(this.dX().i(), 2.0F);
+   public boolean gq() {
+      return this.a != null && this.a.bL();
+   }
+
+   public chv a(chv $$0) {
+      this.a = $$0;
+      $$0.gw();
+      return $$0;
+   }
+
+   public void gr() {
+      this.a.gx();
+      this.a = null;
+   }
+
+   private void gw() {
+      this.b++;
+   }
+
+   private void gx() {
+      this.b--;
+   }
+
+   public boolean gs() {
+      return this.gt() && this.b < this.gp();
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      if (this.gt() && this.dW().A.a(200) == 1) {
+         List<? extends cht> $$0 = this.dW().a((Class<? extends cht>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.b = 1;
          }
-      } else {
-         this.j(300);
       }
    }
 
-   @Override
-   public void az() {
-      int $$0 = this.ct();
-      super.az();
-      this.r($$0);
+   public boolean gt() {
+      return this.b > 1;
    }
 
-   @Override
-   public boolean cJ() {
-      return false;
+   public boolean gu() {
+      return this.g(this.a) <= 121.0;
    }
 
-   @Override
-   public boolean y() {
-      return false;
+   public void gv() {
+      if (this.gq()) {
+         this.L().a(this.a, 1.0);
+      }
    }
 
-   public static boolean b(bvq<? extends chv> $$0, dhi $$1, bvp $$2, jh $$3, bam $$4) {
-      int $$5 = $$1.O();
-      int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(aya.a) && $$1.a_($$3.d()).a(dkn.J);
+   public void a(Stream<? extends chv> $$0) {
+      $$0.limit((long)(this.gp() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
+   @Nullable
+   @Override
+   public bwz a(dhz $$0, bth $$1, bvq $$2, @Nullable bwz $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3 == null) {
+         $$3 = new chv.a(this);
+      } else {
+         this.a(((chv.a)$$3).a);
+      }
+
+      return $$3;
+   }
+
+   public static class a implements bwz {
+      public final chv a;
+
+      public a(chv $$0) {
+         this.a = $$0;
+      }
    }
 }

@@ -5,12 +5,12 @@ public class ahf implements aac<acr> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final jq<bum> g;
+   private final jq<bun> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public ahf(int $$0, buo $$1, boolean $$2) {
+   public ahf(int $$0, bup $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.c();
       this.h = $$1.e();
@@ -37,7 +37,7 @@ public class ahf implements aac<acr> {
 
    private ahf(xg $$0) {
       this.f = $$0.l();
-      this.g = bum.b.decode($$0);
+      this.g = bun.b.decode($$0);
       this.h = $$0.l();
       this.i = $$0.l();
       this.j = $$0.readByte();
@@ -45,7 +45,7 @@ public class ahf implements aac<acr> {
 
    private void a(xg $$0) {
       $$0.c(this.f);
-      bum.b.encode($$0, this.g);
+      bun.b.encode($$0, this.g);
       $$0.c(this.h);
       $$0.c(this.i);
       $$0.l(this.j);
@@ -64,7 +64,7 @@ public class ahf implements aac<acr> {
       return this.f;
    }
 
-   public jq<bum> e() {
+   public jq<bun> e() {
       return this.g;
    }
 

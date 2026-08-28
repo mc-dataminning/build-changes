@@ -1,141 +1,125 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dka extends dkl implements drp {
-   protected static final fcr a = dkl.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final fcr b = dkl.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final dyl c = dyk.D;
-   private final boolean d;
+public abstract class dka extends dkm {
+   protected static final fcs a = dkm.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
+   protected static final fcs b = dkm.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
+   protected static final fbt c = new fbt(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
+   protected final dyk d;
 
-   public static boolean a(dhh $$0, jh $$1) {
-      return h($$0.a_($$1));
-   }
-
-   public static boolean h(dxu $$0) {
-      return $$0.a(axu.P) && $$0.b() instanceof dka;
-   }
-
-   protected dka(boolean $$0, dxt.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected dka(dxu.d $$0, dyk $$1) {
+      super($$0.a($$1.g()));
+      this.d = $$1;
    }
 
    @Override
    protected abstract MapCodec<? extends dka> a();
 
-   public boolean b() {
-      return this.d;
+   @Override
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return this.h($$0) > 0 ? a : b;
+   }
+
+   protected int b() {
+      return 20;
    }
 
    @Override
-   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      dyx $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
-      return $$4 != null && $$4.b() ? b : a;
+   public boolean a(dxv $$0) {
+      return true;
    }
 
    @Override
-   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
-      return c($$1, $$2.e());
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      return $$4 == jm.a && !$$0.a($$1, $$3) ? dko.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void b(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
+   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
+      jh $$3 = $$2.e();
+      return c($$1, $$3) || a($$1, $$3, jm.b);
+   }
+
+   @Override
+   protected void a(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      int $$4 = this.h($$0);
+      if ($$4 > 0) {
+         this.a(null, $$1, $$2, $$0, $$4);
       }
    }
 
-   protected dxu a(dxu $$0, dhh $$1, jh $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, null, $$3);
-      }
-
-      return $$0;
-   }
-
    @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, dkl $$3, @Nullable eve $$4, boolean $$5) {
-      if (!$$1.C && $$1.a_($$2).a(this)) {
-         dyx $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
+   protected void a(dxv $$0, dhi $$1, jh $$2, bvk $$3) {
+      if (!$$1.C) {
+         int $$4 = this.h($$0);
+         if ($$4 == 0) {
+            this.a($$3, $$1, $$2, $$0, $$4);
          }
       }
    }
 
-   private static boolean a(jh $$0, dhh $$1, dyx $$2) {
-      if (!c($$1, $$0.e())) {
-         return true;
-      } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.i());
-            case d:
-               return !c($$1, $$0.h());
-            case e:
-               return !c($$1, $$0.f());
-            case f:
-               return !c($$1, $$0.g());
-            default:
-               return false;
-         }
+   private void a(@Nullable bvk $$0, dhi $$1, jh $$2, dxv $$3, int $$4) {
+      int $$5 = this.b($$1, $$2);
+      boolean $$6 = $$4 > 0;
+      boolean $$7 = $$5 > 0;
+      if ($$4 != $$5) {
+         dxv $$8 = this.a($$3, $$5);
+         $$1.a($$2, $$8, 2);
+         this.a($$1, $$2);
+         $$1.b($$2, $$3, $$8);
       }
-   }
 
-   protected void a(dxu $$0, dhh $$1, jh $$2, dkl $$3) {
-   }
+      if (!$$7 && $$6) {
+         $$1.a(null, $$2, this.d.l(), axg.e);
+         $$1.a($$0, ecr.e, $$2);
+      } else if ($$7 && !$$6) {
+         $$1.a(null, $$2, this.d.m(), axg.e);
+         $$1.a($$0, ecr.a, $$2);
+      }
 
-   protected dxu a(dhh $$0, jh $$1, dxu $$2, boolean $$3) {
-      if ($$0.C) {
-         return $$2;
-      } else {
-         dyx $$4 = $$2.c(this.c());
-         return new dqo($$0, $$1, $$2).a($$0.C($$1), $$3, $$4).c();
+      if ($$7) {
+         $$1.a(new jh($$2), this, this.b());
       }
    }
 
    @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
-      if (!$$4) {
+   protected void a(dxv $$0, dhi $$1, jh $$2, dxv $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if (this.h($$0) > 0) {
+            this.a($$1, $$2);
+         }
+
          super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.d(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.e(), this);
-         }
       }
    }
 
-   @Override
-   public dxu a(dbf $$0) {
-      etw $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == etx.c;
-      dxu $$3 = super.m();
-      jm $$4 = $$0.g();
-      boolean $$5 = $$4 == jm.f || $$4 == jm.e;
-      return $$3.b(this.c(), $$5 ? dyx.b : dyx.a).b(c, Boolean.valueOf($$2));
-   }
-
-   public abstract dyw<dyx> c();
-
-   @Override
-   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected void a(dhi $$0, jh $$1) {
+      $$0.a($$1, this);
+      $$0.a($$1.e(), this);
    }
 
    @Override
-   protected etw b_(dxu $$0) {
-      return $$0.c(c) ? etx.c.a(false) : super.b_($$0);
+   protected int a(dxv $$0, dgn $$1, jh $$2, jm $$3) {
+      return this.h($$0);
    }
+
+   @Override
+   protected int b(dxv $$0, dgn $$1, jh $$2, jm $$3) {
+      return $$3 == jm.b ? this.h($$0) : 0;
+   }
+
+   @Override
+   protected boolean f_(dxv $$0) {
+      return true;
+   }
+
+   protected static int a(dhi $$0, fbt $$1, Class<? extends bvk> $$2) {
+      return $$0.a($$2, $$1, bvp.f.and($$0x -> !$$0x.s_())).size();
+   }
+
+   protected abstract int b(dhi var1, jh var2);
+
+   protected abstract int h(dxv var1);
+
+   protected abstract dxv a(dxv var1, int var2);
 }

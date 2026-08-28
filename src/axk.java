@@ -15,40 +15,40 @@ public class axk extends axi {
    private static final Logger e = LogUtils.getLogger();
    private final axk.a f;
    @VisibleForTesting
-   protected final Set<aly<dcd<?>>> c = Sets.newIdentityHashSet();
+   protected final Set<aly<dce<?>>> c = Sets.newIdentityHashSet();
    @VisibleForTesting
-   protected final Set<aly<dcd<?>>> d = Sets.newIdentityHashSet();
+   protected final Set<aly<dce<?>>> d = Sets.newIdentityHashSet();
 
    public axk(axk.a $$0) {
       this.f = $$0;
    }
 
-   public void a(aly<dcd<?>> $$0) {
+   public void a(aly<dce<?>> $$0) {
       this.c.add($$0);
    }
 
-   public boolean b(aly<dcd<?>> $$0) {
+   public boolean b(aly<dce<?>> $$0) {
       return this.c.contains($$0);
    }
 
-   public void c(aly<dcd<?>> $$0) {
+   public void c(aly<dce<?>> $$0) {
       this.c.remove($$0);
       this.d.remove($$0);
    }
 
-   public void d(aly<dcd<?>> $$0) {
+   public void d(aly<dce<?>> $$0) {
       this.d.remove($$0);
    }
 
-   private void e(aly<dcd<?>> $$0) {
+   private void e(aly<dce<?>> $$0) {
       this.d.add($$0);
    }
 
-   public int a(Collection<dci<?>> $$0, asi $$1) {
+   public int a(Collection<dcj<?>> $$0, asi $$1) {
       List<afe.a> $$2 = new ArrayList<>();
 
-      for (dci<?> $$3 : $$0) {
-         aly<dcd<?>> $$4 = $$3.a();
+      for (dcj<?> $$3 : $$0) {
+         aly<dce<?>> $$4 = $$3.a();
          if (!this.c.contains($$4) && !$$3.b().aq_()) {
             this.a($$4);
             this.e($$4);
@@ -64,11 +64,11 @@ public class axk extends axi {
       return $$2.size();
    }
 
-   public int b(Collection<dci<?>> $$0, asi $$1) {
-      List<ddk> $$2 = Lists.newArrayList();
+   public int b(Collection<dcj<?>> $$0, asi $$1) {
+      List<ddl> $$2 = Lists.newArrayList();
 
-      for (dci<?> $$3 : $$0) {
-         aly<dcd<?>> $$4 = $$3.a();
+      for (dcj<?> $$3 : $$0) {
+         aly<dce<?>> $$4 = $$3.a();
          if (this.c.contains($$4)) {
             this.c($$4);
             this.f.displaysForRecipe($$4, $$1x -> $$2.add($$1x.a()));
@@ -87,14 +87,14 @@ public class axk extends axi {
       this.a().b($$0);
       vd $$1 = new vd();
 
-      for (aly<dcd<?>> $$2 : this.c) {
+      for (aly<dce<?>> $$2 : this.c) {
          $$1.add(vs.a($$2.a().toString()));
       }
 
       $$0.a("recipes", $$1);
       vd $$3 = new vd();
 
-      for (aly<dcd<?>> $$4 : this.d) {
+      for (aly<dce<?>> $$4 : this.d) {
          $$3.add(vs.a($$4.a().toString()));
       }
 
@@ -102,7 +102,7 @@ public class axk extends axi {
       return $$0;
    }
 
-   public void a(ux $$0, Predicate<aly<dcd<?>>> $$1) {
+   public void a(ux $$0, Predicate<aly<dce<?>>> $$1) {
       this.a(axj.a($$0));
       vd $$2 = $$0.c("recipes", 8);
       this.a($$2, this::a, $$1);
@@ -110,12 +110,12 @@ public class axk extends axi {
       this.a($$3, this::e, $$1);
    }
 
-   private void a(vd $$0, Consumer<aly<dcd<?>>> $$1, Predicate<aly<dcd<?>>> $$2) {
+   private void a(vd $$0, Consumer<aly<dce<?>>> $$1, Predicate<aly<dce<?>>> $$2) {
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          String $$4 = $$0.j($$3);
 
          try {
-            aly<dcd<?>> $$5 = aly.a(mb.bk, alz.a($$4));
+            aly<dce<?>> $$5 = aly.a(mb.bk, alz.a($$4));
             if (!$$2.test($$5)) {
                e.error("Tried to load unrecognized recipe: {} removed now.", $$5);
             } else {
@@ -131,7 +131,7 @@ public class axk extends axi {
       $$0.f.b(new afg(this.a()));
       List<afe.a> $$1 = new ArrayList<>(this.c.size());
 
-      for (aly<dcd<?>> $$2 : this.c) {
+      for (aly<dce<?>> $$2 : this.c) {
          this.f.displaysForRecipe($$2, $$2x -> $$1.add(new afe.a($$2x, false, this.d.contains($$2))));
       }
 
@@ -148,6 +148,6 @@ public class axk extends axi {
 
    @FunctionalInterface
    public interface a {
-      void displaysForRecipe(aly<dcd<?>> var1, Consumer<ddj> var2);
+      void displaysForRecipe(aly<dce<?>> var1, Consumer<ddk> var2);
    }
 }

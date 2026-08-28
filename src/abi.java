@@ -1,5 +1,5 @@
-public record abi(ecu c, int d) implements abf {
-   public static final zt<xg, abi> a = zt.a(ecu.d, abi::b, zr.h, abi::c, abi::new);
+public record abi(ecv c, int d) implements abf {
+   public static final zt<xg, abi> a = zt.a(ecv.d, abi::b, zr.h, abi::c, abi::new);
    public static final abf.b<abi> b = abf.a("debug/game_event_listeners");
 
    @Override
@@ -7,7 +7,7 @@ public record abi(ecu c, int d) implements abf {
       return b;
    }
 
-   public ecu b() {
+   public ecv b() {
       return this.c;
    }
 

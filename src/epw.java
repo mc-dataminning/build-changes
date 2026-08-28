@@ -1,15 +1,38 @@
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class epw {
-   public static MapCodec<? extends epv> a(kd<MapCodec<? extends epv>> $$0) {
-      kd.a($$0, "random", epy.a);
-      kd.a($$0, "random_group", epz.a);
-      return kd.a($$0, "direct", epu.a);
+public interface epw {
+   Codec<epw> b = ma.ah.q().dispatch(epw::b, Function.identity());
+
+   void a(bam var1, BiConsumer<aly<epu>, aly<epu>> var2);
+
+   Stream<aly<epu>> a();
+
+   static epv a(String $$0, String $$1) {
+      return a(rr.a($$0), rr.a($$1));
    }
 
-   public static void a(rk<ept> $$0, jq<ept> $$1, List<epv> $$2) {
-      $$2.stream().flatMap(epv::a).map($$0x -> $$0x.a().a()).forEach($$2x -> rr.a($$0, $$2x, new ept($$1, List.of(Pair.of(epr.b($$2x), 1)), ept.a.b)));
+   static epv a(aly<epu> $$0, aly<epu> $$1) {
+      return new epv($$0, $$1);
    }
+
+   static epz a(String $$0, brr<String> $$1) {
+      brr.a<aly<epu>> $$2 = brr.a();
+      $$1.e().forEach($$1x -> $$2.a(rr.a((String)$$1x.b()), $$1x.a().a()));
+      return a(rr.a($$0), $$2.a());
+   }
+
+   static epz a(aly<epu> $$0, brr<aly<epu>> $$1) {
+      return new epz($$0, $$1);
+   }
+
+   static eqa a(brr<List<epw>> $$0) {
+      return new eqa($$0);
+   }
+
+   MapCodec<? extends epw> b();
 }

@@ -1,30 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class duc extends dob {
-   public static final MapCodec<duc> c = b(duc::new);
-   protected static final fcr g = dkl.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class duc extends dkm {
+   public static final MapCodec<duc> a = b(duc::new);
 
    @Override
    public MapCodec<duc> a() {
-      return c;
+      return a;
    }
 
-   public duc(dxt.d $$0) {
-      super($$0, jm.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(bam $$0) {
-      return dpt.a($$0);
+   public duc(dxu.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dkl b() {
-      return dkn.oV;
-   }
+   protected void a(dxv $$0, dhi $$1, jh $$2, bvk $$3) {
+      fby $$4 = new fby(0.25, 0.05F, 0.25);
+      if ($$3 instanceof bwg $$5 && $$5.b(bur.K)) {
+         $$4 = new fby(0.5, 0.25, 0.5);
+      }
 
-   @Override
-   protected boolean h(dxu $$0) {
-      return dpt.a($$0);
+      $$3.a($$0, $$4);
    }
 }

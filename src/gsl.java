@@ -1,106 +1,34 @@
-import com.google.common.annotations.VisibleForTesting;
+public class gsl extends gsw<cij, gyo, gcb> {
+   private static final alz a = alz.b("textures/entity/iron_golem/iron_golem.png");
 
-public class gsl extends gro<cma, gyp> {
-   private static final float a = 0.15F;
-   private static final float b = 0.0F;
-   private static final float h = 0.0F;
-   private static final float i = 0.09375F;
-   private final gsn j;
-   private final bam k = bam.a();
-
-   public gsl(grp.a $$0) {
-      super($$0);
-      this.j = $$0.b();
-      this.f = 0.15F;
-      this.g = 0.75F;
+   public gsl(grq.a $$0) {
+      super($$0, new gcb($$0.a(gen.bl)), 0.7F);
+      this.a(new gvv(this));
+      this.a(new gvw(this, $$0.d()));
    }
 
-   public gyp a() {
-      return new gyp();
+   public alz a(gyo $$0) {
+      return a;
    }
 
-   public void a(cma $$0, gyp $$1, float $$2) {
+   public gyo b() {
+      return new gyo();
+   }
+
+   public void a(cij $$0, gyo $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.p = (float)$$0.m() + $$2;
-      $$1.a = $$0.b;
-      cxo $$3 = $$0.l();
-      $$1.c = $$3.v();
-      $$1.b = this.j.a($$3, $$0.dW(), null, $$0.ar());
+      $$1.a = (float)$$0.t() > 0.0F ? (float)$$0.t() - $$2 : 0.0F;
+      $$1.b = $$0.x();
+      $$1.c = $$0.p();
    }
 
-   public void a(gyp $$0, fgr $$1, glk $$2, int $$3) {
-      hdm $$4 = $$0.b;
-      if ($$4 != null) {
-         $$1.a();
-         cxo $$5 = $$0.c;
-         this.k.b((long)a($$5));
-         boolean $$6 = $$4.b();
-         float $$7 = 0.25F;
-         float $$8 = bae.a($$0.p / 10.0F + $$0.a) * 0.1F + 0.1F;
-         float $$9 = $$4.f().a(cxm.h).d.y();
-         $$1.a(0.0F, $$8 + 0.25F * $$9, 0.0F);
-         float $$10 = cma.f($$0.p, $$0.a);
-         $$1.a(a.d.rotation($$10));
-         a(this.j, $$1, $$2, $$3, $$5, $$4, $$6, this.k);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public static int a(cxo $$0) {
-      return $$0.f() ? 187 : cxk.a($$0.h()) + $$0.o();
-   }
-
-   @VisibleForTesting
-   static int a(int $$0) {
-      if ($$0 <= 1) {
-         return 1;
-      } else if ($$0 <= 16) {
-         return 2;
-      } else if ($$0 <= 32) {
-         return 3;
-      } else {
-         return $$0 <= 48 ? 4 : 5;
-      }
-   }
-
-   public static void a(gsn $$0, fgr $$1, glk $$2, int $$3, cxo $$4, bam $$5, dhh $$6) {
-      hdm $$7 = $$0.a($$4, $$6, null, 0);
-      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
-   }
-
-   public static void a(gsn $$0, fgr $$1, glk $$2, int $$3, cxo $$4, hdm $$5, boolean $$6, bam $$7) {
-      int $$8 = a($$4.L());
-      float $$9 = $$5.f().h.d.x();
-      float $$10 = $$5.f().h.d.y();
-      float $$11 = $$5.f().h.d.z();
-      if (!$$6) {
-         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
-         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
-         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
-         $$1.a($$12, $$13, $$14);
-      }
-
-      for (int $$15 = 0; $$15 < $$8; $$15++) {
-         $$1.a();
-         if ($$15 > 0) {
-            if ($$6) {
-               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               $$1.a($$16, $$17, $$18);
-            } else {
-               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               $$1.a($$19, $$20, 0.0F);
-            }
-         }
-
-         $$0.a($$4, cxm.h, false, $$1, $$2, $$3, hbb.d, $$5);
-         $$1.b();
-         if (!$$6) {
-            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
-         }
+   protected void a(gyo $$0, fgs $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (!((double)$$0.Y < 0.01)) {
+         float $$4 = 13.0F;
+         float $$5 = $$0.X + 6.0F;
+         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$6));
       }
    }
 }

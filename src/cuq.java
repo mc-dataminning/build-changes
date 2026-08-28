@@ -1,16 +1,73 @@
-public abstract class cuq extends ctb {
-   public cuq(cuk<?> $$0, int $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public class cuq extends btq {
+   @Nullable
+   private dvu b;
+
+   public cuq() {
+      super(27);
    }
 
-   public abstract cuq.a a(boolean var1, boolean var2, dci<?> var3, ash var4, cpv var5);
+   public void a(dvu $$0) {
+      this.b = $$0;
+   }
 
-   public abstract void a(cqb var1);
+   public boolean b(dvu $$0) {
+      return this.b == $$0;
+   }
 
-   public abstract cur an_();
+   @Override
+   public void a(vd $$0, js.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, cxp.j);
+      }
 
-   public static enum a {
-      a,
-      b;
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         ux $$4 = $$0.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, cxp.a($$1, (vu)$$4).orElse(cxp.j));
+         }
+      }
+   }
+
+   @Override
+   public vd a(js.a $$0) {
+      vd $$1 = new vd();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cxp $$3 = this.a($$2);
+         if (!$$3.f()) {
+            ux $$4 = new ux();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(cpx $$0) {
+      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void c_(cpx $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      super.c_($$0);
+   }
+
+   @Override
+   public void c(cpx $$0) {
+      if (this.b != null) {
+         this.b.b($$0);
+      }
+
+      super.c($$0);
+      this.b = null;
    }
 }

@@ -1,78 +1,41 @@
-public class cfp extends cfr {
-   public cfp(bwh $$0, dhh $$1) {
+public class cfp extends cfs {
+   public cfp(bwi $$0, dhi $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eum a(int $$0) {
-      this.o = new euh();
+   protected eun a(int $$0) {
+      this.o = new eug(false);
       this.o.a(true);
-      return new eum(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a(fbx $$0, fbx $$1) {
-      return a(this.a, $$0, $$1, true);
+      return new eun(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.q() && this.a.bn() || !this.a.bZ();
+      return true;
    }
 
    @Override
-   protected fbx b() {
-      return this.a.du();
+   protected fby b() {
+      return new fby(this.a.dB(), this.a.e(0.5), this.a.dH());
    }
 
    @Override
-   public euk a(bvj $$0, int $$1) {
-      return this.a($$0.dw(), $$1);
+   protected double a(fby $$0) {
+      return $$0.e;
    }
 
    @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.j();
-      }
-
-      if (!this.m()) {
-         if (this.a()) {
-            this.l();
-         } else if (this.c != null && !this.c.c()) {
-            fbx $$0 = this.c.a(this.a);
-            if (this.a.dA() == bae.a($$0.d) && this.a.dC() == bae.a($$0.e) && this.a.dG() == bae.a($$0.f)) {
-               this.c.a();
-            }
-         }
-
-         ahj.a(this.b, this.a, this.c, this.l);
-         if (!this.m()) {
-            fbx $$1 = this.c.a(this.a);
-            this.a.I().a($$1.d, $$1.e, $$1.f, this.d);
-         }
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean d() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
+   protected boolean a(fby $$0, fby $$1) {
+      return this.a.bn() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override
    public boolean a(jh $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+      return !this.b.a_($$0.e()).l();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

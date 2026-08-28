@@ -1,23 +1,14 @@
-public class gwi extends gwe<gzq, gdj> {
-   private final gdj a;
+public class gwi<S extends gzq, M extends gbm<S>> extends gwf<S, M> {
+   private final gdh<S> a;
+   private final alz b;
 
-   public gwi(gtm<gzq, gdj> $$0, gej $$1) {
+   public gwi(gtn<S, M> $$0, gek $$1, gem $$2, alz $$3) {
       super($$0);
-      this.a = new gdj($$1.a(gem.cM));
+      this.b = $$3;
+      this.a = new gdh<>($$1.a($$2));
    }
 
-   public void a(fgr $$0, glk $$1, int $$2, gzq $$3, float $$4, float $$5) {
-      boolean $$6 = $$3.aj && $$3.u;
-      if (!$$3.u || $$6) {
-         fgv $$7;
-         if ($$6) {
-            $$7 = $$1.getBuffer(glu.s(gtt.a));
-         } else {
-            $$7 = $$1.getBuffer(glu.j(gtt.a));
-         }
-
-         this.a.a($$3);
-         this.a.a($$0, $$7, $$2, gsq.a($$3, 0.0F));
-      }
+   public void a(fgs $$0, gll $$1, int $$2, S $$3, float $$4, float $$5) {
+      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
    }
 }

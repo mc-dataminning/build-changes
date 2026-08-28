@@ -1,27 +1,20 @@
-public abstract class bsb<R extends Runnable> extends brx<R> {
-   private int b;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-   public bsb(String $$0) {
-      super($$0);
+public class bsb extends brx<bsd.c> {
+   public bsb(int $$0, Executor $$1, String $$2) {
+      super(new bsd.a($$0), $$1, $$2);
+      brd.a.a(this);
    }
 
-   @Override
-   public boolean ax() {
-      return this.bB() || super.ax();
+   public bsd.c b(Runnable $$0) {
+      return new bsd.c(0, $$0);
    }
 
-   protected boolean bB() {
-      return this.b != 0;
-   }
-
-   @Override
-   public void d(R $$0) {
-      this.b++;
-
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
+   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
+      CompletableFuture<Source> $$2 = new CompletableFuture<>();
+      this.a_(new bsd.c($$0, () -> $$1.accept($$2)));
+      return $$2;
    }
 }

@@ -29,7 +29,7 @@ public class na implements mh {
                         $$3x.add(
                            "components",
                            (JsonElement)kq.b
-                              .encodeStart($$4, ((cxk)$$2x.a()).g())
+                              .encodeStart($$4, ((cxl)$$2x.a()).g())
                               .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
                         );
                         $$3.add($$2x.g(), $$3x);

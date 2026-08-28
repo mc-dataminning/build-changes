@@ -1,116 +1,76 @@
-public enum dxh implements bba {
-   a("inactive", dxh.a.a) {
-      @Override
-      protected void a(ash $$0, jh $$1, dxe $$2, dxg $$3, boolean $$4) {
-         $$3.a(cxo.j);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+public class dxh {
+   static final String a = "shared_data";
+   static Codec<dxh> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cxp.a("display_item").forGetter($$0x -> $$0x.d),
+               kk.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", dxf.b.d()).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dxh::new)
+   );
+   private cxp d = cxp.j;
+   private Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private double f = dxf.b.d();
+   boolean c;
+
+   dxh(cxp $$0, Set<UUID> $$1, double $$2) {
+      this.d = $$0;
+      this.e.addAll($$1);
+      this.f = $$2;
+   }
+
+   dxh() {
+   }
+
+   public cxp a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return !this.d.f();
+   }
+
+   public void a(cxp $$0) {
+      if (!cxp.a(this.d, $$0)) {
+         this.d = $$0.v();
+         this.f();
       }
-   },
-   b("active", dxh.a.b) {
-      @Override
-      protected void a(ash $$0, jh $$1, dxe $$2, dxg $$3, boolean $$4) {
-         if (!$$3.b()) {
-            dxc.b.a($$0, this, $$2, $$3, $$1);
-         }
+   }
 
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
+   boolean c() {
+      return !this.e.isEmpty();
+   }
+
+   Set<UUID> d() {
+      return this.e;
+   }
+
+   double e() {
+      return this.f;
+   }
+
+   void a(ash $$0, jh $$1, dxg $$2, dxf $$3, double $$4) {
+      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
+      if (!this.e.equals($$5)) {
+         this.e = $$5;
+         this.f();
       }
-   },
-   c("unlocking", dxh.a.b) {
-      @Override
-      protected void a(ash $$0, jh $$1, dxe $$2, dxg $$3, boolean $$4) {
-         $$0.a(null, $$1, axf.Bi, axg.e);
-      }
-   },
-   d("ejecting", dxh.a.b) {
-      @Override
-      protected void a(ash $$0, jh $$1, dxe $$2, dxg $$3, boolean $$4) {
-         $$0.a(null, $$1, axf.Bk, axg.e);
-      }
-
-      @Override
-      protected void a(ash $$0, jh $$1, dxe $$2, dxg $$3) {
-         $$0.a(null, $$1, axf.Bc, axg.e);
-      }
-   };
-
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dxh.a j;
-
-   dxh(final String $$0, final dxh.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   private void f() {
+      this.c = true;
    }
 
-   public int a() {
-      return this.j.c;
-   }
-
-   public dxh a(ash $$0, jh $$1, dxe $$2, dxf $$3, dxg $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.ac() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.ac() + (long)$$7);
-               yield d;
-            }
-         }
-      };
-   }
-
-   private static dxh a(ash $$0, jh $$1, dxe $$2, dxf $$3, dxg $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.ac() + 20L);
-      return $$4.c() ? b : a;
-   }
-
-   public void a(ash $$0, jh $$1, dxh $$2, dxe $$3, dxg $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
-   }
-
-   protected void a(ash $$0, jh $$1, dxe $$2, dxg $$3, boolean $$4) {
-   }
-
-   protected void a(ash $$0, jh $$1, dxe $$2, dxg $$3) {
-   }
-
-   private void a(ash $$0, jh $$1, cxo $$2, float $$3) {
-      la.a($$0, $$2, 2, jm.b, fbx.c($$1).a(jm.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, axf.Be, axg.e, 1.0F, 0.8F + 0.4F * $$3);
-   }
-
-   static enum a {
-      a(6),
-      b(12);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   void a(dxh $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
    }
 }

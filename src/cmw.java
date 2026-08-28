@@ -1,114 +1,93 @@
-import java.util.function.Predicate;
-
-public abstract class cmw extends bwn implements cmo {
-   protected cmw(bvq<? extends cmw> $$0, dhh $$1) {
+public class cmw extends cng {
+   public cmw(bvr<? extends cmw> $$0, dhi $$1) {
       super($$0, $$1);
-      this.bO = 5;
+   }
+
+   public static bxn.a m() {
+      return cmx.gt().a(bxo.v, 0.2F);
+   }
+
+   public static boolean b(bvr<cmw> $$0, dhj $$1, bvq $$2, jh $$3, bam $$4) {
+      return $$1.al() != btg.a;
    }
 
    @Override
-   public axg dn() {
-      return axg.f;
+   public void a(int $$0, boolean $$1) {
+      super.a($$0, $$1);
+      this.g(bxo.a).a((double)($$0 * 3));
    }
 
    @Override
-   public void d_() {
-      this.eX();
-      this.gs();
-      super.d_();
+   public float by() {
+      return 1.0F;
    }
 
-   protected void gs() {
-      float $$0 = this.by();
-      if ($$0 > 0.5F) {
-         this.bf += 2;
+   @Override
+   protected lq p() {
+      return ls.F;
+   }
+
+   @Override
+   public boolean bY() {
+      return false;
+   }
+
+   @Override
+   protected int t() {
+      return super.t() * 4;
+   }
+
+   @Override
+   protected void x() {
+      this.d *= 0.9F;
+   }
+
+   @Override
+   public void s() {
+      fby $$0 = this.dz();
+      float $$1 = (float)this.go() * 0.1F;
+      this.n($$0.d, (double)(this.fj() + $$1), $$0.f);
+      this.ar = true;
+   }
+
+   @Override
+   protected void c(ayk<etw> $$0) {
+      if ($$0 == aya.b) {
+         fby $$1 = this.dz();
+         this.n($$1.d, (double)(0.22F + (float)this.go() * 0.05F), $$1.f);
+         this.ar = true;
+      } else {
+         super.c($$0);
       }
    }
 
    @Override
-   protected boolean X() {
-      return true;
+   protected boolean gk() {
+      return this.dk();
    }
 
    @Override
-   protected axe aV() {
-      return axf.nq;
+   protected float gl() {
+      return super.gl() + 2.0F;
    }
 
    @Override
-   protected axe aW() {
-      return axf.np;
-   }
-
-   @Override
-   protected axe e(btz $$0) {
-      return axf.nn;
+   protected axe e(bua $$0) {
+      return this.gp() ? axf.oL : axf.oK;
    }
 
    @Override
    protected axe o_() {
-      return axf.nm;
+      return this.gp() ? axf.oz : axf.oJ;
    }
 
    @Override
-   public bwf.a eM() {
-      return new bwf.a(axf.no, axf.nl);
+   protected axe gm() {
+      return this.gp() ? axf.oO : axf.oN;
    }
 
    @Override
-   public float a(jh $$0, dhk $$1) {
-      return -$$1.w($$0);
-   }
-
-   public static boolean a(dhy $$0, jh $$1, bam $$2) {
-      if ($$0.a(dhq.a, $$1) > $$2.a(32)) {
-         return false;
-      } else {
-         ebp $$3 = $$0.G_();
-         int $$4 = $$3.e();
-         if ($$4 < 15 && $$0.a(dhq.b, $$1) > $$4) {
-            return false;
-         } else {
-            int $$5 = $$0.a().ae() ? $$0.c($$1, 10) : $$0.A($$1);
-            return $$5 <= $$3.d().a($$2);
-         }
-      }
-   }
-
-   public static boolean b(bvq<? extends cmw> $$0, dhy $$1, bvp $$2, jh $$3, bam $$4) {
-      return $$1.al() != btf.a && (bvp.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static boolean c(bvq<? extends cmw> $$0, dhi $$1, bvp $$2, jh $$3, bam $$4) {
-      return $$1.al() != btf.a && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static bxm.a gt() {
-      return bwh.C().a(bxn.c);
-   }
-
-   @Override
-   public boolean en() {
-      return true;
-   }
-
-   @Override
-   protected boolean eo() {
-      return true;
-   }
-
-   public boolean a(ash $$0, cpw $$1) {
-      return true;
-   }
-
-   @Override
-   public cxo d(cxo $$0) {
-      if ($$0.h() instanceof cyk) {
-         Predicate<cxo> $$1 = ((cyk)$$0.h()).d();
-         cxo $$2 = cyk.a(this, $$1);
-         return $$2.f() ? new cxo(cxs.oS) : $$2;
-      } else {
-         return cxo.j;
-      }
+   protected axe gn() {
+      return axf.oM;
    }
 }

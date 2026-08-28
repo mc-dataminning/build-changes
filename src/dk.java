@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record dk(Map<jq<bum>, dk.b> b) {
-   public static final Codec<dk> a = Codec.unboundedMap(bum.a, dk.b.a).xmap(dk::new, dk::a);
+public record dk(Map<jq<bun>, dk.b> b) {
+   public static final Codec<dk> a = Codec.unboundedMap(bun.a, dk.b.a).xmap(dk::new, dk::a);
 
-   public boolean a(bvj $$0) {
-      if ($$0 instanceof bwf $$1 && this.a($$1.eC())) {
+   public boolean a(bvk $$0) {
+      if ($$0 instanceof bwg $$1 && this.a($$1.eC())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bwf $$0) {
+   public boolean a(bwg $$0) {
       return this.a($$0.eC());
    }
 
-   public boolean a(Map<jq<bum>, buo> $$0) {
-      for (Entry<jq<bum>, dk.b> $$1 : this.b.entrySet()) {
-         buo $$2 = $$0.get($$1.getKey());
+   public boolean a(Map<jq<bun>, bup> $$0) {
+      for (Entry<jq<bun>, dk.b> $$1 : this.b.entrySet()) {
+         bup $$2 = $$0.get($$1.getKey());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record dk(Map<jq<bum>, dk.b> b) {
       return true;
    }
 
-   public Map<jq<bum>, dk.b> a() {
+   public Map<jq<bun>, dk.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<jq<bum>, dk.b> a = ImmutableMap.builder();
+      private final Builder<jq<bun>, dk.b> a = ImmutableMap.builder();
 
       public static dk.a a() {
          return new dk.a();
       }
 
-      public dk.a a(jq<bum> $$0) {
+      public dk.a a(jq<bun> $$0) {
          this.a.put($$0, new dk.b());
          return this;
       }
 
-      public dk.a a(jq<bum> $$0, dk.b $$1) {
+      public dk.a a(jq<bun> $$0, dk.b $$1) {
          this.a.put($$0, $$1);
          return this;
       }
@@ -74,7 +74,7 @@ public record dk(Map<jq<bum>, dk.b> b) {
          this(dj.d.c, dj.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable buo $$0) {
+      public boolean a(@Nullable bup $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

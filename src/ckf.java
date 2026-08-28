@@ -1,49 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class ckf extends cjz {
-   public ckf(bvq<? extends ckf> $$0, dhh $$1) {
-      super($$0, $$1);
+public enum ckf {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   private static final IntFunction<ckf> f = ayv.a(ckf::a, values(), ayv.a.b);
+   private final int g;
+
+   private ckf(final int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected axe u() {
-      return axf.pP;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   protected axe gP() {
-      return axf.pQ;
-   }
-
-   @Override
-   protected axe o_() {
-      return axf.pS;
-   }
-
-   @Nullable
-   @Override
-   protected axe gq() {
-      return axf.pT;
-   }
-
-   @Override
-   protected axe e(btz $$0) {
-      return axf.pU;
-   }
-
-   @Override
-   protected void gW() {
-      this.a(axf.pV, 0.4F, 1.0F);
-   }
-
-   @Override
-   protected void x() {
-      this.a(axf.pR, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bva a(ash $$0, bva $$1) {
-      return bvq.aG.a($$0, bvp.e);
+   public static ckf a(int $$0) {
+      return f.apply($$0);
    }
 }

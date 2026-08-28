@@ -1,47 +1,42 @@
-public class cdz extends cdd {
-   private final cka a;
-   private int b;
+import java.util.EnumSet;
 
-   public cdz(cka $$0) {
+public class cdz extends cde {
+   private final bwi a;
+   private double b;
+   private double c;
+   private int d;
+
+   public cdz(bwi $$0) {
       this.a = $$0;
-      this.a($$0);
-   }
-
-   @Override
-   public void d() {
-      this.a.gU();
-      this.h();
-   }
-
-   private void h() {
-      axe $$0 = this.a.gT();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return false;
+      this.a(EnumSet.of(cde.a.a, cde.a.b));
    }
 
    @Override
    public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.dZ().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fi() && this.a.dZ().a(10) == 0;
-      } else {
-         return false;
-      }
+      return this.a.dZ().i() < 0.02F;
    }
 
-   private void a(cka $$0) {
-      this.b = -$$0.gY();
+   @Override
+   public boolean c() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public void d() {
+      double $$0 = (Math.PI * 2) * this.a.dZ().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dZ().a(20);
    }
 
    @Override
    public boolean V_() {
       return true;
+   }
+
+   @Override
+   public void a() {
+      this.d--;
+      this.a.H().a(this.a.dB() + this.b, this.a.dF(), this.a.dH() + this.c);
    }
 }

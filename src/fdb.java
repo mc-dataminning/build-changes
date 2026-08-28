@@ -1,53 +1,34 @@
-import com.mojang.authlib.GameProfile;
 import javax.annotation.Nullable;
 
 public interface fdb {
-   String cA = "*";
-   fdb cB = new fdb() {
-      @Override
-      public String cI() {
-         return "*";
-      }
-   };
+   int a();
 
-   String cI();
+   void a(int var1);
+
+   default int b(int $$0) {
+      int $$1 = this.a() + $$0;
+      this.a($$1);
+      return $$1;
+   }
+
+   default int b() {
+      return this.b(1);
+   }
+
+   default void c() {
+      this.a(0);
+   }
+
+   boolean d();
+
+   void e();
+
+   void f();
 
    @Nullable
-   default xv p_() {
-      return null;
-   }
+   xv g();
 
-   default xv hc() {
-      xv $$0 = this.p_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new yb(yb.a.a, xv.b(this.cI())))) : xv.b(this.cI());
-   }
+   void a(@Nullable xv var1);
 
-   static fdb c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cB;
-      } else {
-         final xv $$1 = xv.b($$0);
-         return new fdb() {
-            @Override
-            public String cI() {
-               return $$0;
-            }
-
-            @Override
-            public xv hc() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static fdb a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new fdb() {
-         @Override
-         public String cI() {
-            return $$1;
-         }
-      };
-   }
+   void a(@Nullable zl var1);
 }

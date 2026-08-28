@@ -1,73 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsu extends dmv implements dpe {
-   public static final MapCodec<dsu> c = b(dsu::new);
-   public static final dyr<dyp> d = dmv.b;
-   protected static final float e = 6.0F;
-   protected static final fcr f = dkl.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class dsu extends dkw implements dkp {
+   public static final MapCodec<dsu> a = b(dsu::new);
+   protected static final float b = 6.0F;
+   protected static final fcs c = dkm.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dsu> a() {
-      return c;
+      return a;
    }
 
-   public dsu(dxt.d $$0) {
+   protected dsu(dxu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      return f;
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return c;
    }
 
    @Override
-   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
-      return $$0.c($$1, $$2, jm.b) && !$$0.a(dkn.le);
+   public boolean b(dhl $$0, jh $$1, dxv $$2) {
+      return o($$2).m().a($$0, $$1) && $$0.u($$1.d());
    }
 
    @Override
-   public cxo a(dhk $$0, jh $$1, dxu $$2) {
-      return new cxo(dkn.bD);
-   }
-
-   @Nullable
-   @Override
-   public dxu a(dbf $$0) {
-      dxu $$1 = super.a($$0);
-      if ($$1 != null) {
-         etw $$2 = $$0.q().b_($$0.a().d());
-         if ($$2.a(aya.a) && $$2.e() == 8) {
-            return $$1;
-         }
-      }
-
-      return null;
+   public boolean a(dhi $$0, bam $$1, jh $$2, dxv $$3) {
+      return true;
    }
 
    @Override
-   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
-      if ($$0.c(d) == dyp.a) {
-         dxu $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(d) == dyp.b;
-      } else {
-         etw $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(aya.a) && $$4.e() == 8;
-      }
+   public void a(ash $$0, bam $$1, jh $$2, dxv $$3) {
+      dmw.a($$0, o($$3).m(), $$2, 2);
    }
 
-   @Override
-   protected etw b_(dxu $$0) {
-      return etx.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable cpw $$0, dgm $$1, jh $$2, dxu $$3, etv $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dhi $$0, jh $$1, dxu $$2, etw $$3) {
-      return false;
+   private static dmw o(dxv $$0) {
+      return (dmw)($$0.a(dko.bB) ? dko.iZ : dko.iY);
    }
 }

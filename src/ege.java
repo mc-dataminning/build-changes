@@ -1,58 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class ege extends egv<ejg> {
-   public ege(Codec<ejg> $$0) {
+public class ege extends egw<eis> {
+   public ege(Codec<eis> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egx<ejg> $$0) {
+   public boolean a(egy<eis> $$0) {
       jh $$1 = $$0.e();
-      dif $$2 = $$0.b();
+      dig $$2 = $$0.b();
       bam $$3 = $$0.d();
-      if ($$1.v() > $$2.O() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dkn.J) && !$$2.a_($$1.e()).a(dkn.J)) {
+      eis $$4 = $$0.f();
+      if ($$1.v() < $$2.L_() + 5) {
          return false;
       } else {
-         boolean $$4 = false;
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-         for (jm $$5 : jm.values()) {
-            if ($$5 != jm.a && $$2.a_($$1.a($$5)).a(dkn.iT)) {
-               $$4 = true;
-               break;
+         for (jh $$7 : jh.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
 
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, dkn.nr.m(), 2);
+         return true;
+      }
+   }
 
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
+   private boolean a(dhj $$0, jh $$1, bam $$2) {
+      jh $$3 = $$1.e();
+      dxv $$4 = $$0.a_($$3);
+      return $$4.a(dko.kZ) ? $$2.h() : $$4.c($$0, $$3, jm.b);
+   }
 
-               if ($$8 >= 1) {
-                  jh $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dxu $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(dkn.J) || $$10.a(dkn.iT) || $$10.a(dkn.eb)) {
-                     for (jm $$11 : jm.values()) {
-                        dxu $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dkn.nr)) {
-                           $$2.a($$9, dkn.nr.m(), 2);
-                           break;
-                        }
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
+   private void a(dhj $$0, jh $$1, bam $$2, eis $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
    }
 }

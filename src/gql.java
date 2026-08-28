@@ -1,8 +1,9 @@
-public class gql extends gqj<cjf, gwz, gag> {
-   private static final alz a = alz.b("textures/entity/armadillo.png");
+public class gql extends gsw<cjd, gwz, gaf> {
+   private static final alz a = alz.b("textures/entity/allay/allay.png");
 
-   public gql(grp.a $$0) {
-      super($$0, new gag($$0.a(gem.d)), new gag($$0.a(gem.e)), 0.4F);
+   public gql(grq.a $$0) {
+      super($$0, new gaf($$0.a(gen.c)), 0.4F);
+      this.a(new gvx<>(this, $$0.b()));
    }
 
    public alz a(gwz $$0) {
@@ -13,11 +14,15 @@ public class gql extends gqj<cjf, gwz, gag> {
       return new gwz();
    }
 
-   public void a(cjf $$0, gwz $$1, float $$2) {
+   public void a(cjd $$0, gwz $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.x();
-      $$1.d.a($$0.cf);
-      $$1.b.a($$0.cd);
-      $$1.c.a($$0.ce);
+      $$1.b = $$0.go();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
+
+   protected int a(cjd $$0, jh $$1) {
+      return 15;
    }
 }

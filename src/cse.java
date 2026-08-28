@@ -1,51 +1,116 @@
-public class cse extends crw {
-   public cse(bvq<? extends cse> $$0, dhh $$1) {
-      super($$0, $$1);
+public abstract class cse {
+   protected final crw a;
+
+   protected cse(crw $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected cxk u() {
-      return cxs.og;
+   public void a() {
    }
 
-   @Override
-   public cxo dJ() {
-      return new cxo(cxs.og);
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.c($$0, $$1, $$2);
+      this.b($$3 % 360.0F);
+      this.a($$4 % 360.0F);
    }
 
-   @Override
-   public int b() {
-      return 27;
+   public double b() {
+      return this.l();
    }
 
-   @Override
-   public dxu w() {
-      return dkn.cD.m().b(dlp.c, jm.c);
+   public double c() {
+      return this.m();
    }
 
-   @Override
-   public int z() {
-      return 8;
+   public double d() {
+      return this.n();
    }
 
-   @Override
-   public ctb a(int $$0, cpv $$1) {
-      return ctk.a($$0, $$1, this);
+   public float e() {
+      return this.o();
    }
 
-   @Override
-   public void c(cpw $$0) {
-      this.dW().a(ecq.j, this.du(), ecq.a.a($$0));
+   public float f() {
+      return this.p();
    }
 
-   @Override
-   public bti a(cpw $$0, bth $$1) {
-      bti $$2 = this.b_($$0);
-      if ($$2.a() && $$0.dW() instanceof ash $$3) {
-         this.a(ecq.k, $$0);
-         col.a($$3, $$0, true);
-      }
-
-      return $$2;
+   public void a(double $$0, double $$1, double $$2) {
+      this.b($$0, $$1, $$2);
    }
+
+   public abstract void g();
+
+   public dhi h() {
+      return this.a.dW();
+   }
+
+   public abstract void a(ash var1);
+
+   public abstract double a(jh var1, dyy var2, double var3);
+
+   public abstract boolean i();
+
+   public fby j() {
+      return this.a.dz();
+   }
+
+   public void a(fby $$0) {
+      this.a.h($$0);
+   }
+
+   public void b(double $$0, double $$1, double $$2) {
+      this.a.n($$0, $$1, $$2);
+   }
+
+   public fby k() {
+      return this.a.du();
+   }
+
+   public double l() {
+      return this.a.dB();
+   }
+
+   public double m() {
+      return this.a.dD();
+   }
+
+   public double n() {
+      return this.a.dH();
+   }
+
+   public void b(fby $$0) {
+      this.a.b($$0);
+   }
+
+   public void c(double $$0, double $$1, double $$2) {
+      this.a.a_($$0, $$1, $$2);
+   }
+
+   public float o() {
+      return this.a.dO();
+   }
+
+   public void a(float $$0) {
+      this.a.w($$0);
+   }
+
+   public float p() {
+      return this.a.dM();
+   }
+
+   public void b(float $$0) {
+      this.a.v($$0);
+   }
+
+   public jm q() {
+      return this.a.cO();
+   }
+
+   public fby c(fby $$0) {
+      return $$0;
+   }
+
+   public abstract double b(ash var1);
+
+   public abstract double r();
 }

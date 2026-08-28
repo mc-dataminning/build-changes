@@ -1,42 +1,48 @@
-import com.google.common.collect.Sets;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
-public record fax(fat b, fat c) implements fat {
+public record fax(alz b, fo.g c) implements fau {
    public static final MapCodec<fax> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fau.a.fieldOf("min").forGetter(fax::c), fau.a.fieldOf("max").forGetter(fax::d)).apply($$0, fax::new)
+      $$0 -> $$0.group(alz.a.fieldOf("storage").forGetter(fax::c), fo.g.a.fieldOf("path").forGetter(fax::d)).apply($$0, fax::new)
    );
 
    @Override
-   public fas b() {
-      return fau.c;
+   public fat b() {
+      return fav.f;
    }
 
-   public static fax a(float $$0, float $$1) {
-      return new fax(faq.a($$0), faq.a($$1));
+   private Optional<vn> c(ewp $$0) {
+      ux $$1 = $$0.d().p().aK().a(this.b);
+
+      try {
+         List<vu> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof vn $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   public int a(ewo $$0) {
-      return bae.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public float b(ewp $$0) {
+      return this.c($$0).map(vn::k).orElse(0.0F);
    }
 
    @Override
-   public float b(ewo $$0) {
-      return bae.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public int a(ewp $$0) {
+      return this.c($$0).map(vn::g).orElse(0);
    }
 
-   @Override
-   public Set<bbn<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public fat c() {
+   public alz c() {
       return this.b;
    }
 
-   public fat d() {
+   public fo.g d() {
       return this.c;
    }
 }

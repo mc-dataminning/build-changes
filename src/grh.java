@@ -1,27 +1,36 @@
-public class grh extends gqi<cmk, haj, gbg> {
-   private static final alz a = alz.b("textures/entity/zombie/drowned.png");
+public class grh extends grp<cqh, gxv> {
+   private static final alz a = alz.b("textures/entity/enderdragon/dragon_fireball.png");
+   private static final glv b = glv.g(a);
 
-   public grh(grp.a $$0) {
-      super($$0, new gbg($$0.a(gem.at)), new gbg($$0.a(gem.au)), new gbg($$0.a(gem.ay)), new gbg($$0.a(gem.az)), new gbg($$0.a(gem.av)), new gbg($$0.a(gem.aw)));
-      this.a(new gvl(this, $$0.f()));
+   public grh(grq.a $$0) {
+      super($$0);
    }
 
-   public haj a() {
-      return new haj();
+   protected int a(cqh $$0, jh $$1) {
+      return 15;
    }
 
    @Override
-   public alz a(haj $$0) {
-      return a;
+   public void a(gxv $$0, fgs $$1, gll $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(this.e.b());
+      fgs.a $$4 = $$1.c();
+      fgw $$5 = $$2.getBuffer(b);
+      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
+      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
+      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
+      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(haj $$0, fgr $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.B;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.V;
-         float $$6 = bae.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.r / 2.0F / $$3, 0.0F);
-      }
+   private static void a(fgw $$0, fgs.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hbc.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   @Override
+   public gxv d() {
+      return new gxv();
    }
 }

@@ -1,89 +1,93 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class dna extends djx implements dqg {
+public class dna extends djy {
    public static final MapCodec<dna> a = b(dna::new);
+   protected static final fcs b = dkm.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<jh> c = jh.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(jh::j).toList();
 
    @Override
    public MapCodec<dna> a() {
       return a;
    }
 
-   protected dna(dxt.d $$0) {
+   protected dna(dxu.d $$0) {
       super($$0);
    }
 
-   @Override
-   public duw a(jh $$0, dxu $$1) {
-      return new dwp($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends duw> dux<T> a(dhh $$0, dxu $$1, duy<T> $$2) {
-      return a($$2, duy.w, $$0.C ? dwp::a : dwp::b);
+   public static boolean a(dhi $$0, jh $$1, jh $$2) {
+      return $$0.a_($$1.a((kl)$$2)).a(axu.cy) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(axu.cz);
    }
 
    @Override
-   public void a(dxu $$0, dhh $$1, jh $$2, bam $$3) {
-      duw $$4 = $$1.c_($$2);
-      if ($$4 instanceof dwp) {
-         int $$5 = ((dwp)$$4).f();
+   protected boolean g_(dxv $$0) {
+      return true;
+   }
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
-            }
+   @Override
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return b;
+   }
 
-            $$1.a(ls.ad, $$7, $$8, $$9, $$10, $$11, $$12);
+   @Override
+   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
+      super.a($$0, $$1, $$2, $$3);
+
+      for (jh $$4 : c) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               ls.s,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
          }
       }
    }
 
    @Override
-   public cxo a(dhk $$0, jh $$1, dxu $$2) {
-      return cxo.j;
+   protected dqv a_(dxv $$0) {
+      return dqv.c;
    }
 
    @Override
-   protected boolean a(dxu $$0, etv $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, bvj $$3) {
-      if ($$3.o(false) && !$$1.C && $$1.c_($$2) instanceof dwp $$5 && !$$5.c()) {
-         $$3.a(this, $$2);
-         dwp.c($$1, $$2, $$0, $$5);
-      }
+   public dux a(jh $$0, dxv $$1) {
+      return new dvt($$0, $$1);
    }
 
    @Nullable
    @Override
-   public euw a(ash $$0, bvj $$1, jh $$2) {
-      if ($$0.c_($$2) instanceof dwp $$4) {
-         fbx $$6 = $$4.a($$0, $$2);
-         if ($$6 == null) {
-            return null;
-         } else {
-            return $$1 instanceof cqz
-               ? new euw($$0, $$6, fbx.c, 0.0F, 0.0F, Set.of(), euw.c)
-               : new euw($$0, $$6, fbx.c, 0.0F, 0.0F, bwt.a(bwt.l, bwt.k), euw.c);
-         }
+   public <T extends dux> duy<T> a(dhi $$0, dxv $$1, duz<T> $$2) {
+      return $$0.C ? a($$2, duz.n, dvt::a) : null;
+   }
+
+   @Override
+   protected btj a(dxv $$0, dhi $$1, jh $$2, cpx $$3, fbu $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+      }
+
+      return btj.a;
+   }
+
+   @Nullable
+   @Override
+   protected btl b(dxv $$0, dhi $$1, jh $$2) {
+      dux $$3 = $$1.c_($$2);
+      if ($$3 instanceof dvt) {
+         xv $$4 = ((btm)$$3).p_();
+         return new btr(($$2x, $$3x, $$4x) -> new cty($$2x, $$3x, ctp.a($$1, $$2)), $$4);
       } else {
          return null;
       }
+   }
+
+   @Override
+   protected boolean a(dxv $$0, eum $$1) {
+      return false;
    }
 }

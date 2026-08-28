@@ -1,56 +1,32 @@
-import com.mojang.jtracy.TracyClient;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.nio.file.Path;
+import java.util.List;
 
-public final class bpr {
-   private static final ThreadLocal<bpw> a = ThreadLocal.withInitial(bpw::new);
-   private static final ThreadLocal<bps> b = new ThreadLocal<>();
-   private static final AtomicInteger c = new AtomicInteger();
+public interface bpr {
+   char d = '\u001e';
 
-   private bpr() {
+   List<bpv> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
    }
 
-   public static bpr.a a(bps $$0) {
-      b($$0);
-      return bpr::b;
+   default int f() {
+      return this.d() - this.b();
    }
 
-   private static void b(bps $$0) {
-      if (b.get() != null) {
-         throw new IllegalStateException("Profiler is already active");
-      } else {
-         bps $$1 = c($$0);
-         b.set($$1);
-         c.incrementAndGet();
-         $$1.a();
-      }
-   }
+   String e();
 
-   private static void b() {
-      bps $$0 = b.get();
-      if ($$0 == null) {
-         throw new IllegalStateException("Profiler was not active");
-      } else {
-         b.remove();
-         c.decrementAndGet();
-         $$0.b();
-      }
-   }
-
-   private static bps c(bps $$0) {
-      return bps.a(c(), $$0);
-   }
-
-   public static bps a() {
-      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bpr::c);
-   }
-
-   private static bps c() {
-      return (bps)(TracyClient.isAvailable() ? a.get() : bpo.a);
-   }
-
-   public interface a extends AutoCloseable {
-      @Override
-      void close();
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

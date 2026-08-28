@@ -1,45 +1,50 @@
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class hdq implements hdm {
-   protected final hdm a;
+public class hdq implements hdn {
+   private final gnd a;
+   private final hbl b;
+   private final boolean c;
 
-   public hdq(hdm $$0) {
+   public hdq(gnd $$0, hbl $$1, boolean $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public List<gmr> a(@Nullable dxu $$0, @Nullable jm $$1, bam $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public List<gms> a(@Nullable dxv $$0, @Nullable jm $$1, bam $$2) {
+      return Collections.emptyList();
    }
 
    @Override
    public boolean a() {
-      return this.a.a();
+      return false;
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
+      return true;
    }
 
    @Override
    public boolean c() {
-      return this.a.c();
+      return this.c;
    }
 
    @Override
    public boolean d() {
-      return this.a.d();
+      return true;
    }
 
    @Override
-   public hbk e() {
-      return this.a.e();
+   public hbl e() {
+      return this.b;
    }
 
    @Override
-   public gnc f() {
-      return this.a.f();
+   public gnd f() {
+      return this.a;
    }
 }

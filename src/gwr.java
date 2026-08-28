@@ -1,27 +1,22 @@
-public class gwr extends gvn<hag, geb> {
-   private static final alz a = alz.b("textures/entity/wither/wither_armor.png");
-   private final geb b;
-
-   public gwr(gtm<hag, geb> $$0, gej $$1) {
-      super($$0);
-      this.b = new geb($$1.a(gem.dv));
+public class gwr extends gvi<hag, geb> {
+   public gwr(gtn<hag, geb> $$0, gso $$1) {
+      super($$0, $$1);
    }
 
-   protected boolean a(hag $$0) {
-      return $$0.d;
-   }
+   public void a(fgs $$0, gll $$1, int $$2, hag $$3, float $$4, float $$5) {
+      $$0.a();
+      if ($$3.ar.a(cxt.sZ)) {
+         this.d().e().a($$0);
+         this.d().b().a($$0);
+         this.d().c().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
+      }
 
-   @Override
-   protected float a(float $$0) {
-      return bae.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected alz a() {
-      return a;
-   }
-
-   protected geb b() {
-      return this.b;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$0.b();
    }
 }

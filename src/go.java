@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 public class go implements ArgumentType<go.b> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final js<dkl> b;
+   private final js<dkm> b;
 
    public go(es $$0) {
       this.b = $$0.d(mb.f);
@@ -29,12 +29,12 @@ public class go implements ArgumentType<go.b> {
       return a(this.b, $$0);
    }
 
-   public static go.b a(js<dkl> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static go.b a(js<dkm> $$0, StringReader $$1) throws CommandSyntaxException {
       return (go.b)gq.b($$0, $$1, true).map($$0x -> new go.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new go.c($$0x.a(), $$0x.b(), $$0x.c()));
    }
 
-   public static Predicate<dxy> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return (Predicate<dxy>)$$0.getArgument($$1, go.b.class);
+   public static Predicate<dxz> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<dxz>)$$0.getArgument($$1, go.b.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -46,23 +46,23 @@ public class go implements ArgumentType<go.b> {
    }
 
    static class a implements go.b {
-      private final dxu a;
-      private final Set<dyw<?>> b;
+      private final dxv a;
+      private final Set<dyx<?>> b;
       @Nullable
       private final ux c;
 
-      public a(dxu $$0, Set<dyw<?>> $$1, @Nullable ux $$2) {
+      public a(dxv $$0, Set<dyx<?>> $$1, @Nullable ux $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public boolean a(dxy $$0) {
-         dxu $$1 = $$0.a();
+      public boolean a(dxz $$0) {
+         dxv $$1 = $$0.a();
          if (!$$1.a(this.a.b())) {
             return false;
          } else {
-            for (dyw<?> $$2 : this.b) {
+            for (dyx<?> $$2 : this.b) {
                if ($$1.c($$2) != this.a.c($$2)) {
                   return false;
                }
@@ -71,7 +71,7 @@ public class go implements ArgumentType<go.b> {
             if (this.c == null) {
                return true;
             } else {
-               duw $$3 = $$0.b();
+               dux $$3 = $$0.b();
                return $$3 != null && vm.a(this.c, $$3.b($$0.c().K_()), true);
             }
          }
@@ -83,29 +83,29 @@ public class go implements ArgumentType<go.b> {
       }
    }
 
-   public interface b extends Predicate<dxy> {
+   public interface b extends Predicate<dxz> {
       boolean a();
    }
 
    static class c implements go.b {
-      private final ju<dkl> a;
+      private final ju<dkm> a;
       @Nullable
       private final ux b;
       private final Map<String, String> c;
 
-      c(ju<dkl> $$0, Map<String, String> $$1, @Nullable ux $$2) {
+      c(ju<dkm> $$0, Map<String, String> $$1, @Nullable ux $$2) {
          this.a = $$0;
          this.c = $$1;
          this.b = $$2;
       }
 
-      public boolean a(dxy $$0) {
-         dxu $$1 = $$0.a();
+      public boolean a(dxz $$0) {
+         dxv $$1 = $$0.a();
          if (!$$1.a(this.a)) {
             return false;
          } else {
             for (Entry<String, String> $$2 : this.c.entrySet()) {
-               dyw<?> $$3 = $$1.b().l().a($$2.getKey());
+               dyx<?> $$3 = $$1.b().l().a($$2.getKey());
                if ($$3 == null) {
                   return false;
                }
@@ -123,7 +123,7 @@ public class go implements ArgumentType<go.b> {
             if (this.b == null) {
                return true;
             } else {
-               duw $$5 = $$0.b();
+               dux $$5 = $$0.b();
                return $$5 != null && vm.a(this.b, $$5.b($$0.c().K_()), true);
             }
          }

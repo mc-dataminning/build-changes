@@ -5,16 +5,16 @@ public class lh extends le {
    private static final Logger c = LogUtils.getLogger();
 
    @Override
-   protected cxo a(ky $$0, cxo $$1) {
+   protected cxp a(ky $$0, cxp $$1) {
       this.a(false);
-      cxk $$2 = $$1.h();
-      if ($$2 instanceof cvu) {
-         jm $$3 = $$0.d().c(dms.b);
+      cxl $$2 = $$1.h();
+      if ($$2 instanceof cvv) {
+         jm $$3 = $$0.d().c(dmt.b);
          jh $$4 = $$0.c().a($$3);
          jm $$5 = $$0.b().u($$4.e()) ? $$3 : jm.b;
 
          try {
-            this.a(((cvu)$$2).a((dbf)(new dbg($$0.b(), $$4, $$3, $$1, $$5))).a());
+            this.a(((cvv)$$2).a((dbg)(new dbh($$0.b(), $$4, $$3, $$1, $$5))).a());
          } catch (Exception var8) {
             c.error("Error trying to place shulker box at {}", $$4, var8);
          }

@@ -1,46 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eix implements eiz {
+public record eix(elj b, eex c, bso d, int e) implements eja {
    public static final Codec<eix> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bsn.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bsn.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bsn.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bsl.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bsl.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
+               elj.a.fieldOf("state_provider").forGetter(eix::a),
+               eex.b.fieldOf("target").forGetter(eix::b),
+               bso.b(0, 8).fieldOf("radius").forGetter(eix::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eix::d)
             )
             .apply($$0, eix::new)
    );
-   public final int b;
-   public final bsn c;
-   public final bsn d;
-   public final int e;
-   public final int f;
-   public final bsn g;
-   public final bsl h;
-   public final bsl i;
-   public final float j;
-   public final int k;
-   public final int l;
 
-   public eix(int $$0, bsn $$1, bsn $$2, int $$3, int $$4, bsn $$5, bsl $$6, bsl $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   public elj a() {
+      return this.b;
+   }
+
+   public eex b() {
+      return this.c;
+   }
+
+   public bso c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

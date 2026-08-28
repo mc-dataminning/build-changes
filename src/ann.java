@@ -16,7 +16,7 @@ public class ann {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, aly<dhh>> a = ImmutableBiMap.of("o", dhh.i, "n", dhh.j, "e", dhh.k);
+   public static BiMap<String, aly<dhi>> a = ImmutableBiMap.of("o", dhi.i, "n", dhi.j, "e", dhi.k);
    @Nullable
    private static anf g;
    @Nullable

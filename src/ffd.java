@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fdz
-@fdy
-interface ffd {
+public class ffd extends ffc {
+   public ffd(int $$0, int $$1, boolean $$2) {
+      super($$2);
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a($$0, $$1);
+   }
 }

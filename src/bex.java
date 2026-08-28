@@ -22,7 +22,7 @@ public class bex extends bff {
             case 2 -> "MinecartFurnace";
             default -> "MinecartRideable";
          };
-         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(biw.B).types().get($$3);
+         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bix.B).types().get($$3);
          return Pair.of($$3, ae.a($$1, $$4, $$0x -> $$0x.remove("Type")));
       }
    }

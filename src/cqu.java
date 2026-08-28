@@ -1,33 +1,29 @@
-public class cqu extends cqw {
-   public cqu(bvq<? extends cqu> $$0, dhh $$1) {
+public class cqu extends cqk {
+   public cqu(bvr<? extends cqu> $$0, dhi $$1) {
       super($$0, $$1);
    }
 
-   public cqu(dhh $$0, bwf $$1, cxo $$2) {
-      super(bvq.bk, $$1, $$0, $$2);
+   public cqu(dhi $$0, bwg $$1, fby $$2) {
+      super(bvr.bi, $$1, $$2, $$0);
    }
 
-   public cqu(dhh $$0, double $$1, double $$2, double $$3, cxo $$4) {
-      super(bvq.bk, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   protected cxk m() {
-      return cxs.ra;
-   }
-
-   private lq s() {
-      cxo $$0 = this.l();
-      return (lq)(!$$0.f() && !$$0.a(this.m()) ? new lo(ls.S, $$0) : ls.X);
+   public cqu(dhi $$0, double $$1, double $$2, double $$3, fby $$4) {
+      super(bvr.bi, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         lq $$1 = this.s();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dW().a($$1, this.dB(), this.dD(), this.dH(), 0.0, 0.0, 0.0);
+   protected void a(fbv $$0) {
+      super.a($$0);
+      if (this.dW() instanceof ash $$1) {
+         bvk var7 = $$0.a();
+         bvk $$4 = this.p();
+         int $$5 = var7.aG();
+         var7.d(5.0F);
+         bua $$6 = this.dX().a((cqk)this, $$4);
+         if (!var7.a($$1, $$6, 5.0F)) {
+            var7.h($$5);
+         } else {
+            deb.a($$1, var7, $$6);
          }
       }
    }
@@ -35,16 +31,21 @@ public class cqu extends cqw {
    @Override
    protected void a(fbu $$0) {
       super.a($$0);
-      bvj $$1 = $$0.a();
-      int $$2 = $$1 instanceof cmf ? 3 : 0;
-      $$1.a(this.dX().b(this, this.p()), (float)$$2);
+      if (this.dW() instanceof ash $$1) {
+         bvk $$3 = this.p();
+         if (!($$3 instanceof bwi) || $$1.N().b(dhe.c)) {
+            jh $$4 = $$0.b().a($$0.c());
+            if (this.dW().u($$4)) {
+               this.dW().b($$4, djz.a(this.dW(), $$4));
+            }
+         }
+      }
    }
 
    @Override
-   protected void a(fbv $$0) {
+   protected void a(fbw $$0) {
       super.a($$0);
       if (!this.dW().C) {
-         this.dW().a(this, (byte)3);
          this.at();
       }
    }

@@ -12,7 +12,7 @@ public class bdi extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("CarvingStepRemoveFix", this.getInputSchema().getType(biw.c), bdi::a);
+      return this.fixTypeEverywhereTyped("CarvingStepRemoveFix", this.getInputSchema().getType(bix.c), bdi::a);
    }
 
    private static Typed<?> a(Typed<?> $$0) {

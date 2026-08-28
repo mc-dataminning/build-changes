@@ -1,10 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ejr(ela b) implements eiz {
-   public static final Codec<ejr> a = RecordCodecBuilder.create($$0 -> $$0.group(ela.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, ejr::new));
+public record ejr(int b, int c, int d, int e, int f, bso g, float h) implements eja {
+   public static final Codec<ejr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(ejr::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(ejr::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(ejr::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(ejr::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(ejr::f),
+               bso.c.fieldOf("extra_rare_growths").forGetter(ejr::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(ejr::h)
+            )
+            .apply($$0, ejr::new)
+   );
 
-   public ela a() {
+   public int a() {
       return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ffw {
+   void a(boolean var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fdz
-@fdy
-interface ffw {
+   void a();
+
+   void b();
 }

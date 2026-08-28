@@ -5,9 +5,9 @@ public class agj implements aac<acr> {
    private final int b;
    private final int[] c;
 
-   public agj(bvj $$0) {
+   public agj(bvk $$0) {
       this.b = $$0.ar();
-      List<bvj> $$1 = $$0.cZ();
+      List<bvk> $$1 = $$0.cZ();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

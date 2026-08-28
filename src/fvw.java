@@ -1,21 +1,33 @@
-public class fvw extends fum<cuv> {
-   private static final alz G = alz.b("textures/gui/container/shulker_box.png");
+public class fvw extends fof {
+   private static final alz a = alz.b("widget/page_forward_highlighted");
+   private static final alz b = alz.b("widget/page_forward");
+   private static final alz c = alz.b("widget/page_backward_highlighted");
+   private static final alz d = alz.b("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-   public fvw(cuv $$0, cpv $$1, xv $$2) {
-      super($$0, $$1, $$2);
-      this.u++;
+   public fvw(int $$0, int $$1, boolean $$2, fof.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, xu.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   public void a(fnr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void b(fns $$0, int $$1, int $$2, float $$3) {
+      alz $$4;
+      if (this.u) {
+         $$4 = this.B() ? a : b;
+      } else {
+         $$4 = this.B() ? c : d;
+      }
+
+      $$0.a(glv::C, $$4, this.D(), this.E(), 23, 13);
    }
 
    @Override
-   protected void a(fnr $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(glu::C, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   public void a(hgn $$0) {
+      if (this.v) {
+         $$0.a(hfd.a(axf.cy, 1.0F));
+      }
    }
 }

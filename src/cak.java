@@ -1,43 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class cak {
-   public static <E extends bwh> bxz<E> a(cak.b<E> $$0) {
-      return a(($$0x, $$1) -> true, $$0);
-   }
+   private static final float a = 0.3F;
 
-   public static <E extends bwh> bxz<E> a(cak.a<E> $$0, cak.b<E> $$1) {
-      return cbl.a(
-         (Function<cbl.b<E>, ? extends App<cbl.c<E>, cbo<E>>>)($$2 -> $$2.group($$2.c(cfj.o), $$2.a(cfj.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test($$4, (E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bwf> $$7 = $$1.get($$4, (E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
+   public static bzk<bwg> a() {
+      return cbm.a(
+         (Function<cbm.b<bwg>, ? extends App<cbm.c<bwg>, cbp<bwg>>>)($$0 -> $$0.group($$0.a(cfk.m), $$0.a(cfk.n), $$0.b(cfk.e), $$0.b(cfk.h), $$0.c(cfk.q))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     jp $$9 = $$0.b($$3);
+                     cfm $$10 = $$0.b($$4);
+                     if ($$6.H_().a(100) == 0 && $$6.ah() == $$9.a() && $$9.b().a($$7.du(), 4.0) && $$10.d($$0xxx -> bvr.bD.equals($$0xxx.aq()))) {
+                        $$10.a($$1xx -> bvr.bD.equals($$1xx.aq()) && $$1xx.g((bvk)$$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new byk($$3xx, true));
+                           $$1.a(new cfn(new byk($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
                      } else {
-                        bwf $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
+                        return false;
                      }
-                  }
-               }))
+                  }))
       );
-   }
-
-   @FunctionalInterface
-   public interface a<E> {
-      boolean test(ash var1, E var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      Optional<? extends bwf> get(ash var1, E var2);
    }
 }

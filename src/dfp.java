@@ -1,60 +1,33 @@
-import java.util.EnumMap;
+import java.util.Map;
 
-public interface dfp {
-   dfo a = new dfo(5, ae.a(new EnumMap<>(dfq.class), $$0 -> {
-      $$0.put(dfq.d, 1);
-      $$0.put(dfq.c, 2);
-      $$0.put(dfq.b, 3);
-      $$0.put(dfq.a, 1);
-      $$0.put(dfq.e, 3);
-   }), 15, axf.av, 0.0F, 0.0F, ayd.bj, dfs.a);
-   dfo b = new dfo(15, ae.a(new EnumMap<>(dfq.class), $$0 -> {
-      $$0.put(dfq.d, 1);
-      $$0.put(dfq.c, 4);
-      $$0.put(dfq.b, 5);
-      $$0.put(dfq.a, 2);
-      $$0.put(dfq.e, 4);
-   }), 12, axf.ap, 0.0F, 0.0F, ayd.bk, dfs.b);
-   dfo c = new dfo(15, ae.a(new EnumMap<>(dfq.class), $$0 -> {
-      $$0.put(dfq.d, 2);
-      $$0.put(dfq.c, 5);
-      $$0.put(dfq.b, 6);
-      $$0.put(dfq.a, 2);
-      $$0.put(dfq.e, 5);
-   }), 9, axf.au, 0.0F, 0.0F, ayd.bl, dfs.c);
-   dfo d = new dfo(7, ae.a(new EnumMap<>(dfq.class), $$0 -> {
-      $$0.put(dfq.d, 1);
-      $$0.put(dfq.c, 3);
-      $$0.put(dfq.b, 5);
-      $$0.put(dfq.a, 2);
-      $$0.put(dfq.e, 7);
-   }), 25, axf.at, 0.0F, 0.0F, ayd.bm, dfs.d);
-   dfo e = new dfo(33, ae.a(new EnumMap<>(dfq.class), $$0 -> {
-      $$0.put(dfq.d, 3);
-      $$0.put(dfq.c, 6);
-      $$0.put(dfq.b, 8);
-      $$0.put(dfq.a, 3);
-      $$0.put(dfq.e, 11);
-   }), 10, axf.aq, 2.0F, 0.0F, ayd.bn, dfs.e);
-   dfo f = new dfo(25, ae.a(new EnumMap<>(dfq.class), $$0 -> {
-      $$0.put(dfq.d, 2);
-      $$0.put(dfq.c, 5);
-      $$0.put(dfq.b, 6);
-      $$0.put(dfq.a, 2);
-      $$0.put(dfq.e, 5);
-   }), 9, axf.ax, 0.0F, 0.0F, ayd.bp, dfs.f);
-   dfo g = new dfo(37, ae.a(new EnumMap<>(dfq.class), $$0 -> {
-      $$0.put(dfq.d, 3);
-      $$0.put(dfq.c, 6);
-      $$0.put(dfq.b, 8);
-      $$0.put(dfq.a, 3);
-      $$0.put(dfq.e, 11);
-   }), 15, axf.aw, 3.0F, 0.1F, ayd.bo, dfs.g);
-   dfo h = new dfo(4, ae.a(new EnumMap<>(dfq.class), $$0 -> {
-      $$0.put(dfq.d, 3);
-      $$0.put(dfq.c, 6);
-      $$0.put(dfq.b, 8);
-      $$0.put(dfq.a, 3);
-      $$0.put(dfq.e, 11);
-   }), 10, axf.ay, 0.0F, 0.0F, ayd.bq, dfs.h);
+public record dfp(int a, Map<dfr, Integer> b, int c, jq<axe> d, float e, float f, ayk<cxl> g, alz h) {
+   public cxl.a a(cxl.a $$0, dfr $$1) {
+      return $$0.b($$1.a(this.a)).a(this.a($$1)).c(this.c).a(ku.D, dfu.a($$1.a()).a(this.d).a(this.h).a()).a(this.g);
+   }
+
+   public cxl.a a(cxl.a $$0, ju<bvr<?>> $$1) {
+      return $$0.b(dfr.e.a(this.a)).a(this.a(dfr.e)).a(this.g).a(ku.D, dfu.a(bvs.g).a(this.d).a(this.h).a($$1).a());
+   }
+
+   public cxl.a a(cxl.a $$0, jq<axe> $$1, boolean $$2, ju<bvr<?>> $$3) {
+      if ($$2) {
+         $$0 = $$0.b(dfr.e.a(this.a)).a(this.g);
+      }
+
+      return $$0.a(this.a(dfr.e)).a(ku.D, dfu.a(bvs.g).a($$1).a(this.h).a($$3).c($$2).a());
+   }
+
+   private dag a(dfr $$0) {
+      int $$1 = this.b.getOrDefault($$0, 0);
+      dag.a $$2 = dag.a();
+      bvt $$3 = bvt.a($$0.a());
+      alz $$4 = alz.b("armor." + $$0.b());
+      $$2.a(bxo.a, new bxm($$4, (double)$$1, bxm.a.a), $$3);
+      $$2.a(bxo.b, new bxm($$4, (double)this.e, bxm.a.a), $$3);
+      if (this.f > 0.0F) {
+         $$2.a(bxo.p, new bxm($$4, (double)this.f, bxm.a.a), $$3);
+      }
+
+      return $$2.a();
+   }
 }

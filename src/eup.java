@@ -1,37 +1,40 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.HashCommon;
+import org.jetbrains.annotations.Nullable;
 
 public class eup {
-   private final dgq a;
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final euo[] d = new euo[4096];
+
+   public euo a(dgn $$0, jh $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      euo $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
+   }
+
    @Nullable
-   private final euo b;
-   private final jh c;
-   private final jh.a d = new jh.a();
+   private euo a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
+   }
 
-   public eup(dgq $$0, bwh $$1) {
-      this.a = $$0;
-      if ($$1.dW() instanceof ash $$2) {
-         this.b = $$2.H();
-      } else {
-         this.b = null;
+   private euo a(dgn $$0, jh $$1, int $$2, long $$3) {
+      euo $$4 = eut.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
+   }
+
+   public void a(jh $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
       }
-
-      this.c = $$1.dw();
    }
 
-   public eun a(int $$0, int $$1, int $$2) {
-      jh $$3 = this.d.d($$0, $$1, $$2);
-      return this.b == null ? eus.b(this.a, $$3) : this.b.a(this.a, $$3);
-   }
-
-   public dxu a(jh $$0) {
-      return this.a.a_($$0);
-   }
-
-   public dgq a() {
-      return this.a;
-   }
-
-   public jh b() {
-      return this.c;
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

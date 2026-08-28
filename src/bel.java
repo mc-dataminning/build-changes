@@ -3,9 +3,9 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bel extends bhr {
+public class bel extends bhs {
    public bel(Schema $$0) {
-      super($$0, false, "EntityBrushableBlockFieldsRenameFix", biw.s, "minecraft:brushable_block");
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bix.s, "minecraft:brushable_block");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

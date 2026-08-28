@@ -1,13 +1,12 @@
-public class fje extends fjd {
-   public static final int b = 5;
-   public final int c;
+public class fje extends Exception {
+   public final fhk a;
 
-   public fje(int $$0, int $$1) {
-      super(fhj.b.a($$1));
-      if ($$0 >= 0 && $$0 <= 120) {
-         this.c = $$0;
-      } else {
-         this.c = 5;
-      }
+   public fje(fhk $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String getMessage() {
+      return this.a.c();
    }
 }

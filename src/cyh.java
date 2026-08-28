@@ -1,19 +1,17 @@
-public class cyh extends czb {
-   public cyh(dkl $$0, dkl $$1, cxk.a $$2) {
-      super($$0, $$1, jm.a, $$2);
+public class cyh extends cvv {
+   public cyh(dkm $$0, cxl.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public xv a(cxo $$0) {
-      dan $$1 = $$0.a(ku.ag);
-      return (xv)($$1 != null && $$1.c().isPresent() ? xv.a(this.l + ".named", $$1.c().get()) : super.a($$0));
+   public btj a(dbi $$0) {
+      return btj.e;
    }
 
    @Override
-   public void l(cxo $$0) {
-      dan $$1 = $$0.a(ku.ag);
-      if ($$1 != null && !$$1.b()) {
-         $$1.a().thenAcceptAsync($$1x -> $$0.b(ku.ag, $$1x), dwl.a);
-      }
+   public btj a(dhi $$0, cpx $$1, bti $$2) {
+      fbu $$3 = a($$0, $$1, dgq.b.b);
+      fbu $$4 = $$3.a($$3.b().d());
+      return super.a(new dbi($$1, $$2, $$4));
    }
 }

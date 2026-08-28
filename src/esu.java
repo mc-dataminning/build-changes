@@ -1,14 +1,11 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface esu<P extends est> {
-   esu<esr> a = a("clear", esr.a);
-   esu<ess> b = a("passthrough", ess.b);
-   esu<esq> c = a("append_static", esq.a);
-   esu<esp> d = a("append_loot", esp.a);
+public interface esu {
+   Codec<esu> c = ma.n.q().dispatch(esu::a, esv::codec);
 
-   MapCodec<P> codec();
+   @Nullable
+   ux a(bam var1, @Nullable ux var2);
 
-   private static <P extends est> esu<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.n, $$0, () -> $$1);
-   }
+   esv<?> a();
 }

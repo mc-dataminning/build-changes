@@ -1,22 +1,33 @@
-import javax.annotation.Nullable;
-
 public class chc {
-   @Nullable
-   public static fbx a(bwn $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = chb.a($$0, $$1);
-      return che.a($$0, () -> {
-         jh $$9 = che.a($$0.dZ(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            jh $$10 = chd.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = che.a($$10, $$0.dZ().a($$6 - $$7 + 1) + $$7, $$0.dW().am(), $$1xx -> chb.c($$0, $$1xx));
-               return !chb.a($$0, $$10) && !chb.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+   public static boolean a(bwi $$0) {
+      return $$0.L() instanceof cfr;
+   }
+
+   public static boolean a(bwo $$0, int $$1) {
+      return $$0.ga() && $$0.fX().a($$0.du(), (double)($$0.fY() + (float)$$1) + 1.0);
+   }
+
+   public static boolean a(jh $$0, bwo $$1) {
+      return $$1.dW().e($$0.v());
+   }
+
+   public static boolean a(boolean $$0, bwo $$1, jh $$2) {
+      return $$0 && !$$1.a($$2);
+   }
+
+   public static boolean a(cfs $$0, jh $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(bwo $$0, jh $$1) {
+      return $$0.dW().b_($$1).a(aya.a);
+   }
+
+   public static boolean b(bwo $$0, jh $$1) {
+      return $$0.a(eut.b($$0, $$1)) != 0.0F;
+   }
+
+   public static boolean c(bwo $$0, jh $$1) {
+      return $$0.dW().a_($$1).e();
    }
 }

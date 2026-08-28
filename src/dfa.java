@@ -1,28 +1,24 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record dfa(czq d, kl e, Optional<jq<ecq>> f) implements dep {
-   public static final MapCodec<dfa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               czq.b.fieldOf("properties").forGetter(dfa::b),
-               kl.g.optionalFieldOf("offset", kl.h).forGetter(dfa::c),
-               ecq.aj.optionalFieldOf("trigger_game_event").forGetter(dfa::d)
-            )
-            .apply($$0, dfa::new)
-   );
-
-   public dfa(czq $$0) {
-      this($$0, kl.h, Optional.of(ecq.c));
-   }
+public record dfa(alz d) implements deq {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<dfa> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alz.a.fieldOf("function").forGetter(dfa::b)).apply($$0, dfa::new));
 
    @Override
-   public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
-      jh $$5 = jh.a((ka)$$4).a(this.e);
-      dxu $$6 = $$3.dW().a_($$5);
-      dxu $$7 = this.d.a($$6);
-      if (!$$6.equals($$7) && $$3.dW().a($$5, $$7, 3)) {
-         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+   public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4) {
+      MinecraftServer $$5 = $$0.p();
+      amo $$6 = $$5.aE();
+      Optional<ik<ew>> $$7 = $$6.a(this.d);
+      if ($$7.isPresent()) {
+         ew $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bU());
+         $$6.a($$7.get(), $$8);
+      } else {
+         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
       }
    }
 
@@ -31,15 +27,7 @@ public record dfa(czq d, kl e, Optional<jq<ecq>> f) implements dep {
       return a;
    }
 
-   public czq b() {
+   public alz b() {
       return this.d;
-   }
-
-   public kl c() {
-      return this.e;
-   }
-
-   public Optional<jq<ecq>> d() {
-      return this.f;
    }
 }

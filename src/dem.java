@@ -1,18 +1,17 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dem(def d, def e, jq<bub> f) implements dep {
-   public static final MapCodec<dem> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               def.b.fieldOf("min_damage").forGetter(dem::b), def.b.fieldOf("max_damage").forGetter(dem::c), bub.b.fieldOf("damage_type").forGetter(dem::d)
-            )
-            .apply($$0, dem::new)
-   );
+public record dem(deg d) implements deq {
+   public static final MapCodec<dem> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(deg.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, dem::new));
 
    @Override
-   public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
-      float $$5 = bae.b($$3.dZ(), this.d.a($$1), this.e.a($$1));
-      $$3.a($$0, new btz(this.f, $$2.c()), $$5);
+   public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4) {
+      cxp $$5 = $$2.a();
+      if ($$5.b(ku.d) && $$5.b(ku.e)) {
+         asi $$7 = $$2.c() instanceof asi $$6 ? $$6 : null;
+         int $$8 = (int)this.d.a($$1);
+         $$5.a($$8, $$0, $$7, $$2.d());
+      }
    }
 
    @Override
@@ -20,15 +19,7 @@ public record dem(def d, def e, jq<bub> f) implements dep {
       return a;
    }
 
-   public def b() {
+   public deg b() {
       return this.d;
-   }
-
-   public def c() {
-      return this.e;
-   }
-
-   public jq<bub> d() {
-      return this.f;
    }
 }

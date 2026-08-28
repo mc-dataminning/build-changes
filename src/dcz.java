@@ -1,33 +1,26 @@
-public record dcz(cxo a, cxo b, cxo c) implements dcj {
+import java.util.Optional;
+
+public interface dcz extends dce<dda> {
    @Override
-   public cxo a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+   default dcp<dcz> b() {
+      return dcp.g;
    }
 
    @Override
-   public int a() {
-      return 3;
+   dco<? extends dcz> a();
+
+   default boolean a(dda $$0, dhi $$1) {
+      return dca.a(this.c(), $$0.c()) && dca.a(this.f(), $$0.d()) && dca.a(this.k(), $$0.e());
    }
+
+   Optional<dca> c();
+
+   Optional<dca> f();
+
+   Optional<dca> k();
 
    @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public cxo c() {
-      return this.a;
-   }
-
-   public cxo d() {
-      return this.b;
-   }
-
-   public cxo e() {
-      return this.c;
+   default dch h() {
+      return dcg.l;
    }
 }

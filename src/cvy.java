@@ -1,86 +1,49 @@
 import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class cvy extends cyk {
-   public static final int a = 20;
-   public static final int b = 15;
-
-   public cvy(cxk.a $$0) {
+public class cvy extends cxl {
+   public cvy(cxl.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(cxo $$0, dhh $$1, bwf $$2, int $$3) {
-      if (!($$2 instanceof cpw $$4)) {
-         return false;
+   public btj a(dhi $$0, cpx $$1, bti $$2) {
+      List<bvd> $$3 = $$0.a(bvd.class, $$1.cR().g(2.0), $$0x -> $$0x != null && $$0x.bL() && $$0x.n() instanceof cku);
+      cxp $$4 = $$1.b($$2);
+      if (!$$3.isEmpty()) {
+         bvd $$5 = $$3.get(0);
+         $$5.a($$5.c() - 0.5F);
+         $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), axf.cD, axg.g, 1.0F, 1.0F);
+         $$0.a($$1, ecr.y, $$1.du());
+         if ($$1 instanceof asi $$6) {
+            ao.T.a($$6, $$4, $$5);
+         }
+
+         return btj.a.a(this.a($$4, $$1, new cxp(cxt.wd)));
       } else {
-         cxo $$5 = $$4.d($$0);
-         if ($$5.f()) {
-            return false;
+         fbu $$7 = a($$0, $$1, dgq.b.b);
+         if ($$7.d() == fbw.a.a) {
+            return btj.e;
          } else {
-            int $$6 = this.a($$0, $$2) - $$3;
-            float $$7 = a($$6);
-            if ((double)$$7 < 0.1) {
-               return false;
-            } else {
-               List<cxo> $$8 = a($$0, $$5, $$4);
-               if ($$1 instanceof ash $$9 && !$$8.isEmpty()) {
-                  this.a($$9, $$4, $$4.fA(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+            if ($$7.d() == fbw.a.b) {
+               jh $$8 = $$7.b();
+               if (!$$0.a($$1, $$8)) {
+                  return btj.e;
                }
 
-               $$1.a(null, $$4.dB(), $$4.dD(), $$4.dH(), axf.aG, axg.h, 1.0F, 1.0F / ($$1.H_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(axp.c.b(this));
-               return true;
+               if ($$0.b_($$8).a(aya.a)) {
+                  $$0.a($$1, $$1.dB(), $$1.dD(), $$1.dH(), axf.cC, axg.g, 1.0F, 1.0F);
+                  $$0.a($$1, ecr.y, $$8);
+                  return btj.a.a(this.a($$4, $$1, czo.a(cxt.sZ, czp.a)));
+               }
             }
+
+            return btj.e;
          }
       }
    }
 
-   @Override
-   protected void a(bwf $$0, cqp $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bwf $$6) {
-      $$1.a($$0, $$0.dO(), $$0.dM() + $$5, 0.0F, $$3, $$4);
-   }
-
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public int a(cxo $$0, bwf $$1) {
-      return 72000;
-   }
-
-   @Override
-   public cxq b(cxo $$0) {
-      return cxq.e;
-   }
-
-   @Override
-   public bti a(dhh $$0, cpw $$1, bth $$2) {
-      cxo $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.d($$3).f();
-      if (!$$1.fV() && !$$4) {
-         return bti.d;
-      } else {
-         $$1.c($$2);
-         return bti.c;
-      }
-   }
-
-   @Override
-   public Predicate<cxo> b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 15;
+   protected cxp a(cxp $$0, cpx $$1, cxp $$2) {
+      $$1.b(axp.c.b(this));
+      return cxs.a($$0, $$1, $$2);
    }
 }

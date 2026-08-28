@@ -1,14 +1,18 @@
-public class ccr extends cdq {
-   private final chz g;
+import java.util.EnumSet;
 
-   public ccr(chz $$0, double $$1) {
-      super($$0, $$1, 8);
+public class ccr extends cdr {
+   private final cia g;
+
+   public ccr(cia $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
       this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(cde.a.c, cde.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.g.p() && !this.g.go() && super.b();
+      return this.g.p() && !this.g.go() && !this.g.gB() && super.b();
    }
 
    @Override
@@ -18,28 +22,29 @@ public class ccr extends cdq {
    }
 
    @Override
+   protected int a(bwo $$0) {
+      return 40;
+   }
+
+   @Override
    public void e() {
       super.e();
-      this.g.y(false);
+      this.g.A(false);
    }
 
    @Override
    public void a() {
       super.a();
-      this.g.y(this.m());
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gB()) {
+         this.g.A(true);
+      }
    }
 
    @Override
-   protected boolean a(dhk $$0, jh $$1) {
-      if (!$$0.u($$1.d())) {
-         return false;
-      } else {
-         dxu $$2 = $$0.a_($$1);
-         if ($$2.a(dkn.cD)) {
-            return dvd.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dkn.cL) && $$2.c(dnt.b) ? true : $$2.a(axu.T, $$0x -> $$0x.d(dke.b).map($$0xx -> $$0xx != dyh.a).orElse(true));
-         }
-      }
+   protected boolean a(dhl $$0, jh $$1) {
+      return $$0.u($$1.d()) && $$0.a_($$1).a(axu.T);
    }
 }

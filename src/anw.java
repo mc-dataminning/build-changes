@@ -16,11 +16,11 @@ public class anw {
    }
 
    private static int a(ew $$0, jh $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bwh $$3)) {
+      if (!($$0.f() instanceof bwi $$3)) {
          throw a.create();
       } else {
-         cfr $$4 = new cfq($$3, $$0.e());
-         euk $$5 = $$4.a($$1, 0);
+         cfs $$4 = new cfr($$3, $$0.e());
+         eul $$5 = $$4.a($$1, 0);
          ahj.a($$0.e(), $$3, $$5, $$4.r());
          if ($$5 == null) {
             throw b.create();

@@ -1,33 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class drz extends djy {
-   public static final MapCodec<drz> c = b(drz::new);
+public class drz extends dkm {
+   public static final MapCodec<drz> b = b(drz::new);
+   public static final dym c = dyl.A;
 
    @Override
-   public MapCodec<drz> a() {
-      return c;
+   protected MapCodec<? extends drz> a() {
+      return b;
    }
 
-   public drz(dxt.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
-      return this.a($$0, $$1, $$3) ? this.m() : dkn.a.m();
+   protected drz(dxu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
-      return o($$1.a_($$2.e()));
-   }
-
-   public static boolean o(dxu $$0) {
-      return $$0.a(axu.aV);
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      return $$4 == jm.b ? $$0.b(c, Boolean.valueOf(o($$6))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean g(dxu $$0) {
-      return true;
+   public dxv a(dbg $$0) {
+      dxv $$1 = $$0.q().a_($$0.a().d());
+      return this.m().b(c, Boolean.valueOf(o($$1)));
+   }
+
+   private static boolean o(dxv $$0) {
+      return $$0.a(axu.bB);
+   }
+
+   @Override
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(c);
    }
 }

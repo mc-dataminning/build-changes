@@ -1,118 +1,93 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.stream.Stream;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public final class etw extends dxw<etv, etw> {
-   public static final Codec<etw> a = a(ma.c.q(), etv::g).stable();
-   public static final int f = 9;
-   public static final int g = 8;
+public abstract class etw {
+   public static final jw<etx> c = new jw<>();
+   protected final dxw<etw, etx> d;
+   private etx a;
+   private final jq.c<etw> b = ma.c.f(this);
 
-   public etw(etv $$0, Reference2ObjectArrayMap<dyw<?>, Comparable<?>> $$1, MapCodec<etw> $$2) {
-      super($$0, $$1, $$2);
+   protected etw() {
+      dxw.a<etw, etx> $$0 = new dxw.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(etw::g, etx::new);
+      this.f(this.d.b());
    }
 
-   public etv a() {
+   protected void a(dxw.a<etw, etx> $$0) {
+   }
+
+   public dxw<etw, etx> f() {
       return this.d;
    }
 
-   public boolean b() {
-      return this.a().c(this);
+   protected final void f(etx $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(etv $$0) {
-      return this.d == $$0 && this.d.c(this);
+   public final etx g() {
+      return this.a;
    }
 
-   public boolean c() {
-      return this.a().b();
+   public abstract cxl a();
+
+   protected void a(dhi $$0, jh $$1, etx $$2, bam $$3) {
    }
 
-   public float a(dgm $$0, jh $$1) {
-      return this.a().a(this, $$0, $$1);
+   protected void b(ash $$0, jh $$1, dxv $$2, etx $$3) {
    }
 
-   public float d() {
-      return this.a().a(this);
-   }
-
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(dgm $$0, jh $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            jh $$4 = $$1.b($$2, 0, $$3);
-            etw $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).s()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public void a(ash $$0, jh $$1, dxu $$2) {
-      this.a().b($$0, $$1, $$2, this);
-   }
-
-   public void a(dhh $$0, jh $$1, bam $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public boolean f() {
-      return this.a().i();
-   }
-
-   public void a(ash $$0, jh $$1, bam $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public fbx c(dgm $$0, jh $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public dxu g() {
-      return this.a().b(this);
+   protected void a(ash $$0, jh $$1, etx $$2, bam $$3) {
    }
 
    @Nullable
-   public lq h() {
-      return this.a().h();
+   protected lq h() {
+      return null;
    }
 
-   public boolean a(ayk<etv> $$0) {
-      return this.a().k().a($$0);
+   protected abstract boolean a(etx var1, dgn var2, jh var3, etw var4, jm var5);
+
+   protected abstract fby a(dgn var1, jh var2, etx var3);
+
+   public abstract int a(dhl var1);
+
+   protected boolean i() {
+      return false;
    }
 
-   public boolean a(ju<etv> $$0) {
-      return $$0.a(this.a().k());
+   protected boolean b() {
+      return false;
    }
 
-   public boolean b(etv $$0) {
-      return this.a() == $$0;
+   protected abstract float c();
+
+   public abstract float a(etx var1, dgn var2, jh var3);
+
+   public abstract float a(etx var1);
+
+   protected abstract dxv b(etx var1);
+
+   public abstract boolean c(etx var1);
+
+   public abstract int d(etx var1);
+
+   public boolean a(etw $$0) {
+      return $$0 == this;
    }
 
-   public float i() {
-      return this.a().c();
+   @Deprecated
+   public boolean a(ayk<etw> $$0) {
+      return this.b.a($$0);
    }
 
-   public boolean a(dgm $$0, jh $$1, etv $$2, jm $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
+   public abstract fcs b(etx var1, dgn var2, jh var3);
+
+   public Optional<axe> j() {
+      return Optional.empty();
    }
 
-   public fcr d(dgm $$0, jh $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public jq<etv> j() {
-      return this.d.k();
-   }
-
-   public Stream<ayk<etv>> k() {
-      return this.d.k().c();
+   @Deprecated
+   public jq.c<etw> k() {
+      return this.b;
    }
 }

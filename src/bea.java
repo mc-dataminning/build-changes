@@ -2,9 +2,9 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 
-public class bea extends bhr {
+public class bea extends bhs {
    public bea(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Colorless shulker entity fix", biw.B, "minecraft:shulker");
+      super($$0, $$1, "Colorless shulker entity fix", bix.B, "minecraft:shulker");
    }
 
    @Override

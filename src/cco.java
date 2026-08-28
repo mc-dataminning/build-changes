@@ -1,62 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class cco extends cdd {
-   private final bwn a;
+public class cco extends ccv {
+   private static final int g = 240;
+   private final Predicate<btg> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public cco(bwn $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(cdd.a.a, cdd.a.b));
+   public cco(bwi $$0, Predicate<btg> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public cco(bwi $$0, int $$1, Predicate<btg> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean b() {
-      return this.a.ct() < 140;
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public boolean U_() {
-      return false;
+      if (!super.b()) {
+         return false;
+      } else {
+         return !a(this.d).N().b(dhe.c) ? false : this.a(this.d.dW().al()) && !this.h();
+      }
    }
 
    @Override
    public void d() {
-      this.h();
+      super.d();
+      this.a = 0;
    }
 
-   private void h() {
-      Iterable<jh> $$0 = jh.b(
-         bae.a(this.a.dB() - 1.0), this.a.dC(), bae.a(this.a.dH() - 1.0), bae.a(this.a.dB() + 1.0), bae.a(this.a.dD() + 8.0), bae.a(this.a.dH() + 1.0)
-      );
-      jh $$1 = null;
+   @Override
+   public boolean c() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.du(), 2.0) && this.a(this.d.dW().al());
+   }
 
-      for (jh $$2 : $$0) {
-         if (this.a(this.a.dW(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = jh.a(this.a.dB(), this.a.dD() + 8.0, this.a.dH());
-      }
-
-      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   @Override
+   public void e() {
+      super.e();
+      this.d.dW().a(this.d.ar(), this.e, -1);
    }
 
    @Override
    public void a() {
-      this.h();
-      this.a.a(0.02F, new fbx((double)this.a.bo, (double)this.a.bp, (double)this.a.bq));
-      this.a.a(bwj.a, this.a.dz());
+      super.a();
+      if (this.d.dZ().a(20) == 0) {
+         this.d.dW().c(1019, this.e, 0);
+         if (!this.d.aI) {
+            this.d.a(this.d.fA());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dW().a(this.d.ar(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dW().al())) {
+         this.d.dW().a(this.e, false);
+         this.d.dW().c(1021, this.e, 0);
+         this.d.dW().c(2001, this.e, dkm.j(this.d.dW().a_(this.e)));
+      }
    }
 
-   private boolean a(dhk $$0, jh $$1) {
-      dxu $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(dkn.ny)) && $$2.a(eul.a);
+   private boolean a(btg $$0) {
+      return this.h.test($$0);
    }
 }

@@ -1,10 +1,30 @@
-public class fww extends fxb {
-   private static fmi<?>[] a(fmj $$0) {
-      return new fmi[]{$$0.S(), $$0.T()};
+public class fww extends fxc {
+   private static final xv a = xv.c("options.chat.title");
+
+   private static fmj<?>[] a(fmk $$0) {
+      return new fmj[]{
+         $$0.n(),
+         $$0.N(),
+         $$0.O(),
+         $$0.P(),
+         $$0.o(),
+         $$0.s(),
+         $$0.y(),
+         $$0.p(),
+         $$0.C(),
+         $$0.z(),
+         $$0.B(),
+         $$0.A(),
+         $$0.av(),
+         $$0.M(),
+         $$0.ah(),
+         $$0.Y(),
+         $$0.aj()
+      };
    }
 
-   public fww(ftx $$0, fmj $$1) {
-      super($$0, $$1, xv.c("options.font.title"));
+   public fww(fty $$0, fmk $$1) {
+      super($$0, $$1, a);
    }
 
    @Override

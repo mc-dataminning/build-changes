@@ -1,39 +1,40 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class cfc<T extends bwh & bwk> extends cdd {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class cfc extends cfe {
+   private final bxd a;
+   private bwg b;
+   private int c;
 
-   public cfc(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cfc(bxd $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(cde.a.d));
    }
 
    @Override
    public boolean b() {
-      return a(this.b).N().b(dhd.P) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.eq() != null && this.b.eq().aq() == bvq.bS && this.b.er() > this.d;
+      if (this.a.p() && !this.a.go()) {
+         bwg $$0 = this.a.ah_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.es();
+            int $$1 = $$0.et();
+            return $$1 != this.c && this.a(this.b, cgx.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void d() {
-      this.d = this.b.er();
-      this.b.ae_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bwk)$$0).forEach(bwk::ae_);
+      this.e.h(this.b);
+      bwg $$0 = this.a.ah_();
+      if ($$0 != null) {
+         this.c = $$0.et();
       }
 
       super.d();
-   }
-
-   private List<? extends bwh> i() {
-      double $$0 = this.b.h(bxn.m);
-      fbs $$1 = fbs.a(this.b.du()).c($$0, 10.0, $$0);
-      return this.b.dW().a((Class<? extends bwh>)this.b.getClass(), $$1, bvo.f);
    }
 }

@@ -1,62 +1,68 @@
-public enum dyu implements bba {
-   a("harp", axf.sq, dyu.a.a),
-   b("basedrum", axf.sk, dyu.a.a),
-   c("snare", axf.st, dyu.a.a),
-   d("hat", axf.sr, dyu.a.a),
-   e("bass", axf.sl, dyu.a.a),
-   f("flute", axf.so, dyu.a.a),
-   g("bell", axf.sm, dyu.a.a),
-   h("guitar", axf.sp, dyu.a.a),
-   i("chime", axf.sn, dyu.a.a),
-   j("xylophone", axf.su, dyu.a.a),
-   k("iron_xylophone", axf.sv, dyu.a.a),
-   l("cow_bell", axf.sw, dyu.a.a),
-   m("didgeridoo", axf.sx, dyu.a.a),
-   n("bit", axf.sy, dyu.a.a),
-   o("banjo", axf.sz, dyu.a.a),
-   p("pling", axf.ss, dyu.a.a),
-   q("zombie", axf.sA, dyu.a.b),
-   r("skeleton", axf.sB, dyu.a.b),
-   s("creeper", axf.sC, dyu.a.b),
-   t("dragon", axf.sD, dyu.a.b),
-   u("wither_skeleton", axf.sE, dyu.a.b),
-   v("piglin", axf.sF, dyu.a.b),
-   w("custom_head", axf.AQ, dyu.a.c);
+import it.unimi.dsi.fastutil.ints.IntImmutableList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-   private final String x;
-   private final jq<axe> y;
-   private final dyu.a z;
+public final class dyu extends dyx<Integer> {
+   private final IntImmutableList a;
+   private final int b;
+   private final int c;
 
-   private dyu(final String $$0, final jq<axe> $$1, final dyu.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   private dyu(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         this.a = IntImmutableList.toList(IntStream.range($$1, $$2 + 1));
+      }
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public List<Integer> a() {
+      return this.a;
    }
 
-   public jq<axe> a() {
-      return this.y;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dyu $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
    }
 
-   public boolean b() {
-      return this.z == dyu.a.a;
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 
-   public boolean d() {
-      return this.z == dyu.a.c;
+   public static dyu a(String $$0, int $$1, int $$2) {
+      return new dyu($$0, $$1, $$2);
    }
 
-   public boolean e() {
-      return this.z != dyu.a.a;
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         int $$1 = Integer.parseInt($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public String a(Integer $$0) {
+      return $$0.toString();
+   }
+
+   public int b(Integer $$0) {
+      return $$0 <= this.c ? $$0 - this.b : -1;
    }
 }

@@ -1,99 +1,160 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dpp extends dkv implements dko {
-   public static final MapCodec<dpp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aly.a(mb.aL).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, dpp::new)
-   );
-   protected static final float b = 3.0F;
-   protected static final fcr c = dkl.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final aly<egh<?, ?>> d;
+public class dpp {
+   public static final dpp.e[] a = new dpp.e[]{dpp.e.a, dpp.e.b, dpp.e.c};
+   private final dpp.b b;
 
-   @Override
-   public MapCodec<dpp> a() {
-      return a;
+   public dpp(dpo $$0) {
+      this(new dpp.a($$0));
    }
 
-   public dpp(aly<egh<?, ?>> $$0, dxt.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dpp(dpp.b $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      return c;
+   public boolean a(dxv $$0, dgn $$1, jh $$2, jm $$3) {
+      return jm.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   @Override
-   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
+   public Optional<dpp.c> a(dxv $$0, dhj $$1, jh $$2, bam $$3) {
+      return jm.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
+   }
 
-         for (jh $$6 : jh.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
+   public long a(dxv $$0, dhj $$1, jh $$2, boolean $$3) {
+      return jm.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
+
+   public Optional<dpp.c> a(dxv $$0, dhj $$1, jh $$2, jm $$3, bam $$4, boolean $$5) {
+      return jm.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
+
+   private long a(dxv $$0, dhj $$1, jh $$2, jm $$3, boolean $$4) {
+      return jm.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<dpp.c> a(dxv $$0, dhj $$1, jh $$2, jm $$3, jm $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<dpp.c> a(dxv $$0, dgn $$1, jh $$2, jm $$3, jm $$4, dpp.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (dpp.e $$6 : this.b.a()) {
+            dpp.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
             }
          }
 
-         jh $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
+         return Optional.empty();
+      } else {
+         return Optional.empty();
       }
    }
 
-   @Override
-   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
-      return $$0.s();
+   public Optional<dpp.c> a(dhj $$0, dpp.c $$1, boolean $$2) {
+      dxv $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
    }
 
-   @Override
-   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      dxu $$4 = $$1.a_($$3);
-      return $$4.a(axu.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   public static class a implements dpp.b {
+      protected dpo a;
+
+      public a(dpo $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public dxv a(dxv $$0, dgn $$1, jh $$2, jm $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(dgn $$0, jh $$1, jh $$2, jm $$3, dxv $$4) {
+         return $$4.l() || $$4.a(this.a) || $$4.a(dko.J) && $$4.y().b();
+      }
+
+      @Override
+      public boolean a(dgn $$0, jh $$1, dpp.c $$2) {
+         dxv $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
    }
 
-   public boolean a(ash $$0, jh $$1, dxu $$2, bam $$3) {
-      Optional<? extends jq<egh<?, ?>>> $$4 = $$0.K_().e(mb.aL).a(this.d);
-      if ($$4.isEmpty()) {
+   public interface b {
+      @Nullable
+      dxv a(dxv var1, dgn var2, jh var3, jm var4);
+
+      boolean a(dgn var1, jh var2, dpp.c var3);
+
+      default dpp.e[] a() {
+         return dpp.a;
+      }
+
+      default boolean a(dxv $$0, jm $$1) {
+         return dpo.a($$0, $$1);
+      }
+
+      default boolean a(dxv $$0) {
          return false;
-      } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
-            return true;
+      }
+
+      default boolean b(dxv $$0, jm $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(dhj $$0, dpp.c $$1, dxv $$2, boolean $$3) {
+         dxv $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
          } else {
-            $$0.a($$1, $$2, 3);
             return false;
          }
       }
    }
 
-   @Override
-   public boolean b(dhk $$0, jh $$1, dxu $$2) {
-      return true;
+   public static record c(jh a, jm b) {
    }
 
-   @Override
-   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
-      return (double)$$1.i() < 0.4;
+   @FunctionalInterface
+   public interface d {
+      boolean test(dgn var1, jh var2, dpp.c var3);
    }
 
-   @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   public static enum e {
+      a {
+         @Override
+         public dpp.c a(jh $$0, jm $$1, jm $$2) {
+            return new dpp.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public dpp.c a(jh $$0, jm $$1, jm $$2) {
+            return new dpp.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public dpp.c a(jh $$0, jm $$1, jm $$2) {
+            return new dpp.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract dpp.c a(jh var1, jm var2, jm var3);
    }
 }

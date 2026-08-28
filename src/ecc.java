@@ -1,122 +1,72 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ecc<T extends ebx> {
-   public static final int a = 2;
-   public static final int b = 4;
-   private final Class<T> c;
-   private final Long2ObjectFunction<eck> d;
-   private final Long2ObjectMap<ecb<T>> e = new Long2ObjectOpenHashMap();
-   private final LongSortedSet f = new LongAVLTreeSet();
+public class ecc<T extends eby> {
+   private static final Logger a = LogUtils.getLogger();
+   private final ayw<T> b;
+   private ecl c;
 
-   public ecc(Class<T> $$0, Long2ObjectFunction<eck> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public ecc(Class<T> $$0, ecl $$1) {
+      this.c = $$1;
+      this.b = new ayw<>($$0);
    }
 
-   public void a(fbs $$0, ayq<ecb<T>> $$1) {
-      int $$2 = kj.a($$0.a - 2.0);
-      int $$3 = kj.a($$0.b - 4.0);
-      int $$4 = kj.a($$0.c - 2.0);
-      int $$5 = kj.a($$0.d + 2.0);
-      int $$6 = kj.a($$0.e + 0.0);
-      int $$7 = kj.a($$0.f + 2.0);
+   public void a(T $$0) {
+      this.b.add($$0);
+   }
 
-      for (int $$8 = $$2; $$8 <= $$5; $$8++) {
-         long $$9 = kj.b($$8, 0, 0);
-         long $$10 = kj.b($$8, -1, -1);
-         LongIterator $$11 = this.f.subSet($$9, $$10 + 1L).iterator();
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
 
-         while ($$11.hasNext()) {
-            long $$12 = $$11.nextLong();
-            int $$13 = kj.c($$12);
-            int $$14 = kj.d($$12);
-            if ($$13 >= $$3 && $$13 <= $$6 && $$14 >= $$4 && $$14 <= $$7) {
-               ecb<T> $$15 = (ecb<T>)this.e.get($$12);
-               if ($$15 != null && !$$15.a() && $$15.c().b() && $$1.accept($$15).a()) {
-                  return;
-               }
-            }
+   public ayq.a a(fbt $$0, ayq<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cR().c($$0) && $$1.accept($$2).a()) {
+            return ayq.a.b;
          }
       }
+
+      return ayq.a.a;
    }
 
-   public LongStream a(long $$0) {
-      int $$1 = dgn.a($$0);
-      int $$2 = dgn.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
+   public <U extends T> ayq.a a(ecf<T, U> $$0, fbt $$1, ayq<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
       if ($$3.isEmpty()) {
-         return LongStream.empty();
+         return ayq.a.a;
       } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cR().c($$1) && $$2.accept($$5).a()) {
+               return ayq.a.b;
+            }
+         }
+
+         return ayq.a.a;
       }
    }
 
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = kj.b($$0, 0, $$1);
-      long $$3 = kj.b($$0, -1, $$1);
-      return this.f.subSet($$2, $$3 + 1L);
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   public Stream<ecb<T>> b(long $$0) {
-      return this.a($$0).<ecb<T>>mapToObj(this.e::get).filter(Objects::nonNull);
+   public Stream<T> b() {
+      return this.b.stream();
    }
 
-   private static long f(long $$0) {
-      return dgn.c(kj.b($$0), kj.d($$0));
+   public ecl c() {
+      return this.c;
    }
 
-   public ecb<T> c(long $$0) {
-      return (ecb<T>)this.e.computeIfAbsent($$0, this::g);
-   }
-
-   @Nullable
-   public ecb<T> d(long $$0) {
-      return (ecb<T>)this.e.get($$0);
-   }
-
-   private ecb<T> g(long $$0) {
-      long $$1 = f($$0);
-      eck $$2 = (eck)this.d.get($$1);
-      this.f.add($$0);
-      return new ecb<>(this.c, $$2);
-   }
-
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.e.keySet().forEach($$1 -> $$0.add(f($$1)));
-      return $$0;
-   }
-
-   public void b(fbs $$0, ayq<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
-   }
-
-   public <U extends T> void a(ece<T, U> $$0, fbs $$1, ayq<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
-   }
-
-   public void e(long $$0) {
-      this.e.remove($$0);
-      this.f.remove($$0);
+   public ecl a(ecl $$0) {
+      ecl $$1 = this.c;
+      this.c = $$0;
+      return $$1;
    }
 
    @bbl
-   public int b() {
-      return this.f.size();
+   public int d() {
+      return this.b.size();
    }
 }

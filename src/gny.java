@@ -1,23 +1,51 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class gny<S extends duw> implements dmu.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = glg.a($$0.i(), $$0.aB_());
-         int $$4 = glg.a($$1.i(), $$1.aB_());
-         int $$5 = gli.a($$3);
-         int $$6 = gli.a($$4);
-         int $$7 = gli.b($$3);
-         int $$8 = gli.b($$4);
-         return gli.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+public class gny {
+   private static final Map<duz<?>, gnx<?>> a = Maps.newHashMap();
+
+   private static <T extends dux> void a(duz<? extends T> $$0, gnx<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
+   public static Map<duz<?>, gnw<?>> a(gnx.a $$0) {
+      Builder<duz<?>, gnw<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + ma.j.b((duz<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
    }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   static {
+      a(duz.h, gok::new);
+      a(duz.i, gog::new);
+      a(duz.j, gom::new);
+      a(duz.l, goi::new);
+      a(duz.b, goc::new);
+      a(duz.d, goc::new);
+      a(duz.c, goc::new);
+      a(duz.n, gof::new);
+      a(duz.E, goh::new);
+      a(duz.o, gop::new);
+      a(duz.w, goo::new);
+      a(duz.p, gns::new);
+      a(duz.q, gol::new);
+      a(duz.u, gnr::new);
+      a(duz.v, gon::new);
+      a(duz.y, goj::new);
+      a(duz.z, gnt::new);
+      a(duz.A, god::new);
+      a(duz.F, gnu::new);
+      a(duz.H, gob::new);
+      a(duz.O, goa::new);
+      a(duz.P, goe::new);
+      a(duz.R, goq::new);
+      a(duz.S, gor::new);
    }
 }

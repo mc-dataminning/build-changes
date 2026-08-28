@@ -1,182 +1,168 @@
+import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class crc extends cqd {
-   private static final alc<Byte> f = alg.a(crc.class, ale.a);
-   private static final alc<Boolean> g = alg.a(crc.class, ale.k);
-   private boolean h;
-   public int e;
+public class crc extends cqx {
+   public static final double a = 4.0;
+   private static final double c = 16.0;
+   public static final Predicate<bwg> b = $$0 -> $$0.fr() || $$0.bY();
 
-   public crc(bvq<? extends crc> $$0, dhh $$1) {
+   public crc(bvr<? extends crc> $$0, dhi $$1) {
       super($$0, $$1);
    }
 
-   public crc(dhh $$0, bwf $$1, cxo $$2) {
-      super(bvq.bz, $$1, $$0, $$2, null);
-      this.al.a(f, this.b($$2));
-      this.al.a(g, $$2.B());
+   public crc(dhi $$0, bwg $$1, cxp $$2) {
+      super(bvr.aW, $$1, $$0, $$2);
    }
 
-   public crc(dhh $$0, double $$1, double $$2, double $$3, cxo $$4) {
-      super(bvq.bz, $$1, $$2, $$3, $$0, $$4, $$4);
-      this.al.a(f, this.b($$4));
-      this.al.a(g, $$4.B());
+   public crc(dhi $$0, double $$1, double $$2, double $$3, cxp $$4) {
+      super(bvr.aW, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   protected void a(alg.a $$0) {
-      super.a($$0);
-      $$0.a(f, (byte)0);
-      $$0.a(g, false);
+   protected cxl m() {
+      return cxt.we;
    }
 
    @Override
-   public void h() {
-      if (this.b > 4) {
-         this.h = true;
-      }
-
-      bvj $$0 = this.p();
-      int $$1 = this.al.a(f);
-      if ($$1 > 0 && (this.h || this.B()) && $$0 != null) {
-         if (!this.G()) {
-            if (this.dW() instanceof ash $$2 && this.c == cqd.a.b) {
-               this.a($$2, this.u(), 0.1F);
-            }
-
-            this.at();
-         } else {
-            if (!($$0 instanceof cpw) && this.du().f($$0.bF()) < (double)$$0.dr() + 1.0) {
-               this.at();
-               return;
-            }
-
-            this.r(true);
-            fbx $$3 = $$0.bF().d(this.du());
-            this.o(this.dB(), this.dD() + $$3.e * 0.015 * (double)$$1, this.dH());
-            double $$4 = 0.05 * (double)$$1;
-            this.h(this.dz().c(0.95).e($$3.d().c($$4)));
-            if (this.e == 0) {
-               this.a(axf.Ab, 10.0F, 1.0F);
-            }
-
-            this.e++;
-         }
-      }
-
-      super.h();
-   }
-
-   private boolean G() {
-      bvj $$0 = this.p();
-      return $$0 == null || !$$0.bL() ? false : !($$0 instanceof asi) || !$$0.aa_();
-   }
-
-   public boolean D() {
-      return this.al.a(g);
-   }
-
-   @Nullable
-   @Override
-   protected fbu c(fbx $$0, fbx $$1) {
-      return this.h ? null : super.c($$0, $$1);
+   protected double bd() {
+      return 0.05;
    }
 
    @Override
    protected void a(fbu $$0) {
-      bvj $$1 = $$0.a();
-      float $$2 = 8.0F;
-      bvj $$3 = this.p();
-      btz $$4 = this.dX().a(this, (bvj)($$3 == null ? this : $$3));
-      if (this.dW() instanceof ash $$5) {
-         $$2 = dea.a($$5, this.ea(), $$1, $$4, $$2);
-      }
-
-      this.h = true;
-      if ($$1.b($$4, $$2)) {
-         if ($$1.aq() == bvq.O) {
-            return;
-         }
-
-         if (this.dW() instanceof ash $$6) {
-            dea.a($$6, $$1, $$4, this.ea(), $$1x -> this.c($$6));
-         }
-
-         if ($$1 instanceof bwf $$7) {
-            this.a($$7, $$4);
-            this.a($$7);
-         }
-      }
-
-      this.a(cqq.b, $$1, this.p(), false);
-      this.h(this.dz().d(0.02, 0.2, 0.02));
-      this.a(axf.zZ, 1.0F, 1.0F);
-   }
-
-   @Override
-   protected void a(ash $$0, fbt $$1, cxo $$2) {
-      fbx $$3 = $$1.b().a($$1.g());
-      dea.a($$0, $$2, this.p() instanceof bwf $$4 ? $$4 : null, this, null, $$3, $$0.a_($$1.b()), $$1x -> this.c($$0));
-   }
-
-   @Override
-   public cxo ea() {
-      return this.w();
-   }
-
-   @Override
-   protected boolean a(cpw $$0) {
-      return super.a($$0) || this.B() && this.e($$0) && $$0.gi().f(this.u());
-   }
-
-   @Override
-   protected cxo v() {
-      return new cxo(cxs.wI);
-   }
-
-   @Override
-   protected axe s() {
-      return axf.Aa;
-   }
-
-   @Override
-   public void a_(cpw $$0) {
-      if (this.e($$0) || this.p() == null) {
-         super.a_($$0);
-      }
-   }
-
-   @Override
-   public void a(ux $$0) {
       super.a($$0);
-      this.h = $$0.q("DealtDamage");
-      this.al.a(f, this.b(this.w()));
-   }
+      if (!this.dW().C) {
+         cxp $$1 = this.l();
+         jm $$2 = $$0.c();
+         jh $$3 = $$0.b();
+         jh $$4 = $$3.a($$2);
+         czo $$5 = $$1.a(ku.Q, czo.a);
+         if ($$5.a(czp.a)) {
+            this.a($$4);
+            this.a($$4.a($$2.g()));
 
-   @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("DealtDamage", this.h);
-   }
-
-   private byte b(cxo $$0) {
-      return this.dW() instanceof ash $$1 ? (byte)bae.a(dea.c($$1, $$0, this), 0, 127) : 0;
-   }
-
-   @Override
-   public void m() {
-      int $$0 = this.al.a(f);
-      if (this.c != cqd.a.b || $$0 <= 0) {
-         super.m();
+            for (jm $$6 : jm.c.a) {
+               this.a($$4.a($$6));
+            }
+         }
       }
    }
 
    @Override
-   protected float A() {
-      return 0.99F;
+   protected void a(fbw $$0) {
+      super.a($$0);
+      if (this.dW() instanceof ash $$1) {
+         cxp $$3 = this.l();
+         czo $$4 = $$3.a(ku.Q, czo.a);
+         if ($$4.a(czp.a)) {
+            this.b($$1);
+         } else if ($$4.c()) {
+            if (this.s()) {
+               this.a($$4);
+            } else {
+               this.a($$1, $$4.a(), $$0.d() == fbw.a.c ? ((fbv)$$0).a() : null);
+            }
+         }
+
+         int $$5 = $$4.e().isPresent() && $$4.e().get().a().c() ? 2007 : 2002;
+         $$1.c($$5, this.dw(), $$4.b());
+         this.at();
+      }
+   }
+
+   private void b(ash $$0) {
+      fbt $$1 = this.cR().c(4.0, 2.0, 4.0);
+
+      for (bwg $$3 : this.dW().a(bwg.class, $$1, b)) {
+         double $$4 = this.g($$3);
+         if ($$4 < 16.0) {
+            if ($$3.fr()) {
+               $$3.a($$0, this.dX().c(this, this.p()), 1.0F);
+            }
+
+            if ($$3.bY() && $$3.bL()) {
+               $$3.aN();
+            }
+         }
+      }
+
+      for (cjj $$6 : this.dW().a(cjj.class, $$1)) {
+         $$6.x();
+      }
+   }
+
+   private void a(ash $$0, Iterable<bup> $$1, @Nullable bvk $$2) {
+      fbt $$3 = this.cR().c(4.0, 2.0, 4.0);
+      List<bwg> $$4 = $$0.a(bwg.class, $$3);
+      if (!$$4.isEmpty()) {
+         bvk $$5 = this.E();
+
+         for (bwg $$6 : $$4) {
+            if ($$6.fL()) {
+               double $$7 = this.g($$6);
+               if ($$7 < 16.0) {
+                  double $$8;
+                  if ($$6 == $$2) {
+                     $$8 = 1.0;
+                  } else {
+                     $$8 = 1.0 - Math.sqrt($$7) / 4.0;
+                  }
+
+                  for (bup $$10 : $$1) {
+                     jq<bun> $$11 = $$10.c();
+                     if ($$11.a().a()) {
+                        $$11.a().a($$0, this, this.p(), $$6, $$10.e(), $$8);
+                     } else {
+                        int $$12 = $$10.a($$1x -> (int)($$8 * (double)$$1x + 0.5));
+                        bup $$13 = new bup($$11, $$12, $$10.e(), $$10.f(), $$10.g());
+                        if (!$$13.a(20)) {
+                           $$6.b($$13, $$5);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void a(czo $$0) {
+      bvd $$1 = new bvd(this.dW(), this.dB(), this.dD(), this.dH());
+      if (this.p() instanceof bwg $$2) {
+         $$1.a($$2);
+      }
+
+      $$1.a(3.0F);
+      $$1.b(-0.5F);
+      $$1.c(10);
+      $$1.c(-$$1.c() / (float)$$1.g());
+      $$1.a($$0);
+      this.dW().b($$1);
+   }
+
+   private boolean s() {
+      return this.l().a(cxt.wh);
+   }
+
+   private void a(jh $$0) {
+      dxv $$1 = this.dW().a_($$0);
+      if ($$1.a(axu.aN)) {
+         this.dW().a($$0, false, this);
+      } else if (dje.c($$1)) {
+         dje.a(null, $$1, this.dW(), $$0);
+      } else if (dlb.h($$1)) {
+         this.dW().a(null, 1009, $$0, 0);
+         dlb.a(this.p(), this.dW(), $$0, $$1);
+         this.dW().b($$0, $$1.b(dlb.c, Boolean.valueOf(false)));
+      }
    }
 
    @Override
-   public boolean k(double $$0, double $$1, double $$2) {
-      return true;
+   public DoubleDoubleImmutablePair a_(bwg $$0, bua $$1) {
+      double $$2 = $$0.du().d - this.du().d;
+      double $$3 = $$0.du().f - this.du().f;
+      return DoubleDoubleImmutablePair.of($$2, $$3);
    }
 }

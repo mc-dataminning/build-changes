@@ -1,111 +1,113 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class byn extends bxy<cpi> {
-   private static final int c = 5;
-   private static final int d = 600;
-   private static final int e = 6600;
-   private static final int f = 20;
-   private static final Map<cpl, aly<ewt>> g = ImmutableMap.builder()
-      .put(cpl.c, ewk.ar)
-      .put(cpl.d, ewk.as)
-      .put(cpl.e, ewk.at)
-      .put(cpl.f, ewk.au)
-      .put(cpl.g, ewk.av)
-      .put(cpl.h, ewk.aw)
-      .put(cpl.i, ewk.ax)
-      .put(cpl.j, ewk.ay)
-      .put(cpl.k, ewk.az)
-      .put(cpl.l, ewk.aA)
-      .put(cpl.n, ewk.aB)
-      .put(cpl.o, ewk.aC)
-      .put(cpl.p, ewk.aD)
-      .build();
-   private static final float h = 0.5F;
-   private int i = 600;
-   private boolean j;
-   private long k;
+public class byn<E extends bwg> implements bya<E> {
+   private final Map<cfk<?>, cfl> a;
+   private final Set<cfk<?>> b;
+   private final byn.a c;
+   private final byn.b d;
+   private final cai<bya<? super E>> e = new cai<>();
+   private bxz.a f = bxz.a.a;
 
-   public byn(int $$0) {
-      super(ImmutableMap.of(cfj.m, cfk.c, cfj.n, cfk.c, cfj.q, cfk.c, cfj.k, cfk.a), $$0);
+   public byn(Map<cfk<?>, cfl> $$0, Set<cfk<?>> $$1, byn.a $$2, byn.b $$3, List<Pair<? extends bya<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((bya<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   protected boolean a(ash $$0, cpi $$1) {
-      if (!this.b($$1)) {
-         return false;
-      } else if (this.i > 0) {
-         this.i--;
-         return false;
-      } else {
-         return true;
-      }
+   @Override
+   public bxz.a a() {
+      return this.f;
    }
 
-   protected void a(ash $$0, cpi $$1, long $$2) {
-      this.j = false;
-      this.k = $$2;
-      cpw $$3 = this.c($$1).get();
-      $$1.ec().a(cfj.q, $$3);
-      bya.a($$1, $$3);
-   }
-
-   protected boolean b(ash $$0, cpi $$1, long $$2) {
-      return this.b($$1) && !this.j;
-   }
-
-   protected void c(ash $$0, cpi $$1, long $$2) {
-      cpw $$3 = this.c($$1).get();
-      bya.a($$1, $$3);
-      if (this.a($$1, $$3)) {
-         if ($$2 - this.k > 20L) {
-            this.a($$0, $$1, $$3);
-            this.j = true;
+   private boolean a(E $$0) {
+      for (Entry<cfk<?>, cfl> $$1 : this.a.entrySet()) {
+         cfk<?> $$2 = $$1.getKey();
+         cfl $$3 = $$1.getValue();
+         if (!$$0.ec().a($$2, $$3)) {
+            return false;
          }
+      }
+
+      return true;
+   }
+
+   @Override
+   public final boolean e(ash $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = bxz.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
+         return true;
       } else {
-         bya.a($$1, $$3, 0.5F, 5);
+         return false;
       }
    }
 
-   protected void d(ash $$0, cpi $$1, long $$2) {
-      this.i = a($$0);
-      $$1.ec().b(cfj.q);
-      $$1.ec().b(cfj.m);
-      $$1.ec().b(cfj.n);
-   }
-
-   private void a(ash $$0, cpi $$1, bwf $$2) {
-      $$1.a($$0, a($$1), ($$2x, $$3) -> bya.a($$1, $$3, $$2.du()));
-   }
-
-   private static aly<ewt> a(cpi $$0) {
-      if ($$0.e_()) {
-         return ewk.aF;
-      } else {
-         cpl $$1 = $$0.gy().b();
-         return g.getOrDefault($$1, ewk.aE);
+   @Override
+   public final void f(ash $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == bxz.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == bxz.a.b)) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   private boolean b(cpi $$0) {
-      return this.c($$0).isPresent();
+   @Override
+   public final void g(ash $$0, E $$1, long $$2) {
+      this.f = bxz.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == bxz.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.ec()::b);
    }
 
-   private Optional<cpw> c(cpi $$0) {
-      return $$0.ec().c(cfj.k).filter(this::a);
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 
-   private boolean a(cpw $$0) {
-      return $$0.b(buq.F);
+   @Override
+   public String toString() {
+      Set<? extends bya<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bxz.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
    }
 
-   private boolean a(cpi $$0, cpw $$1) {
-      jh $$2 = $$1.dw();
-      jh $$3 = $$0.dw();
-      return $$3.a($$2, 5.0);
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(cai::a);
+
+      private final Consumer<cai<?>> c;
+
+      private a(final Consumer<cai<?>> $$0) {
+         this.c = $$0;
+      }
+
+      public void a(cai<?> $$0) {
+         this.c.accept($$0);
+      }
    }
 
-   private static int a(ash $$0) {
-      return 600 + $$0.A.a(6001);
+   public static enum b {
+      a {
+         @Override
+         public <E extends bwg> void a(Stream<bya<? super E>> $$0, ash $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bxz.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+         }
+      },
+      b {
+         @Override
+         public <E extends bwg> void a(Stream<bya<? super E>> $$0, ash $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bxz.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
+
+      public abstract <E extends bwg> void a(Stream<bya<? super E>> var1, ash var2, E var3, long var4);
    }
 }

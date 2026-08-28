@@ -1,15 +1,12 @@
-public interface dho extends dhk {
-   long ak();
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   default float aq() {
-      return ebp.j[this.G_().b(this.ak())];
-   }
+public interface dho {
+   boolean a(jh var1, Predicate<dxv> var2);
 
-   default float f(float $$0) {
-      return this.G_().a(this.ak());
-   }
+   boolean b(jh var1, Predicate<etx> var2);
 
-   default int ar() {
-      return this.G_().b(this.ak());
-   }
+   <T extends dux> Optional<T> a(jh var1, duz<T> var2);
+
+   jh a(edq.a var1, jh var2);
 }

@@ -1,3 +1,4 @@
-public class gxx extends gyl {
-   public boolean a;
+public class gxx extends gxv {
+   public float a;
+   public float b;
 }

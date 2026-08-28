@@ -1,23 +1,46 @@
-public class gvr extends gwe<gyj, gbw> {
-   private final gbw a;
-   private final gbw b;
-   private final gvo c;
+public class gvr extends gwf<gye, gbp> {
+   private final gso a;
 
-   public gvr(gtm<gyj, gbw> $$0, gej $$1, gvo $$2) {
+   public gvr(gtn<gye, gbp> $$0, gso $$1) {
       super($$0);
-      this.c = $$2;
-      this.a = new gbw($$1.a(gem.bb));
-      this.b = new gbw($$1.a(gem.bd));
+      this.a = $$1;
    }
 
-   public void a(fgr $$0, glk $$1, int $$2, gyj $$3, float $$4, float $$5) {
-      cxo $$6 = $$3.i;
-      dft $$7 = $$6.a(ku.D);
-      if ($$7 != null && !$$7.c().isEmpty()) {
-         gbw $$8 = $$3.ae ? this.b : this.a;
-         alz $$9 = $$7.c().get();
-         $$8.a($$3);
-         this.c.a(dfr.d.e, $$9, $$8, $$6, $$0, $$1, $$2);
+   public void a(fgs $$0, gll $$1, int $$2, gye $$3, float $$4, float $$5) {
+      hdn $$6 = $$3.b();
+      cxp $$7 = $$3.aY_();
+      if ($$6 != null && !$$7.f()) {
+         boolean $$8 = $$3.d;
+         boolean $$9 = $$3.ae;
+         $$0.a();
+         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
+         if ($$9) {
+            float $$10 = 0.75F;
+            $$0.b(0.75F, 0.75F, 0.75F);
+         }
+
+         $$0.a(a.f.rotation($$3.a));
+         $$0.a(a.d.rotationDegrees($$4));
+         $$0.a(a.b.rotationDegrees($$5));
+         if ($$3.ae) {
+            if ($$8) {
+               $$0.a(0.4F, 0.26F, 0.15F);
+            } else {
+               $$0.a(0.06F, 0.26F, -0.5F);
+            }
+         } else if ($$8) {
+            $$0.a(0.46F, 0.26F, 0.22F);
+         } else {
+            $$0.a(0.06F, 0.27F, -0.5F);
+         }
+
+         $$0.a(a.b.rotationDegrees(90.0F));
+         if ($$8) {
+            $$0.a(a.f.rotationDegrees(90.0F));
+         }
+
+         this.a.a($$7, cxn.h, false, $$0, $$1, $$2, hbc.d, $$6);
+         $$0.b();
       }
    }
 }

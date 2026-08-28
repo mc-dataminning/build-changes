@@ -1,7 +1,5 @@
-public class gxe extends gys {
-   public float a;
-   public boolean b = true;
-   public boolean c;
-   public boolean d;
-   public boolean e;
+public class gxe extends gyt {
+   public boolean a;
+   public final bvc b = new bvc();
+   public final bvc c = new bvc();
 }

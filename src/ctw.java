@@ -1,72 +1,58 @@
-public class ctw extends ctb {
-   private static final int m = 9;
-   private static final int n = 9;
-   private static final int o = 36;
-   private static final int p = 36;
-   private static final int q = 45;
-   private final btb r;
+public abstract class ctw {
+   private int a;
 
-   public ctw(int $$0, cpv $$1) {
-      this($$0, $$1, new btp(9));
-   }
-
-   public ctw(int $$0, cpv $$1, btb $$2) {
-      super(cuk.g, $$0);
-      a($$2, 9);
-      this.r = $$2;
-      $$2.c_($$1.k);
-      this.d($$2, 62, 17);
-      this.c($$1, 8, 84);
-   }
-
-   protected void d(btb $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            int $$5 = $$4 + $$3 * 3;
-            this.a(new cuy($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
-      }
-   }
-
-   @Override
-   public boolean b(cpw $$0) {
-      return this.r.a($$0);
-   }
-
-   @Override
-   public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.j;
-      cuy $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cxo $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cxo.j;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cxo.j;
+   public static ctw a(final cto $$0, final int $$1) {
+      return new ctw() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
          }
 
-         if ($$4.f()) {
-            $$3.e(cxo.j);
-         } else {
-            $$3.c();
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
          }
-
-         if ($$4.L() == $$2.L()) {
-            return cxo.j;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
+      };
    }
 
-   @Override
-   public void a(cpw $$0) {
-      super.a($$0);
-      this.r.c($$0);
+   public static ctw a(final int[] $$0, final int $$1) {
+      return new ctw() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
+   }
+
+   public static ctw a() {
+      return new ctw() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
+   }
+
+   public abstract int b();
+
+   public abstract void a(int var1);
+
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
+      this.a = $$0;
+      return $$1;
    }
 }

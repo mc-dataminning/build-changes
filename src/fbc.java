@@ -1,11 +1,4 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface fbc {
-   @Nullable
-   fdb a(ewo var1);
-
-   fbb a();
-
-   Set<bbn<?>> b();
+public record fbc(MapCodec<? extends fbd> a) {
 }

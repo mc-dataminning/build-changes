@@ -1,34 +1,37 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import org.joml.Vector3f;
 
-public record fmt(float a, boolean b, Map<String, List<fms>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<fms>> b = Maps.newHashMap();
-      private boolean c;
+public record fmt(fmt.c a, fmv... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, fmv[] var3, int var4, int var5, float var6);
+   }
 
-      public static fmt.a a(float $$0) {
-         return new fmt.a($$0);
-      }
+   public static class b {
+      public static final fmt.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final fmt.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            bae.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            bae.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            bae.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
+   }
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   public interface c {
+      void apply(geo var1, Vector3f var2);
+   }
 
-      public fmt.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public fmt.a a(String $$0, fms $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
-
-      public fmt b() {
-         return new fmt(this.a, this.c, this.b);
-      }
+   public static class d {
+      public static final fmt.c a = geo::a;
+      public static final fmt.c b = geo::b;
+      public static final fmt.c c = geo::c;
    }
 }

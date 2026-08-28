@@ -1,27 +1,22 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 
-public abstract class cgj extends cgp<bwf> {
-   protected abstract boolean a(ash var1, bwf var2, bwf var3);
-
-   protected abstract cfj<bwf> b();
+public class cgj<T extends bwg> extends cgq<T> {
+   @Override
+   protected void a(ash $$0, T $$1) {
+      double $$2 = $$1.h(bxo.m);
+      fbt $$3 = $$1.cR().c($$2, $$2, $$2);
+      List<bwg> $$4 = $$0.a(bwg.class, $$3, $$1x -> $$1x != $$1 && $$1x.bL());
+      $$4.sort(Comparator.comparingDouble($$1::g));
+      bxi<?> $$5 = $$1.ec();
+      $$5.a(cfk.g, $$4);
+      $$5.a(cfk.h, new cfm($$0, $$1, $$4));
+   }
 
    @Override
-   public Set<cfj<?>> a() {
-      return ImmutableSet.of(this.b());
-   }
-
-   @Override
-   protected void a(ash $$0, bwf $$1) {
-      $$1.ec().a(this.b(), this.c($$0, $$1));
-   }
-
-   private Optional<bwf> c(ash $$0, bwf $$1) {
-      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
-   }
-
-   protected Optional<cfl> a(bwf $$0) {
-      return $$0.ec().c(cfj.h);
+   public Set<cfk<?>> a() {
+      return ImmutableSet.of(cfk.g, cfk.h);
    }
 }

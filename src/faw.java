@@ -1,48 +1,62 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public record faw(alz b, fo.g c) implements fat {
+public record faw(fbd b, String c, float d) implements fau {
    public static final MapCodec<faw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alz.a.fieldOf("storage").forGetter(faw::c), fo.g.a.fieldOf("path").forGetter(faw::d)).apply($$0, faw::new)
+      $$0 -> $$0.group(
+               fbe.a.fieldOf("target").forGetter(faw::c),
+               Codec.STRING.fieldOf("score").forGetter(faw::d),
+               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(faw::e)
+            )
+            .apply($$0, faw::new)
    );
 
    @Override
-   public fas b() {
-      return fau.f;
+   public fat b() {
+      return fav.e;
    }
 
-   private Optional<vn> c(ewo $$0) {
-      ux $$1 = $$0.d().p().aK().a(this.b);
+   @Override
+   public Set<bbn<?>> a() {
+      return this.b.b();
+   }
 
-      try {
-         List<vu> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof vn $$3) {
-            return Optional.of($$3);
+   public static faw a(ewp.b $$0, String $$1) {
+      return a($$0, $$1, 1.0F);
+   }
+
+   public static faw a(ewp.b $$0, String $$1, float $$2) {
+      return new faw(fba.a($$0), $$1, $$2);
+   }
+
+   @Override
+   public float b(ewp $$0) {
+      fdc $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         return 0.0F;
+      } else {
+         fdd $$2 = $$0.d().g();
+         fcv $$3 = $$2.a(this.c);
+         if ($$3 == null) {
+            return 0.0F;
+         } else {
+            fcz $$4 = $$2.d($$1, $$3);
+            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
          }
-      } catch (CommandSyntaxException var6) {
       }
-
-      return Optional.empty();
    }
 
-   @Override
-   public float b(ewo $$0) {
-      return this.c($$0).map(vn::k).orElse(0.0F);
-   }
-
-   @Override
-   public int a(ewo $$0) {
-      return this.c($$0).map(vn::g).orElse(0);
-   }
-
-   public alz c() {
+   public fbd c() {
       return this.b;
    }
 
-   public fo.g d() {
+   public String d() {
       return this.c;
+   }
+
+   public float e() {
+      return this.d;
    }
 }

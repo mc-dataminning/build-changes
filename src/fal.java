@@ -1,11 +1,4 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface fal {
-   @Nullable
-   vu a(ewo var1);
-
-   Set<bbn<?>> b();
-
-   fak a();
+public record fal(MapCodec<? extends fam> a) {
 }

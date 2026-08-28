@@ -1,32 +1,27 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-public record dat(float c, Optional<alz> d) {
+public record dat(boolean c) implements das {
    public static final Codec<dat> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(azn.o.fieldOf("seconds").forGetter(dat::b), alz.a.optionalFieldOf("cooldown_group").forGetter(dat::c)).apply($$0, dat::new)
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(dat::a)).apply($$0, dat::new)
    );
-   public static final zt<xg, dat> b = zt.a(zr.l, dat::b, alz.b.a(zr::a), dat::c, dat::new);
+   public static final zt<ByteBuf, dat> b = zr.b.a(dat::new, dat::a);
+   private static final xv d = xv.c("item.unbreakable").a(n.j);
 
-   public dat(float $$0) {
-      this($$0, Optional.empty());
-   }
-
-   public int a() {
-      return (int)(this.c * 20.0F);
-   }
-
-   public void a(cxo $$0, bwf $$1) {
-      if ($$1 instanceof cpw $$2) {
-         $$2.gE().a($$0, this.a());
+   @Override
+   public void a(cxl.b $$0, Consumer<xv> $$1, czh $$2) {
+      if (this.c) {
+         $$1.accept(d);
       }
    }
 
-   public float b() {
-      return this.c;
+   public dat a(boolean $$0) {
+      return new dat($$0);
    }
 
-   public Optional<alz> c() {
-      return this.d;
+   public boolean a() {
+      return this.c;
    }
 }

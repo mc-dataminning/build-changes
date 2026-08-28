@@ -1,90 +1,46 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public record fdo<T>(T b, jh c, int d, fdt e) {
-   private static final String f = "i";
-   private static final String g = "x";
-   private static final String h = "y";
-   private static final String i = "z";
-   private static final String j = "t";
-   private static final String k = "p";
-   public static final Strategy<fdo<?>> a = new Strategy<fdo<?>>() {
-      public int a(fdo<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+public class fdo<T> implements fdr<T>, fdt<T> {
+   private final List<fdp<T>> a = Lists.newArrayList();
+   private final Set<fdp<?>> b = new ObjectOpenCustomHashSet(fdp.a);
+
+   @Override
+   public void a(fdq<T> $$0) {
+      fdp<T> $$1 = new fdp<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
+   }
+
+   private void a(fdp<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
       }
-
-      public boolean a(@Nullable fdo<?> $$0, @Nullable fdo<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
-      }
-   };
-
-   public static <T> List<fdo<T>> a(vd $$0, Function<String, Optional<T>> $$1, dgn $$2) {
-      List<fdo<T>> $$3 = new ArrayList<>($$0.size());
-      long $$4 = $$2.a();
-
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         ux $$6 = $$0.a($$5);
-         a($$6, $$1).ifPresent($$2x -> {
-            if (dgn.a($$2x.b()) == $$4) {
-               $$3.add($$2x);
-            }
-         });
-      }
-
-      return $$3;
    }
 
-   public static <T> Optional<fdo<T>> a(ux $$0, Function<String, Optional<T>> $$1) {
-      return $$1.apply($$0.l("i")).map($$1x -> {
-         jh $$2 = new jh($$0.h("x"), $$0.h("y"), $$0.h("z"));
-         return new fdo<>((T)$$1x, $$2, $$0.h("t"), fdt.a($$0.h("p")));
-      });
+   @Override
+   public boolean a(jh $$0, T $$1) {
+      return this.b.contains(fdp.a($$1, $$0));
    }
 
-   private static ux a(String $$0, jh $$1, int $$2, fdt $$3) {
-      ux $$4 = new ux();
-      $$4.a("i", $$0);
-      $$4.a("x", $$1.u());
-      $$4.a("y", $$1.v());
-      $$4.a("z", $$1.w());
-      $$4.a("t", $$2);
-      $$4.a("p", $$3.a());
-      return $$4;
+   @Override
+   public int a() {
+      return this.a.size();
    }
 
-   public ux a(Function<T, String> $$0) {
-      return a($$0.apply(this.b), this.c, this.d, this.e);
+   @Override
+   public List<fdp<T>> a(long $$0) {
+      return this.a;
    }
 
-   public fdp<T> a(long $$0, long $$1) {
-      return new fdp<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
+   public List<fdp<T>> b() {
+      return List.copyOf(this.a);
    }
 
-   public static <T> fdo<T> a(T $$0, jh $$1) {
-      return new fdo<>($$0, $$1, 0, fdt.d);
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public jh b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public fdt d() {
-      return this.e;
+   public static <T> fdo<T> a(List<fdp<T>> $$0) {
+      fdo<T> $$1 = new fdo<>();
+      $$0.forEach($$1::a);
+      return $$1;
    }
 }

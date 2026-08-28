@@ -1,38 +1,18 @@
-import com.google.common.math.IntMath;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public final class fcf implements fcj {
-   private final fcd a;
-   private final int b;
-   private final int c;
-
-   fcf(int $$0, int $$1) {
-      this.a = new fcd((int)fco.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+public final class fcf extends fcs {
+   protected fcf(fch $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(fcj.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public DoubleList a(jm.a $$0) {
+      return new fce(this.a.c($$0));
    }
 
    @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   protected int a(jm.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return bae.a(bae.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
 }

@@ -1,41 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class ceo extends cde {
+   private final bwo a;
 
-public class ceo<T extends bwh> extends cdd {
-   private final T a;
-   private final cxo b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final axe d;
-
-   public ceo(T $$0, cxo $$1, @Nullable axe $$2, Predicate<? super T> $$3) {
+   public ceo(bwo $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
    }
 
    @Override
    public boolean b() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.fz();
+      return this.a.aJ() && !this.a.dW().b_(this.a.dw()).a(aya.a);
    }
 
    @Override
    public void d() {
-      this.a.a(bvr.a, this.b.v());
-      this.a.c(bth.a);
-   }
+      jh $$0 = null;
 
-   @Override
-   public void e() {
-      this.a.a(bvr.a, cxo.j);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dZ().i() * 0.2F + 0.9F);
+      for (jh $$2 : jh.b(
+         bae.a(this.a.dB() - 2.0), bae.a(this.a.dD() - 2.0), bae.a(this.a.dH() - 2.0), bae.a(this.a.dB() + 2.0), this.a.dC(), bae.a(this.a.dH() + 2.0)
+      )) {
+         if (this.a.dW().b_($$2).a(aya.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

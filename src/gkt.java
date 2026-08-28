@@ -1,262 +1,309 @@
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 import org.joml.Matrix4f;
+import org.slf4j.Logger;
 
-public class gkt implements AutoCloseable {
-   private static final fgf p = new fgf();
-   private static final int q = -1;
-   private final List<gmd.a> r = new ArrayList<>();
-   private final Object2IntMap<String> s = new Object2IntArrayMap();
-   private final IntList t = new IntArrayList();
-   private final List<fgi> u = new ArrayList<>();
-   private final Map<String, fgi> v = new HashMap<>();
-   private final Map<String, gmd.b> w = new HashMap<>();
-   private final int x;
+public class gkt extends awa<Optional<gkt.b>> implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final alz b = alz.b("textures/environment/clouds.png");
+   private static final float c = 12.0F;
+   private static final float d = 4.0F;
+   private static final float e = 0.6F;
+   private static final long f = 0L;
+   private static final int g = 4;
+   private static final int h = 3;
+   private static final int i = 2;
+   private static final int j = 1;
+   private static final int k = 0;
+   private boolean l = true;
+   private int m = Integer.MIN_VALUE;
+   private int n = Integer.MIN_VALUE;
+   private gkt.a o = gkt.a.b;
    @Nullable
-   public fgi a;
+   private fls p;
    @Nullable
-   public fgi b;
-   @Nullable
-   public fgi c;
-   @Nullable
-   public fgi d;
-   @Nullable
-   public fgi e;
-   @Nullable
-   public fgi f;
-   @Nullable
-   public fgi g;
-   @Nullable
-   public fgi h;
-   @Nullable
-   public fgi i;
-   @Nullable
-   public fgi j;
-   @Nullable
-   public fgi k;
-   @Nullable
-   public fgi l;
-   @Nullable
-   public fgi m;
-   @Nullable
-   public fgi n;
-   @Nullable
-   public fgi o;
+   private gkt.b q;
+   private final fgv r = new fgv(fem.b);
+   private boolean s;
 
-   private gkt(int $$0) {
-      this.x = $$0;
-      this.s.defaultReturnValue(-1);
+   protected Optional<gkt.b> a(avv $$0, bpt $$1) {
+      try {
+         Optional var20;
+         try (
+            InputStream $$2 = $$0.open(b);
+            ffs $$3 = ffs.a($$2);
+         ) {
+            int $$4 = $$3.a();
+            int $$5 = $$3.b();
+            long[] $$6 = new long[$$4 * $$5];
+
+            for (int $$7 = 0; $$7 < $$5; $$7++) {
+               for (int $$8 = 0; $$8 < $$4; $$8++) {
+                  int $$9 = $$3.a($$8, $$7);
+                  if (a($$9)) {
+                     $$6[$$8 + $$7 * $$4] = 0L;
+                  } else {
+                     boolean $$10 = a($$3.a($$8, Math.floorMod($$7 - 1, $$5)));
+                     boolean $$11 = a($$3.a(Math.floorMod($$8 + 1, $$5), $$7));
+                     boolean $$12 = a($$3.a($$8, Math.floorMod($$7 + 1, $$5)));
+                     boolean $$13 = a($$3.a(Math.floorMod($$8 - 1, $$5), $$7));
+                     $$6[$$8 + $$7 * $$4] = a($$9, $$10, $$11, $$12, $$13);
+                  }
+               }
+            }
+
+            var20 = Optional.of(new gkt.b($$6, $$4, $$5));
+         }
+
+         return var20;
+      } catch (IOException var19) {
+         a.error("Failed to load cloud texture", var19);
+         return Optional.empty();
+      }
    }
 
-   public static gkt a(fgg $$0, fgg $$1, fgw $$2) throws gmb.b {
-      int $$3 = GlStateManager.glCreateProgram();
-      if ($$3 <= 0) {
-         throw new gmb.b("Could not create shader program (returned program ID " + $$3 + ")");
-      } else {
-         $$2.a($$3);
-         GlStateManager.glAttachShader($$3, $$0.b());
-         GlStateManager.glAttachShader($$3, $$1.b());
-         GlStateManager.glLinkProgram($$3);
-         int $$4 = GlStateManager.glGetProgrami($$3, 35714);
-         if ($$4 == 0) {
-            String $$5 = GlStateManager.glGetProgramInfoLog($$3, 32768);
-            throw new gmb.b("Error encountered when linking program containing VS " + $$0.a() + " and FS " + $$1.a() + ". Log output: " + $$5);
+   protected void a(Optional<gkt.b> $$0, avv $$1, bpt $$2) {
+      this.q = $$0.orElse(null);
+      this.l = true;
+   }
+
+   private static boolean a(int $$0) {
+      return ayp.a($$0) < 10;
+   }
+
+   private static long a(int $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4) {
+      return (long)$$0 << 4 | (long)(($$1 ? 1 : 0) << 3) | (long)(($$2 ? 1 : 0) << 2) | (long)(($$3 ? 1 : 0) << 1) | (long)(($$4 ? 1 : 0) << 0);
+   }
+
+   private static int a(long $$0) {
+      return (int)($$0 >> 4 & 4294967295L);
+   }
+
+   private static boolean b(long $$0) {
+      return ($$0 >> 3 & 1L) != 0L;
+   }
+
+   private static boolean c(long $$0) {
+      return ($$0 >> 2 & 1L) != 0L;
+   }
+
+   private static boolean d(long $$0) {
+      return ($$0 >> 1 & 1L) != 0L;
+   }
+
+   private static boolean e(long $$0) {
+      return ($$0 >> 0 & 1L) != 0L;
+   }
+
+   public void a(int $$0, fls $$1, float $$2, Matrix4f $$3, Matrix4f $$4, fby $$5, float $$6) {
+      if (this.q != null) {
+         float $$7 = (float)((double)$$2 - $$5.e);
+         float $$8 = $$7 + 4.0F;
+         gkt.a $$9;
+         if ($$8 < 0.0F) {
+            $$9 = gkt.a.a;
+         } else if ($$7 > 0.0F) {
+            $$9 = gkt.a.c;
          } else {
-            return new gkt($$3);
+            $$9 = gkt.a.b;
+         }
+
+         double $$12 = $$5.d + (double)($$6 * 0.030000001F);
+         double $$13 = $$5.f + 3.96F;
+         double $$14 = (double)this.q.b * 12.0;
+         double $$15 = (double)this.q.c * 12.0;
+         $$12 -= (double)bae.a($$12 / $$14) * $$14;
+         $$13 -= (double)bae.a($$13 / $$15) * $$15;
+         int $$16 = bae.a($$12 / 12.0);
+         int $$17 = bae.a($$13 / 12.0);
+         float $$18 = (float)($$12 - (double)((float)$$16 * 12.0F));
+         float $$19 = (float)($$13 - (double)((float)$$17 * 12.0F));
+         glv $$20 = $$1 == fls.c ? glv.w() : glv.v();
+         this.r.a();
+         if (this.l || $$16 != this.m || $$17 != this.n || $$9 != this.o || $$1 != this.p) {
+            this.l = false;
+            this.m = $$16;
+            this.n = $$17;
+            this.o = $$9;
+            this.p = $$1;
+            fgr $$21 = this.a(fgu.b(), $$16, $$17, $$1, $$9, $$20);
+            if ($$21 != null) {
+               this.r.a($$21);
+               this.s = false;
+            } else {
+               this.s = true;
+            }
+         }
+
+         if (!this.s) {
+            RenderSystem.setShaderColor(ayp.i(ayp.b($$0)), ayp.i(ayp.c($$0)), ayp.i(ayp.d($$0)), 1.0F);
+            if ($$1 == fls.c) {
+               this.a(glv.x(), $$3, $$4, $$18, $$7, $$19);
+            }
+
+            this.a($$20, $$3, $$4, $$18, $$7, $$19);
+            fgv.b();
+            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
          }
       }
    }
 
-   public void a(List<gmd.b> $$0, List<gmd.a> $$1) {
-      RenderSystem.assertOnRenderThread();
-
-      for (gmd.b $$2 : $$0) {
-         String $$3 = $$2.a();
-         int $$4 = fgi.a(this.x, $$3);
-         if ($$4 != -1) {
-            fgi $$5 = this.a($$2);
-            $$5.b($$4);
-            this.u.add($$5);
-            this.v.put($$3, $$5);
-            this.w.put($$3, $$2);
-         }
+   private void a(glv $$0, Matrix4f $$1, Matrix4f $$2, float $$3, float $$4, float $$5) {
+      $$0.a();
+      gku $$6 = RenderSystem.getShader();
+      if ($$6 != null && $$6.o != null) {
+         $$6.o.a(-$$3, $$4, -$$5);
       }
 
-      for (gmd.a $$6 : $$1) {
-         int $$7 = fgi.a(this.x, $$6.a());
-         if ($$7 != -1) {
-            this.r.add($$6);
-            this.t.add($$7);
+      this.r.a($$1, $$2, $$6);
+      $$0.b();
+   }
+
+   @Nullable
+   private fgr a(fgu $$0, int $$1, int $$2, fls $$3, gkt.a $$4, glv $$5) {
+      float $$6 = 0.8F;
+      int $$7 = ayp.a(0.8F, 1.0F, 1.0F, 1.0F);
+      int $$8 = ayp.a(0.8F, 0.9F, 0.9F, 0.9F);
+      int $$9 = ayp.a(0.8F, 0.7F, 0.7F, 0.7F);
+      int $$10 = ayp.a(0.8F, 0.8F, 0.8F, 0.8F);
+      fgn $$11 = $$0.a($$5.P(), $$5.O());
+      this.a($$4, $$11, $$1, $$2, $$9, $$7, $$8, $$10, $$3 == fls.c);
+      return $$11.a();
+   }
+
+   private void a(gkt.a $$0, fgn $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
+      if (this.q != null) {
+         int $$9 = 32;
+         long[] $$10 = this.q.a;
+         int $$11 = this.q.b;
+         int $$12 = this.q.c;
+
+         for (int $$13 = -32; $$13 <= 32; $$13++) {
+            for (int $$14 = -32; $$14 <= 32; $$14++) {
+               int $$15 = Math.floorMod($$2 + $$14, $$11);
+               int $$16 = Math.floorMod($$3 + $$13, $$12);
+               long $$17 = $$10[$$15 + $$16 * $$11];
+               if ($$17 != 0L) {
+                  int $$18 = a($$17);
+                  if ($$8) {
+                     this.a($$0, $$1, ayp.a($$4, $$18), ayp.a($$5, $$18), ayp.a($$6, $$18), ayp.a($$7, $$18), $$14, $$13, $$17);
+                  } else {
+                     this.a($$1, ayp.a($$5, $$18), $$14, $$13);
+                  }
+               }
+            }
          }
       }
+   }
 
-      this.a = this.a("ModelViewMat");
-      this.b = this.a("ProjMat");
-      this.c = this.a("TextureMat");
-      this.d = this.a("ScreenSize");
-      this.e = this.a("ColorModulator");
-      this.f = this.a("Light0_Direction");
-      this.g = this.a("Light1_Direction");
-      this.h = this.a("GlintAlpha");
-      this.i = this.a("FogStart");
-      this.j = this.a("FogEnd");
-      this.k = this.a("FogColor");
-      this.l = this.a("FogShape");
-      this.m = this.a("LineWidth");
-      this.n = this.a("GameTime");
-      this.o = this.a("ModelOffset");
+   private void a(fgn $$0, int $$1, int $$2, int $$3) {
+      float $$4 = (float)$$2 * 12.0F;
+      float $$5 = $$4 + 12.0F;
+      float $$6 = (float)$$3 * 12.0F;
+      float $$7 = $$6 + 12.0F;
+      $$0.a($$4, 0.0F, $$6).a($$1);
+      $$0.a($$4, 0.0F, $$7).a($$1);
+      $$0.a($$5, 0.0F, $$7).a($$1);
+      $$0.a($$5, 0.0F, $$6).a($$1);
+   }
+
+   private void a(gkt.a $$0, fgn $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, long $$8) {
+      float $$9 = (float)$$6 * 12.0F;
+      float $$10 = $$9 + 12.0F;
+      float $$11 = 0.0F;
+      float $$12 = 4.0F;
+      float $$13 = (float)$$7 * 12.0F;
+      float $$14 = $$13 + 12.0F;
+      if ($$0 != gkt.a.c) {
+         $$1.a($$9, 4.0F, $$13).a($$3);
+         $$1.a($$9, 4.0F, $$14).a($$3);
+         $$1.a($$10, 4.0F, $$14).a($$3);
+         $$1.a($$10, 4.0F, $$13).a($$3);
+      }
+
+      if ($$0 != gkt.a.a) {
+         $$1.a($$10, 0.0F, $$13).a($$2);
+         $$1.a($$10, 0.0F, $$14).a($$2);
+         $$1.a($$9, 0.0F, $$14).a($$2);
+         $$1.a($$9, 0.0F, $$13).a($$2);
+      }
+
+      if (b($$8) && $$7 > 0) {
+         $$1.a($$9, 0.0F, $$13).a($$5);
+         $$1.a($$9, 4.0F, $$13).a($$5);
+         $$1.a($$10, 4.0F, $$13).a($$5);
+         $$1.a($$10, 0.0F, $$13).a($$5);
+      }
+
+      if (d($$8) && $$7 < 0) {
+         $$1.a($$10, 0.0F, $$14).a($$5);
+         $$1.a($$10, 4.0F, $$14).a($$5);
+         $$1.a($$9, 4.0F, $$14).a($$5);
+         $$1.a($$9, 0.0F, $$14).a($$5);
+      }
+
+      if (e($$8) && $$6 > 0) {
+         $$1.a($$9, 0.0F, $$14).a($$4);
+         $$1.a($$9, 4.0F, $$14).a($$4);
+         $$1.a($$9, 4.0F, $$13).a($$4);
+         $$1.a($$9, 0.0F, $$13).a($$4);
+      }
+
+      if (c($$8) && $$6 < 0) {
+         $$1.a($$10, 0.0F, $$13).a($$4);
+         $$1.a($$10, 4.0F, $$13).a($$4);
+         $$1.a($$10, 4.0F, $$14).a($$4);
+         $$1.a($$10, 0.0F, $$14).a($$4);
+      }
+
+      boolean $$15 = Math.abs($$6) <= 1 && Math.abs($$7) <= 1;
+      if ($$15) {
+         $$1.a($$10, 4.0F, $$13).a($$3);
+         $$1.a($$10, 4.0F, $$14).a($$3);
+         $$1.a($$9, 4.0F, $$14).a($$3);
+         $$1.a($$9, 4.0F, $$13).a($$3);
+         $$1.a($$9, 0.0F, $$13).a($$2);
+         $$1.a($$9, 0.0F, $$14).a($$2);
+         $$1.a($$10, 0.0F, $$14).a($$2);
+         $$1.a($$10, 0.0F, $$13).a($$2);
+         $$1.a($$10, 0.0F, $$13).a($$5);
+         $$1.a($$10, 4.0F, $$13).a($$5);
+         $$1.a($$9, 4.0F, $$13).a($$5);
+         $$1.a($$9, 0.0F, $$13).a($$5);
+         $$1.a($$9, 0.0F, $$14).a($$5);
+         $$1.a($$9, 4.0F, $$14).a($$5);
+         $$1.a($$10, 4.0F, $$14).a($$5);
+         $$1.a($$10, 0.0F, $$14).a($$5);
+         $$1.a($$9, 0.0F, $$13).a($$4);
+         $$1.a($$9, 4.0F, $$13).a($$4);
+         $$1.a($$9, 4.0F, $$14).a($$4);
+         $$1.a($$9, 0.0F, $$14).a($$4);
+         $$1.a($$10, 0.0F, $$14).a($$4);
+         $$1.a($$10, 4.0F, $$14).a($$4);
+         $$1.a($$10, 4.0F, $$13).a($$4);
+         $$1.a($$10, 0.0F, $$13).a($$4);
+      }
+   }
+
+   public void a() {
+      this.l = true;
    }
 
    @Override
    public void close() {
-      this.u.forEach(fgi::close);
-      GlStateManager.glDeleteProgram(this.x);
+      this.r.close();
    }
 
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram(0);
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
-         gmd.a $$2 = this.r.get($$1);
-         if (!this.s.containsKey($$2.a())) {
-            GlStateManager._activeTexture(33984 + $$1);
-            GlStateManager._bindTexture(0);
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
+   static enum a {
+      a,
+      b,
+      c;
    }
 
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram(this.x);
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
-         String $$2 = this.r.get($$1).a();
-         int $$3 = this.s.getInt($$2);
-         if ($$3 != -1) {
-            int $$4 = this.t.getInt($$1);
-            fgi.b($$4, $$1);
-            RenderSystem.activeTexture(33984 + $$1);
-            RenderSystem.bindTexture($$3);
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-
-      for (fgi $$5 : this.u) {
-         $$5.b();
-      }
-   }
-
-   @Nullable
-   public fgi a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.v.get($$0);
-   }
-
-   @Nullable
-   public gmd.b b(String $$0) {
-      return this.w.get($$0);
-   }
-
-   public fgf c(String $$0) {
-      fgi $$1 = this.a($$0);
-      return (fgf)($$1 == null ? p : $$1);
-   }
-
-   public void a(String $$0, int $$1) {
-      this.s.put($$0, $$1);
-   }
-
-   private fgi a(gmd.b $$0) {
-      int $$1 = fgi.a($$0.b());
-      int $$2 = $$0.c();
-      int $$3 = $$2 > 1 && $$2 <= 4 && $$1 < 8 ? $$2 - 1 : 0;
-      fgi $$4 = new fgi($$0.a(), $$1 + $$3, $$2);
-      $$4.a($$0);
-      return $$4;
-   }
-
-   public void a(fgw.c $$0, Matrix4f $$1, Matrix4f $$2, ffu $$3) {
-      for (int $$4 = 0; $$4 < 12; $$4++) {
-         int $$5 = RenderSystem.getShaderTexture($$4);
-         this.a("Sampler" + $$4, $$5);
-      }
-
-      if (this.a != null) {
-         this.a.a($$1);
-      }
-
-      if (this.b != null) {
-         this.b.a($$2);
-      }
-
-      if (this.e != null) {
-         this.e.a(RenderSystem.getShaderColor());
-      }
-
-      if (this.h != null) {
-         this.h.a(RenderSystem.getShaderGlintAlpha());
-      }
-
-      gky $$6 = RenderSystem.getShaderFog();
-      if (this.i != null) {
-         this.i.a($$6.a());
-      }
-
-      if (this.j != null) {
-         this.j.a($$6.b());
-      }
-
-      if (this.k != null) {
-         this.k.a($$6.d(), $$6.e(), $$6.f(), $$6.g());
-      }
-
-      if (this.l != null) {
-         this.l.a($$6.c().a());
-      }
-
-      if (this.c != null) {
-         this.c.a(RenderSystem.getTextureMatrix());
-      }
-
-      if (this.n != null) {
-         this.n.a(RenderSystem.getShaderGameTime());
-      }
-
-      if (this.d != null) {
-         this.d.a((float)$$3.k(), (float)$$3.l());
-      }
-
-      if (this.m != null && ($$0 == fgw.c.a || $$0 == fgw.c.b)) {
-         this.m.a(RenderSystem.getShaderLineWidth());
-      }
-
-      RenderSystem.setupShaderLights(this);
-   }
-
-   @VisibleForTesting
-   public void a(fgi $$0) {
-      this.u.add($$0);
-      this.v.put($$0.a(), $$0);
-   }
-
-   @VisibleForTesting
-   public int c() {
-      return this.x;
+   public static record b(long[] a, int b, int c) {
    }
 }

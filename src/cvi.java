@@ -1,2 +1,2 @@
-public interface cvi {
+public record cvi(czt a) implements cvj {
 }

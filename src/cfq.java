@@ -1,114 +1,57 @@
-public class cfq extends cfr {
-   private boolean p;
-
-   public cfq(bwh $$0, dhh $$1) {
+public class cfq extends cfs {
+   public cfq(bwi $$0, dhi $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eum a(int $$0) {
-      this.o = new eus();
+   protected eun a(int $$0) {
+      this.o = new eui();
       this.o.a(true);
-      return new eum(this.o, $$0);
+      return new eun(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a(fby $$0, fby $$1) {
+      return a(this.a, $$0, $$1, true);
    }
 
    @Override
    protected boolean a() {
-      return this.a.aJ() || this.a.bn() || this.a.bZ();
+      return this.q() && this.a.bn() || !this.a.bZ();
    }
 
    @Override
-   protected fbx b() {
-      return new fbx(this.a.dB(), (double)this.t(), this.a.dH());
+   protected fby b() {
+      return this.a.du();
    }
 
    @Override
-   public euk a(jh $$0, int $$1) {
-      dzz $$2 = this.b.R().a(kj.a($$0.u()), kj.a($$0.w()));
-      if ($$2 == null) {
-         return null;
-      } else {
-         if ($$2.a_($$0).l()) {
-            jh.a $$3 = $$0.k().c(jm.a);
-
-            while ($$3.v() > this.b.L_() && $$2.a_($$3).l()) {
-               $$3.c(jm.a);
-            }
-
-            if ($$3.v() > this.b.L_()) {
-               return super.a($$3.d(), $$1);
-            }
-
-            $$3.q($$0.v() + 1);
-
-            while ($$3.v() <= this.b.am() && $$2.a_($$3).l()) {
-               $$3.c(jm.b);
-            }
-
-            $$0 = $$3;
-         }
-
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            jh.a $$4 = $$0.k().c(jm.b);
-
-            while ($$4.v() <= this.b.am() && $$2.a_($$4).e()) {
-               $$4.c(jm.b);
-            }
-
-            return super.a($$4.j(), $$1);
-         }
-      }
-   }
-
-   @Override
-   public euk a(bvj $$0, int $$1) {
+   public eul a(bvk $$0, int $$1) {
       return this.a($$0.dw(), $$1);
    }
 
-   private int t() {
-      if (this.a.bj() && this.q()) {
-         int $$0 = this.a.dC();
-         dxu $$1 = this.b.a_(jh.a(this.a.dB(), (double)$$0, this.a.dH()));
-         int $$2 = 0;
-
-         while ($$1.a(dkn.J)) {
-            $$1 = this.b.a_(jh.a(this.a.dB(), (double)(++$$0), this.a.dH()));
-            if (++$$2 > 16) {
-               return this.a.dC();
-            }
-         }
-
-         return $$0;
-      } else {
-         return bae.a(this.a.dD() + 0.5);
-      }
-   }
-
    @Override
-   protected void W_() {
-      super.W_();
-      if (this.p) {
-         if (this.b.h(jh.a(this.a.dB(), this.a.dD() + 0.5, this.a.dH()))) {
-            return;
-         }
+   public void c() {
+      this.e++;
+      if (this.m) {
+         this.j();
+      }
 
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            eui $$1 = this.c.a($$0);
-            if (this.b.h(new jh($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
+      if (!this.m()) {
+         if (this.a()) {
+            this.l();
+         } else if (this.c != null && !this.c.c()) {
+            fby $$0 = this.c.a(this.a);
+            if (this.a.dA() == bae.a($$0.d) && this.a.dC() == bae.a($$0.e) && this.a.dG() == bae.a($$0.f)) {
+               this.c.a();
             }
          }
-      }
-   }
 
-   protected boolean a(eun $$0) {
-      if ($$0 == eun.j) {
-         return false;
-      } else {
-         return $$0 == eun.i ? false : $$0 != eun.b;
+         ahj.a(this.b, this.a, this.c, this.l);
+         if (!this.m()) {
+            fby $$1 = this.c.a(this.a);
+            this.a.I().a($$1.d, $$1.e, $$1.f, this.d);
+         }
       }
    }
 
@@ -116,7 +59,7 @@ public class cfq extends cfr {
       this.o.b($$0);
    }
 
-   public boolean e() {
+   public boolean d() {
       return this.o.d();
    }
 
@@ -124,15 +67,12 @@ public class cfq extends cfr {
       this.o.a($$0);
    }
 
-   public boolean f() {
+   public boolean e() {
       return this.o.d();
    }
 
-   public void d(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void e(boolean $$0) {
-      this.o.d($$0);
+   @Override
+   public boolean a(jh $$0) {
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

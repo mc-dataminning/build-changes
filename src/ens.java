@@ -1,42 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class ens extends enq {
-   public static final MapCodec<ens> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bsn.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bsn.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, ens::new)
-   );
-   private final bsn c;
-   private final bsn d;
+public interface ens<P extends enr> {
+   ens<end> a = a("block_predicate_filter", end.a);
+   ens<enu> b = a("rarity_filter", enu.a);
+   ens<enw> c = a("surface_relative_threshold_filter", enw.a);
+   ens<enx> d = a("surface_water_depth_filter", enx.a);
+   ens<enc> e = a("biome", enc.a);
+   ens<eng> f = a("count", eng.a);
+   ens<enm> g = a("noise_based_count", enm.a);
+   ens<enn> h = a("noise_threshold_count", enn.a);
+   ens<enf> i = a("count_on_every_layer", enf.a);
+   ens<enh> j = a("environment_scan", enh.a);
+   ens<enk> k = a("heightmap", enk.a);
+   ens<enj> l = a("height_range", enj.a);
+   ens<enl> m = a("in_square", enl.a);
+   ens<ent> n = a("random_offset", ent.a);
+   ens<eni> o = a("fixed_placement", eni.a);
 
-   public static ens a(bsn $$0, bsn $$1) {
-      return new ens($$0, $$1);
-   }
+   MapCodec<P> codec();
 
-   public static ens a(bsn $$0) {
-      return new ens(bsk.a(0), $$0);
-   }
-
-   public static ens b(bsn $$0) {
-      return new ens($$0, bsk.a(0));
-   }
-
-   private ens(bsn $$0, bsn $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public Stream<jh> a_(eno $$0, bam $$1, jh $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new jh($$3, $$4, $$5));
-   }
-
-   @Override
-   public enr<?> b() {
-      return enr.n;
+   private static <P extends enr> ens<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.S, $$0, () -> $$1);
    }
 }

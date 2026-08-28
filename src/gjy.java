@@ -1,21 +1,24 @@
-public class gjy extends gjr {
-   private float a;
+public class gjy extends gjs {
+   private final gjn a;
 
-   gjy(gfj $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+   gjy(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjn $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public giv b() {
-      return giv.b;
+   public giw b() {
+      return giw.b;
    }
 
    @Override
@@ -23,34 +26,30 @@ public class gjy extends gjr {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      int $$0 = 60 - this.t;
+      if (this.t-- <= 0) {
          this.k();
       } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * bae.b(this.a));
-         this.l = this.l + (double)(0.6F * bae.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
+         this.k = this.k - (double)this.u;
          this.a(this.j, this.k, this.l);
-         if (!this.c.b_(jh.a(this.g, this.h, this.i)).a(aya.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
       }
    }
 
-   public static class a implements giu<lw> {
-      private final gjm a;
+   public static class a implements giv<lw> {
+      private final gjn a;
 
-      public a(gjm $$0) {
+      public a(gjn $$0) {
          this.a = $$0;
       }
 
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjy $$8 = new gjy($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjy($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

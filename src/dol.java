@@ -1,51 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dol extends doc {
-   public static final MapCodec<dol> e = b(dol::new);
+public class dol extends dkm {
+   public static final MapCodec<dol> a = b(dol::new);
+   public static final dym b = dqc.b;
+   public static final dym c = dqc.c;
+   public static final dym d = dqc.d;
+   public static final dym e = dqc.e;
+   public static final dym f = dqc.f;
+   public static final dym g = dqc.g;
+   private static final Map<jm, dym> h = dqc.h;
 
    @Override
-   public MapCodec<? extends dol> a() {
-      return e;
+   public MapCodec<dol> a() {
+      return a;
    }
 
-   public dol(dxt.d $$0) {
+   public dol(dxu.d $$0) {
       super($$0);
-   }
-
-   public static dxu b() {
-      return dkn.J.m();
-   }
-
-   @Override
-   public void a(dhh $$0, cpw $$1, jh $$2, dxu $$3, @Nullable duw $$4, cxo $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!dea.a($$5, axx.s)) {
-         if ($$0.G_().i()) {
-            $$0.a($$2, false);
-            return;
-         }
-
-         dxu $$6 = $$0.a_($$2.e());
-         if ($$6.d() || $$6.n()) {
-            $$0.b($$2, b());
-         }
-      }
+      this.l(
+         this.F
+            .b()
+            .b(b, Boolean.valueOf(true))
+            .b(c, Boolean.valueOf(true))
+            .b(d, Boolean.valueOf(true))
+            .b(e, Boolean.valueOf(true))
+            .b(f, Boolean.valueOf(true))
+            .b(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
-      if ($$1.a(dhq.b, $$2) > 11 - $$0.g()) {
-         this.e($$0, $$1, $$2);
-      }
+   public dxv a(dbg $$0) {
+      dgn $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      return this.m()
+         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
+         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
+         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
    }
 
-   protected void e(dxu $$0, dhh $$1, jh $$2) {
-      if ($$1.G_().i()) {
-         $$1.a($$2, false);
-      } else {
-         $$1.b($$2, b());
-         $$1.b($$2, b().b(), null);
-      }
+   @Override
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected dxv a(dxv $$0, drc $$1) {
+      return $$0.b(h.get($$1.a(jm.c)), $$0.c(b))
+         .b(h.get($$1.a(jm.d)), $$0.c(d))
+         .b(h.get($$1.a(jm.f)), $$0.c(c))
+         .b(h.get($$1.a(jm.e)), $$0.c(e))
+         .b(h.get($$1.a(jm.b)), $$0.c(f))
+         .b(h.get($$1.a(jm.a)), $$0.c(g));
+   }
+
+   @Override
+   protected dxv a(dxv $$0, dpl $$1) {
+      return $$0.b(h.get($$1.b(jm.c)), $$0.c(b))
+         .b(h.get($$1.b(jm.d)), $$0.c(d))
+         .b(h.get($$1.b(jm.f)), $$0.c(c))
+         .b(h.get($$1.b(jm.e)), $$0.c(e))
+         .b(h.get($$1.b(jm.b)), $$0.c(f))
+         .b(h.get($$1.b(jm.a)), $$0.c(g));
+   }
+
+   @Override
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

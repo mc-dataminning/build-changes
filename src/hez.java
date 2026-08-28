@@ -1,34 +1,29 @@
-public class hez extends heq {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cms r;
+public class hez extends her {
+   private final bvk n;
 
-   public hez(cms $$0) {
-      super(axf.lK, axg.f, hfh.t());
-      this.r = $$0;
-      this.k = hfh.a.a;
-      this.i = true;
-      this.j = 0;
+   public hez(axe $$0, axg $$1, float $$2, float $$3, bvk $$4, long $$5) {
+      super($$0, $$1, bam.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dB());
+      this.g = (double)((float)this.n.dD());
+      this.h = (double)((float)this.n.dH());
    }
 
    @Override
    public boolean s() {
-      return !this.r.bb();
+      return !this.n.bb();
    }
 
    @Override
    public void q() {
-      if (!this.r.dR() && this.r.O_() == null) {
-         this.f = (double)((float)this.r.dB());
-         this.g = (double)((float)this.r.dD());
-         this.h = (double)((float)this.r.dH());
-         float $$0 = this.r.L(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
-      } else {
+      if (this.n.dR()) {
          this.n();
+      } else {
+         this.f = (double)((float)this.n.dB());
+         this.g = (double)((float)this.n.dD());
+         this.h = (double)((float)this.n.dH());
       }
    }
 }

@@ -1,252 +1,428 @@
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
+import java.util.List;
 import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dkm {
-   public static final MapCodec<dkl> a = ma.ae.q().dispatchMap(dkl::a, Function.identity());
+public class dkm extends dxu implements dhh {
+   public static final MapCodec<dkm> p = b(dkm::new);
+   private static final Logger a = LogUtils.getLogger();
+   private final jq.c<dkm> b = ma.e.f(this);
+   public static final jw<dxv> q = new jw<>();
+   private static final LoadingCache<fcs, Boolean> c = CacheBuilder.newBuilder().maximumSize(512L).weakKeys().build(new CacheLoader<fcs, Boolean>() {
+      public Boolean a(fcs $$0) {
+         return !fcp.c(fcp.b(), $$0, fcc.g);
+      }
+   });
+   public static final int r = 1;
+   public static final int s = 2;
+   public static final int t = 4;
+   public static final int u = 8;
+   public static final int v = 16;
+   public static final int w = 32;
+   public static final int x = 64;
+   public static final int y = 128;
+   public static final int z = 4;
+   public static final int A = 3;
+   public static final int B = 11;
+   public static final float C = -1.0F;
+   public static final float D = 0.0F;
+   public static final int E = 512;
+   protected final dxw<dkm, dxv> F;
+   private dxv d;
+   @Nullable
+   private cxl e;
+   private static final int f = 256;
+   private static final ThreadLocal<Object2ByteLinkedOpenHashMap<dkm.a>> g = ThreadLocal.withInitial(() -> {
+      Object2ByteLinkedOpenHashMap<dkm.a> $$0 = new Object2ByteLinkedOpenHashMap<dkm.a>(256, 0.25F) {
+         protected void rehash(int $$0) {
+         }
+      };
+      $$0.defaultReturnValue((byte)127);
+      return $$0;
+   });
 
-   public static MapCodec<? extends dkl> a(kd<MapCodec<? extends dkl>> $$0) {
-      kd.a($$0, "block", dkl.p);
-      kd.a($$0, "air", dji.a);
-      kd.a($$0, "amethyst", djj.a);
-      kd.a($$0, "amethyst_cluster", djk.b);
-      kd.a($$0, "anvil", djl.a);
-      kd.a($$0, "attached_stem", djm.a);
-      kd.a($$0, "azalea", djn.a);
-      kd.a($$0, "bamboo_sapling", djo.a);
-      kd.a($$0, "bamboo_stalk", djp.a);
-      kd.a($$0, "banner", djq.a);
-      kd.a($$0, "barrel", djr.a);
-      kd.a($$0, "barrier", djs.a);
-      kd.a($$0, "base_coral_fan", djt.a);
-      kd.a($$0, "base_coral_plant", dju.a);
-      kd.a($$0, "base_coral_wall_fan", djw.b);
-      kd.a($$0, "beacon", dkd.a);
-      kd.a($$0, "bed", dke.a);
-      kd.a($$0, "beehive", dkf.a);
-      kd.a($$0, "beetroot", dkg.a);
-      kd.a($$0, "bell", dkh.a);
-      kd.a($$0, "big_dripleaf", dki.a);
-      kd.a($$0, "big_dripleaf_stem", dkj.a);
-      kd.a($$0, "blast_furnace", dkk.c);
-      kd.a($$0, "brewing_stand", dkq.a);
-      kd.a($$0, "brushable", dkr.a);
-      kd.a($$0, "bubble_column", dks.a);
-      kd.a($$0, "budding_amethyst", dku.b);
-      kd.a($$0, "button", dkw.a);
-      kd.a($$0, "cactus", dkx.a);
-      kd.a($$0, "cake", dky.a);
-      kd.a($$0, "calibrated_sculk_sensor", dkz.a);
-      kd.a($$0, "campfire", dla.a);
-      kd.a($$0, "candle_cake", dlc.c);
-      kd.a($$0, "candle", dlb.c);
-      kd.a($$0, "carpet", dld.a);
-      kd.a($$0, "carrot", dle.a);
-      kd.a($$0, "cartography_table", dlf.a);
-      kd.a($$0, "cauldron", dlh.d);
-      kd.a($$0, "cave_vines", dlj.c);
-      kd.a($$0, "cave_vines_plant", dlk.c);
-      kd.a($$0, "ceiling_hanging_sign", dll.a);
-      kd.a($$0, "chain", dlm.a);
-      kd.a($$0, "cherry_leaves", dlo.a);
-      kd.a($$0, "chest", dlp.b);
-      kd.a($$0, "chiseled_book_shelf", dlq.a);
-      kd.a($$0, "chorus_flower", dlr.a);
-      kd.a($$0, "chorus_plant", dls.a);
-      kd.a($$0, "cocoa", dlt.a);
-      kd.a($$0, "colored_falling", dlu.a);
-      kd.a($$0, "command", dlv.a);
-      kd.a($$0, "comparator", dlw.a);
-      kd.a($$0, "composter", dlx.a);
-      kd.a($$0, "concrete_powder", dly.a);
-      kd.a($$0, "conduit", dlz.a);
-      kd.a($$0, "copper_bulb_block", dma.a);
-      kd.a($$0, "coral", dmb.b);
-      kd.a($$0, "coral_fan", dmc.b);
-      kd.a($$0, "coral_plant", dmd.a);
-      kd.a($$0, "coral_wall_fan", dme.e);
-      kd.a($$0, "crafter", dmf.a);
-      kd.a($$0, "crafting_table", dmg.a);
-      kd.a($$0, "crop", dmi.d);
-      kd.a($$0, "crying_obsidian", dmk.a);
-      kd.a($$0, "daylight_detector", dml.a);
-      kd.a($$0, "dead_bush", dmm.a);
-      kd.a($$0, "decorated_pot", dmn.a);
-      kd.a($$0, "detector_rail", dmo.d);
-      kd.a($$0, "dirt_path", dmr.a);
-      kd.a($$0, "dispenser", dms.a);
-      kd.a($$0, "door", dmt.a);
-      kd.a($$0, "double_plant", dmv.a);
-      kd.a($$0, "dragon_egg", dmw.a);
-      kd.a($$0, "drop_experience", dmx.a);
-      kd.a($$0, "dropper", dmy.e);
-      kd.a($$0, "enchantment_table", dmz.a);
-      kd.a($$0, "ender_chest", dne.b);
-      kd.a($$0, "end_gateway", dna.a);
-      kd.a($$0, "end_portal", dnb.a);
-      kd.a($$0, "end_portal_frame", dnc.a);
-      kd.a($$0, "end_rod", dnd.b);
-      kd.a($$0, "farm", dnj.a);
-      kd.a($$0, "bonemealable_feature_placer", dkp.a);
-      kd.a($$0, "fence", dnk.i);
-      kd.a($$0, "fence_gate", dnl.a);
-      kd.a($$0, "fire", dnm.c);
-      kd.a($$0, "fletching_table", dnn.b);
-      kd.a($$0, "flower", dno.b);
-      kd.a($$0, "flower_pot", dnp.a);
-      kd.a($$0, "frogspawn", dnq.a);
-      kd.a($$0, "frosted_ice", dnr.a);
-      kd.a($$0, "fungus", dns.a);
-      kd.a($$0, "furnace", dnt.c);
-      kd.a($$0, "glazed_terracotta", dnv.a);
-      kd.a($$0, "glow_lichen", dnw.a);
-      kd.a($$0, "grass", dnx.a);
-      kd.a($$0, "grindstone", dny.a);
-      kd.a($$0, "half_transparent", doc.d);
-      kd.a($$0, "hanging_moss", dod.a);
-      kd.a($$0, "hanging_roots", doe.a);
-      kd.a($$0, "hay", dof.a);
-      kd.a($$0, "heavy_core", dog.a);
-      kd.a($$0, "honey", doh.a);
-      kd.a($$0, "hopper", doi.a);
-      kd.a($$0, "huge_mushroom", dok.a);
-      kd.a($$0, "ice", dol.e);
-      kd.a($$0, "infested", dom.a);
-      kd.a($$0, "infested_rotated_pillar", don.b);
-      kd.a($$0, "iron_bars", doo.i);
-      kd.a($$0, "jack_o_lantern", dlg.a);
-      kd.a($$0, "jigsaw", dop.a);
-      kd.a($$0, "jukebox", doq.a);
-      kd.a($$0, "kelp", dor.c);
-      kd.a($$0, "kelp_plant", dos.c);
-      kd.a($$0, "ladder", dot.a);
-      kd.a($$0, "lantern", dou.a);
-      kd.a($$0, "lava_cauldron", dov.d);
-      kd.a($$0, "layered_cauldron", dow.d);
-      kd.a($$0, "leaves", dox.b);
-      kd.a($$0, "lectern", doy.a);
-      kd.a($$0, "lever", dpa.a);
-      kd.a($$0, "light", dpb.a);
-      kd.a($$0, "lightning_rod", dpc.b);
-      kd.a($$0, "liquid", dpd.a);
-      kd.a($$0, "loom", dpf.a);
-      kd.a($$0, "magma", dpg.a);
-      kd.a($$0, "mangrove_leaves", dph.a);
-      kd.a($$0, "mangrove_propagule", dpi.a);
-      kd.a($$0, "mangrove_roots", dpj.a);
-      kd.a($$0, "mossy_carpet", dpl.a);
-      kd.a($$0, "moving_piston", dxm.a);
-      kd.a($$0, "mud", dpm.a);
-      kd.a($$0, "mushroom", dpp.a);
-      kd.a($$0, "mycelium", dpq.a);
-      kd.a($$0, "nether_portal", dpr.a);
-      kd.a($$0, "netherrack", dpv.a);
-      kd.a($$0, "nether_sprouts", dps.a);
-      kd.a($$0, "nether_wart", dpu.a);
-      kd.a($$0, "note", dpw.a);
-      kd.a($$0, "nylium", dpx.a);
-      kd.a($$0, "observer", dpy.b);
-      kd.a($$0, "piglinwallskull", dpz.b);
-      kd.a($$0, "pink_petals", dqa.a);
-      kd.a($$0, "piston_base", dxn.b);
-      kd.a($$0, "piston_head", dxo.b);
-      kd.a($$0, "pitcher_crop", dqc.c);
-      kd.a($$0, "player_head", dqd.b);
-      kd.a($$0, "player_wall_head", dqe.b);
-      kd.a($$0, "pointed_dripstone", dqf.a);
-      kd.a($$0, "potato", dqh.a);
-      kd.a($$0, "powder_snow", dqi.a);
-      kd.a($$0, "powered", dqj.a);
-      kd.a($$0, "powered_rail", dqk.d);
-      kd.a($$0, "pressure_plate", dql.e);
-      kd.a($$0, "pumpkin", dqm.a);
-      kd.a($$0, "rail", dqn.d);
-      kd.a($$0, "redstone_lamp", dqr.a);
-      kd.a($$0, "redstone_ore", dqp.a);
-      kd.a($$0, "redstone_torch", dqs.c);
-      kd.a($$0, "redstone_wall_torch", dqt.h);
-      kd.a($$0, "redstone_wire", dqq.a);
-      kd.a($$0, "repeater", dqv.a);
-      kd.a($$0, "respawn_anchor", dqw.a);
-      kd.a($$0, "rooted_dirt", dqy.a);
-      kd.a($$0, "roots", dqz.a);
-      kd.a($$0, "rotated_pillar", dra.h);
-      kd.a($$0, "sapling", drc.e);
-      kd.a($$0, "scaffolding", drd.a);
-      kd.a($$0, "sculk_catalyst", drg.a);
-      kd.a($$0, "sculk", drf.b);
-      kd.a($$0, "sculk_sensor", drh.c);
-      kd.a($$0, "sculk_shrieker", dri.a);
-      kd.a($$0, "sculk_vein", drk.c);
-      kd.a($$0, "seagrass", drm.a);
-      kd.a($$0, "sea_pickle", drl.a);
-      kd.a($$0, "shulker_box", drn.a);
-      kd.a($$0, "skull", drq.c);
-      kd.a($$0, "slab", drr.a);
-      kd.a($$0, "slime", drs.a);
-      kd.a($$0, "small_dripleaf", drt.c);
-      kd.a($$0, "smithing_table", dru.b);
-      kd.a($$0, "smoker", drv.c);
-      kd.a($$0, "sniffer_egg", drw.a);
-      kd.a($$0, "snow_layer", drx.a);
-      kd.a($$0, "snowy_dirt", dry.b);
-      kd.a($$0, "soul_fire", drz.c);
-      kd.a($$0, "soul_sand", dsa.a);
-      kd.a($$0, "spawner", dsc.a);
-      kd.a($$0, "creaking_heart", dmh.a);
-      kd.a($$0, "sponge", dsd.a);
-      kd.a($$0, "spore_blossom", dse.a);
-      kd.a($$0, "stained_glass_pane", dsh.j);
-      kd.a($$0, "stained_glass", dsg.a);
-      kd.a($$0, "stair", dsi.a);
-      kd.a($$0, "standing_sign", dsj.a);
-      kd.a($$0, "stem", dsk.a);
-      kd.a($$0, "stonecutter", dsl.a);
-      kd.a($$0, "structure", dsm.a);
-      kd.a($$0, "structure_void", dsn.a);
-      kd.a($$0, "sugar_cane", dso.a);
-      kd.a($$0, "sweet_berry_bush", dsr.a);
-      kd.a($$0, "tall_flower", dss.c);
-      kd.a($$0, "tall_grass", dst.a);
-      kd.a($$0, "tall_seagrass", dsu.c);
-      kd.a($$0, "target", dsv.a);
-      kd.a($$0, "tinted_glass", dsw.a);
-      kd.a($$0, "tnt", dsx.a);
-      kd.a($$0, "torchflower_crop", dsz.a);
-      kd.a($$0, "torch", dsy.d);
-      kd.a($$0, "transparent", dta.b);
-      kd.a($$0, "trapdoor", dtb.a);
-      kd.a($$0, "trapped_chest", dtc.n);
-      kd.a($$0, "trial_spawner", dtd.a);
-      kd.a($$0, "trip_wire_hook", dtf.a);
-      kd.a($$0, "tripwire", dte.a);
-      kd.a($$0, "turtle_egg", dtg.a);
-      kd.a($$0, "twisting_vines_plant", dti.c);
-      kd.a($$0, "twisting_vines", dth.c);
-      kd.a($$0, "vault", dtj.a);
-      kd.a($$0, "vine", dtk.a);
-      kd.a($$0, "wall_banner", dtl.a);
-      kd.a($$0, "wall_hanging_sign", dtn.a);
-      kd.a($$0, "wall_sign", dto.a);
-      kd.a($$0, "wall_skull", dtp.c);
-      kd.a($$0, "wall_torch", dtq.f);
-      kd.a($$0, "wall", dtm.a);
-      kd.a($$0, "waterlily", dtr.a);
-      kd.a($$0, "waterlogged_transparent", dts.a);
-      kd.a($$0, "weathering_copper_bulb", dtu.d);
-      kd.a($$0, "weathering_copper_door", dtv.l);
-      kd.a($$0, "weathering_copper_full", dtw.d);
-      kd.a($$0, "weathering_copper_grate", dtx.e);
-      kd.a($$0, "weathering_copper_slab", dty.f);
-      kd.a($$0, "weathering_copper_stair", dtz.J);
-      kd.a($$0, "weathering_copper_trap_door", dua.m);
-      kd.a($$0, "web", dub.a);
-      kd.a($$0, "weeping_vines_plant", dud.c);
-      kd.a($$0, "weeping_vines", duc.c);
-      kd.a($$0, "weighted_pressure_plate", due.e);
-      kd.a($$0, "wet_sponge", duf.a);
-      kd.a($$0, "wither_rose", dug.e);
-      kd.a($$0, "wither_skull", duh.b);
-      kd.a($$0, "wither_wall_skull", dui.b);
-      return kd.a($$0, "wool_carpet", duj.c);
+   @Override
+   protected MapCodec<? extends dkm> a() {
+      return p;
+   }
+
+   public static int j(@Nullable dxv $$0) {
+      if ($$0 == null) {
+         return 0;
+      } else {
+         int $$1 = q.a($$0);
+         return $$1 == -1 ? 0 : $$1;
+      }
+   }
+
+   public static dxv a(int $$0) {
+      dxv $$1 = q.a($$0);
+      return $$1 == null ? dko.a.m() : $$1;
+   }
+
+   public static dkm a(@Nullable cxl $$0) {
+      return $$0 instanceof cvv ? ((cvv)$$0).d() : dko.a;
+   }
+
+   public static dxv a(dxv $$0, dxv $$1, dhj $$2, jh $$3) {
+      fcs $$4 = fcp.b($$0.g($$2, $$3), $$1.g($$2, $$3), fcc.c).a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
+      if ($$4.c()) {
+         return $$1;
+      } else {
+         for (bvk $$6 : $$2.a_(null, $$4.a())) {
+            double $$7 = fcp.a(jm.a.b, $$6.cR().d(0.0, 1.0, 0.0), List.of($$4), -1.0);
+            $$6.d(0.0, 1.0 + $$7, 0.0);
+         }
+
+         return $$1;
+      }
+   }
+
+   public static fcs a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return fcp.a($$0 / 16.0, $$1 / 16.0, $$2 / 16.0, $$3 / 16.0, $$4 / 16.0, $$5 / 16.0);
+   }
+
+   public static dxv b(dxv $$0, dhj $$1, jh $$2) {
+      dxv $$3 = $$0;
+      jh.a $$4 = new jh.a();
+
+      for (jm $$5 : aG) {
+         $$4.a($$2, $$5);
+         $$3 = $$3.a($$1, $$1, $$2, $$5, $$4, $$1.a_($$4), $$1.H_());
+      }
+
+      return $$3;
+   }
+
+   public static void a(dxv $$0, dxv $$1, dhj $$2, jh $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 512);
+   }
+
+   public static void a(dxv $$0, dxv $$1, dhj $$2, jh $$3, int $$4, int $$5) {
+      if ($$1 != $$0) {
+         if ($$1.l()) {
+            if (!$$2.B_()) {
+               $$2.a($$3, ($$4 & 32) == 0, null, $$5);
+            }
+         } else {
+            $$2.a($$3, $$1, $$4 & -33, $$5);
+         }
+      }
+   }
+
+   public dkm(dxu.d $$0) {
+      super($$0);
+      dxw.a<dkm, dxv> $$1 = new dxw.a<>(this);
+      this.a($$1);
+      this.F = $$1.a(dkm::m, dxv::new);
+      this.l(this.F.b());
+      if (ab.aU) {
+         String $$2 = this.getClass().getSimpleName();
+         if (!$$2.endsWith("Block")) {
+            a.error("Block classes should end with Block and {} doesn't.", $$2);
+         }
+      }
+   }
+
+   public static boolean k(dxv $$0) {
+      return $$0.b() instanceof doy || $$0.a(dko.in) || $$0.a(dko.er) || $$0.a(dko.es) || $$0.a(dko.fo) || $$0.a(dko.fn) || $$0.a(axu.am);
+   }
+
+   public static boolean a(dxv $$0, dxv $$1, jm $$2) {
+      fcs $$3 = $$1.a($$2.g());
+      if ($$3 == fcp.b()) {
+         return false;
+      } else if ($$0.a($$1, $$2)) {
+         return false;
+      } else if ($$3 == fcp.a()) {
+         return true;
+      } else {
+         fcs $$4 = $$0.a($$2);
+         if ($$4 == fcp.a()) {
+            return true;
+         } else {
+            dkm.a $$5 = new dkm.a($$4, $$3);
+            Object2ByteLinkedOpenHashMap<dkm.a> $$6 = g.get();
+            byte $$7 = $$6.getAndMoveToFirst($$5);
+            if ($$7 != 127) {
+               return $$7 != 0;
+            } else {
+               boolean $$8 = fcp.c($$4, $$3, fcc.e);
+               if ($$6.size() == 256) {
+                  $$6.removeLastByte();
+               }
+
+               $$6.putAndMoveToFirst($$5, (byte)($$8 ? 1 : 0));
+               return $$8;
+            }
+         }
+      }
+   }
+
+   public static boolean c(dgn $$0, jh $$1) {
+      return $$0.a_($$1).a($$0, $$1, jm.b, dsq.c);
+   }
+
+   public static boolean a(dhl $$0, jh $$1, jm $$2) {
+      dxv $$3 = $$0.a_($$1);
+      return $$2 == jm.a && $$3.a(axu.bb) ? false : $$3.a($$0, $$1, $$2, dsq.b);
+   }
+
+   public static boolean a(fcs $$0, jm $$1) {
+      fcs $$2 = $$0.a($$1);
+      return a($$2);
+   }
+
+   public static boolean a(fcs $$0) {
+      return (Boolean)c.getUnchecked($$0);
+   }
+
+   public void a(dxv $$0, dhi $$1, jh $$2, bam $$3) {
+   }
+
+   public void a(dhj $$0, jh $$1, dxv $$2) {
+   }
+
+   public static List<cxp> a(dxv $$0, ash $$1, jh $$2, @Nullable dux $$3) {
+      ews.a $$4 = new ews.a($$1).a(ezj.f, fby.b($$2)).a(ezj.i, cxp.j).b(ezj.h, $$3);
+      return $$0.a($$4);
+   }
+
+   public static List<cxp> a(dxv $$0, ash $$1, jh $$2, @Nullable dux $$3, @Nullable bvk $$4, cxp $$5) {
+      ews.a $$6 = new ews.a($$1).a(ezj.f, fby.b($$2)).a(ezj.i, $$5).b(ezj.a, $$4).b(ezj.h, $$3);
+      return $$0.a($$6);
+   }
+
+   public static void c(dxv $$0, dhi $$1, jh $$2) {
+      if ($$1 instanceof ash) {
+         a($$0, (ash)$$1, $$2, null).forEach($$2x -> a($$1, $$2, $$2x));
+         $$0.a((ash)$$1, $$2, cxp.j, true);
+      }
+   }
+
+   public static void a(dxv $$0, dhj $$1, jh $$2, @Nullable dux $$3) {
+      if ($$1 instanceof ash) {
+         a($$0, (ash)$$1, $$2, $$3).forEach($$2x -> a((dhi)((ash)$$1), $$2, $$2x));
+         $$0.a((ash)$$1, $$2, cxp.j, true);
+      }
+   }
+
+   public static void a(dxv $$0, dhi $$1, jh $$2, @Nullable dux $$3, @Nullable bvk $$4, cxp $$5) {
+      if ($$1 instanceof ash) {
+         a($$0, (ash)$$1, $$2, $$3, $$4, $$5).forEach($$2x -> a($$1, $$2, $$2x));
+         $$0.a((ash)$$1, $$2, $$5, true);
+      }
+   }
+
+   public static void a(dhi $$0, jh $$1, cxp $$2) {
+      double $$3 = (double)bvr.ar.m() / 2.0;
+      double $$4 = (double)$$1.u() + 0.5 + bae.a($$0.A, -0.25, 0.25);
+      double $$5 = (double)$$1.v() + 0.5 + bae.a($$0.A, -0.25, 0.25) - $$3;
+      double $$6 = (double)$$1.w() + 0.5 + bae.a($$0.A, -0.25, 0.25);
+      a($$0, () -> new cmb($$0, $$4, $$5, $$6, $$2), $$2);
+   }
+
+   public static void a(dhi $$0, jh $$1, jm $$2, cxp $$3) {
+      int $$4 = $$2.j();
+      int $$5 = $$2.k();
+      int $$6 = $$2.l();
+      double $$7 = (double)bvr.ar.l() / 2.0;
+      double $$8 = (double)bvr.ar.m() / 2.0;
+      double $$9 = (double)$$1.u() + 0.5 + ($$4 == 0 ? bae.a($$0.A, -0.25, 0.25) : (double)$$4 * (0.5 + $$7));
+      double $$10 = (double)$$1.v() + 0.5 + ($$5 == 0 ? bae.a($$0.A, -0.25, 0.25) : (double)$$5 * (0.5 + $$8)) - $$8;
+      double $$11 = (double)$$1.w() + 0.5 + ($$6 == 0 ? bae.a($$0.A, -0.25, 0.25) : (double)$$6 * (0.5 + $$7));
+      double $$12 = $$4 == 0 ? bae.a($$0.A, -0.1, 0.1) : (double)$$4 * 0.1;
+      double $$13 = $$5 == 0 ? bae.a($$0.A, 0.0, 0.1) : (double)$$5 * 0.1 + 0.1;
+      double $$14 = $$6 == 0 ? bae.a($$0.A, -0.1, 0.1) : (double)$$6 * 0.1;
+      a($$0, () -> new cmb($$0, $$9, $$10, $$11, $$3, $$12, $$13, $$14), $$3);
+   }
+
+   private static void a(dhi $$0, Supplier<cmb> $$1, cxp $$2) {
+      if ($$0 instanceof ash $$3 && !$$2.f() && $$3.N().b(dhe.h)) {
+         cmb $$5 = $$1.get();
+         $$5.s();
+         $$0.b($$5);
+         return;
+      }
+   }
+
+   protected void a(ash $$0, jh $$1, int $$2) {
+      if ($$0.N().b(dhe.h)) {
+         bvw.a($$0, fby.b($$1), $$2);
+      }
+   }
+
+   public float e() {
+      return this.aI;
+   }
+
+   public void a(ash $$0, jh $$1, dha $$2) {
+   }
+
+   public void a(dhi $$0, jh $$1, dxv $$2, bvk $$3) {
+   }
+
+   @Nullable
+   public dxv a(dbg $$0) {
+      return this.m();
+   }
+
+   public void a(dhi $$0, cpx $$1, jh $$2, dxv $$3, @Nullable dux $$4, cxp $$5) {
+      $$1.b(axp.a.b(this));
+      $$1.G(0.005F);
+      a($$3, $$0, $$2, $$4, $$1, $$5);
+   }
+
+   public void a(dhi $$0, jh $$1, dxv $$2, @Nullable bwg $$3, cxp $$4) {
+   }
+
+   public boolean a(dxv $$0) {
+      return !$$0.e() && !$$0.n();
+   }
+
+   public yj f() {
+      return xv.c(this.v());
+   }
+
+   public void a(dhi $$0, dxv $$1, jh $$2, bvk $$3, float $$4) {
+      $$3.a($$4, 1.0F, $$3.dX().l());
+   }
+
+   public void a(dgn $$0, bvk $$1) {
+      $$1.h($$1.dz().d(1.0, 0.0, 1.0));
+   }
+
+   public cxp a(dhl $$0, jh $$1, dxv $$2) {
+      return new cxp(this);
+   }
+
+   public float g() {
+      return this.aL;
+   }
+
+   public float h() {
+      return this.aM;
+   }
+
+   public float k() {
+      return this.aN;
+   }
+
+   protected void a(dhi $$0, cpx $$1, jh $$2, dxv $$3) {
+      $$0.a($$1, 2001, $$2, j($$3));
+   }
+
+   public dxv a(dhi $$0, jh $$1, dxv $$2, cpx $$3) {
+      this.a($$0, $$3, $$1, $$2);
+      if ($$2.a(axu.aY) && $$0 instanceof ash $$4) {
+         com.a($$4, $$3, false);
+      }
+
+      $$0.a(ecr.f, $$1, ecr.a.a($$3, $$2));
+      return $$2;
+   }
+
+   public void a(dxv $$0, dhi $$1, jh $$2, dik.c $$3) {
+   }
+
+   public boolean a(dha $$0) {
+      return true;
+   }
+
+   protected void a(dxw.a<dkm, dxv> $$0) {
+   }
+
+   public dxw<dkm, dxv> l() {
+      return this.F;
+   }
+
+   protected final void l(dxv $$0) {
+      this.d = $$0;
+   }
+
+   public final dxv m() {
+      return this.d;
+   }
+
+   public final dxv m(dxv $$0) {
+      dxv $$1 = this.m();
+
+      for (dyx<?> $$2 : $$0.b().l().d()) {
+         if ($$1.b($$2)) {
+            $$1 = a($$0, $$1, $$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   private static <T extends Comparable<T>> dxv a(dxv $$0, dxv $$1, dyx<T> $$2) {
+      return $$1.b($$2, $$0.c($$2));
+   }
+
+   @Override
+   public cxl j() {
+      if (this.e == null) {
+         this.e = cxl.a(this);
+      }
+
+      return this.e;
+   }
+
+   public boolean n() {
+      return this.aO;
+   }
+
+   @Override
+   public String toString() {
+      return "Block{" + ma.e.e(this).g() + "}";
+   }
+
+   public void a(cxp $$0, cxl.b $$1, List<xv> $$2, czh $$3) {
+   }
+
+   @Override
+   protected dkm o() {
+      return this;
+   }
+
+   protected ImmutableMap<dxv, fcs> a(Function<dxv, fcs> $$0) {
+      return this.F.a().stream().collect(ImmutableMap.toImmutableMap(Function.identity(), $$0));
+   }
+
+   @Deprecated
+   public jq.c<dkm> p() {
+      return this.b;
+   }
+
+   protected void a(ash $$0, jh $$1, cxp $$2, bso $$3) {
+      int $$4 = deb.b($$0, $$2, $$3.a($$0.H_()));
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$4);
+      }
+   }
+
+   static record a(fcs a, fcs b) {
+      @Override
+      public boolean equals(Object $$0) {
+         if ($$0 instanceof dkm.a $$1 && this.a == $$1.a && this.b == $$1.b) {
+            return true;
+         }
+
+         return false;
+      }
+
+      @Override
+      public int hashCode() {
+         return System.identityHashCode(this.a) * 31 + System.identityHashCode(this.b);
+      }
    }
 }

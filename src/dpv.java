@@ -1,68 +1,57 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpv extends dkl implements dko {
+public class dpv extends dkw {
    public static final MapCodec<dpv> a = b(dpv::new);
+   public static final int b = 3;
+   public static final dyu c = dyl.at;
+   private static final fcs[] d = new fcs[]{
+      dkm.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<dpv> a() {
       return a;
    }
 
-   public dpv(dxt.d $$0) {
+   protected dpv(dxu.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean b(dhk $$0, jh $$1, dxu $$2) {
-      if (!$$0.a_($$1.d()).f()) {
-         return false;
-      } else {
-         for (jh $$3 : jh.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(axu.aO)) {
-               return true;
-            }
-         }
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return d[$$0.c(c)];
+   }
 
-         return false;
+   @Override
+   protected boolean b(dxv $$0, dgn $$1, jh $$2) {
+      return $$0.a(dko.ej);
+   }
+
+   @Override
+   protected boolean f(dxv $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
    }
 
    @Override
-   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
-      return true;
+   public cxp a(dhl $$0, jh $$1, dxv $$2) {
+      return new cxp(cxt.sX);
    }
 
    @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (jh $$6 : jh.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dxu $$7 = $$0.a_($$6);
-         if ($$7.a(dkn.oI)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dkn.oR)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dkn.oI.m() : dkn.oR.m(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dkn.oI.m(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dkn.oR.m(), 3);
-      }
-   }
-
-   @Override
-   public dko.a ar_() {
-      return dko.a.a;
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(c);
    }
 }

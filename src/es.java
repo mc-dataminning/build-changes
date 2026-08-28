@@ -2,7 +2,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public interface es extends js.a {
-   static es a(final js.a $$0, final css $$1) {
+   static es a(final js.a $$0, final cst $$1) {
       return new es() {
          @Override
          public Stream<aly<? extends kd<?>>> b() {
@@ -15,11 +15,11 @@ public interface es extends js.a {
          }
 
          @Override
-         public css a() {
+         public cst a() {
             return $$1;
          }
       };
    }
 
-   css a();
+   cst a();
 }

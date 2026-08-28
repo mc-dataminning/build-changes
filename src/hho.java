@@ -1,98 +1,77 @@
 import javax.annotation.Nullable;
 
-public class hho {
-   private final fmf a;
+public class hho implements hhq {
+   private static final int a = 600;
+   private static final xv b = xv.c("tutorial.punch_tree.title");
+   private static final xv c = xv.a("tutorial.punch_tree.description", hhp.a("attack"));
+   private final hhp d;
    @Nullable
-   private hhp b;
+   private fqs e;
+   private int f;
+   private int g;
 
-   public hho(fmf $$0, fmj $$1) {
-      this.a = $$0;
+   public hho(hhp $$0) {
+      this.d = $$0;
    }
 
-   public void a(gke $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable gfj $$0, @Nullable fbv $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(gfj $$0, jh $$1, dxu $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
+   @Override
    public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hhr.f);
+      } else {
+         if (this.f == 1) {
+            gkh $$0 = this.d.e().t;
+            if ($$0 != null) {
+               if ($$0.gi().a(ayd.r)) {
+                  this.d.a(hhr.e);
+                  return;
+               }
 
-   public void a(cxo $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.n.r.a(this);
-   }
-
-   public void d() {
-      if (this.b != null) {
-         if (this.a.s != null) {
-            this.b.a();
-         } else {
-            this.b();
+               if (hhl.a($$0)) {
+                  this.d.a(hhr.e);
+                  return;
+               }
+            }
          }
-      } else if (this.a.s != null) {
-         this.c();
+
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new fqs(fqs.a.c, b, c, true);
+            this.d.e().aA().a(this.e);
+         }
       }
    }
 
-   public void a(hhq $$0) {
-      this.a.n.r = $$0;
-      this.a.n.az();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.d();
+         this.e = null;
       }
    }
 
-   public fmf e() {
-      return this.a;
+   @Override
+   public void a(gfk $$0, jh $$1, dxv $$2, float $$3) {
+      boolean $$4 = $$2.a(axu.u);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(hhr.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
    }
 
-   public boolean f() {
-      return this.a.r == null ? false : this.a.r.j() == dhe.a;
-   }
-
-   public static xv a(String $$0) {
-      return xv.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cxo $$0, cxo $$1, ctl $$2) {
+   @Override
+   public void a(cxp $$0) {
+      if ($$0.a(ayd.r)) {
+         this.d.a(hhr.e);
+      }
    }
 }

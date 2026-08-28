@@ -2,7 +2,7 @@ import com.mojang.authlib.GameProfile;
 import java.time.Duration;
 import java.util.UUID;
 
-public record ym(UUID a, cpz b) {
+public record ym(UUID a, cqa b) {
    public yr a(Duration $$0) {
       return new yr.a(this.b.a(), () -> this.b.b().a($$0));
    }
@@ -23,13 +23,13 @@ public record ym(UUID a, cpz b) {
       return this.a;
    }
 
-   public cpz d() {
+   public cqa d() {
       return this.b;
    }
 
-   public static record a(UUID a, cpz.a b) {
+   public static record a(UUID a, cqa.a b) {
       public static ym.a a(ws $$0) {
-         return new ym.a($$0.n(), new cpz.a($$0));
+         return new ym.a($$0.n(), new cqa.a($$0));
       }
 
       public static void a(ws $$0, ym.a $$1) {
@@ -37,8 +37,8 @@ public record ym(UUID a, cpz b) {
          $$1.b.a($$0);
       }
 
-      public ym a(GameProfile $$0, bar $$1) throws cpz.b {
-         return new ym(this.a, cpz.a($$1, $$0.getId(), this.b));
+      public ym a(GameProfile $$0, bar $$1) throws cqa.b {
+         return new ym(this.a, cqa.a($$1, $$0.getId(), this.b));
       }
    }
 }

@@ -1,31 +1,66 @@
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fot extends bsy {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+public abstract class fot extends fod {
+   fot(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3, xu.a);
+   }
 
-   public fot(UUID $$0, xv $$1, float $$2, bsy.a $$3, bsy.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ae.c();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public static fot a(int $$0, int $$1, alz $$2, int $$3, int $$4) {
+      return new fot.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static fot a(int $$0, int $$1, alz $$2) {
+      return new fot.a(0, 0, $$0, $$1, $$2);
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.h = $$0;
-      this.i = ae.c();
+   protected void a(fsd $$0) {
    }
 
    @Override
-   public float j() {
-      long $$0 = ae.c() - this.i;
-      float $$1 = bae.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return bae.h($$1, this.b, this.h);
+   public void a(hgn $$0) {
+   }
+
+   @Override
+   public boolean C() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fnp a(fsj $$0) {
+      return null;
+   }
+
+   static class a extends fot {
+      private final alz a;
+
+      public a(int $$0, int $$1, int $$2, int $$3, alz $$4) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+      }
+
+      @Override
+      public void b(fns $$0, int $$1, int $$2, float $$3) {
+         $$0.a(glv::C, this.a, this.D(), this.E(), this.y(), this.w());
+      }
+   }
+
+   static class b extends fot {
+      private final alz a;
+      private final int b;
+      private final int c;
+
+      public b(int $$0, int $$1, int $$2, int $$3, alz $$4, int $$5, int $$6) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+         this.b = $$5;
+         this.c = $$6;
+      }
+
+      @Override
+      protected void b(fns $$0, int $$1, int $$2, float $$3) {
+         $$0.a(glv::C, this.a, this.D(), this.E(), 0.0F, 0.0F, this.y(), this.w(), this.b, this.c);
+      }
    }
 }

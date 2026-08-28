@@ -1,45 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public class bsk extends bsn {
-   public static final bsk a = new bsk(0);
-   public static final MapCodec<bsk> b = Codec.INT.fieldOf("value").xmap(bsk::a, bsk::d);
-   private final int f;
+public class bsk extends bsm {
+   public static final bsk a = new bsk(0.0F);
+   public static final MapCodec<bsk> b = Codec.FLOAT.fieldOf("value").xmap(bsk::a, bsk::d);
+   private final float d;
 
-   public static bsk a(int $$0) {
-      return $$0 == 0 ? a : new bsk($$0);
+   public static bsk a(float $$0) {
+      return $$0 == 0.0F ? a : new bsk($$0);
    }
 
-   private bsk(int $$0) {
-      this.f = $$0;
+   private bsk(float $$0) {
+      this.d = $$0;
    }
 
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public int a(bam $$0) {
-      return this.f;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a(bam $$0) {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public bso<?> c() {
-      return bso.a;
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bsn<?> c() {
+      return bsn.a;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return Float.toString(this.d);
    }
 }

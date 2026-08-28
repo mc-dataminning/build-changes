@@ -3,35 +3,35 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cj(Optional<be<daf.b, cj.a>> c) implements dz<daf> {
+public record cj(Optional<be<dag.b, cj.a>> c) implements dz<dag> {
    public static final Codec<cj> a = RecordCodecBuilder.create($$0 -> $$0.group(be.a(cj.a.a).optionalFieldOf("modifiers").forGetter(cj::b)).apply($$0, cj::new));
 
    @Override
-   public kt<daf> a() {
+   public kt<dag> a() {
       return ku.o;
    }
 
-   public boolean a(cxo $$0, daf $$1) {
+   public boolean a(cxp $$0, dag $$1) {
       return !this.c.isPresent() || this.c.get().a($$1.b());
    }
 
-   public Optional<be<daf.b, cj.a>> b() {
+   public Optional<be<dag.b, cj.a>> b() {
       return this.c;
    }
 
-   public static record a(Optional<ju<bxi>> b, Optional<alz> c, dj.c d, Optional<bxl.a> e, Optional<bvs> f) implements Predicate<daf.b> {
+   public static record a(Optional<ju<bxj>> b, Optional<alz> c, dj.c d, Optional<bxm.a> e, Optional<bvt> f) implements Predicate<dag.b> {
       public static final Codec<cj.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   kf.a(mb.c).optionalFieldOf("attribute").forGetter(cj.a::a),
                   alz.a.optionalFieldOf("id").forGetter(cj.a::b),
                   dj.c.d.optionalFieldOf("amount", dj.c.c).forGetter(cj.a::c),
-                  bxl.a.f.optionalFieldOf("operation").forGetter(cj.a::d),
-                  bvs.l.optionalFieldOf("slot").forGetter(cj.a::e)
+                  bxm.a.f.optionalFieldOf("operation").forGetter(cj.a::d),
+                  bvt.l.optionalFieldOf("slot").forGetter(cj.a::e)
                )
                .apply($$0, cj.a::new)
       );
 
-      public boolean a(daf.b $$0) {
+      public boolean a(dag.b $$0) {
          if (this.b.isPresent() && !this.b.get().a($$0.a())) {
             return false;
          } else if (this.c.isPresent() && !this.c.get().equals($$0.b().b())) {
@@ -43,7 +43,7 @@ public record cj(Optional<be<daf.b, cj.a>> c) implements dz<daf> {
          }
       }
 
-      public Optional<ju<bxi>> a() {
+      public Optional<ju<bxj>> a() {
          return this.b;
       }
 
@@ -55,11 +55,11 @@ public record cj(Optional<be<daf.b, cj.a>> c) implements dz<daf> {
          return this.d;
       }
 
-      public Optional<bxl.a> d() {
+      public Optional<bxm.a> d() {
          return this.e;
       }
 
-      public Optional<bvs> e() {
+      public Optional<bvt> e() {
          return this.f;
       }
    }

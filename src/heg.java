@@ -1,17 +1,11 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class heg extends hdq {
-   private final brq<hdm> b;
+public interface heg {
+   void a(heg.a var1);
 
-   public heg(brq<hdm> $$0) {
-      super($$0.e().getFirst().b());
-      this.b = $$0;
-   }
+   hdn a(hdw var1, Function<hdu, hbl> var2, hec var3);
 
-   @Override
-   public List<gmr> a(@Nullable dxu $$0, @Nullable jm $$1, bam $$2) {
-      return this.b.a($$2).map($$3 -> $$3.a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public interface a {
+      heg a(alz var1);
    }
 }

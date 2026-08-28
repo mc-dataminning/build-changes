@@ -5,9 +5,9 @@ public interface arx {
 
    void a(ary var1);
 
-   CompletableFuture<dzp> a(ary var1, eat var2, bay<ary> var3);
+   CompletableFuture<dzq> a(ary var1, eau var2, bay<ary> var3);
 
-   arj a(eaq var1, dgn var2);
+   arj a(ear var1, dgo var2);
 
    void g();
 }

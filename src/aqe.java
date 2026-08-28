@@ -11,8 +11,8 @@ public class aqe {
    public static void a(CommandDispatcher<ew> $$0) {
       LiteralCommandNode<ew> $$1 = $$0.register((LiteralArgumentBuilder)ex.a("teammsg").then(ex.a("message", fn.a()).executes($$0x -> {
          ew $$1x = (ew)$$0x.getSource();
-         bvj $$2 = $$1x.g();
-         fcx $$3 = $$2.cr();
+         bvk $$2 = $$1x.g();
+         fcy $$3 = $$2.cr();
          if ($$3 == null) {
             throw b.create();
          } else {
@@ -27,7 +27,7 @@ public class aqe {
       $$0.register((LiteralArgumentBuilder)ex.a("tm").redirect($$1));
    }
 
-   private static void a(ew $$0, bvj $$1, fcx $$2, List<asi> $$3, yl $$4) {
+   private static void a(ew $$0, bvk $$1, fcy $$2, List<asi> $$3, yl $$4) {
       xv $$5 = $$2.d().c(a);
       xr.a $$6 = xr.a(xr.i, $$0).c($$5);
       xr.a $$7 = xr.a(xr.j, $$0).c($$5);

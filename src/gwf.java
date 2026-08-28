@@ -1,25 +1,25 @@
-public class gwf<S extends gys & gzk, M extends gbl<? super S>> extends gwe<S, M> {
-   private final alz a;
-   private final M b;
-   private final M c;
+public abstract class gwf<S extends gxv, M extends gbm<? super S>> {
+   private final gtn<S, M> a;
 
-   public gwf(gtm<S, M> $$0, M $$1, M $$2, alz $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.a = $$3;
+   public gwf(gtn<S, M> $$0) {
+      this.a = $$0;
    }
 
-   public gwf(gtm<S, M> $$0, M $$1, alz $$2) {
-      this($$0, $$1, $$1, $$2);
-   }
-
-   public void a(fgr $$0, glk $$1, int $$2, S $$3, float $$4, float $$5) {
-      if ($$3.c()) {
-         M $$6 = $$3.ae ? this.c : this.b;
-         $$6.a($$3);
-         fgv $$7 = $$1.getBuffer(glu.g(this.a));
-         $$6.a($$0, $$7, $$2, hbb.d);
+   protected static <S extends gyt> void a(gbm<S> $$0, alz $$1, fgs $$2, gll $$3, int $$4, S $$5, int $$6) {
+      if (!$$5.u) {
+         $$0.a($$5);
+         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
+
+   protected static void b(gbm<?> $$0, alz $$1, fgs $$2, gll $$3, int $$4, gyt $$5, int $$6) {
+      fgw $$7 = $$3.getBuffer(glv.g($$1));
+      $$0.a($$2, $$7, $$4, gsr.a($$5, 0.0F), $$6);
+   }
+
+   public M d() {
+      return this.a.c();
+   }
+
+   public abstract void a(fgs var1, gll var2, int var3, S var4, float var5, float var6);
 }

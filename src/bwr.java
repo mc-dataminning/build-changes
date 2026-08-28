@@ -1,35 +1,65 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum bwr {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8),
-   j(9),
-   k(10),
-   l(11),
-   m(12),
-   n(13),
-   o(14),
-   p(15),
-   q(16),
-   r(17);
+public class bwr {
+   private final dqh a;
+   private jh b;
+   private int c;
+   private boolean d;
 
-   public static final IntFunction<bwr> s = ayv.a(bwr::a, values(), ayv.a.a);
-   public static final zt<ByteBuf, bwr> t = zr.a(s, bwr::a);
-   private final int u;
-
-   private bwr(final int $$0) {
-      this.u = $$0;
+   public bwr(dqh $$0, jh $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = true;
    }
 
-   public int a() {
-      return this.u;
+   public boolean a(ash $$0, bvk $$1, boolean $$2) {
+      if (!this.d) {
+         this.f();
+         return false;
+      } else {
+         this.d = false;
+         return $$2 && this.c++ >= this.a.a($$0, $$1);
+      }
+   }
+
+   @Nullable
+   public eux a(ash $$0, bvk $$1) {
+      return this.a.a($$0, $$1, this.b);
+   }
+
+   public dqh.a a() {
+      return this.a.b();
+   }
+
+   private void f() {
+      this.c = Math.max(this.c - 4, 0);
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public jh c() {
+      return this.b;
+   }
+
+   public void a(jh $$0) {
+      this.b = $$0;
+   }
+
+   public int d() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean a(dqh $$0) {
+      return this.a == $$0;
    }
 }

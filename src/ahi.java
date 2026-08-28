@@ -69,8 +69,8 @@ public class ahi {
       "Fist"
    };
 
-   public static String a(bvj $$0) {
-      if ($$0 instanceof cpw) {
+   public static String a(bvk $$0) {
+      if ($$0 instanceof cpx) {
          return $$0.al().getString();
       } else {
          xv $$1 = $$0.an();

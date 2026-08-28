@@ -1,17 +1,26 @@
-public class eem {
-   private final int a;
-   private final int b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public eem(dzq $$0, dhj $$1) {
-      this.a = Math.max($$1.L_(), $$0.g());
-      this.b = Math.min($$1.M_(), $$0.e());
+public record eem(eeo b, eel c) {
+   public static final Codec<eem> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eeo.a.forGetter(eem::a), eel.a.forGetter(eem::b)).apply($$0, $$0.stable(eem::new))
+   );
+
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, eeo $$1, eel $$2) {
+      return a.encodeStart($$0, new eem($$1, $$2));
    }
 
-   public int a() {
-      return this.a;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, eeo $$1, ke $$2) {
+      return a($$0, $$1, new eel($$2.e(mb.bf)));
    }
 
-   public int b() {
+   public eeo a() {
       return this.b;
+   }
+
+   public eel b() {
+      return this.c;
    }
 }

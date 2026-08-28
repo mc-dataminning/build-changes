@@ -1,5 +1,6 @@
-public interface bxf<T> {
-   void a(T var1);
+import javax.annotation.Nullable;
 
-   T d();
+public interface bxf {
+   @Nullable
+   bvk p();
 }

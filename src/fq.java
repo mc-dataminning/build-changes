@@ -18,10 +18,10 @@ public class fq implements ArgumentType<String> {
       return new fq();
    }
 
-   public static fcu a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+   public static fcv a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      fdc $$3 = ((ew)$$0.getSource()).l().aJ();
-      fcu $$4 = $$3.a($$2);
+      fdd $$3 = ((ew)$$0.getSource()).l().aJ();
+      fcv $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class fq implements ArgumentType<String> {
       }
    }
 
-   public static fcu b(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      fcu $$2 = a($$0, $$1);
+   public static fcv b(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      fcv $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

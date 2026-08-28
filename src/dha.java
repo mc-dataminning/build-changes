@@ -1,27 +1,52 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dha {
-   public Optional<Float> a(dgz $$0, dgm $$1, jh $$2, dxu $$3, etw $$4) {
-      return $$3.l() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+public interface dha {
+   static bua a(dhi $$0, @Nullable bvk $$1) {
+      return $$0.aj().d($$1, a($$1));
    }
 
-   public boolean a(dgz $$0, dgm $$1, jh $$2, dxu $$3, float $$4) {
-      return true;
+   @Nullable
+   static bwg a(@Nullable bvk $$0) {
+      return switch ($$0) {
+         case null, default -> null;
+         case cmc $$1 -> $$1.l();
+         case bwg $$2 -> $$2;
+         case cqq $$3 when $$3.p() instanceof bwg $$4 -> $$4;
+      };
    }
 
-   public boolean a(dgz $$0, bvj $$1) {
-      return true;
-   }
+   ash a();
 
-   public float a(bvj $$0) {
-      return 1.0F;
-   }
+   dha.a b();
 
-   public float a(dgz $$0, bvj $$1, float $$2) {
-      float $$3 = $$0.e() * 2.0F;
-      fbx $$4 = $$0.f();
-      double $$5 = Math.sqrt($$1.f($$4)) / (double)$$3;
-      double $$6 = (1.0 - $$5) * (double)$$2;
-      return (float)(($$6 * $$6 + $$6) / 2.0 * 7.0 * (double)$$3 + 1.0);
+   @Nullable
+   bwg c();
+
+   @Nullable
+   bvk d();
+
+   float e();
+
+   fby f();
+
+   boolean g();
+
+   boolean h();
+
+   public static enum a {
+      a(false),
+      b(true),
+      c(true),
+      d(false);
+
+      private final boolean e;
+
+      private a(final boolean $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a() {
+         return this.e;
+      }
    }
 }

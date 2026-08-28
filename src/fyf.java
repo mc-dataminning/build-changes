@@ -1,71 +1,64 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-public class fyf {
-   private final gge a;
-   private final ggm b;
-   private final Predicate<ggh.a> c;
-   @Nullable
-   private yq d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private yl g;
+public class fyf extends fye<ggm.a> {
+   private static final xv C = xv.c("gui.chatReport.title");
+   private static final xv D = xv.c("gui.chatReport.select_chat");
+   private foy E;
+   private fof F;
+   private fof G;
 
-   public fyf(ggs $$0, Predicate<ggh.a> $$1) {
-      this.a = $$0.b();
-      this.b = new ggm($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   private fyf(fty $$0, ggt $$1, ggm.a $$2) {
+      super(C, $$0, $$1, $$2);
    }
 
-   public void a(int $$0, fyf.a $$1) {
-      int $$2 = 0;
-
-      while ($$2 < $$0) {
-         ggg $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
-
-         int $$4 = this.e--;
-         if ($$3 instanceof ggh.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(xv.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
-         }
-      }
+   public fyf(fty $$0, ggt $$1, UUID $$2) {
+      this($$0, $$1, new ggm.a($$2, $$1.a().b()));
    }
 
-   private boolean a(fyf.a $$0, ggh.a $$1) {
-      yl $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.k())) {
-            $$0.a(xv.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
-         }
+   public fyf(fty $$0, ggt $$1, ggm $$2) {
+      this($$0, $$1, new ggm.a($$2, $$1.a().b()));
+   }
 
-         this.d = $$2.k();
-         return true;
+   @Override
+   protected void E() {
+      this.F = this.z.a(fof.a(D, $$0 -> this.m.a(new fyh(this, this.y, this.A, $$0x -> {
+            this.A = $$0x;
+            this.G();
+         }))).a(280).a());
+      this.G = fof.a(c, $$0 -> this.m.a(new fyk(this, this.A.i(), ggs.a, $$0x -> {
+            this.A.a($$0x);
+            this.G();
+         }))).a(280).a();
+      this.z.a(frq.a(this.p, this.G, b));
+      this.E = this.a(280, 9 * 8, $$0 -> {
+         this.A.a($$0);
+         this.G();
+      });
+      this.z.a(frq.a(this.p, this.E, d, $$0 -> $$0.e(12)));
+   }
+
+   @Override
+   protected void G() {
+      IntSet $$0 = this.A.a();
+      if ($$0.isEmpty()) {
+         this.F.b(D);
       } else {
-         return $$3;
+         this.F.b(xv.a("gui.chatReport.selected_chat", $$0.size()));
       }
+
+      ggr $$1 = this.A.i();
+      if ($$1 != null) {
+         this.G.b($$1.b());
+      } else {
+         this.G.b(c);
+      }
+
+      super.G();
    }
 
-   public interface a {
-      void a(int var1, ggh.a var2);
-
-      void a(xv var1);
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
    }
 }

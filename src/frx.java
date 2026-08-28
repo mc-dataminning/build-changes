@@ -1,111 +1,143 @@
-import java.util.function.Consumer;
+public interface frx {
+   frx a(int var1);
 
-public class frx implements fru {
-   private final frs a;
-   private final frx.a b;
-   private int c = 0;
+   frx a(int var1, int var2);
 
-   private frx(frx.a $$0) {
-      this(0, 0, $$0);
+   frx a(int var1, int var2, int var3, int var4);
+
+   frx b(int var1);
+
+   frx c(int var1);
+
+   frx d(int var1);
+
+   frx e(int var1);
+
+   frx f(int var1);
+
+   frx g(int var1);
+
+   frx a(float var1, float var2);
+
+   frx a(float var1);
+
+   frx b(float var1);
+
+   default frx a() {
+      return this.a(0.0F);
    }
 
-   public frx(int $$0, int $$1, frx.a $$2) {
-      this.a = new frs($$0, $$1);
-      this.b = $$2;
+   default frx b() {
+      return this.a(0.5F);
    }
 
-   public frx a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
+   default frx c() {
+      return this.a(1.0F);
    }
 
-   public frw b() {
-      return this.a.b();
+   default frx d() {
+      return this.b(0.0F);
    }
 
-   public frw c() {
-      return this.a.c();
+   default frx e() {
+      return this.b(0.5F);
    }
 
-   public <T extends frv> T a(T $$0, frw $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
+   default frx f() {
+      return this.b(1.0F);
    }
 
-   public <T extends frv> T a(T $$0) {
-      return this.a($$0, this.b());
+   frx g();
+
+   frx.a h();
+
+   static frx i() {
+      return new frx.a();
    }
 
-   public <T extends frv> T a(T $$0, Consumer<frw> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ae.a(this.b(), $$1));
-   }
+   public static class a implements frx {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
 
-   @Override
-   public void b(Consumer<frv> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int y() {
-      return this.a.y();
-   }
-
-   @Override
-   public int w() {
-      return this.a.w();
-   }
-
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
-   }
-
-   @Override
-   public void l(int $$0) {
-      this.a.l($$0);
-   }
-
-   @Override
-   public int D() {
-      return this.a.D();
-   }
-
-   @Override
-   public int E() {
-      return this.a.E();
-   }
-
-   public static frx d() {
-      return new frx(frx.a.b);
-   }
-
-   public static frx e() {
-      return new frx(frx.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(frs $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+      public a() {
       }
 
-      public <T extends frv> T a(frs $$0, T $$1, int $$2, frw $$3) {
-         return (T)(switch (this) {
-            case a -> (frv)$$0.a($$1, 0, $$2, $$3);
-            case b -> (frv)$$0.a($$1, $$2, 0, $$3);
-         });
+      public a(frx.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
+
+      public frx.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public frx.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public frx.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public frx.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public frx.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public frx.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public frx.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public frx.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public frx.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public frx.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public frx.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public frx.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public frx.a j() {
+         return new frx.a(this);
+      }
+
+      @Override
+      public frx.a h() {
+         return this;
       }
    }
 }

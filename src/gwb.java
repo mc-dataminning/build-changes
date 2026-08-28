@@ -1,35 +1,26 @@
-public class gwb extends gwe<gzf, gcq> {
-   private final gcj a;
-   private final gzb b = new gzb();
+public class gwb extends gwf<gzb, gcj> {
+   private final gso a;
 
-   public gwb(gtm<gzf, gcq> $$0, gej $$1) {
+   public gwb(gtn<gzb, gcj> $$0, gso $$1) {
       super($$0);
-      this.a = new gcj($$1.a(gem.bK));
-      this.b.c = gcj.a.e;
+      this.a = $$1;
    }
 
-   public void a(fgr $$0, glk $$1, int $$2, gzf $$3, float $$4, float $$5) {
-      cim.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
-      }
+   public void a(fgs $$0, gll $$1, int $$2, gzb $$3, float $$4, float $$5) {
+      hdn $$6 = $$3.b();
+      if ($$6 != null && $$3.g && !$$3.f) {
+         float $$7 = -0.6F;
+         float $$8 = 1.4F;
+         if ($$3.e) {
+            $$7 -= 0.2F * bae.a($$3.p * 0.6F) + 0.2F;
+            $$8 -= 0.09F * bae.a($$3.p * 0.6F);
+         }
 
-      cim.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+         $$0.a();
+         $$0.a(0.1F, $$8, $$7);
+         cxp $$9 = $$3.aY_();
+         this.a.a($$9, cxn.h, false, $$0, $$1, $$2, hbc.d, $$6);
+         $$0.b();
       }
-   }
-
-   private void a(fgr $$0, glk $$1, int $$2, gzf $$3, cim.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.I ? -1.3F : -1.5F, 0.0F);
-      this.b.p = $$3.p;
-      this.b.X = $$3.X;
-      this.b.Y = $$3.Y;
-      this.b.U = $$5;
-      this.b.V = $$6;
-      this.a.a(this.b);
-      this.a.a($$0, $$1.getBuffer(this.a.a(gtc.a($$4))), $$2, hbb.d);
-      $$0.b();
    }
 }

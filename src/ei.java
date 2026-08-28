@@ -8,8 +8,8 @@ public class ei extends dy<ei.a> {
       return ei.a.a;
    }
 
-   public void a(asi $$0, bvj $$1, fbx $$2, int $$3) {
-      ewo $$4 = bw.b($$0, $$1);
+   public void a(asi $$0, bvk $$1, fby $$2, int $$3) {
+      ewp $$4 = bw.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
@@ -27,7 +27,7 @@ public class ei extends dy<ei.a> {
          return ao.M.a(new ei.a(Optional.empty(), $$0, $$1));
       }
 
-      public boolean a(ewo $$0, fbx $$1, int $$2) {
+      public boolean a(ewp $$0, fby $$1, int $$2) {
          return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 

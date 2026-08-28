@@ -1,20 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dud extends doa {
+public class dud extends doc {
    public static final MapCodec<dud> c = b(dud::new);
-   public static final fcr e = dkl.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   protected static final fcs g = dkm.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<dud> a() {
       return c;
    }
 
-   public dud(dxt.d $$0) {
-      super($$0, jm.a, e, false);
+   public dud(dxu.d $$0) {
+      super($$0, jm.a, g, false, 0.1);
    }
 
    @Override
-   protected dob c() {
-      return (dob)dkn.oU;
+   protected int a(bam $$0) {
+      return dpu.a($$0);
+   }
+
+   @Override
+   protected dkm b() {
+      return dko.oV;
+   }
+
+   @Override
+   protected boolean h(dxv $$0) {
+      return dpu.a($$0);
    }
 }

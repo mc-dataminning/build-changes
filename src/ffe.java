@@ -1,22 +1,8 @@
-import java.io.File;
-import java.time.Duration;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class ffe {
-   private static final Duration a = Duration.ofSeconds(15L);
-
-   public static void a(File $$0, long $$1) {
-      Thread $$2 = new Thread(() -> {
-         try {
-            Thread.sleep(a);
-         } catch (InterruptedException var4) {
-            return;
-         }
-
-         o $$3 = arb.a("Client shutdown", $$1);
-         fmf.a($$0, $$3);
-      });
-      $$2.setDaemon(true);
-      $$2.setName("Client shutdown watchdog");
-      $$2.start();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fea
+@fdz
+interface ffe {
 }

@@ -1,37 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqm extends dkl {
-   public static final MapCodec<dqm> a = b(dqm::new);
+public class dqm extends dka {
+   public static final MapCodec<dqm> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dyk.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t()).apply($$0, dqm::new)
+   );
+   public static final dym f = dyl.x;
 
    @Override
    public MapCodec<dqm> a() {
-      return a;
+      return e;
    }
 
-   protected dqm(dxt.d $$0) {
-      super($$0);
+   protected dqm(dyk $$0, dxu.d $$1) {
+      super($$1, $$0);
+      this.l(this.F.b().b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected bti a(cxo $$0, dxu $$1, dhh $$2, jh $$3, cpw $$4, bth $$5, fbt $$6) {
-      if (!$$0.a(cxs.sJ)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.C) {
-         return bti.a;
-      } else {
-         jm $$7 = $$6.c();
-         jm $$8 = $$7.o() == jm.a.b ? $$4.cO().g() : $$7;
-         $$2.a(null, $$3, axf.vq, axg.e, 1.0F, 1.0F);
-         $$2.a($$3, dkn.er.m().b(dlg.b, $$8), 11);
-         cma $$9 = new cma(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cxo(cxs.sM, 4)
-         );
-         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, bwf.d($$5));
-         $$2.a($$4, ecq.M, $$3);
-         $$4.b(axp.c.b(cxs.sJ));
-         return bti.a;
-      }
+   protected int h(dxv $$0) {
+      return $$0.c(f) ? 15 : 0;
+   }
+
+   @Override
+   protected dxv a(dxv $$0, int $$1) {
+      return $$0.b(f, Boolean.valueOf($$1 > 0));
+   }
+
+   @Override
+   protected int b(dhi $$0, jh $$1) {
+      Class<? extends bvk> $$2 = switch (this.d.f()) {
+         case a -> bvk.class;
+         case b -> bwg.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(f);
    }
 }

@@ -1,17 +1,17 @@
 import java.util.List;
 
 public class tb {
-   public static final enq a = enj.a(edp.a.e);
-   public static final enq b = enj.a(edp.a.c);
-   public static final enq c = enj.a(edp.a.a);
-   public static final enq d = enj.a(edp.a.d);
-   public static final enq e = eni.a(eej.a(), eej.b());
-   public static final enq f = eni.a(eej.b(10), eej.c(10));
-   public static final enq g = eni.a(eej.b(8), eej.c(8));
-   public static final enq h = eni.a(eej.b(4), eej.c(4));
-   public static final enq i = eni.a(eej.a(), eej.a(256));
+   public static final enr a = enk.a(edq.a.e);
+   public static final enr b = enk.a(edq.a.c);
+   public static final enr c = enk.a(edq.a.a);
+   public static final enr d = enk.a(edq.a.d);
+   public static final enr e = enj.a(eek.a(), eek.b());
+   public static final enr f = enj.a(eek.b(10), eek.c(10));
+   public static final enr g = enj.a(eek.b(8), eek.c(8));
+   public static final enr h = enj.a(eek.b(4), eek.c(4));
+   public static final enr i = enj.a(eek.a(), eek.a(256));
 
-   public static void a(rk<enn> $$0) {
+   public static void a(rk<eno> $$0) {
       sv.a($$0);
       sw.a($$0);
       sx.a($$0);
@@ -23,49 +23,49 @@ public class tb {
       te.a($$0);
    }
 
-   public static aly<enn> a(String $$0) {
+   public static aly<eno> a(String $$0) {
       return aly.a(mb.aT, alz.b($$0));
    }
 
-   public static void a(rk<enn> $$0, aly<enn> $$1, jq<egh<?, ?>> $$2, List<enq> $$3) {
-      $$0.a($$1, new enn($$2, List.copyOf($$3)));
+   public static void a(rk<eno> $$0, aly<eno> $$1, jq<egi<?, ?>> $$2, List<enr> $$3) {
+      $$0.a($$1, new eno($$2, List.copyOf($$3)));
    }
 
-   public static void a(rk<enn> $$0, aly<enn> $$1, jq<egh<?, ?>> $$2, enq... $$3) {
+   public static void a(rk<eno> $$0, aly<eno> $$1, jq<egi<?, ?>> $$2, enr... $$3) {
       a($$0, $$1, $$2, List.of($$3));
    }
 
-   public static enq a(int $$0, float $$1, int $$2) {
+   public static enr a(int $$0, float $$1, int $$2) {
       float $$3 = 1.0F / $$1;
       if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
          throw new IllegalStateException("Chance data cannot be represented as list weight");
       } else {
-         brq<bsn> $$4 = brq.<bsn>a().a(bsk.a($$0), (int)$$3 - 1).a(bsk.a($$0 + $$2), 1).a();
-         return enf.a(new bsu($$4));
+         brr<bso> $$4 = brr.<bso>a().a(bsl.a($$0), (int)$$3 - 1).a(bsl.a($$0 + $$2), 1).a();
+         return eng.a(new bsv($$4));
       }
    }
 
-   public static enp a() {
-      return enc.a(eew.c);
+   public static enq a() {
+      return end.a(eex.c);
    }
 
-   public static enc a(dkl $$0) {
-      return enc.a(eew.a($$0.m(), jh.c));
+   public static end a(dkm $$0) {
+      return end.a(eex.a($$0.m(), jh.c));
    }
 
-   public static jq<enn> a(jq<egh<?, ?>> $$0, enq... $$1) {
-      return jq.a(new enn($$0, List.of($$1)));
+   public static jq<eno> a(jq<egi<?, ?>> $$0, enr... $$1) {
+      return jq.a(new eno($$0, List.of($$1)));
    }
 
-   public static <FC extends eiz, F extends egv<FC>> jq<enn> a(F $$0, FC $$1, enq... $$2) {
-      return a(jq.a(new egh($$0, $$1)), $$2);
+   public static <FC extends eja, F extends egw<FC>> jq<eno> a(F $$0, FC $$1, enr... $$2) {
+      return a(jq.a(new egi($$0, $$1)), $$2);
    }
 
-   public static <FC extends eiz, F extends egv<FC>> jq<enn> a(F $$0, FC $$1) {
-      return a($$0, $$1, eew.c);
+   public static <FC extends eja, F extends egw<FC>> jq<eno> a(F $$0, FC $$1) {
+      return a($$0, $$1, eex.c);
    }
 
-   public static <FC extends eiz, F extends egv<FC>> jq<enn> a(F $$0, FC $$1, eew $$2) {
-      return a($$0, $$1, enc.a($$2));
+   public static <FC extends eja, F extends egw<FC>> jq<eno> a(F $$0, FC $$1, eex $$2) {
+      return a($$0, $$1, end.a($$2));
    }
 }

@@ -1,32 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dlf extends dkl {
+public class dlf extends dmj {
    public static final MapCodec<dlf> a = b(dlf::new);
-   private static final xv b = xv.c("container.cartography_table");
+   private static final fcs[] b = new fcs[]{
+      dkm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dkm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<dlf> a() {
       return a;
    }
 
-   protected dlf(dxt.d $$0) {
+   public dlf(dxu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(axp.aw);
-      }
-
-      return bti.a;
+   protected dhh d() {
+      return cxt.uV;
    }
 
-   @Nullable
    @Override
-   protected btk b(dxu $$0, dhh $$1, jh $$2) {
-      return new btq(($$2x, $$3, $$4) -> new ctj($$2x, $$3, cto.a($$1, $$2)), b);
+   protected fcs a(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return b[this.h($$0)];
    }
 }

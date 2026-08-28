@@ -17,10 +17,10 @@ public class gi implements ArgumentType<String> {
       return new gi();
    }
 
-   public static fcx a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+   public static fcy a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      fdc $$3 = ((ew)$$0.getSource()).l().aJ();
-      fcx $$4 = $$3.b($$2);
+      fdd $$3 = ((ew)$$0.getSource()).l().aJ();
+      fcy $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

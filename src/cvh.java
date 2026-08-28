@@ -1,2 +1,8 @@
-public record cvh(czs a) implements cvi {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cvh {
 }

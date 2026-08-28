@@ -19,15 +19,15 @@ public class aqt implements aqr {
             return $$0.then(ex.a("entity").then($$1.apply(ex.a($$0, fj.a()))));
          }
       };
-   private final bvj c;
+   private final bvk c;
 
-   public aqt(bvj $$0) {
+   public aqt(bvk $$0) {
       this.c = $$0;
    }
 
    @Override
    public void a(ux $$0) throws CommandSyntaxException {
-      if (this.c instanceof cpw) {
+      if (this.c instanceof cpx) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cG();

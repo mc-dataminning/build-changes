@@ -1,3 +1,3 @@
-public class gxy extends gxu {
-   public int a;
+public class gxy extends gym {
+   public boolean a;
 }

@@ -1,124 +1,216 @@
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-public class eqz {
-   private static final int a = 32;
-   static final jh b = new jh(4, 0, 15);
-   private static final alz[] c = new alz[]{
-      alz.b("shipwreck/with_mast"),
-      alz.b("shipwreck/sideways_full"),
-      alz.b("shipwreck/sideways_fronthalf"),
-      alz.b("shipwreck/sideways_backhalf"),
-      alz.b("shipwreck/rightsideup_full"),
-      alz.b("shipwreck/rightsideup_fronthalf"),
-      alz.b("shipwreck/rightsideup_backhalf"),
-      alz.b("shipwreck/with_mast_degraded"),
-      alz.b("shipwreck/rightsideup_full_degraded"),
-      alz.b("shipwreck/rightsideup_fronthalf_degraded"),
-      alz.b("shipwreck/rightsideup_backhalf_degraded")
+public class eqz extends eok {
+   private static final String[] e = new String[]{
+      "ruined_portal/portal_1",
+      "ruined_portal/portal_2",
+      "ruined_portal/portal_3",
+      "ruined_portal/portal_4",
+      "ruined_portal/portal_5",
+      "ruined_portal/portal_6",
+      "ruined_portal/portal_7",
+      "ruined_portal/portal_8",
+      "ruined_portal/portal_9",
+      "ruined_portal/portal_10"
    };
-   private static final alz[] d = new alz[]{
-      alz.b("shipwreck/with_mast"),
-      alz.b("shipwreck/upsidedown_full"),
-      alz.b("shipwreck/upsidedown_fronthalf"),
-      alz.b("shipwreck/upsidedown_backhalf"),
-      alz.b("shipwreck/sideways_full"),
-      alz.b("shipwreck/sideways_fronthalf"),
-      alz.b("shipwreck/sideways_backhalf"),
-      alz.b("shipwreck/rightsideup_full"),
-      alz.b("shipwreck/rightsideup_fronthalf"),
-      alz.b("shipwreck/rightsideup_backhalf"),
-      alz.b("shipwreck/with_mast_degraded"),
-      alz.b("shipwreck/upsidedown_full_degraded"),
-      alz.b("shipwreck/upsidedown_fronthalf_degraded"),
-      alz.b("shipwreck/upsidedown_backhalf_degraded"),
-      alz.b("shipwreck/sideways_full_degraded"),
-      alz.b("shipwreck/sideways_fronthalf_degraded"),
-      alz.b("shipwreck/sideways_backhalf_degraded"),
-      alz.b("shipwreck/rightsideup_full_degraded"),
-      alz.b("shipwreck/rightsideup_fronthalf_degraded"),
-      alz.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   static final Map<String, aly<ewt>> e = Map.of("map_chest", ewk.G, "treasure_chest", ewk.I, "supply_chest", ewk.H);
+   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
+   private static final float g = 0.05F;
+   private static final int h = 15;
+   private final List<eqz.a> i;
+   public static final MapCodec<eqz> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), azn.a(eqz.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, eqz::new)
+   );
 
-   public static eqz.a a(esm $$0, jh $$1, drb $$2, eoo $$3, bam $$4, boolean $$5) {
-      alz $$6 = ae.a($$5 ? c : d, $$4);
-      eqz.a $$7 = new eqz.a($$0, $$6, $$1, $$2, $$5);
-      $$3.a($$7);
-      return $$7;
+   public eqz(eok.c $$0, List<eqz.a> $$1) {
+      super($$0);
+      this.i = $$1;
    }
 
-   public static class a extends eot {
-      private final boolean h;
+   public eqz(eok.c $$0, eqz.a $$1) {
+      this($$0, List.of($$1));
+   }
 
-      public a(esm $$0, alz $$1, jh $$2, drb $$3, boolean $$4) {
-         super(epa.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-         this.h = $$4;
-      }
+   @Override
+   public Optional<eok.b> a(eok.a $$0) {
+      eqy.a $$1 = new eqy.a();
+      eep $$2 = $$0.f();
+      eqz.a $$3 = null;
+      if (this.i.size() > 1) {
+         float $$4 = 0.0F;
 
-      public a(esm $$0, ux $$1) {
-         super(epa.ab, $$1, $$0, $$1x -> a(drb.valueOf($$1.l("Rot"))));
-         this.h = $$1.q("isBeached");
-      }
-
-      @Override
-      protected void a(eoz $$0, ux $$1) {
-         super.a($$0, $$1);
-         $$1.a("isBeached", this.h);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      private static esh a(drb $$0) {
-         return new esh().a($$0).a(dpk.a).a(eqz.b).a(erm.d);
-      }
-
-      @Override
-      protected void a(String $$0, jh $$1, dhy $$2, bam $$3, eob $$4) {
-         aly<ewt> $$5 = eqz.e.get($$0);
-         if ($$5 != null) {
-            bto.a($$2, $$3, $$1.e(), $$5);
+         for (eqz.a $$5 : this.i) {
+            $$4 += $$5.h();
          }
+
+         float $$6 = $$2.i();
+
+         for (eqz.a $$7 : this.i) {
+            $$6 -= $$7.h() / $$4;
+            if ($$6 < 0.0F) {
+               $$3 = $$7;
+               break;
+            }
+         }
+      } else {
+         $$3 = this.i.get(0);
       }
 
-      @Override
-      public void a(dif $$0, did $$1, dzq $$2, bam $$3, eob $$4, dgn $$5, jh $$6) {
-         if (this.l()) {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$3 == null) {
+         throw new IllegalStateException();
+      } else {
+         eqz.a $$8 = $$3;
+         $$1.d = a($$2, $$8.b());
+         $$1.c = $$8.c();
+         $$1.e = $$8.d();
+         $$1.f = $$8.e();
+         $$1.g = $$8.g();
+         alz $$9;
+         if ($$2.i() < 0.05F) {
+            $$9 = alz.b(f[$$2.a(f.length)]);
          } else {
-            int $$7 = $$0.am() + 1;
-            int $$8 = 0;
-            kl $$9 = this.b.a();
-            edp.a $$10 = this.h ? edp.a.a : edp.a.c;
-            int $$11 = $$9.u() * $$9.w();
-            if ($$11 == 0) {
-               $$8 = $$0.a($$10, this.d.u(), this.d.w());
-            } else {
-               jh $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
+            $$9 = alz.b(e[$$2.a(e.length)]);
+         }
 
-               for (jh $$13 : jh.c(this.d, $$12)) {
-                  int $$14 = $$0.a($$10, $$13.u(), $$13.w());
-                  $$8 += $$14;
-                  $$7 = Math.min($$7, $$14);
-               }
-
-               $$8 /= $$11;
+         esm $$11 = $$0.e().a($$9);
+         drc $$12 = ae.a(drc.values(), $$2);
+         dpl $$13 = $$2.i() < 0.5F ? dpl.a : dpl.c;
+         jh $$14 = new jh($$11.a().u() / 2, 0, $$11.a().w() / 2);
+         dzr $$15 = $$0.b();
+         dhk $$16 = $$0.i();
+         eee $$17 = $$0.d();
+         jh $$18 = $$0.h().l();
+         eoc $$19 = $$11.a($$18, $$12, $$14, $$13);
+         jh $$20 = $$19.g();
+         int $$21 = $$15.a($$20.u(), $$20.w(), eqy.a($$8.a()), $$16, $$17) - 1;
+         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.e(), $$19, $$16, $$17);
+         jh $$23 = new jh($$18.u(), $$22, $$18.w());
+         return Optional.of(new eok.b($$23, (Consumer<epc>)($$11x -> {
+            if ($$8.f()) {
+               $$1.b = a($$23, $$0.b().d().getNoiseBiome(kb.a($$23.u()), kb.a($$23.v()), kb.a($$23.w()), $$17.b()), $$15.f());
             }
 
-            this.c(this.h ? this.a($$7, $$3) : $$8);
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+            $$11x.a(new eqy($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
+         })));
+      }
+   }
+
+   private static boolean a(eep $$0, float $$1) {
+      if ($$1 == 0.0F) {
+         return false;
+      } else {
+         return $$1 == 1.0F ? true : $$0.i() < $$1;
+      }
+   }
+
+   private static boolean a(jh $$0, jq<dik> $$1, int $$2) {
+      return $$1.a().b($$0, $$2);
+   }
+
+   private static int a(bam $$0, dzr $$1, eqy.b $$2, boolean $$3, int $$4, int $$5, eoc $$6, dhk $$7, eee $$8) {
+      int $$9 = $$7.L_() + 15;
+      int $$10;
+      if ($$2 == eqy.b.f) {
+         if ($$3) {
+            $$10 = bae.b($$0, 32, 100);
+         } else if ($$0.i() < 0.5F) {
+            $$10 = bae.b($$0, 27, 29);
+         } else {
+            $$10 = bae.b($$0, 29, 100);
+         }
+      } else if ($$2 == eqy.b.d) {
+         int $$13 = $$4 - $$5;
+         $$10 = a($$0, 70, $$13);
+      } else if ($$2 == eqy.b.e) {
+         int $$15 = $$4 - $$5;
+         $$10 = a($$0, $$9, $$15);
+      } else if ($$2 == eqy.b.b) {
+         $$10 = $$4 - $$5 + bae.b($$0, 2, 8);
+      } else {
+         $$10 = $$4;
+      }
+
+      List<jh> $$19 = ImmutableList.of(new jh($$6.h(), 0, $$6.j()), new jh($$6.k(), 0, $$6.j()), new jh($$6.h(), 0, $$6.m()), new jh($$6.k(), 0, $$6.m()));
+      List<dhu> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
+      edq.a $$21 = $$2 == eqy.b.c ? edq.a.c : edq.a.a;
+
+      int $$22;
+      for ($$22 = $$10; $$22 > $$9; $$22--) {
+         int $$23 = 0;
+
+         for (dhu $$24 : $$20) {
+            dxv $$25 = $$24.a($$22);
+            if ($$21.e().test($$25)) {
+               if (++$$23 == 3) {
+                  return $$22;
+               }
+            }
          }
       }
 
-      public boolean l() {
-         kl $$0 = this.b.a();
-         return $$0.u() > 32 || $$0.v() > 32;
+      return $$22;
+   }
+
+   private static int a(bam $$0, int $$1, int $$2) {
+      return $$1 < $$2 ? bae.b($$0, $$1, $$2) : $$2;
+   }
+
+   @Override
+   public eot<?> e() {
+      return eot.l;
+   }
+
+   public static record a(eqy.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
+      public static final Codec<eqz.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  eqy.b.g.fieldOf("placement").forGetter(eqz.a::a),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(eqz.a::b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(eqz.a::c),
+                  Codec.BOOL.fieldOf("overgrown").forGetter(eqz.a::d),
+                  Codec.BOOL.fieldOf("vines").forGetter(eqz.a::e),
+                  Codec.BOOL.fieldOf("can_be_cold").forGetter(eqz.a::f),
+                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(eqz.a::g),
+                  azn.o.fieldOf("weight").forGetter(eqz.a::h)
+               )
+               .apply($$0, eqz.a::new)
+      );
+
+      public eqy.b a() {
+         return this.b;
       }
 
-      public int a(int $$0, bam $$1) {
-         return $$0 - this.b.a().v() / 2 - $$1.a(3);
+      public float b() {
+         return this.c;
       }
 
-      public void c(int $$0) {
-         this.d = new jh(this.d.u(), $$0, this.d.w());
+      public float c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public boolean f() {
+         return this.g;
+      }
+
+      public boolean g() {
+         return this.h;
+      }
+
+      public float h() {
+         return this.i;
       }
    }
 }

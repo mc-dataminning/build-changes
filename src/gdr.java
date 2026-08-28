@@ -1,18 +1,25 @@
-public class gdr extends gcg {
-   public static final alz a = alz.b("textures/entity/trident.png");
+public class gdr extends gbm<gyt> {
+   private final geo a;
 
-   public gdr(gen $$0) {
-      super($$0, glu::d);
+   public gdr(geo $$0) {
+      super($$0, glv::g);
+      this.a = $$0.b("tail");
    }
 
-   public static get a() {
-      gev $$0 = new gev();
-      gex $$1 = $$0.a();
-      gex $$2 = $$1.a("pole", ges.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), gep.a);
-      $$2.a("base", ges.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), gep.a);
-      $$2.a("left_spike", ges.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gep.a);
-      $$2.a("middle_spike", ges.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), gep.a);
-      $$2.a("right_spike", ges.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gep.a);
-      return get.a($$0, 32, 32);
+   public static geu a() {
+      gew $$0 = new gew();
+      gey $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", get.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), geq.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", get.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), geq.a(0.0F, 22.0F, 0.0F));
+      return geu.a($$0, 16, 16);
+   }
+
+   public void a(gyt $$0) {
+      super.a($$0);
+      float $$1 = $$0.af ? 1.0F : 1.5F;
+      this.a.f = -$$1 * 0.25F * bae.a(0.3F * $$0.p);
    }
 }

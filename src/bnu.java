@@ -11,12 +11,8 @@ public class bnu extends Schema {
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("EntityHorse");
-      $$0.register($$1, "Horse", () -> DSL.optionalFields("ArmorItem", biw.t.in($$0), "SaddleItem", biw.t.in($$0), bkl.a($$0)));
-      $$0.register($$1, "Donkey", () -> DSL.optionalFields("Items", DSL.list(biw.t.in($$0)), "SaddleItem", biw.t.in($$0), bkl.a($$0)));
-      $$0.register($$1, "Mule", () -> DSL.optionalFields("Items", DSL.list(biw.t.in($$0)), "SaddleItem", biw.t.in($$0), bkl.a($$0)));
-      $$0.register($$1, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", biw.t.in($$0), bkl.a($$0)));
-      $$0.register($$1, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", biw.t.in($$0), bkl.a($$0)));
+      $$0.register($$1, "ZombieVillager", $$1x -> DSL.optionalFields("Offers", DSL.optionalFields("Recipes", DSL.list(bix.x.in($$0))), bkm.a($$0)));
+      $$0.register($$1, "Husk", () -> bkm.a($$0));
       return $$1;
    }
 }

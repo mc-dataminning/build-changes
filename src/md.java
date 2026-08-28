@@ -3,224 +3,224 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class md {
-   private static final Map<dkl, me> aq = Maps.newHashMap();
+   private static final Map<dkm, me> aq = Maps.newHashMap();
    private static final String ar = "wooden";
    private static final String as = "has_planks";
-   public static final me a = a(dkn.r)
-      .a(dkn.gO)
-      .h(dkn.kz)
-      .j(dkn.kq)
-      .m(dkn.dP)
-      .a(dkn.cP, dkn.dd)
-      .k(dkn.jO)
-      .l(dkn.if)
-      .f(dkn.kI)
-      .o(dkn.eP)
+   public static final me a = a(dko.r)
+      .a(dko.gO)
+      .h(dko.kz)
+      .j(dko.kq)
+      .m(dko.dP)
+      .a(dko.cP, dko.dd)
+      .k(dko.jO)
+      .l(dko.if)
+      .f(dko.kI)
+      .o(dko.eP)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me b = a(dkn.s)
-      .a(dkn.gP)
-      .h(dkn.kA)
-      .j(dkn.kr)
-      .m(dkn.dQ)
-      .a(dkn.cQ, dkn.de)
-      .k(dkn.jP)
-      .l(dkn.ig)
-      .f(dkn.kJ)
-      .o(dkn.eQ)
+   public static final me b = a(dko.s)
+      .a(dko.gP)
+      .h(dko.kA)
+      .j(dko.kr)
+      .m(dko.dQ)
+      .a(dko.cQ, dko.de)
+      .k(dko.jP)
+      .l(dko.ig)
+      .f(dko.kJ)
+      .o(dko.eQ)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me c = a(dkn.p)
-      .a(dkn.gM)
-      .h(dkn.kx)
-      .j(dkn.ko)
-      .m(dkn.dN)
-      .a(dkn.cO, dkn.dc)
-      .k(dkn.jM)
-      .l(dkn.fZ)
-      .f(dkn.kG)
-      .o(dkn.eN)
+   public static final me c = a(dko.p)
+      .a(dko.gM)
+      .h(dko.kx)
+      .j(dko.ko)
+      .m(dko.dN)
+      .a(dko.cO, dko.dc)
+      .k(dko.jM)
+      .l(dko.fZ)
+      .f(dko.kG)
+      .o(dko.eN)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me d = a(dkn.oZ)
-      .a(dkn.pn)
-      .h(dkn.pf)
-      .j(dkn.pj)
-      .m(dkn.pd)
-      .a(dkn.pr, dkn.pt)
-      .k(dkn.pb)
-      .l(dkn.pl)
-      .f(dkn.pp)
-      .o(dkn.ph)
+   public static final me d = a(dko.oZ)
+      .a(dko.pn)
+      .h(dko.pf)
+      .j(dko.pj)
+      .m(dko.pd)
+      .a(dko.pr, dko.pt)
+      .k(dko.pb)
+      .l(dko.pl)
+      .f(dko.pp)
+      .o(dko.ph)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me e = a(dkn.q)
-      .a(dkn.gN)
-      .h(dkn.ky)
-      .j(dkn.kp)
-      .m(dkn.dO)
-      .a(dkn.cR, dkn.df)
-      .k(dkn.jN)
-      .l(dkn.ga)
-      .f(dkn.kH)
-      .o(dkn.eO)
+   public static final me e = a(dko.q)
+      .a(dko.gN)
+      .h(dko.ky)
+      .j(dko.kp)
+      .m(dko.dO)
+      .a(dko.cR, dko.df)
+      .k(dko.jN)
+      .l(dko.ga)
+      .f(dko.kH)
+      .o(dko.eO)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me f = a(dkn.n)
-      .a(dkn.gK)
-      .h(dkn.eh)
-      .j(dkn.fv)
-      .m(dkn.dL)
-      .a(dkn.cM, dkn.da)
-      .k(dkn.jK)
-      .l(dkn.cC)
-      .f(dkn.cW)
-      .o(dkn.eL)
+   public static final me f = a(dko.n)
+      .a(dko.gK)
+      .h(dko.eh)
+      .j(dko.fv)
+      .m(dko.dL)
+      .a(dko.cM, dko.da)
+      .k(dko.jK)
+      .l(dko.cC)
+      .f(dko.cW)
+      .o(dko.eL)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me g = a(dkn.t)
-      .a(dkn.gQ)
-      .h(dkn.kB)
-      .j(dkn.ks)
-      .m(dkn.dR)
-      .a(dkn.cS, dkn.dg)
-      .k(dkn.jQ)
-      .l(dkn.ih)
-      .f(dkn.kK)
-      .o(dkn.eR)
+   public static final me g = a(dko.t)
+      .a(dko.gQ)
+      .h(dko.kB)
+      .j(dko.ks)
+      .m(dko.dR)
+      .a(dko.cS, dko.dg)
+      .k(dko.jQ)
+      .l(dko.ih)
+      .f(dko.kK)
+      .o(dko.eR)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me h = a(dkn.v)
-      .a(dkn.gR)
-      .h(dkn.kC)
-      .j(dkn.kt)
-      .m(dkn.dS)
-      .a(dkn.cT, dkn.dh)
-      .k(dkn.jR)
-      .l(dkn.ii)
-      .f(dkn.kL)
-      .o(dkn.eS)
+   public static final me h = a(dko.v)
+      .a(dko.gR)
+      .h(dko.kC)
+      .j(dko.kt)
+      .m(dko.dS)
+      .a(dko.cT, dko.dh)
+      .k(dko.jR)
+      .l(dko.ii)
+      .f(dko.kL)
+      .o(dko.eS)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me i = a(dkn.o)
-      .a(dkn.gL)
-      .h(dkn.kw)
-      .j(dkn.kn)
-      .m(dkn.dM)
-      .a(dkn.cN, dkn.db)
-      .k(dkn.jL)
-      .l(dkn.fY)
-      .f(dkn.kF)
-      .o(dkn.eM)
+   public static final me i = a(dko.o)
+      .a(dko.gL)
+      .h(dko.kw)
+      .j(dko.kn)
+      .m(dko.dM)
+      .a(dko.cN, dko.db)
+      .k(dko.jL)
+      .l(dko.fY)
+      .f(dko.kF)
+      .o(dko.eM)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me j = a(dkn.pa)
-      .a(dkn.po)
-      .h(dkn.pg)
-      .j(dkn.pk)
-      .m(dkn.pe)
-      .a(dkn.ps, dkn.pu)
-      .k(dkn.pc)
-      .l(dkn.pm)
-      .f(dkn.pq)
-      .o(dkn.pi)
+   public static final me j = a(dko.pa)
+      .a(dko.po)
+      .h(dko.pg)
+      .j(dko.pk)
+      .m(dko.pe)
+      .a(dko.ps, dko.pu)
+      .k(dko.pc)
+      .l(dko.pm)
+      .f(dko.pq)
+      .o(dko.pi)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me k = a(dkn.w)
-      .a(dkn.gS)
-      .k(dkn.jS)
-      .l(dkn.ij)
-      .h(dkn.kD)
-      .j(dkn.ku)
-      .m(dkn.dT)
-      .a(dkn.cU, dkn.di)
-      .f(dkn.kM)
-      .o(dkn.eT)
+   public static final me k = a(dko.w)
+      .a(dko.gS)
+      .k(dko.jS)
+      .l(dko.ij)
+      .h(dko.kD)
+      .j(dko.ku)
+      .m(dko.dT)
+      .a(dko.cU, dko.di)
+      .f(dko.kM)
+      .o(dko.eT)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me l = a(dkn.x)
-      .a(dkn.gT)
-      .k(dkn.jT)
-      .l(dkn.ik)
-      .g(dkn.kE)
-      .i(dkn.kv)
-      .m(dkn.dU)
-      .a(dkn.cV, dkn.dj)
-      .f(dkn.kN)
-      .o(dkn.eU)
-      .c(dkn.y)
+   public static final me l = a(dko.x)
+      .a(dko.gT)
+      .k(dko.jT)
+      .l(dko.ik)
+      .g(dko.kE)
+      .i(dko.kv)
+      .m(dko.dU)
+      .a(dko.cV, dko.dj)
+      .f(dko.kN)
+      .o(dko.eU)
+      .c(dko.y)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final me m = a(dkn.y).k(dkn.jU).l(dkn.il).a();
-   public static final me n = a(dkn.fa).p(dkn.og).l(dkn.fy).k(dkn.kd).a();
-   public static final me o = a(dkn.g).p(dkn.oi).l(dkn.nJ).k(dkn.nW).n(dkn.h).a();
-   public static final me p = a(dkn.h).l(dkn.nL).k(dkn.nY).a();
-   public static final me q = a(dkn.pM).p(dkn.pO).l(dkn.pN).k(dkn.pP).n(dkn.pQ).a();
-   public static final me r = a(dkn.pQ).p(dkn.qc).m(dkn.qa).a(dkn.qb).l(dkn.pY).k(dkn.pZ).n(dkn.pR).b(dkn.pT).a();
-   public static final me s = a(dkn.pR).p(dkn.pW).l(dkn.pV).k(dkn.pU).d(dkn.pS).a();
-   public static final me t = a(dkn.cq).p(dkn.oa).l(dkn.fw).k(dkn.kb).a();
-   public static final me u = a(dkn.kU).p(dkn.ol).l(dkn.nE).k(dkn.nS).a();
-   public static final me v = a(dkn.eW).p(dkn.od).l(dkn.nB).k(dkn.nP).a();
-   public static final me w = a(dkn.rr).e(dkn.rA).b().a();
-   public static final me x = a(dkn.rA).k(dkn.rQ).l(dkn.rM).b(dkn.rE).b().a();
-   public static final me y = a(dkn.rR).e(dkn.rY).a("waxed_cut_copper").b().a();
-   public static final me z = a(dkn.rY).k(dkn.sg).l(dkn.sc).b(dkn.rI).a("waxed_cut_copper").b().a();
-   public static final me A = a(dkn.rs).e(dkn.rz).b().a();
-   public static final me B = a(dkn.rz).k(dkn.rP).l(dkn.rL).b(dkn.rD).b().a();
-   public static final me C = a(dkn.rT).e(dkn.rX).a("waxed_exposed_cut_copper").b().a();
-   public static final me D = a(dkn.rX).k(dkn.sf).l(dkn.sb).b(dkn.rH).a("waxed_exposed_cut_copper").b().a();
-   public static final me E = a(dkn.rt).e(dkn.ry).b().a();
-   public static final me F = a(dkn.ry).k(dkn.rO).l(dkn.rK).b(dkn.rC).b().a();
-   public static final me G = a(dkn.rS).e(dkn.rW).a("waxed_weathered_cut_copper").b().a();
-   public static final me H = a(dkn.rW).k(dkn.se).l(dkn.sa).b(dkn.rG).a("waxed_weathered_cut_copper").b().a();
-   public static final me I = a(dkn.ru).e(dkn.rx).b().a();
-   public static final me J = a(dkn.rx).k(dkn.rN).l(dkn.rJ).b(dkn.rB).b().a();
-   public static final me K = a(dkn.rU).e(dkn.rV).a("waxed_oxidized_cut_copper").b().a();
-   public static final me L = a(dkn.rV).k(dkn.sd).l(dkn.rZ).b(dkn.rF).a("waxed_oxidized_cut_copper").b().a();
-   public static final me M = a(dkn.m).p(dkn.gd).l(dkn.cZ).k(dkn.ka).a();
-   public static final me N = a(dkn.cu).p(dkn.ge).l(dkn.nD).k(dkn.nR).a();
-   public static final me O = a(dkn.e).p(dkn.om).l(dkn.nM).k(dkn.nZ).n(dkn.f).a();
-   public static final me P = a(dkn.f).l(dkn.nC).k(dkn.nQ).a();
-   public static final me Q = a(dkn.c).p(dkn.oe).l(dkn.nI).k(dkn.nV).n(dkn.d).a();
-   public static final me R = a(dkn.d).l(dkn.nz).k(dkn.nN).a();
-   public static final me S = a(dkn.qU).p(dkn.qX).l(dkn.qW).k(dkn.qV).b(dkn.rc).n(dkn.qY).a();
-   public static final me T = a(dkn.qY).p(dkn.rb).l(dkn.ra).k(dkn.qZ).n(dkn.rd).a();
-   public static final me U = a(dkn.rd).p(dkn.rg).l(dkn.rf).k(dkn.re).b(dkn.rh).a();
-   public static final me V = a(dkn.fB).h(dkn.fC).p(dkn.oh).l(dkn.fD).k(dkn.ke).b(dkn.qd).d(dkn.qe).a();
-   public static final me W = a(dkn.lg).k(dkn.nX).l(dkn.nK).p(dkn.oj).a();
-   public static final me X = a(dkn.iq).p(dkn.ob).l(dkn.it).k(dkn.iw).a();
-   public static final me Y = a(dkn.kR).l(dkn.kT).k(dkn.ki).c().a();
-   public static final me Z = a(dkn.ir).l(dkn.iu).k(dkn.ix).a();
-   public static final me aa = a(dkn.is).l(dkn.iv).k(dkn.iy).a();
-   public static final me ab = a(dkn.ht).l(dkn.hw).k(dkn.kf).b(dkn.hu).c().a();
-   public static final me ac = a(dkn.kl).l(dkn.nH).k(dkn.nU).a();
-   public static final me ad = a(dkn.bc).p(dkn.ok).l(dkn.fR).k(dkn.jX).b(dkn.bd).e(dkn.be).c().a();
-   public static final me ae = a(dkn.be).k(dkn.jY).a();
-   public static final me af = a(dkn.kk).k(dkn.nT).l(dkn.nG).a();
-   public static final me ag = a(dkn.jG).p(dkn.oc).l(dkn.jJ).k(dkn.kg).b(dkn.jH).e(dkn.jI).c().a();
-   public static final me ah = a(dkn.jI).k(dkn.kh).a();
-   public static final me ai = a(dkn.km).k(dkn.nO).l(dkn.nA).a();
-   public static final me aj = a(dkn.b).k(dkn.jV).m(dkn.dJ).a(dkn.dZ).l(dkn.nF).a();
-   public static final me ak = a(dkn.eV).p(dkn.of).l(dkn.fx).k(dkn.kc).b(dkn.eY).d(dkn.eX).c().a();
-   public static final me al = a(dkn.te).a();
-   public static final me am = a(dkn.tf).k(dkn.th).l(dkn.tg).p(dkn.ti).b(dkn.tv).n(dkn.tj).a();
-   public static final me an = a(dkn.tj).k(dkn.tl).l(dkn.tk).p(dkn.tm).a();
-   public static final me ao = a(dkn.tr).k(dkn.tt).l(dkn.ts).p(dkn.tu).d(dkn.tw).a();
-   public static final me ap = a(dkn.tn).k(dkn.tp).l(dkn.to).p(dkn.tq).d(dkn.tx).a();
+   public static final me m = a(dko.y).k(dko.jU).l(dko.il).a();
+   public static final me n = a(dko.fa).p(dko.og).l(dko.fy).k(dko.kd).a();
+   public static final me o = a(dko.g).p(dko.oi).l(dko.nJ).k(dko.nW).n(dko.h).a();
+   public static final me p = a(dko.h).l(dko.nL).k(dko.nY).a();
+   public static final me q = a(dko.pM).p(dko.pO).l(dko.pN).k(dko.pP).n(dko.pQ).a();
+   public static final me r = a(dko.pQ).p(dko.qc).m(dko.qa).a(dko.qb).l(dko.pY).k(dko.pZ).n(dko.pR).b(dko.pT).a();
+   public static final me s = a(dko.pR).p(dko.pW).l(dko.pV).k(dko.pU).d(dko.pS).a();
+   public static final me t = a(dko.cq).p(dko.oa).l(dko.fw).k(dko.kb).a();
+   public static final me u = a(dko.kU).p(dko.ol).l(dko.nE).k(dko.nS).a();
+   public static final me v = a(dko.eW).p(dko.od).l(dko.nB).k(dko.nP).a();
+   public static final me w = a(dko.rr).e(dko.rA).b().a();
+   public static final me x = a(dko.rA).k(dko.rQ).l(dko.rM).b(dko.rE).b().a();
+   public static final me y = a(dko.rR).e(dko.rY).a("waxed_cut_copper").b().a();
+   public static final me z = a(dko.rY).k(dko.sg).l(dko.sc).b(dko.rI).a("waxed_cut_copper").b().a();
+   public static final me A = a(dko.rs).e(dko.rz).b().a();
+   public static final me B = a(dko.rz).k(dko.rP).l(dko.rL).b(dko.rD).b().a();
+   public static final me C = a(dko.rT).e(dko.rX).a("waxed_exposed_cut_copper").b().a();
+   public static final me D = a(dko.rX).k(dko.sf).l(dko.sb).b(dko.rH).a("waxed_exposed_cut_copper").b().a();
+   public static final me E = a(dko.rt).e(dko.ry).b().a();
+   public static final me F = a(dko.ry).k(dko.rO).l(dko.rK).b(dko.rC).b().a();
+   public static final me G = a(dko.rS).e(dko.rW).a("waxed_weathered_cut_copper").b().a();
+   public static final me H = a(dko.rW).k(dko.se).l(dko.sa).b(dko.rG).a("waxed_weathered_cut_copper").b().a();
+   public static final me I = a(dko.ru).e(dko.rx).b().a();
+   public static final me J = a(dko.rx).k(dko.rN).l(dko.rJ).b(dko.rB).b().a();
+   public static final me K = a(dko.rU).e(dko.rV).a("waxed_oxidized_cut_copper").b().a();
+   public static final me L = a(dko.rV).k(dko.sd).l(dko.rZ).b(dko.rF).a("waxed_oxidized_cut_copper").b().a();
+   public static final me M = a(dko.m).p(dko.gd).l(dko.cZ).k(dko.ka).a();
+   public static final me N = a(dko.cu).p(dko.ge).l(dko.nD).k(dko.nR).a();
+   public static final me O = a(dko.e).p(dko.om).l(dko.nM).k(dko.nZ).n(dko.f).a();
+   public static final me P = a(dko.f).l(dko.nC).k(dko.nQ).a();
+   public static final me Q = a(dko.c).p(dko.oe).l(dko.nI).k(dko.nV).n(dko.d).a();
+   public static final me R = a(dko.d).l(dko.nz).k(dko.nN).a();
+   public static final me S = a(dko.qU).p(dko.qX).l(dko.qW).k(dko.qV).b(dko.rc).n(dko.qY).a();
+   public static final me T = a(dko.qY).p(dko.rb).l(dko.ra).k(dko.qZ).n(dko.rd).a();
+   public static final me U = a(dko.rd).p(dko.rg).l(dko.rf).k(dko.re).b(dko.rh).a();
+   public static final me V = a(dko.fB).h(dko.fC).p(dko.oh).l(dko.fD).k(dko.ke).b(dko.qd).d(dko.qe).a();
+   public static final me W = a(dko.lg).k(dko.nX).l(dko.nK).p(dko.oj).a();
+   public static final me X = a(dko.iq).p(dko.ob).l(dko.it).k(dko.iw).a();
+   public static final me Y = a(dko.kR).l(dko.kT).k(dko.ki).c().a();
+   public static final me Z = a(dko.ir).l(dko.iu).k(dko.ix).a();
+   public static final me aa = a(dko.is).l(dko.iv).k(dko.iy).a();
+   public static final me ab = a(dko.ht).l(dko.hw).k(dko.kf).b(dko.hu).c().a();
+   public static final me ac = a(dko.kl).l(dko.nH).k(dko.nU).a();
+   public static final me ad = a(dko.bc).p(dko.ok).l(dko.fR).k(dko.jX).b(dko.bd).e(dko.be).c().a();
+   public static final me ae = a(dko.be).k(dko.jY).a();
+   public static final me af = a(dko.kk).k(dko.nT).l(dko.nG).a();
+   public static final me ag = a(dko.jG).p(dko.oc).l(dko.jJ).k(dko.kg).b(dko.jH).e(dko.jI).c().a();
+   public static final me ah = a(dko.jI).k(dko.kh).a();
+   public static final me ai = a(dko.km).k(dko.nO).l(dko.nA).a();
+   public static final me aj = a(dko.b).k(dko.jV).m(dko.dJ).a(dko.dZ).l(dko.nF).a();
+   public static final me ak = a(dko.eV).p(dko.of).l(dko.fx).k(dko.kc).b(dko.eY).d(dko.eX).c().a();
+   public static final me al = a(dko.te).a();
+   public static final me am = a(dko.tf).k(dko.th).l(dko.tg).p(dko.ti).b(dko.tv).n(dko.tj).a();
+   public static final me an = a(dko.tj).k(dko.tl).l(dko.tk).p(dko.tm).a();
+   public static final me ao = a(dko.tr).k(dko.tt).l(dko.ts).p(dko.tu).d(dko.tw).a();
+   public static final me ap = a(dko.tn).k(dko.tp).l(dko.to).p(dko.tq).d(dko.tx).a();
 
-   private static me.a a(dkl $$0) {
+   private static me.a a(dkm $$0) {
       me.a $$1 = new me.a($$0);
       me $$2 = aq.put($$0, $$1.a());
       if ($$2 != null) {

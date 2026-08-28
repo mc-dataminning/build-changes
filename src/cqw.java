@@ -1,49 +1,51 @@
-public abstract class cqw extends cqx implements cqm {
-   private static final alc<cxo> a = alg.a(cqw.class, ale.h);
+import javax.annotation.Nullable;
 
-   public cqw(bvq<? extends cqw> $$0, dhh $$1) {
+public class cqw extends cqe {
+   private int e = 200;
+
+   public cqw(bvr<? extends cqw> $$0, dhi $$1) {
       super($$0, $$1);
    }
 
-   public cqw(bvq<? extends cqw> $$0, double $$1, double $$2, double $$3, dhh $$4, cxo $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a($$5);
+   public cqw(dhi $$0, bwg $$1, cxp $$2, @Nullable cxp $$3) {
+      super(bvr.bn, $$1, $$0, $$2, $$3);
    }
 
-   public cqw(bvq<? extends cqw> $$0, bwf $$1, dhh $$2, cxo $$3) {
-      this($$0, $$1.dB(), $$1.dF() - 0.1F, $$1.dH(), $$2, $$3);
-      this.c($$1);
-   }
-
-   public void a(cxo $$0) {
-      this.au().a(a, $$0.c(1));
-   }
-
-   protected abstract cxk m();
-
-   @Override
-   public cxo l() {
-      return this.au().a(a);
+   public cqw(dhi $$0, double $$1, double $$2, double $$3, cxp $$4, @Nullable cxp $$5) {
+      super(bvr.bn, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
-   protected void a(alg.a $$0) {
-      $$0.a(a, new cxo(this.m()));
+   public void h() {
+      super.h();
+      if (this.dW().C && !this.l()) {
+         this.dW().a(ls.R, this.dB(), this.dD(), this.dH(), 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("Item", this.l().a(this.dY()));
+   protected void a(bwg $$0) {
+      super.a($$0);
+      bup $$1 = new bup(bur.x, this.e, 0);
+      $$0.b($$1, this.E());
    }
 
    @Override
    public void a(ux $$0) {
       super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cxo.a(this.dY(), (vu)$$0.p("Item")).orElseGet(() -> new cxo(this.m())));
-      } else {
-         this.a(new cxo(this.m()));
+      if ($$0.e("Duration")) {
+         this.e = $$0.h("Duration");
       }
+   }
+
+   @Override
+   public void b(ux $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.e);
+   }
+
+   @Override
+   protected cxp v() {
+      return new cxp(cxt.wf);
    }
 }

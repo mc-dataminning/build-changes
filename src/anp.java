@@ -16,7 +16,7 @@ public class anp {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xv.b("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xv.c("commands.clone.failed"));
-   public static final Predicate<dxy> a = $$0 -> !$$0.a().l();
+   public static final Predicate<dxz> a = $$0 -> !$$0.a().l();
 
    public static void a(CommandDispatcher<ew> $$0, es $$1) {
       $$0.register(
@@ -82,7 +82,7 @@ public class anp {
       anp.c<CommandContext<ew>, anp.d> $$0,
       anp.c<CommandContext<ew>, anp.d> $$1,
       anp.c<CommandContext<ew>, anp.d> $$2,
-      anp.c<CommandContext<ew>, Predicate<dxy>> $$3,
+      anp.c<CommandContext<ew>, Predicate<dxz>> $$3,
       ArgumentBuilder<ew, ?> $$4
    ) {
       return $$4.then(ex.a("force").executes($$4x -> a((ew)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), anp.e.a)))
@@ -90,20 +90,20 @@ public class anp {
          .then(ex.a("normal").executes($$4x -> a((ew)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), anp.e.c)));
    }
 
-   private static int a(ew $$0, anp.d $$1, anp.d $$2, anp.d $$3, Predicate<dxy> $$4, anp.e $$5) throws CommandSyntaxException {
+   private static int a(ew $$0, anp.d $$1, anp.d $$2, anp.d $$3, Predicate<dxz> $$4, anp.e $$5) throws CommandSyntaxException {
       jh $$6 = $$1.b();
       jh $$7 = $$2.b();
-      eob $$8 = eob.a($$6, $$7);
+      eoc $$8 = eoc.a($$6, $$7);
       jh $$9 = $$3.b();
       jh $$10 = $$9.a($$8.c());
-      eob $$11 = eob.a($$9, $$10);
+      eoc $$11 = eoc.a($$9, $$10);
       ash $$12 = $$1.a();
       ash $$13 = $$3.a();
       if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
          throw b.create();
       } else {
          int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().N().c(dhd.A);
+         int $$15 = $$0.e().N().c(dhe.A);
          if ($$14 > $$15) {
             throw c.create($$15, $$14);
          } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
@@ -118,10 +118,10 @@ public class anp {
                   for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
                      jh $$24 = new jh($$23, $$22, $$21);
                      jh $$25 = $$24.a((kl)$$20);
-                     dxy $$26 = new dxy($$12, $$24, false);
-                     dxu $$27 = $$26.a();
+                     dxz $$26 = new dxz($$12, $$24, false);
+                     dxv $$27 = $$26.a();
                      if ($$4.test($$26)) {
-                        duw $$28 = $$12.c_($$24);
+                        dux $$28 = $$12.c_($$24);
                         if ($$28 != null) {
                            anp.a $$29 = new anp.a($$28.e($$0.u()), $$28.s());
                            $$17.add(new anp.b($$25, $$27, $$29));
@@ -140,13 +140,13 @@ public class anp {
 
             if ($$5 == anp.e.b) {
                for (jh $$30 : $$19) {
-                  duw $$31 = $$12.c_($$30);
-                  bsz.a($$31);
-                  $$12.a($$30, dkn.in.m(), 2);
+                  dux $$31 = $$12.c_($$30);
+                  bta.a($$31);
+                  $$12.a($$30, dko.in.m(), 2);
                }
 
                for (jh $$32 : $$19) {
-                  $$12.a($$32, dkn.a.m(), 3);
+                  $$12.a($$32, dko.a.m(), 3);
                }
             }
 
@@ -157,9 +157,9 @@ public class anp {
             List<anp.b> $$34 = Lists.reverse($$33);
 
             for (anp.b $$35 : $$34) {
-               duw $$36 = $$13.c_($$35.a);
-               bsz.a($$36);
-               $$13.a($$35.a, dkn.in.m(), 2);
+               dux $$36 = $$13.c_($$35.a);
+               bta.a($$36);
+               $$13.a($$35.a, dko.in.m(), 2);
             }
 
             int $$37 = 0;
@@ -171,7 +171,7 @@ public class anp {
             }
 
             for (anp.b $$39 : $$17) {
-               duw $$40 = $$13.c_($$39.a);
+               dux $$40 = $$13.c_($$39.a);
                if ($$39.c != null && $$40 != null) {
                   $$40.d($$39.c.a, $$13.K_());
                   $$40.a($$39.c.b);
@@ -202,7 +202,7 @@ public class anp {
    static record a(ux a, kq b) {
    }
 
-   static record b(jh a, dxu b, @Nullable anp.a c) {
+   static record b(jh a, dxv b, @Nullable anp.a c) {
    }
 
    @FunctionalInterface

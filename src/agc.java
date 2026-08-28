@@ -5,7 +5,7 @@ public class agc implements aac<acr> {
    private final int b;
    private final int c;
 
-   public agc(bvj $$0, @Nullable bvj $$1) {
+   public agc(bvk $$0, @Nullable bvk $$1) {
       this.b = $$0.ar();
       this.c = $$1 != null ? $$1.ar() : 0;
    }

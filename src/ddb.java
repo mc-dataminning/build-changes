@@ -4,87 +4,72 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ddb implements dcy {
-   final Optional<dbz> c;
-   final Optional<dbz> d;
-   final Optional<dbz> e;
+public class ddb implements dcz {
+   final Optional<dca> c;
+   final Optional<dca> d;
+   final Optional<dca> e;
+   final cxp f;
    @Nullable
-   private dcc f;
+   private dcd g;
 
-   public ddb(Optional<dbz> $$0, Optional<dbz> $$1, Optional<dbz> $$2) {
+   public ddb(Optional<dca> $$0, Optional<dca> $$1, Optional<dca> $$2, cxp $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
+      this.f = $$3;
    }
 
-   public cxo a(dcz $$0, js.a $$1) {
-      return a($$1, $$0.d(), $$0.e(), $$0.c());
-   }
-
-   public static cxo a(js.a $$0, cxo $$1, cxo $$2, cxo $$3) {
-      Optional<jq.c<dfw>> $$4 = dfx.a($$0, $$2);
-      Optional<jq.c<dfy>> $$5 = dfz.a($$0, $$3);
-      if ($$4.isPresent() && $$5.isPresent()) {
-         dfv $$6 = $$1.a(ku.U);
-         if ($$6 != null && $$6.a($$5.get(), $$4.get())) {
-            return cxo.j;
-         } else {
-            cxo $$7 = $$1.c(1);
-            $$7.b(ku.U, new dfv($$4.get(), $$5.get()));
-            return $$7;
-         }
-      } else {
-         return cxo.j;
-      }
+   public cxp a(dda $$0, js.a $$1) {
+      cxp $$2 = $$0.d().a(this.f.h(), this.f.L());
+      $$2.b(this.f.e());
+      return $$2;
    }
 
    @Override
-   public Optional<dbz> c() {
+   public Optional<dca> c() {
       return this.c;
    }
 
    @Override
-   public Optional<dbz> f() {
+   public Optional<dca> f() {
       return this.d;
    }
 
    @Override
-   public Optional<dbz> k() {
+   public Optional<dca> k() {
       return this.e;
    }
 
    @Override
-   public dcn<ddb> a() {
-      return dcn.u;
+   public dco<ddb> a() {
+      return dco.t;
    }
 
    @Override
-   public dcc ap_() {
-      if (this.f == null) {
-         this.f = dcc.a(List.of(this.c, this.d, this.e));
+   public dcd ap_() {
+      if (this.g == null) {
+         this.g = dcd.a(List.of(this.c, this.d, this.e));
       }
 
-      return this.f;
+      return this.g;
    }
 
    @Override
-   public List<ddi> g() {
-      ddo $$0 = dbz.a(this.d);
-      ddo $$1 = dbz.a(this.e);
-      ddo $$2 = dbz.a(this.c);
-      return List.of(new ddr($$2, $$0, $$1, new ddo.g($$0, $$1, $$2), new ddo.d(cxs.xg)));
+   public List<ddj> g() {
+      return List.of(new dds(dca.a(this.c), dca.a(this.d), dca.a(this.e), new ddp.f(this.f), new ddp.d(cxt.xg)));
    }
 
-   public static class a implements dcn<ddb> {
+   public static class a implements dco<ddb> {
       private static final MapCodec<ddb> x = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  dbz.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
-                  dbz.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
-                  dbz.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e)
+                  dca.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
+                  dca.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
+                  dca.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
+                  cxp.c.fieldOf("result").forGetter($$0x -> $$0x.f)
                )
                .apply($$0, ddb::new)
       );
-      public static final zt<xg, ddb> w = zt.a(dbz.b, $$0 -> $$0.c, dbz.b, $$0 -> $$0.d, dbz.b, $$0 -> $$0.e, ddb::new);
+      public static final zt<xg, ddb> w = zt.a(dca.b, $$0 -> $$0.c, dca.b, $$0 -> $$0.d, dca.b, $$0 -> $$0.e, cxp.h, $$0 -> $$0.f, ddb::new);
 
       @Override
       public MapCodec<ddb> a() {

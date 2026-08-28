@@ -1,32 +1,31 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class byv {
-   public static <T extends bwf> bxz<bwf> a(bvq<? extends T> $$0, int $$1, cfj<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
-   }
-
-   public static <E extends bwf, T extends bwf> bxz<E> a(bvq<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cfj<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<bwf> $$8 = $$2x -> $$0.equals($$2x.aq()) && $$3.test((T)$$2x);
-      return cbl.a(
-         (Function<cbl.b<E>, ? extends App<cbl.c<E>, cbo<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cfj.n), $$6x.c(cfj.m), $$6x.b(cfj.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     cfl $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<bwf> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bvj)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new byj($$5xxxx, true));
-                           $$8x.a(new cfm(new byj($$5xxxx, false), $$5, $$6));
-                        });
-                        return true;
-                     } else {
-                        return false;
+   public static bya<bwo> a(float $$0) {
+      return cbm.a(
+         (Function<cbm.b<bwo>, ? extends App<cbm.c<bwo>, cbp<bwo>>>)($$1 -> $$1.group($$1.c(cfk.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dw())) {
+                           return false;
+                        } else {
+                           jh $$5 = $$3.dw();
+                           List<jh> $$6 = jh.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(jh::j).collect(ae.b());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new cfn($$2x, $$0, 0)));
+                           return true;
+                        }
                      }
-                  }))
+               ))
       );
    }
 }

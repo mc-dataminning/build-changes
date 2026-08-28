@@ -1,34 +1,81 @@
 import javax.annotation.Nullable;
 
-public interface fda {
-   int a();
+public class fda implements fcz {
+   private static final String a = "Score";
+   private static final String b = "Locked";
+   private static final String c = "display";
+   private static final String d = "format";
+   private int e;
+   private boolean f = true;
+   @Nullable
+   private xv g;
+   @Nullable
+   private zl h;
 
-   void a(int var1);
+   @Override
+   public int a() {
+      return this.e;
+   }
 
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
+   public void a(int $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   @Nullable
+   public xv d() {
+      return this.g;
+   }
+
+   public void a(@Nullable xv $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
+   @Override
+   public zl c() {
+      return this.h;
+   }
+
+   public void b(@Nullable zl $$0) {
+      this.h = $$0;
+   }
+
+   public ux a(js.a $$0) {
+      ux $$1 = new ux();
+      $$1.a("Score", this.e);
+      $$1.a("Locked", this.f);
+      if (this.g != null) {
+         $$1.a("display", xv.a.a(this.g, $$0));
+      }
+
+      if (this.h != null) {
+         zn.b.encodeStart($$0.a(vl.a), this.h).ifSuccess($$1x -> $$1.a("format", $$1x));
+      }
+
       return $$1;
    }
 
-   default int b() {
-      return this.b(1);
+   public static fda a(ux $$0, js.a $$1) {
+      fda $$2 = new fda();
+      $$2.e = $$0.h("Score");
+      $$2.f = $$0.q("Locked");
+      if ($$0.b("display", 8)) {
+         $$2.g = xv.a.a($$0.l("display"), $$1);
+      }
+
+      if ($$0.b("format", 10)) {
+         zn.b.parse($$1.a(vl.a), $$0.c("format")).ifSuccess($$1x -> $$2.h = $$1x);
+      }
+
+      return $$2;
    }
-
-   default void c() {
-      this.a(0);
-   }
-
-   boolean d();
-
-   void e();
-
-   void f();
-
-   @Nullable
-   xv g();
-
-   void a(@Nullable xv var1);
-
-   void a(@Nullable zl var1);
 }

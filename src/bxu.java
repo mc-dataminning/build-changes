@@ -1,38 +1,79 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bxu {
-   public static bxz<cpi> a() {
-      return cbl.a(
-         (Function<cbl.b<cpi>, ? extends App<cbl.c<cpi>, cbo<cpi>>>)($$0 -> $$0.group($$0.b(cfj.d), $$0.a(cfj.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jp $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.du(), 2.0) && !$$4.gz()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.gy().b() != cpl.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.p();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.z().c($$6.b()))
-                                 .flatMap($$0xxx -> ma.x.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gy().a($$2xx));
-                                    $$4.g($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class bxu<E extends bwo> extends bxz<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private final float g;
+   private final Function<bwo, ayk<buc>> h;
+
+   public bxu(float $$0) {
+      this($$0, $$0x -> axw.F);
+   }
+
+   public bxu(float $$0, Function<bwo, ayk<buc>> $$1) {
+      super(Map.of(cfk.Z, cfl.c, cfk.x, cfl.c), 100, 120);
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   protected boolean a(ash $$0, E $$1) {
+      return $$1.ec().c(cfk.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.ec().a(cfk.Z);
+   }
+
+   protected boolean a(ash $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(ash $$0, E $$1, long $$2) {
+      $$1.ec().a(cfk.Z, true);
+      $$1.ec().b(cfk.m);
+   }
+
+   protected void c(ash $$0, E $$1, long $$2) {
+      bxi<?> $$3 = $$1.ec();
+      $$3.b(cfk.Z);
+   }
+
+   protected void d(ash $$0, E $$1, long $$2) {
+      if ($$1.L().m()) {
+         fby $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.ec().a(cfk.m, new cfn($$3, this.g, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private fby a(E $$0, ash $$1) {
+      if ($$0.bY()) {
+         Optional<fby> $$2 = this.a((dgn)$$1, $$0).map(fby::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
+      }
+
+      return che.a($$0, 5, 4);
+   }
+
+   private Optional<jh> a(dgn $$0, bvk $$1) {
+      jh $$2 = $$1.dw();
+      if (!$$0.a_($$2).g($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<jh> $$3;
+         if (bae.f($$1.dr()) == 2) {
+            $$3 = $$1x -> jh.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(aya.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(aya.a);
+         }
+
+         return jh.a($$2, 5, 1, $$3);
+      }
    }
 }

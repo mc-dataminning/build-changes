@@ -4,11 +4,11 @@ public class ais implements aac<ahm> {
    private final ais.a c;
    private final int d;
 
-   public ais(bvj $$0, ais.a $$1) {
+   public ais(bvk $$0, ais.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public ais(bvj $$0, ais.a $$1, int $$2) {
+   public ais(bvk $$0, ais.a $$1, int $$2) {
       this.b = $$0.ar();
       this.c = $$1;
       this.d = $$2;

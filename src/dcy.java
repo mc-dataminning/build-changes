@@ -1,26 +1,29 @@
-import java.util.Optional;
-
-public interface dcy extends dcd<dcz> {
-   @Override
-   default dco<dcy> b() {
-      return dco.g;
+public class dcy extends dbk {
+   public dcy(String $$0, dbq $$1, dca $$2, cxp $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   dcn<? extends dcy> a();
-
-   default boolean a(dcz $$0, dhh $$1) {
-      return dbz.a(this.c(), $$0.c()) && dbz.a(this.f(), $$0.d()) && dbz.a(this.k(), $$0.e());
+   protected cxl f() {
+      return cxt.fc;
    }
 
-   Optional<dbz> c();
-
-   Optional<dbz> f();
-
-   Optional<dbz> k();
+   @Override
+   public dco<dcy> a() {
+      return dco.o;
+   }
 
    @Override
-   default dcg h() {
-      return dcf.l;
+   public dcp<dcy> b() {
+      return dcp.b;
+   }
+
+   @Override
+   public dch h() {
+      return switch (this.e()) {
+         case b -> dcg.f;
+         case a -> dcg.e;
+         case c -> dcg.g;
+      };
    }
 }

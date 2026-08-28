@@ -36,19 +36,19 @@ public class aob {
       );
    }
 
-   private static int a(ew $$0, Collection<? extends bvj> $$1, jq<ddy> $$2, int $$3) throws CommandSyntaxException {
-      ddy $$4 = $$2.a();
+   private static int a(ew $$0, Collection<? extends bvk> $$1, jq<ddz> $$2, int $$3) throws CommandSyntaxException {
+      ddz $$4 = $$2.a();
       if ($$3 > $$4.e()) {
          throw d.create($$3, $$4.e());
       } else {
          int $$5 = 0;
 
-         for (bvj $$6 : $$1) {
-            if ($$6 instanceof bwf) {
-               bwf $$7 = (bwf)$$6;
-               cxo $$8 = $$7.eZ();
+         for (bvk $$6 : $$1) {
+            if ($$6 instanceof bwg) {
+               bwg $$7 = (bwg)$$6;
+               cxp $$8 = $$7.eZ();
                if (!$$8.f()) {
-                  if ($$4.c($$8) && dea.a(dea.b($$8).a(), $$2)) {
+                  if ($$4.c($$8) && deb.a(deb.b($$8).a(), $$2)) {
                      $$8.a($$2, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {
@@ -66,9 +66,9 @@ public class aob {
             throw e.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> xv.a("commands.enchant.success.single", ddy.a($$2, $$3), $$1.iterator().next().p_()), true);
+               $$0.a(() -> xv.a("commands.enchant.success.single", ddz.a($$2, $$3), $$1.iterator().next().p_()), true);
             } else {
-               $$0.a(() -> xv.a("commands.enchant.success.multiple", ddy.a($$2, $$3), $$1.size()), true);
+               $$0.a(() -> xv.a("commands.enchant.success.multiple", ddz.a($$2, $$3), $$1.size()), true);
             }
 
             return $$5;

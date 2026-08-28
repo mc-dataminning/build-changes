@@ -1,24 +1,27 @@
-public class gvv extends gwe<gyn, gca> {
-   private final gmn a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gvv(gtm<gyn, gca> $$0, gmn $$1) {
+public class gvv extends gwf<gyo, gcb> {
+   private static final Map<bvh.a, alz> a = ImmutableMap.of(
+      bvh.a.b,
+      alz.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bvh.a.c,
+      alz.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bvh.a.d,
+      alz.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gvv(gtn<gyo, gcb> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fgr $$0, glk $$1, int $$2, gyn $$3, float $$4, float $$5) {
-      if ($$3.b != 0) {
-         $$0.a();
-         gen $$6 = this.d().b();
-         $$6.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$7 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dkn.ca.m(), $$0, $$1, $$2, hbb.d);
-         $$0.b();
+   public void a(fgs $$0, gll $$1, int $$2, gyo $$3, float $$4, float $$5) {
+      if (!$$3.u) {
+         bvh.a $$6 = $$3.c;
+         if ($$6 != bvh.a.a) {
+            alz $$7 = a.get($$6);
+            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
+         }
       }
    }
 }

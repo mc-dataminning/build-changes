@@ -1,26 +1,18 @@
-public class guk extends gsv<cnk, hab, gdv> {
-   private static final alz a = alz.b("textures/entity/illager/vex.png");
-   private static final alz b = alz.b("textures/entity/illager/vex_charging.png");
+public class guk extends gqg<ckb, gxw, gac<gxw>> {
+   private static final alz a = alz.b("textures/entity/horse/horse_zombie.png");
+   private static final alz b = alz.b("textures/entity/horse/horse_skeleton.png");
+   private final alz k;
 
-   public guk(grp.a $$0) {
-      super($$0, new gdv($$0.a(gem.dn)), 0.3F);
-      this.a(new gvw<>(this, $$0.b()));
+   public guk(grq.a $$0, gem $$1, gem $$2, boolean $$3) {
+      super($$0, new gbx($$0.a($$1)), new gbx($$0.a($$2)), 1.0F);
+      this.k = $$3 ? b : a;
    }
 
-   protected int a(cnk $$0, jh $$1) {
-      return 15;
+   public alz a(gxw $$0) {
+      return this.k;
    }
 
-   public alz a(hab $$0) {
-      return $$0.a ? b : a;
-   }
-
-   public hab b() {
-      return new hab();
-   }
-
-   public void a(cnk $$0, hab $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.go();
+   public gxw b() {
+      return new gxw();
    }
 }

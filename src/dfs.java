@@ -1,46 +1,127 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Map.Entry;
-import java.util.function.BiConsumer;
+import java.util.function.UnaryOperator;
 
-public interface dfs {
-   alz a = alz.b("leather");
-   alz b = alz.b("chainmail");
-   alz c = alz.b("iron");
-   alz d = alz.b("gold");
-   alz e = alz.b("diamond");
-   alz f = alz.b("turtle_scute");
-   alz g = alz.b("netherite");
-   alz h = alz.b("armadillo_scute");
-   alz i = alz.b("elytra");
-   Map<cwl, alz> j = ae.a(cwl.class, $$0 -> alz.b($$0.c() + "_carpet"));
-   alz k = alz.b("trader_llama");
+public record dfs(Map<dfs.d, List<dfs.c>> b) {
+   private static final Codec<List<dfs.c>> c = azn.a(dfs.c.a.listOf());
+   public static final Codec<dfs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(azn.c(Codec.unboundedMap(dfs.d.g, c)).fieldOf("layers").forGetter(dfs::b)).apply($$0, dfs::new)
+   );
 
-   static void a(BiConsumer<alz, dfr> $$0) {
-      $$0.accept(a, dfr.a().a(alz.b("leather"), true).a(alz.b("leather_overlay"), false).a(dfr.d.e, dfr.c.a(alz.b("leather"), true)).a());
-      $$0.accept(b, a("chainmail"));
-      $$0.accept(c, b("iron"));
-      $$0.accept(d, b("gold"));
-      $$0.accept(e, b("diamond"));
-      $$0.accept(f, dfr.a().b(alz.b("turtle_scute"), false).a());
-      $$0.accept(g, a("netherite"));
-      $$0.accept(h, dfr.a().a(dfr.d.d, dfr.c.b(alz.b("armadillo_scute"), false)).a(dfr.d.d, dfr.c.b(alz.b("armadillo_scute_overlay"), true)).a());
-      $$0.accept(i, dfr.a().a(dfr.d.c, new dfr.c(alz.b("elytra"), Optional.empty(), true)).a());
+   public static dfs.a a() {
+      return new dfs.a();
+   }
 
-      for (Entry<cwl, alz> $$1 : j.entrySet()) {
-         cwl $$2 = $$1.getKey();
-         alz $$3 = $$1.getValue();
-         $$0.accept($$3, dfr.a().a(dfr.d.f, new dfr.c(alz.b($$2.c()))).a());
+   public List<dfs.c> a(dfs.d $$0) {
+      return this.b.getOrDefault($$0, List.of());
+   }
+
+   public static class a {
+      private final Map<dfs.d, List<dfs.c>> a = new EnumMap<>(dfs.d.class);
+
+      a() {
       }
 
-      $$0.accept(k, dfr.a().a(dfr.d.f, new dfr.c(alz.b("trader_llama"))).a());
+      public dfs.a a(alz $$0) {
+         return this.a($$0, false);
+      }
+
+      public dfs.a a(alz $$0, boolean $$1) {
+         this.a(dfs.d.b, dfs.c.a($$0, $$1));
+         this.b($$0, $$1);
+         return this;
+      }
+
+      public dfs.a b(alz $$0, boolean $$1) {
+         return this.a(dfs.d.a, dfs.c.a($$0, $$1));
+      }
+
+      public dfs.a a(dfs.d $$0, dfs.c... $$1) {
+         Collections.addAll(this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()), $$1);
+         return this;
+      }
+
+      public dfs a() {
+         return new dfs(this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> List.copyOf((Collection)$$0.getValue()))));
+      }
    }
 
-   private static dfr a(String $$0) {
-      return dfr.a().a(alz.b($$0)).a();
+   public static record b(Optional<Integer> b) {
+      public static final Codec<dfs.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(azn.i.optionalFieldOf("color_when_undyed").forGetter(dfs.b::a)).apply($$0, dfs.b::new)
+      );
+
+      public Optional<Integer> a() {
+         return this.b;
+      }
    }
 
-   private static dfr b(String $$0) {
-      return dfr.a().a(alz.b($$0)).a(dfr.d.e, dfr.c.a(alz.b($$0), false)).a();
+   public static record c(alz b, Optional<dfs.b> c, boolean d) {
+      public static final Codec<dfs.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alz.a.fieldOf("texture").forGetter(dfs.c::a),
+                  dfs.b.a.optionalFieldOf("dyeable").forGetter(dfs.c::b),
+                  Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(dfs.c::c)
+               )
+               .apply($$0, dfs.c::new)
+      );
+
+      public c(alz $$0) {
+         this($$0, Optional.empty(), false);
+      }
+
+      public static dfs.c a(alz $$0, boolean $$1) {
+         return new dfs.c($$0, $$1 ? Optional.of(new dfs.b(Optional.of(-6265536))) : Optional.empty(), false);
+      }
+
+      public static dfs.c b(alz $$0, boolean $$1) {
+         return new dfs.c($$0, $$1 ? Optional.of(new dfs.b(Optional.empty())) : Optional.empty(), false);
+      }
+
+      public alz a(dfs.d $$0) {
+         return this.b.a((UnaryOperator<String>)($$1 -> "textures/entity/equipment/" + $$0.c() + "/" + $$1 + ".png"));
+      }
+
+      public alz a() {
+         return this.b;
+      }
+
+      public Optional<dfs.b> b() {
+         return this.c;
+      }
+
+      public boolean c() {
+         return this.d;
+      }
+   }
+
+   public static enum d implements bba {
+      a("humanoid"),
+      b("humanoid_leggings"),
+      c("wings"),
+      d("wolf_body"),
+      e("horse_body"),
+      f("llama_body");
+
+      public static final Codec<dfs.d> g = bba.a(dfs.d::values);
+      private final String h;
+
+      private d(final String $$0) {
+         this.h = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
    }
 }

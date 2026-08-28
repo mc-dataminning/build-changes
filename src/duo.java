@@ -1,99 +1,76 @@
-public class duo {
-   public static final aly<dum> a = a("base");
-   public static final aly<dum> b = a("square_bottom_left");
-   public static final aly<dum> c = a("square_bottom_right");
-   public static final aly<dum> d = a("square_top_left");
-   public static final aly<dum> e = a("square_top_right");
-   public static final aly<dum> f = a("stripe_bottom");
-   public static final aly<dum> g = a("stripe_top");
-   public static final aly<dum> h = a("stripe_left");
-   public static final aly<dum> i = a("stripe_right");
-   public static final aly<dum> j = a("stripe_center");
-   public static final aly<dum> k = a("stripe_middle");
-   public static final aly<dum> l = a("stripe_downright");
-   public static final aly<dum> m = a("stripe_downleft");
-   public static final aly<dum> n = a("small_stripes");
-   public static final aly<dum> o = a("cross");
-   public static final aly<dum> p = a("straight_cross");
-   public static final aly<dum> q = a("triangle_bottom");
-   public static final aly<dum> r = a("triangle_top");
-   public static final aly<dum> s = a("triangles_bottom");
-   public static final aly<dum> t = a("triangles_top");
-   public static final aly<dum> u = a("diagonal_left");
-   public static final aly<dum> v = a("diagonal_up_right");
-   public static final aly<dum> w = a("diagonal_up_left");
-   public static final aly<dum> x = a("diagonal_right");
-   public static final aly<dum> y = a("circle");
-   public static final aly<dum> z = a("rhombus");
-   public static final aly<dum> A = a("half_vertical");
-   public static final aly<dum> B = a("half_horizontal");
-   public static final aly<dum> C = a("half_vertical_right");
-   public static final aly<dum> D = a("half_horizontal_bottom");
-   public static final aly<dum> E = a("border");
-   public static final aly<dum> F = a("curly_border");
-   public static final aly<dum> G = a("gradient");
-   public static final aly<dum> H = a("gradient_up");
-   public static final aly<dum> I = a("bricks");
-   public static final aly<dum> J = a("globe");
-   public static final aly<dum> K = a("creeper");
-   public static final aly<dum> L = a("skull");
-   public static final aly<dum> M = a("flower");
-   public static final aly<dum> N = a("mojang");
-   public static final aly<dum> O = a("piglin");
-   public static final aly<dum> P = a("flow");
-   public static final aly<dum> Q = a("guster");
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   private static aly<dum> a(String $$0) {
-      return aly.a(mb.d, alz.b($$0));
+public record duo(List<duo.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final duo a = new duo(List.of());
+   public static final Codec<duo> b = duo.b.a.listOf().xmap(duo::new, duo::b);
+   public static final zt<xg, duo> c = duo.b.b.a(zr.a()).a(duo::new, duo::b);
+
+   public duo a() {
+      return new duo(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   public static void a(rk<dum> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-      a($$0, s);
-      a($$0, t);
-      a($$0, u);
-      a($$0, v);
-      a($$0, w);
-      a($$0, x);
-      a($$0, y);
-      a($$0, z);
-      a($$0, A);
-      a($$0, B);
-      a($$0, C);
-      a($$0, D);
-      a($$0, E);
-      a($$0, G);
-      a($$0, H);
-      a($$0, I);
-      a($$0, F);
-      a($$0, J);
-      a($$0, K);
-      a($$0, L);
-      a($$0, M);
-      a($$0, N);
-      a($$0, O);
-      a($$0, P);
-      a($$0, Q);
+   public List<duo.b> b() {
+      return this.d;
    }
 
-   public static void a(rk<dum> $$0, aly<dum> $$1) {
-      $$0.a($$1, new dum($$1.a(), "block.minecraft.banner." + $$1.a().e()));
+   public static class a {
+      private final Builder<duo.b> a = ImmutableList.builder();
+
+      @Deprecated
+      public duo.a a(jr<dun> $$0, aly<dun> $$1, cwm $$2) {
+         Optional<jq.c<dun>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            duo.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
+         }
+      }
+
+      public duo.a a(jq<dun> $$0, cwm $$1) {
+         return this.a(new duo.b($$0, $$1));
+      }
+
+      public duo.a a(duo.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public duo.a a(duo $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public duo a() {
+         return new duo(this.a.build());
+      }
+   }
+
+   public static record b(jq<dun> c, cwm d) {
+      public static final Codec<duo.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dun.c.fieldOf("pattern").forGetter(duo.b::b), cwm.q.fieldOf("color").forGetter(duo.b::c)).apply($$0, duo.b::new)
+      );
+      public static final zt<xg, duo.b> b = zt.a(dun.d, duo.b::b, cwm.r, duo.b::c, duo.b::new);
+
+      public yj a() {
+         String $$0 = this.c.a().b();
+         return xv.c($$0 + "." + this.d.b());
+      }
+
+      public jq<dun> b() {
+         return this.c;
+      }
+
+      public cwm c() {
+         return this.d;
+      }
    }
 }

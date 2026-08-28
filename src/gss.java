@@ -1,31 +1,32 @@
-public class gss extends gro<cqo, gyu> {
-   private static final alz a = alz.b("textures/entity/llama/spit.png");
-   private final gce b;
+public class gss extends gqk<cke, gyu, gce> {
+   private static final alz a = alz.b("textures/entity/llama/creamy.png");
+   private static final alz b = alz.b("textures/entity/llama/white.png");
+   private static final alz k = alz.b("textures/entity/llama/brown.png");
+   private static final alz l = alz.b("textures/entity/llama/gray.png");
 
-   public gss(grp.a $$0) {
-      super($$0);
-      this.b = new gce($$0.a(gem.bt));
+   public gss(grq.a $$0, gem $$1, gem $$2) {
+      super($$0, new gce($$0.a($$1)), new gce($$0.a($$2)), 0.7F);
+      this.a(new gvz(this, $$0.f(), $$0.h()));
    }
 
-   public void a(gyu $$0, fgr $$1, glk $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.15F, 0.0F);
-      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.b));
-      this.b.a($$0);
-      fgv $$4 = $$2.getBuffer(this.b.a(a));
-      this.b.a($$1, $$4, $$3, hbb.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public alz a(gyu $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   public gyu a() {
+   public gyu b() {
       return new gyu();
    }
 
-   public void a(cqo $$0, gyu $$1, float $$2) {
+   public void a(cke $$0, gyu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.j($$2);
-      $$1.a = $$0.k($$2);
+      $$1.a = $$0.gB();
+      $$1.b = !$$0.e_() && $$0.t();
+      $$1.c = $$0.af();
+      $$1.d = $$0.gr();
    }
 }

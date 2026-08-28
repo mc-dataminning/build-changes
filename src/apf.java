@@ -38,7 +38,7 @@ public class apf {
       );
    }
 
-   private static int a(ew $$0, Collection<asi> $$1, Collection<dci<?>> $$2) throws CommandSyntaxException {
+   private static int a(ew $$0, Collection<asi> $$1, Collection<dcj<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (asi $$4 : $$1) {
@@ -58,7 +58,7 @@ public class apf {
       }
    }
 
-   private static int b(ew $$0, Collection<asi> $$1, Collection<dci<?>> $$2) throws CommandSyntaxException {
+   private static int b(ew $$0, Collection<asi> $$1, Collection<dcj<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (asi $$4 : $$1) {

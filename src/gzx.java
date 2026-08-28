@@ -1,3 +1,5 @@
-public class gzx extends gxb {
-   public boolean d;
+public class gzx extends gxv {
+   public float a;
+   public float b;
+   public boolean c;
 }

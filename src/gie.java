@@ -1,19 +1,12 @@
-public class gie extends gjr {
+public class gie extends gjs {
    private final double a;
    private final double b;
    private final double F;
-   private final boolean G;
-   private final gir.a H;
+   private final int G;
+   private final int H;
 
-   gie(gfj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gir.a.a);
-   }
-
-   gie(gfj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gir.a $$8) {
+   gie(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
       super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
       this.j = $$4;
       this.k = $$5;
       this.l = $$6;
@@ -27,43 +20,24 @@ public class gie extends gjr {
       this.h = this.e;
       this.i = this.f;
       this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
       this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+      this.t = (int)(Math.random() * 5.0) + 25;
+      this.G = $$7;
+      this.H = $$8;
    }
 
    @Override
-   public giv b() {
-      return this.H.a() ? giv.b : giv.c;
+   public giw b() {
+      return giw.b;
    }
 
    @Override
    public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
    }
 
    @Override
    public int a(float $$0) {
-      if (this.G) {
-         return 240;
-      } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
-         }
-
-         return $$3 | $$4 << 16;
-      }
+      return 240;
    }
 
    @Override
@@ -75,60 +49,26 @@ public class gie extends gjr {
          this.k();
       } else {
          float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
          float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
+         this.g = this.a + this.j * (double)$$1;
+         this.h = this.b + this.k * (double)$$1;
+         this.i = this.F + this.l * (double)$$1;
+         int $$2 = ayp.a($$0, this.G, this.H);
+         this.a((float)ayp.b($$2) / 255.0F, (float)ayp.c($$2) / 255.0F, (float)ayp.d($$2) / 255.0F);
+         this.e((float)ayp.a($$2) / 255.0F);
       }
    }
 
-   @Override
-   public void a(fgv $$0, flo $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
-   }
+   public static class a implements giv<lw> {
+      private final gjn a;
 
-   public static class a implements giu<lw> {
-      private final gjm a;
-
-      public a(gjm $$0) {
+      public a(gjn $$0) {
          this.a = $$0;
       }
 
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gie $$8 = new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements giu<lw> {
-      private final gjm a;
-
-      public b(gjm $$0) {
-         this.a = $$0;
-      }
-
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gie $$8 = new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements giu<lw> {
-      private final gjm a;
-
-      public c(gjm $$0) {
-         this.a = $$0;
-      }
-
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gie $$8 = new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gir.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
+      public gis a(lw $$0, gfk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gie $$8 = new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
+         $$8.d(bae.b($$1.H_(), 3.0F, 5.0F));
          $$8.a(this.a);
          return $$8;
       }

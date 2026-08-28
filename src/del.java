@@ -1,16 +1,29 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record del(def d) implements dep {
-   public static final MapCodec<del> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(def.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, del::new));
+public record del(ju<bun> d, deg e, deg f, deg g, deg h) implements deq {
+   public static final MapCodec<del> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kf.a(mb.W).fieldOf("to_apply").forGetter(del::b),
+               deg.b.fieldOf("min_duration").forGetter(del::c),
+               deg.b.fieldOf("max_duration").forGetter(del::d),
+               deg.b.fieldOf("min_amplifier").forGetter(del::e),
+               deg.b.fieldOf("max_amplifier").forGetter(del::f)
+            )
+            .apply($$0, del::new)
+   );
 
    @Override
-   public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
-      cxo $$5 = $$2.a();
-      if ($$5.b(ku.d) && $$5.b(ku.e)) {
-         asi $$7 = $$2.c() instanceof asi $$6 ? $$6 : null;
-         int $$8 = (int)this.d.a($$1);
-         $$5.a($$8, $$0, $$7, $$2.d());
+   public void a(ash $$0, int $$1, ddy $$2, bvk $$3, fby $$4) {
+      if ($$3 instanceof bwg $$5) {
+         bam $$6 = $$5.dZ();
+         Optional<jq<bun>> $$7 = this.d.a($$6);
+         if ($$7.isPresent()) {
+            int $$8 = Math.round(bae.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
+            int $$9 = Math.max(0, Math.round(bae.b($$6, this.g.a($$1), this.h.a($$1))));
+            $$5.a(new bup($$7.get(), $$8, $$9));
+         }
       }
    }
 
@@ -19,7 +32,23 @@ public record del(def d) implements dep {
       return a;
    }
 
-   public def b() {
+   public ju<bun> b() {
       return this.d;
+   }
+
+   public deg c() {
+      return this.e;
+   }
+
+   public deg d() {
+      return this.f;
+   }
+
+   public deg e() {
+      return this.g;
+   }
+
+   public deg f() {
+      return this.h;
    }
 }

@@ -1,26 +1,22 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class esc extends esf {
-   public static final MapCodec<esc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ma.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, esc::new)
-   );
-   private final dkl b;
-   private final float d;
+public class esc extends esj {
+   public final ayk<dkm> a;
+   public static final MapCodec<esc> b = ayk.b(mb.f).xmap(esc::new, $$0 -> $$0.a).fieldOf("value");
 
-   public esc(dkl $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public esc(ayk<dkm> $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public esm.d a(dhl $$0, jh $$1, jh $$2, esm.d $$3, esm.d $$4, esi $$5) {
+      return egw.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
    }
 
    @Override
-   public boolean a(dxu $$0, bam $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected esg<?> a() {
-      return esg.e;
+   protected esl<?> a() {
+      return esl.n;
    }
 }

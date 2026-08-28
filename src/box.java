@@ -1,31 +1,67 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface box<S, T> {
-   Optional<T> a(bow<S> var1);
+public abstract class box<S> {
+   private final Map<box.b<?>, box.a<?>> a = new HashMap<>();
+   private final bou<S> b;
+   private final bov<S> c;
 
-   static <S, T> box<S, T> a(bpa<S> $$0, box.a<S, T> $$1) {
-      return new box.c<>($$1, $$0);
+   protected box(bou<S> $$0, bov<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static <S, T> box<S, T> a(bpa<S> $$0, box.b<T> $$1) {
-      return new box.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
+   public bov<S> a() {
+      return this.c;
    }
 
-   @FunctionalInterface
-   public interface a<S, T> {
-      Optional<T> run(bow<S> var1, boy var2);
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      T run(boy var1);
-   }
-
-   public static record c<S, T>(box.a<S, T> a, bpa<S> b) implements box<S, T> {
-      @Override
-      public Optional<T> a(bow<S> $$0) {
-         boy $$1 = new boy();
-         return this.b.a($$0, $$1, bos.a) ? this.a.run($$0, $$1) : Optional.empty();
+   public <T> Optional<T> a(bos<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
       }
+
+      return $$1;
+   }
+
+   public <T> Optional<T> b(bos<T> $$0) {
+      box.b<T> $$1 = new box.b<>($$0, this.c());
+      box.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
+      } else {
+         boy<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
+         } else {
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
+         }
+      }
+   }
+
+   @Nullable
+   private <T> box.a<T> a(box.b<T> $$0) {
+      return (box.a<T>)this.a.get($$0);
+   }
+
+   private <T> void a(box.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new box.a<>($$1, this.c()));
+   }
+
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
+   }
+
+   static record b<T>(bos<T> a, int b) {
    }
 }

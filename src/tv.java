@@ -86,7 +86,7 @@ public class tv {
                   tv.this.k.d().accept(tv.this.c);
                   tv.this.g.forEach($$0xxx -> $$0xxx.b(tv.this.k));
                   LongSet $$0 = new LongArraySet(tv.this.c.x());
-                  $$0.forEach($$0xxx -> tv.this.c.a(dgn.a($$0xxx), dgn.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> tv.this.c.a(dgo.a($$0xxx), dgo.b($$0xxx), false));
                   tv.this.a($$0 + 1);
                }
             }
@@ -105,7 +105,7 @@ public class tv {
                if (tv.this.n) {
                   tv.this.k.d().accept(tv.this.c);
                   LongSet $$2 = new LongArraySet(tv.this.c.x());
-                  $$2.forEach($$0xxx -> tv.this.c.a(dgn.a($$0xxx), dgn.b($$0xxx), false));
+                  $$2.forEach($$0xxx -> tv.this.c.a(dgo.a($$0xxx), dgo.b($$0xxx), false));
                   ty.a.a();
                } else {
                   this.a();

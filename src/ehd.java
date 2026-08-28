@@ -1,46 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class ehd extends efx {
-   public ehd(Codec<ejb> $$0) {
+public class ehd extends egw<ejh> {
+   public ehd(Codec<ejh> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dhi $$0, bam $$1, jh $$2, int $$3, jh.a $$4, ejb $$5) {
-      int $$6 = $$5.d;
+   public boolean a(egy<ejh> $$0) {
+      dig $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      bam $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dxv $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dko.ei) && !$$4.a(dko.el) && !$$4.a(dko.pM)) {
+            return false;
+         } else {
+            $$1.a($$2, dko.ep.m(), 2);
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).s()) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dxu $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dok.e) && $$19.b(dok.c) && $$19.b(dok.b) && $$19.b(dok.d)) {
-                     $$19 = $$19.b(dok.e, Boolean.valueOf($$15))
-                        .b(dok.c, Boolean.valueOf($$16))
-                        .b(dok.b, Boolean.valueOf($$17))
-                        .b(dok.d, Boolean.valueOf($$18));
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               jh $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).l()) {
+                  int $$7 = 0;
+
+                  for (jm $$8 : jm.values()) {
+                     if ($$1.a_($$6.a($$8)).a(dko.ep)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
                   }
 
-                  this.a($$0, $$4, $$19);
+                  if ($$7 == 1) {
+                     $$1.a($$6, dko.ep.m(), 2);
+                  }
                }
             }
+
+            return true;
          }
       }
-   }
-
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
    }
 }

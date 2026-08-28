@@ -1,92 +1,73 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class cxf extends cxk implements cys {
-   public static final Supplier<BiMap<dkl, dkl>> a = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dkn.rr, dkn.rR)
-            .put(dkn.rs, dkn.rT)
-            .put(dkn.rt, dkn.rS)
-            .put(dkn.ru, dkn.rU)
-            .put(dkn.rA, dkn.rY)
-            .put(dkn.rz, dkn.rX)
-            .put(dkn.ry, dkn.rW)
-            .put(dkn.rx, dkn.rV)
-            .put(dkn.rQ, dkn.sg)
-            .put(dkn.rP, dkn.sf)
-            .put(dkn.rO, dkn.se)
-            .put(dkn.rN, dkn.sd)
-            .put(dkn.rM, dkn.sc)
-            .put(dkn.rL, dkn.sb)
-            .put(dkn.rK, dkn.sa)
-            .put(dkn.rJ, dkn.rZ)
-            .put(dkn.rE, dkn.rI)
-            .put(dkn.rD, dkn.rH)
-            .put(dkn.rC, dkn.rG)
-            .put(dkn.rB, dkn.rF)
-            .put(dkn.sh, dkn.sl)
-            .put(dkn.si, dkn.sm)
-            .put(dkn.sk, dkn.so)
-            .put(dkn.sj, dkn.sn)
-            .put(dkn.sp, dkn.st)
-            .put(dkn.sq, dkn.su)
-            .put(dkn.ss, dkn.sw)
-            .put(dkn.sr, dkn.sv)
-            .put(dkn.sx, dkn.sB)
-            .put(dkn.sy, dkn.sC)
-            .put(dkn.sz, dkn.sD)
-            .put(dkn.sA, dkn.sE)
-            .put(dkn.sF, dkn.sJ)
-            .put(dkn.sG, dkn.sK)
-            .put(dkn.sH, dkn.sL)
-            .put(dkn.sI, dkn.sM)
-            .build()
+public class cxf extends cwi {
+   protected static final Map<dkm, Pair<Predicate<dbi>, Consumer<dbi>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dko.i,
+         Pair.of(cxf::b, a(dko.cK.m())),
+         dko.kZ,
+         Pair.of(cxf::b, a(dko.cK.m())),
+         dko.j,
+         Pair.of(cxf::b, a(dko.cK.m())),
+         dko.k,
+         Pair.of(cxf::b, a(dko.j.m())),
+         dko.tc,
+         Pair.of((Predicate<dbi>)$$0 -> true, a(dko.j.m(), cxt.dY))
+      )
    );
-   public static final Supplier<BiMap<dkl, dkl>> b = Suppliers.memoize(() -> a.get().inverse());
 
-   public cxf(cxk.a $$0) {
-      super($$0);
+   public cxf(czg $$0, float $$1, float $$2, cxl.a $$3) {
+      super($$0, axu.bD, $$1, $$2, $$3);
    }
 
    @Override
-   public bti a(dbh $$0) {
-      dhh $$1 = $$0.q();
+   public btj a(dbi $$0) {
+      dhi $$1 = $$0.q();
       jh $$2 = $$0.a();
-      dxu $$3 = $$1.a_($$2);
-      return a($$3).map($$3x -> {
-         cpw $$4 = $$0.o();
-         cxo $$5 = $$0.n();
-         if ($$4 instanceof asi $$6) {
-            ao.N.a($$6, $$2, $$5);
-         }
-
-         $$5.h(1);
-         $$1.a($$2, $$3x, 11);
-         $$1.a(ecq.c, $$2, ecq.a.a($$4, $$3x));
-         $$1.a($$4, 3003, $$2, 0);
-         return bti.a;
-      }).orElse(bti.e);
-   }
-
-   public static Optional<dxu> a(dxu $$0) {
-      return Optional.ofNullable((dkl)a.get().get($$0.b())).map($$1 -> ((dkl)$$1).m($$0));
-   }
-
-   @Override
-   public boolean a(dhh $$0, dwj $$1, boolean $$2, cpw $$3) {
-      if ($$1.b(true)) {
-         $$0.a(null, 3003, $$1.aB_(), 0);
-         return true;
+      Pair<Predicate<dbi>, Consumer<dbi>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return btj.e;
       } else {
-         return false;
+         Predicate<dbi> $$4 = (Predicate<dbi>)$$3.getFirst();
+         Consumer<dbi> $$5 = (Consumer<dbi>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cpx $$6 = $$0.o();
+            $$1.a($$6, $$2, axf.mF, axg.e, 1.0F, 1.0F);
+            if (!$$1.C) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bwg.d($$0.p()));
+               }
+            }
+
+            return btj.a;
+         } else {
+            return btj.e;
+         }
       }
    }
 
-   @Override
-   public boolean a(dwk $$0, cpw $$1) {
-      return true;
+   public static Consumer<dbi> a(dxv $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(ecr.c, $$1.a(), ecr.a.a($$1.o(), $$0));
+      };
+   }
+
+   public static Consumer<dbi> a(dxv $$0, dhh $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(ecr.c, $$2.a(), ecr.a.a($$2.o(), $$0));
+         dkm.a($$2.q(), $$2.a(), $$2.k(), new cxp($$1));
+      };
+   }
+
+   public static boolean b(dbi $$0) {
+      return $$0.k() != jm.a && $$0.q().a_($$0.a().d()).l();
    }
 }

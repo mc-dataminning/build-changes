@@ -11,35 +11,35 @@ public class ps {
       .a(mb.aV, rs::a)
       .a(mb.aX, rr::a)
       .a(mb.aI, se::a)
-      .a(mb.bc, diy::a)
+      .a(mb.bc, diz::a)
       .a(mb.aS, ro::a)
-      .a(mb.aM, edw::a)
-      .a(mb.aR, edu::a)
-      .a(mb.bb, enz::a)
-      .a(mb.aQ, eml::a)
+      .a(mb.aM, edx::a)
+      .a(mb.aR, edv::a)
+      .a(mb.bb, eoa::a)
+      .a(mb.aQ, emm::a)
       .a(mb.aJ, xr::a)
-      .a(mb.ba, dfz::a)
-      .a(mb.aZ, dfx::a)
-      .a(mb.bd, dwy::a)
-      .a(mb.m, cjb::a)
-      .a(mb.X, clx::a)
-      .a(mb.s, buc::a)
-      .a(mb.d, duo::a)
-      .a(mb.aO, ded::a)
-      .a(mb.aP, dfm::a)
-      .a(mb.L, cxw::a)
-      .a(mb.I, cxj::a);
+      .a(mb.ba, dga::a)
+      .a(mb.aZ, dfy::a)
+      .a(mb.bd, dwz::a)
+      .a(mb.m, cjc::a)
+      .a(mb.X, cly::a)
+      .a(mb.s, bud::a)
+      .a(mb.d, dup::a)
+      .a(mb.aO, dee::a)
+      .a(mb.aP, dfn::a)
+      .a(mb.L, cxx::a)
+      .a(mb.I, cxk::a);
 
    private static void a(js.a $$0) {
       a($$0.d(mb.aT), $$0.d(mb.aI));
    }
 
-   public static void a(jr<enn> $$0, js<dij> $$1) {
+   public static void a(jr<eno> $$0, js<dik> $$1) {
       $$1.c().forEach($$1x -> {
          alz $$2 = $$1x.h().a();
-         List<ju<enn>> $$3 = ((dij)$$1x.a()).d().c();
+         List<ju<eno>> $$3 = ((dik)$$1x.a()).d().c();
          $$3.stream().flatMap(ju::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               jq.c<enn> $$3xx = $$0.b($$2xx);
+               jq.c<eno> $$3xx = $$0.b($$2xx);
                if (!a($$3xx.a())) {
                   ae.b("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
                }
@@ -51,8 +51,8 @@ public class ps {
       });
    }
 
-   private static boolean a(enn $$0) {
-      return $$0.c().contains(enb.a());
+   private static boolean a(eno $$0) {
+      return $$0.c().contains(enc.a());
    }
 
    public static js.a a() {

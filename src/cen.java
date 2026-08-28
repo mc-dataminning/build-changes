@@ -1,30 +1,40 @@
-public class cen extends cdd {
-   private final bwn a;
+import java.util.EnumSet;
 
-   public cen(bwn $$0) {
+public class cen extends cde {
+   private final cpe a;
+
+   public cen(cpe $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(cde.a.c, cde.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.a.aJ() && !this.a.dW().b_(this.a.dw()).a(aya.a);
+      if (!this.a.bL()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cpx $$0 = this.a.go();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+         }
+      }
    }
 
    @Override
    public void d() {
-      jh $$0 = null;
+      this.a.L().o();
+   }
 
-      for (jh $$2 : jh.b(
-         bae.a(this.a.dB() - 2.0), bae.a(this.a.dD() - 2.0), bae.a(this.a.dH() - 2.0), bae.a(this.a.dB() + 2.0), this.a.dC(), bae.a(this.a.dH() + 2.0)
-      )) {
-         if (this.a.dW().b_($$2).a(aya.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

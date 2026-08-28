@@ -1,29 +1,39 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public record fly(int a, xv b, @Nullable yh c, @Nullable flz d) {
-   @Nullable
-   public flz.a a() {
-      return this.d != null ? this.d.f() : null;
+public enum fly implements bah {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
+
+   private static final IntFunction<fly> d = ayv.a(fly::b, values(), ayv.a.b);
+   private final int e;
+   private final String f;
+
+   private fly(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
+   @Override
    public int b() {
-      return this.a;
+      return this.e;
    }
 
-   public xv c() {
-      return this.b;
+   @Override
+   public String a() {
+      return this.f;
    }
 
-   @Nullable
-   public yh d() {
-      return this.c;
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
    }
 
-   @Nullable
-   public flz e() {
-      return this.d;
-   }
-
-   public static record a(int a, azq b, @Nullable flz c, boolean d) {
+   public static fly a(int $$0) {
+      return d.apply($$0);
    }
 }

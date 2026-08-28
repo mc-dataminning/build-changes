@@ -342,20 +342,20 @@ public class ws extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public dgn f() {
-      return new dgn(this.readLong());
+   public dgo f() {
+      return new dgo(this.readLong());
    }
 
-   public ws a(dgn $$0) {
+   public ws a(dgo $$0) {
       this.b($$0.a());
       return this;
    }
 
-   public static dgn c(ByteBuf $$0) {
-      return new dgn($$0.readLong());
+   public static dgo c(ByteBuf $$0) {
+      return new dgo($$0.readLong());
    }
 
-   public static void a(ByteBuf $$0, dgn $$1) {
+   public static void a(ByteBuf $$0, dgo $$1) {
       $$0.writeLong($$1.a());
    }
 
@@ -369,7 +369,7 @@ public class ws extends ByteBuf {
    }
 
    public jp h() {
-      aly<dhh> $$0 = this.a(mb.be);
+      aly<dhi> $$0 = this.a(mb.be);
       jh $$1 = this.e();
       return jp.a($$0, $$1);
    }
@@ -416,21 +416,21 @@ public class ws extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public static fbx f(ByteBuf $$0) {
-      return new fbx($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
+   public static fby f(ByteBuf $$0) {
+      return new fby($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
    }
 
-   public fbx k() {
+   public fby k() {
       return f(this);
    }
 
-   public static void a(ByteBuf $$0, fbx $$1) {
+   public static void a(ByteBuf $$0, fby $$1) {
       $$0.writeDouble($$1.a());
       $$0.writeDouble($$1.b());
       $$0.writeDouble($$1.c());
    }
 
-   public void a(fbx $$0) {
+   public void a(fby $$0) {
       a(this, $$0);
    }
 
@@ -605,7 +605,7 @@ public class ws extends ByteBuf {
       return this;
    }
 
-   public fbt v() {
+   public fbu v() {
       jh $$0 = this.e();
       jm $$1 = this.b(jm.class);
       float $$2 = this.readFloat();
@@ -613,14 +613,14 @@ public class ws extends ByteBuf {
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
       boolean $$6 = this.readBoolean();
-      return new fbt(new fbx((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
+      return new fbu(new fby((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
    }
 
-   public void a(fbt $$0) {
+   public void a(fbu $$0) {
       jh $$1 = $$0.b();
       this.a($$1);
       this.a($$0.c());
-      fbx $$2 = $$0.g();
+      fby $$2 = $$0.g();
       this.a((float)($$2.d - (double)$$1.u()));
       this.a((float)($$2.e - (double)$$1.v()));
       this.a((float)($$2.f - (double)$$1.w()));

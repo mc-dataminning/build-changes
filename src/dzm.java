@@ -1,5 +1,8 @@
-public interface dzm {
-   dxu a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, dxu var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dzm {
 }

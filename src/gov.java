@@ -1,57 +1,66 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public class gov {
-   private final Long2ObjectMap<gov.a> a = new Long2ObjectOpenHashMap();
+public class gov implements dgk {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final gou[] c;
+   protected final dhi d;
+
+   gov(dhi $$0, int $$1, int $$2, gou[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
+   }
+
+   @Override
+   public dxv a_(jh $$0) {
+      return this.a(kj.a($$0.u()), kj.a($$0.w())).b($$0);
+   }
+
+   @Override
+   public etx b_(jh $$0) {
+      return this.a(kj.a($$0.u()), kj.a($$0.w())).b($$0).y();
+   }
+
+   @Override
+   public float a(jm $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public etm C_() {
+      return this.d.C_();
+   }
 
    @Nullable
-   public gou a(dhh $$0, kj $$1) {
-      gov.a $$2 = this.a($$0, $$1.a(), $$1.c());
-      if ($$2.a().c($$1.b())) {
-         return null;
-      } else {
-         int $$3 = $$1.a() - 1;
-         int $$4 = $$1.c() - 1;
-         int $$5 = $$1.a() + 1;
-         int $$6 = $$1.c() + 1;
-         got[] $$7 = new got[9];
-
-         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
-            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
-               int $$10 = gou.a($$3, $$4, $$9, $$8);
-               gov.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
-               $$7[$$10] = $$11.b();
-            }
-         }
-
-         return new gou($$0, $$3, $$4, $$7);
-      }
+   @Override
+   public dux c_(jh $$0) {
+      return this.a(kj.a($$0.u()), kj.a($$0.w())).a($$0);
    }
 
-   private gov.a a(dhh $$0, int $$1, int $$2) {
-      return (gov.a)this.a.computeIfAbsent(dgn.c($$1, $$2), $$1x -> new gov.a($$0.d(dgn.a($$1x), dgn.b($$1x))));
+   private gou a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
    }
 
-   static final class a {
-      private final dzz a;
-      @Nullable
-      private got b;
+   @Override
+   public int a(jh $$0, dgs $$1) {
+      return this.d.a($$0, $$1);
+   }
 
-      a(dzz $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public int L_() {
+      return this.d.L_();
+   }
 
-      public dzz a() {
-         return this.a;
-      }
+   @Override
+   public int M_() {
+      return this.d.M_();
+   }
 
-      public got b() {
-         if (this.b == null) {
-            this.b = new got(this.a);
-         }
-
-         return this.b;
-      }
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
    }
 }

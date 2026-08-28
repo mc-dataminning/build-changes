@@ -1,28 +1,28 @@
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fik extends fiw {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fii> a;
+public class fik extends fix {
+   private static final Logger d = LogUtils.getLogger();
+   @Nullable
+   public String a;
+   @Nullable
+   public String b;
+   @Nullable
+   public String c;
 
    public static fik a(String $$0) {
       fik $$1 = new fik();
-      $$1.a = new ArrayList<>();
 
       try {
          JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
-         if ($$2.get("servers").isJsonArray()) {
-            for (JsonElement $$4 : $$2.get("servers").getAsJsonArray()) {
-               $$1.a.add(fii.a($$4.getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse McoServerList: {}", var6.getMessage());
+         $$1.a = fkt.b("address", $$2, null);
+         $$1.b = fkt.b("resourcePackUrl", $$2, null);
+         $$1.c = fkt.b("resourcePackHash", $$2, null);
+      } catch (Exception var3) {
+         d.error("Could not parse RealmsServerAddress: {}", var3.getMessage());
       }
 
       return $$1;

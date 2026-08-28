@@ -11,8 +11,8 @@ public class bb extends dy<bb.a> {
       return bb.a.a;
    }
 
-   public void a(asi $$0, Collection<? extends bvj> $$1) {
-      List<ewo> $$2 = $$1.stream().map($$1x -> bw.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(asi $$0, Collection<? extends bvk> $$1) {
+      List<ewp> $$2 = $$1.stream().map($$1x -> bw.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -26,11 +26,11 @@ public class bb extends dy<bb.a> {
          return ao.F.a(new bb.a(Optional.empty(), bw.a($$0)));
       }
 
-      public boolean a(Collection<? extends ewo> $$0) {
+      public boolean a(Collection<? extends ewp> $$0) {
          for (bh $$1 : this.c) {
             boolean $$2 = false;
 
-            for (ewo $$3 : $$0) {
+            for (ewp $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

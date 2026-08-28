@@ -1,111 +1,41 @@
-public abstract class fuo<T extends cuq> extends fum<T> implements fxz {
-   private final fxu<?> G;
-   private boolean H;
+import java.util.List;
 
-   public fuo(T $$0, fxu<?> $$1, cpv $$2, xv $$3) {
-      super($$0, $$2, $$3);
-      this.G = $$1;
+public abstract class fuo<T extends cte> extends fup<T> {
+   private final alz G;
+   private final alz H;
+   private final alz I;
+
+   public fuo(T $$0, cpw $$1, xv $$2, xv $$3, alz $$4, alz $$5, alz $$6, List<fxv.a> $$7) {
+      super($$0, new fxs($$0, $$3, $$7), $$1, $$2);
+      this.G = $$4;
+      this.H = $$5;
+      this.I = $$6;
    }
 
    @Override
-   protected void aT_() {
+   public void aT_() {
       super.aT_();
-      this.H = this.n < 379;
-      this.G.a(this.n, this.o, this.m, this.H);
-      this.C = this.G.a(this.n, this.s);
-      this.M();
-   }
-
-   protected abstract fsl G();
-
-   private void M() {
-      fsl $$0 = this.G();
-      this.c(new foq($$0.a(), $$0.b(), 20, 18, fxu.a, $$0x -> {
-         this.G.c();
-         this.C = this.G.a(this.n, this.s);
-         fsl $$1 = this.G();
-         $$0x.c($$1.a(), $$1.b());
-         this.J();
-      }));
-      this.d(this.G);
-   }
-
-   protected void J() {
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   public void a(fnr $$0, int $$1, int $$2, float $$3) {
-      if (this.G.d() && this.H) {
-         this.b($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
+   protected fsm G() {
+      return new fsm(this.C + 20, this.o / 2 - 49);
+   }
+
+   @Override
+   protected void a(fns $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(glv::C, this.G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if (this.z.o()) {
+         int $$6 = 14;
+         int $$7 = bae.f(this.z.n() * 13.0F) + 1;
+         $$0.a(glv::C, this.H, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
       }
 
-      this.G.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-      this.G.a($$0, $$1, $$2, this.B);
-   }
-
-   @Override
-   protected void c(fnr $$0) {
-      super.c($$0);
-      this.G.a($$0, this.K());
-   }
-
-   protected boolean K() {
-      return true;
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.G.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.G.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.G.a($$0, $$1, $$2)) {
-         this.a(this.G);
-         return true;
-      } else {
-         return this.H && this.G.d() ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.H || !this.G.d()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
-      return this.G.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
-   }
-
-   @Override
-   protected void a(cuy $$0, int $$1, int $$2, ctm $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.G.b($$0);
-   }
-
-   @Override
-   public void E() {
-      super.E();
-      this.G.e();
-   }
-
-   @Override
-   public void L() {
-      this.G.g();
-   }
-
-   @Override
-   public void a(ddi $$0) {
-      this.G.a($$0);
+      int $$8 = 24;
+      int $$9 = bae.f(this.z.m() * 24.0F);
+      $$0.a(glv::C, this.I, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
    }
 }

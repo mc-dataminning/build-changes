@@ -1,19 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class ekb<P extends eka> {
-   public static final ekb<ekd> a = a("two_layers_feature_size", ekd.d);
-   public static final ekb<ekc> b = a("three_layers_feature_size", ekc.d);
-   private final MapCodec<P> c;
+public abstract class ekb {
+   public static final Codec<ekb> a = ma.Y.q().dispatch(ekb::b, ekc::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   private static <P extends eka> ekb<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.Y, $$0, new ekb<>($$1));
+   protected static <S extends ekb> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   private ekb(MapCodec<P> $$0) {
+   public ekb(OptionalInt $$0) {
       this.c = $$0;
    }
 
-   public MapCodec<P> a() {
+   protected abstract ekc<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
       return this.c;
    }
 }

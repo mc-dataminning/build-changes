@@ -1,10 +1,11 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bmh extends bkk {
+public class bmh extends bkl {
    public bmh(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -13,22 +14,74 @@ public class bmh extends bkk {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         biw.c,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(biw.A.in($$0)),
-               "block_entities",
-               DSL.list(DSL.or(biw.s.in($$0), DSL.remainder())),
-               "block_ticks",
-               DSL.list(DSL.fields("i", biw.C.in($$0))),
-               "sections",
-               DSL.list(
-                  DSL.optionalFields(
-                     "biomes", DSL.optionalFields("palette", DSL.list(biw.K.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(biw.u.in($$0)))
+         bix.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(bix.A.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(bix.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", bix.C.in($$0))),
+                  "Sections",
+                  DSL.list(
+                     DSL.optionalFields(
+                        "biomes",
+                        DSL.optionalFields("palette", DSL.list(bix.K.in($$0))),
+                        "block_states",
+                        DSL.optionalFields("palette", DSL.list(bix.u.in($$0)))
+                     )
+                  ),
+                  "Structures",
+                  DSL.optionalFields("Starts", DSL.compoundList(bix.G.in($$0)))
+               )
+            )
+      );
+      $$0.registerType(false, bix.L, () -> DSL.constType(a()));
+      $$0.registerType(
+         false,
+         bix.M,
+         () -> DSL.fields(
+               "dimensions",
+               DSL.compoundList(
+                  DSL.constType(a()),
+                  DSL.fields(
+                     "generator",
+                     DSL.taggedChoiceLazy(
+                        "type",
+                        DSL.string(),
+                        ImmutableMap.of(
+                           "minecraft:debug",
+                           DSL::remainder,
+                           "minecraft:flat",
+                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                                 "settings", DSL.optionalFields("biome", bix.K.in($$0), "layers", DSL.list(DSL.optionalFields("block", bix.C.in($$0))))
+                              ),
+                           "minecraft:noise",
+                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                                 "biome_source",
+                                 DSL.taggedChoiceLazy(
+                                    "type",
+                                    DSL.string(),
+                                    ImmutableMap.of(
+                                       "minecraft:fixed",
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", bix.K.in($$0)),
+                                       "minecraft:multi_noise",
+                                       (Supplier<TypeTemplate>)() -> DSL.or(DSL.fields("preset", bix.L.in($$0)), DSL.list(DSL.fields("biome", bix.K.in($$0)))),
+                                       "minecraft:checkerboard",
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(bix.K.in($$0))),
+                                       "minecraft:the_end",
+                                       DSL::remainder
+                                    )
+                                 ),
+                                 "settings",
+                                 DSL.or(DSL.constType(DSL.string()), DSL.optionalFields("default_block", bix.C.in($$0), "default_fluid", bix.C.in($$0)))
+                              )
+                        )
+                     )
                   )
-               ),
-               "structures",
-               DSL.optionalFields("starts", DSL.compoundList(biw.G.in($$0)))
+               )
             )
       );
    }

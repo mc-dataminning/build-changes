@@ -60,7 +60,7 @@ public class apo {
       } else {
          long $$4 = $$0.e().ac() + (long)$$2;
          alz $$5 = (alz)$$1.getFirst();
-         fbk<MinecraftServer> $$6 = $$0.l().aZ().I().s();
+         fbl<MinecraftServer> $$6 = $$0.l().aZ().I().s();
          Optional<ik<ew>> $$7 = ((Either)$$1.getSecond()).left();
          if ($$7.isPresent()) {
             if ($$7.get() instanceof in) {
@@ -72,7 +72,7 @@ public class apo {
                $$6.a($$8);
             }
 
-            $$6.a($$8, $$4, new fbg($$5));
+            $$6.a($$8, $$4, new fbh($$5));
             $$0.a(() -> xv.a("commands.schedule.created.function", xv.a($$5), $$2, $$4), true);
          } else {
             String $$9 = "#" + $$5;
@@ -80,7 +80,7 @@ public class apo {
                $$6.a($$9);
             }
 
-            $$6.a($$9, $$4, new fbh($$5));
+            $$6.a($$9, $$4, new fbi($$5));
             $$0.a(() -> xv.a("commands.schedule.created.tag", xv.a($$5), $$2, $$4), true);
          }
 

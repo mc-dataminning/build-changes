@@ -99,7 +99,7 @@ public class azu {
       return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   public static jq<cxk> b(JsonElement $$0, String $$1) {
+   public static jq<cxl> b(JsonElement $$0, String $$1) {
       if ($$0.isJsonPrimitive()) {
          String $$2 = $$0.getAsString();
          return ma.g.c(alz.a($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
@@ -108,7 +108,7 @@ public class azu {
       }
    }
 
-   public static jq<cxk> j(JsonObject $$0, String $$1) {
+   public static jq<cxl> j(JsonObject $$0, String $$1) {
       if ($$0.has($$1)) {
          return b($$0.get($$1), $$1);
       } else {
@@ -118,7 +118,7 @@ public class azu {
 
    @Nullable
    @Contract("_,_,!null->!null;_,_,null->_")
-   public static jq<cxk> a(JsonObject $$0, String $$1, @Nullable jq<cxk> $$2) {
+   public static jq<cxl> a(JsonObject $$0, String $$1, @Nullable jq<cxl> $$2) {
       return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 

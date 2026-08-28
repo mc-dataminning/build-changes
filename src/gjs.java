@@ -1,29 +1,45 @@
-public class gjs extends gjd {
-   gjs(gfj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjm $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
+public abstract class gjs extends gjf {
+   protected hbl E;
+
+   protected gjs(gfk $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public static class a implements giu<lw> {
-      private final gjm a;
+   protected gjs(gfk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public a(gjm $$0) {
-         this.a = $$0;
-      }
+   protected void a(hbl $$0) {
+      this.E = $$0;
+   }
 
-      public gir a(lw $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gjs($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   @Override
+   protected float c() {
+      return this.E.c();
+   }
+
+   @Override
+   protected float d() {
+      return this.E.d();
+   }
+
+   @Override
+   protected float e() {
+      return this.E.g();
+   }
+
+   @Override
+   protected float f() {
+      return this.E.h();
+   }
+
+   public void a(gjn $$0) {
+      this.a($$0.a(this.r));
+   }
+
+   public void b(gjn $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

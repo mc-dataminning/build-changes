@@ -1,25 +1,24 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-record epy(aly<ept> c, brq<aly<ept>> d) implements epv {
-   static MapCodec<epy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aly.a(mb.aX).fieldOf("alias").forGetter(epy::c), brq.b(aly.a(mb.aX)).fieldOf("targets").forGetter(epy::d)).apply($$0, epy::new)
-   );
+@FunctionalInterface
+public interface epy {
+   epy a = $$0 -> $$0;
 
-   @Override
-   public void a(bam $$0, BiConsumer<aly<ept>, aly<ept>> $$1) {
-      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (aly<ept>)$$1x.b()));
-   }
+   aly<epu> lookup(aly<epu> var1);
 
-   @Override
-   public Stream<aly<ept>> a() {
-      return this.d.e().stream().map(brs.b::b);
-   }
-
-   @Override
-   public MapCodec<epy> b() {
-      return a;
+   static epy create(List<epw> $$0, jh $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         bam $$3 = bam.a($$2).e().a($$1);
+         Builder<aly<epu>, aly<epu>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<aly<epu>, aly<epu>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x.a() + " was mapped to null value");
+      }
    }
 }

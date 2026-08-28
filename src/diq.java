@@ -1,70 +1,245 @@
-public abstract class diq {
-   public static final aly<dij> a = a("the_void");
-   public static final aly<dij> b = a("plains");
-   public static final aly<dij> c = a("sunflower_plains");
-   public static final aly<dij> d = a("snowy_plains");
-   public static final aly<dij> e = a("ice_spikes");
-   public static final aly<dij> f = a("desert");
-   public static final aly<dij> g = a("swamp");
-   public static final aly<dij> h = a("mangrove_swamp");
-   public static final aly<dij> i = a("forest");
-   public static final aly<dij> j = a("flower_forest");
-   public static final aly<dij> k = a("birch_forest");
-   public static final aly<dij> l = a("dark_forest");
-   public static final aly<dij> m = a("old_growth_birch_forest");
-   public static final aly<dij> n = a("old_growth_pine_taiga");
-   public static final aly<dij> o = a("old_growth_spruce_taiga");
-   public static final aly<dij> p = a("taiga");
-   public static final aly<dij> q = a("snowy_taiga");
-   public static final aly<dij> r = a("savanna");
-   public static final aly<dij> s = a("savanna_plateau");
-   public static final aly<dij> t = a("windswept_hills");
-   public static final aly<dij> u = a("windswept_gravelly_hills");
-   public static final aly<dij> v = a("windswept_forest");
-   public static final aly<dij> w = a("windswept_savanna");
-   public static final aly<dij> x = a("jungle");
-   public static final aly<dij> y = a("sparse_jungle");
-   public static final aly<dij> z = a("bamboo_jungle");
-   public static final aly<dij> A = a("badlands");
-   public static final aly<dij> B = a("eroded_badlands");
-   public static final aly<dij> C = a("wooded_badlands");
-   public static final aly<dij> D = a("meadow");
-   public static final aly<dij> E = a("cherry_grove");
-   public static final aly<dij> F = a("grove");
-   public static final aly<dij> G = a("snowy_slopes");
-   public static final aly<dij> H = a("frozen_peaks");
-   public static final aly<dij> I = a("jagged_peaks");
-   public static final aly<dij> J = a("stony_peaks");
-   public static final aly<dij> K = a("river");
-   public static final aly<dij> L = a("frozen_river");
-   public static final aly<dij> M = a("beach");
-   public static final aly<dij> N = a("snowy_beach");
-   public static final aly<dij> O = a("stony_shore");
-   public static final aly<dij> P = a("warm_ocean");
-   public static final aly<dij> Q = a("lukewarm_ocean");
-   public static final aly<dij> R = a("deep_lukewarm_ocean");
-   public static final aly<dij> S = a("ocean");
-   public static final aly<dij> T = a("deep_ocean");
-   public static final aly<dij> U = a("cold_ocean");
-   public static final aly<dij> V = a("deep_cold_ocean");
-   public static final aly<dij> W = a("frozen_ocean");
-   public static final aly<dij> X = a("deep_frozen_ocean");
-   public static final aly<dij> Y = a("mushroom_fields");
-   public static final aly<dij> Z = a("dripstone_caves");
-   public static final aly<dij> aa = a("lush_caves");
-   public static final aly<dij> ab = a("deep_dark");
-   public static final aly<dij> ac = a("nether_wastes");
-   public static final aly<dij> ad = a("warped_forest");
-   public static final aly<dij> ae = a("crimson_forest");
-   public static final aly<dij> af = a("soul_sand_valley");
-   public static final aly<dij> ag = a("basalt_deltas");
-   public static final aly<dij> ah = a("the_end");
-   public static final aly<dij> ai = a("end_highlands");
-   public static final aly<dij> aj = a("end_midlands");
-   public static final aly<dij> ak = a("small_end_islands");
-   public static final aly<dij> al = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-   private static aly<dij> a(String $$0) {
-      return aly.a(mb.aI, alz.b($$0));
+public class diq {
+   public static final Codec<diq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               diq.b.d.optionalFieldOf("grass_color_modifier", diq.b.a).forGetter($$0x -> $$0x.h),
+               dij.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               axe.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               dii.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               dih.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               axc.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+            )
+            .apply($$0, diq::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final diq.b h;
+   private final Optional<dij> i;
+   private final Optional<jq<axe>> j;
+   private final Optional<dii> k;
+   private final Optional<dih> l;
+   private final Optional<axc> m;
+
+   diq(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      diq.b $$6,
+      Optional<dij> $$7,
+      Optional<jq<axe>> $$8,
+      Optional<dii> $$9,
+      Optional<dih> $$10,
+      Optional<axc> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public diq.b g() {
+      return this.h;
+   }
+
+   public Optional<dij> h() {
+      return this.i;
+   }
+
+   public Optional<jq<axe>> i() {
+      return this.j;
+   }
+
+   public Optional<dii> j() {
+      return this.k;
+   }
+
+   public Optional<dih> k() {
+      return this.l;
+   }
+
+   public Optional<axc> l() {
+      return this.m;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private diq.b g = diq.b.a;
+      private Optional<dij> h = Optional.empty();
+      private Optional<jq<axe>> i = Optional.empty();
+      private Optional<dii> j = Optional.empty();
+      private Optional<dih> k = Optional.empty();
+      private Optional<axc> l = Optional.empty();
+
+      public diq.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public diq.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public diq.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public diq.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public diq.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public diq.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public diq.a a(diq.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public diq.a a(dij $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public diq.a a(jq<axe> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public diq.a a(dii $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public diq.a a(dih $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public diq.a a(@Nullable axc $$0) {
+         this.l = Optional.ofNullable($$0);
+         return this;
+      }
+
+      public diq a() {
+         return new diq(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
+         );
+      }
+   }
+
+   public static enum b implements bba {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = dik.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
+
+      private final String e;
+      public static final Codec<diq.b> d = bba.a(diq.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

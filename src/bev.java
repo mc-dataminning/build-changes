@@ -91,10 +91,10 @@ public class bev extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(biw.B);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(biw.B);
-      Type<?> $$2 = this.getInputSchema().getType(biw.t);
-      Type<?> $$3 = this.getOutputSchema().getType(biw.t);
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bix.B);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bix.B);
+      Type<?> $$2 = this.getInputSchema().getType(bix.t);
+      Type<?> $$3 = this.getOutputSchema().getType(bix.t);
       return TypeRewriteRule.seq(
          this.convertUnchecked("item stack entity name hook converter", $$2, $$3),
          this.fixTypeEverywhere("EntityIdFix", $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))

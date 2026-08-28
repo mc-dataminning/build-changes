@@ -1,22 +1,22 @@
-public class gun extends gsv<cpo, had, gdx> {
-   private static final alz a = alz.b("textures/entity/wandering_trader.png");
+public class gun extends gsj<cnm, gym> {
+   private static final alz a = alz.b("textures/entity/illager/vindicator.png");
 
-   public gun(grp.a $$0) {
-      super($$0, new gdx($$0.a(gem.dq)), 0.5F);
-      this.a(new gvi<>(this, $$0.f(), $$0.b()));
-      this.a(new gvh<>(this, $$0.b()));
+   public gun(grq.a $$0) {
+      super($$0, new gca<>($$0.a(gen.dp)), 0.5F);
+      this.a(new gvx<gym, gca<gym>>(this, $$0.b()) {
+         public void a(fgs $$0, gll $$1, int $$2, gym $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public alz a(had $$0) {
+   public alz a(gym $$0) {
       return a;
    }
 
-   public had b() {
-      return new had();
-   }
-
-   public void a(cpo $$0, had $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.p() > 0;
+   public gym b() {
+      return new gym();
    }
 }

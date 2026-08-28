@@ -1,23 +1,20 @@
 import net.minecraft.server.MinecraftServer;
 
-public class fbh implements fbi<MinecraftServer> {
+public class fbh implements fbj<MinecraftServer> {
    final alz a;
 
    public fbh(alz $$0) {
       this.a = $$0;
    }
 
-   public void a(MinecraftServer $$0, fbk<MinecraftServer> $$1, long $$2) {
+   public void a(MinecraftServer $$0, fbl<MinecraftServer> $$1, long $$2) {
       amo $$3 = $$0.aE();
-
-      for (ik<ew> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   public static class a extends fbi.a<MinecraftServer, fbh> {
+   public static class a extends fbj.a<MinecraftServer, fbh> {
       public a() {
-         super(alz.b("function_tag"), fbh.class);
+         super(alz.b("function"), fbh.class);
       }
 
       public void a(ux $$0, fbh $$1) {

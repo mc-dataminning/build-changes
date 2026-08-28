@@ -2,8 +2,9 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Locale;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.stream.Collectors;
 
 public class big extends DataFix {
    public big(Schema $$0, boolean $$1) {
@@ -12,10 +13,18 @@ public class big extends DataFix {
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(biw.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Optional<String> $$1 = $$0x.get("lang").asString().result();
-               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
-            })
+         "OptionsKeyTranslationFix",
+         this.getInputSchema().getType(bix.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
+                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
+                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
+                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
+                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
+                        }
+                     }
+
+                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
+                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
       );
    }
 }

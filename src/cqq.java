@@ -1,30 +1,350 @@
+import com.google.common.base.MoreObjects;
+import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface cqq {
-   cqq a = ($$0, $$1, $$2) -> {
-   };
-   cqq b = ($$0, $$1, $$2) -> {
-      float $$3 = 170.0F + $$2.i() * 20.0F;
-      $$0.h($$0.dz().c(-0.5));
-      $$0.v($$0.dM() + $$3);
-      $$0.N += $$3;
-      $$0.ar = true;
-   };
-   cqq c = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         fbx $$3 = $$1.bT().d();
-         $$0.h($$3);
-         $$0.ar = true;
-      }
-   };
-   cqq d = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         fbx $$3 = $$1.dz().d();
-         $$0.h($$3);
-         $$0.ar = true;
-      }
-   };
+public abstract class cqq extends bvk implements bxf {
+   @Nullable
+   private UUID a;
+   @Nullable
+   private bvk b;
+   private boolean c;
+   private boolean d;
+   @Nullable
+   private bvk e;
 
-   void deflect(cqp var1, @Nullable bvj var2, bam var3);
+   cqq(bvr<? extends cqq> $$0, dhi $$1) {
+      super($$0, $$1);
+   }
+
+   public void c(@Nullable bvk $$0) {
+      if ($$0 != null) {
+         this.a = $$0.cG();
+         this.b = $$0;
+      }
+   }
+
+   @Nullable
+   @Override
+   public bvk p() {
+      if (this.b != null && !this.b.dR()) {
+         return this.b;
+      } else if (this.a != null) {
+         this.b = this.b(this.a);
+         return this.b;
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   protected bvk b(UUID $$0) {
+      return this.dW() instanceof ash $$1 ? $$1.a($$0) : null;
+   }
+
+   public bvk E() {
+      return (bvk)MoreObjects.firstNonNull(this.p(), this);
+   }
+
+   @Override
+   protected void b(ux $$0) {
+      if (this.a != null) {
+         $$0.a("Owner", this.a);
+      }
+
+      if (this.c) {
+         $$0.a("LeftOwner", true);
+      }
+
+      $$0.a("HasBeenShot", this.d);
+   }
+
+   protected boolean e(bvk $$0) {
+      return $$0.cG().equals(this.a);
+   }
+
+   @Override
+   protected void a(ux $$0) {
+      if ($$0.b("Owner")) {
+         this.c($$0.a("Owner"));
+      }
+
+      this.c = $$0.q("LeftOwner");
+      this.d = $$0.q("HasBeenShot");
+   }
+
+   protected void c(UUID $$0) {
+      if (this.a != $$0) {
+         this.a = $$0;
+         this.b = this.b($$0);
+      }
+   }
+
+   @Override
+   public void x(bvk $$0) {
+      super.x($$0);
+      if ($$0 instanceof cqq $$1) {
+         this.a = $$1.a;
+         this.b = $$1.b;
+      }
+   }
+
+   @Override
+   public void h() {
+      if (!this.d) {
+         this.a(ecr.K, this.p());
+         this.d = true;
+      }
+
+      if (!this.c) {
+         this.c = this.m();
+      }
+
+      super.h();
+   }
+
+   private boolean m() {
+      bvk $$0 = this.p();
+      if ($$0 != null) {
+         fbt $$1 = this.cR().b(this.dz()).g(1.0);
+         return $$0.dg().db().filter(bvp.h).noneMatch($$1x -> $$1.c($$1x.cR()));
+      } else {
+         return true;
+      }
+   }
+
+   public fby d(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      return new fby($$0, $$1, $$2)
+         .d()
+         .b(this.ae.a(0.0, 0.0172275 * (double)$$4), this.ae.a(0.0, 0.0172275 * (double)$$4), this.ae.a(0.0, 0.0172275 * (double)$$4))
+         .c((double)$$3);
+   }
+
+   public void c(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      fby $$5 = this.d($$0, $$1, $$2, $$3, $$4);
+      this.h($$5);
+      this.ar = true;
+      double $$6 = $$5.i();
+      this.v((float)(bae.d($$5.d, $$5.f) * 180.0F / (float)Math.PI));
+      this.w((float)(bae.d($$5.e, $$6) * 180.0F / (float)Math.PI));
+      this.N = this.dM();
+      this.O = this.dO();
+   }
+
+   public void a(bvk $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = -bae.a($$2 * (float) (Math.PI / 180.0)) * bae.b($$1 * (float) (Math.PI / 180.0));
+      float $$7 = -bae.a(($$1 + $$3) * (float) (Math.PI / 180.0));
+      float $$8 = bae.b($$2 * (float) (Math.PI / 180.0)) * bae.b($$1 * (float) (Math.PI / 180.0));
+      this.c((double)$$6, (double)$$7, (double)$$8, $$4, $$5);
+      fby $$9 = $$0.ah();
+      this.h(this.dz().b($$9.d, $$0.aJ() ? 0.0 : $$9.e, $$9.f));
+   }
+
+   public static <T extends cqq> T a(cqq.a<T> $$0, ash $$1, cxp $$2, bwg $$3, float $$4, float $$5, float $$6) {
+      return a($$0.create($$1, $$3, $$2), $$1, $$2, $$4x -> $$4x.a($$3, $$3.dO(), $$3.dM(), $$4, $$5, $$6));
+   }
+
+   public static <T extends cqq> T a(cqq.a<T> $$0, ash $$1, cxp $$2, bwg $$3, double $$4, double $$5, double $$6, float $$7, float $$8) {
+      return a($$0.create($$1, $$3, $$2), $$1, $$2, $$5x -> $$5x.c($$4, $$5, $$6, $$7, $$8));
+   }
+
+   public static <T extends cqq> T a(T $$0, ash $$1, cxp $$2, double $$3, double $$4, double $$5, float $$6, float $$7) {
+      return a($$0, $$1, $$2, $$6x -> $$0.c($$3, $$4, $$5, $$6, $$7));
+   }
+
+   public static <T extends cqq> T a(T $$0, ash $$1, cxp $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
+   }
+
+   public static <T extends cqq> T a(T $$0, ash $$1, cxp $$2, Consumer<T> $$3) {
+      $$3.accept($$0);
+      $$1.b($$0);
+      $$0.b($$1, $$2);
+      return $$0;
+   }
+
+   public void b(ash $$0, cxp $$1) {
+      deb.a($$0, $$1, this, $$0x -> {
+      });
+      if (this instanceof cqe $$2) {
+         cxp $$3 = $$2.ea();
+         if ($$3 != null && !$$3.f() && !$$1.h().equals($$3.h())) {
+            deb.a($$0, $$3, this, $$2::b);
+         }
+      }
+   }
+
+   protected cqr b(fbw $$0) {
+      if ($$0.d() == fbw.a.c) {
+         fbv $$1 = (fbv)$$0;
+         bvk $$2 = $$1.a();
+         cqr $$3 = $$2.a(this);
+         if ($$3 != cqr.a) {
+            if ($$2 != this.e && this.a($$3, $$2, this.p(), false)) {
+               this.e = $$2;
+            }
+
+            return $$3;
+         }
+      } else if (this.C() && $$0 instanceof fbu $$4 && $$4.f()) {
+         cqr $$5 = cqr.b;
+         if (this.a($$5, null, this.p(), false)) {
+            this.h(this.dz().c(0.2));
+            return $$5;
+         }
+      }
+
+      this.a($$0);
+      return cqr.a;
+   }
+
+   protected boolean C() {
+      return false;
+   }
+
+   public boolean a(cqr $$0, @Nullable bvk $$1, @Nullable bvk $$2, boolean $$3) {
+      $$0.deflect(this, $$1, this.ae);
+      if (!this.dW().C) {
+         this.c($$2);
+         this.b($$1, $$3);
+      }
+
+      return true;
+   }
+
+   protected void b(@Nullable bvk $$0, boolean $$1) {
+   }
+
+   protected void b(cxl $$0) {
+   }
+
+   protected void a(fbw $$0) {
+      fbw.a $$1 = $$0.d();
+      if ($$1 == fbw.a.c) {
+         fbv $$2 = (fbv)$$0;
+         bvk $$3 = $$2.a();
+         if ($$3.aq().a(axy.H) && $$3 instanceof cqq $$4) {
+            $$4.a(cqr.c, this.p(), this.p(), true);
+         }
+
+         this.a($$2);
+         this.dW().a(ecr.J, $$0.g(), ecr.a.a(this, null));
+      } else if ($$1 == fbw.a.b) {
+         fbu $$5 = (fbu)$$0;
+         this.a($$5);
+         jh $$6 = $$5.b();
+         this.dW().a(ecr.J, $$6, ecr.a.a(this, this.dW().a_($$6)));
+      }
+   }
+
+   protected void a(fbv $$0) {
+   }
+
+   protected void a(fbu $$0) {
+      dxv $$1 = this.dW().a_($$0.b());
+      $$1.a(this.dW(), $$1, $$0, this);
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.n($$0, $$1, $$2);
+      if (this.O == 0.0F && this.N == 0.0F) {
+         double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         this.w((float)(bae.d($$1, $$3) * 180.0F / (float)Math.PI));
+         this.v((float)(bae.d($$0, $$2) * 180.0F / (float)Math.PI));
+         this.O = this.dO();
+         this.N = this.dM();
+         this.b(this.dB(), this.dD(), this.dH(), this.dM(), this.dO());
+      }
+   }
+
+   protected boolean b(bvk $$0) {
+      if (!$$0.bG()) {
+         return false;
+      } else {
+         bvk $$1 = this.p();
+         return $$1 == null || this.c || !$$1.z($$0);
+      }
+   }
+
+   protected void F() {
+      fby $$0 = this.dz();
+      double $$1 = $$0.i();
+      this.w(f(this.O, (float)(bae.d($$0.e, $$1) * 180.0F / (float)Math.PI)));
+      this.v(f(this.N, (float)(bae.d($$0.d, $$0.f) * 180.0F / (float)Math.PI)));
+   }
+
+   protected static float f(float $$0, float $$1) {
+      while ($$1 - $$0 < -180.0F) {
+         $$0 -= 360.0F;
+      }
+
+      while ($$1 - $$0 >= 180.0F) {
+         $$0 += 360.0F;
+      }
+
+      return bae.h(0.2F, $$0, $$1);
+   }
+
+   @Override
+   public aac<acr> a(asf $$0) {
+      bvk $$1 = this.p();
+      return new acs(this, $$0, $$1 == null ? 0 : $$1.ar());
+   }
+
+   @Override
+   public void a(acs $$0) {
+      super.a($$0);
+      bvk $$1 = this.dW().a($$0.p());
+      if ($$1 != null) {
+         this.c($$1);
+      }
+   }
+
+   @Override
+   public boolean c(ash $$0, jh $$1) {
+      bvk $$2 = this.p();
+      return $$2 instanceof cpx ? $$2.c($$0, $$1) : $$2 == null || $$0.N().b(dhe.c);
+   }
+
+   public boolean a(ash $$0) {
+      return this.aq().a(axy.g) && $$0.N().b(dhe.g);
+   }
+
+   @Override
+   public boolean bH() {
+      return this.aq().a(axy.H);
+   }
+
+   @Override
+   public float bS() {
+      return this.bH() ? 1.0F : 0.0F;
+   }
+
+   public DoubleDoubleImmutablePair a_(bwg $$0, bua $$1) {
+      double $$2 = this.dz().d;
+      double $$3 = this.dz().f;
+      return DoubleDoubleImmutablePair.of($$2, $$3);
+   }
+
+   @Override
+   public int bX() {
+      return 2;
+   }
+
+   @Override
+   public boolean a(ash $$0, bua $$1, float $$2) {
+      if (!this.d($$1)) {
+         this.bD();
+      }
+
+      return false;
+   }
+
+   @FunctionalInterface
+   public interface a<T extends cqq> {
+      T create(ash var1, bwg var2, cxp var3);
+   }
 }

@@ -1,16 +1,13 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-public interface emr<P extends emq> {
-   emr<emp> a = a("constant", emp.b);
-   emr<emt> b = a("uniform", emt.a);
-   emr<emo> c = a("biased_to_bottom", emo.a);
-   emr<emu> d = a("very_biased_to_bottom", emu.a);
-   emr<ems> e = a("trapezoid", ems.a);
-   emr<emv> f = a("weighted_list", emv.a);
+public abstract class emr {
+   private static final Codec<Either<eek, emr>> a = Codec.either(eek.a, ma.L.q().dispatch(emr::a, ems::codec));
+   public static final Codec<emr> c = a.xmap(
+      $$0 -> (emr)$$0.map(emq::a, $$0x -> $$0x), $$0 -> $$0.a() == ems.a ? Either.left(((emq)$$0).b()) : Either.right($$0)
+   );
 
-   MapCodec<P> codec();
+   public abstract int a(bam var1, een var2);
 
-   private static <P extends emq> emr<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.L, $$0, () -> $$1);
-   }
+   public abstract ems<?> a();
 }

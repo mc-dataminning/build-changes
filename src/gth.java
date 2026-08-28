@@ -1,20 +1,16 @@
-public class gth extends gqj<cio, gzg, gcr> {
-   private static final alz a = alz.b("textures/entity/bear/polarbear.png");
+public class gth extends gsj<cna, gym> {
+   private static final alz a = alz.b("textures/entity/illager/pillager.png");
 
-   public gth(grp.a $$0) {
-      super($$0, new gcr($$0.a(gem.cl)), new gcr($$0.a(gem.cm)), 0.9F);
+   public gth(grq.a $$0) {
+      super($$0, new gca<>($$0.a(gen.ca)), 0.5F);
+      this.a(new gvx<>(this, $$0.b()));
    }
 
-   public alz a(gzg $$0) {
+   public alz a(gym $$0) {
       return a;
    }
 
-   public gzg b() {
-      return new gzg();
-   }
-
-   public void a(cio $$0, gzg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
+   public gym b() {
+      return new gym();
    }
 }

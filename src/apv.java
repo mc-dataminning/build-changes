@@ -16,7 +16,7 @@ public class apv {
 
    private static int a(ew $$0, jh $$1, float $$2) {
       ash $$3 = $$0.e();
-      if ($$3.ah() != dhh.i) {
+      if ($$3.ah() != dhi.i) {
          $$0.b(xv.c("commands.setworldspawn.failure.not_overworld"));
          return 0;
       } else {

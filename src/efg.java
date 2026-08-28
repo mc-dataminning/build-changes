@@ -1,8 +1,7 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class efg extends efh {
+class efg extends efi {
    public static final MapCodec<efg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, efg::new));
 
    public efg(kl $$0) {
@@ -10,12 +9,12 @@ public class efg extends efh {
    }
 
    @Override
-   protected boolean a(dxu $$0) {
-      return $$0.e();
+   protected boolean a(dxv $$0) {
+      return $$0.v();
    }
 
    @Override
-   public eex<?> a() {
-      return eex.e;
+   public eey<?> a() {
+      return eey.f;
    }
 }

@@ -1,34 +1,44 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.stream.Stream;
 
-public class eni extends enq {
-   public static final MapCodec<eni> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(emq.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eni::new));
-   private final emq c;
+public class eni extends enr {
+   public static final MapCodec<eni> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(jh.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eni::new)
+   );
+   private final List<jh> c;
 
-   private eni(emq $$0) {
+   public static eni a(jh... $$0) {
+      return new eni(List.of($$0));
+   }
+
+   private eni(List<jh> $$0) {
       this.c = $$0;
    }
 
-   public static eni a(emq $$0) {
-      return new eni($$0);
+   @Override
+   public Stream<jh> a_(enp $$0, bam $$1, jh $$2) {
+      int $$3 = kj.a($$2.u());
+      int $$4 = kj.a($$2.w());
+      boolean $$5 = false;
+
+      for (jh $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
    }
 
-   public static eni a(eej $$0, eej $$1) {
-      return a(emt.a($$0, $$1));
-   }
-
-   public static eni b(eej $$0, eej $$1) {
-      return a(ems.a($$0, $$1));
+   private static boolean a(int $$0, int $$1, jh $$2) {
+      return $$0 == kj.a($$2.u()) && $$1 == kj.a($$2.w());
    }
 
    @Override
-   public Stream<jh> a_(eno $$0, bam $$1, jh $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
-   }
-
-   @Override
-   public enr<?> b() {
-      return enr.l;
+   public ens<?> b() {
+      return ens.o;
    }
 }

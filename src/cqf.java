@@ -1,121 +1,182 @@
 import javax.annotation.Nullable;
 
-public class cqf extends cqd {
-   private static final int e = 600;
-   private static final int f = -1;
-   private static final alc<Integer> g = alg.a(cqf.class, ale.b);
-   private static final byte h = 0;
+public abstract class cqf extends cqq {
+   public static final double a = 0.1;
+   public static final double b = 0.5;
+   public double c = 0.1;
 
-   public cqf(bvq<? extends cqf> $$0, dhh $$1) {
+   protected cqf(bvr<? extends cqf> $$0, dhi $$1) {
       super($$0, $$1);
    }
 
-   public cqf(dhh $$0, double $$1, double $$2, double $$3, cxo $$4, @Nullable cxo $$5) {
-      super(bvq.g, $$1, $$2, $$3, $$0, $$4, $$5);
-      this.H();
+   protected cqf(bvr<? extends cqf> $$0, double $$1, double $$2, double $$3, dhi $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
-   public cqf(dhh $$0, bwf $$1, cxo $$2, @Nullable cxo $$3) {
-      super(bvq.g, $$1, $$0, $$2, $$3);
-      this.H();
+   public cqf(bvr<? extends cqf> $$0, double $$1, double $$2, double $$3, fby $$4, dhi $$5) {
+      this($$0, $$5);
+      this.b($$1, $$2, $$3, this.dM(), this.dO());
+      this.ay();
+      this.a($$4, this.c);
    }
 
-   private czn G() {
-      return this.w().a(ku.Q, czn.a);
-   }
-
-   private void a(czn $$0) {
-      this.w().b(ku.Q, $$0);
-      this.H();
-   }
-
-   @Override
-   protected void a(cxo $$0) {
-      super.a($$0);
-      this.H();
-   }
-
-   private void H() {
-      czn $$0 = this.G();
-      this.al.a(g, $$0.equals(czn.a) ? -1 : $$0.b());
-   }
-
-   public void a(buo $$0) {
-      this.a(this.G().a($$0));
+   public cqf(bvr<? extends cqf> $$0, bwg $$1, fby $$2, dhi $$3) {
+      this($$0, $$1.dB(), $$1.dD(), $$1.dH(), $$2, $$3);
+      this.c($$1);
+      this.b($$1.dM(), $$1.dO());
    }
 
    @Override
    protected void a(alg.a $$0) {
-      super.a($$0);
-      $$0.a(g, -1);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cR().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
+      }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
+   }
+
+   protected dgq.a al_() {
+      return dgq.a.a;
    }
 
    @Override
    public void h() {
-      super.h();
-      if (this.dW().C) {
-         if (this.l()) {
-            if (this.b % 5 == 0) {
-               this.b(1);
-            }
+      bvk $$0 = this.p();
+      this.v();
+      if (this.dW().C || ($$0 == null || !$$0.dR()) && this.dW().B(this.dw())) {
+         fbw $$1 = cqs.a(this, this::b, this.al_());
+         fby $$2;
+         if ($$1.d() != fbw.a.a) {
+            $$2 = $$1.g();
          } else {
-            this.b(2);
+            $$2 = this.du().e(this.dz());
          }
-      } else if (this.l() && this.b != 0 && !this.G().equals(czn.a) && this.b >= 600) {
-         this.dW().a(this, (byte)0);
-         this.a(new cxo(cxs.oS));
-      }
-   }
 
-   private void b(int $$0) {
-      int $$1 = this.D();
-      if ($$1 != -1 && $$0 > 0) {
-         for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dW().a(ll.a(ls.u, $$1), this.d(0.5), this.dE(), this.g(0.5), 0.0, 0.0, 0.0);
+         cqs.a(this, 0.2F);
+         this.b($$2);
+         this.aK();
+         super.h();
+         if (this.m()) {
+            this.d(1.0F);
          }
-      }
-   }
 
-   public int D() {
-      return this.al.a(g);
-   }
-
-   @Override
-   protected void a(bwf $$0) {
-      super.a($$0);
-      bvj $$1 = this.E();
-      czn $$2 = this.G();
-      if ($$2.e().isPresent()) {
-         for (buo $$3 : $$2.e().get().a().a()) {
-            $$0.b(new buo($$3.c(), Math.max($$3.a($$0x -> $$0x / 8), 1), $$3.e(), $$3.f(), $$3.g()), $$1);
+         if ($$1.d() != fbw.a.a && this.bL()) {
+            this.b($$1);
          }
-      }
 
-      for (buo $$4 : $$2.d()) {
-         $$0.b($$4, $$1);
-      }
-   }
-
-   @Override
-   protected cxo v() {
-      return new cxo(cxs.oS);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.D();
-         if ($$1 != -1) {
-            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
-            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
-            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
-
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dW().a(ll.a(ls.u, $$2, $$3, $$4), this.d(0.5), this.dE(), this.g(0.5), 0.0, 0.0, 0.0);
-            }
-         }
+         this.w();
       } else {
-         super.b($$0);
+         this.at();
+      }
+   }
+
+   private void v() {
+      fby $$0 = this.dz();
+      fby $$1 = this.du();
+      float $$4;
+      if (this.bj()) {
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            float $$3 = 0.25F;
+            this.dW().a(ls.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+         }
+
+         $$4 = this.u();
+      } else {
+         $$4 = this.t();
+      }
+
+      this.h($$0.e($$0.d().c(this.c)).c((double)$$4));
+   }
+
+   private void w() {
+      lq $$0 = this.s();
+      fby $$1 = this.du();
+      if ($$0 != null) {
+         this.dW().a($$0, $$1.d, $$1.e + 0.5, $$1.f, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   public boolean a(ash $$0, bua $$1, float $$2) {
+      return false;
+   }
+
+   @Override
+   protected boolean b(bvk $$0) {
+      return super.b($$0) && !$$0.ad;
+   }
+
+   @Override
+   protected boolean m() {
+      return true;
+   }
+
+   @Nullable
+   protected lq s() {
+      return ls.af;
+   }
+
+   protected float t() {
+      return 0.95F;
+   }
+
+   protected float u() {
+      return 0.8F;
+   }
+
+   @Override
+   public void b(ux $$0) {
+      super.b($$0);
+      $$0.a("acceleration_power", this.c);
+   }
+
+   @Override
+   public void a(ux $$0) {
+      super.a($$0);
+      if ($$0.b("acceleration_power", 6)) {
+         this.c = $$0.k("acceleration_power");
+      }
+   }
+
+   @Override
+   public float by() {
+      return 1.0F;
+   }
+
+   @Override
+   public aac<acr> a(asf $$0) {
+      bvk $$1 = this.p();
+      int $$2 = $$1 == null ? 0 : $$1.ar();
+      fby $$3 = $$0.b();
+      return new acs(this.ar(), this.cG(), $$3.a(), $$3.b(), $$3.c(), $$0.d(), $$0.e(), this.aq(), $$2, $$0.c(), 0.0);
+   }
+
+   @Override
+   public void a(acs $$0) {
+      super.a($$0);
+      fby $$1 = new fby($$0.j(), $$0.k(), $$0.l());
+      this.h($$1);
+   }
+
+   private void a(fby $$0, double $$1) {
+      this.h($$0.d().c($$1));
+      this.ar = true;
+   }
+
+   @Override
+   protected void b(@Nullable bvk $$0, boolean $$1) {
+      super.b($$0, $$1);
+      if ($$1) {
+         this.c = 0.1;
+      } else {
+         this.c *= 0.5;
       }
    }
 }

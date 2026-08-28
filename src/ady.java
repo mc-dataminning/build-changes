@@ -1,4 +1,4 @@
-public record ady(dgn b) implements aac<acr> {
+public record ady(dgo b) implements aac<acr> {
    public static final zt<ws, ady> a = aac.a(ady::a, ady::new);
 
    private ady(ws $$0) {

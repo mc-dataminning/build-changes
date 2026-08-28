@@ -1,236 +1,61 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class cpo extends cpd implements czu.b {
-   private static final int cb = 5;
-   @Nullable
-   private jh cc;
-   private int cd;
+public final class cpo {
+   public static final cpo a = a("desert");
+   public static final cpo b = a("jungle");
+   public static final cpo c = a("plains");
+   public static final cpo d = a("savanna");
+   public static final cpo e = a("snow");
+   public static final cpo f = a("swamp");
+   public static final cpo g = a("taiga");
+   private final String h;
+   private static final Map<aly<dik>, cpo> i = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dir.A, a);
+      $$0.put(dir.f, a);
+      $$0.put(dir.B, a);
+      $$0.put(dir.C, a);
+      $$0.put(dir.z, b);
+      $$0.put(dir.x, b);
+      $$0.put(dir.y, b);
+      $$0.put(dir.s, d);
+      $$0.put(dir.r, d);
+      $$0.put(dir.w, d);
+      $$0.put(dir.X, e);
+      $$0.put(dir.W, e);
+      $$0.put(dir.L, e);
+      $$0.put(dir.e, e);
+      $$0.put(dir.N, e);
+      $$0.put(dir.q, e);
+      $$0.put(dir.d, e);
+      $$0.put(dir.F, e);
+      $$0.put(dir.G, e);
+      $$0.put(dir.H, e);
+      $$0.put(dir.I, e);
+      $$0.put(dir.g, f);
+      $$0.put(dir.h, f);
+      $$0.put(dir.o, g);
+      $$0.put(dir.n, g);
+      $$0.put(dir.u, g);
+      $$0.put(dir.t, g);
+      $$0.put(dir.p, g);
+      $$0.put(dir.v, g);
+   });
 
-   public cpo(bvq<? extends cpo> $$0, dhh $$1) {
-      super($$0, $$1);
+   private cpo(String $$0) {
+      this.h = $$0;
    }
 
    @Override
-   protected void B() {
-      this.bT.a(0, new ccx(this));
-      this.bT.a(0, new ceo<>(this, czn.a(cxs.sZ, czo.g), axf.BX, $$0 -> this.dW().V() && !$$0.cp()));
-      this.bT.a(0, new ceo<>(this, new cxo(cxs.rc), axf.Cc, $$0 -> this.dW().U() && $$0.cp()));
-      this.bT.a(1, new cem(this));
-      this.bT.a(1, new cck<>(this, cnp.class, 8.0F, 0.5, 0.5));
-      this.bT.a(1, new cck<>(this, cmp.class, 12.0F, 0.5, 0.5));
-      this.bT.a(1, new cck<>(this, cnl.class, 8.0F, 0.5, 0.5));
-      this.bT.a(1, new cck<>(this, cnk.class, 8.0F, 0.5, 0.5));
-      this.bT.a(1, new cck<>(this, cmz.class, 15.0F, 0.5, 0.5));
-      this.bT.a(1, new cck<>(this, cmu.class, 12.0F, 0.5, 0.5));
-      this.bT.a(1, new cck<>(this, cno.class, 10.0F, 0.5, 0.5));
-      this.bT.a(1, new cdw(this, 0.5));
-      this.bT.a(1, new cdm(this));
-      this.bT.a(2, new cpo.a(this, 2.0, 0.35));
-      this.bT.a(4, new cdr(this, 0.35));
-      this.bT.a(8, new ceq(this, 0.35));
-      this.bT.a(9, new cdg(this, cpw.class, 3.0F, 1.0F));
-      this.bT.a(10, new cdl(this, bwh.class, 8.0F));
+   public String toString() {
+      return this.h;
    }
 
-   @Nullable
-   @Override
-   public bva a(ash $$0, bva $$1) {
-      return null;
+   private static cpo a(String $$0) {
+      return kd.a(ma.w, alz.b($$0), new cpo($$0));
    }
 
-   @Override
-   public boolean gr() {
-      return false;
-   }
-
-   @Override
-   public bti b(cpw $$0, bth $$1) {
-      cxo $$2 = $$0.b($$1);
-      if (!$$2.a(cxs.ux) && this.bL() && !this.gp() && !this.e_()) {
-         if ($$1 == bth.a) {
-            $$0.a(axp.S);
-         }
-
-         if (!this.dW().C) {
-            if (this.gq().isEmpty()) {
-               return bti.c;
-            }
-
-            this.a($$0);
-            this.a($$0, this.p_(), 1);
-         }
-
-         return bti.a;
-      } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Override
-   protected void gv() {
-      if (this.dW().J().b(csu.c)) {
-         this.gy();
-      } else {
-         cpm.g[] $$0 = (cpm.g[])cpm.b.get(1);
-         cpm.g[] $$1 = (cpm.g[])cpm.b.get(2);
-         if ($$0 != null && $$1 != null) {
-            dgf $$2 = this.gq();
-            this.a($$2, $$0, 5);
-            int $$3 = this.ae.a($$1.length);
-            cpm.g $$4 = $$1[$$3];
-            dge $$5 = $$4.a(this, this.ae);
-            if ($$5 != null) {
-               $$2.add($$5);
-            }
-         }
-      }
-   }
-
-   private void gy() {
-      dgf $$0 = this.gq();
-
-      for (Pair<cpm.g[], Integer> $$1 : cpm.d) {
-         cpm.g[] $$2 = (cpm.g[])$$1.getLeft();
-         this.a($$0, $$2, (Integer)$$1.getRight());
-      }
-   }
-
-   @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.cd);
-      if (this.cc != null) {
-         $$0.a("wander_target", vm.a(this.cc));
-      }
-   }
-
-   @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.cd = $$0.h("DespawnDelay");
-      }
-
-      vm.a($$0, "wander_target").ifPresent($$0x -> this.cc = $$0x);
-      this.c_(Math.max(0, this.Z_()));
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(dge $$0) {
-      if ($$0.u()) {
-         int $$1 = 3 + this.ae.a(4);
-         this.dW().b(new bvv(this.dW(), this.dB(), this.dD() + 0.5, this.dH(), $$1));
-      }
-   }
-
-   @Override
-   protected axe u() {
-      return this.gp() ? axf.Cd : axf.BV;
-   }
-
-   @Override
-   protected axe e(btz $$0) {
-      return axf.Ca;
-   }
-
-   @Override
-   protected axe o_() {
-      return axf.BW;
-   }
-
-   @Override
-   public axe j(cxo $$0) {
-      return $$0.a(cxs.rc) ? axf.BY : axf.BZ;
-   }
-
-   @Override
-   protected axe x(boolean $$0) {
-      return $$0 ? axf.Ce : axf.Cb;
-   }
-
-   @Override
-   public axe gs() {
-      return axf.Ce;
-   }
-
-   public void t(int $$0) {
-      this.cd = $$0;
-   }
-
-   public int gx() {
-      return this.cd;
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (!this.dW().C) {
-         this.gz();
-      }
-   }
-
-   private void gz() {
-      if (this.cd > 0 && !this.gp() && --this.cd == 0) {
-         this.at();
-      }
-   }
-
-   public void h(@Nullable jh $$0) {
-      this.cc = $$0;
-   }
-
-   @Nullable
-   jh gB() {
-      return this.cc;
-   }
-
-   class a extends cdd {
-      final cpo a;
-      final double b;
-      final double c;
-
-      a(final cpo $$0, final double $$1, final double $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.a(EnumSet.of(cdd.a.a));
-      }
-
-      @Override
-      public void e() {
-         this.a.h(null);
-         cpo.this.bS.o();
-      }
-
-      @Override
-      public boolean b() {
-         jh $$0 = this.a.gB();
-         return $$0 != null && this.a($$0, this.b);
-      }
-
-      @Override
-      public void a() {
-         jh $$0 = this.a.gB();
-         if ($$0 != null && cpo.this.bS.m()) {
-            if (this.a($$0, 10.0)) {
-               fbx $$1 = new fbx((double)$$0.u() - this.a.dB(), (double)$$0.v() - this.a.dD(), (double)$$0.w() - this.a.dH()).d();
-               fbx $$2 = $$1.c(10.0).b(this.a.dB(), this.a.dD(), this.a.dH());
-               cpo.this.bS.a($$2.d, $$2.e, $$2.f, this.c);
-            } else {
-               cpo.this.bS.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), this.c);
-            }
-         }
-      }
-
-      private boolean a(jh $$0, double $$1) {
-         return !$$0.a(this.a.du(), $$1);
-      }
+   public static cpo a(jq<dik> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

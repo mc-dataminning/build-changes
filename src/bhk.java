@@ -1,21 +1,29 @@
+import com.google.common.escape.Escaper;
+import com.google.common.escape.Escapers;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class bhk extends bgp {
+public class bhk extends bgq {
+   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
+
    public bhk(Schema $$0) {
-      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
+      super($$0, "LockComponentPredicateFix", "minecraft:lock");
    }
 
    @Override
    protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
-      $$0 = $$0.remove("pos").remove("dimension");
-      if ($$1.isPresent() && $$2.isPresent()) {
-         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
-      }
+      return b($$0);
+   }
 
-      return $$0;
+   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isPresent()) {
+         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
+         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
+         return $$0.emptyMap().set("components", $$3);
+      } else {
+         return $$0.emptyMap();
+      }
    }
 }

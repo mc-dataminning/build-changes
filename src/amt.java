@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class amt extends btr {
+public class amt extends bts {
    private long g = 0L;
    private long h = 0L;
    private long i = 0L;

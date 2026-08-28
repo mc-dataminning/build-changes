@@ -21,10 +21,10 @@ public class apx {
       );
    }
 
-   private static int a(ew $$0, @Nullable bvj $$1, asi $$2) throws CommandSyntaxException {
+   private static int a(ew $$0, @Nullable bvk $$1, asi $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.h.b() != dhe.d) {
+      } else if ($$2.h.b() != dhf.d) {
          throw b.create($$2.p_());
       } else {
          $$2.d($$1);

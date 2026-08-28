@@ -1,10 +1,5 @@
-public class gzt extends gys implements gzk {
-   public boolean a;
-   public boolean b;
-   public boolean c;
-
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class gzt extends gyt {
+   public float a;
+   public float b;
+   public float c;
 }

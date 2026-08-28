@@ -1,45 +1,39 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class crq {
-   private final crp a;
-   private final List<crq.a> b = Lists.newArrayList();
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final crq c = a("empty").a(0, cro.b).a();
+   public static final crq d = a("simple").a(5000, cro.c).a(11000, cro.e).a();
+   public static final crq e = a("villager_baby").a(10, cro.b).a(3000, cro.d).a(6000, cro.b).a(10000, cro.d).a(12000, cro.e).a();
+   public static final crq f = a("villager_default").a(10, cro.b).a(2000, cro.c).a(9000, cro.f).a(11000, cro.b).a(12000, cro.e).a();
+   private final Map<cro, crs> g = Maps.newHashMap();
 
-   public crq(crp $$0) {
-      this.a = $$0;
+   protected static crr a(String $$0) {
+      crq $$1 = kd.a(ma.B, $$0, new crq());
+      return new crr($$1);
    }
 
-   public crq a(int $$0, crn $$1) {
-      this.b.add(new crq.a($$0, $$1));
-      return this;
+   protected void a(cro $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new crs());
+      }
    }
 
-   public crp a() {
-      this.b.stream().map(crq.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         crn $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   protected crs b(cro $$0) {
+      return this.g.get($$0);
    }
 
-   static class a {
-      private final int a;
-      private final crn b;
+   protected List<crs> c(cro $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
 
-      public a(int $$0, crn $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public crn b() {
-         return this.b;
-      }
+   public cro a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cro.b);
    }
 }

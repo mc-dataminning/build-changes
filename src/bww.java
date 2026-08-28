@@ -1,5 +1,13 @@
-public interface bww {
-   void a(ash var1, axg var2, cxo var3);
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface bww {
+   boolean f();
+
+   void a(cxp var1, @Nullable axg var2);
+
+   default axe ac_() {
+      return axf.ni;
+   }
+
+   boolean j();
 }

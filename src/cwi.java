@@ -1,16 +1,15 @@
-import java.util.List;
-
-public class cwi extends cxk {
-   public cwi(cxk.a $$0) {
-      super($$0);
+public class cwi extends cxl {
+   protected cwi(czg $$0, ayk<dkm> $$1, float $$2, float $$3, cxl.a $$4) {
+      super($$0.a($$4, $$1, $$2, $$3));
    }
 
    @Override
-   public void a(cxo $$0, cxk.b $$1, List<xv> $$2, czg $$3) {
-      $$2.add(this.b().a(n.h));
+   public boolean a(cxp $$0, bwg $$1, bwg $$2) {
+      return true;
    }
 
-   public yj b() {
-      return xv.c(this.l + ".desc");
+   @Override
+   public void b(cxp $$0, bwg $$1, bwg $$2) {
+      $$0.a(2, $$2, bvs.a);
    }
 }

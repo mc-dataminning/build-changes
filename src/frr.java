@@ -1,111 +1,163 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class frr extends fro {
-   private final List<frr.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final frw f = frw.i().a(0.5F, 0.5F);
+public class frr extends frp {
+   private final frr.b c;
+   private final List<frr.a> d = new ArrayList<>();
+   private final frx e = frx.i();
 
-   public frr() {
-      this(0, 0, 0, 0);
+   public frr(int $$0, int $$1, frr.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public frr(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public frr(int $$0, int $$1, int $$2, int $$3) {
+   public frr(int $$0, int $$1, int $$2, int $$3, frr.b $$4) {
       super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public frr a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public frr a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public frr b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public frw b() {
-      return this.f.g();
-   }
-
-   public frw c() {
-      return this.f;
+      this.c = $$4;
    }
 
    @Override
    public void a() {
       super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
 
-      for (frr.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
+         for (frr.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<frr.a> $$5 = this.d.iterator();
+         frr.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               frr.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (frr.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
       }
-
-      for (frr.a $$3 : this.c) {
-         $$3.a(this.D(), $$0);
-         $$3.b(this.E(), $$1);
-      }
-
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public <T extends frv> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends frv> T a(T $$0, frw $$1) {
-      this.c.add(new frr.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends frv> T a(T $$0, Consumer<frw> $$1) {
-      return this.a($$0, ae.a(this.b(), $$1));
    }
 
    @Override
-   public void b(Consumer<frv> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
+   public void b(Consumer<frw> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public static void a(frv $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   public frx b() {
+      return this.e.g();
    }
 
-   public static void a(frv $$0, fsm $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   public frx c() {
+      return this.e;
    }
 
-   public static void a(frv $$0, fsm $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   public <T extends frw> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public static void a(frv $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.y(), $$0::k, $$5);
-      a($$2, $$4, $$0.w(), $$0::l, $$6);
+   public <T extends frw> T a(T $$0, frx $$1) {
+      this.d.add(new frr.a($$0, $$1));
+      return $$0;
    }
 
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)bae.h($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
+   public <T extends frw> T a(T $$0, Consumer<frx> $$1) {
+      return this.a($$0, ae.a(this.b(), $$1));
    }
 
-   static class a extends fro.a {
-      protected a(frv $$0, frw $$1) {
+   static class a extends frp.a {
+      protected a(frw $$0, frx $$1) {
          super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(frw $$0) {
+         return switch (this) {
+            case a -> $$0.y();
+            case b -> $$0.w();
+         };
+      }
+
+      int a(frr.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(frw $$0) {
+         return switch (this) {
+            case a -> $$0.w();
+            case b -> $$0.y();
+         };
+      }
+
+      int b(frr.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(frr.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(frr.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(frw $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.E();
+         };
+      }
+
+      int d(frw $$0) {
+         return switch (this) {
+            case a -> $$0.E();
+            case b -> $$0.D();
+         };
       }
    }
 }

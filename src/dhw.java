@@ -1,25 +1,41 @@
-public interface dhw {
-   <T> fdp<T> a(jh var1, T var2, int var3, fdt var4);
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   <T> fdp<T> a(jh var1, T var2, int var3);
+public class dhw {
+   private final List<dhw.a> a = Lists.newArrayList();
 
-   fdl<dkl> T();
-
-   default void a(jh $$0, dkl $$1, int $$2, fdt $$3) {
-      this.T().a(this.a($$0, $$1, $$2, $$3));
+   public void a(jh $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new dhw.a($$0, $$1));
+      }
    }
 
-   default void a(jh $$0, dkl $$1, int $$2) {
-      this.T().a(this.a($$0, $$1, $$2));
+   public double b(jh $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (dhw.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   fdl<etv> S();
+   static class a {
+      private final jh a;
+      private final double b;
 
-   default void a(jh $$0, etv $$1, int $$2, fdt $$3) {
-      this.S().a(this.a($$0, $$1, $$2, $$3));
-   }
+      public a(jh $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   default void a(jh $$0, etv $$1, int $$2) {
-      this.S().a(this.a($$0, $$1, $$2));
+      public double a(jh $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

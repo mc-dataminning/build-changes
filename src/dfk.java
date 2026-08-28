@@ -1,26 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dfk(jq<ddy> c, bsn d) implements dfg {
-   public static final MapCodec<dfk> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ddy.c.fieldOf("enchantment").forGetter(dfk::b), bsn.c.fieldOf("level").forGetter(dfk::c)).apply($$0, dfk::new)
+public record dfk(ju<ddz> d, int e, int f) implements dfh {
+   public static final int b = 10000;
+   public static final MapCodec<dfk> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kf.a(mb.aO).fieldOf("enchantments").forGetter(dfk::b),
+               azn.a(1, 10000).fieldOf("min_cost").forGetter(dfk::c),
+               azn.a(0, 10000).fieldOf("max_cost_span").forGetter(dfk::d)
+            )
+            .apply($$0, dfk::new)
    );
 
    @Override
-   public void a(cxo $$0, dee.a $$1, bam $$2, btg $$3) {
-      $$1.b(this.c, bae.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public void a(cxp $$0, def.a $$1, bam $$2, bth $$3) {
+      float $$4 = $$3.d();
+      int $$5 = bae.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
+
+      for (dec $$7 : deb.b($$2, $$0, $$5, this.d.a())) {
+         $$1.b($$7.a, $$7.b);
+      }
    }
 
    @Override
    public MapCodec<dfk> a() {
-      return b;
+      return c;
    }
 
-   public jq<ddy> b() {
-      return this.c;
-   }
-
-   public bsn c() {
+   public ju<ddz> b() {
       return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
    }
 }

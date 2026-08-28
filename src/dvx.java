@@ -1,15 +1,23 @@
-public interface dvx extends btb {
-   fbs y_ = dkl.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+public class dvx extends dwk {
+   private static final int a = 60;
+   private static final int b = 9;
 
-   default fbs am_() {
-      return y_;
+   public dvx(jh $$0, dxv $$1) {
+      super(duz.i, $$0, $$1);
    }
 
-   double G();
+   @Override
+   public int b() {
+      return 9;
+   }
 
-   double H();
+   @Override
+   public int c() {
+      return 60;
+   }
 
-   double I();
-
-   boolean J();
+   @Override
+   public axe d() {
+      return axf.Cz;
+   }
 }

@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public interface af {
-   evu d();
+   evv d();
 
    String b();
 

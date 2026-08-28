@@ -1,11 +1,58 @@
-public interface dnh {
-   default void a(dhh $$0, jh $$1, dxu $$2, dxu $$3, clz $$4) {
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public abstract class dnh extends dok {
+   public static final dys<dyg> L = dyl.V;
+
+   protected dnh(dxu.d $$0) {
+      super($$0);
    }
 
-   default void a(dhh $$0, jh $$1, clz $$2) {
+   @Override
+   protected abstract MapCodec<? extends dnh> a();
+
+   @Override
+   protected boolean a(dxv $$0, dhl $$1, jh $$2) {
+      return b($$1, $$2, n($$0).g());
    }
 
-   default btz a(bvj $$0) {
-      return $$0.dX().a($$0);
+   public static boolean b(dhl $$0, jh $$1, jm $$2) {
+      jh $$3 = $$1.a($$2);
+      return $$0.a_($$3).c($$0, $$3, $$2.g());
+   }
+
+   @Nullable
+   @Override
+   public dxv a(dbg $$0) {
+      for (jm $$1 : $$0.f()) {
+         dxv $$2;
+         if ($$1.o() == jm.a.b) {
+            $$2 = this.m().b(L, $$1 == jm.b ? dyg.c : dyg.a).b(aF, $$0.g());
+         } else {
+            $$2 = this.m().b(L, dyg.b).b(aF, $$1.g());
+         }
+
+         if ($$2.a((dhl)$$0.q(), $$0.a())) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      return n($$0).g() == $$4 && !$$0.a($$1, $$3) ? dko.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static jm n(dxv $$0) {
+      switch ((dyg)$$0.c(L)) {
+         case c:
+            return jm.a;
+         case a:
+            return jm.b;
+         default:
+            return $$0.c(aF);
+      }
    }
 }

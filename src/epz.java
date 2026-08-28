@@ -1,21 +1,21 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-record epz(brq<List<epv>> c) implements epv {
-   static MapCodec<epz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(brq.b(Codec.list(epv.b)).fieldOf("groups").forGetter(epz::c)).apply($$0, epz::new));
+record epz(aly<epu> c, brr<aly<epu>> d) implements epw {
+   static MapCodec<epz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aly.a(mb.aX).fieldOf("alias").forGetter(epz::c), brr.b(aly.a(mb.aX)).fieldOf("targets").forGetter(epz::d)).apply($$0, epz::new)
+   );
 
    @Override
-   public void a(bam $$0, BiConsumer<aly<ept>, aly<ept>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   public void a(bam $$0, BiConsumer<aly<epu>, aly<epu>> $$1) {
+      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (aly<epu>)$$1x.b()));
    }
 
    @Override
-   public Stream<aly<ept>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(epv::a);
+   public Stream<aly<epu>> a() {
+      return this.d.e().stream().map(brt.b::b);
    }
 
    @Override

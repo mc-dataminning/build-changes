@@ -1,190 +1,121 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class hbl implements avp, hbm, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   public static final alz a = alz.b("");
-   private final Map<alz, hav> c = Maps.newHashMap();
-   private final Set<hbm> d = Sets.newHashSet();
-   private final Map<String, Integer> e = Maps.newHashMap();
-   private final avv f;
+public class hbl {
+   private final alz a;
+   private final hbf b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   public hbl(avv $$0) {
-      this.f = $$0;
+   protected hbl(alz $$0, hbf $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
    }
 
-   public void a(alz $$0, hav $$1) {
-      $$1 = this.d($$0, $$1);
-      hav $$2 = this.c.put($$0, $$1);
-      if ($$2 != $$1) {
-         if ($$2 != null && $$2 != hba.c()) {
-            this.c($$0, $$2);
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public hbf e() {
+      return this.b;
+   }
+
+   @Nullable
+   public hbl.a f() {
+      final hbh $$0 = this.b.e();
+      return $$0 != null ? new hbl.a() {
+         @Override
+         public void a() {
+            $$0.a(hbl.this.c, hbl.this.d);
          }
 
-         if ($$1 instanceof hbm) {
-            this.d.add((hbm)$$1);
+         @Override
+         public void close() {
+            $$0.close();
          }
-      }
+      } : null;
    }
 
-   private void c(alz $$0, hav $$1) {
-      if ($$1 != hba.c()) {
-         this.d.remove($$1);
-
-         try {
-            $$1.close();
-         } catch (Exception var4) {
-            b.warn("Failed to close texture {}", $$0, var4);
-         }
-      }
-
-      $$1.b();
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
    }
 
-   private hav d(alz $$0, hav $$1) {
-      try {
-         $$1.a(this.f);
-         return $$1;
-      } catch (IOException var6) {
-         if ($$0 != a) {
-            b.warn("Failed to load texture: {}", $$0, var6);
-         }
-
-         return hba.c();
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Registering texture");
-         p $$5 = $$4.a("Resource location being registered");
-         $$5.a("Resource location", $$0);
-         $$5.a("Texture object class", () -> $$1.getClass().getName());
-         throw new z($$4);
-      }
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
    }
 
-   public hav a(alz $$0) {
-      hav $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new hbd($$0);
-         this.a($$0, $$1);
-      }
-
-      return $$1;
+   public float g() {
+      return this.g;
    }
 
-   public hav b(alz $$0, hav $$1) {
-      return this.c.getOrDefault($$0, $$1);
+   public float h() {
+      return this.h;
    }
 
-   public alz a(String $$0, hax $$1) {
-      Integer $$2 = this.e.get($$0);
-      if ($$2 == null) {
-         $$2 = 1;
-      } else {
-         $$2 = $$2 + 1;
-      }
-
-      this.e.put($$0, $$2);
-      alz $$3 = alz.b(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
-      this.a($$3, $$1);
-      return $$3;
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
    }
 
-   public CompletableFuture<Void> a(alz $$0, Executor $$1) {
-      if (!this.c.containsKey($$0)) {
-         hbc $$2 = new hbc(this.f, $$0, $$1);
-         this.c.put($$0, $$2);
-         return $$2.e().thenRunAsync(() -> this.a($$0, (hav)$$2), hbl::a);
-      } else {
-         return CompletableFuture.completedFuture(null);
-      }
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
    }
 
-   private static void a(Runnable $$0) {
-      fmf.Q().execute(() -> RenderSystem.recordRenderCall($$0::run));
+   public alz i() {
+      return this.a;
    }
 
    @Override
-   public void f() {
-      for (hbm $$0 : this.d) {
-         $$0.f();
-      }
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
    }
 
-   public void b(alz $$0) {
-      hav $$1 = this.c.remove($$0);
-      if ($$1 != null) {
-         this.c($$0, $$1);
-      }
+   public void j() {
+      this.b.a(this.c, this.d);
    }
 
-   @Override
-   public void close() {
-      this.c.forEach(this::c);
-      this.c.clear();
-      this.d.clear();
-      this.e.clear();
+   private float l() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
    }
 
-   @Override
-   public CompletableFuture<Void> a(avp.a $$0, avv $$1, Executor $$2, Executor $$3) {
-      CompletableFuture<Void> $$4 = new CompletableFuture<>();
-      ftz.a(this, $$2).thenCompose($$0::a).thenAcceptAsync($$3x -> {
-         hba.c();
-         fjm.a(this.f);
-         Iterator<Entry<alz, hav>> $$4x = this.c.entrySet().iterator();
-
-         while ($$4x.hasNext()) {
-            Entry<alz, hav> $$5 = $$4x.next();
-            alz $$6 = $$5.getKey();
-            hav $$7 = $$5.getValue();
-            if ($$7 == hba.c() && !$$6.equals(hba.b())) {
-               $$4x.remove();
-            } else {
-               $$7.a(this, $$1, $$6, $$3);
-            }
-         }
-
-         fmf.Q().a_(() -> $$4.complete(null));
-      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
-      return $$4;
+   public float k() {
+      return 4.0F / this.l();
    }
 
-   public void a(Path $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0));
-      } else {
-         this.b($$0);
-      }
+   public fgw a(fgw $$0) {
+      return new gmi($$0, this);
    }
 
-   private void b(Path $$0) {
-      try {
-         Files.createDirectories($$0);
-      } catch (IOException var3) {
-         b.error("Failed to create directory {}", $$0, var3);
-         return;
-      }
+   public interface a extends AutoCloseable {
+      void a();
 
-      this.c.forEach(($$1, $$2) -> {
-         if ($$2 instanceof haw $$3) {
-            try {
-               $$3.a($$1, $$0);
-            } catch (IOException var5) {
-               b.error("Failed to dump texture {}", $$1, var5);
-            }
-         }
-      });
+      @Override
+      void close();
    }
 }

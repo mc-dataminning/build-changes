@@ -1,65 +1,79 @@
-public class fte extends ftx {
-   private static final xv a = xv.c("gui.toMenu");
-   private static final xv b = xv.c("gui.toTitle");
-   private static final xv c = xv.c("gui.report_to_server");
-   private static final xv d = xv.c("gui.open_report_dir");
-   private final ftx s;
-   private final wr u;
-   private final xv v;
-   private final frx w = frx.d();
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fte(ftx $$0, xv $$1, xv $$2) {
-      this($$0, $$1, new wr($$2));
+public class fte extends fty {
+   private static final xv a = xv.c("addServer.enterIp");
+   private fof b;
+   private final gfz c;
+   private foo d;
+   private final BooleanConsumer s;
+   private final fty u;
+
+   public fte(fty $$0, BooleanConsumer $$1, gfz $$2) {
+      super(xv.c("selectServer.direct"));
+      this.u = $$0;
+      this.c = $$2;
+      this.s = $$1;
    }
 
-   public fte(ftx $$0, xv $$1, xv $$2, xv $$3) {
-      this($$0, $$1, new wr($$2), $$3);
-   }
-
-   public fte(ftx $$0, xv $$1, wr $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public fte(ftx $$0, xv $$1, wr $$2, xv $$3) {
-      super($$1);
-      this.s = $$0;
-      this.u = $$2;
-      this.v = $$3;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aM_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.l();
+         return true;
+      }
    }
 
    @Override
    protected void aT_() {
-      this.w.c().b().a(10);
-      this.w.a(new fpm(this.l, this.p));
-      this.w.a(new foz(this.u.a(), this.p).d(this.n - 50).b(true));
-      this.w.c().a(2);
-      this.u.c().ifPresent($$0 -> this.w.a(foe.a(c, fsu.b(this, $$0, false)).a(200).a()));
-      this.u.b().ifPresent($$0 -> this.w.a(foe.a(d, $$1x -> ae.m().a($$0.getParent())).a(200).a()));
-      foe $$0;
-      if (this.m.F()) {
-         $$0 = foe.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
-      } else {
-         $$0 = foe.a(b, $$0x -> this.m.a(new ftz())).a(200).a();
-      }
-
-      this.w.a($$0);
-      this.w.a();
-      this.w.a(this::c);
-      this.c();
+      this.d = new foo(this.p, this.n / 2 - 100, 116, 200, 20, xv.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.m.n.Y);
+      this.d.b($$0 -> this.E());
+      this.d(this.d);
+      this.b = this.c(fof.a(xv.c("selectServer.select"), $$0 -> this.l()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
+      this.c(fof.a(xu.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+      this.E();
    }
 
    @Override
-   protected void c() {
-      frr.a(this.w, this.H());
+   protected void aG_() {
+      this.b(this.d);
    }
 
    @Override
-   public xv i() {
-      return xu.a(this.l, this.u.a());
+   public void a(fmg $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void l() {
+      this.c.b = this.d.a();
+      this.s.accept(true);
    }
 
    @Override
-   public boolean aH_() {
-      return false;
+   public void aP_() {
+      this.m.a(this.u);
+   }
+
+   @Override
+   public void aJ_() {
+      this.m.n.Y = this.d.a();
+      this.m.n.az();
+   }
+
+   private void E() {
+      this.b.j = ghc.b(this.d.a());
+   }
+
+   @Override
+   public void a(fns $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

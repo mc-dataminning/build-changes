@@ -1,48 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dau(cxo c) {
-   public static final Codec<dau> a = cxo.a.xmap(dau::new, dau::a);
-   public static final zt<xg, dau> b = zt.a(cxo.h, dau::a, dau::new);
+public record dau(float c, Optional<alz> d) {
+   public static final Codec<dau> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(azn.o.fieldOf("seconds").forGetter(dau::b), alz.a.optionalFieldOf("cooldown_group").forGetter(dau::c)).apply($$0, dau::new)
+   );
+   public static final zt<xg, dau> b = zt.a(zr.l, dau::b, alz.b.a(zr::a), dau::c, dau::new);
 
-   public cxo a(cxo $$0, int $$1, boolean $$2, dau.a $$3) {
-      if ($$2) {
-         return $$0;
-      } else if ($$0.L() >= $$1) {
-         return $$0;
-      } else {
-         cxo $$4 = this.c.v();
-         if ($$0.f()) {
-            return $$4;
-         } else {
-            $$3.apply($$4);
-            return $$0;
-         }
+   public dau(float $$0) {
+      this($$0, Optional.empty());
+   }
+
+   public int a() {
+      return (int)(this.c * 20.0F);
+   }
+
+   public void a(cxp $$0, bwg $$1) {
+      if ($$1 instanceof cpx $$2) {
+         $$2.gE().a($$0, this.a());
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         dau $$1 = (dau)$$0;
-         return cxo.a(this.c, $$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return cxo.a(this.c);
-   }
-
-   public cxo a() {
+   public float b() {
       return this.c;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void apply(cxo var1);
+   public Optional<alz> c() {
+      return this.d;
    }
 }

@@ -1,41 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.EnumMap;
 
 public class gfq {
-   private final avg a = avj.c();
-   private final Map<avc, String> b;
+   public static final int a = 5000;
+   private final gfl b;
+   private final fon c;
+   private final EnumMap<boe, Long> d;
 
-   public gfq() {
-      this.a.a();
-      Builder<avc, String> $$0 = ImmutableMap.builder();
-      this.a.d().forEach($$1 -> {
-         auf $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+   public gfq(gfl $$0, fon $$1) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = new EnumMap<>(boe.class);
    }
 
-   public List<avc> a(List<avc> $$0) {
-      List<avc> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
-
-      for (avc $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
+   public void a() {
+      if (this.c.g()) {
+         this.a(boe.a);
       }
-
-      this.a.b($$2);
-      return $$1;
    }
 
-   public avl a() {
-      List<aug> $$0 = this.a.h();
-      return new avo(aui.b, $$0);
+   private void a(boe $$0) {
+      long $$1 = ae.c();
+      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
+         this.b.b(new aif($$0));
+         this.d.put($$0, $$1);
+      }
    }
 }

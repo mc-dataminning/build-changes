@@ -1,13 +1,13 @@
 public class ahq implements aac<ahm> {
    public static final zt<ws, ahq> a = aac.a(ahq::a, ahq::new);
-   private final btf b;
+   private final btg b;
 
-   public ahq(btf $$0) {
+   public ahq(btg $$0) {
       this.b = $$0;
    }
 
    private ahq(ws $$0) {
-      this.b = btf.a($$0.readUnsignedByte());
+      this.b = btg.a($$0.readUnsignedByte());
    }
 
    private void a(ws $$0) {
@@ -23,7 +23,7 @@ public class ahq implements aac<ahm> {
       $$0.a(this);
    }
 
-   public btf b() {
+   public btg b() {
       return this.b;
    }
 }

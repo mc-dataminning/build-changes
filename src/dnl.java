@@ -1,170 +1,91 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
 
-public class dnl extends doj {
-   public static final MapCodec<dnl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dzg.a.fieldOf("wood_type").forGetter($$0x -> $$0x.H), t()).apply($$0, dnl::new)
-   );
-   public static final dyl b = dyk.v;
-   public static final dyl c = dyk.x;
-   public static final dyl d = dyk.q;
-   protected static final fcr e = dkl.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final fcr f = dkl.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
-   protected static final fcr g = dkl.a(0.0, 0.0, 6.0, 16.0, 13.0, 10.0);
-   protected static final fcr h = dkl.a(6.0, 0.0, 0.0, 10.0, 13.0, 16.0);
-   protected static final fcr i = dkl.a(0.0, 0.0, 6.0, 16.0, 24.0, 10.0);
-   protected static final fcr j = dkl.a(6.0, 0.0, 0.0, 10.0, 24.0, 16.0);
-   protected static final fcr k = dkl.a(0.0, 5.0, 6.0, 16.0, 24.0, 10.0);
-   protected static final fcr l = dkl.a(6.0, 5.0, 0.0, 10.0, 24.0, 16.0);
-   protected static final fcr m = fco.a(dkl.a(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), dkl.a(14.0, 5.0, 7.0, 16.0, 16.0, 9.0));
-   protected static final fcr n = fco.a(dkl.a(7.0, 5.0, 0.0, 9.0, 16.0, 2.0), dkl.a(7.0, 5.0, 14.0, 9.0, 16.0, 16.0));
-   protected static final fcr o = fco.a(dkl.a(0.0, 2.0, 7.0, 2.0, 13.0, 9.0), dkl.a(14.0, 2.0, 7.0, 16.0, 13.0, 9.0));
-   protected static final fcr G = fco.a(dkl.a(7.0, 2.0, 0.0, 9.0, 13.0, 2.0), dkl.a(7.0, 2.0, 14.0, 9.0, 13.0, 16.0));
-   private final dzg H;
+public class dnl extends dmk {
+   public static final MapCodec<dnl> i = b(dnl::new);
+   private final fcs[] j;
 
    @Override
    public MapCodec<dnl> a() {
-      return a;
+      return i;
    }
 
-   public dnl(dzg $$0, dxt.d $$1) {
-      super($$1.a($$0.d()));
-      this.H = $$0;
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      if ($$0.c(d)) {
-         return $$0.c(aF).o() == jm.a.a ? h : g;
-      } else {
-         return $$0.c(aF).o() == jm.a.a ? f : e;
-      }
-   }
-
-   @Override
-   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
-      jm.a $$8 = $$4.o();
-      if ($$0.c(aF).h().o() != $$8) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         boolean $$9 = this.o($$6) || this.o($$1.a_($$3.a($$4.g())));
-         return $$0.b(d, Boolean.valueOf($$9));
-      }
+   public dnl(dxu.d $$0) {
+      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
+      this.l(
+         this.F
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
+      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
    }
 
    @Override
-   protected fcr b_(dxu $$0, dgm $$1, jh $$2) {
-      if ($$0.c(b)) {
-         return fco.a();
-      } else {
-         return $$0.c(aF).o() == jm.a.c ? k : l;
-      }
+   protected fcs d_(dxv $$0) {
+      return this.j[this.h($$0)];
    }
 
    @Override
-   protected fcr b(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
-      if ($$0.c(b)) {
-         return fco.a();
-      } else {
-         return $$0.c(aF).o() == jm.a.c ? i : j;
-      }
+   protected fcs c(dxv $$0, dgn $$1, jh $$2, fcd $$3) {
+      return this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected fcr d_(dxu $$0) {
-      if ($$0.c(d)) {
-         return $$0.c(aF).o() == jm.a.a ? G : o;
-      } else {
-         return $$0.c(aF).o() == jm.a.a ? n : m;
-      }
+   protected boolean a(dxv $$0, eum $$1) {
+      return false;
+   }
+
+   public boolean a(dxv $$0, boolean $$1, jm $$2) {
+      dkm $$3 = $$0.b();
+      boolean $$4 = this.o($$0);
+      boolean $$5 = $$3 instanceof dnm && dnm.a($$0, $$2);
+      return !k($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean o(dxv $$0) {
+      return $$0.a(axu.U) && $$0.a(axu.l) == this.m().a(axu.l);
    }
 
    @Override
-   protected boolean a(dxu $$0, eul $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(b);
-         case b:
-            return false;
-         case c:
-            return $$0.c(b);
-         default:
-            return false;
-      }
+   protected btj a(dxv $$0, dhi $$1, jh $$2, cpx $$3, fbu $$4) {
+      return (btj)(!$$1.B_() ? cxz.a($$3, $$1, $$2) : btj.e);
    }
 
    @Override
-   public dxu a(dbf $$0) {
-      dhh $$1 = $$0.q();
+   public dxv a(dbg $$0) {
+      dgn $$1 = $$0.q();
       jh $$2 = $$0.a();
-      boolean $$3 = $$1.C($$2);
-      jm $$4 = $$0.g();
-      jm.a $$5 = $$4.o();
-      boolean $$6 = $$5 == jm.a.c && (this.o($$1.a_($$2.h())) || this.o($$1.a_($$2.i())))
-         || $$5 == jm.a.a && (this.o($$1.a_($$2.f())) || this.o($$1.a_($$2.g())));
-      return this.m().b(aF, $$4).b(b, Boolean.valueOf($$3)).b(c, Boolean.valueOf($$3)).b(d, Boolean.valueOf($$6));
-   }
-
-   private boolean o(dxu $$0) {
-      return $$0.a(axu.N);
+      etx $$3 = $$0.q().b_($$0.a());
+      jh $$4 = $$2.f();
+      jh $$5 = $$2.i();
+      jh $$6 = $$2.g();
+      jh $$7 = $$2.h();
+      dxv $$8 = $$1.a_($$4);
+      dxv $$9 = $$1.a_($$5);
+      dxv $$10 = $$1.a_($$6);
+      dxv $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jm.d), jm.d)))
+         .b(b, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jm.e), jm.e)))
+         .b(c, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jm.c), jm.c)))
+         .b(d, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jm.f), jm.f)))
+         .b(e, Boolean.valueOf($$3.a() == ety.c));
    }
 
    @Override
-   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if ($$0.c(b)) {
-         $$0 = $$0.b(b, Boolean.valueOf(false));
-         $$1.a($$2, $$0, 10);
-      } else {
-         jm $$5 = $$3.cO();
-         if ($$0.c(aF) == $$5.g()) {
-            $$0 = $$0.b(aF, $$5);
-         }
-
-         $$0 = $$0.b(b, Boolean.valueOf(true));
-         $$1.a($$2, $$0, 10);
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, ety.c, ety.c.a($$1));
       }
 
-      boolean $$6 = $$0.c(b);
-      $$1.a($$3, $$2, $$6 ? this.H.g() : this.H.f(), axg.e, 1.0F, $$1.H_().i() * 0.1F + 0.9F);
-      $$1.a($$3, $$6 ? ecq.h : ecq.d, $$2);
-      return bti.a;
+      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g()), $$4.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(dxu $$0, ash $$1, jh $$2, dgz $$3, BiConsumer<cxo, jh> $$4) {
-      if ($$3.g() && !$$0.c(c)) {
-         boolean $$5 = $$0.c(b);
-         $$1.b($$2, $$0.b(b, Boolean.valueOf(!$$5)));
-         $$1.a(null, $$2, $$5 ? this.H.f() : this.H.g(), axg.e, 1.0F, $$1.H_().i() * 0.1F + 0.9F);
-         $$1.a($$5 ? ecq.d : ecq.h, $$2, ecq.a.a($$0));
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(dxu $$0, dhh $$1, jh $$2, dkl $$3, @Nullable eve $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.C($$2);
-         if ($$0.c(c) != $$6) {
-            $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)).b(b, Boolean.valueOf($$6)), 2);
-            if ($$0.c(b) != $$6) {
-               $$1.a(null, $$2, $$6 ? this.H.g() : this.H.f(), axg.e, 1.0F, $$1.H_().i() * 0.1F + 0.9F);
-               $$1.a(null, $$6 ? ecq.h : ecq.d, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(dxv.a<dkl, dxu> $$0) {
-      $$0.a(aF, b, c, d);
-   }
-
-   public static boolean a(dxu $$0, jm $$1) {
-      return $$0.c(aF).o() == $$1.h().o();
+   protected void a(dxw.a<dkm, dxv> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

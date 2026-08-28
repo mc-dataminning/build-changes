@@ -1,43 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dmc extends djt {
-   public static final MapCodec<dmc> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmb.a.forGetter($$0x -> $$0x.c), t()).apply($$0, dmc::new));
-   private final dkl c;
+public class dmc extends dkm {
+   public static final MapCodec<dkm> a = ma.e.q().fieldOf("dead");
+   public static final MapCodec<dmc> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dmc::new));
+   private final dkm c;
+
+   public dmc(dkm $$0, dxu.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
    @Override
    public MapCodec<dmc> a() {
       return b;
    }
 
-   protected dmc(dkl $$0, dxt.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
    @Override
-   protected void b(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
-      this.a($$0, $$1, $$1, $$1.A, $$2);
-   }
-
-   @Override
-   protected void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.m().b(d, Boolean.valueOf(false)), 2);
+   protected void a(dxv $$0, ash $$1, jh $$2, bam $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.m(), 2);
       }
    }
 
    @Override
-   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
-      if ($$4 == jm.a && !$$0.a($$1, $$3)) {
-         return dkn.a.m();
-      } else {
-         this.a($$0, $$1, $$2, $$7, $$3);
-         if ($$0.c(d)) {
-            $$2.a($$3, etx.c, etx.c.a($$1));
+   protected dxv a(dxv $$0, dhl $$1, dhx $$2, jh $$3, jm $$4, jh $$5, dxv $$6, bam $$7) {
+      if (!this.a($$1, $$3)) {
+         $$2.a($$3, this, 60 + $$7.a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected boolean a(dgn $$0, jh $$1) {
+      for (jm $$2 : jm.values()) {
+         etx $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(aya.a)) {
+            return true;
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
+
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public dxv a(dbg $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().H_().a(40));
+      }
+
+      return this.m();
    }
 }

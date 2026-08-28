@@ -31,7 +31,7 @@ public record xr(xs l, xs m) {
       $$0.a(k, new xr(xs.a("chat.type.emote"), xs.a("chat.type.emote")));
    }
 
-   public static xr.a a(aly<xr> $$0, bvj $$1) {
+   public static xr.a a(aly<xr> $$0, bvk $$1) {
       return a($$0, $$1.dW().K_(), $$1.p_());
    }
 

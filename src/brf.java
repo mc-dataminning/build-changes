@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface brf {
+public interface brf {
+   List<brc> bw();
 }

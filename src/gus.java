@@ -1,15 +1,40 @@
-public class gus extends gqh<cnn, gzp> {
-   private static final alz a = alz.b("textures/entity/skeleton/wither_skeleton.png");
+public class gus extends gsw<clo, hah, gec> {
+   private static final alz a = alz.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alz b = alz.b("textures/entity/wither/wither.png");
 
-   public gus(grp.a $$0) {
-      super($$0, gem.dw, gem.dx, gem.dy);
+   public gus(grq.a $$0) {
+      super($$0, new gec($$0.a(gen.du)), 1.0F);
+      this.a(new gws(this, $$0.f()));
    }
 
-   public alz b(gzp $$0) {
-      return a;
+   protected int a(clo $$0, jh $$1) {
+      return 15;
    }
 
-   public gzp b() {
-      return new gzp();
+   public alz a(hah $$0) {
+      int $$1 = bae.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
+   }
+
+   public hah b() {
+      return new hah();
+   }
+
+   protected void a(hah $$0, fgs $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
+      }
+
+      $$1.b($$2, $$2, $$2);
+   }
+
+   public void a(clo $$0, hah $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      int $$3 = $$0.go();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.x(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.t(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.gp();
    }
 }

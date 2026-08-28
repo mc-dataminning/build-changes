@@ -1,14 +1,8 @@
-public class cwk extends cvu {
-   public cwk(dkl $$0, cxk.a $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public interface cwk {
+   default void a(@Nullable cpx $$0, dhi $$1, cxp $$2, jh $$3) {
    }
 
-   @Override
-   protected boolean a(dbf $$0, dxu $$1) {
-      dhh $$2 = $$0.q();
-      jh $$3 = $$0.a().d();
-      dxu $$4 = $$2.z($$3) ? dkn.J.m() : dkn.a.m();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
-   }
+   boolean a(@Nullable cpx var1, dhi var2, jh var3, @Nullable fbu var4);
 }

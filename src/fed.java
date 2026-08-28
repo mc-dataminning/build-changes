@@ -1,166 +1,99 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.jtracy.TracyClient;
 import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
-import org.slf4j.Logger;
 
-public class fed {
-   private static final Logger b = LogUtils.getLogger();
+public class fed implements AutoCloseable {
+   private static final int a = 320;
+   private static final int b = 180;
    private static final int c = 4;
-   public static final int a = 1;
-   private final int d;
-   private final AtomicBoolean e = new AtomicBoolean(true);
-   private int f = 16384;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private final ffc h = new ffd(320, 180, false);
+   private final fen i = new fen(fel.c, fem.f, 0);
    @Nullable
-   private hga g;
+   private feo j;
+   private int k;
+   private boolean l;
 
-   @Nullable
-   static fed a() {
-      int[] $$0 = new int[1];
-      AL10.alGenSources($$0);
-      return feh.a("Allocate new source") ? null : new fed($$0[0]);
+   private void a(int $$0, int $$1) {
+      float $$2 = (float)$$0 / (float)$$1;
+      if ($$0 > 320) {
+         $$0 = 320;
+         $$1 = (int)(320.0F / $$2);
+      }
+
+      if ($$1 > 180) {
+         $$0 = (int)(180.0F * $$2);
+         $$1 = 180;
+      }
+
+      $$0 = $$0 / 4 * 4;
+      $$1 = $$1 / 4 * 4;
+      if (this.f != $$0 || this.g != $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h.a($$0, $$1);
+         this.i.a($$0 * $$1 * 4);
+         if (this.j != null) {
+            this.j.close();
+            this.j = null;
+         }
+      }
    }
 
-   private fed(int $$0) {
-      this.d = $$0;
+   public void a(ffc $$0) {
+      if (this.j == null && !this.l) {
+         this.l = true;
+         if ($$0.c != this.d || $$0.d != this.e) {
+            this.d = $$0.c;
+            this.e = $$0.d;
+            this.a(this.d, this.e);
+         }
+
+         GlStateManager._glBindFramebuffer(36009, this.h.h);
+         GlStateManager._glBindFramebuffer(36008, $$0.h);
+         GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.f, this.g, 16384, 9729);
+         GlStateManager._glBindFramebuffer(36008, 0);
+         GlStateManager._glBindFramebuffer(36009, 0);
+         this.i.b();
+         GlStateManager._glBindFramebuffer(36008, this.h.h);
+         GlStateManager._readPixels(0, 0, this.f, this.g, 6408, 5121, 0L);
+         GlStateManager._glBindFramebuffer(36008, 0);
+         this.j = new feo();
+         this.k = 0;
+      }
+   }
+
+   public void a() {
+      if (this.j != null) {
+         if (this.j.a(0L)) {
+            this.j = null;
+
+            try (fen.a $$0 = this.i.a()) {
+               if ($$0 != null) {
+                  TracyClient.frameImage($$0.a(), this.f, this.g, this.k, true);
+               }
+            }
+         }
+      }
    }
 
    public void b() {
-      if (this.e.compareAndSet(true, false)) {
-         AL10.alSourceStop(this.d);
-         feh.a("Stop");
-         if (this.g != null) {
-            try {
-               this.g.close();
-            } catch (IOException var2) {
-               b.error("Failed to close audio stream", var2);
-            }
-
-            this.l();
-            this.g = null;
-         }
-
-         AL10.alDeleteSources(new int[]{this.d});
-         feh.a("Cleanup");
-      }
+      this.k++;
+      this.l = false;
+      TracyClient.markFrame();
    }
 
-   public void c() {
-      AL10.alSourcePlay(this.d);
-   }
-
-   private int k() {
-      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
-   }
-
-   public void d() {
-      if (this.k() == 4114) {
-         AL10.alSourcePause(this.d);
-      }
-   }
-
-   public void e() {
-      if (this.k() == 4115) {
-         AL10.alSourcePlay(this.d);
-      }
-   }
-
-   public void f() {
-      if (this.e.get()) {
-         AL10.alSourceStop(this.d);
-         feh.a("Stop");
-      }
-   }
-
-   public boolean g() {
-      return this.k() == 4114;
-   }
-
-   public boolean h() {
-      return this.k() == 4116;
-   }
-
-   public void a(fbx $$0) {
-      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.d, (float)$$0.e, (float)$$0.f});
-   }
-
-   public void a(float $$0) {
-      AL10.alSourcef(this.d, 4099, $$0);
-   }
-
-   public void a(boolean $$0) {
-      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
-   }
-
-   public void b(float $$0) {
-      AL10.alSourcef(this.d, 4106, $$0);
-   }
-
-   public void i() {
-      AL10.alSourcei(this.d, 53248, 0);
-   }
-
-   public void c(float $$0) {
-      AL10.alSourcei(this.d, 53248, 53251);
-      AL10.alSourcef(this.d, 4131, $$0);
-      AL10.alSourcef(this.d, 4129, 1.0F);
-      AL10.alSourcef(this.d, 4128, 0.0F);
-   }
-
-   public void b(boolean $$0) {
-      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
-   }
-
-   public void a(fei $$0) {
-      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
-   }
-
-   public void a(hga $$0) {
-      this.g = $$0;
-      AudioFormat $$1 = $$0.a();
-      this.f = a($$1, 1);
-      this.a(4);
-   }
-
-   private static int a(AudioFormat $$0, int $$1) {
-      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
-   }
-
-   private void a(int $$0) {
-      if (this.g != null) {
-         try {
-            for (int $$1 = 0; $$1 < $$0; $$1++) {
-               ByteBuffer $$2 = this.g.a(this.f);
-               if ($$2 != null) {
-                  new fei($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
-               }
-            }
-         } catch (IOException var4) {
-            b.error("Failed to read from audio stream", var4);
-         }
-      }
-   }
-
-   public void j() {
-      if (this.g != null) {
-         int $$0 = this.l();
-         this.a($$0);
-      }
-   }
-
-   private int l() {
-      int $$0 = AL10.alGetSourcei(this.d, 4118);
-      if ($$0 > 0) {
-         int[] $$1 = new int[$$0];
-         AL10.alSourceUnqueueBuffers(this.d, $$1);
-         feh.a("Unqueue buffers");
-         AL10.alDeleteBuffers($$1);
-         feh.a("Remove processed buffers");
+   @Override
+   public void close() {
+      if (this.j != null) {
+         this.j.close();
+         this.j = null;
       }
 
-      return $$0;
+      this.i.close();
+      this.h.a();
    }
 }
