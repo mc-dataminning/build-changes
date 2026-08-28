@@ -1,71 +1,62 @@
-import javax.annotation.Nullable;
+public class dai extends dah {
+   private final jn b;
 
-public class dai {
-   @Nullable
-   private final cox a;
-   private final bsj b;
-   private final faw c;
-   private final dgi d;
-   private final cwp e;
-
-   public dai(cox $$0, bsj $$1, faw $$2) {
-      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
-   }
-
-   protected dai(dgi $$0, @Nullable cox $$1, bsj $$2, cwp $$3, faw $$4) {
-      this.a = $$1;
+   public dai(dgj $$0, ji $$1, jn $$2, cwq $$3, jn $$4) {
+      super($$0, null, bsk.a, $$3, new fax(fbb.c($$1), $$4, $$1, false));
       this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
    }
 
-   protected final faw j() {
-      return this.c;
-   }
-
+   @Override
    public ji a() {
-      return this.c.b();
+      return this.j().b();
    }
 
-   public jn k() {
-      return this.c.c();
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
    }
 
-   public fba l() {
-      return this.c.g();
+   @Override
+   public boolean c() {
+      return this.b();
    }
 
-   public boolean m() {
-      return this.c.e();
+   @Override
+   public jn d() {
+      return jn.a;
    }
 
-   public cwp n() {
-      return this.e;
+   @Override
+   public jn[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jn[]{jn.a, jn.c, jn.f, jn.d, jn.e, jn.b};
+         case b:
+            return new jn[]{jn.a, jn.b, jn.c, jn.f, jn.d, jn.e};
+         case c:
+            return new jn[]{jn.a, jn.c, jn.f, jn.e, jn.b, jn.d};
+         case d:
+            return new jn[]{jn.a, jn.d, jn.f, jn.e, jn.b, jn.c};
+         case e:
+            return new jn[]{jn.a, jn.e, jn.d, jn.b, jn.c, jn.f};
+         case f:
+            return new jn[]{jn.a, jn.f, jn.d, jn.b, jn.c, jn.e};
+      }
    }
 
-   @Nullable
-   public cox o() {
-      return this.a;
-   }
-
-   public bsj p() {
-      return this.b;
-   }
-
-   public dgi q() {
-      return this.d;
-   }
-
+   @Override
    public jn g() {
-      return this.a == null ? jn.c : this.a.cO();
+      return this.b.o() == jn.a.b ? jn.c : this.b;
    }
 
+   @Override
    public boolean h() {
-      return this.a != null && this.a.fY();
+      return false;
    }
 
+   @Override
    public float i() {
-      return this.a == null ? 0.0F : this.a.dL();
+      return (float)(this.b.e() * 90);
    }
 }

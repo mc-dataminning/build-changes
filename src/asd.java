@@ -84,7 +84,7 @@ public abstract class asd implements zp {
    }
 
    protected void e() {
-      bos.a().a("keepAlive");
+      bot.a().a("keepAlive");
       long $$0 = af.c();
       if (!this.h() && $$0 - this.j >= 15000L) {
          if (this.k) {
@@ -97,7 +97,7 @@ public abstract class asd implements zp {
          }
       }
 
-      bos.a().c();
+      bot.a().c();
    }
 
    private boolean a(long $$0) {

@@ -99,7 +99,7 @@ public class ayp {
       return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   public static jr<cwl> b(JsonElement $$0, String $$1) {
+   public static jr<cwm> b(JsonElement $$0, String $$1) {
       if ($$0.isJsonPrimitive()) {
          String $$2 = $$0.getAsString();
          return mb.g.c(akv.a($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
@@ -108,7 +108,7 @@ public class ayp {
       }
    }
 
-   public static jr<cwl> j(JsonObject $$0, String $$1) {
+   public static jr<cwm> j(JsonObject $$0, String $$1) {
       if ($$0.has($$1)) {
          return b($$0.get($$1), $$1);
       } else {
@@ -118,7 +118,7 @@ public class ayp {
 
    @Nullable
    @Contract("_,_,!null->!null;_,_,null->_")
-   public static jr<cwl> a(JsonObject $$0, String $$1, @Nullable jr<cwl> $$2) {
+   public static jr<cwm> a(JsonObject $$0, String $$1, @Nullable jr<cwm> $$2) {
       return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 

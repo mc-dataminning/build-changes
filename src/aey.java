@@ -6,9 +6,9 @@ public class aey implements yw<abl> {
    public static final yn<wa, aey> a = yw.a(aey::a, aey::new);
    private static final byte b = -128;
    private final int c;
-   private final List<Pair<but, cwp>> d;
+   private final List<Pair<buu, cwq>> d;
 
-   public aey(int $$0, List<Pair<but, cwp>> $$1) {
+   public aey(int $$0, List<Pair<buu, cwq>> $$1) {
       this.c = $$0;
       this.d = $$1;
    }
@@ -20,8 +20,8 @@ public class aey implements yw<abl> {
       int $$1;
       do {
          $$1 = $$0.readByte();
-         but $$2 = but.i.get($$1 & 127);
-         cwp $$3 = cwp.g.decode($$0);
+         buu $$2 = buu.i.get($$1 & 127);
+         cwq $$3 = cwq.g.decode($$0);
          this.d.add(Pair.of($$2, $$3));
       } while (($$1 & -128) != 0);
    }
@@ -31,12 +31,12 @@ public class aey implements yw<abl> {
       int $$1 = this.d.size();
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<but, cwp> $$3 = this.d.get($$2);
-         but $$4 = (but)$$3.getFirst();
+         Pair<buu, cwq> $$3 = this.d.get($$2);
+         buu $$4 = (buu)$$3.getFirst();
          boolean $$5 = $$2 != $$1 - 1;
          int $$6 = $$4.ordinal();
          $$0.l($$5 ? $$6 | -128 : $$6);
-         cwp.g.encode($$0, (cwp)$$3.getSecond());
+         cwq.g.encode($$0, (cwq)$$3.getSecond());
       }
    }
 
@@ -53,7 +53,7 @@ public class aey implements yw<abl> {
       return this.c;
    }
 
-   public List<Pair<but, cwp>> e() {
+   public List<Pair<buu, cwq>> e() {
       return this.d;
    }
 }

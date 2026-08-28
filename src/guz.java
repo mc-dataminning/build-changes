@@ -1,27 +1,18 @@
-public class guz extends gtk<cmm, hat, gel> {
-   private static final akv a = akv.b("textures/entity/illager/vex.png");
-   private static final akv b = akv.b("textures/entity/illager/vex_charging.png");
+public class guz extends gqv<cjd, gym, gaq<gym>> {
+   private static final akv a = akv.b("textures/entity/horse/horse_zombie.png");
+   private static final akv b = akv.b("textures/entity/horse/horse_skeleton.png");
+   private final akv k;
 
-   public guz(gse.a $$0) {
-      super($$0, new gel($$0.a(gfc.ds)), 0.3F);
-      this.a(new gwl<>(this));
+   public guz(gsf.a $$0, gfc $$1, gfc $$2, boolean $$3) {
+      super($$0, new gcn($$0.a($$1)), new gcn($$0.a($$2)));
+      this.k = $$3 ? b : a;
    }
 
-   protected int a(cmm $$0, ji $$1) {
-      return 15;
+   public akv a(gym $$0) {
+      return this.k;
    }
 
-   public akv a(hat $$0) {
-      return $$0.a ? b : a;
-   }
-
-   public hat b() {
-      return new hat();
-   }
-
-   public void a(cmm $$0, hat $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gxp.a($$0, $$1, this.i);
-      $$1.a = $$0.gs();
+   public gym b() {
+      return new gym();
    }
 }

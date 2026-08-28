@@ -20,7 +20,7 @@ public class acw implements yw<abl> {
       this.i = $$0.l();
    }
 
-   public acw(dyn $$0) {
+   public acw(dyo $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
       this.d = $$0.i();

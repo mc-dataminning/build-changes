@@ -27,9 +27,9 @@ public class gz implements ArgumentType<gv> {
       return new gz($$0);
    }
 
-   public static faz a(CommandContext<ex> $$0, String $$1) {
-      fba $$2 = ((gv)$$0.getArgument($$1, gv.class)).a((ex)$$0.getSource());
-      return new faz((float)$$2.d, (float)$$2.f);
+   public static fba a(CommandContext<ex> $$0, String $$1) {
+      fbb $$2 = ((gv)$$0.getArgument($$1, gv.class)).a((ex)$$0.getSource());
+      return new fba((float)$$2.d, (float)$$2.f);
    }
 
    public gv a(StringReader $$0) throws CommandSyntaxException {

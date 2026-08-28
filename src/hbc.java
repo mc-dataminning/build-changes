@@ -1,8 +1,4 @@
-public class hbc extends hbb implements hau {
-   public coj c = new coj(coo.c, col.b, 1);
-
-   @Override
-   public coj a() {
-      return this.c;
-   }
+public class hbc extends gzc {
+   public boolean a;
+   public boolean b;
 }

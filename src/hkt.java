@@ -1,15 +1,15 @@
 import javax.annotation.Nullable;
 
-public class hkt implements hky {
-   private static final int a = 6000;
-   private static final wp b = wp.c("tutorial.find_tree.title");
-   private static final wp c = wp.c("tutorial.find_tree.description");
-   private final hkx d;
+public class hkt implements hkz {
+   private static final int a = 1200;
+   private static final wp b = wp.c("tutorial.craft_planks.title");
+   private static final wp c = wp.c("tutorial.craft_planks.description");
+   private final hky d;
    @Nullable
-   private frf e;
+   private frg e;
    private int f;
 
-   public hkt(hkx $$0) {
+   public hkt(hky $$0) {
       this.d = $$0;
    }
 
@@ -17,19 +17,26 @@ public class hkt implements hky {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(hkz.f);
+         this.d.a(hla.f);
       } else {
-         flj $$0 = this.d.e();
+         flk $$0 = this.d.e();
          if (this.f == 1) {
-            gkw $$1 = $$0.t;
-            if ($$1 != null && (b($$1) || a($$1))) {
-               this.d.a(hkz.e);
-               return;
+            gkx $$1 = $$0.t;
+            if ($$1 != null) {
+               if ($$1.gi().a(awy.b)) {
+                  this.d.a(hla.f);
+                  return;
+               }
+
+               if (a($$1, awy.b)) {
+                  this.d.a(hla.f);
+                  return;
+               }
             }
          }
 
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new frf($$0.h, frf.a.c, b, c, false);
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new frg($$0.h, frg.a.e, b, c, false);
             $$0.aA().a(this.e);
          }
       }
@@ -44,30 +51,15 @@ public class hkt implements hky {
    }
 
    @Override
-   public void a(gfz $$0, fay $$1) {
-      if ($$1.d() == fay.a.b) {
-         dwx $$2 = $$0.a_(((faw)$$1).b());
-         if ($$2.a(awp.al)) {
-            this.d.a(hkz.c);
-         }
+   public void a(cwq $$0) {
+      if ($$0.a(awy.b)) {
+         this.d.a(hla.f);
       }
    }
 
-   @Override
-   public void a(cwp $$0) {
-      if ($$0.a(awy.aQ)) {
-         this.d.a(hkz.e);
-      }
-   }
-
-   private static boolean b(gkw $$0) {
-      return $$0.gi().a_($$0x -> $$0x.a(awy.aQ));
-   }
-
-   public static boolean a(gkw $$0) {
-      for (jr<djm> $$1 : mb.e.c(awp.al)) {
-         djm $$2 = $$1.a();
-         if ($$0.m().a(awk.a.b($$2)) > 0) {
+   public static boolean a(gkx $$0, axf<cwm> $$1) {
+      for (jr<cwm> $$2 : mb.g.c($$1)) {
+         if ($$0.m().a(awk.b.b($$2.a())) > 0) {
             return true;
          }
       }

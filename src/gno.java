@@ -1,96 +1,274 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import org.joml.Quaternionf;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public class gno {
-   public static final gno a = new gno(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-   public final Vector3f b;
-   public final Vector3f c;
-   public final Vector3f d;
+public class gno implements hho {
+   public static final akv a = akv.b("builtin/generated");
+   public static final List<String> b = List.of("layer0", "layer1", "layer2", "layer3", "layer4");
+   private static final float e = 7.5F;
+   private static final float f = 8.5F;
+   private static final gns.a g = new gns.a.a().a("particle", "layer0").a();
 
-   public gno(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
-      this.b = new Vector3f($$0);
-      this.c = new Vector3f($$1);
-      this.d = new Vector3f($$2);
+   @Override
+   public gns.a d() {
+      return g;
    }
 
-   public void a(boolean $$0, ffu $$1) {
-      if (this != a) {
-         float $$2 = this.b.x();
-         float $$3 = this.b.y();
-         float $$4 = this.b.z();
-         if ($$0) {
-            $$3 = -$$3;
-            $$4 = -$$4;
+   @Override
+   public void a(hhl.a $$0) {
+   }
+
+   @Nullable
+   @Override
+   public hho.a b() {
+      return hho.a.a;
+   }
+
+   @Override
+   public hgt a(gns $$0, hhc $$1, hhj $$2, boolean $$3, boolean $$4, gnq $$5) {
+      return this.a($$0, $$1.a(), $$2, $$3, $$4, $$5);
+   }
+
+   private hgt a(gns $$0, hhn $$1, hhj $$2, boolean $$3, boolean $$4, gnq $$5) {
+      gns.a.a $$6 = new gns.a.a();
+      List<gnh> $$7 = new ArrayList<>();
+
+      for (int $$8 = 0; $$8 < b.size(); $$8++) {
+         String $$9 = b.get($$8);
+         hha $$10 = $$0.a($$9);
+         if ($$10 == null) {
+            break;
          }
 
-         int $$5 = $$0 ? -1 : 1;
-         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
-         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
-         $$1.b(this.d.x(), this.d.y(), this.d.z());
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (this.getClass() != $$0.getClass()) {
-         return false;
-      } else {
-         gno $$1 = (gno)$$0;
-         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      $$0 = 31 * $$0 + this.c.hashCode();
-      return 31 * $$0 + this.d.hashCode();
-   }
-
-   protected static class a implements JsonDeserializer<gno> {
-      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float a = 5.0F;
-      public static final float b = 4.0F;
-
-      public gno a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.a($$3, "rotation", c);
-         Vector3f $$5 = this.a($$3, "translation", d);
-         $$5.mul(0.0625F);
-         $$5.set(ayz.a($$5.x, -5.0F, 5.0F), ayz.a($$5.y, -5.0F, 5.0F), ayz.a($$5.z, -5.0F, 5.0F));
-         Vector3f $$6 = this.a($$3, "scale", e);
-         $$6.set(ayz.a($$6.x, -4.0F, 4.0F), ayz.a($$6.y, -4.0F, 4.0F), ayz.a($$6.z, -4.0F, 4.0F));
-         return new gno($$4, $$5, $$6);
+         $$6.a($$9, $$10);
+         hen $$11 = $$1.a($$10).e();
+         $$7.addAll(this.a($$8, $$9, $$11));
       }
 
-      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
-         if (!$$0.has($$1)) {
-            return $$2;
-         } else {
-            JsonArray $$3 = ayp.v($$0, $$1);
-            if ($$3.size() != 3) {
-               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
-            } else {
-               float[] $$4 = new float[3];
+      return hhm.a($$7, $$0, $$1, $$2, $$3, $$4, false, $$5);
+   }
 
-               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-                  $$4[$$5] = ayp.e($$3.get($$5), $$1 + "[" + $$5 + "]");
-               }
+   private List<gnh> a(int $$0, String $$1, hen $$2) {
+      Map<jn, gni> $$3 = Map.of(
+         jn.d,
+         new gni(null, $$0, $$1, new gnk(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)),
+         jn.c,
+         new gni(null, $$0, $$1, new gnk(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0))
+      );
+      List<gnh> $$4 = new ArrayList<>();
+      $$4.add(new gnh(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3));
+      $$4.addAll(this.a($$2, $$1, $$0));
+      return $$4;
+   }
 
-               return new Vector3f($$4[0], $$4[1], $$4[2]);
+   private List<gnh> a(hen $$0, String $$1, int $$2) {
+      float $$3 = (float)$$0.a();
+      float $$4 = (float)$$0.b();
+      List<gnh> $$5 = new ArrayList<>();
+
+      for (gno.a $$6 : this.a($$0)) {
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         float $$9 = 0.0F;
+         float $$10 = 0.0F;
+         float $$11 = 0.0F;
+         float $$12 = 0.0F;
+         float $$13 = 0.0F;
+         float $$14 = 0.0F;
+         float $$15 = 16.0F / $$3;
+         float $$16 = 16.0F / $$4;
+         float $$17 = (float)$$6.b();
+         float $$18 = (float)$$6.c();
+         float $$19 = (float)$$6.d();
+         gno.b $$20 = $$6.a();
+         switch ($$20) {
+            case a:
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$13 = $$19;
+               $$8 = $$19;
+               $$10 = $$19;
+               $$14 = $$19 + 1.0F;
+               break;
+            case b:
+               $$13 = $$19;
+               $$14 = $$19 + 1.0F;
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$8 = $$19 + 1.0F;
+               $$10 = $$19 + 1.0F;
+               break;
+            case c:
+               $$11 = $$19;
+               $$7 = $$19;
+               $$9 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+               break;
+            case d:
+               $$11 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$7 = $$19 + 1.0F;
+               $$9 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+         }
+
+         $$7 *= $$15;
+         $$9 *= $$15;
+         $$8 *= $$16;
+         $$10 *= $$16;
+         $$8 = 16.0F - $$8;
+         $$10 = 16.0F - $$10;
+         $$11 *= $$15;
+         $$12 *= $$15;
+         $$13 *= $$16;
+         $$14 *= $$16;
+         Map<jn, gni> $$21 = Map.of($$20.a(), new gni(null, $$2, $$1, new gnk(new float[]{$$11, $$13, $$12, $$14}, 0)));
+         switch ($$20) {
+            case a:
+               $$5.add(new gnh(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21));
+               break;
+            case b:
+               $$5.add(new gnh(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
+               break;
+            case c:
+               $$5.add(new gnh(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21));
+               break;
+            case d:
+               $$5.add(new gnh(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
+         }
+      }
+
+      return $$5;
+   }
+
+   private List<gno.a> a(hen $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      List<gno.a> $$3 = new ArrayList<>();
+      $$0.d().forEach($$4 -> {
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$1; $$6++) {
+               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
+               this.a(gno.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gno.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gno.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gno.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
             }
          }
+      });
+      return $$3;
+   }
+
+   private void a(gno.b $$0, List<gno.a> $$1, hen $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
+      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
+      if ($$9) {
+         this.a($$1, $$0, $$4, $$5);
+      }
+   }
+
+   private void a(List<gno.a> $$0, gno.b $$1, int $$2, int $$3) {
+      gno.a $$4 = null;
+
+      for (gno.a $$5 : $$0) {
+         if ($$5.a() == $$1) {
+            int $$6 = $$1.d() ? $$3 : $$2;
+            if ($$5.d() == $$6) {
+               $$4 = $$5;
+               break;
+            }
+         }
+      }
+
+      int $$7 = $$1.d() ? $$3 : $$2;
+      int $$8 = $$1.d() ? $$2 : $$3;
+      if ($$4 == null) {
+         $$0.add(new gno.a($$1, $$8, $$7));
+      } else {
+         $$4.a($$8);
+      }
+   }
+
+   private boolean a(hen $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
+   }
+
+   static class a {
+      private final gno.b a;
+      private int b;
+      private int c;
+      private final int d;
+
+      public a(gno.b $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(int $$0) {
+         if ($$0 < this.b) {
+            this.b = $$0;
+         } else if ($$0 > this.c) {
+            this.c = $$0;
+         }
+      }
+
+      public gno.b a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public int c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a(jn.b, 0, -1),
+      b(jn.a, 0, 1),
+      c(jn.f, -1, 0),
+      d(jn.e, 1, 0);
+
+      private final jn e;
+      private final int f;
+      private final int g;
+
+      private b(final jn $$0, final int $$1, final int $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+      }
+
+      public jn a() {
+         return this.e;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      boolean d() {
+         return this == b || this == a;
       }
    }
 }

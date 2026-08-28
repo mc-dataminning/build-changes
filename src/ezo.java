@@ -1,11 +1,4 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface ezo {
-   @Nullable
-   un a(evr var1);
-
-   Set<bai<?>> b();
-
-   ezn a();
+public record ezo(MapCodec<? extends ezp> a) {
 }

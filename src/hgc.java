@@ -1,78 +1,17 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hgc implements auq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final hgb b = new hgb("US", "English", false);
-   private Map<String, hgb> c = ImmutableMap.of("en_us", b);
-   private String d;
-   private final Consumer<hfy> e;
+public record hgc(String b, String c, boolean d) {
+   public static final Codec<hgc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayi.A.fieldOf("region").forGetter(hgc::b),
+               ayi.A.fieldOf("name").forGetter(hgc::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(hgc::d)
+            )
+            .apply($$0, hgc::new)
+   );
 
-   public hgc(String $$0, Consumer<hfy> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   private static Map<String, hgb> a(Stream<atc> $$0) {
-      Map<String, hgb> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            hgm $$2 = $$1x.a(hgm.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
-
-   @Override
-   public void a(aup $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         hgb $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
-      }
-
-      hfy $$4 = hfy.a($$0, $$1, $$2);
-      hga.a($$4);
-      tl.a($$4);
-      this.e.accept($$4);
-   }
-
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, hgb> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public hgb b(String $$0) {
-      return this.c.get($$0);
+   public wp a() {
+      return wp.b(this.c + " (" + this.b + ")");
    }
 }

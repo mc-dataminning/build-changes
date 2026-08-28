@@ -1,75 +1,223 @@
-import java.util.List;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class coe implements dfu {
-   private static final int a = 1200;
-   private int b;
+public abstract class coe extends bud implements coh, coi, dff {
+   private static final ajy<Integer> ca = akc.a(coe.class, aka.b);
+   private static final Logger cb = LogUtils.getLogger();
+   public static final int bY = 300;
+   private static final int cc = 8;
+   @Nullable
+   private coy cd;
+   @Nullable
+   protected dfh bZ;
+   private final bss ce = new bss(8);
 
-   @Override
-   public int a(ard $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.O().b(dge.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
-         } else {
-            this.b = 1200;
-            cox $$3 = $$0.k();
-            if ($$3 == null) {
-               return 0;
-            } else {
-               azh $$4 = $$0.A;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               ji $$7 = $$3.dv().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (bwd.a(bus.u, $$0, $$7)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
-                     }
-
-                     if ($$0.b().a($$7, axb.n).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
-
-                  return 0;
-               }
-            }
-         }
-      } else {
-         return 0;
-      }
+   public coe(but<? extends coe> $$0, dgj $$1) {
+      super($$0, $$1);
+      this.a(etr.n, 16.0F);
+      this.a(etr.o, -1.0F);
    }
 
-   private int a(ard $$0, ji $$1) {
-      int $$2 = 48;
-      if ($$0.A().a($$0x -> $$0x.a(cgp.n), $$1, 48, cgl.b.b) > 4L) {
-         List<chb> $$3 = $$0.a(chb.class, new fav($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
-         }
+   @Override
+   public bwb a(dha $$0, bsj $$1, bus $$2, @Nullable bwb $$3) {
+      if ($$3 == null) {
+         $$3 = new bud.a(false);
       }
 
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   public int p() {
+      return this.al.a(ca);
+   }
+
+   public void r(int $$0) {
+      this.al.a(ca, $$0);
+   }
+
+   @Override
+   public int x() {
       return 0;
    }
 
-   private int b(ard $$0, ji $$1) {
-      int $$2 = 16;
-      List<chb> $$3 = $$0.a(chb.class, new fav($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
+   @Override
+   protected void a(akc.a $$0) {
+      super.a($$0);
+      $$0.a(ca, 0);
    }
 
-   private int a(ji $$0, ard $$1) {
-      chb $$2 = bus.u.a($$1, bur.a);
-      if ($$2 == null) {
-         return 0;
+   @Override
+   public void a(@Nullable coy $$0) {
+      this.cd = $$0;
+   }
+
+   @Nullable
+   @Override
+   public coy gs() {
+      return this.cd;
+   }
+
+   public boolean gt() {
+      return this.cd != null;
+   }
+
+   @Override
+   public dfh gu() {
+      if (this.dV().C) {
+         throw new IllegalStateException("Cannot load Villager offers on the client");
       } else {
-         $$2.a($$1, $$1.d_($$0), bur.a, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
+         if (this.bZ == null) {
+            this.bZ = new dfh();
+            this.gz();
+         }
+
+         return this.bZ;
       }
+   }
+
+   @Override
+   public void a(@Nullable dfh $$0) {
+   }
+
+   @Override
+   public void s(int $$0) {
+   }
+
+   @Override
+   public void a(dfg $$0) {
+      $$0.l();
+      this.bM = -this.T();
+      this.b($$0);
+      if (this.cd instanceof are) {
+         ap.t.a((are)this.cd, this, $$0.f());
+      }
+   }
+
+   protected abstract void b(dfg var1);
+
+   @Override
+   public boolean gv() {
+      return true;
+   }
+
+   @Override
+   public void i(cwq $$0) {
+      if (!this.dV().C && this.bM > -this.T() + 20) {
+         this.bM = -this.T();
+         this.b(this.x(!$$0.f()));
+      }
+   }
+
+   @Override
+   public avz gw() {
+      return awa.BM;
+   }
+
+   protected avz x(boolean $$0) {
+      return $$0 ? awa.BM : awa.BK;
+   }
+
+   public void gx() {
+      this.b(awa.BH);
+   }
+
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      if (!this.dV().C) {
+         dfh $$1 = this.gu();
+         if (!$$1.isEmpty()) {
+            $$0.a("Offers", (un)dfh.a.encodeStart(this.dX().a(ue.a), $$1).getOrThrow());
+         }
+      }
+
+      this.b($$0, this.dX());
+   }
+
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      if ($$0.e("Offers")) {
+         dfh.a.parse(this.dX().a(ue.a), $$0.c("Offers")).resultOrPartial(af.a("Failed to load offers: ", cb::warn)).ifPresent($$0x -> this.bZ = $$0x);
+      }
+
+      this.a($$0, this.dX());
+   }
+
+   @Nullable
+   @Override
+   public bum b(eua $$0) {
+      this.gy();
+      return super.b($$0);
+   }
+
+   protected void gy() {
+      this.a(null);
+   }
+
+   @Override
+   public void a(btc $$0) {
+      super.a($$0);
+      this.gy();
+   }
+
+   protected void a(lr $$0) {
+      for (int $$1 = 0; $$1 < 5; $$1++) {
+         double $$2 = this.ae.k() * 0.02;
+         double $$3 = this.ae.k() * 0.02;
+         double $$4 = this.ae.k() * 0.02;
+         this.dV().a($$0, this.d(1.0), this.dD() + 1.0, this.g(1.0), $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public boolean y() {
+      return false;
+   }
+
+   @Override
+   public bss t() {
+      return this.ce;
+   }
+
+   @Override
+   public bwa a_(int $$0) {
+      int $$1 = $$0 - 300;
+      return $$1 >= 0 && $$1 < this.ce.b() ? bwa.a(this.ce, $$1) : super.a_($$0);
+   }
+
+   protected abstract void gz();
+
+   protected void a(dfh $$0, coo.g[] $$1, int $$2) {
+      ArrayList<coo.g> $$3 = Lists.newArrayList($$1);
+      int $$4 = 0;
+
+      while ($$4 < $$2 && !$$3.isEmpty()) {
+         dfg $$5 = $$3.remove(this.ae.a($$3.size())).a(this, this.ae);
+         if ($$5 != null) {
+            $$0.add($$5);
+            $$4++;
+         }
+      }
+   }
+
+   @Override
+   public fbb u(float $$0) {
+      float $$1 = ayz.h($$0, this.aY, this.aX) * (float) (Math.PI / 180.0);
+      fbb $$2 = new fbb(0.0, this.cR().c() - 1.0, 0.2);
+      return this.o($$0).e($$2.b(-$$1));
+   }
+
+   @Override
+   public boolean gA() {
+      return this.dV().C;
+   }
+
+   @Override
+   public boolean f(coy $$0) {
+      return this.gs() == $$0 && this.bL() && $$0.b(this, 4.0);
    }
 }

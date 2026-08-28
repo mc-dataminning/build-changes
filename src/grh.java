@@ -1,31 +1,20 @@
-import java.util.function.UnaryOperator;
+public class grh extends gtl<cli, gzl, gbi> {
+   private static final akv a = akv.b("textures/entity/blaze.png");
 
-public class grh extends gqs {
-   private final gcw a;
-   private final akv b;
-   private final gcb<gxw> h;
+   public grh(gsf.a $$0) {
+      super($$0, new gbi($$0.a(gfd.D)), 0.5F);
+   }
 
-   public grh(gse.a $$0, gfb $$1) {
-      super($$0);
-      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new gcw.a($$0.a(gfc.E), $$0x -> gmi.i());
-      this.h = new gbi($$0.a($$1));
+   protected int a(cli $$0, ji $$1) {
+      return 15;
    }
 
    @Override
-   protected gcb<gxw> a() {
-      return this.h;
+   public akv b(gzl $$0) {
+      return a;
    }
 
-   @Override
-   protected gmi b() {
-      return this.h.a(this.b);
-   }
-
-   @Override
-   protected void b(gxw $$0, ffu $$1, gly $$2, int $$3) {
-      if (!$$0.f) {
-         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, hei.d);
-      }
+   public gzl a() {
+      return new gzl();
    }
 }

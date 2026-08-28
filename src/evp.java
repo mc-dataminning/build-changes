@@ -1,69 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
-public interface evp {
-   evo<czh> a = new evo<czh>() {
-      @Override
-      public ku<czh> a() {
-         return kv.al;
-      }
+public interface evp<T> {
+   ku<T> a();
 
-      public Stream<cwp> a(czh $$0) {
-         return $$0.b();
-      }
+   T b();
 
-      public czh c() {
-         return czh.a;
-      }
+   T a(T var1, Stream<cwq> var2);
 
-      public czh a(czh $$0, Stream<cwp> $$1) {
-         return czh.a($$1.toList());
-      }
-   };
-   evo<cyt> b = new evo<cyt>() {
-      @Override
-      public ku<cyt> a() {
-         return kv.P;
-      }
+   Stream<cwq> a(T var1);
 
-      public cyt c() {
-         return cyt.a;
-      }
+   default void a(cwq $$0, T $$1, Stream<cwq> $$2) {
+      T $$3 = $$0.a(this.a(), $$1);
+      T $$4 = this.a($$3, $$2);
+      $$0.b(this.a(), $$4);
+   }
 
-      public Stream<cwp> a(cyt $$0) {
-         return $$0.b();
-      }
+   default void a(cwq $$0, Stream<cwq> $$1) {
+      this.a($$0, this.b(), $$1);
+   }
 
-      public cyt a(cyt $$0, Stream<cwp> $$1) {
-         cyt.a $$2 = new cyt.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
+   default void a(cwq $$0, UnaryOperator<cwq> $$1) {
+      T $$2 = $$0.a(this.a());
+      if ($$2 != null) {
+         UnaryOperator<cwq> $$3 = $$1x -> {
+            if ($$1x.f()) {
+               return $$1x;
+            } else {
+               cwq $$2x = $$1.apply($$1x);
+               $$2x.f($$2x.k());
+               return $$2x;
+            }
+         };
+         this.a($$0, this.a($$2).map($$3));
       }
-   };
-   evo<cyu> c = new evo<cyu>() {
-      @Override
-      public ku<cyu> a() {
-         return kv.O;
-      }
-
-      public cyu c() {
-         return cyu.a;
-      }
-
-      public Stream<cwp> a(cyu $$0) {
-         return $$0.a().stream();
-      }
-
-      public cyu a(cyu $$0, Stream<cwp> $$1) {
-         return cyu.a($$1.toList());
-      }
-   };
-   Map<ku<?>, evo<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(evo::a, $$0 -> (evo<?>)$$0));
-   Codec<evo<?>> e = mb.ao.q().comapFlatMap($$0 -> {
-      evo<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, evo::a);
+   }
 }

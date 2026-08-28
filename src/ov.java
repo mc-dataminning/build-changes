@@ -53,14 +53,14 @@ public class ov implements mi {
                   var5x = CompletableFuture.allOf($$3x.filter($$0xx -> $$0xx.toString().endsWith(".snbt")).map($$3xx -> CompletableFuture.runAsync(() -> {
                         ov.c $$4 = this.a($$3xx, this.a($$3, $$3xx));
                         this.a($$0, $$4, $$1);
-                     }, af.g().a("SnbtToNbt"))).toArray(CompletableFuture[]::new));
+                     }, af.h().a("SnbtToNbt"))).toArray(CompletableFuture[]::new));
                }
 
                return var5x;
             } catch (Exception var9) {
                throw new RuntimeException("Failed to read structure input directory, aborting", var9);
             }
-         }, af.g().a("SnbtToNbt")).thenCompose($$0x -> $$0x));
+         }, af.h().a("SnbtToNbt")).thenCompose($$0x -> $$0x));
       }
 
       return af.e($$2);

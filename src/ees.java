@@ -1,61 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ees {
-   public static final ees a = new ees(false, djo.gV.m(), djo.qn.m(), djo.ew.m(), djo.aX.m());
-   public static final Codec<ees> b = RecordCodecBuilder.create(
+public class ees extends ein {
+   public static final MapCodec<ees> d = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(ees::a),
-               dwx.a.optionalFieldOf("air_state", a.b()).forGetter(ees::b),
-               dwx.a.optionalFieldOf("water_state", a.b()).forGetter(ees::c),
-               dwx.a.optionalFieldOf("lava_state", a.b()).forGetter(ees::d),
-               dwx.a.optionalFieldOf("barrier_state", a.b()).forGetter(ees::e)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               elu.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bro.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               edn.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               eet.b.optionalFieldOf("debug_settings", eet.a).forGetter($$0x -> $$0x.h),
+               kg.a(mc.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
             )
             .apply($$0, ees::new)
    );
-   private final boolean c;
-   private final dwx d;
-   private final dwx e;
-   private final dwx f;
-   private final dwx g;
+   public final elu e;
+   public final bro f;
+   public final edn g;
+   public final eet h;
+   public final jv<djn> i;
 
-   public static ees a(boolean $$0, dwx $$1, dwx $$2, dwx $$3, dwx $$4) {
-      return new ees($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static ees a(dwx $$0, dwx $$1, dwx $$2, dwx $$3) {
-      return new ees(false, $$0, $$1, $$2, $$3);
-   }
-
-   public static ees a(boolean $$0, dwx $$1) {
-      return new ees($$0, $$1, a.c(), a.d(), a.e());
-   }
-
-   private ees(boolean $$0, dwx $$1, dwx $$2, dwx $$3, dwx $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a() {
-      return this.c;
-   }
-
-   public dwx b() {
-      return this.d;
-   }
-
-   public dwx c() {
-      return this.e;
-   }
-
-   public dwx d() {
-      return this.f;
-   }
-
-   public dwx e() {
-      return this.g;
+   public ees(float $$0, elu $$1, bro $$2, edn $$3, eet $$4, jv<djn> $$5) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

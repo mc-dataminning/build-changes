@@ -1,26 +1,21 @@
-public abstract class fay {
-   protected final fba a;
+public class fay extends faz {
+   private final bum b;
 
-   protected fay(fba $$0) {
-      this.a = $$0;
+   public fay(bum $$0) {
+      this($$0, $$0.dt());
    }
 
-   public double a(bul $$0) {
-      double $$1 = this.a.d - $$0.dA();
-      double $$2 = this.a.e - $$0.dC();
-      double $$3 = this.a.f - $$0.dG();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public fay(bum $$0, fbb $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public abstract fay.a d();
-
-   public fba g() {
-      return this.a;
+   public bum a() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public faz.a d() {
+      return faz.a.c;
    }
 }

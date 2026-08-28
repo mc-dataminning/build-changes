@@ -3,9 +3,9 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bdh extends bgs {
+public class bdh extends bgt {
    public bdh(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityArmorStandSilentFix", bhx.B, "ArmorStand");
+      super($$0, $$1, "EntityArmorStandSilentFix", bhy.B, "ArmorStand");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

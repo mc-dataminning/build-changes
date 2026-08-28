@@ -1,24 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dte extends djm {
-   public static final MapCodec<dte> a = b(dte::new);
+public class dte extends dsf implements dsx {
+   public static final MapCodec<dte> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxn.a.fieldOf("block_set_type").forGetter(dsf::q), dsx.a.e.fieldOf("weathering_state").forGetter(dte::r), t()).apply($$0, dte::new)
+   );
+   private final dsx.a n;
 
    @Override
    public MapCodec<dte> a() {
-      return a;
+      return m;
    }
 
-   public dte(dww.d $$0) {
-      super($$0);
+   protected dte(dxn $$0, dsx.a $$1, dwx.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
    @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, bul $$3) {
-      fba $$4 = new fba(0.25, 0.05F, 0.25);
-      if ($$3 instanceof bvh $$5 && $$5.b(bts.K)) {
-         $$4 = new fba(0.5, 0.25, 0.5);
-      }
+   protected void b(dwy $$0, ard $$1, ji $$2, azh $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
 
-      $$3.a($$0, $$4);
+   @Override
+   protected boolean f(dwy $$0) {
+      return dsx.c($$0.b()).isPresent();
+   }
+
+   public dsx.a r() {
+      return this.n;
    }
 }

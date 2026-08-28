@@ -1,19 +1,31 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dfy extends dgb {
-   private final bul a;
+public enum dfy implements dfo {
+   a;
 
-   public dfy(bul $$0) {
-      this.a = $$0;
+   @Nullable
+   @Override
+   public dua c_(ji $$0) {
+      return null;
    }
 
    @Override
-   public Optional<Float> a(dga $$0, dfn $$1, ji $$2, dwx $$3, esz $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public dwy a_(ji $$0) {
+      return djp.a.m();
    }
 
    @Override
-   public boolean a(dga $$0, dfn $$1, ji $$2, dwx $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public eta b_(ji $$0) {
+      return etb.a.g();
+   }
+
+   @Override
+   public int L_() {
+      return 0;
+   }
+
+   @Override
+   public int M_() {
+      return 0;
    }
 }

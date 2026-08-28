@@ -1,13 +1,21 @@
-import java.util.List;
+import java.util.Map;
 
-public enum ggc {
-   a,
-   b;
+public class ggc implements dbg {
+   private final Map<aku<dbo>, dbo> a;
+   private final dbs.b<dcf> b;
 
-   private static final List<ggc> c = List.of(values());
-   private static final kf.b d = kf.a(mb.aC);
+   public ggc(Map<aku<dbo>, dbo> $$0, dbs.b<dcf> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   public static jy<ggc> a() {
-      return new jy<>(c).a(a, d);
+   @Override
+   public dbo a(aku<dbo> $$0) {
+      return this.a.getOrDefault($$0, dbo.j);
+   }
+
+   @Override
+   public dbs.b<dcf> a() {
+      return this.b;
    }
 }

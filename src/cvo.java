@@ -1,25 +1,46 @@
-public class cvo extends cwl implements cxk {
-   public static float a = 1.5F;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public cvo(cwl.a $$0) {
-      super($$0);
+public class cvo extends cwm implements cxu {
+   private static final Map<cvn, cvo> a = Maps.newEnumMap(cvn.class);
+   private final cvn b;
+
+   public cvo(cvn $$0, cwm.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bsk a(dgi $$0, cox $$1, bsj $$2) {
-      cwp $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awa.ii, awb.h, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof ard $$4) {
-         cpq.a(cpz::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
+   public bsl a(cwq $$0, coy $$1, bvi $$2, bsk $$3) {
+      if ($$2 instanceof chv $$4 && $$4.bL() && !$$4.x() && $$4.t() != this.b) {
+         $$4.dV().a($$1, $$4, awa.ih, awb.h, 1.0F, 1.0F);
+         if (!$$1.dV().C) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return bsl.a;
       }
 
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bsk.a;
+      return bsl.e;
+   }
+
+   public cvn b() {
+      return this.b;
+   }
+
+   public static cvo a(cvn $$0) {
+      return a.get($$0);
    }
 
    @Override
-   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
-      return new cpz($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public boolean a(dgj $$0, dvn $$1, boolean $$2, coy $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.b()), $$2)) {
+         $$0.a(null, $$1.aA_(), awa.ih, awb.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -6,9 +6,9 @@ public class abn implements yw<abl> {
    private final double e;
    private final int f;
 
-   public abn(bux $$0, arb $$1) {
+   public abn(buy $$0, arb $$1) {
       this.b = $$0.ar();
-      fba $$2 = $$1.b();
+      fbb $$2 = $$1.b();
       this.c = $$2.a();
       this.d = $$2.b();
       this.e = $$2.c();

@@ -1,41 +1,37 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bxs extends bxa<coi> {
-   private static final int d = 1200;
-   final float c;
+public class bxs {
+   public static bxc<coj> a(float $$0, int $$1) {
+      return cao.a((Function<cao.b<coj>, ? extends App<cao.c<coj>, car<coj>>>)($$2 -> $$2.group($$2.c(cem.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dv())) {
+                  return false;
+               } else {
+                  cgm $$6 = $$3.A();
+                  int $$7 = $$6.a(kk.a($$4.dv()));
+                  fbb $$8 = null;
 
-   public bxs(float $$0) {
-      super(ImmutableMap.of(cel.d, cem.a), 1200);
-      this.c = $$0;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     fbb $$10 = cgg.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kk.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kk.a(ji.a((kb)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   protected boolean a(ard $$0, coi $$1) {
-      return $$1.eb().g().map($$0x -> $$0x == cqo.b || $$0x == cqo.c || $$0x == cqo.d).orElse(true);
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   protected boolean a(ard $$0, coi $$1, long $$2) {
-      return $$1.eb().a(cel.d);
-   }
+                  if ($$8 != null) {
+                     $$2x.a(new cep($$8, $$0, $$1));
+                  }
 
-   protected void b(ard $$0, coi $$1, long $$2) {
-      bxc.a($$1, $$1.eb().c(cel.d).get().b(), this.c, 1);
-   }
-
-   protected void c(ard $$0, coi $$1, long $$2) {
-      Optional<jq> $$3 = $$1.eb().c(cel.d);
-      $$3.ifPresent($$1x -> {
-         ji $$2x = $$1x.b();
-         ard $$3x = $$0.p().a($$1x.a());
-         if ($$3x != null) {
-            cgl $$4 = $$3x.A();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
-
-            agd.c($$0, $$2x);
-         }
-      });
-      $$1.eb().b(cel.d);
+                  return true;
+               }
+            })));
    }
 }

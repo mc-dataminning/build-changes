@@ -3,9 +3,9 @@ public class aci implements yw<abl> {
    private final int b;
    private final int c;
    private final int d;
-   private final cwp e;
+   private final cwq e;
 
-   public aci(int $$0, int $$1, int $$2, cwp $$3) {
+   public aci(int $$0, int $$1, int $$2, cwq $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -16,14 +16,14 @@ public class aci implements yw<abl> {
       this.b = $$0.x();
       this.c = $$0.l();
       this.d = $$0.readShort();
-      this.e = cwp.g.decode($$0);
+      this.e = cwq.g.decode($$0);
    }
 
    private void a(wa $$0) {
       $$0.f(this.b);
       $$0.c(this.c);
       $$0.m(this.d);
-      cwp.g.encode($$0, this.e);
+      cwq.g.encode($$0, this.e);
    }
 
    @Override
@@ -43,7 +43,7 @@ public class aci implements yw<abl> {
       return this.d;
    }
 
-   public cwp f() {
+   public cwq f() {
       return this.e;
    }
 

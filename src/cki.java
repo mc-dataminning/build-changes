@@ -1,61 +1,100 @@
-public class cki extends cjy {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final cfy f = cfy.a().a(150.0);
-   private final cfy g;
-   private int h;
+import javax.annotation.Nullable;
 
-   public cki(cjv $$0) {
+public class cki extends cjz {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private buf g;
+
+   public cki(cjw $$0) {
       super($$0);
-      this.g = cfy.a().a(20.0).a(($$1, $$2) -> Math.abs($$1.dC() - $$0.dC()) <= 10.0);
    }
 
    @Override
-   public void a(ard $$0) {
-      this.h++;
-      bvh $$1 = $$0.a(this.g, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$1 != null) {
-         if (this.h > 25) {
-            this.a.go().a(ckl.h);
-         } else {
-            fba $$2 = new fba($$1.dA() - this.a.dA(), 0.0, $$1.dG() - this.a.dG()).d();
-            fba $$3 = new fba((double)ayz.a(this.a.dL() * (float) (Math.PI / 180.0)), 0.0, (double)(-ayz.b(this.a.dL() * (float) (Math.PI / 180.0)))).d();
-            float $$4 = (float)$$3.b($$2);
-            float $$5 = (float)(Math.acos((double)$$4) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$5 < 0.0F || $$5 > 10.0F) {
-               double $$6 = $$1.dA() - this.a.c.dA();
-               double $$7 = $$1.dG() - this.a.c.dG();
-               double $$8 = ayz.a(ayz.d(180.0 - ayz.d($$6, $$7) * 180.0F / (float)Math.PI - (double)this.a.dL()), -100.0, 100.0);
-               this.a.ca *= 0.8F;
-               float $$9 = (float)Math.sqrt($$6 * $$6 + $$7 * $$7) + 1.0F;
-               float $$10 = $$9;
-               if ($$9 > 40.0F) {
-                  $$9 = 40.0F;
-               }
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         fbb $$0 = this.a.J(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.c.dA();
+         double $$2 = this.a.c.e(0.5);
+         double $$3 = this.a.c.dG();
 
-               this.a.ca += (float)$$8 * (0.7F / $$9 / $$10);
-               this.a.v(this.a.dL() + this.a.ca);
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.dY().k() / 2.0;
+            double $$6 = $$2 + this.a.dY().k() / 2.0;
+            double $$7 = $$3 + this.a.dY().k() / 2.0;
+
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dV().a(lt.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
             }
-         }
-      } else if (this.h >= 100) {
-         $$1 = $$0.a(f, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-         this.a.go().a(ckl.e);
-         if ($$1 != null) {
-            this.a.go().a(ckl.i);
-            this.a.go().b(ckl.i).a(new fba($$1.dA(), $$1.dC(), $$1.dG()));
+
+            $$0.b((float) (Math.PI / 16));
          }
       }
    }
 
    @Override
-   public void c() {
-      this.h = 0;
+   public void a(ard $$0) {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.go().a(ckm.e);
+         } else {
+            this.a.go().a(ckm.g);
+         }
+      } else if (this.e == 10) {
+         fbb $$1 = new fbb(this.a.c.dA() - this.a.dA(), 0.0, this.a.c.dG() - this.a.dG()).d();
+         float $$2 = 5.0F;
+         double $$3 = this.a.c.dA() + $$1.d * 5.0 / 2.0;
+         double $$4 = this.a.c.dG() + $$1.f * 5.0 / 2.0;
+         double $$5 = this.a.c.e(0.5);
+         double $$6 = $$5;
+         ji.a $$7 = new ji.a($$3, $$5, $$4);
+
+         while ($$0.u($$7)) {
+            if (--$$6 < 0.0) {
+               $$6 = $$5;
+               break;
+            }
+
+            $$7.b($$3, $$6, $$4);
+         }
+
+         $$6 = (double)(ayz.a($$6) + 1);
+         this.g = new buf($$0, $$3, $$6, $$4);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(lt.h);
+         this.g.a(new btr(btt.g));
+         $$0.b(this.g);
+      }
    }
 
    @Override
-   public ckl<cki> h() {
-      return ckl.g;
+   public void c() {
+      this.e = 0;
+      this.f++;
+   }
+
+   @Override
+   public void d() {
+      if (this.g != null) {
+         this.g.at();
+         this.g = null;
+      }
+   }
+
+   @Override
+   public ckm<cki> h() {
+      return ckm.f;
+   }
+
+   public void i() {
+      this.f = 0;
    }
 }

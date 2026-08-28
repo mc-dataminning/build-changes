@@ -1,51 +1,55 @@
 import java.util.EnumSet;
 
-public class cdg<T extends cly & cmc & cll> extends ccf {
-   public static final brv a = bab.a(1, 2);
-   private final T b;
-   private cdg.a c = cdg.a.a;
-   private final double d;
-   private final float e;
+public class cdg<T extends clz & cmd> extends ccg {
+   private final T a;
+   private final double b;
+   private int c;
+   private final float d;
+   private int e = -1;
    private int f;
-   private int g;
-   private int h;
+   private boolean g;
+   private boolean h;
+   private int i = -1;
 
-   public cdg(T $$0, double $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(ccf.a.a, ccf.a.b));
+   public cdg(T $$0, double $$1, int $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3 * $$3;
+      this.a(EnumSet.of(ccg.a.a, ccg.a.b));
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
    }
 
    @Override
    public boolean b() {
-      return this.i() && this.h();
+      return this.a.O_() == null ? false : this.h();
    }
 
-   private boolean h() {
-      return this.b.b(cwt.wV);
+   protected boolean h() {
+      return this.a.b(cwu.pa);
    }
 
    @Override
    public boolean c() {
-      return this.i() && (this.b() || !this.b.P().k()) && this.h();
+      return (this.b() || !this.a.P().k()) && this.h();
    }
 
-   private boolean i() {
-      return this.b.O_() != null && this.b.O_().bL();
+   @Override
+   public void d() {
+      super.d();
+      this.a.w(true);
    }
 
    @Override
    public void e() {
       super.e();
-      this.b.w(false);
-      this.b.h(null);
+      this.a.w(false);
       this.f = 0;
-      if (this.b.fz()) {
-         this.b.fF();
-         this.b.b(false);
-         this.b.fB().b(kv.O, cyu.a);
-      }
+      this.e = -1;
+      this.a.fF();
    }
 
    @Override
@@ -55,73 +59,72 @@ public class cdg<T extends cly & cmc & cll> extends ccf {
 
    @Override
    public void a() {
-      bvh $$0 = this.b.O_();
+      bvi $$0 = this.a.O_();
       if ($$0 != null) {
-         boolean $$1 = this.b.Q().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
+         double $$1 = this.a.i($$0.dA(), $$0.dC(), $$0.dG());
+         boolean $$2 = this.a.Q().a($$0);
+         boolean $$3 = this.f > 0;
+         if ($$2 != $$3) {
             this.f = 0;
          }
 
-         if ($$1) {
+         if ($$2) {
             this.f++;
          } else {
             this.f--;
          }
 
-         double $$3 = this.b.g((bul)$$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.P().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.dY());
-            }
+         if (!($$1 > (double)this.d) && this.f >= 20) {
+            this.a.P().m();
+            this.i++;
          } else {
-            this.h = 0;
-            this.b.P().m();
+            this.a.P().a($$0, this.b);
+            this.i = -1;
          }
 
-         this.b.L().a($$0, 30.0F, 30.0F);
-         if (this.c == cdg.a.a) {
-            if (!$$4) {
-               this.b.c(cps.a(this.b, cwt.wV));
-               this.c = cdg.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == cdg.a.b) {
-            if (!this.b.fz()) {
-               this.c = cdg.a.a;
+         if (this.i >= 20) {
+            if ((double)this.a.dY().i() < 0.3) {
+               this.g = !this.g;
             }
 
-            int $$5 = this.b.fD();
-            cwp $$6 = this.b.fB();
-            if ($$5 >= cvg.b($$6, this.b)) {
-               this.b.fE();
-               this.c = cdg.a.c;
-               this.g = 20 + this.b.dY().a(20);
-               this.b.b(false);
+            if ((double)this.a.dY().i() < 0.3) {
+               this.h = !this.h;
             }
-         } else if (this.c == cdg.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = cdg.a.d;
+
+            this.i = 0;
+         }
+
+         if (this.i > -1) {
+            if ($$1 > (double)(this.d * 0.75F)) {
+               this.h = false;
+            } else if ($$1 < (double)(this.d * 0.25F)) {
+               this.h = true;
             }
-         } else if (this.c == cdg.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            this.c = cdg.a.a;
+
+            this.a.N().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
+            if (this.a.dl() instanceof bvk $$4) {
+               $$4.a($$0, 30.0F, 30.0F);
+            }
+
+            this.a.a($$0, 30.0F, 30.0F);
+         } else {
+            this.a.L().a($$0, 30.0F, 30.0F);
+         }
+
+         if (this.a.fz()) {
+            if (!$$2 && this.f < -60) {
+               this.a.fF();
+            } else if ($$2) {
+               int $$5 = this.a.fD();
+               if ($$5 >= 20) {
+                  this.a.fF();
+                  this.a.a($$0, cva.a($$5));
+                  this.e = this.c;
+               }
+            }
+         } else if (--this.e <= 0 && this.f >= -60) {
+            this.a.c(cpt.a(this.a, cwu.pa));
          }
       }
-   }
-
-   private boolean k() {
-      return this.c == cdg.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

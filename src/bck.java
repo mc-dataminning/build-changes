@@ -14,7 +14,7 @@ public class bck extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhx.c);
+      Type<?> $$0 = this.getInputSchema().getType(bhy.c);
       OpticFinder<?> $$1 = $$0.findField("Level");
       return this.fixTypeEverywhereTyped("Leaves fix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> {
                Optional<IntStream> $$1xx = $$0xxx.get("Biomes").asIntStreamOpt().result();

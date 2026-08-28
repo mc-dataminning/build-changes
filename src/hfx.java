@@ -1,40 +1,56 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public abstract class hfx implements auj, AutoCloseable {
-   private final her a;
-   private final akv b;
-   private final Set<atp<?>> c;
+public class hfx extends auu<List<String>> {
+   private static final akv a = akv.b("texts/splashes.txt");
+   private static final azh b = azh.a();
+   private final List<String> c = Lists.newArrayList();
+   private final flw d;
 
-   public hfx(heu $$0, akv $$1, akv $$2) {
-      this($$0, $$1, $$2, hen.a);
+   public hfx(flw $$0) {
+      this.d = $$0;
    }
 
-   public hfx(heu $$0, akv $$1, akv $$2, Set<atp<?>> $$3) {
-      this.b = $$2;
-      this.a = new her($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
-   }
+   protected List<String> a(aup $$0, bou $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = flk.Q().ac().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+         }
 
-   protected hes a(akv $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public final CompletableFuture<Void> a(auj.a $$0, aup $$1, Executor $$2, Executor $$3) {
-      return hen.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hen.a::a).thenCompose($$0::a).thenAcceptAsync(this::a, $$3);
-   }
-
-   private void a(hen.a $$0) {
-      try (boy $$1 = bos.a().d("upload")) {
-         this.a.a($$0);
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
       }
    }
 
-   @Override
-   public void close() {
-      this.a.f();
+   protected void a(List<String> $$0, aup $$1, bou $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
+   }
+
+   @Nullable
+   public fpy a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return fpy.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return fpy.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return fpy.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new fpy(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fpy(this.c.get(b.a(this.c.size())));
+      }
    }
 }

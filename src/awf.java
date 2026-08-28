@@ -15,40 +15,40 @@ public class awf extends awd {
    private static final Logger e = LogUtils.getLogger();
    private final awf.a f;
    @VisibleForTesting
-   protected final Set<aku<dbe<?>>> c = Sets.newIdentityHashSet();
+   protected final Set<aku<dbf<?>>> c = Sets.newIdentityHashSet();
    @VisibleForTesting
-   protected final Set<aku<dbe<?>>> d = Sets.newIdentityHashSet();
+   protected final Set<aku<dbf<?>>> d = Sets.newIdentityHashSet();
 
    public awf(awf.a $$0) {
       this.f = $$0;
    }
 
-   public void a(aku<dbe<?>> $$0) {
+   public void a(aku<dbf<?>> $$0) {
       this.c.add($$0);
    }
 
-   public boolean b(aku<dbe<?>> $$0) {
+   public boolean b(aku<dbf<?>> $$0) {
       return this.c.contains($$0);
    }
 
-   public void c(aku<dbe<?>> $$0) {
+   public void c(aku<dbf<?>> $$0) {
       this.c.remove($$0);
       this.d.remove($$0);
    }
 
-   public void d(aku<dbe<?>> $$0) {
+   public void d(aku<dbf<?>> $$0) {
       this.d.remove($$0);
    }
 
-   private void e(aku<dbe<?>> $$0) {
+   private void e(aku<dbf<?>> $$0) {
       this.d.add($$0);
    }
 
-   public int a(Collection<dbj<?>> $$0, are $$1) {
+   public int a(Collection<dbk<?>> $$0, are $$1) {
       List<ady.a> $$2 = new ArrayList<>();
 
-      for (dbj<?> $$3 : $$0) {
-         aku<dbe<?>> $$4 = $$3.a();
+      for (dbk<?> $$3 : $$0) {
+         aku<dbf<?>> $$4 = $$3.a();
          if (!this.c.contains($$4) && !$$3.b().ap_()) {
             this.a($$4);
             this.e($$4);
@@ -64,11 +64,11 @@ public class awf extends awd {
       return $$2.size();
    }
 
-   public int b(Collection<dbj<?>> $$0, are $$1) {
-      List<dcl> $$2 = Lists.newArrayList();
+   public int b(Collection<dbk<?>> $$0, are $$1) {
+      List<dcm> $$2 = Lists.newArrayList();
 
-      for (dbj<?> $$3 : $$0) {
-         aku<dbe<?>> $$4 = $$3.a();
+      for (dbk<?> $$3 : $$0) {
+         aku<dbf<?>> $$4 = $$3.a();
          if (this.c.contains($$4)) {
             this.c($$4);
             this.f.displaysForRecipe($$4, $$1x -> $$2.add($$1x.a()));
@@ -87,14 +87,14 @@ public class awf extends awd {
       this.a().b($$0);
       tw $$1 = new tw();
 
-      for (aku<dbe<?>> $$2 : this.c) {
+      for (aku<dbf<?>> $$2 : this.c) {
          $$1.add(ul.a($$2.a().toString()));
       }
 
       $$0.a("recipes", $$1);
       tw $$3 = new tw();
 
-      for (aku<dbe<?>> $$4 : this.d) {
+      for (aku<dbf<?>> $$4 : this.d) {
          $$3.add(ul.a($$4.a().toString()));
       }
 
@@ -102,7 +102,7 @@ public class awf extends awd {
       return $$0;
    }
 
-   public void a(tq $$0, Predicate<aku<dbe<?>>> $$1) {
+   public void a(tq $$0, Predicate<aku<dbf<?>>> $$1) {
       this.a(awe.a($$0));
       tw $$2 = $$0.c("recipes", 8);
       this.a($$2, this::a, $$1);
@@ -110,12 +110,12 @@ public class awf extends awd {
       this.a($$3, this::e, $$1);
    }
 
-   private void a(tw $$0, Consumer<aku<dbe<?>>> $$1, Predicate<aku<dbe<?>>> $$2) {
+   private void a(tw $$0, Consumer<aku<dbf<?>>> $$1, Predicate<aku<dbf<?>>> $$2) {
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          String $$4 = $$0.j($$3);
 
          try {
-            aku<dbe<?>> $$5 = aku.a(mc.bk, akv.a($$4));
+            aku<dbf<?>> $$5 = aku.a(mc.bk, akv.a($$4));
             if (!$$2.test($$5)) {
                e.error("Tried to load unrecognized recipe: {} removed now.", $$5);
             } else {
@@ -131,7 +131,7 @@ public class awf extends awd {
       $$0.f.b(new aea(this.a()));
       List<ady.a> $$1 = new ArrayList<>(this.c.size());
 
-      for (aku<dbe<?>> $$2 : this.c) {
+      for (aku<dbf<?>> $$2 : this.c) {
          this.f.displaysForRecipe($$2, $$2x -> $$1.add(new ady.a($$2x, false, this.d.contains($$2))));
       }
 
@@ -148,6 +148,6 @@ public class awf extends awd {
 
    @FunctionalInterface
    public interface a {
-      void displaysForRecipe(aku<dbe<?>> var1, Consumer<dck> var2);
+      void displaysForRecipe(aku<dbf<?>> var1, Consumer<dcl> var2);
    }
 }

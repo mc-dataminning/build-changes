@@ -1,53 +1,50 @@
-public class gox implements gok<dvl> {
-   private final gox.a a;
+public class gox implements gol<dwu> {
+   private final gnd a;
 
-   public gox(gol.a $$0) {
-      this($$0.f());
+   public gox(gom.a $$0) {
+      this.a = $$0.b();
    }
 
-   public gox(gez $$0) {
-      this.a = new gox.a($$0.a(gfc.cF));
-   }
+   public void a(dwu $$0, float $$1, ffv $$2, glz $$3, int $$4, int $$5) {
+      dgj $$6 = $$0.i();
+      if ($$6 != null) {
+         ji $$7 = $$0.aA_().a($$0.f().g());
+         dwy $$8 = $$0.j();
+         if (!$$8.l()) {
+            gnf.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(djp.bG) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.b(dws.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.d() && !$$0.b()) {
+               dxz $$9 = $$8.a(djp.by) ? dxz.b : dxz.a;
+               dwy $$10 = djp.bG.m().b(dws.c, $$9).b(dws.a, $$8.c(dwr.a));
+               $$10 = $$10.b(dws.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               ji $$11 = $$7.a($$0.f());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.b(dwr.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            }
 
-   public void a(dvl $$0, float $$1, ffu $$2, gly $$3, int $$4, int $$5) {
-      jn $$6 = $$0.m().a(dqq.b, jn.b);
-      cvm $$7 = $$0.s();
-      hgz $$8;
-      if ($$7 == null) {
-         $$8 = gmt.i;
-      } else {
-         $$8 = gmt.d($$7);
+            $$2.b();
+            gnf.b();
+         }
       }
-
-      float $$10 = $$0.a($$1);
-      this.a($$2, $$3, $$4, $$5, $$6, $$10, $$8);
    }
 
-   public void a(ffu $$0, gly $$1, int $$2, int $$3, jn $$4, float $$5, hgz $$6) {
-      $$0.a();
-      $$0.a(0.5F, 0.5F, 0.5F);
-      float $$7 = 0.9995F;
-      $$0.b(0.9995F, 0.9995F, 0.9995F);
-      $$0.a($$4.b());
-      $$0.b(1.0F, -1.0F, -1.0F);
-      $$0.a(0.0F, -1.0F, 0.0F);
-      this.a.a($$5);
-      ffy $$8 = $$6.a($$1, this.a::a);
-      this.a.a($$0, $$8, $$2, $$3);
-      $$0.b();
+   private void a(ji $$0, dwy $$1, ffv $$2, glz $$3, dgj $$4, boolean $$5, int $$6) {
+      gmj $$7 = gls.b($$1);
+      ffz $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azh.a(), $$1.b($$0), $$6);
    }
 
-   static class a extends gcw {
-      private final gfd a;
-
-      public a(gfd $$0) {
-         super($$0, gmi::g);
-         this.a = $$0.b("lid");
-      }
-
-      public void a(float $$0) {
-         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
-         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
-      }
+   @Override
+   public int aU_() {
+      return 68;
    }
 }

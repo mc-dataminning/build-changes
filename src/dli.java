@@ -1,177 +1,154 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class dli extends djw implements djp {
-   public static final MapCodec<dli> d = b(dli::new);
-   public static final int e = 7;
-   public static final dxw f = dxn.ay;
-   private static final fbu[] a = new fbu[]{
-      djm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
+public class dli extends diz {
+   public static final MapCodec<dli> a = b(dli::new);
+   public static final dxv<jn.a> b = dxo.L;
+   public static final dxp c = dxo.a;
+   public static final dxp d = dxo.x;
 
    @Override
-   public MapCodec<? extends dli> a() {
-      return d;
+   public MapCodec<dli> a() {
+      return a;
    }
 
-   protected dli(dww.d $$0) {
+   protected dli(dwx.d $$0) {
       super($$0);
-      this.l(this.F.b().b(this.b(), Integer.valueOf(0)));
+      this.l(this.m().b(b, jn.a.b).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return a[this.h($$0)];
+   public dua a(ji $$0, dwy $$1) {
+      return new dup($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
-      return $$0.a(djo.cK);
-   }
-
-   protected dxw b() {
-      return f;
-   }
-
-   public int c() {
-      return 7;
-   }
-
-   public int h(dwx $$0) {
-      return $$0.c(this.b());
-   }
-
-   public dwx b(int $$0) {
-      return this.m().b(this.b(), Integer.valueOf($$0));
-   }
-
-   public final boolean i(dwx $$0) {
-      return this.h($$0) >= this.c();
-   }
-
-   @Override
-   protected boolean f(dwx $$0) {
-      return !this.i($$0);
-   }
-
-   @Override
-   protected void b(dwx $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         int $$4 = this.h($$0);
-         if ($$4 < this.c()) {
-            float $$5 = a(this, $$1, $$2);
-            if ($$3.a((int)(25.0F / $$5) + 1) == 0) {
-               $$1.a($$2, this.b($$4 + 1), 2);
-            }
-         }
-      }
-   }
-
-   public void a(dgi $$0, ji $$1, dwx $$2) {
-      int $$3 = this.h($$2) + this.a($$0);
-      int $$4 = this.c();
-      if ($$3 > $$4) {
-         $$3 = $$4;
-      }
-
-      $$0.a($$1, this.b($$3), 2);
-   }
-
-   protected int a(dgi $$0) {
-      return ayz.a($$0.A, 2, 5);
-   }
-
-   protected static float a(djm $$0, dfn $$1, ji $$2) {
-      float $$3 = 1.0F;
-      ji $$4 = $$2.e();
-
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            float $$7 = 0.0F;
-            dwx $$8 = $$1.a_($$4.b($$5, 0, $$6));
-            if ($$8.a(djo.cK)) {
-               $$7 = 1.0F;
-               if ($$8.c(dmk.b) > 0) {
-                  $$7 = 3.0F;
-               }
-            }
-
-            if ($$5 != 0 || $$6 != 0) {
-               $$7 /= 4.0F;
-            }
-
-            $$3 += $$7;
-         }
-      }
-
-      ji $$9 = $$2.f();
-      ji $$10 = $$2.g();
-      ji $$11 = $$2.h();
-      ji $$12 = $$2.i();
-      boolean $$13 = $$1.a_($$11).a($$0) || $$1.a_($$12).a($$0);
-      boolean $$14 = $$1.a_($$9).a($$0) || $$1.a_($$10).a($$0);
-      if ($$13 && $$14) {
-         $$3 /= 2.0F;
+   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
+      if ($$0.C) {
+         return null;
       } else {
-         boolean $$15 = $$1.a_($$11.f()).a($$0) || $$1.a_($$12.f()).a($$0) || $$1.a_($$12.g()).a($$0) || $$1.a_($$11.g()).a($$0);
-         if ($$15) {
-            $$3 /= 2.0F;
+         return $$1.c(c) ? a($$2, duc.k, dup::a) : null;
+      }
+   }
+
+   public static boolean a(dgj $$0) {
+      return $$0.G_().j() && $$0.W();
+   }
+
+   @Override
+   public void a(dwy $$0, dgj $$1, ji $$2, azh $$3) {
+      if (a($$1)) {
+         if ($$0.c(c)) {
+            if ($$3.a(16) == 0 && a($$1, $$2)) {
+               $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awa.gB, awb.e, 1.0F, 1.0F, false);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
+      dwy $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return c($$8, $$1, $$3);
+   }
+
+   private static dwy c(dwy $$0, dgm $$1, ji $$2) {
+      boolean $$3 = b($$0, $$1, $$2);
+      boolean $$4 = !$$0.c(c);
+      return $$3 && $$4 ? $$0.b(c, Boolean.valueOf(true)) : $$0;
+   }
+
+   public static boolean b(dwy $$0, dgm $$1, ji $$2) {
+      jn.a $$3 = $$0.c(b);
+
+      for (jn $$4 : $$3.g()) {
+         dwy $$5 = $$1.a_($$2.a($$4));
+         if (!$$5.a(awp.w) || $$5.c(b) != $$3) {
+            return false;
          }
       }
 
-      return $$3;
+      return true;
    }
 
-   @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      return a($$1, $$2) && super.a($$0, $$1, $$2);
-   }
-
-   protected static boolean a(dgl $$0, ji $$1) {
-      return $$0.b($$1, 0) >= 8;
-   }
-
-   @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, bul $$3) {
-      if ($$1 instanceof ard $$4 && $$3 instanceof cmd && $$4.O().b(dge.c)) {
-         $$4.a($$2, true, $$3);
+   private static boolean a(dgk $$0, ji $$1) {
+      for (jn $$2 : jn.values()) {
+         ji $$3 = $$1.a($$2);
+         dwy $$4 = $$0.a_($$3);
+         if (!$$4.a(awp.w)) {
+            return false;
+         }
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      return true;
    }
 
-   protected dgh d() {
-      return cwt.qa;
+   @Nullable
+   @Override
+   public dwy a(dah $$0) {
+      return c(this.m().b(b, $$0.k().o()), $$0.q(), $$0.a());
    }
 
    @Override
-   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
-      return new cwp(this.d());
+   protected dwy a(dwy $$0, dqf $$1) {
+      return dqe.b($$0, $$1);
    }
 
    @Override
-   public boolean a(dgl $$0, ji $$1, dwx $$2) {
-      return !this.i($$2);
+   protected void a(dwz.a<djn, dwy> $$0) {
+      $$0.a(b, c, d);
    }
 
    @Override
-   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+   protected void a(dwy $$0, dgj $$1, ji $$2, dwy $$3, boolean $$4) {
+      if ($$1.c_($$2) instanceof dup $$5) {
+         $$5.a(null);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dwy $$0, ard $$1, ji $$2, dgb $$3, BiConsumer<cwq, ji> $$4) {
+      if ($$1.c_($$2) instanceof dup $$5 && $$3 instanceof dgz $$6 && $$3.b().a()) {
+         $$5.a($$6.k());
+         if ($$3.c() instanceof coy $$7 && $$3.b().a()) {
+            this.a($$7, $$0, $$1, $$2);
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public dwy a(dgj $$0, ji $$1, dwy $$2, coy $$3) {
+      if ($$0.c_($$1) instanceof dup $$4) {
+         $$4.a($$3.dW().a($$3));
+         this.a($$3, $$2, $$0, $$1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(coy $$0, dwy $$1, dgj $$2, ji $$3) {
+      if (!$$0.b() && !$$0.Z_() && $$1.c(d) && $$2 instanceof ard $$4) {
+         this.a($$4, $$3, $$2.A.a(20, 24));
+      }
+   }
+
+   @Override
+   protected boolean c_(dwy $$0) {
       return true;
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwx $$3) {
-      this.a((dgi)$$0, $$2, $$3);
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(f);
+   protected int a(dwy $$0, dgj $$1, ji $$2) {
+      if (!$$0.c(c)) {
+         return 0;
+      } else {
+         return $$1.c_($$2) instanceof dup $$3 ? $$3.d() : 0;
+      }
    }
 }

@@ -1,11 +1,11 @@
-public class gjr extends gkh {
-   private final gkc a;
+public class gjr extends gki {
+   private final gkd a;
 
-   gjr(gfz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkc $$7) {
+   gjr(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkd $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
       this.a = $$7;
-      this.d(1.0F);
+      this.d(1.5F);
       this.n = false;
       this.b($$7);
    }
@@ -16,8 +16,8 @@ public class gjr extends gkh {
    }
 
    @Override
-   public gjl b() {
-      return gjl.c;
+   public gjm b() {
+      return gjm.c;
    }
 
    @Override
@@ -26,12 +26,14 @@ public class gjr extends gkh {
       this.b(this.a);
    }
 
-   public static record a(gkc a) implements gjk<lx> {
-      public gjh a(lx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(gkd a) implements gjl<lv> {
+      public gji a(lv $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gjr $$8 = new gjr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
          $$8.b($$5, $$6, $$7);
-         $$8.a($$1.A.a(4) + 6);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.A.a(12) + 8);
          return $$8;
       }
    }

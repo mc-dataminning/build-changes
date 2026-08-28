@@ -1,42 +1,48 @@
-import com.google.common.collect.Sets;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
-public record faa(ezw b, ezw c) implements ezw {
+public record faa(akv b, fp.g c) implements ezx {
    public static final MapCodec<faa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ezx.a.fieldOf("min").forGetter(faa::c), ezx.a.fieldOf("max").forGetter(faa::d)).apply($$0, faa::new)
+      $$0 -> $$0.group(akv.a.fieldOf("storage").forGetter(faa::c), fp.g.a.fieldOf("path").forGetter(faa::d)).apply($$0, faa::new)
    );
 
    @Override
-   public ezv b() {
-      return ezx.c;
+   public ezw b() {
+      return ezy.f;
    }
 
-   public static faa a(float $$0, float $$1) {
-      return new faa(ezt.a($$0), ezt.a($$1));
+   private Optional<ug> c(evs $$0) {
+      tq $$1 = $$0.d().p().aK().a(this.b);
+
+      try {
+         List<un> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof ug $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   public int a(evr $$0) {
-      return ayz.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public float b(evs $$0) {
+      return this.c($$0).map(ug::k).orElse(0.0F);
    }
 
    @Override
-   public float b(evr $$0) {
-      return ayz.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public int a(evs $$0) {
+      return this.c($$0).map(ug::g).orElse(0);
    }
 
-   @Override
-   public Set<bai<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public ezw c() {
+   public akv c() {
       return this.b;
    }
 
-   public ezw d() {
+   public fp.g d() {
       return this.c;
    }
 }

@@ -16,32 +16,32 @@ public class aka {
    public static final ajz<String> e = ajz.a(yl.o);
    public static final ajz<wp> f = ajz.a(wr.d);
    public static final ajz<Optional<wp>> g = ajz.a(wr.e);
-   public static final ajz<cwp> h = new ajz<cwp>() {
+   public static final ajz<cwq> h = new ajz<cwq>() {
       @Override
-      public yn<? super wa, cwp> codec() {
-         return cwp.g;
+      public yn<? super wa, cwq> codec() {
+         return cwq.g;
       }
 
-      public cwp a(cwp $$0) {
+      public cwq a(cwq $$0) {
          return $$0.v();
       }
    };
-   public static final ajz<dwx> i = ajz.a(yl.a(djm.q));
-   private static final yn<ByteBuf, Optional<dwx>> G = new yn<ByteBuf, Optional<dwx>>() {
-      public void a(ByteBuf $$0, Optional<dwx> $$1) {
+   public static final ajz<dwy> i = ajz.a(yl.a(djn.q));
+   private static final yn<ByteBuf, Optional<dwy>> G = new yn<ByteBuf, Optional<dwy>>() {
+      public void a(ByteBuf $$0, Optional<dwy> $$1) {
          if ($$1.isPresent()) {
-            wg.a($$0, djm.j($$1.get()));
+            wg.a($$0, djn.j($$1.get()));
          } else {
             wg.a($$0, 0);
          }
       }
 
-      public Optional<dwx> a(ByteBuf $$0) {
+      public Optional<dwy> a(ByteBuf $$0) {
          int $$1 = wg.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(djm.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(djn.a($$1));
       }
    };
-   public static final ajz<Optional<dwx>> j = ajz.a(G);
+   public static final ajz<Optional<dwy>> j = ajz.a(G);
    public static final ajz<Boolean> k = ajz.a(yl.b);
    public static final ajz<lr> l = ajz.a(lt.bj);
    public static final ajz<List<lr>> m = ajz.a(lt.bj.a(yl.a()));
@@ -61,7 +61,7 @@ public class aka {
          return $$0.i();
       }
    };
-   public static final ajz<coj> u = ajz.a(coj.d);
+   public static final ajz<cok> u = ajz.a(cok.d);
    private static final yn<ByteBuf, OptionalInt> H = new yn<ByteBuf, OptionalInt>() {
       public OptionalInt a(ByteBuf $$0) {
          int $$1 = wg.a($$0);
@@ -73,13 +73,13 @@ public class aka {
       }
    };
    public static final ajz<OptionalInt> v = ajz.a(H);
-   public static final ajz<bvt> w = ajz.a(bvt.t);
-   public static final ajz<jr<chc>> x = ajz.a(chc.a);
-   public static final ajz<jr<cic>> y = ajz.a(cic.d);
-   public static final ajz<jr<chj>> z = ajz.a(chj.a);
-   public static final ajz<jr<cky>> A = ajz.a(cky.d);
-   public static final ajz<cih.a> B = ajz.a(cih.a.e);
-   public static final ajz<cjp.a> C = ajz.a(cjp.a.i);
+   public static final ajz<bvu> w = ajz.a(bvu.t);
+   public static final ajz<jr<chd>> x = ajz.a(chd.a);
+   public static final ajz<jr<cid>> y = ajz.a(cid.d);
+   public static final ajz<jr<chk>> z = ajz.a(chk.a);
+   public static final ajz<jr<ckz>> A = ajz.a(ckz.d);
+   public static final ajz<cii.a> B = ajz.a(cii.a.e);
+   public static final ajz<cjq.a> C = ajz.a(cjq.a.i);
    public static final ajz<Vector3f> D = ajz.a(yl.u);
    public static final ajz<Quaternionf> E = ajz.a(yl.v);
 

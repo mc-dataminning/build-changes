@@ -1,6 +1,16 @@
 import javax.annotation.Nullable;
 
-public interface emb {
+public record emb(ecx.c[] a) implements ecx.c {
    @Nullable
-   dwx a(ecw var1, int var2, int var3, int var4);
+   @Override
+   public dwy calculate(ecm.b $$0) {
+      for (ecx.c $$1 : this.a) {
+         dwy $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
 }

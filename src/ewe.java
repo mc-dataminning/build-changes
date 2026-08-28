@@ -1,30 +1,70 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class ewe extends ewj {
-   public static final MapCodec<ewe> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cwl.e.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ewe::new)
-   );
-   private final jr<cwl> j;
+public class ewe extends ewb {
+   public static final MapCodec<ewe> a = a(ewe::new);
 
-   private ewe(jr<cwl> $$0, int $$1, int $$2, List<eza> $$3, List<exf> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   ewe(List<ewi> $$0, List<ezb> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ewi a() {
-      return ewf.c;
+   public ewj a() {
+      return ewg.i;
    }
 
    @Override
-   public void a(Consumer<cwp> $$0, evr $$1) {
-      $$0.accept(new cwp(this.j));
+   protected ewa a(List<? extends ewa> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ewa)$$0.get(0);
+         case 2 -> {
+            ewa $$1 = $$0.get(0);
+            ewa $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (ewa $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   public static ewj.a<?> a(dgh $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewe($$0.j().f(), $$1, $$2, $$3, $$4));
+   public static ewe.a a(ewi.a<?>... $$0) {
+      return new ewe.a($$0);
+   }
+
+   public static class a extends ewi.a<ewe.a> {
+      private final Builder<ewi> a = ImmutableList.builder();
+
+      public a(ewi.a<?>... $$0) {
+         for (ewi.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected ewe.a a() {
+         return this;
+      }
+
+      @Override
+      public ewe.a b(ewi.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ewi b() {
+         return new ewe(this.a.build(), this.f());
+      }
    }
 }

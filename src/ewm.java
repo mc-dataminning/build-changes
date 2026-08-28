@@ -1,61 +1,64 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class ewm extends ewj {
-   public static final MapCodec<ewm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axf.a(mc.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, ewm::new)
-   );
-   private final axf<cwl> j;
-   private final boolean k;
+public class ewm extends ewb {
+   public static final MapCodec<ewm> a = a(ewm::new);
 
-   private ewm(axf<cwl> $$0, boolean $$1, int $$2, int $$3, List<eza> $$4, List<exf> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   ewm(List<ewi> $$0, List<ezb> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ewi a() {
-      return ewf.f;
+   public ewj a() {
+      return ewg.h;
    }
 
    @Override
-   public void a(Consumer<cwp> $$0, evr $$1) {
-      mb.g.c(this.j).forEach($$1x -> $$0.accept(new cwp($$1x)));
-   }
-
-   private boolean a(evr $$0, Consumer<ewg> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jr<cwl> $$2 : mb.g.c(this.j)) {
-            $$1.accept(new ewj.c() {
-               @Override
-               public void a(Consumer<cwp> $$0, evr $$1) {
-                  $$0.accept(new cwp($$2));
-               }
-            });
+   protected ewa a(List<? extends ewa> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ewa)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ewa $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
          }
 
          return true;
+      };
+      };
+   }
+
+   public static ewm.a a(ewi.a<?>... $$0) {
+      return new ewm.a($$0);
+   }
+
+   public static class a extends ewi.a<ewm.a> {
+      private final Builder<ewi> a = ImmutableList.builder();
+
+      public a(ewi.a<?>... $$0) {
+         for (ewi.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
-   }
 
-   @Override
-   public boolean expand(evr $$0, Consumer<ewg> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
+      protected ewm.a a() {
+         return this;
+      }
 
-   public static ewj.a<?> a(axf<cwl> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewm($$0, false, $$1, $$2, $$3, $$4));
-   }
+      @Override
+      public ewm.a c(ewi.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static ewj.a<?> b(axf<cwl> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewm($$0, true, $$1, $$2, $$3, $$4));
+      @Override
+      public ewi b() {
+         return new ewm(this.a.build(), this.f());
+      }
    }
 }

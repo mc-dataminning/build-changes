@@ -1,30 +1,23 @@
-public class gds extends gcw {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final gfd e;
-   private final gfd f;
+import java.util.Set;
 
-   public gds(gfd $$0) {
-      super($$0, gmi::d);
-      this.e = $$0.b("plate");
-      this.f = $$0.b("handle");
+public class gds extends gdm<hae> {
+   public static final gfn a = new gbb(false, 8.0F, 4.0F, 2.0F, 2.0F, 24.0F, Set.of("head"));
+
+   public gds(gfe $$0) {
+      super($$0);
    }
 
-   public static gfj a() {
-      gfl $$0 = new gfl();
-      gfn $$1 = $$0.a();
-      $$1.a("plate", gfi.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gff.a);
-      $$1.a("handle", gfi.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gff.a);
-      return gfj.a($$0, 64, 64);
+   public static gfk a() {
+      gfm $$0 = gdm.a(12, gfi.a);
+      gfo $$1 = $$0.a();
+      $$1.a("head", gfj.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), gfg.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", gfj.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), gfg.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gfk.a($$0, 64, 32);
    }
 
-   public gfd b() {
-      return this.e;
-   }
-
-   public gfd c() {
-      return this.f;
+   public void a(hae $$0) {
+      super.a($$0);
+      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ag;
+      this.b.e = $$0.b;
    }
 }

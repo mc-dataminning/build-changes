@@ -1,101 +1,64 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public class ftz extends fti {
+   private fou c;
 
-public class ftz extends ful {
-   private static final long a = 2000L;
-   private final arr b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<dzt> s = af.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dzt.c, 5526612);
-      $$0.put(dzt.d, 10066329);
-      $$0.put(dzt.e, 6250897);
-      $$0.put(dzt.f, 8434258);
-      $$0.put(dzt.g, 13750737);
-      $$0.put(dzt.h, 7497737);
-      $$0.put(dzt.i, 3159410);
-      $$0.put(dzt.j, 2213376);
-      $$0.put(dzt.k, 13421772);
-      $$0.put(dzt.l, 16769184);
-      $$0.put(dzt.m, 15884384);
-      $$0.put(dzt.n, 16777215);
-   });
-
-   public ftz(arr $$0) {
-      super(fla.a);
-      this.b = $$0;
+   public ftz() {
+      super("");
    }
 
    @Override
-   public boolean aG_() {
-      return false;
+   protected void aR_() {
+      super.aR_();
+      this.c = fou.a(wp.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   protected boolean aQ_() {
-      return false;
-   }
-
-   @Override
-   public void aI_() {
-      this.d = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fsq $$0) {
-      if (this.d) {
-         $$0.a(fsp.a, wp.c("narrator.loading.done"));
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
       } else {
-         $$0.a(fsp.a, this.m());
+         super.a($$0, $$1, $$2, $$3);
       }
-   }
-
-   private wp m() {
-      return wp.a("loading.progress", ayz.a(this.b.f(), 0, 100));
    }
 
    @Override
-   public void a(foe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = af.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
+   public void aO_() {
+      this.E();
    }
 
-   public static void a(foe $$0, arr $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      if ($$5 != 0) {
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.E();
       }
 
-      for (int $$15 = 0; $$15 < $$9; $$15++) {
-         for (int $$16 = 0; $$16 < $$9; $$16++) {
-            dzt $$17 = $$1.a($$15, $$16);
-            int $$18 = $$11 + $$15 * $$6;
-            int $$19 = $$12 + $$16 * $$6;
-            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axk.f(s.getInt($$17)));
-         }
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.m.d().d();
+         return true;
+      }
+   }
+
+   private void E() {
+      ggb $$0 = this.m.t.j;
+      $$0.b(new ahn(this.m.t, ahn.a.c));
+   }
+
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new fti(this.b.a()));
       }
    }
 }

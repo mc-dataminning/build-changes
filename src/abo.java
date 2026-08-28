@@ -8,7 +8,7 @@ public class abo implements yw<abl> {
    private final int g;
    private final int h;
 
-   public abo(bul $$0, int $$1) {
+   public abo(bum $$0, int $$1) {
       this.g = $$0.ar();
       this.h = $$1;
    }

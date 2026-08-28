@@ -64,20 +64,20 @@ public class aqq extends arf {
    }
 
    @Override
-   public bsk a(are $$0, dgi $$1, cwp $$2, bsj $$3) {
+   public bsl a(are $$0, dgj $$1, cwq $$2, bsk $$3) {
       if (this.f) {
          this.f();
-         return bsk.e;
+         return bsl.e;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bsk a(are $$0, dgi $$1, cwp $$2, bsj $$3, faw $$4) {
+   public bsl a(are $$0, dgj $$1, cwq $$2, bsk $$3, fax $$4) {
       if (this.f) {
          this.f();
-         return bsk.e;
+         return bsl.e;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

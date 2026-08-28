@@ -1,19 +1,44 @@
 import com.google.common.collect.ImmutableMap;
 
-public class byg extends bxa<bvj> {
-   public byg(int $$0, int $$1) {
-      super(ImmutableMap.of(cel.n, cem.a), $$0, $$1);
+public class byg extends bxb<coj> {
+   private final float c;
+
+   public byg(float $$0) {
+      super(ImmutableMap.of(cem.m, cen.c, cem.n, cen.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   protected boolean a(ard $$0, bvj $$1, long $$2) {
-      return $$1.eb().c(cel.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   protected boolean a(ard $$0, coj $$1) {
+      coy $$2 = $$1.gs();
+      return $$1.bL() && $$2 != null && !$$1.bj() && !$$1.T && $$1.g((bum)$$2) <= 16.0 && $$2.cd != null;
    }
 
-   protected void b(ard $$0, bvj $$1, long $$2) {
-      $$1.eb().b(cel.n);
+   protected boolean a(ard $$0, coj $$1, long $$2) {
+      return this.a($$0, $$1);
    }
 
-   protected void c(ard $$0, bvj $$1, long $$2) {
-      $$1.eb().c(cel.n).ifPresent($$1x -> $$1.L().a($$1x.a()));
+   protected void b(ard $$0, coj $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(ard $$0, coj $$1, long $$2) {
+      bwk<?> $$3 = $$1.eb();
+      $$3.b(cem.m);
+      $$3.b(cem.n);
+   }
+
+   protected void d(ard $$0, coj $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(coj $$0) {
+      bwk<?> $$1 = $$0.eb();
+      $$1.a(cem.m, new cep(new bxm($$0.gs(), false), this.c, 2));
+      $$1.a(cem.n, new bxm($$0.gs(), true));
    }
 }

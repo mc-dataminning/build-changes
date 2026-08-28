@@ -8,11 +8,11 @@ import net.minecraft.obfuscate.DontObfuscate;
 @Name("minecraft.ChunkRegionRead")
 @Label("Region File Read")
 @DontObfuscate
-public class ChunkRegionReadEvent extends bpg {
+public class ChunkRegionReadEvent extends bph {
    public static final String EVENT_NAME = "minecraft.ChunkRegionRead";
    public static final EventType TYPE = EventType.getEventType(ChunkRegionReadEvent.class);
 
-   public ChunkRegionReadEvent(eal $$0, dfo $$1, eak $$2, int $$3) {
+   public ChunkRegionReadEvent(eam $$0, dfp $$1, eal $$2, int $$3) {
       super($$0, $$1, $$2, $$3);
    }
 }

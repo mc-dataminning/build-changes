@@ -3,19 +3,19 @@ import java.util.function.BiFunction;
 public class abs implements yw<abl> {
    public static final yn<wa, abs> a = yn.a(ji.b, abs::b, yl.a(mc.h), abs::e, yl.s, abs::f, abs::new);
    private final ji b;
-   private final dub<?> c;
+   private final duc<?> c;
    private final tq d;
 
-   public static abs a(dtz $$0, BiFunction<dtz, kf, tq> $$1) {
+   public static abs a(dua $$0, BiFunction<dua, kf, tq> $$1) {
       kf $$2 = $$0.i().K_();
       return new abs($$0.aA_(), $$0.p(), $$1.apply($$0, $$2));
    }
 
-   public static abs a(dtz $$0) {
-      return a($$0, dtz::a);
+   public static abs a(dua $$0) {
+      return a($$0, dua::a);
    }
 
-   private abs(ji $$0, dub<?> $$1, tq $$2) {
+   private abs(ji $$0, duc<?> $$1, tq $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -34,7 +34,7 @@ public class abs implements yw<abl> {
       return this.b;
    }
 
-   public dub<?> e() {
+   public duc<?> e() {
       return this.c;
    }
 

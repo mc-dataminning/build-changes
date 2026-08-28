@@ -1,31 +1,25 @@
-import java.util.List;
-
-public class dce extends dbw {
-   public dce(String $$0, dba $$1, cwp $$2) {
-      super($$0, $$1, $$2);
+public class dce extends dal {
+   public dce(String $$0, dar $$1, dbb $$2, cwq $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dbp<dce> b() {
-      return dbp.f;
+   protected cwm f() {
+      return cwu.xl;
    }
 
    @Override
-   public dbo<dce> a() {
-      return dbo.s;
+   public dbq<dce> b() {
+      return dbq.d;
    }
 
    @Override
-   public List<dcj> g() {
-      return List.of(new dct(this.k().c(), this.c(), new dcp.d(cwt.xr)));
-   }
-
-   public dcp c() {
-      return new dcp.f(this.l());
+   public dbp<dce> a() {
+      return dbp.q;
    }
 
    @Override
-   public dbh h() {
-      return dbg.k;
+   public dbi h() {
+      return dbh.j;
    }
 }

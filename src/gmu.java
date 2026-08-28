@@ -1,181 +1,206 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gmu implements AutoCloseable {
-   private static final akv b = akv.b("textures/environment/sun.png");
-   private static final akv c = akv.b("textures/environment/moon_phases.png");
-   public static final akv a = akv.b("textures/environment/end_sky.png");
-   private static final float d = 512.0F;
-   private final ffx e = ffx.a(ffz.c.h, ffs.e, this::a);
-   private final ffx f = ffx.a(ffz.c.g, ffs.e, $$0 -> this.a($$0, 16.0F));
-   private final ffx g = ffx.a(ffz.c.g, ffs.e, $$0 -> this.a($$0, -16.0F));
-   private final ffx h = ffx.a(ffz.c.h, ffs.j, this::b);
+public class gmu {
+   public static final akv a = akv.b("textures/atlas/shulker_boxes.png");
+   public static final akv b = akv.b("textures/atlas/beds.png");
+   public static final akv c = akv.b("textures/atlas/banner_patterns.png");
+   public static final akv d = akv.b("textures/atlas/shield_patterns.png");
+   public static final akv e = akv.b("textures/atlas/signs.png");
+   public static final akv f = akv.b("textures/atlas/chest.png");
+   public static final akv g = akv.b("textures/atlas/armor_trims.png");
+   public static final akv h = akv.b("textures/atlas/decorated_pot.png");
+   private static final gmj B = gmj.g(a);
+   private static final gmj C = gmj.d(b);
+   private static final gmj D = gmj.n(c);
+   private static final gmj E = gmj.n(d);
+   private static final gmj F = gmj.g(e);
+   private static final gmj G = gmj.f(f);
+   private static final gmj H = gmj.a(g);
+   private static final gmj I = gmj.b(g);
+   private static final gmj J = gmj.d(hes.d);
+   private static final gmj K = gmj.f(hes.d);
+   private static final gmj L = gmj.i(hes.d);
+   public static final hha i = b(akv.b("shulker"));
+   public static final List<hha> j = Arrays.stream(cvn.values()).sorted(Comparator.comparingInt(cvn::a)).map(gmu::f).collect(ImmutableList.toImmutableList());
+   public static final Map<dyk, hha> k = dyk.a().collect(Collectors.toMap(Function.identity(), gmu::c));
+   public static final Map<dyk, hha> l = dyk.a().collect(Collectors.toMap(Function.identity(), gmu::d));
+   public static final hha m = new hha(c, akv.b("entity/banner/base"));
+   public static final hha n = new hha(d, akv.b("entity/shield/base"));
+   private static final Map<akv, hha> M = new HashMap<>();
+   private static final Map<akv, hha> N = new HashMap<>();
+   public static final Map<aku<dus>, hha> o = mb.ak.c().collect(Collectors.toMap(jr.c::h, $$0 -> f($$0.a().a())));
+   public static final hha p = f(akv.b("decorated_pot_base"));
+   public static final hha q = f(akv.b("decorated_pot_side"));
+   private static final hha[] O = Arrays.stream(cvn.values()).sorted(Comparator.comparingInt(cvn::a)).map(gmu::c).toArray(hha[]::new);
+   public static final hha r = a("trapped");
+   public static final hha s = a("trapped_left");
+   public static final hha t = a("trapped_right");
+   public static final hha u = a("christmas");
+   public static final hha v = a("christmas_left");
+   public static final hha w = a("christmas_right");
+   public static final hha x = a("normal");
+   public static final hha y = a("normal_left");
+   public static final hha z = a("normal_right");
+   public static final hha A = a("ender");
 
-   private void a(ffy $$0) {
-      azh $$1 = azh.a(10842L);
-      int $$2 = 1500;
-      float $$3 = 100.0F;
+   public static gmj a() {
+      return D;
+   }
 
-      for (int $$4 = 0; $$4 < 1500; $$4++) {
-         float $$5 = $$1.i() * 2.0F - 1.0F;
-         float $$6 = $$1.i() * 2.0F - 1.0F;
-         float $$7 = $$1.i() * 2.0F - 1.0F;
-         float $$8 = 0.15F + $$1.i() * 0.1F;
-         float $$9 = ayz.k($$5, $$6, $$7);
-         if (!($$9 <= 0.010000001F) && !($$9 >= 1.0F)) {
-            Vector3f $$10 = new Vector3f($$5, $$6, $$7).normalize(100.0F);
-            float $$11 = (float)($$1.j() * (float) Math.PI * 2.0);
-            Matrix3f $$12 = new Matrix3f().rotateTowards(new Vector3f($$10).negate(), new Vector3f(0.0F, 1.0F, 0.0F)).rotateZ(-$$11);
-            $$0.a(new Vector3f($$8, -$$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f($$8, $$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f(-$$8, $$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f(-$$8, -$$8, 0.0F).mul($$12).add($$10));
-         }
+   public static gmj b() {
+      return E;
+   }
+
+   public static gmj c() {
+      return C;
+   }
+
+   public static gmj d() {
+      return B;
+   }
+
+   public static gmj e() {
+      return F;
+   }
+
+   public static gmj f() {
+      return F;
+   }
+
+   public static gmj g() {
+      return G;
+   }
+
+   public static gmj a(boolean $$0) {
+      return $$0 ? I : H;
+   }
+
+   public static gmj h() {
+      return J;
+   }
+
+   public static gmj i() {
+      return K;
+   }
+
+   public static gmj j() {
+      return L;
+   }
+
+   public static hha a(cvn $$0) {
+      return O[$$0.a()];
+   }
+
+   public static akv b(cvn $$0) {
+      return akv.b($$0.b());
+   }
+
+   public static hha c(cvn $$0) {
+      return a(b($$0));
+   }
+
+   public static hha a(akv $$0) {
+      return new hha(b, $$0.f("entity/bed/"));
+   }
+
+   public static hha d(cvn $$0) {
+      return j.get($$0.a());
+   }
+
+   public static akv e(cvn $$0) {
+      return akv.b("shulker_" + $$0.b());
+   }
+
+   public static hha f(cvn $$0) {
+      return b(e($$0));
+   }
+
+   public static hha b(akv $$0) {
+      return new hha(a, $$0.f("entity/shulker/"));
+   }
+
+   private static hha c(dyk $$0) {
+      return c(akv.b($$0.b()));
+   }
+
+   public static hha c(akv $$0) {
+      return new hha(e, $$0.f("entity/signs/"));
+   }
+
+   private static hha d(dyk $$0) {
+      return d(akv.b($$0.b()));
+   }
+
+   public static hha d(akv $$0) {
+      return new hha(e, $$0.f("entity/signs/hanging/"));
+   }
+
+   public static hha a(dyk $$0) {
+      return k.get($$0);
+   }
+
+   public static hha b(dyk $$0) {
+      return l.get($$0);
+   }
+
+   public static hha a(jr<dtq> $$0) {
+      return M.computeIfAbsent($$0.a().a(), $$0x -> {
+         akv $$1 = $$0x.f("entity/banner/");
+         return new hha(c, $$1);
+      });
+   }
+
+   public static hha b(jr<dtq> $$0) {
+      return N.computeIfAbsent($$0.a().a(), $$0x -> {
+         akv $$1 = $$0x.f("entity/shield/");
+         return new hha(d, $$1);
+      });
+   }
+
+   private static hha a(String $$0) {
+      return new hha(f, akv.b("entity/chest/" + $$0));
+   }
+
+   public static hha e(akv $$0) {
+      return new hha(f, $$0.f("entity/chest/"));
+   }
+
+   private static hha f(akv $$0) {
+      return new hha(h, $$0.f("entity/decorated_pot/"));
+   }
+
+   @Nullable
+   public static hha a(@Nullable aku<dus> $$0) {
+      return $$0 == null ? null : o.get($$0);
+   }
+
+   public static hha a(dua $$0, dxq $$1, boolean $$2) {
+      if ($$0 instanceof dux) {
+         return A;
+      } else if ($$2) {
+         return a($$1, u, v, w);
+      } else {
+         return $$0 instanceof dvw ? a($$1, r, s, t) : a($$1, x, y, z);
       }
    }
 
-   private void a(ffy $$0, float $$1) {
-      float $$2 = Math.signum($$1) * 512.0F;
-      $$0.a(0.0F, $$1, 0.0F);
-
-      for (int $$3 = -180; $$3 <= 180; $$3 += 45) {
-         $$0.a($$2 * ayz.b((float)$$3 * (float) (Math.PI / 180.0)), $$1, 512.0F * ayz.a((float)$$3 * (float) (Math.PI / 180.0)));
+   private static hha a(dxq $$0, hha $$1, hha $$2, hha $$3) {
+      switch ($$0) {
+         case b:
+            return $$2;
+         case c:
+            return $$3;
+         case a:
+         default:
+            return $$1;
       }
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      RenderSystem.setShaderColor($$0, $$1, $$2, 1.0F);
-      this.f.a(gmi.G());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   public void a(ffu $$0) {
-      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
-      $$0.a();
-      $$0.a(0.0F, 12.0F, 0.0F);
-      this.g.a(gmi.G());
-      $$0.b();
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   public void a(ffu $$0, gly.a $$1, float $$2, int $$3, float $$4, float $$5, gln $$6) {
-      $$0.a();
-      $$0.a(a.d.rotationDegrees(-90.0F));
-      $$0.a(a.b.rotationDegrees($$2 * 360.0F));
-      this.a($$4, $$1, $$0);
-      this.a($$3, $$4, $$1, $$0);
-      $$1.b();
-      if ($$5 > 0.0F) {
-         this.a($$6, $$5, $$0);
-      }
-
-      $$0.b();
-   }
-
-   private void a(float $$0, gly $$1, ffu $$2) {
-      float $$3 = 30.0F;
-      float $$4 = 100.0F;
-      ffy $$5 = $$1.getBuffer(gmi.C(b));
-      int $$6 = axk.a($$0);
-      Matrix4f $$7 = $$2.c().a();
-      $$5.a($$7, -30.0F, 100.0F, -30.0F).a(0.0F, 0.0F).a($$6);
-      $$5.a($$7, 30.0F, 100.0F, -30.0F).a(1.0F, 0.0F).a($$6);
-      $$5.a($$7, 30.0F, 100.0F, 30.0F).a(1.0F, 1.0F).a($$6);
-      $$5.a($$7, -30.0F, 100.0F, 30.0F).a(0.0F, 1.0F).a($$6);
-   }
-
-   private void a(int $$0, float $$1, gly $$2, ffu $$3) {
-      float $$4 = 20.0F;
-      int $$5 = $$0 % 4;
-      int $$6 = $$0 / 4 % 2;
-      float $$7 = (float)($$5 + 0) / 4.0F;
-      float $$8 = (float)($$6 + 0) / 2.0F;
-      float $$9 = (float)($$5 + 1) / 4.0F;
-      float $$10 = (float)($$6 + 1) / 2.0F;
-      float $$11 = 100.0F;
-      ffy $$12 = $$2.getBuffer(gmi.C(c));
-      int $$13 = axk.a($$1);
-      Matrix4f $$14 = $$3.c().a();
-      $$12.a($$14, -20.0F, -100.0F, 20.0F).a($$9, $$10).a($$13);
-      $$12.a($$14, 20.0F, -100.0F, 20.0F).a($$7, $$10).a($$13);
-      $$12.a($$14, 20.0F, -100.0F, -20.0F).a($$7, $$8).a($$13);
-      $$12.a($$14, -20.0F, -100.0F, -20.0F).a($$9, $$8).a($$13);
-   }
-
-   private void a(gln $$0, float $$1, ffu $$2) {
-      Matrix4fStack $$3 = RenderSystem.getModelViewStack();
-      $$3.pushMatrix();
-      $$3.mul($$2.c().a());
-      RenderSystem.setShaderColor($$1, $$1, $$1, $$1);
-      RenderSystem.setShaderFog(gln.a);
-      this.e.a(gmi.J());
-      RenderSystem.setShaderFog($$0);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.popMatrix();
-   }
-
-   public void a(ffu $$0, gly.a $$1, float $$2, int $$3) {
-      $$0.a();
-      $$0.a(a.b.rotationDegrees(90.0F));
-      float $$4 = ayz.a($$2) < 0.0F ? 180.0F : 0.0F;
-      $$0.a(a.f.rotationDegrees($$4));
-      $$0.a(a.f.rotationDegrees(90.0F));
-      Matrix4f $$5 = $$0.c().a();
-      ffy $$6 = $$1.getBuffer(gmi.I());
-      float $$7 = axk.i($$3);
-      $$6.a($$5, 0.0F, 100.0F, 0.0F).a($$3);
-      int $$8 = axk.g($$3);
-      int $$9 = 16;
-
-      for (int $$10 = 0; $$10 <= 16; $$10++) {
-         float $$11 = (float)$$10 * (float) (Math.PI * 2) / 16.0F;
-         float $$12 = ayz.a($$11);
-         float $$13 = ayz.b($$11);
-         $$6.a($$5, $$12 * 120.0F, $$13 * 120.0F, -$$13 * 40.0F * $$7).a($$8);
-      }
-
-      $$0.b();
-   }
-
-   private void b(ffy $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         Matrix4f $$2 = new Matrix4f();
-         switch ($$1) {
-            case 1:
-               $$2.rotationX((float) (Math.PI / 2));
-               break;
-            case 2:
-               $$2.rotationX((float) (-Math.PI / 2));
-               break;
-            case 3:
-               $$2.rotationX((float) Math.PI);
-               break;
-            case 4:
-               $$2.rotationZ((float) (Math.PI / 2));
-               break;
-            case 5:
-               $$2.rotationZ((float) (-Math.PI / 2));
-         }
-
-         $$0.a($$2, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(-14145496);
-         $$0.a($$2, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(-14145496);
-         $$0.a($$2, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(-14145496);
-         $$0.a($$2, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(-14145496);
-      }
-   }
-
-   public void a() {
-      this.h.a(gmi.H());
-   }
-
-   @Override
-   public void close() {
-      this.e.close();
-      this.f.close();
-      this.g.close();
-      this.h.close();
    }
 }

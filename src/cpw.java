@@ -1,51 +1,51 @@
-import javax.annotation.Nullable;
-
-public class cpw extends cpe {
-   private int d = 200;
-
-   public cpw(bus<? extends cpw> $$0, dgi $$1) {
+public class cpw extends cpy {
+   public cpw(but<? extends cpw> $$0, dgj $$1) {
       super($$0, $$1);
    }
 
-   public cpw(dgi $$0, bvh $$1, cwp $$2, @Nullable cwp $$3) {
-      super(bus.bm, $$1, $$0, $$2, $$3);
+   public cpw(dgj $$0, bvi $$1, cwq $$2) {
+      super(but.bj, $$1, $$0, $$2);
    }
 
-   public cpw(dgi $$0, double $$1, double $$2, double $$3, cwp $$4, @Nullable cwp $$5) {
-      super(bus.bm, $$1, $$2, $$3, $$0, $$4, $$5);
+   public cpw(dgj $$0, double $$1, double $$2, double $$3, cwq $$4) {
+      super(but.bj, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.dV().C && !this.l()) {
-         this.dV().a(lt.S, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+   protected cwm m() {
+      return cwu.rj;
+   }
+
+   private lr s() {
+      cwq $$0 = this.l();
+      return (lr)($$0.f() ? lt.Y : new lp(lt.T, $$0));
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         lr $$1 = this.s();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dV().a($$1, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   protected void a(bvh $$0) {
+   protected void a(fay $$0) {
       super.a($$0);
-      btq $$1 = new btq(bts.x, this.d, 0);
-      $$0.b($$1, this.E());
+      bum $$1 = $$0.a();
+      int $$2 = $$1 instanceof cli ? 3 : 0;
+      $$1.a(this.dW().b(this, this.p()), (float)$$2);
    }
 
    @Override
-   public void a(tq $$0) {
+   protected void a(faz $$0) {
       super.a($$0);
-      if ($$0.e("Duration")) {
-         this.d = $$0.h("Duration");
+      if (!this.dV().C) {
+         this.dV().a(this, (byte)3);
+         this.at();
       }
-   }
-
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.d);
-   }
-
-   @Override
-   protected cwp v() {
-      return new cwp(cwt.wp);
    }
 }

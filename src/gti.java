@@ -1,36 +1,31 @@
-public class gti extends gtk<clx, hah, gcr> {
-   private static final akv a = akv.b("textures/entity/slime/magmacube.png");
+public class gti extends gse<cpq, gzn> {
+   private static final akv a = akv.b("textures/entity/llama/spit.png");
+   private final gcv b;
 
-   public gti(gse.a $$0) {
-      super($$0, new gcr($$0.a(gfc.bx)), 0.25F);
+   public gti(gsf.a $$0) {
+      super($$0);
+      this.b = new gcv($$0.a(gfd.bw));
    }
 
-   protected int a(clx $$0, ji $$1) {
-      return 15;
+   public void a(gzn $$0, ffv $$1, glz $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.b.a($$0);
+      ffz $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, hej.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public akv a(hah $$0) {
-      return a;
+   public gzn a() {
+      return new gzn();
    }
 
-   public hah b() {
-      return new hah();
-   }
-
-   public void a(clx $$0, hah $$1, float $$2) {
+   public void a(cpq $$0, gzn $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = ayz.h($$2, $$0.bY, $$0.bX);
-      $$1.b = $$0.gs();
-   }
-
-   protected float b(hah $$0) {
-      return (float)$$0.b * 0.25F;
-   }
-
-   protected void a(hah $$0, ffu $$1) {
-      int $$2 = $$0.b;
-      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
-      float $$4 = 1.0F / ($$3 + 1.0F);
-      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
+      $$1.b = $$0.j($$2);
+      $$1.a = $$0.k($$2);
    }
 }

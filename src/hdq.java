@@ -1,24 +1,22 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import javax.annotation.Nullable;
 
-public class hdq implements hdw<dvg> {
-   private final gos a;
+public class hdq implements hdt {
+   private final gfe a;
 
-   public hdq(gos $$0) {
+   public hdq(gfe $$0) {
       this.a = $$0;
    }
 
-   @Nullable
-   public dvg a(cwp $$0) {
-      return $$0.a(kv.ak);
+   @Override
+   public void a(cwo $$0, ffv $$1, glz $$2, int $$3, int $$4, boolean $$5) {
+      ffz $$6 = gos.a.a($$2, gmj::d);
+      $$1.a();
+      $$1.a(0.5F, 0.5F, 0.5F);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
    }
 
-   public void a(@Nullable dvg $$0, cwn $$1, ffu $$2, gly $$3, int $$4, int $$5, boolean $$6) {
-      this.a.a($$2, $$3, $$4, $$5, Objects.requireNonNullElse($$0, dvg.a));
-   }
-
-   public static record a() implements hdw.a {
+   public static record a() implements hdx.a {
       public static final MapCodec<hdq.a> a = MapCodec.unit(new hdq.a());
 
       @Override
@@ -27,8 +25,8 @@ public class hdq implements hdw<dvg> {
       }
 
       @Override
-      public hdw<?> a(gez $$0) {
-         return new hdq(new gos($$0));
+      public hdx<?> a(gfa $$0) {
+         return new hdq($$0.a(gfd.ad));
       }
    }
 }

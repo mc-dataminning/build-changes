@@ -1,23 +1,29 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class hdz implements hds {
-   private final geh a;
+public class hdz implements hdt {
+   private final gcx a;
+   private final hha b;
 
-   public hdz(geh $$0) {
+   public hdz(gcx $$0, hha $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public void a(cwn $$0, ffu $$1, gly $$2, int $$3, int $$4, boolean $$5) {
-      $$1.a();
-      $$1.b(1.0F, -1.0F, -1.0F);
-      ffy $$6 = gtc.a($$2, this.a.a(geh.a), false, $$5);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
+   public void a(cwo $$0, ffv $$1, glz $$2, int $$3, int $$4, boolean $$5) {
+      goz.a($$1, $$2, $$3, $$4, this.a, this.b);
    }
 
-   public static record a() implements hdw.a {
-      public static final MapCodec<hdz.a> a = MapCodec.unit(new hdz.a());
+   public static record a(dyk b, Optional<akv> c) implements hdx.a {
+      public static final MapCodec<hdz.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(dyk.a.fieldOf("wood_type").forGetter(hdz.a::b), akv.a.optionalFieldOf("texture").forGetter(hdz.a::c)).apply($$0, hdz.a::new)
+      );
+
+      public a(dyk $$0) {
+         this($$0, Optional.empty());
+      }
 
       @Override
       public MapCodec<hdz.a> a() {
@@ -25,8 +31,10 @@ public class hdz implements hds {
       }
 
       @Override
-      public hdw<?> a(gez $$0) {
-         return new hdz(new geh($$0.a(gfc.dl)));
+      public hdx<?> a(gfa $$0) {
+         gcx $$1 = goz.a($$0, this.b, true);
+         hha $$2 = this.c.<hha>map(gmu::c).orElseGet(() -> gmu.a(this.b));
+         return new hdz($$1, $$2);
       }
    }
 }

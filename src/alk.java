@@ -39,17 +39,17 @@ public class alk {
    }
 
    private void a(Collection<il<ex>> $$0, akv $$1) {
-      bos.a().a($$1::toString);
+      bot.a().a($$1::toString);
 
       for (il<ex> $$2 : $$0) {
          this.a($$2, this.c());
       }
 
-      bos.a().c();
+      bot.a().c();
    }
 
    public void a(il<ex> $$0, ex $$1) {
-      bot $$2 = bos.a();
+      bou $$2 = bot.a();
       $$2.a(() -> "function " + $$0.a());
 
       try {

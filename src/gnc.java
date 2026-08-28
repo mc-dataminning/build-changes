@@ -1,78 +1,61 @@
-import java.util.function.Supplier;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class gnc implements auq {
-   private final gnb a;
-   private final gne b;
-   private final Supplier<gmv> c;
-   private final gnd d;
-   private final azh e = azh.a();
-   private final fml f;
+public class gnc {
+   private Map<dwy, hgt> a = Map.of();
+   private final hhh b;
 
-   public gnc(gnb $$0, Supplier<gmv> $$1, fml $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new gne(this.f);
-      this.d = new gnd();
+   public gnc(hhh $$0) {
+      this.b = $$0;
    }
 
-   public gnb a() {
-      return this.a;
+   public het a(dwy $$0) {
+      return this.b($$0).d();
    }
 
-   public void a(dwx $$0, ji $$1, dfk $$2, ffu $$3, ffy $$4) {
-      if ($$0.o() == dpx.b) {
-         hgs $$5 = this.a.b($$0);
-         long $$6 = $$0.b($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hei.d);
+   public hgt b(dwy $$0) {
+      hgt $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
       }
+
+      return $$1;
    }
 
-   public void a(dwx $$0, ji $$1, dfk $$2, ffu $$3, ffy $$4, boolean $$5, azh $$6) {
-      try {
-         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hei.d);
-      } catch (Throwable var11) {
-         o $$8 = o.a(var11, "Tesselating block in world");
-         p $$9 = $$8.a("Block being tesselated");
-         p.a($$9, $$2, $$1, $$0);
-         throw new z($$8);
-      }
-   }
-
-   public void a(ji $$0, dfk $$1, ffy $$2, dwx $$3, esz $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new z($$6);
-      }
-   }
-
-   public gne b() {
+   public hhh a() {
       return this.b;
    }
 
-   public hgs a(dwx $$0) {
-      return this.a.b($$0);
+   public void a(Map<dwy, hgt> $$0) {
+      this.a = $$0;
    }
 
-   public void a(dwx $$0, ffu $$1, gly $$2, int $$3, int $$4) {
-      dpx $$5 = $$0.o();
-      if ($$5 != dpx.a) {
-         hgs $$6 = this.a($$0);
-         int $$7 = this.f.a($$0, null, null, 0);
-         float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-         float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-         float $$10 = (float)($$7 & 0xFF) / 255.0F;
-         this.b.a($$1.c(), $$2.getBuffer(glr.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-         this.c.get().a($$0.b(), cwn.a, $$1, $$2, $$3, $$4);
+   public static hhi c(dwy $$0) {
+      return a(mb.e.b($$0.b()), $$0);
+   }
+
+   public static hhi a(akv $$0, dwy $$1) {
+      return new hhi($$0, b($$1.G()));
+   }
+
+   public static String b(Map<dya<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<dya<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
+         }
+
+         dya<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
       }
+
+      return $$1.toString();
    }
 
-   @Override
-   public void a(aup $$0) {
-      this.d.a();
+   private static <T extends Comparable<T>> String a(dya<T> $$0, Comparable<?> $$1) {
+      return $$0.b((T)$$1);
    }
 }

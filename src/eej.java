@@ -1,8 +1,7 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class eej extends eek {
+class eej extends eel {
    public static final MapCodec<eej> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eej::new));
 
    public eej(km $$0) {
@@ -10,12 +9,12 @@ public class eej extends eek {
    }
 
    @Override
-   protected boolean a(dwx $$0) {
-      return $$0.e();
+   protected boolean a(dwy $$0) {
+      return $$0.v();
    }
 
    @Override
-   public eea<?> a() {
-      return eea.e;
+   public eeb<?> a() {
+      return eeb.f;
    }
 }

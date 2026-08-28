@@ -1,13 +1,13 @@
 public class aie implements yw<agg> {
    public static final yn<vl, aie> a = yw.a(aie::a, aie::new);
-   private final bsj b;
+   private final bsk b;
 
-   public aie(bsj $$0) {
+   public aie(bsk $$0) {
       this.b = $$0;
    }
 
    private aie(vl $$0) {
-      this.b = $$0.b(bsj.class);
+      this.b = $$0.b(bsk.class);
    }
 
    private void a(vl $$0) {
@@ -23,7 +23,7 @@ public class aie implements yw<agg> {
       $$0.a(this);
    }
 
-   public bsj b() {
+   public bsk b() {
       return this.b;
    }
 }

@@ -136,7 +136,7 @@ public class hp {
                   }
                }
 
-               for (dgf $$6 : dgf.values()) {
+               for (dgg $$6 : dgg.values()) {
                   if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
                      if ($$5) {
                         $$1x.suggest("!" + $$6.b());
@@ -157,7 +157,7 @@ public class hp {
                throw b.createWithContext($$0.g(), "gamemode");
             } else {
                String $$3 = $$0.g().readUnquotedString();
-               dgf $$4 = dgf.a($$3, null);
+               dgg $$4 = dgg.a($$3, null);
                if ($$4 == null) {
                   $$0.g().setCursor($$1);
                   throw g.createWithContext($$0.g(), $$3);
@@ -167,7 +167,7 @@ public class hp {
                      if (!($$2x instanceof are)) {
                         return false;
                      } else {
-                        dgf $$3x = ((are)$$2x).h.b();
+                        dgg $$3x = ((are)$$2x).h.b();
                         return $$2 ? $$3x != $$4 : $$3x == $$4;
                      }
                   });
@@ -183,10 +183,10 @@ public class hp {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
             $$0.a($$2x -> {
-               if (!($$2x instanceof bvh)) {
+               if (!($$2x instanceof bvi)) {
                   return false;
                } else {
-                  fch $$3 = $$2x.cr();
+                  fci $$3 = $$2x.cr();
                   String $$4 = $$3 == null ? "" : $$3.b();
                   return $$4.equals($$2) != $$1;
                }
@@ -219,15 +219,15 @@ public class hp {
                }
 
                if ($$0.f()) {
-                  axf<bus<?>> $$3 = axf.a(mc.z, akv.a($$0.g()));
+                  axf<but<?>> $$3 = axf.a(mc.z, akv.a($$0.g()));
                   $$0.a($$2x -> $$2x.aq().a($$3) != $$2);
                } else {
                   akv $$4 = akv.a($$0.g());
-                  bus<?> $$5 = mb.f.b($$4).orElseThrow(() -> {
+                  but<?> $$5 = mb.f.b($$4).orElseThrow(() -> {
                      $$0.g().setCursor($$1);
                      return h.createWithContext($$0.g(), $$4.toString());
                   });
-                  if (Objects.equals(bus.bR, $$5) && !$$2) {
+                  if (Objects.equals(but.bR, $$5) && !$$2) {
                      $$0.a(false);
                   }
 
@@ -249,7 +249,7 @@ public class hp {
             $$0.a($$2x -> {
                tq $$3 = $$2x.f(new tq());
                if ($$2x instanceof are $$4) {
-                  cwp $$5 = $$4.gi().f();
+                  cwq $$5 = $$4.gi().f();
                   if (!$$5.f()) {
                      $$3.a("SelectedItem", $$5.a($$4.dX()));
                   }
@@ -281,15 +281,15 @@ public class hp {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  fcf $$2x = $$1x.cV().aJ();
+                  fcg $$2x = $$1x.cV().aJ();
 
                   for (Entry<String, dk.d> $$3x : $$2.entrySet()) {
-                     fbx $$4x = $$2x.a($$3x.getKey());
+                     fby $$4x = $$2x.a($$3x.getKey());
                      if ($$4x == null) {
                         return false;
                      }
 
-                     fcb $$5 = $$2x.d($$1x, $$4x);
+                     fcc $$5 = $$2x.d($$1x, $$4x);
                      if ($$5 == null) {
                         return false;
                      }
@@ -387,19 +387,19 @@ public class hp {
          }, $$0 -> !$$0.H(), wp.c("argument.entity.options.advancements.description"));
          a("predicate", $$0 -> {
             boolean $$1 = $$0.e();
-            aku<eza> $$2 = aku.a(mc.bi, akv.a($$0.g()));
+            aku<ezb> $$2 = aku.a(mc.bi, akv.a($$0.g()));
             $$0.a($$2x -> {
                if (!($$2x.dV() instanceof ard)) {
                   return false;
                } else {
                   ard $$3 = (ard)$$2x.dV();
-                  Optional<eza> $$4 = $$3.p().bc().a().c($$2).map(jr::a);
+                  Optional<ezb> $$4 = $$3.p().bc().a().c($$2).map(jr::a);
                   if ($$4.isEmpty()) {
                      return false;
                   } else {
-                     evu $$5 = new evu.a($$3).a(eyl.a, $$2x).a(eyl.f, $$2x.dt()).a(eyk.e);
-                     evr $$6 = new evr.a($$5).a(Optional.empty());
-                     $$6.b(evr.a($$4.get()));
+                     evv $$5 = new evv.a($$3).a(eym.a, $$2x).a(eym.f, $$2x.dt()).a(eyl.e);
+                     evs $$6 = new evs.a($$5).a(Optional.empty());
+                     $$6.b(evs.a($$4.get()));
                      return $$1 ^ $$4.get().test($$6);
                   }
                }

@@ -1,11 +1,11 @@
 public class aih implements yw<agg> {
    public static final yn<vl, aih> a = yw.a(aih::a, aih::new);
-   private final bsj b;
+   private final bsk b;
    private final int c;
    private final float d;
    private final float e;
 
-   public aih(bsj $$0, int $$1, float $$2, float $$3) {
+   public aih(bsk $$0, int $$1, float $$2, float $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -13,7 +13,7 @@ public class aih implements yw<agg> {
    }
 
    private aih(vl $$0) {
-      this.b = $$0.b(bsj.class);
+      this.b = $$0.b(bsk.class);
       this.c = $$0.l();
       this.d = $$0.readFloat();
       this.e = $$0.readFloat();
@@ -35,7 +35,7 @@ public class aih implements yw<agg> {
       $$0.a(this);
    }
 
-   public bsj b() {
+   public bsk b() {
       return this.b;
    }
 

@@ -1,50 +1,86 @@
-public class fxe extends ful {
-   private static final int a = 600;
-   private final vi b;
-   private fot c;
-   private int d;
-   private final fsl s = fsl.d();
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public fxe(wp $$0, vi $$1) {
-      super($$0);
-      this.b = $$1;
-   }
+public class fxe extends fum {
+   private static final int a = 310;
+   private static final int b = 25;
+   private static final wp c = wp.c("menu.server_links.title");
+   private final fum d;
+   @Nullable
+   private fxe.a s;
+   final fsi u = new fsi(this);
+   final aln v;
 
-   @Override
-   public boolean aG_() {
-      return false;
+   public fxe(fum $$0, aln $$1) {
+      super(c);
+      this.d = $$0;
+      this.v = $$1;
    }
 
    @Override
    protected void aR_() {
-      this.s.c().b().a(10);
-      this.s.a(new fqa(this.l, this.p));
-      this.c = this.s.a(fot.a(wo.p, $$0 -> this.b.a(ftk.a)).a());
-      this.c.j = false;
-      this.s.a();
-      this.s.a($$1 -> {
-         foq var10000 = this.c($$1);
+      this.u.a(this.l, this.p);
+      this.s = this.u.c(new fxe.a(this.m, this.n, this));
+      this.u.b(fou.a(wo.k, $$0 -> this.aO_()).a(200).a());
+      this.u.a($$1 -> {
+         fos var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      fsf.a(this.s, this.J());
+      this.u.a();
+      if (this.s != null) {
+         this.s.a(this.n, this.u);
+      }
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
+   public void aO_() {
+      this.m.a(this.d);
+   }
+
+   static class a extends fpa<fxe.b> {
+      public a(flk $$0, int $$1, fxe $$2) {
+         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
+         $$2.v.c().forEach($$1x -> this.b(new fxe.b($$2, $$1x)));
       }
 
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
+      @Override
+      public int a() {
+         return 310;
+      }
+
+      @Override
+      public void a(int $$0, fsi $$1) {
+         super.a($$0, $$1);
+         int $$2 = $$0 / 2 - 155;
+         this.aH_().forEach($$1x -> $$1x.a.j($$2));
+      }
+   }
+
+   static class b extends fpa.a<fxe.b> {
+      final fos a;
+
+      b(fum $$0, aln.a $$1) {
+         this.a = fou.a($$1.a(), ftj.b($$0, $$1.c(), false)).a(310).a();
+      }
+
+      @Override
+      public void a(fof $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a.k($$2);
+         this.a.a($$0, $$6, $$7, $$9);
+      }
+
+      @Override
+      public List<? extends fqr> aH_() {
+         return List.of(this.a);
+      }
+
+      @Override
+      public List<? extends fsp> b() {
+         return List.of(this.a);
       }
    }
 }

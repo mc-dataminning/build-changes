@@ -1,18 +1,15 @@
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class erm {
-   private final List<erl> a;
-
-   public erm(List<erl> $$0) {
-      this.a = $$0;
+public abstract class erm {
+   @Nullable
+   public erp.d a(dgm $$0, ji $$1, ji $$2, erp.d $$3, erp.d $$4, erl $$5) {
+      return $$4;
    }
 
-   public List<erl> a() {
-      return this.a;
-   }
+   protected abstract ero<?> a();
 
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
+   public List<erp.d> a(dha $$0, ji $$1, ji $$2, List<erp.d> $$3, List<erp.d> $$4, erl $$5) {
+      return $$4;
    }
 }

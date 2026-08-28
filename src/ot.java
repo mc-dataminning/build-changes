@@ -39,7 +39,7 @@ public class ot implements mi {
                         try (Stream<Path> $$3x = Files.walk($$3)) {
                            var4 = CompletableFuture.allOf(
                               $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
-                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), af.h()))
+                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), af.i()))
                                  .toArray(CompletableFuture[]::new)
                            );
                         }
@@ -50,7 +50,7 @@ public class ot implements mi {
                         return CompletableFuture.completedFuture(null);
                      }
                   },
-                  af.g().a("NbtToSnbt")
+                  af.h().a("NbtToSnbt")
                )
                .thenCompose($$0x -> $$0x)
          );

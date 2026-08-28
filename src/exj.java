@@ -1,41 +1,40 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
 
-public class exj implements exf {
+public class exj extends exf {
    public static final MapCodec<exj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(exh.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, exj::new)
+      $$0 -> a($$0)
+            .and($$0.group(evq.e.fieldOf("component").forGetter($$0x -> $$0x.b), exi.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, exj::new)
    );
-   public static final Codec<exj> b = exh.b.listOf().xmap(exj::new, $$0 -> $$0.c);
-   private final List<exf> c;
-   private final BiFunction<cwp, evr, cwp> d;
+   private final evp<?> b;
+   private final exg c;
 
-   private exj(List<exf> $$0) {
-      this.c = $$0;
-      this.d = exh.a($$0);
-   }
-
-   public static exj a(List<exf> $$0) {
-      return new exj(List.copyOf($$0));
-   }
-
-   public cwp a(cwp $$0, evr $$1) {
-      return this.d.apply($$0, $$1);
+   private exj(List<ezb> $$0, evp<?> $$1, exg $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void a(evx $$0) {
-      exf.super.a($$0);
+   public exh<exj> b() {
+      return exi.u;
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+   @Override
+   public cwq a(cwq $$0, evs $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
       }
    }
 
    @Override
-   public exg<exj> b() {
-      return exh.I;
+   public void a(evy $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

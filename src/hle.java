@@ -1,34 +1,22 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public class hle implements fpx {
+   private final wp a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-public abstract class hle extends ful {
-   protected static final int d = 17;
-   protected static final int s = 7;
-   protected static final long u = 5368709120L;
-   protected static final int v = 5000268;
-   protected static final int w = 7105644;
-   protected static final int x = 8388479;
-   protected static final int y = 3368635;
-   protected static final int z = 7107012;
-   protected static final int A = 32;
-   protected static final int B = 8;
-   private final List<hld> a = Lists.newArrayList();
-
-   public hle(wp $$0) {
-      super($$0);
+   public hle(wp $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   @Override
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
+      $$0.a(flk.Q().h, this.a, this.b, this.c, this.d);
    }
 
-   protected hld a(hld $$0) {
-      this.a.add($$0);
-      return this.a($$0);
-   }
-
-   public wp m() {
-      return wo.a(this.a.stream().map(hld::a).collect(Collectors.toList()));
+   public wp a() {
+      return this.a;
    }
 }

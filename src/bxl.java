@@ -1,44 +1,41 @@
-import java.util.Optional;
+public class bxl implements bxc<bvi> {
+   private final int a;
+   private final int b;
+   private bxb.a c = bxb.a.a;
+   private long d;
 
-public class bxl implements byo {
-   private final bul a;
-   private final boolean b;
-
-   public bxl(bul $$0, boolean $$1) {
+   public bxl(int $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public fba a() {
-      return this.b ? this.a.dt().b(0.0, (double)this.a.cS(), 0.0) : this.a.dt();
+   public bxb.a a() {
+      return this.c;
    }
 
    @Override
-   public ji b() {
-      return this.a.dv();
+   public final boolean e(ard $$0, bvi $$1, long $$2) {
+      this.c = bxb.a.b;
+      int $$3 = this.a + $$0.H_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
    }
 
    @Override
-   public boolean a(bvh $$0) {
-      if (this.a instanceof bvh $$1) {
-         if (!$$1.bL()) {
-            return false;
-         } else {
-            Optional<cen> $$3 = $$0.eb().c(cel.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   public final void f(ard $$0, bvi $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   public bul c() {
-      return this.a;
+   @Override
+   public final void g(ard $$0, bvi $$1, long $$2) {
+      this.c = bxb.a.a;
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

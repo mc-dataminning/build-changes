@@ -1,23 +1,22 @@
-public class gvc extends gtk<cop, hav, gen> {
-   private static final akv a = akv.b("textures/entity/wandering_trader.png");
+public class gvc extends gsy<cmo, gzd> {
+   private static final akv a = akv.b("textures/entity/illager/vindicator.png");
 
-   public gvc(gse.a $$0) {
-      super($$0, new gen($$0.a(gfc.dw)), 0.5F);
-      this.a(new gvx<>(this, $$0.f()));
-      this.a(new gvw<>(this));
+   public gvc(gsf.a $$0) {
+      super($$0, new gcq<>($$0.a(gfd.dv)), 0.5F);
+      this.a(new gwm<gzd, gcq<gzd>>(this) {
+         public void a(ffv $$0, glz $$1, int $$2, gzd $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public akv a(hav $$0) {
+   public akv a(gzd $$0) {
       return a;
    }
 
-   public hav b() {
-      return new hav();
-   }
-
-   public void a(cop $$0, hav $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gyz.a($$0, $$1, this.i);
-      $$1.a = $$0.p() > 0;
+   public gzd b() {
+      return new gzd();
    }
 }

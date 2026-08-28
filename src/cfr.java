@@ -1,76 +1,38 @@
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BiPredicate;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public abstract class cfr<E extends bvh> {
-   private static final azh a = azh.b();
-   private static final int b = 20;
-   private static final int c = 16;
-   private static final cfy d = cfy.b().a(16.0);
-   private static final cfy e = cfy.b().a(16.0).e();
-   private static final cfy f = cfy.a().a(16.0);
-   private static final cfy g = cfy.a().a(16.0).e();
-   private static final cfy h = cfy.a().a(16.0).d();
-   private static final cfy i = cfy.a().a(16.0).d().e();
-   private final int j;
-   private long k;
+public class cfr {
+   private final bvk a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
 
-   public cfr(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+   public cfr(bvk $$0) {
+      this.a = $$0;
    }
 
-   public cfr() {
-      this(20);
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   public final void b(ard $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$1);
-         this.a($$0, $$1);
-      }
-   }
-
-   private void a(E $$0) {
-      double $$1 = $$0.h(bwp.m);
-      d.a($$1);
-      e.a($$1);
-      f.a($$1);
-      g.a($$1);
-      h.a($$1);
-      i.a($$1);
-   }
-
-   protected abstract void a(ard var1, E var2);
-
-   public abstract Set<cel<?>> a();
-
-   public static boolean b(ard $$0, bvh $$1, bvh $$2) {
-      return $$1.eb().b(cel.o, $$2) ? e.a($$0, $$1, $$2) : d.a($$0, $$1, $$2);
-   }
-
-   public static boolean c(ard $$0, bvh $$1, bvh $$2) {
-      return $$1.eb().b(cel.o, $$2) ? g.a($$0, $$1, $$2) : f.a($$0, $$1, $$2);
-   }
-
-   public static BiPredicate<ard, bvh> a(bvh $$0, int $$1) {
-      return a($$1, ($$1x, $$2) -> c($$1x, $$0, $$2));
-   }
-
-   public static boolean d(ard $$0, bvh $$1, bvh $$2) {
-      return $$1.eb().b(cel.o, $$2) ? i.a($$0, $$1, $$2) : h.a($$0, $$1, $$2);
-   }
-
-   static <T, U> BiPredicate<T, U> a(int $$0, BiPredicate<T, U> $$1) {
-      AtomicInteger $$2 = new AtomicInteger(0);
-      return ($$3, $$4) -> {
-         if ($$1.test($$3, $$4)) {
-            $$2.set($$0);
-            return true;
+   public boolean a(bum $$0) {
+      int $$1 = $$0.ar();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         bou $$2 = bot.a();
+         $$2.a("hasLineOfSight");
+         boolean $$3 = this.a.E($$0);
+         $$2.c();
+         if ($$3) {
+            this.b.add($$1);
          } else {
-            return $$2.decrementAndGet() >= 0;
+            this.c.add($$1);
          }
-      };
+
+         return $$3;
+      }
    }
 }

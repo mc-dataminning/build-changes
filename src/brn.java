@@ -1,26 +1,45 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public abstract class brn implements brs {
-   private static final Codec<Either<Float, brn>> a = Codec.either(Codec.FLOAT, mb.J.q().dispatch(brn::c, bro::codec));
-   public static final Codec<brn> c = a.xmap(
-      $$0 -> (brn)$$0.map(brl::a, $$0x -> $$0x), $$0 -> $$0.c() == bro.a ? Either.left(((brl)$$0).d()) : Either.right($$0)
-   );
+public class brn extends brq {
+   public static final brn a = new brn(0);
+   public static final MapCodec<brn> b = Codec.INT.fieldOf("value").xmap(brn::a, brn::d);
+   private final int f;
 
-   public static Codec<brn> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+   public static brn a(int $$0) {
+      return $$0 == 0 ? a : new brn($$0);
    }
 
-   public abstract float a();
+   private brn(int $$0) {
+      this.f = $$0;
+   }
 
-   public abstract float b();
+   public int d() {
+      return this.f;
+   }
 
-   public abstract bro<?> c();
+   @Override
+   public int a(azh $$0) {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public brr<?> c() {
+      return brr.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
+   }
 }

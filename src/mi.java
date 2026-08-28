@@ -88,7 +88,7 @@ public interface mi {
          } catch (IOException var10) {
             c.error("Failed to save file to {}", $$2, var10);
          }
-      }, af.g().a("saveStable"));
+      }, af.h().a("saveStable"));
    }
 
    @FunctionalInterface

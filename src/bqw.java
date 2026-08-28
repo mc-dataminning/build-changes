@@ -1,67 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class bqw<E extends bqu> {
-   private final int a;
-   private final ImmutableList<E> b;
-
-   bqw(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bqv.a($$0);
+public class bqw {
+   private bqw() {
    }
 
-   public static <E extends bqu> bqw<E> c() {
-      return new bqw<>(ImmutableList.of());
+   public static int a(List<? extends bqv> $$0) {
+      long $$1 = 0L;
+
+      for (bqv $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
+      }
    }
 
-   @SafeVarargs
-   public static <E extends bqu> bqw<E> a(E... $$0) {
-      return new bqw<>(ImmutableList.copyOf($$0));
-   }
-
-   public static <E extends bqu> bqw<E> a(List<E> $$0) {
-      return new bqw<>($$0);
-   }
-
-   public boolean d() {
-      return this.b.isEmpty();
-   }
-
-   public Optional<E> b(azh $$0) {
-      if (this.a == 0) {
+   public static <T extends bqv> Optional<T> a(azh $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
          return Optional.empty();
       } else {
-         int $$1 = $$0.a(this.a);
-         return bqv.a(this.b, $$1);
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
       }
    }
 
-   public List<E> e() {
-      return this.b;
-   }
-
-   public static <E extends bqu> Codec<bqw<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bqw::a, bqw::e);
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         bqw<?> $$1 = (bqw<?>)$$0;
-         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
-      } else {
-         return false;
+   public static <T extends bqv> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
       }
+
+      return Optional.empty();
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
+   public static <T extends bqv> Optional<T> a(azh $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

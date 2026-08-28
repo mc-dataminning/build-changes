@@ -1,19 +1,30 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eiq implements eic {
+public record eiq(int b, int c, int d, jr<emr> e) implements eid {
    public static final Codec<eiq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(eik.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, eiq::new)
+      $$0 -> $$0.group(
+               ayi.m.fieldOf("tries").orElse(128).forGetter(eiq::a),
+               ayi.l.fieldOf("xz_spread").orElse(7).forGetter(eiq::b),
+               ayi.l.fieldOf("y_spread").orElse(3).forGetter(eiq::c),
+               emr.b.fieldOf("feature").forGetter(eiq::d)
+            )
+            .apply($$0, eiq::new)
    );
-   public final List<eik.a> b;
 
-   public eiq(dwx $$0, dwx $$1) {
-      this(ImmutableList.of(eik.a(new eqs($$0), $$1)));
+   public int a() {
+      return this.b;
    }
 
-   public eiq(List<eik.a> $$0) {
-      this.b = $$0;
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public jr<emr> d() {
+      return this.e;
    }
 }

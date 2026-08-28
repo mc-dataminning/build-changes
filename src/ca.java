@@ -1,21 +1,21 @@
 import com.mojang.serialization.Codec;
 
-public record ca(jv<bus<?>> b) {
+public record ca(jv<but<?>> b) {
    public static final Codec<ca> a = kg.a(mc.z).xmap(ca::new, ca::a);
 
-   public static ca a(js<bus<?>> $$0, bus<?> $$1) {
+   public static ca a(js<but<?>> $$0, but<?> $$1) {
       return new ca(jv.a($$1.r()));
    }
 
-   public static ca a(js<bus<?>> $$0, axf<bus<?>> $$1) {
+   public static ca a(js<but<?>> $$0, axf<but<?>> $$1) {
       return new ca($$0.b($$1));
    }
 
-   public boolean a(bus<?> $$0) {
+   public boolean a(but<?> $$0) {
       return $$0.a(this.b);
    }
 
-   public jv<bus<?>> a() {
+   public jv<but<?>> a() {
       return this.b;
    }
 }

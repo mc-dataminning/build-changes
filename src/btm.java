@@ -1,38 +1,19 @@
-import java.util.function.ToIntFunction;
-import org.joml.Vector3f;
-
-class btm extends bto {
-   private final float c;
-   private final ToIntFunction<azh> d;
-
-   protected btm(btp $$0, int $$1, float $$2, ToIntFunction<azh> $$3) {
-      super($$0, $$1, lt.G);
-      this.c = $$2;
-      this.d = $$3;
+class btm extends btp {
+   protected btm(btq $$0, int $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(ard $$0, bvh $$1, int $$2, btb $$3, float $$4) {
-      if ($$1.dY().i() <= this.c) {
-         int $$5 = this.d.applyAsInt($$1.dY());
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            this.a($$0, $$1, $$1.dA(), $$1.dC() + (double)$$1.dr() / 2.0, $$1.dG());
-         }
+   public boolean a(ard $$0, bvi $$1, int $$2) {
+      if ($$1 instanceof coy $$3) {
+         $$3.G(0.005F * (float)($$2 + 1));
       }
+
+      return true;
    }
 
-   private void a(ard $$0, bvh $$1, double $$2, double $$3, double $$4) {
-      cmf $$5 = bus.bd.a($$0, bur.k);
-      if ($$5 != null) {
-         azh $$6 = $$1.dY();
-         float $$7 = (float) (Math.PI / 2);
-         float $$8 = ayz.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
-         Vector3f $$9 = $$1.bT().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
-         $$5.b($$2, $$3, $$4, $$0.H_().i() * 360.0F, 0.0F);
-         $$5.i(new fba($$9));
-         $$0.b($$5);
-         $$5.a(awa.xz);
-      }
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 }

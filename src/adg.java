@@ -36,7 +36,7 @@ public abstract class adg implements yw<abl> {
    }
 
    @Nullable
-   public bul a(dgi $$0) {
+   public bum a(dgj $$0) {
       return $$0.a(this.a);
    }
 

@@ -128,12 +128,12 @@ public record ah(Optional<akv> c, Optional<au> d, am e, Map<String, aq<?>> f, al
          return this;
       }
 
-      public ah.a a(cwp $$0, wp $$1, wp $$2, @Nullable akv $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ah.a a(cwq $$0, wp $$1, wp $$2, @Nullable akv $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new au($$0, $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
-      public ah.a a(dgh $$0, wp $$1, wp $$2, @Nullable akv $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new au(new cwp($$0.j()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
+      public ah.a a(dgi $$0, wp $$1, wp $$2, @Nullable akv $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new au(new cwq($$0.j()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
       public ah.a a(au $$0) {

@@ -1,59 +1,70 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SequencedMap;
-
 public class gmg {
-   private final gml a = new gml();
-   private final gmm b;
-   private final gly.a c;
-   private final gly.a d;
-   private final gma e;
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   public gmg(int $$0) {
-      this.b = gmm.a($$0);
-      SequencedMap<gmi, ffr> $$1 = af.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gmt.h(), this.a.a(gmi.c()));
-         $$0x.put(gmt.i(), this.a.a(gmi.e()));
-         $$0x.put(gmt.a(), this.a.a(gmi.d()));
-         $$0x.put(gmt.j(), this.a.a(gmi.f()));
-         a($$0x, gmt.b());
-         a($$0x, gmt.c());
-         a($$0x, gmt.d());
-         a($$0x, gmt.e());
-         a($$0x, gmt.f());
-         $$0x.put(gmt.g(), new ffr(786432));
-         a($$0x, gmi.j());
-         a($$0x, gmi.l());
-         a($$0x, gmi.k());
-         a($$0x, gmi.m());
-         a($$0x, gmi.i());
-      });
-      this.c = gly.a($$1, new ffr(786432));
-      this.e = new gma(this.c);
-      SequencedMap<gmi, ffr> $$2 = af.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hhc.l.forEach($$1x -> a($$0x, $$1x)));
-      this.d = gly.a($$2, new ffr(0));
+   public gmg(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gmi, ffr> $$0, gmi $$1) {
-      $$0.put($$1, new ffr($$1.R()));
+   public gmg a(gmg $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   public gml a() {
+   public int a() {
       return this.a;
    }
 
-   public gmm b() {
+   public int b() {
       return this.b;
    }
 
-   public gly.a c() {
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(int $$0) {
+      this.b = $$0;
+   }
+
+   public int c() {
       return this.c;
    }
 
-   public gly.a d() {
+   public int d() {
       return this.d;
    }
 
-   public gma e() {
-      return this.e;
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

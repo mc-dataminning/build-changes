@@ -1,115 +1,158 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.function.Function;
 
 public class cob {
-   public static final Codec<cob> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayi.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               ayi.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               ayi.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cob::new)
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = ayz.f(100.0F);
+   public static final int a = ayz.f(133.59999F);
+   public static final int b = ayz.f(84.0F);
+   private static final int i = ayz.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cft<? extends cfs<? super coa>>> k = List.of(cft.d, cft.x);
+   private static final List<cem<?>> l = List.of(
+      cem.g,
+      cem.h,
+      cem.k,
+      cem.l,
+      cem.M,
+      cem.n,
+      cem.m,
+      cem.E,
+      cem.t,
+      cem.o,
+      cem.p,
+      cem.B,
+      cem.ay,
+      cem.az,
+      cem.aA,
+      cem.aB,
+      cem.aC,
+      cem.aD,
+      cem.aE,
+      cem.aF,
+      cem.aG,
+      cem.aH,
+      cem.aI,
+      cem.aJ,
+      cem.aK,
+      cem.aL
    );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
+   private static final bxc<coa> m = cao.a(
+      (Function<cao.b<coa>, ? extends App<cao.c<coa>, car<coa>>>)($$0 -> $$0.group($$0.a(cem.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(baf.a, 1200L);
+               }
 
-   public cob(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+               return true;
+            }))
+   );
+
+   public static void a(coa $$0) {
+      $$0.eb().a(ImmutableList.of(cqp.y, cqp.z, cqp.x, cqp.k, cqp.w, cqp.v, cqp.b));
    }
 
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
-      } else {
-         this.g++;
+   protected static bwk<?> a(coa $$0, Dynamic<?> $$1) {
+      bwk.b<coa> $$2 = bwk.a(l, k);
+      bwk<coa> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(cqp.a));
+      $$3.b(cqp.b);
+      $$3.f();
+      return $$3;
+   }
+
+   private static void a(bwk<coa> $$0) {
+      $$0.a(cqp.a, 0, ImmutableList.of(new bzv(0.8F), caz.a(), new byh(45, 90), new byl()));
+   }
+
+   private static void b(bwk<coa> $$0) {
+      $$0.a(cqp.y, 5, ImmutableList.of(new cav(a)), cem.aC);
+   }
+
+   private static void c(bwk<coa> $$0) {
+      $$0.a(cqp.z, ImmutableList.of(Pair.of(0, new caw()), Pair.of(1, new cau(h))), ImmutableSet.of(Pair.of(cem.ay, cen.b), Pair.of(cem.aE, cen.b)));
+   }
+
+   private static void d(bwk<coa> $$0) {
+      $$0.a(
+         cqp.b,
+         10,
+         ImmutableList.of(
+            cay.a(coa::x), cbc.a(), new byy(ImmutableMap.of(cem.aB, cen.b), ImmutableList.of(Pair.of(byt.a(0.5F), 2), Pair.of(new bxl(30, 60), 1)))
+         )
+      );
+   }
+
+   private static void e(bwk<coa> $$0) {
+      $$0.a(cqp.w, 5, ImmutableList.of(cay.a(coa::x), bxu.a(cem.az, 2, 0.7F)), cem.az);
+   }
+
+   private static void f(bwk<coa> $$0) {
+      $$0.a(cqp.v, 5, ImmutableList.of(cay.a(coa::x), new cba(i)), cem.aB);
+   }
+
+   private static void g(bwk<coa> $$0) {
+      $$0.a(cqp.x, 10, ImmutableList.of(new cax()), cem.ay);
+   }
+
+   private static void a(coa $$0, bwk<coa> $$1) {
+      $$1.a(
+         cqp.k,
+         10,
+         ImmutableList.of(
+            m,
+            bzq.a(($$1x, $$2) -> !$$0.t().d() || !$$0.b($$2), cob::a, false),
+            bza.a($$1x -> a($$0, $$1x), (float)$$0.h(bwq.m)),
+            bzg.a(1.2F),
+            new cbb(),
+            byi.a(18)
+         ),
+         cem.o
+      );
+   }
+
+   private static boolean a(coa $$0, bvi $$1) {
+      return $$0.eb().c(cem.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void a(ard $$0, coa $$1, bvi $$2) {
+      if (!$$1.b($$2)) {
+         $$1.c($$2);
       }
 
-      if (this.i > 0) {
-         this.i--;
+      a((bvi)$$1);
+   }
+
+   public static void a(bvi $$0) {
+      if ($$0.eb().a(cem.aE)) {
+         $$0.eb().a(cem.aE, baf.a, 1200L);
       }
    }
 
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(ard $$0, ji $$1, are $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<are> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cob::d).orElse(false))) {
-            return OptionalInt.empty();
-         } else {
-            Optional<cob> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cob::c));
-            if ($$4.isPresent()) {
-               cob $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
-         }
+   public static void a(coa $$0, ji $$1) {
+      if ($$0.dV().F_().a($$1) && !$$0.x().isPresent() && !$$0.eb().c(cem.o).isPresent()) {
+         a((bvi)$$0);
+         $$0.eb().a(cem.aG, baf.a, 100L);
+         $$0.eb().a(cem.n, new bxe($$1), 100L);
+         $$0.eb().a(cem.az, $$1, 100L);
+         $$0.eb().b(cem.m);
       }
-   }
-
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(ard $$0, ji $$1) {
-      fav $$2 = fav.a(fba.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(cnz.class, $$2).isEmpty();
-   }
-
-   private static List<are> b(ard $$0, ji $$1) {
-      fba $$2 = fba.b($$1);
-      return $$0.a($$1x -> !$$1x.Z_() && $$1x.dt().a((kb)$$2, 16.0) && $$1x.bL());
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
-      }
-   }
-
-   private void f() {
-      this.a(this.c() - 1);
-   }
-
-   public void a(int $$0) {
-      this.h = ayz.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(cob $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
    }
 }

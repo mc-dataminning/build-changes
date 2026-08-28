@@ -4,13 +4,13 @@ public class aic implements yw<agg> {
    private static final int c = 2;
    private static final int d = 4;
    private final ji e;
-   private final dvr.a f;
-   private final dyg g;
+   private final dvs.a f;
+   private final dyh g;
    private final String h;
    private final ji i;
    private final km j;
-   private final dol k;
-   private final dqe l;
+   private final dom k;
+   private final dqf l;
    private final String m;
    private final boolean n;
    private final boolean o;
@@ -19,7 +19,7 @@ public class aic implements yw<agg> {
    private final long r;
 
    public aic(
-      ji $$0, dvr.a $$1, dyg $$2, String $$3, ji $$4, km $$5, dol $$6, dqe $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      ji $$0, dvs.a $$1, dyh $$2, String $$3, ji $$4, km $$5, dom $$6, dqf $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.e = $$0;
       this.f = $$1;
@@ -39,15 +39,15 @@ public class aic implements yw<agg> {
 
    private aic(vl $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(dvr.a.class);
-      this.g = $$0.b(dyg.class);
+      this.f = $$0.b(dvs.a.class);
+      this.g = $$0.b(dyh.class);
       this.h = $$0.p();
       int $$1 = 48;
       this.i = new ji(ayz.a($$0.readByte(), -48, 48), ayz.a($$0.readByte(), -48, 48), ayz.a($$0.readByte(), -48, 48));
       int $$2 = 48;
       this.j = new km(ayz.a($$0.readByte(), 0, 48), ayz.a($$0.readByte(), 0, 48), ayz.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(dol.class);
-      this.l = $$0.b(dqe.class);
+      this.k = $$0.b(dom.class);
+      this.l = $$0.b(dqf.class);
       this.m = $$0.d(128);
       this.q = ayz.a($$0.readFloat(), 0.0F, 1.0F);
       this.r = $$0.m();
@@ -102,11 +102,11 @@ public class aic implements yw<agg> {
       return this.e;
    }
 
-   public dvr.a e() {
+   public dvs.a e() {
       return this.f;
    }
 
-   public dyg f() {
+   public dyh f() {
       return this.g;
    }
 
@@ -122,11 +122,11 @@ public class aic implements yw<agg> {
       return this.j;
    }
 
-   public dol j() {
+   public dom j() {
       return this.k;
    }
 
-   public dqe k() {
+   public dqf k() {
       return this.l;
    }
 

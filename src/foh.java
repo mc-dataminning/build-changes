@@ -1,38 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+public interface foh {
+   boolean a(cua var1);
 
-public class foh {
-   public static final float a = 200.0F;
-   private final List<foh.a> b = new ArrayList<>();
+   boolean a(double var1, double var3, int var5, cwq var6);
 
-   public foh a(foh.a $$0) {
-      this.b.add($$0);
-      return this;
-   }
+   void b(cua var1);
 
-   public foh a(foh $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
-         }
-      });
-   }
-
-   public void a(foe $$0, fkz $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
-   }
-
-   private void b(foe $$0, fkz $$1) {
-      for (foh.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
-      }
-   }
-
-   public interface a {
-      void render(foe var1, fkz var2);
-   }
+   void a(cua var1, cso var2);
 }

@@ -1,120 +1,120 @@
-import java.util.Locale;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fiq extends hle {
-   private static final wp a = wp.c("mco.backup.info.title");
-   private static final wp b = wp.c("mco.backup.unknown");
-   private final ful c;
-   final fha C;
-   final fsh D = new fsh(this);
-   private fiq.a E;
+public class fiq extends hlf {
+   private static final wp a = wp.c("mco.selectServer.popup");
+   private static final wp b = wp.c("mco.selectServer.close");
+   private static final akv c = akv.b("popup/background");
+   private static final akv C = akv.b("icon/trial_available");
+   private static final fqh D = new fqh(akv.b("widget/cross_button"), akv.b("widget/cross_button_highlighted"));
+   private static final int E = 236;
+   private static final int F = 34;
+   private static final int G = 6;
+   private static final int H = 195;
+   private static final int I = 152;
+   private static final int J = 4;
+   private static final int K = 10;
+   private static final int L = 320;
+   private static final int M = 172;
+   private static final int N = 100;
+   private static final int O = 99;
+   private static final int P = 100;
+   private static List<akv> Q = List.of();
+   private final fum R;
+   private final boolean S;
+   @Nullable
+   private fou T;
+   private int U;
+   private int V;
 
-   public fiq(ful $$0, fha $$1) {
+   public fiq(fum $$0, boolean $$1) {
       super(a);
-      this.c = $$0;
-      this.C = $$1;
+      this.R = $$0;
+      this.S = $$1;
+   }
+
+   public static void a(aup $$0) {
+      Collection<akv> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      Q = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
    }
 
    @Override
-   public void aR_() {
-      this.D.a(a, this.p);
-      this.E = this.D.c(new fiq.a(this.m));
-      this.D.b(fot.a(wo.k, $$0 -> this.aO_()).a());
-      this.c();
-      this.D.a($$1 -> {
-         foq var10000 = this.c($$1);
-      });
+   protected void aR_() {
+      this.R.a(this.m, this.n, this.o);
+      if (this.S) {
+         this.T = this.c(fou.a(wp.c("mco.selectServer.trial"), ftj.b(this, axv.q)).a(this.G() - 10 - 99, this.H() - 10 - 4 - 40, 99, 20).a());
+      }
+
+      this.c(fou.a(wp.c("mco.selectServer.buy"), ftj.b(this, axv.r)).a(this.G() - 10 - 99, this.H() - 10 - 20, 99, 20).a());
+      fpg $$0 = this.c(new fpg(this.E() + 4, this.F() + 4, 14, 14, D, $$0x -> this.aO_(), b));
+      $$0.a(fqf.a(b));
+      int $$1 = 142 - (this.S ? 40 : 20);
+      fpe $$2 = new fpe(this.G() - 10 - 100, this.F() + 10, 100, $$1, a, this.p);
+      if ($$2.q()) {
+         $$2.h(94);
+      }
+
+      this.c($$2);
    }
 
    @Override
-   protected void c() {
-      this.E.b(this.n, this.D.d());
-      this.D.a();
+   public void e() {
+      super.e();
+      if (++this.V > 100) {
+         this.V = 0;
+         this.U = (this.U + 1) % Q.size();
+      }
+   }
+
+   @Override
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.T != null) {
+         a($$0, this.T);
+      }
+   }
+
+   public static void a(fof $$0, fou $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(gmj::H, C, $$1.F() + $$1.A() - 8 - 4, $$1.G() + $$1.y() / 2 - 4, 8, 8);
+      $$0.c().b();
+   }
+
+   @Override
+   public void b(fof $$0, int $$1, int $$2, float $$3) {
+      this.R.a($$0, -1, -1, $$3);
+      $$0.d();
+      RenderSystem.clear(256);
+      this.A();
+      this.b($$0);
+      $$0.a(gmj::H, c, this.E(), this.F(), 320, 172);
+      if (!Q.isEmpty()) {
+         $$0.a(gmj::H, Q.get(this.U), this.E() + 10, this.F() + 10, 0.0F, 0.0F, 195, 152, 195, 152);
+      }
+   }
+
+   private int E() {
+      return (this.n - 320) / 2;
+   }
+
+   private int F() {
+      return (this.o - 172) / 2;
+   }
+
+   private int G() {
+      return this.E() + 320;
+   }
+
+   private int H() {
+      return this.F() + 172;
    }
 
    @Override
    public void aO_() {
-      this.m.a(this.c);
-   }
-
-   wp a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
-      } else {
-         return (wp)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wp.b($$1));
-      }
-   }
-
-   private wp a(String $$0) {
-      try {
-         return fjl.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   private wp b(String $$0) {
-      try {
-         return fjl.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   class a extends fpp<fiq.b> {
-      public a(final flj $$0) {
-         super($$0, fiq.this.n, fiq.this.D.d(), fiq.this.D.c(), 36);
-         if (fiq.this.C.e != null) {
-            fiq.this.C.e.forEach(($$0x, $$1) -> this.b(fiq.this.new b($$0x, $$1)));
-         }
-      }
-   }
-
-   class b extends fpp.a<fiq.b> {
-      private static final wp b = wp.c("mco.backup.entry.templateName");
-      private static final wp c = wp.c("mco.backup.entry.gameDifficulty");
-      private static final wp d = wp.c("mco.backup.entry.name");
-      private static final wp e = wp.c("mco.backup.entry.gameServerVersion");
-      private static final wp f = wp.c("mco.backup.entry.uploaded");
-      private static final wp g = wp.c("mco.backup.entry.enabledPack");
-      private static final wp h = wp.c("mco.backup.entry.description");
-      private static final wp i = wp.c("mco.backup.entry.gameMode");
-      private static final wp j = wp.c("mco.backup.entry.seed");
-      private static final wp k = wp.c("mco.backup.entry.worldType");
-      private static final wp l = wp.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
-
-      public b(final String $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-
-      @Override
-      public void a(foe $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(fiq.this.p, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(fiq.this.p, fiq.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
-
-      private wp a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_packs" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public wp a() {
-         return wp.a("narrator.select", this.m + " " + this.n);
-      }
+      this.m.a(this.R);
    }
 }

@@ -1,66 +1,102 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class ghd extends ghe {
-   private final String g;
+public class ghd {
+   final int a;
+   private final List<ghd.a> b = new ArrayList<>();
 
-   ghd(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   public ghd(int $$0) {
+      this.a = $$0;
    }
 
-   public String a() {
-      return this.g;
-   }
+   public void a(ggv $$0, IntCollection $$1, ghd.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   public ghd c() {
-      ghd $$0 = new ghd(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.f = this.f;
-      return $$0;
-   }
-
-   @Override
-   public ful a(ful $$0, ghi $$1) {
-      return new fyv($$0, $$1, this);
-   }
-
-   public static class a extends ghe.a<ghd> {
-      public a(ghd $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new ghd(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public ghe.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ghe.b.d : super.c();
-      }
-
-      @Override
-      public Either<ghe.c, ghe.b> a(ghi $$0) {
-         ghe.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new ghe.c(this.a.a, ghh.c, $$3));
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         ggx $$6 = $$0.b($$4);
+         if ($$6 instanceof ggy.a) {
+            ggy.a $$5 = (ggy.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
          }
       }
+   }
+
+   public void a(xf $$0) {
+      this.b.add(new ghd.a($$0));
+   }
+
+   public boolean b(xf $$0) {
+      boolean $$1 = false;
+      Iterator<ghd.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         ghd.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<xb> b;
+      private xf c;
+      private boolean d = true;
+      private int e;
+
+      a(final xf $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(xf $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= ghd.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, ggy.a var2);
    }
 }

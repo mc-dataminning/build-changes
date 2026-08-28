@@ -1,28 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record ezf(ezw b) implements eza {
-   public static final MapCodec<ezf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezx.a.fieldOf("chance").forGetter(ezf::c)).apply($$0, ezf::new));
+public class ezf implements ezb {
+   private static final ezf b = new ezf();
+   public static final MapCodec<ezf> a = MapCodec.unit(b);
+
+   private ezf() {
+   }
 
    @Override
-   public ezb b() {
-      return ezc.d;
+   public ezc b() {
+      return ezd.g;
    }
 
-   public boolean a(evr $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
+   @Override
+   public Set<bai<?>> a() {
+      return Set.of(eym.b);
    }
 
-   public static eza.a a(float $$0) {
-      return () -> new ezf(ezt.a($$0));
+   public boolean a(evs $$0) {
+      return $$0.a(eym.b);
    }
 
-   public static eza.a a(ezw $$0) {
-      return () -> new ezf($$0);
-   }
-
-   public ezw c() {
-      return this.b;
+   public static ezb.a c() {
+      return () -> b;
    }
 }

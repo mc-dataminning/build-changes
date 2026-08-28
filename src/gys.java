@@ -1,3 +1,4 @@
-public class gys extends gyk {
-   public fba a = fba.c;
+public class gys extends gyl {
+   public boolean a;
+   public final hbp b = new hbp();
 }

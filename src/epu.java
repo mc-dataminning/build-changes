@@ -1,53 +1,42 @@
-public class epu {
-   private static final akv[] a = new akv[]{
-      akv.b("nether_fossils/fossil_1"),
-      akv.b("nether_fossils/fossil_2"),
-      akv.b("nether_fossils/fossil_3"),
-      akv.b("nether_fossils/fossil_4"),
-      akv.b("nether_fossils/fossil_5"),
-      akv.b("nether_fossils/fossil_6"),
-      akv.b("nether_fossils/fossil_7"),
-      akv.b("nether_fossils/fossil_8"),
-      akv.b("nether_fossils/fossil_9"),
-      akv.b("nether_fossils/fossil_10"),
-      akv.b("nether_fossils/fossil_11"),
-      akv.b("nether_fossils/fossil_12"),
-      akv.b("nether_fossils/fossil_13"),
-      akv.b("nether_fossils/fossil_14")
-   };
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-   public static void a(erp $$0, enr $$1, azh $$2, ji $$3) {
-      dqe $$4 = dqe.a($$2);
-      $$1.a(new epu.a($$0, af.a(a, $$2), $$3, $$4));
+public class epu extends enn {
+   public static final bqx<dhx.c> d = bqx.a(
+      new dhx.c(but.o, 10, 2, 3), new dhx.c(but.bQ, 5, 4, 4), new dhx.c(but.bJ, 8, 5, 5), new dhx.c(but.be, 2, 5, 5), new dhx.c(but.az, 3, 4, 4)
+   );
+   public static final MapCodec<epu> e = a(epu::new);
+
+   public epu(enn.c $$0) {
+      super($$0);
    }
 
-   public static class a extends enw {
-      public a(erp $$0, akv $$1, ji $$2, dqe $$3) {
-         super(eod.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+   @Override
+   public Optional<enn.b> a(enn.a $$0) {
+      dfp $$1 = $$0.h();
+      ji $$2 = new ji($$1.d(), 64, $$1.e());
+      return Optional.of(new enn.b($$2, (Consumer<eof>)($$1x -> a($$1x, $$0))));
+   }
+
+   private static void a(eof $$0, enn.a $$1) {
+      ept.q $$2 = new ept.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<enr> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         enr $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
 
-      public a(erp $$0, tq $$1) {
-         super(eod.ac, $$1, $$0, $$1x -> a(dqe.valueOf($$1.l("Rot"))));
-      }
+      $$0.a($$1.f(), 48, 70);
+   }
 
-      private static erk a(dqe $$0) {
-         return new erk().a($$0).a(dol.a).a(eqp.d);
-      }
-
-      @Override
-      protected void a(eoc $$0, tq $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, ji $$1, dgz $$2, azh $$3, ene $$4) {
-      }
-
-      @Override
-      public void a(dhg $$0, dhe $$1, dyt $$2, azh $$3, ene $$4, dfo $$5, ji $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   @Override
+   public enw<?> e() {
+      return enw.d;
    }
 }

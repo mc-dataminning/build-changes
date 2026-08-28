@@ -1,18 +1,27 @@
-public class guy extends gqu<cjc, gyl, gap<gyl>> {
-   private static final akv a = akv.b("textures/entity/horse/horse_zombie.png");
-   private static final akv b = akv.b("textures/entity/horse/horse_skeleton.png");
-   private final akv k;
+public class guy extends gqz<cia, hat, gel> {
+   private static final akv a = akv.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public guy(gse.a $$0, gfb $$1, gfb $$2, boolean $$3) {
-      super($$0, new gcm($$0.a($$1)), new gcm($$0.a($$2)));
-      this.k = $$3 ? b : a;
+   public guy(gsf.a $$0) {
+      super($$0, new gel($$0.a(gfd.dq)), new gel($$0.a(gfd.dr)), 0.7F);
    }
 
-   public akv a(gyl $$0) {
-      return this.k;
+   protected float a(hat $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
    }
 
-   public gyl b() {
-      return new gyl();
+   public hat b() {
+      return new hat();
+   }
+
+   public void a(cia $$0, hat $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = !$$0.bj() && $$0.aJ();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.e_() && $$0.p();
+   }
+
+   public akv b(hat $$0) {
+      return a;
    }
 }

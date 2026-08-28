@@ -1,43 +1,22 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.function.Function;
+import com.google.gson.JsonPrimitive;
 
-public class fnm<T> {
-   final String a;
-   final Function<T, JsonElement> b;
+public class fnm {
+   public static final fnn<fnm.a> a = new fnn<>("x", $$0 -> new JsonPrimitive($$0.e));
+   public static final fnn<fnm.a> b = new fnn<>("y", $$0 -> new JsonPrimitive($$0.e));
+   public static final fnn<akv> c = new fnn<>("model", $$0 -> new JsonPrimitive($$0.toString()));
+   public static final fnn<Boolean> d = new fnn<>("uvlock", JsonPrimitive::new);
+   public static final fnn<Integer> e = new fnn<>("weight", JsonPrimitive::new);
 
-   public fnm(String $$0, Function<T, JsonElement> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static enum a {
+      a(0),
+      b(90),
+      c(180),
+      d(270);
 
-   public fnm<T>.a a(T $$0) {
-      return new fnm.a($$0);
-   }
+      final int e;
 
-   @Override
-   public String toString() {
-      return this.a;
-   }
-
-   public class a {
-      private final T b;
-
-      public a(final T $$1) {
-         this.b = $$1;
-      }
-
-      public fnm<T> a() {
-         return fnm.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(fnm.this.a, fnm.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return fnm.this.a + "=" + this.b;
+      private a(final int $$0) {
+         this.e = $$0;
       }
    }
 }

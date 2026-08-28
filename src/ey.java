@@ -97,7 +97,7 @@ public class ey {
       aph.a(this.h);
       apj.a(this.h);
       apl.a(this.h);
-      if (bpb.f.d()) {
+      if (bpc.f.d()) {
          anj.a(this.h);
       }
 
@@ -152,7 +152,7 @@ public class ey {
 
    public void a(ParseResults<ex> $$0, String $$1) {
       ex $$2 = (ex)$$0.getContext().getSource();
-      bos.a().a(() -> "/" + $$1);
+      bot.a().a(() -> "/" + $$1);
       ContextChain<ex> $$3 = a($$0, $$1, $$2);
 
       try {
@@ -176,7 +176,7 @@ public class ey {
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
-         bos.a().c();
+         bot.a().c();
       }
    }
 
@@ -214,10 +214,10 @@ public class ey {
       hx<ex> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aL().c(dge.y));
-         int $$6 = $$2.aL().c(dge.z);
+         int $$5 = Math.max(1, $$2.aL().c(dgf.y));
+         int $$6 = $$2.aL().c(dgf.z);
 
-         try (hx<ex> $$7 = new hx<>($$5, $$6, bos.a())) {
+         try (hx<ex> $$7 = new hx<>($$5, $$6, bot.a())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -313,8 +313,8 @@ public class ey {
    public static et a(final jt.a $$0) {
       return new et() {
          @Override
-         public crt a() {
-            return crv.e.a();
+         public cru a() {
+            return crw.e.a();
          }
 
          @Override

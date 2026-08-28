@@ -1,63 +1,105 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dqf extends djw implements djp {
-   public static final MapCodec<dqf> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dwm.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dqf::new)
-   );
-   public static final dxw f = dxn.aX;
-   protected static final float g = 6.0F;
-   protected static final fbu h = djm.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dwm i;
+public enum dqf implements azv {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<? extends dqf> a() {
-      return e;
+   public static final Codec<dqf> e = azv.a(dqf::values);
+   private final String f;
+   private final h g;
+
+   private dqf(final String $$0, final h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected dqf(dwm $$0, dww.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.l(this.F.b().b(f, Integer.valueOf(0)));
+   public dqf a(dqf $$0) {
+      return switch ($$0) {
+         case b -> {
+            switch (this) {
+               case a:
+                  yield b;
+               case b:
+                  yield c;
+               case c:
+                  yield d;
+               case d:
+                  yield a;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case c -> {
+            switch (this) {
+               case a:
+                  yield c;
+               case b:
+                  yield d;
+               case c:
+                  yield a;
+               case d:
+                  yield b;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch (this) {
+               case a:
+                  yield d;
+               case b:
+                  yield a;
+               case c:
+                  yield b;
+               case d:
+                  yield c;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> this;
+      };
    }
 
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return h;
+   public h a() {
+      return this.g;
    }
 
-   @Override
-   protected void b(dwx $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
-      }
-   }
-
-   public void a(ard $$0, ji $$1, dwx $$2, azh $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
+   public jn a(jn $$0) {
+      if ($$0.o() == jn.a.b) {
+         return $$0;
       } else {
-         this.i.a($$0, $$0.m().g(), $$1, $$2, $$3);
+         return switch (this) {
+            case b -> $$0.h();
+            case c -> $$0.g();
+            case d -> $$0.i();
+            default -> $$0;
+         };
       }
    }
 
-   @Override
-   public boolean a(dgl $$0, ji $$1, dwx $$2) {
-      return true;
+   public int a(int $$0, int $$1) {
+      return switch (this) {
+         case b -> ($$0 + $$1 / 4) % $$1;
+         case c -> ($$0 + $$1 / 2) % $$1;
+         case d -> ($$0 + $$1 * 3 / 4) % $$1;
+         default -> $$0;
+      };
+   }
+
+   public static dqf a(azh $$0) {
+      return af.a(values(), $$0);
+   }
+
+   public static List<dqf> b(azh $$0) {
+      return af.b(values(), $$0);
    }
 
    @Override
-   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
-      return (double)$$0.A.i() < 0.45;
-   }
-
-   @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwx $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(f);
+   public String c() {
+      return this.f;
    }
 }

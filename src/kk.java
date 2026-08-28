@@ -35,11 +35,11 @@ public class kk extends km {
       return new kk(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static kk a(dfo $$0, int $$1) {
+   public static kk a(dfp $$0, int $$1) {
       return new kk($$0.h, $$1, $$0.i);
    }
 
-   public static kk a(eba $$0) {
+   public static kk a(ebb $$0) {
       return a($$0.dv());
    }
 
@@ -51,7 +51,7 @@ public class kk extends km {
       return new kk(b($$0), c($$0), d($$0));
    }
 
-   public static kk a(dys $$0) {
+   public static kk a(dyt $$0) {
       return a($$0.f(), $$0.ap());
    }
 
@@ -191,8 +191,8 @@ public class kk extends km {
       return this.j().b(8, 8, 8);
    }
 
-   public dfo r() {
-      return new dfo(this.a(), this.c());
+   public dfp r() {
+      return new dfp(this.a(), this.c());
    }
 
    public static long c(ji $$0) {
@@ -225,7 +225,7 @@ public class kk extends km {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<kk> a(dfo $$0, int $$1, int $$2, int $$3) {
+   public static Stream<kk> a(dfp $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.h;
       int $$5 = $$0.i;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3, $$5 + $$1);

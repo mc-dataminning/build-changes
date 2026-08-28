@@ -342,20 +342,20 @@ public class vl extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public dfo f() {
-      return new dfo(this.readLong());
+   public dfp f() {
+      return new dfp(this.readLong());
    }
 
-   public vl a(dfo $$0) {
+   public vl a(dfp $$0) {
       this.b($$0.a());
       return this;
    }
 
-   public static dfo c(ByteBuf $$0) {
-      return new dfo($$0.readLong());
+   public static dfp c(ByteBuf $$0) {
+      return new dfp($$0.readLong());
    }
 
-   public static void a(ByteBuf $$0, dfo $$1) {
+   public static void a(ByteBuf $$0, dfp $$1) {
       $$0.writeLong($$1.a());
    }
 
@@ -369,7 +369,7 @@ public class vl extends ByteBuf {
    }
 
    public jq h() {
-      aku<dgi> $$0 = this.a(mc.be);
+      aku<dgj> $$0 = this.a(mc.be);
       ji $$1 = this.e();
       return jq.a($$0, $$1);
    }
@@ -416,21 +416,21 @@ public class vl extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public static fba f(ByteBuf $$0) {
-      return new fba($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
+   public static fbb f(ByteBuf $$0) {
+      return new fbb($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
    }
 
-   public fba k() {
+   public fbb k() {
       return f(this);
    }
 
-   public static void a(ByteBuf $$0, fba $$1) {
+   public static void a(ByteBuf $$0, fbb $$1) {
       $$0.writeDouble($$1.a());
       $$0.writeDouble($$1.b());
       $$0.writeDouble($$1.c());
    }
 
-   public void a(fba $$0) {
+   public void a(fbb $$0) {
       a(this, $$0);
    }
 
@@ -605,7 +605,7 @@ public class vl extends ByteBuf {
       return this;
    }
 
-   public faw v() {
+   public fax v() {
       ji $$0 = this.e();
       jn $$1 = this.b(jn.class);
       float $$2 = this.readFloat();
@@ -613,14 +613,14 @@ public class vl extends ByteBuf {
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
       boolean $$6 = this.readBoolean();
-      return new faw(new fba((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
+      return new fax(new fbb((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
    }
 
-   public void a(faw $$0) {
+   public void a(fax $$0) {
       ji $$1 = $$0.b();
       this.a($$1);
       this.a($$0.c());
-      fba $$2 = $$0.g();
+      fbb $$2 = $$0.g();
       this.a((float)($$2.d - (double)$$1.u()));
       this.a((float)($$2.e - (double)$$1.v()));
       this.a((float)($$2.f - (double)$$1.w()));

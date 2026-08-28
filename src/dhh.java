@@ -1,23 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class dhh {
-   public static final Codec<dhh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avz.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dhh::new)
-   );
-   private final jr<avz> b;
-   private final double c;
+public interface dhh extends dha {
+   long E();
 
-   public dhh(jr<avz> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default boolean f_(ji $$0) {
+      return true;
    }
 
-   public jr<avz> a() {
-      return this.b;
-   }
-
-   public double b() {
-      return this.c;
+   default void a(@Nullable Supplier<String> $$0) {
    }
 }

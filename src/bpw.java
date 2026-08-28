@@ -1,14 +1,7 @@
-import java.time.Duration;
 import jdk.jfr.consumer.RecordedEvent;
 
-public record bpw(Duration a, dfo b, String c, String d, boolean e) implements bpz {
+public record bpw(String a, String b, String c) {
    public static bpw a(RecordedEvent $$0) {
-      return new bpw(
-         $$0.getDuration(),
-         new dfo($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
-         $$0.getString("structure"),
-         $$0.getString("level"),
-         $$0.getBoolean("success")
-      );
+      return new bpw($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
    }
 }

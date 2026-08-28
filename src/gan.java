@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gan extends RuntimeException {
+   public gan(String $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gan {
+   public gan(String $$0, Throwable $$1) {
+      super($$0, $$1);
+   }
 }

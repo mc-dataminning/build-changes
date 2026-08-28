@@ -18,7 +18,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<aku<dbe<?>>> g, Map<akv, ds.c> h, Optional<bx> i, Optional<ci> j) implements by {
+public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<aku<dbf<?>>> g, Map<akv, ds.c> h, Optional<bx> i, Optional<ci> j) implements by {
    public static final int b = 100;
    public static final MapCodec<ds> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
@@ -34,7 +34,7 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<aku<dbe<?>>> g
    );
 
    @Override
-   public boolean a(bul $$0, ard $$1, @Nullable fba $$2) {
+   public boolean a(bum $$0, ard $$1, @Nullable fbb $$2) {
       if (!($$0 instanceof are $$3)) {
          return false;
       } else if (!this.d.d($$3.cr)) {
@@ -54,8 +54,8 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<aku<dbe<?>>> g
          ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
-            Entry<aku<dbe<?>>> $$8 = (Entry<aku<dbe<?>>>)var13.next();
-            if ($$7.b((aku<dbe<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
+            Entry<aku<dbf<?>>> $$8 = (Entry<aku<dbf<?>>>)var13.next();
+            if ($$7.b((aku<dbf<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
                return false;
             }
          }
@@ -73,15 +73,15 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<aku<dbe<?>>> g
          }
 
          if (this.i.isPresent()) {
-            fba $$13 = $$3.bF();
-            fba $$14 = $$3.g(1.0F);
-            fba $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
-            fax $$16 = cps.a($$3.dV(), $$3, $$13, $$15, new fav($$13, $$15).g(1.0), $$0x -> !$$0x.Z_(), 0.0F);
-            if ($$16 == null || $$16.d() != fay.a.c) {
+            fbb $$13 = $$3.bF();
+            fbb $$14 = $$3.g(1.0F);
+            fbb $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
+            fay $$16 = cpt.a($$3.dV(), $$3, $$13, $$15, new faw($$13, $$15).g(1.0), $$0x -> !$$0x.Z_(), 0.0F);
+            if ($$16 == null || $$16.d() != faz.a.c) {
                return false;
             }
 
-            bul $$17 = $$16.a();
+            bum $$17 = $$16.a();
             if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
@@ -108,7 +108,7 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<aku<dbe<?>>> g
       return this.f;
    }
 
-   public Object2BooleanMap<aku<dbe<?>>> e() {
+   public Object2BooleanMap<aku<dbf<?>>> e() {
       return this.g;
    }
 
@@ -174,7 +174,7 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<aku<dbe<?>>> g
       private dk.d a = dk.d.c;
       private cg b = cg.a;
       private final Builder<ds.e<?>> c = ImmutableList.builder();
-      private final Object2BooleanMap<aku<dbe<?>>> d = new Object2BooleanOpenHashMap();
+      private final Object2BooleanMap<aku<dbf<?>>> d = new Object2BooleanOpenHashMap();
       private final Map<akv, ds.c> e = Maps.newHashMap();
       private Optional<bx> f = Optional.empty();
       private Optional<ci> g = Optional.empty();
@@ -193,7 +193,7 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<aku<dbe<?>>> g
          return this;
       }
 
-      public ds.d a(aku<dbe<?>> $$0, boolean $$1) {
+      public ds.d a(aku<dbf<?>> $$0, boolean $$1) {
          this.d.put($$0, $$1);
          return this;
       }

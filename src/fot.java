@@ -1,100 +1,160 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.UUID;
 
-public class fot extends foi {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fot.b q = $$0 -> $$0.get();
-   protected final fot.c r;
-   protected final fot.b s;
+public class fot {
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final akv[] c = new akv[]{
+      akv.b("boss_bar/pink_background"),
+      akv.b("boss_bar/blue_background"),
+      akv.b("boss_bar/red_background"),
+      akv.b("boss_bar/green_background"),
+      akv.b("boss_bar/yellow_background"),
+      akv.b("boss_bar/purple_background"),
+      akv.b("boss_bar/white_background")
+   };
+   private static final akv[] d = new akv[]{
+      akv.b("boss_bar/pink_progress"),
+      akv.b("boss_bar/blue_progress"),
+      akv.b("boss_bar/red_progress"),
+      akv.b("boss_bar/green_progress"),
+      akv.b("boss_bar/yellow_progress"),
+      akv.b("boss_bar/purple_progress"),
+      akv.b("boss_bar/white_progress")
+   };
+   private static final akv[] e = new akv[]{
+      akv.b("boss_bar/notched_6_background"),
+      akv.b("boss_bar/notched_10_background"),
+      akv.b("boss_bar/notched_12_background"),
+      akv.b("boss_bar/notched_20_background")
+   };
+   private static final akv[] f = new akv[]{
+      akv.b("boss_bar/notched_6_progress"), akv.b("boss_bar/notched_10_progress"), akv.b("boss_bar/notched_12_progress"), akv.b("boss_bar/notched_20_progress")
+   };
+   private final flk g;
+   final Map<UUID, fpi> h = Maps.newLinkedHashMap();
 
-   public static fot.a a(wp $$0, fot.c $$1) {
-      return new fot.a($$0, $$1);
+   public fot(flk $$0) {
+      this.g = $$0;
    }
 
-   protected fot(int $$0, int $$1, int $$2, int $$3, wp $$4, fot.c $$5, fot.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
-   }
+   public void a(fof $$0) {
+      if (!this.h.isEmpty()) {
+         bou $$1 = bot.a();
+         $$1.a("bossHealth");
+         int $$2 = $$0.a();
+         int $$3 = 12;
 
-   @Override
-   public void b() {
-      this.r.onPress(this);
-   }
+         for (fpi $$4 : this.h.values()) {
+            int $$5 = $$2 / 2 - 91;
+            this.a($$0, $$5, $$3, $$4);
+            wp $$7 = $$4.i();
+            int $$8 = this.g.h.a($$7);
+            int $$9 = $$2 / 2 - $$8 / 2;
+            int $$10 = $$3 - 9;
+            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
+            $$3 += 10 + 9;
+            if ($$3 >= $$0.b() / 3) {
+               break;
+            }
+         }
 
-   @Override
-   protected xd d() {
-      return this.s.createNarrationMessage(() -> super.d());
-   }
-
-   @Override
-   public void a(fsq $$0) {
-      this.c($$0);
-   }
-
-   public static class a {
-      private final wp a;
-      private final fot.c b;
-      @Nullable
-      private fqe c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fot.b h = fot.q;
-
-      public a(wp $$0, fot.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fot.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fot.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fot.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fot.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fot.a a(@Nullable fqe $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fot.a a(fot.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fot a() {
-         fot $$0 = new fot(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+         $$1.c();
       }
    }
 
-   public interface b {
-      xd createNarrationMessage(Supplier<xd> var1);
+   private void a(fof $$0, int $$1, int $$2, bsb $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = ayz.b($$3.j(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+      }
    }
 
-   public interface c {
-      void onPress(fot var1);
+   private void a(fof $$0, int $$1, int $$2, bsb $$3, int $$4, akv[] $$5, akv[] $$6) {
+      $$0.a(gmj::H, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.l() != bsb.b.a) {
+         $$0.a(gmj::H, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      }
+   }
+
+   public void a(abv $$0) {
+      $$0.a(new abv.b() {
+         @Override
+         public void a(UUID $$0, wp $$1, float $$2, bsb.a $$3, bsb.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            fot.this.h.put($$0, new fpi($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         }
+
+         @Override
+         public void a(UUID $$0) {
+            fot.this.h.remove($$0);
+         }
+
+         @Override
+         public void a(UUID $$0, float $$1) {
+            fot.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, wp $$1) {
+            fot.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, bsb.a $$1, bsb.b $$2) {
+            fpi $$3 = fot.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
+
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            fpi $$4 = fot.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
+   }
+
+   public void a() {
+      this.h.clear();
+   }
+
+   public boolean b() {
+      if (!this.h.isEmpty()) {
+         for (bsb $$0 : this.h.values()) {
+            if ($$0.n()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (bsb $$0 : this.h.values()) {
+            if ($$0.m()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (bsb $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 }

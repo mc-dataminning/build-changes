@@ -3,68 +3,50 @@ import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dst extends dsb {
-   public static final MapCodec<dst> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dst::new));
-   public static final dxu<jn> g = dnk.aF;
-   protected static final float h = 2.5F;
-   private static final Map<jn, fbu> i = Maps.newEnumMap(
+public class dst extends dij {
+   public static final MapCodec<dst> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqu.a.b.fieldOf("kind").forGetter(dij::b), t()).apply($$0, dst::new));
+   public static final dxv<jn> d = dnl.aF;
+   private static final Map<jn, fbv> b = Maps.newEnumMap(
       ImmutableMap.of(
          jn.c,
-         djm.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         djn.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
          jn.d,
-         djm.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
-         jn.e,
-         djm.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         djn.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
          jn.f,
-         djm.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+         djn.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         jn.e,
+         djn.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
       )
    );
 
    @Override
-   public MapCodec<dst> a() {
-      return f;
+   public MapCodec<? extends dst> a() {
+      return c;
    }
 
-   protected dst(lx $$0, dww.d $$1) {
+   protected dst(dqu.a $$0, dwx.d $$1) {
       super($$0, $$1);
-      this.l(this.F.b().b(g, jn.c));
+      this.l(this.m().b(d, jn.c));
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return o($$0);
-   }
-
-   public static fbu o(dwx $$0) {
-      return i.get($$0.c(g));
+   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
+      return b.get($$0.c(d));
    }
 
    @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      return b($$1, $$2, $$0.c(g));
-   }
-
-   public static boolean b(dgl $$0, ji $$1, jn $$2) {
-      ji $$3 = $$1.a($$2.g());
-      dwx $$4 = $$0.a_($$3);
-      return $$4.c($$0, $$3, $$2);
-   }
-
-   @Nullable
-   @Override
-   public dwx a(dag $$0) {
-      dwx $$1 = this.m();
-      dgl $$2 = $$0.q();
+   public dwy a(dah $$0) {
+      dwy $$1 = super.a($$0);
+      dfo $$2 = $$0.q();
       ji $$3 = $$0.a();
       jn[] $$4 = $$0.f();
 
       for (jn $$5 : $$4) {
          if ($$5.o().d()) {
             jn $$6 = $$5.g();
-            $$1 = $$1.b(g, $$6);
-            if ($$1.a($$2, $$3)) {
+            $$1 = $$1.b(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
                return $$1;
             }
          }
@@ -74,35 +56,18 @@ public class dst extends dsb {
    }
 
    @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      return $$4.g() == $$0.c(g) && !$$0.a($$1, $$3) ? djo.a.m() : $$0;
+   protected dwy a(dwy $$0, dqf $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
-      jn $$4 = $$0.c(g);
-      double $$5 = (double)$$2.u() + 0.5;
-      double $$6 = (double)$$2.v() + 0.7;
-      double $$7 = (double)$$2.w() + 0.5;
-      double $$8 = 0.22;
-      double $$9 = 0.27;
-      jn $$10 = $$4.g();
-      $$1.a(lt.ag, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   protected dwy a(dwy $$0, dom $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(g, $$1.a($$0.c(g)));
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.a($$1.a($$0.c(g)));
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(g);
+   protected void a(dwz.a<djn, dwy> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

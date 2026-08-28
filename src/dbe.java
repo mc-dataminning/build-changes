@@ -1,35 +1,72 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public interface dbe<T extends dbk> {
-   Codec<dbe<?>> a = mb.r.q().dispatch(dbe::a, dbo::a);
-   yn<wa, dbe<?>> b = yl.a(mc.ae).b(dbe::a, dbo::b);
+public class dbe {
+   public static final int a = -1;
+   public static final dbe b = new dbe(List.of(), IntList.of());
+   private final List<dbb> c;
+   private final IntList d;
 
-   boolean a(T var1, dgi var2);
-
-   cwp a(T var1, jt.a var2);
-
-   default boolean ap_() {
-      return false;
+   private dbe(List<dbb> $$0, IntList $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   default boolean i() {
-      return true;
+   public static dbe a(dbb $$0) {
+      return $$0.b() ? b : new dbe(List.of($$0), IntList.of(0));
    }
 
-   default String j() {
-      return "";
+   public static dbe a(List<Optional<dbb>> $$0) {
+      int $$1 = $$0.size();
+      List<dbb> $$2 = new ArrayList<>($$1);
+      IntList $$3 = new IntArrayList($$1);
+      int $$4 = 0;
+
+      for (Optional<dbb> $$5 : $$0) {
+         if ($$5.isPresent()) {
+            dbb $$6 = $$5.get();
+            if ($$6.b()) {
+               return b;
+            }
+
+            $$2.add($$6);
+            $$3.add($$4++);
+         } else {
+            $$3.add(-1);
+         }
+      }
+
+      return new dbe($$2, $$3);
    }
 
-   dbo<? extends dbe<T>> a();
+   public static dbe b(List<dbb> $$0) {
+      int $$1 = $$0.size();
+      IntList $$2 = new IntArrayList($$1);
 
-   dbp<? extends dbe<T>> b();
+      for (int $$3 = 0; $$3 < $$1; $$3++) {
+         dbb $$4 = $$0.get($$3);
+         if ($$4.b()) {
+            return b;
+         }
 
-   dbd ao_();
+         $$2.add($$3);
+      }
 
-   default List<dcj> g() {
-      return List.of();
+      return new dbe($$0, $$2);
    }
 
-   dbh h();
+   public IntList a() {
+      return this.d;
+   }
+
+   public List<dbb> b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d.isEmpty();
+   }
 }

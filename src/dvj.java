@@ -1,124 +1,98 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dvj extends dtz implements ebv.b<ecc.b>, ecc {
-   private static final Logger a = LogUtils.getLogger();
-   private ecc.a b;
-   private final ecc.b c;
-   private final ecc.d d = this.b();
-   private int h;
+public class dvj extends dua implements ebw.b<dvj.a> {
+   private final dvj.a a;
 
-   protected dvj(dub<?> $$0, ji $$1, dwx $$2) {
-      super($$0, $$1, $$2);
-      this.b = new ecc.a();
-      this.c = new ecc.b(this);
+   public dvj(ji $$0, dwy $$1) {
+      super(duc.L, $$0, $$1);
+      this.a = new dvj.a($$1, new ebq($$0));
    }
 
-   public dvj(ji $$0, dwx $$1) {
-      this(dub.J, $$0, $$1);
-   }
-
-   public ecc.d b() {
-      return new dvj.a(this.aA_());
+   public static void a(dgj $$0, ji $$1, dwy $$2, dvj $$3) {
+      $$3.a.d().a($$0, $$1, $$0.H_(), true);
    }
 
    @Override
    protected void a(tq $$0, jt.a $$1) {
       super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      akt<un> $$2 = $$1.a(ue.a);
-      if ($$0.b("listener", 10)) {
-         ecc.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
-            .ifPresent($$0x -> this.b = $$0x);
-      }
+      this.a.b.a($$0);
    }
 
    @Override
    protected void b(tq $$0, jt.a $$1) {
+      this.a.b.b($$0);
       super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      akt<un> $$2 = $$1.a(ue.a);
-      ecc.a.a
-         .encodeStart($$2, this.b)
-         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
    }
 
-   @Override
-   public ecc.a gt() {
-      return this.b;
+   public dvj.a b() {
+      return this.a;
    }
 
-   @Override
-   public ecc.d gu() {
-      return this.d;
-   }
+   public static class a implements ebw {
+      public static final int a = 8;
+      final dqn b;
+      private final dwy c;
+      private final eby d;
 
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public ecc.b f() {
-      return this.c;
-   }
-
-   protected class a implements ecc.d {
-      public static final int b = 8;
-      protected final ji c;
-      private final ebx a;
-
-      public a(final ji $$1) {
-         this.c = $$1;
-         this.a = new ebp($$1);
+      public a(dwy $$0, eby $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dqn.a();
       }
 
       @Override
-      public int a() {
+      public eby a() {
+         return this.d;
+      }
+
+      @Override
+      public int b() {
          return 8;
       }
 
       @Override
-      public ebx b() {
-         return this.a;
+      public ebw.a c() {
+         return ebw.a.b;
       }
 
       @Override
-      public boolean d() {
-         return true;
-      }
+      public boolean a(ard $$0, jr<ebu> $$1, ebu.a $$2, fbb $$3) {
+         if ($$1.a(ebu.p) && $$2.a() instanceof bvi $$4) {
+            if (!$$4.eI()) {
+               btc $$5 = $$4.eF();
+               int $$6 = $$4.a($$0, x.a($$5, btc::d));
+               if ($$4.em() && $$6 > 0) {
+                  this.b.a(ji.a((kb)$$3.a(jn.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
 
-      @Override
-      public boolean a(ard $$0, ji $$1, jr<ebt> $$2, @Nullable ebt.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(ebt.f) && !$$2.a(ebt.i) ? dqk.q(dvj.this.m()) : false;
-      }
-
-      @Override
-      public void a(ard $$0, ji $$1, jr<ebt> $$2, @Nullable bul $$3, @Nullable bul $$4, float $$5) {
-         dwx $$6 = dvj.this.m();
-         if (dqk.q($$6)) {
-            dvj.this.a(ecc.a_($$2));
-            int $$7 = ecc.a_($$5, this.a());
-            if ($$6.b() instanceof dqk $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dvj.this.d());
+               $$4.eH();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, ji.a((kb)$$1x), this.c, $$0.H_()));
             }
+
+            return true;
+         } else {
+            return false;
          }
       }
 
-      @Override
-      public void e() {
-         dvj.this.e();
+      @VisibleForTesting
+      public dqn d() {
+         return this.b;
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      private void a(ard $$0, ji $$1, dwy $$2, azh $$3) {
+         $$0.a($$1, $$2.b(dqk.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(lt.J, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, awa.wA, awb.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(dgj $$0, bvi $$1) {
+         if ($$1.ep() instanceof are $$3) {
+            btc $$4 = $$1.eF() == null ? $$0.ak().a((coy)$$3) : $$1.eF();
+            ap.Z.a($$3, $$1, $$4);
+         }
       }
    }
 }

@@ -16,8 +16,8 @@ public class mv implements mi {
    private static final Logger d = LogUtils.getLogger();
    private final Path e;
    private final CompletableFuture<jt.a> f;
-   private static final MapCodec<aku<dhk>> g = aku.a(mc.aI).fieldOf("biome");
-   private static final Codec<dht.c<aku<dhk>>> h = dht.c.a(g).fieldOf("biomes").codec();
+   private static final MapCodec<aku<dhl>> g = aku.a(mc.aI).fieldOf("biome");
+   private static final Codec<dhu.c<aku<dhl>>> h = dhu.c.a(g).fieldOf("biomes").codec();
 
    public mv(mk $$0, CompletableFuture<jt.a> $$1) {
       this.e = $$0.a(mk.b.c).resolve("biome_parameters");
@@ -29,7 +29,7 @@ public class mv implements mi {
       return this.f.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         dhy.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         dhz.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
          return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
    }

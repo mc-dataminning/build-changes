@@ -1,40 +1,38 @@
-public class gbx extends gcb<gzb> {
-   public static final gfm a = gfm.scaling(0.5F);
-   private final gfd b;
-   private final gfd c;
-
-   public gbx(gfd $$0) {
+public class gbx extends geu<hbc> {
+   public gbx(gfe $$0) {
       super($$0);
-      this.c = $$0.b("left_wing");
-      this.b = $$0.b("right_wing");
    }
 
-   public static gfj a() {
-      gfl $$0 = new gfl();
-      gfn $$1 = $$0.a();
-      gfh $$2 = new gfh(1.0F);
-      $$1.a(
-         "left_wing",
-         gfi.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gff.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
-      );
-      $$1.a(
-         "right_wing",
-         gfi.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gff.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
-      );
-      return gfj.a($$0, 64, 32);
+   public static gfk a(gfi $$0) {
+      gfm $$1 = gcp.a($$0, 0.0F);
+      gfo $$2 = $$1.a();
+      $$2.a("left_arm", gfj.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gfg.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", gfj.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gfg.a(1.9F, 12.0F, 0.0F));
+      return gfk.a($$1, 64, 64);
    }
 
-   public void a(gzb $$0) {
+   @Override
+   public void a(hbc $$0) {
       super.a($$0);
-      this.c.c = $$0.N ? 3.0F : 0.0F;
-      this.c.e = $$0.S;
-      this.c.g = $$0.U;
-      this.c.f = $$0.T;
-      this.b.f = -this.c.f;
-      this.b.c = this.c.c;
-      this.b.e = this.c.e;
-      this.b.g = -this.c.g;
+      if ($$0.h == gcp.a.e) {
+         this.s.e = this.s.e * 0.5F - (float) Math.PI;
+         this.s.f = 0.0F;
+      }
+
+      if ($$0.f == gcp.a.e) {
+         this.r.e = this.r.e * 0.5F - (float) Math.PI;
+         this.r.f = 0.0F;
+      }
+
+      float $$1 = $$0.G;
+      if ($$1 > 0.0F) {
+         this.r.e = ayz.j($$1, this.r.e, (float) (-Math.PI * 4.0 / 5.0)) + $$1 * 0.35F * ayz.a(0.1F * $$0.u);
+         this.s.e = ayz.j($$1, this.s.e, (float) (-Math.PI * 4.0 / 5.0)) - $$1 * 0.35F * ayz.a(0.1F * $$0.u);
+         this.r.g = ayz.j($$1, this.r.g, -0.15F);
+         this.s.g = ayz.j($$1, this.s.g, 0.15F);
+         this.u.e = this.u.e - $$1 * 0.55F * ayz.a(0.1F * $$0.u);
+         this.t.e = this.t.e + $$1 * 0.55F * ayz.a(0.1F * $$0.u);
+         this.o.e = 0.0F;
+      }
    }
 }

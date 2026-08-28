@@ -1,35 +1,35 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public interface dbo<T extends dbe<?>> {
-   dbo<dbs> a = a("crafting_shaped", new dbs.a());
-   dbo<dbu> b = a("crafting_shapeless", new dbu.a());
-   dbo<dal> c = a("crafting_special_armordye", new dau.a<>(dal::new));
-   dbo<dao> d = a("crafting_special_bookcloning", new dau.a<>(dao::new));
-   dbo<dbb> e = a("crafting_special_mapcloning", new dau.a<>(dbb::new));
-   dbo<dbc> f = a("crafting_special_mapextending", new dau.a<>(dbc::new));
-   dbo<dax> g = a("crafting_special_firework_rocket", new dau.a<>(dax::new));
-   dbo<daz> h = a("crafting_special_firework_star", new dau.a<>(daz::new));
-   dbo<day> i = a("crafting_special_firework_star_fade", new dau.a<>(day::new));
-   dbo<dcf> j = a("crafting_special_tippedarrow", new dau.a<>(dcf::new));
-   dbo<dam> k = a("crafting_special_bannerduplicate", new dau.a<>(dam::new));
-   dbo<dbv> l = a("crafting_special_shielddecoration", new dau.a<>(dbv::new));
-   dbo<dcg> m = a("crafting_transmute", new dcg.a());
-   dbo<dbq> n = a("crafting_special_repairitem", new dau.a<>(dbq::new));
-   dbo<dby> o = a("smelting", new dak.b<>(dby::new, 200));
-   dbo<dan> p = a("blasting", new dak.b<>(dan::new, 100));
-   dbo<dcd> q = a("smoking", new dak.b<>(dcd::new, 100));
-   dbo<dap> r = a("campfire_cooking", new dak.b<>(dap::new, 100));
-   dbo<dce> s = a("stonecutting", new dbw.b<>(dce::new));
-   dbo<dcb> t = a("smithing_transform", new dcb.a());
-   dbo<dcc> u = a("smithing_trim", new dcc.a());
-   dbo<dav> v = a("crafting_decorated_pot", new dau.a<>(dav::new));
+public class dbo {
+   public static final aku<? extends ke<dbo>> a = aku.a(akv.b("recipe_property_set"));
+   public static final aku<dbo> b = a("smithing_base");
+   public static final aku<dbo> c = a("smithing_template");
+   public static final aku<dbo> d = a("smithing_addition");
+   public static final aku<dbo> e = a("furnace_input");
+   public static final aku<dbo> f = a("blast_furnace_input");
+   public static final aku<dbo> g = a("smoker_input");
+   public static final aku<dbo> h = a("campfire_input");
+   public static final yn<wa, dbo> i = yl.b(mc.K).a(yl.a()).a($$0 -> new dbo(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
+   public static final dbo j = new dbo(Set.of());
+   private final Set<jr<cwm>> k;
 
-   MapCodec<T> a();
+   private dbo(Set<jr<cwm>> $$0) {
+      this.k = $$0;
+   }
 
-   @Deprecated
-   yn<wa, T> b();
+   private static aku<dbo> a(String $$0) {
+      return aku.a(a, akv.b($$0));
+   }
 
-   static <S extends dbo<T>, T extends dbe<?>> S a(String $$0, S $$1) {
-      return ke.a(mb.r, $$0, $$1);
+   public boolean a(cwq $$0) {
+      return this.k.contains($$0.i());
+   }
+
+   static dbo a(Collection<dbb> $$0) {
+      Set<jr<cwm>> $$1 = $$0.stream().flatMap(dbb::a).collect(Collectors.toUnmodifiableSet());
+      return new dbo($$1);
    }
 }

@@ -1,30 +1,44 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class exn extends exe {
+public class exn extends exf {
    public static final MapCodec<exn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ks.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, exn::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  arv.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
+                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
+                  ayi.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, exn::new)
    );
-   private final ks b;
+   private final Optional<String> b;
+   private final Optional<arv<String>> c;
+   private final Optional<Integer> d;
 
-   private exn(List<eza> $$0, ks $$1) {
+   public exn(List<ezb> $$0, Optional<arv<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
       super($$0);
-      this.b = $$1;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
    }
 
    @Override
-   public exg<exn> b() {
-      return exh.k;
-   }
-
-   @Override
-   public cwp a(cwp $$0, evr $$1) {
-      $$0.a(this.b);
+   protected cwq a(cwq $$0, evs $$1) {
+      $$0.a(kv.T, czy.a, this::a);
       return $$0;
    }
 
-   public static <T> exe.a<?> a(ku<T> $$0, T $$1) {
-      return a($$2 -> new exn($$2, ks.a().a($$0, $$1).a()));
+   private czy a(czy $$0) {
+      return new czy(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   }
+
+   @Override
+   public exh<exn> b() {
+      return exi.M;
    }
 }

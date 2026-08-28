@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fgz {
+   fgp b();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fgz {
+   void d();
+
+   static fgz f() {
+      return new fgz() {
+         private final fgp a = new fgp();
+
+         @Override
+         public fgp b() {
+            return this.a;
+         }
+
+         @Override
+         public void d() {
+         }
+      };
+   }
 }

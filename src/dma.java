@@ -1,94 +1,88 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class dma extends diy implements dpj {
+public class dma extends diz {
    public static final MapCodec<dma> a = b(dma::new);
+   protected static final fbv b = djn.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<ji> c = ji.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(ji::j).toList();
 
    @Override
    public MapCodec<dma> a() {
       return a;
    }
 
-   protected dma(dww.d $$0) {
+   protected dma(dwx.d $$0) {
       super($$0);
    }
 
-   @Override
-   public dtz a(ji $$0, dwx $$1) {
-      return new dvs($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
-      return a($$2, dub.w, $$0.C ? dvs::a : dvs::b);
+   public static boolean a(dgj $$0, ji $$1, ji $$2) {
+      return $$0.a_($$1.a((km)$$2)).a(awp.cy) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(awp.cz);
    }
 
    @Override
-   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
-      dtz $$4 = $$1.c_($$2);
-      if ($$4 instanceof dvs) {
-         int $$5 = ((dvs)$$4).f();
+   protected boolean g_(dwy $$0) {
+      return true;
+   }
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
-            }
+   @Override
+   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
+      return b;
+   }
 
-            $$1.a(lt.ae, $$7, $$8, $$9, $$10, $$11, $$12);
+   @Override
+   public void a(dwy $$0, dgj $$1, ji $$2, azh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+
+      for (ji $$4 : c) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               lt.s,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
          }
       }
    }
 
    @Override
-   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
-      return cwp.j;
-   }
-
-   @Override
-   protected boolean a(dwx $$0, esy $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, bul $$3) {
-      if ($$3.o(false) && !$$1.C && $$1.c_($$2) instanceof dvs $$5 && !$$5.c()) {
-         $$3.a(this, $$2);
-         dvs.c($$1, $$2, $$0, $$5);
-      }
+   public dua a(ji $$0, dwy $$1) {
+      return new duw($$0, $$1);
    }
 
    @Nullable
    @Override
-   public etz a(ard $$0, bul $$1, ji $$2) {
-      if ($$0.c_($$2) instanceof dvs $$4) {
-         fba $$6 = $$4.a($$0, $$2);
-         if ($$6 == null) {
-            return null;
-         } else {
-            return $$1 instanceof cqa
-               ? new etz($$0, $$6, fba.c, 0.0F, 0.0F, Set.of(), etz.c)
-               : new etz($$0, $$6, fba.c, 0.0F, 0.0F, bvv.a(bvv.l, bvv.k), etz.c);
-         }
+   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
+      return $$0.C ? a($$2, duc.n, duw::a) : null;
+   }
+
+   @Override
+   protected bsl a(dwy $$0, dgj $$1, ji $$2, coy $$3, fax $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+      }
+
+      return bsl.a;
+   }
+
+   @Nullable
+   @Override
+   protected bsn b(dwy $$0, dgj $$1, ji $$2) {
+      dua $$3 = $$1.c_($$2);
+      if ($$3 instanceof duw) {
+         wp $$4 = ((bso)$$3).p_();
+         return new bst(($$2x, $$3x, $$4x) -> new csz($$2x, $$3x, csq.a($$1, $$2)), $$4);
       } else {
          return null;
       }
    }
 
    @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.a;
+   protected boolean a(dwy $$0, etp $$1) {
+      return false;
    }
 }

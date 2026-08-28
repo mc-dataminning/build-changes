@@ -1,250 +1,97 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SequencedMap;
 import javax.annotation.Nullable;
 
-public class glz {
-   private final glz.b a;
-   final ji b;
-
-   public glz(kk $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$1 * 2 + 1;
-      int $$5 = ayz.c($$4);
-      int $$6 = $$1 * 16;
-      ji $$7 = $$0.j();
-      this.b = $$0.k();
-      int $$8 = $$7.u() - $$6;
-      int $$9 = $$8 + $$5 * 16 - 1;
-      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
-      int $$11 = $$10 + $$5 * 16 - 1;
-      int $$12 = $$7.w() - $$6;
-      int $$13 = $$12 + $$5 * 16 - 1;
-      this.a = new glz.b(new ene($$8, $$10, $$12, $$9, $$11, $$13));
+public interface glz {
+   static glz.a a(ffs $$0) {
+      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
    }
 
-   public boolean a(gpm.b $$0) {
-      return this.a.a($$0);
+   static glz.a a(SequencedMap<gmj, ffs> $$0, ffs $$1) {
+      return new glz.a($$1, $$0);
    }
 
-   public void a(glz.e $$0, gpq $$1, int $$2) {
-      this.a.a($$0, false, $$1, 0, $$2, true);
-   }
+   ffz getBuffer(gmj var1);
 
-   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
-      int $$7 = this.b.u();
-      int $$8 = this.b.v();
-      int $$9 = this.b.w();
-      return (double)$$7 > $$0 - (double)$$6
-         && (double)$$7 < $$3 + (double)$$6
-         && (double)$$8 > $$1 - (double)$$6
-         && (double)$$8 < $$4 + (double)$$6
-         && (double)$$9 > $$2 - (double)$$6
-         && (double)$$9 < $$5 + (double)$$6;
-   }
+   public static class a implements glz {
+      protected final ffs a;
+      protected final SequencedMap<gmj, ffs> b;
+      protected final Map<gmj, ffq> c = new HashMap<>();
+      @Nullable
+      protected gmj d;
 
-   static enum a {
-      a(4, 2, 1),
-      b(4, 1, 2),
-      c(2, 4, 1),
-      d(1, 4, 2),
-      e(2, 1, 4),
-      f(1, 2, 4);
-
-      final int g;
-      final int h;
-      final int i;
-
-      private a(final int $$0, final int $$1, final int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      public static glz.a a(int $$0, int $$1, int $$2) {
-         if ($$0 > $$1 && $$0 > $$2) {
-            return $$1 > $$2 ? a : b;
-         } else if ($$1 > $$0 && $$1 > $$2) {
-            return $$0 > $$2 ? c : d;
-         } else {
-            return $$0 > $$1 ? e : f;
-         }
-      }
-   }
-
-   class b implements glz.d {
-      private final glz.d[] b = new glz.d[8];
-      private final ene c;
-      private final int d;
-      private final int e;
-      private final int f;
-      private final glz.a g;
-      private final boolean h;
-      private final boolean i;
-      private final boolean j;
-
-      public b(final ene $$0) {
-         this.c = $$0;
-         this.d = this.c.h() + this.c.d() / 2;
-         this.e = this.c.i() + this.c.e() / 2;
-         this.f = this.c.j() + this.c.f() / 2;
-         int $$1 = glz.this.b.u() - this.d;
-         int $$2 = glz.this.b.v() - this.e;
-         int $$3 = glz.this.b.w() - this.f;
-         this.g = glz.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
-         this.h = $$1 < 0;
-         this.i = $$2 < 0;
-         this.j = $$3 < 0;
-      }
-
-      public boolean a(gpm.b $$0) {
-         boolean $$1 = $$0.f().u() - this.d < 0;
-         boolean $$2 = $$0.f().v() - this.e < 0;
-         boolean $$3 = $$0.f().w() - this.f < 0;
-         boolean $$4 = $$1 != this.h;
-         boolean $$5 = $$2 != this.i;
-         boolean $$6 = $$3 != this.j;
-         int $$7 = a(this.g, $$4, $$5, $$6);
-         if (this.c()) {
-            boolean $$8 = this.b[$$7] != null;
-            this.b[$$7] = glz.this.new c($$0);
-            return !$$8;
-         } else if (this.b[$$7] != null) {
-            glz.b $$9 = (glz.b)this.b[$$7];
-            return $$9.a($$0);
-         } else {
-            ene $$10 = this.a($$1, $$2, $$3);
-            glz.b $$11 = glz.this.new b($$10);
-            this.b[$$7] = $$11;
-            return $$11.a($$0);
-         }
-      }
-
-      private static int a(glz.a $$0, boolean $$1, boolean $$2, boolean $$3) {
-         int $$4 = 0;
-         if ($$1) {
-            $$4 += $$0.g;
-         }
-
-         if ($$2) {
-            $$4 += $$0.h;
-         }
-
-         if ($$3) {
-            $$4 += $$0.i;
-         }
-
-         return $$4;
-      }
-
-      private boolean c() {
-         return this.c.d() == 32;
-      }
-
-      private ene a(boolean $$0, boolean $$1, boolean $$2) {
-         int $$3;
-         int $$4;
-         if ($$0) {
-            $$3 = this.c.h();
-            $$4 = this.d - 1;
-         } else {
-            $$3 = this.d;
-            $$4 = this.c.k();
-         }
-
-         int $$7;
-         int $$8;
-         if ($$1) {
-            $$7 = this.c.i();
-            $$8 = this.e - 1;
-         } else {
-            $$7 = this.e;
-            $$8 = this.c.l();
-         }
-
-         int $$11;
-         int $$12;
-         if ($$2) {
-            $$11 = this.c.j();
-            $$12 = this.f - 1;
-         } else {
-            $$11 = this.f;
-            $$12 = this.c.m();
-         }
-
-         return new ene($$3, $$7, $$11, $$4, $$8, $$12);
+      protected a(ffs $$0, SequencedMap<gmj, ffs> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
       @Override
-      public void a(glz.e $$0, boolean $$1, gpq $$2, int $$3, int $$4, boolean $$5) {
-         boolean $$6 = $$1;
-         if (!$$1) {
-            int $$7 = $$2.a(this.c);
-            $$1 = $$7 == -2;
-            $$6 = $$7 == -2 || $$7 == -1;
+      public ffz getBuffer(gmj $$0) {
+         ffq $$1 = this.c.get($$0);
+         if ($$1 != null && !$$0.X()) {
+            this.a($$0, $$1);
+            $$1 = null;
          }
 
-         if ($$6) {
-            $$5 = $$5
-               && glz.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
-            $$0.visit(this, $$1, $$3, $$5);
-
-            for (glz.d $$8 : this.b) {
-               if ($$8 != null) {
-                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            ffs $$2 = this.b.get($$0);
+            if ($$2 != null) {
+               $$1 = new ffq($$2, $$0.T(), $$0.S());
+            } else {
+               if (this.d != null) {
+                  this.a(this.d);
                }
+
+               $$1 = new ffq(this.a, $$0.T(), $$0.S());
+               this.d = $$0;
             }
+
+            this.c.put($$0, $$1);
+            return $$1;
          }
       }
 
-      @Nullable
-      @Override
-      public gpm.b a() {
-         return null;
-      }
-
-      @Override
-      public fav b() {
-         return new fav(
-            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
-         );
-      }
-   }
-
-   final class c implements glz.d {
-      private final gpm.b b;
-
-      c(final gpm.b $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(glz.e $$0, boolean $$1, gpq $$2, int $$3, int $$4, boolean $$5) {
-         fav $$6 = this.b.b();
-         if ($$1 || $$2.a(this.a().b())) {
-            $$5 = $$5 && glz.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
-            $$0.visit(this, $$1, $$3, $$5);
+      public void a() {
+         if (this.d != null) {
+            this.a(this.d);
+            this.d = null;
          }
       }
 
-      @Override
-      public gpm.b a() {
-         return this.b;
+      public void b() {
+         this.a();
+
+         for (gmj $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
       }
 
-      @Override
-      public fav b() {
-         return this.b.b();
+      public void a(gmj $$0) {
+         ffq $$1 = this.c.remove($$0);
+         if ($$1 != null) {
+            this.a($$0, $$1);
+         }
       }
-   }
 
-   public interface d {
-      void a(glz.e var1, boolean var2, gpq var3, int var4, int var5, boolean var6);
+      private void a(gmj $$0, ffq $$1) {
+         ffu $$2 = $$1.a();
+         if ($$2 != null) {
+            if ($$0.Y()) {
+               ffs $$3 = this.b.getOrDefault($$0, this.a);
+               $$2.a($$3, RenderSystem.getProjectionType().a());
+            }
 
-      @Nullable
-      gpm.b a();
+            $$0.a($$2);
+         }
 
-      fav b();
-   }
-
-   @FunctionalInterface
-   public interface e {
-      void visit(glz.d var1, boolean var2, int var3, boolean var4);
+         if ($$0.equals(this.d)) {
+            this.d = null;
+         }
+      }
    }
 }

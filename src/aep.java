@@ -4,7 +4,7 @@ public class aep implements yw<abl> {
    public static final yn<vl, aep> a = yw.a(aep::a, aep::new);
    private final int b;
 
-   public aep(bul $$0) {
+   public aep(bum $$0) {
       this.b = $$0.ar();
    }
 
@@ -26,7 +26,7 @@ public class aep implements yw<abl> {
    }
 
    @Nullable
-   public bul a(dgi $$0) {
+   public bum a(dgj $$0) {
       return $$0.a(this.b);
    }
 }

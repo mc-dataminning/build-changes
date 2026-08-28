@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class era extends erb {
+public class era extends erm {
    public static final MapCodec<era> a = MapCodec.unit(() -> era.b);
    public static final era b = new era();
 
@@ -8,12 +8,7 @@ public class era extends erb {
    }
 
    @Override
-   public boolean a(ji $$0, ji $$1, ji $$2, azh $$3) {
-      return true;
-   }
-
-   @Override
-   protected erc<?> a() {
-      return erc.a;
+   protected ero<?> a() {
+      return ero.j;
    }
 }

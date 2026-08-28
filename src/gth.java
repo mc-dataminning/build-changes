@@ -1,31 +1,32 @@
-public class gth extends gsd<cpp, gzm> {
-   private static final akv a = akv.b("textures/entity/llama/spit.png");
-   private final gcu b;
+public class gth extends gqz<cjg, gzm, gcu> {
+   private static final akv a = akv.b("textures/entity/llama/creamy.png");
+   private static final akv b = akv.b("textures/entity/llama/white.png");
+   private static final akv k = akv.b("textures/entity/llama/brown.png");
+   private static final akv l = akv.b("textures/entity/llama/gray.png");
 
-   public gth(gse.a $$0) {
-      super($$0);
-      this.b = new gcu($$0.a(gfc.bw));
+   public gth(gsf.a $$0, gfc $$1, gfc $$2) {
+      super($$0, new gcu($$0.a($$1)), new gcu($$0.a($$2)), 0.7F);
+      this.a(new gwo(this, $$0.f(), $$0.h()));
    }
 
-   public void a(gzm $$0, ffu $$1, gly $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.15F, 0.0F);
-      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.b));
-      this.b.a($$0);
-      ffy $$4 = $$2.getBuffer(this.b.a(a));
-      this.b.a($$1, $$4, $$3, hei.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public akv a(gzm $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   public gzm a() {
+   public gzm b() {
       return new gzm();
    }
 
-   public void a(cpp $$0, gzm $$1, float $$2) {
+   public void a(cjg $$0, gzm $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.j($$2);
-      $$1.a = $$0.k($$2);
+      $$1.a = $$0.gF();
+      $$1.b = !$$0.e_() && $$0.t();
+      $$1.c = $$0.ak();
+      $$1.d = $$0.gv();
    }
 }

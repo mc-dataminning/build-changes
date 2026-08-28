@@ -1,121 +1,94 @@
-public class gbm extends gcb<gxz> {
-   private static final float b = 2.0F;
-   private static final float c = 2.5F;
-   public static final gfm a = gfm.scaling(0.45F);
-   private static final String d = "saddle";
-   private static final String e = "bridle";
-   private static final String f = "reins";
-   private final gfd g;
-   private final gfd[] i;
-   private final gfd[] j;
+public class gbm extends gcc<gxz> {
+   private static final float a = 0.6F;
+   private static final float b = 0.8F;
+   private static final float c = 1.0F;
+   private final gfe d;
+   private final gfe e;
+   private final gfe f;
+   private final gfe g;
+   private final gfe i;
+   private final gfe j;
+   private final gfe k;
 
-   public gbm(gfd $$0) {
-      super($$0);
-      gfd $$1 = $$0.b("body");
-      this.g = $$1.b("head");
-      this.i = new gfd[]{$$1.b("saddle"), this.g.b("bridle")};
-      this.j = new gfd[]{this.g.b("reins")};
+   public gbm(gfe $$0) {
+      super($$0, gmj::j);
+      this.f = $$0.b("wind_body");
+      this.j = this.f.b("wind_bottom");
+      this.i = this.j.b("wind_mid");
+      this.g = this.i.b("wind_top");
+      this.d = $$0.b("body").b("head");
+      this.e = this.d.b("eyes");
+      this.k = $$0.b("body").b("rods");
    }
 
-   public static gfj a() {
-      gfl $$0 = new gfl();
-      gfn $$1 = $$0.a();
-      gfh $$2 = new gfh(0.05F);
-      gfn $$3 = $$1.a("body", gfi.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), gff.a(0.0F, 4.0F, 9.5F));
-      $$3.a("hump", gfi.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), gff.a(0.0F, -12.0F, -10.0F));
-      $$3.a("tail", gfi.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), gff.a(0.0F, -9.0F, 3.5F));
-      gfn $$4 = $$3.a(
+   public static gfk a(int $$0, int $$1) {
+      gfm $$2 = new gfm();
+      gfo $$3 = $$2.a();
+      gfo $$4 = $$3.a("body", gfj.c(), gfg.a(0.0F, 0.0F, 0.0F));
+      gfo $$5 = $$4.a("rods", gfj.c(), gfg.a(0.0F, 8.0F, 0.0F));
+      $$5.a("rod_1", gfj.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gfi(0.0F)), gfg.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
+      $$5.a("rod_2", gfj.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gfi(0.0F)), gfg.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
+      $$5.a("rod_3", gfj.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gfi(0.0F)), gfg.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
+      gfo $$6 = $$4.a(
          "head",
-         gfi.c()
-            .a(60, 24)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
-            .a(21, 0)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
-            .a(50, 0)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
-         gff.a(0.0F, -3.0F, -19.5F)
+         gfj.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gfi(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gfi(0.0F)),
+         gfg.a(0.0F, 4.0F, 0.0F)
       );
-      $$4.a("left_ear", gfi.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gff.a(2.5F, -21.0F, -9.5F));
-      $$4.a("right_ear", gfi.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gff.a(-2.5F, -21.0F, -9.5F));
-      $$1.a("left_hind_leg", gfi.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gff.a(4.9F, 1.0F, 9.5F));
-      $$1.a("right_hind_leg", gfi.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gff.a(-4.9F, 1.0F, 9.5F));
-      $$1.a("left_front_leg", gfi.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gff.a(4.9F, 1.0F, -10.5F));
-      $$1.a("right_front_leg", gfi.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gff.a(-4.9F, 1.0F, -10.5F));
-      $$3.a(
-         "saddle",
-         gfi.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
-         gff.a(0.0F, 0.0F, 0.0F)
+      $$6.a(
+         "eyes",
+         gfj.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gfi(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gfi(0.0F)),
+         gfg.a(0.0F, 0.0F, 0.0F)
       );
-      $$4.a(
-         "reins",
-         gfi.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         gff.a(0.0F, 0.0F, 0.0F)
+      gfo $$7 = $$3.a("wind_body", gfj.c(), gfg.a(0.0F, 0.0F, 0.0F));
+      gfo $$8 = $$7.a("wind_bottom", gfj.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new gfi(0.0F)), gfg.a(0.0F, 24.0F, 0.0F));
+      gfo $$9 = $$8.a(
+         "wind_mid",
+         gfj.c()
+            .a(74, 28)
+            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new gfi(0.0F))
+            .a(78, 32)
+            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new gfi(0.0F))
+            .a(49, 71)
+            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new gfi(0.0F)),
+         gfg.a(0.0F, -7.0F, 0.0F)
       );
-      $$4.a(
-         "bridle",
-         gfi.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         gff.a(0.0F, 0.0F, 0.0F)
+      $$9.a(
+         "wind_top",
+         gfj.c()
+            .a(0, 0)
+            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new gfi(0.0F))
+            .a(6, 6)
+            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new gfi(0.0F))
+            .a(105, 57)
+            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new gfi(0.0F)),
+         gfg.a(0.0F, -6.0F, 0.0F)
       );
-      return gfj.a($$0, 128, 128);
+      return gfk.a($$2, $$0, $$1);
    }
 
    public void a(gxz $$0) {
       super.a($$0);
-      this.a($$0, $$0.aa, $$0.ab);
-      this.b($$0);
-      this.a(fmd.a, $$0.ad, $$0.ae, 2.0F, 2.5F);
-      this.a($$0.d, fmd.b, $$0.u, 1.0F);
-      this.a($$0.e, fmd.c, $$0.u, 1.0F);
-      this.a($$0.f, fmd.d, $$0.u, 1.0F);
-      this.a($$0.g, fmd.f, $$0.u, 1.0F);
-      this.a($$0.h, fmd.e, $$0.u, 1.0F);
+      this.a($$0.a, fmd.a, $$0.u);
+      this.a($$0.b, fmd.b, $$0.u);
+      this.a($$0.c, fmd.e, $$0.u);
+      this.a($$0.d, fmd.f, $$0.u);
+      this.a($$0.e, fmd.d, $$0.u);
+      this.a($$0.f, fmd.c, $$0.u);
    }
 
-   private void a(gxz $$0, float $$1, float $$2) {
-      $$1 = ayz.a($$1, -30.0F, 30.0F);
-      $$2 = ayz.a($$2, -25.0F, 45.0F);
-      if ($$0.c > 0.0F) {
-         float $$3 = 45.0F * $$0.c / 55.0F;
-         $$2 = ayz.a($$2 + $$3, -25.0F, 70.0F);
-      }
-
-      this.g.f = $$1 * (float) (Math.PI / 180.0);
-      this.g.e = $$2 * (float) (Math.PI / 180.0);
+   public gfe a() {
+      return this.d;
    }
 
-   private void b(gxz $$0) {
-      boolean $$1 = $$0.a;
-      boolean $$2 = $$0.b;
+   public gfe b() {
+      return this.e;
+   }
 
-      for (gfd $$3 : this.i) {
-         $$3.k = $$1;
-      }
+   public gfe c() {
+      return this.k;
+   }
 
-      for (gfd $$4 : this.j) {
-         $$4.k = $$2 && $$1;
-      }
+   public gfe d() {
+      return this.f;
    }
 }

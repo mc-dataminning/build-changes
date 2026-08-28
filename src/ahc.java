@@ -28,15 +28,15 @@ public class ahc implements yw<agg> {
       this.d = $$1;
    }
 
-   public static ahc a(bul $$0, boolean $$1) {
+   public static ahc a(bum $$0, boolean $$1) {
       return new ahc($$0.ar(), $$1, e);
    }
 
-   public static ahc a(bul $$0, boolean $$1, bsj $$2) {
+   public static ahc a(bum $$0, boolean $$1, bsk $$2) {
       return new ahc($$0.ar(), $$1, new ahc.d($$2));
    }
 
-   public static ahc a(bul $$0, boolean $$1, bsj $$2, fba $$3) {
+   public static ahc a(bum $$0, boolean $$1, bsk $$2, fbb $$3) {
       return new ahc($$0.ar(), $$1, new ahc.e($$2, $$3));
    }
 
@@ -64,7 +64,7 @@ public class ahc implements yw<agg> {
    }
 
    @Nullable
-   public bul a(ard $$0) {
+   public bum a(ard $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class ahc implements yw<agg> {
    }
 
    public interface c {
-      void a(bsj var1);
+      void a(bsk var1);
 
-      void a(bsj var1, fba var2);
+      void a(bsk var1, fbb var2);
 
       void a();
    }
 
    static class d implements ahc.a {
-      private final bsj a;
+      private final bsk a;
 
-      d(bsj $$0) {
+      d(bsk $$0) {
          this.a = $$0;
       }
 
       private d(vl $$0) {
-         this.a = $$0.b(bsj.class);
+         this.a = $$0.b(bsk.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class ahc implements yw<agg> {
    }
 
    static class e implements ahc.a {
-      private final bsj a;
-      private final fba b;
+      private final bsk a;
+      private final fbb b;
 
-      e(bsj $$0, fba $$1) {
+      e(bsk $$0, fbb $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(vl $$0) {
-         this.b = new fba((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bsj.class);
+         this.b = new fbb((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bsk.class);
       }
 
       @Override

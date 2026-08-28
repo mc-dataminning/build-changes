@@ -1,17 +1,17 @@
 public class aig implements yw<agg> {
    public static final yn<vl, aig> a = yw.a(aig::a, aig::new);
-   private final faw b;
-   private final bsj c;
+   private final fax b;
+   private final bsk c;
    private final int d;
 
-   public aig(bsj $$0, faw $$1, int $$2) {
+   public aig(bsk $$0, fax $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
    }
 
    private aig(vl $$0) {
-      this.c = $$0.b(bsj.class);
+      this.c = $$0.b(bsk.class);
       this.b = $$0.v();
       this.d = $$0.l();
    }
@@ -31,11 +31,11 @@ public class aig implements yw<agg> {
       $$0.a(this);
    }
 
-   public bsj b() {
+   public bsk b() {
       return this.c;
    }
 
-   public faw e() {
+   public fax e() {
       return this.b;
    }
 

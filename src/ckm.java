@@ -1,45 +1,63 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public class ckm {
-   private static final Logger a = LogUtils.getLogger();
-   private final cjv b;
-   private final ckf[] c = new ckf[ckl.c()];
-   @Nullable
-   private ckf d;
+public class ckm<T extends ckg> {
+   private static ckm<?>[] l = new ckm[0];
+   public static final ckm<ckc> a = a(ckc.class, "HoldingPattern");
+   public static final ckm<ckk> b = a(ckk.class, "StrafePlayer");
+   public static final ckm<cke> c = a(cke.class, "LandingApproach");
+   public static final ckm<ckf> d = a(ckf.class, "Landing");
+   public static final ckm<ckl> e = a(ckl.class, "Takeoff");
+   public static final ckm<cki> f = a(cki.class, "SittingFlaming");
+   public static final ckm<ckj> g = a(ckj.class, "SittingScanning");
+   public static final ckm<ckh> h = a(ckh.class, "SittingAttacking");
+   public static final ckm<cka> i = a(cka.class, "ChargingPlayer");
+   public static final ckm<ckb> j = a(ckb.class, "Dying");
+   public static final ckm<ckd> k = a(ckd.class, "Hover");
+   private final Class<? extends ckg> m;
+   private final int n;
+   private final String o;
 
-   public ckm(cjv $$0) {
-      this.b = $$0;
-      this.a(ckl.k);
+   private ckm(int $$0, Class<? extends ckg> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   public void a(ckl<?> $$0) {
-      if (this.d == null || $$0 != this.d.h()) {
-         if (this.d != null) {
-            this.d.d();
-         }
-
-         this.d = this.b((ckl<ckf>)$$0);
-         if (!this.b.dV().C) {
-            this.b.au().a(cjv.a, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dV().C ? "client" : "server");
-         this.d.c();
+   public ckg a(cjw $$0) {
+      try {
+         Constructor<? extends ckg> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
       }
    }
 
-   public ckf a() {
-      return this.d;
+   protected Constructor<? extends ckg> a() throws NoSuchMethodException {
+      return this.m.getConstructor(cjw.class);
    }
 
-   public <T extends ckf> T b(ckl<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
+   public int b() {
+      return this.n;
+   }
 
-      return (T)this.c[$$1];
+   @Override
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
+   }
+
+   public static ckm<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   }
+
+   public static int c() {
+      return l.length;
+   }
+
+   private static <T extends ckg> ckm<T> a(Class<T> $$0, String $$1) {
+      ckm<T> $$2 = new ckm<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
+      return $$2;
    }
 }

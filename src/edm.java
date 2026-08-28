@@ -1,93 +1,47 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import java.util.concurrent.atomic.AtomicLong;
 
-public interface edm {
-   Codec<edm> a = Codec.xor(edm.b.d, Codec.xor(edm.a.d, edm.c.d)).xmap(edm::a, edm::a);
-   edm b = b(0);
-   edm c = c(0);
+@Deprecated
+public class edm implements eci {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final ecv i = new ecv(this);
 
-   static edm a(int $$0) {
-      return new edm.b($$0);
+   public edm(long $$0) {
+      this.b($$0);
    }
 
-   static edm b(int $$0) {
-      return new edm.a($$0);
+   @Override
+   public azh d() {
+      return new edm(this.g());
    }
 
-   static edm c(int $$0) {
-      return new edm.c($$0);
+   @Override
+   public edg e() {
+      return new ecu.a(this.g());
    }
 
-   static edm a() {
-      return b;
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
    }
 
-   static edm b() {
-      return c;
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
    }
 
-   private static edm a(Either<edm.b, Either<edm.a, edm.c>> $$0) {
-      return (edm)$$0.map(Function.identity(), Either::unwrap);
-   }
-
-   private static Either<edm.b, Either<edm.a, edm.c>> a(edm $$0) {
-      return $$0 instanceof edm.b ? Either.left((edm.b)$$0) : Either.right($$0 instanceof edm.a ? Either.left((edm.a)$$0) : Either.right((edm.c)$$0));
-   }
-
-   int a(edp var1);
-
-   public static record a(int e) implements edm {
-      public static final Codec<edm.a> d = Codec.intRange(eas.e, eas.d).fieldOf("above_bottom").xmap(edm.a::new, edm.a::c).codec();
-
-      @Override
-      public int a(edp $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements edm {
-      public static final Codec<edm.b> d = Codec.intRange(eas.e, eas.d).fieldOf("absolute").xmap(edm.b::new, edm.b::c).codec();
-
-      @Override
-      public int a(edp $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements edm {
-      public static final Codec<edm.c> d = Codec.intRange(eas.e, eas.d).fieldOf("below_top").xmap(edm.c::new, edm.c::c).codec();
-
-      @Override
-      public int a(edp $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
-      }
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

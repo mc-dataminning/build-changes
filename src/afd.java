@@ -5,9 +5,9 @@ public class afd implements yw<abl> {
    private final int b;
    private final int[] c;
 
-   public afd(bul $$0) {
+   public afd(bum $$0) {
       this.b = $$0.ar();
-      List<bul> $$1 = $$0.cY();
+      List<bum> $$1 = $$0.cY();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

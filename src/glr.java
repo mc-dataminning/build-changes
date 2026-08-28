@@ -1,385 +1,169 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class glr {
-   private static final Map<djm, gmi> a = af.a(Maps.newHashMap(), $$0 -> {
-      gmi $$1 = gmi.s();
-      $$0.put(djo.gd, $$1);
-      gmi $$2 = gmi.d();
-      $$0.put(djo.i, $$2);
-      $$0.put(djo.fk, $$2);
-      $$0.put(djo.fm, $$2);
-      $$0.put(djo.gc, $$2);
-      $$0.put(djo.hz, $$2);
-      $$0.put(djo.fl, $$2);
-      $$0.put(djo.aN, $$2);
-      $$0.put(djo.aK, $$2);
-      $$0.put(djo.aL, $$2);
-      $$0.put(djo.aO, $$2);
-      $$0.put(djo.aP, $$2);
-      $$0.put(djo.aM, $$2);
-      $$0.put(djo.aQ, $$2);
-      $$0.put(djo.aR, $$2);
-      $$0.put(djo.aT, $$2);
-      $$0.put(djo.aU, $$2);
-      $$0.put(djo.ag, $$2);
-      $$0.put(djo.aS, $$2);
-      gmi $$3 = gmi.e();
-      $$0.put(djo.z, $$3);
-      $$0.put(djo.A, $$3);
-      $$0.put(djo.B, $$3);
-      $$0.put(djo.C, $$3);
-      $$0.put(djo.D, $$3);
-      $$0.put(djo.E, $$3);
-      $$0.put(djo.F, $$3);
-      $$0.put(djo.G, $$3);
-      $$0.put(djo.aX, $$3);
-      $$0.put(djo.bg, $$3);
-      $$0.put(djo.bh, $$3);
-      $$0.put(djo.bi, $$3);
-      $$0.put(djo.bj, $$3);
-      $$0.put(djo.bk, $$3);
-      $$0.put(djo.bl, $$3);
-      $$0.put(djo.bm, $$3);
-      $$0.put(djo.bn, $$3);
-      $$0.put(djo.bo, $$3);
-      $$0.put(djo.bp, $$3);
-      $$0.put(djo.bq, $$3);
-      $$0.put(djo.br, $$3);
-      $$0.put(djo.bs, $$3);
-      $$0.put(djo.bt, $$3);
-      $$0.put(djo.bu, $$3);
-      $$0.put(djo.bv, $$3);
-      $$0.put(djo.bw, $$3);
-      $$0.put(djo.bx, $$3);
-      $$0.put(djo.bz, $$3);
-      $$0.put(djo.bA, $$3);
-      $$0.put(djo.bB, $$3);
-      $$0.put(djo.bC, $$3);
-      $$0.put(djo.bD, $$3);
-      $$0.put(djo.bE, $$3);
-      $$0.put(djo.bY, $$3);
-      $$0.put(djo.tZ, $$3);
-      $$0.put(djo.ua, $$3);
-      $$0.put(djo.ca, $$3);
-      $$0.put(djo.cb, $$3);
-      $$0.put(djo.cc, $$3);
-      $$0.put(djo.cd, $$3);
-      $$0.put(djo.ce, $$3);
-      $$0.put(djo.cf, $$3);
-      $$0.put(djo.cg, $$3);
-      $$0.put(djo.ch, $$3);
-      $$0.put(djo.ci, $$3);
-      $$0.put(djo.cj, $$3);
-      $$0.put(djo.ck, $$3);
-      $$0.put(djo.cl, $$3);
-      $$0.put(djo.cm, $$3);
-      $$0.put(djo.cn, $$3);
-      $$0.put(djo.cw, $$3);
-      $$0.put(djo.cx, $$3);
-      $$0.put(djo.en, $$3);
-      $$0.put(djo.eo, $$3);
-      $$0.put(djo.cy, $$3);
-      $$0.put(djo.cz, $$3);
-      $$0.put(djo.cA, $$3);
-      $$0.put(djo.tT, $$3);
-      $$0.put(djo.tU, $$3);
-      $$0.put(djo.cE, $$3);
-      $$0.put(djo.cJ, $$3);
-      $$0.put(djo.cW, $$3);
-      $$0.put(djo.cX, $$3);
-      $$0.put(djo.cY, $$3);
-      $$0.put(djo.dK, $$3);
-      $$0.put(djo.dX, $$3);
-      $$0.put(djo.dY, $$3);
-      $$0.put(djo.ed, $$3);
-      $$0.put(djo.ef, $$3);
-      $$0.put(djo.eu, $$3);
-      $$0.put(djo.eL, $$3);
-      $$0.put(djo.eM, $$3);
-      $$0.put(djo.eN, $$3);
-      $$0.put(djo.eO, $$3);
-      $$0.put(djo.eP, $$3);
-      $$0.put(djo.eQ, $$3);
-      $$0.put(djo.eR, $$3);
-      $$0.put(djo.eS, $$3);
-      $$0.put(djo.po, $$3);
-      $$0.put(djo.pp, $$3);
-      $$0.put(djo.eT, $$3);
-      $$0.put(djo.eU, $$3);
-      $$0.put(djo.sw, $$3);
-      $$0.put(djo.sx, $$3);
-      $$0.put(djo.sz, $$3);
-      $$0.put(djo.sy, $$3);
-      $$0.put(djo.sA, $$3);
-      $$0.put(djo.sB, $$3);
-      $$0.put(djo.sD, $$3);
-      $$0.put(djo.sC, $$3);
-      $$0.put(djo.fp, $$3);
-      $$0.put(djo.fq, $$3);
-      $$0.put(djo.fr, $$3);
-      $$0.put(djo.fs, $$3);
-      $$0.put(djo.ft, $$3);
-      $$0.put(djo.tX, $$3);
-      $$0.put(djo.tY, $$3);
-      $$0.put(djo.fu, $$3);
-      $$0.put(djo.fv, $$3);
-      $$0.put(djo.fB, $$3);
-      $$0.put(djo.fL, $$3);
-      $$0.put(djo.fN, $$3);
-      $$0.put(djo.fX, $$3);
-      $$0.put(djo.gj, $$3);
-      $$0.put(djo.gm, $$3);
-      $$0.put(djo.go, $$3);
-      $$0.put(djo.gp, $$3);
-      $$0.put(djo.gq, $$3);
-      $$0.put(djo.gr, $$3);
-      $$0.put(djo.gs, $$3);
-      $$0.put(djo.gt, $$3);
-      $$0.put(djo.gu, $$3);
-      $$0.put(djo.gv, $$3);
-      $$0.put(djo.gw, $$3);
-      $$0.put(djo.gx, $$3);
-      $$0.put(djo.gy, $$3);
-      $$0.put(djo.gz, $$3);
-      $$0.put(djo.ub, $$3);
-      $$0.put(djo.uc, $$3);
-      $$0.put(djo.gA, $$3);
-      $$0.put(djo.gB, $$3);
-      $$0.put(djo.gC, $$3);
-      $$0.put(djo.gD, $$3);
-      $$0.put(djo.gE, $$3);
-      $$0.put(djo.gF, $$3);
-      $$0.put(djo.gG, $$3);
-      $$0.put(djo.gH, $$3);
-      $$0.put(djo.gI, $$3);
-      $$0.put(djo.gJ, $$3);
-      $$0.put(djo.gK, $$3);
-      $$0.put(djo.gL, $$3);
-      $$0.put(djo.gM, $$3);
-      $$0.put(djo.gN, $$3);
-      $$0.put(djo.gO, $$3);
-      $$0.put(djo.tK, $$3);
-      $$0.put(djo.tL, $$3);
-      $$0.put(djo.gn, $$3);
-      $$0.put(djo.gP, $$3);
-      $$0.put(djo.gQ, $$3);
-      $$0.put(djo.hv, $$3);
-      $$0.put(djo.hE, $$3);
-      $$0.put(djo.iw, $$3);
-      $$0.put(djo.jb, $$3);
-      $$0.put(djo.jc, $$3);
-      $$0.put(djo.jd, $$3);
-      $$0.put(djo.je, $$3);
-      $$0.put(djo.jf, $$3);
-      $$0.put(djo.jg, $$3);
-      $$0.put(djo.kM, $$3);
-      $$0.put(djo.kN, $$3);
-      $$0.put(djo.kO, $$3);
-      $$0.put(djo.kP, $$3);
-      $$0.put(djo.kQ, $$3);
-      $$0.put(djo.kR, $$3);
-      $$0.put(djo.kS, $$3);
-      $$0.put(djo.kT, $$3);
-      $$0.put(djo.kU, $$3);
-      $$0.put(djo.so, $$3);
-      $$0.put(djo.sp, $$3);
-      $$0.put(djo.sr, $$3);
-      $$0.put(djo.sq, $$3);
-      $$0.put(djo.ss, $$3);
-      $$0.put(djo.st, $$3);
-      $$0.put(djo.sv, $$3);
-      $$0.put(djo.su, $$3);
-      $$0.put(djo.kV, $$3);
-      $$0.put(djo.kW, $$3);
-      $$0.put(djo.kX, $$3);
-      $$0.put(djo.bZ, $$3);
-      $$0.put(djo.lc, $$3);
-      $$0.put(djo.le, $$3);
-      $$0.put(djo.ld, $$3);
-      $$0.put(djo.lf, $$3);
-      $$0.put(djo.mE, $$3);
-      $$0.put(djo.mF, $$3);
-      $$0.put(djo.mH, $$3);
-      $$0.put(djo.mT, $$3);
-      $$0.put(djo.mU, $$3);
-      $$0.put(djo.mV, $$3);
-      $$0.put(djo.mW, $$3);
-      $$0.put(djo.mX, $$3);
-      $$0.put(djo.mY, $$3);
-      $$0.put(djo.mZ, $$3);
-      $$0.put(djo.na, $$3);
-      $$0.put(djo.nb, $$3);
-      $$0.put(djo.nc, $$3);
-      $$0.put(djo.nd, $$3);
-      $$0.put(djo.ne, $$3);
-      $$0.put(djo.nf, $$3);
-      $$0.put(djo.ng, $$3);
-      $$0.put(djo.nh, $$3);
-      $$0.put(djo.ni, $$3);
-      $$0.put(djo.nj, $$3);
-      $$0.put(djo.nk, $$3);
-      $$0.put(djo.nl, $$3);
-      $$0.put(djo.nm, $$3);
-      $$0.put(djo.nn, $$3);
-      $$0.put(djo.no, $$3);
-      $$0.put(djo.np, $$3);
-      $$0.put(djo.nq, $$3);
-      $$0.put(djo.nr, $$3);
-      $$0.put(djo.ns, $$3);
-      $$0.put(djo.nt, $$3);
-      $$0.put(djo.nu, $$3);
-      $$0.put(djo.nv, $$3);
-      $$0.put(djo.nw, $$3);
-      $$0.put(djo.nx, $$3);
-      $$0.put(djo.nz, $$3);
-      $$0.put(djo.nA, $$3);
-      $$0.put(djo.nB, $$3);
-      $$0.put(djo.nC, $$3);
-      $$0.put(djo.ou, $$3);
-      $$0.put(djo.oE, $$3);
-      $$0.put(djo.oG, $$3);
-      $$0.put(djo.oH, $$3);
-      $$0.put(djo.oI, $$3);
-      $$0.put(djo.oJ, $$3);
-      $$0.put(djo.oK, $$3);
-      $$0.put(djo.pb, $$3);
-      $$0.put(djo.pc, $$3);
-      $$0.put(djo.pd, $$3);
-      $$0.put(djo.pe, $$3);
-      $$0.put(djo.oT, $$3);
-      $$0.put(djo.oZ, $$3);
-      $$0.put(djo.oQ, $$3);
-      $$0.put(djo.pf, $$3);
-      $$0.put(djo.oS, $$3);
-      $$0.put(djo.pO, $$3);
-      $$0.put(djo.pP, $$3);
-      $$0.put(djo.pQ, $$3);
-      $$0.put(djo.pR, $$3);
-      $$0.put(djo.pw, $$3);
-      $$0.put(djo.px, $$3);
-      $$0.put(djo.sV, $$3);
-      $$0.put(djo.ra, $$3);
-      $$0.put(djo.qZ, $$3);
-      $$0.put(djo.qY, $$3);
-      $$0.put(djo.qX, $$3);
-      $$0.put(djo.sU, $$3);
-      $$0.put(djo.sX, $$3);
-      $$0.put(djo.sY, $$3);
-      $$0.put(djo.sZ, $$3);
-      $$0.put(djo.tb, $$3);
-      $$0.put(djo.ta, $$3);
-      $$0.put(djo.td, $$3);
-      $$0.put(djo.tf, $$3);
-      $$0.put(djo.tg, $$3);
-      $$0.put(djo.th, $$3);
-      $$0.put(djo.ti, $$3);
-      $$0.put(djo.rs, $$3);
-      $$0.put(djo.rt, $$3);
-      $$0.put(djo.rv, $$3);
-      $$0.put(djo.rx, $$3);
-      $$0.put(djo.H, $$3);
-      $$0.put(djo.tP, $$3);
-      $$0.put(djo.sE, $$3);
-      $$0.put(djo.sF, $$3);
-      $$0.put(djo.sG, $$3);
-      $$0.put(djo.sH, $$3);
-      $$0.put(djo.sI, $$3);
-      $$0.put(djo.sJ, $$3);
-      $$0.put(djo.sK, $$3);
-      $$0.put(djo.sL, $$3);
-      gmi $$4 = gmi.f();
-      $$0.put(djo.eb, $$4);
-      $$0.put(djo.eq, $$4);
-      $$0.put(djo.ev, $$4);
-      $$0.put(djo.ew, $$4);
-      $$0.put(djo.ex, $$4);
-      $$0.put(djo.ey, $$4);
-      $$0.put(djo.ez, $$4);
-      $$0.put(djo.eA, $$4);
-      $$0.put(djo.eB, $$4);
-      $$0.put(djo.eC, $$4);
-      $$0.put(djo.eD, $$4);
-      $$0.put(djo.eE, $$4);
-      $$0.put(djo.eF, $$4);
-      $$0.put(djo.eG, $$4);
-      $$0.put(djo.eH, $$4);
-      $$0.put(djo.eI, $$4);
-      $$0.put(djo.eJ, $$4);
-      $$0.put(djo.eK, $$4);
-      $$0.put(djo.hW, $$4);
-      $$0.put(djo.hX, $$4);
-      $$0.put(djo.hY, $$4);
-      $$0.put(djo.hZ, $$4);
-      $$0.put(djo.ia, $$4);
-      $$0.put(djo.ib, $$4);
-      $$0.put(djo.ic, $$4);
-      $$0.put(djo.id, $$4);
-      $$0.put(djo.ie, $$4);
-      $$0.put(djo.if, $$4);
-      $$0.put(djo.ig, $$4);
-      $$0.put(djo.ih, $$4);
-      $$0.put(djo.ii, $$4);
-      $$0.put(djo.ij, $$4);
-      $$0.put(djo.ik, $$4);
-      $$0.put(djo.il, $$4);
-      $$0.put(djo.it, $$4);
-      $$0.put(djo.pI, $$4);
-      $$0.put(djo.lk, $$4);
-      $$0.put(djo.nF, $$4);
-      $$0.put(djo.rq, $$4);
-   });
-   private static final Map<esy, gmi> b = af.a(Maps.newHashMap(), $$0 -> {
-      gmi $$1 = gmi.f();
-      $$0.put(eta.b, $$1);
-      $$0.put(eta.c, $$1);
-   });
-   private static boolean c;
+public class glr extends auu<glr.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akv b = akv.b("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public static gmi a(dwx $$0) {
-      djm $$1 = $$0.b();
-      if ($$1 instanceof dny) {
-         return c ? gmi.d() : gmi.c();
-      } else {
-         gmi $$2 = a.get($$1);
-         return $$2 != null ? $$2 : gmi.c();
-      }
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   public static gmi b(dwx $$0) {
-      djm $$1 = $$0.b();
-      if ($$1 instanceof dny) {
-         return c ? gmi.d() : gmi.c();
-      } else {
-         gmi $$2 = a.get($$1);
-         if ($$2 != null) {
-            return $$2 == gmi.f() ? gmi.g() : $$2;
-         } else {
-            return gmi.c();
+   public boolean b() {
+      return this.a() && !this.e;
+   }
+
+   public void d() {
+      this.d = true;
+   }
+
+   public void e() {
+      this.e = true;
+   }
+
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected glr.a a(aup $$0, bou $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         try (boz $$6 = $$1.d("compile_regex")) {
+            a($$5.getAsJsonArray("renderer"), $$2);
+            a($$5.getAsJsonArray("version"), $$3);
+            a($$5.getAsJsonArray("vendor"), $$4);
          }
       }
+
+      return new glr.a($$2, $$3, $$4);
    }
 
-   public static gmi c(dwx $$0) {
-      gmi $$1 = a($$0);
-      return $$1 == gmi.f() ? gmt.j() : gmt.i();
+   protected void a(glr.a $$0, aup $$1, bou $$2) {
+      this.c = $$0.a();
    }
 
-   public static gmi a(cwp $$0) {
-      if ($$0.h() instanceof cuv $$2) {
-         djm $$3 = $$2.d();
-         return c($$3.m());
-      } else {
-         return gmt.j();
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(aup $$0, bou $$1) {
+      try {
+         JsonObject var4;
+         try (
+            boz $$2 = $$1.d("parse_json");
+            Reader $$3 = $$0.openAsReader(b);
+         ) {
+            var4 = JsonParser.parseReader($$3).getAsJsonObject();
+         }
+
+         return var4;
+      } catch (JsonSyntaxException | IOException var10) {
+         a.warn("Failed to load GPU warnlist");
+         return null;
       }
    }
 
-   public static gmi a(esz $$0) {
-      gmi $$1 = b.get($$0.a());
-      return $$1 != null ? $$1 : gmi.c();
-   }
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
 
-   public static void a(boolean $$0) {
-      c = $$0;
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
+         }
+
+         return String.join(", ", $$2);
+      }
+
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, feo.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
+
+         String $$2 = a(this.b, feo.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, feo.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
+      }
    }
 }

@@ -1,35 +1,75 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import javax.annotation.Nullable;
 
-public record bsl(cv d) {
-   public static final bsl a = new bsl(cv.a.a().b());
-   public static final Codec<bsl> b = cv.a.xmap(bsl::new, bsl::a);
-   public static final String c = "lock";
+public sealed interface bsl permits bsl.d, bsl.a, bsl.c, bsl.f {
+   bsl.d a = new bsl.d(bsl.e.b, bsl.b.b);
+   bsl.d b = new bsl.d(bsl.e.c, bsl.b.b);
+   bsl.d c = new bsl.d(bsl.e.a, bsl.b.b);
+   bsl.a d = new bsl.a();
+   bsl.c e = new bsl.c();
+   bsl.f f = new bsl.f();
 
-   public boolean a(cwp $$0) {
-      return this.d.a($$0);
+   default boolean a() {
+      return false;
    }
 
-   public void a(tq $$0, jt.a $$1) {
-      if (this != a) {
-         DataResult<un> $$2 = b.encode(this, $$1.a(ue.a), new tq());
-         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
+   public static record a() implements bsl {
+   }
+
+   public static record b(boolean c, @Nullable cwq d) {
+      static bsl.b a = new bsl.b(false, null);
+      static bsl.b b = new bsl.b(true, null);
+
+      public boolean a() {
+         return this.c;
+      }
+
+      @Nullable
+      public cwq b() {
+         return this.d;
       }
    }
 
-   public static bsl b(tq $$0, jt.a $$1) {
-      if ($$0.b("lock", 10)) {
-         DataResult<Pair<bsl, un>> $$2 = b.decode($$1.a(ue.a), $$0.c("lock"));
-         if ($$2.isSuccess()) {
-            return (bsl)((Pair)$$2.getOrThrow()).getFirst();
-         }
-      }
-
-      return a;
+   public static record c() implements bsl {
    }
 
-   public cv a() {
-      return this.d;
+   public static record d(bsl.e g, bsl.b h) implements bsl {
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      public bsl.d a(cwq $$0) {
+         return new bsl.d(this.g, new bsl.b(true, $$0));
+      }
+
+      public bsl.d b() {
+         return new bsl.d(this.g, bsl.b.a);
+      }
+
+      public boolean c() {
+         return this.h.c;
+      }
+
+      @Nullable
+      public cwq d() {
+         return this.h.d;
+      }
+
+      public bsl.e e() {
+         return this.g;
+      }
+
+      public bsl.b f() {
+         return this.h;
+      }
+   }
+
+   public static enum e {
+      a,
+      b,
+      c;
+   }
+
+   public static record f() implements bsl {
    }
 }

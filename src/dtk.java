@@ -1,77 +1,50 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtk extends dqt {
-   public static final MapCodec<dtk> b = b(dtk::new);
-   @Nullable
-   private static dxc h;
-   @Nullable
-   private static dxc i;
+public class dtk extends dmq {
+   public static final MapCodec<dtk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dmq::c), t()).apply($$0, dtk::new));
 
    @Override
    public MapCodec<dtk> a() {
-      return b;
+      return a;
    }
 
-   protected dtk(dww.d $$0) {
-      super(dqt.b.d, $$0);
+   public dtk(jr<btp> $$0, float $$1, dwx.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dtk(czr $$0, dwx.d $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(dgi $$0, ji $$1, dwx $$2, @Nullable bvh $$3, cwp $$4) {
-      a($$0, $$1);
+   protected boolean b(dwy $$0, dfo $$1, ji $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(djp.ei) || $$0.a(djp.ej) || $$0.a(djp.ek);
    }
 
-   public static void a(dgi $$0, ji $$1) {
-      if ($$0.c_($$1) instanceof dvo $$2) {
-         a($$0, $$1, $$2);
-      }
-   }
+   @Override
+   public void a(dwy $$0, dgj $$1, ji $$2, azh $$3) {
+      fbv $$4 = this.a($$0, $$1, $$2, fbg.a());
+      fbb $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.d;
+      double $$7 = (double)$$2.w() + $$5.f;
 
-   public static void a(dgi $$0, ji $$1, dvo $$2) {
-      if (!$$0.C) {
-         dwx $$3 = $$2.m();
-         boolean $$4 = $$3.a(djo.hd) || $$3.a(djo.he);
-         if ($$4 && $$1.v() >= $$0.L_() && $$0.am() != bsh.a) {
-            dxc.b $$5 = q().a($$0, $$1);
-            if ($$5 != null) {
-               ckp $$6 = bus.bI.a($$0, bur.k);
-               if ($$6 != null) {
-                  dkh.a($$0, $$5);
-                  ji $$7 = $$5.a(1, 2, 0).d();
-                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == jn.a.a ? 0.0F : 90.0F, 0.0F);
-                  $$6.aX = $$5.b().o() == jn.a.a ? 0.0F : 90.0F;
-                  $$6.m();
-
-                  for (are $$8 : $$0.a(are.class, $$6.cR().g(50.0))) {
-                     ap.o.a($$8, $$6);
-                  }
-
-                  $$0.b($$6);
-                  dkh.b($$0, $$5);
-               }
-            }
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(lt.ag, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
          }
       }
    }
 
-   public static boolean b(dgi $$0, ji $$1, cwp $$2) {
-      return $$2.a(cwt.vl) && $$1.v() >= $$0.L_() + 2 && $$0.am() != bsh.a && !$$0.C ? r().a($$0, $$1) != null : false;
+   @Override
+   protected void a(dwy $$0, dgj $$1, ji $$2, bum $$3) {
+      if ($$1 instanceof ard $$4 && $$1.am() != bsi.a && $$3 instanceof bvi $$5 && !$$5.a($$4, $$1.ak().r())) {
+         $$5.a(this.b());
+      }
    }
 
-   private static dxc q() {
-      if (h == null) {
-         h = dxd.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(awp.aI)).a('^', dxb.a(dxg.a(djo.hd).or(dxg.a(djo.he)))).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return h;
-   }
-
-   private static dxc r() {
-      if (i == null) {
-         i = dxd.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(awp.aI)).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return i;
+   @Override
+   public btr b() {
+      return new btr(btt.t, 40);
    }
 }

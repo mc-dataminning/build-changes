@@ -1,5 +1,5 @@
-public record aac(ebx c, int d) implements zz {
-   public static final yn<wa, aac> a = yn.a(ebx.d, aac::b, yl.h, aac::c, aac::new);
+public record aac(eby c, int d) implements zz {
+   public static final yn<wa, aac> a = yn.a(eby.d, aac::b, yl.h, aac::c, aac::new);
    public static final zz.b<aac> b = zz.a("debug/game_event_listeners");
 
    @Override
@@ -7,7 +7,7 @@ public record aac(ebx c, int d) implements zz {
       return b;
    }
 
-   public ebx b() {
+   public eby b() {
       return this.c;
    }
 

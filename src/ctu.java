@@ -1,68 +1,30 @@
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ctu implements bsd, ctt {
-   private final ka<cwp> b = ka.a(1, cwp.j);
+public interface ctu {
+   void a(@Nullable dbk<?> var1);
+
    @Nullable
-   private dbj<?> c;
+   dbk<?> d();
 
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public boolean c() {
-      for (cwp $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
+   default void a(coy $$0, List<cwq> $$1) {
+      dbk<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().ap_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
          }
       }
-
-      return true;
    }
 
-   @Override
-   public cwp a(int $$0) {
-      return this.b.get(0);
-   }
-
-   @Override
-   public cwp a(int $$0, int $$1) {
-      return bse.a(this.b, 0);
-   }
-
-   @Override
-   public cwp b(int $$0) {
-      return bse.a(this.b, 0);
-   }
-
-   @Override
-   public void a(int $$0, cwp $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cox $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable dbj<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dbj<?> d() {
-      return this.c;
+   default boolean a(are $$0, dbk<?> $$1) {
+      if (!$$1.b().ap_() && $$0.y().O().b(dgf.x) && !$$0.J().b($$1.a())) {
+         return false;
+      } else {
+         this.a($$1);
+         return true;
+      }
    }
 }

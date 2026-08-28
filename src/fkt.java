@@ -1,15 +1,26 @@
-public class fkt {
-   private static volatile boolean a;
+public enum fkt {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-   public static void a() {
-      if (!a) {
-         a = true;
-         hbn.a();
-         hdx.a();
-         fmu.a();
-         hdh.a();
-         hbw.a();
-         hcs.a();
-      }
+   private static final fkt[] d = values();
+   private final boolean e;
+   private final boolean f;
+
+   private fkt(final boolean $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a() {
+      return this.e;
+   }
+
+   public boolean b() {
+      return this.f;
+   }
+
+   public fkt c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

@@ -1,109 +1,226 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class fti extends ftj {
-   private static final wp d = wp.c("chat.copy");
-   private static final wp s = wp.c("chat.link.warning");
-   private final String u;
-   private final boolean v;
+public class fti extends fum {
+   public static final double a = 7.0;
+   private static final wp c = wp.c("chat_screen.usage");
+   private static final int d = 210;
+   private String s = "";
+   private int u = -1;
+   protected fpd b;
+   private String v;
+   fox w;
 
-   public fti(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), wp.b($$1), $$1, $$2 ? wo.e : wo.g, $$2);
-   }
-
-   public fti(BooleanConsumer $$0, wp $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wo.e : wo.g, $$3);
-   }
-
-   public fti(BooleanConsumer $$0, wp $$1, URI $$2, boolean $$3) {
-      this($$0, $$1, $$2.toString(), $$3);
-   }
-
-   public fti(BooleanConsumer $$0, wp $$1, wp $$2, URI $$3, wp $$4, boolean $$5) {
-      this($$0, $$1, $$2, $$3.toString(), $$4, true);
-   }
-
-   public fti(BooleanConsumer $$0, wp $$1, wp $$2, String $$3, wp $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (wp)($$5 ? wp.c("chat.link.open") : wo.f);
-      this.b = $$4;
-      this.v = !$$5;
-      this.u = $$3;
-   }
-
-   protected static xd a(boolean $$0, String $$1) {
-      return c($$0).b(wo.v).b(wp.b($$1));
-   }
-
-   protected static xd c(boolean $$0) {
-      return wp.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public fti(String $$0) {
+      super(wp.c("chat_screen.title"));
+      this.v = $$0;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.c(fot.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fot.a(d, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(fot.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void l() {
-      this.m.p.a(this.u);
+   protected void aR_() {
+      this.u = this.m.m.d().c().size();
+      this.b = new fpd(this.m.i, 4, this.o - 12, this.n - 4, 12, wp.c("chat.editBox")) {
+         @Override
+         protected xd d() {
+            return super.d().b(fti.this.w.e());
+         }
+      };
+      this.b.f(256);
+      this.b.d(false);
+      this.b.a(this.v);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.d(this.b);
+      this.w = new fox(this.m, this, this.b, this.p, false, false, 1, 10, true, -805306368);
+      this.w.b(false);
+      this.w.d();
    }
 
    @Override
-   public void a(foe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.v) {
-         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+   protected void aF_() {
+      this.b(this.b);
+   }
+
+   @Override
+   public void a(flk $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.w.d();
+   }
+
+   @Override
+   public void aI_() {
+      this.m.m.d().d();
+   }
+
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.w.a(!$$1.equals(this.v));
+      this.w.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.w.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         this.b(this.b.a(), true);
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.m.m.d().a(this.m.m.d().j() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.m.m.d().a(-this.m.m.d().j() + 1);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static void a(ful $$0, String $$1, boolean $$2) {
-      flj $$3 = flj.Q();
-      $$3.a(new fti($$3x -> {
-         if ($$3x) {
-            af.m().a($$1);
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = ayz.a($$3, -1.0, 1.0);
+      if (this.w.a($$3)) {
+         return true;
+      } else {
+         if (!t()) {
+            $$3 *= 7.0;
          }
 
-         $$3.a($$0);
-      }, $$1, $$2));
+         this.m.m.d().a((int)$$3);
+         return true;
+      }
    }
 
-   public static void a(ful $$0, URI $$1, boolean $$2) {
-      flj $$3 = flj.Q();
-      $$3.a(new fti($$3x -> {
-         if ($$3x) {
-            af.m().a($$1);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.w.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            fov $$3 = this.m.m.d();
+            if ($$3.a($$0, $$1)) {
+               return true;
+            }
+
+            xm $$4 = this.b($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.v = this.b.a();
+               return true;
+            }
          }
 
-         $$3.a($$0);
-      }, $$1.toString(), $$2));
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
    }
 
-   public static void a(ful $$0, URI $$1) {
-      a($$0, $$1, true);
+   @Override
+   protected void a_(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
    }
 
-   public static void a(ful $$0, String $$1) {
-      a($$0, $$1, true);
+   public void a(int $$0) {
+      int $$1 = this.u + $$0;
+      int $$2 = this.m.m.d().c().size();
+      $$1 = ayz.a($$1, 0, $$2);
+      if ($$1 != this.u) {
+         if ($$1 == $$2) {
+            this.u = $$2;
+            this.b.a(this.s);
+         } else {
+            if (this.u == $$2) {
+               this.s = this.b.a();
+            }
+
+            this.b.a(this.m.m.d().c().get($$1));
+            this.w.a(false);
+            this.u = $$1;
+         }
+      }
    }
 
-   public static fot.c b(ful $$0, String $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
+   @Override
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
+      this.m.m.d().a($$0, this.m.m.e(), $$1, $$2, true);
+      $$0.a(2, this.o - 14, this.n - 2, this.o - 2, this.m.n.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 200.0F);
+      this.w.a($$0, $$1, $$2);
+      $$0.c().b();
+      fle $$4 = this.m.m.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.p, this.p.c($$4.g(), 210), $$1, $$2);
+      } else {
+         xm $$5 = this.b((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.j() != null) {
+            $$0.a(this.p, $$5, $$1, $$2);
+         }
+      }
    }
 
-   public static fot.c b(ful $$0, URI $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
+   @Override
+   public void b(fof $$0, int $$1, int $$2, float $$3) {
    }
 
-   public static fot.c b(ful $$0, String $$1) {
-      return b($$0, $$1, true);
+   @Override
+   public boolean k() {
+      return false;
    }
 
-   public static fot.c b(ful $$0, URI $$1) {
-      return b($$0, $$1, true);
+   private void c(String $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   protected void a(fsr $$0) {
+      $$0.a(fsq.a, this.n());
+      $$0.a(fsq.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(fsq.a, wp.a("chat_screen.message", $$1));
+      }
+   }
+
+   @Nullable
+   private xm b(double $$0, double $$1) {
+      return this.m.m.d().b($$0, $$1);
+   }
+
+   public void b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if (!$$0.isEmpty()) {
+         if ($$1) {
+            this.m.m.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.m.t.j.c($$0.substring(1));
+         } else {
+            this.m.t.j.b($$0);
+         }
+      }
+   }
+
+   public String a(String $$0) {
+      return azw.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

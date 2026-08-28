@@ -97,11 +97,11 @@ public class bcn extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhx.c);
+      Type<?> $$0 = this.getInputSchema().getType(bhy.c);
       OpticFinder<?> $$1 = $$0.findField("Level");
       OpticFinder<?> $$2 = $$1.type().findField("Sections");
       Schema $$3 = this.getOutputSchema();
-      Type<?> $$4 = $$3.getType(bhx.c);
+      Type<?> $$4 = $$3.getType(bhy.c);
       Type<?> $$5 = $$4.findField("Level").type();
       Type<?> $$6 = $$5.findField("Sections").type();
       return this.fixTypeEverywhereTyped("ChunkHeightAndBiomeFix", $$0, $$4, $$4x -> $$4x.updateTyped($$1, $$5, $$3xx -> {

@@ -1,51 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record eyy(Optional<di> b, ji c) implements eza {
-   private static final MapCodec<ji> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(km::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(km::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(km::w)
-            )
-            .apply($$0, ji::new)
-   );
-   public static final MapCodec<eyy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(di.a.optionalFieldOf("predicate").forGetter(eyy::c), g.forGetter(eyy::d)).apply($$0, eyy::new)
-   );
+public record eyy(ezb b) implements ezb {
+   public static final MapCodec<eyy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezb.e.fieldOf("term").forGetter(eyy::c)).apply($$0, eyy::new));
 
    @Override
-   public ezb b() {
-      return ezc.n;
+   public ezc b() {
+      return ezd.a;
    }
 
-   public boolean a(evr $$0) {
-      fba $$1 = $$0.c(eyl.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   public boolean a(evs $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
    public Set<bai<?>> a() {
-      return Set.of(eyl.f);
+      return this.b.a();
    }
 
-   public static eza.a a(di.a $$0) {
-      return () -> new eyy(Optional.of($$0.b()), ji.c);
+   @Override
+   public void a(evy $$0) {
+      ezb.super.a($$0);
+      this.b.a($$0);
    }
 
-   public static eza.a a(di.a $$0, ji $$1) {
-      return () -> new eyy(Optional.of($$0.b()), $$1);
+   public static ezb.a a(ezb.a $$0) {
+      eyy $$1 = new eyy($$0.build());
+      return () -> $$1;
    }
 
-   public Optional<di> c() {
+   public ezb c() {
       return this.b;
-   }
-
-   public ji d() {
-      return this.c;
    }
 }

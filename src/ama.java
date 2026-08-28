@@ -110,7 +110,7 @@ public class ama {
    }
 
    private Optional<ama.a> b(Scanner $$0) {
-      aku<dgi> $$1 = (aku<dgi>)amj.a.get($$0.next());
+      aku<dgj> $$1 = (aku<dgj>)amj.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,7 +119,7 @@ public class ama {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new ama.a($$1, new fba((double)$$2, (double)$$3, (double)$$4), new faz($$6, $$5)));
+         return Optional.of(new ama.a($$1, new fbb((double)$$2, (double)$$3, (double)$$4), new fba($$6, $$5)));
       }
    }
 
@@ -129,13 +129,13 @@ public class ama {
          if (!$$1.isEmpty()) {
             are $$2 = $$1.get(0);
             ard $$3 = this.e.J();
-            ex $$4 = new ex($$2.z(), fba.a($$3.Z()), faz.a, $$3, 4, "", wo.a, this.e, $$2);
+            ex $$4 = new ex($$2.z(), fbb.a($$3.Z()), fba.a, $$3, 4, "", wo.a, this.e, $$2);
             ey $$5 = this.e.aG();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(aku<dgi> a, fba b, faz c) {
+   static record a(aku<dgj> a, fbb b, fba c) {
    }
 }

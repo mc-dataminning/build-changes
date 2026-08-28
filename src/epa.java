@@ -1,24 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
-@FunctionalInterface
-public interface epa {
-   epa a = $$0 -> $$0;
+public class epa {
+   public static MapCodec<? extends eoz> a(ke<MapCodec<? extends eoz>> $$0) {
+      ke.a($$0, "random", epc.a);
+      ke.a($$0, "random_group", epd.a);
+      return ke.a($$0, "direct", eoy.a);
+   }
 
-   aku<eow> lookup(aku<eow> var1);
-
-   static epa create(List<eoy> $$0, ji $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         azh $$3 = azh.a($$2).e().a($$1);
-         Builder<aku<eow>, aku<eow>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<aku<eow>, aku<eow>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x.a() + " was mapped to null value");
-      }
+   public static void a(qe<eox> $$0, jr<eox> $$1, List<eoz> $$2) {
+      $$2.stream().flatMap(eoz::a).map($$0x -> $$0x.a().a()).forEach($$2x -> ql.a($$0, $$2x, new eox($$1, List.of(Pair.of(eov.b($$2x), 1)), eox.a.b)));
    }
 }

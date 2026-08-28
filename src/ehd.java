@@ -1,30 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class ehd extends efy<ehx> {
-   public ehd(Codec<ehx> $$0) {
+public class ehd extends efz<eiu> {
+   public ehd(Codec<eiu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<ehx> $$0) {
-      int $$1 = 0;
-      azh $$2 = $$0.d();
-      dhg $$3 = $$0.b();
-      ji $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(egb<eiu> $$0) {
+      dhh $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         eiu $$3 = $$0.f();
+         azh $$4 = $$0.d();
+         dqn $$5 = dqn.b();
+         int $$6 = $$3.f() + $$3.d();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(ecs.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         ji $$10 = new ji($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dwx $$11 = djo.nx.m().b(dqo.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(djo.J) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
          }
-      }
 
-      return $$1 > 0;
+         ji $$11 = $$2.e();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
+            $$1.a($$2, djp.rw.m(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            ji $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jn.b)) {
+               $$1.a($$14, djp.rx.m().b(dqm.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(dgk $$0, ji $$1) {
+      dwy $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dqi) {
+         return true;
+      } else {
+         return !$$2.l() && (!$$2.a(djp.J) || !$$2.y().b()) ? false : jn.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
+      }
    }
 }

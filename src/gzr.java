@@ -1,17 +1,8 @@
-public class gzr extends gyz {
-   public chn.a a;
-   public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float j;
-   public float k;
-   public float l;
+import javax.annotation.Nullable;
 
-   public gzr() {
-      this.a = chn.a.a;
-   }
+public class gzr extends gyl {
+   public jn a = jn.c;
+   @Nullable
+   public ckz b;
+   public int[] c = new int[0];
 }

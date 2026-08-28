@@ -1,74 +1,31 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+public class ftv extends fum {
+   private final wp a;
 
-public class ftv implements AutoCloseable {
-   private static final akv a = akv.b("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final heu d;
-   private final akv e;
-   @Nullable
-   private hef f;
-   private boolean g;
-
-   private ftv(heu $$0, akv $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static ftv a(heu $$0, String $$1) {
-      return new ftv($$0, akv.b("worlds/" + af.a($$1, akv::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static ftv b(heu $$0, String $$1) {
-      return new ftv($$0, akv.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(feu $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new hef($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public akv b() {
-      return this.f != null ? this.e : a;
+   public ftv(wp $$0, wp $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   protected void aR_() {
+      super.aR_();
+      this.c(fou.a(wo.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   @Override
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
+      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
+   }
+
+   @Override
+   public void b(fof $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
+   }
+
+   @Override
+   public boolean aG_() {
+      return false;
    }
 }

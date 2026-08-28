@@ -38,7 +38,7 @@ public class aob {
       );
    }
 
-   private static int a(ex $$0, Collection<are> $$1, Collection<dbj<?>> $$2) throws CommandSyntaxException {
+   private static int a(ex $$0, Collection<are> $$1, Collection<dbk<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (are $$4 : $$1) {
@@ -58,7 +58,7 @@ public class aob {
       }
    }
 
-   private static int b(ex $$0, Collection<are> $$1, Collection<dbj<?>> $$2) throws CommandSyntaxException {
+   private static int b(ex $$0, Collection<are> $$1, Collection<dbk<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (are $$4 : $$1) {

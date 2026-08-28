@@ -34,7 +34,7 @@ public class abv implements yw<abl> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static abv a(bsa $$0) {
+   public static abv a(bsb $$0) {
       return new abv($$0.h(), new abv.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class abv implements yw<abl> {
       return new abv($$0, g);
    }
 
-   public static abv b(bsa $$0) {
+   public static abv b(bsb $$0) {
       return new abv($$0.h(), new abv.f($$0.j()));
    }
 
-   public static abv c(bsa $$0) {
+   public static abv c(bsb $$0) {
       return new abv($$0.h(), new abv.e($$0.i()));
    }
 
-   public static abv d(bsa $$0) {
+   public static abv d(bsb $$0) {
       return new abv($$0.h(), new abv.h($$0.k(), $$0.l()));
    }
 
-   public static abv e(bsa $$0) {
+   public static abv e(bsb $$0) {
       return new abv($$0.h(), new abv.g($$0.m(), $$0.n(), $$0.o()));
    }
 
@@ -97,13 +97,13 @@ public class abv implements yw<abl> {
    static class a implements abv.c {
       private final wp a;
       private final float b;
-      private final bsa.a c;
-      private final bsa.b d;
+      private final bsb.a c;
+      private final bsb.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(bsa $$0) {
+      a(bsb $$0) {
          this.a = $$0.i();
          this.b = $$0.j();
          this.c = $$0.k();
@@ -116,8 +116,8 @@ public class abv implements yw<abl> {
       private a(wa $$0) {
          this.a = wr.d.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(bsa.a.class);
-         this.d = $$0.b(bsa.b.class);
+         this.c = $$0.b(bsb.a.class);
+         this.d = $$0.b(bsb.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class abv implements yw<abl> {
    }
 
    public interface b {
-      default void a(UUID $$0, wp $$1, float $$2, bsa.a $$3, bsa.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, wp $$1, float $$2, bsb.a $$3, bsb.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class abv implements yw<abl> {
       default void a(UUID $$0, wp $$1) {
       }
 
-      default void a(UUID $$0, bsa.a $$1, bsa.b $$2) {
+      default void a(UUID $$0, bsb.a $$1, bsb.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class abv implements yw<abl> {
    }
 
    static class h implements abv.c {
-      private final bsa.a a;
-      private final bsa.b b;
+      private final bsb.a a;
+      private final bsb.b b;
 
-      h(bsa.a $$0, bsa.b $$1) {
+      h(bsb.a $$0, bsb.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(wa $$0) {
-         this.a = $$0.b(bsa.a.class);
-         this.b = $$0.b(bsa.b.class);
+         this.a = $$0.b(bsb.a.class);
+         this.b = $$0.b(bsb.b.class);
       }
 
       @Override

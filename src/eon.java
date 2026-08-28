@@ -1,42 +1,30 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class eon extends eou {
-   public static final MapCodec<eon> a = MapCodec.unit(() -> eon.b);
-   public static final eon b = new eon();
+public record eon(int c, int d) {
+   private static final Codec<eon> e = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayi.l.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), ayi.l.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
+            .apply($$0, eon::new)
+   );
+   public static final Codec<eon> a = Codec.either(ayi.l, e)
+      .xmap($$0 -> (eon)$$0.map(eon::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
+   public static final eon b = new eon(0);
 
-   private eon() {
-      super(eow.a.a);
+   public eon(int $$0) {
+      this($$0, $$0);
    }
 
-   @Override
-   public km a(erp $$0, dqe $$1) {
-      return km.h;
+   public boolean a() {
+      return this.d == this.c;
    }
 
-   @Override
-   public List<ero.a> a(erp $$0, ji $$1, dqe $$2, azh $$3) {
-      return Collections.emptyList();
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public ene a(erp $$0, ji $$1, dqe $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
-   }
-
-   @Override
-   public boolean a(erp $$0, dhg $$1, dhe $$2, dyt $$3, ji $$4, ji $$5, dqe $$6, ene $$7, azh $$8, eqy $$9, boolean $$10) {
-      return true;
-   }
-
-   @Override
-   public eov<?> a() {
-      return eov.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Empty";
+   public int c() {
+      return this.d;
    }
 }

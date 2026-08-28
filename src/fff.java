@@ -1,5 +1,21 @@
-public interface fff<T> {
-   T e();
+public record fff(int a, int b, boolean c) implements ffg<fef> {
+   public fef a() {
+      return new feg(this.a, this.b, this.c);
+   }
 
-   void a(T var1);
+   public void a(fef $$0) {
+      $$0.a();
+   }
+
+   public int b() {
+      return this.a;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean d() {
+      return this.c;
+   }
 }

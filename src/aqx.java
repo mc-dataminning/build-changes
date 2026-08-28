@@ -4,25 +4,25 @@ public class aqx {
    @Nullable
    protected static ji a(ard $$0, int $$1, int $$2) {
       boolean $$3 = $$0.G_().h();
-      dzc $$4 = $$0.d(kk.a($$1), kk.a($$2));
-      int $$5 = $$3 ? $$0.m().g().a($$0) : $$4.a(ecs.a.e, $$1 & 15, $$2 & 15);
+      dzd $$4 = $$0.d(kk.a($$1), kk.a($$2));
+      int $$5 = $$3 ? $$0.m().g().a($$0) : $$4.a(ect.a.e, $$1 & 15, $$2 & 15);
       if ($$5 < $$0.L_()) {
          return null;
       } else {
-         int $$6 = $$4.a(ecs.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(ecs.a.d, $$1 & 15, $$2 & 15)) {
+         int $$6 = $$4.a(ect.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(ect.a.d, $$1 & 15, $$2 & 15)) {
             return null;
          } else {
             ji.a $$7 = new ji.a();
 
             for (int $$8 = $$5 + 1; $$8 >= $$0.L_(); $$8--) {
                $$7.d($$1, $$8, $$2);
-               dwx $$9 = $$0.a_($$7);
+               dwy $$9 = $$0.a_($$7);
                if (!$$9.y().c()) {
                   break;
                }
 
-               if (djm.a($$9.g($$0, $$7), jn.b)) {
+               if (djn.a($$9.g($$0, $$7), jn.b)) {
                   return $$7.d().j();
                }
             }
@@ -33,7 +33,7 @@ public class aqx {
    }
 
    @Nullable
-   public static ji a(ard $$0, dfo $$1) {
+   public static ji a(ard $$0, dfp $$1) {
       if (ab.a($$1)) {
          return null;
       } else {

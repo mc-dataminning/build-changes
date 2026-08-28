@@ -1,87 +1,118 @@
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
 
-public final class dba implements cpb.a<jr<cwl>>, Predicate<cwp> {
-   public static final yn<wa, dba> a = yl.c(mc.K).a(dba::new, $$0 -> $$0.e);
-   public static final yn<wa, Optional<dba>> b = yl.c(mc.K)
-      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dba((jv<cwl>)$$0)), $$0 -> $$0.<jv.a<cwl>>map($$0x -> $$0x.e).orElse(jv.a()));
-   public static final Codec<jv<cwl>> c = akp.a(mc.K, cwl.e, false);
-   public static final Codec<dba> d = ayi.c(c).xmap(dba::new, $$0 -> $$0.e);
-   private final jv<cwl> e;
+public class dba extends dav {
+   private static final Map<cwm, czf.a> c = Map.of(
+      cwu.uV,
+      czf.a.b,
+      cwu.pY,
+      czf.a.e,
+      cwu.tf,
+      czf.a.c,
+      cwu.vk,
+      czf.a.d,
+      cwu.vl,
+      czf.a.d,
+      cwu.vo,
+      czf.a.d,
+      cwu.vm,
+      czf.a.d,
+      cwu.vp,
+      czf.a.d,
+      cwu.vn,
+      czf.a.d,
+      cwu.vq,
+      czf.a.d
+   );
+   private static final dbb d = dbb.a(cwu.pe);
+   private static final dbb e = dbb.a(cwu.rV);
+   private static final dbb f = dbb.a(cwu.pZ);
 
-   private dba(jv<cwl> $$0) {
-      $$0.d().ifRight($$0x -> {
-         if ($$0x.isEmpty()) {
-            throw new UnsupportedOperationException("Ingredients can't be empty");
-         } else if ($$0x.contains(cwt.a.f())) {
-            throw new UnsupportedOperationException("Ingredient can't contain air");
+   public dba(das $$0) {
+      super($$0);
+   }
+
+   public boolean a(dat $$0, dgj $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+         boolean $$4 = false;
+         boolean $$5 = false;
+         boolean $$6 = false;
+
+         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
+            cwq $$8 = $$0.a($$7);
+            if (!$$8.f()) {
+               if (c.containsKey($$8.h())) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else if (e.a($$8)) {
+                  if ($$6) {
+                     return false;
+                  }
+
+                  $$6 = true;
+               } else if (d.a($$8)) {
+                  if ($$5) {
+                     return false;
+                  }
+
+                  $$5 = true;
+               } else if (f.a($$8)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$8.h() instanceof cvo)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
          }
-      });
-      this.e = $$0;
+
+         return $$2 && $$3;
+      }
    }
 
-   public static boolean a(Optional<dba> $$0, cwp $$1) {
-      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
-   }
+   public cwq a(dat $$0, jt.a $$1) {
+      czf.a $$2 = czf.a.a;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      IntList $$5 = new IntArrayList();
 
-   @Deprecated
-   public Stream<jr<cwl>> a() {
-      return this.e.a();
-   }
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cwq $$7 = $$0.a($$6);
+         if (!$$7.f()) {
+            czf.a $$8 = c.get($$7.h());
+            if ($$8 != null) {
+               $$2 = $$8;
+            } else if (e.a($$7)) {
+               $$3 = true;
+            } else if (d.a($$7)) {
+               $$4 = true;
+            } else if ($$7.h() instanceof cvo $$9) {
+               $$5.add($$9.b().f());
+            }
+         }
+      }
 
-   public boolean b() {
-      return this.e.b() == 0;
-   }
-
-   public boolean a(cwp $$0) {
-      return $$0.a(this.e);
-   }
-
-   public boolean a(jr<cwl> $$0) {
-      return this.e.a($$0);
+      cwq $$10 = new cwq(cwu.vu);
+      $$10.b(kv.ae, new czf($$2, $$5, IntList.of(), $$4, $$3));
+      return $$10;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return $$0 instanceof dba $$1 ? Objects.equals(this.e, $$1.e) : false;
-   }
-
-   public static dba a(dgh $$0) {
-      return new dba(jv.a($$0.j().f()));
-   }
-
-   public static dba a(dgh... $$0) {
-      return a(Arrays.stream($$0));
-   }
-
-   public static dba a(Stream<? extends dgh> $$0) {
-      return new dba(jv.a($$0.map($$0x -> $$0x.j().f()).toList()));
-   }
-
-   public static dba a(jv<cwl> $$0) {
-      return new dba($$0);
-   }
-
-   public dcp c() {
-      return (dcp)this.e.d().map(dcp.h::new, $$0 -> new dcp.b($$0.stream().map(dba::b).toList()));
-   }
-
-   public static dcp a(Optional<dba> $$0) {
-      return $$0.<dcp>map(dba::c).orElse(dcp.c.c);
-   }
-
-   private static dcp b(jr<cwl> $$0) {
-      dcp $$1 = new dcp.d($$0);
-      cwp $$2 = $$0.a().k();
-      if (!$$2.f()) {
-         dcp $$3 = new dcp.f($$2);
-         return new dcp.j($$1, $$3);
-      } else {
-         return $$1;
-      }
+   public dbp<dba> a() {
+      return dbp.h;
    }
 }

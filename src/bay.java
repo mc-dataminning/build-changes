@@ -17,7 +17,7 @@ public class bay extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         this.a, this.getInputSchema().getType(bhx.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
+         this.a, this.getInputSchema().getType(bhy.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
                   String $$2 = ((Dynamic)$$1.getFirst()).asString("");
                   return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
                }))

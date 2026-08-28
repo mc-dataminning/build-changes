@@ -1,42 +1,25 @@
-public class gue extends gsd<cpt, hae> {
-   private static final akv a = akv.b("textures/entity/shulker/spark.png");
-   private static final gmi b = gmi.j(a);
-   private final gdt h;
+public class gue extends gqz<chv, hae, gds> {
+   private static final akv a = akv.b("textures/entity/sheep/sheep.png");
 
-   public gue(gse.a $$0) {
-      super($$0);
-      this.h = new gdt($$0.a(gfc.cG));
+   public gue(gsf.a $$0) {
+      super($$0, new gds($$0.a(gfd.cz)), new gds($$0.a(gfd.cA)), 0.7F);
+      this.a(new gww(this, $$0.f()));
    }
 
-   protected int a(cpt $$0, ji $$1) {
-      return 15;
+   public akv a(hae $$0) {
+      return a;
    }
 
-   public void a(hae $$0, ffu $$1, gly $$2, int $$3) {
-      $$1.a();
-      float $$4 = $$0.u;
-      $$1.a(0.0F, 0.15F, 0.0F);
-      $$1.a(a.d.rotationDegrees(ayz.a($$4 * 0.1F) * 180.0F));
-      $$1.a(a.b.rotationDegrees(ayz.b($$4 * 0.1F) * 180.0F));
-      $$1.a(a.f.rotationDegrees(ayz.a($$4 * 0.15F) * 360.0F));
-      $$1.b(-0.5F, -0.5F, 0.5F);
-      this.h.a($$0);
-      ffy $$5 = $$2.getBuffer(this.h.a(a));
-      this.h.a($$1, $$5, $$3, hei.d);
-      $$1.b(1.5F, 1.5F, 1.5F);
-      ffy $$6 = $$2.getBuffer(b);
-      this.h.a($$1, $$6, $$3, hei.d, 654311423);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public hae a() {
+   public hae b() {
       return new hae();
    }
 
-   public void a(cpt $$0, hae $$1, float $$2) {
+   public void a(chv $$0, hae $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.k($$2);
-      $$1.a = $$0.j($$2);
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.x();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ar();
    }
 }

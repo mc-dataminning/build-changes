@@ -1,105 +1,48 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dqe implements azv {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dqe extends djn {
+   public static final MapCodec<dqe> h = b(dqe::new);
+   public static final dxv<jn.a> i = dxo.L;
 
-   public static final Codec<dqe> e = azv.a(dqe::values);
-   private final String f;
-   private final h g;
-
-   private dqe(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<? extends dqe> a() {
+      return h;
    }
 
-   public dqe a(dqe $$0) {
-      return switch ($$0) {
-         case b -> {
-            switch (this) {
-               case a:
-                  yield b;
-               case b:
-                  yield c;
-               case c:
-                  yield d;
-               case d:
-                  yield a;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case c -> {
-            switch (this) {
-               case a:
-                  yield c;
-               case b:
-                  yield d;
-               case c:
-                  yield a;
-               case d:
-                  yield b;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case d -> {
-            switch (this) {
-               case a:
-                  yield d;
-               case b:
-                  yield a;
-               case c:
-                  yield b;
-               case d:
-                  yield c;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         default -> this;
-      };
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public jn a(jn $$0) {
-      if ($$0.o() == jn.a.b) {
-         return $$0;
-      } else {
-         return switch (this) {
-            case b -> $$0.h();
-            case c -> $$0.g();
-            case d -> $$0.i();
-            default -> $$0;
-         };
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return switch (this) {
-         case b -> ($$0 + $$1 / 4) % $$1;
-         case c -> ($$0 + $$1 / 2) % $$1;
-         case d -> ($$0 + $$1 * 3 / 4) % $$1;
-         default -> $$0;
-      };
-   }
-
-   public static dqe a(azh $$0) {
-      return af.a(values(), $$0);
-   }
-
-   public static List<dqe> b(azh $$0) {
-      return af.b(values(), $$0);
+   public dqe(dwx.d $$0) {
+      super($$0);
+      this.l(this.m().b(i, jn.a.b));
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected dwy a(dwy $$0, dqf $$1) {
+      return b($$0, $$1);
+   }
+
+   public static dwy b(dwy $$0, dqf $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((jn.a)$$0.c(i)) {
+               case a:
+                  return $$0.b(i, jn.a.c);
+               case c:
+                  return $$0.b(i, jn.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected void a(dwz.a<djn, dwy> $$0) {
+      $$0.a(i);
+   }
+
+   @Override
+   public dwy a(dah $$0) {
+      return this.m().b(i, $$0.k().o());
    }
 }

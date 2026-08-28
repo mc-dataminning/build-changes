@@ -1,8 +1,21 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public interface hbx {
-   boolean a(cwp var1, @Nullable gfz var2, @Nullable bvh var3, int var4, cwn var5);
+public class hbx {
+   private static final ayi.b<akv, MapCodec<? extends hby>> b = new ayi.b<>();
+   public static final MapCodec<hby> a = b.a(akv.a).dispatchMap("property", hby::a, $$0 -> $$0);
 
-   MapCodec<? extends hbx> a();
+   public static void a() {
+      b.a(akv.b("custom_model_data"), hbz.a);
+      b.a(akv.b("using_item"), hch.a);
+      b.a(akv.b("broken"), hbv.a);
+      b.a(akv.b("damaged"), hca.a);
+      b.a(akv.b("fishing_rod/cast"), hcc.a);
+      b.a(akv.b("has_component"), hcd.a);
+      b.a(akv.b("bundle/has_selected_item"), hbw.a);
+      b.a(akv.b("selected"), hcg.a);
+      b.a(akv.b("carried"), hce.a);
+      b.a(akv.b("extended_view"), hcb.a);
+      b.a(akv.b("keybind_down"), hcf.a);
+      b.a(akv.b("view_entity"), hci.a);
+   }
 }

@@ -1,57 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class cjm extends cjc {
-   private static final buo bY = bus.bO.n().a(bun.a().a(bum.a, 0.0F, bus.bO.m() - 0.03125F, 0.0F)).a(0.5F);
+public enum cjm implements azv {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public cjm(bus<? extends cjm> $$0, dgi $$1) {
-      super($$0, $$1);
+   public static final Codec<cjm> h = azv.a(cjm::values);
+   private static final IntFunction<cjm> i = axq.a(cjm::a, values(), axq.a.b);
+   private final int j;
+   private final String k;
+
+   private cjm(final int $$0, final String $$1) {
+      this.j = $$0;
+      this.k = $$1;
    }
 
-   public static bwo.a p() {
-      return gU().a(bwp.s, 15.0).a(bwp.v, 0.2F);
+   public int a() {
+      return this.j;
    }
 
-   public static boolean c(bus<? extends cgy> $$0, dgj $$1, bur $$2, ji $$3, azh $$4) {
-      return !bur.a($$2) ? cgy.b($$0, $$1, $$2, $$3, $$4) : bur.b($$2) || a($$1, $$3);
-   }
-
-   @Override
-   protected void a(azh $$0) {
-      this.g(bwp.o).a(a($$0::j));
-   }
-
-   @Override
-   protected avz u() {
-      return awa.Eo;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.Ep;
-   }
-
-   @Override
-   protected avz e(btb $$0) {
-      return awa.Eq;
-   }
-
-   @Nullable
-   @Override
-   public buc a(ard $$0, buc $$1) {
-      return bus.bO.a($$0, bur.e);
+   public static cjm a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   public bsk b(cox $$0, bsj $$1) {
-      return (bsk)(!this.gJ() ? bsk.e : super.b($$0, $$1));
-   }
-
-   @Override
-   protected void gK() {
-   }
-
-   @Override
-   public buo e(bvt $$0) {
-      return this.e_() ? bY : super.e($$0);
+   public String c() {
+      return this.k;
    }
 }

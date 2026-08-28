@@ -1,12 +1,5 @@
-public class fig extends Exception {
-   public final fgm a;
-
-   public fig(fgm $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
+public class fig extends RuntimeException {
+   public fig(String $$0, Exception $$1) {
+      super($$0, $$1);
    }
 }

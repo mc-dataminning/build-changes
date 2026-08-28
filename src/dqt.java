@@ -1,82 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dqt extends dii {
-   public static final MapCodec<dqt> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqt.a.b.fieldOf("kind").forGetter(dii::b), t()).apply($$0, dqt::new));
-   public static final int d = dyc.a();
-   private static final int b = d + 1;
-   public static final dxw e = dxn.bd;
-   protected static final fbu f = djm.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final fbu g = djm.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
-
+public interface dqt extends djv, dog {
    @Override
-   public MapCodec<? extends dqt> a() {
-      return c;
-   }
-
-   protected dqt(dqt.a $$0, dww.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(e, Integer.valueOf(0)));
+   default boolean a(@Nullable coy $$0, dfo $$1, ji $$2, dwy $$3, esz $$4) {
+      return $$4 == etb.c;
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return this.b() == dqt.b.h ? g : f;
-   }
+   default boolean a(dgk $$0, ji $$1, dwy $$2, eta $$3) {
+      if (!$$2.c(dxo.J) && $$3.a() == etb.c) {
+         if (!$$0.B_()) {
+            $$0.a($$1, $$2.b(dxo.J, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   @Override
-   protected fbu d_(dwx $$0) {
-      return fbr.a();
-   }
-
-   @Override
-   public dwx a(dag $$0) {
-      return super.a($$0).b(e, Integer.valueOf(dyc.a($$0.i())));
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends azv {
-      Map<String, dqt.a> a = new Object2ObjectArrayMap();
-      Codec<dqt.a> b = Codec.stringResolver(azv::c, a::get);
-   }
-
-   public static enum b implements dqt.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      @Override
-      public String c() {
-         return this.j;
+   @Override
+   default cwq a(@Nullable coy $$0, dgk $$1, ji $$2, dwy $$3) {
+      if ($$3.c(dxo.J)) {
+         $$1.a($$2, $$3.b(dxo.J, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cwq(cwu.rg);
+      } else {
+         return cwq.j;
       }
+   }
+
+   @Override
+   default Optional<avz> as_() {
+      return etb.c.j();
    }
 }

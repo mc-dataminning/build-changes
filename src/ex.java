@@ -21,7 +21,7 @@ public class ex implements ez<ex>, fc {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("permissions.requires.entity"));
    private final ew d;
-   private final fba e;
+   private final fbb e;
    private final ard f;
    private final int g;
    private final String h;
@@ -29,27 +29,27 @@ public class ex implements ez<ex>, fc {
    private final MinecraftServer j;
    private final boolean k;
    @Nullable
-   private final bul l;
+   private final bum l;
    private final eu m;
    private final fj.a n;
-   private final faz o;
+   private final fba o;
    private final ev p;
    private final azx q;
 
-   public ex(ew $$0, fba $$1, faz $$2, ard $$3, int $$4, String $$5, wp $$6, MinecraftServer $$7, @Nullable bul $$8) {
+   public ex(ew $$0, fbb $$1, fba $$2, ard $$3, int $$4, String $$5, wp $$6, MinecraftServer $$7, @Nullable bum $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, eu.a, fj.a.a, ev.a, azx.immediate($$7));
    }
 
    protected ex(
       ew $$0,
-      fba $$1,
-      faz $$2,
+      fbb $$1,
+      fba $$2,
       ard $$3,
       int $$4,
       String $$5,
       wp $$6,
       MinecraftServer $$7,
-      @Nullable bul $$8,
+      @Nullable bum $$8,
       boolean $$9,
       eu $$10,
       fj.a $$11,
@@ -76,17 +76,17 @@ public class ex implements ez<ex>, fc {
       return this.d == $$0 ? this : new ex($$0, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ex a(bul $$0) {
+   public ex a(bum $$0) {
       return this.l == $$0
          ? this
          : new ex(this.d, this.e, this.o, this.f, this.g, $$0.al().getString(), $$0.p_(), this.j, $$0, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ex a(fba $$0) {
+   public ex a(fbb $$0) {
       return this.e.equals($$0) ? this : new ex(this.d, $$0, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ex a(faz $$0) {
+   public ex a(fba $$0) {
       return this.o.c($$0) ? this : new ex(this.d, this.e, $$0, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
@@ -123,25 +123,25 @@ public class ex implements ez<ex>, fc {
       if ($$0 == this.f) {
          return this;
       } else {
-         double $$1 = eas.a(this.f.G_(), $$0.G_());
-         fba $$2 = new fba(this.e.d * $$1, this.e.e, this.e.f * $$1);
+         double $$1 = eat.a(this.f.G_(), $$0.G_());
+         fbb $$2 = new fbb(this.e.d * $$1, this.e.e, this.e.f * $$1);
          return new ex(this.d, $$2, this.o, $$0, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
       }
    }
 
-   public ex a(bul $$0, fj.a $$1) {
+   public ex a(bum $$0, fj.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public ex b(fba $$0) {
-      fba $$1 = this.n.a(this);
+   public ex b(fbb $$0) {
+      fbb $$1 = this.n.a(this);
       double $$2 = $$0.d - $$1.d;
       double $$3 = $$0.e - $$1.e;
       double $$4 = $$0.f - $$1.f;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
       float $$6 = ayz.h((float)(-(ayz.d($$3, $$5) * 180.0F / (float)Math.PI)));
       float $$7 = ayz.h((float)(ayz.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new faz($$6, $$7));
+      return this.a(new fba($$6, $$7));
    }
 
    public ex a(ev $$0, azx $$1) {
@@ -163,7 +163,7 @@ public class ex implements ez<ex>, fc {
       return this.g >= $$0;
    }
 
-   public fba d() {
+   public fbb d() {
       return this.e;
    }
 
@@ -172,11 +172,11 @@ public class ex implements ez<ex>, fc {
    }
 
    @Nullable
-   public bul f() {
+   public bum f() {
       return this.l;
    }
 
-   public bul g() throws CommandSyntaxException {
+   public bum g() throws CommandSyntaxException {
       if (this.l == null) {
          throw b.create();
       } else {
@@ -185,7 +185,7 @@ public class ex implements ez<ex>, fc {
    }
 
    public are h() throws CommandSyntaxException {
-      bul var2 = this.l;
+      bum var2 = this.l;
       if (var2 instanceof are) {
          return (are)var2;
       } else {
@@ -202,7 +202,7 @@ public class ex implements ez<ex>, fc {
       return this.l instanceof are;
    }
 
-   public faz k() {
+   public fba k() {
       return this.o;
    }
 
@@ -266,7 +266,7 @@ public class ex implements ez<ex>, fc {
 
    private void c(wp $$0) {
       wp $$1 = wp.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.j.aL().b(dge.p)) {
+      if (this.j.aL().b(dgf.p)) {
          for (are $$2 : this.j.ag().t()) {
             if ($$2.z() != this.d && this.j.ag().f($$2.gh())) {
                $$2.a($$1);
@@ -274,7 +274,7 @@ public class ex implements ez<ex>, fc {
          }
       }
 
-      if (this.d != this.j && this.j.aL().b(dge.m)) {
+      if (this.d != this.j && this.j.aL().b(dgf.m)) {
          this.j.a($$1);
       }
    }
@@ -326,7 +326,7 @@ public class ex implements ez<ex>, fc {
    }
 
    @Override
-   public Set<aku<dgi>> t() {
+   public Set<aku<dgj>> t() {
       return this.j.K();
    }
 
@@ -336,7 +336,7 @@ public class ex implements ez<ex>, fc {
    }
 
    @Override
-   public crt v() {
+   public cru v() {
       return this.f.K();
    }
 

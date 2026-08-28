@@ -1,30 +1,26 @@
-public class ckg extends cjy {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public ckg(cjv $$0) {
-      super($$0);
-   }
+public interface ckg {
+   boolean a();
 
-   @Override
-   public void b() {
-      this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), awa.iz, this.a.dm(), 2.5F, 0.8F + this.a.dY().i() * 0.3F, false);
-   }
+   void b();
 
-   @Override
-   public void a(ard $$0) {
-      if (this.c++ >= 40) {
-         this.a.go().a(ckl.f);
-      }
-   }
+   void a(ard var1);
 
-   @Override
-   public void c() {
-      this.c = 0;
-   }
+   void a(cjv var1, ji var2, btc var3, @Nullable coy var4);
 
-   @Override
-   public ckl<ckg> h() {
-      return ckl.h;
-   }
+   void c();
+
+   void d();
+
+   float e();
+
+   float g();
+
+   ckm<? extends ckg> h();
+
+   @Nullable
+   fbb f();
+
+   float a(btc var1, float var2);
 }

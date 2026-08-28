@@ -1,67 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class cam {
-   public static bxb<coi> a(float $$0) {
-      return can.a(
-         (Function<can.b<coi>, ? extends App<can.c<coi>, caq<coi>>>)($$1 -> $$1.group($$1.b(cel.d), $$1.c(cel.c), $$1.b(cel.g), $$1.a(cel.m), $$1.a(cel.n))
-               .apply(
-                  $$1,
-                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                        if ($$7.e_()) {
-                           return false;
-                        } else if ($$7.gC().b() != col.b) {
-                           return false;
-                        } else {
-                           ji $$9 = $$1.<jq>b($$2).b();
-                           Optional<jr<cgo>> $$10 = $$6x.A().c($$9);
-                           if ($$10.isEmpty()) {
-                              return true;
-                           } else {
-                              $$1.<List<bvh>>b($$4)
-                                 .stream()
-                                 .filter($$1xxx -> $$1xxx instanceof coi && $$1xxx != $$7)
-                                 .map($$0xxxx -> (coi)$$0xxxx)
-                                 .filter(bvh::bL)
-                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
-                                 .findFirst()
-                                 .ifPresent($$6xx -> {
-                                    $$5.b();
-                                    $$6.b();
-                                    $$2.b();
-                                    if ($$6xx.eb().c(cel.c).isEmpty()) {
-                                       bxc.a($$6xx, $$9, $$0, 1);
-                                       $$6xx.eb().a(cel.d, jq.a($$6x.ai(), $$9));
-                                       agd.c($$6x, $$9);
-                                    }
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class cam extends bxb<coj> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
+
+   public cam() {
+      super(ImmutableMap.of(cem.c, cen.a, cem.n, cen.c));
    }
 
-   private static boolean a(jr<cgo> $$0, coi $$1, ji $$2) {
-      boolean $$3 = $$1.eb().c(cel.d).isPresent();
-      if ($$3) {
+   protected boolean b(ard $$0, coj $$1) {
+      if ($$0.ad() - this.e < 300L) {
+         return false;
+      } else if ($$0.A.a(2) != 0) {
          return false;
       } else {
-         Optional<jq> $$4 = $$1.eb().c(cel.c);
-         col $$5 = $$1.gC().b();
-         if ($$5.b().test($$0)) {
-            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
-         } else {
-            return false;
-         }
+         this.e = $$0.ad();
+         jq $$2 = $$1.eb().c(cem.c).get();
+         return $$2.a() == $$0.ai() && $$2.b().a($$1.dt(), 1.73);
       }
    }
 
-   private static boolean a(bvp $$0, ji $$1, cgo $$2) {
-      etn $$3 = $$0.P().a($$1, $$2.c());
-      return $$3 != null && $$3.j();
+   protected void a(ard $$0, coj $$1, long $$2) {
+      bwk<coj> $$3 = $$1.eb();
+      $$3.a(cem.J, $$2);
+      $$3.c(cem.c).ifPresent($$1x -> $$3.a(cem.n, new bxe($$1x.b())));
+      $$1.gH();
+      this.a($$0, $$1);
+      if ($$1.gG()) {
+         $$1.gF();
+      }
+   }
+
+   protected void a(ard $$0, coj $$1) {
+   }
+
+   protected boolean b(ard $$0, coj $$1, long $$2) {
+      Optional<jq> $$3 = $$1.eb().c(cem.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jq $$4 = $$3.get();
+         return $$4.a() == $$0.ai() && $$4.b().a($$1.dt(), 1.73);
+      }
    }
 }

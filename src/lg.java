@@ -1,22 +1,22 @@
 public class lg extends lb {
-   private final cxk c;
-   private final cxk.a d;
+   private final cxl c;
+   private final cxl.a d;
 
-   public lg(cwl $$0) {
-      if ($$0 instanceof cxk $$1) {
+   public lg(cwm $$0) {
+      if ($$0 instanceof cxl $$1) {
          this.c = $$1;
          this.d = $$1.b();
       } else {
-         throw new IllegalArgumentException($$0 + " not instance of " + cxk.class.getSimpleName());
+         throw new IllegalArgumentException($$0 + " not instance of " + cxl.class.getSimpleName());
       }
    }
 
    @Override
-   public cwp a(kz $$0, cwp $$1) {
+   public cwq a(kz $$0, cwq $$1) {
       ard $$2 = $$0.b();
-      jn $$3 = $$0.d().c(dls.b);
+      jn $$3 = $$0.d().c(dlt.b);
       kb $$4 = this.d.b().getDispensePosition($$0, $$3);
-      cpq.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
+      cpr.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
       $$1.h(1);
       return $$1;
    }

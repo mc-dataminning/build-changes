@@ -19,7 +19,7 @@ public class bcv extends DataFix {
 
    public TypeRewriteRule makeRule() {
       return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(bhx.c), this.getOutputSchema().getType(bhx.c), $$0 -> $$0.update("Level", bcv::a)
+         "ChunkToProtoChunkFix", this.getInputSchema().getType(bhy.c), this.getOutputSchema().getType(bhy.c), $$0 -> $$0.update("Level", bcv::a)
       );
    }
 

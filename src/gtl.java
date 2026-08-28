@@ -1,27 +1,14 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-
-public class gtl extends gqy<chl, gzp, gbr> {
-   private static final Map<chl.a, akv> a = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(chl.a.b, akv.b("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(chl.a.a, akv.b("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public gtl(gse.a $$0) {
-      super($$0, new gbr($$0.a(gfc.bB)), new gbr($$0.a(gfc.bC)), 0.7F);
-      this.a(new gwo(this, $$0.d()));
+public abstract class gtl<T extends bvk, S extends gzl, M extends gcc<? super S>> extends gtg<T, S, M> {
+   public gtl(gsf.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public akv a(gzp $$0) {
-      return a.get($$0.a);
+   protected boolean a(T $$0, double $$1) {
+      return super.a($$0, $$1) && ($$0.cM() || $$0.l_() && $$0 == this.e.c);
    }
 
-   public gzp b() {
-      return new gzp();
-   }
-
-   public void a(chl $$0, gzp $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+   @Override
+   protected float g(S $$0) {
+      return super.g($$0) * $$0.ag;
    }
 }

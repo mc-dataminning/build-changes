@@ -1,99 +1,94 @@
 import com.mojang.serialization.MapCodec;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public class dmb extends diy implements dpj {
+public class dmb extends diz implements dpk {
    public static final MapCodec<dmb> a = b(dmb::new);
-   protected static final fbu b = djm.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
 
    @Override
    public MapCodec<dmb> a() {
       return a;
    }
 
-   protected dmb(dww.d $$0) {
+   protected dmb(dwx.d $$0) {
       super($$0);
    }
 
    @Override
-   public dtz a(ji $$0, dwx $$1) {
+   public dua a(ji $$0, dwy $$1) {
       return new dvt($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return b;
+   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
+      return a($$2, duc.w, $$0.C ? dvt::a : dvt::b);
    }
 
    @Override
-   protected fbu a_(dwx $$0, dgi $$1, ji $$2) {
-      return $$0.f($$1, $$2);
-   }
+   public void a(dwy $$0, dgj $$1, ji $$2, azh $$3) {
+      dua $$4 = $$1.c_($$2);
+      if ($$4 instanceof dvt) {
+         int $$5 = ((dvt)$$4).f();
 
-   @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, bul $$3) {
-      if ($$3.o(false)) {
-         if (!$$1.C && $$1.ai() == dgi.k && $$3 instanceof are $$4 && !$$4.i) {
-            $$4.n();
-            return;
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j();
+            double $$9 = (double)$$2.w() + $$3.j();
+            double $$10 = ($$3.j() - 0.5) * 0.5;
+            double $$11 = ($$3.j() - 0.5) * 0.5;
+            double $$12 = ($$3.j() - 0.5) * 0.5;
+            int $$13 = $$3.a(2) * 2 - 1;
+            if ($$3.h()) {
+               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
+               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+            } else {
+               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
+               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+            }
+
+            $$1.a(lt.ae, $$7, $$8, $$9, $$10, $$11, $$12);
          }
-
-         $$3.a(this, $$2);
       }
    }
 
    @Override
-   public etz a(ard $$0, bul $$1, ji $$2) {
-      aku<dgi> $$3 = $$0.ai() == dgi.k ? dgi.i : dgi.k;
-      ard $$4 = $$0.p().a($$3);
-      if ($$4 == null) {
-         return null;
-      } else {
-         boolean $$5 = $$3 == dgi.k;
-         ji $$6 = $$5 ? ard.a : $$4.Z();
-         fba $$7 = $$6.c();
-         float $$8;
-         Set<bvv> $$9;
-         if ($$5) {
-            efw.a($$4, ji.a((kb)$$7).e(), true);
-            $$8 = jn.e.p();
-            $$9 = bvv.a(bvv.l, Set.of(bvv.e));
-            if ($$1 instanceof are) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
-         } else {
-            $$8 = 0.0F;
-            $$9 = bvv.a(bvv.l, bvv.k);
-            if ($$1 instanceof are $$12) {
-               return $$12.a(false, etz.a);
-            }
-
-            $$7 = $$1.a($$4, $$6).c();
-         }
-
-         return new etz($$4, $$7, fba.c, $$8, 0.0F, $$9, etz.b.then(etz.c));
-      }
+   protected cwq a(dgm $$0, ji $$1, dwy $$2, boolean $$3) {
+      return cwq.j;
    }
 
    @Override
-   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(lt.ag, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
-      return cwp.j;
-   }
-
-   @Override
-   protected boolean a(dwx $$0, esy $$1) {
+   protected boolean a(dwy $$0, esz $$1) {
       return false;
    }
 
    @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.a;
+   protected void a(dwy $$0, dgj $$1, ji $$2, bum $$3) {
+      if ($$3.o(false) && !$$1.C && $$1.c_($$2) instanceof dvt $$5 && !$$5.c()) {
+         $$3.a(this, $$2);
+         dvt.c($$1, $$2, $$0, $$5);
+      }
+   }
+
+   @Nullable
+   @Override
+   public eua a(ard $$0, bum $$1, ji $$2) {
+      if ($$0.c_($$2) instanceof dvt $$4) {
+         fbb $$6 = $$4.a($$0, $$2);
+         if ($$6 == null) {
+            return null;
+         } else {
+            return $$1 instanceof cqb
+               ? new eua($$0, $$6, fbb.c, 0.0F, 0.0F, Set.of(), eua.c)
+               : new eua($$0, $$6, fbb.c, 0.0F, 0.0F, bvw.a(bvw.l, bvw.k), eua.c);
+         }
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   protected dpy a_(dwy $$0) {
+      return dpy.a;
    }
 }

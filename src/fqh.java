@@ -1,55 +1,17 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
-
-public class fqh {
-   @Nullable
-   private fqe a;
-   private Duration b = Duration.ZERO;
-   private long c;
-   private boolean d;
-
-   public void a(Duration $$0) {
-      this.b = $$0;
+public record fqh(akv a, akv b, akv c, akv d) {
+   public fqh(akv $$0, akv $$1) {
+      this($$0, $$0, $$1, $$1);
    }
 
-   public void a(@Nullable fqe $$0) {
-      this.a = $$0;
+   public fqh(akv $$0, akv $$1, akv $$2) {
+      this($$0, $$1, $$2, $$1);
    }
 
-   @Nullable
-   public fqe a() {
-      return this.a;
-   }
-
-   public void a(boolean $$0, boolean $$1, fta $$2) {
-      if (this.a == null) {
-         this.d = false;
+   public akv a(boolean $$0, boolean $$1) {
+      if ($$0) {
+         return $$1 ? this.c : this.a;
       } else {
-         boolean $$3 = $$0 || $$1 && flj.Q().aX().b();
-         if ($$3 != this.d) {
-            if ($$3) {
-               this.c = af.c();
-            }
-
-            this.d = $$3;
-         }
-
-         if ($$3 && af.c() - this.c > this.b.toMillis()) {
-            ful $$4 = flj.Q().z;
-            if ($$4 != null) {
-               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
-            }
-         }
-      }
-   }
-
-   private fww a(fta $$0, boolean $$1, boolean $$2) {
-      return (fww)(!$$1 && $$2 && flj.Q().aX().b() ? new fwr($$0) : new fwy($$0));
-   }
-
-   public void a(fsq $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
+         return $$1 ? this.d : this.b;
       }
    }
 }

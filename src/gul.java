@@ -1,16 +1,21 @@
-public class gul extends grc<cpw, gxr> {
-   public static final akv a = akv.b("textures/entity/projectiles/spectral_arrow.png");
+public class gul extends gtl<chx, hak, gec> {
+   private static final akv a = akv.b("textures/entity/snow_golem.png");
 
-   public gul(gse.a $$0) {
-      super($$0);
+   public gul(gsf.a $$0) {
+      super($$0, new gec($$0.a(gfd.cS)), 0.5F);
+      this.a(new gwz(this, $$0.d()));
    }
 
-   @Override
-   protected akv a(gxr $$0) {
+   public akv a(hak $$0) {
       return a;
    }
 
-   public gxr a() {
-      return new gxr();
+   public hak b() {
+      return new hak();
+   }
+
+   public void a(chx $$0, hak $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.p();
    }
 }

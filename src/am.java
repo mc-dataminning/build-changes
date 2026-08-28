@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record am(int c, List<aku<evw>> d, List<aku<dbe<?>>> e, Optional<es> f) {
+public record am(int c, List<aku<evx>> d, List<aku<dbf<?>>> e, Optional<es> f) {
    public static final Codec<am> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(am::a),
@@ -21,19 +21,19 @@ public record am(int c, List<aku<evw>> d, List<aku<dbe<?>>> e, Optional<es> f) {
 
    public void a(are $$0) {
       $$0.d(this.c);
-      evu $$1 = new evu.a($$0.y()).a(eyl.a, $$0).a(eyl.f, $$0.dt()).a(eyk.m);
+      evv $$1 = new evv.a($$0.y()).a(eym.a, $$0).a(eym.f, $$0.dt()).a(eyl.m);
       boolean $$2 = false;
 
-      for (aku<evw> $$3 : this.d) {
+      for (aku<evx> $$3 : this.d) {
          ObjectListIterator var6 = $$0.g.bc().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cwp $$4 = (cwp)var6.next();
+            cwq $$4 = (cwq)var6.next();
             if ($$0.i($$4)) {
                $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), awa.oa, awb.h, 0.2F, (($$0.dY().i() - $$0.dY().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               clc $$5 = $$0.a($$4, false);
+               cld $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.t();
                   $$5.b($$0.cG());
@@ -58,11 +58,11 @@ public record am(int c, List<aku<evw>> d, List<aku<dbe<?>>> e, Optional<es> f) {
       return this.c;
    }
 
-   public List<aku<evw>> b() {
+   public List<aku<evx>> b() {
       return this.d;
    }
 
-   public List<aku<dbe<?>>> c() {
+   public List<aku<dbf<?>>> c() {
       return this.e;
    }
 
@@ -72,8 +72,8 @@ public record am(int c, List<aku<evw>> d, List<aku<dbe<?>>> e, Optional<es> f) {
 
    public static class a {
       private int a;
-      private final Builder<aku<evw>> b = ImmutableList.builder();
-      private final Builder<aku<dbe<?>>> c = ImmutableList.builder();
+      private final Builder<aku<evx>> b = ImmutableList.builder();
+      private final Builder<aku<dbf<?>>> c = ImmutableList.builder();
       private Optional<akv> d = Optional.empty();
 
       public static am.a a(int $$0) {
@@ -85,20 +85,20 @@ public record am(int c, List<aku<evw>> d, List<aku<dbe<?>>> e, Optional<es> f) {
          return this;
       }
 
-      public static am.a a(aku<evw> $$0) {
+      public static am.a a(aku<evx> $$0) {
          return new am.a().b($$0);
       }
 
-      public am.a b(aku<evw> $$0) {
+      public am.a b(aku<evx> $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static am.a c(aku<dbe<?>> $$0) {
+      public static am.a c(aku<dbf<?>> $$0) {
          return new am.a().d($$0);
       }
 
-      public am.a d(aku<dbe<?>> $$0) {
+      public am.a d(aku<dbf<?>> $$0) {
          this.c.add($$0);
          return this;
       }

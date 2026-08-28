@@ -3,35 +3,35 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record ck(Optional<bf<czg.b, ck.a>> c) implements ea<czg> {
+public record ck(Optional<bf<czh.b, ck.a>> c) implements ea<czh> {
    public static final Codec<ck> a = RecordCodecBuilder.create($$0 -> $$0.group(bf.a(ck.a.a).optionalFieldOf("modifiers").forGetter(ck::b)).apply($$0, ck::new));
 
    @Override
-   public ku<czg> a() {
+   public ku<czh> a() {
       return kv.o;
    }
 
-   public boolean a(cwp $$0, czg $$1) {
+   public boolean a(cwq $$0, czh $$1) {
       return !this.c.isPresent() || this.c.get().a($$1.b());
    }
 
-   public Optional<bf<czg.b, ck.a>> b() {
+   public Optional<bf<czh.b, ck.a>> b() {
       return this.c;
    }
 
-   public static record a(Optional<jv<bwk>> b, Optional<akv> c, dk.c d, Optional<bwn.a> e, Optional<buu> f) implements Predicate<czg.b> {
+   public static record a(Optional<jv<bwl>> b, Optional<akv> c, dk.c d, Optional<bwo.a> e, Optional<buv> f) implements Predicate<czh.b> {
       public static final Codec<ck.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   kg.a(mc.c).optionalFieldOf("attribute").forGetter(ck.a::a),
                   akv.a.optionalFieldOf("id").forGetter(ck.a::b),
                   dk.c.d.optionalFieldOf("amount", dk.c.c).forGetter(ck.a::c),
-                  bwn.a.f.optionalFieldOf("operation").forGetter(ck.a::d),
-                  buu.l.optionalFieldOf("slot").forGetter(ck.a::e)
+                  bwo.a.f.optionalFieldOf("operation").forGetter(ck.a::d),
+                  buv.l.optionalFieldOf("slot").forGetter(ck.a::e)
                )
                .apply($$0, ck.a::new)
       );
 
-      public boolean a(czg.b $$0) {
+      public boolean a(czh.b $$0) {
          if (this.b.isPresent() && !this.b.get().a($$0.a())) {
             return false;
          } else if (this.c.isPresent() && !this.c.get().equals($$0.b().b())) {
@@ -43,7 +43,7 @@ public record ck(Optional<bf<czg.b, ck.a>> c) implements ea<czg> {
          }
       }
 
-      public Optional<jv<bwk>> a() {
+      public Optional<jv<bwl>> a() {
          return this.b;
       }
 
@@ -55,11 +55,11 @@ public record ck(Optional<bf<czg.b, ck.a>> c) implements ea<czg> {
          return this.d;
       }
 
-      public Optional<bwn.a> d() {
+      public Optional<bwo.a> d() {
          return this.e;
       }
 
-      public Optional<buu> e() {
+      public Optional<buv> e() {
          return this.f;
       }
    }

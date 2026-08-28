@@ -1,23 +1,18 @@
-public class gvz extends gwt<gyf, gbu> {
-   public gvz(gub<gyf, gbu> $$0) {
+public class gvz extends gwu<gzx, gdh> {
+   private final gcp<gzx> a;
+
+   public gvz(guc<gzx, gdh> $$0, gfa $$1) {
       super($$0);
+      this.a = new gdg($$1.a(gfd.cg));
    }
 
-   public void a(ffu $$0, gly $$1, int $$2, gyf $$3, float $$4, float $$5) {
-      hbo $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         float $$7 = 1.0F;
-         float $$8 = -1.0F;
-         float $$9 = ayz.e($$3.ab) / 60.0F;
-         if ($$3.ab < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
-         }
-
-         $$6.a($$0, $$1, $$2, hei.d);
-         $$0.b();
+   public void a(ffv $$0, glz $$1, int $$2, gzx $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.z) {
+         ffz $$6 = $$1.getBuffer(gmj.d($$3.a.a()));
+         int $$7 = gtg.a($$3, 0.0F);
+         this.d().a(this.a);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
       }
    }
 }

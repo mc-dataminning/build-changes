@@ -16,9 +16,9 @@ public class bci extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
-         this.getInputSchema().getType(bhx.t)
+         this.getInputSchema().getType(bhy.t)
       );
-      Type<?> $$1 = this.getInputSchema().getType(bhx.B);
+      Type<?> $$1 = this.getInputSchema().getType(bhy.B);
       return TypeRewriteRule.seq(
          this.a($$0, $$1, "minecraft:llama"),
          new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:trader_llama"), this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
@@ -28,7 +28,7 @@ public class bci extends DataFix {
    private TypeRewriteRule a(
       OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0, Type<?> $$1, String $$2
    ) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bhx.B, $$2);
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bhy.B, $$2);
       OpticFinder<?> $$4 = DSL.namedChoice($$2, $$3);
       OpticFinder<?> $$5 = $$3.findField("Items");
       return this.fixTypeEverywhereTyped(

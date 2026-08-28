@@ -2,7 +2,7 @@ public class adp implements yw<abl> {
    public static final yn<vl, adp> a = yw.a(adp::a, adp::new);
    private final int b;
 
-   public adp(bsy $$0) {
+   public adp(bsz $$0) {
       this($$0.b());
    }
 

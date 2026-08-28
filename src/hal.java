@@ -1,10 +1,5 @@
-public class hal extends gzk implements hab {
-   public boolean a;
-   public boolean b;
-   public boolean c;
-
-   @Override
-   public boolean a() {
-      return this.a;
-   }
+public class hal extends gzl {
+   public float a;
+   public float b;
+   public float c;
 }

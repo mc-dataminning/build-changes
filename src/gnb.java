@@ -1,61 +1,100 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class gnb {
-   private Map<dwx, hgs> a = Map.of();
-   private final hhg b;
+   public static final akv a = akv.b("textures/misc/forcefield.png");
 
-   public gnb(hhg $$0) {
-      this.b = $$0;
-   }
+   public void a(dyo $$0, fbb $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = ayz.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         gmj $$12 = gmj.a(flk.O());
+         $$12.a();
+         int $$13 = $$0.d().a();
+         float $$14 = (float)axk.b($$13) / 255.0F;
+         float $$15 = (float)axk.c($$13) / 255.0F;
+         float $$16 = (float)axk.d($$13) / 255.0F;
+         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
+         float $$17 = (float)(af.c() % 3000L) / 3000.0F;
+         float $$18 = (float)(-ayz.e($$1.e * 0.5));
+         float $$19 = $$18 + $$11;
+         ffq $$20 = ffx.b().a(fga.c.h, fft.i);
+         double $$21 = Math.max((double)ayz.a($$10 - $$2), $$6);
+         double $$22 = Math.min((double)ayz.c($$10 + $$2), $$7);
+         float $$23 = (float)(ayz.a($$21) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$24 = $$23;
 
-   public hes a(dwx $$0) {
-      return this.b($$0).d();
-   }
-
-   public hgs b(dwx $$0) {
-      hgs $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
-   }
-
-   public hhg a() {
-      return this.b;
-   }
-
-   public void a(Map<dwx, hgs> $$0) {
-      this.a = $$0;
-   }
-
-   public static hhh c(dwx $$0) {
-      return a(mb.e.b($$0.b()), $$0);
-   }
-
-   public static hhh a(akv $$0, dwx $$1) {
-      return new hhh($$0, b($$1.G()));
-   }
-
-   public static String b(Map<dxz<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dxz<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
+            for (double $$25 = $$21; $$25 < $$22; $$24 += 0.5F) {
+               double $$26 = Math.min(1.0, $$22 - $$25);
+               float $$27 = (float)$$26 * 0.5F;
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$19);
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$19);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$18);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$18);
+               $$25++;
+            }
          }
 
-         dxz<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
+         if ($$9 < $$4 + $$2) {
+            float $$28 = $$23;
+
+            for (double $$29 = $$21; $$29 < $$22; $$28 += 0.5F) {
+               double $$30 = Math.min(1.0, $$22 - $$29);
+               float $$31 = (float)$$30 * 0.5F;
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$18);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$18);
+               $$29++;
+            }
+         }
+
+         $$21 = Math.max((double)ayz.a($$9 - $$2), $$4);
+         $$22 = Math.min((double)ayz.c($$9 + $$2), $$5);
+         $$23 = (float)(ayz.a($$21) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$32 = $$23;
+
+            for (double $$33 = $$21; $$33 < $$22; $$32 += 0.5F) {
+               double $$34 = Math.min(1.0, $$22 - $$33);
+               float $$35 = (float)$$34 * 0.5F;
+               $$20.a((float)($$33 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$18);
+               $$20.a((float)($$33 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$18);
+               $$33++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$36 = $$23;
+
+            for (double $$37 = $$21; $$37 < $$22; $$36 += 0.5F) {
+               double $$38 = Math.min(1.0, $$22 - $$37);
+               float $$39 = (float)$$38 * 0.5F;
+               $$20.a((float)($$37 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), $$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$18);
+               $$20.a((float)($$37 - $$9), $$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$18);
+               $$37++;
+            }
+         }
+
+         ffu $$40 = $$20.a();
+         if ($$40 != null) {
+            ffr.a($$40);
+         }
+
+         $$12.b();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
       }
-
-      return $$1.toString();
-   }
-
-   private static <T extends Comparable<T>> String a(dxz<T> $$0, Comparable<?> $$1) {
-      return $$0.b((T)$$1);
    }
 }

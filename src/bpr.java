@@ -1,7 +1,7 @@
 import jdk.jfr.consumer.RecordedEvent;
 
-public record bpr(double a, double b, double c) {
+public record bpr(String a, String b, int c, int d) {
    public static bpr a(RecordedEvent $$0) {
-      return new bpr((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
+      return new bpr($$0.getString("level"), $$0.getString("dimension"), $$0.getInt("chunkPosX"), $$0.getInt("chunkPosZ"));
    }
 }

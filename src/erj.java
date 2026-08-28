@@ -1,16 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface erj<P extends eri> {
-   erj<eql> a = a("always_true", eql.a);
-   erj<eqq> b = a("block_match", eqq.a);
-   erj<eqs> c = a("blockstate_match", eqs.a);
-   erj<erq> d = a("tag_match", erq.a);
-   erj<erf> e = a("random_block_match", erf.a);
-   erj<erg> f = a("random_blockstate_match", erg.a);
+public abstract class erj {
+   public static final Codec<erj> c = mb.m.q().dispatch("predicate_type", erj::a, erk::codec);
 
-   MapCodec<P> codec();
+   public abstract boolean a(dwy var1, azh var2);
 
-   static <P extends eri> erj<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.m, $$0, () -> $$1);
-   }
+   protected abstract erk<?> a();
 }

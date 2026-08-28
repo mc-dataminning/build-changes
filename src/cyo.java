@@ -1,183 +1,233 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Consumer;
 
-public record cyo(Optional<jr<cym>> e, Optional<Integer> f, List<btq> g, Optional<String> h) implements cyw {
-   public static final cyo a = new cyo(Optional.empty(), Optional.empty(), List.of(), Optional.empty());
-   private static final wp i = wp.c("effect.none").a(n.h);
-   public static final int b = -13083194;
-   private static final Codec<cyo> j = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cym.a.optionalFieldOf("potion").forGetter(cyo::e),
-               Codec.INT.optionalFieldOf("custom_color").forGetter(cyo::f),
-               btq.d.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(cyo::d),
-               Codec.STRING.optionalFieldOf("custom_name").forGetter(cyo::g)
-            )
-            .apply($$0, cyo::new)
-   );
-   public static final Codec<cyo> c = Codec.withAlternative(j, cym.a, cyo::new);
-   public static final yn<wa, cyo> d = yn.a(cym.b.a(yl::a), cyo::e, yl.g.a(yl::a), cyo::f, btq.e.a(yl.a()), cyo::d, yl.o.a(yl::a), cyo::g, cyo::new);
+public class cyo {
+   public static final int a = 20;
+   public static final cyo b = new cyo(List.of(), List.of(), List.of());
+   private final List<dbb> c;
+   private final List<cyo.b<cyn>> d;
+   private final List<cyo.b<cwm>> e;
 
-   public cyo(jr<cym> $$0) {
-      this(Optional.of($$0), Optional.empty(), List.of(), Optional.empty());
+   cyo(List<dbb> $$0, List<cyo.b<cyn>> $$1, List<cyo.b<cwm>> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static cwp a(cwl $$0, jr<cym> $$1) {
-      cwp $$2 = new cwp($$0);
-      $$2.b(kv.Q, new cyo($$1));
-      return $$2;
+   public boolean a(cwq $$0) {
+      return this.b($$0) || this.c($$0);
    }
 
-   public boolean a(jr<cym> $$0) {
-      return this.e.isPresent() && this.e.get().a($$0) && this.g.isEmpty();
+   private boolean d(cwq $$0) {
+      for (dbb $$1 : this.c) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public Iterable<btq> a() {
-      if (this.e.isEmpty()) {
-         return this.g;
+   public boolean b(cwq $$0) {
+      for (cyo.b<cwm> $$1 : this.e) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c(cwq $$0) {
+      for (cyo.b<cyn> $$1 : this.d) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(jr<cyn> $$0) {
+      for (cyo.b<cyn> $$1 : this.d) {
+         if ($$1.c.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(cwq $$0, cwq $$1) {
+      return !this.d($$0) ? false : this.b($$0, $$1) || this.c($$0, $$1);
+   }
+
+   public boolean b(cwq $$0, cwq $$1) {
+      for (cyo.b<cwm> $$2 : this.e) {
+         if ($$0.a($$2.a) && $$2.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c(cwq $$0, cwq $$1) {
+      Optional<jr<cyn>> $$2 = $$0.a(kv.Q, cyp.a).e();
+      if ($$2.isEmpty()) {
+         return false;
       } else {
-         return (Iterable<btq>)(this.g.isEmpty() ? this.e.get().a().a() : Iterables.concat(this.e.get().a().a(), this.g));
-      }
-   }
-
-   public void a(Consumer<btq> $$0) {
-      if (this.e.isPresent()) {
-         for (btq $$1 : this.e.get().a().a()) {
-            $$0.accept(new btq($$1));
-         }
-      }
-
-      for (btq $$2 : this.g) {
-         $$0.accept(new btq($$2));
-      }
-   }
-
-   public cyo b(jr<cym> $$0) {
-      return new cyo(Optional.of($$0), this.f, this.g, this.h);
-   }
-
-   public cyo a(btq $$0) {
-      return new cyo(this.e, this.f, af.a(this.g, $$0), this.h);
-   }
-
-   public int b() {
-      return this.a(-13083194);
-   }
-
-   public int a(int $$0) {
-      return this.f.isPresent() ? this.f.get() : a(this.a()).orElse($$0);
-   }
-
-   public wp a(String $$0) {
-      String $$1 = this.h.or(() -> this.e.map($$0x -> ((cym)$$0x.a()).b())).orElse("empty");
-      return wp.c($$0 + $$1);
-   }
-
-   public static OptionalInt a(Iterable<btq> $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (btq $$5 : $$0) {
-         if ($$5.g()) {
-            int $$6 = $$5.c().a().g();
-            int $$7 = $$5.e() + 1;
-            $$1 += $$7 * axk.b($$6);
-            $$2 += $$7 * axk.c($$6);
-            $$3 += $$7 * axk.d($$6);
-            $$4 += $$7;
-         }
-      }
-
-      return $$4 == 0 ? OptionalInt.empty() : OptionalInt.of(axk.a($$1 / $$4, $$2 / $$4, $$3 / $$4));
-   }
-
-   public boolean c() {
-      return !this.g.isEmpty() ? true : this.e.isPresent() && !this.e.get().a().a().isEmpty();
-   }
-
-   public List<btq> d() {
-      return Lists.transform(this.g, btq::new);
-   }
-
-   public void a(Consumer<wp> $$0, float $$1, float $$2) {
-      a(this.a(), $$0, $$1, $$2);
-   }
-
-   public void a(bvh $$0) {
-      if ($$0.dV() instanceof ard $$1) {
-         cox $$4 = $$0 instanceof cox $$3 ? $$3 : null;
-         this.a((Consumer<btq>)($$3x -> {
-            if ($$3x.c().a().a()) {
-               $$3x.c().a().a($$1, $$4, $$4, $$0, $$3x.e(), 1.0);
-            } else {
-               $$0.a($$3x);
-            }
-         }));
-      }
-   }
-
-   public static void a(Iterable<btq> $$0, Consumer<wp> $$1, float $$2, float $$3) {
-      List<Pair<jr<bwk>, bwn>> $$4 = Lists.newArrayList();
-      boolean $$5 = true;
-
-      for (btq $$6 : $$0) {
-         $$5 = false;
-         xd $$7 = wp.c($$6.i());
-         jr<bto> $$8 = $$6.c();
-         $$8.a().a($$6.e(), ($$1x, $$2x) -> $$4.add(new Pair($$1x, $$2x)));
-         if ($$6.e() > 0) {
-            $$7 = wp.a("potion.withAmplifier", $$7, wp.c("potion.potency." + $$6.e()));
-         }
-
-         if (!$$6.a(20)) {
-            $$7 = wp.a("potion.withDuration", $$7, btr.a($$6, $$2, $$3));
-         }
-
-         $$1.accept($$7.a($$8.a().f().a()));
-      }
-
-      if ($$5) {
-         $$1.accept(i);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.accept(wo.a);
-         $$1.accept(wp.c("potion.whenDrank").a(n.f));
-
-         for (Pair<jr<bwk>, bwn> $$9 : $$4) {
-            bwn $$10 = (bwn)$$9.getSecond();
-            double $$11 = $$10.c();
-            double $$13;
-            if ($$10.d() != bwn.a.b && $$10.d() != bwn.a.c) {
-               $$13 = $$10.c();
-            } else {
-               $$13 = $$10.c() * 100.0;
-            }
-
-            if ($$11 > 0.0) {
-               $$1.accept(wp.a("attribute.modifier.plus." + $$10.d().a(), czg.d.format($$13), wp.c(((bwk)((jr)$$9.getFirst()).a()).c())).a(n.j));
-            } else if ($$11 < 0.0) {
-               $$13 *= -1.0;
-               $$1.accept(wp.a("attribute.modifier.take." + $$10.d().a(), czg.d.format($$13), wp.c(((bwk)((jr)$$9.getFirst()).a()).c())).a(n.m));
+         for (cyo.b<cyn> $$3 : this.d) {
+            if ($$3.a.a($$2.get()) && $$3.b.a($$1)) {
+               return true;
             }
          }
+
+         return false;
       }
    }
 
-   @Override
-   public void a(dgi $$0, bvh $$1, cwp $$2, cyv $$3) {
-      this.a($$1);
+   public cwq d(cwq $$0, cwq $$1) {
+      if ($$1.f()) {
+         return $$1;
+      } else {
+         Optional<jr<cyn>> $$2 = $$1.a(kv.Q, cyp.a).e();
+         if ($$2.isEmpty()) {
+            return $$1;
+         } else {
+            for (cyo.b<cwm> $$3 : this.e) {
+               if ($$1.a($$3.a) && $$3.b.a($$0)) {
+                  return cyp.a($$3.c.a(), $$2.get());
+               }
+            }
+
+            for (cyo.b<cyn> $$4 : this.d) {
+               if ($$4.a.a($$2.get()) && $$4.b.a($$0)) {
+                  return cyp.a($$1.h(), $$4.c);
+               }
+            }
+
+            return $$1;
+         }
+      }
    }
 
-   public Optional<String> g() {
-      return this.h;
+   public static cyo a(cru $$0) {
+      cyo.a $$1 = new cyo.a($$0);
+      a($$1);
+      return $$1.a();
+   }
+
+   public static void a(cyo.a $$0) {
+      $$0.a(cwu.ti);
+      $$0.a(cwu.wo);
+      $$0.a(cwu.wr);
+      $$0.a(cwu.ti, cwu.pZ, cwu.wo);
+      $$0.a(cwu.wo, cwu.wn, cwu.wr);
+      $$0.a(cyq.a, cwu.rV, cyq.c);
+      $$0.a(cyq.a, cwu.me, cyq.b);
+      $$0.a(cyq.a, cwu.tg, cyq.d);
+      $$0.a(cwu.uZ, cyq.Q);
+      $$0.a(cwu.ml, cyq.S);
+      $$0.a(cwu.b, cyq.T);
+      $$0.a(cwu.cT, cyq.R);
+      $$0.a(cyq.d, cwu.vj, cyq.e);
+      $$0.a(cyq.e, cwu.me, cyq.f);
+      $$0.a(cyq.e, cwu.tk, cyq.g);
+      $$0.a(cyq.f, cwu.tk, cyq.h);
+      $$0.a(cyq.g, cwu.me, cyq.h);
+      $$0.a(cwu.tm, cyq.l);
+      $$0.a(cyq.l, cwu.me, cyq.m);
+      $$0.a(cwu.vD, cyq.i);
+      $$0.a(cyq.i, cwu.me, cyq.j);
+      $$0.a(cyq.i, cwu.rV, cyq.k);
+      $$0.a(cyq.i, cwu.tk, cyq.q);
+      $$0.a(cyq.j, cwu.tk, cyq.r);
+      $$0.a(cyq.q, cwu.me, cyq.r);
+      $$0.a(cyq.q, cwu.rV, cyq.s);
+      $$0.a(cyq.d, cwu.oT, cyq.t);
+      $$0.a(cyq.t, cwu.me, cyq.u);
+      $$0.a(cyq.t, cwu.rV, cyq.v);
+      $$0.a(cyq.n, cwu.tk, cyq.q);
+      $$0.a(cyq.o, cwu.tk, cyq.r);
+      $$0.a(cwu.sx, cyq.n);
+      $$0.a(cyq.n, cwu.me, cyq.o);
+      $$0.a(cyq.n, cwu.rV, cyq.p);
+      $$0.a(cyq.d, cwu.rZ, cyq.w);
+      $$0.a(cyq.w, cwu.me, cyq.x);
+      $$0.a(cwu.tq, cyq.y);
+      $$0.a(cyq.y, cwu.rV, cyq.z);
+      $$0.a(cyq.y, cwu.tk, cyq.A);
+      $$0.a(cyq.z, cwu.tk, cyq.B);
+      $$0.a(cyq.A, cwu.rV, cyq.B);
+      $$0.a(cyq.C, cwu.tk, cyq.A);
+      $$0.a(cyq.D, cwu.tk, cyq.A);
+      $$0.a(cyq.E, cwu.tk, cyq.B);
+      $$0.a(cwu.tj, cyq.C);
+      $$0.a(cyq.C, cwu.me, cyq.D);
+      $$0.a(cyq.C, cwu.rV, cyq.E);
+      $$0.a(cwu.te, cyq.F);
+      $$0.a(cyq.F, cwu.me, cyq.G);
+      $$0.a(cyq.F, cwu.rV, cyq.H);
+      $$0.a(cwu.tl, cyq.I);
+      $$0.a(cyq.I, cwu.me, cyq.J);
+      $$0.a(cyq.I, cwu.rV, cyq.K);
+      $$0.a(cyq.a, cwu.tk, cyq.L);
+      $$0.a(cyq.L, cwu.me, cyq.M);
+      $$0.a(cyq.d, cwu.ov, cyq.O);
+      $$0.a(cyq.O, cwu.me, cyq.P);
+   }
+
+   public static class a {
+      private final List<dbb> a = new ArrayList<>();
+      private final List<cyo.b<cyn>> b = new ArrayList<>();
+      private final List<cyo.b<cwm>> c = new ArrayList<>();
+      private final cru d;
+
+      public a(cru $$0) {
+         this.d = $$0;
+      }
+
+      private static void b(cwm $$0) {
+         if (!($$0 instanceof cxk)) {
+            throw new IllegalArgumentException("Expected a potion, got: " + mb.g.b($$0));
+         }
+      }
+
+      public void a(cwm $$0, cwm $$1, cwm $$2) {
+         if ($$0.a(this.d) && $$1.a(this.d) && $$2.a(this.d)) {
+            b($$0);
+            b($$2);
+            this.c.add(new cyo.b<>($$0.f(), dbb.a($$1), $$2.f()));
+         }
+      }
+
+      public void a(cwm $$0) {
+         if ($$0.a(this.d)) {
+            b($$0);
+            this.a.add(dbb.a($$0));
+         }
+      }
+
+      public void a(jr<cyn> $$0, cwm $$1, jr<cyn> $$2) {
+         if ($$0.a().a(this.d) && $$1.a(this.d) && $$2.a().a(this.d)) {
+            this.b.add(new cyo.b<>($$0, dbb.a($$1), $$2));
+         }
+      }
+
+      public void a(cwm $$0, jr<cyn> $$1) {
+         if ($$1.a().a(this.d)) {
+            this.a(cyq.a, $$0, cyq.b);
+            this.a(cyq.d, $$0, $$1);
+         }
+      }
+
+      public cyo a() {
+         return new cyo(List.copyOf(this.a), List.copyOf(this.b), List.copyOf(this.c));
+      }
+   }
+
+   static record b<T>(jr<T> a, dbb b, jr<T> c) {
    }
 }

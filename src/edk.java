@@ -1,284 +1,828 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Arrays;
-import java.util.Optional;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public class edk {
-   private static final dwx a = djo.hG.m();
-   private static final dwx b = djo.hH.m();
-   private static final dwx c = djo.iY.m();
-   private static final dwx d = djo.hK.m();
-   private static final dwx e = djo.hS.m();
-   private static final dwx f = djo.hU.m();
-   private static final dwx g = djo.hO.m();
-   private static final dwx h = djo.ja.m();
-   private static final dwx i = djo.ec.m();
-   private final dwx j;
-   private final int k;
-   private final dwx[] l;
-   private final esc m;
-   private final esc n;
-   private final esc o;
-   private final esc p;
-   private final esc q;
-   private final esc r;
-   private final esc s;
-   private final edf t;
-   private final esc u;
-   private final esc v;
+   public static final edk.f a = a(0, false, emh.b);
+   public static final edk.f b = a(0, true, emh.b);
+   public static final edk.f c = a(0, true, 6, emh.b);
+   public static final edk.f d = a(0, true, 30, emh.b);
+   public static final edk.f e = a(0, false, emh.a);
+   public static final edk.f f = a(0, true, emh.a);
 
-   public edk(edg $$0, dwx $$1, int $$2, edf $$3) {
-      this.j = $$1;
-      this.k = $$2;
-      this.t = $$3;
-      this.m = $$0.a(edb.P);
-      this.l = a($$3.a(akv.b("clay_bands")));
-      this.u = $$0.a(edb.N);
-      this.v = $$0.a(edb.O);
-      this.n = $$0.a(edb.Q);
-      this.o = $$0.a(edb.R);
-      this.p = $$0.a(edb.S);
-      this.q = $$0.a(edb.T);
-      this.r = $$0.a(edb.U);
-      this.s = $$0.a(edb.V);
+   public static edk.f a(int $$0, boolean $$1, emh $$2) {
+      return new edk.t($$0, $$1, 0, $$2);
    }
 
-   public void a(edg $$0, dhm $$1, ke<dhk> $$2, boolean $$3, edp $$4, final dys $$5, ecw $$6, edj.o $$7) {
-      final ji.a $$8 = new ji.a();
-      final dfo $$9 = $$5.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      dyp $$12 = new dyp() {
-         @Override
-         public dwx a(int $$0) {
-            return $$5.a_($$8.q($$0));
-         }
+   public static edk.f a(int $$0, boolean $$1, int $$2, emh $$3) {
+      return new edk.t($$0, $$1, $$2, $$3);
+   }
 
-         @Override
-         public void a(int $$0, dwx $$1) {
-            dgk $$2 = $$5.B();
-            if ($$2.d($$0)) {
-               $$5.a($$8.q($$0), $$1, false);
-               if (!$$1.y().c()) {
-                  $$5.e($$8);
-               }
-            }
-         }
+   public static edk.f a(edk.f $$0) {
+      return new edk.n($$0);
+   }
 
-         @Override
-         public String toString() {
-            return "ChunkBlockColumn " + $$9;
-         }
-      };
-      edj.g $$13 = new edj.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
-      edj.u $$14 = $$7.apply($$13);
-      ji.a $$15 = new ji.a();
+   public static edk.f a(edn $$0, int $$1) {
+      return new edk.aa($$0, $$1, false);
+   }
 
-      for (int $$16 = 0; $$16 < 16; $$16++) {
-         for (int $$17 = 0; $$17 < 16; $$17++) {
-            int $$18 = $$10 + $$16;
-            int $$19 = $$11 + $$17;
-            int $$20 = $$5.a(ecs.a.a, $$16, $$17) + 1;
-            $$8.p($$18).r($$19);
-            jr<dhk> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
-            if ($$21.a(dhr.C)) {
-               this.a($$12, $$18, $$19, $$20, $$5);
-            }
+   public static edk.f b(edn $$0, int $$1) {
+      return new edk.aa($$0, $$1, true);
+   }
 
-            int $$22 = $$5.a(ecs.a.a, $$16, $$17) + 1;
-            $$13.a($$18, $$19);
-            int $$23 = 0;
-            int $$24 = Integer.MIN_VALUE;
-            int $$25 = Integer.MAX_VALUE;
-            int $$26 = $$5.L_();
+   public static edk.f a(int $$0, int $$1) {
+      return new edk.z($$0, $$1, false);
+   }
 
-            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
-               dwx $$28 = $$12.a($$27);
-               if ($$28.l()) {
-                  $$23 = 0;
-                  $$24 = Integer.MIN_VALUE;
-               } else if (!$$28.y().c()) {
-                  if ($$24 == Integer.MIN_VALUE) {
-                     $$24 = $$27 + 1;
-                  }
-               } else {
-                  if ($$25 >= $$27) {
-                     $$25 = eas.g;
+   public static edk.f b(int $$0, int $$1) {
+      return new edk.z($$0, $$1, true);
+   }
 
-                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
-                        dwx $$30 = $$12.a($$29);
-                        if (!this.a($$30)) {
-                           $$25 = $$29 + 1;
-                           break;
-                        }
-                     }
-                  }
+   @SafeVarargs
+   public static edk.f a(aku<dhl>... $$0) {
+      return a(List.of($$0));
+   }
 
-                  $$23++;
-                  int $$31 = $$27 - $$25 + 1;
-                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
-                  if ($$28 == this.j) {
-                     dwx $$32 = $$14.tryApply($$18, $$27, $$19);
-                     if ($$32 != null) {
-                        $$12.a($$27, $$32);
-                     }
-                  }
-               }
-            }
+   private static edk.c a(List<aku<dhl>> $$0) {
+      return new edk.c($$0);
+   }
 
-            if ($$21.a(dhr.X) || $$21.a(dhr.Y)) {
-               this.a($$13.c(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
-            }
-         }
+   public static edk.f a(aku<esd.a> $$0, double $$1) {
+      return a($$0, $$1, Double.MAX_VALUE);
+   }
+
+   public static edk.f a(aku<esd.a> $$0, double $$1, double $$2) {
+      return new edk.l($$0, $$1, $$2);
+   }
+
+   public static edk.f a(String $$0, edn $$1, edn $$2) {
+      return new edk.y(akv.a($$0), $$1, $$2);
+   }
+
+   public static edk.f a() {
+      return edk.s.a;
+   }
+
+   public static edk.f b() {
+      return edk.h.a;
+   }
+
+   public static edk.f c() {
+      return edk.a.a;
+   }
+
+   public static edk.f d() {
+      return edk.v.a;
+   }
+
+   public static edk.o a(edk.f $$0, edk.o $$1) {
+      return new edk.x($$0, $$1);
+   }
+
+   public static edk.o a(edk.o... $$0) {
+      if ($$0.length == 0) {
+         throw new IllegalArgumentException("Need at least 1 rule for a sequence");
+      } else {
+         return new edk.q(Arrays.asList($$0));
       }
    }
 
-   protected int a(int $$0, int $$1) {
-      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
-      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
+   public static edk.o a(dwy $$0) {
+      return new edk.d($$0);
    }
 
-   protected double b(int $$0, int $$1) {
-      return this.v.a((double)$$0, 0.0, (double)$$1);
+   public static edk.o e() {
+      return edk.b.a;
    }
 
-   private boolean a(dwx $$0) {
-      return !$$0.l() && $$0.y().c();
+   static <A> MapCodec<? extends A> a(ke<MapCodec<? extends A>> $$0, String $$1, ays<? extends A> $$2) {
+      return ke.a($$0, $$1, $$2.a());
    }
 
-   public int a() {
-      return this.k;
-   }
+   static enum a implements edk.f {
+      a;
 
-   @Deprecated
-   public Optional<dwx> a(edj.o $$0, eet $$1, Function<ji, jr<dhk>> $$2, dys $$3, ecw $$4, ji $$5, boolean $$6) {
-      edj.g $$7 = new edj.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().e(mc.aI), $$1);
-      edj.u $$8 = $$0.apply($$7);
-      int $$9 = $$5.u();
-      int $$10 = $$5.v();
-      int $$11 = $$5.w();
-      $$7.a($$9, $$11);
-      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
-      dwx $$12 = $$8.tryApply($$9, $$10, $$11);
-      return Optional.ofNullable($$12);
-   }
+      static final ays<edk.a> c = ays.a(MapCodec.unit(a));
 
-   private void a(dyp $$0, int $$1, int $$2, int $$3, dgk $$4) {
-      double $$5 = 0.2;
-      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
-      if (!($$6 <= 0.0)) {
-         double $$7 = 0.75;
-         double $$8 = 1.5;
-         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
-         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
-         int $$11 = ayz.a($$10);
-         if ($$3 <= $$11) {
-            for (int $$12 = $$11; $$12 >= $$4.L_(); $$12--) {
-               dwx $$13 = $$0.a($$12);
-               if ($$13.a(this.j.b())) {
-                  break;
-               }
+      @Override
+      public ays<? extends edk.f> a() {
+         return c;
+      }
 
-               if ($$13.a(djo.J)) {
-                  return;
-               }
-            }
-
-            for (int $$14 = $$11; $$14 >= $$4.L_() && $$0.a($$14).l(); $$14--) {
-               $$0.a($$14, this.j);
-            }
-         }
+      public edk.e a(edk.g $$0) {
+         return $$0.i;
       }
    }
 
-   private void a(int $$0, dhk $$1, dyp $$2, ji.a $$3, int $$4, int $$5, int $$6) {
-      double $$7 = 1.28;
-      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
-      if (!($$8 <= 1.8)) {
-         double $$9 = 1.17;
-         double $$10 = 1.5;
-         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
-         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
-         if ($$1.d($$3.d($$4, this.k, $$5), this.k)) {
-            $$12 -= 2.0;
+   static record aa(edn a, int c, boolean d) implements edk.f {
+      static final ays<edk.aa> e = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     edn.a.fieldOf("anchor").forGetter(edk.aa::b),
+                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(edk.aa::c),
+                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(edk.aa::d)
+                  )
+                  .apply($$0, edk.aa::new)
+         )
+      );
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return e;
+      }
+
+      public edk.e a(final edk.g $$0) {
+         class a extends edk.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.B + (aa.this.d ? this.c.E : 0) >= aa.this.a.a(this.c.n) + this.c.t * aa.this.c;
+            }
          }
 
-         double $$13;
-         if ($$12 > 2.0) {
-            $$13 = (double)this.k - $$12 - 7.0;
-            $$12 += (double)this.k;
+         return new a();
+      }
+
+      public edn b() {
+         return this.a;
+      }
+   }
+
+   static enum b implements edk.o {
+      a;
+
+      static final ays<edk.b> c = ays.a(MapCodec.unit(a));
+
+      @Override
+      public ays<? extends edk.o> a() {
+         return c;
+      }
+
+      public edk.u a(edk.g $$0) {
+         return $$0.e::a;
+      }
+   }
+
+   static final class c implements edk.f {
+      static final ays<edk.c> a = ays.a(aku.a(mc.aI).listOf().fieldOf("biome_is").xmap(edk::a, $$0 -> $$0.c));
+      private final List<aku<dhl>> c;
+      final Predicate<aku<dhl>> d;
+
+      c(List<aku<dhl>> $$0) {
+         this.c = $$0;
+         this.d = Set.copyOf($$0)::contains;
+      }
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return a;
+      }
+
+      public edk.e a(final edk.g $$0) {
+         class a extends edk.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.A.get().a(c.this.d);
+            }
+         }
+
+         return new a();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
          } else {
-            $$12 = 0.0;
-            $$13 = 0.0;
+            return $$0 instanceof edk.c $$1 ? this.c.equals($$1.c) : false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return this.c.hashCode();
+      }
+
+      @Override
+      public String toString() {
+         return "BiomeConditionSource[biomes=" + this.c + "]";
+      }
+   }
+
+   static record d(dwy a, edk.r c) implements edk.o {
+      static final ays<edk.d> d = ays.a(dwy.a.xmap(edk.d::new, edk.d::b).fieldOf("result_state"));
+
+      d(dwy $$0) {
+         this($$0, new edk.r($$0));
+      }
+
+      @Override
+      public ays<? extends edk.o> a() {
+         return d;
+      }
+
+      public edk.u a(edk.g $$0) {
+         return this.c;
+      }
+
+      public dwy b() {
+         return this.a;
+      }
+   }
+
+   interface e {
+      boolean b();
+   }
+
+   public interface f extends Function<edk.g, edk.e> {
+      Codec<edk.f> b = mb.ab.q().dispatch($$0 -> $$0.a().a(), Function.identity());
+
+      static MapCodec<? extends edk.f> a(ke<MapCodec<? extends edk.f>> $$0) {
+         edk.a($$0, "biome", edk.c.a);
+         edk.a($$0, "noise_threshold", edk.l.e);
+         edk.a($$0, "vertical_gradient", edk.y.e);
+         edk.a($$0, "y_above", edk.aa.e);
+         edk.a($$0, "water", edk.z.e);
+         edk.a($$0, "temperature", edk.v.c);
+         edk.a($$0, "steep", edk.s.c);
+         edk.a($$0, "not", edk.n.c);
+         edk.a($$0, "hole", edk.h.c);
+         edk.a($$0, "above_preliminary_surface", edk.a.c);
+         return edk.a($$0, "stone_depth", edk.t.f);
+      }
+
+      ays<? extends edk.f> a();
+   }
+
+   protected static final class g {
+      private static final int a = 8;
+      private static final int b = 4;
+      private static final int c = 16;
+      private static final int d = 15;
+      final edl e;
+      final edk.e f = new edk.g.d(this);
+      final edk.e g = new edk.g.c(this);
+      final edk.e h = new edk.g.b(this);
+      final edk.e i = new edk.g.a();
+      final edh j;
+      final dyt k;
+      private final ecx l;
+      private final Function<ji, jr<dhl>> m;
+      final edq n;
+      private long o = Long.MAX_VALUE;
+      private final int[] p = new int[4];
+      long q = -9223372036854775807L;
+      int r;
+      int s;
+      int t;
+      private long u = this.q - 1L;
+      private double v;
+      private long w = this.q - 1L;
+      private int x;
+      long y = -9223372036854775807L;
+      final ji.a z = new ji.a();
+      Supplier<jr<dhl>> A;
+      int B;
+      int C;
+      int D;
+      int E;
+
+      protected g(edl $$0, edh $$1, dyt $$2, ecx $$3, Function<ji, jr<dhl>> $$4, ke<dhl> $$5, edq $$6) {
+         this.e = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+         this.m = $$4;
+         this.n = $$6;
+      }
+
+      protected void a(int $$0, int $$1) {
+         this.q++;
+         this.y++;
+         this.r = $$0;
+         this.s = $$1;
+         this.t = this.e.a($$0, $$1);
+      }
+
+      protected void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+         this.y++;
+         this.A = Suppliers.memoize(() -> this.m.apply(this.z.d($$3, $$4, $$5)));
+         this.B = $$4;
+         this.C = $$2;
+         this.D = $$1;
+         this.E = $$0;
+      }
+
+      protected double a() {
+         if (this.u != this.q) {
+            this.u = this.q;
+            this.v = this.e.b(this.r, this.s);
          }
 
-         double $$15 = $$12;
-         azh $$16 = this.t.a($$4, 0, $$5);
-         int $$17 = 2 + $$16.a(4);
-         int $$18 = this.k + 18 + $$16.a(10);
-         int $$19 = 0;
+         return this.v;
+      }
 
-         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
-            if ($$2.a($$20).l() && $$20 < (int)$$15 && $$16.j() > 0.01
-               || $$2.a($$20).a(djo.J) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
-               if ($$19 <= $$17 && $$20 > $$18) {
-                  $$2.a($$20, i);
-                  $$19++;
-               } else {
-                  $$2.a($$20, h);
-               }
+      public int b() {
+         return this.e.a();
+      }
+
+      private static int a(int $$0) {
+         return $$0 >> 4;
+      }
+
+      private static int b(int $$0) {
+         return $$0 << 4;
+      }
+
+      protected int c() {
+         if (this.w != this.q) {
+            this.w = this.q;
+            int $$0 = a(this.r);
+            int $$1 = a(this.s);
+            long $$2 = dfp.c($$0, $$1);
+            if (this.o != $$2) {
+               this.o = $$2;
+               this.p[0] = this.l.a(b($$0), b($$1));
+               this.p[1] = this.l.a(b($$0 + 1), b($$1));
+               this.p[2] = this.l.a(b($$0), b($$1 + 1));
+               this.p[3] = this.l.a(b($$0 + 1), b($$1 + 1));
+            }
+
+            int $$3 = ayz.a(
+               ayz.a(
+                  (double)((float)(this.r & 15) / 16.0F),
+                  (double)((float)(this.s & 15) / 16.0F),
+                  (double)this.p[0],
+                  (double)this.p[1],
+                  (double)this.p[2],
+                  (double)this.p[3]
+               )
+            );
+            this.x = $$3 + this.t - 8;
+         }
+
+         return this.x;
+      }
+
+      final class a implements edk.e {
+         @Override
+         public boolean b() {
+            return g.this.B >= g.this.c();
+         }
+      }
+
+      static final class b extends edk.j {
+         b(edk.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            return this.c.t <= 0;
+         }
+      }
+
+      static class c extends edk.j {
+         c(edk.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            int $$0 = this.c.r & 15;
+            int $$1 = this.c.s & 15;
+            int $$2 = Math.max($$1 - 1, 0);
+            int $$3 = Math.min($$1 + 1, 15);
+            dyt $$4 = this.c.k;
+            int $$5 = $$4.a(ect.a.a, $$0, $$2);
+            int $$6 = $$4.a(ect.a.a, $$0, $$3);
+            if ($$6 >= $$5 + 4) {
+               return true;
+            } else {
+               int $$7 = Math.max($$0 - 1, 0);
+               int $$8 = Math.min($$0 + 1, 15);
+               int $$9 = $$4.a(ect.a.a, $$7, $$1);
+               int $$10 = $$4.a(ect.a.a, $$8, $$1);
+               return $$9 >= $$10 + 4;
             }
          }
       }
-   }
 
-   private static dwx[] a(azh $$0) {
-      dwx[] $$1 = new dwx[192];
-      Arrays.fill($$1, c);
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$2 += $$0.a(5) + 1;
-         if ($$2 < $$1.length) {
-            $$1[$$2] = b;
-         }
-      }
-
-      a($$0, $$1, 1, d);
-      a($$0, $$1, 2, e);
-      a($$0, $$1, 1, f);
-      int $$3 = $$0.a(9, 15);
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
-         $$1[$$5] = a;
-         if ($$5 - 1 > 0 && $$0.h()) {
-            $$1[$$5 - 1] = g;
+      static class d extends edk.k {
+         d(edk.g $$0) {
+            super($$0);
          }
 
-         if ($$5 + 1 < $$1.length && $$0.h()) {
-            $$1[$$5 + 1] = g;
-         }
-
-         $$4++;
-      }
-
-      return $$1;
-   }
-
-   private static void a(azh $$0, dwx[] $$1, int $$2, dwx $$3) {
-      int $$4 = $$0.a(6, 15);
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         int $$6 = $$2 + $$0.a(3);
-         int $$7 = $$0.a($$1.length);
-
-         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
-            $$1[$$7 + $$8] = $$3;
+         @Override
+         protected boolean a() {
+            return this.c.A.get().a().b(this.c.z.d(this.c.r, this.c.B, this.c.s), this.c.b());
          }
       }
    }
 
-   protected dwx a(int $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
-      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
+   static enum h implements edk.f {
+      a;
+
+      static final ays<edk.h> c = ays.a(MapCodec.unit(a));
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return c;
+      }
+
+      public edk.e a(edk.g $$0) {
+         return $$0.h;
+      }
+   }
+
+   abstract static class i implements edk.e {
+      protected final edk.g c;
+      private long a;
+      @Nullable
+      Boolean d;
+
+      protected i(edk.g $$0) {
+         this.c = $$0;
+         this.a = this.c() - 1L;
+      }
+
+      @Override
+      public boolean b() {
+         long $$0 = this.c();
+         if ($$0 == this.a) {
+            if (this.d == null) {
+               throw new IllegalStateException("Update triggered but the result is null");
+            } else {
+               return this.d;
+            }
+         } else {
+            this.a = $$0;
+            this.d = this.a();
+            return this.d;
+         }
+      }
+
+      protected abstract long c();
+
+      protected abstract boolean a();
+   }
+
+   abstract static class j extends edk.i {
+      protected j(edk.g $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected long c() {
+         return this.c.q;
+      }
+   }
+
+   abstract static class k extends edk.i {
+      protected k(edk.g $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected long c() {
+         return this.c.y;
+      }
+   }
+
+   static record l(aku<esd.a> a, double c, double d) implements edk.f {
+      static final ays<edk.l> e = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     aku.a(mc.aS).fieldOf("noise").forGetter(edk.l::b),
+                     Codec.DOUBLE.fieldOf("min_threshold").forGetter(edk.l::c),
+                     Codec.DOUBLE.fieldOf("max_threshold").forGetter(edk.l::d)
+                  )
+                  .apply($$0, edk.l::new)
+         )
+      );
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return e;
+      }
+
+      public edk.e a(final edk.g $$0) {
+         final esd $$1 = $$0.j.a(this.a);
+
+         class a extends edk.j {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               double $$0 = $$1.a((double)this.c.r, 0.0, (double)this.c.s);
+               return $$0 >= l.this.c && $$0 <= l.this.d;
+            }
+         }
+
+         return new a();
+      }
+
+      public aku<esd.a> b() {
+         return this.a;
+      }
+   }
+
+   static record m(edk.e a) implements edk.e {
+      @Override
+      public boolean b() {
+         return !this.a.b();
+      }
+   }
+
+   static record n(edk.f a) implements edk.f {
+      static final ays<edk.n> c = ays.a(edk.f.b.xmap(edk.n::new, edk.n::b).fieldOf("invert"));
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return c;
+      }
+
+      public edk.e a(edk.g $$0) {
+         return new edk.m(this.a.apply($$0));
+      }
+
+      public edk.f b() {
+         return this.a;
+      }
+   }
+
+   public interface o extends Function<edk.g, edk.u> {
+      Codec<edk.o> b = mb.ac.q().dispatch($$0 -> $$0.a().a(), Function.identity());
+
+      static MapCodec<? extends edk.o> a(ke<MapCodec<? extends edk.o>> $$0) {
+         edk.a($$0, "bandlands", edk.b.c);
+         edk.a($$0, "block", edk.d.d);
+         edk.a($$0, "sequence", edk.q.c);
+         return edk.a($$0, "condition", edk.x.d);
+      }
+
+      ays<? extends edk.o> a();
+   }
+
+   static record p(List<edk.u> a) implements edk.u {
+      @Nullable
+      @Override
+      public dwy tryApply(int $$0, int $$1, int $$2) {
+         for (edk.u $$3 : this.a) {
+            dwy $$4 = $$3.tryApply($$0, $$1, $$2);
+            if ($$4 != null) {
+               return $$4;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   static record q(List<edk.o> a) implements edk.o {
+      static final ays<edk.q> c = ays.a(edk.o.b.listOf().xmap(edk.q::new, edk.q::b).fieldOf("sequence"));
+
+      @Override
+      public ays<? extends edk.o> a() {
+         return c;
+      }
+
+      public edk.u a(edk.g $$0) {
+         if (this.a.size() == 1) {
+            return this.a.get(0).apply($$0);
+         } else {
+            Builder<edk.u> $$1 = ImmutableList.builder();
+
+            for (edk.o $$2 : this.a) {
+               $$1.add($$2.apply($$0));
+            }
+
+            return new edk.p($$1.build());
+         }
+      }
+
+      public List<edk.o> b() {
+         return this.a;
+      }
+   }
+
+   static record r(dwy a) implements edk.u {
+      @Override
+      public dwy tryApply(int $$0, int $$1, int $$2) {
+         return this.a;
+      }
+   }
+
+   static enum s implements edk.f {
+      a;
+
+      static final ays<edk.s> c = ays.a(MapCodec.unit(a));
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return c;
+      }
+
+      public edk.e a(edk.g $$0) {
+         return $$0.g;
+      }
+   }
+
+   static record t(int a, boolean c, int d, emh e) implements edk.f {
+      static final ays<edk.t> f = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     Codec.INT.fieldOf("offset").forGetter(edk.t::b),
+                     Codec.BOOL.fieldOf("add_surface_depth").forGetter(edk.t::c),
+                     Codec.INT.fieldOf("secondary_depth_range").forGetter(edk.t::d),
+                     emh.c.fieldOf("surface_type").forGetter(edk.t::e)
+                  )
+                  .apply($$0, edk.t::new)
+         )
+      );
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return f;
+      }
+
+      public edk.e a(final edk.g $$0) {
+         final boolean $$1 = this.e == emh.a;
+
+         class a extends edk.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               int $$0 = $$1 ? this.c.D : this.c.E;
+               int $$1 = t.this.c ? this.c.t : 0;
+               int $$2 = t.this.d == 0 ? 0 : (int)ayz.b(this.c.a(), -1.0, 1.0, 0.0, (double)t.this.d);
+               return $$0 <= 1 + t.this.a + $$1 + $$2;
+            }
+         }
+
+         return new a();
+      }
+
+      public int b() {
+         return this.a;
+      }
+   }
+
+   protected interface u {
+      @Nullable
+      dwy tryApply(int var1, int var2, int var3);
+   }
+
+   static enum v implements edk.f {
+      a;
+
+      static final ays<edk.v> c = ays.a(MapCodec.unit(a));
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return c;
+      }
+
+      public edk.e a(edk.g $$0) {
+         return $$0.f;
+      }
+   }
+
+   static record w(edk.e a, edk.u b) implements edk.u {
+      @Nullable
+      @Override
+      public dwy tryApply(int $$0, int $$1, int $$2) {
+         return !this.a.b() ? null : this.b.tryApply($$0, $$1, $$2);
+      }
+   }
+
+   static record x(edk.f a, edk.o c) implements edk.o {
+      static final ays<edk.x> d = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(edk.f.b.fieldOf("if_true").forGetter(edk.x::b), edk.o.b.fieldOf("then_run").forGetter(edk.x::c)).apply($$0, edk.x::new)
+         )
+      );
+
+      @Override
+      public ays<? extends edk.o> a() {
+         return d;
+      }
+
+      public edk.u a(edk.g $$0) {
+         return new edk.w(this.a.apply($$0), this.c.apply($$0));
+      }
+
+      public edk.f b() {
+         return this.a;
+      }
+   }
+
+   static record y(akv a, edn c, edn d) implements edk.f {
+      static final ays<edk.y> e = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     akv.a.fieldOf("random_name").forGetter(edk.y::b),
+                     edn.a.fieldOf("true_at_and_below").forGetter(edk.y::c),
+                     edn.a.fieldOf("false_at_and_above").forGetter(edk.y::d)
+                  )
+                  .apply($$0, edk.y::new)
+         )
+      );
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return e;
+      }
+
+      public edk.e a(final edk.g $$0) {
+         final int $$1 = this.c().a($$0.n);
+         final int $$2 = this.d().a($$0.n);
+         final edg $$3 = $$0.j.a(this.b());
+
+         class a extends edk.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               int $$0 = this.c.B;
+               if ($$0 <= $$1) {
+                  return true;
+               } else if ($$0 >= $$2) {
+                  return false;
+               } else {
+                  double $$1 = ayz.b((double)$$0, (double)$$1, (double)$$2, 1.0, 0.0);
+                  azh $$2 = $$3.a(this.c.r, $$0, this.c.s);
+                  return (double)$$2.i() < $$1;
+               }
+            }
+         }
+
+         return new a();
+      }
+
+      public akv b() {
+         return this.a;
+      }
+   }
+
+   static record z(int a, int c, boolean d) implements edk.f {
+      static final ays<edk.z> e = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     Codec.INT.fieldOf("offset").forGetter(edk.z::b),
+                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(edk.z::c),
+                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(edk.z::d)
+                  )
+                  .apply($$0, edk.z::new)
+         )
+      );
+
+      @Override
+      public ays<? extends edk.f> a() {
+         return e;
+      }
+
+      public edk.e a(final edk.g $$0) {
+         class a extends edk.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.C == Integer.MIN_VALUE || this.c.B + (z.this.d ? this.c.E : 0) >= this.c.C + z.this.a + this.c.t * z.this.c;
+            }
+         }
+
+         return new a();
+      }
+
+      public int b() {
+         return this.a;
+      }
    }
 }

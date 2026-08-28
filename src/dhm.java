@@ -1,101 +1,103 @@
-import com.google.common.hash.Hashing;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class dhm {
-   public static final int a = kc.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final dhm.a e;
-   private final long f;
+   private static final Logger c = LogUtils.getLogger();
+   public static final dhm a = new dhm(jv.a(), List.of());
+   public static final MapCodec<dhm> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eex.c.promotePartial(af.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               emr.d.promotePartial(af.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dhm::new)
+   );
+   private final jv<eex<?>> d;
+   private final List<jv<emr>> e;
+   private final Supplier<List<efl<?, ?>>> f;
+   private final Supplier<Set<emr>> g;
 
-   public dhm(dhm.a $$0, long $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   dhm(jv<eex<?>> $$0, List<jv<emr>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(jv::a).map(jr::a).flatMap(emr::a).filter($$0xx -> $$0xx.b() == efz.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jv::a).map(jr::a).collect(Collectors.toSet()));
    }
 
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
+   public Iterable<jr<eex<?>>> a() {
+      return this.d;
    }
 
-   public dhm a(dhm.a $$0) {
-      return new dhm($$0, this.f);
+   public List<efl<?, ?>> b() {
+      return this.f.get();
    }
 
-   public jr<dhk> a(ji $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
+   public List<jv<emr>> c() {
+      return this.e;
+   }
 
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
+   public boolean a(emr $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends dhm.b {
+      private final js<emr> a;
+      private final js<eex<?>> b;
+
+      public a(js<emr> $$0, js<eex<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dhm.a a(ecp.a $$0, aku<emr> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public dhm.a a(aku<eex<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final List<jr<eex<?>>> a = new ArrayList<>();
+      private final List<List<jr<emr>>> b = new ArrayList<>();
+
+      public dhm.b a(ecp.a $$0, jr<emr> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public dhm.b a(int $$0, jr<emr> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public dhm.b a(jr<eex<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
          }
       }
 
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
-   }
-
-   public jr<dhk> a(double $$0, double $$1, double $$2) {
-      int $$3 = kc.a(ayz.a($$0));
-      int $$4 = kc.a(ayz.a($$1));
-      int $$5 = kc.a(ayz.a($$2));
-      return this.a($$3, $$4, $$5);
-   }
-
-   public jr<dhk> b(ji $$0) {
-      int $$1 = kc.a($$0.u());
-      int $$2 = kc.a($$0.v());
-      int $$3 = kc.a($$0.w());
-      return this.a($$1, $$2, $$3);
-   }
-
-   public jr<dhk> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
-   }
-
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = ayu.a($$0, (long)$$1);
-      $$7 = ayu.a($$7, (long)$$2);
-      $$7 = ayu.a($$7, (long)$$3);
-      $$7 = ayu.a($$7, (long)$$1);
-      $$7 = ayu.a($$7, (long)$$2);
-      $$7 = ayu.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = ayu.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = ayu.a($$7, $$0);
-      double $$10 = b($$7);
-      return ayz.k($$6 + $$10) + ayz.k($$5 + $$9) + ayz.k($$4 + $$8);
-   }
-
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
-   }
-
-   public interface a {
-      jr<dhk> getNoiseBiome(int var1, int var2, int var3);
+      public dhm a() {
+         return new dhm(jv.a(this.a), this.b.stream().map(jv::a).collect(ImmutableList.toImmutableList()));
+      }
    }
 }

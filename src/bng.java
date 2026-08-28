@@ -1,7 +1,19 @@
-public interface bng {
-   void a(long[] var1);
+public class bng extends bnc {
+   private final bnd c;
+   private final bnf d;
 
-   void a(long var1);
+   public bng(int $$0, bnd $$1, bnf $$2) {
+      this($$0, $$1, $$2, new long[$$0]);
+   }
 
-   void a(long var1, int var3);
+   public bng(int $$0, bnd $$1, bnf $$2, long[] $$3) {
+      super($$0, $$3);
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   @Override
+   protected void a() {
+      this.c.a(new acm((long[])this.b.clone(), this.d));
+   }
 }

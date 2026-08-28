@@ -1,32 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
 
-public record eyt(Optional<bm> b) implements eza {
-   public static final MapCodec<eyt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bm.a.optionalFieldOf("predicate").forGetter(eyt::c)).apply($$0, eyt::new));
+public interface eyt<T extends eyt<T>> {
+   T b(ezb.a var1);
 
-   @Override
-   public ezb b() {
-      return ezc.m;
+   default <E> T a_(Iterable<E> $$0, Function<E, ezb.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public Set<bai<?>> a() {
-      return Set.of(eyl.f, eyl.c);
-   }
-
-   public boolean a(evr $$0) {
-      btb $$1 = $$0.c(eyl.c);
-      fba $$2 = $$0.c(eyl.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
-   }
-
-   public static eza.a a(bm.a $$0) {
-      return () -> new eyt(Optional.of($$0.b()));
-   }
-
-   public Optional<bm> c() {
-      return this.b;
-   }
+   T d();
 }

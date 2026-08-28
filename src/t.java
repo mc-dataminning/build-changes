@@ -15,7 +15,7 @@ public class t implements ag {
    private final String c;
    private final String d;
    private final boolean e;
-   private final eux f;
+   private final euy f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,9 +23,9 @@ public class t implements ag {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "1.21.4-rc2";
+      this.d = "1.21.4-rc3";
       this.e = false;
-      this.f = new eux(4186, "main");
+      this.f = new euy(4188, "main");
       this.g = ab.c();
       this.h = 46;
       this.i = 61;
@@ -36,7 +36,7 @@ public class t implements ag {
       this.c = ayp.i($$0, "id");
       this.d = ayp.i($$0, "name");
       this.e = ayp.k($$0, "stable");
-      this.f = new eux(ayp.o($$0, "world_version"), ayp.a($$0, "series_id", eux.a));
+      this.f = new euy(ayp.o($$0, "world_version"), ayp.a($$0, "series_id", euy.a));
       this.g = ayp.o($$0, "protocol_version");
       JsonObject $$1 = ayp.u($$0, "pack_version");
       this.h = ayp.o($$1, "resource");
@@ -75,7 +75,7 @@ public class t implements ag {
    }
 
    @Override
-   public eux d() {
+   public euy d() {
       return this.f;
    }
 

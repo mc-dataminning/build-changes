@@ -1,53 +1,26 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record czo(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
-   private static final Codec<czo> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayi.y.optionalFieldOf("name").forGetter(czo::c),
-               kl.a.optionalFieldOf("id").forGetter(czo::d),
-               ayi.x.optionalFieldOf("properties", new PropertyMap()).forGetter(czo::e)
-            )
-            .apply($$0, czo::new)
-   );
-   public static final Codec<czo> a = Codec.withAlternative(g, ayi.y, $$0 -> new czo(Optional.of($$0), Optional.empty(), new PropertyMap()));
-   public static final yn<ByteBuf, czo> b = yn.a(yl.b(16).a(yl::a), czo::c, kl.g.a(yl::a), czo::d, yl.x, czo::e, czo::new);
+public record czo(int f) implements cyx, czt {
+   public static final int a = 120000;
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final Codec<czo> d = ayi.a(0, 4).xmap(czo::new, czo::a);
+   public static final yn<wa, czo> e = yn.a(yl.h, czo::a, czo::new);
 
-   public czo(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   @Override
+   public void a(dgj $$0, bvi $$1, cwq $$2, cyw $$3) {
+      $$1.a(new btr(btt.E, 120000, this.f, false, false, true));
    }
 
-   public czo(GameProfile $$0) {
-      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
+   @Override
+   public void a(cwm.b $$0, Consumer<wp> $$1, cyi $$2) {
+      List<btr> $$3 = List.of(new btr(btt.E, 120000, this.f, false, false, true));
+      cyp.a($$3, $$1, 1.0F, $$0.b());
    }
 
-   public CompletableFuture<czo> a() {
-      if (this.b()) {
-         return CompletableFuture.completedFuture(this);
-      } else {
-         return this.d.isPresent() ? dvo.a(this.d.get()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
-            return new czo($$1);
-         }) : dvo.a(this.c.orElseThrow()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(af.e, this.c.get()));
-            return new czo($$1);
-         });
-      }
-   }
-
-   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      GameProfile $$3 = new GameProfile($$1.orElse(af.e), $$0.orElse(""));
-      $$3.getProperties().putAll($$2);
-      return $$3;
-   }
-
-   public boolean b() {
-      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
+   public int a() {
+      return this.f;
    }
 }

@@ -1,3 +1,3 @@
-public interface hau {
-   coj a();
+public class hau extends gxq {
+   public boolean a;
 }

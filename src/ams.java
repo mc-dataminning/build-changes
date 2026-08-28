@@ -16,11 +16,11 @@ public class ams {
    }
 
    private static int a(ex $$0, ji $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bvj $$3)) {
+      if (!($$0.f() instanceof bvk $$3)) {
          throw a.create();
       } else {
-         cet $$4 = new ces($$3, $$0.e());
-         etn $$5 = $$4.a($$1, 0);
+         ceu $$4 = new cet($$3, $$0.e());
+         eto $$5 = $$4.a($$1, 0);
          agd.a($$0.e(), $$3, $$5, $$4.p());
          if ($$5 == null) {
             throw b.create();

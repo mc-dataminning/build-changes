@@ -1,7 +1,7 @@
-public record adi(fba b, float c, float d) implements yw<abl> {
-   public static final yn<vl, adi> a = yn.a(fba.b, adi::b, yl.l, adi::e, yl.l, adi::f, adi::new);
+public record adi(fbb b, float c, float d) implements yw<abl> {
+   public static final yn<vl, adi> a = yn.a(fbb.b, adi::b, yl.l, adi::e, yl.l, adi::f, adi::new);
 
-   public static adi a(bul $$0) {
+   public static adi a(bum $$0) {
       return new adi($$0.dt(), $$0.dL(), $$0.dN());
    }
 

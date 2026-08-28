@@ -1,90 +1,135 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public abstract class eou {
-   public static final Codec<eou> f = mb.ag.q().dispatch("element_type", eou::a, eov::codec);
-   private static final jr<erm> a = jr.a(new erm(List.of()));
-   @Nullable
-   private volatile eow.a b;
+public class eou extends eov {
+   private static final Comparator<erp.a> a = Comparator.comparingInt(erp.a::g).reversed();
+   private static final Codec<Either<akv, erp>> g = Codec.of(eou::a, akv.a.map(Either::left));
+   public static final MapCodec<eou> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, eou::new));
+   protected final Either<akv, erp> c;
+   protected final jr<ern> d;
+   protected final Optional<eqz> e;
 
-   protected static <E extends eou> RecordCodecBuilder<E, eow.a> e() {
-      return eow.a.c.fieldOf("projection").forGetter(eou::f);
+   private static <T> DataResult<T> a(Either<akv, erp> $$0, DynamicOps<T> $$1, T $$2) {
+      Optional<akv> $$3 = $$0.left();
+      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : akv.a.encode($$3.get(), $$1, $$2);
    }
 
-   protected eou(eow.a $$0) {
-      this.b = $$0;
+   protected static <E extends eou> RecordCodecBuilder<E, jr<ern>> b() {
+      return ero.d.fieldOf("processors").forGetter($$0 -> $$0.d);
    }
 
-   public abstract km a(erp var1, dqe var2);
-
-   public abstract List<ero.a> a(erp var1, ji var2, dqe var3, azh var4);
-
-   public abstract ene a(erp var1, ji var2, dqe var3);
-
-   public abstract boolean a(erp var1, dhg var2, dhe var3, dyt var4, ji var5, ji var6, dqe var7, ene var8, azh var9, eqy var10, boolean var11);
-
-   public abstract eov<?> a();
-
-   public void a(dgj $$0, ero.d $$1, ji $$2, dqe $$3, azh $$4, ene $$5) {
+   protected static <E extends eou> RecordCodecBuilder<E, Optional<eqz>> c() {
+      return eqz.c.optionalFieldOf("override_liquid_settings").forGetter($$0 -> $$0.e);
    }
 
-   public eou a(eow.a $$0) {
-      this.b = $$0;
-      return this;
+   protected static <E extends eou> RecordCodecBuilder<E, Either<akv, erp>> d() {
+      return g.fieldOf("location").forGetter($$0 -> $$0.c);
    }
 
-   public eow.a f() {
-      eow.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
+   protected eou(Either<akv, erp> $$0, jr<ern> $$1, eox.a $$2, Optional<eqz> $$3) {
+      super($$2);
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$3;
+   }
+
+   @Override
+   public km a(erq $$0, dqf $$1) {
+      erp $$2 = this.a($$0);
+      return $$2.a($$1);
+   }
+
+   private erp a(erq $$0) {
+      return (erp)this.c.map($$0::a, Function.identity());
+   }
+
+   public List<erp.d> a(erq $$0, ji $$1, dqf $$2, boolean $$3) {
+      erp $$4 = this.a($$0);
+      List<erp.d> $$5 = $$4.a($$1, new erl().a($$2), djp.pC, $$3);
+      List<erp.d> $$6 = Lists.newArrayList();
+
+      for (erp.d $$7 : $$5) {
+         tq $$8 = $$7.c();
+         if ($$8 != null) {
+            dyh $$9 = dyh.valueOf($$8.l("mode"));
+            if ($$9 == dyh.d) {
+               $$6.add($$7);
+            }
+         }
+      }
+
+      return $$6;
+   }
+
+   @Override
+   public List<erp.a> a(erq $$0, ji $$1, dqf $$2, azh $$3) {
+      List<erp.a> $$4 = this.a($$0).a($$1, $$2);
+      af.c($$4, $$3);
+      a($$4);
+      return $$4;
+   }
+
+   @VisibleForTesting
+   static void a(List<erp.a> $$0) {
+      $$0.sort(a);
+   }
+
+   @Override
+   public enf a(erq $$0, ji $$1, dqf $$2) {
+      erp $$3 = this.a($$0);
+      return $$3.b(new erl().a($$2), $$1);
+   }
+
+   @Override
+   public boolean a(erq $$0, dhh $$1, dhf $$2, dyu $$3, ji $$4, ji $$5, dqf $$6, enf $$7, azh $$8, eqz $$9, boolean $$10) {
+      erp $$11 = this.a($$0);
+      erl $$12 = this.a($$6, $$7, $$9, $$10);
+      if (!$$11.a($$1, $$4, $$5, $$12, $$8, 18)) {
+         return false;
       } else {
-         return $$0;
+         for (erp.d $$14 : erp.a($$1, $$4, $$5, $$12, this.a($$0, $$4, $$6, false))) {
+            this.a($$1, $$14, $$4, $$6, $$8, $$7);
+         }
+
+         return true;
       }
    }
 
-   public int g() {
-      return 1;
+   protected erl a(dqf $$0, enf $$1, eqz $$2, boolean $$3) {
+      erl $$4 = new erl();
+      $$4.a($$1);
+      $$4.a($$0);
+      $$4.b(true);
+      $$4.a(false);
+      $$4.a(eqq.b);
+      $$4.c(true);
+      $$4.a(this.e.orElse($$2));
+      if (!$$3) {
+         $$4.a(eqw.b);
+      }
+
+      this.d.a().a().forEach($$4::a);
+      this.f().b().forEach($$4::a);
+      return $$4;
    }
 
-   public static Function<eow.a, eon> h() {
-      return $$0 -> eon.b;
+   @Override
+   public eow<?> a() {
+      return eow.a;
    }
 
-   public static Function<eow.a, eor> a(String $$0) {
-      return $$1 -> new eor(Either.left(akv.a($$0)), a, $$1, Optional.empty());
-   }
-
-   public static Function<eow.a, eor> a(String $$0, jr<erm> $$1) {
-      return $$2 -> new eor(Either.left(akv.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<eow.a, eot> b(String $$0) {
-      return $$1 -> new eot(Either.left(akv.a($$0)), a, $$1, Optional.empty());
-   }
-
-   public static Function<eow.a, eot> b(String $$0, jr<erm> $$1) {
-      return $$2 -> new eot(Either.left(akv.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<eow.a, eot> a(String $$0, eqy $$1) {
-      return $$2 -> new eot(Either.left(akv.a($$0)), a, $$2, Optional.of($$1));
-   }
-
-   public static Function<eow.a, eot> a(String $$0, jr<erm> $$1, eqy $$2) {
-      return $$3 -> new eot(Either.left(akv.a($$0)), $$1, $$3, Optional.of($$2));
-   }
-
-   public static Function<eow.a, eoo> a(jr<emq> $$0) {
-      return $$1 -> new eoo($$0, $$1);
-   }
-
-   public static Function<eow.a, eos> b(List<Function<eow.a, ? extends eou>> $$0) {
-      return $$1 -> new eos($$0.stream().map($$1x -> (eou)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   @Override
+   public String toString() {
+      return "Single[" + this.c + "]";
    }
 }

@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-public interface dzf {
-   @Nullable
-   dze c(int var1, int var2);
+public interface dzf extends dfo {
+   void a(BiConsumer<ji, dwy> var1);
 
-   default void a(dgr $$0, kk $$1) {
-   }
-
-   dfn q();
+   esk D();
 }

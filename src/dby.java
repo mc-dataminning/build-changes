@@ -1,29 +1,19 @@
-public class dby extends dak {
-   public dby(String $$0, daq $$1, dba $$2, cwp $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public record dby(cwq a) implements dbl {
+   @Override
+   public cwq a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   protected cwl f() {
-      return cwt.fe;
+   public int a() {
+      return 1;
    }
 
-   @Override
-   public dbo<dby> a() {
-      return dbo.o;
-   }
-
-   @Override
-   public dbp<dby> b() {
-      return dbp.b;
-   }
-
-   @Override
-   public dbh h() {
-      return switch (this.e()) {
-         case b -> dbg.f;
-         case a -> dbg.e;
-         case c -> dbg.g;
-      };
+   public cwq c() {
+      return this.a;
    }
 }

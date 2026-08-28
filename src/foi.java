@@ -1,40 +1,38 @@
-public abstract class foi extends foq {
-   protected static final int e = 2;
-   private static final fqg a = new fqg(akv.b("widget/button"), akv.b("widget/button_disabled"), akv.b("widget/button_highlighted"));
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-   public foi(int $$0, int $$1, int $$2, int $$3, wp $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class foi {
+   public static final float a = 200.0F;
+   private final List<foi.a> b = new ArrayList<>();
+
+   public foi a(foi.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   public abstract void b();
-
-   @Override
-   protected void b(foe $$0, int $$1, int $$2, float $$3) {
-      flj $$4 = flj.Q();
-      $$0.a(gmi::H, a.a(this.j, this.D()), this.F(), this.G(), this.A(), this.y(), axk.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | ayz.f(this.l * 255.0F) << 24);
+   public foi a(foi $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
    }
 
-   public void a(foe $$0, foc $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
+   public void a(fof $$0, fla $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.b();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fsv.a($$0)) {
-         this.a(flj.Q().ak());
-         this.b();
-         return true;
-      } else {
-         return false;
+   private void b(fof $$0, fla $$1) {
+      for (foi.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
       }
+   }
+
+   public interface a {
+      void render(fof var1, fla var2);
    }
 }

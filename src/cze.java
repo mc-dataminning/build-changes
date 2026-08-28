@@ -1,131 +1,92 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
 
-public record cze(cze.a e, IntList f, IntList g, boolean h, boolean i) implements czs {
-   public static final cze a = new cze(cze.a.a, IntList.of(), IntList.of(), false, false);
-   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-   public static final Codec<cze> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cze.a.g.fieldOf("shape").forGetter(cze::a),
-               b.optionalFieldOf("colors", IntList.of()).forGetter(cze::b),
-               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(cze::c),
-               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(cze::d),
-               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(cze::e)
-            )
-            .apply($$0, cze::new)
+public record cze(int d, boolean e) implements czt {
+   private static final Codec<cze> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cze::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cze::b)).apply($$0, cze::new)
    );
-   private static final yn<ByteBuf, IntList> j = yl.g.a(yl.a()).a(IntArrayList::new, ArrayList::new);
-   public static final yn<ByteBuf, cze> d = yn.a(cze.a.f, cze::a, j, cze::b, j, cze::c, yl.b, cze::d, yl.b, cze::e, cze::new);
-   private static final wp k = wp.c("item.minecraft.firework_star.custom_color");
+   public static final Codec<cze> a = Codec.withAlternative(f, Codec.INT, $$0 -> new cze($$0, true));
+   public static final yn<ByteBuf, cze> b = yn.a(yl.g, cze::a, yl.b, cze::b, cze::new);
+   public static final int c = -6265536;
 
-   @Override
-   public void a(cwl.b $$0, Consumer<wp> $$1, cyh $$2) {
-      this.a($$1);
-      this.b($$1);
+   public static int a(cwq $$0, int $$1) {
+      cze $$2 = $$0.a(kv.J);
+      return $$2 != null ? axk.f($$2.a()) : $$1;
    }
 
-   public void a(Consumer<wp> $$0) {
-      $$0.accept(this.e.a().a(n.h));
-   }
-
-   public void b(Consumer<wp> $$0) {
-      if (!this.f.isEmpty()) {
-         $$0.accept(a(wp.i().a(n.h), this.f));
-      }
-
-      if (!this.g.isEmpty()) {
-         $$0.accept(a(wp.c("item.minecraft.firework_star.fade_to").b(wo.v).a(n.h), this.g));
-      }
-
-      if (this.h) {
-         $$0.accept(wp.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if (this.i) {
-         $$0.accept(wp.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
-   }
-
-   private static wp a(xd $$0, IntList $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+   public static cwq a(cwq $$0, List<cvo> $$1) {
+      if (!$$0.a(awy.bO)) {
+         return cwq.j;
+      } else {
+         cwq $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         cze $$8 = $$2.a(kv.J);
+         if ($$8 != null) {
+            int $$9 = axk.b($$8.a());
+            int $$10 = axk.c($$8.a());
+            int $$11 = axk.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
          }
 
-         $$0.b(a($$1.getInt($$2)));
+         for (cvo $$12 : $$1) {
+            int $$13 = $$12.b().d();
+            int $$14 = axk.b($$13);
+            int $$15 = axk.c($$13);
+            int $$16 = axk.d($$13);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = axk.a(0, $$17, $$18, $$19);
+         boolean $$23 = $$8 == null || $$8.b();
+         $$2.b(kv.J, new cze($$22, $$23));
+         return $$2;
       }
-
-      return $$0;
    }
 
-   private static wp a(int $$0) {
-      cvm $$1 = cvm.b($$0);
-      return (wp)($$1 == null ? k : wp.c("item.minecraft.firework_star." + $$1.b()));
+   @Override
+   public void a(cwm.b $$0, Consumer<wp> $$1, cyi $$2) {
+      if (this.e) {
+         if ($$2.a()) {
+            $$1.accept(wp.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
+         } else {
+            $$1.accept(wp.c("item.dyed").a(n.h, n.u));
+         }
+      }
    }
 
-   public cze a(IntList $$0) {
-      return new cze(this.e, this.f, new IntArrayList($$0), this.h, this.i);
+   public cze a(boolean $$0) {
+      return new cze(this.d, $$0);
    }
 
-   public cze.a a() {
+   public int a() {
+      return this.d;
+   }
+
+   public boolean b() {
       return this.e;
-   }
-
-   public IntList b() {
-      return this.f;
-   }
-
-   public IntList c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.h;
-   }
-
-   public boolean e() {
-      return this.i;
-   }
-
-   public static enum a implements azv {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
-
-      private static final IntFunction<cze.a> h = axq.a(cze.a::b, values(), axq.a.a);
-      public static final yn<ByteBuf, cze.a> f = yl.a(h, cze.a::b);
-      public static final Codec<cze.a> g = azv.b(cze.a::values);
-      private final int i;
-      private final String j;
-
-      private a(final int $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
-
-      public xd a() {
-         return wp.c("item.minecraft.firework_star.shape." + this.j);
-      }
-
-      public int b() {
-         return this.i;
-      }
-
-      public static cze.a a(int $$0) {
-         return h.apply($$0);
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
    }
 }

@@ -1,7 +1,5 @@
+import java.util.List;
+
 public interface fcu<T> {
-   void a(fcs<T> var1);
-
-   boolean a(ji var1, T var2);
-
-   int a();
+   List<fcs<T>> a(long var1);
 }

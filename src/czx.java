@@ -1,123 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public record czx(arv<String> k, String l, int m, List<arv<wp>> n, boolean o) implements cys<wp, czx> {
-   public static final czx a = new czx(arv.a(""), "", 0, List.of(), true);
-   public static final int b = 32767;
-   public static final int c = 16;
-   public static final int d = 32;
-   public static final int e = 3;
-   public static final int f = 2;
-   public static final Codec<wp> g = wr.a(32767);
-   public static final Codec<List<arv<wp>>> h = a(g);
-   public static final Codec<czx> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arv.a(Codec.string(0, 32)).fieldOf("title").forGetter(czx::d),
-               Codec.STRING.fieldOf("author").forGetter(czx::e),
-               ayi.a(0, 3).optionalFieldOf("generation", 0).forGetter(czx::f),
-               h.optionalFieldOf("pages", List.of()).forGetter(czx::a),
-               Codec.BOOL.optionalFieldOf("resolved", false).forGetter(czx::g)
-            )
-            .apply($$0, czx::new)
-   );
-   public static final yn<wa, czx> j = yn.a(arv.a(yl.b(32)), czx::d, yl.o, czx::e, yl.h, czx::f, arv.a(wr.b).a(yl.a()), czx::a, yl.b, czx::g, czx::new);
+public record czx(List<arv<String>> g) implements cyt<String, czx> {
+   public static final czx a = new czx(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<arv<String>> h = arv.a(Codec.string(0, 1024));
+   public static final Codec<List<arv<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<czx> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(czx::a)).apply($$0, czx::new));
+   public static final yn<ByteBuf, czx> f = arv.a(yl.b(1024)).a(yl.c(100)).a(czx::new, czx::a);
 
-   public czx(arv<String> k, String l, int m, List<arv<wp>> n, boolean o) {
-      if (m >= 0 && m <= 3) {
-         this.k = k;
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
+   public czx(List<arv<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
       } else {
-         throw new IllegalArgumentException("Generation was " + m + ", but must be between 0 and 3");
+         this.g = g;
       }
    }
 
-   private static Codec<arv<wp>> b(Codec<wp> $$0) {
-      return arv.a($$0);
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
    }
 
-   public static Codec<List<arv<wp>>> a(Codec<wp> $$0) {
-      return b($$0).listOf();
-   }
-
-   @Nullable
-   public czx b() {
-      return this.m >= 2 ? null : new czx(this.k, this.l, this.m + 1, this.n, this.o);
-   }
-
-   @Nullable
-   public czx a(ex $$0, @Nullable cox $$1) {
-      if (this.o) {
-         return null;
-      } else {
-         Builder<arv<wp>> $$2 = ImmutableList.builderWithExpectedSize(this.n.size());
-
-         for (arv<wp> $$3 : this.n) {
-            Optional<arv<wp>> $$4 = a($$0, $$1, $$3);
-            if ($$4.isEmpty()) {
-               return null;
-            }
-
-            $$2.add($$4.get());
-         }
-
-         return new czx(this.k, this.l, this.m, $$2.build(), true);
-      }
-   }
-
-   public czx c() {
-      return new czx(this.k, this.l, this.m, this.n, true);
-   }
-
-   private static Optional<arv<wp>> a(ex $$0, @Nullable cox $$1, arv<wp> $$2) {
-      return $$2.b($$2x -> {
-         try {
-            wp $$3 = ws.a($$0, $$2x, $$1, 0);
-            return a($$3, $$0.u()) ? Optional.empty() : Optional.of($$3);
-         } catch (Exception var4) {
-            return Optional.of($$2x);
-         }
-      });
-   }
-
-   private static boolean a(wp $$0, jt.a $$1) {
-      return wp.a.a($$0, $$1).length() > 32767;
-   }
-
-   public List<wp> a(boolean $$0) {
-      return Lists.transform(this.n, $$1 -> (wp)$$1.a($$0));
-   }
-
-   public czx b(List<arv<wp>> $$0) {
-      return new czx(this.k, this.l, this.m, $$0, false);
-   }
-
-   public arv<String> d() {
-      return this.k;
-   }
-
-   public String e() {
-      return this.l;
-   }
-
-   public int f() {
-      return this.m;
+   public czx b(List<arv<String>> $$0) {
+      return new czx($$0);
    }
 
    @Override
-   public List<arv<wp>> a() {
-      return this.n;
-   }
-
-   public boolean g() {
-      return this.o;
+   public List<arv<String>> a() {
+      return this.g;
    }
 }

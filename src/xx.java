@@ -21,10 +21,10 @@ public record xx(Either<ho, String> d, String e) implements wq {
       return c;
    }
 
-   private fce a(ex $$0) throws CommandSyntaxException {
+   private fcf a(ex $$0) throws CommandSyntaxException {
       Optional<ho> $$1 = this.d.left();
       if ($$1.isPresent()) {
-         List<? extends bul> $$2 = $$1.get().b().b($$0);
+         List<? extends bum> $$2 = $$1.get().b().b($$0);
          if (!$$2.isEmpty()) {
             if ($$2.size() != 1) {
                throw fk.a.create();
@@ -32,20 +32,20 @@ public record xx(Either<ho, String> d, String e) implements wq {
                return $$2.getFirst();
             }
          } else {
-            return fce.c($$1.get().a());
+            return fcf.c($$1.get().a());
          }
       } else {
-         return fce.c((String)this.d.right().orElseThrow());
+         return fcf.c((String)this.d.right().orElseThrow());
       }
    }
 
-   private xd a(fce $$0, ex $$1) {
+   private xd a(fcf $$0, ex $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         fcf $$3 = $$2.aJ();
-         fbx $$4 = $$3.a(this.e);
+         fcg $$3 = $$2.aJ();
+         fby $$4 = $$3.a(this.e);
          if ($$4 != null) {
-            fcb $$5 = $$3.d($$0, $$4);
+            fcc $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(yi.b));
             }
@@ -56,12 +56,12 @@ public record xx(Either<ho, String> d, String e) implements wq {
    }
 
    @Override
-   public xd a(@Nullable ex $$0, @Nullable bul $$1, int $$2) throws CommandSyntaxException {
+   public xd a(@Nullable ex $$0, @Nullable bum $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return wp.i();
       } else {
-         fce $$3 = this.a($$0);
-         fce $$4 = (fce)($$1 != null && $$3.equals(fce.cB) ? $$1 : $$3);
+         fcf $$3 = this.a($$0);
+         fcf $$4 = (fcf)($$1 != null && $$3.equals(fcf.cB) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

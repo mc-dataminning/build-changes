@@ -1,59 +1,45 @@
-public interface fcm extends bsd {
-   cwp f();
-
-   default cwp c(int $$0) {
-      return this.f().a($$0);
-   }
-
-   void b(cwp var1);
-
-   default cwp h() {
-      return this.c(this.an_());
-   }
-
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean c() {
-      return this.f().f();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cwp b(int $$0) {
-      return this.a($$0, this.an_());
-   }
-
-   @Override
-   default cwp a(int $$0) {
-      return $$0 == 0 ? this.f() : cwp.j;
-   }
-
-   @Override
-   default cwp a(int $$0, int $$1) {
-      return $$0 != 0 ? cwp.j : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cwp $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+public class fcm {
+   private static final fcw<Object> a = new fcw<Object>() {
+      @Override
+      public void a(fct<Object> $$0) {
       }
-   }
-
-   public interface a extends fcm {
-      dtz t();
 
       @Override
-      default boolean a(cox $$0) {
-         return bsd.a(this.t(), $$0);
+      public boolean a(ji $$0, Object $$1) {
+         return false;
       }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final fcp<Object> b = new fcp<Object>() {
+      @Override
+      public void a(fct<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(ji $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(ji $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> fcw<T> a() {
+      return (fcw<T>)a;
+   }
+
+   public static <T> fcp<T> b() {
+      return (fcp<T>)b;
    }
 }

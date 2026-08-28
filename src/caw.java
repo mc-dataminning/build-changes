@@ -1,40 +1,17 @@
 import com.google.common.collect.ImmutableMap;
 
-public class caw extends bxa<cnz> {
-   private static final int c = 25;
-   private static final int d = 20;
-
+public class caw extends bxb<bvi> {
    public caw() {
-      super(ImmutableMap.of(cel.ay, cem.a, cel.o, cem.b, cel.aF, cem.c, cel.aD, cem.c), coa.b);
+      super(ImmutableMap.of());
    }
 
-   protected void a(ard $$0, cnz $$1, long $$2) {
-      bwj<cnz> $$3 = $$1.eb();
-      $$3.a(cel.aD, baf.a, 25L);
-      $$3.b(cel.m);
-      bvh $$4 = $$1.eb().c(cel.ay).get();
-      bxc.a($$1, $$4);
-      $$1.b(bvt.l);
-      $$1.a($$4, 20, false);
+   @Override
+   protected boolean a(ard $$0, bvi $$1) {
+      return $$1.bZ();
    }
 
-   protected boolean b(ard $$0, cnz $$1, long $$2) {
-      return true;
-   }
-
-   protected void c(ard $$0, cnz $$1, long $$2) {
-      if (!$$1.eb().a(cel.aD) && !$$1.eb().a(cel.aF)) {
-         $$1.eb().a(cel.aF, baf.a, (long)(coa.b - 25));
-         $$1.a(awa.CI, 3.0F, 1.0F);
-      }
-   }
-
-   protected void d(ard $$0, cnz $$1, long $$2) {
-      if ($$1.c(bvt.l)) {
-         $$1.b(bvt.a);
-      }
-
-      $$1.eb().c(cel.ay).ifPresent($$1::j);
-      $$1.eb().b(cel.ay);
+   @Override
+   protected void d(ard $$0, bvi $$1, long $$2) {
+      $$1.ao();
    }
 }

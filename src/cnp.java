@@ -1,119 +1,116 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
 
-public class cnp {
-   private static final int a = 600;
-   private static final int b = 20;
-   private static final double c = 0.0125;
-   private static final int d = 8;
-   private static final int e = 8;
-   private static final float f = 0.6F;
-   private static final int g = 2;
-   private static final int h = 100;
-   private static final int i = 5;
+public class cnp extends cnl {
+   private static final int bZ = 50;
+   private static final float ca = 0.35F;
+   private static final int cb = 7;
+   private static final double cc = 12.0;
+   protected static final ImmutableList<cft<? extends cfs<? super cnp>>> d = ImmutableList.of(cft.c, cft.d, cft.b, cft.f, cft.m);
+   protected static final ImmutableList<cem<?>> bY = ImmutableList.of(
+      cem.n, cem.v, cem.g, cem.h, cem.k, cem.l, cem.ao, cem.an, cem.x, cem.y, cem.m, cem.E, new cem[]{cem.o, cem.p, cem.q, cem.t, cem.ab, cem.M, cem.b}
+   );
 
-   protected static bwj<?> a(cno $$0, bwj<cno> $$1) {
-      b($$0, $$1);
-      c($$0, $$1);
-      d($$0, $$1);
-      $$1.a(ImmutableSet.of(cqo.a));
-      $$1.b(cqo.b);
-      $$1.f();
-      return $$1;
+   public cnp(but<? extends cnp> $$0, dgj $$1) {
+      super($$0, $$1);
+      this.bN = 20;
    }
 
-   protected static void a(cno $$0) {
-      jq $$1 = jq.a($$0.dV().ai(), $$0.dv());
-      $$0.eb().a(cel.b, $$1);
+   public static bwp.a t() {
+      return clz.gx().a(bwq.s, 50.0).a(bwq.v, 0.35F).a(bwq.c, 7.0).a(bwq.m, 12.0);
    }
 
-   private static void b(cno $$0, bwj<cno> $$1) {
-      $$1.a(cqo.a, 0, ImmutableList.of(new byg(45, 90), new byk(), bxy.a(), bzq.a()));
+   @Nullable
+   @Override
+   public bwb a(dha $$0, bsj $$1, bus $$2, @Nullable bwb $$3) {
+      cnq.a(this);
+      this.a($$0.H_(), $$1);
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   private static void c(cno $$0, bwj<cno> $$1) {
-      $$1.a(cqo.b, 10, ImmutableList.of(bzm.a(cnp::a), a(), b(), bzc.a(bus.bR, 4)));
+   @Override
+   protected void a(azh $$0, bsj $$1) {
+      this.a(buu.a, new cwq(cwu.pE));
    }
 
-   private static void d(cno $$0, bwj<cno> $$1) {
-      $$1.a(cqo.k, 10, ImmutableList.of(bzp.a(($$1x, $$2) -> !a($$1x, (cnk)$$0, $$2)), bzf.a(1.0F), byh.a(20)), cel.o);
+   @Override
+   protected bwk.b<cnp> ec() {
+      return bwk.a(bY, d);
    }
 
-   private static byx<cno> a() {
-      return new byx<>(
-         ImmutableList.of(
-            Pair.of(byz.a(bus.bR, 8.0F), 1),
-            Pair.of(byz.a(bus.aR, 8.0F), 1),
-            Pair.of(byz.a(bus.aS, 8.0F), 1),
-            Pair.of(byz.a(8.0F), 1),
-            Pair.of(new bxk(30, 60), 1)
-         )
-      );
+   @Override
+   protected bwk<?> a(Dynamic<?> $$0) {
+      return cnq.a(this, this.ec().a($$0));
    }
 
-   private static byx<cno> b() {
-      return new byx<>(
-         ImmutableList.of(
-            Pair.of(bys.a(0.6F), 2),
-            Pair.of(bxx.a(bus.aR, 8, cel.q, 0.6F, 2), 2),
-            Pair.of(bxx.a(bus.aS, 8, cel.q, 0.6F, 2), 2),
-            Pair.of(bzs.a(cel.b, 0.6F, 2, 100), 2),
-            Pair.of(bzr.a(cel.b, 0.6F, 5), 2),
-            Pair.of(new bxk(30, 60), 1)
-         )
-      );
+   @Override
+   public bwk<cnp> eb() {
+      return (bwk<cnp>)super.eb();
    }
 
-   protected static void b(cno $$0) {
-      bwj<cno> $$1 = $$0.eb();
-      cqo $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(cqo.k, cqo.b));
-      cqo $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         d($$0);
+   @Override
+   public boolean m() {
+      return false;
+   }
+
+   @Override
+   public boolean c(ard $$0, cwq $$1) {
+      return $$1.a(cwu.pE) ? super.c($$0, $$1) : false;
+   }
+
+   @Override
+   protected void a(ard $$0) {
+      bou $$1 = bot.a();
+      $$1.a("piglinBruteBrain");
+      this.eb().a($$0, this);
+      $$1.c();
+      cnq.b(this);
+      cnq.c(this);
+      super.a($$0);
+   }
+
+   @Override
+   public cno gt() {
+      return this.gh() && this.gu() ? cno.a : cno.f;
+   }
+
+   @Override
+   public boolean a(ard $$0, btc $$1, float $$2) {
+      boolean $$3 = super.a($$0, $$1, $$2);
+      if ($$3 && $$1.d() instanceof bvi $$4) {
+         cnq.a($$0, this, $$4);
       }
 
-      $$0.w($$1.a(cel.o));
+      return $$3;
    }
 
-   private static boolean a(ard $$0, cnk $$1, bvh $$2) {
-      return a($$0, $$1).filter($$1x -> $$1x == $$2).isPresent();
+   @Override
+   protected avz u() {
+      return awa.up;
    }
 
-   private static Optional<? extends bvh> a(ard $$0, cnk $$1) {
-      Optional<bvh> $$2 = bxc.a($$1, cel.ab);
-      if ($$2.isPresent() && cfr.d($$0, $$1, $$2.get())) {
-         return $$2;
-      } else {
-         Optional<? extends bvh> $$3 = $$1.eb().c(cel.l);
-         return $$3.isPresent() ? $$3 : $$1.eb().c(cel.M);
-      }
+   @Override
+   protected avz e(btc $$0) {
+      return awa.us;
    }
 
-   protected static void a(ard $$0, cno $$1, bvh $$2) {
-      if (!($$2 instanceof cnk)) {
-         cnm.a($$0, $$1, $$2);
-      }
+   @Override
+   protected avz o_() {
+      return awa.ur;
    }
 
-   protected static void a(cno $$0, bvh $$1) {
-      $$0.eb().b(cel.E);
-      $$0.eb().a(cel.ab, $$1.cG(), 600L);
+   @Override
+   protected void b(ji $$0, dwy $$1) {
+      this.a(awa.ut, 0.15F, 1.0F);
    }
 
-   protected static void c(cno $$0) {
-      if ((double)$$0.dV().A.i() < 0.0125) {
-         d($$0);
-      }
+   protected void gy() {
+      this.b(awa.uq);
    }
 
-   private static void d(cno $$0) {
-      $$0.eb().g().ifPresent($$1 -> {
-         if ($$1 == cqo.k) {
-            $$0.gy();
-         }
-      });
+   @Override
+   protected void gv() {
+      this.b(awa.uu);
    }
 }

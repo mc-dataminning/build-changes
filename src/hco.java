@@ -1,19 +1,18 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class hco implements hct {
-   public static final MapCodec<hco> a = MapCodec.unit(new hco());
+public record hco(boolean b) implements hcu {
+   public static final MapCodec<hco> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hco::b)).apply($$0, hco::new)
+   );
 
    @Override
-   public float a(cwp $$0, @Nullable gfz $$1, @Nullable bvh $$2, int $$3) {
-      if ($$2 == null) {
-         return 0.0F;
-      } else if (cvg.g($$0)) {
-         return 0.0F;
-      } else {
-         int $$4 = cvg.b($$0, $$2);
-         return (float)hcw.a($$0, $$2) / (float)$$4;
-      }
+   public float a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2, int $$3) {
+      float $$4 = (float)$$0.M();
+      float $$5 = (float)$$0.k();
+      return this.b ? ayz.a($$4 / $$5, 0.0F, 1.0F) : ayz.a($$4, 0.0F, $$5);
    }
 
    @Override

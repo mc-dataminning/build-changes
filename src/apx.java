@@ -39,7 +39,7 @@ public class apx implements Runnable {
             o $$3 = a("Watching Server", this.d.ay().threadId());
             this.d.b($$3.f());
             p $$4 = $$3.a("Performance stats");
-            $$4.a("Random tick rate", () -> this.d.aZ().o().a(dge.o).toString());
+            $$4.a("Random tick rate", () -> this.d.aZ().o().a(dgf.o).toString());
             $$4.a("Level stats", () -> Streams.stream(this.d.L()).map($$0x -> $$0x.ai().a() + ": " + $$0x.G()).collect(Collectors.joining(",\n")));
             akx.a("Crash report:\n" + $$3.a(y.a));
             Path $$5 = this.d.D().resolve("crash-reports").resolve("crash-" + af.f() + "-server.txt");

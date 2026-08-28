@@ -8,7 +8,7 @@ public class cc extends dz<cc.a> {
       return cc.a.a;
    }
 
-   public void a(are $$0, cwp $$1) {
+   public void a(are $$0, cwq $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class cc extends dz<cc.a> {
          return ap.k.a(new cc.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cwp $$0) {
+      public boolean a(cwq $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

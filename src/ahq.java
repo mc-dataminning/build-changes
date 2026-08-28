@@ -1,17 +1,17 @@
 public class ahq implements yw<agg> {
    public static final yn<vl, ahq> a = yw.a(ahq::a, ahq::new);
-   private final cts b;
+   private final ctt b;
    private final boolean c;
    private final boolean d;
 
-   public ahq(cts $$0, boolean $$1, boolean $$2) {
+   public ahq(ctt $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
    private ahq(vl $$0) {
-      this.b = $$0.b(cts.class);
+      this.b = $$0.b(ctt.class);
       this.c = $$0.readBoolean();
       this.d = $$0.readBoolean();
    }
@@ -31,7 +31,7 @@ public class ahq implements yw<agg> {
       $$0.a(this);
    }
 
-   public cts b() {
+   public ctt b() {
       return this.b;
    }
 

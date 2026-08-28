@@ -36,19 +36,19 @@ public class amx {
       );
    }
 
-   private static int a(ex $$0, Collection<? extends bul> $$1, jr<dcz> $$2, int $$3) throws CommandSyntaxException {
-      dcz $$4 = $$2.a();
+   private static int a(ex $$0, Collection<? extends bum> $$1, jr<dda> $$2, int $$3) throws CommandSyntaxException {
+      dda $$4 = $$2.a();
       if ($$3 > $$4.e()) {
          throw d.create($$3, $$4.e());
       } else {
          int $$5 = 0;
 
-         for (bul $$6 : $$1) {
-            if ($$6 instanceof bvh) {
-               bvh $$7 = (bvh)$$6;
-               cwp $$8 = $$7.eZ();
+         for (bum $$6 : $$1) {
+            if ($$6 instanceof bvi) {
+               bvi $$7 = (bvi)$$6;
+               cwq $$8 = $$7.eZ();
                if (!$$8.f()) {
-                  if ($$4.c($$8) && ddb.a(ddb.b($$8).a(), $$2)) {
+                  if ($$4.c($$8) && ddc.a(ddc.b($$8).a(), $$2)) {
                      $$8.a($$2, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {
@@ -66,9 +66,9 @@ public class amx {
             throw e.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> wp.a("commands.enchant.success.single", dcz.a($$2, $$3), $$1.iterator().next().p_()), true);
+               $$0.a(() -> wp.a("commands.enchant.success.single", dda.a($$2, $$3), $$1.iterator().next().p_()), true);
             } else {
-               $$0.a(() -> wp.a("commands.enchant.success.multiple", dcz.a($$2, $$3), $$1.size()), true);
+               $$0.a(() -> wp.a("commands.enchant.success.multiple", dda.a($$2, $$3), $$1.size()), true);
             }
 
             return $$5;

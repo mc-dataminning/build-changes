@@ -1,109 +1,69 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class evq {
-   private static final Codec<evq> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ezx.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-               ezx.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, evq::new)
-   );
-   public static final Codec<evq> a = Codec.either(Codec.INT, b).xmap($$0 -> (evq)$$0.map(evq::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final ezw c;
-   @Nullable
-   private final ezw d;
-   private final evq.b e;
-   private final evq.a f;
-
-   public Set<bai<?>> a() {
-      Builder<bai<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
+public interface evq {
+   evp<czi> a = new evp<czi>() {
+      @Override
+      public ku<czi> a() {
+         return kv.al;
       }
 
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
+      public Stream<cwq> a(czi $$0) {
+         return $$0.b();
       }
 
-      return $$0.build();
-   }
-
-   private evq(Optional<ezw> $$0, Optional<ezw> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
-   }
-
-   private evq(@Nullable ezw $$0, @Nullable ezw $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> ayz.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+      public czi c() {
+         return czi.a;
       }
-   }
 
-   public static evq a(int $$0) {
-      ezt $$1 = ezt.a((float)$$0);
-      return new evq(Optional.of($$1), Optional.of($$1));
-   }
+      public czi a(czi $$0, Stream<cwq> $$1) {
+         return czi.a($$1.toList());
+      }
+   };
+   evp<cyu> b = new evp<cyu>() {
+      @Override
+      public ku<cyu> a() {
+         return kv.P;
+      }
 
-   public static evq a(int $$0, int $$1) {
-      return new evq(Optional.of(ezt.a((float)$$0)), Optional.of(ezt.a((float)$$1)));
-   }
+      public cyu c() {
+         return cyu.a;
+      }
 
-   public static evq b(int $$0) {
-      return new evq(Optional.of(ezt.a((float)$$0)), Optional.empty());
-   }
+      public Stream<cwq> a(cyu $$0) {
+         return $$0.b();
+      }
 
-   public static evq c(int $$0) {
-      return new evq(Optional.empty(), Optional.of(ezt.a((float)$$0)));
-   }
+      public cyu a(cyu $$0, Stream<cwq> $$1) {
+         cyu.a $$2 = new cyu.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   evp<cyv> c = new evp<cyv>() {
+      @Override
+      public ku<cyv> a() {
+         return kv.O;
+      }
 
-   public int a(evr $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
+      public cyv c() {
+         return cyv.a;
+      }
 
-   public boolean b(evr $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
+      public Stream<cwq> a(cyv $$0) {
+         return $$0.a().stream();
+      }
 
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof ezt $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface a {
-      boolean test(evr var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      int apply(evr var1, int var2);
-   }
+      public cyv a(cyv $$0, Stream<cwq> $$1) {
+         return cyv.a($$1.toList());
+      }
+   };
+   Map<ku<?>, evp<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(evp::a, $$0 -> (evp<?>)$$0));
+   Codec<evp<?>> e = mb.ao.q().comapFlatMap($$0 -> {
+      evp<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, evp::a);
 }

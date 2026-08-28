@@ -1,29 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class egb extends efy<eig> {
-   public egb(Codec<eig> $$0) {
-      super($$0);
+public class egb<FC extends eid> {
+   private final Optional<efl<?, ?>> a;
+   private final dhh b;
+   private final dyu c;
+   private final azh d;
+   private final ji e;
+   private final FC f;
+
+   public egb(Optional<efl<?, ?>> $$0, dhh $$1, dyu $$2, azh $$3, ji $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(ega<eig> $$0) {
-      ji $$1 = $$0.e();
-      eig $$2 = $$0.f();
-      dhg $$3 = $$0.b();
-      ji.a $$4 = new ji.a();
+   public Optional<efl<?, ?>> a() {
+      return this.a;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.L_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).l()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
-      }
+   public dhh b() {
+      return this.b;
+   }
 
-      return true;
+   public dyu c() {
+      return this.c;
+   }
+
+   public azh d() {
+      return this.d;
+   }
+
+   public ji e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

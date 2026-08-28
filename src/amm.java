@@ -27,7 +27,7 @@ public class amm {
                                              (ex)$$0x.getSource(),
                                              fk.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new btb(fw.a($$0x, "damageType", mc.s))
+                                             new btc(fw.a($$0x, "damageType", mc.s))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class amm {
                                                       (ex)$$0x.getSource(),
                                                       fk.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new btb(fw.a($$0x, "damageType", mc.s), ha.a($$0x, "location"))
+                                                      new btc(fw.a($$0x, "damageType", mc.s), ha.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class amm {
                                                       (ex)$$0x.getSource(),
                                                       fk.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new btb(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"))
+                                                      new btc(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class amm {
                                                                (ex)$$0x.getSource(),
                                                                fk.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new btb(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"), fk.a($$0x, "cause"))
+                                                               new btc(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"), fk.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class amm {
       );
    }
 
-   private static int a(ex $$0, bul $$1, float $$2, btb $$3) throws CommandSyntaxException {
+   private static int a(ex $$0, bum $$1, float $$2, btc $$3) throws CommandSyntaxException {
       if ($$1.a($$0.e(), $$3, $$2)) {
          $$0.a(() -> wp.a("commands.damage.success", $$2, $$1.p_()), true);
          return 1;

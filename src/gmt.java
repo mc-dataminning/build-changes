@@ -1,206 +1,160 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
 public class gmt {
-   public static final akv a = akv.b("textures/atlas/shulker_boxes.png");
-   public static final akv b = akv.b("textures/atlas/beds.png");
-   public static final akv c = akv.b("textures/atlas/banner_patterns.png");
-   public static final akv d = akv.b("textures/atlas/shield_patterns.png");
-   public static final akv e = akv.b("textures/atlas/signs.png");
-   public static final akv f = akv.b("textures/atlas/chest.png");
-   public static final akv g = akv.b("textures/atlas/armor_trims.png");
-   public static final akv h = akv.b("textures/atlas/decorated_pot.png");
-   private static final gmi B = gmi.g(a);
-   private static final gmi C = gmi.d(b);
-   private static final gmi D = gmi.n(c);
-   private static final gmi E = gmi.n(d);
-   private static final gmi F = gmi.g(e);
-   private static final gmi G = gmi.f(f);
-   private static final gmi H = gmi.a(g);
-   private static final gmi I = gmi.b(g);
-   private static final gmi J = gmi.d(her.d);
-   private static final gmi K = gmi.f(her.d);
-   private static final gmi L = gmi.i(her.d);
-   public static final hgz i = b(akv.b("shulker"));
-   public static final List<hgz> j = Arrays.stream(cvm.values()).sorted(Comparator.comparingInt(cvm::a)).map(gmt::f).collect(ImmutableList.toImmutableList());
-   public static final Map<dyj, hgz> k = dyj.a().collect(Collectors.toMap(Function.identity(), gmt::c));
-   public static final Map<dyj, hgz> l = dyj.a().collect(Collectors.toMap(Function.identity(), gmt::d));
-   public static final hgz m = new hgz(c, akv.b("entity/banner/base"));
-   public static final hgz n = new hgz(d, akv.b("entity/shield/base"));
-   private static final Map<akv, hgz> M = new HashMap<>();
-   private static final Map<akv, hgz> N = new HashMap<>();
-   public static final Map<aku<dur>, hgz> o = mb.ak.c().collect(Collectors.toMap(jr.c::h, $$0 -> f($$0.a().a())));
-   public static final hgz p = f(akv.b("decorated_pot_base"));
-   public static final hgz q = f(akv.b("decorated_pot_side"));
-   private static final hgz[] O = Arrays.stream(cvm.values()).sorted(Comparator.comparingInt(cvm::a)).map(gmt::c).toArray(hgz[]::new);
-   public static final hgz r = a("trapped");
-   public static final hgz s = a("trapped_left");
-   public static final hgz t = a("trapped_right");
-   public static final hgz u = a("christmas");
-   public static final hgz v = a("christmas_left");
-   public static final hgz w = a("christmas_right");
-   public static final hgz x = a("normal");
-   public static final hgz y = a("normal_left");
-   public static final hgz z = a("normal_right");
-   public static final hgz A = a("ender");
-
-   public static gmi a() {
-      return D;
-   }
-
-   public static gmi b() {
-      return E;
-   }
-
-   public static gmi c() {
-      return C;
-   }
-
-   public static gmi d() {
-      return B;
-   }
-
-   public static gmi e() {
-      return F;
-   }
-
-   public static gmi f() {
-      return F;
-   }
-
-   public static gmi g() {
-      return G;
-   }
-
-   public static gmi a(boolean $$0) {
-      return $$0 ? I : H;
-   }
-
-   public static gmi h() {
-      return J;
-   }
-
-   public static gmi i() {
-      return K;
-   }
-
-   public static gmi j() {
-      return L;
-   }
-
-   public static hgz a(cvm $$0) {
-      return O[$$0.a()];
-   }
-
-   public static akv b(cvm $$0) {
-      return akv.b($$0.b());
-   }
-
-   public static hgz c(cvm $$0) {
-      return a(b($$0));
-   }
-
-   public static hgz a(akv $$0) {
-      return new hgz(b, $$0.f("entity/bed/"));
-   }
-
-   public static hgz d(cvm $$0) {
-      return j.get($$0.a());
-   }
-
-   public static akv e(cvm $$0) {
-      return akv.b("shulker_" + $$0.b());
-   }
-
-   public static hgz f(cvm $$0) {
-      return b(e($$0));
-   }
-
-   public static hgz b(akv $$0) {
-      return new hgz(a, $$0.f("entity/shulker/"));
-   }
-
-   private static hgz c(dyj $$0) {
-      return c(akv.b($$0.b()));
-   }
-
-   public static hgz c(akv $$0) {
-      return new hgz(e, $$0.f("entity/signs/"));
-   }
-
-   private static hgz d(dyj $$0) {
-      return d(akv.b($$0.b()));
-   }
-
-   public static hgz d(akv $$0) {
-      return new hgz(e, $$0.f("entity/signs/hanging/"));
-   }
-
-   public static hgz a(dyj $$0) {
-      return k.get($$0);
-   }
-
-   public static hgz b(dyj $$0) {
-      return l.get($$0);
-   }
-
-   public static hgz a(jr<dtp> $$0) {
-      return M.computeIfAbsent($$0.a().a(), $$0x -> {
-         akv $$1 = $$0x.f("entity/banner/");
-         return new hgz(c, $$1);
+   public static void a(ffv $$0, ffz $$1, fbv $$2, double $$3, double $$4, double $$5, int $$6) {
+      ffv.a $$7 = $$0.c();
+      $$2.a(($$6x, $$7x, $$8, $$9, $$10, $$11) -> {
+         Vector3f $$12 = new Vector3f((float)($$9 - $$6x), (float)($$10 - $$7x), (float)($$11 - $$8)).normalize();
+         $$1.a($$7, (float)($$6x + $$3), (float)($$7x + $$4), (float)($$8 + $$5)).a($$6).b($$7, $$12);
+         $$1.a($$7, (float)($$9 + $$3), (float)($$10 + $$4), (float)($$11 + $$5)).a($$6).b($$7, $$12);
       });
    }
 
-   public static hgz b(jr<dtp> $$0) {
-      return N.computeIfAbsent($$0.a().a(), $$0x -> {
-         akv $$1 = $$0x.f("entity/shield/");
-         return new hgz(d, $$1);
-      });
+   public static void a(ffv $$0, ffz $$1, faw $$2, float $$3, float $$4, float $$5, float $$6) {
+      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6, $$3, $$4, $$5);
    }
 
-   private static hgz a(String $$0) {
-      return new hgz(f, akv.b("entity/chest/" + $$0));
+   public static void a(ffv $$0, ffz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$8, $$9, $$10);
    }
 
-   public static hgz e(akv $$0) {
-      return new hgz(f, $$0.f("entity/chest/"));
+   public static void a(
+      ffv $$0,
+      ffz $$1,
+      double $$2,
+      double $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      double $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14
+   ) {
+      ffv.a $$15 = $$0.c();
+      float $$16 = (float)$$2;
+      float $$17 = (float)$$3;
+      float $$18 = (float)$$4;
+      float $$19 = (float)$$5;
+      float $$20 = (float)$$6;
+      float $$21 = (float)$$7;
+      $$1.a($$15, $$16, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
+      $$1.a($$15, $$19, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
+      $$1.a($$15, $$16, $$17, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
+      $$1.a($$15, $$16, $$20, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
+      $$1.a($$15, $$16, $$17, $$18).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
+      $$1.a($$15, $$16, $$17, $$21).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
+      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
+      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
+      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
+      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
+      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
+      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
+      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
+      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
+      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
+      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
+      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
+      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
+      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
+      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
+      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
+      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
+      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
+      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
    }
 
-   private static hgz f(akv $$0) {
-      return new hgz(h, $$0.f("entity/decorated_pot/"));
+   public static void b(ffv $$0, ffz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
+      a($$0, $$1, (float)$$2, (float)$$3, (float)$$4, (float)$$5, (float)$$6, (float)$$7, $$8, $$9, $$10, $$11);
    }
 
-   @Nullable
-   public static hgz a(@Nullable aku<dur> $$0) {
-      return $$0 == null ? null : o.get($$0);
+   public static void a(ffv $$0, ffz $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+      Matrix4f $$12 = $$0.c().a();
+      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
+      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
    }
 
-   public static hgz a(dtz $$0, dxp $$1, boolean $$2) {
-      if ($$0 instanceof duw) {
-         return A;
-      } else if ($$2) {
-         return a($$1, u, v, w);
-      } else {
-         return $$0 instanceof dvv ? a($$1, r, s, t) : a($$1, x, y, z);
-      }
-   }
-
-   private static hgz a(dxp $$0, hgz $$1, hgz $$2, hgz $$3) {
-      switch ($$0) {
-         case b:
-            return $$2;
-         case c:
-            return $$3;
+   public static void a(
+      ffv $$0, ffz $$1, jn $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
+   ) {
+      Matrix4f $$13 = $$0.c().a();
+      switch ($$2) {
          case a:
-         default:
-            return $$1;
+            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
+            break;
+         case b:
+            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
+            break;
+         case c:
+            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
+            break;
+         case d:
+            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
+            break;
+         case e:
+            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
+            break;
+         case f:
+            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
+            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
       }
+   }
+
+   public static void a(ffv $$0, ffz $$1, Vector3f $$2, fbb $$3, int $$4) {
+      ffv.a $$5 = $$0.c();
+      $$1.a($$5, $$2).a($$4).b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
+      $$1.a($$5, (float)((double)$$2.x() + $$3.d), (float)((double)$$2.y() + $$3.e), (float)((double)$$2.z() + $$3.f))
+         .a($$4)
+         .b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
    }
 }

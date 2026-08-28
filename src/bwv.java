@@ -1,79 +1,84 @@
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class bwv<E extends bvp> extends bxa<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
+public class bwv extends bxb<cgz> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final but<? extends cgz> f;
    private final float g;
-   private final Function<bvp, axf<btd>> h;
+   private final int h;
+   private static final int i = 2;
+   private long j;
 
-   public bwv(float $$0) {
-      this($$0, $$0x -> awr.F);
+   public bwv(but<? extends cgz> $$0) {
+      this($$0, 1.0F, 2);
    }
 
-   public bwv(float $$0, Function<bvp, axf<btd>> $$1) {
-      super(Map.of(cel.Z, cem.c, cel.x, cem.c), 100, 120);
-      this.g = $$0;
-      this.h = $$1;
+   public bwv(but<? extends cgz> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(cem.h, cen.a, cem.r, cen.b, cem.m, cen.c, cem.n, cen.c, cem.Z, cen.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   protected boolean a(ard $$0, E $$1) {
-      return $$1.eb().c(cel.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.eb().a(cel.Z);
+   protected boolean a(ard $$0, cgz $$1) {
+      return $$1.gC() && this.c($$1).isPresent();
    }
 
-   protected boolean a(ard $$0, E $$1, long $$2) {
-      return true;
+   protected void a(ard $$0, cgz $$1, long $$2) {
+      cgz $$3 = this.c($$1).get();
+      $$1.eb().a(cem.r, $$3);
+      $$3.eb().a(cem.r, $$1);
+      bxd.a($$1, (bvi)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.dY().a(50);
+      this.j = $$2 + (long)$$4;
    }
 
-   protected void b(ard $$0, E $$1, long $$2) {
-      $$1.eb().a(cel.Z, true);
-      $$1.eb().b(cel.m);
-   }
-
-   protected void c(ard $$0, E $$1, long $$2) {
-      bwj<?> $$3 = $$1.eb();
-      $$3.b(cel.Z);
-   }
-
-   protected void d(ard $$0, E $$1, long $$2) {
-      if ($$1.P().k()) {
-         fba $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.eb().a(cel.m, new ceo($$3, this.g, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private fba a(E $$0, ard $$1) {
-      if ($$0.bY()) {
-         Optional<fba> $$2 = this.a((dfn)$$1, $$0).map(fba::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return cgf.a($$0, 5, 4);
-   }
-
-   private Optional<ji> a(dfn $$0, bul $$1) {
-      ji $$2 = $$1.dv();
-      if (!$$0.a_($$2).g($$0, $$2).c()) {
-         return Optional.empty();
+   protected boolean b(ard $$0, cgz $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
       } else {
-         Predicate<ji> $$3;
-         if (ayz.f($$1.dq()) == 2) {
-            $$3 = $$1x -> ji.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(awv.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(awv.a);
+         cgz $$3 = this.a($$1);
+         return $$3.bL() && $$1.a($$3) && bxd.a($$1.eb(), $$3) && $$2 <= this.j && !$$1.gp() && !$$3.gp();
+      }
+   }
+
+   protected void c(ard $$0, cgz $$1, long $$2) {
+      cgz $$3 = this.a($$1);
+      bxd.a($$1, (bvi)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.eb().b(cem.r);
+            $$3.eb().b(cem.r);
+         }
+      }
+   }
+
+   protected void d(ard $$0, cgz $$1, long $$2) {
+      $$1.eb().b(cem.r);
+      $$1.eb().b(cem.m);
+      $$1.eb().b(cem.n);
+      this.j = 0L;
+   }
+
+   private cgz a(cgz $$0) {
+      return (cgz)$$0.eb().c(cem.r).get();
+   }
+
+   private boolean b(cgz $$0) {
+      bwk<?> $$1 = $$0.eb();
+      return $$1.a(cem.r) && $$1.c(cem.r).get().aq() == this.f;
+   }
+
+   private Optional<? extends cgz> c(cgz $$0) {
+      return $$0.eb().c(cem.h).get().a($$1 -> {
+         if ($$1.aq() == this.f && $$1 instanceof cgz $$2 && $$0.a($$2) && !$$2.gp()) {
+            return true;
          }
 
-         return ji.a($$2, 5, 1, $$3);
-      }
+         return false;
+      }).map(cgz.class::cast);
    }
 }

@@ -8,7 +8,7 @@ public class cp extends dz<cp.a> {
       return cp.a.a;
    }
 
-   public void a(are $$0, cwp $$1, int $$2) {
+   public void a(are $$0, cwq $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -31,7 +31,7 @@ public class cp extends dz<cp.a> {
          return ap.u.a(new cp.a($$0, $$1, $$2, dk.d.c));
       }
 
-      public boolean a(cwp $$0, int $$1) {
+      public boolean a(cwq $$0, int $$1) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else {

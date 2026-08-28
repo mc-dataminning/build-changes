@@ -1,25 +1,36 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class cfw extends cfk<cnz> {
+public class cfw extends cfm {
+   private static final ImmutableMap<but<?>, Float> a = ImmutableMap.builder()
+      .put(but.K, 8.0F)
+      .put(but.S, 12.0F)
+      .put(but.am, 8.0F)
+      .put(but.an, 12.0F)
+      .put(but.aT, 15.0F)
+      .put(but.aY, 12.0F)
+      .put(but.bB, 8.0F)
+      .put(but.bD, 10.0F)
+      .put(but.bM, 10.0F)
+      .put(but.bN, 8.0F)
+      .put(but.bP, 8.0F)
+      .build();
+
    @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cel.B)));
+   protected boolean a(ard $$0, bvi $$1, bvi $$2) {
+      return this.b($$2) && this.a($$1, $$2);
    }
 
-   protected void a(ard $$0, cnz $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.aq() == bus.bR)
-         .or(() -> a($$1, $$0xx -> $$0xx.aq() != bus.bR))
-         .ifPresentOrElse($$1x -> $$1.eb().a(cel.B, $$1x), () -> $$1.eb().b(cel.B));
+   private boolean a(bvi $$0, bvi $$1) {
+      float $$2 = (Float)a.get($$1.aq());
+      return $$1.g((bum)$$0) <= (double)($$2 * $$2);
    }
 
-   private static Optional<bvh> a(cnz $$0, Predicate<bvh> $$1) {
-      return $$0.eb().c(cel.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   @Override
+   protected cem<bvi> b() {
+      return cem.A;
+   }
+
+   private boolean b(bvi $$0) {
+      return a.containsKey($$0.aq());
    }
 }

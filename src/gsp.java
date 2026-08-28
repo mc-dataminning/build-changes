@@ -1,22 +1,21 @@
-public class gsp extends gtk<clt, hbb, gco<hbb>> {
-   private static final akv a = akv.b("textures/entity/zombie/zombie.png");
+public class gsp extends gtl<clt, gyw, gch> {
+   private static final akv a = akv.b("textures/entity/ghast/ghast.png");
+   private static final akv b = akv.b("textures/entity/ghast/ghast_shooting.png");
 
-   public gsp(gse.a $$0, float $$1) {
-      super($$0, new gch($$0.a(gfc.aS)), 0.5F * $$1);
-      this.a(new gwl<>(this));
-      this.a(new gwi<>(this, new gch($$0.a(gfc.aT)), new gch($$0.a(gfc.aU)), $$0.h()));
+   public gsp(gsf.a $$0) {
+      super($$0, new gch($$0.a(gfd.aR)), 1.5F);
    }
 
-   public akv a(hbb $$0) {
-      return a;
+   public akv a(gyw $$0) {
+      return $$0.a ? b : a;
    }
 
-   public hbb b() {
-      return new hbb();
+   public gyw b() {
+      return new gyw();
    }
 
-   public void a(clt $$0, hbb $$1, float $$2) {
+   public void a(clt $$0, gyw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gsv.a($$0, $$1, $$2, this.i);
+      $$1.a = $$0.m();
    }
 }

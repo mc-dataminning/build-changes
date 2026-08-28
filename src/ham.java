@@ -1,13 +1,10 @@
-import javax.annotation.Nullable;
-
-public class ham extends gye {
-   @Nullable
-   public buj.l.e a;
-   @Nullable
-   public buj.l.b f;
+public class ham extends gzl implements hac {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 
    @Override
    public boolean a() {
-      return this.a != null;
+      return this.a;
    }
 }

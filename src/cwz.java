@@ -1,59 +1,43 @@
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cwz extends cwl {
-   public cwz(cwl.a $$0) {
+public class cwz extends cwm {
+   private static final Logger a = LogUtils.getLogger();
+
+   public cwz(cwm.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsk a(dai $$0) {
-      dgi $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwx $$3 = $$1.a_($$2);
-      if ($$3.a(awp.U)) {
-         cox $$4 = $$0.o();
-         if (!$$1.C && $$4 != null) {
-            return a($$4, $$1, $$2);
-         }
-      }
-
-      return bsk.e;
-   }
-
-   public static bsk a(cox $$0, dgi $$1, ji $$2) {
-      ckw $$3 = null;
-      List<bvf> $$4 = a($$1, $$2, $$1x -> $$1x.D() == $$0);
-
-      for (bvf $$5 : $$4) {
-         if ($$3 == null) {
-            $$3 = ckw.a($$1, $$2);
-            $$3.s();
-         }
-
-         $$5.b($$3, true);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.a(ebt.b, $$2, ebt.a.a($$0));
-         return bsk.b;
+   public bsl a(dgj $$0, coy $$1, bsk $$2) {
+      cwq $$3 = $$1.b($$2);
+      List<aku<dbf<?>>> $$4 = $$3.a(kv.ac, List.of());
+      $$3.a(1, $$1);
+      if ($$4.isEmpty()) {
+         return bsl.d;
       } else {
-         return bsk.e;
-      }
-   }
+         if (!$$0.C) {
+            dbm $$5 = $$0.p().aI();
+            List<dbk<?>> $$6 = new ArrayList<>($$4.size());
 
-   public static List<bvf> a(dgi $$0, ji $$1, Predicate<bvf> $$2) {
-      double $$3 = 7.0;
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      fav $$7 = new fav((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
-      return $$0.a(bul.class, $$7, $$1x -> {
-         if ($$1x instanceof bvf $$2x && $$2.test($$2x)) {
-            return true;
+            for (aku<dbf<?>> $$7 : $$4) {
+               Optional<dbk<?>> $$8 = $$5.b($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bsl.d;
+               }
+
+               $$6.add($$8.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(awk.c.b(this));
          }
 
-         return false;
-      }).stream().map(bvf.class::cast).toList();
+         return bsl.a;
+      }
    }
 }

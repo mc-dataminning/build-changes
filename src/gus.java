@@ -1,18 +1,29 @@
-public class gus extends gsd<cqd, hao> {
-   public static final akv a = akv.b("textures/entity/trident.png");
-   private final geh b;
+public class gus<T extends bum & cpo> extends gse<T, hao> {
+   private final hbn a;
+   private final float b;
+   private final boolean h;
 
-   public gus(gse.a $$0) {
+   public gus(gsf.a $$0, float $$1, boolean $$2) {
       super($$0);
-      this.b = new geh($$0.a(gfc.dl));
+      this.a = $$0.b();
+      this.b = $$1;
+      this.h = $$2;
    }
 
-   public void a(hao $$0, ffu $$1, gly $$2, int $$3) {
+   public gus(gsf.a $$0) {
+      this($$0, 1.0F, false);
+   }
+
+   @Override
+   protected int a(T $$0, ji $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
+   }
+
+   public void a(hao $$0, ffv $$1, glz $$2, int $$3) {
       $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
-      ffy $$4 = gtc.a($$2, this.b.a(a), false, $$0.c);
-      this.b.a($$1, $$4, $$3, hei.d);
+      $$1.b(this.b, this.b, this.b);
+      $$1.a(this.e.b());
+      $$0.a.a($$1, $$2, $$3, hej.d);
       $$1.b();
       super.a($$0, $$1, $$2, $$3);
    }
@@ -21,10 +32,8 @@ public class gus extends gsd<cqd, hao> {
       return new hao();
    }
 
-   public void a(cqd $$0, hao $$1, float $$2) {
+   public void a(T $$0, hao $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.k($$2);
-      $$1.a = $$0.j($$2);
-      $$1.c = $$0.D();
+      this.a.a($$1.a, $$0.l(), cwo.h, $$0);
    }
 }

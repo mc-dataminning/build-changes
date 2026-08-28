@@ -1,12 +1,16 @@
-public class fgu extends fgs {
-   final long a;
+public class fgu extends fgt {
+   private final wp a;
 
-   public fgu(long $$0) {
+   public fgu(wp $$0) {
       this.a = $$0;
    }
 
+   public fgu(String $$0) {
+      this(wp.b($$0));
+   }
+
    @Override
-   public wp[] b() {
-      return new wp[]{wp.c("mco.upload.failed.too_big.title"), wp.a("mco.upload.failed.too_big.description", fgg.b(this.a, fgg.a(this.a)))};
+   public wp a() {
+      return wp.a("mco.upload.failed", this.a);
    }
 }

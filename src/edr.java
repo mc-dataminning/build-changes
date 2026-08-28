@@ -1,84 +1,87 @@
-import java.util.function.LongFunction;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-public class edr extends ect {
-   private final azh d;
-   private int e;
+public class edr {
+   public static final MapCodec<edr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(edr::c),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(edr::d),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(edr::e),
+               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(edr::new))
+   );
+   public static final edr b = new edr((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
 
-   public edr(azh $$0) {
-      super(0L);
-      this.d = $$0;
+   public edr(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   public int l() {
+   public static edr a() {
+      return new edr(g(), true, false);
+   }
+
+   public static edr b() {
+      return new edr(g(), false, false);
+   }
+
+   private edr(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public long c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
       return this.e;
    }
 
-   @Override
-   public azh d() {
-      return this.d.d();
+   public boolean f() {
+      return this.f.isPresent();
    }
 
-   @Override
-   public edf e() {
-      return this.d.e();
+   public edr a(boolean $$0) {
+      return new edr(this.c, this.d, $$0, this.f);
    }
 
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof ect $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   public edr b(boolean $$0) {
+      return new edr(this.c, $$0, this.e, this.f);
    }
 
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
+   public edr a(OptionalLong $$0) {
+      return new edr($$0.orElse(g()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
+         }
       }
    }
 
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static azh a(int $$0, int $$1, long $$2, long $$3) {
-      return azh.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(ect::new),
-      b(edt::new);
-
-      private final LongFunction<azh> c;
-
-      private a(final LongFunction<azh> $$0) {
-         this.c = $$0;
-      }
-
-      public azh a(long $$0) {
-         return this.c.apply($$0);
-      }
+   public static long g() {
+      return azh.a().g();
    }
 }

@@ -1,33 +1,28 @@
 import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
 
-public class hiv<T> implements hiz<T> {
-   protected final Comparator<T> a;
-   protected final hiy<T> b;
+public class hiv<T> extends hiw<T> {
+   private final hja<T> c;
 
-   public hiv(Function<T, Stream<akv>> $$0, List<T> $$1) {
-      ToIntFunction<T> $$2 = af.g($$1);
-      this.a = Comparator.comparingInt($$2);
-      this.b = hiy.a($$1, $$0);
+   public hiv(Function<T, Stream<String>> $$0, Function<T, Stream<akv>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = hja.plainText($$2, $$0);
    }
 
    @Override
-   public List<T> search(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
-   }
-
    protected List<T> a(String $$0) {
-      return this.b.b($$0);
+      return this.c.search($$0);
    }
 
+   @Override
    protected List<T> a(String $$0, String $$1) {
       List<T> $$2 = this.b.a($$0);
       List<T> $$3 = this.b.b($$1);
-      return ImmutableList.copyOf(new hiw<T>($$2.iterator(), $$3.iterator(), this.a));
+      List<T> $$4 = this.c.search($$1);
+      Iterator<T> $$5 = new hiy<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new hix<T>($$2.iterator(), $$5, this.a));
    }
 }

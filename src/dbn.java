@@ -1,35 +1,48 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class dbn {
-   public static final aku<? extends ke<dbn>> a = aku.a(akv.b("recipe_property_set"));
-   public static final aku<dbn> b = a("smithing_base");
-   public static final aku<dbn> c = a("smithing_template");
-   public static final aku<dbn> d = a("smithing_addition");
-   public static final aku<dbn> e = a("furnace_input");
-   public static final aku<dbn> f = a("blast_furnace_input");
-   public static final aku<dbn> g = a("smoker_input");
-   public static final aku<dbn> h = a("campfire_input");
-   public static final yn<wa, dbn> i = yl.b(mc.K).a(yl.a()).a($$0 -> new dbn(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
-   public static final dbn j = new dbn(Set.of());
-   private final Set<jr<cwl>> k;
+   public static final dbn a = new dbn(ImmutableMultimap.of(), Map.of());
+   private final Multimap<dbq<?>, dbk<?>> b;
+   private final Map<aku<dbf<?>>, dbk<?>> c;
 
-   private dbn(Set<jr<cwl>> $$0) {
-      this.k = $$0;
+   private dbn(Multimap<dbq<?>, dbk<?>> $$0, Map<aku<dbf<?>>, dbk<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static aku<dbn> a(String $$0) {
-      return aku.a(a, akv.b($$0));
+   public static dbn a(Iterable<dbk<?>> $$0) {
+      Builder<dbq<?>, dbk<?>> $$1 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<aku<dbf<?>>, dbk<?>> $$2 = ImmutableMap.builder();
+
+      for (dbk<?> $$3 : $$0) {
+         $$1.put($$3.b().b(), $$3);
+         $$2.put($$3.a(), $$3);
+      }
+
+      return new dbn($$1.build(), $$2.build());
    }
 
-   public boolean a(cwp $$0) {
-      return this.k.contains($$0.i());
+   public <I extends dbl, T extends dbf<I>> Collection<dbk<T>> a(dbq<T> $$0) {
+      return this.b.get($$0);
    }
 
-   static dbn a(Collection<dba> $$0) {
-      Set<jr<cwl>> $$1 = $$0.stream().flatMap(dba::a).collect(Collectors.toUnmodifiableSet());
-      return new dbn($$1);
+   public Collection<dbk<?>> a() {
+      return this.c.values();
+   }
+
+   @Nullable
+   public dbk<?> a(aku<dbf<?>> $$0) {
+      return this.c.get($$0);
+   }
+
+   public <I extends dbl, T extends dbf<I>> Stream<dbk<T>> a(dbq<T> $$0, I $$1, dgj $$2) {
+      return $$1.b() ? Stream.empty() : this.a($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2));
    }
 }

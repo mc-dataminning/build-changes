@@ -1,2 +1,8 @@
-public record cui(cyt a) implements cuj {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cui {
 }

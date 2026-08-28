@@ -1,52 +1,52 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
 
-public class bqt {
-   public static final Codec<bqt> a = Codec.INT.xmap(bqt::a, bqt::a);
-   private static final bqt b = new bqt(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
-
-   private bqt(int $$0) {
-      this.d = $$0;
+public class bqt<E> extends bqx<bqv.b<E>> {
+   public static <E> Codec<bqt<E>> a(Codec<E> $$0) {
+      return bqv.b.a($$0).listOf().xmap(bqt::new, bqx::e);
    }
 
-   public static bqt a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new bqt($$0);
+   public static <E> Codec<bqt<E>> b(Codec<E> $$0) {
+      return ayi.b(bqv.b.a($$0).listOf()).xmap(bqt::new, bqx::e);
+   }
+
+   bqt(List<? extends bqv.b<E>> $$0) {
+      super($$0);
+   }
+
+   public static <E> bqt.a<E> a() {
+      return new bqt.a<>();
+   }
+
+   public static <E> bqt<E> b() {
+      return new bqt<>(List.of());
+   }
+
+   public static <E> bqt<E> a(E $$0) {
+      return new bqt<>(List.of(bqv.a($$0, 1)));
+   }
+
+   public Optional<E> a(azh $$0) {
+      return this.b($$0).map(bqv.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bqv.b<E>> a = ImmutableList.builder();
+
+      public bqt.a<E> a(E $$0) {
+         return this.a($$0, 1);
       }
-   }
 
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && ab.aU) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
+      public bqt.a<E> a(E $$0, int $$1) {
+         this.a.add(bqv.a($$0, $$1));
+         return this;
       }
-   }
 
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bqt && this.d == ((bqt)$$0).d;
+      public bqt<E> a() {
+         return new bqt<>(this.a.build());
+      }
    }
 }

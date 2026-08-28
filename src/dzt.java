@@ -1,102 +1,63 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.function.UnaryOperator;
 
-public class dzt {
-   public static final int a = 8;
-   private static final EnumSet<ecs.a> o = EnumSet.of(ecs.a.c, ecs.a.a);
-   public static final EnumSet<ecs.a> b = EnumSet.of(ecs.a.d, ecs.a.b, ecs.a.e, ecs.a.f);
-   public static final dzt c = a("empty", null, o, dzx.a);
-   public static final dzt d = a("structure_starts", c, o, dzx.a);
-   public static final dzt e = a("structure_references", d, o, dzx.a);
-   public static final dzt f = a("biomes", e, o, dzx.a);
-   public static final dzt g = a("noise", f, o, dzx.a);
-   public static final dzt h = a("surface", g, o, dzx.a);
-   public static final dzt i = a("carvers", h, b, dzx.a);
-   public static final dzt j = a("features", i, b, dzx.a);
-   public static final dzt k = a("initialize_light", j, b, dzx.a);
-   public static final dzt l = a("light", k, b, dzx.a);
-   public static final dzt m = a("spawn", l, b, dzx.a);
-   public static final dzt n = a("full", m, b, dzx.b);
-   private final int p;
-   private final dzt q;
-   private final dzx r;
-   private final EnumSet<ecs.a> s;
+public record dzt(ImmutableList<dzx> c) {
+   public static final dzt a = new dzt.a()
+      .a(dzu.c, $$0 -> $$0)
+      .a(dzu.d, $$0 -> $$0.a(dzw::b))
+      .a(dzu.e, $$0 -> $$0.a(dzu.d, 8).a(dzw::d))
+      .a(dzu.f, $$0 -> $$0.a(dzu.d, 8).a(dzw::e))
+      .a(dzu.g, $$0 -> $$0.a(dzu.d, 8).a(dzu.f, 1).a(0).a(dzw::f))
+      .a(dzu.h, $$0 -> $$0.a(dzu.d, 8).a(dzu.f, 1).a(0).a(dzw::g))
+      .a(dzu.i, $$0 -> $$0.a(dzu.d, 8).a(0).a(dzw::h))
+      .a(dzu.j, $$0 -> $$0.a(dzu.d, 8).a(dzu.i, 1).a(1).a(dzw::i))
+      .a(dzu.k, $$0 -> $$0.a(dzw::j))
+      .a(dzu.l, $$0 -> $$0.a(dzu.k, 1).a(dzw::k))
+      .a(dzu.m, $$0 -> $$0.a(dzu.f, 1).a(dzw::l))
+      .a(dzu.n, $$0 -> $$0.a(dzw::m))
+      .a();
+   public static final dzt b = new dzt.a()
+      .a(dzu.c, $$0 -> $$0)
+      .a(dzu.d, $$0 -> $$0.a(dzw::c))
+      .a(dzu.e, $$0 -> $$0)
+      .a(dzu.f, $$0 -> $$0)
+      .a(dzu.g, $$0 -> $$0)
+      .a(dzu.h, $$0 -> $$0)
+      .a(dzu.i, $$0 -> $$0)
+      .a(dzu.j, $$0 -> $$0)
+      .a(dzu.k, $$0 -> $$0.a(dzw::j))
+      .a(dzu.l, $$0 -> $$0.a(dzu.k, 1).a(dzw::k))
+      .a(dzu.m, $$0 -> $$0)
+      .a(dzu.n, $$0 -> $$0.a(dzw::m))
+      .a();
 
-   private static dzt a(String $$0, @Nullable dzt $$1, EnumSet<ecs.a> $$2, dzx $$3) {
-      return ke.a(mb.l, $$0, new dzt($$1, $$2, $$3));
+   public dzx a(dzu $$0) {
+      return (dzx)this.c.get($$0.b());
    }
 
-   public static List<dzt> a() {
-      List<dzt> $$0 = Lists.newArrayList();
+   public ImmutableList<dzx> a() {
+      return this.c;
+   }
 
-      dzt $$1;
-      for ($$1 = n; $$1.c() != $$1; $$1 = $$1.c()) {
-         $$0.add($$1);
+   public static class a {
+      private final List<dzx> a = new ArrayList<>();
+
+      public dzt a() {
+         return new dzt(ImmutableList.copyOf(this.a));
       }
 
-      $$0.add($$1);
-      Collections.reverse($$0);
-      return $$0;
-   }
+      public dzt.a a(dzu $$0, UnaryOperator<dzx.a> $$1) {
+         dzx.a $$2;
+         if (this.a.isEmpty()) {
+            $$2 = new dzx.a($$0);
+         } else {
+            $$2 = new dzx.a($$0, this.a.getLast());
+         }
 
-   @VisibleForTesting
-   protected dzt(@Nullable dzt $$0, EnumSet<ecs.a> $$1, dzx $$2) {
-      this.q = $$0 == null ? this : $$0;
-      this.r = $$2;
-      this.s = $$1;
-      this.p = $$0 == null ? 0 : $$0.b() + 1;
-   }
-
-   public int b() {
-      return this.p;
-   }
-
-   public dzt c() {
-      return this.q;
-   }
-
-   public dzx d() {
-      return this.r;
-   }
-
-   public static dzt a(String $$0) {
-      return mb.l.a(akv.c($$0));
-   }
-
-   public EnumSet<ecs.a> e() {
-      return this.s;
-   }
-
-   public boolean a(dzt $$0) {
-      return this.b() >= $$0.b();
-   }
-
-   public boolean b(dzt $$0) {
-      return this.b() > $$0.b();
-   }
-
-   public boolean c(dzt $$0) {
-      return this.b() <= $$0.b();
-   }
-
-   public boolean d(dzt $$0) {
-      return this.b() < $$0.b();
-   }
-
-   public static dzt a(dzt $$0, dzt $$1) {
-      return $$0.b($$1) ? $$0 : $$1;
-   }
-
-   @Override
-   public String toString() {
-      return this.f();
-   }
-
-   public String f() {
-      return mb.l.b(this).toString();
+         this.a.add($$1.apply($$2).a());
+         return this;
+      }
    }
 }

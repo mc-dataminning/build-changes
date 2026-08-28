@@ -1,5 +1,5 @@
-public record aes(cwp b) implements yw<abl> {
-   public static final yn<wa, aes> a = yn.a(cwp.g, aes::b, aes::new);
+public record aes(cwq b) implements yw<abl> {
+   public static final yn<wa, aes> a = yn.a(cwq.g, aes::b, aes::new);
 
    @Override
    public yy<aes> a() {

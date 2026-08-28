@@ -1,15 +1,12 @@
-public interface dgp extends dgl {
-   long al();
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   default float ar() {
-      return eas.k[this.G_().b(this.al())];
-   }
+public interface dgp {
+   boolean a(ji var1, Predicate<dwy> var2);
 
-   default float f(float $$0) {
-      return this.G_().a(this.al());
-   }
+   boolean b(ji var1, Predicate<eta> var2);
 
-   default int as() {
-      return this.G_().b(this.al());
-   }
+   <T extends dua> Optional<T> a(ji var1, duc<T> var2);
+
+   ji a(ect.a var1, ji var2);
 }

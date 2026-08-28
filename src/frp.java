@@ -1,106 +1,276 @@
-import org.joml.Matrix4f;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class frp {
-   public static final float a = 0.001F;
-   private final frn b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
-   private final float j;
+   private final Supplier<String> a;
+   private final Consumer<String> b;
+   private final Supplier<String> c;
+   private final Consumer<String> d;
+   private final Predicate<String> e;
+   private int f;
+   private int g;
 
-   public frp(frn $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   public frp(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f();
    }
 
-   public void a(frp.b $$0, Matrix4f $$1, ffy $$2, int $$3) {
-      xm $$4 = $$0.f();
-      boolean $$5 = $$4.d();
-      float $$6 = $$0.a();
-      float $$7 = $$0.b();
-      int $$8 = $$0.c();
-      int $$9 = $$0.d();
-      boolean $$10 = $$4.c();
-      if ($$0.i()) {
-         this.a($$5, $$6 + $$0.h(), $$7 + $$0.h(), $$1, $$2, $$9, $$10, $$3);
-         this.a($$5, $$6, $$7, 0.03F, $$1, $$2, $$8, $$10, $$3);
-      } else {
-         this.a($$5, $$6, $$7, $$1, $$2, $$8, $$10, $$3);
+   public static Supplier<String> a(flk $$0) {
+      return () -> b($$0);
+   }
+
+   public static String b(flk $$0) {
+      return n.a($$0.p.a().replaceAll("\\r", ""));
+   }
+
+   public static Consumer<String> c(flk $$0) {
+      return $$1 -> a($$0, $$1);
+   }
+
+   public static void a(flk $$0, String $$1) {
+      $$0.p.a($$1);
+   }
+
+   public boolean a(char $$0) {
+      if (azw.a($$0)) {
+         this.a(this.a.get(), Character.toString($$0));
       }
 
-      if ($$10) {
-         if ($$0.i()) {
-            this.a($$5, $$6 + $$0.g() + $$0.h(), $$7 + $$0.h(), 0.001F, $$1, $$2, $$9, true, $$3);
-            this.a($$5, $$6 + $$0.g(), $$7, 0.03F, $$1, $$2, $$8, true, $$3);
+      return true;
+   }
+
+   public boolean a(int $$0) {
+      if (fum.f($$0)) {
+         this.d();
+         return true;
+      } else if (fum.e($$0)) {
+         this.c();
+         return true;
+      } else if (fum.d($$0)) {
+         this.b();
+         return true;
+      } else if (fum.c($$0)) {
+         this.a();
+         return true;
+      } else {
+         frp.a $$1 = fum.s() ? frp.a.b : frp.a.a;
+         if ($$0 == 259) {
+            this.a(-1, $$1);
+            return true;
          } else {
-            this.a($$5, $$6 + $$0.g(), $$7, $$1, $$2, $$8, true, $$3);
+            if ($$0 == 261) {
+               this.a(1, $$1);
+            } else {
+               if ($$0 == 263) {
+                  this.a(-1, fum.t(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 262) {
+                  this.a(1, fum.t(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 268) {
+                  this.a(fum.t());
+                  return true;
+               }
+
+               if ($$0 == 269) {
+                  this.b(fum.t());
+                  return true;
+               }
+            }
+
+            return false;
          }
       }
    }
 
-   private void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, ffy $$4, int $$5, boolean $$6, int $$7) {
-      this.a($$0, $$1, $$2, 0.0F, $$3, $$4, $$5, $$6, $$7);
+   private int h(int $$0) {
+      return ayz.a($$0, 0, this.a.get().length());
    }
 
-   private void a(boolean $$0, float $$1, float $$2, float $$3, Matrix4f $$4, ffy $$5, int $$6, boolean $$7, int $$8) {
-      float $$9 = $$1 + this.g;
-      float $$10 = $$1 + this.h;
-      float $$11 = $$2 + this.i;
-      float $$12 = $$2 + this.j;
-      float $$13 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
-      float $$14 = $$0 ? 1.0F - 0.25F * this.j : 0.0F;
-      float $$15 = $$7 ? 0.1F : 0.0F;
-      $$5.a($$4, $$9 + $$13 - $$15, $$11 - $$15, $$3).a($$6).a(this.c, this.e).c($$8);
-      $$5.a($$4, $$9 + $$14 - $$15, $$12 + $$15, $$3).a($$6).a(this.c, this.f).c($$8);
-      $$5.a($$4, $$10 + $$14 + $$15, $$12 + $$15, $$3).a($$6).a(this.d, this.f).c($$8);
-      $$5.a($$4, $$10 + $$13 + $$15, $$11 - $$15, $$3).a($$6).a(this.d, this.e).c($$8);
+   private void a(String $$0, String $$1) {
+      if (this.g != this.f) {
+         $$0 = this.c($$0);
+      }
+
+      this.f = ayz.a(this.f, 0, $$0.length());
+      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
+      if (this.e.test($$2)) {
+         this.b.accept($$2);
+         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
+      }
    }
 
-   public void a(frp.a $$0, Matrix4f $$1, ffy $$2, int $$3) {
-      if ($$0.i()) {
-         this.a($$0, $$0.h(), 0.0F, $$0.g(), $$2, $$3, $$1);
-         this.a($$0, 0.0F, 0.03F, $$0.f, $$2, $$3, $$1);
+   public void a(String $$0) {
+      this.a(this.a.get(), $$0);
+   }
+
+   private void c(boolean $$0) {
+      if (!$$0) {
+         this.g = this.f;
+      }
+   }
+
+   public void a(int $$0, boolean $$1, frp.a $$2) {
+      switch ($$2) {
+         case a:
+            this.a($$0, $$1);
+            break;
+         case b:
+            this.b($$0, $$1);
+      }
+   }
+
+   public void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.f = af.a(this.a.get(), this.f, $$0);
+      this.c($$1);
+   }
+
+   public void c(int $$0) {
+      this.b($$0, false);
+   }
+
+   public void b(int $$0, boolean $$1) {
+      this.f = flu.a(this.a.get(), $$0, this.f, true);
+      this.c($$1);
+   }
+
+   public void a(int $$0, frp.a $$1) {
+      switch ($$1) {
+         case a:
+            this.e($$0);
+            break;
+         case b:
+            this.d($$0);
+      }
+   }
+
+   public void d(int $$0) {
+      int $$1 = flu.a(this.a.get(), $$0, this.f, true);
+      this.e($$1 - this.f);
+   }
+
+   public void e(int $$0) {
+      String $$1 = this.a.get();
+      if (!$$1.isEmpty()) {
+         String $$2;
+         if (this.g != this.f) {
+            $$2 = this.c($$1);
+         } else {
+            int $$3 = af.a($$1, this.f, $$0);
+            int $$4 = Math.min($$3, this.f);
+            int $$5 = Math.max($$3, this.f);
+            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
+            if ($$0 < 0) {
+               this.g = this.f = $$4;
+            }
+         }
+
+         this.b.accept($$2);
+      }
+   }
+
+   public void a() {
+      String $$0 = this.a.get();
+      this.d.accept(this.b($$0));
+      this.b.accept(this.c($$0));
+   }
+
+   public void b() {
+      this.a(this.a.get(), this.c.get());
+      this.g = this.f;
+   }
+
+   public void c() {
+      this.d.accept(this.b(this.a.get()));
+   }
+
+   public void d() {
+      this.g = 0;
+      this.f = this.a.get().length();
+   }
+
+   private String b(String $$0) {
+      int $$1 = Math.min(this.f, this.g);
+      int $$2 = Math.max(this.f, this.g);
+      return $$0.substring($$1, $$2);
+   }
+
+   private String c(String $$0) {
+      if (this.g == this.f) {
+         return $$0;
       } else {
-         this.a($$0, 0.0F, 0.0F, $$0.f, $$2, $$3, $$1);
+         int $$1 = Math.min(this.f, this.g);
+         int $$2 = Math.max(this.f, this.g);
+         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
+         this.g = this.f = $$1;
+         return $$3;
       }
    }
 
-   private void a(frp.a $$0, float $$1, float $$2, int $$3, ffy $$4, int $$5, Matrix4f $$6) {
-      $$4.a($$6, $$0.a + $$1, $$0.b + $$1, $$0.e + $$2).a($$3).a(this.c, this.e).c($$5);
-      $$4.a($$6, $$0.c + $$1, $$0.b + $$1, $$0.e + $$2).a($$3).a(this.c, this.f).c($$5);
-      $$4.a($$6, $$0.c + $$1, $$0.d + $$1, $$0.e + $$2).a($$3).a(this.d, this.f).c($$5);
-      $$4.a($$6, $$0.a + $$1, $$0.d + $$1, $$0.e + $$2).a($$3).a(this.d, this.e).c($$5);
+   public void e() {
+      this.a(false);
    }
 
-   public gmi a(foc.a $$0) {
-      return this.b.a($$0);
+   public void a(boolean $$0) {
+      this.f = 0;
+      this.c($$0);
    }
 
-   public static record a(float a, float b, float c, float d, float e, int f, int g, float h) {
-
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, int $$5) {
-         this($$0, $$1, $$2, $$3, $$4, $$5, 0, 0.0F);
-      }
-
-      boolean i() {
-         return this.g() != 0;
-      }
+   public void f() {
+      this.b(false);
    }
 
-   public static record b(float a, float b, int c, int d, frp e, xm f, float g, float h) {
-      boolean i() {
-         return this.d() != 0;
-      }
+   public void b(boolean $$0) {
+      this.f = this.a.get().length();
+      this.c($$0);
+   }
+
+   public int g() {
+      return this.f;
+   }
+
+   public void f(int $$0) {
+      this.c($$0, true);
+   }
+
+   public void c(int $$0, boolean $$1) {
+      this.f = this.h($$0);
+      this.c($$1);
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public void g(int $$0) {
+      this.g = this.h($$0);
+   }
+
+   public void a(int $$0, int $$1) {
+      int $$2 = this.a.get().length();
+      this.f = ayz.a($$0, 0, $$2);
+      this.g = ayz.a($$1, 0, $$2);
+   }
+
+   public boolean i() {
+      return this.f != this.g;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

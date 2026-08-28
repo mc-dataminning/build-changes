@@ -106,9 +106,9 @@ public class apb {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ex $$0, Collection<? extends bul> $$1, bul $$2) throws CommandSyntaxException {
-      for (bul $$3 : $$1) {
-         a($$0, $$3, (ard)$$2.dV(), $$2.dA(), $$2.dC(), $$2.dG(), EnumSet.noneOf(bvv.class), $$2.dL(), $$2.dN(), null);
+   private static int a(ex $$0, Collection<? extends bum> $$1, bum $$2) throws CommandSyntaxException {
+      for (bum $$3 : $$1) {
+         a($$0, $$3, (ard)$$2.dV(), $$2.dA(), $$2.dC(), $$2.dG(), EnumSet.noneOf(bvw.class), $$2.dL(), $$2.dN(), null);
       }
 
       if ($$1.size() == 1) {
@@ -120,12 +120,12 @@ public class apb {
       return $$1.size();
    }
 
-   private static int a(ex $$0, Collection<? extends bul> $$1, ard $$2, gv $$3, @Nullable gv $$4, @Nullable ano $$5) throws CommandSyntaxException {
-      fba $$6 = $$3.a($$0);
-      faz $$7 = $$4 == null ? null : $$4.b($$0);
+   private static int a(ex $$0, Collection<? extends bum> $$1, ard $$2, gv $$3, @Nullable gv $$4, @Nullable ano $$5) throws CommandSyntaxException {
+      fbb $$6 = $$3.a($$0);
+      fba $$7 = $$4 == null ? null : $$4.b($$0);
 
-      for (bul $$8 : $$1) {
-         Set<bvv> $$9 = a($$3, $$4, $$8.dV().ai() == $$2.ai());
+      for (bum $$8 : $$1) {
+         Set<bvw> $$9 = a($$3, $$4, $$8.dV().ai() == $$2.ai());
          if ($$7 == null) {
             a($$0, $$8, $$2, $$6.d, $$6.e, $$6.f, $$9, $$8.dL(), $$8.dN(), $$5);
          } else {
@@ -142,35 +142,35 @@ public class apb {
       return $$1.size();
    }
 
-   private static Set<bvv> a(gv $$0, @Nullable gv $$1, boolean $$2) {
-      Set<bvv> $$3 = EnumSet.noneOf(bvv.class);
+   private static Set<bvw> a(gv $$0, @Nullable gv $$1, boolean $$2) {
+      Set<bvw> $$3 = EnumSet.noneOf(bvw.class);
       if ($$0.a()) {
-         $$3.add(bvv.f);
+         $$3.add(bvw.f);
          if ($$2) {
-            $$3.add(bvv.a);
+            $$3.add(bvw.a);
          }
       }
 
       if ($$0.b()) {
-         $$3.add(bvv.g);
+         $$3.add(bvw.g);
          if ($$2) {
-            $$3.add(bvv.b);
+            $$3.add(bvw.b);
          }
       }
 
       if ($$0.c()) {
-         $$3.add(bvv.h);
+         $$3.add(bvw.h);
          if ($$2) {
-            $$3.add(bvv.c);
+            $$3.add(bvw.c);
          }
       }
 
       if ($$1 == null || $$1.a()) {
-         $$3.add(bvv.e);
+         $$3.add(bvw.e);
       }
 
       if ($$1 == null || $$1.b()) {
-         $$3.add(bvv.d);
+         $$3.add(bvw.d);
       }
 
       return $$3;
@@ -180,16 +180,16 @@ public class apb {
       return String.format(Locale.ROOT, "%f", $$0);
    }
 
-   private static void a(ex $$0, bul $$1, ard $$2, double $$3, double $$4, double $$5, Set<bvv> $$6, float $$7, float $$8, @Nullable ano $$9) throws CommandSyntaxException {
+   private static void a(ex $$0, bum $$1, ard $$2, double $$3, double $$4, double $$5, Set<bvw> $$6, float $$7, float $$8, @Nullable ano $$9) throws CommandSyntaxException {
       ji $$10 = ji.a($$3, $$4, $$5);
-      if (!dgi.l($$10)) {
+      if (!dgj.l($$10)) {
          throw a.create();
       } else {
-         double $$11 = $$6.contains(bvv.a) ? $$3 - $$1.dA() : $$3;
-         double $$12 = $$6.contains(bvv.b) ? $$4 - $$1.dC() : $$4;
-         double $$13 = $$6.contains(bvv.c) ? $$5 - $$1.dG() : $$5;
-         float $$14 = $$6.contains(bvv.d) ? $$7 - $$1.dL() : $$7;
-         float $$15 = $$6.contains(bvv.e) ? $$8 - $$1.dN() : $$8;
+         double $$11 = $$6.contains(bvw.a) ? $$3 - $$1.dA() : $$3;
+         double $$12 = $$6.contains(bvw.b) ? $$4 - $$1.dC() : $$4;
+         double $$13 = $$6.contains(bvw.c) ? $$5 - $$1.dG() : $$5;
+         float $$14 = $$6.contains(bvw.d) ? $$7 - $$1.dL() : $$7;
+         float $$15 = $$6.contains(bvw.e) ? $$8 - $$1.dN() : $$8;
          float $$16 = ayz.h($$14);
          float $$17 = ayz.h($$15);
          if ($$1.a($$2, $$11, $$12, $$13, $$6, $$16, $$17, true)) {
@@ -197,12 +197,12 @@ public class apb {
                $$9.perform($$0, $$1);
             }
 
-            if (!($$1 instanceof bvh $$18) || !$$18.fJ()) {
+            if (!($$1 instanceof bvi $$18) || !$$18.fJ()) {
                $$1.i($$1.dy().d(1.0, 0.0, 1.0));
                $$1.d(true);
             }
 
-            if ($$1 instanceof bvp $$19) {
+            if ($$1 instanceof bvq $$19) {
                $$19.P().m();
             }
          }

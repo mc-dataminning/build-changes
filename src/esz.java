@@ -1,118 +1,93 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.stream.Stream;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public final class esz extends dwz<esy, esz> {
-   public static final Codec<esz> a = a(mb.c.q(), esy::g).stable();
-   public static final int f = 9;
-   public static final int g = 8;
+public abstract class esz {
+   public static final jx<eta> c = new jx<>();
+   protected final dwz<esz, eta> d;
+   private eta a;
+   private final jr.c<esz> b = mb.c.f(this);
 
-   public esz(esy $$0, Reference2ObjectArrayMap<dxz<?>, Comparable<?>> $$1, MapCodec<esz> $$2) {
-      super($$0, $$1, $$2);
+   protected esz() {
+      dwz.a<esz, eta> $$0 = new dwz.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(esz::g, eta::new);
+      this.f(this.d.b());
    }
 
-   public esy a() {
+   protected void a(dwz.a<esz, eta> $$0) {
+   }
+
+   public dwz<esz, eta> f() {
       return this.d;
    }
 
-   public boolean b() {
-      return this.a().c(this);
+   protected final void f(eta $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(esy $$0) {
-      return this.d == $$0 && this.d.c(this);
+   public final eta g() {
+      return this.a;
    }
 
-   public boolean c() {
-      return this.a().b();
+   public abstract cwm a();
+
+   protected void a(dgj $$0, ji $$1, eta $$2, azh $$3) {
    }
 
-   public float a(dfn $$0, ji $$1) {
-      return this.a().a(this, $$0, $$1);
+   protected void b(ard $$0, ji $$1, dwy $$2, eta $$3) {
    }
 
-   public float d() {
-      return this.a().a(this);
-   }
-
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(dfn $$0, ji $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            ji $$4 = $$1.b($$2, 0, $$3);
-            esz $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).s()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public void a(ard $$0, ji $$1, dwx $$2) {
-      this.a().b($$0, $$1, $$2, this);
-   }
-
-   public void a(dgi $$0, ji $$1, azh $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public boolean f() {
-      return this.a().i();
-   }
-
-   public void a(ard $$0, ji $$1, azh $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public fba c(dfn $$0, ji $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public dwx g() {
-      return this.a().b(this);
+   protected void a(ard $$0, ji $$1, eta $$2, azh $$3) {
    }
 
    @Nullable
-   public lr h() {
-      return this.a().h();
+   protected lr h() {
+      return null;
    }
 
-   public boolean a(axf<esy> $$0) {
-      return this.a().k().a($$0);
+   protected abstract boolean a(eta var1, dfo var2, ji var3, esz var4, jn var5);
+
+   protected abstract fbb a(dfo var1, ji var2, eta var3);
+
+   public abstract int a(dgm var1);
+
+   protected boolean i() {
+      return false;
    }
 
-   public boolean a(jv<esy> $$0) {
-      return $$0.a(this.a().k());
+   protected boolean b() {
+      return false;
    }
 
-   public boolean b(esy $$0) {
-      return this.a() == $$0;
+   protected abstract float c();
+
+   public abstract float a(eta var1, dfo var2, ji var3);
+
+   public abstract float a(eta var1);
+
+   protected abstract dwy b(eta var1);
+
+   public abstract boolean c(eta var1);
+
+   public abstract int d(eta var1);
+
+   public boolean a(esz $$0) {
+      return $$0 == this;
    }
 
-   public float i() {
-      return this.a().c();
+   @Deprecated
+   public boolean a(axf<esz> $$0) {
+      return this.b.a($$0);
    }
 
-   public boolean a(dfn $$0, ji $$1, esy $$2, jn $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
+   public abstract fbv b(eta var1, dfo var2, ji var3);
+
+   public Optional<avz> j() {
+      return Optional.empty();
    }
 
-   public fbu d(dfn $$0, ji $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public jr<esy> j() {
-      return this.d.k();
-   }
-
-   public Stream<axf<esy>> k() {
-      return this.d.k().c();
+   @Deprecated
+   public jr.c<esz> k() {
+      return this.b;
    }
 }

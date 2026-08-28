@@ -1,9 +1,9 @@
 import java.util.Set;
 
-public record adv(int b, bvu c, Set<bvv> d) implements yw<abl> {
-   public static final yn<vl, adv> a = yn.a(yl.h, adv::b, bvu.a, adv::e, bvv.m, adv::f, adv::new);
+public record adv(int b, bvv c, Set<bvw> d) implements yw<abl> {
+   public static final yn<vl, adv> a = yn.a(yl.h, adv::b, bvv.a, adv::e, bvw.m, adv::f, adv::new);
 
-   public static adv a(int $$0, bvu $$1, Set<bvv> $$2) {
+   public static adv a(int $$0, bvv $$1, Set<bvw> $$2) {
       return new adv($$0, $$1, $$2);
    }
 
@@ -16,11 +16,11 @@ public record adv(int b, bvu c, Set<bvv> d) implements yw<abl> {
       $$0.a(this);
    }
 
-   public bvu e() {
+   public bvv e() {
       return this.c;
    }
 
-   public Set<bvv> f() {
+   public Set<bvw> f() {
       return this.d;
    }
 }

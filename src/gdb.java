@@ -1,20 +1,47 @@
-import java.util.Set;
+public class gdb extends gcc<gzu> {
+   private static final String a = "tail_base";
+   private static final String b = "tail_tip";
+   private final gfe c;
+   private final gfe d;
+   private final gfe e;
+   private final gfe f;
+   private final gfe g;
+   private final gfe i;
 
-public class gdb extends gdl<gzk> {
-   public static final gfm a = new gba(false, 4.0F, 4.0F, Set.of("head"));
-
-   public gdb(gfd $$0) {
+   public gdb(gfe $$0) {
       super($$0);
+      gfe $$1 = $$0.b("body");
+      this.g = $$1.b("tail_base");
+      this.i = this.g.b("tail_tip");
+      this.c = $$1.b("left_wing_base");
+      this.d = this.c.b("left_wing_tip");
+      this.e = $$1.b("right_wing_base");
+      this.f = this.e.b("right_wing_tip");
    }
 
-   public static gfj a(gfh $$0) {
-      gfl $$1 = gdl.a(6, $$0);
-      gfn $$2 = $$1.a();
-      $$2.a(
-         "head",
-         gfi.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$0).a(16, 16).a(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, $$0),
-         gff.a(0.0F, 12.0F, -6.0F)
-      );
-      return gfj.a($$1, 64, 32);
+   public static gfk a() {
+      gfm $$0 = new gfm();
+      gfo $$1 = $$0.a();
+      gfo $$2 = $$1.a("body", gfj.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), gfg.b(-0.1F, 0.0F, 0.0F));
+      gfo $$3 = $$2.a("tail_base", gfj.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), gfg.a(0.0F, -2.0F, 1.0F));
+      $$3.a("tail_tip", gfj.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), gfg.a(0.0F, 0.5F, 6.0F));
+      gfo $$4 = $$2.a("left_wing_base", gfj.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), gfg.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
+      $$4.a("left_wing_tip", gfj.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), gfg.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
+      gfo $$5 = $$2.a("right_wing_base", gfj.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), gfg.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
+      $$5.a("right_wing_tip", gfj.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), gfg.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
+      $$2.a("head", gfj.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), gfg.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
+      return gfk.a($$0, 64, 64);
+   }
+
+   public void a(gzu $$0) {
+      super.a($$0);
+      float $$1 = $$0.a * 7.448451F * (float) (Math.PI / 180.0);
+      float $$2 = 16.0F;
+      this.c.g = ayz.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.d.g = ayz.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.e.g = -this.c.g;
+      this.f.g = -this.d.g;
+      this.g.e = -(5.0F + ayz.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      this.i.e = -(5.0F + ayz.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
    }
 }

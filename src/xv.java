@@ -94,7 +94,7 @@ public class xv implements wq {
    }
 
    @Override
-   public xd a(@Nullable ex $$0, @Nullable bul $$1, int $$2) throws CommandSyntaxException {
+   public xd a(@Nullable ex $$0, @Nullable bum $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.c != null) {
          Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {

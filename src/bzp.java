@@ -1,50 +1,28 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bzp {
-   private static final int a = 200;
-
-   public static <E extends bvj> bxb<E> a(bzp.b<E> $$0) {
-      return a(($$0x, $$1) -> false, $$0, true);
-   }
-
-   public static <E extends bvj> bxb<E> a(bzp.a $$0) {
-      return a($$0, ($$0x, $$1, $$2) -> {
-      }, true);
-   }
-
-   public static <E extends bvj> bxb<E> a() {
-      return a(($$0, $$1) -> false, ($$0, $$1, $$2) -> {
-      }, true);
-   }
-
-   public static <E extends bvj> bxb<E> a(bzp.a $$0, bzp.b<E> $$1, boolean $$2) {
-      return can.a(
-         (Function<can.b<E>, ? extends App<can.c<E>, caq<E>>>)($$3 -> $$3.group($$3.b(cel.o), $$3.a(cel.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bvh $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bL() && $$9.dV() == $$7.dV() && !$$0.test($$6, $$9)) {
-                     return true;
-                  } else {
-                     $$1.accept($$6, (E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+   public static bxc<bvi> a(Function<bvi, Optional<byp>> $$0, Predicate<bvi> $$1, int $$2, int $$3, float $$4) {
+      return cao.a(
+         (Function<cao.b<bvi>, ? extends App<cao.c<bvi>, car<bvi>>>)($$5 -> $$5.group($$5.a(cem.n), $$5.a(cem.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<byp> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        byp $$11 = $$10.get();
+                        if ($$8.dt().a((kb)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           byp $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new cep($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
       );
-   }
-
-   private static boolean a(bvh $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dV().ad() - $$1.get() > 200L;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      boolean test(ard var1, bvh var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      void accept(ard var1, E var2, bvh var3);
    }
 }

@@ -1,23 +1,20 @@
 import net.minecraft.server.MinecraftServer;
 
-public class fak implements fal<MinecraftServer> {
+public class fak implements fam<MinecraftServer> {
    final akv a;
 
    public fak(akv $$0) {
       this.a = $$0;
    }
 
-   public void a(MinecraftServer $$0, fan<MinecraftServer> $$1, long $$2) {
+   public void a(MinecraftServer $$0, fao<MinecraftServer> $$1, long $$2) {
       alk $$3 = $$0.aE();
-
-      for (il<ex> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   public static class a extends fal.a<MinecraftServer, fak> {
+   public static class a extends fam.a<MinecraftServer, fak> {
       public a() {
-         super(akv.b("function_tag"), fak.class);
+         super(akv.b("function"), fak.class);
       }
 
       public void a(tq $$0, fak $$1) {

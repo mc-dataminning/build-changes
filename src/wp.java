@@ -204,7 +204,7 @@ public interface wp extends Message, wu {
       return b($$0.toString());
    }
 
-   static wp a(dfo $$0) {
+   static wp a(dfp $$0) {
       return b($$0.toString());
    }
 

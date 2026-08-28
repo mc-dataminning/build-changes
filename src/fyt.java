@@ -1,71 +1,64 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-public class fyt {
-   private final ggu a;
-   private final ghc b;
-   private final Predicate<ggx.a> c;
-   @Nullable
-   private xk d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private xf g;
+public class fyt extends fys<ghc.a> {
+   private static final wp C = wp.c("gui.chatReport.title");
+   private static final wp D = wp.c("gui.chatReport.select_chat");
+   private fpm E;
+   private fou F;
+   private fou G;
 
-   public fyt(ghi $$0, Predicate<ggx.a> $$1) {
-      this.a = $$0.b();
-      this.b = new ghc($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   private fyt(fum $$0, ghj $$1, ghc.a $$2) {
+      super(C, $$0, $$1, $$2);
    }
 
-   public void a(int $$0, fyt.a $$1) {
-      int $$2 = 0;
-
-      while ($$2 < $$0) {
-         ggw $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
-
-         int $$4 = this.e--;
-         if ($$3 instanceof ggx.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(wp.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
-         }
-      }
+   public fyt(fum $$0, ghj $$1, UUID $$2) {
+      this($$0, $$1, new ghc.a($$2, $$1.a().b()));
    }
 
-   private boolean a(fyt.a $$0, ggx.a $$1) {
-      xf $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.k())) {
-            $$0.a(wp.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
-         }
+   public fyt(fum $$0, ghj $$1, ghc $$2) {
+      this($$0, $$1, new ghc.a($$2, $$1.a().b()));
+   }
 
-         this.d = $$2.k();
-         return true;
+   @Override
+   protected void E() {
+      this.F = this.z.a(fou.a(D, $$0 -> this.m.a(new fyv(this, this.y, this.A, $$0x -> {
+            this.A = $$0x;
+            this.G();
+         }))).a(280).a());
+      this.G = fou.a(c, $$0 -> this.m.a(new fyy(this, this.A.i(), ghi.a, $$0x -> {
+            this.A.a($$0x);
+            this.G();
+         }))).a(280).a();
+      this.z.a(fse.a(this.p, this.G, b));
+      this.E = this.a(280, 9 * 8, $$0 -> {
+         this.A.a($$0);
+         this.G();
+      });
+      this.z.a(fse.a(this.p, this.E, d, $$0 -> $$0.e(12)));
+   }
+
+   @Override
+   protected void G() {
+      IntSet $$0 = this.A.a();
+      if ($$0.isEmpty()) {
+         this.F.b(D);
       } else {
-         return $$3;
+         this.F.b(wp.a("gui.chatReport.selected_chat", $$0.size()));
       }
+
+      ghh $$1 = this.A.i();
+      if ($$1 != null) {
+         this.G.b($$1.b());
+      } else {
+         this.G.b(c);
+      }
+
+      super.G();
    }
 
-   public interface a {
-      void a(int var1, ggx.a var2);
-
-      void a(wp var1);
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
    }
 }

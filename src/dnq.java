@@ -1,78 +1,82 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnq extends djm implements dmf, dmv {
-   public static final MapCodec<dnq> a = b(dnq::new);
-   public static final dxu<jp> b = dxn.W;
+public class dnq extends dlk {
+   public static final MapCodec<dnq> i = b(dnq::new);
 
    @Override
-   public MapCodec<dnq> a() {
-      return a;
+   public MapCodec<? extends dnq> a() {
+      return i;
    }
 
-   protected dnq(dww.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jp.k));
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
+   protected dnq(dwx.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.l(
+         this.F
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
+   public dwy a(dah $$0) {
+      dfo $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      eta $$3 = $$0.q().b_($$0.a());
+      ji $$4 = $$2.f();
+      ji $$5 = $$2.g();
+      ji $$6 = $$2.h();
+      ji $$7 = $$2.i();
+      dwy $$8 = $$1.a_($$4);
+      dwy $$9 = $$1.a_($$5);
+      dwy $$10 = $$1.a_($$6);
+      dwy $$11 = $$1.a_($$7);
+      return this.m()
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jn.d))))
+         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jn.c))))
+         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jn.f))))
+         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jn.e))))
+         .b(e, Boolean.valueOf($$3.a() == etb.c));
    }
 
    @Override
-   public dwx a(dag $$0) {
-      jn $$1 = $$0.k();
-      jn $$2;
-      if ($$1.o() == jn.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = jn.b;
+   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, etb.c, etb.c.a($$1));
       }
 
-      return this.m().b(b, jp.a($$1, $$2));
+      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public dtz a(ji $$0, dwx $$1) {
-      return new dvc($$0, $$1);
+   protected fbv c(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
+      return fbs.a();
    }
 
    @Override
-   protected bsk a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
-      dtz $$5 = $$1.c_($$2);
-      if ($$5 instanceof dvc && $$3.gG()) {
-         $$3.a((dvc)$$5);
-         return bsk.a;
-      } else {
-         return bsk.e;
+   protected boolean b(dwy $$0, dwy $$1, jn $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
+         }
+
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
+         }
       }
+
+      return super.b($$0, $$1, $$2);
    }
 
-   public static boolean a(ero.a $$0, ero.a $$1) {
-      jn $$2 = o($$0.a().b());
-      jn $$3 = o($$1.a().b());
-      jn $$4 = p($$0.a().b());
-      jn $$5 = p($$1.a().b());
-      dvc.a $$6 = $$0.b();
-      boolean $$7 = $$6 == dvc.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.e().equals($$1.c());
+   public final boolean a(dwy $$0, boolean $$1) {
+      return !k($$0) && $$1 || $$0.b() instanceof dnq || $$0.a(awp.N);
    }
 
-   public static jn o(dwx $$0) {
-      return $$0.c(b).a();
-   }
-
-   public static jn p(dwx $$0) {
-      return $$0.c(b).b();
+   @Override
+   protected void a(dwz.a<djn, dwy> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

@@ -1,14 +1,14 @@
-public record aqo(String b, int c, cou d, boolean e, int f, bvb g, boolean h, boolean i, aqv j) {
+public record aqo(String b, int c, cov d, boolean e, int f, bvc g, boolean h, boolean i, aqv j) {
    public static final int a = 16;
 
    public aqo(vl $$0) {
       this(
          $$0.d(16),
          $$0.readByte(),
-         $$0.b(cou.class),
+         $$0.b(cov.class),
          $$0.readBoolean(),
          $$0.readUnsignedByte(),
-         $$0.b(bvb.class),
+         $$0.b(bvc.class),
          $$0.readBoolean(),
          $$0.readBoolean(),
          $$0.b(aqv.class)
@@ -28,6 +28,6 @@ public record aqo(String b, int c, cou d, boolean e, int f, bvb g, boolean h, bo
    }
 
    public static aqo a() {
-      return new aqo("en_us", 2, cou.a, true, 0, cox.bG, false, false, aqv.a);
+      return new aqo("en_us", 2, cov.a, true, 0, coy.bG, false, false, aqv.a);
    }
 }

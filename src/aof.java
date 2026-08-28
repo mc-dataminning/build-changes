@@ -37,14 +37,14 @@ public class aof {
       );
    }
 
-   private static int a(ex $$0, bul $$1, gv $$2) {
-      faz $$3 = $$2.b($$0);
+   private static int a(ex $$0, bum $$1, gv $$2) {
+      fba $$3 = $$2.b($$0);
       $$1.a($$3.j, $$3.i);
       $$0.a(() -> wp.a("commands.rotate.success", $$1.p_()), true);
       return 1;
    }
 
-   private static int a(ex $$0, bul $$1, ano $$2) {
+   private static int a(ex $$0, bum $$1, ano $$2) {
       $$2.perform($$0, $$1);
       $$0.a(() -> wp.a("commands.rotate.success", $$1.p_()), true);
       return 1;

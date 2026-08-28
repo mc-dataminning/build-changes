@@ -17,8 +17,8 @@ public class bbe extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhx.s);
-      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bhx.s);
+      Type<?> $$0 = this.getInputSchema().getType(bhy.s);
+      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bhy.s);
       OpticFinder<?> $$2 = $$0.findField("components");
       return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$2x -> {
          Object $$3 = ((Pair)$$2x.get($$1.finder())).getFirst();

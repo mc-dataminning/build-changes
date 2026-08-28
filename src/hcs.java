@@ -1,19 +1,88 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hcs {
-   private static final ayi.b<akv, MapCodec<? extends hct>> b = new ayi.b<>();
-   public static final MapCodec<hct> a = b.a(akv.a).dispatchMap("property", hct::a, $$0 -> $$0);
+public abstract class hcs {
+   private final boolean a;
 
-   public static void a() {
-      b.a(akv.b("custom_model_data"), hcp.a);
-      b.a(akv.b("bundle/fullness"), hcj.a);
-      b.a(akv.b("damage"), hcq.a);
-      b.a(akv.b("cooldown"), hcm.a);
-      b.a(akv.b("time"), hcu.a);
-      b.a(akv.b("compass"), hck.a);
-      b.a(akv.b("crossbow/pull"), hco.a);
-      b.a(akv.b("use_cycle"), hcv.a);
-      b.a(akv.b("use_duration"), hcw.a);
-      b.a(akv.b("count"), hcn.a);
+   protected hcs(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public float a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2, int $$3) {
+      bum $$4 = (bum)($$2 != null ? $$2 : $$0.J());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         if ($$1 == null && $$4.dV() instanceof gga $$5) {
+            $$1 = $$5;
+         }
+
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
+   }
+
+   protected abstract float a(cwq var1, gga var2, int var3, bum var4);
+
+   protected boolean b() {
+      return this.a;
+   }
+
+   protected hcs.a a(float $$0) {
+      return this.a ? b($$0) : c();
+   }
+
+   public static hcs.a b(final float $$0) {
+      return new hcs.a() {
+         private float b;
+         private float c;
+         private long d;
+
+         @Override
+         public float a() {
+            return this.b;
+         }
+
+         @Override
+         public boolean a(long $$0x) {
+            return this.d != $$0;
+         }
+
+         @Override
+         public void a(long $$0x, float $$1) {
+            this.d = $$0;
+            float $$2 = ayz.b($$1 - this.b + 0.5F, 1.0F) - 0.5F;
+            this.c += $$2 * 0.1F;
+            this.c = this.c * $$0;
+            this.b = ayz.b(this.b + this.c, 1.0F);
+         }
+      };
+   }
+
+   public static hcs.a c() {
+      return new hcs.a() {
+         private float a;
+
+         @Override
+         public float a() {
+            return this.a;
+         }
+
+         @Override
+         public boolean a(long $$0) {
+            return true;
+         }
+
+         @Override
+         public void a(long $$0, float $$1) {
+            this.a = $$1;
+         }
+      };
+   }
+
+   public interface a {
+      float a();
+
+      boolean a(long var1);
+
+      void a(long var1, float var3);
    }
 }

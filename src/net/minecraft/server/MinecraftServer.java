@@ -54,7 +54,7 @@ import javax.imageio.ImageIO;
 import net.minecraft.obfuscate.DontObfuscate;
 import org.slf4j.Logger;
 
-public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
+public abstract class MinecraftServer extends bre<als> implements all, eab, ew {
    private static final Logger l = LogUtils.getLogger();
    public static final String b = "vanilla";
    private static final float m = 0.8F;
@@ -71,13 +71,13 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    private static final int x = 100;
    private static final int y = 3;
    public static final int c = 29999984;
-   public static final dgm d = new dgm("Demo World", dgf.a, false, bsh.c, false, new dge(crv.h), dhf.c);
+   public static final dgn d = new dgn("Demo World", dgg.a, false, bsi.c, false, new dgf(crw.h), dhg.c);
    public static final GameProfile e = new GameProfile(af.e, "Anonymous Player");
-   protected final evf.c f;
-   protected final evi g;
+   protected final evg.c f;
+   protected final evj g;
    private final List<Runnable> z = Lists.newArrayList();
-   private bqk A = bqj.a;
-   private Consumer<bor> B = $$0x -> this.aU();
+   private bql A = bqk.a;
+   private Consumer<bos> B = $$0x -> this.aU();
    private Consumer<Path> C = $$0x -> {
    };
    private boolean D;
@@ -95,7 +95,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    private String M;
    private int N = -1;
    private final jy<ale> O;
-   private final Map<aku<dgi>, ard> P = Maps.newLinkedHashMap();
+   private final Map<aku<dgj>, ard> P = Maps.newLinkedHashMap();
    private avd Q;
    private volatile boolean R = true;
    private boolean S;
@@ -131,7 +131,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    private final aua ar;
    private final alo as = new alo(this);
    @Nullable
-   private euw at;
+   private eux at;
    private final aly au = new aly();
    private final alk av;
    private boolean aw;
@@ -140,11 +140,11 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    @Nullable
    private String az;
    private MinecraftServer.a aA;
-   private final erp aB;
+   private final erq aB;
    private final alp aC;
-   protected final evl j;
-   private final cyn aD;
-   private dux aE;
+   protected final evm j;
+   private final cyo aD;
+   private duy aE;
    private int aF;
    private volatile boolean aG;
    private static final AtomicReference<RuntimeException> aH = new AtomicReference<>();
@@ -165,11 +165,11 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       return $$3;
    }
 
-   public MinecraftServer(Thread $$0, evf.c $$1, aua $$2, alu $$3, Proxy $$4, DataFixer $$5, alq $$6, aro $$7) {
+   public MinecraftServer(Thread $$0, evg.c $$1, aua $$2, alu $$3, Proxy $$4, DataFixer $$5, alq $$6, aro $$7) {
       super("Server");
       this.O = $$3.c();
       this.j = $$3.d();
-      if (!this.O.a().e(mc.bf).e(eat.b)) {
+      if (!this.O.a().e(mc.bf).e(eau.b)) {
          throw new IllegalStateException("Missing Overworld dimension data");
       } else {
          this.h = $$4;
@@ -187,31 +187,31 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
          this.g = $$1.g();
          this.L = $$5;
          this.av = new alk(this, this.aA.b.a());
-         js<djm> $$8 = this.O.a().e(mc.f).a(this.j.K());
-         this.aB = new erp($$3.a(), $$1, $$5, $$8);
+         js<djn> $$8 = this.O.a().e(mc.f).a(this.j.K());
+         this.aB = new erq($$3.a(), $$1, $$5, $$8);
          this.aj = $$0;
-         this.ay = af.g();
-         this.aD = cyn.a(this.j.K());
+         this.ay = af.h();
+         this.aD = cyo.a(this.j.K());
          this.aA.b.c().a(this.j.K());
-         this.aE = dux.a(this.O.a(), this.j.K());
+         this.aE = duy.a(this.O.a(), this.j.K());
          this.aJ = TracyClient.createDiscontinuousFrame("Server Tick");
       }
    }
 
-   private void a(euz $$0) {
+   private void a(eva $$0) {
       $$0.a(this.aJ().b(), "scoreboard");
    }
 
    protected abstract boolean e() throws IOException;
 
    protected void v_() {
-      if (!bpb.f.c()) {
+      if (!bpc.f.c()) {
       }
 
       boolean $$0 = false;
-      bpe $$1 = bpb.f.e();
+      bpf $$1 = bpc.f.e();
       this.j.a(this.getServerModName(), this.Q().a());
-      arn $$2 = this.H.create(this.j.o().c(dge.ab));
+      arn $$2 = this.H.create(this.j.o().c(dgf.ab));
       this.a($$2);
       this.t();
       this.b($$2);
@@ -221,7 +221,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
 
       if ($$0) {
          try {
-            bpb.f.b();
+            bpc.f.b();
          } catch (Throwable var5) {
             l.warn("Failed to stop JFR profiling", var5);
          }
@@ -232,20 +232,20 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    protected void a(arn $$0) {
-      evk $$1 = this.j.I();
+      evl $$1 = this.j.I();
       boolean $$2 = this.j.A();
-      ke<eat> $$3 = this.O.a().e(mc.bf);
-      edq $$4 = this.j.y();
+      ke<eau> $$3 = this.O.a().e(mc.bf);
+      edr $$4 = this.j.y();
       long $$5 = $$4.c();
-      long $$6 = dhm.a($$5);
-      List<dfu> $$7 = ImmutableList.of(new ede(), new edd(), new coe(), new cgj(), new coq($$1));
-      eat $$8 = $$3.c(eat.b);
-      ard $$9 = new ard(this, this.ay, this.f, $$1, dgi.i, $$8, $$0, $$2, $$6, $$7, true, null);
-      this.P.put(dgi.i, $$9);
-      euz $$10 = $$9.w();
+      long $$6 = dhn.a($$5);
+      List<dfv> $$7 = ImmutableList.of(new edf(), new ede(), new cof(), new cgk(), new cor($$1));
+      eau $$8 = $$3.c(eau.b);
+      ard $$9 = new ard(this, this.ay, this.f, $$1, dgj.i, $$8, $$0, $$2, $$6, $$7, true, null);
+      this.P.put(dgj.i, $$9);
+      eva $$10 = $$9.w();
       this.a($$10);
-      this.at = new euw($$10);
-      dyn $$11 = $$9.F_();
+      this.at = new eux($$10);
+      dyo $$11 = $$9.F_();
       if (!$$1.n()) {
          try {
             a($$9, $$1, $$4.e(), $$2);
@@ -272,15 +272,15 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
          this.aM().a(this.j.E(), this.ba());
       }
 
-      bsp $$14 = $$9.N();
+      bsq $$14 = $$9.N();
 
-      for (Entry<aku<eat>, eat> $$15 : $$3.k()) {
-         aku<eat> $$16 = $$15.getKey();
-         if ($$16 != eat.b) {
-            aku<dgi> $$17 = aku.a(mc.be, $$16.a());
-            euy $$18 = new euy(this.j, $$1);
+      for (Entry<aku<eau>, eau> $$15 : $$3.k()) {
+         aku<eau> $$16 = $$15.getKey();
+         if ($$16 != eau.b) {
+            aku<dgj> $$17 = aku.a(mc.be, $$16.a());
+            euz $$18 = new euz(this.j, $$1);
             ard $$19 = new ard(this, this.ay, this.f, $$18, $$17, $$15.getValue(), $$0, $$2, $$6, ImmutableList.of(), false, $$14);
-            $$11.a(new dyl.a($$19.F_()));
+            $$11.a(new dym.a($$19.F_()));
             this.P.put($$17, $$19);
          }
       }
@@ -288,16 +288,16 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       $$11.a($$1.p());
    }
 
-   private static void a(ard $$0, evk $$1, boolean $$2, boolean $$3) {
+   private static void a(ard $$0, evl $$1, boolean $$2, boolean $$3) {
       if ($$3) {
          $$1.a(ji.c.b(80), 0.0F);
       } else {
          ara $$4 = $$0.m();
-         dfo $$5 = new dfo($$4.i().b().a());
+         dfp $$5 = new dfp($$4.i().b().a());
          int $$6 = $$4.g().a($$0);
          if ($$6 < $$0.L_()) {
             ji $$7 = $$5.l();
-            $$6 = $$0.a(ecs.a.b, $$7.u() + 8, $$7.w() + 8);
+            $$6 = $$0.a(ect.a.b, $$7.u() + 8, $$7.w() + 8);
          }
 
          $$1.a($$5.l().b(8, $$6, 8), 0.0F);
@@ -308,7 +308,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
 
          for (int $$12 = 0; $$12 < ayz.h(11); $$12++) {
             if ($$8 >= -5 && $$8 <= 5 && $$9 >= -5 && $$9 <= 5) {
-               ji $$13 = aqx.a($$0, new dfo($$5.h + $$8, $$5.i + $$9));
+               ji $$13 = aqx.a($$0, new dfp($$5.h + $$8, $$5.i + $$9));
                if ($$13 != null) {
                   $$1.a($$13, 0.0F);
                   break;
@@ -326,31 +326,31 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
          }
 
          if ($$2) {
-            $$0.K_().a(mc.aL).flatMap($$0x -> $$0x.a(rg.m)).ifPresent($$3x -> ((efk)$$3x.a()).a($$0, $$4.g(), $$0.A, $$1.a()));
+            $$0.K_().a(mc.aL).flatMap($$0x -> $$0x.a(rg.m)).ifPresent($$3x -> ((efl)$$3x.a()).a($$0, $$4.g(), $$0.A, $$1.a()));
          }
       }
    }
 
-   private void a(evl $$0) {
-      $$0.a(bsh.a);
+   private void a(evm $$0) {
+      $$0.a(bsi.a);
       $$0.d(true);
-      evk $$1 = $$0.I();
+      evl $$1 = $$0.I();
       $$1.b(false);
       $$1.a(false);
       $$1.a(1000000000);
       $$1.b(6000L);
-      $$1.a(dgf.d);
+      $$1.a(dgg.d);
    }
 
    private void b(arn $$0) {
       ard $$1 = this.J();
       l.info("Preparing start region for dimension {}", $$1.ai().a());
       ji $$2 = $$1.Z();
-      $$0.a(new dfo($$2));
+      $$0.a(new dfp($$2));
       ara $$3 = $$1.m();
       this.an = af.d();
       $$1.a($$2, $$1.aa());
-      int $$4 = this.aL().c(dge.ab);
+      int $$4 = this.aL().c(dgf.ab);
       int $$5 = $$4 > 0 ? ayz.h(arn.a($$4)) : 0;
 
       while ($$3.b() < $$5) {
@@ -362,13 +362,13 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       this.x_();
 
       for (ard $$6 : this.P.values()) {
-         dgd $$7 = $$6.w().b(dgd.a(), "chunks");
+         dge $$7 = $$6.w().b(dge.a(), "chunks");
          if ($$7 != null) {
             LongIterator $$8 = $$7.b().iterator();
 
             while ($$8.hasNext()) {
                long $$9 = $$8.nextLong();
-               dfo $$10 = new dfo($$9);
+               dfp $$10 = new dfp($$9);
                $$6.m().a($$10, true);
             }
          }
@@ -380,7 +380,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       this.bH();
    }
 
-   public dgf u() {
+   public dgg u() {
       return this.j.k();
    }
 
@@ -407,7 +407,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       }
 
       ard $$5 = this.J();
-      evk $$6 = this.j.I();
+      evl $$6 = this.j.I();
       $$6.a($$5.F_().t());
       this.j.a(this.aM().a(this.ba()));
       this.f.a(this.ba(), this.j, this.ag().r());
@@ -553,8 +553,8 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
 
             this.an += $$0;
 
-            try (bos.a $$5 = bos.a(this.bI())) {
-               bot $$6 = bos.a();
+            try (bot.a $$5 = bot.a(this.bI())) {
+               bou $$6 = bot.a();
                $$6.a("tick");
                this.aJ.start();
                this.a($$4 ? () -> false : this::bu);
@@ -576,7 +576,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
             }
 
             this.ag = true;
-            bpb.f.a(this.ax);
+            bpc.f.a(this.ax);
          }
       } catch (Throwable var69) {
          l.error("Encountered an unexpected exception", var69);
@@ -624,9 +624,9 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
 
    private void bt() {
       if (this.g()) {
-         bng $$0 = this.f();
-         $$0.a(af.d() - this.al - this.am, bni.c.ordinal());
-         $$0.a(this.am, bni.d.ordinal());
+         bnh $$0 = this.f();
+         $$0.a(af.d() - this.al - this.am, bnj.c.ordinal());
+         $$0.a(this.am, bnj.d.ordinal());
       }
    }
 
@@ -728,7 +728,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    protected void b(als $$0) {
-      bos.a().f("runTask");
+      bot.a().f("runTask");
       super.d($$0);
    }
 
@@ -803,7 +803,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
          this.bD();
       }
 
-      bot $$3 = bos.a();
+      bou $$3 = bot.a();
       $$3.a("tallying");
       long $$4 = af.d() - $$1;
       int $$5 = this.T % 100;
@@ -818,7 +818,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    private void bD() {
       this.U = this.bE();
       l.debug("Autosave started");
-      bot $$0 = bos.a();
+      bou $$0 = bot.a();
       $$0.a("save");
       this.b(true, false, false);
       $$0.c();
@@ -827,7 +827,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
 
    private void a(long $$0) {
       if (this.g()) {
-         this.f().a(af.d() - $$0, bni.b.ordinal());
+         this.f().a(af.d() - $$0, bnj.b.ordinal());
       }
    }
 
@@ -851,7 +851,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       }
    }
 
-   protected abstract bng f();
+   protected abstract bnh f();
 
    public abstract boolean g();
 
@@ -881,7 +881,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    protected void c(BooleanSupplier $$0) {
-      bot $$1 = bos.a();
+      bou $$1 = bot.a();
       this.ag().t().forEach($$0x -> $$0x.f.f());
       $$1.a("commandFunctions");
       this.aE().b();
@@ -938,11 +938,11 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    private void b(ard $$0) {
-      this.Q.a(new afj($$0.ad(), $$0.ae(), $$0.O().b(dge.l)), $$0.ai());
+      this.Q.a(new afj($$0.ad(), $$0.ae(), $$0.O().b(dgf.l)), $$0.ai());
    }
 
    public void H() {
-      bot $$0 = bos.a();
+      bou $$0 = bot.a();
       $$0.a("timeSync");
 
       for (ard $$1 : this.L()) {
@@ -952,7 +952,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       $$0.c();
    }
 
-   public boolean a(dgi $$0) {
+   public boolean a(dgj $$0) {
       return true;
    }
 
@@ -973,15 +973,15 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    public final ard J() {
-      return this.P.get(dgi.i);
+      return this.P.get(dgj.i);
    }
 
    @Nullable
-   public ard a(aku<dgi> $$0) {
+   public ard a(aku<dgj> $$0) {
       return this.P.get($$0);
    }
 
-   public Set<aku<dgi>> K() {
+   public Set<aku<dgj>> K() {
       return this.P.keySet();
    }
 
@@ -1021,7 +1021,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
 
       $$0.a("Active Data Packs", () -> aua.a(this.ar.g()));
       $$0.a("Available Data Packs", () -> aua.a(this.ar.d()));
-      $$0.a("Enabled Feature Flags", () -> crv.e.b(this.j.K()).stream().map(akv::toString).collect(Collectors.joining(", ")));
+      $$0.a("Enabled Feature Flags", () -> crw.e.b(this.j.K()).stream().map(akv::toString).collect(Collectors.joining(", ")));
       $$0.a("World Generation", () -> this.j.B().toString());
       $$0.a("World Seed", () -> String.valueOf(this.j.y().c()));
       $$0.a("Suppressed Exceptions", this.aI::a);
@@ -1078,9 +1078,9 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       }
    }
 
-   public void a(bsh $$0, boolean $$1) {
+   public void a(bsi $$0, boolean $$1) {
       if ($$1 || !this.j.r()) {
-         this.j.a(this.j.l() ? bsh.d : $$0);
+         this.j.a(this.j.l() ? bsi.d : $$0);
          this.bH();
          this.ag().t().forEach(this::c);
       }
@@ -1102,12 +1102,12 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    private void c(are $$0) {
-      evb $$1 = $$0.dV().D_();
+      evc $$1 = $$0.dV().D_();
       $$0.f.b(new aby($$1.q(), $$1.r()));
    }
 
    public boolean W() {
-      return this.j.q() != bsh.a;
+      return this.j.q() != bsi.a;
    }
 
    public boolean X() {
@@ -1189,7 +1189,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
 
    public abstract boolean r();
 
-   public void a(dgf $$0) {
+   public void a(dgg $$0) {
       this.j.a($$0);
    }
 
@@ -1205,7 +1205,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       return false;
    }
 
-   public boolean a(@Nullable dgf $$0, boolean $$1, int $$2) {
+   public boolean a(@Nullable dgg $$0, boolean $$1, int $$2) {
       return false;
    }
 
@@ -1217,7 +1217,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       return 16;
    }
 
-   public boolean a(ard $$0, ji $$1, cox $$2) {
+   public boolean a(ard $$0, ji $$1, coy $$2) {
       return false;
    }
 
@@ -1308,7 +1308,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    public int a(@Nullable ard $$0) {
-      return $$0 != null ? $$0.O().c(dge.s) : 10;
+      return $$0 != null ? $$0.O().c(dgf.s) : 10;
    }
 
    public ali aD() {
@@ -1336,7 +1336,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
             this.aA.close();
             this.aA = $$1x;
             this.ar.b($$0);
-            dhf $$2 = new dhf(a(this.ar, true), this.j.K());
+            dhg $$2 = new dhg(a(this.ar, true), this.j.K());
             this.j.a($$2);
             this.aA.b.g();
             this.aA.b.c().a(this.j.K());
@@ -1344,7 +1344,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
             this.ag().u();
             this.av.a(this.aA.b.a());
             this.aB.a(this.aA.a);
-            this.aE = dux.a(this.O.a(), this.j.K());
+            this.aE = duy.a(this.O.a(), this.j.K());
          }, this);
       if (this.bx()) {
          this.b($$1::isDone);
@@ -1353,10 +1353,10 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       return $$1;
    }
 
-   public static dhf a(aua $$0, dhf $$1, boolean $$2, boolean $$3) {
-      dfv $$4 = $$1.a();
-      crt $$5 = $$2 ? crt.a() : $$1.b();
-      crt $$6 = $$2 ? crv.e.a() : $$1.b();
+   public static dhg a(aua $$0, dhg $$1, boolean $$2, boolean $$3) {
+      dfw $$4 = $$1.a();
+      cru $$5 = $$2 ? cru.a() : $$1.b();
+      cru $$6 = $$2 ? crw.e.a() : $$1.b();
       $$0.a();
       if ($$3) {
          return a($$0, List.of("vanilla"), $$5, false);
@@ -1374,19 +1374,19 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
          for (atx $$9 : $$0.d()) {
             String $$10 = $$9.g();
             if (!$$4.b().contains($$10)) {
-               crt $$11 = $$9.e();
+               cru $$11 = $$9.e();
                boolean $$12 = $$7.contains($$10);
                if (!$$12 && $$9.l().a()) {
                   if ($$11.a($$6)) {
                      l.info("Found new data pack {}, loading it automatically", $$10);
                      $$7.add($$10);
                   } else {
-                     l.info("Found new data pack {}, but can't load it due to missing features {}", $$10, crv.a($$6, $$11));
+                     l.info("Found new data pack {}, but can't load it due to missing features {}", $$10, crw.a($$6, $$11));
                   }
                }
 
                if ($$12 && !$$11.a($$6)) {
-                  l.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$10, crv.a($$6, $$11));
+                  l.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$10, crw.a($$6, $$11));
                   $$7.remove($$10);
                }
             }
@@ -1401,17 +1401,17 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       }
    }
 
-   private static dhf a(aua $$0, Collection<String> $$1, crt $$2, boolean $$3) {
+   private static dhg a(aua $$0, Collection<String> $$1, cru $$2, boolean $$3) {
       $$0.b($$1);
       a($$0, $$2);
-      dfv $$4 = a($$0, $$3);
-      crt $$5 = $$0.f().c($$2);
-      return new dhf($$4, $$5);
+      dfw $$4 = a($$0, $$3);
+      cru $$5 = $$0.f().c($$2);
+      return new dhg($$4, $$5);
    }
 
-   private static void a(aua $$0, crt $$1) {
-      crt $$2 = $$0.f();
-      crt $$3 = $$1.d($$2);
+   private static void a(aua $$0, cru $$1) {
+      cru $$2 = $$0.f();
+      cru $$3 = $$1.d($$2);
       if (!$$3.b()) {
          Set<String> $$4 = new ObjectArraySet($$0.e());
 
@@ -1422,7 +1422,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
 
             if ($$5.l() == aub.d) {
                String $$6 = $$5.g();
-               crt $$7 = $$5.e();
+               cru $$7 = $$5.e();
                if (!$$7.b() && $$7.b($$3) && $$7.a($$1)) {
                   if (!$$4.add($$6)) {
                      throw new IllegalStateException("Tried to force '" + $$6 + "', but it was already enabled");
@@ -1438,11 +1438,11 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       }
    }
 
-   private static dfv a(aua $$0, boolean $$1) {
+   private static dfw a(aua $$0, boolean $$1) {
       Collection<String> $$2 = $$0.e();
       List<String> $$3 = ImmutableList.copyOf($$2);
       List<String> $$4 = $$1 ? $$0.c().stream().filter($$1x -> !$$2.contains($$1x)).toList() : List.of();
-      return new dfv($$3, $$4);
+      return new dfw($$3, $$4);
    }
 
    public void a(ex $$0) {
@@ -1468,7 +1468,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
 
    public ex aH() {
       ard $$0 = this.J();
-      return new ex(this, $$0 == null ? fba.c : fba.a($$0.Z()), faz.a, $$0, 4, "Server", wp.b("Server"), this, null);
+      return new ex(this, $$0 == null ? fbb.c : fbb.a($$0.Z()), fba.a, $$0, 4, "Server", wp.b("Server"), this, null);
    }
 
    @Override
@@ -1484,7 +1484,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    @Override
    public abstract boolean c();
 
-   public dbl aI() {
+   public dbm aI() {
       return this.aA.b.c();
    }
 
@@ -1492,7 +1492,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       return this.as;
    }
 
-   public euw aK() {
+   public eux aK() {
       if (this.at == null) {
          throw new NullPointerException("Called before server init");
       } else {
@@ -1500,7 +1500,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       }
    }
 
-   public dge aL() {
+   public dgf aL() {
       return this.J().O();
    }
 
@@ -1558,7 +1558,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       Path $$1 = $$0.resolve("levels");
 
       try {
-         for (Entry<aku<dgi>, ard> $$2 : this.P.entrySet()) {
+         for (Entry<aku<dgj>, ard> $$2 : this.P.entrySet()) {
             akv $$3 = $$2.getKey().a();
             Path $$4 = $$1.resolve($$3.b()).resolve($$3.a());
             Files.createDirectories($$4);
@@ -1581,17 +1581,17 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
          $$1.write(String.format(Locale.ROOT, "pending_tasks: %d\n", this.by()));
          $$1.write(String.format(Locale.ROOT, "average_tick_time: %f\n", this.aO()));
          $$1.write(String.format(Locale.ROOT, "tick_times: %s\n", Arrays.toString(this.ab)));
-         $$1.write(String.format(Locale.ROOT, "queue: %s\n", af.g()));
+         $$1.write(String.format(Locale.ROOT, "queue: %s\n", af.h()));
       }
    }
 
    private void d(Path $$0) throws IOException {
       try (Writer $$1 = Files.newBufferedWriter($$0)) {
          final List<String> $$2 = Lists.newArrayList();
-         final dge $$3 = this.aL();
-         $$3.a(new dge.c() {
+         final dgf $$3 = this.aL();
+         $$3.a(new dgf.c() {
             @Override
-            public <T extends dge.g<T>> void a(dge.e<T> $$0, dge.f<T> $$1) {
+            public <T extends dgf.g<T>> void a(dgf.e<T> $$0, dgf.f<T> $$1) {
                $$2.add(String.format(Locale.ROOT, "%s=%s\n", $$0.a(), $$3.a($$0)));
             }
          });
@@ -1646,9 +1646,9 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       }
    }
 
-   private bot bI() {
+   private bou bI() {
       if (this.D) {
-         this.A = bqi.a(new bqm(af.c, this.n()), af.c, af.h(), new bqo("server"), this.B, $$0 -> {
+         this.A = bqj.a(new bqn(af.c, this.n()), af.c, af.i(), new bqp("server"), this.B, $$0 -> {
             this.h(() -> this.b($$0.resolve("server")));
             this.C.accept($$0);
          });
@@ -1656,7 +1656,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       }
 
       this.A.c();
-      return bow.a(this.A.f(), bow.a("Server"));
+      return box.a(this.A.f(), box.a("Server"));
    }
 
    public void aS() {
@@ -1667,7 +1667,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       return this.A.e();
    }
 
-   public void a(Consumer<bor> $$0, Consumer<Path> $$1) {
+   public void a(Consumer<bos> $$0, Consumer<Path> $$1) {
       this.B = $$1x -> {
          this.aU();
          $$0.accept($$1x);
@@ -1677,7 +1677,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    public void aU() {
-      this.A = bqj.a;
+      this.A = bqk.a;
    }
 
    public void aV() {
@@ -1688,7 +1688,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       this.A.b();
    }
 
-   public Path a(evd $$0) {
+   public Path a(eve $$0) {
       return this.f.a($$0);
    }
 
@@ -1696,11 +1696,11 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       return true;
    }
 
-   public erp aY() {
+   public erq aY() {
       return this.aB;
    }
 
-   public evl aZ() {
+   public evm aZ() {
       return this.j;
    }
 
@@ -1725,7 +1725,7 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    @Nullable
-   public dgf bd() {
+   public dgg bd() {
       return null;
    }
 
@@ -1745,11 +1745,11 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       this.F = true;
    }
 
-   public bor bi() {
+   public bos bi() {
       if (this.E == null) {
-         return bon.a;
+         return boo.a;
       } else {
-         bor $$0 = this.E.a(af.d(), this.T);
+         bos $$0 = this.E.a(af.d(), this.T);
          this.E = null;
          return $$0;
       }
@@ -1776,15 +1776,15 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       return true;
    }
 
-   public void a(are $$0, bne $$1) {
+   public void a(are $$0, bnf $$1) {
    }
 
    public boolean bm() {
       return false;
    }
 
-   private void a(o $$0, dfo $$1, eal $$2) {
-      af.h().execute(() -> {
+   private void a(o $$0, dfp $$1, eam $$2) {
+      af.i().execute(() -> {
          try {
             Path $$3 = this.c("debug");
             v.c($$3);
@@ -1811,14 +1811,14 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
    }
 
    @Override
-   public void a(Throwable $$0, eal $$1, dfo $$2) {
+   public void a(Throwable $$0, eam $$1, dfp $$2) {
       l.error("Failed to load chunk {},{}", new Object[]{$$2.h, $$2.i, $$0});
       this.aI.a("chunk/load", $$0);
       this.a(o.a($$0, "Chunk load failure"), $$2, $$1);
    }
 
    @Override
-   public void b(Throwable $$0, eal $$1, dfo $$2) {
+   public void b(Throwable $$0, eam $$1, dfp $$2) {
       l.error("Failed to save chunk {},{}", new Object[]{$$2.h, $$2.i, $$0});
       this.aI.a("chunk/save", $$0);
       this.a(o.a($$0, "Chunk save failure"), $$2, $$1);
@@ -1828,11 +1828,11 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
       this.aI.a("packet/" + $$1.toString(), $$0);
    }
 
-   public cyn bn() {
+   public cyo bn() {
       return this.aD;
    }
 
-   public dux bo() {
+   public duy bo() {
       return this.aE;
    }
 
@@ -1864,10 +1864,10 @@ public abstract class MinecraftServer extends brd<als> implements all, eaa, ew {
          this.b = $$1;
       }
 
-      bor a(final long $$0, final int $$1) {
-         return new bor() {
+      bos a(final long $$0, final int $$1) {
+         return new bos() {
             @Override
-            public List<bov> a(String $$0x) {
+            public List<bow> a(String $$0x) {
                return Collections.emptyList();
             }
 

@@ -1,22 +1,31 @@
-public class gri extends gqw<cli, gxx> {
-   private static final akv a = akv.b("textures/entity/skeleton/bogged.png");
-   private static final akv b = akv.b("textures/entity/skeleton/bogged_overlay.png");
+import java.util.function.UnaryOperator;
 
-   public gri(gse.a $$0) {
-      super($$0, gfc.G, gfc.H, new gbj($$0.a(gfc.F)));
-      this.a(new gww<>(this, $$0.f(), gfc.I, b));
+public class gri extends gqt {
+   private final gcx a;
+   private final akv b;
+   private final gcc<gxx> h;
+
+   public gri(gsf.a $$0, gfc $$1) {
+      super($$0);
+      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new gcx.a($$0.a(gfd.E), $$0x -> gmj.i());
+      this.h = new gbj($$0.a($$1));
    }
 
-   public akv a(gxx $$0) {
-      return a;
+   @Override
+   protected gcc<gxx> a() {
+      return this.h;
    }
 
-   public gxx a() {
-      return new gxx();
+   @Override
+   protected gmj b() {
+      return this.h.a(this.b);
    }
 
-   public void a(cli $$0, gxx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gv();
+   @Override
+   protected void b(gxx $$0, ffv $$1, glz $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, hej.d);
+      }
    }
 }

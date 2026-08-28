@@ -1,110 +1,219 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public abstract class fbk {
+   private static final jn.a[] d = jn.a.values();
+   protected final int a;
+   protected final int b;
+   protected final int c;
 
-public class fbk implements fbf {
-   protected static final fbf a = new fbk(false, -Double.MAX_VALUE, cwp.j, $$0 -> false, null) {
-      @Override
-      public boolean a(fbu $$0, ji $$1, boolean $$2) {
-         return $$2;
+   protected fbk(int $$0, int $$1, int $$2) {
+      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      } else {
+         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
       }
-   };
-   private final boolean b;
-   private final double c;
-   private final cwp d;
-   private final Predicate<esz> e;
-   @Nullable
-   private final bul f;
-
-   protected fbk(boolean $$0, double $$1, cwp $$2, Predicate<esz> $$3, @Nullable bul $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
    }
 
-   @Deprecated
-   protected fbk(bul $$0, boolean $$1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:627)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: aload 1
-      // 02: invokevirtual bul.ch ()Z
-      // 05: aload 1
-      // 06: invokevirtual bul.dC ()D
-      // 09: aload 1
-      // 0a: instanceof bvh
-      // 0d: ifeq 1a
-      // 10: aload 1
-      // 11: checkcast bvh
-      // 14: invokevirtual bvh.eZ ()Lcwp;
-      // 17: goto 1d
-      // 1a: getstatic cwp.j Lcwp;
-      // 1d: iload 2
-      // 1e: ifeq 29
-      // 21: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, fbk.b (Lesz;)Z, (Lesz;)Z ]
-      // 26: goto 46
-      // 29: aload 1
-      // 2a: instanceof bvh
-      // 2d: ifeq 41
-      // 30: aload 1
-      // 31: checkcast bvh
-      // 34: dup
-      // 35: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 38: pop
-      // 39: invokedynamic test (Lbvh;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, bvh.a (Lesz;)Z, (Lesz;)Z ]
-      // 3e: goto 46
-      // 41: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, fbk.a (Lesz;)Z, (Lesz;)Z ]
-      // 46: aload 1
-      // 47: invokespecial fbk.<init> (ZDLcwp;Ljava/util/function/Predicate;Lbul;)V
-      // 4a: return
+   public boolean a(jf $$0, int $$1, int $$2, int $$3) {
+      return this.e($$0.a($$1, $$2, $$3, jn.a.a), $$0.a($$1, $$2, $$3, jn.a.b), $$0.a($$1, $$2, $$3, jn.a.c));
    }
 
-   @Override
-   public boolean a(cwl $$0) {
-      return this.d.a($$0);
+   public boolean e(int $$0, int $$1, int $$2) {
+      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
+         return false;
+      } else {
+         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
+      }
    }
 
-   @Override
-   public boolean a(esz $$0, esz $$1) {
-      return this.e.test($$1) && !$$0.a().a($$1.a());
+   public boolean b(jf $$0, int $$1, int $$2, int $$3) {
+      return this.b($$0.a($$1, $$2, $$3, jn.a.a), $$0.a($$1, $$2, $$3, jn.a.b), $$0.a($$1, $$2, $$3, jn.a.c));
    }
 
-   @Override
-   public fbu a(dwx $$0, dfr $$1, ji $$2) {
-      return $$0.b($$1, $$2, this);
+   public abstract boolean b(int var1, int var2, int var3);
+
+   public abstract void c(int var1, int var2, int var3);
+
+   public boolean a() {
+      for (jn.a $$0 : d) {
+         if (this.a($$0) >= this.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public boolean b() {
-      return this.b;
+   public abstract int a(jn.a var1);
+
+   public abstract int b(jn.a var1);
+
+   public int a(jn.a $$0, int $$1, int $$2) {
+      int $$3 = this.c($$0);
+      if ($$1 >= 0 && $$2 >= 0) {
+         jn.a $$4 = jf.b.a($$0);
+         jn.a $$5 = jf.c.a($$0);
+         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
+            jf $$6 = jf.a(jn.a.a, $$0);
+
+            for (int $$7 = 0; $$7 < $$3; $$7++) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7;
+               }
+            }
+
+            return $$3;
+         } else {
+            return $$3;
+         }
+      } else {
+         return $$3;
+      }
    }
 
-   @Override
-   public boolean a(fbu $$0, ji $$1, boolean $$2) {
-      return this.c > (double)$$1.v() + $$0.c(jn.a.b) - 1.0E-5F;
+   public int b(jn.a $$0, int $$1, int $$2) {
+      if ($$1 >= 0 && $$2 >= 0) {
+         jn.a $$3 = jf.b.a($$0);
+         jn.a $$4 = jf.c.a($$0);
+         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
+            int $$5 = this.c($$0);
+            jf $$6 = jf.a(jn.a.a, $$0);
+
+            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7 + 1;
+               }
+            }
+
+            return 0;
+         } else {
+            return 0;
+         }
+      } else {
+         return 0;
+      }
    }
 
-   @Nullable
-   public bul c() {
-      return this.f;
+   public int c(jn.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   public int b() {
+      return this.c(jn.a.a);
+   }
+
+   public int c() {
+      return this.c(jn.a.b);
+   }
+
+   public int d() {
+      return this.c(jn.a.c);
+   }
+
+   public void a(fbk.b $$0, boolean $$1) {
+      this.a($$0, jf.a, $$1);
+      this.a($$0, jf.b, $$1);
+      this.a($$0, jf.c, $$1);
+   }
+
+   private void a(fbk.b $$0, jf $$1, boolean $$2) {
+      jf $$3 = $$1.a();
+      int $$4 = this.c($$3.a(jn.a.a));
+      int $$5 = this.c($$3.a(jn.a.b));
+      int $$6 = this.c($$3.a(jn.a.c));
+
+      for (int $$7 = 0; $$7 <= $$4; $$7++) {
+         for (int $$8 = 0; $$8 <= $$5; $$8++) {
+            int $$9 = -1;
+
+            for (int $$10 = 0; $$10 <= $$6; $$10++) {
+               int $$11 = 0;
+               int $$12 = 0;
+
+               for (int $$13 = 0; $$13 <= 1; $$13++) {
+                  for (int $$14 = 0; $$14 <= 1; $$14++) {
+                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
+                        $$11++;
+                        $$12 ^= $$13 ^ $$14;
+                     }
+                  }
+               }
+
+               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
+                  if ($$2) {
+                     if ($$9 == -1) {
+                        $$9 = $$10;
+                     }
+                  } else {
+                     $$0.consume(
+                        $$3.a($$7, $$8, $$10, jn.a.a),
+                        $$3.a($$7, $$8, $$10, jn.a.b),
+                        $$3.a($$7, $$8, $$10, jn.a.c),
+                        $$3.a($$7, $$8, $$10 + 1, jn.a.a),
+                        $$3.a($$7, $$8, $$10 + 1, jn.a.b),
+                        $$3.a($$7, $$8, $$10 + 1, jn.a.c)
+                     );
+                  }
+               } else if ($$9 != -1) {
+                  $$0.consume(
+                     $$3.a($$7, $$8, $$9, jn.a.a),
+                     $$3.a($$7, $$8, $$9, jn.a.b),
+                     $$3.a($$7, $$8, $$9, jn.a.c),
+                     $$3.a($$7, $$8, $$10, jn.a.a),
+                     $$3.a($$7, $$8, $$10, jn.a.b),
+                     $$3.a($$7, $$8, $$10, jn.a.c)
+                  );
+                  $$9 = -1;
+               }
+            }
+         }
+      }
+   }
+
+   public void b(fbk.b $$0, boolean $$1) {
+      fbe.a(this, $$0, $$1);
+   }
+
+   public void a(fbk.a $$0) {
+      this.a($$0, jf.a);
+      this.a($$0, jf.b);
+      this.a($$0, jf.c);
+   }
+
+   private void a(fbk.a $$0, jf $$1) {
+      jf $$2 = $$1.a();
+      jn.a $$3 = $$2.a(jn.a.c);
+      int $$4 = this.c($$2.a(jn.a.a));
+      int $$5 = this.c($$2.a(jn.a.b));
+      int $$6 = this.c($$3);
+      jn $$7 = jn.a($$3, jn.b.b);
+      jn $$8 = jn.a($$3, jn.b.a);
+
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         for (int $$10 = 0; $$10 < $$5; $$10++) {
+            boolean $$11 = false;
+
+            for (int $$12 = 0; $$12 <= $$6; $$12++) {
+               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
+               if (!$$11 && $$13) {
+                  $$0.consume($$7, $$2.a($$9, $$10, $$12, jn.a.a), $$2.a($$9, $$10, $$12, jn.a.b), $$2.a($$9, $$10, $$12, jn.a.c));
+               }
+
+               if ($$11 && !$$13) {
+                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, jn.a.a), $$2.a($$9, $$10, $$12 - 1, jn.a.b), $$2.a($$9, $$10, $$12 - 1, jn.a.c));
+               }
+
+               $$11 = $$13;
+            }
+         }
+      }
+   }
+
+   public interface a {
+      void consume(jn var1, int var2, int var3, int var4);
+   }
+
+   public interface b {
+      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
    }
 }

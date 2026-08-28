@@ -1,53 +1,37 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import javax.annotation.Nullable;
 
-public class fbp extends AbstractDoubleList implements fbm {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
+public class fbp extends fbl {
+   @Nullable
+   private ji b;
+   @Nullable
+   private ji c;
 
-   protected fbp(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   protected fbp(cqx $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
    }
 
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
-   }
-
-   @Override
-   public boolean a(fbm.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
-   }
-
-   private boolean b(fbm.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
+   private void a(cqx $$0) {
+      ji $$1 = $$0.p();
+      dwy $$2 = $$0.dV().a_($$1);
+      boolean $$3 = djc.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         dyb $$4 = $$2.c(((djc)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
          }
       }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
    }
 
    @Override
-   public DoubleList a() {
-      return this;
+   public fbv a(dwy $$0, dfs $$1, ji $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fbs.a();
    }
 }

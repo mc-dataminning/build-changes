@@ -1,33 +1,26 @@
-public record dca(cwp a, cwp b, cwp c) implements dbk {
+import java.util.Optional;
+
+public interface dca extends dbf<dcb> {
    @Override
-   public cwp a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+   default dbq<dca> b() {
+      return dbq.g;
    }
 
    @Override
-   public int a() {
-      return 3;
+   dbp<? extends dca> a();
+
+   default boolean a(dcb $$0, dgj $$1) {
+      return dbb.a(this.c(), $$0.c()) && dbb.a(this.f(), $$0.d()) && dbb.a(this.k(), $$0.e());
    }
+
+   Optional<dbb> c();
+
+   Optional<dbb> f();
+
+   Optional<dbb> k();
 
    @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public cwp c() {
-      return this.a;
-   }
-
-   public cwp d() {
-      return this.b;
-   }
-
-   public cwp e() {
-      return this.c;
+   default dbi h() {
+      return dbh.l;
    }
 }

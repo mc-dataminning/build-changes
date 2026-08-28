@@ -10,7 +10,7 @@ public class arh extends aqk {
    private final int d;
    private final String e;
 
-   public arh(brf<Runnable> $$0, Executor $$1, int $$2) {
+   public arh(brg<Runnable> $$0, Executor $$1, int $$2) {
       super($$0, $$1);
       this.d = $$2;
       this.e = $$0.A_();
@@ -35,6 +35,6 @@ public class arh extends aqk {
 
    @VisibleForTesting
    public String d() {
-      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new dfo($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
+      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new dfp($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
    }
 }

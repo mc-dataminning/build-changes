@@ -2,9 +2,9 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 
-public class bbu extends bgs {
+public class bbu extends bgt {
    public bbu(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityShulkerBoxColorFix", bhx.s, "minecraft:shulker_box");
+      super($$0, $$1, "BlockEntityShulkerBoxColorFix", bhy.s, "minecraft:shulker_box");
    }
 
    @Override

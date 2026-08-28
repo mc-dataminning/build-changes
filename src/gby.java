@@ -1,43 +1,40 @@
-import org.joml.Quaternionf;
+public class gby extends gcc<gzc> {
+   public static final gfn a = gfn.scaling(0.5F);
+   private final gfe b;
+   private final gfe c;
 
-public class gby extends gcb<gyh> {
-   private static final String e = "outer_glass";
-   private static final String f = "inner_glass";
-   private static final String g = "base";
-   private static final float i = (float)Math.sin(Math.PI / 4);
-   public final gfd a;
-   public final gfd b;
-   public final gfd c;
-   public final gfd d;
-
-   public gby(gfd $$0) {
+   public gby(gfe $$0) {
       super($$0);
-      this.a = $$0.b("base");
-      this.b = $$0.b("outer_glass");
-      this.c = this.b.b("inner_glass");
-      this.d = this.c.b("cube");
+      this.c = $$0.b("left_wing");
+      this.b = $$0.b("right_wing");
    }
 
-   public static gfj a() {
-      gfl $$0 = new gfl();
-      gfn $$1 = $$0.a();
-      float $$2 = 0.875F;
-      gfi $$3 = gfi.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-      gfn $$4 = $$1.a("outer_glass", $$3, gff.a(0.0F, 24.0F, 0.0F));
-      gfn $$5 = $$4.a("inner_glass", $$3, gff.a.a(0.875F));
-      $$5.a("cube", gfi.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gff.a.a(0.765625F));
-      $$1.a("base", gfi.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gff.a);
-      return gfj.a($$0, 64, 32);
+   public static gfk a() {
+      gfm $$0 = new gfm();
+      gfo $$1 = $$0.a();
+      gfi $$2 = new gfi(1.0F);
+      $$1.a(
+         "left_wing",
+         gfj.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         gfg.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
+      );
+      $$1.a(
+         "right_wing",
+         gfj.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         gfg.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      );
+      return gfk.a($$0, 64, 32);
    }
 
-   public void a(gyh $$0) {
+   public void a(gzc $$0) {
       super.a($$0);
-      this.a.k = $$0.a;
-      float $$1 = $$0.u * 3.0F;
-      float $$2 = gry.a($$0.u) * 16.0F;
-      this.b.c += $$2 / 2.0F;
-      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
-      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
-      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+      this.c.c = $$0.N ? 3.0F : 0.0F;
+      this.c.e = $$0.S;
+      this.c.g = $$0.U;
+      this.c.f = $$0.T;
+      this.b.f = -this.c.f;
+      this.b.c = this.c.c;
+      this.b.e = this.c.e;
+      this.b.g = -this.c.g;
    }
 }

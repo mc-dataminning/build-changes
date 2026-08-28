@@ -1,77 +1,86 @@
-import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
-public class bse {
-   public static final String a = "Items";
+public interface bse extends bsc {
+   float r_ = 4.0F;
 
-   public static cwp a(List<cwp> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : cwp.j;
+   int b();
+
+   boolean c();
+
+   cwq a(int var1);
+
+   cwq a(int var1, int var2);
+
+   cwq b(int var1);
+
+   void a(int var1, cwq var2);
+
+   default int an_() {
+      return 99;
    }
 
-   public static cwp a(List<cwp> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cwp.j) : cwp.j;
+   default int e_(cwq $$0) {
+      return Math.min(this.an_(), $$0.k());
    }
 
-   public static tq a(tq $$0, ka<cwp> $$1, jt.a $$2) {
-      return a($$0, $$1, true, $$2);
+   void e();
+
+   boolean a(coy var1);
+
+   default void c_(coy $$0) {
    }
 
-   public static tq a(tq $$0, ka<cwp> $$1, boolean $$2, jt.a $$3) {
-      tw $$4 = new tw();
+   default void c(coy $$0) {
+   }
 
-      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
-         cwp $$6 = $$1.get($$5);
-         if (!$$6.f()) {
-            tq $$7 = new tq();
-            $$7.a("Slot", (byte)$$5);
-            $$4.add($$6.b($$3, $$7));
+   default boolean b(int $$0, cwq $$1) {
+      return true;
+   }
+
+   default boolean a(bse $$0, int $$1, cwq $$2) {
+      return true;
+   }
+
+   default int a_(cwm $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cwq $$3 = this.a($$2);
+         if ($$3.h().equals($$0)) {
+            $$1 += $$3.M();
          }
       }
 
-      if (!$$4.isEmpty() || $$2) {
-         $$0.a("Items", $$4);
-      }
-
-      return $$0;
+      return $$1;
    }
 
-   public static void b(tq $$0, ka<cwp> $$1, jt.a $$2) {
-      tw $$3 = $$0.c("Items", 10);
+   default boolean a(Set<cwm> $$0) {
+      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
+   }
 
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         tq $$5 = $$3.a($$4);
-         int $$6 = $$5.f("Slot") & 255;
-         if ($$6 >= 0 && $$6 < $$1.size()) {
-            $$1.set($$6, cwp.a($$2, (un)$$5).orElse(cwp.j));
+   default boolean a_(Predicate<cwq> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cwq $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
          }
       }
+
+      return false;
    }
 
-   public static int a(bsd $$0, Predicate<cwp> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cwp $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.f()) {
-            $$0.a($$5, cwp.j);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
+   static boolean a(dua $$0, coy $$1) {
+      return a($$0, $$1, 4.0F);
    }
 
-   public static int a(cwp $$0, Predicate<cwp> $$1, int $$2, boolean $$3) {
-      if ($$0.f() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.M();
+   static boolean a(dua $$0, coy $$1, float $$2) {
+      dgj $$3 = $$0.i();
+      ji $$4 = $$0.aA_();
+      if ($$3 == null) {
+         return false;
       } else {
-         int $$4 = $$2 < 0 ? $$0.M() : Math.min($$2, $$0.M());
-         $$0.h($$4);
-         return $$4;
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

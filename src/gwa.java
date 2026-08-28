@@ -1,16 +1,23 @@
-public class gwa extends gwt<hbb, gbw> {
-   private static final akv a = akv.b("textures/entity/zombie/drowned_outer_layer.png");
-   private final gbw b;
-   private final gbw c;
-
-   public gwa(gub<hbb, gbw> $$0, gez $$1) {
+public class gwa extends gwu<gyg, gbv> {
+   public gwa(guc<gyg, gbv> $$0) {
       super($$0);
-      this.b = new gbw($$1.a(gfc.aD));
-      this.c = new gbw($$1.a(gfc.aA));
    }
 
-   public void a(ffu $$0, gly $$1, int $$2, hbb $$3, float $$4, float $$5) {
-      gbw $$6 = $$3.aj ? this.c : this.b;
-      a($$6, a, $$0, $$1, $$2, $$3, -1);
+   public void a(ffv $$0, glz $$1, int $$2, gyg $$3, float $$4, float $$5) {
+      hbp $$6 = $$3.i;
+      if (!$$6.c()) {
+         $$0.a();
+         float $$7 = 1.0F;
+         float $$8 = -1.0F;
+         float $$9 = ayz.e($$3.ab) / 60.0F;
+         if ($$3.ab < 0.0F) {
+            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
+         } else {
+            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
+         }
+
+         $$6.a($$0, $$1, $$2, hej.d);
+         $$0.b();
+      }
    }
 }

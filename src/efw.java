@@ -1,33 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class efw extends efy<eij> {
-   public efw(Codec<eij> $$0) {
+public class efw extends efz<eik> {
+   public efw(Codec<eik> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eij> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
-   }
+   public boolean a(egb<eik> $$0) {
+      dhh $$1 = $$0.b();
+      azh $$2 = $$0.d();
+      ji $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-   public static void a(dgz $$0, ji $$1, boolean $$2) {
-      ji.a $$3 = $$1.k();
-
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               ji $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               djm $$8 = $$6 == -1 ? djo.cv : djo.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
-                  }
-
-                  $$0.a($$7, $$8.m(), 3);
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = ayz.d(-$$4); $$6 <= ayz.f($$4); $$6++) {
+            for (int $$7 = ayz.d(-$$4); $$7 <= ayz.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), djp.fU.m());
                }
             }
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
+
+      return true;
    }
 }

@@ -1,29 +1,17 @@
-public class gqz extends gtk<cie, gxn, gas> {
-   private static final akv a = akv.b("textures/entity/allay/allay.png");
+@Deprecated
+public abstract class gqz<T extends bvk, S extends gzl, M extends gcc<? super S>> extends gtl<T, S, M> {
+   private final M a;
+   private final M b;
 
-   public gqz(gse.a $$0) {
-      super($$0, new gas($$0.a(gfc.c)), 0.4F);
-      this.a(new gwl<>(this));
+   public gqz(gsf.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public akv a(gxn $$0) {
-      return a;
-   }
-
-   public gxn a() {
-      return new gxn();
-   }
-
-   public void a(cie $$0, gxn $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gxp.a($$0, $$1, this.i);
-      $$1.a = $$0.x();
-      $$1.b = $$0.gs();
-      $$1.c = $$0.K($$2);
-      $$1.d = $$0.J($$2);
-   }
-
-   protected int a(cie $$0, ji $$1) {
-      return 15;
+   @Override
+   public void a(S $$0, ffv $$1, glz $$2, int $$3) {
+      this.h = $$0.aj ? this.b : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

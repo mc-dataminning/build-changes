@@ -1,37 +1,15 @@
-import javax.annotation.Nullable;
+public class hfu extends hfy {
+   private static final akv a = akv.b("back");
 
-public record hfu(akv a, @Nullable String b, @Nullable akv c, @Nullable akv d, hfu.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+   public hfu(hev $$0) {
+      super($$0, akv.b("textures/atlas/paintings.png"), akv.b("paintings"));
+   }
 
-      private final String c;
+   public het a(ckz $$0) {
+      return this.a($$0.d());
+   }
 
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static hfu.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   public het a() {
+      return this.a(a);
    }
 }

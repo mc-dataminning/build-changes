@@ -21,10 +21,10 @@ public class aot {
       );
    }
 
-   private static int a(ex $$0, @Nullable bul $$1, are $$2) throws CommandSyntaxException {
+   private static int a(ex $$0, @Nullable bum $$1, are $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.h.b() != dgf.d) {
+      } else if ($$2.h.b() != dgg.d) {
          throw b.create($$2.p_());
       } else {
          $$2.d($$1);

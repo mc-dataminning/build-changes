@@ -1,16 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class bxm {
-   public static <E extends bvh> bxb<E> a(Predicate<E> $$0, cel<?> $$1) {
-      return can.a((Function<can.b<E>, ? extends App<can.c<E>, caq<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+public class bxm implements byp {
+   private final bum a;
+   private final boolean b;
+
+   public bxm(bum $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public fbb a() {
+      return this.b ? this.a.dt().b(0.0, (double)this.a.cS(), 0.0) : this.a.dt();
+   }
+
+   @Override
+   public ji b() {
+      return this.a.dv();
+   }
+
+   @Override
+   public boolean a(bvi $$0) {
+      if (this.a instanceof bvi $$1) {
+         if (!$$1.bL()) {
+            return false;
+         } else {
+            Optional<ceo> $$3 = $$0.eb().c(cem.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public bum c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

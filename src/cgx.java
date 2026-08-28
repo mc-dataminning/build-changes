@@ -1,56 +1,110 @@
-public abstract class cgx extends buc {
-   protected cgx(bus<? extends cgx> $$0, dgi $$1) {
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+
+public abstract class cgx extends cgv {
+   @Nullable
+   private cgx a;
+   private int b = 1;
+
+   public cgx(but<? extends cgx> $$0, dgj $$1) {
       super($$0, $$1);
-      this.a(etq.j, 0.0F);
    }
 
    @Override
-   public boolean a(dgl $$0) {
-      return $$0.f(this);
+   protected void E() {
+      super.E();
+      this.bS.a(5, new ccc(this));
    }
 
    @Override
-   public int T() {
-      return 120;
+   public int aj() {
+      return this.gt();
+   }
+
+   public int gt() {
+      return super.aj();
    }
 
    @Override
-   public int e(ard $$0) {
-      return 1 + this.ae.a(3);
+   protected boolean x() {
+      return !this.gu();
    }
 
-   protected void r(int $$0) {
-      if (this.bL() && !this.bm()) {
-         this.j($$0 - 1);
-         if (this.ct() == -20) {
-            this.j(0);
-            this.a(this.dW().i(), 2.0F);
+   public boolean gu() {
+      return this.a != null && this.a.bL();
+   }
+
+   public cgx a(cgx $$0) {
+      this.a = $$0;
+      $$0.gA();
+      return $$0;
+   }
+
+   public void gv() {
+      this.a.gB();
+      this.a = null;
+   }
+
+   private void gA() {
+      this.b++;
+   }
+
+   private void gB() {
+      this.b--;
+   }
+
+   public boolean gw() {
+      return this.gx() && this.b < this.gt();
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      if (this.gx() && this.dV().A.a(200) == 1) {
+         List<? extends cgv> $$0 = this.dV().a((Class<? extends cgv>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.b = 1;
          }
-      } else {
-         this.j(300);
       }
    }
 
-   @Override
-   public void az() {
-      int $$0 = this.ct();
-      super.az();
-      this.r($$0);
+   public boolean gx() {
+      return this.b > 1;
    }
 
-   @Override
-   public boolean cJ() {
-      return false;
+   public boolean gy() {
+      return this.g(this.a) <= 121.0;
    }
 
-   @Override
-   public boolean y() {
-      return false;
+   public void gz() {
+      if (this.gu()) {
+         this.P().a(this.a, 1.0);
+      }
    }
 
-   public static boolean b(bus<? extends cgx> $$0, dgj $$1, bur $$2, ji $$3, azh $$4) {
-      int $$5 = $$1.P();
-      int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(awv.a) && $$1.a_($$3.d()).a(djo.J);
+   public void a(Stream<? extends cgx> $$0) {
+      $$0.limit((long)(this.gt() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
+   @Nullable
+   @Override
+   public bwb a(dha $$0, bsj $$1, bus $$2, @Nullable bwb $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3 == null) {
+         $$3 = new cgx.a(this);
+      } else {
+         this.a(((cgx.a)$$3).a);
+      }
+
+      return $$3;
+   }
+
+   public static class a implements bwb {
+      public final cgx a;
+
+      public a(cgx $$0) {
+         this.a = $$0;
+      }
    }
 }

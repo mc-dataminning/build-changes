@@ -2,5 +2,5 @@ import java.util.function.BiConsumer;
 
 @FunctionalInterface
 public interface ng {
-   void generate(BiConsumer<aku<evw>, evw.a> var1);
+   void generate(BiConsumer<aku<evx>, evx.a> var1);
 }

@@ -1,58 +1,42 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
 import java.util.List;
 
-public class eoo extends eou {
-   public static final MapCodec<eoo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(emq.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, eoo::new)
-   );
-   private final jr<emq> b;
-   private final tq c;
+public class eoo extends eov {
+   public static final MapCodec<eoo> a = MapCodec.unit(() -> eoo.b);
+   public static final eoo b = new eoo();
 
-   protected eoo(jr<emq> $$0, eow.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
-   }
-
-   private tq b() {
-      tq $$0 = new tq();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dvc.a.a.c());
-      return $$0;
+   private eoo() {
+      super(eox.a.a);
    }
 
    @Override
-   public km a(erp $$0, dqe $$1) {
+   public km a(erq $$0, dqf $$1) {
       return km.h;
    }
 
    @Override
-   public List<ero.a> a(erp $$0, ji $$1, dqe $$2, azh $$3) {
-      return List.of(ero.a.a(new ero.d($$1, djo.pD.m().b(dnq.b, jp.a(jn.a, jn.d)), this.c)));
+   public List<erp.a> a(erq $$0, ji $$1, dqf $$2, azh $$3) {
+      return Collections.emptyList();
    }
 
    @Override
-   public ene a(erp $$0, ji $$1, dqe $$2) {
-      km $$3 = this.a($$0, $$2);
-      return new ene($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   public enf a(erq $$0, ji $$1, dqf $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
    }
 
    @Override
-   public boolean a(erp $$0, dhg $$1, dhe $$2, dyt $$3, ji $$4, ji $$5, dqe $$6, ene $$7, azh $$8, eqy $$9, boolean $$10) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
+   public boolean a(erq $$0, dhh $$1, dhf $$2, dyu $$3, ji $$4, ji $$5, dqf $$6, enf $$7, azh $$8, eqz $$9, boolean $$10) {
+      return true;
    }
 
    @Override
-   public eov<?> a() {
-      return eov.c;
+   public eow<?> a() {
+      return eow.d;
    }
 
    @Override
    public String toString() {
-      return "Feature[" + this.b + "]";
+      return "Empty";
    }
 }

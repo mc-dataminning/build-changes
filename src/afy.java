@@ -9,11 +9,11 @@ public class afy implements yw<abl> {
    private final int b;
    private final List<afy.a> c;
 
-   public afy(int $$0, Collection<bwl> $$1) {
+   public afy(int $$0, Collection<bwm> $$1) {
       this.b = $$0;
       this.c = Lists.newArrayList();
 
-      for (bwl $$2 : $$1) {
+      for (bwm $$2 : $$1) {
          this.c.add(new afy.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
@@ -40,11 +40,11 @@ public class afy implements yw<abl> {
       return this.c;
    }
 
-   public static record a(jr<bwk> c, double d, Collection<bwn> e) {
-      public static final yn<ByteBuf, bwn> a = yn.a(akv.b, bwn::b, yl.m, bwn::c, bwn.a.e, bwn::d, bwn::new);
-      public static final yn<wa, afy.a> b = yn.a(bwk.b, afy.a::a, yl.m, afy.a::b, a.a(yl.a(ArrayList::new)), afy.a::c, afy.a::new);
+   public static record a(jr<bwl> c, double d, Collection<bwo> e) {
+      public static final yn<ByteBuf, bwo> a = yn.a(akv.b, bwo::b, yl.m, bwo::c, bwo.a.e, bwo::d, bwo::new);
+      public static final yn<wa, afy.a> b = yn.a(bwl.b, afy.a::a, yl.m, afy.a::b, a.a(yl.a(ArrayList::new)), afy.a::c, afy.a::new);
 
-      public jr<bwk> a() {
+      public jr<bwl> a() {
          return this.c;
       }
 
@@ -52,7 +52,7 @@ public class afy implements yw<abl> {
          return this.d;
       }
 
-      public Collection<bwn> c() {
+      public Collection<bwo> c() {
          return this.e;
       }
    }

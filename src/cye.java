@@ -1,29 +1,20 @@
-public class cye extends cxj implements cxk {
-   public static float a = 0.5F;
-
-   public cye(cwl.a $$0) {
-      super($$0);
+public class cye extends cwm {
+   public cye(cyh $$0, float $$1, float $$2, cwm.a $$3) {
+      super($$0.a($$3, $$1, $$2));
    }
 
    @Override
-   public bsk a(dgi $$0, cox $$1, bsj $$2) {
-      cwp $$3 = $$1.b($$2);
-      if ($$0 instanceof ard $$4) {
-         cpq.a(cqc::new, $$4, $$3, $$1, -20.0F, a, 1.0F);
-      }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bsk.a;
+   public boolean a(dwy $$0, dgj $$1, ji $$2, coy $$3) {
+      return !$$3.b();
    }
 
    @Override
-   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
-      return new cqc($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public boolean a(cwq $$0, bvi $$1, bvi $$2) {
+      return true;
    }
 
    @Override
-   public cxk.a b() {
-      return cxk.a.a().a(cxk.a.a.c() * 0.5F).b(cxk.a.a.d() * 1.25F).a();
+   public void b(cwq $$0, bvi $$1, bvi $$2) {
+      $$0.a(1, $$2, buu.a);
    }
 }

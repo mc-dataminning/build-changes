@@ -209,7 +209,7 @@ public class td {
    }
 
    private static int a(sl $$0) {
-      $$0.g().a_(null, $$0.e()).stream().forEach($$0x -> $$0x.a(bul.d.b));
+      $$0.g().a_(null, $$0.e()).stream().forEach($$0x -> $$0x.a(bum.d.b));
       $$0.f().c($$0.g());
       tb.a($$0.e(), $$0.g());
       a($$0.g(), "Reset succeded for: " + $$0.b(), n.k);
@@ -225,7 +225,7 @@ public class td {
    }
 
    private static Optional<sl> a(ji $$0, ard $$1, sy $$2) {
-      dvr $$3 = (dvr)$$1.c_($$0);
+      dvs $$3 = (dvs)$$1.c_($$0);
       if ($$3 == null) {
          a($$1, "Structure block entity could not be found", n.m);
          return Optional.empty();
@@ -248,11 +248,11 @@ public class td {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          ard $$5 = $$0.e();
          ji $$6 = a($$0).e();
-         tb.a($$1.toLowerCase(), $$6, new km($$2, $$3, $$4), dqe.a, $$5);
+         tb.a($$1.toLowerCase(), $$6, new km($$2, $$3, $$4), dqf.a, $$5);
          ji $$7 = $$6.d();
          ji $$8 = $$7.b($$2 - 1, 0, $$4 - 1);
-         ji.d($$7, $$8).forEach($$1x -> $$5.b($$1x, djo.I.m()));
-         tb.a($$6, new ji(1, 0, -1), dqe.a, $$5);
+         ji.d($$7, $$8).forEach($$1x -> $$5.b($$1x, djp.I.m()));
+         tb.a($$6, new ji(1, 0, -1), dqf.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -260,7 +260,7 @@ public class td {
    }
 
    private static int a(ex $$0, String $$1) throws CommandSyntaxException {
-      faw $$2 = (faw)$$0.h().a(10.0, 1.0F, false);
+      fax $$2 = (fax)$$0.h().a(10.0, 1.0F, false);
       ji $$3 = $$2.b();
       ard $$4 = $$0.e();
       Optional<ji> $$5 = tb.a($$3, 15, $$4);
@@ -272,7 +272,7 @@ public class td {
          $$0.b(wp.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dvr $$6 = (dvr)$$4.c_($$5.get());
+         dvs $$6 = (dvs)$$4.c_($$5.get());
          if ($$6 == null) {
             a($$4, "Structure block entity could not be found", n.m);
             return 0;
@@ -309,7 +309,7 @@ public class td {
       return 1;
    }
 
-   static int a(ex $$0, dvr $$1) {
+   static int a(ex $$0, dvs $$1) {
       String $$2 = $$1.c();
       if (!$$1.b(true)) {
          c($$0, "Failed to save structure " + $$2);
@@ -351,7 +351,7 @@ public class td {
 
    static ji a(ex $$0) {
       ji $$1 = ji.a((kb)$$0.d());
-      int $$2 = $$0.e().a(ecs.a.b, $$1).v();
+      int $$2 = $$0.e().a(ect.a.b, $$1).v();
       return new ji($$1.u(), $$2 + 1, $$1.w() + 3);
    }
 
@@ -413,11 +413,11 @@ public class td {
          ard $$1 = $$0.e();
          so.a($$1);
          this.a(this.a.findStructureBlockPos(), $$1x -> {
-            dvr $$2 = (dvr)$$1.c_($$1x);
+            dvs $$2 = (dvs)$$1.c_($$1x);
             if ($$2 == null) {
                return 0;
             } else {
-               ene $$3 = tb.b($$2);
+               enf $$3 = tb.b($$2);
                tb.a($$3, $$1);
                return 1;
             }
@@ -430,7 +430,7 @@ public class td {
          ex $$1 = this.a.a();
          ard $$2 = $$1.e();
          this.a(this.a.findStructureBlockPos(), $$3 -> {
-            dvr $$4 = (dvr)$$2.c_($$3);
+            dvs $$4 = (dvs)$$2.c_($$3);
             if ($$4 == null) {
                td.a($$2, "Structure block entity could not be found", n.m);
                $$0.setFalse();
@@ -457,7 +457,7 @@ public class td {
          Collection<sf> $$4 = new ArrayList<>();
 
          for (sl $$5 : $$3) {
-            for (dqe $$6 : dqe.values()) {
+            for (dqf $$6 : dqf.values()) {
                Collection<sl> $$7 = new ArrayList<>();
 
                for (int $$8 = 0; $$8 < 100; $$8++) {
@@ -521,7 +521,7 @@ public class td {
             .findStructureBlockPos()
             .forEach(
                $$2x -> {
-                  dvr $$3 = (dvr)this.a.a().e().c_($$2x);
+                  dvs $$3 = (dvs)this.a.a().e().c_($$2x);
                   if ($$3 != null) {
                      jn $$4 = $$3.s().a(jn.c);
                      ji $$5 = $$3.aA_().a($$4, 2);

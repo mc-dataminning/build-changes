@@ -1,69 +1,51 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class fyg {
-   private final Reference2ObjectMap<ctz, fyg.a> a = new Reference2ObjectArrayMap();
-   private final fyp b;
+public class fyg extends fyj<csf> {
+   private static final fqh h = new fqh(
+      akv.b("recipe_book/furnace_filter_enabled"),
+      akv.b("recipe_book/furnace_filter_disabled"),
+      akv.b("recipe_book/furnace_filter_enabled_highlighted"),
+      akv.b("recipe_book/furnace_filter_disabled_highlighted")
+   );
+   private final wp i;
 
-   public fyg(fyp $$0) {
-      this.b = $$0;
+   public fyg(csf $$0, wp $$1, List<fyj.a> $$2) {
+      super($$0, $$2);
+      this.i = $$1;
    }
 
-   public void a() {
-      this.a.clear();
+   @Override
+   protected void a() {
+      this.e.a(h);
    }
 
-   private void a(ctz $$0, bak $$1, dcp $$2, boolean $$3) {
-      List<cwp> $$4 = $$2.a($$1);
-      if (!$$4.isEmpty()) {
-         this.a.put($$0, new fyg.a($$4, $$3));
-      }
+   @Override
+   protected boolean a(cua $$0) {
+      return switch ($$0.d) {
+         case 0, 1, 2 -> true;
+         default -> false;
+      };
    }
 
-   protected void a(ctz $$0, bak $$1, dcp $$2) {
-      this.a($$0, $$1, $$2, false);
-   }
-
-   protected void b(ctz $$0, bak $$1, dcp $$2) {
-      this.a($$0, $$1, $$2, true);
-   }
-
-   public void a(foe $$0, flj $$1, boolean $$2) {
-      this.a.forEach(($$3, $$4) -> {
-         int $$5 = $$3.e;
-         int $$6 = $$3.f;
-         if ($$4.b && $$2) {
-            $$0.a($$5 - 4, $$6 - 4, $$5 + 20, $$6 + 20, 822018048);
-         } else {
-            $$0.a($$5, $$6, $$5 + 16, $$6 + 16, 822018048);
-         }
-
-         cwp $$7 = $$4.a(this.b.currentIndex());
-         $$0.b($$7, $$5, $$6);
-         $$0.a(gmi.O(), $$5, $$6, $$5 + 16, $$6 + 16, 822083583);
-         if ($$4.b) {
-            $$0.a($$1.h, $$7, $$5, $$6);
-         }
-      });
-   }
-
-   public void a(foe $$0, flj $$1, int $$2, int $$3, @Nullable ctz $$4) {
-      if ($$4 != null) {
-         fyg.a $$5 = (fyg.a)this.a.get($$4);
-         if ($$5 != null) {
-            cwp $$6 = $$5.a(this.b.currentIndex());
-            $$0.a($$1.h, ful.a($$1, $$6), $$2, $$3, $$6.a(kv.G));
+   @Override
+   protected void a(fyh $$0, dck $$1, bak $$2) {
+      $$0.b(this.f.l(), $$2, $$1.d());
+      if ($$1 instanceof dcj $$3) {
+         $$0.a(this.f.k.get(0), $$2, $$3.b());
+         cua $$4 = this.f.k.get(1);
+         if ($$4.g().f()) {
+            $$0.a($$4, $$2, $$3.c());
          }
       }
    }
 
-   static record a(List<cwp> a, boolean b) {
+   @Override
+   protected wp b() {
+      return this.i;
+   }
 
-      public cwp a(int $$0) {
-         int $$1 = this.a.size();
-         return $$1 == 0 ? cwp.j : this.a.get($$0 % $$1);
-      }
+   @Override
+   protected void a(fyn $$0, cpd $$1) {
+      $$0.a($$1, $$0x -> $$0x instanceof dcj);
    }
 }

@@ -1,46 +1,19 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public record btg(String i) {
-   public static final btg a = new btg("generic");
-   public static final btg b = new btg("ladder");
-   public static final btg c = new btg("vines");
-   public static final btg d = new btg("weeping_vines");
-   public static final btg e = new btg("twisting_vines");
-   public static final btg f = new btg("scaffolding");
-   public static final btg g = new btg("other_climbable");
-   public static final btg h = new btg("water");
+public enum btg implements azv {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
 
-   public static btg a(dwx $$0) {
-      if ($$0.a(djo.cX) || $$0.a(awp.R)) {
-         return b;
-      } else if ($$0.a(djo.ft)) {
-         return c;
-      } else if ($$0.a(djo.pb) || $$0.a(djo.pc)) {
-         return d;
-      } else if ($$0.a(djo.pd) || $$0.a(djo.pe)) {
-         return e;
-      } else {
-         return $$0.a(djo.ou) ? f : g;
-      }
+   public static final Codec<btg> d = azv.a(btg::values);
+   private final String e;
+
+   private btg(final String $$0) {
+      this.e = $$0;
    }
 
-   @Nullable
-   public static btg a(bvh $$0) {
-      Optional<ji> $$1 = $$0.eN();
-      if ($$1.isPresent()) {
-         dwx $$2 = $$0.dV().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.bj() ? h : null;
-      }
-   }
-
-   public String a() {
-      return "death.fell.accident." + this.i;
-   }
-
-   public String b() {
-      return this.i;
+   @Override
+   public String c() {
+      return this.e;
    }
 }

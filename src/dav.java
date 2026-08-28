@@ -1,35 +1,53 @@
-public class dav extends dau {
-   public dav(dar $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static cwp c(das $$0) {
-      return $$0.a(1, 0);
-   }
+public abstract class dav implements dau {
+   private final das c;
 
-   private static cwp d(das $$0) {
-      return $$0.a(0, 1);
-   }
-
-   private static cwp e(das $$0) {
-      return $$0.a(2, 1);
-   }
-
-   private static cwp f(das $$0) {
-      return $$0.a(1, 2);
-   }
-
-   public boolean a(das $$0, dgi $$1) {
-      return $$0.f() == 3 && $$0.g() == 3 && $$0.e() == 4 ? c($$0).a(awy.bF) && d($$0).a(awy.bF) && e($$0).a(awy.bF) && f($$0).a(awy.bF) : false;
-   }
-
-   public cwp a(das $$0, jt.a $$1) {
-      dvg $$2 = new dvg(c($$0).h(), d($$0).h(), e($$0).h(), f($$0).h());
-      return duq.a($$2);
+   public dav(das $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public dbo<dav> a() {
-      return dbo.v;
+   public boolean ap_() {
+      return true;
+   }
+
+   @Override
+   public das c() {
+      return this.c;
+   }
+
+   @Override
+   public dbe ao_() {
+      return dbe.b;
+   }
+
+   @Override
+   public abstract dbp<? extends dav> a();
+
+   public static class a<T extends dau> implements dbp<T> {
+      private final MapCodec<T> w;
+      private final yn<wa, T> x;
+
+      public a(dav.a.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(das.e.fieldOf("category").orElse(das.d).forGetter(dau::c)).apply($$1, $$0::create));
+         this.x = yn.a(das.g, dau::c, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public yn<wa, T> b() {
+         return this.x;
+      }
+
+      @FunctionalInterface
+      public interface a<T extends dau> {
+         T create(das var1);
+      }
    }
 }

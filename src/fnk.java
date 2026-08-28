@@ -1,47 +1,49 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public class fnk implements Supplier<JsonElement> {
-   private final Map<fnm<?>, fnm<?>.a> a = Maps.newLinkedHashMap();
+public final class fnk {
+   private static final fnk a = new fnk(ImmutableList.of());
+   private static final Comparator<dya.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dya.a<?>> c;
 
-   public <T> fnk a(fnm<T> $$0, T $$1) {
-      fnm<?>.a $$2 = this.a.put($$0, $$0.a($$1));
-      if ($$2 != null) {
-         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
-      } else {
-         return this;
-      }
+   public fnk a(dya.a<?> $$0) {
+      return new fnk(ImmutableList.builder().addAll(this.c).add($$0).build());
+   }
+
+   public fnk a(fnk $$0) {
+      return new fnk(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
+   }
+
+   private fnk(List<dya.a<?>> $$0) {
+      this.c = $$0;
    }
 
    public static fnk a() {
-      return new fnk();
+      return a;
    }
 
-   public static fnk a(fnk $$0, fnk $$1) {
-      fnk $$2 = new fnk();
-      $$2.a.putAll($$0.a);
-      $$2.a.putAll($$1.a);
-      return $$2;
+   public static fnk a(dya.a<?>... $$0) {
+      return new fnk(ImmutableList.copyOf($$0));
    }
 
-   public JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      this.a.values().forEach($$1 -> $$1.a($$0));
-      return $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof fnk && this.c.equals(((fnk)$$0).c);
    }
 
-   public static JsonElement a(List<fnk> $$0) {
-      if ($$0.size() == 1) {
-         return $$0.get(0).b();
-      } else {
-         JsonArray $$1 = new JsonArray();
-         $$0.forEach($$1x -> $$1.add($$1x.b()));
-         return $$1;
-      }
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   public String b() {
+      return this.c.stream().sorted(b).map(dya.a::toString).collect(Collectors.joining(","));
+   }
+
+   @Override
+   public String toString() {
+      return this.b();
    }
 }

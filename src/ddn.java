@@ -1,18 +1,17 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddn(ddg d, ddg e, jr<btd> f) implements ddq {
-   public static final MapCodec<ddn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ddg.b.fieldOf("min_damage").forGetter(ddn::b), ddg.b.fieldOf("max_damage").forGetter(ddn::c), btd.b.fieldOf("damage_type").forGetter(ddn::d)
-            )
-            .apply($$0, ddn::new)
-   );
+public record ddn(ddh d) implements ddr {
+   public static final MapCodec<ddn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddh.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, ddn::new));
 
    @Override
-   public void a(ard $$0, int $$1, dcy $$2, bul $$3, fba $$4) {
-      float $$5 = ayz.b($$3.dY(), this.d.a($$1), this.e.a($$1));
-      $$3.a($$0, new btb(this.f, $$2.c()), $$5);
+   public void a(ard $$0, int $$1, dcz $$2, bum $$3, fbb $$4) {
+      cwq $$5 = $$2.a();
+      if ($$5.b(kv.d) && $$5.b(kv.e)) {
+         are $$7 = $$2.c() instanceof are $$6 ? $$6 : null;
+         int $$8 = (int)this.d.a($$1);
+         $$5.a($$8, $$0, $$7, $$2.d());
+      }
    }
 
    @Override
@@ -20,15 +19,7 @@ public record ddn(ddg d, ddg e, jr<btd> f) implements ddq {
       return a;
    }
 
-   public ddg b() {
+   public ddh b() {
       return this.d;
-   }
-
-   public ddg c() {
-      return this.e;
-   }
-
-   public jr<btd> d() {
-      return this.f;
    }
 }

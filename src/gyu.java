@@ -1,9 +1,10 @@
-public class gyu extends gzk {
-   private static final akv g = akv.b("textures/entity/frog/temperate_frog.png");
-   public boolean a;
-   public final bud b = new bud();
-   public final bud c = new bud();
-   public final bud d = new bud();
-   public final bud e = new bud();
-   public akv f = g;
+public class gyu extends gza {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public chj.v h = chj.v.a;
 }

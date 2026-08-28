@@ -24,7 +24,7 @@ public abstract class bda extends DataFix {
    }
 
    public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhx.w);
+      Type<?> $$0 = this.getInputSchema().getType(bhy.w);
       return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
             Optional<? extends Dynamic<?>> $$1 = $$0xx.get(this.b).result();
             if ($$1.isEmpty()) {

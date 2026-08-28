@@ -1,56 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dlb extends djm {
-   public static final MapCodec<djm> a = mb.e.q().fieldOf("dead");
-   public static final MapCodec<dlb> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dlb::new));
-   private final djm c;
+public class dlb extends djn {
+   public static final MapCodec<dlb> a = b(dlb::new);
+   public static final dxp b = dxo.B;
+   public static final dxp c = dxo.v;
 
-   public dlb(djm $$0, dww.d $$1) {
-      super($$1);
-      this.c = $$0;
+   @Override
+   protected MapCodec<? extends dlb> a() {
+      return a;
+   }
+
+   public dlb(dwx.d $$0) {
+      super($$0);
+      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public MapCodec<dlb> a() {
-      return b;
-   }
-
-   @Override
-   protected void a(dwx $$0, ard $$1, ji $$2, azh $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.m(), 2);
+   protected void b(dwy $$0, dgj $$1, ji $$2, dwy $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof ard $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
    @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if (!this.a($$1, $$3)) {
-         $$2.a($$3, this, 60 + $$7.a(40));
+   protected void a(dwy $$0, dgj $$1, ji $$2, djn $$3, @Nullable eui $$4, boolean $$5) {
+      if ($$1 instanceof ard $$6) {
+         this.a($$0, $$6, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   protected boolean a(dfn $$0, ji $$1) {
-      for (jn $$2 : jn.values()) {
-         esz $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(awv.a)) {
-            return true;
+   public void a(dwy $$0, ard $$1, ji $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         dwy $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? awa.fI : awa.fJ, awb.e);
          }
-      }
 
-      return false;
+         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
+      }
    }
 
-   @Nullable
    @Override
-   public dwx a(dag $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().H_().a(40));
-      }
+   protected void a(dwz.a<djn, dwy> $$0) {
+      $$0.a(c, b);
+   }
 
-      return this.m();
+   @Override
+   protected boolean c_(dwy $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dwy $$0, dgj $$1, ji $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

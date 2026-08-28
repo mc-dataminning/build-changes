@@ -1,290 +1,121 @@
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public abstract class bwe extends cgy implements bvo {
-   public static final int bY = 144;
-   private static final int cc = 2;
-   private static final int cd = 3;
-   private static final int ce = 1;
-   protected static final ajy<Byte> bZ = akc.a(bwe.class, aka.a);
-   protected static final ajy<Optional<UUID>> ca = akc.a(bwe.class, aka.r);
-   private boolean cf;
+public class bwe {
+   private static final Map<but<?>, bwe.a> a = Maps.newHashMap();
 
-   protected bwe(bus<? extends bwe> $$0, dgi $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a(akc.a $$0) {
-      super.a($$0);
-      $$0.a(bZ, (byte)0);
-      $$0.a(ca, Optional.empty());
-   }
-
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      if (this.aa_() != null) {
-         $$0.a("Owner", this.aa_());
-      }
-
-      $$0.a("Sitting", this.cf);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      UUID $$1;
-      if ($$0.b("Owner")) {
-         $$1 = $$0.a("Owner");
-      } else {
-         String $$2 = $$0.l("Owner");
-         $$1 = avc.a(this.cV(), $$2);
-      }
-
-      if ($$1 != null) {
-         try {
-            this.b($$1);
-            this.a(true, false);
-         } catch (Throwable var4) {
-            this.a(false, true);
-         }
-      } else {
-         this.b(null);
-         this.a(false, true);
-      }
-
-      this.cf = $$0.q("Sitting");
-      this.y(this.cf);
-   }
-
-   @Override
-   public boolean y() {
-      return true;
-   }
-
-   @Override
-   public boolean a(bul $$0, float $$1) {
-      if (this.x()) {
-         if ($$1 > 10.0F) {
-            this.z();
-         }
-
-         return false;
-      } else {
-         return super.a($$0, $$1);
+   private static <T extends bvk> void a(but<T> $$0, bwc $$1, ect.a $$2, bwe.b<T> $$3) {
+      bwe.a $$4 = a.put($$0, new bwe.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + mb.f.b($$0));
       }
    }
 
-   protected void x(boolean $$0) {
-      lr $$1 = lt.R;
-      if (!$$0) {
-         $$1 = lt.ag;
-      }
-
-      for (int $$2 = 0; $$2 < 7; $$2++) {
-         double $$3 = this.ae.k() * 0.02;
-         double $$4 = this.ae.k() * 0.02;
-         double $$5 = this.ae.k() * 0.02;
-         this.dV().a($$1, this.d(1.0), this.dD() + 0.5, this.g(1.0), $$3, $$4, $$5);
-      }
+   public static bwc a(but<?> $$0) {
+      bwe.a $$1 = a.get($$0);
+      return $$1 == null ? bwd.a : $$1.b;
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 7) {
-         this.x(true);
-      } else if ($$0 == 6) {
-         this.x(false);
-      } else {
-         super.b($$0);
-      }
+   public static boolean a(but<?> $$0, dgm $$1, ji $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
    }
 
-   public boolean p() {
-      return (this.al.a(bZ) & 4) != 0;
+   public static ect.a b(@Nullable but<?> $$0) {
+      bwe.a $$1 = a.get($$0);
+      return $$1 == null ? ect.a.f : $$1.a;
    }
 
-   public void a(boolean $$0, boolean $$1) {
-      byte $$2 = this.al.a(bZ);
-      if ($$0) {
-         this.al.a(bZ, (byte)($$2 | 4));
-      } else {
-         this.al.a(bZ, (byte)($$2 & -5));
-      }
-
-      if ($$1) {
-         this.t();
-      }
+   public static <T extends bum> boolean a(but<T> $$0, dha $$1, bus $$2, ji $$3, azh $$4) {
+      bwe.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   protected void t() {
+   static {
+      a(but.h, bwd.b, ect.a.f, cil::a);
+      a(but.A, bwd.b, ect.a.f, cib::c);
+      a(but.H, bwd.b, ect.a.f, cgy::b);
+      a(but.K, bwd.b, ect.a.f, cln::a);
+      a(but.ai, bwd.b, ect.a.f, clv::b);
+      a(but.aW, bwd.b, ect.a.f, cib::c);
+      a(but.aZ, bwd.b, ect.a.f, cib::c);
+      a(but.bq, bwd.b, ect.a.f, cgy::b);
+      a(but.bz, bwd.b, ect.a.f, chz::b);
+      a(but.e, bwd.d, ect.a.f, cii::c);
+      a(but.k, bwd.d, ect.a.f, cgt::b);
+      a(but.o, bwd.d, ect.a.f, clz::c);
+      a(but.q, bwd.d, ect.a.f, clz::b);
+      a(but.r, bwd.d, ect.a.f, clz::c);
+      a(but.v, bwd.d, ect.a.f, clz::b);
+      a(but.z, bwd.d, ect.a.f, cgz::b);
+      a(but.C, bwd.d, ect.a.f, cgz::b);
+      a(but.E, bwd.d, ect.a.f, clz::b);
+      a(but.I, bwd.d, ect.a.f, cgz::b);
+      a(but.N, bwd.d, ect.a.f, clz::b);
+      a(but.O, bwd.d, ect.a.f, clq::b);
+      a(but.P, bwd.d, ect.a.f, bvk::a);
+      a(but.ab, bwd.d, ect.a.f, cit::c);
+      a(but.ad, bwd.d, ect.a.f, clt::b);
+      a(but.ae, bwd.d, ect.a.f, clz::b);
+      a(but.ag, bwd.b, ect.a.f, bva::a);
+      a(but.ah, bwd.d, ect.a.f, ciz::c);
+      a(but.al, bwd.d, ect.a.f, cgz::b);
+      a(but.am, bwd.d, ect.a.f, clw::a);
+      a(but.ap, bwd.d, ect.a.f, bvk::a);
+      a(but.ax, bwd.d, ect.a.f, cgz::b);
+      a(but.az, bwd.d, ect.a.f, cly::b);
+      a(but.aE, bwd.d, ect.a.f, chm::c);
+      a(but.aF, bwd.d, ect.a.f, cgz::b);
+      a(but.aI, bwd.d, ect.a.e, chn::c);
+      a(but.aO, bwd.d, ect.a.e, chp::c);
+      a(but.aQ, bwd.d, ect.a.f, cgz::b);
+      a(but.aj, bwd.d, ect.a.f, cng::c);
+      a(but.aR, bwd.d, ect.a.f, cnm::b);
+      a(but.aT, bwd.d, ect.a.f, cma::b);
+      a(but.aU, bwd.d, ect.a.f, chr::c);
+      a(but.aX, bwd.d, ect.a.f, cht::c);
+      a(but.ba, bwd.d, ect.a.f, cgz::b);
+      a(but.bd, bwd.d, ect.a.f, cmg::b);
+      a(but.be, bwd.d, ect.a.f, clz::b);
+      a(but.bf, bwd.d, ect.a.f, cjj::c);
+      a(but.bg, bwd.d, ect.a.f, cmi::c);
+      a(but.bk, bwd.d, ect.a.f, bvk::a);
+      a(but.bn, bwd.d, ect.a.f, clz::b);
+      a(but.br, bwd.d, ect.a.f, cml::a);
+      a(but.bs, bwd.c, ect.a.f, cmm::c);
+      a(but.bA, bwd.d, ect.a.f, cia::c);
+      a(but.bC, bwd.d, ect.a.f, bvk::a);
+      a(but.bH, bwd.d, ect.a.f, clz::b);
+      a(but.bI, bwd.d, ect.a.f, clz::b);
+      a(but.bJ, bwd.d, ect.a.f, clz::b);
+      a(but.bL, bwd.d, ect.a.f, cic::c);
+      a(but.bM, bwd.d, ect.a.f, clz::c);
+      a(but.D, bwd.d, ect.a.f, clz::b);
+      a(but.bN, bwd.d, ect.a.f, clz::b);
+      a(but.bO, bwd.d, ect.a.f, cjn::c);
+      a(but.bQ, bwd.d, ect.a.f, cmu::b);
+      a(but.bP, bwd.d, ect.a.f, clz::b);
+      a(but.u, bwd.d, ect.a.f, cgz::b);
+      a(but.M, bwd.b, ect.a.f, clv::b);
+      a(but.S, bwd.a, ect.a.f, clz::b);
+      a(but.aa, bwd.a, ect.a.f, chj::c);
+      a(but.an, bwd.a, ect.a.f, clz::b);
+      a(but.aN, bwd.a, ect.a.f, cgz::b);
+      a(but.aP, bwd.a, ect.a.f, bvk::a);
+      a(but.aY, bwd.d, ect.a.f, clz::b);
+      a(but.bb, bwd.a, ect.a.f, bvk::a);
+      a(but.bx, bwd.a, ect.a.f, cgz::b);
+      a(but.bB, bwd.a, ect.a.f, clz::b);
+      a(but.bD, bwd.a, ect.a.f, clz::b);
+      a(but.bE, bwd.d, ect.a.f, bvk::a);
+      a(but.bF, bwd.a, ect.a.f, clz::b);
    }
 
-   public boolean x() {
-      return (this.al.a(bZ) & 1) != 0;
+   static record a(ect.a a, bwc b, bwe.b<?> c) {
    }
 
-   public void y(boolean $$0) {
-      byte $$1 = this.al.a(bZ);
-      if ($$0) {
-         this.al.a(bZ, (byte)($$1 | 1));
-      } else {
-         this.al.a(bZ, (byte)($$1 & -2));
-      }
-   }
-
-   @Nullable
-   @Override
-   public UUID aa_() {
-      return this.al.a(ca).orElse(null);
-   }
-
-   public void b(@Nullable UUID $$0) {
-      this.al.a(ca, Optional.ofNullable($$0));
-   }
-
-   public void a(cox $$0) {
-      this.a(true, true);
-      this.b($$0.cG());
-      if ($$0 instanceof are $$1) {
-         ap.y.a($$1, this);
-      }
-   }
-
-   @Override
-   public boolean c(bvh $$0) {
-      return this.j($$0) ? false : super.c($$0);
-   }
-
-   public boolean j(bvh $$0) {
-      return $$0 == this.ag_();
-   }
-
-   public boolean a(bvh $$0, bvh $$1) {
-      return true;
-   }
-
-   @Override
-   public fca cr() {
-      if (this.p()) {
-         bvh $$0 = this.ag_();
-         if ($$0 != null) {
-            return $$0.cr();
-         }
-      }
-
-      return super.cr();
-   }
-
-   @Override
-   protected boolean t(bul $$0) {
-      if (this.p()) {
-         bvh $$1 = this.ag_();
-         if ($$0 == $$1) {
-            return true;
-         }
-
-         if ($$1 != null) {
-            return $$1.t($$0);
-         }
-      }
-
-      return super.t($$0);
-   }
-
-   @Override
-   public void a(btb $$0) {
-      if (this.dV() instanceof ard $$1 && $$1.O().b(dge.n) && this.ag_() instanceof are $$2) {
-         $$2.a(this.eQ().a());
-      }
-
-      super.a($$0);
-   }
-
-   public boolean gs() {
-      return this.cf;
-   }
-
-   public void z(boolean $$0) {
-      this.cf = $$0;
-   }
-
-   public void gt() {
-      bvh $$0 = this.ag_();
-      if ($$0 != null) {
-         this.h($$0.dv());
-      }
-   }
-
-   public boolean gu() {
-      bvh $$0 = this.ag_();
-      return $$0 != null && this.g((bul)this.ag_()) >= 144.0;
-   }
-
-   private void h(ji $$0) {
-      for (int $$1 = 0; $$1 < 10; $$1++) {
-         int $$2 = this.ae.a(-3, 3);
-         int $$3 = this.ae.a(-3, 3);
-         if (Math.abs($$2) >= 2 || Math.abs($$3) >= 2) {
-            int $$4 = this.ae.a(-1, 1);
-            if (this.a($$0.u() + $$2, $$0.v() + $$4, $$0.w() + $$3)) {
-               return;
-            }
-         }
-      }
-   }
-
-   private boolean a(int $$0, int $$1, int $$2) {
-      if (!this.i(new ji($$0, $$1, $$2))) {
-         return false;
-      } else {
-         this.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.dL(), this.dN());
-         this.bR.m();
-         return true;
-      }
-   }
-
-   private boolean i(ji $$0) {
-      etq $$1 = etv.b(this, $$0);
-      if ($$1 != etq.c) {
-         return false;
-      } else {
-         dwx $$2 = this.dV().a_($$0.e());
-         if (!this.gw() && $$2.b() instanceof dny) {
-            return false;
-         } else {
-            ji $$3 = $$0.b(this.dv());
-            return this.dV().a(this, this.cR().a($$3));
-         }
-      }
-   }
-
-   public final boolean gv() {
-      return this.gs() || this.bZ() || this.q() || this.ag_() != null && this.ag_().Z_();
-   }
-
-   protected boolean gw() {
-      return false;
-   }
-
-   public class a extends ccy {
-      public a(final double param3, final axf<btd> bwe.this) {
-         super(bwe.this, $$1, $$2);
-      }
-
-      public a(final double $$1) {
-         super(bwe.this, $$1);
-      }
-
-      @Override
-      public void a() {
-         if (!bwe.this.gv() && bwe.this.gu()) {
-            bwe.this.gt();
-         }
-
-         super.a();
-      }
+   @FunctionalInterface
+   public interface b<T extends bum> {
+      boolean test(but<T> var1, dha var2, bus var3, ji var4, azh var5);
    }
 }

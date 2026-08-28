@@ -1,19 +1,21 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record czc(Map<jr<djm>, dxz<?>> c) {
-   public static final czc a = new czc(Map.of());
-   public static final Codec<czc> b = Codec.dispatchedMap(mb.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
-         dxz<?> $$2 = ((djm)$$0.a()).l().a($$1);
-         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
-      }, dxz::f)).xmap(czc::new, czc::a);
+public record czc(List<dac> d) {
+   public static final Codec<czc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dac.d.listOf().optionalFieldOf("death_effects", List.of()).forGetter(czc::a)).apply($$0, czc::new)
+   );
+   public static final yn<wa, czc> b = yn.a(dac.e.a(yl.a()), czc::a, czc::new);
+   public static final czc c = new czc(List.of(new dab(), new daa(List.of(new btr(btt.j, 900, 1), new btr(btt.v, 100, 1), new btr(btt.l, 800, 0)))));
 
-   public czc a(jr<djm> $$0, dxz<?> $$1) {
-      return new czc(af.a(this.c, $$0, $$1));
+   public void a(cwq $$0, bvi $$1) {
+      for (dac $$2 : this.d) {
+         $$2.a($$1.dV(), $$0, $$1);
+      }
    }
 
-   public Map<jr<djm>, dxz<?>> a() {
-      return this.c;
+   public List<dac> a() {
+      return this.d;
    }
 }

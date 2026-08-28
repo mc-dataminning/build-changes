@@ -1,30 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record eip(int b, int c, int d, jr<emq> e) implements eic {
+public class eip implements eid {
    public static final Codec<eip> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayi.m.fieldOf("tries").orElse(128).forGetter(eip::a),
-               ayi.l.fieldOf("xz_spread").orElse(7).forGetter(eip::b),
-               ayi.l.fieldOf("y_spread").orElse(3).forGetter(eip::c),
-               emq.b.fieldOf("feature").forGetter(eip::d)
-            )
-            .apply($$0, eip::new)
+      $$0 -> $$0.apply2(eip::new, eht.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), emr.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
+   public final List<eht> b;
+   public final jr<emr> c;
 
-   public int a() {
-      return this.b;
+   public eip(List<eht> $$0, jr<emr> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public jr<emq> d() {
-      return this.e;
+   @Override
+   public Stream<efl<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

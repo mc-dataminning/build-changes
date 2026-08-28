@@ -1,25 +1,26 @@
-public class gvf extends gtk<cmo, hax, geq> {
-   private static final akv a = akv.b("textures/entity/witch.png");
+public class gvf extends gse<cqh, gyl> {
+   private static final akv a = akv.b("textures/entity/projectiles/wind_charge.png");
+   private final geq b;
 
-   public gvf(gse.a $$0) {
-      super($$0, new geq($$0.a(gfc.dz)), 0.5F);
-      this.a(new gxf(this));
+   public gvf(gsf.a $$0) {
+      super($$0);
+      this.b = new geq($$0.a(gfd.dy));
    }
 
-   public akv a(hax $$0) {
-      return a;
+   @Override
+   public void a(gyl $$0, ffv $$1, glz $$2, int $$3) {
+      ffz $$4 = $$2.getBuffer(gmj.a(a, this.a($$0.u) % 1.0F, 0.0F));
+      this.b.a($$0);
+      this.b.a($$1, $$4, $$3, hej.d);
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hax b() {
-      return new hax();
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
    }
 
-   public void a(cmo $$0, hax $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gyz.a($$0, $$1, this.i);
-      $$1.a = $$0.ar();
-      cwp $$3 = $$0.eZ();
-      $$1.b = !$$3.f();
-      $$1.c = $$3.a(cwt.ti);
+   @Override
+   public gyl d() {
+      return new gyl();
    }
 }

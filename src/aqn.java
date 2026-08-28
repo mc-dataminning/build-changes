@@ -9,15 +9,15 @@ public interface aqn {
       }
 
       @Override
-      public void a(Consumer<dfo> $$0) {
+      public void a(Consumer<dfp> $$0) {
       }
    };
 
-   static aqn a(dfo $$0, int $$1) {
+   static aqn a(dfp $$0, int $$1) {
       return new aqn.a($$0, $$1);
    }
 
-   static void a(aqn $$0, aqn $$1, Consumer<dfo> $$2, Consumer<dfo> $$3) {
+   static void a(aqn $$0, aqn $$1, Consumer<dfp> $$2, Consumer<dfp> $$3) {
       if (!$$0.equals($$1)) {
          if ($$0 instanceof aqn.a $$4 && $$1 instanceof aqn.a $$5 && $$4.a($$5)) {
             int $$6 = Math.min($$4.c(), $$5.c());
@@ -31,9 +31,9 @@ public interface aqn {
                   boolean $$13 = $$5.a($$10, $$11);
                   if ($$12 != $$13) {
                      if ($$13) {
-                        $$2.accept(new dfo($$10, $$11));
+                        $$2.accept(new dfp($$10, $$11));
                      } else {
-                        $$3.accept(new dfo($$10, $$11));
+                        $$3.accept(new dfp($$10, $$11));
                      }
                   }
                }
@@ -47,7 +47,7 @@ public interface aqn {
       }
    }
 
-   default boolean a(dfo $$0) {
+   default boolean a(dfp $$0) {
       return this.a($$0.h, $$0.i);
    }
 
@@ -57,7 +57,7 @@ public interface aqn {
 
    boolean a(int var1, int var2, boolean var3);
 
-   void a(Consumer<dfo> var1);
+   void a(Consumer<dfp> var1);
 
    default boolean b(int $$0, int $$1) {
       return this.a($$0, $$1, false);
@@ -76,7 +76,7 @@ public interface aqn {
       return $$9 < (long)$$10;
    }
 
-   public static record a(dfo b, int c) implements aqn {
+   public static record a(dfp b, int c) implements aqn {
       int c() {
          return this.b.h - this.c - 1;
       }
@@ -104,17 +104,17 @@ public interface aqn {
       }
 
       @Override
-      public void a(Consumer<dfo> $$0) {
+      public void a(Consumer<dfp> $$0) {
          for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
             for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
                if (this.a($$1, $$2)) {
-                  $$0.accept(new dfo($$1, $$2));
+                  $$0.accept(new dfp($$1, $$2));
                }
             }
          }
       }
 
-      public dfo a() {
+      public dfp a() {
          return this.b;
       }
 

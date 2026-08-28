@@ -1,69 +1,139 @@
-import java.util.OptionalInt;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fpn extends foo {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final azp<fpn.a, fpm> c;
-   private boolean d = false;
-
-   public fpn(wp $$0, foc $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fpn(int $$0, int $$1, wp $$2, foc $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = af.a($$1x -> $$1x.c.isPresent() ? fpm.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fpm.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public fpn c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fpn d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fpn e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fpn b(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   @Override
-   public int A() {
-      return this.c.a(this.c()).b();
-   }
-
-   @Override
-   public int y() {
-      return this.c.a(this.c()).a() * 9;
-   }
-
-   @Override
-   public void b(foe $$0, int $$1, int $$2, float $$3) {
-      fpm $$4 = this.c.a(this.c());
-      int $$5 = this.F();
-      int $$6 = this.G();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.A() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+public interface fpn {
+   fpn a = new fpn() {
+      @Override
+      public void a(fof $$0, int $$1, int $$2) {
       }
+
+      @Override
+      public void a(fof $$0, int $$1, int $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      public void b(fof $$0, int $$1, int $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      public int c(fof $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static fpn a(fod $$0, wp... $$1) {
+      return a($$0, Integer.MAX_VALUE, Integer.MAX_VALUE, $$1);
    }
 
-   private fpn.a c() {
-      return new fpn.a(this.B(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   static fpn a(fod $$0, int $$1, wp... $$2) {
+      return a($$0, $$1, Integer.MAX_VALUE, $$2);
    }
 
-   static record a(wp a, int b, OptionalInt c) {
+   static fpn a(fod $$0, wp $$1, int $$2) {
+      return a($$0, $$2, Integer.MAX_VALUE, $$1);
+   }
+
+   static fpn a(final fod $$0, final int $$1, final int $$2, final wp... $$3) {
+      return $$3.length == 0 ? a : new fpn() {
+         @Nullable
+         private List<fpn.a> f;
+         @Nullable
+         private tl g;
+
+         @Override
+         public void a(fof $$0x, int $$1x, int $$2x) {
+            this.a($$0, $$1, $$2, 9, -1);
+         }
+
+         @Override
+         public void a(fof $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (fpn.a $$6 : this.c()) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+         }
+
+         @Override
+         public void b(fof $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (fpn.a $$6 : this.c()) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+         }
+
+         @Override
+         public int c(fof $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (fpn.a $$6 : this.c()) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         private List<fpn.a> c() {
+            tl $$0 = tl.a();
+            if (this.f != null && $$0 == this.g) {
+               return this.f;
+            } else {
+               this.g = $$0;
+               List<ayl> $$1 = new ArrayList<>();
+
+               for (wp $$2 : $$3) {
+                  $$1.addAll($$0.c($$2, $$1));
+               }
+
+               this.f = new ArrayList<>();
+
+               for (ayl $$3 : $$1.subList(0, Math.min($$1.size(), $$2))) {
+                  this.f.add(new fpn.a($$3, $$0.a($$3)));
+               }
+
+               return this.f;
+            }
+         }
+
+         @Override
+         public int a() {
+            return this.c().size();
+         }
+
+         @Override
+         public int b() {
+            return Math.min($$1, this.c().stream().mapToInt(fpn.a::b).max().orElse(0));
+         }
+      };
+   }
+
+   void a(fof var1, int var2, int var3);
+
+   void a(fof var1, int var2, int var3, int var4, int var5);
+
+   void b(fof var1, int var2, int var3, int var4, int var5);
+
+   int c(fof var1, int var2, int var3, int var4, int var5);
+
+   int a();
+
+   int b();
+
+   public static record a(ayl a, int b) {
    }
 }

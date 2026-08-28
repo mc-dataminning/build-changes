@@ -1,95 +1,59 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
 import java.util.List;
-import java.util.Set;
+import java.util.Locale;
+import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class gny implements gns {
-   private final List<gny.d> a;
+public class gny implements gnx {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   gny(List<gny.d> $$0) {
-      this.a = $$0;
+   public gny(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public Object a(dwx $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
-         if (this.a.get($$2).a.test($$0)) {
-            $$1.add($$2);
+   public Predicate<dwy> getPredicate(dwz<djn, dwy> $$0) {
+      dya<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
          }
-      }
 
-      record a(gny a, IntList b) {
-         a(IntList b) {
-            this.b = b;
-         }
-      }
-
-      return new a($$1);
-   }
-
-   @Override
-   public void a(hhk.a $$0) {
-      this.a.forEach($$1 -> $$1.b.a($$0));
-   }
-
-   @Override
-   public hgs a(hhb $$0) {
-      List<hhj.a> $$1 = new ArrayList<>(this.a.size());
-
-      for (gny.d $$2 : this.a) {
-         hgs $$3 = $$2.b.a($$0);
-         $$1.add(new hhj.a($$2.a, $$3));
-      }
-
-      return new hhj($$1);
-   }
-
-   public static record b(List<goa> a) {
-      public gny a(dwy<djm, dwx> $$0) {
-         List<gny.d> $$1 = this.a.stream().map($$1x -> new gny.d($$1x.a($$0), $$1x.a())).toList();
-         return new gny($$1);
-      }
-
-      public Set<gnq> a() {
-         return this.a.stream().map(goa::a).collect(Collectors.toSet());
-      }
-
-      public List<goa> b() {
-         return this.a;
-      }
-   }
-
-   public static class c implements JsonDeserializer<gny.b> {
-      public gny.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new gny.b(this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<goa> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<goa> $$2 = new ArrayList<>();
-         if ($$1.isEmpty()) {
-            throw new JsonSyntaxException("Empty selector array");
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
          } else {
-            for (JsonElement $$3 : $$1) {
-               $$2.add((goa)$$0.deserialize($$3, goa.class));
+            Predicate<dwy> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               $$5 = af.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
             }
 
-            return $$2;
+            return $$3 ? $$5.negate() : $$5;
          }
       }
    }
 
-   static record d(Predicate<dwx> a, gnq b) {
+   private Predicate<dwy> a(dwz<djn, dwy> $$0, dya<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

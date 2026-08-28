@@ -1,39 +1,27 @@
-public class grl extends gqy<chb, gya, gbn> {
-   public grl(gse.a $$0) {
-      super($$0, new gbn($$0.a(gfc.O)), new gbn($$0.a(gfc.P)), 0.4F);
-      this.a(new gvu(this, $$0.f()));
+public class grl extends gqz<ciq, gya, gbn> {
+   private static final akv a = akv.b("textures/entity/camel/camel.png");
+
+   public grl(gsf.a $$0) {
+      super($$0, new gbn($$0.a(gfd.M)), new gbn($$0.a(gfd.N)), 0.7F);
    }
 
    public akv a(gya $$0) {
-      return $$0.a;
+      return a;
    }
 
    public gya a() {
       return new gya();
    }
 
-   public void a(chb $$0, gya $$1, float $$2) {
+   public void a(ciq $$0, gya $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gE().a().a();
-      $$1.d = $$0.ci();
-      $$1.e = $$0.cj();
-      $$1.f = $$0.x();
-      $$1.g = $$0.J($$2);
-      $$1.h = $$0.K($$2);
-      $$1.i = $$0.L($$2);
-      $$1.b = $$0.gJ();
-      $$1.c = $$0.p() ? $$0.gG() : null;
-   }
-
-   protected void a(gya $$0, ffu $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.g;
-      if ($$4 > 0.0F) {
-         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
-         $$1.a(a.f.rotationDegrees(ayz.i($$4, 0.0F, 90.0F)));
-         if ($$0.b) {
-            $$1.a(0.15F * $$4, 0.0F, 0.0F);
-         }
-      }
+      $$1.a = $$0.j();
+      $$1.b = $$0.ca();
+      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.cf);
+      $$1.f.a($$0.cg);
+      $$1.g.a($$0.ch);
+      $$1.h.a($$0.ci);
    }
 }

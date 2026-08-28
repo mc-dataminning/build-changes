@@ -1,61 +1,46 @@
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface buw {
-   void a(but var1, cwp var2);
+public record buw(aku<evx> c, Map<buu, Float> d) {
+   public static final Codec<Map<buu, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(buu.k, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(buw::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(buu.i);
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<buw> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aku.a(mc.bg).fieldOf("loot_table").forGetter(buw::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(buw::b))
+            .apply($$0, buw::new)
+   );
 
-   cwp a(but var1);
-
-   void a(but var1, float var2);
-
-   default void a(buv $$0, evu $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   public buw(aku<evx> $$0, float $$1) {
+      this($$0, a($$1));
    }
 
-   default void a(aku<evw> $$0, evu $$1, Map<but, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
+   private static Map<buu, Float> a(float $$0) {
+      return a(List.of(buu.values()), $$0);
    }
 
-   default void a(aku<evw> $$0, evu $$1, long $$2, Map<but, Float> $$3) {
-      evw $$4 = $$1.a().p().bc().b($$0);
-      if ($$4 != evw.a) {
-         List<cwp> $$5 = $$4.a($$1, $$2);
-         List<but> $$6 = new ArrayList<>();
+   private static Map<buu, Float> a(List<buu> $$0, float $$1) {
+      Map<buu, Float> $$2 = Maps.newHashMap();
 
-         for (cwp $$7 : $$5) {
-            but $$8 = this.a($$7, $$6);
-            if ($$8 != null) {
-               cwp $$9 = $$8.a($$7);
-               this.a($$8, $$9);
-               Float $$10 = $$3.get($$8);
-               if ($$10 != null) {
-                  this.a($$8, $$10);
-               }
-
-               $$6.add($$8);
-            }
-         }
+      for (buu $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   @Nullable
-   default but a(cwp $$0, List<but> $$1) {
-      if ($$0.f()) {
-         return null;
-      } else {
-         deu $$2 = $$0.a(kv.D);
-         if ($$2 != null) {
-            but $$3 = $$2.a();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(but.a)) {
-            return but.a;
-         }
+   public aku<evx> a() {
+      return this.c;
+   }
 
-         return null;
-      }
+   public Map<buu, Float> b() {
+      return this.d;
    }
 }

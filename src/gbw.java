@@ -1,38 +1,39 @@
-public class gbw extends get<hbb> {
-   public gbw(gfd $$0) {
+public class gbw extends gaq<gyh> {
+   public static final float e = 0.87F;
+   public static final float f = 0.92F;
+   private final gfe g = this.c.b("left_chest");
+   private final gfe i = this.c.b("right_chest");
+
+   public gbw(gfe $$0) {
       super($$0);
    }
 
-   public static gfj a(gfh $$0) {
-      gfl $$1 = gco.a($$0, 0.0F);
-      gfn $$2 = $$1.a();
-      $$2.a("left_arm", gfi.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gff.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", gfi.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gff.a(1.9F, 12.0F, 0.0F));
-      return gfj.a($$1, 64, 64);
+   public static gfk a(float $$0) {
+      gfm $$1 = gaq.a(gfi.a);
+      a($$1.a());
+      return gfk.a($$1, 64, 64).a(gfn.scaling($$0));
    }
 
-   @Override
-   public void a(hbb $$0) {
+   public static gfk b(float $$0) {
+      gfm $$1 = gaq.c(gfi.a);
+      a($$1.a());
+      return gfk.a(gaq.b.apply($$1), 64, 64).a(gfn.scaling($$0));
+   }
+
+   private static void a(gfo $$0) {
+      gfo $$1 = $$0.b("body");
+      gfj $$2 = gfj.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$1.a("left_chest", $$2, gfg.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("right_chest", $$2, gfg.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      gfo $$3 = $$0.b("head_parts").b("head");
+      gfj $$4 = gfj.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$3.a("left_ear", $$4, gfg.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$3.a("right_ear", $$4, gfg.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+   }
+
+   public void a(gyh $$0) {
       super.a($$0);
-      if ($$0.h == gco.a.e) {
-         this.s.e = this.s.e * 0.5F - (float) Math.PI;
-         this.s.f = 0.0F;
-      }
-
-      if ($$0.f == gco.a.e) {
-         this.r.e = this.r.e * 0.5F - (float) Math.PI;
-         this.r.f = 0.0F;
-      }
-
-      float $$1 = $$0.G;
-      if ($$1 > 0.0F) {
-         this.r.e = ayz.j($$1, this.r.e, (float) (-Math.PI * 4.0 / 5.0)) + $$1 * 0.35F * ayz.a(0.1F * $$0.u);
-         this.s.e = ayz.j($$1, this.s.e, (float) (-Math.PI * 4.0 / 5.0)) - $$1 * 0.35F * ayz.a(0.1F * $$0.u);
-         this.r.g = ayz.j($$1, this.r.g, -0.15F);
-         this.s.g = ayz.j($$1, this.s.g, 0.15F);
-         this.u.e = this.u.e - $$1 * 0.55F * ayz.a(0.1F * $$0.u);
-         this.t.e = this.t.e + $$1 * 0.55F * ayz.a(0.1F * $$0.u);
-         this.o.e = 0.0F;
-      }
+      this.g.k = $$0.a;
+      this.i.k = $$0.a;
    }
 }

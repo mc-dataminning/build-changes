@@ -1,16 +1,13 @@
-public class fgt extends fgs {
-   private final wp a;
+import javax.annotation.Nullable;
 
-   public fgt(wp $$0) {
-      this.a = $$0;
-   }
-
-   public fgt(String $$0) {
-      this(wp.b($$0));
-   }
-
-   @Override
+public abstract class fgt extends RuntimeException {
+   @Nullable
    public wp a() {
-      return wp.a("mco.upload.failed", this.a);
+      return null;
+   }
+
+   @Nullable
+   public wp[] b() {
+      return null;
    }
 }

@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fyq {
+@FunctionalInterface
+public interface fyq {
+   int currentIndex();
 }

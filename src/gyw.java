@@ -1,5 +1,3 @@
-public class gyw extends gzk {
-   public boolean a = true;
-   public boolean b = true;
-   public float c;
+public class gyw extends gzl {
+   public boolean a;
 }

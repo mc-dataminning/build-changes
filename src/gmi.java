@@ -1,620 +1,311 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-public abstract class gmi extends gmh {
-   private static final int be = 1048576;
-   public static final int aY = 4194304;
-   public static final int aZ = 786432;
-   public static final int ba = 1536;
-   private static final gmi bf = a("solid", ffs.b, ffz.c.h, 4194304, true, false, gmi.b.a().a(aw).a(v).a(aq).a(true));
-   private static final gmi bg = a("cutout_mipped", ffs.b, ffz.c.h, 4194304, true, false, gmi.b.a().a(aw).a(w).a(aq).a(true));
-   private static final gmi bh = a("cutout", ffs.b, ffz.c.h, 786432, true, false, gmi.b.a().a(aw).a(x).a(ar).a(true));
-   private static final gmi bi = a("translucent", ffs.b, ffz.c.h, 786432, true, true, a(y));
-   private static final gmi bj = a("translucent_moving_block", ffs.b, ffz.c.h, 786432, false, true, Z());
-   private static final Function<akv, gmi> bk = af.b($$0 -> a("armor_cutout_no_cull", $$0, false));
-   private static final Function<akv, gmi> bl = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(B).a(new gmh.n($$0, bad.b, false)).a(i).a(aB).a(aw).a(ay).a(aL).a(true);
-      return a("armor_translucent", ffs.c, ffz.c.h, 1536, true, true, $$1);
+public abstract class gmi {
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aY;
+   private final Runnable aZ;
+   protected static final gmi.p c = new gmi.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
    });
-   private static final Function<akv, gmi> bm = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(C).a(new gmh.n($$0, bad.b, false)).a(c).a(aw).a(ay).a(true);
-      return a("entity_solid", ffs.c, ffz.c.h, 1536, true, false, $$1);
+   protected static final gmi.p d = new gmi.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final Function<akv, gmi> bn = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(C).a(new gmh.n($$0, bad.b, false)).a(c).a(aw).a(ay).a(aM).a(true);
-      return a("entity_solid_z_offset_forward", ffs.c, ffz.c.h, 1536, true, false, $$1);
+   protected static final gmi.p e = new gmi.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final Function<akv, gmi> bo = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(D).a(new gmh.n($$0, bad.b, false)).a(c).a(aw).a(ay).a(true);
-      return a("entity_cutout", ffs.c, ffz.c.h, 1536, true, false, $$1);
+   protected static final gmi.p f = new gmi.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gmi.p g = new gmi.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gmi.p h = new gmi.p(
+      "overlay_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gmi.p i = new gmi.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gmi.p j = new gmi.p("vignette_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final BiFunction<akv, Boolean, gmi> bp = af.a(($$0, $$1) -> {
-      gmi.b $$2 = gmi.b.a().a(E).a(new gmh.n($$0, bad.b, false)).a(c).a(aB).a(aw).a(ay).a($$1);
-      return a("entity_cutout_no_cull", ffs.c, ffz.c.h, 1536, true, false, $$2);
+   protected static final gmi.p k = new gmi.p(
+      "crosshair_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gmi.p l = new gmi.p("mojang_logo_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final BiFunction<akv, Boolean, gmi> bq = af.a(($$0, $$1) -> {
-      gmi.b $$2 = gmi.b.a().a(F).a(new gmh.n($$0, bad.b, false)).a(c).a(aB).a(aw).a(ay).a(aL).a($$1);
-      return a("entity_cutout_no_cull_z_offset", ffs.c, ffz.c.h, 1536, true, false, $$2);
+   protected static final gmi.p m = new gmi.p(
+      "nausea_overlay_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gmi.m n = new gmi.m();
+   protected static final gmi.m o = new gmi.m(glk.f);
+   protected static final gmi.m p = new gmi.m(glk.d);
+   protected static final gmi.m q = new gmi.m(glk.h);
+   protected static final gmi.m r = new gmi.m(glk.g);
+   protected static final gmi.m s = new gmi.m(glk.e);
+   protected static final gmi.m t = new gmi.m(glk.i);
+   protected static final gmi.m u = new gmi.m(glk.c);
+   protected static final gmi.m v = new gmi.m(glk.j);
+   protected static final gmi.m w = new gmi.m(glk.k);
+   protected static final gmi.m x = new gmi.m(glk.l);
+   protected static final gmi.m y = new gmi.m(glk.m);
+   protected static final gmi.m z = new gmi.m(glk.n);
+   protected static final gmi.m A = new gmi.m(glk.o);
+   protected static final gmi.m B = new gmi.m(glk.p);
+   protected static final gmi.m C = new gmi.m(glk.q);
+   protected static final gmi.m D = new gmi.m(glk.r);
+   protected static final gmi.m E = new gmi.m(glk.s);
+   protected static final gmi.m F = new gmi.m(glk.t);
+   protected static final gmi.m G = new gmi.m(glk.u);
+   protected static final gmi.m H = new gmi.m(glk.v);
+   protected static final gmi.m I = new gmi.m(glk.w);
+   protected static final gmi.m J = new gmi.m(glk.x);
+   protected static final gmi.m K = new gmi.m(glk.y);
+   protected static final gmi.m L = new gmi.m(glk.z);
+   protected static final gmi.m M = new gmi.m(glk.A);
+   protected static final gmi.m N = new gmi.m(glk.B);
+   protected static final gmi.m O = new gmi.m(glk.C);
+   protected static final gmi.m P = new gmi.m(glk.D);
+   protected static final gmi.m Q = new gmi.m(glk.E);
+   protected static final gmi.m R = new gmi.m(glk.F);
+   protected static final gmi.m S = new gmi.m(glk.G);
+   protected static final gmi.m T = new gmi.m(glk.H);
+   protected static final gmi.m U = new gmi.m(glk.I);
+   protected static final gmi.m V = new gmi.m(glk.J);
+   protected static final gmi.m W = new gmi.m(glk.K);
+   protected static final gmi.m X = new gmi.m(glk.L);
+   protected static final gmi.m Y = new gmi.m(glk.Y);
+   protected static final gmi.m Z = new gmi.m(glk.M);
+   protected static final gmi.m aa = new gmi.m(glk.N);
+   protected static final gmi.m ab = new gmi.m(glk.O);
+   protected static final gmi.m ac = new gmi.m(glk.P);
+   protected static final gmi.m ad = new gmi.m(glk.Q);
+   protected static final gmi.m ae = new gmi.m(glk.R);
+   protected static final gmi.m af = new gmi.m(glk.S);
+   protected static final gmi.m ag = new gmi.m(glk.T);
+   protected static final gmi.m ah = new gmi.m(glk.U);
+   protected static final gmi.m ai = new gmi.m(glk.V);
+   protected static final gmi.m aj = new gmi.m(glk.W);
+   protected static final gmi.m ak = new gmi.m(glk.X);
+   protected static final gmi.m al = new gmi.m(glk.Z);
+   protected static final gmi.m am = new gmi.m(glk.aa);
+   protected static final gmi.m an = new gmi.m(glk.ab);
+   protected static final gmi.m ao = new gmi.m(glk.ac);
+   protected static final gmi.m ap = new gmi.m(glk.ad);
+   protected static final gmi.n aq = new gmi.n(hes.d, bad.b, true);
+   protected static final gmi.n ar = new gmi.n(hes.d, bad.b, false);
+   protected static final gmi.e as = new gmi.e();
+   protected static final gmi.o at = new gmi.o("default_texturing", () -> {
+   }, () -> {
    });
-   private static final Function<akv, gmi> br = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(G).a(new gmh.n($$0, bad.b, false)).a(i).a(aU).a(aw).a(ay).a(aG).a(true);
-      return a("item_entity_translucent_cull", ffs.c, ffz.c.h, 1536, true, true, $$1);
+   protected static final gmi.o au = new gmi.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gmi.o av = new gmi.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gmi.g aw = new gmi.g(true);
+   protected static final gmi.g ax = new gmi.g(false);
+   protected static final gmi.l ay = new gmi.l(true);
+   protected static final gmi.l az = new gmi.l(false);
+   protected static final gmi.c aA = new gmi.c(true);
+   protected static final gmi.c aB = new gmi.c(false);
+   protected static final gmi.d aC = new gmi.d("always", 519);
+   protected static final gmi.d aD = new gmi.d("==", 514);
+   protected static final gmi.d aE = new gmi.d("<=", 515);
+   protected static final gmi.d aF = new gmi.d(">", 516);
+   protected static final gmi.q aG = new gmi.q(true, true);
+   protected static final gmi.q aH = new gmi.q(true, false);
+   protected static final gmi.q aI = new gmi.q(false, true);
+   protected static final gmi.f aJ = new gmi.f("no_layering", () -> {
+   }, () -> {
    });
-   private static final BiFunction<akv, Boolean, gmi> bs = af.a(($$0, $$1) -> {
-      gmi.b $$2 = gmi.b.a().a(H).a(new gmh.n($$0, bad.b, false)).a(i).a(aB).a(aw).a(ay).a($$1);
-      return a("entity_translucent", ffs.c, ffz.c.h, 1536, true, true, $$2);
+   protected static final gmi.f aK = new gmi.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
    });
-   private static final BiFunction<akv, Boolean, gmi> bt = af.a(($$0, $$1) -> {
-      gmi.b $$2 = gmi.b.a().a(I).a(new gmh.n($$0, bad.b, false)).a(i).a(aB).a(aH).a(ay).a($$1);
-      return a("entity_translucent_emissive", ffs.c, ffz.c.h, 1536, true, true, $$2);
+   protected static final gmi.f aL = new gmi.f("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      RenderSystem.getProjectionType().a($$0, 1.0F);
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
    });
-   private static final Function<akv, gmi> bu = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(J).a(new gmh.n($$0, bad.b, false)).a(aB).a(aw).a(true);
-      return a("entity_smooth_cutout", ffs.c, ffz.c.h, 1536, $$1);
+   protected static final gmi.f aM = new gmi.f("view_offset_z_layering_forward", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      RenderSystem.getProjectionType().a($$0, -1.0F);
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
    });
-   private static final BiFunction<akv, Boolean, gmi> bv = af.a(($$0, $$1) -> {
-      gmi.b $$2 = gmi.b.a().a(K).a(new gmh.n($$0, bad.b, false)).a($$1 ? i : c).a($$1 ? aH : aG).a(false);
-      return a("beacon_beam", ffs.b, ffz.c.h, 1536, false, true, $$2);
+   protected static final gmi.f aN = new gmi.f("world_border_layering", () -> {
+      RenderSystem.polygonOffset(-3.0F, -3.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
    });
-   private static final Function<akv, gmi> bw = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(L).a(new gmh.n($$0, bad.b, false)).a(aD).a(aB).a(aw).a(ay).a(false);
-      return a("entity_decal", ffs.c, ffz.c.h, 1536, $$1);
+   protected static final gmi.k aO = new gmi.k("main_target", () -> flk.Q().h().a(false), () -> {
    });
-   private static final Function<akv, gmi> bx = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(M).a(new gmh.n($$0, bad.b, false)).a(i).a(aB).a(aw).a(ay).a(aH).a(false);
-      return a("entity_no_outline", ffs.c, ffz.c.h, 1536, false, true, $$1);
+   protected static final gmi.k aP = new gmi.k("outline_target", () -> {
+      fef $$0 = flk.Q().f.q();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         flk.Q().h().a(false);
+      }
+   }, () -> flk.Q().h().a(false));
+   protected static final gmi.k aQ = new gmi.k("translucent_target", () -> {
+      fef $$0 = flk.Q().f.r();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         flk.Q().h().a(false);
+      }
+   }, () -> flk.Q().h().a(false));
+   protected static final gmi.k aR = new gmi.k("particles_target", () -> {
+      fef $$0 = flk.Q().f.t();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         flk.Q().h().a(false);
+      }
+   }, () -> flk.Q().h().a(false));
+   protected static final gmi.k aS = new gmi.k("weather_target", () -> {
+      fef $$0 = flk.Q().f.u();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         flk.Q().h().a(false);
+      }
+   }, () -> flk.Q().h().a(false));
+   protected static final gmi.k aT = new gmi.k("clouds_target", () -> {
+      fef $$0 = flk.Q().f.v();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         flk.Q().h().a(false);
+      }
+   }, () -> flk.Q().h().a(false));
+   protected static final gmi.k aU = new gmi.k("item_entity_target", () -> {
+      fef $$0 = flk.Q().f.s();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         flk.Q().h().a(false);
+      }
+   }, () -> flk.Q().h().a(false));
+   protected static final gmi.h aV = new gmi.h(OptionalDouble.of(1.0));
+   protected static final gmi.b aW = new gmi.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
    });
-   private static final Function<akv, gmi> by = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(N).a(new gmh.n($$0, bad.b, false)).a(i).a(aA).a(aw).a(ay).a(aH).a(aE).a(aL).a(false);
-      return a("entity_shadow", ffs.c, ffz.c.h, 1536, false, false, $$1);
-   });
-   private static final Function<akv, gmi> bz = af.b($$0 -> {
-      gmi.b $$1 = gmi.b.a().a(O).a(new gmh.n($$0, bad.b, false)).a(aB).a(true);
-      return a("entity_alpha", ffs.c, ffz.c.h, 1536, $$1);
-   });
-   private static final BiFunction<akv, gmh.p, gmi> bA = af.a(($$0, $$1) -> {
-      gmh.n $$2 = new gmh.n($$0, bad.b, false);
-      return a("eyes", ffs.c, ffz.c.h, 1536, false, true, gmi.b.a().a(P).a($$2).a($$1).a(aH).a(false));
-   });
-   private static final gmi bB = a("leash", ffs.h, ffz.c.f, 1536, gmi.b.a().a(R).a(as).a(aB).a(aw).a(false));
-   private static final gmi bC = a("water_mask", ffs.e, ffz.c.h, 1536, gmi.b.a().a(S).a(as).a(aI).a(false));
-   private static final gmi bD = a(
-      "armor_entity_glint", ffs.i, ffz.c.h, 1536, gmi.b.a().a(U).a(new gmh.n(gtc.a, bad.c, false)).a(aH).a(aB).a(aD).a(f).a(av).a(aL).a(false)
-   );
-   private static final gmi bE = a(
-      "glint_translucent", ffs.i, ffz.c.h, 1536, gmi.b.a().a(V).a(new gmh.n(gtc.b, bad.c, false)).a(aH).a(aB).a(aD).a(f).a(au).a(aU).a(false)
-   );
-   private static final gmi bF = a("glint", ffs.i, ffz.c.h, 1536, gmi.b.a().a(W).a(new gmh.n(gtc.b, bad.c, false)).a(aH).a(aB).a(aD).a(f).a(au).a(false));
-   private static final gmi bG = a("entity_glint", ffs.i, ffz.c.h, 1536, gmi.b.a().a(X).a(new gmh.n(gtc.a, bad.c, false)).a(aH).a(aB).a(aD).a(f).a(av).a(false));
-   private static final Function<akv, gmi> bH = af.b($$0 -> {
-      gmh.n $$1 = new gmh.n($$0, bad.b, false);
-      return a("crumbling", ffs.b, ffz.c.h, 1536, false, true, gmi.b.a().a(Y).a($$1).a(g).a(aH).a(aK).a(false));
-   });
-   private static final Function<akv, gmi> bI = af.b(
-      $$0 -> a("text", ffs.k, ffz.c.h, 786432, false, false, gmi.b.a().a(Z).a(new gmh.n($$0, bad.b, false)).a(i).a(aw).a(false))
-   );
-   private static final gmi bJ = a("text_background", ffs.h, ffz.c.h, 1536, false, true, gmi.b.a().a(aa).a(as).a(i).a(aw).a(false));
-   private static final Function<akv, gmi> bK = af.b(
-      $$0 -> a("text_intensity", ffs.k, ffz.c.h, 786432, false, false, gmi.b.a().a(ab).a(new gmh.n($$0, bad.b, false)).a(i).a(aw).a(false))
-   );
-   private static final Function<akv, gmi> bL = af.b(
-      $$0 -> a("text_polygon_offset", ffs.k, ffz.c.h, 1536, false, true, gmi.b.a().a(Z).a(new gmh.n($$0, bad.b, false)).a(i).a(aw).a(aK).a(false))
-   );
-   private static final Function<akv, gmi> bM = af.b(
-      $$0 -> a("text_intensity_polygon_offset", ffs.k, ffz.c.h, 1536, false, true, gmi.b.a().a(ab).a(new gmh.n($$0, bad.b, false)).a(i).a(aw).a(aK).a(false))
-   );
-   private static final Function<akv, gmi> bN = af.b(
-      $$0 -> a("text_see_through", ffs.k, ffz.c.h, 1536, false, false, gmi.b.a().a(ac).a(new gmh.n($$0, bad.b, false)).a(i).a(aw).a(aC).a(aH).a(false))
-   );
-   private static final gmi bO = a("text_background_see_through", ffs.h, ffz.c.h, 1536, false, true, gmi.b.a().a(ad).a(as).a(i).a(aw).a(aC).a(aH).a(false));
-   private static final Function<akv, gmi> bP = af.b(
-      $$0 -> a("text_intensity_see_through", ffs.k, ffz.c.h, 1536, false, true, gmi.b.a().a(ae).a(new gmh.n($$0, bad.b, false)).a(i).a(aw).a(aC).a(aH).a(false))
-   );
-   private static final gmi bQ = a("lightning", ffs.f, ffz.c.h, 1536, false, true, gmi.b.a().a(af).a(aG).a(e).a(aS).a(false));
-   private static final gmi bR = a("dragon_rays", ffs.f, ffz.c.e, 1536, false, false, gmi.b.a().a(af).a(aH).a(e).a(false));
-   private static final gmi bS = a("dragon_rays_depth", ffs.e, ffz.c.e, 1536, false, false, gmi.b.a().a(p).a(aI).a(false));
-   private static final gmi bT = a("tripwire", ffs.b, ffz.c.h, 1536, true, true, aa());
-   private static final gmi bU = a(
-      "end_portal", ffs.e, ffz.c.h, 1536, false, false, gmi.b.a().a(ah).a(gmh.i.d().a(gpd.a, false, false).a(gpd.b, false, false).a()).a(false)
-   );
-   private static final gmi bV = a(
-      "end_gateway", ffs.e, ffz.c.h, 1536, false, false, gmi.b.a().a(ai).a(gmh.i.d().a(gpd.a, false, false).a(gpd.b, false, false).a()).a(false)
-   );
-   private static final gmi bW = a(false, false);
-   private static final gmi bX = a(false, true);
-   private static final gmi bY = a(true, true);
-   public static final gmi.a bb = a("lines", ffs.g, ffz.c.a, 1536, gmi.b.a().a(ak).a(new gmh.h(OptionalDouble.empty())).a(aL).a(i).a(aU).a(aG).a(aB).a(false));
-   public static final gmi.a bc = a(
-      "secondary_block_outline", ffs.g, ffz.c.a, 1536, gmi.b.a().a(ak).a(new gmh.h(OptionalDouble.of(7.0))).a(aL).a(gmh.i).a(aU).a(aH).a(aB).a(false)
-   );
-   public static final gmi.a bd = a(
-      "line_strip", ffs.g, ffz.c.b, 1536, gmi.b.a().a(ak).a(new gmh.h(OptionalDouble.empty())).a(aL).a(i).a(aU).a(aG).a(aB).a(false)
-   );
-   private static final Function<Double, gmi.a> bZ = af.b(
-      $$0 -> a("debug_line_strip", ffs.f, ffz.c.d, 1536, gmi.b.a().a(s).a(new gmh.h(OptionalDouble.of($$0))).a(c).a(aB).a(false))
-   );
-   private static final gmi.a ca = a("debug_filled_box", ffs.f, ffz.c.f, 1536, false, true, gmi.b.a().a(s).a(aL).a(i).a(false));
-   private static final gmi.a cb = a("debug_quads", ffs.f, ffz.c.h, 1536, false, true, gmi.b.a().a(s).a(i).a(aB).a(false));
-   private static final gmi.a cc = a("debug_triangle_fan", ffs.f, ffz.c.g, 1536, false, true, gmi.b.a().a(s).a(i).a(aB).a(false));
-   private static final gmi.a cd = a("debug_structure_quads", ffs.f, ffz.c.h, 1536, false, true, gmi.b.a().a(s).a(i).a(aB).a(aE).a(aH).a(false));
-   private static final gmi.a ce = a("debug_section_quads", ffs.f, ffz.c.h, 1536, false, true, gmi.b.a().a(s).a(aL).a(i).a(aA).a(false));
-   private static final gmi cf = b(false);
-   private static final gmi cg = b(true);
-   private static final Function<akv, gmi> ch = af.b(
-      $$0 -> a("opaque_particle", ffs.d, ffz.c.h, 1536, false, false, gmi.b.a().a(u).a(new gmh.n($$0, bad.b, false)).a(aw).a(aG).a(false))
-   );
-   private static final Function<akv, gmi> ci = af.b(
-      $$0 -> a("translucent_particle", ffs.d, ffz.c.h, 1536, false, false, gmi.b.a().a(u).a(new gmh.n($$0, bad.b, false)).a(i).a(aR).a(aw).a(aG).a(false))
-   );
-   private static final Function<akv, gmi> cj = c(true);
-   private static final Function<akv, gmi> ck = c(false);
-   private static final gmi cl = a("sky", ffs.e, ffz.c.h, 1536, false, false, gmi.b.a().a(p).a(aH).a(false));
-   private static final gmi cm = a("end_sky", ffs.j, ffz.c.h, 1536, false, false, gmi.b.a().a(t).a(new gmh.n(gmu.a, bad.b, false)).a(i).a(aH).a(false));
-   private static final gmi cn = a("sunrise_sunset", ffs.f, ffz.c.g, 1536, false, false, gmi.b.a().a(s).a(i).a(aH).a(false));
-   private static final gmi co = a("stars", ffs.e, ffz.c.h, 1536, false, false, gmi.b.a().a(p).a(h).a(aH).a(false));
-   private static final Function<akv, gmi> cp = af.b(
-      $$0 -> a("celestial", ffs.j, ffz.c.h, 1536, false, false, gmi.b.a().a(t).a(new gmh.n($$0, bad.b, false)).a(h).a(aH).a(false))
-   );
-   private static final Function<akv, gmi> cq = af.b(
-      $$0 -> a("block_screen_effect", ffs.j, ffz.c.h, 1536, false, false, gmi.b.a().a(t).a(new gmh.n($$0, bad.b, false)).a(aC).a(aH).a(i).a(false))
-   );
-   private static final Function<akv, gmi> cr = af.b(
-      $$0 -> a("fire_screen_effect", ffs.j, ffz.c.h, 1536, false, false, gmi.b.a().a(t).a(new gmh.n($$0, bad.b, false)).a(aC).a(aH).a(i).a(false))
-   );
-   private static final gmi.a cs = a("gui", ffs.f, ffz.c.h, 786432, gmi.b.a().a(al).a(i).a(aE).a(false));
-   private static final gmi.a ct = a("gui_overlay", ffs.f, ffz.c.h, 1536, gmi.b.a().a(am).a(i).a(aC).a(aH).a(false));
-   private static final Function<akv, gmi> cu = af.b(
-      $$0 -> a("gui_textured_overlay", ffs.j, ffz.c.h, 1536, gmi.b.a().a(new gmh.n($$0, bad.c, false)).a(t).a(i).a(aC).a(aH).a(false))
-   );
-   private static final Function<akv, gmi> cv = af.b(
-      $$0 -> a("gui_opaque_textured_background", ffs.j, ffz.c.h, 786432, gmi.b.a().a(new gmh.n($$0, bad.b, false)).a(t).a(c).a(aE).a(false))
-   );
-   private static final gmi.a cw = a("gui_nausea_overlay", ffs.j, ffz.c.h, 1536, gmi.b.a().a(new gmh.n(fod.a, bad.c, false)).a(t).a(m).a(aC).a(aH).a(false));
-   private static final gmi.a cx = a("gui_text_highlight", ffs.f, ffz.c.h, 1536, gmi.b.a().a(an).a(i).a(aC).a(aX).a(false));
-   private static final gmi.a cy = a("gui_ghost_recipe_overlay", ffs.f, ffz.c.h, 1536, gmi.b.a().a(ao).a(i).a(aF).a(aH).a(false));
-   private static final Function<akv, gmi> cz = af.b(
-      $$0 -> a("gui_textured", ffs.j, ffz.c.h, 786432, gmi.b.a().a(new gmh.n($$0, bad.b, false)).a(t).a(i).a(aE).a(false))
-   );
-   private static final Function<akv, gmi> cA = af.b(
-      $$0 -> a("vignette", ffs.j, ffz.c.h, 786432, gmi.b.a().a(new gmh.n($$0, bad.c, false)).a(t).a(j).a(aC).a(aH).a(false))
-   );
-   private static final Function<akv, gmi> cB = af.b(
-      $$0 -> a("crosshair", ffs.j, ffz.c.h, 786432, gmi.b.a().a(new gmh.n($$0, bad.b, false)).a(t).a(k).a(false))
-   );
-   private static final gmi.a cC = a("mojang_logo", ffs.j, ffz.c.h, 786432, gmi.b.a().a(new gmh.n(fub.a, bad.c, false)).a(t).a(l).a(aC).a(aH).a(false));
-   private static final ImmutableList<gmi> cD = ImmutableList.of(c(), d(), e(), f(), s());
-   private final ffz cE;
-   private final ffz.c cF;
-   private final int cG;
-   private final boolean cH;
-   private final boolean cI;
+   protected static final gmi.b aX = new gmi.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.h.n);
+   }, () -> RenderSystem.disableColorLogicOp());
 
-   public static gmi c() {
-      return bf;
+   public gmi(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aY = $$1;
+      this.aZ = $$2;
    }
 
-   public static gmi d() {
-      return bg;
+   public void a() {
+      this.aY.run();
    }
 
-   public static gmi e() {
-      return bh;
-   }
-
-   private static gmi.b a(gmh.m $$0) {
-      return gmi.b.a().a(aw).a($$0).a(aq).a(i).a(aQ).a(true);
-   }
-
-   public static gmi f() {
-      return bi;
-   }
-
-   private static gmi.b Z() {
-      return gmi.b.a().a(aw).a(z).a(aq).a(i).a(aU).a(true);
-   }
-
-   public static gmi g() {
-      return bj;
-   }
-
-   private static gmi.a a(String $$0, akv $$1, boolean $$2) {
-      gmi.b $$3 = gmi.b.a().a(A).a(new gmh.n($$1, bad.b, false)).a(c).a(aB).a(aw).a(ay).a(aL).a($$2 ? aD : aE).a(true);
-      return a($$0, ffs.c, ffz.c.h, 1536, true, false, $$3);
-   }
-
-   public static gmi a(akv $$0) {
-      return bk.apply($$0);
-   }
-
-   public static gmi b(akv $$0) {
-      return a("armor_decal_cutout_no_cull", $$0, true);
-   }
-
-   public static gmi c(akv $$0) {
-      return bl.apply($$0);
-   }
-
-   public static gmi d(akv $$0) {
-      return bm.apply($$0);
-   }
-
-   public static gmi e(akv $$0) {
-      return bn.apply($$0);
-   }
-
-   public static gmi f(akv $$0) {
-      return bo.apply($$0);
-   }
-
-   public static gmi a(akv $$0, boolean $$1) {
-      return bp.apply($$0, $$1);
-   }
-
-   public static gmi g(akv $$0) {
-      return a($$0, true);
-   }
-
-   public static gmi b(akv $$0, boolean $$1) {
-      return bq.apply($$0, $$1);
-   }
-
-   public static gmi h(akv $$0) {
-      return b($$0, true);
-   }
-
-   public static gmi i(akv $$0) {
-      return br.apply($$0);
-   }
-
-   public static gmi c(akv $$0, boolean $$1) {
-      return bs.apply($$0, $$1);
-   }
-
-   public static gmi j(akv $$0) {
-      return c($$0, true);
-   }
-
-   public static gmi d(akv $$0, boolean $$1) {
-      return bt.apply($$0, $$1);
-   }
-
-   public static gmi k(akv $$0) {
-      return d($$0, true);
-   }
-
-   public static gmi l(akv $$0) {
-      return bu.apply($$0);
-   }
-
-   public static gmi e(akv $$0, boolean $$1) {
-      return bv.apply($$0, $$1);
-   }
-
-   public static gmi m(akv $$0) {
-      return bw.apply($$0);
-   }
-
-   public static gmi n(akv $$0) {
-      return bx.apply($$0);
-   }
-
-   public static gmi o(akv $$0) {
-      return by.apply($$0);
-   }
-
-   public static gmi p(akv $$0) {
-      return bz.apply($$0);
-   }
-
-   public static gmi q(akv $$0) {
-      return bA.apply($$0, i);
-   }
-
-   public static gmi r(akv $$0) {
-      return bt.apply($$0, false);
-   }
-
-   public static gmi a(akv $$0, float $$1, float $$2) {
-      return a(
-         "breeze_wind",
-         ffs.c,
-         ffz.c.h,
-         1536,
-         false,
-         true,
-         gmi.b.a().a(ap).a(new gmh.n($$0, bad.b, false)).a(new gmh.j($$1, $$2)).a(i).a(aB).a(aw).a(az).a(false)
-      );
-   }
-
-   public static gmi b(akv $$0, float $$1, float $$2) {
-      return a(
-         "energy_swirl",
-         ffs.c,
-         ffz.c.h,
-         1536,
-         false,
-         true,
-         gmi.b.a().a(Q).a(new gmh.n($$0, bad.b, false)).a(new gmh.j($$1, $$2)).a(d).a(aB).a(aw).a(ay).a(false)
-      );
-   }
-
-   public static gmi h() {
-      return bB;
-   }
-
-   public static gmi i() {
-      return bC;
-   }
-
-   public static gmi s(akv $$0) {
-      return gmi.a.be.apply($$0, aB);
-   }
-
-   public static gmi j() {
-      return bD;
-   }
-
-   public static gmi k() {
-      return bE;
-   }
-
-   public static gmi l() {
-      return bF;
-   }
-
-   public static gmi m() {
-      return bG;
-   }
-
-   public static gmi t(akv $$0) {
-      return bH.apply($$0);
-   }
-
-   public static gmi u(akv $$0) {
-      return bI.apply($$0);
-   }
-
-   public static gmi n() {
-      return bJ;
-   }
-
-   public static gmi v(akv $$0) {
-      return bK.apply($$0);
-   }
-
-   public static gmi w(akv $$0) {
-      return bL.apply($$0);
-   }
-
-   public static gmi x(akv $$0) {
-      return bM.apply($$0);
-   }
-
-   public static gmi y(akv $$0) {
-      return bN.apply($$0);
-   }
-
-   public static gmi o() {
-      return bO;
-   }
-
-   public static gmi z(akv $$0) {
-      return bP.apply($$0);
-   }
-
-   public static gmi p() {
-      return bQ;
-   }
-
-   public static gmi q() {
-      return bR;
-   }
-
-   public static gmi r() {
-      return bS;
-   }
-
-   private static gmi.b aa() {
-      return gmi.b.a().a(aw).a(ag).a(aq).a(i).a(aS).a(true);
-   }
-
-   public static gmi s() {
-      return bT;
-   }
-
-   public static gmi t() {
-      return bU;
-   }
-
-   public static gmi u() {
-      return bV;
-   }
-
-   private static gmi.a a(boolean $$0, boolean $$1) {
-      return a("clouds", ffs.f, ffz.c.h, 786432, false, false, gmi.b.a().a(aj).a(i).a($$1 ? aA : aB).a($$0 ? aI : aG).a(aT).a(true));
-   }
-
-   public static gmi v() {
-      return bW;
-   }
-
-   public static gmi w() {
-      return bX;
-   }
-
-   public static gmi x() {
-      return bY;
-   }
-
-   public static gmi y() {
-      return bb;
-   }
-
-   public static gmi z() {
-      return bc;
-   }
-
-   public static gmi A() {
-      return bd;
-   }
-
-   public static gmi a(double $$0) {
-      return bZ.apply($$0);
-   }
-
-   public static gmi B() {
-      return ca;
-   }
-
-   public static gmi C() {
-      return cb;
-   }
-
-   public static gmi D() {
-      return cc;
-   }
-
-   public static gmi E() {
-      return cd;
-   }
-
-   public static gmi F() {
-      return ce;
-   }
-
-   private static gmi b(boolean $$0) {
-      return a(
-         "world_border",
-         ffs.i,
-         ffz.c.h,
-         1536,
-         false,
-         false,
-         gmi.b.a().a(q).a(new gmh.n(gna.a, bad.b, false)).a(h).a(aw).a(aS).a($$0 ? aG : aH).a(aN).a(aB).a(false)
-      );
-   }
-
-   public static gmi a(boolean $$0) {
-      return $$0 ? cg : cf;
-   }
-
-   public static gmi A(akv $$0) {
-      return ch.apply($$0);
-   }
-
-   public static gmi B(akv $$0) {
-      return ci.apply($$0);
-   }
-
-   private static Function<akv, gmi> c(boolean $$0) {
-      return af.b(
-         $$1 -> a(
-               "weather", ffs.d, ffz.c.h, 1536, false, false, gmi.b.a().a(u).a(new gmh.n($$1, bad.b, false)).a(i).a(aS).a(aw).a($$0 ? aG : aH).a(aB).a(false)
-            )
-      );
-   }
-
-   public static gmi f(akv $$0, boolean $$1) {
-      return ($$1 ? cj : ck).apply($$0);
-   }
-
-   public static gmi G() {
-      return cl;
-   }
-
-   public static gmi H() {
-      return cm;
-   }
-
-   public static gmi I() {
-      return cn;
-   }
-
-   public static gmi J() {
-      return co;
-   }
-
-   public static gmi C(akv $$0) {
-      return cp.apply($$0);
-   }
-
-   public static gmi D(akv $$0) {
-      return cq.apply($$0);
-   }
-
-   public static gmi E(akv $$0) {
-      return cr.apply($$0);
-   }
-
-   public static gmi K() {
-      return cs;
-   }
-
-   public static gmi L() {
-      return ct;
-   }
-
-   public static gmi F(akv $$0) {
-      return cu.apply($$0);
-   }
-
-   public static gmi G(akv $$0) {
-      return cv.apply($$0);
-   }
-
-   public static gmi M() {
-      return cw;
-   }
-
-   public static gmi N() {
-      return cx;
-   }
-
-   public static gmi O() {
-      return cy;
-   }
-
-   public static gmi H(akv $$0) {
-      return cz.apply($$0);
-   }
-
-   public static gmi I(akv $$0) {
-      return cA.apply($$0);
-   }
-
-   public static gmi J(akv $$0) {
-      return cB.apply($$0);
-   }
-
-   public static gmi P() {
-      return cC;
-   }
-
-   public gmi(String $$0, ffz $$1, ffz.c $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
-      super($$0, $$6, $$7);
-      this.cE = $$1;
-      this.cF = $$2;
-      this.cG = $$3;
-      this.cH = $$4;
-      this.cI = $$5;
-   }
-
-   static gmi.a a(String $$0, ffz $$1, ffz.c $$2, int $$3, gmi.b $$4) {
-      return a($$0, $$1, $$2, $$3, false, false, $$4);
-   }
-
-   private static gmi.a a(String $$0, ffz $$1, ffz.c $$2, int $$3, boolean $$4, boolean $$5, gmi.b $$6) {
-      return new gmi.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(fft $$0) {
-      this.a();
-      ffq.a($$0);
-      this.b();
+   public void b() {
+      this.aZ.run();
    }
 
    @Override
@@ -622,254 +313,295 @@ public abstract class gmi extends gmh {
       return this.b;
    }
 
-   public static List<gmi> Q() {
-      return cD;
+   private static void a(float $$0) {
+      long $$1 = (long)((double)af.c() * flk.Q().n.ap().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
    }
 
-   public int R() {
-      return this.cG;
-   }
+   static class a extends gmi {
+      private final boolean aY;
 
-   public ffz S() {
-      return this.cE;
-   }
-
-   public ffz.c T() {
-      return this.cF;
-   }
-
-   public Optional<gmi> U() {
-      return Optional.empty();
-   }
-
-   public boolean V() {
-      return false;
-   }
-
-   public boolean W() {
-      return this.cH;
-   }
-
-   public boolean X() {
-      return !this.cF.l;
-   }
-
-   public boolean Y() {
-      return this.cI;
-   }
-
-   static final class a extends gmi {
-      static final BiFunction<akv, gmh.c, gmi> be = af.a(
-         ($$0, $$1) -> gmi.a("outline", ffs.j, ffz.c.h, 1536, gmi.b.a().a(T).a(new gmh.n($$0, bad.b, false)).a($$1).a(aC).a(aP).a(gmi.c.b))
-      );
-      private final gmi.b bf;
-      private final Optional<gmi> bg;
-      private final boolean bh;
-
-      a(String $$0, ffz $$1, ffz.c $$2, int $$3, boolean $$4, boolean $$5, gmi.b $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(gmh::a), () -> $$6.o.forEach(gmh::b));
-         this.bf = $$6;
-         this.bg = $$6.n == gmi.c.c ? $$6.a.c().map($$1x -> be.apply($$1x, $$6.e)) : Optional.empty();
-         this.bh = $$6.n == gmi.c.b;
-      }
-
-      @Override
-      public Optional<gmi> U() {
-         return this.bg;
-      }
-
-      @Override
-      public boolean V() {
-         return this.bh;
-      }
-
-      protected final gmi.b Z() {
-         return this.bf;
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aY = $$3;
       }
 
       @Override
       public String toString() {
-         return "RenderType[" + this.b + ":" + this.bf + "]";
+         return this.b + "[" + this.aY + "]";
       }
    }
 
-   protected static final class b {
-      final gmh.e a;
-      private final gmh.m b;
-      private final gmh.p c;
-      private final gmh.d d;
-      final gmh.c e;
-      private final gmh.g f;
-      private final gmh.l g;
-      private final gmh.f h;
-      private final gmh.k i;
-      private final gmh.o j;
-      private final gmh.q k;
-      private final gmh.h l;
-      private final gmh.b m;
-      final gmi.c n;
-      final ImmutableList<gmh> o;
+   protected static class b extends gmi {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
 
-      b(
-         gmh.e $$0,
-         gmh.m $$1,
-         gmh.p $$2,
-         gmh.d $$3,
-         gmh.c $$4,
-         gmh.g $$5,
-         gmh.l $$6,
-         gmh.f $$7,
-         gmh.k $$8,
-         gmh.o $$9,
-         gmh.q $$10,
-         gmh.h $$11,
-         gmh.b $$12,
-         gmi.c $$13
-      ) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
-         this.j = $$9;
-         this.k = $$10;
-         this.l = $$11;
-         this.m = $$12;
-         this.n = $$13;
-         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new gmh[]{this.l});
+   protected static class c extends gmi.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class d extends gmi {
+      private final String aY;
+
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
+         });
+         this.aY = $$0;
       }
 
       @Override
       public String toString() {
-         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
-      }
-
-      public static gmi.b.a a() {
-         return new gmi.b.a();
-      }
-
-      public static class a {
-         private gmh.e a = gmh.as;
-         private gmh.m b = gmh.n;
-         private gmh.p c;
-         private gmh.d d;
-         private gmh.c e;
-         private gmh.g f;
-         private gmh.l g;
-         private gmh.f h;
-         private gmh.k i;
-         private gmh.o j;
-         private gmh.q k;
-         private gmh.h l;
-         private gmh.b m;
-
-         a() {
-            this.c = gmh.c;
-            this.d = gmh.aE;
-            this.e = gmh.aA;
-            this.f = gmh.ax;
-            this.g = gmh.az;
-            this.h = gmh.aJ;
-            this.i = gmh.aO;
-            this.j = gmh.at;
-            this.k = gmh.aG;
-            this.l = gmh.aV;
-            this.m = gmh.aW;
-         }
-
-         public gmi.b.a a(gmh.e $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.m $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.p $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.d $$0) {
-            this.d = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.c $$0) {
-            this.e = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.g $$0) {
-            this.f = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.l $$0) {
-            this.g = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.f $$0) {
-            this.h = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.k $$0) {
-            this.i = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.o $$0) {
-            this.j = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.q $$0) {
-            this.k = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.h $$0) {
-            this.l = $$0;
-            return this;
-         }
-
-         public gmi.b.a a(gmh.b $$0) {
-            this.m = $$0;
-            return this;
-         }
-
-         public gmi.b a(boolean $$0) {
-            return this.a($$0 ? gmi.c.c : gmi.c.a);
-         }
-
-         public gmi.b a(gmi.c $$0) {
-            return new gmi.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
-         }
+         return this.b + "[" + this.aY + "]";
       }
    }
 
-   static enum c {
-      a("none"),
-      b("is_outline"),
-      c("affects_outline");
+   protected static class e extends gmi {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
+      }
 
-      private final String d;
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
 
-      private c(final String $$0) {
-         this.d = $$0;
+      protected Optional<akv> c() {
+         return Optional.empty();
+      }
+   }
+
+   protected static class f extends gmi {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class g extends gmi.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               flk.Q().j.l().c();
+            }
+         }, () -> {
+            if ($$0) {
+               flk.Q().j.l().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class h extends gmi {
+      private final OptionalDouble aY;
+
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)flk.Q().aO().k() / 1920.0F * 2.5F));
+               }
+            }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aY = $$0;
       }
 
       @Override
       public String toString() {
-         return this.d;
+         return this.b + "[" + (this.aY.isPresent() ? this.aY.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends gmi.e {
+      private final Optional<akv> aY;
+
+      i(List<gmi.i.b> $$0) {
+         super(() -> {
+            for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+               gmi.i.b $$2 = $$0.get($$1);
+               hev $$3 = flk.Q().aa();
+               hee $$4 = $$3.b($$2.a);
+               $$4.a($$2.b, $$2.c);
+               RenderSystem.setShaderTexture($$1, $$4.a());
+            }
+         }, () -> {
+         });
+         this.aY = $$0.isEmpty() ? Optional.empty() : Optional.of($$0.getFirst().a);
+      }
+
+      @Override
+      protected Optional<akv> c() {
+         return this.aY;
+      }
+
+      public static gmi.i.a d() {
+         return new gmi.i.a();
+      }
+
+      public static final class a {
+         private final Builder<gmi.i.b> a = new Builder();
+
+         public gmi.i.a a(akv $$0, boolean $$1, boolean $$2) {
+            this.a.add(new gmi.i.b($$0, $$1, $$2));
+            return this;
+         }
+
+         public gmi.i a() {
+            return new gmi.i(this.a.build());
+         }
+      }
+
+      static record b(akv a, boolean b, boolean c) {
+      }
+   }
+
+   protected static final class j extends gmi.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+      }
+   }
+
+   protected static class k extends gmi {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class l extends gmi.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               flk.Q().j.m().a();
+            }
+         }, () -> {
+            if ($$0) {
+               flk.Q().j.m().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class m extends gmi {
+      private final Optional<gmr> aY;
+
+      public m(gmr $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aY = Optional.of($$0);
+      }
+
+      public m() {
+         super("shader", RenderSystem::clearShader, () -> {
+         });
+         this.aY = Optional.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aY + "]";
+      }
+   }
+
+   protected static class n extends gmi.e {
+      private final Optional<akv> aY;
+      private final bad aZ;
+      private final boolean ba;
+
+      public n(akv $$0, bad $$1, boolean $$2) {
+         super(() -> {
+            hev $$3 = flk.Q().aa();
+            hee $$4 = $$3.b($$0);
+            $$4.a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$4.a());
+         }, () -> {
+         });
+         this.aY = Optional.of($$0);
+         this.aZ = $$1;
+         this.ba = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aY + "(blur=" + this.aZ + ", mipmap=" + this.ba + ")]";
+      }
+
+      @Override
+      protected Optional<akv> c() {
+         return this.aY;
+      }
+   }
+
+   protected static class o extends gmi {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends gmi {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends gmi {
+      private final boolean aY;
+      private final boolean aZ;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
+            }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aY = $$0;
+         this.aZ = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aY + ", writeDepth=" + this.aZ + "]";
       }
    }
 }

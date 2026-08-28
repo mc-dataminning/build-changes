@@ -1,48 +1,21 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fwl extends fvb<ctx> {
+   private static final akv G = akv.b("textures/gui/container/shulker_box.png");
 
-public class fwl extends fvd {
-   public static final float c = 62.500004F;
-   public static final float d = 0.9765628F;
-   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private gcw u;
-
-   public fwl(dvm $$0, boolean $$1, boolean $$2) {
+   public fwl(ctx $$0, cox $$1, wp $$2) {
       super($$0, $$1, $$2);
+      this.u++;
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      boolean $$0 = this.a.m().b() instanceof drm;
-      this.u = goy.a(this.m.aS(), this.b, $$0);
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(foe $$0, dwx $$1) {
-      super.a($$0, $$1);
-      boolean $$2 = $$1.b() instanceof drm;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
-      }
-   }
-
-   @Override
-   protected void c(foe $$0) {
-      if (this.u != null) {
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         $$0.a($$1 -> {
-            hgz $$2 = gmt.a(this.b);
-            ffy $$3 = $$2.a($$1, this.u::a);
-            this.u.a($$0.c(), $$3, 15728880, hei.d);
-         });
-      }
-   }
-
-   @Override
-   protected Vector3f m() {
-      return s;
+   protected void a(fof $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gmj::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

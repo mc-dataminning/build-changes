@@ -1,8 +1,8 @@
-public record acq(int b, bvu c, boolean d) implements yw<abl> {
-   public static final yn<vl, acq> a = yn.a(yl.h, acq::b, bvu.a, acq::e, yl.b, acq::f, acq::new);
+public record acq(int b, bvv c, boolean d) implements yw<abl> {
+   public static final yn<vl, acq> a = yn.a(yl.h, acq::b, bvv.a, acq::e, yl.b, acq::f, acq::new);
 
-   public static acq a(bul $$0) {
-      return new acq($$0.ar(), new bvu($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
+   public static acq a(bum $$0) {
+      return new acq($$0.ar(), new bvv($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
    }
 
    @Override
@@ -14,7 +14,7 @@ public record acq(int b, bvu c, boolean d) implements yw<abl> {
       $$0.a(this);
    }
 
-   public bvu e() {
+   public bvv e() {
       return this.c;
    }
 

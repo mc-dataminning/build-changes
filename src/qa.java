@@ -2,24 +2,24 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qa {
-   public static final aku<eow> a = ql.a("bastion/starts");
+   public static final aku<eox> a = ql.a("bastion/starts");
 
-   public static void a(qe<eow> $$0) {
-      js<erm> $$1 = $$0.a(mc.aV);
-      jr<erm> $$2 = $$1.b(qm.w);
-      js<eow> $$3 = $$0.a(mc.aX);
-      jr<eow> $$4 = $$3.b(ql.a);
+   public static void a(qe<eox> $$0) {
+      js<ern> $$1 = $$0.a(mc.aV);
+      jr<ern> $$2 = $$1.b(qm.w);
+      js<eox> $$3 = $$0.a(mc.aX);
+      jr<eox> $$4 = $$3.b(ql.a);
       $$0.a(
          a,
-         new eow(
+         new eox(
             $$4,
             ImmutableList.of(
-               Pair.of(eou.b("bastion/units/air_base", $$2), 1),
-               Pair.of(eou.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(eou.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(eou.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+               Pair.of(eov.b("bastion/units/air_base", $$2), 1),
+               Pair.of(eov.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(eov.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(eov.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
             ),
-            eow.a.b
+            eox.a.b
          )
       );
       pz.a($$0);

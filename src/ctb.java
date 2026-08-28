@@ -1,45 +1,9 @@
-public class ctb extends ctz {
-   private final cox a;
-   private int b;
-
-   public ctb(cox $$0, bsd $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+public class ctb extends csf {
+   public ctb(int $$0, cox $$1) {
+      super(ctm.o, dbq.b, dbo.e, ctt.b, $$0, $$1);
    }
 
-   @Override
-   public boolean a(cwp $$0) {
-      return false;
-   }
-
-   @Override
-   public cwp a(int $$0) {
-      if (this.h()) {
-         this.b = this.b + Math.min($$0, this.g().M());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   public void a(cox $$0, cwp $$1) {
-      this.b_($$1);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(cwp $$0, int $$1) {
-      this.b += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cwp $$0) {
-      $$0.a(this.a.dV(), this.a, this.b);
-      if (this.a instanceof are $$1 && this.c instanceof dtn $$2) {
-         $$2.a($$1);
-      }
-
-      this.b = 0;
+   public ctb(int $$0, cox $$1, bse $$2, csp $$3) {
+      super(ctm.o, dbq.b, dbo.e, ctt.b, $$0, $$1, $$2, $$3);
    }
 }

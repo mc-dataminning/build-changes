@@ -1,24 +1,26 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface fdt extends AutoCloseable {
-   float a = 7.0F;
+public interface fdt {
+   float getAdvance();
 
-   @Override
-   default void close() {
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
    }
 
-   @Nullable
-   default fds a(int $$0) {
-      return null;
+   default float a() {
+      return 1.0F;
    }
 
-   IntSet a();
+   default float b() {
+      return 1.0F;
+   }
 
-   public static record a(fdt a, frk.a b) implements AutoCloseable {
+   frq bake(Function<fdv, frq> var1);
+
+   public interface a extends fdt {
       @Override
-      public void close() {
-         this.a.close();
+      default frq bake(Function<fdv, frq> $$0) {
+         return frr.b;
       }
    }
 }

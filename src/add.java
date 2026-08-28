@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record add(int b, boolean c, Set<aku<dgi>> d, int e, int f, int g, boolean h, boolean i, boolean j, agb k, boolean l) implements yw<abl> {
+public record add(int b, boolean c, Set<aku<dgj>> d, int e, int f, int g, boolean h, boolean i, boolean j, agb k, boolean l) implements yw<abl> {
    public static final yn<wa, add> a = yw.a(add::a, add::new);
 
    private add(wa $$0) {
@@ -47,7 +47,7 @@ public record add(int b, boolean c, Set<aku<dgi>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<aku<dgi>> f() {
+   public Set<aku<dgj>> f() {
       return this.d;
    }
 

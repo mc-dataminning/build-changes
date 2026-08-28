@@ -1,56 +1,183 @@
-public class cyp {
-   public static final jr<cym> a = a("water", new cym("water"));
-   public static final jr<cym> b = a("mundane", new cym("mundane"));
-   public static final jr<cym> c = a("thick", new cym("thick"));
-   public static final jr<cym> d = a("awkward", new cym("awkward"));
-   public static final jr<cym> e = a("night_vision", new cym("night_vision", new btq(bts.p, 3600)));
-   public static final jr<cym> f = a("long_night_vision", new cym("night_vision", new btq(bts.p, 9600)));
-   public static final jr<cym> g = a("invisibility", new cym("invisibility", new btq(bts.n, 3600)));
-   public static final jr<cym> h = a("long_invisibility", new cym("invisibility", new btq(bts.n, 9600)));
-   public static final jr<cym> i = a("leaping", new cym("leaping", new btq(bts.h, 3600)));
-   public static final jr<cym> j = a("long_leaping", new cym("leaping", new btq(bts.h, 9600)));
-   public static final jr<cym> k = a("strong_leaping", new cym("leaping", new btq(bts.h, 1800, 1)));
-   public static final jr<cym> l = a("fire_resistance", new cym("fire_resistance", new btq(bts.l, 3600)));
-   public static final jr<cym> m = a("long_fire_resistance", new cym("fire_resistance", new btq(bts.l, 9600)));
-   public static final jr<cym> n = a("swiftness", new cym("swiftness", new btq(bts.a, 3600)));
-   public static final jr<cym> o = a("long_swiftness", new cym("swiftness", new btq(bts.a, 9600)));
-   public static final jr<cym> p = a("strong_swiftness", new cym("swiftness", new btq(bts.a, 1800, 1)));
-   public static final jr<cym> q = a("slowness", new cym("slowness", new btq(bts.b, 1800)));
-   public static final jr<cym> r = a("long_slowness", new cym("slowness", new btq(bts.b, 4800)));
-   public static final jr<cym> s = a("strong_slowness", new cym("slowness", new btq(bts.b, 400, 3)));
-   public static final jr<cym> t = a("turtle_master", new cym("turtle_master", new btq(bts.b, 400, 3), new btq(bts.k, 400, 2)));
-   public static final jr<cym> u = a("long_turtle_master", new cym("turtle_master", new btq(bts.b, 800, 3), new btq(bts.k, 800, 2)));
-   public static final jr<cym> v = a("strong_turtle_master", new cym("turtle_master", new btq(bts.b, 400, 5), new btq(bts.k, 400, 3)));
-   public static final jr<cym> w = a("water_breathing", new cym("water_breathing", new btq(bts.m, 3600)));
-   public static final jr<cym> x = a("long_water_breathing", new cym("water_breathing", new btq(bts.m, 9600)));
-   public static final jr<cym> y = a("healing", new cym("healing", new btq(bts.f, 1)));
-   public static final jr<cym> z = a("strong_healing", new cym("healing", new btq(bts.f, 1, 1)));
-   public static final jr<cym> A = a("harming", new cym("harming", new btq(bts.g, 1)));
-   public static final jr<cym> B = a("strong_harming", new cym("harming", new btq(bts.g, 1, 1)));
-   public static final jr<cym> C = a("poison", new cym("poison", new btq(bts.s, 900)));
-   public static final jr<cym> D = a("long_poison", new cym("poison", new btq(bts.s, 1800)));
-   public static final jr<cym> E = a("strong_poison", new cym("poison", new btq(bts.s, 432, 1)));
-   public static final jr<cym> F = a("regeneration", new cym("regeneration", new btq(bts.j, 900)));
-   public static final jr<cym> G = a("long_regeneration", new cym("regeneration", new btq(bts.j, 1800)));
-   public static final jr<cym> H = a("strong_regeneration", new cym("regeneration", new btq(bts.j, 450, 1)));
-   public static final jr<cym> I = a("strength", new cym("strength", new btq(bts.e, 3600)));
-   public static final jr<cym> J = a("long_strength", new cym("strength", new btq(bts.e, 9600)));
-   public static final jr<cym> K = a("strong_strength", new cym("strength", new btq(bts.e, 1800, 1)));
-   public static final jr<cym> L = a("weakness", new cym("weakness", new btq(bts.r, 1800)));
-   public static final jr<cym> M = a("long_weakness", new cym("weakness", new btq(bts.r, 4800)));
-   public static final jr<cym> N = a("luck", new cym("luck", new btq(bts.z, 6000)));
-   public static final jr<cym> O = a("slow_falling", new cym("slow_falling", new btq(bts.B, 1800)));
-   public static final jr<cym> P = a("long_slow_falling", new cym("slow_falling", new btq(bts.B, 4800)));
-   public static final jr<cym> Q = a("wind_charged", new cym("wind_charged", new btq(bts.J, 3600)));
-   public static final jr<cym> R = a("weaving", new cym("weaving", new btq(bts.K, 3600)));
-   public static final jr<cym> S = a("oozing", new cym("oozing", new btq(bts.L, 3600)));
-   public static final jr<cym> T = a("infested", new cym("infested", new btq(bts.M, 3600)));
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Consumer;
 
-   private static jr<cym> a(String $$0, cym $$1) {
-      return ke.b(mb.h, akv.b($$0), $$1);
+public record cyp(Optional<jr<cyn>> e, Optional<Integer> f, List<btr> g, Optional<String> h) implements cyx {
+   public static final cyp a = new cyp(Optional.empty(), Optional.empty(), List.of(), Optional.empty());
+   private static final wp i = wp.c("effect.none").a(n.h);
+   public static final int b = -13083194;
+   private static final Codec<cyp> j = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cyn.a.optionalFieldOf("potion").forGetter(cyp::e),
+               Codec.INT.optionalFieldOf("custom_color").forGetter(cyp::f),
+               btr.d.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(cyp::d),
+               Codec.STRING.optionalFieldOf("custom_name").forGetter(cyp::g)
+            )
+            .apply($$0, cyp::new)
+   );
+   public static final Codec<cyp> c = Codec.withAlternative(j, cyn.a, cyp::new);
+   public static final yn<wa, cyp> d = yn.a(cyn.b.a(yl::a), cyp::e, yl.g.a(yl::a), cyp::f, btr.e.a(yl.a()), cyp::d, yl.o.a(yl::a), cyp::g, cyp::new);
+
+   public cyp(jr<cyn> $$0) {
+      this(Optional.of($$0), Optional.empty(), List.of(), Optional.empty());
    }
 
-   public static jr<cym> a(ke<cym> $$0) {
-      return a;
+   public static cwq a(cwm $$0, jr<cyn> $$1) {
+      cwq $$2 = new cwq($$0);
+      $$2.b(kv.Q, new cyp($$1));
+      return $$2;
+   }
+
+   public boolean a(jr<cyn> $$0) {
+      return this.e.isPresent() && this.e.get().a($$0) && this.g.isEmpty();
+   }
+
+   public Iterable<btr> a() {
+      if (this.e.isEmpty()) {
+         return this.g;
+      } else {
+         return (Iterable<btr>)(this.g.isEmpty() ? this.e.get().a().a() : Iterables.concat(this.e.get().a().a(), this.g));
+      }
+   }
+
+   public void a(Consumer<btr> $$0) {
+      if (this.e.isPresent()) {
+         for (btr $$1 : this.e.get().a().a()) {
+            $$0.accept(new btr($$1));
+         }
+      }
+
+      for (btr $$2 : this.g) {
+         $$0.accept(new btr($$2));
+      }
+   }
+
+   public cyp b(jr<cyn> $$0) {
+      return new cyp(Optional.of($$0), this.f, this.g, this.h);
+   }
+
+   public cyp a(btr $$0) {
+      return new cyp(this.e, this.f, af.a(this.g, $$0), this.h);
+   }
+
+   public int b() {
+      return this.a(-13083194);
+   }
+
+   public int a(int $$0) {
+      return this.f.isPresent() ? this.f.get() : a(this.a()).orElse($$0);
+   }
+
+   public wp a(String $$0) {
+      String $$1 = this.h.or(() -> this.e.map($$0x -> ((cyn)$$0x.a()).b())).orElse("empty");
+      return wp.c($$0 + $$1);
+   }
+
+   public static OptionalInt a(Iterable<btr> $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (btr $$5 : $$0) {
+         if ($$5.g()) {
+            int $$6 = $$5.c().a().g();
+            int $$7 = $$5.e() + 1;
+            $$1 += $$7 * axk.b($$6);
+            $$2 += $$7 * axk.c($$6);
+            $$3 += $$7 * axk.d($$6);
+            $$4 += $$7;
+         }
+      }
+
+      return $$4 == 0 ? OptionalInt.empty() : OptionalInt.of(axk.a($$1 / $$4, $$2 / $$4, $$3 / $$4));
+   }
+
+   public boolean c() {
+      return !this.g.isEmpty() ? true : this.e.isPresent() && !this.e.get().a().a().isEmpty();
+   }
+
+   public List<btr> d() {
+      return Lists.transform(this.g, btr::new);
+   }
+
+   public void a(Consumer<wp> $$0, float $$1, float $$2) {
+      a(this.a(), $$0, $$1, $$2);
+   }
+
+   public void a(bvi $$0) {
+      if ($$0.dV() instanceof ard $$1) {
+         coy $$4 = $$0 instanceof coy $$3 ? $$3 : null;
+         this.a((Consumer<btr>)($$3x -> {
+            if ($$3x.c().a().a()) {
+               $$3x.c().a().a($$1, $$4, $$4, $$0, $$3x.e(), 1.0);
+            } else {
+               $$0.a($$3x);
+            }
+         }));
+      }
+   }
+
+   public static void a(Iterable<btr> $$0, Consumer<wp> $$1, float $$2, float $$3) {
+      List<Pair<jr<bwl>, bwo>> $$4 = Lists.newArrayList();
+      boolean $$5 = true;
+
+      for (btr $$6 : $$0) {
+         $$5 = false;
+         xd $$7 = wp.c($$6.i());
+         jr<btp> $$8 = $$6.c();
+         $$8.a().a($$6.e(), ($$1x, $$2x) -> $$4.add(new Pair($$1x, $$2x)));
+         if ($$6.e() > 0) {
+            $$7 = wp.a("potion.withAmplifier", $$7, wp.c("potion.potency." + $$6.e()));
+         }
+
+         if (!$$6.a(20)) {
+            $$7 = wp.a("potion.withDuration", $$7, bts.a($$6, $$2, $$3));
+         }
+
+         $$1.accept($$7.a($$8.a().f().a()));
+      }
+
+      if ($$5) {
+         $$1.accept(i);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.accept(wo.a);
+         $$1.accept(wp.c("potion.whenDrank").a(n.f));
+
+         for (Pair<jr<bwl>, bwo> $$9 : $$4) {
+            bwo $$10 = (bwo)$$9.getSecond();
+            double $$11 = $$10.c();
+            double $$13;
+            if ($$10.d() != bwo.a.b && $$10.d() != bwo.a.c) {
+               $$13 = $$10.c();
+            } else {
+               $$13 = $$10.c() * 100.0;
+            }
+
+            if ($$11 > 0.0) {
+               $$1.accept(wp.a("attribute.modifier.plus." + $$10.d().a(), czh.d.format($$13), wp.c(((bwl)((jr)$$9.getFirst()).a()).c())).a(n.j));
+            } else if ($$11 < 0.0) {
+               $$13 *= -1.0;
+               $$1.accept(wp.a("attribute.modifier.take." + $$10.d().a(), czh.d.format($$13), wp.c(((bwl)((jr)$$9.getFirst()).a()).c())).a(n.m));
+            }
+         }
+      }
+   }
+
+   @Override
+   public void a(dgj $$0, bvi $$1, cwq $$2, cyw $$3) {
+      this.a($$1);
+   }
+
+   public Optional<String> g() {
+      return this.h;
    }
 }

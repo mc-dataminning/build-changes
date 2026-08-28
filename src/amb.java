@@ -59,7 +59,7 @@ public class amb {
 
                for (Socket $$3 : this.h) {
                   if (!$$3.isClosed()) {
-                     af.h().execute(() -> {
+                     af.i().execute(() -> {
                         try {
                            OutputStream $$2x = $$3.getOutputStream();
                            $$2x.write($$2);

@@ -1,70 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class ewd extends ewa {
-   public static final MapCodec<ewd> a = a(ewd::new);
+public class ewd extends ewk {
+   public static final MapCodec<ewd> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ewd::new));
 
-   ewd(List<ewh> $$0, List<eza> $$1) {
-      super($$0, $$1);
+   private ewd(int $$0, int $$1, List<ezb> $$2, List<exg> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public ewi a() {
-      return ewf.i;
+   public ewj a() {
+      return ewg.b;
    }
 
    @Override
-   protected evz a(List<? extends evz> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (evz)$$0.get(0);
-         case 2 -> {
-            evz $$1 = $$0.get(0);
-            evz $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (evz $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<cwq> $$0, evs $$1) {
    }
 
-   public static ewd.a a(ewh.a<?>... $$0) {
-      return new ewd.a($$0);
-   }
-
-   public static class a extends ewh.a<ewd.a> {
-      private final Builder<ewh> a = ImmutableList.builder();
-
-      public a(ewh.a<?>... $$0) {
-         for (ewh.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ewd.a a() {
-         return this;
-      }
-
-      @Override
-      public ewd.a b(ewh.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ewh b() {
-         return new ewd(this.a.build(), this.f());
-      }
+   public static ewk.a<?> b() {
+      return a(ewd::new);
    }
 }

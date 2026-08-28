@@ -46,7 +46,7 @@ public abstract class pn<T> implements mi {
             this.g.complete(null);
             return $$0x;
          })
-         .thenCombineAsync(this.h, ($$0x, $$1) -> new a<>($$0x, (pn.c<T>)$$1), af.g())
+         .thenCombineAsync(this.h, ($$0x, $$1) -> new a<>($$0x, (pn.c<T>)$$1), af.h())
          .thenCompose(
             $$1 -> {
                jt.b<T> $$2 = $$1.a.d(this.f);

@@ -1,46 +1,55 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public record buv(aku<evw> c, Map<but, Float> d) {
-   public static final Codec<Map<but, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(but.k, Codec.FLOAT))
-      .xmap($$0 -> (Map)$$0.map(buv::a, Function.identity()), $$0 -> {
-         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
-         boolean $$2 = $$0.keySet().containsAll(but.i);
-         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
-      });
-   public static final Codec<buv> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aku.a(mc.bg).fieldOf("loot_table").forGetter(buv::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(buv::b))
-            .apply($$0, buv::new)
-   );
+public enum buv implements azv {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", buu.a),
+   c(2, "offhand", buu.b),
+   d(3, "hand", $$0 -> $$0.a() == buu.a.a),
+   e(4, "feet", buu.c),
+   f(5, "legs", buu.d),
+   g(6, "chest", buu.e),
+   h(7, "head", buu.f),
+   i(8, "armor", buu::f),
+   j(9, "body", buu.g);
 
-   public buv(aku<evw> $$0, float $$1) {
-      this($$0, a($$1));
+   public static final IntFunction<buv> k = axq.a($$0 -> $$0.n, values(), axq.a.a);
+   public static final Codec<buv> l = azv.a(buv::values);
+   public static final yn<ByteBuf, buv> m = yl.a(k, $$0 -> $$0.n);
+   private final int n;
+   private final String o;
+   private final Predicate<buu> p;
+
+   private buv(final int $$0, final String $$1, final Predicate<buu> $$2) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
    }
 
-   private static Map<but, Float> a(float $$0) {
-      return a(List.of(but.values()), $$0);
+   private buv(final int $$0, final String $$1, final buu $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   private static Map<but, Float> a(List<but> $$0, float $$1) {
-      Map<but, Float> $$2 = Maps.newHashMap();
-
-      for (but $$3 : $$0) {
-         $$2.put($$3, $$1);
-      }
-
-      return $$2;
+   public static buv a(buu $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+      };
    }
 
-   public aku<evw> a() {
-      return this.c;
+   @Override
+   public String c() {
+      return this.o;
    }
 
-   public Map<but, Float> b() {
-      return this.d;
+   public boolean b(buu $$0) {
+      return this.p.test($$0);
    }
 }

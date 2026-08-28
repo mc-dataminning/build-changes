@@ -1,18 +1,64 @@
-public class gvy extends gwt<gzw, gdg> {
-   private final gco<gzw> a;
+import java.util.function.Function;
 
-   public gvy(gub<gzw, gdg> $$0, gez $$1) {
-      super($$0);
-      this.a = new gdf($$1.a(gfc.cg));
+public class gvy<S extends gzl, M extends gcc<S> & gcl> extends gwu<S, M> {
+   private static final float a = 0.625F;
+   private static final float b = 1.1875F;
+   private final gvy.a c;
+   private final Function<dqu.a, gdz> d;
+
+   public gvy(guc<S, M> $$0, gfa $$1) {
+      this($$0, $$1, gvy.a.a);
    }
 
-   public void a(ffu $$0, gly $$1, int $$2, gzw $$3, float $$4, float $$5) {
-      if ("deadmau5".equals($$3.aH) && !$$3.z) {
-         ffy $$6 = $$1.getBuffer(gmi.d($$3.a.a()));
-         int $$7 = gtf.a($$3, 0.0F);
-         this.d().a(this.a);
-         this.a.a($$3);
-         this.a.a($$0, $$6, $$2, $$7);
+   public gvy(guc<S, M> $$0, gfa $$1, gvy.a $$2) {
+      super($$0);
+      this.c = $$2;
+      this.d = af.b($$1x -> gpa.a($$1, $$1x));
+   }
+
+   public void a(ffv $$0, glz $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.as.c() || $$3.au != null) {
+         $$0.a();
+         $$0.b(this.c.c(), 1.0F, this.c.c());
+         M $$6 = this.d();
+         $$6.e().a($$0);
+         $$6.b().a($$0);
+         if ($$3.au != null) {
+            $$0.a(0.0F, this.c.b(), 0.0F);
+            $$0.b(1.1875F, -1.1875F, -1.1875F);
+            $$0.a(-0.5, 0.0, -0.5);
+            dqu.a $$7 = $$3.au;
+            gdz $$8 = this.d.apply($$7);
+            gmj $$9 = gpa.a($$7, $$3.av);
+            gpa.a(null, 180.0F, $$3.at, $$0, $$1, $$2, $$8, $$9);
+         } else {
+            a($$0, this.c);
+            $$3.as.a($$0, $$1, $$2, hej.d);
+         }
+
+         $$0.b();
+      }
+   }
+
+   public static void a(ffv $$0, gvy.a $$1) {
+      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.b(0.625F, -0.625F, -0.625F);
+   }
+
+   public static record a(float b, float c, float d) {
+      public static final gvy.a a = new gvy.a(0.0F, 0.0F, 1.0F);
+
+      public float a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
       }
    }
 }

@@ -10,7 +10,7 @@ public class alx extends aqz {
    private int k = 100;
 
    public alx(akv $$0, wp $$1) {
-      super($$1, bsa.a.g, bsa.b.a);
+      super($$1, bsb.a.g, bsb.b.a);
       this.h = $$0;
       this.a(0.0F);
    }
@@ -141,8 +141,8 @@ public class alx extends aqz {
       $$3.d($$0.q("Visible"));
       $$3.a($$0.h("Value"));
       $$3.b($$0.h("Max"));
-      $$3.a(bsa.a.a($$0.l("Color")));
-      $$3.a(bsa.b.a($$0.l("Overlay")));
+      $$3.a(bsb.a.a($$0.l("Color")));
+      $$3.a(bsb.b.a($$0.l("Overlay")));
       $$3.a($$0.q("DarkenScreen"));
       $$3.b($$0.q("PlayBossMusic"));
       $$3.c($$0.q("CreateWorldFog"));

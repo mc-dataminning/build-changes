@@ -1,20 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hde(String b) implements hdi<String> {
-   public static final hdi.a<hde, String> a = hdi.a.a(
-      RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block_state_property").forGetter(hde::b)).apply($$0, hde::new)), Codec.STRING
-   );
+public record hde() implements hdj<cwo> {
+   public static final hdj.a<hde, cwo> a = hdj.a.a(MapCodec.unit(new hde()), cwo.j);
 
-   @Nullable
-   public String a(cwp $$0, @Nullable gfz $$1, @Nullable bvh $$2, int $$3, cwn $$4) {
-      cyr $$5 = $$0.a(kv.am);
-      return $$5 == null ? null : $$5.b().get(this.b);
+   public cwo a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2, int $$3, cwo $$4) {
+      return $$4;
    }
 
    @Override
-   public hdi.a<hde, String> a() {
+   public hdj.a<hde, cwo> a() {
       return a;
    }
 }

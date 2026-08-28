@@ -1,5 +1,5 @@
-public class haa extends gzk {
+public class haa extends gzl {
    public float a;
-   public float b;
-   public float c;
+   public boolean b;
+   public cht.g c = cht.g.a;
 }

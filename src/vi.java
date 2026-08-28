@@ -413,7 +413,7 @@ public class vi extends SimpleChannelInboundHandler<yw<?>> {
       return this.k.a();
    }
 
-   public static vi a(InetSocketAddress $$0, boolean $$1, @Nullable bnd $$2) {
+   public static vi a(InetSocketAddress $$0, boolean $$1, @Nullable bne $$2) {
       vi $$3 = new vi(yx.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -586,7 +586,7 @@ public class vi extends SimpleChannelInboundHandler<yw<?>> {
       return this.x;
    }
 
-   public void a(bnd $$0) {
+   public void a(bne $$0) {
       this.B = new vb($$0);
    }
 }

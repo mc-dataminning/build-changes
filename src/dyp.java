@@ -1,5 +1,8 @@
-public interface dyp {
-   dwx a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, dwx var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dyp {
 }

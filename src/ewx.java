@@ -1,125 +1,95 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
 
-public class ewx extends exe {
-   public static final axf<enm> a = axb.l;
-   public static final jr<euo> b = eup.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<ewx> f = RecordCodecBuilder.mapCodec(
+public class ewx extends exf {
+   public static final int a = 0;
+   public static final MapCodec<ewx> b = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  axf.a(mc.aU).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  euo.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+                  dda.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
+                  ezy.a.fieldOf("count").forGetter($$0x -> $$0x.d),
+                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
                )
             )
             .apply($$0, ewx::new)
    );
-   private final axf<enm> h;
-   private final jr<euo> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final jr<dda> c;
+   private final ezx d;
+   private final int e;
 
-   ewx(List<eza> $$0, axf<enm> $$1, jr<euo> $$2, byte $$3, int $$4, boolean $$5) {
+   ewx(List<ezb> $$0, jr<dda> $$1, ezx $$2, int $$3) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   public exg<ewx> b() {
-      return exh.q;
+   public exh<ewx> b() {
+      return exi.m;
    }
 
    @Override
    public Set<bai<?>> a() {
-      return Set.of(eyl.f);
+      return Sets.union(ImmutableSet.of(eym.d), this.d.a());
+   }
+
+   private boolean c() {
+      return this.e > 0;
    }
 
    @Override
-   public cwp a(cwp $$0, evr $$1) {
-      if (!$$0.a(cwt.vi)) {
-         return $$0;
-      } else {
-         fba $$2 = $$1.c(eyl.f);
-         if ($$2 != null) {
-            ard $$3 = $$1.d();
-            ji $$4 = $$3.a(this.h, ji.a((kb)$$2), this.k, this.l);
-            if ($$4 != null) {
-               cwp $$5 = cxc.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cxc.a($$3, $$5);
-               eut.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
+   public cwq a(cwq $$0, evs $$1) {
+      bum $$2 = $$1.c(eym.d);
+      if ($$2 instanceof bvi $$3) {
+         int $$4 = ddc.a(this.c, $$3);
+         if ($$4 == 0) {
+            return $$0;
          }
 
-         return $$0;
+         float $$5 = (float)$$4 * this.d.b($$1);
+         $$0.g(Math.round($$5));
+         if (this.c()) {
+            $$0.f(this.e);
+         }
       }
+
+      return $$0;
    }
 
-   public static ewx.a c() {
-      return new ewx.a();
+   public static ewx.a a(jt.a $$0, ezx $$1) {
+      jt.b<dda> $$2 = $$0.d(mc.aO);
+      return new ewx.a($$2.b(ddf.s), $$1);
    }
 
-   public static class a extends exe.a<ewx.a> {
-      private axf<enm> a;
-      private jr<euo> b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public static class a extends exf.a<ewx.a> {
+      private final jr<dda> a;
+      private final ezx b;
+      private int c = 0;
 
-      public a() {
-         this.a = ewx.a;
-         this.b = ewx.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+      public a(jr<dda> $$0, ezx $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
       protected ewx.a a() {
          return this;
       }
 
-      public ewx.a a(axf<enm> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public ewx.a a(jr<euo> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public ewx.a a(byte $$0) {
+      public ewx.a a(int $$0) {
          this.c = $$0;
          return this;
       }
 
-      public ewx.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ewx.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
       @Override
-      public exf b() {
-         return new ewx(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public exg b() {
+         return new ewx(this.g(), this.a, this.b, this.c);
       }
    }
 }

@@ -1,4 +1,8 @@
-public class gyr extends gyk {
-   public boolean a;
-   public final hbo b = new hbo();
+public class gyr extends gzl {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

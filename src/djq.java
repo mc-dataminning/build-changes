@@ -1,39 +1,23 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface djq {
+   boolean a(dgm var1, ji var2, dwy var3);
 
-public class djq extends djm implements djp {
-   public static final MapCodec<djq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aku.a(mc.aL).fieldOf("feature").forGetter($$0x -> $$0x.b), t()).apply($$0, djq::new)
-   );
-   private final aku<efk<?, ?>> b;
+   boolean a(dgj var1, azh var2, ji var3, dwy var4);
 
-   @Override
-   public MapCodec<djq> a() {
-      return a;
+   void a(ard var1, azh var2, ji var3, dwy var4);
+
+   default ji a(ji $$0) {
+      return switch (this.aq_()) {
+         case a -> $$0.d();
+         case b -> $$0;
+      };
    }
 
-   public djq(aku<efk<?, ?>> $$0, dww.d $$1) {
-      super($$1);
-      this.b = $$0;
+   default djq.a aq_() {
+      return djq.a.b;
    }
 
-   @Override
-   public boolean a(dgl $$0, ji $$1, dwx $$2) {
-      return $$0.a_($$1.d()).l();
-   }
-
-   @Override
-   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwx $$3) {
-      $$0.K_().a(mc.aL).flatMap($$0x -> $$0x.a(this.b)).ifPresent($$3x -> ((efk)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2.d()));
-   }
-
-   @Override
-   public djp.a aq_() {
-      return djp.a.a;
+   public static enum a {
+      a,
+      b;
    }
 }

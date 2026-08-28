@@ -2,30 +2,29 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record fad(String b) implements faf {
-   public static final MapCodec<fad> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(fad::c)).apply($$0, fad::new));
+public record fad(evs.b c) implements fag {
+   public static final MapCodec<fad> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(evs.b.e.fieldOf("target").forGetter(fad::c)).apply($$0, fad::new));
+   public static final Codec<fad> b = evs.b.e.xmap(fad::new, fad::c);
 
-   public static faf a(String $$0) {
+   public static fag a(evs.b $$0) {
       return new fad($$0);
    }
 
    @Override
-   public fae a() {
-      return fag.b;
+   public faf a() {
+      return fah.c;
    }
 
+   @Nullable
    @Override
-   public fce a(evr $$0) {
-      return fce.c(this.b);
+   public fcf a(evs $$0) {
+      return $$0.c(this.c.a());
    }
 
    @Override
    public Set<bai<?>> b() {
-      return Set.of();
-   }
-
-   public String c() {
-      return this.b;
+      return Set.of(this.c.a());
    }
 }

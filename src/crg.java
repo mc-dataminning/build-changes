@@ -1,109 +1,51 @@
-public class crg extends cqw {
-   static final ajy<String> b = akc.a(crg.class, aka.e);
-   static final ajy<wp> c = akc.a(crg.class, aka.f);
-   private final dfi d = new crg.a();
-   private static final int h = 4;
-   private int i;
-
-   public crg(bus<? extends crg> $$0, dgi $$1) {
+public class crg extends cqy {
+   public crg(but<? extends crg> $$0, dgj $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected cwl u() {
-      return cwt.oo;
+   protected cwm u() {
+      return cwu.op;
    }
 
    @Override
-   public cwp dI() {
-      return new cwp(cwt.vM);
+   public cwq dI() {
+      return new cwq(cwu.op);
    }
 
    @Override
-   protected void a(akc.a $$0) {
-      super.a($$0);
-      $$0.a(b, "");
-      $$0.a(c, wo.a);
+   public int b() {
+      return 27;
    }
 
    @Override
-   protected void a(tq $$0) {
-      super.a($$0);
-      this.d.b($$0, this.dX());
-      this.au().a(b, this.v().m());
-      this.au().a(c, this.v().l());
+   public dwy w() {
+      return djp.cD.m().b(dkq.c, jn.c);
    }
 
    @Override
-   protected void b(tq $$0) {
-      super.b($$0);
-      this.d.a($$0, this.dX());
+   public int z() {
+      return 8;
    }
 
    @Override
-   public dwx w() {
-      return djo.gi.m();
-   }
-
-   public dfi v() {
-      return this.d;
+   public csd a(int $$0, cox $$1) {
+      return csm.a($$0, $$1, this);
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.af - this.i >= 4) {
-         this.v().a(this.dV());
-         this.i = this.af;
-      }
+   public void c(coy $$0) {
+      this.dV().a(ebu.j, this.dt(), ebu.a.a($$0));
    }
 
    @Override
-   public bsk a(cox $$0, bsj $$1) {
-      return this.d.a($$0);
-   }
-
-   @Override
-   public void a(ajy<?> $$0) {
-      super.a($$0);
-      if (c.equals($$0)) {
-         try {
-            this.d.c(this.au().a(c));
-         } catch (Throwable var3) {
-         }
-      } else if (b.equals($$0)) {
-         this.d.a(this.au().a(b));
-      }
-   }
-
-   public class a extends dfi {
-      @Override
-      public ard e() {
-         return (ard)crg.this.dV();
+   public bsl a(coy $$0, bsk $$1) {
+      bsl $$2 = this.b_($$0);
+      if ($$2.a() && $$0.dV() instanceof ard $$3) {
+         this.a(ebu.k, $$0);
+         cnn.a($$3, $$0, true);
       }
 
-      @Override
-      public void f() {
-         crg.this.au().a(crg.b, this.m());
-         crg.this.au().a(crg.c, this.l());
-      }
-
-      @Override
-      public fba g() {
-         return crg.this.dt();
-      }
-
-      public crg h() {
-         return crg.this;
-      }
-
-      @Override
-      public ex i() {
-         return new ex(this, crg.this.dt(), crg.this.bU(), this.e(), 2, this.n().getString(), crg.this.p_(), this.e().p(), crg.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !crg.this.dQ();
-      }
+      return $$2;
    }
 }

@@ -1,40 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class drw extends djw implements djp {
-   public static final MapCodec<drw> a = b(drw::new);
-   protected static final float b = 6.0F;
-   protected static final fbu c = djm.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class drw extends dlw implements djq {
+   public static final MapCodec<drw> c = b(drw::new);
 
    @Override
    public MapCodec<drw> a() {
-      return a;
+      return c;
    }
 
-   protected drw(dww.d $$0) {
+   public drw(dwx.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return c;
-   }
-
-   @Override
-   public boolean a(dgl $$0, ji $$1, dwx $$2) {
-      return o($$2).m().a($$0, $$1) && $$0.u($$1.d());
-   }
-
-   @Override
-   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+   public boolean a(dgm $$0, ji $$1, dwy $$2) {
       return true;
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwx $$3) {
-      dlv.a($$0, o($$3).m(), $$2, 2);
+   public boolean a(dgj $$0, azh $$1, ji $$2, dwy $$3) {
+      return true;
    }
 
-   private static dlv o(dwx $$0) {
-      return (dlv)($$0.a(djo.bB) ? djo.jg : djo.jf);
+   @Override
+   public void a(ard $$0, azh $$1, ji $$2, dwy $$3) {
+      a($$0, $$2, new cwq(this));
    }
 }

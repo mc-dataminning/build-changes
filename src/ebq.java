@@ -1,43 +1,36 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class ebq<T extends ebv> {
-   private final T a;
-   @Nullable
-   private kk b;
+public class ebq implements eby {
+   public static final MapCodec<ebq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ji.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, ebq::new));
+   public static final yn<ByteBuf, ebq> b = yn.a(ji.b, $$0 -> $$0.e, ebq::new);
+   private final ji e;
 
-   public ebq(T $$0) {
-      this.a = $$0;
+   public ebq(ji $$0) {
+      this.e = $$0;
    }
 
-   public void a(ard $$0) {
-      this.c($$0);
+   @Override
+   public Optional<fbb> a(dgj $$0) {
+      return Optional.of(fbb.b(this.e));
    }
 
-   public T a() {
-      return this.a;
+   @Override
+   public ebz<ebq> a() {
+      return ebz.a;
    }
 
-   public void b(ard $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
+   public static class a implements ebz<ebq> {
+      @Override
+      public MapCodec<ebq> a() {
+         return ebq.a;
+      }
 
-   public void c(ard $$0) {
-      this.a.a().a($$0).map(kk::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(dgl $$0, @Nullable kk $$1, Consumer<ebw> $$2) {
-      if ($$1 != null) {
-         dys $$3 = $$0.a($$1.a(), $$1.c(), dzt.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
+      @Override
+      public yn<ByteBuf, ebq> b() {
+         return ebq.b;
       }
    }
 }

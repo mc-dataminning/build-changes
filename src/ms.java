@@ -3,10 +3,10 @@ import java.util.function.Consumer;
 public class ms implements mm {
    @Override
    public void a(jt.a $$0, Consumer<ai> $$1) {
-      js<cwl> $$2 = $$0.d(mc.K);
+      js<cwm> $$2 = $$0.d(mc.K);
       ai $$3 = ah.a.a()
          .a(
-            djo.i,
+            djp.i,
             wp.c("advancements.story.root.title"),
             wp.c("advancements.story.root.description"),
             akv.b("textures/gui/advancements/backgrounds/stone.png"),
@@ -15,80 +15,80 @@ public class ms implements mm {
             false,
             false
          )
-         .a("crafting_table", cj.a.a(djo.cI))
+         .a("crafting_table", cj.a.a(djp.cI))
          .a($$1, "story/root");
       ai $$4 = ah.a.a()
          .a($$3)
-         .a(cwt.pt, wp.c("advancements.story.mine_stone.title"), wp.c("advancements.story.mine_stone.description"), null, ao.a, true, true, false)
+         .a(cwu.pt, wp.c("advancements.story.mine_stone.title"), wp.c("advancements.story.mine_stone.description"), null, ao.a, true, true, false)
          .a("get_stone", cj.a.a(cv.a.a().a($$2, awy.bc)))
          .a($$1, "story/mine_stone");
       ai $$5 = ah.a.a()
          .a($$4)
-         .a(cwt.py, wp.c("advancements.story.upgrade_tools.title"), wp.c("advancements.story.upgrade_tools.description"), null, ao.a, true, true, false)
-         .a("stone_pickaxe", cj.a.a(cwt.py))
+         .a(cwu.py, wp.c("advancements.story.upgrade_tools.title"), wp.c("advancements.story.upgrade_tools.description"), null, ao.a, true, true, false)
+         .a("stone_pickaxe", cj.a.a(cwu.py))
          .a($$1, "story/upgrade_tools");
       ai $$6 = ah.a.a()
          .a($$5)
-         .a(cwt.pk, wp.c("advancements.story.smelt_iron.title"), wp.c("advancements.story.smelt_iron.description"), null, ao.a, true, true, false)
-         .a("iron", cj.a.a(cwt.pk))
+         .a(cwu.pk, wp.c("advancements.story.smelt_iron.title"), wp.c("advancements.story.smelt_iron.description"), null, ao.a, true, true, false)
+         .a("iron", cj.a.a(cwu.pk))
          .a($$1, "story/smelt_iron");
       ai $$7 = ah.a.a()
          .a($$6)
-         .a(cwt.pI, wp.c("advancements.story.iron_tools.title"), wp.c("advancements.story.iron_tools.description"), null, ao.a, true, true, false)
-         .a("iron_pickaxe", cj.a.a(cwt.pI))
+         .a(cwu.pI, wp.c("advancements.story.iron_tools.title"), wp.c("advancements.story.iron_tools.description"), null, ao.a, true, true, false)
+         .a("iron_pickaxe", cj.a.a(cwu.pI))
          .a($$1, "story/iron_tools");
       ai $$8 = ah.a.a()
          .a($$7)
-         .a(cwt.pe, wp.c("advancements.story.mine_diamond.title"), wp.c("advancements.story.mine_diamond.description"), null, ao.a, true, true, false)
-         .a("diamond", cj.a.a(cwt.pe))
+         .a(cwu.pe, wp.c("advancements.story.mine_diamond.title"), wp.c("advancements.story.mine_diamond.description"), null, ao.a, true, true, false)
+         .a("diamond", cj.a.a(cwu.pe))
          .a($$1, "story/mine_diamond");
       ai $$9 = ah.a.a()
          .a($$6)
-         .a(cwt.rh, wp.c("advancements.story.lava_bucket.title"), wp.c("advancements.story.lava_bucket.description"), null, ao.a, true, true, false)
-         .a("lava_bucket", cj.a.a(cwt.rh))
+         .a(cwu.rh, wp.c("advancements.story.lava_bucket.title"), wp.c("advancements.story.lava_bucket.description"), null, ao.a, true, true, false)
+         .a("lava_bucket", cj.a.a(cwu.rh))
          .a($$1, "story/lava_bucket");
       ai $$10 = ah.a.a()
          .a($$6)
-         .a(cwt.qm, wp.c("advancements.story.obtain_armor.title"), wp.c("advancements.story.obtain_armor.description"), null, ao.a, true, true, false)
+         .a(cwu.qm, wp.c("advancements.story.obtain_armor.title"), wp.c("advancements.story.obtain_armor.description"), null, ao.a, true, true, false)
          .a(al.a.b)
-         .a("iron_helmet", cj.a.a(cwt.ql))
-         .a("iron_chestplate", cj.a.a(cwt.qm))
-         .a("iron_leggings", cj.a.a(cwt.qn))
-         .a("iron_boots", cj.a.a(cwt.qo))
+         .a("iron_helmet", cj.a.a(cwu.ql))
+         .a("iron_chestplate", cj.a.a(cwu.qm))
+         .a("iron_leggings", cj.a.a(cwu.qn))
+         .a("iron_boots", cj.a.a(cwu.qo))
          .a($$1, "story/obtain_armor");
       ah.a.a()
          .a($$8)
-         .a(cwt.vv, wp.c("advancements.story.enchant_item.title"), wp.c("advancements.story.enchant_item.description"), null, ao.a, true, true, false)
+         .a(cwu.vv, wp.c("advancements.story.enchant_item.title"), wp.c("advancements.story.enchant_item.description"), null, ao.a, true, true, false)
          .a("enchanted_item", br.a.b())
          .a($$1, "story/enchant_item");
       ai $$11 = ah.a.a()
          .a($$9)
-         .a(djo.cv, wp.c("advancements.story.form_obsidian.title"), wp.c("advancements.story.form_obsidian.description"), null, ao.a, true, true, false)
-         .a("obsidian", cj.a.a(djo.cv))
+         .a(djp.cv, wp.c("advancements.story.form_obsidian.title"), wp.c("advancements.story.form_obsidian.description"), null, ao.a, true, true, false)
+         .a("obsidian", cj.a.a(djp.cv))
          .a($$1, "story/form_obsidian");
       ah.a.a()
          .a($$10)
-         .a(cwt.ws, wp.c("advancements.story.deflect_arrow.title"), wp.c("advancements.story.deflect_arrow.description"), null, ao.a, true, true, false)
+         .a(cwu.ws, wp.c("advancements.story.deflect_arrow.title"), wp.c("advancements.story.deflect_arrow.description"), null, ao.a, true, true, false)
          .a("deflected_projectile", bw.a.a(bl.a.a().a(bm.a.a().a(eh.a(awr.j))).a(true)))
          .a($$1, "story/deflect_arrow");
       ah.a.a()
          .a($$8)
-         .a(cwt.qq, wp.c("advancements.story.shiny_gear.title"), wp.c("advancements.story.shiny_gear.description"), null, ao.a, true, true, false)
+         .a(cwu.qq, wp.c("advancements.story.shiny_gear.title"), wp.c("advancements.story.shiny_gear.description"), null, ao.a, true, true, false)
          .a(al.a.b)
-         .a("diamond_helmet", cj.a.a(cwt.qp))
-         .a("diamond_chestplate", cj.a.a(cwt.qq))
-         .a("diamond_leggings", cj.a.a(cwt.qr))
-         .a("diamond_boots", cj.a.a(cwt.qs))
+         .a("diamond_helmet", cj.a.a(cwu.qp))
+         .a("diamond_chestplate", cj.a.a(cwu.qq))
+         .a("diamond_leggings", cj.a.a(cwu.qr))
+         .a("diamond_boots", cj.a.a(cwu.qs))
          .a($$1, "story/shiny_gear");
       ai $$12 = ah.a.a()
          .a($$11)
-         .a(cwt.oX, wp.c("advancements.story.enter_the_nether.title"), wp.c("advancements.story.enter_the_nether.description"), null, ao.a, true, true, false)
-         .a("entered_nether", bb.a.a(dgi.j))
+         .a(cwu.oX, wp.c("advancements.story.enter_the_nether.title"), wp.c("advancements.story.enter_the_nether.description"), null, ao.a, true, true, false)
+         .a("entered_nether", bb.a.a(dgj.j))
          .a($$1, "story/enter_the_nether");
       ah.a.a()
          .a($$12)
          .a(
-            cwt.qF,
+            cwu.qF,
             wp.c("advancements.story.cure_zombie_villager.title"),
             wp.c("advancements.story.cure_zombie_villager.description"),
             null,
@@ -101,13 +101,13 @@ public class ms implements mm {
          .a($$1, "story/cure_zombie_villager");
       ai $$13 = ah.a.a()
          .a($$12)
-         .a(cwt.tp, wp.c("advancements.story.follow_ender_eye.title"), wp.c("advancements.story.follow_ender_eye.description"), null, ao.a, true, true, false)
-         .a("in_stronghold", dt.a.a(di.a.b($$0.d(mc.aU).b(eng.k))))
+         .a(cwu.tp, wp.c("advancements.story.follow_ender_eye.title"), wp.c("advancements.story.follow_ender_eye.description"), null, ao.a, true, true, false)
+         .a("in_stronghold", dt.a.a(di.a.b($$0.d(mc.aU).b(enh.k))))
          .a($$1, "story/follow_ender_eye");
       ah.a.a()
          .a($$13)
-         .a(djo.fU, wp.c("advancements.story.enter_the_end.title"), wp.c("advancements.story.enter_the_end.description"), null, ao.a, true, true, false)
-         .a("entered_end", bb.a.a(dgi.k))
+         .a(djp.fU, wp.c("advancements.story.enter_the_end.title"), wp.c("advancements.story.enter_the_end.description"), null, ao.a, true, true, false)
+         .a("entered_end", bb.a.a(dgj.k))
          .a($$1, "story/enter_the_end");
    }
 }

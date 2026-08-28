@@ -1,70 +1,72 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cby extends ccf {
-   protected final bvp a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final dgi f;
+public class cby extends ccg {
+   private static final int a = 40;
+   private static final Predicate<dwy> b = dxh.a(djp.bA);
+   private final bvk c;
+   private final dgj d;
+   private int e;
 
-   public cby(bvp $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dV();
-      this.a(EnumSet.of(ccf.a.a));
+   public cby(bvk $$0) {
+      this.c = $$0;
+      this.d = $$0.dV();
+      this.a(EnumSet.of(ccg.a.a, ccg.a.b, ccg.a.c));
    }
 
    @Override
    public boolean b() {
-      if (this.a.O_() != null) {
-         return false;
-      } else if (!this.f.V()) {
-         return false;
-      } else if (!this.a.bY()) {
-         return false;
-      } else if (!this.f.h(this.a.dv())) {
+      if (this.c.dY().a(this.c.e_() ? 50 : 1000) != 0) {
          return false;
       } else {
-         return !this.a.a(but.f).f() ? false : this.h();
+         ji $$0 = this.c.dv();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.e()).a(djp.i);
       }
-   }
-
-   protected boolean h() {
-      fba $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.d;
-         this.c = $$0.e;
-         this.d = $$0.f;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a.P().k();
    }
 
    @Override
    public void d() {
-      this.a.P().a(this.b, this.c, this.d, this.e);
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.P().m();
    }
 
-   @Nullable
-   protected fba i() {
-      azh $$0 = this.a.dY();
-      ji $$1 = this.a.dv();
+   @Override
+   public void e() {
+      this.e = 0;
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         ji $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return fba.c($$3);
+   @Override
+   public boolean c() {
+      return this.e > 0;
+   }
+
+   public int h() {
+      return this.e;
+   }
+
+   @Override
+   public void a() {
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         ji $$0 = this.c.dv();
+         if (b.test(this.d.a_($$0))) {
+            if (a(this.d).O().b(dgf.c)) {
+               this.d.b($$0, false);
+            }
+
+            this.c.S();
+         } else {
+            ji $$1 = $$0.e();
+            if (this.d.a_($$1).a(djp.i)) {
+               if (a(this.d).O().b(dgf.c)) {
+                  this.d.c(2001, $$1, djn.j(djp.i.m()));
+                  this.d.a($$1, djp.j.m(), 2);
+               }
+
+               this.c.S();
+            }
          }
       }
-
-      return null;
    }
 }

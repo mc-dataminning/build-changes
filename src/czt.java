@@ -1,27 +1,5 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.function.Consumer;
 
-public record czt(boolean c) implements czs {
-   public static final Codec<czt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(czt::a)).apply($$0, czt::new)
-   );
-   public static final yn<ByteBuf, czt> b = yl.b.a(czt::new, czt::a);
-   private static final wp d = wp.c("item.unbreakable").a(n.j);
-
-   @Override
-   public void a(cwl.b $$0, Consumer<wp> $$1, cyh $$2) {
-      if (this.c) {
-         $$1.accept(d);
-      }
-   }
-
-   public czt a(boolean $$0) {
-      return new czt($$0);
-   }
-
-   public boolean a() {
-      return this.c;
-   }
+public interface czt {
+   void a(cwm.b var1, Consumer<wp> var2, cyi var3);
 }

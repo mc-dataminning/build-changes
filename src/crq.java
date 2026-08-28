@@ -1,11 +1,8 @@
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface crq {
-   Set<aku<? extends ke<? extends crq>>> bT = Set.of(mc.K, mc.f, mc.z, mc.V, mc.ad, mc.W);
-
-   crt i();
-
-   default boolean a(crt $$0) {
-      return this.i().a($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface crq {
 }

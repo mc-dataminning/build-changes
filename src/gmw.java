@@ -1,44 +1,21 @@
-public class gmw implements ffy {
-   private final ffy a;
-   private final hes b;
+import java.util.Map;
 
-   public gmw(ffy $$0, hes $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class gmw {
+   public static final gmw a = new gmw(Map.of());
+   private final Map<djn, hdx<?>> b;
+
+   public gmw(Map<djn, hdx<?>> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public ffy a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static gmw a(gfa $$0) {
+      return new gmw(hdy.a($$0));
    }
 
-   @Override
-   public ffy a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public ffy a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
-   }
-
-   @Override
-   public ffy a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public ffy b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public ffy b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+   public void a(djn $$0, cwo $$1, ffv $$2, glz $$3, int $$4, int $$5) {
+      hdx<?> $$6 = this.b.get($$0);
+      if ($$6 != null) {
+         $$6.a(null, $$1, $$2, $$3, $$4, $$5, false);
+      }
    }
 }

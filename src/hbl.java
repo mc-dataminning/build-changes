@@ -1,18 +1,28 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface hbl {
-   void a(hbo var1, cwp var2, hbm var3, cwn var4, @Nullable gfz var5, @Nullable bvh var6, int var7);
+public class hbl implements hbm {
+   public static final hbm a = new hbl();
 
-   public static record a(hhb a, gez b, hbl c) {
-      public hgs a(akv $$0) {
-         return this.a().a($$0, hgt.a);
-      }
+   @Override
+   public void a(hbp $$0, cwq $$1, hbn $$2, cwo $$3, @Nullable gga $$4, @Nullable bvi $$5, int $$6) {
    }
 
-   public interface b extends hhk {
-      MapCodec<? extends hbl.b> a();
+   public static record a() implements hbm.b {
+      public static final MapCodec<hbl.a> a = MapCodec.unit(hbl.a::new);
 
-      hbl a(hbl.a var1);
+      @Override
+      public void a(hhl.a $$0) {
+      }
+
+      @Override
+      public hbm a(hbm.a $$0) {
+         return hbl.a;
+      }
+
+      @Override
+      public MapCodec<hbl.a> a() {
+         return a;
+      }
    }
 }

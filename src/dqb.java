@@ -1,34 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqb extends djm implements djp {
-   public static final MapCodec<dqb> a = b(dqb::new);
+public abstract class dqb extends dlr {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final fbv h = djn.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final fbv i = djn.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final fbv j = djn.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dqb> a() {
-      return a;
-   }
-
-   public dqb(dww.d $$0) {
+   protected dqb(dwx.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dgl $$0, ji $$1, dwx $$2) {
-      return $$0.a_($$1.e()).l();
+   protected abstract MapCodec<? extends dqb> a();
+
+   @Override
+   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
    }
 
    @Override
-   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
-      return true;
+   protected dwy a(dwy $$0, dqf $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwx $$3) {
-      $$0.b($$2.e(), djo.ti.m());
+   protected dwy a(dwy $$0, dom $$1) {
+      return $$0.b(a, $$1.b($$0.c(a)));
    }
 
    @Override
-   public ji a(ji $$0) {
-      return $$0.e();
+   protected boolean a(dwy $$0, etp $$1) {
+      return false;
    }
 }

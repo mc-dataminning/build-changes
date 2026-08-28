@@ -1,127 +1,21 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
-public record hgy(Map<hgy.d, List<hgy.c>> b) {
-   private static final Codec<List<hgy.c>> c = ayi.b(hgy.c.a.listOf());
-   public static final Codec<hgy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayi.d(Codec.unboundedMap(hgy.d.g, c)).fieldOf("layers").forGetter(hgy::b)).apply($$0, hgy::new)
-   );
+public class hgy extends aut<hgz> {
+   public static final hgz a = new hgz(Map.of());
+   private static final ako b = ako.a("equipment");
+   private Map<aku<det>, hgz> c = Map.of();
 
-   public static hgy.a a() {
-      return new hgy.a();
+   public hgy() {
+      super(hgz.a, b);
    }
 
-   public List<hgy.c> a(hgy.d $$0) {
-      return this.b.getOrDefault($$0, List.of());
+   protected void a(Map<akv, hgz> $$0, aup $$1, bou $$2) {
+      this.c = $$0.entrySet().stream().collect(Collectors.toUnmodifiableMap($$0x -> aku.a(deu.a, (akv)$$0x.getKey()), Entry::getValue));
    }
 
-   public static class a {
-      private final Map<hgy.d, List<hgy.c>> a = new EnumMap<>(hgy.d.class);
-
-      a() {
-      }
-
-      public hgy.a a(akv $$0) {
-         return this.a($$0, false);
-      }
-
-      public hgy.a a(akv $$0, boolean $$1) {
-         this.a(hgy.d.b, hgy.c.a($$0, $$1));
-         this.b($$0, $$1);
-         return this;
-      }
-
-      public hgy.a b(akv $$0, boolean $$1) {
-         return this.a(hgy.d.a, hgy.c.a($$0, $$1));
-      }
-
-      public hgy.a a(hgy.d $$0, hgy.c... $$1) {
-         Collections.addAll(this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()), $$1);
-         return this;
-      }
-
-      public hgy a() {
-         return new hgy(this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> List.copyOf((Collection)$$0.getValue()))));
-      }
-   }
-
-   public static record b(Optional<Integer> b) {
-      public static final Codec<hgy.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ayi.i.optionalFieldOf("color_when_undyed").forGetter(hgy.b::a)).apply($$0, hgy.b::new)
-      );
-
-      public Optional<Integer> a() {
-         return this.b;
-      }
-   }
-
-   public static record c(akv b, Optional<hgy.b> c, boolean d) {
-      public static final Codec<hgy.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  akv.a.fieldOf("texture").forGetter(hgy.c::a),
-                  hgy.b.a.optionalFieldOf("dyeable").forGetter(hgy.c::b),
-                  Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(hgy.c::c)
-               )
-               .apply($$0, hgy.c::new)
-      );
-
-      public c(akv $$0) {
-         this($$0, Optional.empty(), false);
-      }
-
-      public static hgy.c a(akv $$0, boolean $$1) {
-         return new hgy.c($$0, $$1 ? Optional.of(new hgy.b(Optional.of(-6265536))) : Optional.empty(), false);
-      }
-
-      public static hgy.c b(akv $$0, boolean $$1) {
-         return new hgy.c($$0, $$1 ? Optional.of(new hgy.b(Optional.empty())) : Optional.empty(), false);
-      }
-
-      public akv a(hgy.d $$0) {
-         return this.b.a((UnaryOperator<String>)($$1 -> "textures/entity/equipment/" + $$0.c() + "/" + $$1 + ".png"));
-      }
-
-      public akv a() {
-         return this.b;
-      }
-
-      public Optional<hgy.b> b() {
-         return this.c;
-      }
-
-      public boolean c() {
-         return this.d;
-      }
-   }
-
-   public static enum d implements azv {
-      a("humanoid"),
-      b("humanoid_leggings"),
-      c("wings"),
-      d("wolf_body"),
-      e("horse_body"),
-      f("llama_body");
-
-      public static final Codec<hgy.d> g = azv.a(hgy.d::values);
-      private final String h;
-
-      private d(final String $$0) {
-         this.h = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
+   public hgz a(aku<det> $$0) {
+      return this.c.getOrDefault($$0, a);
    }
 }

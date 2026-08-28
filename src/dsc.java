@@ -1,61 +1,31 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsc extends dli {
-   public static final MapCodec<dsc> a = b(dsc::new);
-   public static final int b = 2;
-   public static final dxw c = dxn.at;
-   private static final float g = 3.0F;
-   private static final fbu[] h = new fbu[]{djm.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), djm.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
-   private static final int i = 1;
-
-   @Override
-   public MapCodec<dsc> a() {
-      return a;
-   }
-
-   public dsc(dww.d $$0) {
-      super($$0);
-   }
+public class dsc extends djd {
+   protected static final MapCodec<lx> c = mb.i
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof lx $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dsc> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dsc::new));
+   protected final lx e;
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(c);
+   public MapCodec<? extends dsc> a() {
+      return d;
+   }
+
+   protected dsc(lx $$0, dwx.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return h[this.h($$0)];
-   }
-
-   @Override
-   protected dxw b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 2;
-   }
-
-   @Override
-   protected dgh d() {
-      return cwt.wi;
-   }
-
-   @Override
-   public dwx b(int $$0) {
-      return $$0 == 2 ? djo.bZ.m() : super.b($$0);
-   }
-
-   @Override
-   public void b(dwx $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(dgi $$0) {
-      return 1;
+   public void a(dwy $$0, dgj $$1, ji $$2, azh $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(lt.ag, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

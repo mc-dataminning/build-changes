@@ -1,77 +1,166 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public class esk {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final axo d;
+   private final ji.a e = new ji.a();
+   private final ji.a f = new ji.a();
 
-public abstract class esk<M extends esk<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final dyx[] d = new dyx[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<dyx> a;
-
-   protected esk(Long2ObjectOpenHashMap<dyx> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+   public esk(dgl $$0) {
+      this.c = $$0.L_() - 1;
+      int $$1 = $$0.an() + 1;
+      int $$2 = ayz.e($$1 - this.c + 1);
+      this.d = new azo($$2, 256);
    }
 
-   public abstract M b();
-
-   public dyx a(long $$0) {
-      dyx $$1 = ((dyx)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
-   }
-
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   @Nullable
-   public dyx c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
-      }
-
-      dyx $$2 = (dyx)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
+   public void a(dyt $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
       } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
             }
+         }
+      }
+   }
 
-            this.c[0] = $$0;
-            this.d[0] = $$2;
+   private int a(dyt $$0, int $$1, int $$2, int $$3) {
+      int $$4 = kk.c($$0.h($$1) + 1);
+      ji.a $$5 = this.e.d($$2, $$4, $$3);
+      ji.a $$6 = this.f.a($$5, jn.a);
+      dwy $$7 = djp.a.m();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dze $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = djp.a.m();
+            int $$10 = $$0.h($$8);
+            $$5.q(kk.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dwy $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$7, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(jn.a);
+            }
+         }
+      }
+
+      return this.c;
+   }
+
+   public boolean a(dfo $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         ji $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dwy $$8 = $$0.a_($$7);
+         ji $$9 = this.f.d($$1, $$2, $$3);
+         dwy $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            ji $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dwy $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
+      }
+   }
+
+   private boolean a(dfo $$0, int $$1, int $$2, ji $$3, dwy $$4, ji $$5, dwy $$6) {
+      int $$7 = $$3.v();
+      if (a($$4, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
+      }
+
+      return false;
+   }
+
+   private int a(dfo $$0, ji $$1, dwy $$2) {
+      ji.a $$3 = this.e.g($$1);
+      ji.a $$4 = this.f.a($$1, jn.a);
+      dwy $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dwy $$6 = $$0.a_($$4);
+         if (a($$5, $$6)) {
+            return $$3.v();
          }
 
-         return $$2;
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(jn.a);
+      }
+
+      return this.c;
+   }
+
+   private static boolean a(dwy $$0, dwy $$1) {
+      if ($$1.g() != 0) {
+         return true;
+      } else {
+         fbv $$2 = esr.a($$0, jn.a);
+         fbv $$3 = esr.a($$1, jn.b);
+         return fbs.b($$2, $$3);
       }
    }
 
-   @Nullable
-   public dyx d(long $$0) {
-      return (dyx)this.a.remove($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
    }
 
-   public void a(long $$0, dyx $$1) {
-      this.a.put($$0, $$1);
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
    }
 
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
       }
    }
 
-   public void d() {
-      this.e = false;
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
+   }
+
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

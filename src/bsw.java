@@ -1,4 +1,3 @@
-import javax.annotation.Nullable;
-
-public record bsw(btb a, float b, @Nullable btg c, float d) {
+public interface bsw {
+   bsv a(dwy var1, dgk var2, ji var3);
 }

@@ -24,15 +24,15 @@ public class aff implements yw<abl> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static aff a(fca $$0, boolean $$1) {
+   public static aff a(fcb $$0, boolean $$1) {
       return new aff($$0.b(), $$1 ? 0 : 2, Optional.of(new aff.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static aff a(fca $$0) {
+   public static aff a(fcb $$0) {
       return new aff($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static aff a(fca $$0, String $$1, aff.a $$2) {
+   public static aff a(fcb $$0, String $$1, aff.a $$2) {
       return new aff($$0.b(), $$2 == aff.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -125,7 +125,7 @@ public class aff implements yw<abl> {
       private final n f;
       private final int g;
 
-      public b(fca $$0) {
+      public b(fcb $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

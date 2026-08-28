@@ -1,22 +1,26 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eed implements edz {
-   public static final MapCodec<eed> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(km.v(16).optionalFieldOf("offset", ji.c).forGetter($$0x -> $$0x.e)).apply($$0, eed::new)
-   );
+public class eed implements eea {
    private final km e;
+   private final jn f;
+   public static final MapCodec<eed> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(km.v(16).optionalFieldOf("offset", km.h).forGetter($$0x -> $$0x.e), jn.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, eed::new)
+   );
 
-   public eed(km $$0) {
+   public eed(km $$0, jn $$1) {
       this.e = $$0;
+      this.f = $$1;
    }
 
-   public boolean a(dhg $$0, ji $$1) {
-      return !$$0.s($$1.a(this.e));
+   public boolean a(dhh $$0, ji $$1) {
+      ji $$2 = $$1.a(this.e);
+      return $$0.a_($$2).c($$0, $$2, this.f);
    }
 
    @Override
-   public eea<?> a() {
-      return eea.h;
+   public eeb<?> a() {
+      return eeb.d;
    }
 }

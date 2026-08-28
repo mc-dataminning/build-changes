@@ -1,31 +1,46 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egh implements eic {
-   public static final Codec<egh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwx.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dwx.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dwx.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dwx.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               edz.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, egh::new)
-   );
-   public final dwx b;
-   public final dwx c;
-   public final dwx d;
-   public final dwx e;
-   public final edz f;
-   public final boolean g;
+public class egh extends efb {
+   public egh(Codec<eif> $$0) {
+      super($$0);
+   }
 
-   public egh(dwx $$0, dwx $$1, dwx $$2, dwx $$3, edz $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   protected void a(dgk $$0, azh $$1, ji $$2, int $$3, ji.a $$4, eif $$5) {
+      int $$6 = $$5.d;
+
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).s()) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dwy $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(dnm.e) && $$19.b(dnm.c) && $$19.b(dnm.b) && $$19.b(dnm.d)) {
+                     $$19 = $$19.b(dnm.e, Boolean.valueOf($$15))
+                        .b(dnm.c, Boolean.valueOf($$16))
+                        .b(dnm.b, Boolean.valueOf($$17))
+                        .b(dnm.d, Boolean.valueOf($$18));
+                  }
+
+                  this.a($$0, $$4, $$19);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

@@ -3,28 +3,23 @@ import io.netty.buffer.ByteBuf;
 import java.util.function.IntFunction;
 
 public enum dar implements azv {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+   a(0, "food"),
+   b(1, "blocks"),
+   c(2, "misc");
 
-   public static final Codec<dar> e = azv.a(dar::values);
-   public static final IntFunction<dar> f = axq.a(dar::a, values(), axq.a.a);
-   public static final yn<ByteBuf, dar> g = yl.a(f, dar::a);
+   private static final IntFunction<dar> f = axq.a($$0 -> $$0.g, values(), axq.a.a);
+   public static final Codec<dar> d = azv.a(dar::values);
+   public static final yn<ByteBuf, dar> e = yl.a(f, $$0 -> $$0.g);
+   private final int g;
    private final String h;
-   private final int i;
 
-   private dar(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   private dar(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
    public String c() {
       return this.h;
-   }
-
-   private int a() {
-      return this.i;
    }
 }

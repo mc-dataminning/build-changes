@@ -1,11 +1,4 @@
-import javax.annotation.Nullable;
-
-public abstract class gye extends gyk {
-   @Nullable
-   public buj.k b;
-   public float c;
-   public float d;
-   public float e;
-
-   public abstract boolean a();
+public class gye extends gzl {
+   public float a;
+   public boolean b;
 }

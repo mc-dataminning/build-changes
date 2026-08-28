@@ -1,35 +1,13 @@
-import org.joml.Quaternionf;
+public class gjs extends gki {
+   private final gkd a;
 
-public class gjs extends gkh {
-   private static final float a = 1.0472F;
-   private int b;
-
-   gjs(gfz $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.b = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a(ffy $$0, fkr $$1, float $$2) {
-      if (this.b <= 0) {
-         this.y = 1.0F - ayz.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         Quaternionf $$3 = new Quaternionf();
-         $$3.rotationX(-1.0472F);
-         this.a($$0, $$1, $$3, $$2);
-         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
-         this.a($$0, $$1, $$3, $$2);
-      }
+   gjs(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkd $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
@@ -38,30 +16,22 @@ public class gjs extends gkh {
    }
 
    @Override
-   public gjl b() {
-      return gjl.c;
+   public gjm b() {
+      return gjm.c;
    }
 
    @Override
    public void a() {
-      if (this.b > 0) {
-         this.b--;
-      } else {
-         super.a();
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements gjk<lw> {
-      private final gkc a;
-
-      public a(gkc $$0) {
-         this.a = $$0;
-      }
-
-      public gjh a(lw $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjs $$8 = new gjs($$1, $$2, $$3, $$4, $$0.b());
-         $$8.a(this.a);
+   public static record a(gkd a) implements gjl<lx> {
+      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjs $$8 = new gjs($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.A.a(4) + 6);
          return $$8;
       }
    }

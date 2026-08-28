@@ -1,5 +1,5 @@
-public record ahr(dcl b) implements yw<agg> {
-   public static final yn<vl, ahr> a = yn.a(dcl.a, ahr::b, ahr::new);
+public record ahr(dcm b) implements yw<agg> {
+   public static final yn<vl, ahr> a = yn.a(dcm.a, ahr::b, ahr::new);
 
    @Override
    public yy<ahr> a() {

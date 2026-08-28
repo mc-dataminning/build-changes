@@ -1,19 +1,16 @@
-public class bua extends bto {
-   public static final int c = 40;
-
-   protected bua(btp $$0, int $$1) {
-      super($$0, $$1);
+class bua extends btp {
+   protected bua(btq $$0, int $$1) {
+      super($$0, $$1, lt.y);
    }
 
    @Override
-   public boolean a(ard $$0, bvh $$1, int $$2) {
-      $$1.a($$0, $$1.dW().r(), 1.0F);
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public void a(ard $$0, bvi $$1, int $$2, bum.d $$3) {
+      if ($$3 == bum.d.a) {
+         double $$4 = $$1.dA();
+         double $$5 = $$1.dC() + (double)($$1.dr() / 2.0F);
+         double $$6 = $$1.dG();
+         float $$7 = 3.0F + $$1.dY().i() * 2.0F;
+         $$0.a($$1, null, cqh.d, $$4, $$5, $$6, $$7, false, dgj.a.e, lt.A, lt.z, awa.cQ);
+      }
    }
 }

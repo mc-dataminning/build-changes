@@ -1,18 +1,20 @@
-import java.nio.file.Path;
-import java.util.List;
 import java.util.UUID;
 
 public interface hhu {
-   void scheduleReload(hhu.a var1);
+   void a(UUID var1, hhu.b var2);
 
-   public interface a {
-      void a();
+   void a(UUID var1, hhu.a var2);
 
-      void a(boolean var1);
-
-      List<hhu.b> b();
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   public static record b(UUID a, Path b) {
+   public static enum b {
+      a,
+      b;
    }
 }

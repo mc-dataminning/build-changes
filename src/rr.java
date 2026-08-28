@@ -1,69 +1,69 @@
 public class rr {
-   public static final aku<emq> a = ru.a("ice_spike");
-   public static final aku<emq> b = ru.a("ice_patch");
-   public static final aku<emq> c = ru.a("forest_rock");
-   public static final aku<emq> d = ru.a("iceberg_packed");
-   public static final aku<emq> e = ru.a("iceberg_blue");
-   public static final aku<emq> f = ru.a("blue_ice");
-   public static final aku<emq> g = ru.a("lake_lava_underground");
-   public static final aku<emq> h = ru.a("lake_lava_surface");
-   public static final aku<emq> i = ru.a("disk_clay");
-   public static final aku<emq> j = ru.a("disk_gravel");
-   public static final aku<emq> k = ru.a("disk_sand");
-   public static final aku<emq> l = ru.a("disk_grass");
-   public static final aku<emq> m = ru.a("freeze_top_layer");
-   public static final aku<emq> n = ru.a("void_start_platform");
-   public static final aku<emq> o = ru.a("desert_well");
-   public static final aku<emq> p = ru.a("spring_lava");
-   public static final aku<emq> q = ru.a("spring_lava_frozen");
-   public static final aku<emq> r = ru.a("spring_water");
+   public static final aku<emr> a = ru.a("ice_spike");
+   public static final aku<emr> b = ru.a("ice_patch");
+   public static final aku<emr> c = ru.a("forest_rock");
+   public static final aku<emr> d = ru.a("iceberg_packed");
+   public static final aku<emr> e = ru.a("iceberg_blue");
+   public static final aku<emr> f = ru.a("blue_ice");
+   public static final aku<emr> g = ru.a("lake_lava_underground");
+   public static final aku<emr> h = ru.a("lake_lava_surface");
+   public static final aku<emr> i = ru.a("disk_clay");
+   public static final aku<emr> j = ru.a("disk_gravel");
+   public static final aku<emr> k = ru.a("disk_sand");
+   public static final aku<emr> l = ru.a("disk_grass");
+   public static final aku<emr> m = ru.a("freeze_top_layer");
+   public static final aku<emr> n = ru.a("void_start_platform");
+   public static final aku<emr> o = ru.a("desert_well");
+   public static final aku<emr> p = ru.a("spring_lava");
+   public static final aku<emr> q = ru.a("spring_lava_frozen");
+   public static final aku<emr> r = ru.a("spring_water");
 
-   public static void a(qe<emq> $$0) {
-      js<efk<?, ?>> $$1 = $$0.a(mc.aL);
-      jr<efk<?, ?>> $$2 = $$1.b(rg.a);
-      jr<efk<?, ?>> $$3 = $$1.b(rg.b);
-      jr<efk<?, ?>> $$4 = $$1.b(rg.c);
-      jr<efk<?, ?>> $$5 = $$1.b(rg.d);
-      jr<efk<?, ?>> $$6 = $$1.b(rg.e);
-      jr<efk<?, ?>> $$7 = $$1.b(rg.f);
-      jr<efk<?, ?>> $$8 = $$1.b(rg.g);
-      jr<efk<?, ?>> $$9 = $$1.b(rg.h);
-      jr<efk<?, ?>> $$10 = $$1.b(rg.i);
-      jr<efk<?, ?>> $$11 = $$1.b(rg.j);
-      jr<efk<?, ?>> $$12 = $$1.b(rg.l);
-      jr<efk<?, ?>> $$13 = $$1.b(rg.k);
-      jr<efk<?, ?>> $$14 = $$1.b(rg.n);
-      jr<efk<?, ?>> $$15 = $$1.b(rg.o);
-      jr<efk<?, ?>> $$16 = $$1.b(rg.p);
-      jr<efk<?, ?>> $$17 = $$1.b(rg.q);
-      jr<efk<?, ?>> $$18 = $$1.b(rg.r);
-      ru.a($$0, a, $$2, emi.a(3), emn.a(), ru.a, eme.a());
-      ru.a($$0, b, $$3, emi.a(2), emn.a(), ru.a, emv.a(brm.a(-1)), emf.a(edz.a(djo.ec)), eme.a());
-      ru.a($$0, c, $$4, emi.a(2), emn.a(), ru.a, eme.a());
-      ru.a($$0, e, $$6, emw.a(200), emn.a(), eme.a());
-      ru.a($$0, d, $$5, emw.a(16), emn.a(), eme.a());
-      ru.a($$0, f, $$7, emi.a(brv.a(0, 19)), emn.a(), eml.a(edm.a(30), edm.a(61)), eme.a());
+   public static void a(qe<emr> $$0) {
+      js<efl<?, ?>> $$1 = $$0.a(mc.aL);
+      jr<efl<?, ?>> $$2 = $$1.b(rg.a);
+      jr<efl<?, ?>> $$3 = $$1.b(rg.b);
+      jr<efl<?, ?>> $$4 = $$1.b(rg.c);
+      jr<efl<?, ?>> $$5 = $$1.b(rg.d);
+      jr<efl<?, ?>> $$6 = $$1.b(rg.e);
+      jr<efl<?, ?>> $$7 = $$1.b(rg.f);
+      jr<efl<?, ?>> $$8 = $$1.b(rg.g);
+      jr<efl<?, ?>> $$9 = $$1.b(rg.h);
+      jr<efl<?, ?>> $$10 = $$1.b(rg.i);
+      jr<efl<?, ?>> $$11 = $$1.b(rg.j);
+      jr<efl<?, ?>> $$12 = $$1.b(rg.l);
+      jr<efl<?, ?>> $$13 = $$1.b(rg.k);
+      jr<efl<?, ?>> $$14 = $$1.b(rg.n);
+      jr<efl<?, ?>> $$15 = $$1.b(rg.o);
+      jr<efl<?, ?>> $$16 = $$1.b(rg.p);
+      jr<efl<?, ?>> $$17 = $$1.b(rg.q);
+      jr<efl<?, ?>> $$18 = $$1.b(rg.r);
+      ru.a($$0, a, $$2, emj.a(3), emo.a(), ru.a, emf.a());
+      ru.a($$0, b, $$3, emj.a(2), emo.a(), ru.a, emw.a(brn.a(-1)), emg.a(eea.a(djp.ec)), emf.a());
+      ru.a($$0, c, $$4, emj.a(2), emo.a(), ru.a, emf.a());
+      ru.a($$0, e, $$6, emx.a(200), emo.a(), emf.a());
+      ru.a($$0, d, $$5, emx.a(16), emo.a(), emf.a());
+      ru.a($$0, f, $$7, emj.a(brw.a(0, 19)), emo.a(), emm.a(edn.a(30), edn.a(61)), emf.a());
       ru.a(
          $$0,
          g,
          $$8,
-         emw.a(9),
-         emn.a(),
-         eml.a(elw.a(edm.a(0), edm.b())),
-         emj.a(jn.a, edz.a(edz.a(edz.c), edz.d(new ji(0, -5, 0))), 32),
-         emy.a(ecs.a.c, Integer.MIN_VALUE, -5),
-         eme.a()
+         emx.a(9),
+         emo.a(),
+         emm.a(elx.a(edn.a(0), edn.b())),
+         emk.a(jn.a, eea.a(eea.a(eea.c), eea.d(new ji(0, -5, 0))), 32),
+         emz.a(ect.a.c, Integer.MIN_VALUE, -5),
+         emf.a()
       );
-      ru.a($$0, h, $$8, emw.a(200), emn.a(), ru.d, eme.a());
-      ru.a($$0, i, $$9, emn.a(), ru.c, emf.a(edz.a(eta.c)), eme.a());
-      ru.a($$0, j, $$10, emn.a(), ru.c, emf.a(edz.a(eta.c)), eme.a());
-      ru.a($$0, k, $$11, emi.a(3), emn.a(), ru.c, emf.a(edz.a(eta.c)), eme.a());
-      ru.a($$0, l, $$12, emi.a(1), emn.a(), ru.c, emv.a(brm.a(-1)), emf.a(edz.a(djo.tk)), eme.a());
-      ru.a($$0, m, $$13, eme.a());
-      ru.a($$0, n, $$14, eme.a());
-      ru.a($$0, o, $$15, emw.a(1000), emn.a(), ru.a, eme.a());
-      ru.a($$0, p, $$16, emi.a(20), emn.a(), eml.a(elx.a(edm.a(), edm.c(8), 8)), eme.a());
-      ru.a($$0, q, $$17, emi.a(20), emn.a(), eml.a(elx.a(edm.a(), edm.c(8), 8)), eme.a());
-      ru.a($$0, r, $$18, emi.a(25), emn.a(), eml.a(edm.a(), edm.a(192)), eme.a());
+      ru.a($$0, h, $$8, emx.a(200), emo.a(), ru.d, emf.a());
+      ru.a($$0, i, $$9, emo.a(), ru.c, emg.a(eea.a(etb.c)), emf.a());
+      ru.a($$0, j, $$10, emo.a(), ru.c, emg.a(eea.a(etb.c)), emf.a());
+      ru.a($$0, k, $$11, emj.a(3), emo.a(), ru.c, emg.a(eea.a(etb.c)), emf.a());
+      ru.a($$0, l, $$12, emj.a(1), emo.a(), ru.c, emw.a(brn.a(-1)), emg.a(eea.a(djp.tk)), emf.a());
+      ru.a($$0, m, $$13, emf.a());
+      ru.a($$0, n, $$14, emf.a());
+      ru.a($$0, o, $$15, emx.a(1000), emo.a(), ru.a, emf.a());
+      ru.a($$0, p, $$16, emj.a(20), emo.a(), emm.a(ely.a(edn.a(), edn.c(8), 8)), emf.a());
+      ru.a($$0, q, $$17, emj.a(20), emo.a(), emm.a(ely.a(edn.a(), edn.c(8), 8)), emf.a());
+      ru.a($$0, r, $$18, emj.a(25), emo.a(), emm.a(edn.a(), edn.a(192)), emf.a());
    }
 }

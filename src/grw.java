@@ -1,32 +1,36 @@
-public class grw extends gqx<clm, hbb, gbw> {
-   private static final akv a = akv.b("textures/entity/zombie/drowned.png");
+public class grw extends gse<cpi, gyl> {
+   private static final akv a = akv.b("textures/entity/enderdragon/dragon_fireball.png");
+   private static final gmj b = gmj.g(a);
 
-   public grw(gse.a $$0) {
-      super($$0, new gbw($$0.a(gfc.aw)), new gbw($$0.a(gfc.ax)), new gbw($$0.a(gfc.aB)), new gbw($$0.a(gfc.aC)), new gbw($$0.a(gfc.ay)), new gbw($$0.a(gfc.az)));
-      this.a(new gwa(this, $$0.f()));
+   public grw(gsf.a $$0) {
+      super($$0);
    }
 
-   public hbb a() {
-      return new hbb();
+   protected int a(cpi $$0, ji $$1) {
+      return 15;
    }
 
    @Override
-   public akv a(hbb $$0) {
-      return a;
-   }
-
-   protected void a(hbb $$0, ffu $$1, float $$2, float $$3) {
+   public void a(gyl $$0, ffv $$1, glz $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(this.e.b());
+      ffv.a $$4 = $$1.c();
+      ffz $$5 = $$2.getBuffer(b);
+      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
+      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
+      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
+      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
+      $$1.b();
       super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.G;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.ab;
-         float $$6 = ayz.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
-      }
    }
 
-   protected gco.a a(clm $$0, bvb $$1) {
-      cwp $$2 = $$0.a($$1);
-      return $$0.fy() == $$1 && $$0.gh() && $$2.a(cwt.wS) ? gco.a.e : gco.a.a;
+   private static void a(ffz $$0, ffv.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hej.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   @Override
+   public gyl d() {
+      return new gyl();
    }
 }

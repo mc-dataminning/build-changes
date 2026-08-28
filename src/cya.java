@@ -1,11 +1,19 @@
-public class cya extends cye {
-   public cya(cwl.a $$0) {
+import javax.annotation.Nullable;
+
+public class cya extends cur {
+   public cya(cwm.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsk a(dgi $$0, cox $$1, bsj $$2) {
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awa.zE, awb.h, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public cpf a(dgj $$0, cwq $$1, bvi $$2, @Nullable cwq $$3) {
+      return new cpx($$0, $$2, $$1.c(1), $$3);
+   }
+
+   @Override
+   public cpr a(dgj $$0, kb $$1, cwq $$2, jn $$3) {
+      cpx $$4 = new cpx($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.b = cpf.a.b;
+      return $$4;
    }
 }

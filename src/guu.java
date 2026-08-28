@@ -1,42 +1,21 @@
-public class guu extends gqv<crk, gzo> {
-   private final gnc b;
+public class guu extends grd<cph, haq> {
+   public static final akv a = akv.b("textures/entity/projectiles/arrow.png");
+   public static final akv b = akv.b("textures/entity/projectiles/tipped_arrow.png");
 
-   public guu(gse.a $$0) {
-      super($$0, gfc.di);
-      this.b = $$0.d();
+   public guu(gsf.a $$0) {
+      super($$0);
    }
 
-   protected void a(gzo $$0, dwx $$1, ffu $$2, gly $$3, int $$4) {
-      float $$5 = $$0.n;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = ayz.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   protected akv a(haq $$0) {
+      return $$0.d ? b : a;
    }
 
-   public static void a(gnc $$0, dwx $$1, ffu $$2, gly $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = hei.a(hei.a(1.0F), 10);
-      } else {
-         $$6 = hei.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public haq a() {
+      return new haq();
    }
 
-   public gzo a() {
-      return new gzo();
-   }
-
-   public void a(crk $$0, gzo $$1, float $$2) {
+   public void a(cph $$0, haq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.n = $$0.x() > -1 ? (float)$$0.x() - $$2 + 1.0F : -1.0F;
+      $$1.d = $$0.D() > 0;
    }
 }

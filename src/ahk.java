@@ -1,5 +1,5 @@
-public record ahk(int b, dcl c, boolean d) implements yw<agg> {
-   public static final yn<vl, ahk> a = yn.a(yl.w, ahk::b, dcl.a, ahk::e, yl.b, ahk::f, ahk::new);
+public record ahk(int b, dcm c, boolean d) implements yw<agg> {
+   public static final yn<vl, ahk> a = yn.a(yl.w, ahk::b, dcm.a, ahk::e, yl.b, ahk::f, ahk::new);
 
    @Override
    public yy<ahk> a() {
@@ -10,7 +10,7 @@ public record ahk(int b, dcl c, boolean d) implements yw<agg> {
       $$0.a(this);
    }
 
-   public dcl e() {
+   public dcm e() {
       return this.c;
    }
 

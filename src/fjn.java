@@ -1,76 +1,135 @@
 import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fjn extends hle {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wp b = wp.c("mco.terms.title");
-   private static final wp c = wp.c("mco.terms.sentence.1");
-   private static final wp C = wo.a().b(wp.c("mco.terms.sentence.2").c(xm.a.c(true)));
-   private final ful D;
-   private final fhl E;
-   private boolean F;
+public class fjn extends hlf {
+   static final Logger a = LogUtils.getLogger();
+   private static final wp b = wp.c("mco.configure.world.subscription.title");
+   private static final wp c = wp.c("mco.configure.world.subscription.start");
+   private static final wp C = wp.c("mco.configure.world.subscription.timeleft");
+   private static final wp D = wp.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final wp E = wp.c("mco.configure.world.subscription.expired");
+   private static final wp F = wp.c("mco.configure.world.subscription.less_than_a_day");
+   private static final wp G = wp.c("mco.configure.world.subscription.unknown");
+   private static final wp H = wp.c("mco.configure.world.subscription.recurring.info");
+   private final fum I;
+   final fhm J;
+   final fum K;
+   private wp L = G;
+   private wp M = G;
+   @Nullable
+   private fhy.a N;
 
-   public fjn(ful $$0, fhl $$1) {
-      super(b);
-      this.D = $$0;
-      this.E = $$1;
+   public fjn(fum $$0, fhm $$1, fum $$2) {
+      super(flb.a);
+      this.I = $$0;
+      this.J = $$1;
+      this.K = $$2;
    }
 
    @Override
    public void aR_() {
-      int $$0 = this.n / 4 - 2;
-      this.c(fot.a(wp.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.n / 4, g(12), $$0, 20).a());
-      this.c(fot.a(wp.c("mco.terms.buttons.disagree"), $$0x -> this.m.a(this.D)).a(this.n / 2 + 4, g(12), $$0, 20).a());
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.a(this.D);
-         return true;
+      this.a(this.J.a);
+      this.c(fou.a(wp.c("mco.configure.world.subscription.extend"), $$0 -> ftj.a(this, axv.a(this.J.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
+      if (this.J.j) {
+         this.c(
+            fou.a(wp.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fjh.b(this, wp.c("mco.configure.world.delete.question.line1"), $$0x -> this.E())))
+               .a(this.n / 2 - 100, g(10), 200, 20)
+               .a()
+         );
+      } else if (fgg.b() && this.J.u != null) {
+         this.c(new fpe(this.n / 2 - 100, g(8), 200, 46, wp.a("mco.snapshot.subscription.info", this.J.u), this.p));
       } else {
-         return super.a($$0, $$1, $$2);
+         this.c(new fpe(this.n / 2 - 100, g(8), 200, 46, H, this.p));
       }
-   }
 
-   private void E() {
-      fgk $$0 = fgk.a();
-
-      try {
-         $$0.j();
-         this.m.a(new fja(this.D, new fkg(this.D, this.E)));
-      } catch (fig var3) {
-         a.error("Couldn't agree to TOS", var3);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.F) {
-         this.m.p.a(axv.s.toString());
-         af.m().a(axv.s);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+      this.c(fou.a(wo.k, $$0 -> this.aO_()).a(this.n / 2 - 100, g(12), 200, 20).a());
    }
 
    @Override
    public wp i() {
-      return wo.a(super.i(), c).b(wo.v).b(C);
+      return wo.b(b, c, this.M, C, this.L);
+   }
+
+   private void E() {
+      (new Thread("Realms-delete-realm") {
+         @Override
+         public void run() {
+            try {
+               fgl $$0 = fgl.a();
+               $$0.j(fjn.this.J.a);
+            } catch (fih var2) {
+               fjn.a.error("Couldn't delete world", var2);
+            }
+
+            fjn.this.m.execute(() -> fjn.this.m.a(fjn.this.K));
+         }
+      }).start();
+      this.m.a(this);
+   }
+
+   private void a(long $$0) {
+      fgl $$1 = fgl.a();
+
+      try {
+         fhy $$2 = $$1.h($$0);
+         this.L = this.a($$2.b);
+         this.M = b($$2.a);
+         this.N = $$2.c;
+      } catch (fih var5) {
+         a.error("Couldn't get subscription", var5);
+         this.m.a(new fiz(var5, this.I));
+      }
+   }
+
+   private static wp b(long $$0) {
+      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
+      $$1.setTimeInMillis($$0);
+      return wp.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
    }
 
    @Override
-   public void a(foe $$0, int $$1, int $$2, float $$3) {
+   public void aO_() {
+      this.m.a(this.I);
+   }
+
+   @Override
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.b(this.p, c, this.n / 2 - 120, g(5), -1);
-      int $$4 = this.p.a(c);
-      int $$5 = this.n / 2 - 121 + $$4;
-      int $$6 = g(5);
-      int $$7 = $$5 + this.p.a(C) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.F = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.b(this.p, C, this.n / 2 - 120 + $$4, g(5), this.F ? 7107012 : 3368635);
+      int $$4 = this.n / 2 - 100;
+      $$0.a(this.p, b, this.n / 2, 17, -1);
+      $$0.b(this.p, c, $$4, g(0), -6250336);
+      $$0.b(this.p, this.M, $$4, g(1), -1);
+      if (this.N == fhy.a.a) {
+         $$0.b(this.p, C, $$4, g(3), -6250336);
+      } else if (this.N == fhy.a.b) {
+         $$0.b(this.p, D, $$4, g(3), -6250336);
+      }
+
+      $$0.b(this.p, this.L, $$4, g(4), -1);
+   }
+
+   private wp a(int $$0) {
+      if ($$0 < 0 && this.J.j) {
+         return E;
+      } else if ($$0 <= 1) {
+         return F;
+      } else {
+         int $$1 = $$0 / 30;
+         int $$2 = $$0 % 30;
+         boolean $$3 = $$1 > 0;
+         boolean $$4 = $$2 > 0;
+         if ($$3 && $$4) {
+            return wp.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+         } else if ($$3) {
+            return wp.a("mco.configure.world.subscription.remaining.months", $$1);
+         } else {
+            return $$4 ? wp.a("mco.configure.world.subscription.remaining.days", $$2) : wp.i();
+         }
+      }
    }
 }

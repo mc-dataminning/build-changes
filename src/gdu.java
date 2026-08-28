@@ -1,51 +1,32 @@
-public class gdu extends gcb<haf> {
-   public static final String a = "lid";
-   private static final String b = "base";
-   private final gfd c;
-   private final gfd d;
+public class gdu extends gcc<haf> {
+   private static final String a = "main";
+   private final gfe b;
 
-   public gdu(gfd $$0) {
-      super($$0, gmi::h);
-      this.c = $$0.b("lid");
-      this.d = $$0.b("head");
+   public gdu(gfe $$0) {
+      super($$0);
+      this.b = $$0.b("main");
    }
 
-   private static gfl c() {
-      gfl $$0 = new gfl();
-      gfn $$1 = $$0.a();
-      $$1.a("lid", gfi.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gff.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", gfi.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gff.a(0.0F, 24.0F, 0.0F));
-      return $$0;
-   }
-
-   public static gfj a() {
-      gfl $$0 = c();
-      $$0.a().a("head", gfi.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gff.a(0.0F, 12.0F, 0.0F));
-      return gfj.a($$0, 64, 64);
-   }
-
-   public static gfj b() {
-      gfl $$0 = c();
-      return gfj.a($$0, 64, 64);
+   public static gfk a() {
+      gfm $$0 = new gfm();
+      gfo $$1 = $$0.a();
+      $$1.a(
+         "main",
+         gfj.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
+            .a(0, 10)
+            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
+            .a(20, 0)
+            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
+         gfg.a
+      );
+      return gfk.a($$0, 64, 32);
    }
 
    public void a(haf $$0) {
       super.a($$0);
-      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
-      float $$2 = -1.0F + ayz.a($$1);
-      float $$3 = 0.0F;
-      if ($$1 > (float) Math.PI) {
-         $$3 = ayz.a($$0.u * 0.1F) * 0.7F;
-      }
-
-      this.c.a(0.0F, 16.0F + ayz.a($$1) * 8.0F + $$3, 0.0F);
-      if ($$0.c > 0.3F) {
-         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
-      } else {
-         this.c.f = 0.0F;
-      }
-
-      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
+      this.b.f = $$0.b * (float) (Math.PI / 180.0);
+      this.b.e = $$0.a * (float) (Math.PI / 180.0);
    }
 }

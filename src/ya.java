@@ -180,7 +180,7 @@ public class ya implements wq {
    }
 
    @Override
-   public xd a(@Nullable ex $$0, @Nullable bul $$1, int $$2) throws CommandSyntaxException {
+   public xd a(@Nullable ex $$0, @Nullable bum $$1, int $$2) throws CommandSyntaxException {
       Object[] $$3 = new Object[this.j.length];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {

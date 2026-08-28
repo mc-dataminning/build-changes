@@ -10,7 +10,7 @@ public record acb(List<acb.a> b) implements yw<abl> {
       this($$0.a(acb.a::new));
    }
 
-   public static acb a(List<dzc> $$0) {
+   public static acb a(List<dzd> $$0) {
       return new acb($$0.stream().map(acb.a::new).toList());
    }
 
@@ -27,8 +27,8 @@ public record acb(List<acb.a> b) implements yw<abl> {
       $$0.a(this);
    }
 
-   public static record a(dfo a, byte[] b) {
-      public a(dzc $$0) {
+   public static record a(dfp a, byte[] b) {
+      public a(dzd $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new vl(this.d()), $$0);
       }
@@ -37,10 +37,10 @@ public record acb(List<acb.a> b) implements yw<abl> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(dzc $$0) {
+      private static int a(dzd $$0) {
          int $$1 = 0;
 
-         for (dzd $$2 : $$0.d()) {
+         for (dze $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -57,8 +57,8 @@ public record acb(List<acb.a> b) implements yw<abl> {
          return $$0;
       }
 
-      public static void a(vl $$0, dzc $$1) {
-         for (dzd $$2 : $$1.d()) {
+      public static void a(vl $$0, dzd $$1) {
+         for (dze $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -68,7 +68,7 @@ public record acb(List<acb.a> b) implements yw<abl> {
          $$0.a(this.b);
       }
 
-      public dfo b() {
+      public dfp b() {
          return this.a;
       }
 

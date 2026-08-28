@@ -1,42 +1,57 @@
-public class gje extends gjh {
-   private final gcw a;
-   private final gmi b = gmi.j(grx.a);
-
-   gje(gfz $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new gcj(flj.Q().aS().a(gfc.aE));
-      this.u = 0.0F;
-      this.t = 30;
+public class gje extends gki {
+   gje(gga $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public gjl b() {
-      return gjl.d;
+   public gjm b() {
+      return gjm.b;
    }
 
    @Override
-   public void a(ffu $$0, gly $$1, fkr $$2, float $$3) {
-      float $$4 = ((float)this.s + $$3) / (float)this.t;
-      float $$5 = 0.05F + 0.5F * ayz.a($$4 * (float) Math.PI);
-      int $$6 = axk.a($$5, 1.0F, 1.0F, 1.0F);
-      $$0.a();
-      $$0.a($$2.f());
-      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
-      float $$7 = 0.42553192F;
-      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$0.a(0.0F, -0.56F, 3.5F);
-      ffy $$8 = $$1.getBuffer(this.b);
-      this.a.a($$0, $$8, 15728880, hei.d, $$6);
-      $$0.b();
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
    }
 
    @Override
-   public void a(ffy $$0, fkr $$1, float $$2) {
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
    }
 
-   public static class a implements gjk<lx> {
-      public gjh a(lx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gje($$1, $$2, $$3, $$4);
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(lt.ag, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+   }
+
+   public static class a implements gjl<lx> {
+      private final gkd a;
+
+      public a(gkd $$0) {
+         this.a = $$0;
+      }
+
+      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gje $$8 = new gje($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

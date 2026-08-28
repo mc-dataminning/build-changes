@@ -1,13 +1,13 @@
 public class agk implements yw<agg> {
    public static final yn<vl, agk> a = yw.a(agk::a, agk::new);
-   private final bsh b;
+   private final bsi b;
 
-   public agk(bsh $$0) {
+   public agk(bsi $$0) {
       this.b = $$0;
    }
 
    private agk(vl $$0) {
-      this.b = bsh.a($$0.readUnsignedByte());
+      this.b = bsi.a($$0.readUnsignedByte());
    }
 
    private void a(vl $$0) {
@@ -23,7 +23,7 @@ public class agk implements yw<agg> {
       $$0.a(this);
    }
 
-   public bsh b() {
+   public bsi b() {
       return this.b;
    }
 }

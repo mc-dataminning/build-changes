@@ -15,8 +15,8 @@ public class bbt extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bhx.s);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bhx.s);
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bhy.s);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bhy.s);
       return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
    }
 

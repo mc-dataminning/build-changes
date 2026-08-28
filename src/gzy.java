@@ -1,3 +1,3 @@
-public class gzy extends gzk {
-   public int a;
+public class gzy extends gzl {
+   public float a;
 }

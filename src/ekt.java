@@ -1,10 +1,8 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class ekt extends ekw {
+public class ekt extends ekx {
    public static final MapCodec<ekt> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ekt::new, $$0 -> $$0.b);
    private final float b;
 
@@ -13,30 +11,28 @@ public class ekt extends ekw {
    }
 
    @Override
-   protected ekx<?> a() {
-      return ekx.d;
+   protected eky<?> a() {
+      return eky.e;
    }
 
    @Override
-   public void a(ekw.a $$0) {
+   public void a(ekx.a $$0) {
       azh $$1 = $$0.b();
-      List<ji> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         if (!($$1.i() >= this.b)) {
-            List<ji> $$3 = new ArrayList<>($$2);
-            af.c($$3, $$1);
-            Optional<ji> $$4 = $$3.stream().filter($$1x -> {
-               for (jn $$2x : jn.values()) {
-                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(awp.u))) {
-                     return false;
+      if (!($$1.i() >= this.b)) {
+         List<ji> $$2 = $$0.c();
+         if (!$$2.isEmpty()) {
+            int $$3 = $$2.getFirst().v();
+            $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+               for (jn $$3x : jn.c.a) {
+                  if ($$1.i() <= 0.25F) {
+                     jn $$4 = $$3x.g();
+                     ji $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                     if ($$0.a($$5)) {
+                        $$0.a($$5, djp.fX.m().b(dku.c, Integer.valueOf($$1.a(3))).b(dku.aF, $$3x));
+                     }
                   }
                }
-
-               return true;
-            }).findFirst();
-            if (!$$4.isEmpty()) {
-               $$0.a($$4.get(), djo.cB.m().b(dlh.c, Boolean.valueOf(true)).b(dlh.d, Boolean.valueOf(true)));
-            }
+            });
          }
       }
    }

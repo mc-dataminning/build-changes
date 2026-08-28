@@ -1,2 +1,2 @@
-public interface cuj {
+public record cuj(cyu a) implements cuk {
 }

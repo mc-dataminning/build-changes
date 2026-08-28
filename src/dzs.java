@@ -1,63 +1,54 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.UnaryOperator;
+import java.util.Locale;
 
-public record dzs(ImmutableList<dzw> c) {
-   public static final dzs a = new dzs.a()
-      .a(dzt.c, $$0 -> $$0)
-      .a(dzt.d, $$0 -> $$0.a(dzv::b))
-      .a(dzt.e, $$0 -> $$0.a(dzt.d, 8).a(dzv::d))
-      .a(dzt.f, $$0 -> $$0.a(dzt.d, 8).a(dzv::e))
-      .a(dzt.g, $$0 -> $$0.a(dzt.d, 8).a(dzt.f, 1).a(0).a(dzv::f))
-      .a(dzt.h, $$0 -> $$0.a(dzt.d, 8).a(dzt.f, 1).a(0).a(dzv::g))
-      .a(dzt.i, $$0 -> $$0.a(dzt.d, 8).a(0).a(dzv::h))
-      .a(dzt.j, $$0 -> $$0.a(dzt.d, 8).a(dzt.i, 1).a(1).a(dzv::i))
-      .a(dzt.k, $$0 -> $$0.a(dzv::j))
-      .a(dzt.l, $$0 -> $$0.a(dzt.k, 1).a(dzv::k))
-      .a(dzt.m, $$0 -> $$0.a(dzt.f, 1).a(dzv::l))
-      .a(dzt.n, $$0 -> $$0.a(dzv::m))
-      .a();
-   public static final dzs b = new dzs.a()
-      .a(dzt.c, $$0 -> $$0)
-      .a(dzt.d, $$0 -> $$0.a(dzv::c))
-      .a(dzt.e, $$0 -> $$0)
-      .a(dzt.f, $$0 -> $$0)
-      .a(dzt.g, $$0 -> $$0)
-      .a(dzt.h, $$0 -> $$0)
-      .a(dzt.i, $$0 -> $$0)
-      .a(dzt.j, $$0 -> $$0)
-      .a(dzt.k, $$0 -> $$0.a(dzv::j))
-      .a(dzt.l, $$0 -> $$0.a(dzt.k, 1).a(dzv::k))
-      .a(dzt.m, $$0 -> $$0)
-      .a(dzt.n, $$0 -> $$0.a(dzv::m))
-      .a();
+public final class dzs {
+   private final ImmutableList<dzu> a;
+   private final int[] b;
 
-   public dzw a(dzt $$0) {
-      return (dzw)this.c.get($$0.b());
-   }
+   public dzs(ImmutableList<dzu> $$0) {
+      this.a = $$0;
+      int $$1 = $$0.isEmpty() ? 0 : ((dzu)$$0.getFirst()).b() + 1;
+      this.b = new int[$$1];
 
-   public ImmutableList<dzw> a() {
-      return this.c;
-   }
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         dzu $$3 = (dzu)$$0.get($$2);
+         int $$4 = $$3.b();
 
-   public static class a {
-      private final List<dzw> a = new ArrayList<>();
-
-      public dzs a() {
-         return new dzs(ImmutableList.copyOf(this.a));
-      }
-
-      public dzs.a a(dzt $$0, UnaryOperator<dzw.a> $$1) {
-         dzw.a $$2;
-         if (this.a.isEmpty()) {
-            $$2 = new dzw.a($$0);
-         } else {
-            $$2 = new dzw.a($$0, this.a.getLast());
+         for (int $$5 = 0; $$5 <= $$4; $$5++) {
+            this.b[$$5] = $$2;
          }
-
-         this.a.add($$1.apply($$2).a());
-         return this;
       }
+   }
+
+   @VisibleForTesting
+   public ImmutableList<dzu> a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.a.size();
+   }
+
+   public int a(dzu $$0) {
+      int $$1 = $$0.b();
+      if ($$1 >= this.b.length) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
+      } else {
+         return this.b[$$1];
+      }
+   }
+
+   public int c() {
+      return Math.max(0, this.a.size() - 1);
+   }
+
+   public dzu a(int $$0) {
+      return (dzu)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
    }
 }

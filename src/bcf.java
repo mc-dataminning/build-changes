@@ -3,9 +3,9 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bcf extends bgs {
+public class bcf extends bgt {
    public bcf(Schema $$0, boolean $$1) {
-      super($$0, $$1, "CatTypeFix", bhx.B, "minecraft:cat");
+      super($$0, $$1, "CatTypeFix", bhy.B, "minecraft:cat");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

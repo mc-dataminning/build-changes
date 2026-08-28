@@ -1,10 +1,9 @@
-public class haw extends gzk {
-   public float a;
-   public float b;
-   public final bud c = new bud();
-   public final bud d = new bud();
-   public final bud e = new bud();
-   public final bud f = new bud();
-   public final bud g = new bud();
-   public final bud h = new bud();
+public class haw extends gza implements hav {
+   public boolean a;
+   public cok b = new cok(cop.c, com.b, 1);
+
+   @Override
+   public cok a() {
+      return this.b;
+   }
 }

@@ -1,8 +1,16 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface cvk {
-   default void a(@Nullable cox $$0, dgi $$1, cwp $$2, ji $$3) {
+public class cvk extends cwm {
+   public cvk(cwm.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable cox var1, dgi var2, ji var3, @Nullable faw var4);
+   @Override
+   public void a(cwq $$0, cwm.b $$1, List<wp> $$2, cyi $$3) {
+      $$2.add(this.b().a(n.h));
+   }
+
+   public xd b() {
+      return wp.c(this.l + ".desc");
+   }
 }

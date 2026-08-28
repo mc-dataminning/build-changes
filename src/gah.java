@@ -1,49 +1,21 @@
-import java.util.Collection;
-import java.util.Comparator;
+import com.google.common.base.MoreObjects;
 import java.util.List;
 
-public class gah implements gad, gae {
-   private static final akv a = akv.b("spectator/teleport_to_player");
-   private static final Comparator<ggl> b = Comparator.comparing($$0 -> $$0.a().getId());
-   private static final wp c = wp.c("spectatorMenu.teleport");
-   private static final wp d = wp.c("spectatorMenu.teleport.prompt");
-   private final List<gae> e;
+public class gah {
+   public static final int a = -1;
+   private final List<gaf> b;
+   private final int c;
 
-   public gah() {
-      this(flj.Q().L().l());
+   public gah(List<gaf> $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public gah(Collection<ggl> $$0) {
-      this.e = $$0.stream().filter($$0x -> $$0x.e() != dgf.d).sorted(b).map($$0x -> new gaa($$0x.a())).toList();
+   public gaf a(int $$0) {
+      return $$0 >= 0 && $$0 < this.b.size() ? (gaf)MoreObjects.firstNonNull(this.b.get($$0), gad.a) : gad.a;
    }
 
-   @Override
-   public List<gae> a() {
-      return this.e;
-   }
-
-   @Override
-   public wp b() {
-      return d;
-   }
-
-   @Override
-   public void a(gac $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public wp aS_() {
-      return c;
-   }
-
-   @Override
-   public void a(foe $$0, float $$1, float $$2) {
-      $$0.a(gmi::H, a, 0, 0, 16, 16, axk.a($$2, $$1, $$1, $$1));
-   }
-
-   @Override
-   public boolean aT_() {
-      return !this.e.isEmpty();
+   public int a() {
+      return this.c;
    }
 }

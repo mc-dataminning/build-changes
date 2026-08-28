@@ -1,6 +1,7 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
 import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -12,22 +13,28 @@ public class bjo extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bhx.J, () -> DSL.constType(bjl.a()));
       $$0.registerType(
-         false,
-         bhx.b,
-         () -> DSL.optionalFields(
-               new Pair[]{
-                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bhx.A.in($$0))),
-                  Pair.of("ender_pearls", DSL.list(bhx.A.in($$0))),
-                  Pair.of("Inventory", DSL.list(bhx.t.in($$0))),
-                  Pair.of("EnderItems", DSL.list(bhx.t.in($$0))),
-                  Pair.of("ShoulderEntityLeft", bhx.A.in($$0)),
-                  Pair.of("ShoulderEntityRight", bhx.A.in($$0)),
-                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bhx.J.in($$0)), "toBeDisplayed", DSL.list(bhx.J.in($$0))))
-               }
+         true,
+         bhy.t,
+         () -> DSL.hook(
+               DSL.optionalFields(
+                  "id",
+                  bhy.D.in($$0),
+                  "tag",
+                  DSL.optionalFields(
+                     new Pair[]{
+                        Pair.of("EntityTag", bhy.A.in($$0)),
+                        Pair.of("BlockEntityTag", bhy.s.in($$0)),
+                        Pair.of("CanDestroy", DSL.list(bhy.C.in($$0))),
+                        Pair.of("CanPlaceOn", DSL.list(bhy.C.in($$0))),
+                        Pair.of("Items", DSL.list(bhy.t.in($$0))),
+                        Pair.of("ChargedProjectiles", DSL.list(bhy.t.in($$0)))
+                     }
+                  )
+               ),
+               bna.b,
+               HookFunction.IDENTITY
             )
       );
-      $$0.registerType(false, bhx.d, () -> DSL.compoundList(DSL.list(bhx.t.in($$0))));
    }
 }

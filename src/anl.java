@@ -12,8 +12,8 @@ public class anl {
       );
    }
 
-   private static int a(ex $$0, Collection<? extends bul> $$1) {
-      for (bul $$2 : $$1) {
+   private static int a(ex $$0, Collection<? extends bum> $$1) {
+      for (bum $$2 : $$1) {
          $$2.c($$0.e());
       }
 

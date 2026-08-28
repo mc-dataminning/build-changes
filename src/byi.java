@@ -1,27 +1,34 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class byi {
-   private static final int a = 1;
+   public static <T extends bvk> bym<T> a(int $$0) {
+      return a($$0x -> true, $$0);
+   }
 
-   public static bxb<bvh> a(float $$0) {
-      return can.a(
-         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$1 -> $$1.group($$1.a(cel.n), $$1.c(cel.m), $$1.b(cel.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bZ()) {
-                        return false;
-                     } else {
-                        bul $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bxl($$8, true));
-                           $$3.a(new ceo(new bxl($$8, false), $$0, 1));
-                        }
-
+   public static <T extends bvk> bym<T> a(Predicate<T> $$0, int $$1) {
+      return cao.a(
+         (Function<cao.b<T>, ? extends App<cao.c<T>, car<T>>>)($$2 -> $$2.group($$2.a(cem.n), $$2.b(cem.o), $$2.c(cem.p), $$2.b(cem.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bvi $$10 = $$2.b($$4);
+                     if ($$0.test((T)$$8) && !a($$8) && $$8.i($$10) && $$2.<ceo>b($$6).a($$10)) {
+                        $$3.a(new bxm($$10, true));
+                        $$8.a(bsk.a);
+                        $$8.c($$7, $$10);
+                        $$5.a(true, (long)$$1);
                         return true;
+                     } else {
+                        return false;
                      }
                   }))
       );
+   }
+
+   private static boolean a(bvk $$0) {
+      return $$0.b($$1 -> {
+         cwm $$2 = $$1.h();
+         return $$2 instanceof cxm && $$0.a((cxm)$$2);
+      });
    }
 }

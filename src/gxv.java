@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
-
-public class gxv extends gye {
-   @Nullable
-   public buj.b.a a;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class gxv extends gzl {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

@@ -1,5 +1,3 @@
-public class hao extends gyk {
-   public float a;
-   public float b;
-   public boolean c;
+public class hao extends gyl {
+   public final hbp a = new hbp();
 }

@@ -1,62 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public class dwh {
+   public static final float a = 10.0F;
+   private float b;
+   private float c;
 
-public record dwh(aku<evw> d, double e, double f, cwp g, Optional<aku<evw>> h, dvy i, dvy.a j) {
-   static final String a = "config";
-   static dwh b = new dwh();
-   static Codec<dwh> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  aku.a(mc.bg).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dwh::b),
-                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dwh::c),
-                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dwh::d),
-                  cwp.a("key_item").forGetter(dwh::e),
-                  aku.a(mc.bg).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dwh::f)
-               )
-               .apply($$0, dwh::new)
-      )
-      .validate(dwh::h);
-
-   private dwh() {
-      this(evn.R, 4.0, 4.5, new cwp(cwt.zD), Optional.empty(), dvy.b, dvy.a.a);
+   dwh() {
    }
 
-   public dwh(aku<evw> $$0, double $$1, double $$2, cwp $$3, Optional<aku<evw>> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   public float a() {
+      return this.b;
    }
 
-   public dvy a() {
-      return this.i;
+   public float b() {
+      return this.c;
    }
 
-   private DataResult<dwh> h() {
-      return this.e > this.f
-         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
-         : DataResult.success(this);
-   }
-
-   public aku<evw> b() {
-      return this.d;
-   }
-
-   public double c() {
-      return this.e;
-   }
-
-   public double d() {
-      return this.f;
-   }
-
-   public cwp e() {
-      return this.g;
-   }
-
-   public Optional<aku<evw>> f() {
-      return this.h;
-   }
-
-   public dvy.a g() {
-      return this.j;
+   void c() {
+      this.c = this.b;
+      this.b = ayz.h(this.b + 10.0F);
    }
 }

@@ -1,91 +1,44 @@
-import javax.annotation.Nullable;
-
-public class buz extends chx {
-   private static final ajy<Integer> cg = akc.a(buz.class, aka.b);
-
-   public buz(bus<? extends buz> $$0, dgi $$1) {
+public abstract class buz extends bvk {
+   protected buz(but<? extends buz> $$0, dgj $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected lr p() {
-      return lt.aR;
+   protected void a(double $$0, boolean $$1, dwy $$2, ji $$3) {
    }
 
    @Override
-   protected void a(akc.a $$0) {
-      super.a($$0);
-      $$0.a(cg, 0);
-   }
+   public void a_(fbb $$0) {
+      if (this.dh()) {
+         if (this.bj()) {
+            this.a(0.02F, $$0);
+            this.a(bvm.a, this.dy());
+            this.i(this.dy().c(0.8F));
+         } else if (this.bx()) {
+            this.a(0.02F, $$0);
+            this.a(bvm.a, this.dy());
+            this.i(this.dy().c(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aJ()) {
+               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
+            }
 
-   @Nullable
-   @Override
-   public buc a(ard $$0, buc $$1) {
-      return bus.ag.a($$0, bur.e);
-   }
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aJ()) {
+               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
+            }
 
-   @Override
-   protected avz t() {
-      return awa.lj;
-   }
-
-   @Override
-   protected avz u() {
-      return awa.lg;
-   }
-
-   @Override
-   protected avz e(btb $$0) {
-      return awa.li;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.lh;
-   }
-
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.x());
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      this.s($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      int $$0 = this.x();
-      if ($$0 > 0) {
-         this.s($$0 - 1);
+            this.a(this.aJ() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bvm.a, this.dy());
+            this.i(this.dy().c((double)$$1));
+         }
       }
-
-      this.dV().a(lt.aS, this.d(0.6), this.dD(), this.g(0.6), 0.0, 0.0, 0.0);
    }
 
    @Override
-   public boolean a(ard $$0, btb $$1, float $$2) {
-      boolean $$3 = super.a($$0, $$1, $$2);
-      if ($$3) {
-         this.s(100);
-      }
-
-      return $$3;
-   }
-
-   private void s(int $$0) {
-      this.al.a(cg, $$0);
-   }
-
-   public int x() {
-      return this.al.a(cg);
-   }
-
-   public static boolean a(bus<? extends bvh> $$0, dgz $$1, bur $$2, ji $$3, azh $$4) {
-      return $$3.v() <= $$1.P() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(djo.J);
+   public boolean q_() {
+      return false;
    }
 }

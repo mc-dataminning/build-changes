@@ -1,6 +1,6 @@
-public class gxo extends gzk {
+public class gxo extends gxq {
    public boolean a;
-   public final bud b = new bud();
-   public final bud c = new bud();
-   public final bud d = new bud();
+   public boolean b;
+   public float c;
+   public float d;
 }

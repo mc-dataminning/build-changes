@@ -1,20 +1,51 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public enum boz {
-   a("client"),
-   b("server");
+public class boz implements AutoCloseable {
+   public static final boz a = new boz(null);
+   @Nullable
+   private final bou b;
 
-   private final String c;
-
-   private boz(final String $$0) {
-      this.c = $$0;
+   boz(@Nullable bou $$0) {
+      this.b = $$0;
    }
 
-   public static boz a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
+   public boz a(String $$0) {
+      if (this.b != null) {
+         this.b.e($$0);
+      }
+
+      return this;
    }
 
-   public String a() {
-      return this.c;
+   public boz a(Supplier<String> $$0) {
+      if (this.b != null) {
+         this.b.e($$0.get());
+      }
+
+      return this;
+   }
+
+   public boz a(long $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      return this;
+   }
+
+   public boz a(int $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void close() {
+      if (this.b != null) {
+         this.b.c();
+      }
    }
 }

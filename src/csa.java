@@ -1,46 +1,62 @@
-public class csa {
-   public static final crz a = new crz.a().a(4).a(0.3F).b();
-   public static final crz b = new crz.a().a(5).a(0.6F).b();
-   public static final crz c = new crz.a().a(3).a(0.3F).b();
-   public static final crz d = new crz.a().a(1).a(0.6F).b();
-   public static final crz e = a(6).b();
-   public static final crz f = new crz.a().a(5).a(0.6F).b();
-   public static final crz g = new crz.a().a(3).a(0.6F).b();
-   public static final crz h = new crz.a().a(2).a(0.3F).b();
-   public static final crz i = new crz.a().a(4).a(0.3F).a().b();
-   public static final crz j = new crz.a().a(2).a(0.1F).b();
-   public static final crz k = new crz.a().a(8).a(0.8F).b();
-   public static final crz l = new crz.a().a(6).a(0.6F).b();
-   public static final crz m = new crz.a().a(5).a(0.6F).b();
-   public static final crz n = new crz.a().a(6).a(0.8F).b();
-   public static final crz o = new crz.a().a(8).a(0.8F).b();
-   public static final crz p = new crz.a().a(5).a(0.6F).b();
-   public static final crz q = new crz.a().a(6).a(0.8F).b();
-   public static final crz r = new crz.a().a(2).a(0.1F).b();
-   public static final crz s = new crz.a().a(1).a(0.3F).b();
-   public static final crz t = new crz.a().a(4).a(1.2F).a().b();
-   public static final crz u = new crz.a().a(4).a(1.2F).a().b();
-   public static final crz v = new crz.a().a(6).a(1.2F).b();
-   public static final crz w = new crz.a().a(6).a(0.1F).a().b();
-   public static final crz x = new crz.a().a(2).a(0.3F).b();
-   public static final crz y = a(6).b();
-   public static final crz z = new crz.a().a(2).a(0.3F).b();
-   public static final crz A = new crz.a().a(2).a(0.3F).b();
-   public static final crz B = new crz.a().a(3).a(0.3F).b();
-   public static final crz C = new crz.a().a(1).a(0.3F).b();
-   public static final crz D = new crz.a().a(1).a(0.1F).b();
-   public static final crz E = new crz.a().a(8).a(0.3F).b();
-   public static final crz F = new crz.a().a(3).a(0.3F).b();
-   public static final crz G = a(10).b();
-   public static final crz H = new crz.a().a(4).a(0.1F).b();
-   public static final crz I = new crz.a().a(2).a(0.1F).b();
-   public static final crz J = new crz.a().a(2).a(0.8F).b();
-   public static final crz K = a(6).a().b();
-   public static final crz L = new crz.a().a(2).a(0.1F).b();
-   public static final crz M = new crz.a().a(2).a(0.1F).b();
-   public static final crz N = new crz.a().a(1).a(0.1F).b();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static crz.a a(int $$0) {
-      return new crz.a().a($$0).a(0.6F);
+public record csa(int c, float d, boolean e) implements cyx {
+   public static final Codec<csa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayi.l.fieldOf("nutrition").forGetter(csa::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(csa::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(csa::c)
+            )
+            .apply($$0, csa::new)
+   );
+   public static final yn<wa, csa> b = yn.a(yl.h, csa::a, yl.l, csa::b, yl.b, csa::c, csa::new);
+
+   @Override
+   public void a(dgj $$0, bvi $$1, cwq $$2, cyw $$3) {
+      azh $$4 = $$1.dY();
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), awb.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof coy $$5) {
+         $$5.gt().a(this);
+         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), awa.uJ, awb.h, 0.5F, ayz.b($$4, 0.9F, 1.0F));
+      }
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public boolean c() {
+      return this.e;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+
+      public csa.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public csa.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public csa.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public csa b() {
+         float $$0 = cry.a(this.a, this.b);
+         return new csa(this.a, $$0, this.c);
+      }
    }
 }

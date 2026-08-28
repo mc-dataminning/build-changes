@@ -1,8 +1,4 @@
-public class gzu extends gzk implements hab {
-   public boolean a;
-
-   @Override
-   public boolean a() {
-      return this.a;
-   }
+public class gzu extends gzl {
+   public float a;
+   public int b;
 }

@@ -21,7 +21,7 @@ public class aoq {
    }
 
    private static int a(ex $$0, Collection<are> $$1, ji $$2, float $$3) {
-      aku<dgi> $$4 = $$0.e().ai();
+      aku<dgj> $$4 = $$0.e().ai();
 
       for (are $$5 : $$1) {
          $$5.a($$4, $$2, $$3, true, false);

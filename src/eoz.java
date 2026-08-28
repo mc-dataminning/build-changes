@@ -1,15 +1,38 @@
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class eoz {
-   public static MapCodec<? extends eoy> a(ke<MapCodec<? extends eoy>> $$0) {
-      ke.a($$0, "random", epb.a);
-      ke.a($$0, "random_group", epc.a);
-      return ke.a($$0, "direct", eox.a);
+public interface eoz {
+   Codec<eoz> b = mb.ah.q().dispatch(eoz::b, Function.identity());
+
+   void a(azh var1, BiConsumer<aku<eox>, aku<eox>> var2);
+
+   Stream<aku<eox>> a();
+
+   static eoy a(String $$0, String $$1) {
+      return a(ql.a($$0), ql.a($$1));
    }
 
-   public static void a(qe<eow> $$0, jr<eow> $$1, List<eoy> $$2) {
-      $$2.stream().flatMap(eoy::a).map($$0x -> $$0x.a().a()).forEach($$2x -> ql.a($$0, $$2x, new eow($$1, List.of(Pair.of(eou.b($$2x), 1)), eow.a.b)));
+   static eoy a(aku<eox> $$0, aku<eox> $$1) {
+      return new eoy($$0, $$1);
    }
+
+   static epc a(String $$0, bqt<String> $$1) {
+      bqt.a<aku<eox>> $$2 = bqt.a();
+      $$1.e().forEach($$1x -> $$2.a(ql.a((String)$$1x.b()), $$1x.a().a()));
+      return a(ql.a($$0), $$2.a());
+   }
+
+   static epc a(aku<eox> $$0, bqt<aku<eox>> $$1) {
+      return new epc($$0, $$1);
+   }
+
+   static epd a(bqt<List<eoz>> $$0) {
+      return new epd($$0);
+   }
+
+   MapCodec<? extends eoz> b();
 }

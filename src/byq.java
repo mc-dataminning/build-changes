@@ -1,92 +1,146 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
 
-public class byq extends bxa<ciy> {
-   public static final int c = 200;
-   public static final float d = 1.65F;
-   private final Function<ciy, brv> e;
-   private final cfy f;
+public class byq<E extends bvq> extends bxb<E> {
+   public static final int c = 160;
+   private final ToIntFunction<E> d;
+   private final int e;
+   private final int f;
    private final float g;
-   private final ToDoubleFunction<ciy> h;
-   private fba i;
-   private final Function<ciy, avz> j;
-   private final Function<ciy, avz> k;
+   private final cfz h;
+   private final int i;
+   private final Function<E, avz> j;
+   private Optional<Long> k = Optional.empty();
+   private Optional<byq.a> l = Optional.empty();
 
-   public byq(Function<ciy, brv> $$0, cfy $$1, float $$2, ToDoubleFunction<ciy> $$3, Function<ciy, avz> $$4, Function<ciy, avz> $$5) {
-      super(ImmutableMap.of(cel.V, cem.b, cel.W, cem.a), 200);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.j = $$4;
-      this.k = $$5;
-      this.i = fba.c;
+   public byq(ToIntFunction<E> $$0, int $$1, int $$2, float $$3, cfz $$4, int $$5, Function<E, avz> $$6) {
+      super(ImmutableMap.of(cem.n, cen.c, cem.V, cen.b, cem.h, cen.a, cem.W, cen.b), 160);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   protected boolean a(ard $$0, ciy $$1) {
-      return $$1.eb().a(cel.W);
+   protected void a(ard $$0, bvq $$1, long $$2) {
+      bwk<?> $$3 = $$1.eb();
+      $$3.c(cem.h).flatMap($$2x -> $$2x.a($$2xx -> this.h.a($$0, $$1, $$2xx))).ifPresent($$1x -> this.b($$1, $$1x));
    }
 
-   protected boolean a(ard $$0, ciy $$1, long $$2) {
-      return $$1.eb().a(cel.W);
+   protected void b(ard $$0, E $$1, long $$2) {
+      bwk<?> $$3 = $$1.eb();
+      if (!$$3.a(cem.W)) {
+         $$0.a($$1, (byte)59);
+         $$3.a(cem.V, this.d.applyAsInt($$1));
+      }
    }
 
-   protected void b(ard $$0, ciy $$1, long $$2) {
-      ji $$3 = $$1.dv();
-      bwj<?> $$4 = $$1.eb();
-      fba $$5 = $$4.c(cel.W).get();
-      this.i = new fba((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
-      $$4.a(cel.m, new ceo($$5, this.g, 0));
+   protected boolean c(ard $$0, bvq $$1, long $$2) {
+      return this.l.isPresent() && this.l.get().c().bL();
    }
 
-   protected void c(ard $$0, ciy $$1, long $$2) {
-      List<bvh> $$3 = $$0.a(bvh.class, this.f, $$1, $$1.cR());
-      bwj<?> $$4 = $$1.eb();
-      if (!$$3.isEmpty()) {
-         bvh $$5 = $$3.get(0);
-         btb $$6 = $$0.ak().c((bvh)$$1);
-         if ($$5.a($$0, $$6, (float)$$1.h(bwp.c))) {
-            ddb.a($$0, (bul)$$5, $$6);
-         }
+   protected void d(ard $$0, E $$1, long $$2) {
+      if (!this.l.isEmpty()) {
+         $$1.eb().a(cem.m, new cep(this.l.get().a(), this.g, 0));
+         $$1.eb().a(cem.n, new bxm(this.l.get().c(), true));
+         boolean $$3 = !this.l.get().c().dv().equals(this.l.get().b());
+         if ($$3) {
+            $$0.a($$1, (byte)59);
+            $$1.P().m();
+            this.b($$1, this.l.get().c);
+         } else {
+            ji $$4 = $$1.dv();
+            if ($$4.equals(this.l.get().a())) {
+               $$0.a($$1, (byte)58);
+               if (this.k.isEmpty()) {
+                  this.k = Optional.of($$2);
+               }
 
-         int $$7 = $$1.b(bts.a) ? $$1.c(bts.a).e() + 1 : 0;
-         int $$8 = $$1.b(bts.b) ? $$1.c(bts.b).e() + 1 : 0;
-         float $$9 = 0.25F * (float)($$7 - $$8);
-         float $$10 = ayz.a($$1.fp() * 1.65F, 0.2F, 3.0F) + $$9;
-         float $$11 = $$5.i($$0.ak().b((bvh)$$1)) ? 0.5F : 1.0F;
-         $$5.p((double)($$11 * $$10) * this.h.applyAsDouble($$1), this.i.a(), this.i.c());
-         this.b($$0, $$1);
-         $$0.a(null, $$1, this.j.apply($$1), awb.g, 1.0F, 1.0F);
-      } else if (this.c($$0, $$1)) {
-         $$0.a(null, $$1, this.j.apply($$1), awb.g, 1.0F, 1.0F);
-         boolean $$12 = $$1.gu();
-         if ($$12) {
-            $$0.a(null, $$1, this.k.apply($$1), awb.g, 1.0F, 1.0F);
-         }
-
-         this.b($$0, $$1);
-      } else {
-         Optional<ceo> $$13 = $$4.c(cel.m);
-         Optional<fba> $$14 = $$4.c(cel.W);
-         boolean $$15 = $$13.isEmpty() || $$14.isEmpty() || $$13.get().a().a().a($$14.get(), 0.25);
-         if ($$15) {
-            this.b($$0, $$1);
+               if ($$2 - this.k.get() >= (long)this.i) {
+                  $$1.eb().a(cem.W, this.a($$4, this.l.get().b()));
+                  $$0.a(null, $$1, this.j.apply($$1), awb.g, 1.0F, $$1.fh());
+                  this.l = Optional.empty();
+               }
+            }
          }
       }
    }
 
-   private boolean c(ard $$0, ciy $$1) {
-      fba $$2 = $$1.dy().d(1.0, 0.0, 1.0).d();
-      ji $$3 = ji.a((kb)$$1.dt().e($$2));
-      return $$0.a_($$3).a(awp.cp) || $$0.a_($$3.d()).a(awp.cp);
+   private fbb a(ji $$0, ji $$1) {
+      double $$2 = 0.5;
+      double $$3 = 0.5 * (double)ayz.j((double)($$1.u() - $$0.u()));
+      double $$4 = 0.5 * (double)ayz.j((double)($$1.w() - $$0.w()));
+      return fbb.c($$1).b($$3, 0.0, $$4);
    }
 
-   protected void b(ard $$0, ciy $$1) {
-      $$0.a($$1, (byte)59);
-      $$1.eb().a(cel.V, this.e.apply($$1).a($$0.A));
-      $$1.eb().b(cel.W);
+   private Optional<ji> a(bvq $$0, bvi $$1) {
+      ji $$2 = $$1.dv();
+      if (!this.a($$0, $$2)) {
+         return Optional.empty();
+      } else {
+         List<ji> $$3 = Lists.newArrayList();
+         ji.a $$4 = $$2.k();
+
+         for (jn $$5 : jn.c.a) {
+            $$4.g($$2);
+
+            for (int $$6 = 0; $$6 < this.f; $$6++) {
+               if (!this.a($$0, $$4.c($$5))) {
+                  $$4.c($$5.g());
+                  break;
+               }
+            }
+
+            if ($$4.k($$2) >= this.e) {
+               $$3.add($$4.j());
+            }
+         }
+
+         ceu $$7 = $$0.P();
+         return $$3.stream().sorted(Comparator.comparingDouble($$0.dv()::j)).filter($$1x -> {
+            eto $$2x = $$7.a($$1x, 0);
+            return $$2x != null && $$2x.j();
+         }).findFirst();
+      }
+   }
+
+   private boolean a(bvq $$0, ji $$1) {
+      return $$0.P().a($$1) && $$0.a(etw.b($$0, $$1)) == 0.0F;
+   }
+
+   private void b(bvq $$0, bvi $$1) {
+      this.k = Optional.empty();
+      this.l = this.a($$0, $$1).map($$1x -> new byq.a($$1x, $$1.dv(), $$1));
+   }
+
+   public static class a {
+      private final ji a;
+      private final ji b;
+      final bvi c;
+
+      public a(ji $$0, ji $$1, bvi $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public ji a() {
+         return this.a;
+      }
+
+      public ji b() {
+         return this.b;
+      }
+
+      public bvi c() {
+         return this.c;
+      }
    }
 }

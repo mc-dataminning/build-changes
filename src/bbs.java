@@ -3,9 +3,9 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bbs extends bgs {
+public class bbs extends bgt {
    public bbs(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityKeepPacked", bhx.s, "DUMMY");
+      super($$0, $$1, "BlockEntityKeepPacked", bhy.s, "DUMMY");
    }
 
    private static Dynamic<?> a(Dynamic<?> $$0) {

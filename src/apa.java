@@ -11,8 +11,8 @@ public class apa {
    public static void a(CommandDispatcher<ex> $$0) {
       LiteralCommandNode<ex> $$1 = $$0.register((LiteralArgumentBuilder)ey.a("teammsg").then(ey.a("message", fo.a()).executes($$0x -> {
          ex $$1x = (ex)$$0x.getSource();
-         bul $$2 = $$1x.g();
-         fca $$3 = $$2.cr();
+         bum $$2 = $$1x.g();
+         fcb $$3 = $$2.cr();
          if ($$3 == null) {
             throw b.create();
          } else {
@@ -27,7 +27,7 @@ public class apa {
       $$0.register((LiteralArgumentBuilder)ey.a("tm").redirect($$1));
    }
 
-   private static void a(ex $$0, bul $$1, fca $$2, List<are> $$3, xf $$4) {
+   private static void a(ex $$0, bum $$1, fcb $$2, List<are> $$3, xf $$4) {
       wp $$5 = $$2.d().c(a);
       wl.a $$6 = wl.a(wl.i, $$0).c($$5);
       wl.a $$7 = wl.a(wl.j, $$0).c($$5);

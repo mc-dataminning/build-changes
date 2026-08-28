@@ -1,141 +1,49 @@
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class dyx {
-   public static final int a = 16;
-   public static final int b = 128;
-   public static final int c = 2048;
-   private static final int e = 4;
+public abstract class dyx implements dzg, AutoCloseable {
    @Nullable
-   protected byte[] d;
-   private int f;
-
-   public dyx() {
-      this(0);
+   public dzd a(int $$0, int $$1, boolean $$2) {
+      return (dzd)this.a($$0, $$1, dzu.n, $$2);
    }
 
-   public dyx(int $$0) {
-      this.f = $$0;
+   @Nullable
+   public dzd a(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
 
-   public dyx(byte[] $$0) {
-      this.d = $$0;
-      this.f = 0;
-      if ($$0.length != 2048) {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
-      }
+   @Nullable
+   @Override
+   public dzf c(int $$0, int $$1) {
+      return this.a($$0, $$1, dzu.c, false);
    }
 
-   public int a(int $$0, int $$1, int $$2) {
-      return this.d(b($$0, $$1, $$2));
+   public boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, dzu.n, false) != null;
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.a(b($$0, $$1, $$2), $$3);
+   @Nullable
+   public abstract dyt a(int var1, int var2, dzu var3, boolean var4);
+
+   public abstract void a(BooleanSupplier var1, boolean var2);
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
    }
 
-   private static int b(int $$0, int $$1, int $$2) {
-      return $$1 << 8 | $$2 << 4 | $$0;
-   }
+   public abstract String e();
 
-   private int d(int $$0) {
-      if (this.d == null) {
-         return this.f;
-      } else {
-         int $$1 = f($$0);
-         int $$2 = e($$0);
-         return this.d[$$1] >> 4 * $$2 & 15;
-      }
-   }
-
-   private void a(int $$0, int $$1) {
-      byte[] $$2 = this.a();
-      int $$3 = f($$0);
-      int $$4 = e($$0);
-      int $$5 = ~(15 << 4 * $$4);
-      int $$6 = ($$1 & 15) << 4 * $$4;
-      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
-   }
-
-   private static int e(int $$0) {
-      return $$0 & 1;
-   }
-
-   private static int f(int $$0) {
-      return $$0 >> 1;
-   }
-
-   public void a(int $$0) {
-      this.f = $$0;
-      this.d = null;
-   }
-
-   private static byte g(int $$0) {
-      byte $$1 = (byte)$$0;
-
-      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
-         $$1 = (byte)($$1 | $$0 << $$2);
-      }
-
-      return $$1;
-   }
-
-   public byte[] a() {
-      if (this.d == null) {
-         this.d = new byte[2048];
-         if (this.f != 0) {
-            Arrays.fill(this.d, g(this.f));
-         }
-      }
-
-      return this.d;
-   }
-
-   public dyx b() {
-      return this.d == null ? new dyx(this.f) : new dyx((byte[])this.d.clone());
-   }
+   public abstract int j();
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-
-      for (int $$1 = 0; $$1 < 4096; $$1++) {
-         $$0.append(Integer.toHexString(this.d($$1)));
-         if (($$1 & 15) == 15) {
-            $$0.append("\n");
-         }
-
-         if (($$1 & 0xFF) == 255) {
-            $$0.append("\n");
-         }
-      }
-
-      return $$0.toString();
+   public void close() throws IOException {
    }
 
-   @bag
-   public String b(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
+   public abstract esp p();
 
-      for (int $$2 = 0; $$2 < 256; $$2++) {
-         $$1.append(Integer.toHexString(this.d($$2)));
-         if (($$2 & 15) == 15) {
-            $$1.append("\n");
-         }
-      }
-
-      return $$1.toString();
+   public void b(boolean $$0) {
    }
 
-   public boolean c() {
-      return this.d == null;
-   }
-
-   public boolean c(int $$0) {
-      return this.d == null && this.f == $$0;
-   }
-
-   public boolean d() {
-      return this.d == null && this.f == 0;
+   public void a(dfp $$0, boolean $$1) {
    }
 }

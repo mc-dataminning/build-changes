@@ -1,27 +1,20 @@
-public class gvv extends gwc<gyd, gbt> {
-   private static final akv a = akv.b("textures/entity/creeper/creeper_armor.png");
-   private final gbt b;
+public class gvv extends gwu<gyb, gbo> {
+   private static final akv a = akv.b("textures/entity/cat/cat_collar.png");
+   private final gbo b;
+   private final gbo c;
 
-   public gvv(gub<gyd, gbt> $$0, gez $$1) {
+   public gvv(guc<gyb, gbo> $$0, gfa $$1) {
       super($$0);
-      this.b = new gbt($$1.a(gfc.aj));
+      this.b = new gbo($$1.a(gfd.R));
+      this.c = new gbo($$1.a(gfd.Q));
    }
 
-   protected boolean a(gyd $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected akv a() {
-      return a;
-   }
-
-   protected gbt b() {
-      return this.b;
+   public void a(ffv $$0, glz $$1, int $$2, gyb $$3, float $$4, float $$5) {
+      cvn $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         gbo $$8 = $$3.aj ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
+      }
    }
 }

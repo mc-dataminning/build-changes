@@ -1,13 +1,8 @@
-import javax.annotation.Nullable;
+public class fgs extends fgt {
+   private static final wp a = wp.c("mco.upload.cancelled");
 
-public abstract class fgs extends RuntimeException {
-   @Nullable
+   @Override
    public wp a() {
-      return null;
-   }
-
-   @Nullable
-   public wp[] b() {
-      return null;
+      return a;
    }
 }

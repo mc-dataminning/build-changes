@@ -1,25 +1,19 @@
-public class cez extends cfl {
-   public static final float a = 8.0F;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
+public class cez extends cfs<bud> {
    @Override
-   protected boolean a(ard $$0, bvh $$1, bvh $$2) {
-      return this.b($$1, $$2) && $$2.bm() && (this.b($$2) || this.a($$1, $$2)) && cfr.c($$0, $$1, $$2);
+   public Set<cem<?>> a() {
+      return ImmutableSet.of(cem.K, cem.h);
    }
 
-   private boolean a(bvh $$0, bvh $$1) {
-      return !$$0.eb().a(cel.U) && $$1.aq().a(awt.j);
+   protected void a(ard $$0, bud $$1) {
+      $$1.eb().c(cem.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   private boolean b(bvh $$0) {
-      return $$0.aq().a(awt.i);
-   }
-
-   private boolean b(bvh $$0, bvh $$1) {
-      return $$1.g((bul)$$0) <= 64.0;
-   }
-
-   @Override
-   protected cel<bvh> b() {
-      return cel.B;
+   private void a(bud $$0, ceo $$1) {
+      Optional<bud> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.e_()).map(bud.class::cast);
+      $$0.eb().a(cem.K, $$2);
    }
 }

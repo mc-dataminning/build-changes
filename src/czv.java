@@ -1,48 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record czv(cwp c) {
-   public static final Codec<czv> a = cwp.a.xmap(czv::new, czv::a);
-   public static final yn<wa, czv> b = yn.a(cwp.h, czv::a, czv::new);
+public record czv(float c, Optional<akv> d) {
+   public static final Codec<czv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayi.o.fieldOf("seconds").forGetter(czv::b), akv.a.optionalFieldOf("cooldown_group").forGetter(czv::c)).apply($$0, czv::new)
+   );
+   public static final yn<wa, czv> b = yn.a(yl.l, czv::b, akv.b.a(yl::a), czv::c, czv::new);
 
-   public cwp a(cwp $$0, int $$1, boolean $$2, czv.a $$3) {
-      if ($$2) {
-         return $$0;
-      } else if ($$0.M() >= $$1) {
-         return $$0;
-      } else {
-         cwp $$4 = this.c.v();
-         if ($$0.f()) {
-            return $$4;
-         } else {
-            $$3.apply($$4);
-            return $$0;
-         }
+   public czv(float $$0) {
+      this($$0, Optional.empty());
+   }
+
+   public int a() {
+      return (int)(this.c * 20.0F);
+   }
+
+   public void a(cwq $$0, bvi $$1) {
+      if ($$1 instanceof coy $$2) {
+         $$2.gE().a($$0, this.a());
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         czv $$1 = (czv)$$0;
-         return cwp.a(this.c, $$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return cwp.a(this.c);
-   }
-
-   public cwp a() {
+   public float b() {
       return this.c;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void apply(cwp var1);
+   public Optional<akv> c() {
+      return this.d;
    }
 }

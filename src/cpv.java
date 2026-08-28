@@ -1,33 +1,29 @@
-public class cpv extends cpx {
-   public cpv(bus<? extends cpv> $$0, dgi $$1) {
+public class cpv extends cpl {
+   public cpv(but<? extends cpv> $$0, dgj $$1) {
       super($$0, $$1);
    }
 
-   public cpv(dgi $$0, bvh $$1, cwp $$2) {
-      super(bus.bj, $$1, $$0, $$2);
+   public cpv(dgj $$0, bvi $$1, fbb $$2) {
+      super(but.bh, $$1, $$2, $$0);
    }
 
-   public cpv(dgi $$0, double $$1, double $$2, double $$3, cwp $$4) {
-      super(bus.bj, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   protected cwl m() {
-      return cwt.rj;
-   }
-
-   private lr s() {
-      cwp $$0 = this.l();
-      return (lr)($$0.f() ? lt.Y : new lp(lt.T, $$0));
+   public cpv(dgj $$0, double $$1, double $$2, double $$3, fbb $$4) {
+      super(but.bh, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         lr $$1 = this.s();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dV().a($$1, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+   protected void a(fay $$0) {
+      super.a($$0);
+      if (this.dV() instanceof ard $$1) {
+         bum var7 = $$0.a();
+         bum $$4 = this.p();
+         int $$5 = var7.aG();
+         var7.d(5.0F);
+         btc $$6 = this.dW().a((cpl)this, $$4);
+         if (!var7.a($$1, $$6, 5.0F)) {
+            var7.h($$5);
+         } else {
+            ddc.a($$1, var7, $$6);
          }
       }
    }
@@ -35,16 +31,21 @@ public class cpv extends cpx {
    @Override
    protected void a(fax $$0) {
       super.a($$0);
-      bul $$1 = $$0.a();
-      int $$2 = $$1 instanceof clh ? 3 : 0;
-      $$1.a(this.dW().b(this, this.p()), (float)$$2);
+      if (this.dV() instanceof ard $$1) {
+         bum $$3 = this.p();
+         if (!($$3 instanceof bvk) || $$1.O().b(dgf.c)) {
+            ji $$4 = $$0.b().a($$0.c());
+            if (this.dV().u($$4)) {
+               this.dV().b($$4, dja.a(this.dV(), $$4));
+            }
+         }
+      }
    }
 
    @Override
-   protected void a(fay $$0) {
+   protected void a(faz $$0) {
       super.a($$0);
       if (!this.dV().C) {
-         this.dV().a(this, (byte)3);
          this.at();
       }
    }

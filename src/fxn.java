@@ -1,58 +1,23 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class fxn extends fxp {
-   private static final wp a = wp.c("options.online.title");
-   @Nullable
-   private flm<Unit> u;
+public class fxn extends fxq {
+   private static final wp a = wp.c("options.mouse_settings.title");
 
-   public fxn(ful $$0, fln $$1) {
+   private static fln<?>[] a(flo $$0) {
+      return new fln[]{$$0.d(), $$0.U(), $$0.H(), $$0.V(), $$0.ac()};
+   }
+
+   public fxn(fum $$0, flo $$1) {
       super($$0, $$1, a);
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      if (this.u != null) {
-         foq $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private flm<?>[] a(fln $$0, flj $$1) {
-      List<flm<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.W());
-      $$2.add($$0.X());
-      flm<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            bsh $$1x = $$0x.am();
-            return new flm<>(
-               "options.difficulty.online",
-               flm.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new flm.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
-      }
-
-      return $$2.toArray(new flm[0]);
-   }
-
-   @Override
    protected void m() {
-      this.d.a(this.a(this.c, this.m));
+      if (feq.a()) {
+         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.I())).toArray(fln[]::new));
+      } else {
+         this.d.a(a(this.c));
+      }
    }
 }

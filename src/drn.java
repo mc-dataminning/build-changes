@@ -1,112 +1,53 @@
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class drn extends djw implements djp {
-   public static final MapCodec<drn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aku.a(mc.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               aku.a(mc.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               aku.a(mc.K).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               t()
-            )
-            .apply($$0, drn::new)
-   );
-   public static final int b = 7;
-   public static final dxw c = dxn.ay;
-   protected static final float d = 1.0F;
-   protected static final fbu[] e = new fbu[]{
-      djm.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      djm.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      djm.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      djm.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      djm.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      djm.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      djm.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      djm.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final aku<djm> f;
-   private final aku<djm> g;
-   private final aku<cwl> h;
+public class drn extends dqs {
+   public static final MapCodec<drn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dyk.a.fieldOf("wood_type").forGetter(dqs::d), t()).apply($$0, drn::new));
+   public static final dxx b = dxo.bd;
 
    @Override
    public MapCodec<drn> a() {
       return a;
    }
 
-   protected drn(aku<djm> $$0, aku<djm> $$1, aku<cwl> $$2, dww.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+   public drn(dyk $$0, dwx.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.F.b().b(b, Integer.valueOf(0)).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return e[$$0.c(c)];
+   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
-      return $$0.a(djo.cK);
+   public dwy a(dah $$0) {
+      eta $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Integer.valueOf(dyd.a($$0.i() + 180.0F))).b(f, Boolean.valueOf($$1.a() == etb.c));
    }
 
    @Override
-   protected void b(dwx $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = dli.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.b(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               jn $$6 = jn.c.a.a($$3);
-               ji $$7 = $$2.a($$6);
-               dwx $$8 = $$1.a_($$7.e());
-               if ($$1.a_($$7).l() && ($$8.a(djo.cK) || $$8.a(awp.ah))) {
-                  ke<djm> $$9 = $$1.K_().e(mc.f);
-                  Optional<djm> $$10 = $$9.f(this.f);
-                  Optional<djm> $$11 = $$9.f(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().m());
-                     $$1.b($$2, $$11.get().m().b(dnk.aF, $$6));
-                  }
-               }
-            }
-         }
-      }
+   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
+      return $$4 == jn.a && !this.a($$0, $$1, $$3) ? djp.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
-      return new cwp((dgh)DataFixUtils.orElse($$0.K_().e(mc.K).f(this.h), this));
+   public float h(dwy $$0) {
+      return dyd.b($$0.c(b));
    }
 
    @Override
-   public boolean a(dgl $$0, ji $$1, dwx $$2) {
-      return $$2.c(c) != 7;
+   protected dwy a(dwy $$0, dqf $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
-      return true;
+   protected dwy a(dwy $$0, dom $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwx $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + ayz.a($$0.A, 2, 5));
-      dwx $$5 = $$3.b(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.A);
-      }
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(c);
+   protected void a(dwz.a<djn, dwy> $$0) {
+      $$0.a(b, f);
    }
 }

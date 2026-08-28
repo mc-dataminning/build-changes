@@ -28,7 +28,7 @@ public class ha implements ArgumentType<gv> {
       return new ha($$0);
    }
 
-   public static fba a(CommandContext<ex> $$0, String $$1) {
+   public static fbb a(CommandContext<ex> $$0, String $$1) {
       return ((gv)$$0.getArgument($$1, gv.class)).a((ex)$$0.getSource());
    }
 

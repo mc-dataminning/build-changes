@@ -1,7 +1,3 @@
-public class had extends gzk {
-   public float a;
-   public float b;
-   public boolean c;
-   public cvm d = cvm.a;
-   public int e;
+public class had extends gzl {
+   public chu.a a = chu.a.b;
 }

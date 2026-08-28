@@ -1,34 +1,19 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dpk extends dli {
-   public static final MapCodec<dpk> a = b(dpk::new);
-   private static final fbu[] b = new fbu[]{
-      djm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
-
-   @Override
-   public MapCodec<dpk> a() {
-      return a;
+public interface dpk {
+   default int a(ard $$0, bum $$1) {
+      return 0;
    }
 
-   public dpk(dww.d $$0) {
-      super($$0);
+   @Nullable
+   eua a(ard var1, bum var2, ji var3);
+
+   default dpk.a b() {
+      return dpk.a.b;
    }
 
-   @Override
-   protected dgh d() {
-      return cwt.vf;
-   }
-
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return b[this.h($$0)];
+   public static enum a {
+      a,
+      b;
    }
 }

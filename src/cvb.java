@@ -1,136 +1,112 @@
-import javax.annotation.Nullable;
+public class cvb extends cwm {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class cvb extends cwl implements cvk {
-   private final esy a;
-
-   public cvb(esy $$0, cwl.a $$1) {
-      super($$1);
-      this.a = $$0;
+   public cvb(cwm.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bsk a(dgi $$0, cox $$1, bsj $$2) {
-      cwp $$3 = $$1.b($$2);
-      faw $$4 = a($$0, $$1, this.a == eta.a ? dfq.b.b : dfq.b.a);
-      if ($$4.d() == fay.a.a) {
-         return bsk.e;
-      } else if ($$4.d() != fay.a.b) {
-         return bsk.e;
-      } else {
-         ji $$5 = $$4.b();
-         jn $$6 = $$4.c();
-         ji $$7 = $$5.a($$6);
-         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
-            return bsk.d;
-         } else if (this.a == eta.a) {
-            dwx $$8 = $$0.a_($$5);
-            if ($$8.b() instanceof dju $$9) {
-               cwp $$10 = $$9.a($$1, $$0, $$5, $$8);
-               if (!$$10.f()) {
-                  $$1.b(awk.c.b(this));
-                  $$9.as_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
-                  $$0.a($$1, ebt.y, $$5);
-                  cwp $$11 = cws.a($$3, $$1, $$10);
-                  if (!$$0.C) {
-                     ap.k.a((are)$$1, $$10);
+   public bsl a(daj $$0) {
+      coy $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).d() == faz.a.b) {
+         $$1.c($$0.p());
+      }
+
+      return bsl.c;
+   }
+
+   @Override
+   public cws b(cwq $$0) {
+      return cws.j;
+   }
+
+   @Override
+   public int a(cwq $$0, bvi $$1) {
+      return 200;
+   }
+
+   @Override
+   public void a(dgj $$0, bvi $$1, cwq $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof coy $$4) {
+         faz $$6 = this.a($$4);
+         if ($$6 instanceof fax $$7 && $$6.d() == faz.a.b) {
+            int $$9 = this.a($$2, $$1) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               ji $$11 = $$7.b();
+               dwy $$12 = $$0.a_($$11);
+               bvc $$13 = $$1.fA() == bsk.a ? $$4.fy() : $$4.fy().e();
+               if ($$12.D() && $$12.o() != dpy.a) {
+                  this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
+               }
+
+               avz $$15;
+               if ($$12.b() instanceof djt $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = awa.cS;
+               }
+
+               $$0.a($$4, $$11, $$15, awb.e);
+               if ($$0 instanceof ard $$17 && $$0.c_($$11) instanceof due $$18) {
+                  boolean $$19 = $$18.a($$0.ad(), $$17, $$4, $$7.c(), $$2);
+                  if ($$19) {
+                     buu $$20 = $$2.equals($$4.a(buu.b)) ? buu.b : buu.a;
+                     $$2.a(1, $$4, $$20);
                   }
-
-                  return bsk.a.a($$11);
                }
             }
 
-            return bsk.d;
-         } else {
-            dwx $$12 = $$0.a_($$5);
-            ji $$13 = $$12.b() instanceof dof && this.a == eta.c ? $$5 : $$7;
-            if (this.a($$1, $$0, $$13, $$4)) {
-               this.a($$1, $$0, $$3, $$13);
-               if ($$1 instanceof are) {
-                  ap.z.a((are)$$1, $$13, $$3);
-               }
-
-               $$1.b(awk.c.b(this));
-               cwp $$14 = cws.a($$3, $$1, b($$3, $$1));
-               return bsk.a.a($$14);
-            } else {
-               return bsk.d;
-            }
+            return;
          }
-      }
-   }
 
-   public static cwp b(cwp $$0, cox $$1) {
-      return !$$1.fV() ? new cwp(cwt.rf) : $$0;
-   }
-
-   @Override
-   public void a(@Nullable cox $$0, dgi $$1, cwp $$2, ji $$3) {
-   }
-
-   @Override
-   public boolean a(@Nullable cox $$0, dgi $$1, ji $$2, @Nullable faw $$3) {
-      if (!(this.a instanceof esx $$4)) {
-         return false;
+         $$1.fE();
       } else {
-         djm $$7;
-         boolean $$8;
-         dwx $$6;
-         boolean var10000;
-         label82: {
-            $$6 = $$1.a_($$2);
-            $$7 = $$6.b();
-            $$8 = $$6.a(this.a);
-            label70:
-            if (!$$6.l() && !$$8) {
-               if ($$7 instanceof dof $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
-                  break label70;
-               }
-
-               var10000 = false;
-               break label82;
-            }
-
-            var10000 = true;
-         }
-
-         boolean $$10 = var10000;
-         if (!$$10) {
-            return $$3 != null && this.a($$0, $$1, $$3.b().a($$3.c()), null);
-         } else if ($$1.G_().i() && this.a.a(awv.a)) {
-            int $$11 = $$2.u();
-            int $$12 = $$2.v();
-            int $$13 = $$2.w();
-            $$1.a($$0, $$2, awa.ju, awb.e, 0.5F, 2.6F + ($$1.A.i() - $$1.A.i()) * 0.8F);
-
-            for (int $$14 = 0; $$14 < 8; $$14++) {
-               $$1.a(lt.Z, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
-            }
-
-            return true;
-         } else {
-            if ($$7 instanceof dof $$15 && this.a == eta.c) {
-               $$15.a($$1, $$2, $$6, $$4.a(false));
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-
-            if (!$$1.C && $$8 && !$$6.n()) {
-               $$1.b($$2, true);
-            }
-
-            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.y().b()) {
-               return false;
-            } else {
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-         }
+         $$1.fE();
       }
    }
 
-   protected void a(@Nullable cox $$0, dgj $$1, ji $$2) {
-      avz $$3 = this.a.a(awv.b) ? awa.dg : awa.dd;
-      $$1.a($$0, $$2, $$3, awb.e, 1.0F, 1.0F);
-      $$1.a($$0, ebt.z, $$2);
+   private faz a(coy $$0) {
+      return cpt.a($$0, bur.h, $$0.gL());
+   }
+
+   private void a(dgj $$0, fax $$1, dwy $$2, fbb $$3, bvc $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bvc.b ? 1 : -1;
+      int $$7 = $$0.H_().b(7, 12);
+      ll $$8 = new ll(lt.b, $$2);
+      jn $$9 = $$1.c();
+      cvb.a $$10 = cvb.a.a($$3, $$9);
+      fbb $$11 = $$1.g();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.d - (double)($$9 == jn.e ? 1.0E-6F : 0.0F),
+            $$11.e,
+            $$11.f - (double)($$9 == jn.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.H_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.H_().j()
+         );
+      }
+   }
+
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
+
+      public static cvb.a a(fbb $$0, jn $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new cvb.a($$0.c(), 0.0, -$$0.a());
+            case c -> new cvb.a(1.0, 0.0, -0.1);
+            case d -> new cvb.a(-1.0, 0.0, 0.1);
+            case e -> new cvb.a(-0.1, 0.0, -1.0);
+            case f -> new cvb.a(0.1, 0.0, 1.0);
+         };
+      }
    }
 }

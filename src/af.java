@@ -111,7 +111,7 @@ public class af {
       return Collectors.toCollection(Lists::newArrayList);
    }
 
-   public static <T extends Comparable<T>> String a(dxz<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dya<T> $$0, Object $$1) {
       return $$0.b((T)$$1);
    }
 
@@ -136,7 +136,7 @@ public class af {
    }
 
    private static ae c(String $$0) {
-      int $$1 = ayz.a(Runtime.getRuntime().availableProcessors() - 1, 1, p());
+      int $$1 = g();
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -170,7 +170,11 @@ public class af {
       return new ae($$2);
    }
 
-   private static int p() {
+   public static int g() {
+      return ayz.a(Runtime.getRuntime().availableProcessors() - 1, 1, q());
+   }
+
+   private static int q() {
       String $$0 = System.getProperty("max.bg.threads");
       if ($$0 != null) {
          try {
@@ -188,19 +192,19 @@ public class af {
       return 255;
    }
 
-   public static ae g() {
+   public static ae h() {
       return k;
    }
 
-   public static ae h() {
+   public static ae i() {
       return l;
    }
 
-   public static ae i() {
+   public static ae j() {
       return m;
    }
 
-   public static void j() {
+   public static void k() {
       k.a(3L, TimeUnit.SECONDS);
       l.a(3L, TimeUnit.SECONDS);
    }
@@ -314,7 +318,7 @@ public class af {
       return $$2 == null ? "[unregistered]" : $$2.toString();
    }
 
-   public static <T> Predicate<T> k() {
+   public static <T> Predicate<T> l() {
       return $$0 -> true;
    }
 
@@ -355,7 +359,7 @@ public class af {
 
    public static <T> Predicate<T> a(List<? extends Predicate<? super T>> $$0) {
       return switch ($$0.size()) {
-         case 0 -> k();
+         case 0 -> l();
          case 1 -> a((Predicate<? super T>)$$0.get(0));
          case 2 -> a((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1));
          case 3 -> a((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1), (Predicate<? super T>)$$0.get(2));
@@ -374,7 +378,7 @@ public class af {
       };
    }
 
-   public static <T> Predicate<T> l() {
+   public static <T> Predicate<T> m() {
       return $$0 -> false;
    }
 
@@ -415,7 +419,7 @@ public class af {
 
    public static <T> Predicate<T> b(List<? extends Predicate<? super T>> $$0) {
       return switch ($$0.size()) {
-         case 0 -> l();
+         case 0 -> m();
          case 1 -> b((Predicate<? super T>)$$0.get(0));
          case 2 -> b((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1));
          case 3 -> b((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1), (Predicate<? super T>)$$0.get(2));
@@ -455,7 +459,7 @@ public class af {
       }
    }
 
-   public static af.a m() {
+   public static af.a n() {
       String $$0 = System.getProperty("os.name").toLowerCase(Locale.ROOT);
       if ($$0.contains("win")) {
          return af.a.c;
@@ -487,7 +491,7 @@ public class af {
       }
    }
 
-   public static Stream<String> n() {
+   public static Stream<String> o() {
       RuntimeMXBean $$0 = ManagementFactory.getRuntimeMXBean();
       return $$0.getInputArguments().stream().filter($$0x -> $$0x.startsWith("-X"));
    }
@@ -838,7 +842,7 @@ public class af {
       }
    }
 
-   public static void o() {
+   public static void p() {
       Thread $$0 = new Thread("Timer hack thread") {
          @Override
          public void run() {

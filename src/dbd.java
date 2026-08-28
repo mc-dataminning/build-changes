@@ -1,72 +1,54 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
-public class dbd {
-   public static final int a = -1;
-   public static final dbd b = new dbd(List.of(), IntList.of());
-   private final List<dba> c;
-   private final IntList d;
-
-   private dbd(List<dba> $$0, IntList $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class dbd extends dbt {
+   public dbd(das $$0) {
+      super("", $$0, dbu.a(Map.of('#', dbb.a(cwu.rv), 'x', dbb.a(cwu.sR)), "###", "#x#", "###"), new cwq(cwu.vi));
    }
 
-   public static dbd a(dba $$0) {
-      return $$0.b() ? b : new dbd(List.of($$0), IntList.of(0));
-   }
-
-   public static dbd a(List<Optional<dba>> $$0) {
-      int $$1 = $$0.size();
-      List<dba> $$2 = new ArrayList<>($$1);
-      IntList $$3 = new IntArrayList($$1);
-      int $$4 = 0;
-
-      for (Optional<dba> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            dba $$6 = $$5.get();
-            if ($$6.b()) {
-               return b;
-            }
-
-            $$2.add($$6);
-            $$3.add($$4++);
+   @Override
+   public boolean a(dat $$0, dgj $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cwq $$2 = c($$0);
+         if ($$2.f()) {
+            return false;
          } else {
-            $$3.add(-1);
+            euu $$3 = cxd.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
+      }
+   }
+
+   @Override
+   public cwq a(dat $$0, jt.a $$1) {
+      cwq $$2 = c($$0).c(1);
+      $$2.b(kv.N, czn.b);
+      return $$2;
+   }
+
+   private static cwq c(dat $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cwq $$2 = $$0.a($$1);
+         if ($$2.b(kv.L)) {
+            return $$2;
          }
       }
 
-      return new dbd($$2, $$3);
+      return cwq.j;
    }
 
-   public static dbd b(List<dba> $$0) {
-      int $$1 = $$0.size();
-      IntList $$2 = new IntArrayList($$1);
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         dba $$4 = $$0.get($$3);
-         if ($$4.b()) {
-            return b;
-         }
-
-         $$2.add($$3);
-      }
-
-      return new dbd($$0, $$2);
+   @Override
+   public boolean ap_() {
+      return true;
    }
 
-   public IntList a() {
-      return this.d;
-   }
-
-   public List<dba> b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d.isEmpty();
+   @Override
+   public dbp<dbd> a() {
+      return dbp.f;
    }
 }

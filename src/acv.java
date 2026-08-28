@@ -1,7 +1,7 @@
 public record acv(int b, float c) implements yw<abl> {
    public static final yn<vl, acv> a = yw.a(acv::a, acv::new);
 
-   public acv(bvh $$0) {
+   public acv(bvi $$0) {
       this($$0.ar(), $$0.eJ());
    }
 

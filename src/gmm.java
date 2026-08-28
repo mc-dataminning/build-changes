@@ -1,63 +1,30 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
 
-public class gmm {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<gml> b;
-   private volatile int c;
-
-   private gmm(List<gml> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
-   }
-
-   public static gmm a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gml.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<gml> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new gml());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
+public class gmm implements AutoCloseable {
+   private static final List<gmj> b = gmj.Q();
+   public static final int a = b.stream().mapToInt(gmj::R).sum();
+   private final Map<gmj, ffs> c = af.a(new Reference2ObjectArrayMap(b.size()), $$0 -> {
+      for (gmj $$1 : b) {
+         $$0.put($$1, new ffs($$1.R()));
       }
+   });
 
-      return new gmm($$3);
+   public ffs a(gmj $$0) {
+      return this.c.get($$0);
    }
 
-   @Nullable
-   public gml a() {
-      gml $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
-      } else {
-         return null;
-      }
+   public void a() {
+      this.c.values().forEach(ffs::b);
    }
 
-   public void a(gml $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
+   public void b() {
+      this.c.values().forEach(ffs::c);
    }
 
-   public boolean b() {
-      return this.b.isEmpty();
-   }
-
-   public int c() {
-      return this.c;
+   @Override
+   public void close() {
+      this.c.values().forEach(ffs::close);
    }
 }

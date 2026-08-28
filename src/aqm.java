@@ -1,23 +1,23 @@
-public abstract class aqm extends esl {
+public abstract class aqm extends esm {
    protected aqm(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
    protected boolean a(long $$0) {
-      return $$0 == dfo.c;
+      return $$0 == dfp.c;
    }
 
    @Override
    protected void a(long $$0, int $$1, boolean $$2) {
       if (!$$2 || $$1 < this.f - 2) {
-         dfo $$3 = new dfo($$0);
+         dfp $$3 = new dfp($$0);
          int $$4 = $$3.h;
          int $$5 = $$3.i;
 
          for (int $$6 = -1; $$6 <= 1; $$6++) {
             for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = dfo.c($$4 + $$6, $$5 + $$7);
+               long $$8 = dfp.c($$4 + $$6, $$5 + $$7);
                if ($$8 != $$0) {
                   this.b($$0, $$8, $$1, $$2);
                }
@@ -29,15 +29,15 @@ public abstract class aqm extends esl {
    @Override
    protected int a(long $$0, long $$1, int $$2) {
       int $$3 = $$2;
-      dfo $$4 = new dfo($$0);
+      dfp $$4 = new dfp($$0);
       int $$5 = $$4.h;
       int $$6 = $$4.i;
 
       for (int $$7 = -1; $$7 <= 1; $$7++) {
          for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = dfo.c($$5 + $$7, $$6 + $$8);
+            long $$9 = dfp.c($$5 + $$7, $$6 + $$8);
             if ($$9 == $$0) {
-               $$9 = dfo.c;
+               $$9 = dfp.c;
             }
 
             if ($$9 != $$1) {
@@ -58,12 +58,12 @@ public abstract class aqm extends esl {
 
    @Override
    protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == dfo.c ? this.b($$1) : $$2 + 1;
+      return $$0 == dfp.c ? this.b($$1) : $$2 + 1;
    }
 
    protected abstract int b(long var1);
 
    public void b(long $$0, int $$1, boolean $$2) {
-      this.a(dfo.c, $$0, $$1, $$2);
+      this.a(dfp.c, $$0, $$1, $$2);
    }
 }

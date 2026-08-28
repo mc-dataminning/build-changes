@@ -1,49 +1,52 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class brw extends brp {
+public class brw extends brq {
    public static final MapCodec<brw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bqs.b(brp.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, brw::new)
-   );
-   private final bqs<brp> b;
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, brw::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
    private final int f;
-   private final int g;
 
-   public brw(bqs<brp> $$0) {
+   private brw(int $$0, int $$1) {
       this.b = $$0;
-      List<bqu.b<brp>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+      this.f = $$1;
+   }
 
-      for (bqu.b<brp> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
-      }
-
-      this.f = $$2;
-      this.g = $$3;
+   public static brw a(int $$0, int $$1) {
+      return new brw($$0, $$1);
    }
 
    @Override
    public int a(azh $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+      return ayz.b($$0, this.b, this.f);
    }
 
    @Override
    public int a() {
-      return this.f;
+      return this.b;
    }
 
    @Override
    public int b() {
-      return this.g;
+      return this.f;
    }
 
    @Override
-   public brq<?> c() {
-      return brq.e;
+   public brr<?> c() {
+      return brr.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

@@ -18,9 +18,9 @@ public abstract class atu implements auc {
    private final ate d;
    private final atg e;
    private final akv f;
-   private final faq g;
+   private final far g;
 
-   public atu(ate $$0, atg $$1, akv $$2, faq $$3) {
+   public atu(ate $$0, atg $$1, akv $$2, far $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;

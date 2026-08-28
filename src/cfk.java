@@ -1,22 +1,24 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cfk<T extends bvh> extends cfr<T> {
-   @Override
-   protected void a(ard $$0, T $$1) {
-      double $$2 = $$1.h(bwp.m);
-      fav $$3 = $$1.cR().c($$2, $$2, $$2);
-      List<bvh> $$4 = $$0.a(bvh.class, $$3, $$1x -> $$1x != $$1 && $$1x.bL());
-      $$4.sort(Comparator.comparingDouble($$1::g));
-      bwj<?> $$5 = $$1.eb();
-      $$5.a(cel.g, $$4);
-      $$5.a(cel.h, new cen($$0, $$1, $$4));
-   }
+public class cfk extends cfs<bvk> {
+   private static final long b = 32L;
+   private static final long c = 16L;
+   public static final int a = 32;
 
    @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.of(cel.g, cel.h);
+   public Set<cem<?>> a() {
+      return ImmutableSet.of(cem.L);
+   }
+
+   protected void a(ard $$0, bvk $$1) {
+      bwk<?> $$2 = $$1.eb();
+      List<cld> $$3 = $$0.a(cld.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<cld> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.l())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(cem.L, $$4);
    }
 }

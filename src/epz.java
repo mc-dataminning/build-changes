@@ -1,63 +1,243 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class epz extends enm {
-   public static final MapCodec<epz> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               a($$0),
-               epz.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, epz::new)
-   );
-   public final epz.a e;
-   public final float f;
-   public final float g;
+public class epz {
+   static final erm a = a(djp.L, djp.M, evo.bb);
+   static final erm b = a(djp.O, djp.P, evo.bc);
+   private static final akv[] c = new akv[]{
+      akv.b("underwater_ruin/warm_1"),
+      akv.b("underwater_ruin/warm_2"),
+      akv.b("underwater_ruin/warm_3"),
+      akv.b("underwater_ruin/warm_4"),
+      akv.b("underwater_ruin/warm_5"),
+      akv.b("underwater_ruin/warm_6"),
+      akv.b("underwater_ruin/warm_7"),
+      akv.b("underwater_ruin/warm_8")
+   };
+   private static final akv[] d = new akv[]{
+      akv.b("underwater_ruin/brick_1"),
+      akv.b("underwater_ruin/brick_2"),
+      akv.b("underwater_ruin/brick_3"),
+      akv.b("underwater_ruin/brick_4"),
+      akv.b("underwater_ruin/brick_5"),
+      akv.b("underwater_ruin/brick_6"),
+      akv.b("underwater_ruin/brick_7"),
+      akv.b("underwater_ruin/brick_8")
+   };
+   private static final akv[] e = new akv[]{
+      akv.b("underwater_ruin/cracked_1"),
+      akv.b("underwater_ruin/cracked_2"),
+      akv.b("underwater_ruin/cracked_3"),
+      akv.b("underwater_ruin/cracked_4"),
+      akv.b("underwater_ruin/cracked_5"),
+      akv.b("underwater_ruin/cracked_6"),
+      akv.b("underwater_ruin/cracked_7"),
+      akv.b("underwater_ruin/cracked_8")
+   };
+   private static final akv[] f = new akv[]{
+      akv.b("underwater_ruin/mossy_1"),
+      akv.b("underwater_ruin/mossy_2"),
+      akv.b("underwater_ruin/mossy_3"),
+      akv.b("underwater_ruin/mossy_4"),
+      akv.b("underwater_ruin/mossy_5"),
+      akv.b("underwater_ruin/mossy_6"),
+      akv.b("underwater_ruin/mossy_7"),
+      akv.b("underwater_ruin/mossy_8")
+   };
+   private static final akv[] g = new akv[]{
+      akv.b("underwater_ruin/big_brick_1"), akv.b("underwater_ruin/big_brick_2"), akv.b("underwater_ruin/big_brick_3"), akv.b("underwater_ruin/big_brick_8")
+   };
+   private static final akv[] h = new akv[]{
+      akv.b("underwater_ruin/big_mossy_1"), akv.b("underwater_ruin/big_mossy_2"), akv.b("underwater_ruin/big_mossy_3"), akv.b("underwater_ruin/big_mossy_8")
+   };
+   private static final akv[] i = new akv[]{
+      akv.b("underwater_ruin/big_cracked_1"),
+      akv.b("underwater_ruin/big_cracked_2"),
+      akv.b("underwater_ruin/big_cracked_3"),
+      akv.b("underwater_ruin/big_cracked_8")
+   };
+   private static final akv[] j = new akv[]{
+      akv.b("underwater_ruin/big_warm_4"), akv.b("underwater_ruin/big_warm_5"), akv.b("underwater_ruin/big_warm_6"), akv.b("underwater_ruin/big_warm_7")
+   };
 
-   public epz(enm.c $$0, epz.a $$1, float $$2, float $$3) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   private static erm a(djn $$0, djn $$1, aku<evx> $$2) {
+      return new equ(new eri(List.of(new ere(new eqr($$0), eqm.b, erb.b, $$1.m(), new ert($$2)))), brn.a(5));
    }
 
-   @Override
-   public Optional<enm.b> a(enm.a $$0) {
-      return a($$0, ecs.a.c, $$1 -> this.a($$1, $$0));
+   private static akv a(azh $$0) {
+      return af.a(c, $$0);
    }
 
-   private void a(eoe $$0, enm.a $$1) {
-      ji $$2 = new ji($$1.h().d(), 90, $$1.h().e());
-      dqe $$3 = dqe.a($$1.f());
-      epy.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   private static akv b(azh $$0) {
+      return af.a(j, $$0);
    }
 
-   @Override
-   public env<?> e() {
-      return env.k;
+   public static void a(erq $$0, ji $$1, dqf $$2, ens $$3, azh $$4, eqa $$5) {
+      boolean $$6 = $$4.i() <= $$5.f;
+      float $$7 = $$6 ? 0.9F : 0.8F;
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$6 && $$4.i() <= $$5.g) {
+         a($$0, $$4, $$2, $$1, $$5, $$3);
+      }
    }
 
-   public static enum a implements azv {
-      a("warm"),
-      b("cold");
+   private static void a(erq $$0, azh $$1, dqf $$2, ji $$3, eqa $$4, ens $$5) {
+      ji $$6 = new ji($$3.u(), 90, $$3.w());
+      ji $$7 = erp.a(new ji(15, 0, 15), dom.a, $$2, ji.c).a((km)$$6);
+      enf $$8 = enf.a($$6, $$7);
+      ji $$9 = new ji(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
+      List<ji> $$10 = a($$1, $$9);
+      int $$11 = ayz.a($$1, 4, 8);
 
-      public static final Codec<epz.a> c = azv.a(epz.a::values);
-      private final String d;
+      for (int $$12 = 0; $$12 < $$11; $$12++) {
+         if (!$$10.isEmpty()) {
+            int $$13 = $$1.a($$10.size());
+            ji $$14 = $$10.remove($$13);
+            dqf $$15 = dqf.a($$1);
+            ji $$16 = erp.a(new ji(5, 0, 6), dom.a, $$15, ji.c).a((km)$$14);
+            enf $$17 = enf.a($$14, $$16);
+            if (!$$17.a($$8)) {
+               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
+            }
+         }
+      }
+   }
 
-      private a(final String $$0) {
-         this.d = $$0;
+   private static List<ji> a(azh $$0, ji $$1) {
+      List<ji> $$2 = Lists.newArrayList();
+      $$2.add($$1.b(-16 + ayz.a($$0, 1, 8), 0, 16 + ayz.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + ayz.a($$0, 1, 8), 0, ayz.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + ayz.a($$0, 1, 8), 0, -16 + ayz.a($$0, 4, 8)));
+      $$2.add($$1.b(ayz.a($$0, 1, 7), 0, 16 + ayz.a($$0, 1, 7)));
+      $$2.add($$1.b(ayz.a($$0, 1, 7), 0, -16 + ayz.a($$0, 4, 6)));
+      $$2.add($$1.b(16 + ayz.a($$0, 1, 7), 0, 16 + ayz.a($$0, 3, 8)));
+      $$2.add($$1.b(16 + ayz.a($$0, 1, 7), 0, ayz.a($$0, 1, 7)));
+      $$2.add($$1.b(16 + ayz.a($$0, 1, 7), 0, -16 + ayz.a($$0, 4, 8)));
+      return $$2;
+   }
+
+   private static void a(erq $$0, ji $$1, dqf $$2, ens $$3, azh $$4, eqa $$5, boolean $$6, float $$7) {
+      switch ($$5.e) {
+         case a:
+         default:
+            akv $$8 = $$6 ? b($$4) : a($$4);
+            $$3.a(new epz.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
+            break;
+         case b:
+            akv[] $$9 = $$6 ? g : d;
+            akv[] $$10 = $$6 ? i : e;
+            akv[] $$11 = $$6 ? h : f;
+            int $$12 = $$4.a($$9.length);
+            $$3.a(new epz.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
+            $$3.a(new epz.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
+            $$3.a(new epz.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
+      }
+   }
+
+   public static class a extends enx {
+      private final eqa.a h;
+      private final float i;
+      private final boolean j;
+
+      public a(erq $$0, akv $$1, ji $$2, dqf $$3, float $$4, eqa.a $$5, boolean $$6) {
+         super(eoe.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
+         this.i = $$4;
+         this.h = $$5;
+         this.j = $$6;
       }
 
-      public String a() {
-         return this.d;
+      private a(erq $$0, tq $$1, dqf $$2, float $$3, eqa.a $$4, boolean $$5) {
+         super(eoe.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
+         this.i = $$3;
+         this.h = $$4;
+         this.j = $$5;
+      }
+
+      private static erl a(dqf $$0, float $$1, eqa.a $$2) {
+         erm $$3 = $$2 == eqa.a.b ? epz.b : epz.a;
+         return new erl().a($$0).a(dom.a).a(new eqs($$1)).a(eqq.d).a($$3);
+      }
+
+      public static epz.a a(erq $$0, tq $$1) {
+         dqf $$2 = dqf.valueOf($$1.l("Rot"));
+         float $$3 = $$1.j("Integrity");
+         eqa.a $$4 = eqa.a.valueOf($$1.l("BiomeType"));
+         boolean $$5 = $$1.q("IsLarge");
+         return new epz.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
       @Override
-      public String c() {
-         return this.d;
+      protected void a(eod $$0, tq $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("Integrity", this.i);
+         $$1.a("BiomeType", this.h.toString());
+         $$1.a("IsLarge", this.j);
+      }
+
+      @Override
+      protected void a(String $$0, ji $$1, dha $$2, azh $$3, enf $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, djp.cD.m().b(dkq.e, Boolean.valueOf($$2.b_($$1).a(awv.a))), 2);
+            dua $$5 = $$2.c_($$1);
+            if ($$5 instanceof duh) {
+               ((duh)$$5).a(this.j ? evo.E : evo.D, $$3.g());
+            }
+         } else if ("drowned".equals($$0)) {
+            cln $$6 = but.K.a($$2.a(), bus.d);
+            if ($$6 != null) {
+               $$6.fY();
+               $$6.a($$1, 0.0F, 0.0F);
+               $$6.a($$2, $$2.d_($$1), bus.d, null);
+               $$2.a_($$6);
+               if ($$1.v() > $$2.P()) {
+                  $$2.a($$1, djp.a.m(), 2);
+               } else {
+                  $$2.a($$1, djp.J.m(), 2);
+               }
+            }
+         }
+      }
+
+      @Override
+      public void a(dhh $$0, dhf $$1, dyu $$2, azh $$3, enf $$4, dfp $$5, ji $$6) {
+         int $$7 = $$0.a(ect.a.c, this.d.u(), this.d.w());
+         this.d = new ji(this.d.u(), $$7, this.d.w());
+         ji $$8 = erp.a(new ji(this.b.a().u() - 1, 0, this.b.a().w() - 1), dom.a, this.c.d(), ji.c).a((km)this.d);
+         this.d = new ji(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+
+      private int a(ji $$0, dfo $$1, ji $$2) {
+         int $$3 = $$0.v();
+         int $$4 = 512;
+         int $$5 = $$3 - 1;
+         int $$6 = 0;
+
+         for (ji $$7 : ji.c($$0, $$2)) {
+            int $$8 = $$7.u();
+            int $$9 = $$7.w();
+            int $$10 = $$0.v() - 1;
+            ji.a $$11 = new ji.a($$8, $$10, $$9);
+            dwy $$12 = $$1.a_($$11);
+
+            for (eta $$13 = $$1.b_($$11); ($$12.l() || $$13.a(awv.a) || $$12.a(awp.ap)) && $$10 > $$1.L_() + 1; $$13 = $$1.b_($$11)) {
+               $$11.d($$8, --$$10, $$9);
+               $$12 = $$1.a_($$11);
+            }
+
+            $$4 = Math.min($$4, $$10);
+            if ($$10 < $$5 - 2) {
+               $$6++;
+            }
+         }
+
+         int $$14 = Math.abs($$0.u() - $$2.u());
+         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
+            $$3 = $$4 + 1;
+         }
+
+         return $$3;
       }
    }
 }

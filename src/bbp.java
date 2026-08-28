@@ -3,9 +3,9 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bbp extends bgs {
+public class bbp extends bgt {
    public bbp(Schema $$0, String $$1) {
-      super($$0, false, "BlockEntityFurnaceBurnTimeFix" + $$1, bhx.s, $$1);
+      super($$0, false, "BlockEntityFurnaceBurnTimeFix" + $$1, bhy.s, $$1);
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -1,385 +1,179 @@
-import com.google.common.collect.ComparisonChain;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
-import java.util.Map.Entry;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.slf4j.Logger;
 
-public class fhl extends fhz {
-   private static final Logger x = LogUtils.getLogger();
-   private static final int y = -1;
-   public long a;
-   @Nullable
-   public String b;
-   @Nullable
-   public String c;
-   public String d;
-   public fhl.c e;
-   @Nullable
-   public String f;
-   public UUID g = af.e;
-   public List<fhh> h;
-   public Map<Integer, fhr> i;
-   public boolean j;
-   public boolean k;
-   public int l;
-   public fhl.d m;
-   public boolean n;
-   public int o;
-   public int p;
-   @Nullable
-   public String q;
-   public int r;
-   @Nullable
-   public String s;
-   public long t = -1L;
-   @Nullable
-   public String u;
-   public String v = "";
-   public fhl.a w = fhl.a.a;
+public class fhl {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "notificationUuid";
+   private static final String c = "dismissable";
+   private static final String d = "seen";
+   private static final String e = "type";
+   private static final String f = "visitUrl";
+   private static final String g = "infoPopup";
+   static final wp h = wp.c("mco.notification.visitUrl.buttonText.default");
+   final UUID i;
+   final boolean j;
+   final boolean k;
+   final String l;
 
-   public String a() {
-      return this.d;
+   fhl(UUID $$0, boolean $$1, boolean $$2, String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
    }
 
-   @Nullable
-   public String b() {
-      return this.c;
+   public boolean a() {
+      return this.k;
    }
 
-   @Nullable
-   public String c() {
-      return this.q;
+   public boolean b() {
+      return this.j;
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
+   public UUID c() {
+      return this.i;
    }
 
-   public void b(String $$0) {
-      this.d = $$0;
-   }
-
-   public static fhl a(JsonObject $$0) {
-      fhl $$1 = new fhl();
+   public static List<fhl> a(String $$0) {
+      List<fhl> $$1 = new ArrayList<>();
 
       try {
-         $$1.a = fjv.a("id", $$0, -1L);
-         $$1.b = fjv.b("remoteSubscriptionId", $$0, null);
-         $$1.c = fjv.b("name", $$0, null);
-         $$1.d = fjv.b("motd", $$0, "");
-         $$1.e = f(fjv.b("state", $$0, fhl.c.a.name()));
-         $$1.f = fjv.b("owner", $$0, null);
-         if ($$0.get("players") != null && $$0.get("players").isJsonArray()) {
-            $$1.h = a($$0.get("players").getAsJsonArray());
-            a($$1);
-         } else {
-            $$1.h = Lists.newArrayList();
+         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
+            $$1.add(a($$3.getAsJsonObject()));
          }
-
-         $$1.l = fjv.a("daysLeft", $$0, 0);
-         $$1.j = fjv.a("expired", $$0, false);
-         $$1.k = fjv.a("expiredTrial", $$0, false);
-         $$1.m = g(fjv.b("worldType", $$0, fhl.d.a.name()));
-         $$1.n = fjv.a("isHardcore", $$0, false);
-         $$1.o = fjv.a("gameMode", $$0, -1);
-         $$1.g = fjv.a("ownerUUID", $$0, af.e);
-         if ($$0.get("slots") != null && $$0.get("slots").isJsonArray()) {
-            $$1.i = b($$0.get("slots").getAsJsonArray());
-         } else {
-            $$1.i = j();
-         }
-
-         $$1.q = fjv.b("minigameName", $$0, null);
-         $$1.p = fjv.a("activeSlot", $$0, -1);
-         $$1.r = fjv.a("minigameId", $$0, -1);
-         $$1.s = fjv.b("minigameImage", $$0, null);
-         $$1.t = fjv.a("parentWorldId", $$0, -1L);
-         $$1.u = fjv.b("parentWorldName", $$0, null);
-         $$1.v = fjv.b("activeVersion", $$0, "");
-         $$1.w = d(fjv.b("compatibility", $$0, fhl.a.a.name()));
-      } catch (Exception var3) {
-         x.error("Could not parse McoServer: {}", var3.getMessage());
+      } catch (Exception var5) {
+         a.error("Could not parse list of RealmsNotifications", var5);
       }
 
       return $$1;
    }
 
-   private static void a(fhl $$0) {
-      $$0.h
-         .sort(
-            ($$0x, $$1) -> ComparisonChain.start()
-                  .compareFalseFirst($$1.d(), $$0x.d())
-                  .compare($$0x.a().toLowerCase(Locale.ROOT), $$1.a().toLowerCase(Locale.ROOT))
-                  .result()
-         );
+   private static fhl a(JsonObject $$0) {
+      UUID $$1 = fjw.a("notificationUuid", $$0, null);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing required property notificationUuid");
+      } else {
+         boolean $$2 = fjw.a("dismissable", $$0, true);
+         boolean $$3 = fjw.a("seen", $$0, false);
+         String $$4 = fjw.a("type", $$0);
+         fhl $$5 = new fhl($$1, $$2, $$3, $$4);
+
+         return (fhl)(switch ($$4) {
+            case "visitUrl" -> fhl.c.a($$5, $$0);
+            case "infoPopup" -> fhl.a.a($$5, $$0);
+            default -> $$5;
+         });
+      }
    }
 
-   private static List<fhh> a(JsonArray $$0) {
-      List<fhh> $$1 = Lists.newArrayList();
+   public static class a extends fhl {
+      private static final String a = "title";
+      private static final String b = "message";
+      private static final String c = "image";
+      private static final String d = "urlButton";
+      private final fhr e;
+      private final fhr f;
+      private final akv g;
+      @Nullable
+      private final fhl.b h;
 
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            fhh $$4 = new fhh();
-            $$4.a(fjv.b("name", $$3, null));
-            $$4.a(fjv.a("uuid", $$3, af.e));
-            $$4.a(fjv.a("operator", $$3, false));
-            $$4.b(fjv.a("accepted", $$3, false));
-            $$4.c(fjv.a("online", $$3, false));
-            $$1.add($$4);
-         } catch (Exception var6) {
-         }
+      private a(fhl $$0, fhr $$1, fhr $$2, akv $$3, @Nullable fhl.b $$4) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
+         this.h = $$4;
       }
 
-      return $$1;
-   }
+      public static fhl.a a(fhl $$0, JsonObject $$1) {
+         fhr $$2 = fjw.a("title", $$1, fhr::a);
+         fhr $$3 = fjw.a("message", $$1, fhr::a);
+         akv $$4 = akv.a(fjw.a("image", $$1));
+         fhl.b $$5 = fjw.b("urlButton", $$1, fhl.b::a);
+         return new fhl.a($$0, $$2, $$3, $$4, $$5);
+      }
 
-   private static Map<Integer, fhr> b(JsonArray $$0) {
-      Map<Integer, fhr> $$1 = Maps.newHashMap();
-
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            JsonElement $$4 = JsonParser.parseString($$3.get("options").getAsString());
-            fhp $$5 = a($$3.get("settings"));
-            fhr $$6;
-            if ($$4 == null) {
-               $$6 = fhr.a();
-            } else {
-               $$6 = fhr.a($$4.getAsJsonObject(), $$5);
+      @Nullable
+      public fpw a(fum $$0, Consumer<UUID> $$1) {
+         wp $$2 = this.e.a();
+         if ($$2 == null) {
+            fhl.a.warn("Realms info popup had title with no available translation: {}", this.e);
+            return null;
+         } else {
+            fpw.a $$3 = new fpw.a($$0, $$2).a(this.g).a(this.f.a(wo.a));
+            if (this.h != null) {
+               $$3.a(this.h.b.a(fhl.h), $$2x -> {
+                  flk $$3x = flk.Q();
+                  $$3x.a(new ftj($$3xx -> {
+                     if ($$3xx) {
+                        af.n().a(this.h.a);
+                        $$3x.a($$0);
+                     } else {
+                        $$3x.a($$2x);
+                     }
+                  }, this.h.a, true));
+                  $$1.accept(this.c());
+               });
             }
 
-            int $$8 = fjv.a("slotId", $$3, -1);
-            $$1.put($$8, $$6);
-         } catch (Exception var9) {
+            $$3.a(wo.h, $$1x -> {
+               $$1x.aO_();
+               $$1.accept(this.c());
+            });
+            $$3.a(() -> $$1.accept(this.c()));
+            return $$3.a();
          }
       }
-
-      for (int $$9 = 1; $$9 <= 3; $$9++) {
-         if (!$$1.containsKey($$9)) {
-            $$1.put($$9, fhr.b());
-         }
-      }
-
-      return $$1;
    }
 
-   private static fhp a(JsonElement $$0) {
-      boolean $$1 = false;
-      if ($$0.isJsonArray()) {
-         for (JsonElement $$2 : $$0.getAsJsonArray()) {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            $$1 = a($$3, "hardcore", $$1);
-         }
-      }
+   static record b(String a, fhr b) {
+      private static final String c = "url";
+      private static final String d = "urlText";
 
-      return new fhp($$1);
-   }
-
-   private static boolean a(JsonObject $$0, String $$1, boolean $$2) {
-      String $$3 = fjv.b("name", $$0, null);
-      return $$3 != null && $$3.equals($$1) ? fjv.a("value", $$0, $$2) : $$2;
-   }
-
-   private static Map<Integer, fhr> j() {
-      Map<Integer, fhr> $$0 = Maps.newHashMap();
-      $$0.put(1, fhr.b());
-      $$0.put(2, fhr.b());
-      $$0.put(3, fhr.b());
-      return $$0;
-   }
-
-   public static fhl c(String $$0) {
-      try {
-         return a(new JsonParser().parse($$0).getAsJsonObject());
-      } catch (Exception var2) {
-         x.error("Could not parse McoServer: {}", var2.getMessage());
-         return new fhl();
+      public static fhl.b a(JsonObject $$0) {
+         String $$1 = fjw.a("url", $$0);
+         fhr $$2 = fjw.a("urlText", $$0, fhr::a);
+         return new fhl.b($$1, $$2);
       }
    }
 
-   private static fhl.c f(String $$0) {
-      try {
-         return fhl.c.valueOf($$0);
-      } catch (Exception var2) {
-         return fhl.c.a;
-      }
-   }
+   public static class c extends fhl {
+      private static final String a = "url";
+      private static final String b = "buttonText";
+      private static final String c = "message";
+      private final String d;
+      private final fhr e;
+      private final fhr f;
 
-   private static fhl.d g(String $$0) {
-      try {
-         return fhl.d.valueOf($$0);
-      } catch (Exception var2) {
-         return fhl.d.a;
-      }
-   }
-
-   public static fhl.a d(@Nullable String $$0) {
-      try {
-         return fhl.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fhl.a.a;
-      }
-   }
-
-   public boolean d() {
-      return this.w.a();
-   }
-
-   public boolean e() {
-      return this.w.b();
-   }
-
-   public boolean f() {
-      return this.w.c();
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.c, this.d, this.e, this.f, this.j);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0 == this) {
-         return true;
-      } else if ($$0.getClass() != this.getClass()) {
-         return false;
-      } else {
-         fhl $$1 = (fhl)$$0;
-         return new EqualsBuilder()
-            .append(this.a, $$1.a)
-            .append(this.c, $$1.c)
-            .append(this.d, $$1.d)
-            .append(this.e, $$1.e)
-            .append(this.f, $$1.f)
-            .append(this.j, $$1.j)
-            .append(this.m, this.m)
-            .isEquals();
-      }
-   }
-
-   public fhl g() {
-      fhl $$0 = new fhl();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.h = this.h;
-      $$0.i = this.a(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      $$0.l = this.l;
-      $$0.m = this.m;
-      $$0.n = this.n;
-      $$0.o = this.o;
-      $$0.g = this.g;
-      $$0.q = this.q;
-      $$0.p = this.p;
-      $$0.r = this.r;
-      $$0.s = this.s;
-      $$0.u = this.u;
-      $$0.t = this.t;
-      $$0.v = this.v;
-      $$0.w = this.w;
-      return $$0;
-   }
-
-   public Map<Integer, fhr> a(Map<Integer, fhr> $$0) {
-      Map<Integer, fhr> $$1 = Maps.newHashMap();
-
-      for (Entry<Integer, fhr> $$2 : $$0.entrySet()) {
-         $$1.put($$2.getKey(), $$2.getValue().d());
+      private c(fhl $$0, String $$1, fhr $$2, fhr $$3) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
       }
 
-      return $$1;
-   }
-
-   public boolean h() {
-      return this.t != -1L;
-   }
-
-   public boolean i() {
-      return this.m == fhl.d.b;
-   }
-
-   public String a(int $$0) {
-      return this.c == null ? this.i.get($$0).a($$0) : this.c + " (" + this.i.get($$0).a($$0) + ")";
-   }
-
-   public ggo e(String $$0) {
-      return new ggo(Objects.requireNonNullElse(this.c, "unknown server"), $$0, ggo.c.b);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f;
-
-      public boolean a() {
-         return this == f;
+      public static fhl.c a(fhl $$0, JsonObject $$1) {
+         String $$2 = fjw.a("url", $$1);
+         fhr $$3 = fjw.a("buttonText", $$1, fhr::a);
+         fhr $$4 = fjw.a("message", $$1, fhr::a);
+         return new fhl.c($$0, $$2, $$3, $$4);
       }
 
-      public boolean b() {
-         return this == e;
+      public wp d() {
+         return this.f.a(wp.c("mco.notification.visitUrl.message.default"));
       }
 
-      public boolean c() {
-         return this == d;
+      public fou a(fum $$0) {
+         wp $$1 = this.e.a(fhl.h);
+         return fou.a($$1, ftj.b($$0, this.d)).a();
       }
-   }
-
-   public static class b implements Comparator<fhl> {
-      private final String a;
-
-      public b(String $$0) {
-         this.a = $$0;
-      }
-
-      public int a(fhl $$0, fhl $$1) {
-         return ComparisonChain.start()
-            .compareTrueFirst($$0.h(), $$1.h())
-            .compareTrueFirst($$0.e == fhl.c.c, $$1.e == fhl.c.c)
-            .compareTrueFirst($$0.k, $$1.k)
-            .compareTrueFirst(Objects.equals($$0.f, this.a), Objects.equals($$1.f, this.a))
-            .compareFalseFirst($$0.j, $$1.j)
-            .compareTrueFirst($$0.e == fhl.c.b, $$1.e == fhl.c.b)
-            .compare($$0.a, $$1.a)
-            .result();
-      }
-   }
-
-   public static enum c {
-      a,
-      b,
-      c;
-   }
-
-   public static enum d {
-      a,
-      b,
-      c,
-      d,
-      e;
    }
 }

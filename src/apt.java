@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 public class apt extends avd {
    private static final Logger h = LogUtils.getLogger();
 
-   public apt(apu $$0, jy<ale> $$1, evi $$2) {
+   public apt(apu $$0, jy<ale> $$1, evj $$2) {
       super($$0, $$1, $$2, $$0.a().G);
       apv $$3 = $$0.a();
       this.a($$3.E);

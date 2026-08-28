@@ -1,51 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+@FunctionalInterface
+public interface gom<T extends dua> {
+   gol<T> create(gom.a var1);
 
-public class gom {
-   private static final Map<dub<?>, gol<?>> a = Maps.newHashMap();
+   public static class a {
+      private final gok a;
+      private final gnd b;
+      private final hbn c;
+      private final gtd d;
+      private final gsd e;
+      private final gfa f;
+      private final fod g;
 
-   private static <T extends dtz> void a(dub<? extends T> $$0, gol<T> $$1) {
-      a.put($$0, $$1);
-   }
+      public a(gok $$0, gnd $$1, hbn $$2, gtd $$3, gsd $$4, gfa $$5, fod $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   public static Map<dub<?>, gok<?>> a(gol.a $$0) {
-      Builder<dub<?>, gok<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + mb.j.b((dub<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
-   }
+      public gok a() {
+         return this.a;
+      }
 
-   static {
-      a(dub.h, goy::new);
-      a(dub.i, gou::new);
-      a(dub.j, gpa::new);
-      a(dub.l, gow::new);
-      a(dub.b, goq::new);
-      a(dub.d, goq::new);
-      a(dub.c, goq::new);
-      a(dub.n, got::new);
-      a(dub.E, gov::new);
-      a(dub.o, gpd::new);
-      a(dub.w, gpc::new);
-      a(dub.p, gog::new);
-      a(dub.q, goz::new);
-      a(dub.u, gof::new);
-      a(dub.v, gpb::new);
-      a(dub.y, gox::new);
-      a(dub.z, goh::new);
-      a(dub.A, gor::new);
-      a(dub.F, goi::new);
-      a(dub.H, gop::new);
-      a(dub.O, goo::new);
-      a(dub.P, gos::new);
-      a(dub.R, gpe::new);
-      a(dub.S, gpf::new);
+      public gnd b() {
+         return this.b;
+      }
+
+      public gsd c() {
+         return this.e;
+      }
+
+      public hbn d() {
+         return this.c;
+      }
+
+      public gtd e() {
+         return this.d;
+      }
+
+      public gfa f() {
+         return this.f;
+      }
+
+      public gfe a(gfc $$0) {
+         return this.f.a($$0);
+      }
+
+      public fod g() {
+         return this.g;
+      }
    }
 }

@@ -36,7 +36,7 @@ public enum jn implements azv {
    private final jn.a o;
    private final jn.b p;
    private final km q;
-   private final fba r;
+   private final fbb r;
    private static final jn[] s = values();
    private static final jn[] t = Arrays.stream(s).sorted(Comparator.comparingInt($$0 -> $$0.k)).toArray(jn[]::new);
    private static final jn[] u = Arrays.stream(s).filter($$0 -> $$0.o().d()).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(jn[]::new);
@@ -49,10 +49,10 @@ public enum jn implements azv {
       this.o = $$5;
       this.p = $$4;
       this.q = $$6;
-      this.r = fba.a($$6);
+      this.r = fbb.a($$6);
    }
 
-   public static jn[] a(bul $$0) {
+   public static jn[] a(bum $$0) {
       float $$1 = $$0.h(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.i(1.0F) * (float) (Math.PI / 180.0);
       float $$3 = ayz.a($$1);
@@ -134,7 +134,7 @@ public enum jn implements azv {
       return this.p;
    }
 
-   public static jn a(bul $$0, jn.a $$1) {
+   public static jn a(bum $$0, jn.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.i(1.0F)) ? f : e;
          case b -> $$0.h(1.0F) < 0.0F ? b : a;
@@ -298,7 +298,7 @@ public enum jn implements azv {
       return $$3;
    }
 
-   public static jn a(fba $$0) {
+   public static jn a(fbb $$0) {
       return a($$0.d, $$0.e, $$0.f);
    }
 
@@ -353,7 +353,7 @@ public enum jn implements azv {
       return this.q;
    }
 
-   public fba r() {
+   public fbb r() {
       return this.r;
    }
 

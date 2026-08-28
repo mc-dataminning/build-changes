@@ -4,7 +4,7 @@ public class ael implements yw<abl> {
    private final double c;
    private final long d;
 
-   public ael(dyn $$0) {
+   public ael(dyo $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

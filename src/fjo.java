@@ -1,119 +1,54 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.atomic.AtomicReference;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fjo extends hle implements fgy {
-   private static final int b = 200;
-   private static final int c = 80;
-   private static final int C = 95;
-   private static final int D = 1;
-   private static final String[] E = new String[]{"", ".", ". .", ". . ."};
-   private static final wp F = wp.c("mco.upload.verifying");
-   private final fjh G;
-   private final evg H;
-   @Nullable
-   private final fkj I;
-   private final long J;
-   private final int K;
-   final AtomicReference<fgx> a = new AtomicReference<>();
-   private final fgo L;
-   private final RateLimiter M;
-   @Nullable
-   private volatile wp[] N;
-   private volatile wp O = wp.c("mco.upload.preparing");
-   @Nullable
-   private volatile String P;
-   private volatile boolean Q;
-   private volatile boolean R;
-   private volatile boolean S = true;
-   private volatile boolean T;
-   @Nullable
-   private fot U;
-   @Nullable
-   private fot V;
-   private int W;
-   private final fsh X = new fsh(this);
+public class fjo extends hlf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wp b = wp.c("mco.terms.title");
+   private static final wp c = wp.c("mco.terms.sentence.1");
+   private static final wp C = wo.a().b(wp.c("mco.terms.sentence.2").c(xm.a.c(true)));
+   private final fum D;
+   private final fhm E;
+   private boolean F;
 
-   public fjo(@Nullable fkj $$0, long $$1, int $$2, fjh $$3, evg $$4) {
-      super(fla.a);
-      this.I = $$0;
-      this.J = $$1;
-      this.K = $$2;
-      this.G = $$3;
-      this.H = $$4;
-      this.L = new fgo();
-      this.M = RateLimiter.create(0.1F);
+   public fjo(fum $$0, fhm $$1) {
+      super(b);
+      this.D = $$0;
+      this.E = $$1;
    }
 
    @Override
    public void aR_() {
-      this.U = this.X.b(fot.a(wo.k, $$0x -> this.E()).a());
-      this.U.k = false;
-      this.V = this.X.b(fot.a(wo.e, $$0x -> this.F()).a());
-      if (!this.T) {
-         if (this.G.b == -1) {
-            this.T = true;
-            this.H();
-         } else {
-            List<fkh> $$0 = new ArrayList<>();
-            if (this.I != null) {
-               $$0.add(this.I);
-            }
-
-            $$0.add(new fko(this.J, this.G.b, () -> {
-               if (!this.T) {
-                  this.T = true;
-                  this.m.execute(() -> {
-                     this.m.a(this);
-                     this.H();
-                  });
-               }
-            }));
-            this.m.a(new fja(this.G, $$0.toArray(new fkh[0])));
-         }
-      }
-
-      this.X.a($$1 -> {
-         foq var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.X.a();
-   }
-
-   private void E() {
-      this.m.a(new fiu(new fgf(new fun()), this.J));
-   }
-
-   private void F() {
-      this.Q = true;
-      fgx $$0 = this.a.get();
-      if ($$0 != null) {
-         $$0.b();
-      } else {
-         this.m.a(this.G);
-      }
+      int $$0 = this.n / 4 - 2;
+      this.c(fou.a(wp.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.n / 4, g(12), $$0, 20).a());
+      this.c(fou.a(wp.c("mco.terms.buttons.disagree"), $$0x -> this.m.a(this.D)).a(this.n / 2 + 4, g(12), $$0, 20).a());
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         if (this.S) {
-            this.F();
-         } else {
-            this.E();
-         }
+         this.m.a(this.D);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
 
+   private void E() {
+      fgl $$0 = fgl.a();
+
+      try {
+         $$0.j();
+         this.m.a(new fjb(this.D, new fkh(this.D, this.E)));
+      } catch (fih var3) {
+         a.error("Couldn't agree to TOS", var3);
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.F) {
+         this.m.p.a(axv.s.toString());
+         af.n().a(axv.s);
          return true;
       } else {
          return super.a($$0, $$1, $$2);
@@ -121,136 +56,21 @@ public class fjo extends hle implements fgy {
    }
 
    @Override
-   public void a(foe $$0, int $$1, int $$2, float $$3) {
+   public wp i() {
+      return wo.a(super.i(), c).b(wo.v).b(C);
+   }
+
+   @Override
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (!this.R && this.L.c() && this.L.d() && this.V != null) {
-         this.O = F;
-         this.V.j = false;
-      }
-
-      $$0.a(this.p, this.O, this.n / 2, 50, -1);
-      if (this.S) {
-         $$0.b(this.p, E[this.W / 10 % E.length], this.n / 2 + this.p.a(this.O) / 2 + 5, 50, -1);
-      }
-
-      if (this.L.c() && !this.Q) {
-         this.c($$0);
-         this.d($$0);
-      }
-
-      wp[] $$4 = this.N;
-      if ($$4 != null) {
-         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-            $$0.a(this.p, $$4[$$5], this.n / 2, 110 + 12 * $$5, -65536);
-         }
-      }
-   }
-
-   private void c(foe $$0) {
-      double $$1 = this.L.e();
-      this.P = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.n - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.p, wp.a("mco.upload.percent", this.P), this.n / 2, 84, -1);
-   }
-
-   private void d(foe $$0) {
-      this.a($$0, this.L.g());
-   }
-
-   private void a(foe $$0, long $$1) {
-      String $$2 = this.P;
-      if ($$1 > 0L && $$2 != null) {
-         int $$3 = this.p.b($$2);
-         String $$4 = "(" + fgg.b($$1) + "/s)";
-         $$0.b(this.p, $$4, this.n / 2 + $$3 / 2 + 15, 84, -1);
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.W++;
-      this.L.f();
-      if (this.M.tryAcquire(1)) {
-         wp $$0 = this.G();
-         this.m.aY().c($$0);
-      }
-   }
-
-   private wp G() {
-      List<wp> $$0 = Lists.newArrayList();
-      $$0.add(this.O);
-      if (this.P != null) {
-         $$0.add(wp.a("mco.upload.percent", this.P));
-      }
-
-      wp[] $$1 = this.N;
-      if ($$1 != null) {
-         $$0.addAll(Arrays.asList($$1));
-      }
-
-      return wo.a($$0);
-   }
-
-   private void H() {
-      Path $$0 = this.m.q.toPath().resolve("saves").resolve(this.H.a());
-      fhr $$1 = fhr.a(this.H.g(), this.H.l().c());
-      fgx $$2 = new fgx($$0, $$1, this.m.X(), this.J, this.K, this);
-      if (!this.a.compareAndSet(null, $$2)) {
-         throw new IllegalStateException("Tried to start uploading but was already uploading");
-      } else {
-         $$2.a().handleAsync(($$0x, $$1x) -> {
-            if ($$1x != null) {
-               if ($$1x instanceof CompletionException $$2x) {
-                  $$1x = $$2x.getCause();
-               }
-
-               if ($$1x instanceof fgs $$3) {
-                  if ($$3.a() != null) {
-                     this.O = $$3.a();
-                  }
-
-                  this.a($$3.b());
-               } else {
-                  this.O = wp.a("mco.upload.failed", $$1x.getMessage());
-               }
-            } else {
-               this.O = wp.c("mco.upload.done");
-               if (this.U != null) {
-                  this.U.b(wo.d);
-               }
-            }
-
-            this.R = true;
-            this.S = false;
-            if (this.U != null) {
-               this.U.k = true;
-            }
-
-            if (this.V != null) {
-               this.V.k = false;
-            }
-
-            this.a.set(null);
-            return null;
-         }, this.m);
-      }
-   }
-
-   private void a(@Nullable wp... $$0) {
-      this.N = $$0;
-   }
-
-   @Override
-   public fgo b() {
-      return this.L;
-   }
-
-   @Override
-   public void d() {
-      this.O = wp.a("mco.upload.uploading", this.H.b());
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.b(this.p, c, this.n / 2 - 120, g(5), -1);
+      int $$4 = this.p.a(c);
+      int $$5 = this.n / 2 - 121 + $$4;
+      int $$6 = g(5);
+      int $$7 = $$5 + this.p.a(C) + 1;
+      int $$8 = $$6 + 1 + 9;
+      this.F = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
+      $$0.b(this.p, C, this.n / 2 - 120 + $$4, g(5), this.F ? 7107012 : 3368635);
    }
 }

@@ -1,5 +1,5 @@
-public class has extends gzk {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+public class has extends gzl {
+   public chz.b a = chz.b.g;
+   public int b = -1;
+   public int c = -1;
 }

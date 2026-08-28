@@ -62,8 +62,8 @@ public interface jt<T> extends js<T> {
 
       Lifecycle h();
 
-      default jt.b<T> a(crt $$0) {
-         return crq.bT.contains(this.g()) ? this.a($$1 -> ((crq)$$1).a($$0)) : this;
+      default jt.b<T> a(cru $$0) {
+         return crr.bT.contains(this.g()) ? this.a($$1 -> ((crr)$$1).a($$0)) : this;
       }
 
       default jt.b<T> a(final Predicate<T> $$0) {

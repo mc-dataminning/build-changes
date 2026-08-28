@@ -1,21 +1,17 @@
-public record ffe(int a, int b, boolean c) implements fff<fee> {
-   public fee a() {
-      return new fef(this.a, this.b, this.c);
-   }
+public interface ffe {
+   ffe a = new ffe() {
+      @Override
+      public <T> T a(ffg<T> $$0) {
+         return $$0.e();
+      }
 
-   public void a(fee $$0) {
-      $$0.a();
-   }
+      @Override
+      public <T> void a(ffg<T> $$0, T $$1) {
+         $$0.a($$1);
+      }
+   };
 
-   public int b() {
-      return this.a;
-   }
+   <T> T a(ffg<T> var1);
 
-   public int c() {
-      return this.b;
-   }
-
-   public boolean d() {
-      return this.c;
-   }
+   <T> void a(ffg<T> var1, T var2);
 }

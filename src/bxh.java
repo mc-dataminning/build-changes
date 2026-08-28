@@ -1,34 +1,37 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bxh extends bxa<cis> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
+public class bxh extends bxb<bvi> {
+   private final cem<Integer> c;
 
-   public bxh() {
-      super(ImmutableMap.of(cel.m, cem.b), 100);
+   public bxh(cem<Integer> $$0) {
+      super(ImmutableMap.of($$0, cen.a));
+      this.c = $$0;
    }
 
-   protected boolean a(ard $$0, cis $$1) {
-      return $$1.aw() == bvt.a;
+   private Optional<Integer> b(bvi $$0) {
+      return $$0.eb().c(this.c);
    }
 
-   protected boolean a(ard $$0, cis $$1, long $$2) {
-      return this.e < 60;
+   @Override
+   protected boolean a(long $$0) {
+      return false;
    }
 
-   protected void b(ard $$0, cis $$1, long $$2) {
-      if (!$$1.bn()) {
-         $$1.b(bvt.i);
-         this.e = 0;
-      }
+   @Override
+   protected boolean a(ard $$0, bvi $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
    }
 
-   protected void c(ard $$0, cis $$1, long $$2) {
-      $$1.b(bvt.a);
+   @Override
+   protected void c(ard $$0, bvi $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.eb().a(this.c, $$3.get() - 1);
    }
 
-   protected void d(ard $$0, cis $$1, long $$2) {
-      this.e++;
+   @Override
+   protected void b(ard $$0, bvi $$1, long $$2) {
+      $$1.eb().b(this.c);
    }
 }

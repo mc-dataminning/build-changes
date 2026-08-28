@@ -76,13 +76,13 @@ public class bbb extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhx.t);
+      Type<?> $$0 = this.getInputSchema().getType(bhy.t);
       OpticFinder<?> $$1 = $$0.findField("components");
       return TypeRewriteRule.seq(
          this.fixTypeEverywhereTyped("AttributeIdFix (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), bbb::b))),
          new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("AttributeIdFix (Entity)", this.getInputSchema().getType(bhx.B), bbb::a),
-            this.fixTypeEverywhereTyped("AttributeIdFix (Player)", this.getInputSchema().getType(bhx.b), bbb::a)
+            this.fixTypeEverywhereTyped("AttributeIdFix (Entity)", this.getInputSchema().getType(bhy.B), bbb::a),
+            this.fixTypeEverywhereTyped("AttributeIdFix (Player)", this.getInputSchema().getType(bhy.b), bbb::a)
          }
       );
    }

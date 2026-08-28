@@ -1,84 +1,137 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bwu extends bxa<cgy> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bus<? extends cgy> f;
-   private final float g;
-   private final int h;
-   private static final int i = 2;
-   private long j;
+public class bwu {
+   public static final int a = 48;
 
-   public bwu(bus<? extends cgy> $$0) {
-      this($$0, 1.0F, 2);
+   public static bxc<bvq> a(Predicate<jr<cgp>> $$0, cem<jq> $$1, boolean $$2, Optional<Byte> $$3, BiPredicate<ard, ji> $$4) {
+      return a($$0, $$1, $$1, $$2, $$3, $$4);
    }
 
-   public bwu(bus<? extends cgy> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(cel.h, cem.a, cel.r, cem.b, cel.m, cem.c, cel.n, cem.c, cel.Z, cem.b), 110);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public static bxc<bvq> a(Predicate<jr<cgp>> $$0, cem<jq> $$1, boolean $$2, Optional<Byte> $$3) {
+      return a($$0, $$1, $$1, $$2, $$3, ($$0x, $$1x) -> true);
    }
 
-   protected boolean a(ard $$0, cgy $$1) {
-      return $$1.gC() && this.c($$1).isPresent();
+   public static bxc<bvq> a(Predicate<jr<cgp>> $$0, cem<jq> $$1, cem<jq> $$2, boolean $$3, Optional<Byte> $$4, BiPredicate<ard, ji> $$5) {
+      int $$6 = 5;
+      int $$7 = 20;
+      MutableLong $$8 = new MutableLong(0L);
+      Long2ObjectMap<bwu.a> $$9 = new Long2ObjectOpenHashMap();
+      bym<bvq> $$10 = cao.a(
+         (Function<cao.b<bvq>, ? extends App<cao.c<bvq>, car<bvq>>>)($$7x -> $$7x.group($$7x.c($$2))
+               .apply(
+                  $$7x,
+                  $$6xx -> ($$7xx, $$8x, $$9x) -> {
+                        if ($$3 && $$8x.e_()) {
+                           return false;
+                        } else if ($$8.getValue() == 0L) {
+                           $$8.setValue($$7xx.ad() + (long)$$7xx.A.a(20));
+                           return false;
+                        } else if ($$7xx.ad() < $$8.getValue()) {
+                           return false;
+                        } else {
+                           $$8.setValue($$9x + 20L + (long)$$7xx.H_().a(20));
+                           cgm $$10x = $$7xx.A();
+                           $$9.long2ObjectEntrySet().removeIf($$1xxxx -> !((bwu.a)$$1xxxx.getValue()).b($$9x));
+                           Predicate<ji> $$11 = $$2xxxx -> {
+                              bwu.a $$3xxxx = (bwu.a)$$9.get($$2xxxx.a());
+                              if ($$3xxxx == null) {
+                                 return true;
+                              } else if (!$$3xxxx.c($$9x)) {
+                                 return false;
+                              } else {
+                                 $$3xxxx.a($$9x);
+                                 return true;
+                              }
+                           };
+                           Set<Pair<jr<cgp>, ji>> $$12 = $$10x.c($$0, $$11, $$8x.dv(), 48, cgm.b.a)
+                              .limit(5L)
+                              .filter($$2xxxx -> $$5.test($$7xx, (ji)$$2xxxx.getSecond()))
+                              .collect(Collectors.toSet());
+                           eto $$13 = a($$8x, $$12);
+                           if ($$13 != null && $$13.j()) {
+                              ji $$14 = $$13.l();
+                              $$10x.c($$14).ifPresent($$8xx -> {
+                                 $$10x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$14), $$14, 1);
+                                 $$6xx.a(jq.a($$7xx.ai(), $$14));
+                                 $$4.ifPresent($$2xxxxx -> $$7xx.a($$8x, $$2xxxxx));
+                                 $$9.clear();
+                                 agd.c($$7xx, $$14);
+                              });
+                           } else {
+                              for (Pair<jr<cgp>, ji> $$15 : $$12) {
+                                 $$9.computeIfAbsent(((ji)$$15.getSecond()).a(), $$2xxxx -> new bwu.a($$7xx.A, $$9x));
+                              }
+                           }
+
+                           return true;
+                        }
+                     }
+               ))
+      );
+      return $$2 == $$1 ? $$10 : cao.a((Function<cao.b<bvq>, ? extends App<cao.c<bvq>, car<bvq>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$10)));
    }
 
-   protected void a(ard $$0, cgy $$1, long $$2) {
-      cgy $$3 = this.c($$1).get();
-      $$1.eb().a(cel.r, $$3);
-      $$3.eb().a(cel.r, $$1);
-      bxc.a($$1, (bvh)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.dY().a(50);
-      this.j = $$2 + (long)$$4;
-   }
-
-   protected boolean b(ard $$0, cgy $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
+   @Nullable
+   public static eto a(bvk $$0, Set<Pair<jr<cgp>, ji>> $$1) {
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         cgy $$3 = this.a($$1);
-         return $$3.bL() && $$1.a($$3) && bxc.a($$1.eb(), $$3) && $$2 <= this.j && !$$1.gp() && !$$3.gp();
+         Set<ji> $$2 = new HashSet<>();
+         int $$3 = 1;
+
+         for (Pair<jr<cgp>, ji> $$4 : $$1) {
+            $$3 = Math.max($$3, ((cgp)((jr)$$4.getFirst()).a()).c());
+            $$2.add((ji)$$4.getSecond());
+         }
+
+         return $$0.P().a($$2, $$3);
       }
    }
 
-   protected void c(ard $$0, cgy $$1, long $$2) {
-      cgy $$3 = this.a($$1);
-      bxc.a($$1, (bvh)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.eb().b(cel.r);
-            $$3.eb().b(cel.r);
-         }
+   static class a {
+      private static final int a = 40;
+      private static final int b = 80;
+      private static final int c = 400;
+      private final azh d;
+      private long e;
+      private long f;
+      private int g;
+
+      a(azh $$0, long $$1) {
+         this.d = $$0;
+         this.a($$1);
       }
-   }
 
-   protected void d(ard $$0, cgy $$1, long $$2) {
-      $$1.eb().b(cel.r);
-      $$1.eb().b(cel.m);
-      $$1.eb().b(cel.n);
-      this.j = 0L;
-   }
+      public void a(long $$0) {
+         this.e = $$0;
+         int $$1 = this.g + this.d.a(40) + 40;
+         this.g = Math.min($$1, 400);
+         this.f = $$0 + (long)this.g;
+      }
 
-   private cgy a(cgy $$0) {
-      return (cgy)$$0.eb().c(cel.r).get();
-   }
+      public boolean b(long $$0) {
+         return $$0 - this.e < 400L;
+      }
 
-   private boolean b(cgy $$0) {
-      bwj<?> $$1 = $$0.eb();
-      return $$1.a(cel.r) && $$1.c(cel.r).get().aq() == this.f;
-   }
+      public boolean c(long $$0) {
+         return $$0 >= this.f;
+      }
 
-   private Optional<? extends cgy> c(cgy $$0) {
-      return $$0.eb().c(cel.h).get().a($$1 -> {
-         if ($$1.aq() == this.f && $$1 instanceof cgy $$2 && $$0.a($$2) && !$$2.gp()) {
-            return true;
-         }
-
-         return false;
-      }).map(cgy.class::cast);
+      @Override
+      public String toString() {
+         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
+      }
    }
 }

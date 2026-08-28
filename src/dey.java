@@ -1,47 +1,41 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.Optional;
 
-public class dey {
-   public static final aku<dex> a = a("quartz");
-   public static final aku<dex> b = a("iron");
-   public static final aku<dex> c = a("netherite");
-   public static final aku<dex> d = a("redstone");
-   public static final aku<dex> e = a("copper");
-   public static final aku<dex> f = a("gold");
-   public static final aku<dex> g = a("emerald");
-   public static final aku<dex> h = a("diamond");
-   public static final aku<dex> i = a("lapis");
-   public static final aku<dex> j = a("amethyst");
-   public static final aku<dex> k = a("resin");
+public record dey(String e, jr<cwm> f, Map<aku<det>, String> g, wp h) {
+   public static final Codec<dey> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayi.C.fieldOf("asset_name").forGetter(dey::a),
+               cwm.e.fieldOf("ingredient").forGetter(dey::b),
+               Codec.unboundedMap(aku.a(deu.a), Codec.STRING).optionalFieldOf("override_armor_assets", Map.of()).forGetter(dey::c),
+               wr.a.fieldOf("description").forGetter(dey::d)
+            )
+            .apply($$0, dey::new)
+   );
+   public static final yn<wa, dey> b = yn.a(
+      yl.o, dey::a, yl.b(mc.K), dey::b, yl.a(Object2ObjectOpenHashMap::new, aku.b(deu.a), yl.o), dey::c, wr.b, dey::d, dey::new
+   );
+   public static final Codec<jr<dey>> c = akr.a(mc.aZ, a);
+   public static final yn<wa, jr<dey>> d = yl.a(mc.aZ, b);
 
-   public static void a(qe<dex> $$0) {
-      a($$0, a, cwt.ph, xm.a.a(14931140));
-      a($$0, b, cwt.pk, xm.a.a(15527148), Map.of(det.d, "iron_darker"));
-      a($$0, c, cwt.pp, xm.a.a(6445145), Map.of(det.h, "netherite_darker"));
-      a($$0, d, cwt.me, xm.a.a(9901575));
-      a($$0, e, cwt.pm, xm.a.a(11823181));
-      a($$0, f, cwt.po, xm.a.a(14594349), Map.of(det.e, "gold_darker"));
-      a($$0, g, cwt.pf, xm.a.a(1155126));
-      a($$0, h, cwt.pe, xm.a.a(7269586), Map.of(det.f, "diamond_darker"));
-      a($$0, i, cwt.pg, xm.a.a(4288151));
-      a($$0, j, cwt.pi, xm.a.a(10116294));
-      a($$0, k, cwt.vx, xm.a.a(16545810));
+   public static dey a(String $$0, cwm $$1, wp $$2, Map<aku<det>, String> $$3) {
+      return new dey($$0, mb.g.e($$1), $$3, $$2);
    }
 
-   public static Optional<jr.c<dex>> a(jt.a $$0, cwp $$1) {
-      return $$0.d(mc.aZ).c().filter($$1x -> $$1.a(((dex)$$1x.a()).b())).findFirst();
+   public String a() {
+      return this.e;
    }
 
-   private static void a(qe<dex> $$0, aku<dex> $$1, cwl $$2, xm $$3) {
-      a($$0, $$1, $$2, $$3, Map.of());
+   public jr<cwm> b() {
+      return this.f;
    }
 
-   private static void a(qe<dex> $$0, aku<dex> $$1, cwl $$2, xm $$3, Map<aku<des>, String> $$4) {
-      dex $$5 = dex.a($$1.a().a(), $$2, wp.c(af.a("trim_material", $$1.a())).c($$3), $$4);
-      $$0.a($$1, $$5);
+   public Map<aku<det>, String> c() {
+      return this.g;
    }
 
-   private static aku<dex> a(String $$0) {
-      return aku.a(mc.aZ, akv.b($$0));
+   public wp d() {
+      return this.h;
    }
 }

@@ -10,14 +10,14 @@ public class aqk implements aqg.a, AutoCloseable {
    public static final int a = 4;
    private static final Logger c = LogUtils.getLogger();
    private final aql d;
-   private final brf<Runnable> e;
-   private final brc f;
+   private final brg<Runnable> e;
+   private final brd f;
    protected boolean b;
 
-   public aqk(brf<Runnable> $$0, Executor $$1) {
+   public aqk(brg<Runnable> $$0, Executor $$1) {
       this.d = new aql($$0.A_() + "_queue");
       this.e = $$0;
-      this.f = new brc(4, $$1, "dispatcher");
+      this.f = new brd(4, $$1, "dispatcher");
       this.b = true;
    }
 
@@ -26,8 +26,8 @@ public class aqk implements aqg.a, AutoCloseable {
    }
 
    @Override
-   public void onLevelChange(dfo $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
-      this.f.a_(new bre.c(0, () -> {
+   public void onLevelChange(dfp $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.f.a_(new brf.c(0, () -> {
          int $$4 = $$1.getAsInt();
          this.d.a($$4, $$0, $$2);
          $$3.accept($$2);
@@ -35,7 +35,7 @@ public class aqk implements aqg.a, AutoCloseable {
    }
 
    public void a(long $$0, Runnable $$1, boolean $$2) {
-      this.f.a_(new bre.c(1, () -> {
+      this.f.a_(new brf.c(1, () -> {
          this.d.a($$0, $$2);
          this.a($$0);
          if (this.b) {
@@ -48,7 +48,7 @@ public class aqk implements aqg.a, AutoCloseable {
    }
 
    public void a(Runnable $$0, long $$1, IntSupplier $$2) {
-      this.f.a_(new bre.c(2, () -> {
+      this.f.a_(new brf.c(2, () -> {
          int $$3 = $$2.getAsInt();
          this.d.a($$0, $$1, $$3);
          if (this.b) {
@@ -59,7 +59,7 @@ public class aqk implements aqg.a, AutoCloseable {
    }
 
    protected void b() {
-      this.f.a_(new bre.c(3, () -> {
+      this.f.a_(new brf.c(3, () -> {
          aql.a $$0 = this.c();
          if ($$0 == null) {
             this.b = true;

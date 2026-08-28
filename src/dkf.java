@@ -1,34 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkf extends dli {
+public class dkf extends djn {
    public static final MapCodec<dkf> a = b(dkf::new);
-   private static final fbu[] b = new fbu[]{
-      djm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      djm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+   protected static final fbv b = djn.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
    @Override
-   public MapCodec<dkf> a() {
+   public MapCodec<? extends dkf> a() {
       return a;
    }
 
-   public dkf(dww.d $$0) {
+   public dkf(dwx.d $$0) {
       super($$0);
    }
 
    @Override
-   protected dgh d() {
-      return cwt.ve;
+   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
+      return b;
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return b[this.h($$0)];
+   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
+      return !$$0.a($$1, $$3) ? djp.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
+      return !$$1.u($$2.e());
    }
 }

@@ -11,8 +11,8 @@ public class bdb extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bhx.s, "minecraft:decorated_pot");
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bhx.s, "minecraft:decorated_pot");
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bhy.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bhy.s, "minecraft:decorated_pot");
       return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
    }
 }

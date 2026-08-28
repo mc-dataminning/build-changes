@@ -1,71 +1,274 @@
-public abstract class dhr {
-   public static final aku<dhk> a = a("the_void");
-   public static final aku<dhk> b = a("plains");
-   public static final aku<dhk> c = a("sunflower_plains");
-   public static final aku<dhk> d = a("snowy_plains");
-   public static final aku<dhk> e = a("ice_spikes");
-   public static final aku<dhk> f = a("desert");
-   public static final aku<dhk> g = a("swamp");
-   public static final aku<dhk> h = a("mangrove_swamp");
-   public static final aku<dhk> i = a("forest");
-   public static final aku<dhk> j = a("flower_forest");
-   public static final aku<dhk> k = a("birch_forest");
-   public static final aku<dhk> l = a("dark_forest");
-   public static final aku<dhk> m = a("pale_garden");
-   public static final aku<dhk> n = a("old_growth_birch_forest");
-   public static final aku<dhk> o = a("old_growth_pine_taiga");
-   public static final aku<dhk> p = a("old_growth_spruce_taiga");
-   public static final aku<dhk> q = a("taiga");
-   public static final aku<dhk> r = a("snowy_taiga");
-   public static final aku<dhk> s = a("savanna");
-   public static final aku<dhk> t = a("savanna_plateau");
-   public static final aku<dhk> u = a("windswept_hills");
-   public static final aku<dhk> v = a("windswept_gravelly_hills");
-   public static final aku<dhk> w = a("windswept_forest");
-   public static final aku<dhk> x = a("windswept_savanna");
-   public static final aku<dhk> y = a("jungle");
-   public static final aku<dhk> z = a("sparse_jungle");
-   public static final aku<dhk> A = a("bamboo_jungle");
-   public static final aku<dhk> B = a("badlands");
-   public static final aku<dhk> C = a("eroded_badlands");
-   public static final aku<dhk> D = a("wooded_badlands");
-   public static final aku<dhk> E = a("meadow");
-   public static final aku<dhk> F = a("cherry_grove");
-   public static final aku<dhk> G = a("grove");
-   public static final aku<dhk> H = a("snowy_slopes");
-   public static final aku<dhk> I = a("frozen_peaks");
-   public static final aku<dhk> J = a("jagged_peaks");
-   public static final aku<dhk> K = a("stony_peaks");
-   public static final aku<dhk> L = a("river");
-   public static final aku<dhk> M = a("frozen_river");
-   public static final aku<dhk> N = a("beach");
-   public static final aku<dhk> O = a("snowy_beach");
-   public static final aku<dhk> P = a("stony_shore");
-   public static final aku<dhk> Q = a("warm_ocean");
-   public static final aku<dhk> R = a("lukewarm_ocean");
-   public static final aku<dhk> S = a("deep_lukewarm_ocean");
-   public static final aku<dhk> T = a("ocean");
-   public static final aku<dhk> U = a("deep_ocean");
-   public static final aku<dhk> V = a("cold_ocean");
-   public static final aku<dhk> W = a("deep_cold_ocean");
-   public static final aku<dhk> X = a("frozen_ocean");
-   public static final aku<dhk> Y = a("deep_frozen_ocean");
-   public static final aku<dhk> Z = a("mushroom_fields");
-   public static final aku<dhk> aa = a("dripstone_caves");
-   public static final aku<dhk> ab = a("lush_caves");
-   public static final aku<dhk> ac = a("deep_dark");
-   public static final aku<dhk> ad = a("nether_wastes");
-   public static final aku<dhk> ae = a("warped_forest");
-   public static final aku<dhk> af = a("crimson_forest");
-   public static final aku<dhk> ag = a("soul_sand_valley");
-   public static final aku<dhk> ah = a("basalt_deltas");
-   public static final aku<dhk> ai = a("the_end");
-   public static final aku<dhk> aj = a("end_highlands");
-   public static final aku<dhk> ak = a("end_midlands");
-   public static final aku<dhk> al = a("small_end_islands");
-   public static final aku<dhk> am = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-   private static aku<dhk> a(String $$0) {
-      return aku.a(mc.aI, akv.b($$0));
+public class dhr {
+   public static final Codec<dhr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               dhr.b.d.optionalFieldOf("grass_color_modifier", dhr.b.a).forGetter($$0x -> $$0x.h),
+               dhk.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               avz.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               dhj.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               dhi.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               bqt.a(avx.a).optionalFieldOf("music").forGetter($$0x -> $$0x.m),
+               Codec.FLOAT.fieldOf("music_volume").orElse(1.0F).forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, dhr::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final dhr.b h;
+   private final Optional<dhk> i;
+   private final Optional<jr<avz>> j;
+   private final Optional<dhj> k;
+   private final Optional<dhi> l;
+   private final Optional<bqt<avx>> m;
+   private final float n;
+
+   dhr(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      dhr.b $$6,
+      Optional<dhk> $$7,
+      Optional<jr<avz>> $$8,
+      Optional<dhj> $$9,
+      Optional<dhi> $$10,
+      Optional<bqt<avx>> $$11,
+      float $$12
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
+      this.n = $$12;
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public dhr.b g() {
+      return this.h;
+   }
+
+   public Optional<dhk> h() {
+      return this.i;
+   }
+
+   public Optional<jr<avz>> i() {
+      return this.j;
+   }
+
+   public Optional<dhj> j() {
+      return this.k;
+   }
+
+   public Optional<dhi> k() {
+      return this.l;
+   }
+
+   public Optional<bqt<avx>> l() {
+      return this.m;
+   }
+
+   public float m() {
+      return this.n;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private dhr.b g = dhr.b.a;
+      private Optional<dhk> h = Optional.empty();
+      private Optional<jr<avz>> i = Optional.empty();
+      private Optional<dhj> j = Optional.empty();
+      private Optional<dhi> k = Optional.empty();
+      private Optional<bqt<avx>> l = Optional.empty();
+      private float m = 1.0F;
+
+      public dhr.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dhr.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dhr.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dhr.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dhr.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public dhr.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public dhr.a a(dhr.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public dhr.a a(dhk $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public dhr.a a(jr<avz> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public dhr.a a(dhj $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public dhr.a a(dhi $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public dhr.a a(@Nullable avx $$0) {
+         if ($$0 == null) {
+            this.l = Optional.empty();
+            return this;
+         } else {
+            this.l = Optional.of(bqt.a($$0));
+            return this;
+         }
+      }
+
+      public dhr.a a() {
+         return this.a(bqt.b()).a(0.0F);
+      }
+
+      public dhr.a a(bqt<avx> $$0) {
+         this.l = Optional.of($$0);
+         return this;
+      }
+
+      public dhr.a a(float $$0) {
+         this.m = $$0;
+         return this;
+      }
+
+      public dhr b() {
+         return new dhr(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l,
+            this.m
+         );
+      }
+   }
+
+   public static enum b implements azv {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = dhl.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
+
+      private final String e;
+      public static final Codec<dhr.b> d = azv.a(dhr.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

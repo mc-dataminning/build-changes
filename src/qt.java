@@ -57,8 +57,8 @@ public class qt {
    }
 
    private static <C, I extends bac<C>> ayb<C, I> a(I $$0, I $$1, float $$2, float $$3, bac<Float> $$4) {
-      float $$5 = ecz.a(0.4F);
-      float $$6 = ecz.a(0.56666666F);
+      float $$5 = eda.a(0.4F);
+      float $$6 = eda.a(0.56666666F);
       float $$7 = ($$5 + $$6) / 2.0F;
       ayb.b<C, I> $$8 = ayb.a($$1, $$4);
       $$8.a($$5, 0.0F);

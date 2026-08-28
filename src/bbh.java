@@ -23,14 +23,14 @@ public class bbh extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bhx.s, "minecraft:beehive");
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bhy.s, "minecraft:beehive");
       OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
       ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
       Type<?> $$3 = $$2.getElement();
       OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
       OpticFinder<?> $$5 = DSL.typeFinder($$3);
-      Type<?> $$6 = this.getInputSchema().getType(bhx.s);
-      Type<?> $$7 = this.getOutputSchema().getType(bhx.s);
+      Type<?> $$6 = this.getInputSchema().getType(bhy.s);
+      Type<?> $$7 = this.getOutputSchema().getType(bhy.s);
       return this.fixTypeEverywhereTyped(
          "BeehiveFieldRenameFix",
          $$6,

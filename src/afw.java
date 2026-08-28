@@ -5,7 +5,7 @@ public record afw(int b) implements yw<abl> {
       this($$0.l());
    }
 
-   public static afw a(bst $$0) {
+   public static afw a(bsu $$0) {
       return new afw($$0.k());
    }
 

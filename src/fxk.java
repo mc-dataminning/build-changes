@@ -1,10 +1,30 @@
-public class fxk extends fxp {
-   private static flm<?>[] a(fln $$0) {
-      return new flm[]{$$0.S(), $$0.T()};
+public class fxk extends fxq {
+   private static final wp a = wp.c("options.chat.title");
+
+   private static fln<?>[] a(flo $$0) {
+      return new fln[]{
+         $$0.n(),
+         $$0.N(),
+         $$0.O(),
+         $$0.P(),
+         $$0.o(),
+         $$0.s(),
+         $$0.y(),
+         $$0.p(),
+         $$0.C(),
+         $$0.z(),
+         $$0.B(),
+         $$0.A(),
+         $$0.av(),
+         $$0.M(),
+         $$0.ah(),
+         $$0.Y(),
+         $$0.aj()
+      };
    }
 
-   public fxk(ful $$0, fln $$1) {
-      super($$0, $$1, wp.c("options.font.title"));
+   public fxk(fum $$0, flo $$1) {
+      super($$0, $$1, a);
    }
 
    @Override

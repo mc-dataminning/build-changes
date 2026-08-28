@@ -1,50 +1,167 @@
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
-public class fjd extends hle {
-   private static final wp a = wp.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final fsl c = fsl.d();
-   private final ful C;
+public class fjd extends hlf {
+   private static final akv a = akv.b("icon/unseen_notification");
+   private static final akv b = akv.b("icon/news");
+   private static final akv c = akv.b("icon/invite");
+   private static final akv C = akv.b("icon/trial_available");
+   private final CompletableFuture<Boolean> D = fgf.a().thenApply($$0 -> $$0.a() == fgf.b.a);
    @Nullable
-   private fpn D;
+   private fjs.c E;
+   @Nullable
+   private fjd.a F;
+   private volatile int G;
+   private static boolean H;
+   private static boolean I;
+   private static boolean J;
+   private final fjd.a K = new fjd.a() {
+      @Override
+      public fjs.c a(fik $$0) {
+         fjs.c $$1 = $$0.a.a();
+         fjd.this.a($$0, $$1);
+         fjd.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public fjd(ful $$0) {
-      super(fla.a);
-      this.C = $$0;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final fjd.a L = new fjd.a() {
+      @Override
+      public fjs.c a(fik $$0) {
+         fjs.c $$1 = $$0.a.a();
+         fjd.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public fjd() {
+      super(flb.a);
    }
 
    @Override
    public void aR_() {
-      this.c.a(15).c().b();
-      this.D = new fpn(a, this.p).b(true);
-      this.c.a(this.D);
-      fsl $$0 = this.c.a(fsl.e().a(8));
-      wp $$1 = wp.c("mco.account.privacy.info.button");
-      $$0.a(fot.a($$1, fti.b(this, axv.a)).a());
-      $$0.a(fot.a(wo.k, $$0x -> this.aO_()).a());
-      this.c.a($$1x -> {
-         foq var10000 = this.c($$1x);
-      });
-      this.c();
+      if (this.E != null) {
+         this.E.a();
+      }
    }
 
    @Override
-   public void aO_() {
-      this.m.a(this.C);
+   public void aJ_() {
+      super.aJ_();
+      this.m.bb().b.a();
+   }
+
+   @Nullable
+   private fjd.a E() {
+      boolean $$0 = this.G() && this.D.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.F() ? this.K : this.L;
+      }
    }
 
    @Override
-   protected void c() {
-      if (this.D != null) {
-         this.D.d(this.n - 15);
+   public void e() {
+      fjd.a $$0 = this.E();
+      if (!Objects.equals(this.F, $$0)) {
+         this.F = $$0;
+         if (this.F != null) {
+            this.E = this.F.a(this.m.bb());
+         } else {
+            this.E = null;
+         }
       }
 
-      this.c.a();
-      fsf.a(this.c, this.J());
+      if (this.E != null) {
+         this.E.b();
+      }
+   }
+
+   private boolean F() {
+      return this.m.n.W().c();
+   }
+
+   private boolean G() {
+      return this.m.z instanceof fuo;
    }
 
    @Override
-   public wp i() {
-      return a;
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.D.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(fof $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(fof $$0) {
+      int $$1 = this.G;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      int $$4 = this.n / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (J) {
+         $$0.a(gmj::H, a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.F != null && this.F.a()) {
+         if (I) {
+            $$0.a(gmj::H, b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(gmj::H, c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (H) {
+            $$0.a(gmj::H, C, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(fik $$0, fjs.c $$1) {
+      $$1.a($$0.d, $$0x -> this.G = $$0x);
+      $$1.a($$0.e, $$0x -> H = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.h.a($$1x);
+         I = $$0.h.a();
+      });
+   }
+
+   void b(fik $$0, fjs.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         J = false;
+
+         for (fhl $$1x : $$0x) {
+            if (!$$1x.a()) {
+               J = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      fjs.c a(fik var1);
+
+      boolean a();
    }
 }

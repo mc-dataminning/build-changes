@@ -1,44 +1,12 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record dcs(dcp f, dcp g, dcp h, dcp i, dcp j) implements dcj {
-   public static final MapCodec<dcs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dcp.a.fieldOf("template").forGetter(dcs::b),
-               dcp.a.fieldOf("base").forGetter(dcs::c),
-               dcp.a.fieldOf("addition").forGetter(dcs::f),
-               dcp.a.fieldOf("result").forGetter(dcs::d),
-               dcp.a.fieldOf("crafting_station").forGetter(dcs::e)
-            )
-            .apply($$0, dcs::new)
-   );
-   public static final yn<wa, dcs> b = yn.a(dcp.b, dcs::b, dcp.b, dcs::c, dcp.b, dcs::f, dcp.b, dcs::d, dcp.b, dcs::e, dcs::new);
-   public static final dcj.a<dcs> c = new dcj.a<>(a, b);
-
-   @Override
-   public dcj.a<dcs> a() {
-      return c;
-   }
-
-   public dcp b() {
-      return this.f;
-   }
-
-   public dcp c() {
-      return this.g;
-   }
-
-   public dcp f() {
-      return this.h;
-   }
-
-   @Override
-   public dcp d() {
-      return this.i;
-   }
-
-   @Override
-   public dcp e() {
-      return this.j;
+public class dcs {
+   public static dcq.i<?> a(ke<dcq.i<?>> $$0) {
+      ke.a($$0, "empty", dcq.c.f);
+      ke.a($$0, "any_fuel", dcq.a.f);
+      ke.a($$0, "item", dcq.d.e);
+      ke.a($$0, "item_stack", dcq.f.e);
+      ke.a($$0, "tag", dcq.h.e);
+      ke.a($$0, "smithing_trim", dcq.g.e);
+      ke.a($$0, "with_remainder", dcq.j.e);
+      return ke.a($$0, "composite", dcq.b.e);
    }
 }

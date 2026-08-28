@@ -1,33 +1,8 @@
-import java.util.Map;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record dep(int a, Map<der, Integer> b, int c, jr<avz> d, float e, float f, axf<cwl> g, aku<des> h) {
-   public cwl.a a(cwl.a $$0, der $$1) {
-      return $$0.b($$1.a(this.a)).a(this.a($$1)).c(this.c).a(kv.D, deu.a($$1.a()).a(this.d).a(this.h).a()).a(this.g);
-   }
-
-   public cwl.a a(cwl.a $$0, jv<bus<?>> $$1) {
-      return $$0.b(der.e.a(this.a)).a(this.a(der.e)).a(this.g).a(kv.D, deu.a(but.g).a(this.d).a(this.h).a($$1).a());
-   }
-
-   public cwl.a a(cwl.a $$0, jr<avz> $$1, boolean $$2, jv<bus<?>> $$3) {
-      if ($$2) {
-         $$0 = $$0.b(der.e.a(this.a)).a(this.g);
-      }
-
-      return $$0.a(this.a(der.e)).a(kv.D, deu.a(but.g).a($$1).a(this.h).a($$3).c($$2).a());
-   }
-
-   private czg a(der $$0) {
-      int $$1 = this.b.getOrDefault($$0, 0);
-      czg.a $$2 = czg.a();
-      buu $$3 = buu.a($$0.a());
-      akv $$4 = akv.b("armor." + $$0.b());
-      $$2.a(bwp.a, new bwn($$4, (double)$$1, bwn.a.a), $$3);
-      $$2.a(bwp.b, new bwn($$4, (double)this.e, bwn.a.a), $$3);
-      if (this.f > 0.0F) {
-         $$2.a(bwp.p, new bwn($$4, (double)this.f, bwn.a.a), $$3);
-      }
-
-      return $$2.a();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dep {
 }

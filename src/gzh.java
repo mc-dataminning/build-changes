@@ -1,3 +1,8 @@
-public class gzh extends gzf {
-   public float d;
+public class gzh extends gyf {
+   public final hbp a = new hbp();
+
+   @Override
+   public boolean a() {
+      return !this.a.c();
+   }
 }

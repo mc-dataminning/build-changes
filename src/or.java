@@ -11,35 +11,35 @@ public class or {
       .a(mc.aV, qm::a)
       .a(mc.aX, ql::a)
       .a(mc.aI, qx::a)
-      .a(mc.bc, dhz::a)
+      .a(mc.bc, dia::a)
       .a(mc.aS, qi::a)
-      .a(mc.aM, ecz::a)
-      .a(mc.aR, ecx::a)
-      .a(mc.bb, enc::a)
-      .a(mc.aQ, elo::a)
+      .a(mc.aM, eda::a)
+      .a(mc.aR, ecy::a)
+      .a(mc.bb, end::a)
+      .a(mc.aQ, elp::a)
       .a(mc.aJ, wl::a)
-      .a(mc.ba, dfa::a)
-      .a(mc.aZ, dey::a)
-      .a(mc.bd, dwb::a)
-      .a(mc.m, cid::a)
-      .a(mc.X, ckz::a)
-      .a(mc.s, bte::a)
-      .a(mc.d, dtr::a)
-      .a(mc.aO, dde::a)
-      .a(mc.aP, den::a)
-      .a(mc.L, cwx::a)
-      .a(mc.I, cwk::a);
+      .a(mc.ba, dfb::a)
+      .a(mc.aZ, dez::a)
+      .a(mc.bd, dwc::a)
+      .a(mc.m, cie::a)
+      .a(mc.X, cla::a)
+      .a(mc.s, btf::a)
+      .a(mc.d, dts::a)
+      .a(mc.aO, ddf::a)
+      .a(mc.aP, deo::a)
+      .a(mc.L, cwy::a)
+      .a(mc.I, cwl::a);
 
    private static void a(jt.a $$0) {
       a($$0.d(mc.aT), $$0.d(mc.aI));
    }
 
-   public static void a(js<emq> $$0, jt<dhk> $$1) {
+   public static void a(js<emr> $$0, jt<dhl> $$1) {
       $$1.c().forEach($$1x -> {
          akv $$2 = $$1x.h().a();
-         List<jv<emq>> $$3 = ((dhk)$$1x.a()).d().c();
+         List<jv<emr>> $$3 = ((dhl)$$1x.a()).d().c();
          $$3.stream().flatMap(jv::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               jr.c<emq> $$3xx = $$0.b($$2xx);
+               jr.c<emr> $$3xx = $$0.b($$2xx);
                if (!a($$3xx.a())) {
                   af.b("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
                }
@@ -51,8 +51,8 @@ public class or {
       });
    }
 
-   private static boolean a(emq $$0) {
-      return $$0.c().contains(eme.a());
+   private static boolean a(emr $$0) {
+      return $$0.c().contains(emf.a());
    }
 
    public static jt.a a() {

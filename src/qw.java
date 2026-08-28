@@ -1,5 +1,5 @@
 public class qw {
-   public static void a(qe<eow> $$0) {
+   public static void a(qe<eox> $$0) {
       qk.a($$0);
       qo.a($$0);
       qn.a($$0);

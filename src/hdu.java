@@ -1,51 +1,49 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class hdu implements hds {
-   private final gox a;
-   private final float b;
-   private final jn c;
-   private final hgz d;
+public class hdu implements hdx<kr> {
+   private final gdt a;
 
-   public hdu(gox $$0, float $$1, jn $$2, hgz $$3) {
+   public hdu(gdt $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   @Override
-   public void a(cwn $$0, ffu $$1, gly $$2, int $$3, int $$4, boolean $$5) {
-      this.a.a($$1, $$2, $$3, $$4, this.c, this.b, this.d);
+   @Nullable
+   public kr a(cwq $$0) {
+      return $$0.e();
    }
 
-   public static record a(akv b, float c, jn d) implements hdw.a {
-      public static final MapCodec<hdu.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  akv.a.fieldOf("texture").forGetter(hdu.a::b),
-                  Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(hdu.a::c),
-                  jn.g.optionalFieldOf("orientation", jn.b).forGetter(hdu.a::d)
-               )
-               .apply($$0, hdu.a::new)
-      );
-
-      public a() {
-         this(akv.b("shulker"), 0.0F, jn.b);
+   public void a(@Nullable kr $$0, cwo $$1, ffv $$2, glz $$3, int $$4, int $$5, boolean $$6) {
+      dtr $$7 = $$0 != null ? $$0.a(kv.ai, dtr.a) : dtr.a;
+      cvn $$8 = $$0 != null ? $$0.a(kv.aj) : null;
+      boolean $$9 = !$$7.b().isEmpty() || $$8 != null;
+      $$2.a();
+      $$2.b(1.0F, -1.0F, -1.0F);
+      hha $$10 = $$9 ? hhd.g : hhd.h;
+      ffz $$11 = $$10.c().a(gtd.a($$3, this.a.a($$10.a()), $$1 == cwo.g, $$6));
+      this.a.c().a($$2, $$11, $$4, $$5);
+      if ($$9) {
+         gog.a($$2, $$3, $$4, $$5, this.a.b(), $$10, false, Objects.requireNonNullElse($$8, cvn.a), $$7, $$6, false);
+      } else {
+         this.a.b().a($$2, $$11, $$4, $$5);
       }
 
-      public a(cvm $$0) {
-         this(gmt.e($$0), 0.0F, jn.b);
-      }
+      $$2.b();
+   }
+
+   public static record a() implements hdx.a {
+      public static final hdu.a a = new hdu.a();
+      public static final MapCodec<hdu.a> b = MapCodec.unit(a);
 
       @Override
       public MapCodec<hdu.a> a() {
-         return a;
+         return b;
       }
 
       @Override
-      public hdw<?> a(gez $$0) {
-         return new hdu(new gox($$0), this.c, this.d, gmt.b(this.b));
+      public hdx<?> a(gfa $$0) {
+         return new hdu(new gdt($$0.a(gfd.cD)));
       }
    }
 }

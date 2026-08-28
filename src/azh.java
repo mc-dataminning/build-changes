@@ -5,25 +5,25 @@ public interface azh {
    double a = 2.297;
 
    static azh a() {
-      return a(edh.a());
+      return a(edi.a());
    }
 
    @Deprecated
    static azh b() {
-      return new edl(edh.a());
+      return new edm(edi.a());
    }
 
    static azh a(long $$0) {
-      return new ect($$0);
+      return new ecu($$0);
    }
 
    static azh c() {
-      return new edi(ThreadLocalRandom.current().nextLong());
+      return new edj(ThreadLocalRandom.current().nextLong());
    }
 
    azh d();
 
-   edf e();
+   edg e();
 
    void b(long var1);
 

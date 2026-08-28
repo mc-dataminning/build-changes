@@ -1,75 +1,122 @@
-public class gof implements gok<dto> {
-   private static final int a = 16;
-   private static final float b = 0.6666667F;
-   private final gbc c;
-   private final gbc d;
-   private final gbb e;
-   private final gbb f;
+import java.util.List;
 
-   public gof(gol.a $$0) {
-      this($$0.f());
+public abstract class gof implements gol<dvn> {
+   private static final int a = -988212;
+   private static final int b = ayz.h(16);
+   private final fod c;
+
+   public gof(gom.a $$0) {
+      this.c = $$0.g();
    }
 
-   public gof(gez $$0) {
-      this.c = new gbc($$0.a(gfc.q));
-      this.d = new gbc($$0.a(gfc.s));
-      this.e = new gbb($$0.a(gfc.r));
-      this.f = new gbb($$0.a(gfc.t));
+   protected abstract gcx a(dwy var1, dyk var2);
+
+   protected abstract hha a(dyk var1);
+
+   protected abstract float a();
+
+   protected abstract float b();
+
+   protected abstract fbb c();
+
+   protected abstract void a(ffv var1, float var2, dwy var3);
+
+   public void a(dvn $$0, float $$1, ffv $$2, glz $$3, int $$4, int $$5) {
+      dwy $$6 = $$0.m();
+      dqs $$7 = (dqs)$$6.b();
+      gcx $$8 = this.a($$6, $$7.d());
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$7.d(), $$8);
    }
 
-   public void a(dto $$0, float $$1, ffu $$2, gly $$3, int $$4, int $$5) {
-      dwx $$6 = $$0.m();
-      gbc $$8;
-      gbb $$9;
-      float $$7;
-      if ($$6.b() instanceof dir) {
-         $$7 = -dyc.b($$6.c(dir.b));
-         $$8 = this.c;
-         $$9 = this.e;
-      } else {
-         $$7 = -$$6.c(dso.b).p();
-         $$8 = this.d;
-         $$9 = this.f;
-      }
-
-      long $$13 = $$0.i().ad();
-      ji $$14 = $$0.aA_();
-      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$13, 100L) + $$1) / 100.0F;
-      a($$2, $$3, $$4, $$5, $$7, $$8, $$9, $$15, $$0.f(), $$0.b());
+   private void a(dvn $$0, ffv $$1, glz $$2, int $$3, int $$4, dwy $$5, dqs $$6, dyk $$7, gcx $$8) {
+      $$1.a();
+      this.a($$1, -$$6.h($$5), $$5);
+      this.a($$1, $$2, $$3, $$4, $$7, $$8);
+      this.a($$0.aA_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
+      this.a($$0.aA_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
+      $$1.b();
    }
 
-   public void a(ffu $$0, gly $$1, int $$2, int $$3, cvm $$4, dtq $$5) {
-      a($$0, $$1, $$2, $$3, 0.0F, this.c, this.e, 0.0F, $$4, $$5);
-   }
-
-   private static void a(ffu $$0, gly $$1, int $$2, int $$3, float $$4, gbc $$5, gbb $$6, float $$7, cvm $$8, dtq $$9) {
+   protected void a(ffv $$0, glz $$1, int $$2, int $$3, dyk $$4, gcx $$5) {
       $$0.a();
-      $$0.a(0.5F, 0.0F, 0.5F);
-      $$0.a(a.d.rotationDegrees($$4));
-      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
-      $$5.a($$0, hhc.f.a($$1, gmi::d), $$2, $$3);
-      $$6.a($$7);
-      a($$0, $$1, $$2, $$3, $$6.e(), hhc.f, true, $$8, $$9);
+      float $$6 = this.a();
+      $$0.b($$6, -$$6, -$$6);
+      hha $$7 = this.a($$4);
+      ffz $$8 = $$7.a($$1, $$5::a);
+      $$5.a($$0, $$8, $$2, $$3);
       $$0.b();
    }
 
-   public static void a(ffu $$0, gly $$1, int $$2, int $$3, gfd $$4, hgz $$5, boolean $$6, cvm $$7, dtq $$8) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   private void a(ji $$0, dvo $$1, ffv $$2, glz $$3, int $$4, int $$5, int $$6, boolean $$7) {
+      $$2.a();
+      this.a($$2, $$7, this.c());
+      int $$8 = a($$1);
+      int $$9 = 4 * $$5 / 2;
+      ayl[] $$10 = $$1.a(flk.Q().aT(), $$1x -> {
+         List<ayl> $$2x = this.c.c($$1x, $$6);
+         return $$2x.isEmpty() ? ayl.a : $$2x.get(0);
+      });
+      int $$11;
+      boolean $$12;
+      int $$13;
+      if ($$1.a()) {
+         $$11 = $$1.b().g();
+         $$12 = a($$0, $$11);
+         $$13 = 15728880;
+      } else {
+         $$11 = $$8;
+         $$12 = false;
+         $$13 = $$4;
+      }
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         ayl $$18 = $$10[$$17];
+         float $$19 = (float)(-this.c.a($$18) / 2);
+         if ($$12) {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+         } else {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fod.a.c, 0, $$13);
+         }
+      }
+
+      $$2.b();
    }
 
-   public static void a(ffu $$0, gly $$1, int $$2, int $$3, gfd $$4, hgz $$5, boolean $$6, cvm $$7, dtq $$8, boolean $$9, boolean $$10) {
-      $$4.a($$0, $$5.a($$1, gmi::d, $$10, $$9), $$2, $$3);
-      a($$0, $$1, $$2, $$3, $$4, $$6 ? gmt.m : gmt.n, $$7);
+   private void a(ffv $$0, boolean $$1, fbb $$2) {
+      if (!$$1) {
+         $$0.a(a.d.rotationDegrees(180.0F));
+      }
 
-      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
-         dtq.b $$12 = $$8.b().get($$11);
-         hgz $$13 = $$6 ? gmt.a($$12.b()) : gmt.b($$12.b());
-         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
+      float $$3 = 0.015625F * this.b();
+      $$0.a($$2);
+      $$0.b($$3, -$$3, $$3);
+   }
+
+   private static boolean a(ji $$0, int $$1) {
+      if ($$1 == cvn.p.g()) {
+         return true;
+      } else {
+         flk $$2 = flk.Q();
+         gkx $$3 = $$2.t;
+         if ($$3 != null && $$2.n.aE().a() && $$3.gH()) {
+            return true;
+         } else {
+            bum $$4 = $$2.ao();
+            return $$4 != null && $$4.g(fbb.b($$0)) < (double)b;
+         }
       }
    }
 
-   private static void a(ffu $$0, gly $$1, int $$2, int $$3, gfd $$4, hgz $$5, cvm $$6) {
-      int $$7 = $$6.d();
-      $$4.a($$0, $$5.a($$1, gmi::n), $$2, $$3, $$7);
+   public static int a(dvo $$0) {
+      int $$1 = $$0.b().g();
+      if ($$1 == cvn.p.g() && $$0.a()) {
+         return -988212;
+      } else {
+         double $$2 = 0.4;
+         int $$3 = (int)((double)axk.b($$1) * 0.4);
+         int $$4 = (int)((double)axk.c($$1) * 0.4);
+         int $$5 = (int)((double)axk.d($$1) * 0.4);
+         return axk.a(0, $$3, $$4, $$5);
+      }
    }
 }

@@ -1,57 +1,66 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public class gpk {
-   private final Long2ObjectMap<gpk.a> a = new Long2ObjectOpenHashMap();
+public class gpk implements dfl {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final gpj[] c;
+   protected final dgj d;
+
+   gpk(dgj $$0, int $$1, int $$2, gpj[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
+   }
+
+   @Override
+   public dwy a_(ji $$0) {
+      return this.a(kk.a($$0.u()), kk.a($$0.w())).b($$0);
+   }
+
+   @Override
+   public eta b_(ji $$0) {
+      return this.a(kk.a($$0.u()), kk.a($$0.w())).b($$0).y();
+   }
+
+   @Override
+   public float a(jn $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public esp C_() {
+      return this.d.C_();
+   }
 
    @Nullable
-   public gpj a(dgi $$0, kk $$1) {
-      gpk.a $$2 = this.a($$0, $$1.a(), $$1.c());
-      if ($$2.a().c($$1.b())) {
-         return null;
-      } else {
-         int $$3 = $$1.a() - 1;
-         int $$4 = $$1.c() - 1;
-         int $$5 = $$1.a() + 1;
-         int $$6 = $$1.c() + 1;
-         gpi[] $$7 = new gpi[9];
-
-         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
-            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
-               int $$10 = gpj.a($$3, $$4, $$9, $$8);
-               gpk.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
-               $$7[$$10] = $$11.b();
-            }
-         }
-
-         return new gpj($$0, $$3, $$4, $$7);
-      }
+   @Override
+   public dua c_(ji $$0) {
+      return this.a(kk.a($$0.u()), kk.a($$0.w())).a($$0);
    }
 
-   private gpk.a a(dgi $$0, int $$1, int $$2) {
-      return (gpk.a)this.a.computeIfAbsent(dfo.c($$1, $$2), $$1x -> new gpk.a($$0.d(dfo.a($$1x), dfo.b($$1x))));
+   private gpj a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
    }
 
-   static final class a {
-      private final dzc a;
-      @Nullable
-      private gpi b;
+   @Override
+   public int a(ji $$0, dft $$1) {
+      return this.d.a($$0, $$1);
+   }
 
-      a(dzc $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public int L_() {
+      return this.d.L_();
+   }
 
-      public dzc a() {
-         return this.a;
-      }
+   @Override
+   public int M_() {
+      return this.d.M_();
+   }
 
-      public gpi b() {
-         if (this.b == null) {
-            this.b = new gpi(this.a);
-         }
-
-         return this.b;
-      }
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
    }
 }

@@ -1,47 +1,35 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
-import javax.annotation.Nullable;
+public interface fdv {
+   int a();
 
-public class fdv implements fdt {
-   private final Int2ObjectMap<fds.a> b;
+   int b();
 
-   public fdv(Map<Integer, Float> $$0) {
-      this.b = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (fds.a)() -> $$1));
+   void a(int var1, int var2);
+
+   boolean c();
+
+   float d();
+
+   default float e() {
+      return this.i();
    }
 
-   @Nullable
-   @Override
-   public fds a(int $$0) {
-      return (fds)this.b.get($$0);
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.b.keySet());
+   default float g() {
+      return 7.0F - this.j();
    }
 
-   public static record a(Map<Integer, Float> c) implements frw {
-      public static final MapCodec<fdv.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(ayi.B, Codec.FLOAT).fieldOf("advances").forGetter(fdv.a::c)).apply($$0, fdv.a::new)
-      );
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
+   }
 
-      @Override
-      public frx a() {
-         return frx.c;
-      }
+   default float i() {
+      return 0.0F;
+   }
 
-      @Override
-      public Either<frw.b, frw.c> b() {
-         frw.b $$0 = $$0x -> new fdv(this.c);
-         return Either.left($$0);
-      }
+   default float j() {
+      return 7.0F;
    }
 }

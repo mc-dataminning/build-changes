@@ -1,21 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cin {
-   public static bxb<bvh> a() {
-      return can.a(
-         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$0 -> $$0.group($$0.b(cel.N), $$0.a(cel.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.eb().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+public class cin extends bxb<cil> {
+   public cin() {
+      super(ImmutableMap.of(cem.N, cen.a, cem.y, cen.a), 200);
+   }
 
-                  return true;
-               }))
-      );
+   protected boolean a(ard $$0, cil $$1) {
+      return $$1.bm();
+   }
+
+   protected boolean a(ard $$0, cil $$1, long $$2) {
+      return $$1.bm() && $$1.eb().a(cem.N);
+   }
+
+   protected void b(ard $$0, cil $$1, long $$2) {
+      bwk<cil> $$3 = $$1.eb();
+      $$3.b(cem.m);
+      $$3.b(cem.n);
+      $$1.a(new btr(btt.j, 200, 0));
    }
 }

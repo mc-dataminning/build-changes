@@ -1,8 +1,8 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public record adh(int b, List<crl.a> c) implements yw<abl> {
-   public static final yn<vl, adh> a = yn.a(yl.h, adh::b, crl.a.a.a(yl.a()), adh::e, adh::new);
+public record adh(int b, List<crm.a> c) implements yw<abl> {
+   public static final yn<vl, adh> a = yn.a(yl.h, adh::b, crm.a.a.a(yl.a()), adh::e, adh::new);
 
    @Override
    public yy<adh> a() {
@@ -14,11 +14,11 @@ public record adh(int b, List<crl.a> c) implements yw<abl> {
    }
 
    @Nullable
-   public bul a(dgi $$0) {
+   public bum a(dgj $$0) {
       return $$0.a(this.b);
    }
 
-   public List<crl.a> e() {
+   public List<crm.a> e() {
       return this.c;
    }
 }

@@ -1,22 +1,47 @@
-import com.google.gson.JsonPrimitive;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class fnl {
-   public static final fnm<fnl.a> a = new fnm<>("x", $$0 -> new JsonPrimitive($$0.e));
-   public static final fnm<fnl.a> b = new fnm<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final fnm<akv> c = new fnm<>("model", $$0 -> new JsonPrimitive($$0.toString()));
-   public static final fnm<Boolean> d = new fnm<>("uvlock", JsonPrimitive::new);
-   public static final fnm<Integer> e = new fnm<>("weight", JsonPrimitive::new);
+public class fnl implements Supplier<JsonElement> {
+   private final Map<fnn<?>, fnn<?>.a> a = Maps.newLinkedHashMap();
 
-   public static enum a {
-      a(0),
-      b(90),
-      c(180),
-      d(270);
+   public <T> fnl a(fnn<T> $$0, T $$1) {
+      fnn<?>.a $$2 = this.a.put($$0, $$0.a($$1));
+      if ($$2 != null) {
+         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
+      } else {
+         return this;
+      }
+   }
 
-      final int e;
+   public static fnl a() {
+      return new fnl();
+   }
 
-      private a(final int $$0) {
-         this.e = $$0;
+   public static fnl a(fnl $$0, fnl $$1) {
+      fnl $$2 = new fnl();
+      $$2.a.putAll($$0.a);
+      $$2.a.putAll($$1.a);
+      return $$2;
+   }
+
+   public JsonElement b() {
+      JsonObject $$0 = new JsonObject();
+      this.a.values().forEach($$1 -> $$1.a($$0));
+      return $$0;
+   }
+
+   public static JsonElement a(List<fnl> $$0) {
+      if ($$0.size() == 1) {
+         return $$0.get(0).b();
+      } else {
+         JsonArray $$1 = new JsonArray();
+         $$0.forEach($$1x -> $$1.add($$1x.b()));
+         return $$1;
       }
    }
 }

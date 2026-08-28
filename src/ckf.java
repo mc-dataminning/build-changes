@@ -1,26 +1,69 @@
 import javax.annotation.Nullable;
 
-public interface ckf {
-   boolean a();
+public class ckf extends cjy {
+   @Nullable
+   private fbb b;
 
-   void b();
+   public ckf(cjw $$0) {
+      super($$0);
+   }
 
-   void a(ard var1);
+   @Override
+   public void b() {
+      fbb $$0 = this.a.J(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.c.dA();
+      double $$2 = this.a.c.e(0.5);
+      double $$3 = this.a.c.dG();
 
-   void a(cju var1, ji var2, btb var3, @Nullable cox var4);
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         azh $$5 = this.a.dY();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         fbb $$9 = this.a.dy();
+         this.a.dV().a(lt.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
+         $$0.b((float) (Math.PI / 16));
+      }
+   }
 
-   void c();
+   @Override
+   public void a(ard $$0) {
+      if (this.b == null) {
+         this.b = fbb.c($$0.a(ect.a.f, efy.a(this.a.m())));
+      }
 
-   void d();
+      if (this.b.c(this.a.dA(), this.a.dC(), this.a.dG()) < 1.0) {
+         this.a.go().b(ckm.f).i();
+         this.a.go().a(ckm.g);
+      }
+   }
 
-   float e();
+   @Override
+   public float e() {
+      return 1.5F;
+   }
 
-   float g();
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
 
-   ckl<? extends ckf> h();
+   @Override
+   public void c() {
+      this.b = null;
+   }
 
    @Nullable
-   fba f();
+   @Override
+   public fbb f() {
+      return this.b;
+   }
 
-   float a(btb var1, float var2);
+   @Override
+   public ckm<ckf> h() {
+      return ckm.d;
+   }
 }

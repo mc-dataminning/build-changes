@@ -1,13 +1,36 @@
-public class fkk extends fkl {
-   private final fib b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fkk(fib $$0, long $$1, wp $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+public class fkk extends fki {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wp c = wp.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
+
+   public fkk(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   protected void a(fgk $$0, long $$1) throws fig {
-      $$0.d($$1, this.b.a);
+   public void run() {
+      fgl $$0 = fgl.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (fih var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
+   }
+
+   @Override
+   public wp a() {
+      return c;
    }
 }

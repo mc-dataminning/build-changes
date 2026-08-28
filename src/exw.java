@@ -1,46 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-public class exw extends exe {
+public class exw extends exf {
    public static final MapCodec<exw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(ezx.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, exw::new)
+      $$0 -> a($$0).and(axf.b(mc.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, exw::new)
    );
-   private final ezw b;
-   private final boolean c;
+   private final axf<cwj> b;
 
-   private exw(List<eza> $$0, ezw $$1, boolean $$2) {
+   private exw(List<ezb> $$0, axf<cwj> $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public exg<exw> b() {
-      return exh.e;
+   public exh<exw> b() {
+      return exi.G;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return this.b.a();
-   }
+   public cwq a(cwq $$0, evs $$1) {
+      ke<cwj> $$2 = $$1.d().K_().e(mc.I);
+      Optional<jr<cwj>> $$3 = $$2.a(this.b, $$1.b());
+      if ($$3.isPresent()) {
+         $$0.b(kv.Z, $$3.get());
+      }
 
-   @Override
-   public cwp a(cwp $$0, evr $$1) {
-      int $$2 = this.c ? $$0.M() : 0;
-      $$0.e($$2 + this.b.a($$1));
       return $$0;
    }
 
-   public static exe.a<?> a(ezw $$0) {
-      return a($$1 -> new exw($$1, $$0, false));
-   }
-
-   public static exe.a<?> a(ezw $$0, boolean $$1) {
-      return a($$2 -> new exw($$2, $$0, $$1));
+   public static exf.a<?> a(axf<cwj> $$0) {
+      return a($$1 -> new exw($$1, $$0));
    }
 }

@@ -1,34 +1,56 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import com.mojang.datafixers.DSL.TypeReference;
 
-public class bhy extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
+public class bhy {
+   public static final TypeReference a = a("level");
+   public static final TypeReference b = a("player");
+   public static final TypeReference c = a("chunk");
+   public static final TypeReference d = a("hotbar");
+   public static final TypeReference e = a("options");
+   public static final TypeReference f = a("structure");
+   public static final TypeReference g = a("stats");
+   public static final TypeReference h = a("saved_data/command_storage");
+   public static final TypeReference i = a("saved_data/chunks");
+   public static final TypeReference j = a("saved_data/map_data");
+   public static final TypeReference k = a("saved_data/idcounts");
+   public static final TypeReference l = a("saved_data/raids");
+   public static final TypeReference m = a("saved_data/random_sequences");
+   public static final TypeReference n = a("saved_data/structure_feature_indices");
+   public static final TypeReference o = a("saved_data/scoreboard");
+   public static final TypeReference p = a("advancements");
+   public static final TypeReference q = a("poi_chunk");
+   public static final TypeReference r = a("entity_chunk");
+   public static final TypeReference s = a("block_entity");
+   public static final TypeReference t = a("item_stack");
+   public static final TypeReference u = a("block_state");
+   public static final TypeReference v = a("flat_block_state");
+   public static final TypeReference w = a("data_components");
+   public static final TypeReference x = a("villager_trade");
+   public static final TypeReference y = a("particle");
+   public static final TypeReference z = a("entity_name");
+   public static final TypeReference A = a("entity_tree");
+   public static final TypeReference B = a("entity");
+   public static final TypeReference C = a("block_name");
+   public static final TypeReference D = a("item_name");
+   public static final TypeReference E = a("game_event_name");
+   public static final TypeReference F = a("untagged_spawner");
+   public static final TypeReference G = a("structure_feature");
+   public static final TypeReference H = a("objective");
+   public static final TypeReference I = a("team");
+   public static final TypeReference J = a("recipe");
+   public static final TypeReference K = a("biome");
+   public static final TypeReference L = a("multi_noise_biome_source_parameter_list");
+   public static final TypeReference M = a("world_gen_settings");
 
-   public bhy(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-   }
+   public static TypeReference a(final String $$0) {
+      return new TypeReference() {
+         public String typeName() {
+            return $$0;
+         }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(bhx.c),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
-            )
-      );
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bjl::a).map(this.b).map($$0::createString);
-      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
+         @Override
+         public String toString() {
+            return "@" + $$0;
+         }
+      };
    }
 }

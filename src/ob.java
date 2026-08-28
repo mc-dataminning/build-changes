@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public interface ob {
-   void a(aku<dbe<?>> var1, dbe<?> var2, @Nullable ai var3);
+   void a(aku<dbf<?>> var1, dbf<?> var2, @Nullable ai var3);
 
    ah.a a();
 

@@ -1,43 +1,42 @@
-public class guv extends gsd<cld, haq> {
-   private final gnc a;
+public class guv extends gqw<crl, gzp> {
+   private final gnd b;
 
-   public guv(gse.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.a = $$0.d();
+   public guv(gsf.a $$0) {
+      super($$0, gfd.di);
+      this.b = $$0.d();
    }
 
-   public void a(haq $$0, ffu $$1, gly $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.5F, 0.0F);
-      float $$4 = $$0.a;
-      if ($$0.a < 10.0F) {
-         float $$5 = 1.0F - $$0.a / 10.0F;
-         $$5 = ayz.a($$5, 0.0F, 1.0F);
-         $$5 *= $$5;
-         $$5 *= $$5;
-         float $$6 = 1.0F + $$5 * 0.3F;
-         $$1.b($$6, $$6, $$6);
+   protected void a(gzp $$0, dwy $$1, ffv $$2, glz $$3, int $$4) {
+      float $$5 = $$0.n;
+      if ($$5 > -1.0F && $$5 < 10.0F) {
+         float $$6 = 1.0F - $$5 / 10.0F;
+         $$6 = ayz.a($$6, 0.0F, 1.0F);
+         $$6 *= $$6;
+         $$6 *= $$6;
+         float $$7 = 1.0F + $$6 * 0.3F;
+         $$2.b($$7, $$7, $$7);
       }
 
-      $$1.a(a.d.rotationDegrees(-90.0F));
-      $$1.a(-0.5F, -0.5F, 0.5F);
-      $$1.a(a.d.rotationDegrees(90.0F));
-      if ($$0.b != null) {
-         guu.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   }
+
+   public static void a(gnd $$0, dwy $$1, ffv $$2, glz $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = hej.a(hej.a(1.0F), 10);
+      } else {
+         $$6 = hej.d;
       }
 
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 
-   public haq a() {
-      return new haq();
+   public gzp a() {
+      return new gzp();
    }
 
-   public void a(cld $$0, haq $$1, float $$2) {
+   public void a(crl $$0, gzp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.m() - $$2 + 1.0F;
-      $$1.b = $$0.s();
+      $$1.n = $$0.x() > -1 ? (float)$$0.x() - $$2 + 1.0F : -1.0F;
    }
 }

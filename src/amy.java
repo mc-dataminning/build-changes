@@ -57,7 +57,7 @@ public class amy {
                                           .then(ey.a("as").then(ey.a("targets", fk.b()).fork($$2, $$0x -> {
                                              List<ex> $$1x = Lists.newArrayList();
 
-                                             for (bul $$2x : fk.c($$0x, "targets")) {
+                                             for (bum $$2x : fk.c($$0x, "targets")) {
                                                 $$1x.add(((ex)$$0x.getSource()).a($$2x));
                                              }
 
@@ -66,7 +66,7 @@ public class amy {
                                        .then(ey.a("at").then(ey.a("targets", fk.b()).fork($$2, $$0x -> {
                                           List<ex> $$1x = Lists.newArrayList();
 
-                                          for (bul $$2x : fk.c($$0x, "targets")) {
+                                          for (bum $$2x : fk.c($$0x, "targets")) {
                                              $$1x.add(((ex)$$0x.getSource()).a((ard)$$2x.dV()).a($$2x.dt()).a($$2x.bU()));
                                           }
 
@@ -79,14 +79,14 @@ public class amy {
                                           .then(ey.a("as").then(ey.a("targets", fk.b()).fork($$2, $$0x -> {
                                              List<ex> $$1x = Lists.newArrayList();
 
-                                             for (bul $$2x : fk.c($$0x, "targets")) {
+                                             for (bum $$2x : fk.c($$0x, "targets")) {
                                                 $$1x.add(((ex)$$0x.getSource()).a($$2x.dt()));
                                              }
 
                                              return $$1x;
                                           }))))
                                        .then(ey.a("over").then(ey.a("heightmap", fn.a()).redirect($$2, $$0x -> {
-                                          fba $$1x = ((ex)$$0x.getSource()).d();
+                                          fbb $$1x = ((ex)$$0x.getSource()).d();
                                           ard $$2x = ((ex)$$0x.getSource()).e();
                                           double $$3 = $$1x.a();
                                           double $$4 = $$1x.c();
@@ -94,7 +94,7 @@ public class amy {
                                              throw gt.a.create();
                                           } else {
                                              int $$5 = $$2x.a(fn.a($$0x, "heightmap"), ayz.a($$3), ayz.a($$4));
-                                             return ((ex)$$0x.getSource()).a(new fba($$3, (double)$$5, $$4));
+                                             return ((ex)$$0x.getSource()).a(new fbb($$3, (double)$$5, $$4));
                                           }
                                        })))
                                  ))
@@ -104,7 +104,7 @@ public class amy {
                                     .then(ey.a("as").then(ey.a("targets", fk.b()).fork($$2, $$0x -> {
                                        List<ex> $$1x = Lists.newArrayList();
 
-                                       for (bul $$2x : fk.c($$0x, "targets")) {
+                                       for (bum $$2x : fk.c($$0x, "targets")) {
                                           $$1x.add(((ex)$$0x.getSource()).a($$2x.bU()));
                                        }
 
@@ -117,7 +117,7 @@ public class amy {
                                        List<ex> $$1x = Lists.newArrayList();
                                        fj.a $$2x = fj.a($$0x, "anchor");
 
-                                       for (bul $$3 : fk.c($$0x, "targets")) {
+                                       for (bum $$3 : fk.c($$0x, "targets")) {
                                           $$1x.add(((ex)$$0x.getSource()).a($$3, $$2x));
                                        }
 
@@ -265,11 +265,11 @@ public class amy {
       return $$1;
    }
 
-   private static ex a(ex $$0, Collection<fce> $$1, fbx $$2, boolean $$3) {
-      fcf $$4 = $$0.l().aJ();
+   private static ex a(ex $$0, Collection<fcf> $$1, fby $$2, boolean $$3) {
+      fcg $$4 = $$0.l().aJ();
       return $$0.a(($$4x, $$5) -> {
-         for (fce $$6 : $$1) {
-            fcd $$7 = $$4.c($$6, $$2);
+         for (fcf $$6 : $$1) {
+            fce $$7 = $$4.c($$6, $$2);
             int $$8 = $$3 ? $$5 : ($$4x ? 1 : 0);
             $$7.a($$8);
          }
@@ -300,8 +300,8 @@ public class amy {
    }
 
    private static boolean a(ard $$0, ji $$1) {
-      dfo $$2 = new dfo($$1);
-      dzc $$3 = $$0.m().a($$2.h, $$2.i);
+      dfp $$2 = new dfp($$1);
+      dzd $$3 = $$0.m().a($$2.h, $$2.i);
       return $$3 == null ? false : $$3.F() == aqs.d && $$0.c($$2.a());
    }
 
@@ -315,7 +315,7 @@ public class amy {
                                                    $$0,
                                                    ey.a("block", gp.a($$3)),
                                                    $$2,
-                                                   $$0x -> gp.a($$0x, "block").test(new dxb(((ex)$$0x.getSource()).e(), gt.a($$0x, "pos"), true))
+                                                   $$0x -> gp.a($$0x, "block").test(new dxc(((ex)$$0x.getSource()).e(), gt.a($$0x, "pos"), true))
                                                 )
                                              )
                                        )
@@ -500,16 +500,16 @@ public class amy {
       return $$1;
    }
 
-   private static int a(Iterable<? extends bul> $$0, cua $$1, Predicate<cwp> $$2) {
+   private static int a(Iterable<? extends bum> $$0, cub $$1, Predicate<cwq> $$2) {
       int $$3 = 0;
 
-      for (bul $$4 : $$0) {
+      for (bum $$4 : $$0) {
          IntList $$5 = $$1.a();
 
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
             int $$7 = $$5.getInt($$6);
-            bvz $$8 = $$4.a_($$7);
-            cwp $$9 = $$8.a();
+            bwa $$8 = $$4.a_($$7);
+            cwq $$9 = $$8.a();
             if ($$2.test($$9)) {
                $$3 += $$9.M();
             }
@@ -519,16 +519,16 @@ public class amy {
       return $$3;
    }
 
-   private static int a(ex $$0, ji $$1, cua $$2, Predicate<cwp> $$3) throws CommandSyntaxException {
+   private static int a(ex $$0, ji $$1, cub $$2, Predicate<cwq> $$3) throws CommandSyntaxException {
       int $$4 = 0;
-      bsd $$5 = ani.a($$0, $$1, ani.b);
+      bse $$5 = ani.a($$0, $$1, ani.b);
       int $$6 = $$5.b();
       IntList $$7 = $$2.a();
 
       for (int $$8 = 0; $$8 < $$7.size(); $$8++) {
          int $$9 = $$7.getInt($$8);
          if ($$9 >= 0 && $$9 < $$6) {
-            cwp $$10 = $$5.a($$9);
+            cwq $$10 = $$5.a($$9);
             if ($$3.test($$10)) {
                $$4 += $$10.M();
             }
@@ -563,29 +563,29 @@ public class amy {
    }
 
    private static boolean a(CommandContext<ex> $$0, amy.e $$1) throws CommandSyntaxException {
-      fce $$2 = gc.a($$0, "target");
-      fbx $$3 = fr.a($$0, "targetObjective");
-      fce $$4 = gc.a($$0, "source");
-      fbx $$5 = fr.a($$0, "sourceObjective");
-      fcf $$6 = ((ex)$$0.getSource()).l().aJ();
-      fcb $$7 = $$6.d($$2, $$3);
-      fcb $$8 = $$6.d($$4, $$5);
+      fcf $$2 = gc.a($$0, "target");
+      fby $$3 = fr.a($$0, "targetObjective");
+      fcf $$4 = gc.a($$0, "source");
+      fby $$5 = fr.a($$0, "sourceObjective");
+      fcg $$6 = ((ex)$$0.getSource()).l().aJ();
+      fcc $$7 = $$6.d($$2, $$3);
+      fcc $$8 = $$6.d($$4, $$5);
       return $$7 != null && $$8 != null ? $$1.test($$7.a(), $$8.a()) : false;
    }
 
    private static boolean a(CommandContext<ex> $$0, dk.d $$1) throws CommandSyntaxException {
-      fce $$2 = gc.a($$0, "target");
-      fbx $$3 = fr.a($$0, "targetObjective");
-      fcf $$4 = ((ex)$$0.getSource()).l().aJ();
-      fcb $$5 = $$4.d($$2, $$3);
+      fcf $$2 = gc.a($$0, "target");
+      fby $$3 = fr.a($$0, "targetObjective");
+      fcg $$4 = ((ex)$$0.getSource()).l().aJ();
+      fcc $$5 = $$4.d($$2, $$3);
       return $$5 == null ? false : $$1.d($$5.a());
    }
 
-   private static boolean a(ex $$0, jr<eza> $$1) {
+   private static boolean a(ex $$0, jr<ezb> $$1) {
       ard $$2 = $$0.e();
-      evu $$3 = new evu.a($$2).a(eyl.f, $$0.d()).b(eyl.a, $$0.f()).a(eyk.d);
-      evr $$4 = new evr.a($$3).a(Optional.empty());
-      $$4.b(evr.a($$1.a()));
+      evv $$3 = new evv.a($$2).a(eym.f, $$0.d()).b(eym.a, $$0.f()).a(eyl.d);
+      evs $$4 = new evs.a($$3).a(Optional.empty());
+      $$4.b(evs.a($$1.a()));
       return $$1.a().test($$4);
    }
 
@@ -633,8 +633,8 @@ public class amy {
    }
 
    private static OptionalInt a(ard $$0, ji $$1, ji $$2, ji $$3, boolean $$4) throws CommandSyntaxException {
-      ene $$5 = ene.a($$1, $$2);
-      ene $$6 = ene.a($$3, $$3.a($$5.c()));
+      enf $$5 = enf.a($$1, $$2);
+      enf $$6 = enf.a($$3, $$3.a($$5.c()));
       ji $$7 = new ji($$6.h() - $$5.h(), $$6.i() - $$5.i(), $$6.j() - $$5.j());
       int $$8 = $$5.d() * $$5.e() * $$5.f();
       if ($$8 > 32768) {
@@ -648,14 +648,14 @@ public class amy {
                for (int $$13 = $$5.h(); $$13 <= $$5.k(); $$13++) {
                   ji $$14 = new ji($$13, $$12, $$11);
                   ji $$15 = $$14.a((km)$$7);
-                  dwx $$16 = $$0.a_($$14);
-                  if (!$$4 || !$$16.a(djo.a)) {
+                  dwy $$16 = $$0.a_($$14);
+                  if (!$$4 || !$$16.a(djp.a)) {
                      if ($$16 != $$0.a_($$15)) {
                         return OptionalInt.empty();
                      }
 
-                     dtz $$17 = $$0.c_($$14);
-                     dtz $$18 = $$0.c_($$15);
+                     dua $$17 = $$0.c_($$14);
+                     dua $$18 = $$0.c_($$15);
                      if ($$17 != null) {
                         if ($$18 == null) {
                            return OptionalInt.empty();
@@ -686,18 +686,18 @@ public class amy {
       }
    }
 
-   private static RedirectModifier<ex> a(Function<bul, Optional<bul>> $$0) {
+   private static RedirectModifier<ex> a(Function<bum, Optional<bum>> $$0) {
       return $$1 -> {
          ex $$2 = (ex)$$1.getSource();
-         bul $$3 = $$2.f();
+         bum $$3 = $$2.f();
          return (Collection)($$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dQ()).map($$1x -> List.of($$2.a($$1x))).orElse(List.of()));
       };
    }
 
-   private static RedirectModifier<ex> b(Function<bul, Stream<bul>> $$0) {
+   private static RedirectModifier<ex> b(Function<bum, Stream<bum>> $$0) {
       return $$1 -> {
          ex $$2 = (ex)$$1.getSource();
-         bul $$3 = $$2.f();
+         bum $$3 = $$2.f();
          return $$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dQ()).map($$2::a).toList();
       };
    }
@@ -707,35 +707,35 @@ public class amy {
                               ey.a("owner")
                                  .fork(
                                     $$0,
-                                    a((Function<bul, Optional<bul>>)($$0x -> $$0x instanceof bvo $$1x ? Optional.ofNullable($$1x.ag_()) : Optional.empty()))
+                                    a((Function<bum, Optional<bum>>)($$0x -> $$0x instanceof bvp $$1x ? Optional.ofNullable($$1x.ag_()) : Optional.empty()))
                                  )
                            ))
                            .then(
                               ey.a("leasher")
                                  .fork(
-                                    $$0, a((Function<bul, Optional<bul>>)($$0x -> $$0x instanceof bvf $$1x ? Optional.ofNullable($$1x.D()) : Optional.empty()))
+                                    $$0, a((Function<bum, Optional<bum>>)($$0x -> $$0x instanceof bvg $$1x ? Optional.ofNullable($$1x.D()) : Optional.empty()))
                                  )
                            ))
                         .then(
                            ey.a("target")
                               .fork(
-                                 $$0, a((Function<bul, Optional<bul>>)($$0x -> $$0x instanceof bwf $$1x ? Optional.ofNullable($$1x.O_()) : Optional.empty()))
+                                 $$0, a((Function<bum, Optional<bum>>)($$0x -> $$0x instanceof bwg $$1x ? Optional.ofNullable($$1x.O_()) : Optional.empty()))
                               )
                         ))
                      .then(
                         ey.a("attacker")
-                           .fork($$0, a((Function<bul, Optional<bul>>)($$0x -> $$0x instanceof buf $$1x ? Optional.ofNullable($$1x.am()) : Optional.empty())))
+                           .fork($$0, a((Function<bum, Optional<bum>>)($$0x -> $$0x instanceof bug $$1x ? Optional.ofNullable($$1x.am()) : Optional.empty())))
                      ))
-                  .then(ey.a("vehicle").fork($$0, a((Function<bul, Optional<bul>>)($$0x -> Optional.ofNullable($$0x.dk()))))))
-               .then(ey.a("controller").fork($$0, a((Function<bul, Optional<bul>>)($$0x -> Optional.ofNullable($$0x.cW()))))))
+                  .then(ey.a("vehicle").fork($$0, a((Function<bum, Optional<bum>>)($$0x -> Optional.ofNullable($$0x.dk()))))))
+               .then(ey.a("controller").fork($$0, a((Function<bum, Optional<bum>>)($$0x -> Optional.ofNullable($$0x.cW()))))))
             .then(
-               ey.a("origin").fork($$0, a((Function<bul, Optional<bul>>)($$0x -> $$0x instanceof bwg $$1x ? Optional.ofNullable($$1x.p()) : Optional.empty())))
+               ey.a("origin").fork($$0, a((Function<bum, Optional<bum>>)($$0x -> $$0x instanceof bwh $$1x ? Optional.ofNullable($$1x.p()) : Optional.empty())))
             ))
-         .then(ey.a("passengers").fork($$0, b((Function<bul, Stream<bul>>)($$0x -> $$0x.cY().stream()))));
+         .then(ey.a("passengers").fork($$0, b((Function<bum, Stream<bum>>)($$0x -> $$0x.cY().stream()))));
    }
 
-   private static ex a(ex $$0, jr.c<bus<?>> $$1) throws CommandSyntaxException {
-      bul $$2 = aox.a($$0, $$1, $$0.d(), new tq(), true);
+   private static ex a(ex $$0, jr.c<but<?>> $$1) throws CommandSyntaxException {
+      bum $$2 = aox.a($$0, $$1, $$0.d(), new tq(), true);
       return $$0.a($$2);
    }
 

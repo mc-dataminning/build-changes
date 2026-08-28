@@ -1,45 +1,39 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class cqr {
-   private final cqq a;
-   private final List<cqr.a> b = Lists.newArrayList();
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cqr c = a("empty").a(0, cqp.b).a();
+   public static final cqr d = a("simple").a(5000, cqp.c).a(11000, cqp.e).a();
+   public static final cqr e = a("villager_baby").a(10, cqp.b).a(3000, cqp.d).a(6000, cqp.b).a(10000, cqp.d).a(12000, cqp.e).a();
+   public static final cqr f = a("villager_default").a(10, cqp.b).a(2000, cqp.c).a(9000, cqp.f).a(11000, cqp.b).a(12000, cqp.e).a();
+   private final Map<cqp, cqt> g = Maps.newHashMap();
 
-   public cqr(cqq $$0) {
-      this.a = $$0;
+   protected static cqs a(String $$0) {
+      cqr $$1 = ke.a(mb.B, $$0, new cqr());
+      return new cqs($$1);
    }
 
-   public cqr a(int $$0, cqo $$1) {
-      this.b.add(new cqr.a($$0, $$1));
-      return this;
+   protected void a(cqp $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cqt());
+      }
    }
 
-   public cqq a() {
-      this.b.stream().map(cqr.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cqo $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   protected cqt b(cqp $$0) {
+      return this.g.get($$0);
    }
 
-   static class a {
-      private final int a;
-      private final cqo b;
+   protected List<cqt> c(cqp $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
 
-      public a(int $$0, cqo $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public cqo b() {
-         return this.b;
-      }
+   public cqp a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cqp.b);
    }
 }

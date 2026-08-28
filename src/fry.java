@@ -1,17 +1,28 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record fry(akv c) implements frw {
-   public static final MapCodec<fry> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akv.a.fieldOf("id").forGetter(fry::c)).apply($$0, fry::new));
+public enum fry implements azv {
+   a("bitmap", frv.a.a),
+   b("ttf", fsa.a),
+   c("space", fdw.a.a),
+   d("unihex", fsb.b.a),
+   e("reference", frz.a);
 
-   @Override
-   public frx a() {
-      return frx.e;
+   public static final Codec<fry> f = azv.a(fry::values);
+   private final String g;
+   private final MapCodec<? extends frx> h;
+
+   private fry(final String $$0, final MapCodec<? extends frx> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public Either<frw.b, frw.c> b() {
-      return Either.right(new frw.c(this.c));
+   public String c() {
+      return this.g;
+   }
+
+   public MapCodec<? extends frx> a() {
+      return this.h;
    }
 }

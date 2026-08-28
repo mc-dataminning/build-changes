@@ -5,7 +5,7 @@ public class aew implements yw<abl> {
    private final int b;
    private final int c;
 
-   public aew(bul $$0, @Nullable bul $$1) {
+   public aew(bum $$0, @Nullable bum $$1) {
       this.b = $$0.ar();
       this.c = $$1 != null ? $$1.ar() : 0;
    }

@@ -1,59 +1,37 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.List;
 
-public class cxs extends cvi {
-   protected static final Map<djm, dwx> a = Maps.newHashMap(
-      new Builder()
-         .put(djo.i, djo.lg.m())
-         .put(djo.j, djo.lg.m())
-         .put(djo.l, djo.lg.m())
-         .put(djo.k, djo.lg.m())
-         .put(djo.fA, djo.lg.m())
-         .put(djo.tj, djo.lg.m())
-         .build()
-   );
+public class cxs extends cwm {
+   public static final int a = 5;
+   public static final float b = 3.0F;
 
-   public cxs(cyg $$0, float $$1, float $$2, cwl.a $$3) {
-      super($$0, awp.bF, $$1, $$2, $$3);
+   public cxs(cwm.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bsk a(dai $$0) {
-      dgi $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwx $$3 = $$1.a_($$2);
-      if ($$0.k() == jn.a) {
-         return bsk.e;
-      } else {
-         cox $$4 = $$0.o();
-         dwx $$5 = a.get($$3.b());
-         dwx $$6 = null;
-         if ($$5 != null && $$1.a_($$2.d()).l()) {
-            $$1.a($$4, $$2, awa.xk, awb.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dkb && $$3.c(dkb.c)) {
-            if (!$$1.B_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
+   public wp a(cwq $$0) {
+      cvn $$1 = $$0.a(kv.aj);
+      return (wp)($$1 != null ? wp.c(this.l + "." + $$1.b()) : super.a($$0));
+   }
 
-            dkb.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.b(dkb.c, Boolean.valueOf(false));
-         }
+   @Override
+   public void a(cwq $$0, cwm.b $$1, List<wp> $$2, cyi $$3) {
+      cut.a($$0, $$2);
+   }
 
-         if ($$6 != null) {
-            if (!$$1.C) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(ebt.c, $$2, ebt.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bvh.d($$0.p()));
-               }
-            }
+   @Override
+   public cws b(cwq $$0) {
+      return cws.d;
+   }
 
-            return bsk.a;
-         } else {
-            return bsk.e;
-         }
-      }
+   @Override
+   public int a(cwq $$0, bvi $$1) {
+      return 72000;
+   }
+
+   @Override
+   public bsl a(dgj $$0, coy $$1, bsk $$2) {
+      $$1.c($$2);
+      return bsl.c;
    }
 }

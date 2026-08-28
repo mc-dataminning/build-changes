@@ -1,6 +1,8 @@
-public class gzv extends gzb {
+public class gzv extends gzl implements hac {
    public boolean a;
-   public boolean b;
-   public float c;
-   public cnn d = cnn.f;
+
+   @Override
+   public boolean a() {
+      return this.a;
+   }
 }

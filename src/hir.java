@@ -1,32 +1,5 @@
-public class hir implements hhz {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final gkw e;
-   private final hjv f;
-   private int g = 0;
+public interface hir extends hiq {
+   boolean m();
 
-   public hir(gkw $$0, hjv $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bo()) {
-         float $$0 = this.e.dV().A.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((hip)(new his.a(this.e, awa.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((hip)(new his.a(this.e, awa.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((hip)(new his.a(this.e, awa.A)));
-         }
-      }
-   }
+   void q();
 }

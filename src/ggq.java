@@ -1,181 +1,167 @@
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class ggq {
    private static final Logger a = LogUtils.getLogger();
-   private static final wp b = wp.c("multiplayer.status.cannot_connect").b(-65536);
-   private final List<vi> c = Collections.synchronizedList(Lists.newArrayList());
+   private static final brb b = new brb(af.h(), "server-list-io");
+   private static final int c = 16;
+   private final flk d;
+   private final List<ggp> e = Lists.newArrayList();
+   private final List<ggp> f = Lists.newArrayList();
 
-   public void a(final ggo $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
-      final ghr $$3 = ghr.a($$0.b);
-      Optional<InetSocketAddress> $$4 = ght.a.a($$3).map(ghq::d);
-      if ($$4.isEmpty()) {
-         this.a(ftk.b, $$0);
-      } else {
-         final InetSocketAddress $$5 = $$4.get();
-         final vi $$6 = vi.a($$5, false, null);
-         this.c.add($$6);
-         $$0.d = wp.c("multiplayer.status.pinging");
-         $$0.i = Collections.emptyList();
-         ajq $$7 = new ajq() {
-            private boolean h;
-            private boolean i;
-            private long j;
-
-            @Override
-            public void a(ajr $$0x) {
-               if (this.i) {
-                  $$6.a(wp.c("multiplayer.status.unrequested"));
-               } else {
-                  this.i = true;
-                  ajs $$1 = $$0.b();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = wp.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = wp.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = ggq.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<wp> $$2xx = new ArrayList<>($$1xxx.c().size());
-
-                        for (GameProfile $$3xx : $$1xxx.c()) {
-                           $$2xx.add(wp.b($$3xx.getName()));
-                        }
-
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(wp.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
-
-                        $$0.i = $$2xx;
-                     } else {
-                        $$0.i = List.of();
-                     }
-                  }, () -> $$0.c = wp.c("multiplayer.status.unknown").a(n.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a(ggo.b($$2xx.a()));
-                        $$1.run();
-                     }
-                  });
-                  this.j = af.c();
-                  $$6.a(new ajo(this.j));
-                  this.h = true;
-               }
-            }
-
-            @Override
-            public void a(ajl $$0x) {
-               long $$1 = this.j;
-               long $$2 = af.c();
-               $$0.f = $$2 - $$1;
-               $$6.a(wp.c("multiplayer.status.finished"));
-               $$2.run();
-            }
-
-            @Override
-            public void a(vk $$0x) {
-               if (!this.h) {
-                  ggq.this.a($$0.a(), $$0);
-                  ggq.this.a($$5, $$3, $$0);
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return $$6.i();
-            }
-         };
-
-         try {
-            $$6.a($$3.a(), $$3.b(), $$7);
-            $$6.a(aju.a);
-         } catch (Throwable var10) {
-            a.error("Failed to ping server {}", $$3, var10);
-         }
-      }
-   }
-
-   void a(wp $$0, ggo $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = wo.a;
-   }
-
-   void a(InetSocketAddress $$0, final ghr $$1, final ggo $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)vi.e.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
-            try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
-            }
-
-            $$0.pipeline().addLast(new ChannelHandler[]{new ggh($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.a(ggo.b.d);
-               $$2.h = wp.b($$2xx);
-               $$2.d = wp.b($$3);
-               $$2.c = ggq.a($$4, $$5);
-               $$2.e = new ajs.b($$5, $$4, List.of());
-            })});
-         }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
-   }
-
-   public static wp a(int $$0, int $$1) {
-      wp $$2 = wp.b(Integer.toString($$0)).a(n.h);
-      wp $$3 = wp.b(Integer.toString($$1)).a(n.h);
-      return wp.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
+   public ggq(flk $$0) {
+      this.d = $$0;
    }
 
    public void a() {
-      synchronized (this.c) {
-         Iterator<vi> $$0 = this.c.iterator();
+      try {
+         this.e.clear();
+         this.f.clear();
+         tq $$0 = ud.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
 
-         while ($$0.hasNext()) {
-            vi $$1 = $$0.next();
-            if ($$1.i()) {
-               $$1.b();
+         tw $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            tq $$3 = $$1.a($$2);
+            ggp $$4 = ggp.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
             } else {
-               $$0.remove();
-               $$1.n();
+               this.e.add($$4);
             }
          }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
       }
    }
 
    public void b() {
-      synchronized (this.c) {
-         Iterator<vi> $$0 = this.c.iterator();
+      try {
+         tw $$0 = new tw();
 
-         while ($$0.hasNext()) {
-            vi $$1 = $$0.next();
-            if ($$1.i()) {
-               $$0.remove();
-               $$1.a(wp.c("multiplayer.status.cancelled"));
-            }
+         for (ggp $$1 : this.e) {
+            tq $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (ggp $$3 : this.f) {
+            tq $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         tq $$5 = new tq();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         ud.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         af.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
+   }
+
+   public ggp a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Nullable
+   public ggp a(String $$0) {
+      for (ggp $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
          }
       }
+
+      for (ggp $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   public ggp b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         ggp $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(ggp $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(ggp $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      ggp $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, ggp $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(ggp $$0, List<ggp> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         ggp $$3 = $$1.get($$2);
+         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(ggp $$0) {
+      b.a_(() -> {
+         ggq $$1 = new ggq(flk.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

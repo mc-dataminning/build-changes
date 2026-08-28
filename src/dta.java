@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dta extends dsv implements dsw {
-   public static final MapCodec<dta> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dsw.a.e.fieldOf("weathering_state").forGetter(dta::q), t()).apply($$0, dta::new)
+public class dta extends djn implements dsx {
+   public static final MapCodec<dta> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsx.a.e.fieldOf("weathering_state").forGetter(dkp::c), t()).apply($$0, dta::new)
    );
-   private final dsw.a f;
+   private final dsx.a e;
 
    @Override
-   protected MapCodec<dta> a() {
-      return e;
+   public MapCodec<dta> a() {
+      return d;
    }
 
-   protected dta(dsw.a $$0, dww.d $$1) {
+   public dta(dsx.a $$0, dwx.d $$1) {
       super($$1);
-      this.f = $$0;
+      this.e = $$0;
    }
 
    @Override
-   protected void b(dwx $$0, ard $$1, ji $$2, azh $$3) {
+   protected void b(dwy $$0, ard $$1, ji $$2, azh $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean f(dwx $$0) {
-      return dsw.c($$0.b()).isPresent();
+   protected boolean f(dwy $$0) {
+      return dsx.c($$0.b()).isPresent();
    }
 
-   public dsw.a q() {
-      return this.f;
+   public dsx.a q() {
+      return this.e;
    }
 }

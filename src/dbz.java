@@ -1,26 +1,29 @@
-import java.util.Optional;
-
-public interface dbz extends dbe<dca> {
-   @Override
-   default dbp<dbz> b() {
-      return dbp.g;
+public class dbz extends dal {
+   public dbz(String $$0, dar $$1, dbb $$2, cwq $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   dbo<? extends dbz> a();
-
-   default boolean a(dca $$0, dgi $$1) {
-      return dba.a(this.c(), $$0.c()) && dba.a(this.f(), $$0.d()) && dba.a(this.k(), $$0.e());
+   protected cwm f() {
+      return cwu.fe;
    }
 
-   Optional<dba> c();
-
-   Optional<dba> f();
-
-   Optional<dba> k();
+   @Override
+   public dbp<dbz> a() {
+      return dbp.o;
+   }
 
    @Override
-   default dbh h() {
-      return dbg.l;
+   public dbq<dbz> b() {
+      return dbq.b;
+   }
+
+   @Override
+   public dbi h() {
+      return switch (this.e()) {
+         case b -> dbh.f;
+         case a -> dbh.e;
+         case c -> dbh.g;
+      };
    }
 }

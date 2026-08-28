@@ -1,77 +1,31 @@
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
 
-public class daz extends dau {
-   private static final Map<cwl, cze.a> c = Map.of(
-      cwt.uV,
-      cze.a.b,
-      cwt.pY,
-      cze.a.e,
-      cwt.tf,
-      cze.a.c,
-      cwt.vk,
-      cze.a.d,
-      cwt.vl,
-      cze.a.d,
-      cwt.vo,
-      cze.a.d,
-      cwt.vm,
-      cze.a.d,
-      cwt.vp,
-      cze.a.d,
-      cwt.vn,
-      cze.a.d,
-      cwt.vq,
-      cze.a.d
-   );
-   private static final dba d = dba.a(cwt.pe);
-   private static final dba e = dba.a(cwt.rV);
-   private static final dba f = dba.a(cwt.pZ);
+public class daz extends dav {
+   private static final dbb c = dbb.a(cwu.vu);
 
-   public daz(dar $$0) {
+   public daz(das $$0) {
       super($$0);
    }
 
-   public boolean a(das $$0, dgi $$1) {
+   public boolean a(dat $$0, dgj $$1) {
       if ($$0.e() < 2) {
          return false;
       } else {
          boolean $$2 = false;
          boolean $$3 = false;
-         boolean $$4 = false;
-         boolean $$5 = false;
-         boolean $$6 = false;
 
-         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
-            cwp $$8 = $$0.a($$7);
-            if (!$$8.f()) {
-               if (c.containsKey($$8.h())) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else if (e.a($$8)) {
-                  if ($$6) {
-                     return false;
-                  }
-
-                  $$6 = true;
-               } else if (d.a($$8)) {
-                  if ($$5) {
-                     return false;
-                  }
-
-                  $$5 = true;
-               } else if (f.a($$8)) {
-                  if ($$2) {
-                     return false;
-                  }
-
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cwq $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cvo) {
                   $$2 = true;
                } else {
-                  if (!($$8.h() instanceof cvn)) {
+                  if (!c.a($$5)) {
+                     return false;
+                  }
+
+                  if ($$3) {
                      return false;
                   }
 
@@ -80,39 +34,33 @@ public class daz extends dau {
             }
          }
 
-         return $$2 && $$3;
+         return $$3 && $$2;
       }
    }
 
-   public cwp a(das $$0, jt.a $$1) {
-      cze.a $$2 = cze.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
+   public cwq a(dat $$0, jt.a $$1) {
+      IntList $$2 = new IntArrayList();
+      cwq $$3 = null;
 
-      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
-         cwp $$7 = $$0.a($$6);
-         if (!$$7.f()) {
-            cze.a $$8 = c.get($$7.h());
-            if ($$8 != null) {
-               $$2 = $$8;
-            } else if (e.a($$7)) {
-               $$3 = true;
-            } else if (d.a($$7)) {
-               $$4 = true;
-            } else if ($$7.h() instanceof cvn $$9) {
-               $$5.add($$9.b().f());
-            }
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwq $$5 = $$0.a($$4);
+         if ($$5.h() instanceof cvo $$7) {
+            $$2.add($$7.b().f());
+         } else if (c.a($$5)) {
+            $$3 = $$5.c(1);
          }
       }
 
-      cwp $$10 = new cwp(cwt.vu);
-      $$10.b(kv.ae, new cze($$2, $$5, IntList.of(), $$4, $$3));
-      return $$10;
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(kv.ae, czf.a, $$2, czf::a);
+         return $$3;
+      } else {
+         return cwq.j;
+      }
    }
 
    @Override
-   public dbo<daz> a() {
-      return dbo.h;
+   public dbp<daz> a() {
+      return dbp.i;
    }
 }

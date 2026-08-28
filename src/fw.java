@@ -41,24 +41,24 @@ public class fw<T> implements ArgumentType<jr.c<T>> {
       }
    }
 
-   public static jr.c<bwk> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr.c<bwl> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mc.c);
    }
 
-   public static jr.c<efk<?, ?>> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr.c<efl<?, ?>> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mc.aL);
    }
 
-   public static jr.c<enm> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr.c<enn> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mc.aU);
    }
 
-   public static jr.c<bus<?>> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr.c<but<?>> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mc.z);
    }
 
-   public static jr.c<bus<?>> e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      jr.c<bus<?>> $$2 = a($$0, $$1, mc.z);
+   public static jr.c<but<?>> e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      jr.c<but<?>> $$2 = a($$0, $$1, mc.z);
       if (!$$2.a().c()) {
          throw d.create($$2.h().a().toString());
       } else {
@@ -66,11 +66,11 @@ public class fw<T> implements ArgumentType<jr.c<T>> {
       }
    }
 
-   public static jr.c<bto> f(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr.c<btp> f(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mc.W);
    }
 
-   public static jr.c<dcz> g(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr.c<dda> g(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mc.aO);
    }
 

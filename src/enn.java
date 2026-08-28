@@ -1,179 +1,241 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
-import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class enn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = -1;
-   private final eab c;
-   private final kf d;
-   private final erp e;
-   private final aku<dgi> f;
-   private final dyt g;
-   private final edg h;
-   private final dgk i;
-   private final dho j;
-   private final long k;
-   private final DataFixer l;
-   private final Long2ObjectMap<Object2IntMap<enm>> m = new Long2ObjectOpenHashMap();
-   private final Map<enm, Long2BooleanMap> n = new HashMap<>();
+public abstract class enn {
+   public static final Codec<enn> a = mb.R.q().dispatch(enn::e, enw::codec);
+   public static final Codec<jr<enn>> b = akr.a(mc.aU, a);
+   protected final enn.c c;
 
-   public enn(eab $$0, kf $$1, erp $$2, aku<dgi> $$3, dyt $$4, edg $$5, dgk $$6, dho $$7, long $$8, DataFixer $$9) {
+   public static <S extends enn> RecordCodecBuilder<S, enn.c> a(Instance<S> $$0) {
+      return enn.c.a.forGetter($$0x -> $$0x.c);
+   }
+
+   public static <S extends enn> MapCodec<S> a(Function<enn.c, S> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(a($$1)).apply($$1, $$0));
+   }
+
+   protected enn(enn.c $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
    }
 
-   public eno a(dfo $$0, enm $$1, eoj $$2, boolean $$3) {
-      long $$4 = $$0.a();
-      Object2IntMap<enm> $$5 = (Object2IntMap<enm>)this.m.get($$4);
-      if ($$5 != null) {
-         return this.a($$5, $$1, $$3);
-      } else {
-         eno $$6 = this.a($$0, $$1, $$3, $$4);
-         if ($$6 != null) {
-            return $$6;
-         } else if (!$$2.a($$0.h, $$0.i, this.k)) {
-            return eno.b;
-         } else {
-            boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));
-            return !$$7 ? eno.b : eno.c;
-         }
-      }
+   public jv<dhl> a() {
+      return this.c.b;
    }
 
-   private boolean b(dfo $$0, enm $$1) {
-      return $$1.b(new enm.a(this.d, this.g, this.j, this.h, this.e, this.k, $$0, this.i, $$1.a()::a)).isPresent();
+   public Map<bvl, enu> b() {
+      return this.c.c;
    }
 
-   @Nullable
-   private eno a(dfo $$0, enm $$1, boolean $$2, long $$3) {
-      uu $$4 = new uu(new uw(tv.a, "DataVersion"), new uw("Level", "Structures", tq.b, "Starts"), new uw("structures", tq.b, "starts"));
+   public ecp.a c() {
+      return this.c.d;
+   }
 
-      try {
-         this.c.a($$0, $$4).join();
-      } catch (Exception var13) {
-         a.warn("Failed to read chunk {}", $$0, var13);
-         return eno.c;
-      }
+   public eny d() {
+      return this.c.e;
+   }
 
-      if (!($$4.d() instanceof tq $$7)) {
-         return null;
-      } else {
-         int $$8 = eac.a($$7);
-         if ($$8 <= 1493) {
-            return eno.c;
-         } else {
-            eac.a($$7, this.f, this.g.c());
+   public enf a(enf $$0) {
+      return this.d() != eny.a ? $$0.a(12) : $$0;
+   }
 
-            tq $$9;
-            try {
-               $$9 = ban.c.a(this.l, $$7, $$8);
-            } catch (Exception var12) {
-               a.warn("Failed to partially datafix chunk {}", $$0, var12);
-               return eno.c;
+   public env a(jr<enn> $$0, aku<dgj> $$1, kf $$2, dyu $$3, dhp $$4, edh $$5, erq $$6, long $$7, dfp $$8, int $$9, dgl $$10, Predicate<jr<dhl>> $$11) {
+      bpf $$12 = bpc.f.a($$8, $$1, $$0);
+      enn.a $$13 = new enn.a($$2, $$3, $$4, $$5, $$6, $$7, $$8, $$10, $$11);
+      Optional<enn.b> $$14 = this.b($$13);
+      if ($$14.isPresent()) {
+         eof $$15 = $$14.get().a();
+         env $$16 = new env(this, $$8, $$9, $$15.a());
+         if ($$16.b()) {
+            if ($$12 != null) {
+               $$12.finish(true);
             }
 
-            Object2IntMap<enm> $$12 = this.a($$9);
-            if ($$12 == null) {
-               return null;
-            } else {
-               this.a($$3, $$12);
-               return this.a($$12, $$1, $$2);
-            }
+            return $$16;
          }
       }
-   }
 
-   @Nullable
-   private Object2IntMap<enm> a(tq $$0) {
-      if (!$$0.b("structures", 10)) {
-         return null;
-      } else {
-         tq $$1 = $$0.p("structures");
-         if (!$$1.b("starts", 10)) {
-            return null;
-         } else {
-            tq $$2 = $$1.p("starts");
-            if ($$2.g()) {
-               return Object2IntMaps.emptyMap();
-            } else {
-               Object2IntMap<enm> $$3 = new Object2IntOpenHashMap();
-               ke<enm> $$4 = this.d.e(mc.aU);
-
-               for (String $$5 : $$2.e()) {
-                  akv $$6 = akv.c($$5);
-                  if ($$6 != null) {
-                     enm $$7 = $$4.a($$6);
-                     if ($$7 != null) {
-                        tq $$8 = $$2.p($$5);
-                        if (!$$8.g()) {
-                           String $$9 = $$8.l("id");
-                           if (!"INVALID".equals($$9)) {
-                              int $$10 = $$8.h("references");
-                              $$3.put($$7, $$10);
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$3;
-            }
-         }
+      if ($$12 != null) {
+         $$12.finish(false);
       }
+
+      return env.b;
    }
 
-   private static Object2IntMap<enm> a(Object2IntMap<enm> $$0) {
-      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
+   protected static Optional<enn.b> a(enn.a $$0, ect.a $$1, Consumer<eof> $$2) {
+      dfp $$3 = $$0.h();
+      int $$4 = $$3.b();
+      int $$5 = $$3.c();
+      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
+      return Optional.of(new enn.b(new ji($$4, $$6, $$5), $$2));
    }
 
-   private eno a(Object2IntMap<enm> $$0, enm $$1, boolean $$2) {
-      int $$3 = $$0.getOrDefault($$1, -1);
-      return $$3 == -1 || $$2 && $$3 != 0 ? eno.b : eno.a;
+   private static boolean a(enn.b $$0, enn.a $$1) {
+      ji $$2 = $$0.b();
+      return $$1.j.test($$1.b.d().getNoiseBiome(kc.a($$2.u()), kc.a($$2.v()), kc.a($$2.w()), $$1.d.b()));
    }
 
-   public void a(dfo $$0, Map<enm, enu> $$1) {
-      long $$2 = $$0.a();
-      Object2IntMap<enm> $$3 = new Object2IntOpenHashMap();
-      $$1.forEach(($$1x, $$2x) -> {
-         if ($$2x.b()) {
-            $$3.put($$1x, $$2x.f());
-         }
-      });
-      this.a($$2, $$3);
+   public void a(dhh $$0, dhf $$1, dyu $$2, azh $$3, enf $$4, dfp $$5, eoc $$6) {
    }
 
-   private void a(long $$0, Object2IntMap<enm> $$1) {
-      this.m.put($$0, a($$1));
-      this.n.values().forEach($$1x -> $$1x.remove($$0));
+   private static int[] c(enn.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      dyu $$5 = $$0.b();
+      dgl $$6 = $$0.i();
+      edh $$7 = $$0.d();
+      return new int[]{
+         $$5.c($$1, $$3, ect.a.a, $$6, $$7),
+         $$5.c($$1, $$3 + $$4, ect.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3, ect.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3 + $$4, ect.a.a, $$6, $$7)
+      };
    }
 
-   public void a(dfo $$0, enm $$1) {
-      this.m.compute($$0.a(), ($$1x, $$2) -> {
-         if ($$2 == null || $$2.isEmpty()) {
-            $$2 = new Object2IntOpenHashMap();
-         }
+   public static int a(enn.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$2, $$3, $$4);
+      return ($$5[0] + $$5[1] + $$5[2] + $$5[3]) / 4;
+   }
 
-         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
+   protected static int a(enn.a $$0, int $$1, int $$2) {
+      dfp $$3 = $$0.h();
+      int $$4 = $$3.d();
+      int $$5 = $$3.e();
+      return b($$0, $$4, $$5, $$1, $$2);
+   }
+
+   protected static int b(enn.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$3, $$2, $$4);
+      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
+   }
+
+   @Deprecated
+   protected ji a(enn.a $$0, dqf $$1) {
+      int $$2 = 5;
+      int $$3 = 5;
+      if ($$1 == dqf.b) {
+         $$2 = -5;
+      } else if ($$1 == dqf.c) {
+         $$2 = -5;
+         $$3 = -5;
+      } else if ($$1 == dqf.d) {
+         $$3 = -5;
+      }
+
+      dfp $$4 = $$0.h();
+      int $$5 = $$4.a(7);
+      int $$6 = $$4.b(7);
+      return new ji($$5, b($$0, $$5, $$6, $$2, $$3), $$6);
+   }
+
+   protected abstract Optional<enn.b> a(enn.a var1);
+
+   public Optional<enn.b> b(enn.a $$0) {
+      return this.a($$0).filter($$1 -> a($$1, $$0));
+   }
+
+   public abstract enw<?> e();
+
+   public static record a(kf a, dyu b, dhp c, edh d, erq e, eds f, long g, dfp h, dgl i, Predicate<jr<dhl>> j) {
+
+      public a(kf $$0, dyu $$1, dhp $$2, edh $$3, erq $$4, long $$5, dfp $$6, dgl $$7, Predicate<jr<dhl>> $$8) {
+         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
+      }
+
+      private static eds a(long $$0, dfp $$1) {
+         eds $$2 = new eds(new ecu(0L));
+         $$2.c($$0, $$1.h, $$1.i);
          return $$2;
-      });
+      }
+   }
+
+   public static record b(ji a, Either<Consumer<eof>, eof> b) {
+      public b(ji $$0, Consumer<eof> $$1) {
+         this($$0, Either.left($$1));
+      }
+
+      public eof a() {
+         return (eof)this.b.map($$0 -> {
+            eof $$1 = new eof();
+            $$0.accept($$1);
+            return $$1;
+         }, $$0 -> $$0);
+      }
+
+      public ji b() {
+         return this.a;
+      }
+
+      public Either<Consumer<eof>, eof> c() {
+         return this.b;
+      }
+   }
+
+   public static record c(jv<dhl> b, Map<bvl, enu> c, ecp.a d, eny e) {
+      static final enn.c f = new enn.c(jv.a(), Map.of(), ecp.a.e, eny.a);
+      public static final MapCodec<enn.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  kg.a(mc.aI).fieldOf("biomes").forGetter(enn.c::a),
+                  Codec.simpleMap(bvl.i, enu.a, azv.a(bvl.values())).fieldOf("spawn_overrides").forGetter(enn.c::b),
+                  ecp.a.l.fieldOf("step").forGetter(enn.c::c),
+                  eny.f.optionalFieldOf("terrain_adaptation", f.e).forGetter(enn.c::d)
+               )
+               .apply($$0, enn.c::new)
+      );
+
+      public c(jv<dhl> $$0) {
+         this($$0, f.c, f.d, f.e);
+      }
+
+      public jv<dhl> a() {
+         return this.b;
+      }
+
+      public Map<bvl, enu> b() {
+         return this.c;
+      }
+
+      public ecp.a c() {
+         return this.d;
+      }
+
+      public eny d() {
+         return this.e;
+      }
+
+      public static class a {
+         private final jv<dhl> a;
+         private Map<bvl, enu> b = enn.c.f.c;
+         private ecp.a c = enn.c.f.d;
+         private eny d = enn.c.f.e;
+
+         public a(jv<dhl> $$0) {
+            this.a = $$0;
+         }
+
+         public enn.c.a a(Map<bvl, enu> $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public enn.c.a a(ecp.a $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public enn.c.a a(eny $$0) {
+            this.d = $$0;
+            return this;
+         }
+
+         public enn.c a() {
+            return new enn.c(this.a, this.b, this.c, this.d);
+         }
+      }
    }
 }

@@ -1,61 +1,69 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-public record dbr<T extends dbe<?>>(dcp a, Optional<dbj<T>> b) {
-   public static <T extends dbe<?>> yn<wa, dbr<T>> a() {
-      return yn.a(dcp.b, dbr::b, $$0 -> new dbr<>($$0, Optional.empty()));
+public class dbr extends dav {
+   public dbr(das $$0) {
+      super($$0);
    }
 
-   public dcp b() {
-      return this.a;
+   @Nullable
+   private static Pair<cwq, cwq> c(dat $$0) {
+      if ($$0.e() != 2) {
+         return null;
+      } else {
+         cwq $$1 = null;
+
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cwq $$3 = $$0.a($$2);
+            if (!$$3.f()) {
+               if ($$1 != null) {
+                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
+               }
+
+               $$1 = $$3;
+            }
+         }
+
+         return null;
+      }
    }
 
-   public Optional<dbj<T>> c() {
-      return this.b;
+   private static boolean a(cwq $$0, cwq $$1) {
+      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.b(kv.d) && $$1.b(kv.d) && $$0.b(kv.e) && $$1.b(kv.e);
    }
 
-   public static record a<T extends dbe<?>>(dba a, dbr<T> b) {
+   public boolean a(dat $$0, dgj $$1) {
+      return c($$0) != null;
+   }
 
-      public static <T extends dbe<?>> yn<wa, dbr.a<T>> a() {
-         return yn.a(dba.a, dbr.a::b, dbr.a(), dbr.a::c, dbr.a::new);
-      }
-
-      public dba b() {
-         return this.a;
-      }
-
-      public dbr<T> c() {
-         return this.b;
+   public cwq a(dat $$0, jt.a $$1) {
+      Pair<cwq, cwq> $$2 = c($$0);
+      if ($$2 == null) {
+         return cwq.j;
+      } else {
+         cwq $$3 = (cwq)$$2.getFirst();
+         cwq $$4 = (cwq)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cwq $$9 = new cwq($$3.h());
+         $$9.b(kv.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         ddg $$10 = ddc.b($$3);
+         ddg $$11 = ddc.b($$4);
+         ddc.a($$9, $$3x -> $$1.d(mc.aO).c().filter($$0xx -> $$0xx.a(aws.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
       }
    }
 
-   public static record b<T extends dbe<?>>(List<dbr.a<T>> a) {
-      public static <T extends dbe<?>> dbr.b<T> a() {
-         return new dbr.b<>(List.of());
-      }
-
-      public static <T extends dbe<?>> yn<wa, dbr.b<T>> b() {
-         return yn.a(dbr.a.<T>a().a(yl.a()), dbr.b::e, dbr.b::new);
-      }
-
-      public boolean a(cwp $$0) {
-         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
-      }
-
-      public dbr.b<T> b(cwp $$0) {
-         return new dbr.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
-      }
-
-      public boolean c() {
-         return this.a.isEmpty();
-      }
-
-      public int d() {
-         return this.a.size();
-      }
-
-      public List<dbr.a<T>> e() {
-         return this.a;
-      }
+   @Override
+   public dbp<dbr> a() {
+      return dbp.n;
    }
 }

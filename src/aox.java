@@ -25,23 +25,23 @@ public class aox {
       );
    }
 
-   public static bul a(ex $$0, jr.c<bus<?>> $$1, fba $$2, tq $$3, boolean $$4) throws CommandSyntaxException {
+   public static bum a(ex $$0, jr.c<but<?>> $$1, fbb $$2, tq $$3, boolean $$4) throws CommandSyntaxException {
       ji $$5 = ji.a((kb)$$2);
-      if (!dgi.l($$5)) {
+      if (!dgj.l($$5)) {
          throw c.create();
       } else {
          tq $$6 = $$3.i();
          $$6.a("id", $$1.h().a().toString());
          ard $$7 = $$0.e();
-         bul $$8 = bus.a($$6, $$7, bur.n, $$1x -> {
+         bum $$8 = but.a($$6, $$7, bus.n, $$1x -> {
             $$1x.b($$2.d, $$2.e, $$2.f, $$1x.dL(), $$1x.dN());
             return $$1x;
          });
          if ($$8 == null) {
             throw a.create();
          } else {
-            if ($$4 && $$8 instanceof bvj) {
-               ((bvj)$$8).a($$0.e(), $$0.e().d_($$8.dv()), bur.n, null);
+            if ($$4 && $$8 instanceof bvk) {
+               ((bvk)$$8).a($$0.e(), $$0.e().d_($$8.dv()), bus.n, null);
             }
 
             if (!$$7.e($$8)) {
@@ -53,8 +53,8 @@ public class aox {
       }
    }
 
-   private static int b(ex $$0, jr.c<bus<?>> $$1, fba $$2, tq $$3, boolean $$4) throws CommandSyntaxException {
-      bul $$5 = a($$0, $$1, $$2, $$3, $$4);
+   private static int b(ex $$0, jr.c<but<?>> $$1, fbb $$2, tq $$3, boolean $$4) throws CommandSyntaxException {
+      bum $$5 = a($$0, $$1, $$2, $$3, $$4);
       $$0.a(() -> wp.a("commands.summon.success", $$5.p_()), true);
       return 1;
    }

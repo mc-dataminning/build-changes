@@ -1,108 +1,475 @@
-import java.util.Arrays;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicLike;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public enum dgf implements azv {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
+public class dgf {
+   public static final int a = 3;
+   static final Logger ac = LogUtils.getLogger();
+   private static final Map<dgf.e<?>, dgf.f<?>> ad = Maps.newTreeMap(Comparator.comparing($$0 -> $$0.a));
+   public static final dgf.e<dgf.a> b = a("doFireTick", dgf.b.e, dgf.a.a(true));
+   public static final dgf.e<dgf.a> c = a("mobGriefing", dgf.b.b, dgf.a.a(true));
+   public static final dgf.e<dgf.a> d = a("keepInventory", dgf.b.a, dgf.a.a(false));
+   public static final dgf.e<dgf.a> e = a("doMobSpawning", dgf.b.c, dgf.a.a(true));
+   public static final dgf.e<dgf.a> f = a("doMobLoot", dgf.b.d, dgf.a.a(true));
+   public static final dgf.e<dgf.a> g = a("projectilesCanBreakBlocks", dgf.b.d, dgf.a.a(true));
+   public static final dgf.e<dgf.a> h = a("doTileDrops", dgf.b.d, dgf.a.a(true));
+   public static final dgf.e<dgf.a> i = a("doEntityDrops", dgf.b.d, dgf.a.a(true));
+   public static final dgf.e<dgf.a> j = a("commandBlockOutput", dgf.b.f, dgf.a.a(true));
+   public static final dgf.e<dgf.a> k = a("naturalRegeneration", dgf.b.a, dgf.a.a(true));
+   public static final dgf.e<dgf.a> l = a("doDaylightCycle", dgf.b.e, dgf.a.a(true));
+   public static final dgf.e<dgf.a> m = a("logAdminCommands", dgf.b.f, dgf.a.a(true));
+   public static final dgf.e<dgf.a> n = a("showDeathMessages", dgf.b.f, dgf.a.a(true));
+   public static final dgf.e<dgf.d> o = a("randomTickSpeed", dgf.b.e, dgf.d.a(3));
+   public static final dgf.e<dgf.a> p = a("sendCommandFeedback", dgf.b.f, dgf.a.a(true));
+   public static final dgf.e<dgf.a> q = a("reducedDebugInfo", dgf.b.g, dgf.a.a(false, ($$0, $$1) -> {
+      byte $$2 = (byte)($$1.a() ? 22 : 23);
 
-   public static final dgf e = a;
-   public static final azv.a<dgf> f = azv.a(dgf::values);
-   private static final IntFunction<dgf> g = axq.a(dgf::a, values(), axq.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final wp k;
-   private final wp l;
+      for (are $$3 : $$0.ag().t()) {
+         $$3.f.b(new acp($$3, $$2));
+      }
+   }));
+   public static final dgf.e<dgf.a> r = a("spectatorsGenerateChunks", dgf.b.a, dgf.a.a(true));
+   public static final dgf.e<dgf.d> s = a("spawnRadius", dgf.b.a, dgf.d.a(10));
+   public static final dgf.e<dgf.a> t = a("disablePlayerMovementCheck", dgf.b.a, dgf.a.a(false));
+   public static final dgf.e<dgf.a> u = a("disableElytraMovementCheck", dgf.b.a, dgf.a.a(false));
+   public static final dgf.e<dgf.d> v = a("maxEntityCramming", dgf.b.b, dgf.d.a(24));
+   public static final dgf.e<dgf.a> w = a("doWeatherCycle", dgf.b.e, dgf.a.a(true));
+   public static final dgf.e<dgf.a> x = a("doLimitedCrafting", dgf.b.a, dgf.a.a(false, ($$0, $$1) -> {
+      for (are $$2 : $$0.ag().t()) {
+         $$2.f.b(new act(act.n, $$1.a() ? 1.0F : 0.0F));
+      }
+   }));
+   public static final dgf.e<dgf.d> y = a("maxCommandChainLength", dgf.b.g, dgf.d.a(65536));
+   public static final dgf.e<dgf.d> z = a("maxCommandForkCount", dgf.b.g, dgf.d.a(65536));
+   public static final dgf.e<dgf.d> A = a("commandModificationBlockLimit", dgf.b.g, dgf.d.a(32768));
+   public static final dgf.e<dgf.a> B = a("announceAdvancements", dgf.b.f, dgf.a.a(true));
+   public static final dgf.e<dgf.a> C = a("disableRaids", dgf.b.b, dgf.a.a(false));
+   public static final dgf.e<dgf.a> D = a("doInsomnia", dgf.b.c, dgf.a.a(true));
+   public static final dgf.e<dgf.a> E = a("doImmediateRespawn", dgf.b.a, dgf.a.a(false, ($$0, $$1) -> {
+      for (are $$2 : $$0.ag().t()) {
+         $$2.f.b(new act(act.m, $$1.a() ? 1.0F : 0.0F));
+      }
+   }));
+   public static final dgf.e<dgf.d> F = a("playersNetherPortalDefaultDelay", dgf.b.a, dgf.d.a(80));
+   public static final dgf.e<dgf.d> G = a("playersNetherPortalCreativeDelay", dgf.b.a, dgf.d.a(0));
+   public static final dgf.e<dgf.a> H = a("drowningDamage", dgf.b.a, dgf.a.a(true));
+   public static final dgf.e<dgf.a> I = a("fallDamage", dgf.b.a, dgf.a.a(true));
+   public static final dgf.e<dgf.a> J = a("fireDamage", dgf.b.a, dgf.a.a(true));
+   public static final dgf.e<dgf.a> K = a("freezeDamage", dgf.b.a, dgf.a.a(true));
+   public static final dgf.e<dgf.a> L = a("doPatrolSpawning", dgf.b.c, dgf.a.a(true));
+   public static final dgf.e<dgf.a> M = a("doTraderSpawning", dgf.b.c, dgf.a.a(true));
+   public static final dgf.e<dgf.a> N = a("doWardenSpawning", dgf.b.c, dgf.a.a(true));
+   public static final dgf.e<dgf.a> O = a("forgiveDeadPlayers", dgf.b.b, dgf.a.a(true));
+   public static final dgf.e<dgf.a> P = a("universalAnger", dgf.b.b, dgf.a.a(false));
+   public static final dgf.e<dgf.d> Q = a("playersSleepingPercentage", dgf.b.a, dgf.d.a(100));
+   public static final dgf.e<dgf.a> R = a("blockExplosionDropDecay", dgf.b.d, dgf.a.a(true));
+   public static final dgf.e<dgf.a> S = a("mobExplosionDropDecay", dgf.b.d, dgf.a.a(true));
+   public static final dgf.e<dgf.a> T = a("tntExplosionDropDecay", dgf.b.d, dgf.a.a(false));
+   public static final dgf.e<dgf.d> U = a("snowAccumulationHeight", dgf.b.e, dgf.d.a(1));
+   public static final dgf.e<dgf.a> V = a("waterSourceConversion", dgf.b.e, dgf.a.a(true));
+   public static final dgf.e<dgf.a> W = a("lavaSourceConversion", dgf.b.e, dgf.a.a(false));
+   public static final dgf.e<dgf.a> X = a("globalSoundEvents", dgf.b.g, dgf.a.a(true));
+   public static final dgf.e<dgf.a> Y = a("doVinesSpread", dgf.b.e, dgf.a.a(true));
+   public static final dgf.e<dgf.a> Z = a("enderPearlsVanishOnDeath", dgf.b.a, dgf.a.a(true));
+   public static final dgf.e<dgf.d> aa = a("minecartMaxSpeed", dgf.b.g, dgf.d.a(8, 1, 1000, cru.a(crw.d), ($$0, $$1) -> {
+   }));
+   public static final dgf.e<dgf.d> ab = a("spawnChunkRadius", dgf.b.g, dgf.d.a(2, 0, 32, cru.a(), ($$0, $$1) -> {
+      ard $$2 = $$0.J();
+      $$2.a($$2.Z(), $$2.aa());
+   }));
+   private final Map<dgf.e<?>, dgf.g<?>> ae;
+   private final cru af;
 
-   private dgf(final int $$0, final String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = wp.c("selectWorld.gameMode." + $$1);
-      this.l = wp.c("gameMode." + $$1);
-   }
-
-   public int a() {
-      return this.i;
-   }
-
-   public String b() {
-      return this.j;
-   }
-
-   @Override
-   public String c() {
-      return this.j;
-   }
-
-   public wp d() {
-      return this.l;
-   }
-
-   public wp e() {
-      return this.k;
-   }
-
-   public void a(cot $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
+   private static <T extends dgf.g<T>> dgf.e<T> a(String $$0, dgf.b $$1, dgf.f<T> $$2) {
+      dgf.e<T> $$3 = new dgf.e<>($$0, $$1);
+      dgf.f<?> $$4 = ad.put($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate game rule registration for " + $$0);
       } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
+         return $$3;
+      }
+   }
+
+   public dgf(cru $$0, DynamicLike<?> $$1) {
+      this($$0);
+      this.a($$1);
+   }
+
+   public dgf(cru $$0) {
+      this(b($$0).collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((dgf.f)$$0x.getValue()).a())), $$0);
+   }
+
+   private static Stream<Entry<dgf.e<?>, dgf.f<?>>> b(cru $$0) {
+      return ad.entrySet().stream().filter($$1 -> $$1.getValue().e.a($$0));
+   }
+
+   private dgf(Map<dgf.e<?>, dgf.g<?>> $$0, cru $$1) {
+      this.ae = $$0;
+      this.af = $$1;
+   }
+
+   public <T extends dgf.g<T>> T a(dgf.e<T> $$0) {
+      T $$1 = (T)this.ae.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Tried to access invalid game rule");
+      } else {
+         return $$1;
+      }
+   }
+
+   public tq a() {
+      tq $$0 = new tq();
+      this.ae.forEach(($$1, $$2) -> $$0.a($$1.a, $$2.b()));
+      return $$0;
+   }
+
+   private void a(DynamicLike<?> $$0) {
+      this.ae.forEach(($$1, $$2) -> $$0.get($$1.a).asString().ifSuccess($$2::a));
+   }
+
+   public dgf a(cru $$0) {
+      return new dgf(
+         b($$0)
+            .collect(
+               ImmutableMap.toImmutableMap(
+                  Entry::getKey, $$0x -> this.ae.containsKey($$0x.getKey()) ? this.ae.get($$0x.getKey()) : ((dgf.f)$$0x.getValue()).a()
+               )
+            ),
+         $$0
+      );
+   }
+
+   public void a(dgf.c $$0) {
+      ad.forEach(($$1, $$2) -> this.a($$0, (dgf.e<?>)$$1, (dgf.f<?>)$$2));
+   }
+
+   private <T extends dgf.g<T>> void a(dgf.c $$0, dgf.e<?> $$1, dgf.f<?> $$2) {
+      if ($$2.e.a(this.af)) {
+         $$0.a($$1, $$2);
+         $$2.a($$0, $$1);
+      }
+   }
+
+   public void a(dgf $$0, @Nullable MinecraftServer $$1) {
+      $$0.ae.keySet().forEach($$2 -> this.a((dgf.e<?>)$$2, $$0, $$1));
+   }
+
+   private <T extends dgf.g<T>> void a(dgf.e<T> $$0, dgf $$1, @Nullable MinecraftServer $$2) {
+      T $$3 = $$1.a($$0);
+      this.<T>a($$0).a($$3, $$2);
+   }
+
+   public boolean b(dgf.e<dgf.a> $$0) {
+      return this.a($$0).a();
+   }
+
+   public int c(dgf.e<dgf.d> $$0) {
+      return this.a($$0).a();
+   }
+
+   public static class a extends dgf.g<dgf.a> {
+      private boolean b;
+
+      static dgf.f<dgf.a> a(boolean $$0, BiConsumer<MinecraftServer, dgf.a> $$1) {
+         return new dgf.f<>(BoolArgumentType::bool, $$1x -> new dgf.a($$1x, $$0), $$1, dgf.c::b, cru.a());
       }
 
-      $$0.e = !this.f();
+      static dgf.f<dgf.a> a(boolean $$0) {
+         return a($$0, ($$0x, $$1) -> {
+         });
+      }
+
+      public a(dgf.f<dgf.a> $$0, boolean $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+
+      @Override
+      protected void a(CommandContext<ex> $$0, String $$1) {
+         this.b = BoolArgumentType.getBool($$0, $$1);
+      }
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public void a(boolean $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0;
+         this.a($$1);
+      }
+
+      @Override
+      public String b() {
+         return Boolean.toString(this.b);
+      }
+
+      @Override
+      protected void a(String $$0) {
+         this.b = Boolean.parseBoolean($$0);
+      }
+
+      @Override
+      public int c() {
+         return this.b ? 1 : 0;
+      }
+
+      protected dgf.a d() {
+         return this;
+      }
+
+      protected dgf.a e() {
+         return new dgf.a(this.a, this.b);
+      }
+
+      public void a(dgf.a $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0.b;
+         this.a($$1);
+      }
    }
 
-   public boolean f() {
-      return this == c || this == d;
+   public static enum b {
+      a("gamerule.category.player"),
+      b("gamerule.category.mobs"),
+      c("gamerule.category.spawning"),
+      d("gamerule.category.drops"),
+      e("gamerule.category.updates"),
+      f("gamerule.category.chat"),
+      g("gamerule.category.misc");
+
+      private final String h;
+
+      private b(final String $$0) {
+         this.h = $$0;
+      }
+
+      public String a() {
+         return this.h;
+      }
    }
 
-   public boolean g() {
-      return this == b;
+   public interface c {
+      default <T extends dgf.g<T>> void a(dgf.e<T> $$0, dgf.f<T> $$1) {
+      }
+
+      default void b(dgf.e<dgf.a> $$0, dgf.f<dgf.a> $$1) {
+      }
+
+      default void c(dgf.e<dgf.d> $$0, dgf.f<dgf.d> $$1) {
+      }
    }
 
-   public boolean h() {
-      return this == a || this == c;
+   public static class d extends dgf.g<dgf.d> {
+      private int b;
+
+      private static dgf.f<dgf.d> a(int $$0, BiConsumer<MinecraftServer, dgf.d> $$1) {
+         return new dgf.f<>(IntegerArgumentType::integer, $$1x -> new dgf.d($$1x, $$0), $$1, dgf.c::c, cru.a());
+      }
+
+      static dgf.f<dgf.d> a(int $$0, int $$1, int $$2, cru $$3, BiConsumer<MinecraftServer, dgf.d> $$4) {
+         return new dgf.f<>(() -> IntegerArgumentType.integer($$1, $$2), $$1x -> new dgf.d($$1x, $$0), $$4, dgf.c::c, $$3);
+      }
+
+      static dgf.f<dgf.d> a(int $$0) {
+         return a($$0, ($$0x, $$1) -> {
+         });
+      }
+
+      public d(dgf.f<dgf.d> $$0, int $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+
+      @Override
+      protected void a(CommandContext<ex> $$0, String $$1) {
+         this.b = IntegerArgumentType.getInteger($$0, $$1);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public void a(int $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0;
+         this.a($$1);
+      }
+
+      @Override
+      public String b() {
+         return Integer.toString(this.b);
+      }
+
+      @Override
+      protected void a(String $$0) {
+         this.b = c($$0);
+      }
+
+      public boolean b(String $$0) {
+         try {
+            StringReader $$1 = new StringReader($$0);
+            this.b = (Integer)this.a.a.get().parse($$1);
+            return !$$1.canRead();
+         } catch (CommandSyntaxException var3) {
+            return false;
+         }
+      }
+
+      private static int c(String $$0) {
+         if (!$$0.isEmpty()) {
+            try {
+               return Integer.parseInt($$0);
+            } catch (NumberFormatException var2) {
+               dgf.ac.warn("Failed to parse integer {}", $$0);
+            }
+         }
+
+         return 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b;
+      }
+
+      protected dgf.d d() {
+         return this;
+      }
+
+      protected dgf.d e() {
+         return new dgf.d(this.a, this.b);
+      }
+
+      public void a(dgf.d $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0.b;
+         this.a($$1);
+      }
    }
 
-   public static dgf a(int $$0) {
-      return g.apply($$0);
+   public static final class e<T extends dgf.g<T>> {
+      final String a;
+      private final dgf.b b;
+
+      public e(String $$0, dgf.b $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.a;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return this == $$0 ? true : $$0 instanceof dgf.e && ((dgf.e)$$0).a.equals(this.a);
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.hashCode();
+      }
+
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return "gamerule." + this.a;
+      }
+
+      public dgf.b c() {
+         return this.b;
+      }
    }
 
-   public static dgf a(String $$0) {
-      return a($$0, a);
+   public static class f<T extends dgf.g<T>> {
+      final Supplier<ArgumentType<?>> a;
+      private final Function<dgf.f<T>, T> b;
+      final BiConsumer<MinecraftServer, T> c;
+      private final dgf.h<T> d;
+      final cru e;
+
+      f(Supplier<ArgumentType<?>> $$0, Function<dgf.f<T>, T> $$1, BiConsumer<MinecraftServer, T> $$2, dgf.h<T> $$3, cru $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      public RequiredArgumentBuilder<ex, ?> a(String $$0) {
+         return ey.a($$0, (ArgumentType<T>)this.a.get());
+      }
+
+      public T a() {
+         return this.b.apply(this);
+      }
+
+      public void a(dgf.c $$0, dgf.e<T> $$1) {
+         this.d.call($$0, $$1, this);
+      }
+
+      public cru b() {
+         return this.e;
+      }
    }
 
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static dgf a(String $$0, @Nullable dgf $$1) {
-      dgf $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
+   public abstract static class g<T extends dgf.g<T>> {
+      protected final dgf.f<T> a;
+
+      public g(dgf.f<T> $$0) {
+         this.a = $$0;
+      }
+
+      protected abstract void a(CommandContext<ex> var1, String var2);
+
+      public void b(CommandContext<ex> $$0, String $$1) {
+         this.a($$0, $$1);
+         this.a(((ex)$$0.getSource()).l());
+      }
+
+      protected void a(@Nullable MinecraftServer $$0) {
+         if ($$0 != null) {
+            this.a.c.accept($$0, this.g());
+         }
+      }
+
+      protected abstract void a(String var1);
+
+      public abstract String b();
+
+      @Override
+      public String toString() {
+         return this.b();
+      }
+
+      public abstract int c();
+
+      protected abstract T g();
+
+      protected abstract T f();
+
+      public abstract void a(T var1, @Nullable MinecraftServer var2);
    }
 
-   public static int a(@Nullable dgf $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static dgf b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
-   }
-
-   public static boolean c(int $$0) {
-      return Arrays.stream(values()).anyMatch($$1 -> $$1.i == $$0);
+   interface h<T extends dgf.g<T>> {
+      void call(dgf.c var1, dgf.e<T> var2, dgf.f<T> var3);
    }
 }

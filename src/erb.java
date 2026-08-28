@@ -1,9 +1,19 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class erb {
-   public static final Codec<erb> c = mb.o.q().dispatch("predicate_type", erb::a, erc::codec);
+public class erb extends erc {
+   public static final MapCodec<erb> a = MapCodec.unit(() -> erb.b);
+   public static final erb b = new erb();
 
-   public abstract boolean a(ji var1, ji var2, ji var3, azh var4);
+   private erb() {
+   }
 
-   protected abstract erc<?> a();
+   @Override
+   public boolean a(ji $$0, ji $$1, ji $$2, azh $$3) {
+      return true;
+   }
+
+   @Override
+   protected erd<?> a() {
+      return erd.a;
+   }
 }

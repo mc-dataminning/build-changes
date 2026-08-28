@@ -1,53 +1,74 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public final class hkl extends hkj {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class hkl {
+   public static final hkl a = new hkl(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<hkh<hkl.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   @Override
-   public void a(hkd $$0) {
-      if (flj.Q().C()) {
-         super.a($$0);
+   protected hkl(Ticker $$0) {
+      this.c = $$0;
+   }
+
+   public synchronized void a(hkh<hkl.a> $$0) {
+      this.a($$0, (Function<hkh<hkl.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
+
+   public synchronized void a(hkh<hkl.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<hkh<hkl.a>, Stopwatch>)($$1x -> $$1));
+   }
+
+   private synchronized void a(hkh<hkl.a> $$0, Function<hkh<hkl.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
+
+   public synchronized void b(hkh<hkl.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
       }
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
-   }
-
-   @Override
-   public void f() {
-      this.b.add((long)flj.Q().o());
-      this.h();
-      this.c.add(flj.Q().p());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(hkd $$0) {
-      $$0.send(hke.c, $$0x -> {
-         $$0x.a(hkg.r, new LongArrayList(this.b));
-         $$0x.a(hkg.s, new LongArrayList(this.c));
-         $$0x.a(hkg.t, new LongArrayList(this.d));
-         $$0x.a(hkg.u, this.e());
-         $$0x.a(hkg.v, flj.Q().n.aH());
-         $$0x.a(hkg.w, (int)a);
+   public void a(hke $$0) {
+      $$0.send(hkf.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((hkh<hkl.a>)$$1, new hkl.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hkf.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(hkh.B, new hkl.a((int)$$1)));
+            this.d.clear();
+         }
       });
-      this.g();
    }
 
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
+   }
+
+   public static record a(int b) {
+      public static final Codec<hkl.a> a = Codec.INT.xmap(hkl.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
+      }
    }
 }

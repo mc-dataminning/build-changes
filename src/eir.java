@@ -1,26 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eir implements eic {
+public class eir implements eid {
    public static final Codec<eir> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwx.a.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dwx.a.fieldOf("state").forGetter($$0x -> $$0x.c),
-               brp.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eir::new)
+      $$0 -> $$0.group(Codec.list(eil.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, eir::new)
    );
-   public final dwx b;
-   public final dwx c;
-   private final brp d;
+   public final List<eil.a> b;
 
-   public eir(dwx $$0, dwx $$1, brp $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public eir(dwy $$0, dwy $$1) {
+      this(ImmutableList.of(eil.a(new eqt($$0), $$1)));
    }
 
-   public brp a() {
-      return this.d;
+   public eir(List<eil.a> $$0) {
+      this.b = $$0;
    }
 }

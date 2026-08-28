@@ -3,28 +3,43 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ewb extends ewj {
-   public static final MapCodec<ewb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akv.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ewb::new)
-   );
-   private final akv j;
+public abstract class ewb extends ewi {
+   protected final List<ewi> d;
+   private final ewa a;
 
-   private ewb(akv $$0, int $$1, int $$2, List<eza> $$3, List<exf> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected ewb(List<ewi> $$0, List<ezb> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public ewi a() {
-      return ewf.e;
+   public void a(evy $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
+
+   protected abstract ewa a(List<? extends ewa> var1);
 
    @Override
-   public void a(Consumer<cwp> $$0, evr $$1) {
-      $$1.a(this.j, $$0);
+   public final boolean expand(evs $$0, Consumer<ewh> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static ewj.a<?> a(akv $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewb($$0, $$1, $$2, $$3, $$4));
+   public static <T extends ewb> MapCodec<T> a(ewb.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(ewg.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
+
+   @FunctionalInterface
+   public interface a<T extends ewb> {
+      T create(List<ewi> var1, List<ezb> var2);
    }
 }

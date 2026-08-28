@@ -5,9 +5,9 @@ public interface aqt {
 
    void a(aqu var1);
 
-   CompletableFuture<dys> a(aqu var1, dzw var2, azt<aqu> var3);
+   CompletableFuture<dyt> a(aqu var1, dzx var2, azt<aqu> var3);
 
-   aqf a(dzt var1, dfo var2);
+   aqf a(dzu var1, dfp var2);
 
    void g();
 }

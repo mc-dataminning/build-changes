@@ -1,22 +1,17 @@
-public class gsr extends gqy<ciy, gyw, gci> {
-   private static final akv a = akv.b("textures/entity/goat/goat.png");
+public class gsr extends guo<bva> {
+   private static final akv a = akv.b("textures/entity/squid/glow_squid.png");
 
-   public gsr(gse.a $$0) {
-      super($$0, new gci($$0.a(gfc.aX)), new gci($$0.a(gfc.aY)), 0.7F);
+   public gsr(gsf.a $$0, gef $$1, gef $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public akv a(gyw $$0) {
+   @Override
+   public akv a(hal $$0) {
       return a;
    }
 
-   public gyw b() {
-      return new gyw();
-   }
-
-   public void a(ciy $$0, gyw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gs();
-      $$1.b = $$0.gt();
-      $$1.c = $$0.gF();
+   protected int a(bva $$0, ji $$1) {
+      int $$2 = (int)ayz.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

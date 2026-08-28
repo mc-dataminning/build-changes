@@ -1,169 +1,144 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Base64;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class ggo {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public wp c;
-   public wp d;
    @Nullable
-   public ajs.b e;
-   public long f;
-   public int g = ab.b().e();
-   public wp h = wp.b(ab.b().c());
-   public List<wp> i = Collections.emptyList();
-   private ggo.a l = ggo.a.c;
+   private ggo.a a;
    @Nullable
-   private byte[] m;
-   private ggo.c n;
-   private ggo.b o = ggo.b.a;
+   private ggo.b b;
 
-   public ggo(String $$0, String $$1, ggo.c $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
-   }
-
-   public tq a() {
-      tq $$0 = new tq();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+   public void a(aku<? extends ke<?>> $$0, List<ki.a> $$1) {
+      if (this.a == null) {
+         this.a = new ggo.a();
       }
 
-      if (this.l == ggo.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == ggo.a.b) {
-         $$0.a("acceptTextures", false);
+      this.a.a($$0, $$1);
+   }
+
+   public void a(Map<aku<? extends ke<?>>, axh.a> $$0) {
+      if (this.b == null) {
+         this.b = new ggo.b();
       }
 
-      return $$0;
+      $$0.forEach(this.b::a);
    }
 
-   public ggo.a b() {
-      return this.l;
+   private static <T> ke.a<T> a(kf.b $$0, aku<? extends ke<? extends T>> $$1, axh.a $$2) {
+      ke<T> $$3 = $$0.e($$1);
+      return $$3.a($$2.a($$3));
    }
 
-   public void a(ggo.a $$0) {
-      this.l = $$0;
-   }
-
-   public static ggo a(tq $$0) {
-      ggo $$1 = new ggo($$0.l("name"), $$0.l("ip"), ggo.c.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
-            $$1.a(b($$2));
-         } catch (IllegalArgumentException var3) {
-            j.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 99)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(ggo.a.a);
-         } else {
-            $$1.a(ggo.a.b);
-         }
-      } else {
-         $$1.a(ggo.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == ggo.c.a;
-   }
-
-   public boolean e() {
-      return this.n == ggo.c.b;
-   }
-
-   public ggo.c f() {
-      return this.n;
-   }
-
-   public void a(ggo $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(ggo $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public ggo.b g() {
-      return this.o;
-   }
-
-   public void a(ggo.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            aze $$1 = aze.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
+   private kf a(aus $$0, ggo.a $$1, boolean $$2) {
+      jy<ggd> $$3 = ggd.a();
+      kf.b $$4 = $$3.b(ggd.b);
+      Map<aku<? extends ke<?>>, akq.c> $$5 = new HashMap<>();
+      $$1.a.forEach(($$1x, $$2x) -> $$5.put($$1x, new akq.c($$2x, axh.a.a)));
+      List<ke.a<?>> $$6 = new ArrayList<>();
+      if (this.b != null) {
+         this.b.a(($$4x, $$5x) -> {
+            if (!$$5x.a()) {
+               if (ki.a($$4x)) {
+                  $$5.compute($$4x, ($$1xx, $$2xx) -> {
+                     List<ki.a> $$3xx = $$2xx != null ? $$2xx.a() : List.of();
+                     return new akq.c($$3xx, $$5x);
+                  });
+               } else if (!$$2) {
+                  $$6.add(a($$4, $$4x, $$5x));
+               }
             }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
+         });
+      }
+
+      List<jt.b<?>> $$7 = axg.a($$4, $$6);
+
+      kf.b $$8;
+      try {
+         $$8 = akq.a($$5, $$0, $$7, akq.c).e();
+      } catch (Exception var13) {
+         o $$10 = o.a(var13, "Network Registry Load");
+         a($$10, $$5, $$6);
+         throw new z($$10);
+      }
+
+      kf $$12 = $$3.a(ggd.b, $$8).a();
+      $$6.forEach(ke.a::d);
+      return $$12;
+   }
+
+   private static void a(o $$0, Map<aku<? extends ke<?>>, akq.c> $$1, List<ke.a<?>> $$2) {
+      p $$3 = $$0.a("Received Elements and Tags");
+      $$3.a(
+         "Dynamic Registries",
+         () -> $$1.entrySet()
+               .stream()
+               .sorted(Comparator.comparing($$0xx -> ((aku)$$0xx.getKey()).a()))
+               .map(
+                  $$0xx -> String.format(
+                        Locale.ROOT,
+                        "\n\t\t%s: elements=%d tags=%d",
+                        ((aku)$$0xx.getKey()).a(),
+                        ((akq.c)$$0xx.getValue()).a().size(),
+                        ((akq.c)$$0xx.getValue()).b().b()
+                     )
+               )
+               .collect(Collectors.joining())
+      );
+      $$3.a(
+         "Static Registries",
+         () -> $$2.stream()
+               .sorted(Comparator.comparing($$0xx -> $$0xx.a().a()))
+               .map($$0xx -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", $$0xx.a().a(), $$0xx.b()))
+               .collect(Collectors.joining())
+      );
+   }
+
+   private void a(ggo.b $$0, kf.b $$1, boolean $$2) {
+      $$0.a(($$2x, $$3) -> {
+         if ($$2 || ki.a($$2x)) {
+            a($$1, $$2x, $$3).d();
          }
-      }
-
-      return null;
+      });
    }
 
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
+   public kf.b a(aus $$0, kf.b $$1, boolean $$2) {
+      kf $$3;
+      if (this.a != null) {
+         $$3 = this.a($$0, this.a, $$2);
+      } else {
+         if (this.b != null) {
+            this.a(this.b, $$1, !$$2);
+         }
 
-      private final wp d;
-
-      private a(final String $$0) {
-         this.d = wp.c("addServer.resourcePack." + $$0);
+         $$3 = $$1;
       }
 
-      public wp a() {
-         return this.d;
+      return $$3.e();
+   }
+
+   static class a {
+      final Map<aku<? extends ke<?>>, List<ki.a>> a = new HashMap<>();
+
+      public void a(aku<? extends ke<?>> $$0, List<ki.a> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
+   static class b {
+      private final Map<aku<? extends ke<?>>, axh.a> a = new HashMap<>();
 
-   public static enum c {
-      a,
-      b,
-      c;
+      public void a(aku<? extends ke<?>> $$0, axh.a $$1) {
+         this.a.put($$0, $$1);
+      }
+
+      public void a(BiConsumer<? super aku<? extends ke<?>>, ? super axh.a> $$0) {
+         this.a.forEach($$0);
+      }
    }
 }

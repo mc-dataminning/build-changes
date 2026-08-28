@@ -1,48 +1,25 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Function;
+public class cvp extends cwm implements cxl {
+   public static float a = 1.5F;
 
-public record cvp<T>(Optional<jr<T>> a, aku<T> b) {
-   public cvp(jr<T> $$0) {
-      this(Optional.of($$0), $$0.e().orElseThrow());
+   public cvp(cwm.a $$0) {
+      super($$0);
    }
 
-   public cvp(aku<T> $$0) {
-      this(Optional.empty(), $$0);
+   @Override
+   public bsl a(dgj $$0, coy $$1, bsk $$2) {
+      cwq $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awa.ii, awb.h, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ard $$4) {
+         cpr.a(cqa::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
+      }
+
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bsl.a;
    }
 
-   public static <T> Codec<cvp<T>> a(aku<ke<T>> $$0, Codec<jr<T>> $$1) {
-      return Codec.either($$1, aku.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
-         .xmap(cvp::a, cvp::a);
-   }
-
-   public static <T> yn<wa, cvp<T>> a(aku<ke<T>> $$0, yn<wa, jr<T>> $$1) {
-      return yn.a(yl.a($$1, aku.b($$0)), cvp::a, cvp::a);
-   }
-
-   public Either<jr<T>, aku<T>> a() {
-      return this.a.<Either<jr<T>, aku<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
-   }
-
-   public static <T> cvp<T> a(Either<jr<T>, aku<T>> $$0) {
-      return (cvp<T>)$$0.map(cvp::new, cvp::new);
-   }
-
-   public Optional<T> a(ke<T> $$0) {
-      return this.a.<T>map(jr::a).or(() -> $$0.f(this.b));
-   }
-
-   public Optional<jr<T>> a(jt.a $$0) {
-      return this.a.or(() -> $$0.d(this.b.c()).a(this.b));
-   }
-
-   public Optional<jr<T>> b() {
-      return this.a;
-   }
-
-   public aku<T> c() {
-      return this.b;
+   @Override
+   public cpr a(dgj $$0, kb $$1, cwq $$2, jn $$3) {
+      return new cqa($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

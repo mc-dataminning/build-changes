@@ -1,33 +1,47 @@
-public class gdx extends gdy {
-   protected final gfd a;
-
-   public gdx(gfd $$0) {
+public class gdx<S extends hah> extends gcp<S> {
+   public gdx(gfe $$0) {
       super($$0);
-      this.a = $$0.b("head");
    }
 
-   public static gfl a() {
-      gfl $$0 = new gfl();
-      gfn $$1 = $$0.a();
-      $$1.a("head", gfi.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gff.a);
-      return $$0;
+   public static gfk c() {
+      gfm $$0 = gcp.a(gfi.a, 0.0F);
+      gfo $$1 = $$0.a();
+      a($$1);
+      return gfk.a($$0, 64, 32);
    }
 
-   public static gfj b() {
-      gfl $$0 = a();
-      gfn $$1 = $$0.a();
-      $$1.b("head").a("hat", gfi.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gfh(0.25F)), gff.a);
-      return gfj.a($$0, 64, 64);
+   protected static void a(gfo $$0) {
+      $$0.a("right_arm", gfj.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfg.a(-5.0F, 2.0F, 0.0F));
+      $$0.a("left_arm", gfj.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfg.a(5.0F, 2.0F, 0.0F));
+      $$0.a("right_leg", gfj.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfg.a(-2.0F, 12.0F, 0.0F));
+      $$0.a("left_leg", gfj.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfg.a(2.0F, 12.0F, 0.0F));
    }
 
-   public static gfj c() {
-      gfl $$0 = a();
-      return gfj.a($$0, 64, 32);
+   public void a(S $$0) {
+      super.a($$0);
+      if ($$0.b && !$$0.d) {
+         float $$1 = $$0.H;
+         float $$2 = ayz.a($$1 * (float) Math.PI);
+         float $$3 = ayz.a((1.0F - (1.0F - $$1) * (1.0F - $$1)) * (float) Math.PI);
+         this.r.g = 0.0F;
+         this.s.g = 0.0F;
+         this.r.f = -(0.1F - $$2 * 0.6F);
+         this.s.f = 0.1F - $$2 * 0.6F;
+         this.r.e = (float) (-Math.PI / 2);
+         this.s.e = (float) (-Math.PI / 2);
+         this.r.e -= $$2 * 1.2F - $$3 * 0.4F;
+         this.s.e -= $$2 * 1.2F - $$3 * 0.4F;
+         gau.a(this.r, this.s, $$0.u);
+      }
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(bvc $$0, ffv $$1) {
+      this.e().a($$1);
+      float $$2 = $$0 == bvc.b ? 1.0F : -1.0F;
+      gfe $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
    }
 }

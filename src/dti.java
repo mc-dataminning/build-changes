@@ -1,61 +1,54 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dti extends djm {
-   public static final MapCodec<dti> a = b(dti::new);
+public class dti extends djb {
+   public static final MapCodec<dti> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dxn.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dti::new)
+   );
+   public static final dxx f = dxo.aW;
+   private final int g;
 
    @Override
    public MapCodec<dti> a() {
-      return a;
+      return e;
    }
 
-   protected dti(dww.d $$0) {
-      super($$0);
+   protected dti(int $$0, dxn $$1, dwx.d $$2) {
+      super($$2, $$1);
+      this.l(this.F.b().b(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
    @Override
-   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      if ($$1.G_().i()) {
-         $$1.a($$2, djo.aV.m(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, awa.CZ, awb.e, 1.0F, (1.0F + $$1.H_().i() * 0.2F) * 0.7F);
+   protected int b(dgj $$0, ji $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), bum.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return ayz.f($$3 * 15.0F);
+      } else {
+         return 0;
       }
    }
 
    @Override
-   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
-      jn $$4 = jn.b($$3);
-      if ($$4 != jn.b) {
-         ji $$5 = $$2.a($$4);
-         dwx $$6 = $$1.a_($$5);
-         if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == jn.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == jn.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == jn.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == jn.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
+   protected int h(dwy $$0) {
+      return $$0.c(f);
+   }
 
-            $$1.a(lt.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+   @Override
+   protected dwy a(dwy $$0, int $$1) {
+      return $$0.b(f, Integer.valueOf($$1));
+   }
+
+   @Override
+   protected int b() {
+      return 10;
+   }
+
+   @Override
+   protected void a(dwz.a<djn, dwy> $$0) {
+      $$0.a(f);
    }
 }

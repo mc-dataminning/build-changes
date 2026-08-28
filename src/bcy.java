@@ -19,7 +19,7 @@ public class bcy extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bhx.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bhy.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
    private Dynamic<?> a(Dynamic<?> $$0) {

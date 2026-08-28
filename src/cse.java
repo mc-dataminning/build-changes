@@ -1,158 +1,86 @@
 import java.util.List;
 
-public abstract class cse extends ctr {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   public static final int p = 3;
-   public static final int q = 4;
-   private static final int s = 3;
-   private static final int t = 30;
-   private static final int u = 30;
-   private static final int v = 39;
-   final bsd w;
-   private final cso x;
-   protected final dgi r;
-   private final dbp<? extends dak> y;
-   private final dbn z;
-   private final cts A;
+public abstract class cse extends cts {
+   private final int o;
+   private final int p;
+   protected final csv m;
+   protected final ctv n = new ctv();
 
-   protected cse(ctl<?> $$0, dbp<? extends dak> $$1, aku<dbn> $$2, cts $$3, int $$4, cow $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, new bsr(3), new cty(4));
+   public cse(ctm<?> $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1);
+      this.o = $$2;
+      this.p = $$3;
+      this.m = new cuh(this, $$2, $$3);
    }
 
-   protected cse(ctl<?> $$0, dbp<? extends dak> $$1, aku<dbn> $$2, cts $$3, int $$4, cow $$5, bsd $$6, cso $$7) {
-      super($$0, $$4);
-      this.y = $$1;
-      this.A = $$3;
-      a($$6, 3);
-      a($$7, 4);
-      this.w = $$6;
-      this.x = $$7;
-      this.r = $$5.k.dV();
-      this.z = this.r.Q().a($$2);
-      this.a(new ctz($$6, 0, 56, 17));
-      this.a(new csz(this, $$6, 1, 56, 53));
-      this.a(new ctb($$5.k, $$6, 2, 116, 35));
-      this.c($$5, 8, 84);
-      this.a($$7);
+   protected cua a(coy $$0, int $$1, int $$2) {
+      return this.a(new ctw($$0, this.m, this.n, 0, $$1, $$2));
    }
 
    @Override
-   public void a(cpc $$0) {
-      if (this.w instanceof cue) {
-         ((cue)this.w).fillStackedContents($$0);
+   protected void d(int $$0, int $$1) {
+      for (int $$2 = 0; $$2 < this.o; $$2++) {
+         for (int $$3 = 0; $$3 < this.p; $$3++) {
+            this.a(new cua(this.m, $$3 + $$2 * this.o, $$0 + $$3 * 18, $$1 + $$2 * 18));
+         }
       }
    }
 
-   public ctz l() {
-      return this.k.get(2);
-   }
-
    @Override
-   public boolean b(cox $$0) {
-      return this.w.a($$0);
-   }
+   public cts.a a(boolean $$0, boolean $$1, dbk<?> $$2, ard $$3, cox $$4) {
+      dbk<dau> $$5 = (dbk<dau>)$$2;
+      this.l();
 
-   @Override
-   public cwp b(cox $$0, int $$1) {
-      cwp $$2 = cwp.j;
-      ctz $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cwp $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 2) {
-            if (!this.a($$4, 3, 39, true)) {
-               return cwp.j;
+      cts.a var8;
+      try {
+         List<cua> $$6 = this.n();
+         var8 = akh.a(new akh.a<dau>() {
+            @Override
+            public void a(cpd $$0) {
+               cse.this.a($$0);
             }
 
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if (this.c($$4)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return cwp.j;
-               }
-            } else if (this.d($$4)) {
-               if (!this.a($$4, 1, 2, false)) {
-                  return cwp.j;
-               }
-            } else if ($$1 >= 3 && $$1 < 30) {
-               if (!this.a($$4, 30, 39, false)) {
-                  return cwp.j;
-               }
-            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return cwp.j;
+            @Override
+            public void a() {
+               cse.this.n.a();
+               cse.this.m.a();
             }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cwp.j;
-         }
 
-         if ($$4.f()) {
-            $$3.e(cwp.j);
-         } else {
-            $$3.c();
-         }
-
-         if ($$4.M() == $$2.M()) {
-            return cwp.j;
-         }
-
-         $$3.a($$0, $$4);
+            @Override
+            public boolean a(dbk<dau> $$0) {
+               return $$0.b().a(cse.this.m.aB_(), cse.this.q().dV());
+            }
+         }, this.o, this.p, $$6, $$6, $$4, $$5, $$0, $$1);
+      } finally {
+         this.a($$3, (dbk<dau>)$$2);
       }
 
-      return $$2;
-   }
-
-   protected boolean c(cwp $$0) {
-      return this.z.a($$0);
-   }
-
-   protected boolean d(cwp $$0) {
-      return this.r.M().a($$0);
-   }
-
-   public float m() {
-      int $$0 = this.x.a(2);
-      int $$1 = this.x.a(3);
-      return $$1 != 0 && $$0 != 0 ? ayz.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
-   }
-
-   public float n() {
-      int $$0 = this.x.a(1);
-      if ($$0 == 0) {
-         $$0 = 200;
-      }
-
-      return ayz.a((float)this.x.a(0) / (float)$$0, 0.0F, 1.0F);
-   }
-
-   public boolean o() {
-      return this.x.a(0) > 0;
+      return var8;
    }
 
    @Override
-   public cts am_() {
-      return this.A;
+   protected void l() {
    }
 
+   protected void a(ard $$0, dbk<dau> $$1) {
+   }
+
+   public abstract cua m();
+
+   public abstract List<cua> n();
+
+   public int o() {
+      return this.o;
+   }
+
+   public int p() {
+      return this.p;
+   }
+
+   protected abstract coy q();
+
    @Override
-   public ctr.a a(boolean $$0, boolean $$1, dbj<?> $$2, final ard $$3, cow $$4) {
-      final List<ctz> $$5 = List.of(this.b(0), this.b(2));
-      return akh.a(new akh.a<dak>() {
-         @Override
-         public void a(cpc $$0) {
-            cse.this.a($$0);
-         }
-
-         @Override
-         public void a() {
-            $$5.forEach($$0 -> $$0.f(cwp.j));
-         }
-
-         @Override
-         public boolean a(dbj<dak> $$0) {
-            return $$0.b().a(new dbx(cse.this.w.a(0)), $$3);
-         }
-      }, 1, 1, List.of(this.b(0)), $$5, $$4, (dbj<dak>)$$2, $$0, $$1);
+   public void a(cpd $$0) {
+      this.m.fillStackedContents($$0);
    }
 }

@@ -1,195 +1,64 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Objects;
 
-public class fjl extends hle {
-   private static final int C = 2;
-   public static final List<bsh> a = ImmutableList.of(bsh.a, bsh.b, bsh.c, bsh.d);
-   private static final int D = 0;
-   public static final List<dgf> b = ImmutableList.of(dgf.a, dgf.b, dgf.c);
-   private static final wp E = wp.c("mco.configure.world.edit.slot.name");
-   static final wp F = wp.c("mco.configure.world.spawnProtection");
-   private fpc G;
-   protected final fiu c;
-   private int H;
-   private int I;
-   private final fhr J;
-   private final fhl.d K;
-   private bsh L;
-   private dgf M;
-   private final String N;
-   private String O;
-   private boolean P;
-   private boolean Q;
-   int R;
-   private boolean S;
-   private boolean T;
-   fjl.a U;
+public class fjl extends hlf {
+   private static final int a = 212;
+   private static final wp b = wp.c("mco.configure.world.name");
+   private static final wp c = wp.c("mco.configure.world.description");
+   private final fiv C;
+   private final fhm D;
+   private fpd E;
+   private fpd F;
 
-   public fjl(fiu $$0, fhr $$1, fhl.d $$2, int $$3) {
-      super(wp.c("mco.configure.world.buttons.options"));
-      this.c = $$0;
-      this.J = $$1;
-      this.K = $$2;
-      this.L = a(a, $$1.f, 2);
-      this.M = a(b, $$1.g, 0);
-      this.N = $$1.b($$3);
-      this.a($$1.a($$3));
-      if ($$2 == fhl.d.a) {
-         this.P = $$1.a;
-         this.R = $$1.c;
-         this.T = $$1.e;
-         this.Q = $$1.b;
-         this.S = $$1.d;
-      } else {
-         this.P = true;
-         this.R = 0;
-         this.T = false;
-         this.Q = true;
-         this.S = true;
-      }
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.c);
-   }
-
-   private static <T> T a(List<T> $$0, int $$1, int $$2) {
-      try {
-         return $$0.get($$1);
-      } catch (IndexOutOfBoundsException var4) {
-         return $$0.get($$2);
-      }
-   }
-
-   private static <T> int a(List<T> $$0, T $$1, int $$2) {
-      int $$3 = $$0.indexOf($$1);
-      return $$3 == -1 ? $$2 : $$3;
+   public fjl(fiv $$0, fhm $$1) {
+      super(wp.c("mco.configure.world.settings.title"));
+      this.C = $$0;
+      this.D = $$1;
    }
 
    @Override
    public void aR_() {
-      this.I = 170;
-      this.H = this.n / 2 - this.I;
-      int $$0 = this.n / 2 + 10;
-      if (this.K != fhl.d.a) {
-         wp $$1;
-         if (this.K == fhl.d.c) {
-            $$1 = wp.c("mco.configure.world.edit.subscreen.adventuremap");
-         } else if (this.K == fhl.d.e) {
-            $$1 = wp.c("mco.configure.world.edit.subscreen.inspiration");
+      int $$0 = this.n / 2 - 106;
+      String $$1 = this.D.e == fhm.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
+      fou $$2 = fou.a(wp.c($$1), $$0x -> {
+         if (this.D.e == fhm.c.b) {
+            this.m.a(fjh.a(this, wp.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
          } else {
-            $$1 = wp.c("mco.configure.world.edit.subscreen.experience");
+            this.C.b(false);
          }
-
-         this.a(new hld($$1, this.n / 2, 26, 16711680));
-      }
-
-      this.G = this.d(new fpc(this.m.h, this.H, g(1), this.I, 20, null, wp.c("mco.configure.world.edit.slot.name")));
-      this.G.f(10);
-      this.G.a(this.O);
-      this.G.b(this::a);
-      fpa<Boolean> $$4 = this.c(fpa.b(this.P).a($$0, g(1), this.I, 20, wp.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.P = $$1));
-      this.c(fpa.a(dgf::e).a(b).a(this.M).a(this.H, g(3), this.I, 20, wp.c("selectWorld.gameMode"), ($$0x, $$1) -> this.M = $$1));
-      this.U = this.c(new fjl.a($$0, g(3), this.I, this.R, 0.0F, 16.0F));
-      wp $$5 = wp.c("mco.configure.world.spawn_toggle.message");
-      fpa<Boolean> $$6 = fpa.b(this.L != bsh.a && this.Q)
-         .a($$0, g(5), this.I, 20, wp.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.Q = $$0x));
-      this.c(fpa.a(bsh::b).a(a).a(this.L).a(this.H, g(5), this.I, 20, wp.c("options.difficulty"), ($$1, $$2) -> {
-         this.L = $$2;
-         if (this.K == fhl.d.a) {
-            boolean $$3 = this.L != bsh.a;
-            $$6.j = $$3;
-            $$6.a($$3 && this.Q);
-         }
-      }));
-      this.c($$6);
-      fpa<Boolean> $$7 = this.c(fpa.b(this.T).a(this.H, g(7), this.I, 20, wp.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.T = $$1));
-      fpa<Boolean> $$8 = this.c(fpa.b(this.S).a($$0, g(7), this.I, 20, wp.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.S = $$1));
-      if (this.K != fhl.d.a) {
-         $$4.j = false;
-         $$6.j = false;
-         this.U.j = false;
-         $$8.j = false;
-         $$7.j = false;
-      }
-
-      if (this.L == bsh.a) {
-         $$6.j = false;
-      }
-
-      this.c(fot.a(wp.c("mco.configure.world.buttons.done"), $$0x -> this.E()).a(this.H, g(13), this.I, 20).a());
-      this.c(fot.a(wo.e, $$0x -> this.aO_()).a($$0, g(13), this.I, 20).a());
-   }
-
-   private fpa.b<Boolean> a(wp $$0, Consumer<Boolean> $$1) {
-      return ($$2, $$3) -> {
-         if ($$3) {
-            $$1.accept(true);
-         } else {
-            this.m.a(fjg.b(this, $$0, $$1xx -> {
-               $$1.accept(false);
-               $$1xx.aO_();
-            }));
-         }
-      };
+      }).a(this.n / 2 - 53, g(0), 106, 20).a();
+      this.c($$2);
+      this.F = new fpd(this.m.h, $$0, g(4), 212, 20, wp.c("mco.configure.world.name"));
+      this.F.f(32);
+      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
+      this.c(this.F);
+      this.E = new fpd(this.m.h, $$0, g(8), 212, 20, wp.c("mco.configure.world.description"));
+      this.E.f(32);
+      this.E.a(this.D.a());
+      this.c(this.E);
+      fou $$3 = this.c(fou.a(wp.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
+      this.F.b($$1x -> $$3.j = !azw.h($$1x));
+      this.c(fou.a(wo.e, $$0x -> this.aO_()).a(this.n / 2 + 2, g(12), 106, 20).a());
    }
 
    @Override
-   public wp i() {
-      return wo.a(this.n(), this.m());
+   protected void aF_() {
+      this.b(this.F);
    }
 
    @Override
-   public void a(foe $$0, int $$1, int $$2, float $$3) {
+   public void aO_() {
+      this.m.a(this.C);
+   }
+
+   @Override
+   public void a(fof $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.b(this.p, E, this.H + this.I / 2 - this.p.a(E) / 2, g(0) - 5, -1);
-      this.G.a($$0, $$1, $$2, $$3);
+      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
+      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
    }
 
-   private void a(String $$0) {
-      if ($$0.equals(this.N)) {
-         this.O = "";
-      } else {
-         this.O = $$0;
-      }
-   }
-
-   private void E() {
-      int $$0 = a(a, this.L, 2);
-      int $$1 = a(b, this.M, 0);
-      if (this.K != fhl.d.c && this.K != fhl.d.d && this.K != fhl.d.e) {
-         boolean $$2 = this.K == fhl.d.a && this.L != bsh.a && this.Q;
-         this.c.a(new fhr(this.P, $$2, this.R, this.S, $$0, $$1, this.J.h, this.T, this.O, this.J.i, this.J.j));
-      } else {
-         this.c.a(new fhr(this.J.a, this.J.b, this.J.c, this.J.d, $$0, $$1, this.J.h, this.J.e, this.O, this.J.i, this.J.j));
-      }
-   }
-
-   class a extends fon {
-      private final double d;
-      private final double e;
-
-      public a(final int $$0, final int $$1, final int $$2, final int $$3, final float $$4, final float $$5) {
-         super($$0, $$1, $$2, 20, wo.a, 0.0);
-         this.d = (double)$$4;
-         this.e = (double)$$5;
-         this.c = (double)((ayz.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
-         this.b();
-      }
-
-      @Override
-      public void a() {
-         if (fjl.this.U.j) {
-            fjl.this.R = (int)ayz.d(ayz.a(this.c, 0.0, 1.0), this.d, this.e);
-         }
-      }
-
-      @Override
-      protected void b() {
-         this.b(wo.a(fjl.F, (wp)(fjl.this.R == 0 ? wo.c : wp.b(String.valueOf(fjl.this.R)))));
-      }
+   public void g() {
+      this.C.a(this.F.a(), this.E.a());
    }
 }

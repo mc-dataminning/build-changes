@@ -1,93 +1,65 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class eqo extends erl {
-   public static final MapCodec<eqo> a = Codec.FLOAT.fieldOf("mossiness").xmap(eqo::new, $$0 -> $$0.f);
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final dwx[] e = new dwx[]{djo.kc.m(), djo.kj.m()};
-   private final float f;
+public class eqo extends erm {
+   public static final MapCodec<eqo> a = MapCodec.unit(() -> eqo.b);
+   public static final eqo b = new eqo();
+   private final Map<djn, djn> c = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(djp.m, djp.pT);
+      $$0.put(djp.cu, djp.pT);
+      $$0.put(djp.b, djp.pX);
+      $$0.put(djp.eV, djp.pY);
+      $$0.put(djp.eW, djp.pY);
+      $$0.put(djp.cZ, djp.pU);
+      $$0.put(djp.nK, djp.pU);
+      $$0.put(djp.nM, djp.qf);
+      $$0.put(djp.fy, djp.qc);
+      $$0.put(djp.nI, djp.qc);
+      $$0.put(djp.kh, djp.pW);
+      $$0.put(djp.nY, djp.pW);
+      $$0.put(djp.kd, djp.qg);
+      $$0.put(djp.kc, djp.qg);
+      $$0.put(djp.kj, djp.qb);
+      $$0.put(djp.nW, djp.qb);
+      $$0.put(djp.om, djp.qd);
+      $$0.put(djp.ok, djp.qd);
+      $$0.put(djp.gk, djp.pV);
+      $$0.put(djp.gl, djp.pV);
+      $$0.put(djp.eY, djp.qa);
+      $$0.put(djp.eX, djp.pZ);
+      $$0.put(djp.fk, djp.fl);
+   });
 
-   public eqo(float $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ero.d a(dgl $$0, ji $$1, ji $$2, ero.d $$3, ero.d $$4, erk $$5) {
-      azh $$6 = $$5.b($$4.a());
-      dwx $$7 = $$4.b();
-      ji $$8 = $$4.a();
-      dwx $$9 = null;
-      if ($$7.a(djo.eV) || $$7.a(djo.b) || $$7.a(djo.eY)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(awp.L)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(awp.M)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(awp.N)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(djo.cv)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new ero.d($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private dwx a(azh $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dwx[] $$1 = new dwx[]{djo.eX.m(), a($$0, djo.fy)};
-         dwx[] $$2 = new dwx[]{djo.eW.m(), a($$0, djo.nI)};
-         return this.a($$0, $$1, $$2);
-      }
-   }
-
-   @Nullable
-   private dwx a(azh $$0, dwx $$1) {
-      jn $$2 = $$1.c(drl.b);
-      dxv $$3 = $$1.c(drl.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dwx[] $$4 = new dwx[]{djo.nI.m().b(drl.b, $$2).b(drl.c, $$3), djo.nW.m()};
-         return this.a($$0, e, $$4);
-      }
-   }
-
-   @Nullable
-   private dwx b(azh $$0) {
-      return $$0.i() < this.f ? djo.nW.m() : null;
-   }
-
-   @Nullable
-   private dwx c(azh $$0) {
-      return $$0.i() < this.f ? djo.ok.m() : null;
-   }
-
-   @Nullable
-   private dwx d(azh $$0) {
-      return $$0.i() < 0.15F ? djo.pM.m() : null;
-   }
-
-   private static dwx a(azh $$0, djm $$1) {
-      return $$1.m().b(drl.b, jn.c.a.a($$0)).b(drl.c, af.a(dxv.values(), $$0));
-   }
-
-   private dwx a(azh $$0, dwx[] $$1, dwx[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static dwx a(azh $$0, dwx[] $$1) {
-      return $$1[$$0.a($$1.length)];
+   private eqo() {
    }
 
    @Override
-   protected ern<?> a() {
-      return ern.k;
+   public erp.d a(dgm $$0, ji $$1, ji $$2, erp.d $$3, erp.d $$4, erl $$5) {
+      djn $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
+      } else {
+         dwy $$7 = $$4.b();
+         dwy $$8 = $$6.m();
+         if ($$7.b(drm.b)) {
+            $$8 = $$8.b(drm.b, $$7.c(drm.b));
+         }
+
+         if ($$7.b(drm.c)) {
+            $$8 = $$8.b(drm.c, $$7.c(drm.c));
+         }
+
+         if ($$7.b(dqv.b)) {
+            $$8 = $$8.b(dqv.b, $$7.c(dqv.b));
+         }
+
+         return new erp.d($$4.a(), $$8, $$4.c());
+      }
+   }
+
+   @Override
+   protected ero<?> a() {
+      return ero.l;
    }
 }

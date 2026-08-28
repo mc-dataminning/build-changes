@@ -1,60 +1,33 @@
-import java.util.EnumMap;
+import java.util.Map;
 
-public interface deq {
-   dep a = new dep(5, af.a(new EnumMap<>(der.class), $$0 -> {
-      $$0.put(der.d, 1);
-      $$0.put(der.c, 2);
-      $$0.put(der.b, 3);
-      $$0.put(der.a, 1);
-      $$0.put(der.e, 3);
-   }), 15, awa.av, 0.0F, 0.0F, awy.bh, det.b);
-   dep b = new dep(15, af.a(new EnumMap<>(der.class), $$0 -> {
-      $$0.put(der.d, 1);
-      $$0.put(der.c, 4);
-      $$0.put(der.b, 5);
-      $$0.put(der.a, 2);
-      $$0.put(der.e, 4);
-   }), 12, awa.ap, 0.0F, 0.0F, awy.bi, det.c);
-   dep c = new dep(15, af.a(new EnumMap<>(der.class), $$0 -> {
-      $$0.put(der.d, 2);
-      $$0.put(der.c, 5);
-      $$0.put(der.b, 6);
-      $$0.put(der.a, 2);
-      $$0.put(der.e, 5);
-   }), 9, awa.au, 0.0F, 0.0F, awy.bj, det.d);
-   dep d = new dep(7, af.a(new EnumMap<>(der.class), $$0 -> {
-      $$0.put(der.d, 1);
-      $$0.put(der.c, 3);
-      $$0.put(der.b, 5);
-      $$0.put(der.a, 2);
-      $$0.put(der.e, 7);
-   }), 25, awa.at, 0.0F, 0.0F, awy.bk, det.e);
-   dep e = new dep(33, af.a(new EnumMap<>(der.class), $$0 -> {
-      $$0.put(der.d, 3);
-      $$0.put(der.c, 6);
-      $$0.put(der.b, 8);
-      $$0.put(der.a, 3);
-      $$0.put(der.e, 11);
-   }), 10, awa.aq, 2.0F, 0.0F, awy.bl, det.f);
-   dep f = new dep(25, af.a(new EnumMap<>(der.class), $$0 -> {
-      $$0.put(der.d, 2);
-      $$0.put(der.c, 5);
-      $$0.put(der.b, 6);
-      $$0.put(der.a, 2);
-      $$0.put(der.e, 5);
-   }), 9, awa.ax, 0.0F, 0.0F, awy.bn, det.g);
-   dep g = new dep(37, af.a(new EnumMap<>(der.class), $$0 -> {
-      $$0.put(der.d, 3);
-      $$0.put(der.c, 6);
-      $$0.put(der.b, 8);
-      $$0.put(der.a, 3);
-      $$0.put(der.e, 11);
-   }), 15, awa.aw, 3.0F, 0.1F, awy.bm, det.h);
-   dep h = new dep(4, af.a(new EnumMap<>(der.class), $$0 -> {
-      $$0.put(der.d, 3);
-      $$0.put(der.c, 6);
-      $$0.put(der.b, 8);
-      $$0.put(der.a, 3);
-      $$0.put(der.e, 11);
-   }), 10, awa.ay, 0.0F, 0.0F, awy.bo, det.i);
+public record deq(int a, Map<des, Integer> b, int c, jr<avz> d, float e, float f, axf<cwm> g, aku<det> h) {
+   public cwm.a a(cwm.a $$0, des $$1) {
+      return $$0.b($$1.a(this.a)).a(this.a($$1)).c(this.c).a(kv.D, dev.a($$1.a()).a(this.d).a(this.h).a()).a(this.g);
+   }
+
+   public cwm.a a(cwm.a $$0, jv<but<?>> $$1) {
+      return $$0.b(des.e.a(this.a)).a(this.a(des.e)).a(this.g).a(kv.D, dev.a(buu.g).a(this.d).a(this.h).a($$1).a());
+   }
+
+   public cwm.a a(cwm.a $$0, jr<avz> $$1, boolean $$2, jv<but<?>> $$3) {
+      if ($$2) {
+         $$0 = $$0.b(des.e.a(this.a)).a(this.g);
+      }
+
+      return $$0.a(this.a(des.e)).a(kv.D, dev.a(buu.g).a($$1).a(this.h).a($$3).c($$2).a());
+   }
+
+   private czh a(des $$0) {
+      int $$1 = this.b.getOrDefault($$0, 0);
+      czh.a $$2 = czh.a();
+      buv $$3 = buv.a($$0.a());
+      akv $$4 = akv.b("armor." + $$0.b());
+      $$2.a(bwq.a, new bwo($$4, (double)$$1, bwo.a.a), $$3);
+      $$2.a(bwq.b, new bwo($$4, (double)this.e, bwo.a.a), $$3);
+      if (this.f > 0.0F) {
+         $$2.a(bwq.p, new bwo($$4, (double)this.f, bwo.a.a), $$3);
+      }
+
+      return $$2.a();
+   }
 }

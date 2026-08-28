@@ -1,50 +1,72 @@
-public class fpe extends fpn {
-   private static final int a = 4;
-   private final boolean b;
-   private final int c;
+public class fpe extends foq {
+   private final fod a;
+   private final fpo c;
 
-   public fpe(int $$0, wp $$1, foc $$2) {
-      this($$0, $$1, $$2, 4);
+   public fpe(int $$0, int $$1, int $$2, int $$3, wp $$4, fod $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.c = new fpo($$4, $$5).d(this.A() - this.b());
    }
 
-   public fpe(int $$0, wp $$1, foc $$2, int $$3) {
-      this($$0, $$1, $$2, true, $$3);
-   }
-
-   public fpe(int $$0, wp $$1, foc $$2, boolean $$3, int $$4) {
-      super($$1, $$2);
-      this.d($$0);
-      this.b(true);
-      this.j = true;
-      this.b = $$3;
-      this.c = $$4;
-   }
-
-   public void b(int $$0) {
-      this.d($$0 - this.c * 4);
+   public fpe a(int $$0) {
+      this.c.c($$0);
+      return this;
    }
 
    @Override
-   protected void a(fsq $$0) {
-      $$0.a(fsp.a, this.B());
+   public void h(int $$0) {
+      super.h($$0);
+      this.c.d(this.A() - this.b());
    }
 
    @Override
-   public void b(foe $$0, int $$1, int $$2, float $$3) {
-      if (this.aM_() || this.b) {
-         int $$4 = this.F() - this.c;
-         int $$5 = this.G() - this.c;
-         int $$6 = this.A() + this.c * 2;
-         int $$7 = this.y() + this.c * 2;
-         int $$8 = this.b ? (this.aM_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
+   protected int c() {
+      return this.c.y();
+   }
+
+   @Override
+   protected double o() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(fof $$0) {
+      if (this.j()) {
+         super.c($$0);
+      } else if (this.aM_()) {
+         this.a($$0, this.F() - this.a(), this.G() - this.a(), this.A() + this.b(), this.y() + this.b());
       }
-
-      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(hjv $$0) {
+   public void b(fof $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.j()) {
+            this.c($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.F(), (float)this.G(), 0.0F);
+            this.c.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean q() {
+      return super.j();
+   }
+
+   @Override
+   protected void c(fof $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.e(), (float)this.p(), 0.0F);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fsr $$0) {
+      $$0.a(fsq.a, this.B());
    }
 }

@@ -1,9 +1,22 @@
-public interface fog {
-   boolean a(ctz var1);
+import java.util.Set;
 
-   boolean a(double var1, double var3, int var5, cwp var6);
+public class fog extends hfy {
+   private static final Set<atp<?>> a = Set.of(hgg.b, hgk.c);
 
-   void b(ctz var1);
+   public fog(hev $$0) {
+      super($$0, akv.b("textures/atlas/gui.png"), akv.b("gui"), a);
+   }
 
-   void a(ctz var1, csn var2);
+   @Override
+   public het a(akv $$0) {
+      return super.a($$0);
+   }
+
+   public hgl a(het $$0) {
+      return this.b($$0).a();
+   }
+
+   private hgk b(het $$0) {
+      return $$0.e().f().a(hgk.c).orElse(hgk.a);
+   }
 }

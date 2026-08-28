@@ -6,9 +6,9 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class alo extends fcf {
+public class alo extends fcg {
    private final MinecraftServer b;
-   private final Set<fbx> c = Sets.newHashSet();
+   private final Set<fby> c = Sets.newHashSet();
    private final List<Runnable> d = Lists.newArrayList();
 
    public alo(MinecraftServer $$0) {
@@ -16,7 +16,7 @@ public class alo extends fcf {
    }
 
    @Override
-   protected void a(fce $$0, fbx $$1, fcc $$2) {
+   protected void a(fcf $$0, fby $$1, fcd $$2) {
       super.a($$0, $$1, $$2);
       if (this.c.contains($$1)) {
          this.b.ag().a(new afg($$0.cI(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
@@ -26,20 +26,20 @@ public class alo extends fcf {
    }
 
    @Override
-   protected void a(fce $$0, fbx $$1) {
+   protected void a(fcf $$0, fby $$1) {
       super.a($$0, $$1);
       this.a();
    }
 
    @Override
-   public void a(fce $$0) {
+   public void a(fcf $$0) {
       super.a($$0);
       this.b.ag().a(new aed($$0.cI(), null));
       this.a();
    }
 
    @Override
-   public void b(fce $$0, fbx $$1) {
+   public void b(fcf $$0, fby $$1) {
       super.b($$0, $$1);
       if (this.c.contains($$1)) {
          this.b.ag().a(new aed($$0.cI(), $$1.b()));
@@ -49,8 +49,8 @@ public class alo extends fcf {
    }
 
    @Override
-   public void a(fbw $$0, @Nullable fbx $$1) {
-      fbx $$2 = this.a($$0);
+   public void a(fbx $$0, @Nullable fby $$1) {
+      fby $$2 = this.a($$0);
       super.a($$0, $$1);
       if ($$2 != $$1 && $$2 != null) {
          if (this.h($$2) > 0) {
@@ -72,7 +72,7 @@ public class alo extends fcf {
    }
 
    @Override
-   public boolean a(String $$0, fca $$1) {
+   public boolean a(String $$0, fcb $$1) {
       if (super.a($$0, $$1)) {
          this.b.ag().a(aff.a($$1, $$0, aff.a.a));
          this.a();
@@ -83,20 +83,20 @@ public class alo extends fcf {
    }
 
    @Override
-   public void b(String $$0, fca $$1) {
+   public void b(String $$0, fcb $$1) {
       super.b($$0, $$1);
       this.b.ag().a(aff.a($$1, $$0, aff.a.b));
       this.a();
    }
 
    @Override
-   public void a(fbx $$0) {
+   public void a(fby $$0) {
       super.a($$0);
       this.a();
    }
 
    @Override
-   public void b(fbx $$0) {
+   public void b(fby $$0) {
       super.b($$0);
       if (this.c.contains($$0)) {
          this.b.ag().a(new afc($$0, 2));
@@ -106,7 +106,7 @@ public class alo extends fcf {
    }
 
    @Override
-   public void c(fbx $$0) {
+   public void c(fby $$0) {
       super.c($$0);
       if (this.c.contains($$0)) {
          this.g($$0);
@@ -116,21 +116,21 @@ public class alo extends fcf {
    }
 
    @Override
-   public void a(fca $$0) {
+   public void a(fcb $$0) {
       super.a($$0);
       this.b.ag().a(aff.a($$0, true));
       this.a();
    }
 
    @Override
-   public void b(fca $$0) {
+   public void b(fcb $$0) {
       super.b($$0);
       this.b.ag().a(aff.a($$0, false));
       this.a();
    }
 
    @Override
-   public void c(fca $$0) {
+   public void c(fcb $$0) {
       super.c($$0);
       this.b.ag().a(aff.a($$0));
       this.a();
@@ -146,24 +146,24 @@ public class alo extends fcf {
       }
    }
 
-   public List<yw<?>> d(fbx $$0) {
+   public List<yw<?>> d(fby $$0) {
       List<yw<?>> $$1 = Lists.newArrayList();
       $$1.add(new afc($$0, 0));
 
-      for (fbw $$2 : fbw.values()) {
+      for (fbx $$2 : fbx.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new aeu($$2, $$0));
          }
       }
 
-      for (fby $$3 : this.i($$0)) {
+      for (fbz $$3 : this.i($$0)) {
          $$1.add(new afg($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
       }
 
       return $$1;
    }
 
-   public void e(fbx $$0) {
+   public void e(fby $$0) {
       List<yw<?>> $$1 = this.d($$0);
 
       for (are $$2 : this.b.ag().t()) {
@@ -175,11 +175,11 @@ public class alo extends fcf {
       this.c.add($$0);
    }
 
-   public List<yw<?>> f(fbx $$0) {
+   public List<yw<?>> f(fby $$0) {
       List<yw<?>> $$1 = Lists.newArrayList();
       $$1.add(new afc($$0, 1));
 
-      for (fbw $$2 : fbw.values()) {
+      for (fbx $$2 : fbx.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new aeu($$2, $$0));
          }
@@ -188,7 +188,7 @@ public class alo extends fcf {
       return $$1;
    }
 
-   public void g(fbx $$0) {
+   public void g(fby $$0) {
       List<yw<?>> $$1 = this.f($$0);
 
       for (are $$2 : this.b.ag().t()) {
@@ -200,10 +200,10 @@ public class alo extends fcf {
       this.c.remove($$0);
    }
 
-   public int h(fbx $$0) {
+   public int h(fby $$0) {
       int $$1 = 0;
 
-      for (fbw $$2 : fbw.values()) {
+      for (fbx $$2 : fbx.values()) {
          if (this.a($$2) == $$0) {
             $$1++;
          }
@@ -212,17 +212,17 @@ public class alo extends fcf {
       return $$1;
    }
 
-   public eul.a<fcg> b() {
-      return new eul.a<>(this::h, this::a, ban.n);
+   public eum.a<fch> b() {
+      return new eum.a<>(this::h, this::a, ban.n);
    }
 
-   private fcg h() {
-      fcg $$0 = new fcg(this);
+   private fch h() {
+      fch $$0 = new fch(this);
       this.a($$0::c);
       return $$0;
    }
 
-   private fcg a(tq $$0, jt.a $$1) {
+   private fch a(tq $$0, jt.a $$1) {
       return this.h().b($$0, $$1);
    }
 

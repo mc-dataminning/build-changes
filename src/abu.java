@@ -1,14 +1,14 @@
 public class abu implements yw<abl> {
-   public static final yn<wa, abu> a = yn.a(ji.b, abu::e, yl.a(djm.q), abu::b, abu::new);
+   public static final yn<wa, abu> a = yn.a(ji.b, abu::e, yl.a(djn.q), abu::b, abu::new);
    private final ji b;
-   private final dwx c;
+   private final dwy c;
 
-   public abu(ji $$0, dwx $$1) {
+   public abu(ji $$0, dwy $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public abu(dfn $$0, ji $$1) {
+   public abu(dfo $$0, ji $$1) {
       this($$1, $$0.a_($$1));
    }
 
@@ -21,7 +21,7 @@ public class abu implements yw<abl> {
       $$0.a(this);
    }
 
-   public dwx b() {
+   public dwy b() {
       return this.c;
    }
 

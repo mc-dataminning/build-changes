@@ -1,42 +1,13 @@
-public class gwf extends gwt<gyt, gce> {
-   public gwf(gub<gyt, gce> $$0) {
+public abstract class gwf<S extends gyl, M extends gcc<S>> extends gwu<S, M> {
+   public gwf(guc<S, M> $$0) {
       super($$0);
    }
 
-   public void a(ffu $$0, gly $$1, int $$2, gyt $$3, float $$4, float $$5) {
-      hbo $$6 = $$3.i;
-      if (!$$6.c()) {
-         boolean $$7 = $$3.d;
-         boolean $$8 = $$3.aj;
-         $$0.a();
-         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
-         if ($$8) {
-            float $$9 = 0.75F;
-            $$0.b(0.75F, 0.75F, 0.75F);
-         }
-
-         $$0.a(a.f.rotation($$3.a));
-         $$0.a(a.d.rotationDegrees($$4));
-         $$0.a(a.b.rotationDegrees($$5));
-         if ($$3.aj) {
-            if ($$7) {
-               $$0.a(0.4F, 0.26F, 0.15F);
-            } else {
-               $$0.a(0.06F, 0.26F, -0.5F);
-            }
-         } else if ($$7) {
-            $$0.a(0.46F, 0.26F, 0.22F);
-         } else {
-            $$0.a(0.06F, 0.27F, -0.5F);
-         }
-
-         $$0.a(a.b.rotationDegrees(90.0F));
-         if ($$7) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         $$6.a($$0, $$1, $$2, hei.d);
-         $$0.b();
-      }
+   @Override
+   public void a(ffv $$0, glz $$1, int $$2, S $$3, float $$4, float $$5) {
+      ffz $$6 = $$1.getBuffer(this.a());
+      this.d().a($$0, $$6, $$2, hej.d);
    }
+
+   public abstract gmj a();
 }

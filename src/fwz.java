@@ -1,34 +1,39 @@
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fwz {
-   private static final akv f = akv.b("tooltip/background");
-   private static final akv g = akv.b("tooltip/frame");
-   public static final int a = 12;
-   private static final int h = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int i = 9;
+public class fwz implements fwx {
+   private static final int c = 5;
+   private static final int d = 12;
+   public static final int a = 3;
+   public static final int b = 5;
+   private final ftb e;
 
-   public static void a(foe $$0, int $$1, int $$2, int $$3, int $$4, int $$5, @Nullable akv $$6) {
-      int $$7 = $$1 - 3 - 9;
-      int $$8 = $$2 - 3 - 9;
-      int $$9 = $$3 + 3 + 3 + 18;
-      int $$10 = $$4 + 3 + 3 + 18;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, (float)$$5);
-      $$0.a(gmi::H, a($$6), $$7, $$8, $$9, $$10);
-      $$0.a(gmi::H, b($$6), $$7, $$8, $$9, $$10);
-      $$0.c().b();
+   public fwz(ftb $$0) {
+      this.e = $$0;
    }
 
-   private static akv a(@Nullable akv $$0) {
-      return $$0 == null ? f : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_background"));
+   @Override
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
+      if ($$6.x + $$4 > $$0 - 5) {
+         $$6.x = Math.max($$2 - 12 - $$4, 9);
+      }
+
+      $$6.y += 3;
+      int $$7 = $$5 + 3 + 3;
+      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
+      int $$9 = $$1 - 5;
+      if ($$8 + $$7 <= $$9) {
+         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
+      } else {
+         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
+      }
+
+      return $$6;
    }
 
-   private static akv b(@Nullable akv $$0) {
-      return $$0 == null ? g : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_frame"));
+   private static int a(int $$0, int $$1, int $$2) {
+      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
+      return Math.round(ayz.h((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
    }
 }

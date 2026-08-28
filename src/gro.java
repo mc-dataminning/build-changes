@@ -1,27 +1,21 @@
-public class gro extends gtk<che, gzk, gbq> {
-   private static final akv a = akv.b("textures/entity/fish/cod.png");
+public class gro extends gqz<che, gyc, gbq> {
+   private static final akv a = akv.b("textures/entity/chicken.png");
 
-   public gro(gse.a $$0) {
-      super($$0, new gbq($$0.a(gfc.Z)), 0.3F);
+   public gro(gsf.a $$0) {
+      super($$0, new gbq($$0.a(gfd.X)), new gbq($$0.a(gfd.Y)), 0.3F);
    }
 
-   @Override
-   public akv b(gzk $$0) {
+   public akv a(gyc $$0) {
       return a;
    }
 
-   public gzk a() {
-      return new gzk();
+   public gyc a() {
+      return new gyc();
    }
 
-   @Override
-   protected void a(gzk $$0, ffu $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * ayz.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public void a(che $$0, gyc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = ayz.h($$2, $$0.cc, $$0.bY);
+      $$1.b = ayz.h($$2, $$0.ca, $$0.bZ);
    }
 }

@@ -1,18 +1,8 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class fmu {
-   private static final ayi.b<akv, MapCodec<? extends fmt>> b = new ayi.b<>();
-   public static final Codec<fmt> a = b.a(akv.a).dispatch(fmt::a, $$0 -> $$0);
+public interface fmu {
+   int a(cwq var1, @Nullable gga var2, @Nullable bvi var3);
 
-   public static void a() {
-      b.a(akv.b("custom_model_data"), fmp.a);
-      b.a(akv.b("constant"), fmo.a);
-      b.a(akv.b("dye"), fmq.a);
-      b.a(akv.b("grass"), fms.a);
-      b.a(akv.b("firework"), fmr.a);
-      b.a(akv.b("potion"), fmw.a);
-      b.a(akv.b("map_color"), fmv.a);
-      b.a(akv.b("team"), fmx.a);
-   }
+   MapCodec<? extends fmu> a();
 }

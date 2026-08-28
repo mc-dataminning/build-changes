@@ -12,7 +12,7 @@ public record co(dk.d c, dk.d d) implements ea<Integer> {
       return kv.e;
    }
 
-   public boolean a(cwp $$0, Integer $$1) {
+   public boolean a(cwq $$0, Integer $$1) {
       return !this.c.d($$0.p() - $$1) ? false : this.d.d($$1);
    }
 

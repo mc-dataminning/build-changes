@@ -3,27 +3,46 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bzf {
-   private static final int a = 1;
-
-   public static bxb<bvj> a(float $$0) {
-      return a($$1 -> $$0);
+   public static bxc<bvq> a(cem<ji> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, fbb::c);
    }
 
-   public static bxb<bvj> a(Function<bvh, Float> $$0) {
-      return can.a(
-         (Function<can.b<bvj>, ? extends App<can.c<bvj>, caq<bvj>>>)($$1 -> $$1.group($$1.a(cel.m), $$1.a(cel.n), $$1.b(cel.o), $$1.a(cel.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bvh $$9 = $$1.b($$4);
-                     Optional<cen> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bxc.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bxl($$9, true));
-                        $$2.a(new ceo(new bxl($$9, false), $$0.apply($$7), 0));
-                     }
+   public static bym<bvq> b(cem<? extends bum> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bum::dt);
+   }
 
-                     return true;
-                  }))
+   private static <T> bym<bvq> a(cem<T> $$0, float $$1, int $$2, boolean $$3, Function<T, fbb> $$4) {
+      return cao.a(
+         (Function<cao.b<bvq>, ? extends App<cao.c<bvq>, car<bvq>>>)($$5 -> $$5.group($$5.a(cem.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cep> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     fbb $$11 = $$8.dt();
+                     fbb $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((kb)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           fbb $$13 = $$10.get().a().a().d($$11);
+                           fbb $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           fbb $$16 = cgg.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cep($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
+                     }
+                  }
+               }))
       );
    }
 }

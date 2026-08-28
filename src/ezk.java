@@ -1,52 +1,36 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Set;
 
-public record ezk(Optional<Boolean> b, Optional<Boolean> c) implements eza {
+public record ezk(ezx b, evr c) implements ezb {
    public static final MapCodec<ezk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(ezk::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(ezk::e))
-            .apply($$0, ezk::new)
+      $$0 -> $$0.group(ezy.a.fieldOf("value").forGetter(ezk::c), evr.a.fieldOf("range").forGetter(ezk::d)).apply($$0, ezk::new)
    );
 
    @Override
-   public ezb b() {
-      return ezc.o;
+   public ezc b() {
+      return ezd.r;
    }
 
-   public boolean a(evr $$0) {
-      ard $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ag() ? false : !this.c.isPresent() || this.c.get() == $$1.af();
+   @Override
+   public Set<bai<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public static ezk.a c() {
-      return new ezk.a();
+   public boolean a(evs $$0) {
+      return this.c.b($$0, this.b.a($$0));
    }
 
-   public Optional<Boolean> d() {
+   public static ezb.a a(ezx $$0, evr $$1) {
+      return () -> new ezk($$0, $$1);
+   }
+
+   public ezx c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public evr d() {
       return this.c;
-   }
-
-   public static class a implements eza.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public ezk.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ezk.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public ezk a() {
-         return new ezk(this.a, this.b);
-      }
    }
 }

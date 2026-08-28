@@ -4,9 +4,9 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class baz extends bgs {
+public class baz extends bgt {
    public baz(Schema $$0) {
-      super($$0, false, "AreaEffectCloudPotionFix", bhx.B, "minecraft:area_effect_cloud");
+      super($$0, false, "AreaEffectCloudPotionFix", bhy.B, "minecraft:area_effect_cloud");
    }
 
    @Override

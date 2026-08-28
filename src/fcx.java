@@ -1,29 +1,29 @@
-import java.util.function.Function;
+public enum fcx {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public class fcx<T> implements fco<T> {
-   private final Function<ji, fcv<T>> a;
+   private final int h;
 
-   public fcx(Function<ji, fcv<T>> $$0) {
-      this.a = $$0;
+   private fcx(final int $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public boolean a(ji $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public static fcx a(int $$0) {
+      for (fcx $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
    }
 
-   @Override
-   public void a(fcs<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(ji $$0, T $$1) {
-      return false;
-   }
-
-   @Override
    public int a() {
-      return 0;
+      return this.h;
    }
 }

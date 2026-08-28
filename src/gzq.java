@@ -1,8 +1,7 @@
-import javax.annotation.Nullable;
+public class gzq extends gzl {
+   public chm.a a;
 
-public class gzq extends gyk {
-   public jn a = jn.c;
-   @Nullable
-   public cky b;
-   public int[] c = new int[0];
+   public gzq() {
+      this.a = chm.a.a;
+   }
 }

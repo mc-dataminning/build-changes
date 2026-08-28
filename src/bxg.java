@@ -1,37 +1,18 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bxg extends bxa<bvh> {
-   private final cel<Integer> c;
-
-   public bxg(cel<Integer> $$0) {
-      super(ImmutableMap.of($$0, cem.a));
-      this.c = $$0;
-   }
-
-   private Optional<Integer> b(bvh $$0) {
-      return $$0.eb().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(ard $$0, bvh $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(ard $$0, bvh $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.eb().a(this.c, $$3.get() - 1);
-   }
-
-   @Override
-   protected void b(ard $$0, bvh $$1, long $$2) {
-      $$1.eb().b(this.c);
+public class bxg {
+   public static <E extends bvi, T> bxc<E> a(Predicate<E> $$0, cem<? extends T> $$1, cem<T> $$2, brw $$3) {
+      return cao.a(
+         (Function<cao.b<E>, ? extends App<cao.c<E>, car<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
+                     return true;
+                  }
+               }))
+      );
    }
 }

@@ -1,13 +1,12 @@
-public class gvq extends gwt<gxy, gbl> {
-   private static final gmi a = gmi.r(akv.b("textures/entity/breeze/breeze_eyes.png"));
+public class gvq<M extends gdh> extends gxc<M> {
+   private static final akv a = akv.b("textures/entity/bee/bee_stinger.png");
 
-   public gvq(gub<gxy, gbl> $$0) {
-      super($$0);
+   public gvq(gtg<?, gzx, M> $$0, gsf.a $$1) {
+      super($$0, new gbg($$1.a(gfd.z)), a, gxc.a.b);
    }
 
-   public void a(ffu $$0, gly $$1, int $$2, gxy $$3, float $$4, float $$5) {
-      ffy $$6 = $$1.getBuffer(a);
-      gbl $$7 = this.d();
-      grj.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hei.d);
+   @Override
+   protected int a(gzx $$0) {
+      return $$0.k;
    }
 }

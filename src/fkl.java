@@ -1,59 +1,13 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fkl extends fkm {
+   private final fic b;
 
-public abstract class fkl extends fkh {
-   private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final wp d;
-   private final Runnable e;
-
-   public fkl(long $$0, wp $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   protected abstract void a(fgk var1, long var2) throws fig;
-
-   @Override
-   public void run() {
-      fgk $$0 = fgk.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (fih var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
-         }
-      }
+   public fkl(fic $$0, long $$1, wp $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public wp a() {
-      return this.d;
+   protected void a(fgl $$0, long $$1) throws fih {
+      $$0.d($$1, this.b.a);
    }
 }

@@ -11,7 +11,7 @@ public class adn implements yw<abl> {
    private final float j;
    private final float k;
 
-   public adn(cot $$0) {
+   public adn(cou $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

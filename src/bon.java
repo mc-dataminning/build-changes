@@ -1,45 +1,33 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public class bon implements bor {
-   public static final bon a = new bon();
+public class bon {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bor c = boq.a;
 
-   private bon() {
+   public bon(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public List<bov> a(String $$0) {
-      return Collections.emptyList();
+   public boolean a() {
+      return this.c != boq.a;
    }
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
+   public void b() {
+      this.c = boq.a;
    }
 
-   @Override
-   public long a() {
-      return 0L;
+   public void c() {
+      this.c = new bom(this.a, this.b, true);
    }
 
-   @Override
-   public int b() {
-      return 0;
+   public bou d() {
+      return this.c;
    }
 
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   public bos e() {
+      return this.c.d();
    }
 }

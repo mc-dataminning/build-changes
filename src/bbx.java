@@ -4,7 +4,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bbx extends bau {
    public bbx(Schema $$0) {
-      super($$0, bhx.s);
+      super($$0, bhy.s);
    }
 
    protected TypeRewriteRule makeRule() {

@@ -1,53 +1,36 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public abstract class dau implements dat {
-   private final dar c;
-
-   public dau(dar $$0) {
-      this.c = $$0;
+public interface dau extends dbf<dat> {
+   @Override
+   default dbq<dau> b() {
+      return dbq.a;
    }
 
    @Override
-   public boolean ap_() {
-      return true;
+   dbp<? extends dau> a();
+
+   das c();
+
+   default ka<cwq> a(dat $$0) {
+      return b($$0);
+   }
+
+   static ka<cwq> b(dat $$0) {
+      ka<cwq> $$1 = ka.a($$0.a(), cwq.j);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cwm $$3 = $$0.a($$2).h();
+         $$1.set($$2, $$3.k());
+      }
+
+      return $$1;
    }
 
    @Override
-   public dar c() {
-      return this.c;
-   }
-
-   @Override
-   public dbd ao_() {
-      return dbd.b;
-   }
-
-   @Override
-   public abstract dbo<? extends dau> a();
-
-   public static class a<T extends dat> implements dbo<T> {
-      private final MapCodec<T> w;
-      private final yn<wa, T> x;
-
-      public a(dau.a.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(dar.e.fieldOf("category").orElse(dar.d).forGetter(dat::c)).apply($$1, $$0::create));
-         this.x = yn.a(dar.g, dat::c, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yn<wa, T> b() {
-         return this.x;
-      }
-
-      @FunctionalInterface
-      public interface a<T extends dat> {
-         T create(dar var1);
-      }
+   default dbi h() {
+      return switch (this.c()) {
+         case a -> dbh.a;
+         case c -> dbh.c;
+         case b -> dbh.b;
+         case d -> dbh.d;
+      };
    }
 }

@@ -1,13 +1,34 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class elt {
-   private static final Codec<Either<edm, elt>> a = Codec.either(edm.a, mb.L.q().dispatch(elt::a, elu::codec));
-   public static final Codec<elt> c = a.xmap(
-      $$0 -> (elt)$$0.map(els::a, $$0x -> $$0x), $$0 -> $$0.a() == elu.a ? Either.left(((els)$$0).b()) : Either.right($$0)
-   );
+public class elt extends elu {
+   public static final elt a = new elt(edn.a(0));
+   public static final MapCodec<elt> b = edn.a.fieldOf("value").xmap(elt::new, elt::b);
+   private final edn d;
 
-   public abstract int a(azh var1, edp var2);
+   public static elt a(edn $$0) {
+      return new elt($$0);
+   }
 
-   public abstract elu<?> a();
+   private elt(edn $$0) {
+      this.d = $$0;
+   }
+
+   public edn b() {
+      return this.d;
+   }
+
+   @Override
+   public int a(azh $$0, edq $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public elv<?> a() {
+      return elv.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
+   }
 }

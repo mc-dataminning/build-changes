@@ -1,65 +1,40 @@
-public class cer extends cet {
-   public cer(bvj $$0, dgi $$1) {
+public class cer extends ceu {
+   public cer(bvk $$0, dgj $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected etp a(int $$0) {
-      this.o = new etk();
-      return new etp(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a(fba $$0, fba $$1) {
-      return a(this.a, $$0, $$1, true);
+   protected etq a(int $$0) {
+      this.o = new etj(false);
+      return new etq(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.o() && this.a.bn() || !this.a.bZ();
+      return true;
    }
 
    @Override
-   protected fba b() {
-      return this.a.dt();
+   protected fbb b() {
+      return new fbb(this.a.dA(), this.a.e(0.5), this.a.dG());
    }
 
    @Override
-   public etn a(bul $$0, int $$1) {
-      return this.a($$0.dv(), $$1);
+   protected double a(fbb $$0) {
+      return $$0.e;
    }
 
    @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.h();
-      }
-
-      if (!this.k()) {
-         if (this.a()) {
-            this.j();
-         } else if (this.c != null && !this.c.c()) {
-            fba $$0 = this.c.a(this.a);
-            if (this.a.dz() == ayz.a($$0.d) && this.a.dB() == ayz.a($$0.e) && this.a.dF() == ayz.a($$0.f)) {
-               this.c.a();
-            }
-         }
-
-         agd.a(this.b, this.a, this.c, this.l);
-         if (!this.k()) {
-            fba $$1 = this.c.a(this.a);
-            this.a.N().a($$1.d, $$1.e, $$1.f, this.d);
-         }
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
+   protected boolean a(fbb $$0, fbb $$1) {
+      return this.a.bn() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override
    public boolean a(ji $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+      return !this.b.a_($$0.e()).l();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

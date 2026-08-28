@@ -2,12 +2,22 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record fmq(int b) implements fmt {
-   public static final MapCodec<fmq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.i.fieldOf("default").forGetter(fmq::b)).apply($$0, fmq::new));
+public record fmq(int b, int c) implements fmu {
+   public static final MapCodec<fmq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayi.l.optionalFieldOf("index", 0).forGetter(fmq::b), ayi.i.fieldOf("default").forGetter(fmq::c)).apply($$0, fmq::new)
+   );
 
    @Override
-   public int a(cwp $$0, @Nullable gfz $$1, @Nullable bvh $$2) {
-      return czd.a($$0, this.b);
+   public int a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2) {
+      cza $$3 = $$0.a(kv.p);
+      if ($$3 != null) {
+         Integer $$4 = $$3.d(this.b);
+         if ($$4 != null) {
+            return axk.f($$4);
+         }
+      }
+
+      return axk.f(this.c);
    }
 
    @Override

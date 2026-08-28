@@ -28,9 +28,9 @@ public class aoo {
       );
    }
 
-   private static int a(ex $$0, ji $$1, go $$2, aoo.b $$3, @Nullable Predicate<dxb> $$4) throws CommandSyntaxException {
+   private static int a(ex $$0, ji $$1, go $$2, aoo.b $$3, @Nullable Predicate<dxc> $$4) throws CommandSyntaxException {
       ard $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dxb($$5, $$1, true))) {
+      if ($$4 != null && !$$4.test(new dxc($$5, $$1, true))) {
          throw a.create();
       } else {
          boolean $$6;
@@ -38,8 +38,8 @@ public class aoo {
             $$5.b($$1, true);
             $$6 = !$$2.a().l() || !$$5.a_($$1).l();
          } else {
-            dtz $$7 = $$5.c_($$1);
-            bsb.a($$7);
+            dua $$7 = $$5.c_($$1);
+            bsc.a($$7);
             $$6 = true;
          }
 
@@ -55,7 +55,7 @@ public class aoo {
 
    public interface a {
       @Nullable
-      go filter(ene var1, ji var2, go var3, ard var4);
+      go filter(enf var1, ji var2, go var3, ard var4);
    }
 
    public static enum b {

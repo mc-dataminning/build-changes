@@ -1,23 +1,28 @@
 public enum dxt implements azv {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+   a(jn.a),
+   b(jn.b);
 
-   private final String f;
+   private final jn c;
 
-   private dxt(final String $$0) {
-      this.f = $$0;
+   private dxt(final jn $$0) {
+      this.c = $$0;
+   }
+
+   public jn a() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this == a ? "upper" : "lower";
+   }
+
+   public dxt b() {
+      return this == a ? b : a;
    }
 }

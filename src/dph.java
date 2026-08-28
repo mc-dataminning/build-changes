@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dph extends dss {
+public class dph extends dqu {
    public static final MapCodec<dph> b = b(dph::new);
 
    @Override
@@ -8,7 +8,7 @@ public class dph extends dss {
       return b;
    }
 
-   protected dph(dww.d $$0) {
-      super(dqt.b.e, $$0);
+   protected dph(dwx.d $$0) {
+      super(dqu.b.e, $$0);
    }
 }

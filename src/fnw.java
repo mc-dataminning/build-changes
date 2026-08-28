@@ -1,85 +1,77 @@
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class fnw {
-   public static final fnw.a a = a(fnu::a, fnt.c);
-   public static final fnw.a b = a(fnu::a, fnt.d);
-   public static final fnw.a c = a(fnu::a, fnt.e);
-   public static final fnw.a d = a(fnu::n, fnt.j);
-   public static final fnw.a e = a(fnu::n, fnt.k);
-   public static final fnw.a f = a(fnu::t, fnt.n);
-   public static final fnw.a g = a(fnu::o, fnt.m);
-   public static final fnw.a h = a(fnu::E, fnt.p);
-   public static final fnw.a i = a(fnu::D, fnt.q);
-   public static final fnw.a j = a(fnu::i, fnt.ay);
-   public static final fnw.a k = a(fnu::d, fnt.az);
-   public static final fnw.a l = a(fnu::j, fnt.aA);
-   public static final fnw.a m = a(fnu::j, fnt.aB);
-   public static final fnw.a n = a(fnu::j, fnt.aC);
-   public static final fnw.a o = a(fnu::j, fnt.aD);
-   public static final fnw.a p = a(fnu::l, fnt.aG);
-   public static final fnw.a q = a(fnu::m, fnt.aE);
-   public static final fnw.a r = a(fnu::G, fnt.aV);
-   public static final fnw.a s = a(fnu::a, fnt.ad);
-   public static final fnw.a t = a(fnu::A, fnt.bg);
-   public static final fnw.a u = a(fnu::A, fnt.bh);
-   public static final fnw.a v = a(fnu::b, fnt.br);
-   public static final fnw.a w = a(fnu::q, fnt.j);
-   public static final fnw.a x = a(fnu::q, fnt.k);
-   public static final fnw.a y = a(fnu::u, fnt.n);
-   public static final fnw.a z = a(fnu::v, fnt.j);
-   private final fnu A;
-   private final fns B;
+public final class fnw {
+   public static final fnw a = a("all");
+   public static final fnw b = a("texture", a);
+   public static final fnw c = a("particle", b);
+   public static final fnw d = a("end", a);
+   public static final fnw e = a("bottom", d);
+   public static final fnw f = a("top", d);
+   public static final fnw g = a("front", a);
+   public static final fnw h = a("back", a);
+   public static final fnw i = a("side", a);
+   public static final fnw j = a("north", i);
+   public static final fnw k = a("south", i);
+   public static final fnw l = a("east", i);
+   public static final fnw m = a("west", i);
+   public static final fnw n = a("up");
+   public static final fnw o = a("down");
+   public static final fnw p = a("cross");
+   public static final fnw q = a("cross_emissive");
+   public static final fnw r = a("plant");
+   public static final fnw s = a("wall", a);
+   public static final fnw t = a("rail");
+   public static final fnw u = a("wool");
+   public static final fnw v = a("pattern");
+   public static final fnw w = a("pane");
+   public static final fnw x = a("edge");
+   public static final fnw y = a("fan");
+   public static final fnw z = a("stem");
+   public static final fnw A = a("upperstem");
+   public static final fnw B = a("crop");
+   public static final fnw C = a("dirt");
+   public static final fnw D = a("fire");
+   public static final fnw E = a("lantern");
+   public static final fnw F = a("platform");
+   public static final fnw G = a("unsticky");
+   public static final fnw H = a("torch");
+   public static final fnw I = a("layer0");
+   public static final fnw J = a("layer1");
+   public static final fnw K = a("layer2");
+   public static final fnw L = a("lit_log");
+   public static final fnw M = a("candle");
+   public static final fnw N = a("inside");
+   public static final fnw O = a("content");
+   public static final fnw P = a("inner_top");
+   public static final fnw Q = a("flowerbed");
+   private final String R;
+   @Nullable
+   private final fnw S;
 
-   private fnw(fnu $$0, fns $$1) {
-      this.A = $$0;
-      this.B = $$1;
+   private static fnw a(String $$0) {
+      return new fnw($$0, null);
    }
 
-   public fns a() {
-      return this.B;
+   private static fnw a(String $$0, fnw $$1) {
+      return new fnw($$0, $$1);
    }
 
-   public fnu b() {
-      return this.A;
+   private fnw(String $$0, @Nullable fnw $$1) {
+      this.R = $$0;
+      this.S = $$1;
    }
 
-   public fnw a(Consumer<fnu> $$0) {
-      $$0.accept(this.A);
-      return this;
+   public String a() {
+      return this.R;
    }
 
-   public akv a(djm $$0, BiConsumer<akv, fnq> $$1) {
-      return this.B.a($$0, this.A, $$1);
+   @Nullable
+   public fnw b() {
+      return this.S;
    }
 
-   public akv a(djm $$0, String $$1, BiConsumer<akv, fnq> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
-   }
-
-   private static fnw.a a(Function<djm, fnu> $$0, fns $$1) {
-      return $$2 -> new fnw($$0.apply($$2), $$1);
-   }
-
-   public static fnw a(akv $$0) {
-      return new fnw(fnu.b($$0), fnt.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      fnw get(djm var1);
-
-      default akv create(djm $$0, BiConsumer<akv, fnq> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default akv createWithSuffix(djm $$0, String $$1, BiConsumer<akv, fnq> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default fnw.a updateTexture(Consumer<fnu> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   @Override
+   public String toString() {
+      return "#" + this.R;
    }
 }

@@ -89,7 +89,7 @@ public class adt implements yw<abl> {
          yl.x.encode($$0, $$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.i = $$1.c(xg.a::a), ($$0, $$1) -> $$0.a($$1.i, xg.a::a)),
-      c(($$0, $$1) -> $$0.e = dgf.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = dgg.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = vl.a($$1, wr.d), ($$0, $$1) -> vl.a($$0, $$1.f(), wr.d)),
@@ -113,10 +113,10 @@ public class adt implements yw<abl> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dgf e, @Nullable wp f, boolean g, int h, @Nullable xg.a i) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dgg e, @Nullable wp f, boolean g, int h, @Nullable xg.a i) {
 
       b(are $$0) {
-         this($$0.cG(), $$0.gh(), true, $$0.f.k(), $$0.h.b(), $$0.O(), $$0.a(coy.g), $$0.P(), x.a($$0.ad(), xg::a));
+         this($$0.cG(), $$0.gh(), true, $$0.f.k(), $$0.h.b(), $$0.O(), $$0.a(coz.g), $$0.P(), x.a($$0.ad(), xg::a));
       }
    }
 
@@ -126,7 +126,7 @@ public class adt implements yw<abl> {
       GameProfile b;
       boolean c;
       int d;
-      dgf e;
+      dgg e;
       @Nullable
       wp f;
       boolean g;
@@ -135,7 +135,7 @@ public class adt implements yw<abl> {
       xg.a i;
 
       c(UUID $$0) {
-         this.e = dgf.e;
+         this.e = dgg.e;
          this.a = $$0;
       }
 

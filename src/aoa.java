@@ -149,7 +149,7 @@ public class aoa {
    }
 
    private static int a(ex $$0, int $$1, boolean $$2, boolean $$3) {
-      bsp $$4 = $$0.e().N();
+      bsq $$4 = $$0.e().N();
       $$4.a($$1, $$2, $$3);
       int $$5 = $$4.a();
       $$0.a(() -> wp.a("commands.random.reset.all.success", $$5), false);

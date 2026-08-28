@@ -1,31 +1,61 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eet extends edp {
-   private final kf a;
-   private final ecw b;
-   private final edg c;
-   private final edj.o d;
+public class eet {
+   public static final eet a = new eet(false, djp.gV.m(), djp.qn.m(), djp.ew.m(), djp.aX.m());
+   public static final Codec<eet> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(eet::a),
+               dwy.a.optionalFieldOf("air_state", a.b()).forGetter(eet::b),
+               dwy.a.optionalFieldOf("water_state", a.b()).forGetter(eet::c),
+               dwy.a.optionalFieldOf("lava_state", a.b()).forGetter(eet::d),
+               dwy.a.optionalFieldOf("barrier_state", a.b()).forGetter(eet::e)
+            )
+            .apply($$0, eet::new)
+   );
+   private final boolean c;
+   private final dwy d;
+   private final dwy e;
+   private final dwy f;
+   private final dwy g;
 
-   public eet(ecv $$0, kf $$1, dgk $$2, ecw $$3, edg $$4, edj.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public static eet a(boolean $$0, dwy $$1, dwy $$2, dwy $$3, dwy $$4) {
+      return new eet($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Deprecated
-   public Optional<dwx> a(Function<ji, jr<dhk>> $$0, dys $$1, ji $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public static eet a(dwy $$0, dwy $$1, dwy $$2, dwy $$3) {
+      return new eet(false, $$0, $$1, $$2, $$3);
    }
 
-   @Deprecated
-   public kf c() {
-      return this.a;
+   public static eet a(boolean $$0, dwy $$1) {
+      return new eet($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   public edg d() {
+   private eet(boolean $$0, dwy $$1, dwy $$2, dwy $$3, dwy $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
       return this.c;
+   }
+
+   public dwy b() {
+      return this.d;
+   }
+
+   public dwy c() {
+      return this.e;
+   }
+
+   public dwy d() {
+      return this.f;
+   }
+
+   public dwy e() {
+      return this.g;
    }
 }

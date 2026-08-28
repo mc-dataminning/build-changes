@@ -1,23 +1,14 @@
-public class gwx extends gwt<hah, gdz> {
-   private final gdz a;
+public class gwx<S extends hah, M extends gcc<S>> extends gwu<S, M> {
+   private final gdx<S> a;
+   private final akv b;
 
-   public gwx(gub<hah, gdz> $$0, gez $$1) {
+   public gwx(guc<S, M> $$0, gfa $$1, gfc $$2, akv $$3) {
       super($$0);
-      this.a = new gdz($$1.a(gfc.cP));
+      this.b = $$3;
+      this.a = new gdx<>($$1.a($$2));
    }
 
-   public void a(ffu $$0, gly $$1, int $$2, hah $$3, float $$4, float $$5) {
-      boolean $$6 = $$3.ao && $$3.z;
-      if (!$$3.z || $$6) {
-         ffy $$7;
-         if ($$6) {
-            $$7 = $$1.getBuffer(gmi.s(gui.a));
-         } else {
-            $$7 = $$1.getBuffer(gmi.j(gui.a));
-         }
-
-         this.a.a($$3);
-         this.a.a($$0, $$7, $$2, gtf.a($$3, 0.0F));
-      }
+   public void a(ffv $$0, glz $$1, int $$2, S $$3, float $$4, float $$5) {
+      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
    }
 }

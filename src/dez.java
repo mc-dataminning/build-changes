@@ -1,37 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public record dez(akv e, jr<cwl> f, wp g, boolean h) {
-   public static final Codec<dez> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akv.a.fieldOf("asset_id").forGetter(dez::a),
-               cwl.e.fieldOf("template_item").forGetter(dez::b),
-               wr.a.fieldOf("description").forGetter(dez::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(dez::d)
-            )
-            .apply($$0, dez::new)
-   );
-   public static final yn<wa, dez> b = yn.a(akv.b, dez::a, yl.b(mc.K), dez::b, wr.b, dez::c, yl.b, dez::d, dez::new);
-   public static final Codec<jr<dez>> c = akr.a(mc.ba, a);
-   public static final yn<wa, jr<dez>> d = yl.a(mc.ba, b);
+public class dez {
+   public static final aku<dey> a = a("quartz");
+   public static final aku<dey> b = a("iron");
+   public static final aku<dey> c = a("netherite");
+   public static final aku<dey> d = a("redstone");
+   public static final aku<dey> e = a("copper");
+   public static final aku<dey> f = a("gold");
+   public static final aku<dey> g = a("emerald");
+   public static final aku<dey> h = a("diamond");
+   public static final aku<dey> i = a("lapis");
+   public static final aku<dey> j = a("amethyst");
+   public static final aku<dey> k = a("resin");
 
-   public wp a(jr<dex> $$0) {
-      return this.g.f().c($$0.a().d().a());
+   public static void a(qe<dey> $$0) {
+      a($$0, a, cwu.ph, xm.a.a(14931140));
+      a($$0, b, cwu.pk, xm.a.a(15527148), Map.of(deu.d, "iron_darker"));
+      a($$0, c, cwu.pp, xm.a.a(6445145), Map.of(deu.h, "netherite_darker"));
+      a($$0, d, cwu.me, xm.a.a(9901575));
+      a($$0, e, cwu.pm, xm.a.a(11823181));
+      a($$0, f, cwu.po, xm.a.a(14594349), Map.of(deu.e, "gold_darker"));
+      a($$0, g, cwu.pf, xm.a.a(1155126));
+      a($$0, h, cwu.pe, xm.a.a(7269586), Map.of(deu.f, "diamond_darker"));
+      a($$0, i, cwu.pg, xm.a.a(4288151));
+      a($$0, j, cwu.pi, xm.a.a(10116294));
+      a($$0, k, cwu.vx, xm.a.a(16545810));
    }
 
-   public akv a() {
-      return this.e;
+   public static Optional<jr.c<dey>> a(jt.a $$0, cwq $$1) {
+      return $$0.d(mc.aZ).c().filter($$1x -> $$1.a(((dey)$$1x.a()).b())).findFirst();
    }
 
-   public jr<cwl> b() {
-      return this.f;
+   private static void a(qe<dey> $$0, aku<dey> $$1, cwm $$2, xm $$3) {
+      a($$0, $$1, $$2, $$3, Map.of());
    }
 
-   public wp c() {
-      return this.g;
+   private static void a(qe<dey> $$0, aku<dey> $$1, cwm $$2, xm $$3, Map<aku<det>, String> $$4) {
+      dey $$5 = dey.a($$1.a().a(), $$2, wp.c(af.a("trim_material", $$1.a())).c($$3), $$4);
+      $$0.a($$1, $$5);
    }
 
-   public boolean d() {
-      return this.h;
+   private static aku<dey> a(String $$0) {
+      return aku.a(mc.aZ, akv.b($$0));
    }
 }

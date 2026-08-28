@@ -3,7 +3,7 @@ public class ahl implements yw<agg> {
    private static final int b = 2;
    private final boolean c;
 
-   public ahl(cot $$0) {
+   public ahl(cou $$0) {
       this.c = $$0.b;
    }
 

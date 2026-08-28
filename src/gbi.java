@@ -1,65 +1,88 @@
-public class gbi extends gao {
-   private static final int a = 28;
-   private static final int b = 32;
-   private static final int c = 6;
-   private static final int d = 20;
-   private static final int e = 4;
-   private static final String f = "water_patch";
-   private static final String g = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
+import java.util.Arrays;
 
-   public gbi(gfd $$0) {
+public class gbi extends gcc<gzl> {
+   private final gfe[] a;
+   private final gfe b;
+
+   public gbi(gfe $$0) {
       super($$0);
+      this.b = $$0.b("head");
+      this.a = new gfe[12];
+      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
    }
 
-   private static void a(gfn $$0) {
-      int $$1 = 16;
-      int $$2 = 14;
-      int $$3 = 10;
-      $$0.a("bottom", gfi.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gff.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", gfi.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), gff.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", gfi.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), gff.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", gfi.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gff.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", gfi.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gff.a(0.0F, 4.0F, 9.0F));
-      int $$4 = 20;
-      int $$5 = 7;
-      int $$6 = 6;
-      float $$7 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gfi.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gff.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         gfi.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gff.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   private static String a(int $$0) {
+      return "part" + $$0;
    }
 
-   public static gfj a() {
-      gfl $$0 = new gfl();
-      gfn $$1 = $$0.a();
-      a($$1);
-      return gfj.a($$0, 128, 64);
+   public static gfk a() {
+      gfm $$0 = new gfm();
+      gfo $$1 = $$0.a();
+      $$1.a("head", gfj.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfg.a);
+      float $$2 = 0.0F;
+      gfj $$3 = gfj.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = ayz.b($$2) * 9.0F;
+         float $$6 = -2.0F + ayz.b((float)($$4 * 2) * 0.25F);
+         float $$7 = ayz.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, gfg.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = ayz.b($$2) * 7.0F;
+         float $$10 = 2.0F + ayz.b((float)($$8 * 2) * 0.25F);
+         float $$11 = ayz.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, gfg.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = ayz.b($$2) * 5.0F;
+         float $$14 = 11.0F + ayz.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = ayz.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, gfg.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return gfk.a($$0, 64, 32);
    }
 
-   public static gfj b() {
-      gfl $$0 = new gfl();
-      gfn $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gfi.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gff.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gfi.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gff.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gfi.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gff.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gfj.a($$0, 128, 128);
-   }
+   public void a(gzl $$0) {
+      super.a($$0);
+      float $$1 = $$0.u * (float) Math.PI * -0.1F;
 
-   public static gfj c() {
-      gfl $$0 = new gfl();
-      gfn $$1 = $$0.a();
-      $$1.a("water_patch", gfi.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gff.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return gfj.a($$0, 0, 0);
+      for (int $$2 = 0; $$2 < 4; $$2++) {
+         this.a[$$2].c = -2.0F + ayz.b(((float)($$2 * 2) + $$0.u) * 0.25F);
+         this.a[$$2].b = ayz.b($$1) * 9.0F;
+         this.a[$$2].d = ayz.a($$1) * 9.0F;
+         $$1++;
+      }
+
+      $$1 = (float) (Math.PI / 4) + $$0.u * (float) Math.PI * 0.03F;
+
+      for (int $$3 = 4; $$3 < 8; $$3++) {
+         this.a[$$3].c = 2.0F + ayz.b(((float)($$3 * 2) + $$0.u) * 0.25F);
+         this.a[$$3].b = ayz.b($$1) * 7.0F;
+         this.a[$$3].d = ayz.a($$1) * 7.0F;
+         $$1++;
+      }
+
+      $$1 = 0.47123894F + $$0.u * (float) Math.PI * -0.05F;
+
+      for (int $$4 = 8; $$4 < 12; $$4++) {
+         this.a[$$4].c = 11.0F + ayz.b(((float)$$4 * 1.5F + $$0.u) * 0.5F);
+         this.a[$$4].b = ayz.b($$1) * 5.0F;
+         this.a[$$4].d = ayz.a($$1) * 5.0F;
+         $$1++;
+      }
+
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
    }
 }

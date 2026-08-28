@@ -1,27 +1,20 @@
-public class gdc extends gdy {
-   private final gfd a;
-   private final gfd b;
-   private final gfd c;
+import java.util.Set;
 
-   public gdc(gfd $$0) {
+public class gdc extends gdm<gzl> {
+   public static final gfn a = new gbb(false, 4.0F, 4.0F, Set.of("head"));
+
+   public gdc(gfe $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
    }
 
-   public static gfl a() {
-      gfl $$0 = new gfl();
-      gdd.a(gfh.a, $$0);
-      return $$0;
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   public static gfk a(gfi $$0) {
+      gfm $$1 = gdm.a(6, $$0);
+      gfo $$2 = $$1.a();
+      $$2.a(
+         "head",
+         gfj.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$0).a(16, 16).a(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, $$0),
+         gfg.a(0.0F, 12.0F, -6.0F)
+      );
+      return gfk.a($$1, 64, 32);
    }
 }

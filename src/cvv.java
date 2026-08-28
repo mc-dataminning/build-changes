@@ -1,60 +1,28 @@
-public class cvv extends cwl implements cxk {
-   public cvv(cwl.a $$0) {
+public class cvv extends cwm implements cxl {
+   public cvv(cwm.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsk a(dai $$0) {
-      dgi $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwx $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!dkb.i($$3) && !dkc.h($$3) && !dkd.h($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (diz.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, diz.a($$1, $$2));
-            $$1.a($$0.o(), ebt.i, $$2);
-            $$4 = true;
-         }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.b(dxn.v, Boolean.valueOf(true)));
-         $$1.a($$0.o(), ebt.c, $$2);
-         $$4 = true;
+   public bsl a(dgj $$0, coy $$1, bsk $$2) {
+      cwq $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awa.jb, awb.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ard $$4) {
+         cpr.a(cqc::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
       }
 
-      if ($$4) {
-         $$0.n().h(1);
-         return bsk.a;
-      } else {
-         return bsk.d;
-      }
-   }
-
-   private void a(dgi $$0, ji $$1) {
-      azh $$2 = $$0.H_();
-      $$0.a(null, $$1, awa.jk, awb.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bsl.a;
    }
 
    @Override
-   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
-      azh $$4 = $$0.H_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      fba $$8 = new fba($$5, $$6, $$7);
-      cpu $$9 = new cpu($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
-      $$9.a($$2);
-      return $$9;
+   public cpr a(dgj $$0, kb $$1, cwq $$2, jn $$3) {
+      return new cqc($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 
    @Override
-   public void a(cpq $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public cxk.a b() {
-      return cxk.a.a().a(($$0, $$1) -> dls.a($$0, 1.0, fba.c)).a(6.6666665F).b(1.0F).a(1018).a();
+   public cxl.a b() {
+      return cxl.a.a().a(cxl.a.a.c() * 0.5F).b(cxl.a.a.d() * 1.25F).a();
    }
 }

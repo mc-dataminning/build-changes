@@ -37,7 +37,7 @@ public class atx {
             }
 
             asy $$5 = $$3.a(asy.a);
-            crt $$6 = $$5 != null ? $$5.a() : crt.a();
+            cru $$6 = $$5 != null ? $$5.a() : cru.a();
             ayr<Integer> $$7 = a($$0.a(), $$4);
             aty $$8 = aty.a($$7, $$2);
             ata $$9 = $$3.a(ata.a);
@@ -87,7 +87,7 @@ public class atx {
       return this.d.b();
    }
 
-   public crt e() {
+   public cru e() {
       return this.d.c();
    }
 
@@ -133,7 +133,7 @@ public class atx {
       return this.b.hashCode();
    }
 
-   public static record a(wp a, aty b, crt c, List<String> d) {
+   public static record a(wp a, aty b, cru c, List<String> d) {
    }
 
    public static enum b {

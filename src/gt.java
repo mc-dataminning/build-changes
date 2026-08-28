@@ -42,7 +42,7 @@ public class gt implements ArgumentType<gv> {
 
    public static ji c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       ji $$2 = b($$0, $$1);
-      if (!dgi.l($$2)) {
+      if (!dgj.l($$2)) {
          throw c.create();
       } else {
          return $$2;

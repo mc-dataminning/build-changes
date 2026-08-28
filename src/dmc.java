@@ -1,82 +1,99 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
+import java.util.Set;
 
-public class dmc extends djm {
+public class dmc extends diz implements dpk {
    public static final MapCodec<dmc> a = b(dmc::new);
-   public static final dxu<jn> b = dnk.aF;
-   public static final dxo c = dxn.l;
-   protected static final fbu d = djm.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final fbu e = djm.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final fbu f = fbr.a(d, e);
-   private static dxc g;
+   protected static final fbv b = djn.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
 
    @Override
    public MapCodec<dmc> a() {
       return a;
    }
 
-   public dmc(dww.d $$0) {
+   protected dmc(dwx.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jn.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dwx $$0) {
-      return true;
+   public dua a(ji $$0, dwy $$1) {
+      return new dvu($$0, $$1);
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return $$0.c(c) ? f : d;
+   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
+      return b;
    }
 
    @Override
-   public dwx a(dag $$0) {
-      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
+   protected fbv a_(dwy $$0, dgj $$1, ji $$2) {
+      return $$0.f($$1, $$2);
    }
 
    @Override
-   protected boolean c_(dwx $$0) {
-      return true;
-   }
+   protected void a(dwy $$0, dgj $$1, ji $$2, bum $$3) {
+      if ($$3.o(false)) {
+         if (!$$1.C && $$1.ai() == dgj.k && $$3 instanceof are $$4 && !$$4.i) {
+            $$4.n();
+            return;
+         }
 
-   @Override
-   protected int a(dwx $$0, dgi $$1, ji $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dxc b() {
-      if (g == null) {
-         g = dxd.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dxb.a(dxg.a))
-            .a('^', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.d))))
-            .a('>', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.e))))
-            .a('v', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.c))))
-            .a('<', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.f))))
-            .b();
+         $$3.a(this, $$2);
       }
-
-      return g;
    }
 
    @Override
-   protected boolean a(dwx $$0, eto $$1) {
+   public eua a(ard $$0, bum $$1, ji $$2) {
+      aku<dgj> $$3 = $$0.ai() == dgj.k ? dgj.i : dgj.k;
+      ard $$4 = $$0.p().a($$3);
+      if ($$4 == null) {
+         return null;
+      } else {
+         boolean $$5 = $$3 == dgj.k;
+         ji $$6 = $$5 ? ard.a : $$4.Z();
+         fbb $$7 = $$6.c();
+         float $$8;
+         Set<bvw> $$9;
+         if ($$5) {
+            efx.a($$4, ji.a((kb)$$7).e(), true);
+            $$8 = jn.e.p();
+            $$9 = bvw.a(bvw.l, Set.of(bvw.e));
+            if ($$1 instanceof are) {
+               $$7 = $$7.a(0.0, 1.0, 0.0);
+            }
+         } else {
+            $$8 = 0.0F;
+            $$9 = bvw.a(bvw.l, bvw.k);
+            if ($$1 instanceof are $$12) {
+               return $$12.a(false, eua.a);
+            }
+
+            $$7 = $$1.a($$4, $$6).c();
+         }
+
+         return new eua($$4, $$7, fbb.c, $$8, 0.0F, $$9, eua.b.then(eua.c));
+      }
+   }
+
+   @Override
+   public void a(dwy $$0, dgj $$1, ji $$2, azh $$3) {
+      double $$4 = (double)$$2.u() + $$3.j();
+      double $$5 = (double)$$2.v() + 0.8;
+      double $$6 = (double)$$2.w() + $$3.j();
+      $$1.a(lt.ag, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   protected cwq a(dgm $$0, ji $$1, dwy $$2, boolean $$3) {
+      return cwq.j;
+   }
+
+   @Override
+   protected boolean a(dwy $$0, esz $$1) {
       return false;
+   }
+
+   @Override
+   protected dpy a_(dwy $$0) {
+      return dpy.a;
    }
 }

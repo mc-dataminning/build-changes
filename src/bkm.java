@@ -4,14 +4,22 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkm extends bjl {
+public class bkm extends bjm {
    public bkm(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:jigsaw", () -> DSL.optionalFields("final_state", bhx.v.in($$0)));
+      a($$0, $$1, "minecraft:barrel");
+      a($$0, $$1, "minecraft:smoker");
+      a($$0, $$1, "minecraft:blast_furnace");
+      $$0.register($$1, "minecraft:lectern", $$1x -> DSL.optionalFields("Book", bhy.t.in($$0)));
+      $$0.registerSimple($$1, "minecraft:bell");
       return $$1;
+   }
+
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bhy.t.in($$0))));
    }
 }

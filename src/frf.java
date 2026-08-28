@@ -1,123 +1,177 @@
+import com.google.common.collect.Queues;
 import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class frf implements frd {
-   private static final akv h = akv.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final int g = 4;
-   private static final int i = 7;
-   private static final int j = 3;
-   private static final int k = 11;
-   private static final int l = 30;
-   private static final int m = 126;
-   private final frf.a n;
-   private final List<ayl> o;
-   private frd.a p = frd.a.a;
-   private long q;
-   private float r;
-   private float s;
-   private final boolean t;
-   private final int u;
+public class frf {
+   private static final int a = 5;
+   private static final int b = -1;
+   final flk c;
+   private final List<frf.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<fre> f = Queues.newArrayDeque();
 
-   public frf(foc $$0, frf.a $$1, wp $$2, @Nullable wp $$3, boolean $$4, int $$5) {
-      this.n = $$1;
-      this.o = new ArrayList<>(2);
-      this.o.addAll($$0.c($$2.f().b(-11534256), 126));
-      if ($$3 != null) {
-         this.o.addAll($$0.c($$3, 126));
-      }
-
-      this.t = $$4;
-      this.u = $$5;
+   public frf(flk $$0) {
+      this.c = $$0;
    }
 
-   public frf(foc $$0, frf.a $$1, wp $$2, @Nullable wp $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, $$4, 0);
-   }
-
-   @Override
-   public frd.a a() {
-      return this.p;
-   }
-
-   @Override
-   public void a(fre $$0, long $$1) {
-      if (this.u > 0) {
-         this.s = Math.min((float)$$1 / (float)this.u, 1.0F);
-         this.r = this.s;
-         this.q = $$1;
-         if ($$1 > (long)this.u) {
-            this.d();
+   public void a() {
+      this.d.removeIf($$0 -> {
+         $$0.c();
+         if ($$0.b()) {
+            this.e.clear($$0.d, $$0.d + $$0.e);
+            return true;
+         } else {
+            return false;
          }
-      } else if (this.t) {
-         this.r = ayz.b(this.r, this.s, (float)($$1 - this.q) / 100.0F);
-         this.q = $$1;
+      });
+      if (!this.f.isEmpty() && this.e() > 0) {
+         this.f.removeIf($$0 -> {
+            int $$1 = $$0.g();
+            int $$2 = this.a($$1);
+            if ($$2 == -1) {
+               return false;
+            } else {
+               this.d.add(new frf.a<>($$0, $$2, $$1));
+               this.e.set($$2, $$2 + $$1);
+               return true;
+            }
+         });
       }
    }
 
-   @Override
-   public int c() {
-      return 7 + this.e() + 3;
+   public void a(fof $$0) {
+      if (!this.c.n.X) {
+         int $$1 = $$0.a();
+
+         for (frf.a<?> $$2 : this.d) {
+            $$2.a($$0, $$1);
+         }
+      }
+   }
+
+   private int a(int $$0) {
+      if (this.e() >= $$0) {
+         int $$1 = 0;
+
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
+            }
+         }
+      }
+
+      return -1;
    }
 
    private int e() {
-      return Math.max(this.o.size(), 2) * 11;
+      return 5 - this.e.cardinality();
    }
 
-   @Override
-   public void a(foe $$0, foc $$1, long $$2) {
-      int $$3 = this.c();
-      $$0.a(gmi::H, h, 0, 0, this.b(), $$3);
-      this.n.a($$0, 6, 6);
-      int $$4 = this.o.size() * 11;
-      int $$5 = 7 + (this.e() - $$4) / 2;
-
-      for (int $$6 = 0; $$6 < this.o.size(); $$6++) {
-         $$0.a($$1, this.o.get($$6), 30, $$5 + $$6 * 11, -16777216, false);
+   @Nullable
+   public <T extends fre> T a(Class<? extends T> $$0, Object $$1) {
+      for (frf.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().f().equals($$1)) {
+            return (T)$$2.a();
+         }
       }
 
-      if (this.t) {
-         int $$7 = $$3 - 4;
-         $$0.a(3, $$7, 157, $$7 + 1, -1);
-         int $$8;
-         if (this.s >= this.r) {
-            $$8 = -16755456;
+      for (fre $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.f().equals($$1)) {
+            return (T)$$3;
+         }
+      }
+
+      return null;
+   }
+
+   public void b() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
+   }
+
+   public void a(fre $$0) {
+      this.f.add($$0);
+   }
+
+   public flk c() {
+      return this.c;
+   }
+
+   public double d() {
+      return this.c.n.D().c();
+   }
+
+   class a<T extends fre> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private fre.a h = fre.a.a;
+      private long i;
+      private float j;
+      private boolean k;
+
+      a(final T $$0, final int $$1, final int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
+         return this.c;
+      }
+
+      public boolean b() {
+         return this.k;
+      }
+
+      private void a(long $$0) {
+         float $$1 = ayz.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         if (this.h == fre.a.b) {
+            this.j = 1.0F - $$1;
          } else {
-            $$8 = -11206656;
+            this.j = $$1;
+         }
+      }
+
+      public void c() {
+         long $$0 = af.c();
+         if (this.f == -1L) {
+            this.f = $$0;
+            this.h.a(frf.this.c.ak());
          }
 
-         $$0.a(3, $$7, (int)(3.0F + 154.0F * this.r), $$7 + 1, $$8);
-      }
-   }
+         if (this.h == fre.a.a && $$0 - this.f <= 600L) {
+            this.g = $$0;
+         }
 
-   public void d() {
-      this.p = frd.a.b;
-   }
+         this.i = $$0 - this.g;
+         this.a($$0);
+         this.c.a(frf.this, this.i);
+         fre.a $$1 = this.c.a();
+         if ($$1 != this.h) {
+            this.f = $$0 - (long)((int)((1.0F - this.j) * 600.0F));
+            this.h = $$1;
+            this.h.a(frf.this.c.ak());
+         }
 
-   public void a(float $$0) {
-      this.s = $$0;
-   }
-
-   public static enum a {
-      a(akv.b("toast/movement_keys")),
-      b(akv.b("toast/mouse")),
-      c(akv.b("toast/tree")),
-      d(akv.b("toast/recipe_book")),
-      e(akv.b("toast/wooden_planks")),
-      f(akv.b("toast/social_interactions")),
-      g(akv.b("toast/right_click"));
-
-      private final akv h;
-
-      private a(final akv $$0) {
-         this.h = $$0;
+         this.k = this.h == fre.a.b && $$0 - this.f > 600L;
       }
 
-      public void a(foe $$0, int $$1, int $$2) {
-         $$0.a(gmi::H, this.h, $$1, $$2, 20, 20);
+      public void a(fof $$0, int $$1) {
+         $$0.c().a();
+         $$0.c().a((float)$$1 - (float)this.c.b() * this.j, (float)(this.d * 32), 800.0F);
+         this.c.a($$0, frf.this.c.h, this.i);
+         $$0.c().b();
       }
    }
 }

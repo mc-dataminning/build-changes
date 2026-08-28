@@ -1,42 +1,33 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class cfp extends cfr<coi> {
-   private static final int a = 40;
-
-   public cfp() {
-      super(40);
-   }
-
-   protected void a(ard $$0, coi $$1) {
-      aku<dgi> $$2 = $$0.ai();
-      ji $$3 = $$1.dv();
-      List<jq> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ji $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gC().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jq.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bwj<?> $$10 = $$1.eb();
-      if (!$$4.isEmpty()) {
-         $$10.a(cel.f, $$4);
-      } else {
-         $$10.b(cel.f);
-      }
+public class cfp extends cfs<bvi> {
+   @Override
+   public Set<cem<?>> a() {
+      return ImmutableSet.of(cem.j, cem.k, cem.l);
    }
 
    @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.of(cel.f);
+   protected void a(ard $$0, bvi $$1) {
+      List<coy> $$2 = $$0.z()
+         .stream()
+         .filter(bur.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      bwk<?> $$3 = $$1.eb();
+      $$3.a(cem.j, $$2);
+      List<coy> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
+      $$3.a(cem.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<coy> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).findFirst();
+      $$3.a(cem.l, $$5);
+   }
+
+   protected double a(bvi $$0) {
+      return $$0.h(bwq.m);
    }
 }

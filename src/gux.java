@@ -1,13 +1,20 @@
-public class gux extends gqy<chz, has, gek> {
-   private static final akv a = akv.b("textures/entity/turtle/big_sea_turtle.png");
+public class gux extends gtl<chz, has, gcc<has>> {
+   private final gcc<has> a = this.c();
+   private final gcc<has> b;
+   private static final akv k = akv.b("textures/entity/fish/tropical_a.png");
+   private static final akv l = akv.b("textures/entity/fish/tropical_b.png");
 
-   public gux(gse.a $$0) {
-      super($$0, new gek($$0.a(gfc.dq)), new gek($$0.a(gfc.dr)), 0.7F);
+   public gux(gsf.a $$0) {
+      super($$0, new gej($$0.a(gfd.do)), 0.15F);
+      this.b = new gek($$0.a(gfd.dm));
+      this.a(new gxd(this, $$0.f()));
    }
 
-   protected float a(has $$0) {
-      float $$1 = super.g($$0);
-      return $$0.aj ? $$1 * 0.83F : $$1;
+   public akv a(has $$0) {
+      return switch ($$0.a.a()) {
+         case a -> k;
+         case b -> l;
+      };
    }
 
    public has b() {
@@ -16,12 +23,30 @@ public class gux extends gqy<chz, has, gek> {
 
    public void a(chz $$0, has $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = !$$0.bj() && $$0.aJ();
-      $$1.b = $$0.t();
-      $$1.c = !$$0.e_() && $$0.p();
+      $$1.a = $$0.gC();
+      $$1.b = $$0.gA().d();
+      $$1.c = $$0.gB().d();
    }
 
-   public akv b(has $$0) {
-      return a;
+   public void a(has $$0, ffv $$1, glz $$2, int $$3) {
+      this.h = switch ($$0.a.a()) {
+         case a -> this.a;
+         case b -> this.b;
+      };
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected int b(has $$0) {
+      return $$0.b;
+   }
+
+   protected void a(has $$0, ffv $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * ayz.a(0.6F * $$0.u);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.ak) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

@@ -1,10 +1,11 @@
-public class gxw extends gyk {
-   public float a;
-   public int b;
-   public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
+import javax.annotation.Nullable;
+
+public class gxw extends gyf {
+   @Nullable
+   public buk.b.a a;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

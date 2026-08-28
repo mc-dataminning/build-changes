@@ -1,15 +1,12 @@
-public class gie extends gkh {
-   private final gkc a;
-
-   gie(gfz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkc $$7) {
+public class gie extends gki {
+   gie(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
@@ -17,29 +14,36 @@ public class gie extends gkh {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.t-- <= 0) {
          this.k();
       } else {
-         this.k = this.k - (double)this.u;
+         this.k += 0.002;
          this.a(this.j, this.k, this.l);
-         this.b(this.a);
+         this.j *= 0.85F;
+         this.k *= 0.85F;
+         this.l *= 0.85F;
+         if (!this.c.b_(ji.a(this.g, this.h, this.i)).a(awv.a)) {
+            this.k();
+         }
       }
    }
 
    @Override
-   public gjl b() {
-      return gjl.b;
+   public gjm b() {
+      return gjm.b;
    }
 
-   public static class a implements gjk<lx> {
-      private final gkc a;
+   public static class a implements gjl<lx> {
+      private final gkd a;
 
-      public a(gkc $$0) {
+      public a(gkd $$0) {
          this.a = $$0;
       }
 
-      public gjh a(lx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gie $$8 = new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

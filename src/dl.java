@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record dl(Map<jr<bto>, dl.b> b) {
-   public static final Codec<dl> a = Codec.unboundedMap(bto.a, dl.b.a).xmap(dl::new, dl::a);
+public record dl(Map<jr<btp>, dl.b> b) {
+   public static final Codec<dl> a = Codec.unboundedMap(btp.a, dl.b.a).xmap(dl::new, dl::a);
 
-   public boolean a(bul $$0) {
-      if ($$0 instanceof bvh $$1 && this.a($$1.eB())) {
+   public boolean a(bum $$0) {
+      if ($$0 instanceof bvi $$1 && this.a($$1.eB())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bvh $$0) {
+   public boolean a(bvi $$0) {
       return this.a($$0.eB());
    }
 
-   public boolean a(Map<jr<bto>, btq> $$0) {
-      for (Entry<jr<bto>, dl.b> $$1 : this.b.entrySet()) {
-         btq $$2 = $$0.get($$1.getKey());
+   public boolean a(Map<jr<btp>, btr> $$0) {
+      for (Entry<jr<btp>, dl.b> $$1 : this.b.entrySet()) {
+         btr $$2 = $$0.get($$1.getKey());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record dl(Map<jr<bto>, dl.b> b) {
       return true;
    }
 
-   public Map<jr<bto>, dl.b> a() {
+   public Map<jr<btp>, dl.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<jr<bto>, dl.b> a = ImmutableMap.builder();
+      private final Builder<jr<btp>, dl.b> a = ImmutableMap.builder();
 
       public static dl.a a() {
          return new dl.a();
       }
 
-      public dl.a a(jr<bto> $$0) {
+      public dl.a a(jr<btp> $$0) {
          this.a.put($$0, new dl.b());
          return this;
       }
 
-      public dl.a a(jr<bto> $$0, dl.b $$1) {
+      public dl.a a(jr<btp> $$0, dl.b $$1) {
          this.a.put($$0, $$1);
          return this;
       }
@@ -74,7 +74,7 @@ public record dl(Map<jr<bto>, dl.b> b) {
          this(dk.d.c, dk.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable btq $$0) {
+      public boolean a(@Nullable btr $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

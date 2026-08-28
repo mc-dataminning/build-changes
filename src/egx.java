@@ -1,24 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public class egx extends efy<eio> {
-   public egx(Codec<eio> $$0) {
+public class egx extends efz<eiq> {
+   public egx(Codec<eiq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eio> $$0) {
-      eio $$1 = $$0.f();
+   public boolean a(egb<eiq> $$0) {
+      eiq $$1 = $$0.f();
       azh $$2 = $$0.d();
-      dhg $$3 = $$0.b();
-      dyt $$4 = $$0.c();
-      ji $$5 = $$0.e();
+      ji $$3 = $$0.e();
+      dhh $$4 = $$0.b();
+      int $$5 = 0;
+      ji.a $$6 = new ji.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-      for (ehs $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
          }
       }
 
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+      return $$5 > 0;
    }
 }

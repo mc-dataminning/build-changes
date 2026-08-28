@@ -18,8 +18,8 @@ public abstract class bat extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bhx.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bhx.q))) {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bhy.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bhy.q))) {
          throw new IllegalStateException("Poi type is not what was expected.");
       } else {
          return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));

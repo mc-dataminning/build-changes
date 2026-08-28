@@ -1,26 +1,18 @@
 import java.util.function.Consumer;
 
-public interface fsj {
-   void j(int var1);
+public interface fsj extends fsk {
+   void b(Consumer<fsk> var1);
 
-   void k(int var1);
-
-   int F();
-
-   int G();
-
-   int A();
-
-   int y();
-
-   default fta J() {
-      return new fta(this.F(), this.G(), this.A(), this.y());
+   @Override
+   default void a(Consumer<fos> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   default void c(int $$0, int $$1) {
-      this.j($$0);
-      this.k($$1);
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof fsj $$1) {
+            $$1.a();
+         }
+      });
    }
-
-   void a(Consumer<foq> var1);
 }

@@ -1,258 +1,284 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.IntFunction;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class chy extends cgw implements bwh<chy.b> {
-   public static final String a = "BucketVariantTag";
-   private static final ajy<Integer> c = akc.a(chy.class, aka.b);
-   public static final List<chy.d> b = List.of(
-      new chy.d(chy.b.h, cvm.b, cvm.h),
-      new chy.d(chy.b.g, cvm.h, cvm.h),
-      new chy.d(chy.b.g, cvm.h, cvm.l),
-      new chy.d(chy.b.l, cvm.a, cvm.h),
-      new chy.d(chy.b.b, cvm.l, cvm.h),
-      new chy.d(chy.b.a, cvm.b, cvm.a),
-      new chy.d(chy.b.f, cvm.g, cvm.d),
-      new chy.d(chy.b.j, cvm.k, cvm.e),
-      new chy.d(chy.b.l, cvm.a, cvm.o),
-      new chy.d(chy.b.f, cvm.a, cvm.e),
-      new chy.d(chy.b.i, cvm.a, cvm.h),
-      new chy.d(chy.b.l, cvm.a, cvm.b),
-      new chy.d(chy.b.d, cvm.j, cvm.g),
-      new chy.d(chy.b.e, cvm.f, cvm.d),
-      new chy.d(chy.b.k, cvm.o, cvm.a),
-      new chy.d(chy.b.c, cvm.h, cvm.o),
-      new chy.d(chy.b.j, cvm.o, cvm.a),
-      new chy.d(chy.b.g, cvm.a, cvm.e),
-      new chy.d(chy.b.a, cvm.o, cvm.a),
-      new chy.d(chy.b.b, cvm.h, cvm.a),
-      new chy.d(chy.b.d, cvm.j, cvm.e),
-      new chy.d(chy.b.g, cvm.e, cvm.e)
-   );
-   private boolean bY = true;
+public class chy extends cgy {
+   public float bY;
+   public float bZ;
+   public float ca;
+   public float cb;
+   public float cc;
+   public float cd;
+   public float ce;
+   public float cf;
+   private float cg;
+   private float ch;
+   private float ci;
+   fbb cj = fbb.c;
 
-   public chy(bus<? extends chy> $$0, dgi $$1) {
+   public chy(but<? extends chy> $$0, dgj $$1) {
       super($$0, $$1);
-   }
-
-   public static String b(int $$0) {
-      return "entity.minecraft.tropical_fish.predefined." + $$0;
-   }
-
-   static int a(chy.b $$0, cvm $$1, cvm $$2) {
-      return $$0.b() & 65535 | ($$1.a() & 0xFF) << 16 | ($$2.a() & 0xFF) << 24;
-   }
-
-   public static cvm c(int $$0) {
-      return cvm.a($$0 >> 16 & 0xFF);
-   }
-
-   public static cvm r(int $$0) {
-      return cvm.a($$0 >> 24 & 0xFF);
-   }
-
-   public static chy.b s(int $$0) {
-      return chy.b.a($$0 & 65535);
+      this.ae.b((long)this.ar());
+      this.ch = 1.0F / (this.ae.i() + 1.0F) * 0.2F;
    }
 
    @Override
-   protected void a(akc.a $$0) {
-      super.a($$0);
-      $$0.a(c, 0);
+   protected void E() {
+      this.bS.a(0, new chy.b(this));
+      this.bS.a(1, new chy.a());
    }
 
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("Variant", this.gD());
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      this.u($$0.h("Variant"));
-   }
-
-   private void u(int $$0) {
-      this.al.a(c, $$0);
-   }
-
-   @Override
-   public boolean q(int $$0) {
-      return !this.bY;
-   }
-
-   private int gD() {
-      return this.al.a(c);
-   }
-
-   public cvm gA() {
-      return c(this.gD());
-   }
-
-   public cvm gB() {
-      return r(this.gD());
-   }
-
-   public chy.b gC() {
-      return s(this.gD());
-   }
-
-   public void a(chy.b $$0) {
-      int $$1 = this.gD();
-      cvm $$2 = c($$1);
-      cvm $$3 = r($$1);
-      this.u(a($$0, $$2, $$3));
-   }
-
-   @Override
-   public void i(cwp $$0) {
-      super.i($$0);
-      cyy.a(kv.X, $$0, $$0x -> $$0x.a("BucketVariantTag", this.gD()));
-   }
-
-   @Override
-   public cwp W_() {
-      return new cwp(cwt.rp);
+   public static bwp.a gs() {
+      return bvk.F().a(bwq.s, 10.0);
    }
 
    @Override
    protected avz u() {
-      return awa.AA;
+      return awa.zN;
+   }
+
+   @Override
+   protected avz e(btc $$0) {
+      return awa.zP;
    }
 
    @Override
    protected avz o_() {
-      return awa.AB;
+      return awa.zO;
+   }
+
+   protected avz t() {
+      return awa.zQ;
    }
 
    @Override
-   protected avz e(btb $$0) {
-      return awa.AD;
+   public boolean y() {
+      return true;
    }
 
    @Override
-   protected avz gs() {
-      return awa.AC;
+   protected float fg() {
+      return 0.4F;
    }
 
    @Override
-   public void h(tq $$0) {
-      super.h($$0);
-      if ($$0.b("BucketVariantTag", 3)) {
-         this.u($$0.h("BucketVariantTag"));
-      }
+   protected bum.c bg() {
+      return bum.c.c;
    }
 
    @Nullable
    @Override
-   public bwa a(dgz $$0, bsi $$1, bur $$2, @Nullable bwa $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      azh $$4 = $$0.H_();
-      chy.d $$6;
-      if ($$3 instanceof chy.c $$5) {
-         $$6 = $$5.b;
-      } else if ((double)$$4.i() < 0.9) {
-         $$6 = af.a(b, $$4);
-         $$3 = new chy.c(this, $$6);
+   public bud a(ard $$0, bud $$1) {
+      return but.bq.a($$0, bus.e);
+   }
+
+   @Override
+   protected double bd() {
+      return 0.08;
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      this.bZ = this.bY;
+      this.cb = this.ca;
+      this.cd = this.cc;
+      this.cf = this.ce;
+      this.cc = this.cc + this.ch;
+      if ((double)this.cc > Math.PI * 2) {
+         if (this.dV().C) {
+            this.cc = (float) (Math.PI * 2);
+         } else {
+            this.cc -= (float) (Math.PI * 2);
+            if (this.ae.a(10) == 0) {
+               this.ch = 1.0F / (this.ae.i() + 1.0F) * 0.2F;
+            }
+
+            this.dV().a(this, (byte)19);
+         }
+      }
+
+      if (this.bm()) {
+         if (this.cc < (float) Math.PI) {
+            float $$0 = this.cc / (float) Math.PI;
+            this.ce = ayz.a($$0 * $$0 * (float) Math.PI) * (float) Math.PI * 0.25F;
+            if ((double)$$0 > 0.75) {
+               if (this.dh()) {
+                  this.i(this.cj);
+               }
+
+               this.ci = 1.0F;
+            } else {
+               this.ci *= 0.8F;
+            }
+         } else {
+            this.ce = 0.0F;
+            if (this.dh()) {
+               this.i(this.dy().c(0.9));
+            }
+
+            this.ci *= 0.99F;
+         }
+
+         fbb $$1 = this.dy();
+         double $$2 = $$1.i();
+         this.aX = this.aX + (-((float)ayz.d($$1.d, $$1.f)) * (180.0F / (float)Math.PI) - this.aX) * 0.1F;
+         this.v(this.aX);
+         this.ca = this.ca + (float) Math.PI * this.ci * 1.5F;
+         this.bY = this.bY + (-((float)ayz.d($$2, $$1.e)) * (180.0F / (float)Math.PI) - this.bY) * 0.1F;
       } else {
-         this.bY = false;
-         chy.b[] $$8 = chy.b.values();
-         cvm[] $$9 = cvm.values();
-         chy.b $$10 = af.a($$8, $$4);
-         cvm $$11 = af.a($$9, $$4);
-         cvm $$12 = af.a($$9, $$4);
-         $$6 = new chy.d($$10, $$11, $$12);
-      }
+         this.ce = ayz.e(ayz.a(this.cc)) * (float) Math.PI * 0.25F;
+         if (!this.dV().C) {
+            double $$3 = this.dy().e;
+            if (this.b(btt.y)) {
+               $$3 = 0.05 * (double)(this.c(btt.y).e() + 1);
+            } else {
+               $$3 -= this.be();
+            }
 
-      this.u($$6.a());
-      return $$3;
-   }
+            this.n(0.0, $$3 * 0.98F, 0.0);
+         }
 
-   public static boolean b(bus<chy> $$0, dgj $$1, bur $$2, ji $$3, azh $$4) {
-      return $$1.b_($$3.e()).a(awv.a) && $$1.a_($$3.d()).a(djo.J) && ($$1.t($$3).a(awo.an) || cia.c($$0, $$1, $$2, $$3, $$4));
-   }
-
-   public static enum a {
-      a(0),
-      b(1);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
+         this.bY = this.bY + (-90.0F - this.bY) * 0.02F;
       }
    }
 
-   public static enum b implements azv {
-      a("kob", chy.a.a, 0),
-      b("sunstreak", chy.a.a, 1),
-      c("snooper", chy.a.a, 2),
-      d("dasher", chy.a.a, 3),
-      e("brinely", chy.a.a, 4),
-      f("spotty", chy.a.a, 5),
-      g("flopper", chy.a.b, 0),
-      h("stripey", chy.a.b, 1),
-      i("glitter", chy.a.b, 2),
-      j("blockfish", chy.a.b, 3),
-      k("betty", chy.a.b, 4),
-      l("clayfish", chy.a.b, 5);
-
-      public static final Codec<chy.b> m = azv.a(chy.b::values);
-      private static final IntFunction<chy.b> n = axq.a(chy.b::b, values(), a);
-      private final String o;
-      private final wp p;
-      private final chy.a q;
-      private final int r;
-
-      private b(final String $$0, final chy.a $$1, final int $$2) {
-         this.o = $$0;
-         this.q = $$1;
-         this.r = $$1.c | $$2 << 8;
-         this.p = wp.c("entity.minecraft.tropical_fish.type." + this.o);
+   @Override
+   public boolean a(ard $$0, btc $$1, float $$2) {
+      if (super.a($$0, $$1, $$2) && this.ep() != null) {
+         this.x();
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public static chy.b a(int $$0) {
-         return n.apply($$0);
+   private fbb l(fbb $$0) {
+      fbb $$1 = $$0.a(this.bZ * (float) (Math.PI / 180.0));
+      return $$1.b(-this.aY * (float) (Math.PI / 180.0));
+   }
+
+   private void x() {
+      this.b(this.t());
+      fbb $$0 = this.l(new fbb(0.0, -1.0, 0.0)).b(this.dA(), this.dC(), this.dG());
+
+      for (int $$1 = 0; $$1 < 30; $$1++) {
+         fbb $$2 = this.l(new fbb((double)this.ae.i() * 0.6 - 0.3, -1.0, (double)this.ae.i() * 0.6 - 0.3));
+         float $$3 = this.e_() ? 0.1F : 0.3F;
+         fbb $$4 = $$2.c((double)($$3 + this.ae.i() * 2.0F));
+         ((ard)this.dV()).a(this.p(), $$0.d, $$0.e + 0.5, $$0.f, 0, $$4.d, $$4.e, $$4.f, 0.1F);
       }
+   }
 
-      public chy.a a() {
-         return this.q;
+   protected lr p() {
+      return lt.ak;
+   }
+
+   @Override
+   public void a_(fbb $$0) {
+      if (this.dh()) {
+         this.a(bvm.a, this.dy());
       }
+   }
 
-      public int b() {
-         return this.r;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 19) {
+         this.cc = 0.0F;
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public boolean gt() {
+      return this.cj.h() > 1.0E-5F;
+   }
+
+   @Nullable
+   @Override
+   public bwb a(dha $$0, bsj $$1, bus $$2, @Nullable bwb $$3) {
+      bwb $$4 = Objects.requireNonNullElseGet($$3, () -> new bud.a(0.05F));
+      return super.a($$0, $$1, $$2, $$4);
+   }
+
+   class a extends ccg {
+      private static final float b = 3.0F;
+      private static final float c = 5.0F;
+      private static final float d = 10.0F;
+      private int e;
+
+      @Override
+      public boolean b() {
+         bvi $$0 = chy.this.ep();
+         return chy.this.bj() && $$0 != null ? chy.this.g((bum)$$0) < 100.0 : false;
       }
 
       @Override
-      public String c() {
-         return this.o;
+      public void d() {
+         this.e = 0;
       }
 
-      public wp d() {
-         return this.p;
+      @Override
+      public boolean V_() {
+         return true;
+      }
+
+      @Override
+      public void a() {
+         this.e++;
+         bvi $$0 = chy.this.ep();
+         if ($$0 != null) {
+            fbb $$1 = new fbb(chy.this.dA() - $$0.dA(), chy.this.dC() - $$0.dC(), chy.this.dG() - $$0.dG());
+            dwy $$2 = chy.this.dV().a_(ji.a(chy.this.dA() + $$1.d, chy.this.dC() + $$1.e, chy.this.dG() + $$1.f));
+            eta $$3 = chy.this.dV().b_(ji.a(chy.this.dA() + $$1.d, chy.this.dC() + $$1.e, chy.this.dG() + $$1.f));
+            if ($$3.a(awv.a) || $$2.l()) {
+               double $$4 = $$1.g();
+               if ($$4 > 0.0) {
+                  $$1.d();
+                  double $$5 = 3.0;
+                  if ($$4 > 5.0) {
+                     $$5 -= ($$4 - 5.0) / 5.0;
+                  }
+
+                  if ($$5 > 0.0) {
+                     $$1 = $$1.c($$5);
+                  }
+               }
+
+               if ($$2.l()) {
+                  $$1 = $$1.a(0.0, $$1.e, 0.0);
+               }
+
+               chy.this.cj = new fbb($$1.d / 20.0, $$1.e / 20.0, $$1.f / 20.0);
+            }
+
+            if (this.e % 10 == 5) {
+               chy.this.dV().a(lt.d, chy.this.dA(), chy.this.dC(), chy.this.dG(), 0.0, 0.0, 0.0);
+            }
+         }
       }
    }
 
-   static class c extends cgw.a {
-      final chy.d b;
+   static class b extends ccg {
+      private final chy a;
 
-      c(chy $$0, chy.d $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-   }
-
-   public static record d(chy.b b, cvm c, cvm d) {
-      public static final Codec<chy.d> a = Codec.INT.xmap(chy.d::new, chy.d::a);
-
-      public d(int $$0) {
-         this(chy.s($$0), chy.c($$0), chy.r($$0));
+      public b(chy $$0) {
+         this.a = $$0;
       }
 
-      public int a() {
-         return chy.a(this.b, this.c, this.d);
+      @Override
+      public boolean b() {
+         return true;
+      }
+
+      @Override
+      public void a() {
+         int $$0 = this.a.et();
+         if ($$0 > 100) {
+            this.a.cj = fbb.c;
+         } else if (this.a.dY().a(b(50)) == 0 || !this.a.ag || !this.a.gt()) {
+            float $$1 = this.a.dY().i() * (float) (Math.PI * 2);
+            this.a.cj = new fbb((double)(ayz.b($$1) * 0.2F), (double)(-0.1F + this.a.dY().i() * 0.2F), (double)(ayz.a($$1) * 0.2F));
+         }
       }
    }
 }

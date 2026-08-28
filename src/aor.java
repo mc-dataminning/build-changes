@@ -16,7 +16,7 @@ public class aor {
 
    private static int a(ex $$0, ji $$1, float $$2) {
       ard $$3 = $$0.e();
-      if ($$3.ai() != dgi.i) {
+      if ($$3.ai() != dgj.i) {
          $$0.b(wp.c("commands.setworldspawn.failure.not_overworld"));
          return 0;
       } else {

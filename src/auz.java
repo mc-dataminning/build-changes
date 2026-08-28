@@ -149,7 +149,7 @@ public class auz {
          if ($$1 != null) {
             return $$1;
          } else {
-            CompletableFuture<Optional<GameProfile>> $$2 = CompletableFuture.<Optional<GameProfile>>supplyAsync(() -> this.a($$0), af.g().a("getProfile"))
+            CompletableFuture<Optional<GameProfile>> $$2 = CompletableFuture.<Optional<GameProfile>>supplyAsync(() -> this.a($$0), af.h().a("getProfile"))
                .whenCompleteAsync(($$1x, $$2x) -> this.g.remove($$0), this.l);
             this.g.put($$0, $$2);
             return $$2;

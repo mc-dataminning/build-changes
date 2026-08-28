@@ -1,108 +1,149 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
 import javax.annotation.Nullable;
 
-public class fzg extends ful {
-   private static final wp a = wp.c("telemetry_info.screen.title");
-   private static final wp b = wp.c("telemetry_info.screen.description").b(-4539718);
-   private static final wp c = wp.c("telemetry_info.button.privacy_statement");
-   private static final wp d = wp.c("telemetry_info.button.give_feedback");
-   private static final wp s = wp.c("telemetry_info.button.show_data");
-   private static final wp u = wp.c("telemetry_info.opt_in.description");
-   private static final int v = 8;
-   private static final boolean w = flj.Q().D();
-   private final ful x;
-   private final fln y;
-   private final fsh z = new fsh(this, 16 + 9 * 5 + 20, w ? 33 + fov.a(flj.Q().h) : 33);
+public class fzg extends foq {
+   private static final int a = 32;
+   private static final String c = "telemetry.event.required";
+   private static final String d = "telemetry.event.optional";
+   private static final String e = "telemetry.event.optional.disabled";
+   private static final wp f = wp.c("telemetry_info.property_title").a(n.t);
+   private final fod m;
+   private fzg.a n;
    @Nullable
-   private fzf A;
-   @Nullable
-   private fpn B;
-   private double C;
+   private DoubleConsumer o;
 
-   public fzg(ful $$0, fln $$1) {
-      super(a);
-      this.x = $$0;
-      this.y = $$1;
+   public fzg(int $$0, int $$1, int $$2, int $$3, fod $$4) {
+      super($$0, $$1, $$2, $$3, wp.i());
+      this.m = $$4;
+      this.n = this.c(flk.Q().C());
+   }
+
+   public void b(boolean $$0) {
+      this.n = this.c($$0);
+      this.h();
+   }
+
+   public void q() {
+      this.n = this.c(flk.Q().C());
+      this.h();
+   }
+
+   private fzg.a c(boolean $$0) {
+      fzg.b $$1 = new fzg.b(this.r());
+      List<hkf> $$2 = new ArrayList<>(hkf.g());
+      $$2.sort(Comparator.comparing(hkf::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         hkf $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.o = $$0;
    }
 
    @Override
-   public wp i() {
-      return wo.a(super.i(), b);
+   public void a(double $$0) {
+      super.a($$0);
+      if (this.o != null) {
+         this.o.accept(this.g());
+      }
    }
 
    @Override
-   protected void aR_() {
-      fsl $$0 = this.z.a(fsl.d().a(4));
+   protected int c() {
+      return this.n.a().y();
+   }
+
+   @Override
+   protected double o() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(fof $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.p();
+      int $$5 = this.e();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.n.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
       $$0.c().b();
-      $$0.a(new fqa(a, this.p));
-      this.B = $$0.a(new fpn(b, this.p).b(true));
-      fsl $$1 = $$0.a(fsl.e().a(8));
-      $$1.a(fot.a(c, this::a).a());
-      $$1.a(fot.a(d, this::b).a());
-      fsl $$2 = this.z.b(fsl.d().a(4));
-      if (w) {
-         $$2.a(this.m());
-      }
-
-      fsl $$3 = $$2.a(fsl.e().a(8));
-      $$3.a(fot.a(s, this::c).a());
-      $$3.a(fot.a(wo.d, $$0x -> this.aO_()).a());
-      fsl $$4 = this.z.c(fsl.d().a(8));
-      this.A = $$4.a(new fzf(0, 0, this.n - 40, this.z.d(), this.p));
-      this.A.a($$0x -> this.C = $$0x);
-      this.z.a($$1x -> {
-         foq var10000 = this.c($$1x);
-      });
-      this.c();
    }
 
    @Override
-   protected void c() {
-      if (this.A != null) {
-         this.A.a(this.C);
-         this.A.h(this.n - 40);
-         this.A.i(this.z.d());
-         this.A.q();
-      }
-
-      if (this.B != null) {
-         this.B.d(this.n - 16);
-      }
-
-      this.z.a();
+   protected void a(fsr $$0) {
+      $$0.a(fsq.a, this.n.b());
    }
 
-   @Override
-   protected void aF_() {
-      if (this.A != null) {
-         this.b(this.A);
-      }
+   private wp a(wp $$0, boolean $$1) {
+      return (wp)($$1 ? $$0.f().a(n.h) : $$0);
    }
 
-   private foq m() {
-      flm<Boolean> $$0 = this.y.al();
-      return fov.a(u, this.p).a($$0).a(this::a).a();
+   private void a(fzg.b $$0, hkf $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.m, this.a(wp.a($$3, $$1.e()), $$2));
+      $$0.b(this.m, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.m, this.a(f, $$2), 2);
+      this.a($$1, $$0, $$2);
    }
 
-   private void a(foq $$0, boolean $$1) {
-      if (this.A != null) {
-         this.A.b($$1);
+   private void a(hkf $$0, fzg.b $$1, boolean $$2) {
+      for (hkh<?> $$3 : $$0.b()) {
+         $$1.a(this.m, this.a($$3.a(), $$2));
       }
    }
 
-   private void a(fot $$0) {
-      fti.a(this, axv.c);
+   private int r() {
+      return this.g - this.b();
    }
 
-   private void b(fot $$0) {
-      fti.a(this, axv.i);
+   static record a(fsj a, wp b) {
    }
 
-   private void c(fot $$0) {
-      af.m().a(this.m.u().b());
-   }
+   static class b {
+      private final int a;
+      private final fsm b;
+      private final xd c = wp.i();
 
-   @Override
-   public void aO_() {
-      this.m.a(this.x);
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fsm.d();
+         this.b.c().a();
+         this.b.a(fsn.a($$0));
+      }
+
+      public void a(fod $$0, wp $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(fod $$0, wp $$1, int $$2) {
+         this.b.a(new fpo($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(fod $$0, wp $$1) {
+         this.b.a(new fpo($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fsn.b($$0));
+      }
+
+      public fzg.a a() {
+         this.b.a();
+         return new fzg.a(this.b, this.c);
+      }
    }
 }

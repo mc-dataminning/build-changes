@@ -37,20 +37,20 @@ public class aoy {
       );
    }
 
-   private static Collection<String> a(Collection<? extends bul> $$0) {
+   private static Collection<String> a(Collection<? extends bum> $$0) {
       Set<String> $$1 = Sets.newHashSet();
 
-      for (bul $$2 : $$0) {
+      for (bum $$2 : $$0) {
          $$1.addAll($$2.as());
       }
 
       return $$1;
    }
 
-   private static int a(ex $$0, Collection<? extends bul> $$1, String $$2) throws CommandSyntaxException {
+   private static int a(ex $$0, Collection<? extends bum> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bul $$4 : $$1) {
+      for (bum $$4 : $$1) {
          if ($$4.a($$2)) {
             $$3++;
          }
@@ -69,10 +69,10 @@ public class aoy {
       }
    }
 
-   private static int b(ex $$0, Collection<? extends bul> $$1, String $$2) throws CommandSyntaxException {
+   private static int b(ex $$0, Collection<? extends bum> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bul $$4 : $$1) {
+      for (bum $$4 : $$1) {
          if ($$4.b($$2)) {
             $$3++;
          }
@@ -91,15 +91,15 @@ public class aoy {
       }
    }
 
-   private static int a(ex $$0, Collection<? extends bul> $$1) {
+   private static int a(ex $$0, Collection<? extends bum> $$1) {
       Set<String> $$2 = Sets.newHashSet();
 
-      for (bul $$3 : $$1) {
+      for (bum $$3 : $$1) {
          $$2.addAll($$3.as());
       }
 
       if ($$1.size() == 1) {
-         bul $$4 = $$1.iterator().next();
+         bum $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
             $$0.a(() -> wp.a("commands.tag.list.single.empty", $$4.p_()), false);
          } else {

@@ -1,9 +1,10 @@
-import javax.annotation.Nullable;
-
-public class gya extends gyq {
-   private static final akv j = akv.b("textures/entity/cat/tabby.png");
-   public akv a = j;
+public class gya extends gzl {
+   public boolean a;
    public boolean b;
-   @Nullable
-   public cvm c;
+   public float c;
+   public final bue d = new bue();
+   public final bue e = new bue();
+   public final bue f = new bue();
+   public final bue g = new bue();
+   public final bue h = new bue();
 }

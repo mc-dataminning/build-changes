@@ -1,62 +1,60 @@
-import java.util.List;
-
-public class cvw extends cwl implements cxk {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
-
-   public cvw(cwl.a $$0) {
+public class cvw extends cwm implements cxl {
+   public cvw(cwm.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsk a(dai $$0) {
-      dgi $$1 = $$0.q();
-      if ($$1 instanceof ard $$2) {
-         cwp $$3 = $$0.n();
-         fba $$4 = $$0.l();
-         jn $$5 = $$0.k();
-         cpq.a(new cpl($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
-         $$3.h(1);
-      }
-
-      return bsk.a;
-   }
-
-   @Override
-   public bsk a(dgi $$0, cox $$1, bsj $$2) {
-      if ($$1.fJ()) {
-         cwp $$3 = $$1.b($$2);
-         if ($$0 instanceof ard $$4) {
-            cpq.a(new cpl($$0, $$3, $$1), $$4, $$3);
-            $$3.a(1, $$1);
-            $$1.b(awk.c.b(this));
+   public bsl a(daj $$0) {
+      dgj $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dwy $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!dkc.i($$3) && !dkd.h($$3) && !dke.h($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (dja.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, dja.a($$1, $$2));
+            $$1.a($$0.o(), ebu.i, $$2);
+            $$4 = true;
          }
-
-         return bsk.a;
       } else {
-         return bsk.e;
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.b(dxo.v, Boolean.valueOf(true)));
+         $$1.a($$0.o(), ebu.c, $$2);
+         $$4 = true;
+      }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return bsl.a;
+      } else {
+         return bsl.d;
       }
    }
 
-   @Override
-   public void a(cwp $$0, cwl.b $$1, List<wp> $$2, cyh $$3) {
-      czf $$4 = $$0.a(kv.af);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
-      }
+   private void a(dgj $$0, ji $$1) {
+      azh $$2 = $$0.H_();
+      $$0.a(null, $$1, awa.jk, awb.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 
    @Override
-   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
-      return new cpl($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   public cpr a(dgj $$0, kb $$1, cwq $$2, jn $$3) {
+      azh $$4 = $$0.H_();
+      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
+      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
+      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
+      fbb $$8 = new fbb($$5, $$6, $$7);
+      cpv $$9 = new cpv($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
+      $$9.a($$2);
+      return $$9;
    }
 
    @Override
-   public cxk.a b() {
-      return cxk.a.a().a(cvw::a).a(1.0F).b(0.5F).a(1004).a();
+   public void a(cpr $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
    }
 
-   private static fba a(kz $$0, jn $$1) {
-      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
+   @Override
+   public cxl.a b() {
+      return cxl.a.a().a(($$0, $$1) -> dlt.a($$0, 1.0, fbb.c)).a(6.6666665F).b(1.0F).a(1018).a();
    }
 }

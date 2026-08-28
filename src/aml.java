@@ -16,7 +16,7 @@ public class aml {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wp.c("commands.clone.failed"));
-   public static final Predicate<dxb> a = $$0 -> !$$0.a().l();
+   public static final Predicate<dxc> a = $$0 -> !$$0.a().l();
 
    public static void a(CommandDispatcher<ex> $$0, et $$1) {
       $$0.register(
@@ -82,7 +82,7 @@ public class aml {
       aml.c<CommandContext<ex>, aml.d> $$0,
       aml.c<CommandContext<ex>, aml.d> $$1,
       aml.c<CommandContext<ex>, aml.d> $$2,
-      aml.c<CommandContext<ex>, Predicate<dxb>> $$3,
+      aml.c<CommandContext<ex>, Predicate<dxc>> $$3,
       ArgumentBuilder<ex, ?> $$4
    ) {
       return $$4.then(ey.a("force").executes($$4x -> a((ex)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aml.e.a)))
@@ -90,20 +90,20 @@ public class aml {
          .then(ey.a("normal").executes($$4x -> a((ex)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aml.e.c)));
    }
 
-   private static int a(ex $$0, aml.d $$1, aml.d $$2, aml.d $$3, Predicate<dxb> $$4, aml.e $$5) throws CommandSyntaxException {
+   private static int a(ex $$0, aml.d $$1, aml.d $$2, aml.d $$3, Predicate<dxc> $$4, aml.e $$5) throws CommandSyntaxException {
       ji $$6 = $$1.b();
       ji $$7 = $$2.b();
-      ene $$8 = ene.a($$6, $$7);
+      enf $$8 = enf.a($$6, $$7);
       ji $$9 = $$3.b();
       ji $$10 = $$9.a($$8.c());
-      ene $$11 = ene.a($$9, $$10);
+      enf $$11 = enf.a($$9, $$10);
       ard $$12 = $$1.a();
       ard $$13 = $$3.a();
       if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
          throw b.create();
       } else {
          int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().O().c(dge.A);
+         int $$15 = $$0.e().O().c(dgf.A);
          if ($$14 > $$15) {
             throw c.create($$15, $$14);
          } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
@@ -118,10 +118,10 @@ public class aml {
                   for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
                      ji $$24 = new ji($$23, $$22, $$21);
                      ji $$25 = $$24.a((km)$$20);
-                     dxb $$26 = new dxb($$12, $$24, false);
-                     dwx $$27 = $$26.a();
+                     dxc $$26 = new dxc($$12, $$24, false);
+                     dwy $$27 = $$26.a();
                      if ($$4.test($$26)) {
-                        dtz $$28 = $$12.c_($$24);
+                        dua $$28 = $$12.c_($$24);
                         if ($$28 != null) {
                            aml.a $$29 = new aml.a($$28.e($$0.u()), $$28.r());
                            $$17.add(new aml.b($$25, $$27, $$29));
@@ -140,13 +140,13 @@ public class aml {
 
             if ($$5 == aml.e.b) {
                for (ji $$30 : $$19) {
-                  dtz $$31 = $$12.c_($$30);
-                  bsb.a($$31);
-                  $$12.a($$30, djo.iu.m(), 2);
+                  dua $$31 = $$12.c_($$30);
+                  bsc.a($$31);
+                  $$12.a($$30, djp.iu.m(), 2);
                }
 
                for (ji $$32 : $$19) {
-                  $$12.a($$32, djo.a.m(), 3);
+                  $$12.a($$32, djp.a.m(), 3);
                }
             }
 
@@ -157,9 +157,9 @@ public class aml {
             List<aml.b> $$34 = Lists.reverse($$33);
 
             for (aml.b $$35 : $$34) {
-               dtz $$36 = $$13.c_($$35.a);
-               bsb.a($$36);
-               $$13.a($$35.a, djo.iu.m(), 2);
+               dua $$36 = $$13.c_($$35.a);
+               bsc.a($$36);
+               $$13.a($$35.a, djp.iu.m(), 2);
             }
 
             int $$37 = 0;
@@ -171,7 +171,7 @@ public class aml {
             }
 
             for (aml.b $$39 : $$17) {
-               dtz $$40 = $$13.c_($$39.a);
+               dua $$40 = $$13.c_($$39.a);
                if ($$39.c != null && $$40 != null) {
                   $$40.d($$39.c.a, $$13.K_());
                   $$40.a($$39.c.b);
@@ -202,7 +202,7 @@ public class aml {
    static record a(tq a, kr b) {
    }
 
-   static record b(ji a, dwx b, @Nullable aml.a c) {
+   static record b(ji a, dwy b, @Nullable aml.a c) {
    }
 
    @FunctionalInterface

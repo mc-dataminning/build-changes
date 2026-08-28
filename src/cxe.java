@@ -1,74 +1,46 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cxe extends cwm {
+   private final but<? extends cqx> a;
 
-public class cxe extends cvb {
-   private static final MapCodec<chy.d> a = chy.d.a.fieldOf("BucketVariantTag");
-   private final bus<? extends bvj> b;
-   private final avz c;
-
-   public cxe(bus<? extends bvj> $$0, esy $$1, avz $$2, cwl.a $$3) {
-      super($$1, $$3);
-      this.b = $$0;
-      this.c = $$2;
+   public cxe(but<? extends cqx> $$0, cwm.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public void a(@Nullable cox $$0, dgi $$1, cwp $$2, ji $$3) {
-      if ($$1 instanceof ard) {
-         this.a((ard)$$1, $$2, $$3);
-         $$1.a($$0, ebt.t, $$3);
-      }
-   }
-
-   @Override
-   protected void a(@Nullable cox $$0, dgj $$1, ji $$2) {
-      $$1.a($$0, $$2, this.c, awb.g, 1.0F, 1.0F);
-   }
-
-   private void a(ard $$0, cwp $$1, ji $$2) {
-      bvj $$3 = this.b.b($$0, bus.a($$0, $$1, null), $$2, bur.l, true, false);
-      if ($$3 instanceof cha $$4) {
-         cyy $$5 = $$1.a(kv.X, cyy.a);
-         $$4.h($$5.d());
-         $$4.x(true);
-      }
-
-      if ($$3 != null) {
-         $$0.a_($$3);
-         $$3.U();
-      }
-   }
-
-   @Override
-   public void a(cwp $$0, cwl.b $$1, List<wp> $$2, cyh $$3) {
-      if (this.b == bus.bz) {
-         cyy $$4 = $$0.a(kv.X, cyy.a);
-         if ($$4.c()) {
-            return;
+   public bsl a(daj $$0) {
+      dgj $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dwy $$3 = $$1.a_($$2);
+      if (!$$3.a(awp.P)) {
+         return bsl.d;
+      } else {
+         cwq $$4 = $$0.n();
+         dyb $$5 = $$3.b() instanceof djc ? $$3.c(((djc)$$3.b()).c()) : dyb.a;
+         double $$6 = 0.0;
+         if ($$5.b()) {
+            $$6 = 0.5;
          }
 
-         Optional<chy.d> $$5 = $$4.a(a).result();
-         if ($$5.isPresent()) {
-            chy.d $$6 = $$5.get();
-            n[] $$7 = new n[]{n.u, n.h};
-            String $$8 = "color.minecraft." + $$6.c();
-            String $$9 = "color.minecraft." + $$6.d();
-            int $$10 = chy.b.indexOf($$6);
-            if ($$10 != -1) {
-               $$2.add(wp.c(chy.b($$10)).a($$7));
-               return;
+         fbb $$7 = new fbb((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
+         cqx $$8 = cqx.a($$1, $$7.d, $$7.e, $$7.f, this.a, bus.o, $$4, $$0.o());
+         if ($$8 == null) {
+            return bsl.d;
+         } else {
+            if (cqx.b($$1)) {
+               for (bum $$10 : $$1.a_(null, $$8.cR())) {
+                  if ($$10 instanceof cqx) {
+                     return bsl.d;
+                  }
+               }
             }
 
-            $$2.add($$6.b().d().e().a($$7));
-            xd $$11 = wp.c($$8);
-            if (!$$8.equals($$9)) {
-               $$11.f(", ").b(wp.c($$9));
+            if ($$1 instanceof ard $$11) {
+               $$11.b($$8);
+               $$11.a(ebu.t, $$2, ebu.a.a($$0.o(), $$11.a_($$2.e())));
             }
 
-            $$11.a($$7);
-            $$2.add($$11);
+            $$4.h(1);
+            return bsl.a;
          }
       }
    }

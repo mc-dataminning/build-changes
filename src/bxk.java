@@ -1,41 +1,28 @@
-public class bxk implements bxb<bvh> {
-   private final int a;
-   private final int b;
-   private bxa.a c = bxa.a.a;
-   private long d;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-   public bxk(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bxk {
+   public static <E extends bvi> bxc<E> a(int $$0, BiPredicate<E, bum> $$1) {
+      return cao.a((Function<cao.b<E>, ? extends App<cao.c<E>, car<E>>>)($$2 -> $$2.group($$2.a(cem.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               bum $$7 = $$5.dk();
+               bum $$8 = $$2.<bum>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
+                  return false;
+               } else {
+                  bum $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.ae();
+                     $$3.b();
+                     return true;
+                  }
+               }
+            })));
    }
 
-   @Override
-   public bxa.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(ard $$0, bvh $$1, long $$2) {
-      this.c = bxa.a.b;
-      int $$3 = this.a + $$0.H_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
-   }
-
-   @Override
-   public final void f(ard $$0, bvh $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(ard $$0, bvh $$1, long $$2) {
-      this.c = bxa.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   private static boolean a(bvi $$0, bum $$1, int $$2) {
+      return $$1.bL() && $$1.a($$0, (double)$$2) && $$1.dV() == $$0.dV();
    }
 }

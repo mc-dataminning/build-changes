@@ -6,21 +6,21 @@ import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class bbr extends bgs {
+public class bbr extends bgt {
    public bbr(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityJukeboxFix", bhx.s, "minecraft:jukebox");
+      super($$0, $$1, "BlockEntityJukeboxFix", bhy.s, "minecraft:jukebox");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bhx.s, "minecraft:jukebox");
+      Type<?> $$1 = this.getInputSchema().getChoiceType(bhy.s, "minecraft:jukebox");
       Type<?> $$2 = $$1.findFieldType("RecordItem");
       OpticFinder<?> $$3 = DSL.fieldFinder("RecordItem", $$2);
       Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
       int $$5 = $$4.get("Record").asInt(0);
       if ($$5 > 0) {
          $$4.remove("Record");
-         String $$6 = bfx.a(bfk.a($$5), 0);
+         String $$6 = bfy.a(bfl.a($$5), 0);
          if ($$6 != null) {
             Dynamic<?> $$7 = $$4.emptyMap();
             $$7 = $$7.set("id", $$7.createString($$6));

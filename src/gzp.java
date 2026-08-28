@@ -1,7 +1,3 @@
-public class gzp extends gzk {
-   public chl.a a;
-
-   public gzp() {
-      this.a = chl.a.a;
-   }
+public class gzp extends gzo {
+   public float n = -1.0F;
 }

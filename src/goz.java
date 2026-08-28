@@ -1,76 +1,80 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class goz implements gok<dvo> {
-   private final Function<dqt.a, gdy> a;
-   private static final Map<dqt.a, akv> b = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dqt.b.c, akv.b("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dqt.b.d, akv.b("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dqt.b.f, akv.b("textures/entity/zombie/zombie.png"));
-      $$0.put(dqt.b.g, akv.b("textures/entity/creeper/creeper.png"));
-      $$0.put(dqt.b.i, akv.b("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dqt.b.h, akv.b("textures/entity/piglin/piglin.png"));
-      $$0.put(dqt.b.e, hfl.a());
-   });
+public class goz extends gof {
+   private static final float a = 0.6666667F;
+   private static final fbb b = new fbb(0.0, 0.33333334F, 0.046666667F);
+   private final Map<dyk, goz.a> c;
 
-   @Nullable
-   public static gdy a(gez $$0, dqt.a $$1) {
-      if ($$1 instanceof dqt.b $$2) {
-         return (gdy)(switch ($$2) {
-            case c -> new gdx($$0.a(gfc.cN));
-            case d -> new gdx($$0.a(gfc.dF));
-            case e -> new gdx($$0.a(gfc.ch));
-            case f -> new gdx($$0.a(gfc.dR));
-            case g -> new gdx($$0.a(gfc.ak));
-            case i -> new gew($$0.a(gfc.av));
-            case h -> new gdc($$0.a(gfc.bX));
-         });
-      } else {
-         return null;
+   public goz(gom.a $$0) {
+      super($$0);
+      this.c = dyk.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new goz.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
+   }
+
+   @Override
+   protected gcx a(dwy $$0, dyk $$1) {
+      goz.a $$2 = this.c.get($$1);
+      return $$0.b() instanceof drn ? $$2.a() : $$2.b();
+   }
+
+   @Override
+   protected hha a(dyk $$0) {
+      return gmu.a($$0);
+   }
+
+   @Override
+   protected float a() {
+      return 0.6666667F;
+   }
+
+   @Override
+   protected float b() {
+      return 0.6666667F;
+   }
+
+   private static void a(ffv $$0, float $$1) {
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$1));
+   }
+
+   @Override
+   protected void a(ffv $$0, float $$1, dwy $$2) {
+      a($$0, $$1);
+      if (!($$2.b() instanceof drn)) {
+         $$0.a(0.0F, -0.3125F, -0.4375F);
       }
    }
 
-   public goz(gol.a $$0) {
-      gez $$1 = $$0.f();
-      this.a = af.b($$1x -> a($$1, $$1x));
+   @Override
+   protected fbb c() {
+      return b;
    }
 
-   public void a(dvo $$0, float $$1, ffu $$2, gly $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      dwx $$7 = $$0.m();
-      boolean $$8 = $$7.b() instanceof dss;
-      jn $$9 = $$8 ? $$7.c(dss.d) : null;
-      int $$10 = $$8 ? dyc.a($$9.g()) : $$7.c(dqt.e);
-      float $$11 = dyc.b($$10);
-      dqt.a $$12 = ((dii)$$7.b()).b();
-      gdy $$13 = this.a.apply($$12);
-      gmi $$14 = a($$12, $$0.c());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   public static void a(ffv $$0, glz $$1, int $$2, int $$3, gcx $$4, hha $$5) {
+      $$0.a();
+      a($$0, 0.0F);
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      ffz $$6 = $$5.a($$1, $$4::a);
+      $$4.a($$0, $$6, $$2, $$3);
+      $$0.b();
    }
 
-   public static void a(@Nullable jn $$0, float $$1, float $$2, ffu $$3, gly $$4, int $$5, gdy $$6, gmi $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
-      } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+   public static gcx a(gfa $$0, dyk $$1, boolean $$2) {
+      gfc $$3 = $$2 ? gfd.a($$1) : gfd.b($$1);
+      return new gcx.a($$0.a($$3), gmj::g);
+   }
+
+   public static gfk a(boolean $$0) {
+      gfm $$1 = new gfm();
+      gfo $$2 = $$1.a();
+      $$2.a("sign", gfj.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gfg.a);
+      if ($$0) {
+         $$2.a("stick", gfj.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gfg.a);
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      ffy $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, hei.d);
-      $$3.b();
+      return gfk.a($$1, 64, 32);
    }
 
-   public static gmi a(dqt.a $$0, @Nullable czo $$1) {
-      return a($$0, $$1, null);
-   }
-
-   public static gmi a(dqt.a $$0, @Nullable czo $$1, @Nullable akv $$2) {
-      return $$0 == dqt.b.e && $$1 != null ? gmi.j($$2 != null ? $$2 : flj.Q().an().b($$1.f()).a()) : gmi.h($$2 != null ? $$2 : b.get($$0));
+   static record a(gcx a, gcx b) {
    }
 }

@@ -1,25 +1,50 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
+@FunctionalInterface
 public interface hex {
-   ako a = new ako("textures", ".png");
+   Logger a = LogUtils.getLogger();
 
-   void a(aup var1, hex.a var2);
+   static hex create(Collection<atp<?>> $$0) {
+      return ($$1, $$2) -> {
+         aur $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
 
-   hez a();
+         fev $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = fev.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
 
-   public interface a {
-      default void a(akv $$0, aun $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
+         Optional<hgg> $$11 = $$3.a(hgg.b);
+         hgh $$12;
+         if ($$11.isPresent()) {
+            $$12 = $$11.get().a($$7.a(), $$7.b());
+            if (!ayz.c($$7.a(), $$12.a()) || !ayz.c($$7.b(), $$12.b())) {
+               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+               $$7.close();
+               return null;
+            }
+         } else {
+            $$12 = new hgh($$7.a(), $$7.b());
+         }
 
-      void a(akv var1, hex.b var2);
-
-      void a(Predicate<akv> var1);
+         return new hen($$1, $$12, $$7, $$3);
+      };
    }
 
-   public interface b extends Function<hew, hem> {
-      default void a() {
-      }
-   }
+   @Nullable
+   hen loadSprite(akv var1, aun var2);
 }

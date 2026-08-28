@@ -1,24 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+public class cfa extends cfm {
+   public static final float a = 8.0F;
 
-public class cfa extends cfk<cmu> {
    @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cel.B)));
+   protected boolean a(ard $$0, bvi $$1, bvi $$2) {
+      return this.b($$1, $$2) && $$2.bm() && (this.b($$2) || this.a($$1, $$2)) && cfs.c($$0, $$1, $$2);
    }
 
-   protected void a(ard $$0, cmu $$1) {
-      super.a($$0, $$1);
-      $$1.eb()
-         .c(cel.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(buq.e)
-         .filter($$2 -> cfr.c($$0, $$1, $$2))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.eb().a(cel.B, $$1x), () -> $$1.eb().b(cel.B));
+   private boolean a(bvi $$0, bvi $$1) {
+      return !$$0.eb().a(cem.U) && $$1.aq().a(awt.j);
+   }
+
+   private boolean b(bvi $$0) {
+      return $$0.aq().a(awt.i);
+   }
+
+   private boolean b(bvi $$0, bvi $$1) {
+      return $$1.g((bum)$$0) <= 64.0;
+   }
+
+   @Override
+   protected cem<bvi> b() {
+      return cem.B;
    }
 }

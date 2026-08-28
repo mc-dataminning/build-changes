@@ -1,4 +1,5 @@
-public class hah extends gzk {
-   public float a;
-   public int b = 1;
+public class hah extends gzc {
+   public boolean b;
+   public boolean c;
+   public boolean d;
 }

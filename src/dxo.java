@@ -1,38 +1,136 @@
-import java.util.List;
-import java.util.Optional;
-
-public final class dxo extends dxz<Boolean> {
-   private static final List<Boolean> a = List.of(true, false);
-   private static final int b = 0;
-   private static final int c = 1;
-
-   private dxo(String $$0) {
-      super($$0, Boolean.class);
-   }
-
-   @Override
-   public List<Boolean> a() {
-      return a;
-   }
-
-   public static dxo a(String $$0) {
-      return new dxo($$0);
-   }
-
-   @Override
-   public Optional<Boolean> b(String $$0) {
-      return switch ($$0) {
-         case "true" -> Optional.of(true);
-         case "false" -> Optional.of(false);
-         default -> Optional.empty();
-      };
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   public int b(Boolean $$0) {
-      return $$0 ? 0 : 1;
-   }
+public class dxo {
+   public static final dxp a = dxp.a("active");
+   public static final dxp b = dxp.a("attached");
+   public static final dxp c = dxp.a("berries");
+   public static final dxp d = dxp.a("bloom");
+   public static final dxp e = dxp.a("bottom");
+   public static final dxp f = dxp.a("can_summon");
+   public static final dxp g = dxp.a("conditional");
+   public static final dxp h = dxp.a("disarmed");
+   public static final dxp i = dxp.a("drag");
+   public static final dxp j = dxp.a("enabled");
+   public static final dxp k = dxp.a("extended");
+   public static final dxp l = dxp.a("eye");
+   public static final dxp m = dxp.a("falling");
+   public static final dxp n = dxp.a("hanging");
+   public static final dxp o = dxp.a("has_bottle_0");
+   public static final dxp p = dxp.a("has_bottle_1");
+   public static final dxp q = dxp.a("has_bottle_2");
+   public static final dxp r = dxp.a("has_record");
+   public static final dxp s = dxp.a("has_book");
+   public static final dxp t = dxp.a("inverted");
+   public static final dxp u = dxp.a("in_wall");
+   public static final dxp v = dxp.a("lit");
+   public static final dxp w = dxp.a("locked");
+   public static final dxp x = dxp.a("natural");
+   public static final dxp y = dxp.a("occupied");
+   public static final dxp z = dxp.a("open");
+   public static final dxp A = dxp.a("persistent");
+   public static final dxp B = dxp.a("powered");
+   public static final dxp C = dxp.a("short");
+   public static final dxp D = dxp.a("shrieking");
+   public static final dxp E = dxp.a("signal_fire");
+   public static final dxp F = dxp.a("snowy");
+   public static final dxp G = dxp.a("tip");
+   public static final dxp H = dxp.a("triggered");
+   public static final dxp I = dxp.a("unstable");
+   public static final dxp J = dxp.a("waterlogged");
+   public static final dxv<jn.a> K = dxv.a("axis", jn.a.class, jn.a.a, jn.a.c);
+   public static final dxv<jn.a> L = dxv.a("axis", jn.a.class);
+   public static final dxp M = dxp.a("up");
+   public static final dxp N = dxp.a("down");
+   public static final dxp O = dxp.a("north");
+   public static final dxp P = dxp.a("east");
+   public static final dxp Q = dxp.a("south");
+   public static final dxp R = dxp.a("west");
+   public static final dxv<jn> S = dxv.a("facing", jn.class, jn.c, jn.f, jn.d, jn.e, jn.b, jn.a);
+   public static final dxv<jn> T = dxv.a("facing", jn.class, $$0 -> $$0 != jn.b);
+   public static final dxv<jn> U = dxv.a("facing", jn.class, jn.c.a);
+   public static final dxx V = dxx.a("flower_amount", 1, 4);
+   public static final dxv<jp> W = dxv.a("orientation", jp.class);
+   public static final dxv<dxj> X = dxv.a("face", dxj.class);
+   public static final dxv<dxm> Y = dxv.a("attachment", dxm.class);
+   public static final dxv<dyj> Z = dxv.a("east", dyj.class);
+   public static final dxv<dyj> aa = dxv.a("north", dyj.class);
+   public static final dxv<dyj> ab = dxv.a("south", dyj.class);
+   public static final dxv<dyj> ac = dxv.a("west", dyj.class);
+   public static final dxv<dyc> ad = dxv.a("east", dyc.class);
+   public static final dxv<dyc> ae = dxv.a("north", dyc.class);
+   public static final dxv<dyc> af = dxv.a("south", dyc.class);
+   public static final dxv<dyc> ag = dxv.a("west", dyc.class);
+   public static final dxv<dxt> ah = dxv.a("half", dxt.class);
+   public static final dxv<dxw> ai = dxv.a("half", dxw.class);
+   public static final dxv<dyb> aj = dxv.a("shape", dyb.class);
+   public static final dxv<dyb> ak = dxv.a("shape", dyb.class, $$0 -> $$0 != dyb.j && $$0 != dyb.i && $$0 != dyb.g && $$0 != dyb.h);
+   public static final int al = 1;
+   public static final int am = 2;
+   public static final int an = 3;
+   public static final int ao = 4;
+   public static final int ap = 5;
+   public static final int aq = 7;
+   public static final int ar = 15;
+   public static final int as = 25;
+   public static final dxx at = dxx.a("age", 0, 1);
+   public static final dxx au = dxx.a("age", 0, 2);
+   public static final dxx av = dxx.a("age", 0, 3);
+   public static final dxx aw = dxx.a("age", 0, 4);
+   public static final dxx ax = dxx.a("age", 0, 5);
+   public static final dxx ay = dxx.a("age", 0, 7);
+   public static final dxx az = dxx.a("age", 0, 15);
+   public static final dxx aA = dxx.a("age", 0, 25);
+   public static final dxx aB = dxx.a("bites", 0, 6);
+   public static final dxx aC = dxx.a("candles", 1, 4);
+   public static final dxx aD = dxx.a("delay", 1, 4);
+   public static final int aE = 7;
+   public static final dxx aF = dxx.a("distance", 1, 7);
+   public static final dxx aG = dxx.a("eggs", 1, 4);
+   public static final dxx aH = dxx.a("hatch", 0, 2);
+   public static final dxx aI = dxx.a("layers", 1, 8);
+   public static final int aJ = 0;
+   public static final int aK = 1;
+   public static final int aL = 3;
+   public static final int aM = 8;
+   public static final dxx aN = dxx.a("level", 1, 3);
+   public static final dxx aO = dxx.a("level", 0, 8);
+   public static final dxx aP = dxx.a("level", 1, 8);
+   public static final dxx aQ = dxx.a("honey_level", 0, 5);
+   public static final int aR = 15;
+   public static final dxx aS = dxx.a("level", 0, 15);
+   public static final dxx aT = dxx.a("moisture", 0, 7);
+   public static final dxx aU = dxx.a("note", 0, 24);
+   public static final dxx aV = dxx.a("pickles", 1, 4);
+   public static final dxx aW = dxx.a("power", 0, 15);
+   public static final dxx aX = dxx.a("stage", 0, 1);
+   public static final int aY = 7;
+   public static final dxx aZ = dxx.a("distance", 0, 7);
+   public static final int ba = 0;
+   public static final int bb = 4;
+   public static final dxx bc = dxx.a("charges", 0, 4);
+   public static final dxx bd = dxx.a("rotation", 0, dyd.a());
+   public static final dxv<dxl> be = dxv.a("part", dxl.class);
+   public static final dxv<dxq> bf = dxv.a("type", dxq.class);
+   public static final dxv<dxr> bg = dxv.a("mode", dxr.class);
+   public static final dxv<dxs> bh = dxv.a("hinge", dxs.class);
+   public static final dxv<dxy> bi = dxv.a("instrument", dxy.class);
+   public static final dxv<dxz> bj = dxv.a("type", dxz.class);
+   public static final dxv<dyf> bk = dxv.a("type", dyf.class);
+   public static final dxv<dyg> bl = dxv.a("shape", dyg.class);
+   public static final dxv<dyh> bm = dxv.a("mode", dyh.class);
+   public static final dxv<dxk> bn = dxv.a("leaves", dxk.class);
+   public static final dxv<dyi> bo = dxv.a("tilt", dyi.class);
+   public static final dxv<jn> bp = dxv.a("vertical_direction", jn.class, jn.b, jn.a);
+   public static final dxv<dxu> bq = dxv.a("thickness", dxu.class);
+   public static final dxv<dye> br = dxv.a("sculk_sensor_phase", dye.class);
+   public static final dxp bs = dxp.a("slot_0_occupied");
+   public static final dxp bt = dxp.a("slot_1_occupied");
+   public static final dxp bu = dxp.a("slot_2_occupied");
+   public static final dxp bv = dxp.a("slot_3_occupied");
+   public static final dxp bw = dxp.a("slot_4_occupied");
+   public static final dxp bx = dxp.a("slot_5_occupied");
+   public static final dxx by = dxx.a("dusted", 0, 3);
+   public static final dxp bz = dxp.a("cracked");
+   public static final dxp bA = dxp.a("crafting");
+   public static final dxv<dwe> bB = dxv.a("trial_spawner_state", dwe.class);
+   public static final dxv<dwl> bC = dxv.a("vault_state", dwl.class);
+   public static final dxp bD = dxp.a("ominous");
 }
