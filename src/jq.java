@@ -69,6 +69,7 @@ public class jq<T> implements ke<T> {
          return jq.this.i().map(Pair::getSecond);
       }
    };
+   private final Object o = new Object();
 
    public jq(ale<? extends jv<T>> $$0, Lifecycle $$1) {
       this($$0, $$1, false);
@@ -261,14 +262,22 @@ public class jq<T> implements ke<T> {
    @Override
    public jm.c<T> a(axf<T> $$0) {
       jm.c<T> $$1 = this.k.get($$0);
-      if ($$1 == null) {
-         $$1 = this.d($$0);
-         Map<axf<T>, jm.c<T>> $$2 = new IdentityHashMap<>(this.k);
-         $$2.put($$0, $$1);
-         this.k = $$2;
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         synchronized (this.o) {
+            $$1 = this.k.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            } else {
+               $$1 = this.d($$0);
+               Map<axf<T>, jm.c<T>> $$2 = new IdentityHashMap<>(this.k);
+               $$2.put($$0, $$1);
+               this.k = $$2;
+               return $$1;
+            }
+         }
       }
-
-      return $$1;
    }
 
    private jm.c<T> d(axf<T> $$0) {
@@ -365,10 +374,12 @@ public class jq<T> implements ke<T> {
          );
       }
 
-      Map<axf<T>, jm.c<T>> $$3 = new IdentityHashMap<>(this.k);
-      $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
-      $$1.forEach(ji.c::a);
-      this.k = $$3;
+      synchronized (this.o) {
+         Map<axf<T>, jm.c<T>> $$3 = new IdentityHashMap<>(this.k);
+         $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
+         $$1.forEach(ji.c::a);
+         this.k = $$3;
+      }
    }
 
    @Override

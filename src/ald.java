@@ -3,9 +3,9 @@ import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
 public class ald<T> extends akx<T> {
@@ -82,7 +82,7 @@ public class ald<T> extends akx<T> {
 
    static final class a implements ald.c {
       private final jk.a a;
-      private final Map<ale<? extends jv<?>>, Optional<? extends ald.b<?>>> b = new HashMap<>();
+      private final Map<ale<? extends jv<?>>, Optional<? extends ald.b<?>>> b = new ConcurrentHashMap<>();
 
       public a(jk.a $$0) {
          this.a = $$0;

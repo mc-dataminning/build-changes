@@ -1,4 +1,4 @@
-// 1.20.5 Release Candidate 2	2026-08-28T02:12:50.8922582	vanilla/Tags for minecraft:entity_type
+// 1.20.5 Release Candidate 3	2026-08-28T02:15:07.2446245	vanilla/Tags for minecraft:entity_type
 4c073b476785113705dfd3c6b286a337ddbd56b0 data\minecraft\tags\entity_types\beehive_inhabitors.json
 7682a23a9a2c2cf40a063a7d8e005275500409ea data\minecraft\tags\entity_types\powder_snow_walkable_mobs.json
 5decf1729450d88915af4860ad75ac73b3e07f06 data\minecraft\tags\entity_types\freeze_immune_entity_types.json
@@ -6,8 +6,8 @@ c2c355dcc367a1c94022723aee37d206d3a355b7 data\minecraft\tags\entity_types\aquati
 1eed0c14ea5905bcbd45feee0d16154f92f53f32 data\minecraft\tags\entity_types\illager.json
 e977cfe5879b4afb1071dbc6604ba55cb32da943 data\minecraft\tags\entity_types\skeletons.json
 0bbeb07059ee1e779eb6e762c565e34ac6915032 data\minecraft\tags\entity_types\arrows.json
-8629ab74d7e233ee955826685af6d6e0b912cac4 data\minecraft\tags\entity_types\axolotl_always_hostiles.json
 9c3d2fb8d7167bc7452a377ebc0633ec33324d85 data\minecraft\tags\entity_types\impact_projectiles.json
+8629ab74d7e233ee955826685af6d6e0b912cac4 data\minecraft\tags\entity_types\axolotl_always_hostiles.json
 37277d8080b6c9c11a97cf664a14ed7a42f18a82 data\minecraft\tags\entity_types\redirectable_projectile.json
 e2f26c4696552a05feacf8eaadfb3b41a8907161 data\minecraft\tags\entity_types\wither_friends.json
 a8c7becc7c5d6e4b65492a5736c8fd7e72f795d3 data\minecraft\tags\entity_types\zombies.json
