@@ -139,11 +139,12 @@ public class gxl extends gtf<gkt, gzw, gdg> {
       $$1.aF = a($$0, false);
       $$1.aG = $$0.ar();
       $$1.aH = $$0.gh().getName();
-      cwp $$7 = $$0.fB();
-      if ($$7.a(cwt.rU)) {
-         this.i.a($$1.aI, $$7, cwn.f, false, $$0);
-      } else {
-         $$1.aI.b();
+      $$1.aI.b();
+      if ($$1.R) {
+         cwp $$7 = $$0.b($$1.M);
+         if ($$7.a(cwt.rU)) {
+            this.i.a($$1.aI, $$7, cwn.f, false, $$0);
+         }
       }
    }
 

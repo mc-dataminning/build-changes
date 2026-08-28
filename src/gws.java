@@ -8,7 +8,8 @@ public class gws<S extends gzw, M extends gcb<S> & gav & gck> extends gwl<S, M> 
 
    protected void a(S $$0, hbo $$1, bvb $$2, ffu $$3, gly $$4, int $$5) {
       if (!$$1.c()) {
-         if ($$0.H < 1.0E-5F && $$0.e == $$2 && !$$0.aI.c()) {
+         bsj $$6 = $$2 == $$0.e ? bsj.a : bsj.b;
+         if ($$0.R && $$0.M == $$6 && $$0.H < 1.0E-5F && !$$0.aI.c()) {
             this.a($$0.aI, $$2, $$3, $$4, $$5);
          } else {
             super.a($$0, $$1, $$2, $$3, $$4, $$5);

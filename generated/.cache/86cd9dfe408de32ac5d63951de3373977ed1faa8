@@ -1,4 +1,4 @@
-// 1.21.4 Pre-Release 3	2026-08-28T03:14:19.910750732	vanilla/Tags for minecraft:block
+// 1.21.4 Release Candidate 1	2026-08-28T03:16:53.89582554	vanilla/Tags for minecraft:block
 5c92e6e6d0a21918a0d7f6652b7b230a122e2fd5 data/minecraft/tags/block/bee_attractive.json
 1b34690c952fb0cae947d85b752e19a7a83a453b data/minecraft/tags/block/oak_logs.json
 e58f5fa3c4fe3090b27304fa8f3c92e23594f085 data/minecraft/tags/block/flower_pots.json
@@ -26,8 +26,8 @@ ab8bc29e7b3b95dbe4e8f35ee876efa1b2c5fe0a data/minecraft/tags/block/mushroom_grow
 9dfd09180a555f6464fec17bc82c39e10974b22e data/minecraft/tags/block/ancient_city_replaceable.json
 6434eab593808ccdda380aa89dbf4977e908d7b4 data/minecraft/tags/block/mangrove_roots_can_grow_through.json
 4b41342be611564da2a2009e3322c8fd08f20cdd data/minecraft/tags/block/warped_stems.json
-c8ec59201ede7ff6cb74a70bd44fb6be642a3f40 data/minecraft/tags/block/stone_pressure_plates.json
 55d021ee37fe4ddcf34b5e733280ae51aa90d6be data/minecraft/tags/block/impermeable.json
+c8ec59201ede7ff6cb74a70bd44fb6be642a3f40 data/minecraft/tags/block/stone_pressure_plates.json
 d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data/minecraft/tags/block/soul_fire_base_blocks.json
 d7741a7bcdab6fbdbc9c931e88576a038a1562ed data/minecraft/tags/block/wither_immune.json
 89987d10d75ba93bb3e67dc42a2a137ea8e87612 data/minecraft/tags/block/saplings.json
@@ -97,8 +97,8 @@ f28dc9f2c7d071fef84fb760a59427d564938731 data/minecraft/tags/block/diamond_ores.
 92861bbfc33718f65a6c66f4468675fa09ac162f data/minecraft/tags/block/animals_spawnable_on.json
 72c48bb2bb0c020c522578894e993b200e9e5efd data/minecraft/tags/block/wall_hanging_signs.json
 445ffbabd7c2f65b4778c62104d7ecffde797cbc data/minecraft/tags/block/fence_gates.json
-a50dcf5915e98c7c6616f3b34f657c2f14d6d173 data/minecraft/tags/block/lush_ground_replaceable.json
 96c9cbfdf01e0868f405b9ffb5aac3fa6e8b2b38 data/minecraft/tags/block/unstable_bottom_center.json
+a50dcf5915e98c7c6616f3b34f657c2f14d6d173 data/minecraft/tags/block/lush_ground_replaceable.json
 2f6f453e3ae95b8921ba5b843b704a77117e01a7 data/minecraft/tags/block/climbable.json
 2d97a7b26d2a65b8dab30789033841371c7361d4 data/minecraft/tags/block/enchantment_power_transmitter.json
 51d8bf3885db56e8d2baea74147e7db3db031d51 data/minecraft/tags/block/maintains_farmland.json
@@ -125,8 +125,8 @@ c7ea382c3711cc470f33079f0c7c3413eddaa0fd data/minecraft/tags/block/convertable_t
 3bd2eeaac98c81e18bfb56e9bd09c764e71d4cf5 data/minecraft/tags/block/spruce_logs.json
 ed3052eb0c49103d4cdd5f410d09b189a33c80b9 data/minecraft/tags/block/concrete_powder.json
 da1d12f678963493519caaff63a76241b220579f data/minecraft/tags/block/axolotls_spawnable_on.json
-3358796e1ddbb79ccb13467bfc720a95b4a19352 data/minecraft/tags/block/enchantment_power_provider.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/incorrect_for_netherite_tool.json
+3358796e1ddbb79ccb13467bfc720a95b4a19352 data/minecraft/tags/block/enchantment_power_provider.json
 cdedde9c9e3a4d85da4757f1618798a994b8f5d7 data/minecraft/tags/block/mineable/axe.json
 2ba58975d7bf8873dd5e5890051df9b480ee0d7f data/minecraft/tags/block/sword_efficient.json
 5338100e594200c9c08cc4228d31ae3b14f5bdd1 data/minecraft/tags/block/buttons.json
@@ -134,7 +134,7 @@ cdedde9c9e3a4d85da4757f1618798a994b8f5d7 data/minecraft/tags/block/mineable/axe.
 f6d2baa21576277e20daeb8665d3985c31b70579 data/minecraft/tags/block/leaves.json
 f8f437f299af14e5c9c0453089d4e03d42015d2e data/minecraft/tags/block/terracotta.json
 090e10929cf921bcfe7ca9e263679610ff359335 data/minecraft/tags/block/wart_blocks.json
-34f866cffe66b0fabed3a287384146a45440a2dc data/minecraft/tags/block/mineable/pickaxe.json
+905d197e0e44399b1d3bcd17fe2baef0f93abb8c data/minecraft/tags/block/mineable/pickaxe.json
 5cc29d0b3485d239269ca7a4513854336f461b35 data/minecraft/tags/block/needs_stone_tool.json
 031ce19c9707a4d8e85bc799d69543917c962fad data/minecraft/tags/block/pressure_plates.json
 f53e830597a8df09dc1d9097501a773daf98b408 data/minecraft/tags/block/pale_oak_logs.json

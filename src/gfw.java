@@ -51,7 +51,6 @@ public abstract class gfw implements zc {
    @Override
    public void a(yw $$0, Exception $$1) {
       l.error("Failed to handle packet {}, disconnecting", $$0, $$1);
-      zc.super.a($$0, $$1);
       Optional<Path> $$2 = this.a($$0, (Throwable)$$1);
       Optional<URI> $$3 = this.j.a(aln.b.a).map(aln.a::c);
       this.b.a(new vk(wp.c("disconnect.packetError"), $$2, $$3));

@@ -1,4 +1,4 @@
-// 1.21.4 Pre-Release 3	2026-08-28T03:14:19.861412339	vanilla/Advancements
+// 1.21.4 Release Candidate 1	2026-08-28T03:16:53.866250025	vanilla/Advancements
 81b376199ae36a3da86787e6681ab9b658470d48 data/minecraft/advancement/story/upgrade_tools.json
 47d455b0c99b75844aafa5133986758a43c30b58 data/minecraft/advancement/adventure/kill_mob_near_sculk_catalyst.json
 0962940c1ca516bdf9c98dc2bf5e80c3e044a662 data/minecraft/advancement/end/root.json
@@ -93,8 +93,8 @@ efdd91c33e3e97fc8574300fabeab3ffdd90435b data/minecraft/advancement/husbandry/si
 66417659e3e91d54c0698f509a1ea9676af220cc data/minecraft/advancement/nether/ride_strider.json
 f195c9af8fd2707b25169c4d9b4e688c2d383489 data/minecraft/advancement/husbandry/tactical_fishing.json
 945853507877afc3f9b6373b9ce1462dc3d9fdf1 data/minecraft/advancement/husbandry/tadpole_in_a_bucket.json
-f98c774e2b7f9dde5064cec6884df80201d9bd24 data/minecraft/advancement/husbandry/axolotl_in_a_bucket.json
 714263d657f64ab351a0c2c638ef56f90f0b868a data/minecraft/advancement/husbandry/wax_off.json
+f98c774e2b7f9dde5064cec6884df80201d9bd24 data/minecraft/advancement/husbandry/axolotl_in_a_bucket.json
 55fe6d0a1d8f62f1feaa1f424c37c638bc7c3ef1 data/minecraft/advancement/adventure/trim_with_all_exclusive_armor_patterns.json
 a6f9ead1616f8132662253b556e8830fdd5fd8a7 data/minecraft/advancement/end/enter_end_gateway.json
 42987534c913ea45b3368d1e78294ed1ae35acb1 data/minecraft/advancement/husbandry/balanced_diet.json

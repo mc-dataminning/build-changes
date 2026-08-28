@@ -484,7 +484,6 @@ public class pq extends pi<djm> {
             djo.W,
             djo.aY,
             djo.aZ,
-            djo.fD,
             djo.ba,
             djo.bb,
             djo.bc,
