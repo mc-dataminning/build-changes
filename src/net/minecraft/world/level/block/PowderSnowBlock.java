@@ -4,6 +4,7 @@ import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -57,18 +58,24 @@ public class PowderSnowBlock extends Block implements BucketPickup {
    ) {
       if (!(entity instanceof LivingEntity) || entity.getInBlockState().is(this)) {
          entity.makeStuckInBlock(state, new Vec3(0.9F, 1.5, 0.9F));
-         if (level.isClientSide()) {
+         if (level instanceof ServerLevel serverLevel) {
             RandomSource random = level.getRandom();
-            boolean isMoving = entity.xOld != entity.getX() || entity.zOld != entity.getZ();
+            Vec3 knownMovement = entity.getKnownMovement();
+            boolean isMoving = knownMovement.x() != 0.0 || knownMovement.z() != 0.0;
             if (isMoving && random.nextBoolean()) {
-               level.addParticle(
+               serverLevel.sendParticles(
                   ParticleTypes.SNOWFLAKE,
                   entity.getX(),
                   (double)(pos.getY() + 1),
                   entity.getZ(),
+                  1,
+                  0.0,
+                  0.0,
+                  0.0,
                   (double)(Mth.randomBetween(random, -1.0F, 1.0F) * 0.083333336F),
                   0.05F,
-                  (double)(Mth.randomBetween(random, -1.0F, 1.0F) * 0.083333336F)
+                  (double)(Mth.randomBetween(random, -1.0F, 1.0F) * 0.083333336F),
+                  ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE
                );
             }
          }
@@ -78,10 +85,10 @@ public class PowderSnowBlock extends Block implements BucketPickup {
       effectApplier.runBefore(
          InsideBlockEffectType.EXTINGUISH,
          e -> {
-            if (level instanceof ServerLevel serverLevel
+            if (level instanceof ServerLevel serverLevelx
                && e.isOnFire()
-               && (serverLevel.getGameRules().get(GameRules.MOB_GRIEFING) || e instanceof Player)
-               && e.mayInteract(serverLevel, position)) {
+               && (serverLevelx.getGameRules().get(GameRules.MOB_GRIEFING) || e instanceof Player)
+               && e.mayInteract(serverLevelx, position)) {
                level.destroyBlock(position, false);
             }
          }

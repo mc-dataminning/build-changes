@@ -42,7 +42,14 @@ public abstract class GlBuffer extends BaseGpuBuffer {
       @Nullable
       protected ByteBuffer mappedBuffer;
 
-      protected Direct(final DirectStateAccess dsa, @GpuBuffer.Usage final int usage, final long size, final int handle, final boolean canPersistentMap) {
+      protected Direct(
+         final GlHeuristics heuristics,
+         final DirectStateAccess dsa,
+         @GpuBuffer.Usage final int usage,
+         final long size,
+         final int handle,
+         final boolean canPersistentMap
+      ) {
          this.dsa = dsa;
          int clampedSize = (int)Math.min(size, 2147483647L);
          MEMORY_POOL.malloc((long)handle, clampedSize);
@@ -52,7 +59,10 @@ public abstract class GlBuffer extends BaseGpuBuffer {
          }
 
          if ((usage & 2) != 0) {
-            mappingFlags |= 34;
+            mappingFlags |= 2;
+            if (!heuristics.isGlOnDx12()) {
+               mappingFlags |= 32;
+            }
          }
 
          if (canPersistentMap) {

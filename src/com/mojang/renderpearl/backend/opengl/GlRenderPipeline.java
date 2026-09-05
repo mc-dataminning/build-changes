@@ -97,6 +97,7 @@ public final class GlRenderPipeline implements BackendRenderPipeline {
       if (!this.closed) {
          this.closed = true;
          this.program.close();
+         this.vertexArray.close();
          this.device.markAmdShaderCompilerAngry();
       }
    }

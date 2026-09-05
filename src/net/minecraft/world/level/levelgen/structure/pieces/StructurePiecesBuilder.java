@@ -21,28 +21,9 @@ public class StructurePiecesBuilder {
 
    @Deprecated
    public void offsetPiecesVertically(final int dy) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: getfield net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.pieces Ljava/util/List;
-      // 04: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
-      // 09: astore 2
-      // 0a: aload 2
-      // 0b: invokeinterface java/util/Iterator.hasNext ()Z 1
-      // 10: ifeq 27
-      // 13: aload 2
-      // 14: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-      // 19: checkcast net/minecraft/world/level/levelgen/structure/StructurePiece
-      // 1c: astore 3
-      // 1d: aload 3
-      // 1e: bipush 0
-      // 1f: iload 1
-      // 20: bipush 0
-      // 21: invokevirtual net/minecraft/world/level/levelgen/structure/StructurePiece.move (III)V
-      // 24: goto 0a
-      // 27: return
+      for (StructurePiece piece : this.pieces) {
+         piece.move(0, dy, 0);
+      }
    }
 
    @Deprecated

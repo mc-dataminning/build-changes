@@ -288,17 +288,52 @@ public record BinaryFunction(BinaryFunction.Type type, DensityFunction left, Den
 
    @Override
    public Interval range() {
-      Interval left = this.left.range();
-      Interval right = this.right.range();
-
-      return switch (this.type) {
-         case ADD -> Interval.add(left, right);
-         case SUB -> Interval.sub(left, right);
-         case MUL -> Interval.mul(left, right);
-         case DIV -> Interval.div(left, right);
-         case MIN -> Interval.min(left, right);
-         case MAX -> Interval.max(left, right);
-      };
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: getfield net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction.left Lnet/minecraft/world/level/levelgen/densityfunction/DensityFunction;
+      // 04: invokeinterface net/minecraft/world/level/levelgen/densityfunction/DensityFunction.range ()Lnet/minecraft/util/Interval; 1
+      // 09: astore 1
+      // 0a: aload 0
+      // 0b: getfield net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction.right Lnet/minecraft/world/level/levelgen/densityfunction/DensityFunction;
+      // 0e: invokeinterface net/minecraft/world/level/levelgen/densityfunction/DensityFunction.range ()Lnet/minecraft/util/Interval; 1
+      // 13: astore 2
+      // 14: aload 0
+      // 15: getfield net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction.type Lnet/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction$Type;
+      // 18: invokevirtual net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction$Type.ordinal ()I
+      // 1b: tableswitch 37 0 5 47 55 63 71 87 79
+      // 40: new java/lang/MatchException
+      // 43: dup
+      // 44: aconst_null
+      // 45: aconst_null
+      // 46: invokespecial java/lang/MatchException.<init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+      // 49: athrow
+      // 4a: aload 1
+      // 4b: aload 2
+      // 4c: invokestatic net/minecraft/util/Interval.add (Lnet/minecraft/util/Interval;Lnet/minecraft/util/Interval;)Lnet/minecraft/util/Interval;
+      // 4f: goto 77
+      // 52: aload 1
+      // 53: aload 2
+      // 54: invokestatic net/minecraft/util/Interval.sub (Lnet/minecraft/util/Interval;Lnet/minecraft/util/Interval;)Lnet/minecraft/util/Interval;
+      // 57: goto 77
+      // 5a: aload 1
+      // 5b: aload 2
+      // 5c: invokestatic net/minecraft/util/Interval.mul (Lnet/minecraft/util/Interval;Lnet/minecraft/util/Interval;)Lnet/minecraft/util/Interval;
+      // 5f: goto 77
+      // 62: aload 1
+      // 63: aload 2
+      // 64: invokestatic net/minecraft/util/Interval.div (Lnet/minecraft/util/Interval;Lnet/minecraft/util/Interval;)Lnet/minecraft/util/Interval;
+      // 67: goto 77
+      // 6a: aload 1
+      // 6b: aload 2
+      // 6c: invokestatic net/minecraft/util/Interval.max (Lnet/minecraft/util/Interval;Lnet/minecraft/util/Interval;)Lnet/minecraft/util/Interval;
+      // 6f: goto 77
+      // 72: aload 1
+      // 73: aload 2
+      // 74: invokestatic net/minecraft/util/Interval.min (Lnet/minecraft/util/Interval;Lnet/minecraft/util/Interval;)Lnet/minecraft/util/Interval;
+      // 77: areturn
    }
 
    @DensityFunction.Axes
@@ -315,15 +350,58 @@ public record BinaryFunction(BinaryFunction.Type type, DensityFunction left, Den
    public static record AddSampler(DensitySampler left, DensitySampler right) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
-         this.left.sampleVolume(context, outputBuffer, volume);
-
-         try (ScopedDensityBuffer rightBuffer = context.acquireBuffer(volume)) {
-            this.right.sampleVolume(context, rightBuffer, volume);
-
-            for (int i = 0; i < outputBuffer.size(); i++) {
-               outputBuffer.addTo(i, rightBuffer.get(i));
-            }
-         }
+         // $VF: Couldn't be decompiled
+         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+         //
+         // Bytecode:
+         // 00: aload 0
+         // 01: getfield net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction$AddSampler.left Lnet/minecraft/world/level/levelgen/densityfunction/DensitySampler;
+         // 04: aload 1
+         // 05: aload 2
+         // 06: aload 3
+         // 07: invokeinterface net/minecraft/world/level/levelgen/densityfunction/DensitySampler.sampleVolume (Lnet/minecraft/world/level/levelgen/densityfunction/SamplerContext;Lnet/minecraft/world/level/levelgen/densityfunction/DensityBuffer;Lnet/minecraft/world/level/levelgen/densityfunction/DensityVolume;)V 4
+         // 0c: aload 1
+         // 0d: aload 3
+         // 0e: invokevirtual net/minecraft/world/level/levelgen/densityfunction/SamplerContext.acquireBuffer (Lnet/minecraft/world/level/levelgen/densityfunction/DensityVolume;)Lnet/minecraft/world/level/levelgen/densityfunction/ScopedDensityBuffer;
+         // 11: astore 4
+         // 13: aload 0
+         // 14: getfield net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction$AddSampler.right Lnet/minecraft/world/level/levelgen/densityfunction/DensitySampler;
+         // 17: aload 1
+         // 18: aload 4
+         // 1a: aload 3
+         // 1b: invokeinterface net/minecraft/world/level/levelgen/densityfunction/DensitySampler.sampleVolume (Lnet/minecraft/world/level/levelgen/densityfunction/SamplerContext;Lnet/minecraft/world/level/levelgen/densityfunction/DensityBuffer;Lnet/minecraft/world/level/levelgen/densityfunction/DensityVolume;)V 4
+         // 20: bipush 0
+         // 21: istore 5
+         // 23: iload 5
+         // 25: aload 2
+         // 26: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.size ()I
+         // 29: if_icmpge 3f
+         // 2c: aload 2
+         // 2d: iload 5
+         // 2f: aload 4
+         // 31: iload 5
+         // 33: invokevirtual net/minecraft/world/level/levelgen/densityfunction/ScopedDensityBuffer.get (I)F
+         // 36: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.addTo (IF)V
+         // 39: iinc 5 1
+         // 3c: goto 23
+         // 3f: aload 4
+         // 41: ifnull 67
+         // 44: aload 4
+         // 46: invokevirtual net/minecraft/world/level/levelgen/densityfunction/ScopedDensityBuffer.close ()V
+         // 49: goto 67
+         // 4c: astore 5
+         // 4e: aload 4
+         // 50: ifnull 64
+         // 53: aload 4
+         // 55: invokevirtual net/minecraft/world/level/levelgen/densityfunction/ScopedDensityBuffer.close ()V
+         // 58: goto 64
+         // 5b: astore 6
+         // 5d: aload 5
+         // 5f: aload 6
+         // 61: invokevirtual java/lang/Throwable.addSuppressed (Ljava/lang/Throwable;)V
+         // 64: aload 5
+         // 66: athrow
+         // 67: return
       }
 
       @Override
@@ -419,34 +497,11 @@ public record BinaryFunction(BinaryFunction.Type type, DensityFunction left, Den
    public static record ConstSubSampler(float left, DensitySampler right) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
-         // $VF: Couldn't be decompiled
-         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-         //
-         // Bytecode:
-         // 00: aload 0
-         // 01: getfield net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction$ConstSubSampler.right Lnet/minecraft/world/level/levelgen/densityfunction/DensitySampler;
-         // 04: aload 1
-         // 05: aload 2
-         // 06: aload 3
-         // 07: invokeinterface net/minecraft/world/level/levelgen/densityfunction/DensitySampler.sampleVolume (Lnet/minecraft/world/level/levelgen/densityfunction/SamplerContext;Lnet/minecraft/world/level/levelgen/densityfunction/DensityBuffer;Lnet/minecraft/world/level/levelgen/densityfunction/DensityVolume;)V 4
-         // 0c: bipush 0
-         // 0d: istore 4
-         // 0f: iload 4
-         // 11: aload 2
-         // 12: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.size ()I
-         // 15: if_icmpge 2f
-         // 18: aload 2
-         // 19: iload 4
-         // 1b: aload 0
-         // 1c: getfield net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction$ConstSubSampler.left F
-         // 1f: aload 2
-         // 20: iload 4
-         // 22: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.get (I)F
-         // 25: fsub
-         // 26: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.set (IF)V
-         // 29: iinc 4 1
-         // 2c: goto 0f
-         // 2f: return
+         this.right.sampleVolume(context, outputBuffer, volume);
+
+         for (int i = 0; i < outputBuffer.size(); i++) {
+            outputBuffer.set(i, this.left - outputBuffer.get(i));
+         }
       }
 
       @Override

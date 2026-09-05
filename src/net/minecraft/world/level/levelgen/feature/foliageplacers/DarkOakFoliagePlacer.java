@@ -56,9 +56,39 @@ public class DarkOakFoliagePlacer extends FoliagePlacer {
    protected boolean shouldSkipLocationSigned(
       final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk
    ) {
-      return y != 0 || !doubleTrunk || dx != -currentRadius && dx < currentRadius || dz != -currentRadius && dz < currentRadius
-         ? super.shouldSkipLocationSigned(random, dx, y, dz, currentRadius, doubleTrunk)
-         : true;
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 00: iload 3
+      // 01: ifne 27
+      // 04: iload 6
+      // 06: ifeq 27
+      // 09: iload 2
+      // 0a: iload 5
+      // 0c: ineg
+      // 0d: if_icmpeq 16
+      // 10: iload 2
+      // 11: iload 5
+      // 13: if_icmplt 27
+      // 16: iload 4
+      // 18: iload 5
+      // 1a: ineg
+      // 1b: if_icmpeq 25
+      // 1e: iload 4
+      // 20: iload 5
+      // 22: if_icmplt 27
+      // 25: bipush 1
+      // 26: ireturn
+      // 27: aload 0
+      // 28: aload 1
+      // 29: iload 2
+      // 2a: iload 3
+      // 2b: iload 4
+      // 2d: iload 5
+      // 2f: iload 6
+      // 31: invokespecial net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer.shouldSkipLocationSigned (Lnet/minecraft/util/RandomSource;IIIIZ)Z
+      // 34: ireturn
    }
 
    @Override

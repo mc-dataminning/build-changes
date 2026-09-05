@@ -25,6 +25,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
    protected final DirectStateAccess dsa;
    protected final BufferStorage bufferStorage;
    protected final GlDebugLabel debugLabels;
+   protected final GlHeuristics heuristics;
    private final TransientBlockAllocator<TransientBlockAllocator.Allocator.CpuBlock> cpuBlockAllocator = new TransientBlockAllocator<>(
       524288L, 16L, TransientBlockAllocator.Allocator.CpuBlock.memalloc()
    );
@@ -34,6 +35,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
       this.dsa = device.directStateAccess();
       this.bufferStorage = device.getBufferStorage();
       this.debugLabels = device.debugLabels();
+      this.heuristics = device.heuristics();
    }
 
    @Override
@@ -73,7 +75,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
       }
 
       private GlTransientMemory.Fallback.GlAllocation allocateGlBlock(final long size) {
-         GlBuffer buffer = this.bufferStorage.createBuffer(this.dsa, 40, size);
+         GlBuffer buffer = this.bufferStorage.createBuffer(this.heuristics, this.dsa, 40, size);
          this.debugLabels.applyLabel(buffer, () -> "OpenGL Transient Buffer");
          long hostPtr = MemoryUtil.nmemAlloc(size);
          return new GlTransientMemory.Fallback.GlAllocation(buffer, hostPtr);

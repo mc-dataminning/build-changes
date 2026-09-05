@@ -45,7 +45,6 @@ import org.lwjgl.system.Library;
 import org.lwjgl.system.Platform;
 import org.lwjgl.util.freetype.FreeType;
 import org.lwjgl.util.shaderc.Shaderc;
-import org.lwjgl.util.spng.SPNG;
 import org.lwjgl.util.spvc.Spvc;
 import org.lwjgl.util.vma.Vma;
 import org.lwjgl.vulkan.VK;
@@ -80,7 +79,6 @@ public class NativeLibrariesBootstrap {
          entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("OpenAL", NativeLibrariesBootstrap::loadOpenAL));
          entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("STB", NativeLibrariesBootstrap::loadSTB));
          entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("freetype", NativeLibrariesBootstrap::loadFreeType));
-         entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("SPNG", NativeLibrariesBootstrap::loadSPNG));
          if (vulkanLoaderAvailable) {
             entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("shaderc", NativeLibrariesBootstrap::loadShaderc));
             entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("spvc", NativeLibrariesBootstrap::loadSpvc));
@@ -317,10 +315,6 @@ public class NativeLibrariesBootstrap {
 
    private static void loadFreeType() {
       Objects.requireNonNull(FreeType.getLibrary());
-   }
-
-   private static void loadSPNG() {
-      Objects.requireNonNull(SPNG.spng_version_string());
    }
 
    private static class CapturingPrintStream extends PrintStream {

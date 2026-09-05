@@ -79,7 +79,7 @@ public class DetectorRailBlock extends BaseRailBlock {
    }
 
    private void checkPressed(final Level level, final BlockPos pos, final BlockState state) {
-      if (this.canSurvive(state, level, pos)) {
+      if (this.canSurvive(state, level, pos) && level.getBlockState(pos).is(this)) {
          boolean wasPressed = state.getValue(POWERED);
          boolean shouldBePressed = false;
          List<AbstractMinecart> entities = this.getInteractingMinecartOfType(level, pos, AbstractMinecart.class, e -> true);

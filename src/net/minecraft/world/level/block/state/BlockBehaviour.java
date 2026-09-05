@@ -1038,7 +1038,7 @@ public abstract class BlockBehaviour implements FeatureElement {
       private BlockBehaviour.StatePredicate isRedstoneConductor = BlockBehaviour.BlockStateBase::isCollisionShapeFullBlock;
       private BlockBehaviour.StatePredicate isSuffocating = (state, level, pos) -> state.is(BlockTags.CAUSES_SUFFOCATION)
             && state.isCollisionShapeFullBlock(level, pos);
-      private BlockBehaviour.StateArgumentPredicate<AABB> isViewBlocking = (state, level, pos, nearPlaneBox) -> this.isSuffocating.test(state, level, pos);
+      private BlockBehaviour.StateArgumentPredicate<AABB> isViewBlocking = (state, level, pos, var4) -> this.isSuffocating.test(state, level, pos);
       private BlockBehaviour.PostProcess postProcess = (state, level, pos) -> null;
       private Predicate<BlockState> emissiveRendering = var0 -> false;
       private boolean dynamicShape;

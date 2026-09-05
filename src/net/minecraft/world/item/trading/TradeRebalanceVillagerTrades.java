@@ -212,7 +212,7 @@ public class TradeRebalanceVillagerTrades extends VillagerTrades {
    public static final ResourceKey<VillagerTrade> ARMORER_5_DIAMOND_BLOCK_EMERALD_TAIGA = resourceKey("armorer/5/diamond_block_emerald_taiga");
    public static final ResourceKey<VillagerTrade> ARMORER_5_IRON_BLOCK_EMERALD_NON_TAIGA = resourceKey("armorer/5/iron_block_emerald_non_taiga");
 
-   public static Holder<VillagerTrade> bootstrap(final BootstrapContext<VillagerTrade> context) {
+   public static void bootstrap(final BootstrapContext<VillagerTrade> context) {
       HolderGetter<Item> items = context.lookup(Registries.ITEM);
       HolderGetter<VillagerType> villagerVariants = context.lookup(Registries.VILLAGER_TYPE);
       HolderGetter<Enchantment> enchantments = context.lookup(Registries.ENCHANTMENT);
@@ -801,7 +801,7 @@ public class TradeRebalanceVillagerTrades extends VillagerTrades {
             .merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(villagerVariants, List.of(VillagerType.TAIGA))))
             .build()
       );
-      return register(
+      register(
          context,
          ARMORER_5_IRON_BLOCK_EMERALD_NON_TAIGA,
          VillagerTrade.builder(new TradeCost(Items.IRON_BLOCK, 1), new ItemStackTemplate(Items.EMERALD, 4), 12, 30, 0.05F)

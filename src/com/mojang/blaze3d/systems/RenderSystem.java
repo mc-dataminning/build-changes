@@ -224,7 +224,7 @@ public class RenderSystem {
       SDLHints.SDL_SetHint("SDL_QUIT_ON_LAST_WINDOW_CLOSE", "0");
       SDLHints.SDL_SetHint("SDL_MOUSE_FOCUS_CLICKTHROUGH", "1");
       SDLHints.SDL_SetHint("SDL_ENABLE_SCREEN_KEYBOARD", "0");
-      SDLHints.SDL_SetHint("SDL_IME_IMPLEMENTED_UI", "composition, candidates");
+      SDLHints.SDL_SetHint("SDL_IME_IMPLEMENTED_UI", "composition");
       if (!SDLInit.SDL_Init(32)) {
          throw new IllegalStateException("Unable to initialize SDL: " + SDLError.SDL_GetError());
       } else {

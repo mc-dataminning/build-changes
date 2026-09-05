@@ -19,6 +19,15 @@ public interface ContextFloatProvider extends Validatable {
       return 0.0F;
    }
 
+   default float getFloatOrThrow(final LootContext context) throws ArithmeticException {
+      float value = this.getFloatUnsafe(context);
+      if (!Float.isFinite(value)) {
+         throw new ArithmeticException("Invalid value: " + value);
+      } else {
+         return value;
+      }
+   }
+
    MapCodec<? extends ContextFloatProvider> codec();
 
    static float intToFloatSafe(final int value) {

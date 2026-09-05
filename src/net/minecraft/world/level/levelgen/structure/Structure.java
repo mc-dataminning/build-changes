@@ -129,42 +129,11 @@ public abstract class Structure {
    protected static Optional<Structure.GenerationStub> onTopOfChunkCenterWithoutBiomeCheck(
       final Structure.GenerationContext context, final Heightmap.Types heightmap, final Consumer<StructurePiecesBuilder> generator
    ) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: invokevirtual net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos ()Lnet/minecraft/world/level/ChunkPos;
-      // 04: astore 3
-      // 05: aload 3
-      // 06: invokevirtual net/minecraft/world/level/ChunkPos.getMiddleBlockX ()I
-      // 09: istore 4
-      // 0b: aload 3
-      // 0c: invokevirtual net/minecraft/world/level/ChunkPos.getMiddleBlockZ ()I
-      // 0f: istore 5
-      // 11: aload 0
-      // 12: invokevirtual net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator ()Lnet/minecraft/world/level/chunk/ChunkGenerator;
-      // 15: iload 4
-      // 17: iload 5
-      // 19: aload 1
-      // 1a: aload 0
-      // 1b: invokevirtual net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor ()Lnet/minecraft/world/level/LevelHeightAccessor;
-      // 1e: aload 0
-      // 1f: invokevirtual net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState ()Lnet/minecraft/world/level/levelgen/RandomState;
-      // 22: invokevirtual net/minecraft/world/level/chunk/ChunkGenerator.getFirstOccupiedHeight (IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
-      // 25: istore 6
-      // 27: new net/minecraft/world/level/levelgen/structure/Structure$GenerationStub
-      // 2a: dup
-      // 2b: new net/minecraft/core/BlockPos
-      // 2e: dup
-      // 2f: iload 4
-      // 31: iload 6
-      // 33: iload 5
-      // 35: invokespecial net/minecraft/core/BlockPos.<init> (III)V
-      // 38: aload 2
-      // 39: invokespecial net/minecraft/world/level/levelgen/structure/Structure$GenerationStub.<init> (Lnet/minecraft/core/BlockPos;Ljava/util/function/Consumer;)V
-      // 3c: invokestatic java/util/Optional.of (Ljava/lang/Object;)Ljava/util/Optional;
-      // 3f: areturn
+      ChunkPos chunkPos = context.chunkPos();
+      int blockX = chunkPos.getMiddleBlockX();
+      int blockZ = chunkPos.getMiddleBlockZ();
+      int blockY = context.chunkGenerator().getFirstOccupiedHeight(blockX, blockZ, heightmap, context.heightAccessor(), context.randomState());
+      return Optional.of(new Structure.GenerationStub(new BlockPos(blockX, blockY, blockZ), generator));
    }
 
    public void afterPlace(

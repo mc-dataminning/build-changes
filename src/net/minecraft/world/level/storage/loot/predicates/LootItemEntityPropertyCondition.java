@@ -31,8 +31,8 @@ public record LootItemEntityPropertyCondition(Optional<EntityPredicate> predicat
    }
 
    public boolean test(final LootContext context) {
-      Entity entity = context.getOptionalParameter(this.entityTarget.contextParam());
-      Vec3 pos = context.getOptionalParameter(LootContextParams.ORIGIN);
+      Entity entity = context.getOptional(this.entityTarget.contextParam());
+      Vec3 pos = context.getOptional(LootContextParams.ORIGIN);
       return this.predicate.isEmpty() || this.predicate.get().matches(context.getLevel(), pos, entity);
    }
 

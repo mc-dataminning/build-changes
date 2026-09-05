@@ -378,7 +378,7 @@ public class VillagerTrades {
    public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_NAME_TAG = resourceKey("wandering_trader/emerald_name_tag");
    public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_SHELF_MUSHROOM = resourceKey("wandering_trader/emerald_shelf_mushroom");
 
-   public static Holder<VillagerTrade> bootstrap(final BootstrapContext<VillagerTrade> context) {
+   public static void bootstrap(final BootstrapContext<VillagerTrade> context) {
       HolderGetter<Item> items = context.lookup(Registries.ITEM);
       HolderGetter<Enchantment> enchantments = context.lookup(Registries.ENCHANTMENT);
       HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
@@ -1330,7 +1330,7 @@ public class VillagerTrades {
       context.register(
          WANDERING_TRADER_EMERALD_NAME_TAG, VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.NAME_TAG), 5, 1, 0.05F).build()
       );
-      return context.register(
+      context.register(
          WANDERING_TRADER_EMERALD_SHELF_MUSHROOM,
          VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SHELF_MUSHROOM, 3), 12, 1, 0.05F).build()
       );

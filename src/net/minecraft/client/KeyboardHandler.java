@@ -25,7 +25,6 @@ import net.minecraft.client.gui.screens.debug.DebugOptionsScreen;
 import net.minecraft.client.gui.screens.debug.GameModeSwitcherScreen;
 import net.minecraft.client.gui.screens.options.controls.KeyBindsScreen;
 import net.minecraft.client.input.CharacterEvent;
-import net.minecraft.client.input.IMECandidatesEvent;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.PreeditEvent;
 import net.minecraft.client.player.LocalPlayer;
@@ -72,8 +71,6 @@ public class KeyboardHandler {
    private boolean usedDebugKeyAsModifier;
    @Nullable
    private PreeditEvent lastPreeditEvent;
-   @Nullable
-   private IMECandidatesEvent lastIMECandidatesEvent;
 
    public KeyboardHandler(final Minecraft minecraft) {
       this.minecraft = minecraft;
@@ -601,26 +598,11 @@ public class KeyboardHandler {
    public void textEditing(final long handle, @Nullable final PreeditEvent event) {
       if (handle != 0L && handle == this.minecraft.getWindow().handle()) {
          this.lastPreeditEvent = event;
-         if (event == null) {
-            this.lastIMECandidatesEvent = null;
-         }
-
          Screen screen = this.minecraft.gui.screen();
          if (screen != null && this.minecraft.gui.overlay() == null) {
             submitPreeditEvent(screen, event);
          }
       }
-   }
-
-   public void textEditingCandidates(final long handle, @Nullable final IMECandidatesEvent event) {
-      if (handle != 0L && handle == this.minecraft.getWindow().handle()) {
-         this.lastIMECandidatesEvent = event;
-      }
-   }
-
-   @Nullable
-   public IMECandidatesEvent getIMECandidates() {
-      return this.lastIMECandidatesEvent;
    }
 
    public void resubmitLastPreeditEvent(final GuiEventListener screen) {

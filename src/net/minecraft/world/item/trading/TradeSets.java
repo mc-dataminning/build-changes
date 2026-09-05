@@ -81,7 +81,7 @@ public class TradeSets {
    public static final ResourceKey<TradeSet> WEAPONSMITH_LEVEL_4 = resourceKey("weaponsmith/level_4");
    public static final ResourceKey<TradeSet> WEAPONSMITH_LEVEL_5 = resourceKey("weaponsmith/level_5");
 
-   public static Holder<TradeSet> bootstrap(final BootstrapContext<TradeSet> context) {
+   public static void bootstrap(final BootstrapContext<TradeSet> context) {
       register(context, WANDERING_TRADER_BUYING, VillagerTradeTags.WANDERING_TRADER_BUYING);
       register(context, WANDERING_TRADER_COMMON, VillagerTradeTags.WANDERING_TRADER_COMMON, ContextIntProviders.exactly(5));
       register(context, WANDERING_TRADER_UNCOMMON, VillagerTradeTags.WANDERING_TRADER_UNCOMMON);
@@ -149,7 +149,7 @@ public class TradeSets {
       register(context, WEAPONSMITH_LEVEL_2, VillagerTradeTags.WEAPONSMITH_LEVEL_2);
       register(context, WEAPONSMITH_LEVEL_3, VillagerTradeTags.WEAPONSMITH_LEVEL_3);
       register(context, WEAPONSMITH_LEVEL_4, VillagerTradeTags.WEAPONSMITH_LEVEL_4);
-      return register(context, WEAPONSMITH_LEVEL_5, VillagerTradeTags.WEAPONSMITH_LEVEL_5);
+      register(context, WEAPONSMITH_LEVEL_5, VillagerTradeTags.WEAPONSMITH_LEVEL_5);
    }
 
    public static Holder.Reference<TradeSet> register(

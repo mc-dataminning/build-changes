@@ -14,7 +14,8 @@ public record EnchantmentActiveCheck(boolean active) implements LootItemConditio
    );
 
    public boolean test(final LootContext lootContext) {
-      return lootContext.getParameter(LootContextParams.ENCHANTMENT_ACTIVE) == this.active;
+      Boolean value = lootContext.getOptional(LootContextParams.ENCHANTMENT_ACTIVE);
+      return value != null && value == this.active;
    }
 
    @Override

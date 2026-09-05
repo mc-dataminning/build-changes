@@ -92,33 +92,98 @@ public class PoplarFoliagePlacer extends FoliagePlacer {
       final int foliageHeight,
       final boolean flipRhombusShape
    ) {
-      int offset = doubleTrunk ? 1 : 0;
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-      for (int dx = -currentRadius; dx <= currentRadius + offset; dx++) {
-         for (int dz = -currentRadius; dz <= currentRadius + offset; dz++) {
-            int absDz = Mth.abs(dz);
-            int absDx = Mth.abs(dx);
-            if (isWithinRhombusShape(
-                  currentRadius,
-                  absDx,
-                  absDz,
-                  this.getCornerBlocksToCutForRhombusShape(dx, dz, currentRadius, this.shouldRowBePartialRhombusShape(foliageHeight, y), flipRhombusShape),
-                  2
-               )
-               && (absDz == 0 && currentRadius - absDx >= 4 || absDx == 0 && currentRadius - absDz >= 4)) {
-               pos.setWithOffset(origin, dx, y, dz);
-               tryPlaceLog(
-                  level,
-                  foliageSetter,
-                  random,
-                  tree,
-                  pos,
-                  getSidewaysStateModifier(Direction.fromAxisAndDirection(absDz == 0 ? Direction.Axis.X : Direction.Axis.Z, Direction.AxisDirection.POSITIVE))
-               );
-            }
-         }
-      }
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 00: iload 8
+      // 02: ifeq 09
+      // 05: bipush 1
+      // 06: goto 0a
+      // 09: bipush 0
+      // 0a: istore 11
+      // 0c: new net/minecraft/core/BlockPos$MutableBlockPos
+      // 0f: dup
+      // 10: invokespecial net/minecraft/core/BlockPos$MutableBlockPos.<init> ()V
+      // 13: astore 12
+      // 15: iload 6
+      // 17: ineg
+      // 18: istore 13
+      // 1a: iload 13
+      // 1c: iload 6
+      // 1e: iload 11
+      // 20: iadd
+      // 21: if_icmpgt b9
+      // 24: iload 6
+      // 26: ineg
+      // 27: istore 14
+      // 29: iload 14
+      // 2b: iload 6
+      // 2d: iload 11
+      // 2f: iadd
+      // 30: if_icmpgt b3
+      // 33: iload 14
+      // 35: invokestatic net/minecraft/util/Mth.abs (I)I
+      // 38: istore 15
+      // 3a: iload 13
+      // 3c: invokestatic net/minecraft/util/Mth.abs (I)I
+      // 3f: istore 16
+      // 41: iload 6
+      // 43: iload 16
+      // 45: iload 15
+      // 47: aload 0
+      // 48: iload 13
+      // 4a: iload 14
+      // 4c: iload 6
+      // 4e: aload 0
+      // 4f: iload 9
+      // 51: iload 7
+      // 53: invokevirtual net/minecraft/world/level/levelgen/feature/foliageplacers/PoplarFoliagePlacer.shouldRowBePartialRhombusShape (II)Z
+      // 56: iload 10
+      // 58: invokevirtual net/minecraft/world/level/levelgen/feature/foliageplacers/PoplarFoliagePlacer.getCornerBlocksToCutForRhombusShape (IIIZZ)I
+      // 5b: bipush 2
+      // 5c: invokestatic net/minecraft/world/level/levelgen/feature/foliageplacers/PoplarFoliagePlacer.isWithinRhombusShape (IIIII)Z
+      // 5f: ifeq ad
+      // 62: iload 15
+      // 64: ifne 70
+      // 67: iload 6
+      // 69: iload 16
+      // 6b: isub
+      // 6c: bipush 4
+      // 6d: if_icmpge 7e
+      // 70: iload 16
+      // 72: ifne ad
+      // 75: iload 6
+      // 77: iload 15
+      // 79: isub
+      // 7a: bipush 4
+      // 7b: if_icmplt ad
+      // 7e: aload 12
+      // 80: aload 5
+      // 82: iload 13
+      // 84: iload 7
+      // 86: iload 14
+      // 88: invokevirtual net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset (Lnet/minecraft/core/Vec3i;III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      // 8b: pop
+      // 8c: aload 1
+      // 8d: aload 2
+      // 8e: aload 4
+      // 90: aload 3
+      // 91: aload 12
+      // 93: iload 15
+      // 95: ifne 9e
+      // 98: getstatic net/minecraft/core/Direction$Axis.X Lnet/minecraft/core/Direction$Axis;
+      // 9b: goto a1
+      // 9e: getstatic net/minecraft/core/Direction$Axis.Z Lnet/minecraft/core/Direction$Axis;
+      // a1: getstatic net/minecraft/core/Direction$AxisDirection.POSITIVE Lnet/minecraft/core/Direction$AxisDirection;
+      // a4: invokestatic net/minecraft/core/Direction.fromAxisAndDirection (Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/core/Direction$AxisDirection;)Lnet/minecraft/core/Direction;
+      // a7: invokestatic net/minecraft/world/level/levelgen/feature/foliageplacers/PoplarFoliagePlacer.getSidewaysStateModifier (Lnet/minecraft/core/Direction;)Ljava/util/function/Function;
+      // aa: invokestatic net/minecraft/world/level/levelgen/feature/foliageplacers/PoplarFoliagePlacer.tryPlaceLog (Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/TreeFeature;Lnet/minecraft/core/BlockPos;Ljava/util/function/Function;)V
+      // ad: iinc 14 1
+      // b0: goto 29
+      // b3: iinc 13 1
+      // b6: goto 1a
+      // b9: return
    }
 
    private static void tryPlaceLog(

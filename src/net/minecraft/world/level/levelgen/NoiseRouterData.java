@@ -110,7 +110,7 @@ public class NoiseRouterData {
       return ResourceKey.create(Registries.DENSITY_FUNCTION, Identifier.withDefaultNamespace(name));
    }
 
-   public static Holder<? extends DensityFunction> bootstrap(final BootstrapContext<DensityFunction> context) {
+   public static void bootstrap(final BootstrapContext<DensityFunction> context) {
       HolderGetter<NormalNoise> noises = context.lookup(Registries.NOISE);
       HolderGetter<DensityFunction> functions = context.lookup(Registries.DENSITY_FUNCTION);
       context.register(ZERO, DensityFunctions.zero());
@@ -169,7 +169,7 @@ public class NoiseRouterData {
       context.register(SPAGHETTI_2D, spaghetti2D(functions, noises));
       context.register(ENTRANCES, entrances(functions, noises));
       context.register(NOODLE, noodle(functions, noises));
-      return context.register(PILLARS, pillars(noises));
+      context.register(PILLARS, pillars(noises));
    }
 
    private static DensityFunction createEndIslands() {

@@ -13,6 +13,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SpellParticleOption;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -138,33 +139,40 @@ public class MushroomCow extends AbstractCow implements Shearable {
             return super.mobInteract(player, hand);
          } else {
             if (this.stewEffects != null) {
-               for (int i = 0; i < 2; i++) {
-                  this.level()
-                     .addParticle(
-                        ParticleTypes.SMOKE,
-                        this.getX() + this.random.nextDouble() / 2.0,
-                        this.getY(0.5),
-                        this.getZ() + this.random.nextDouble() / 2.0,
-                        0.0,
-                        this.random.nextDouble() / 5.0,
-                        0.0
-                     );
+               if (this.level() instanceof ServerLevel level) {
+                  level.sendParticles(
+                     ParticleTypes.SMOKE,
+                     this.getX(),
+                     this.getY(0.5),
+                     this.getZ(),
+                     2,
+                     0.5,
+                     0.0,
+                     0.5,
+                     0.0,
+                     0.2,
+                     0.0,
+                     ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE_WITH_SPEED
+                  );
                }
             } else {
                itemStack.consume(1, player);
-               SpellParticleOption particle = SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1.0F);
-
-               for (int i = 0; i < 4; i++) {
-                  this.level()
-                     .addParticle(
-                        particle,
-                        this.getX() + this.random.nextDouble() / 2.0,
-                        this.getY(0.5),
-                        this.getZ() + this.random.nextDouble() / 2.0,
-                        0.0,
-                        this.random.nextDouble() / 5.0,
-                        0.0
-                     );
+               if (this.level() instanceof ServerLevel level) {
+                  SpellParticleOption particle = SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1.0F);
+                  level.sendParticles(
+                     particle,
+                     this.getX(),
+                     this.getY(0.5),
+                     this.getZ(),
+                     4,
+                     0.5,
+                     0.0,
+                     0.5,
+                     0.0,
+                     0.2,
+                     0.0,
+                     ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE_WITH_SPEED
+                  );
                }
 
                this.stewEffects = effectsFromItemStack.get();

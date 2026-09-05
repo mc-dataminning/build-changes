@@ -805,7 +805,7 @@ public abstract class AbstractBoat extends VehicleEntity implements Leashable {
    @Nullable
    @Override
    public LivingEntity getControllingPassenger() {
-      return this.getFirstPassenger() instanceof LivingEntity passenger ? passenger : super.getControllingPassenger();
+      return (LivingEntity)(this.getFirstPassenger() instanceof Player passenger ? passenger : super.getControllingPassenger());
    }
 
    public void setInput(final boolean left, final boolean right, final boolean up, final boolean down) {

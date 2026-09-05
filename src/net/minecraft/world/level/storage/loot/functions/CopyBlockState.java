@@ -58,7 +58,7 @@ public class CopyBlockState extends LootItemConditionalFunction {
 
    @Override
    protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-      BlockState state = context.getOptionalParameter(LootContextParams.BLOCK_STATE);
+      BlockState state = context.getOptional(LootContextParams.BLOCK_STATE);
       if (state != null) {
          itemStack.update(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY, itemState -> {
             for (Property<?> property : this.properties) {

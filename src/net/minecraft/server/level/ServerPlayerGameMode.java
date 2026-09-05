@@ -46,6 +46,7 @@ public class ServerPlayerGameMode {
    private boolean isDestroyingBlock;
    private int destroyProgressStart;
    private BlockPos destroyPos = BlockPos.ZERO;
+   private Direction destroyDirection = Direction.DOWN;
    private int gameTicks;
    private boolean hasDelayedDestroy;
    private BlockPos delayedDestroyPos = BlockPos.ZERO;
@@ -130,13 +131,21 @@ public class ServerPlayerGameMode {
             this.lastSentState = -1;
             this.isDestroyingBlock = false;
          } else {
-            this.incrementDestroyProgress(blockState, this.destroyPos, this.destroyProgressStart);
+            int ticksSpentDestroying = this.gameTicks - this.destroyProgressStart;
+            int event;
+            if (ticksSpentDestroying % 4 == 0) {
+               event = 2020;
+            } else {
+               event = 2019;
+            }
+
+            this.incrementDestroyProgress(blockState, this.destroyPos, ticksSpentDestroying);
+            this.level.levelEvent(null, event, this.destroyPos, this.destroyDirection.ordinal());
          }
       }
    }
 
-   private float incrementDestroyProgress(final BlockState blockState, final BlockPos delayedDestroyPos, final int destroyStartTick) {
-      int ticksSpentDestroying = this.gameTicks - destroyStartTick;
+   private float incrementDestroyProgress(final BlockState blockState, final BlockPos delayedDestroyPos, final int ticksSpentDestroying) {
       float destroyProgress = blockState.getDestroyProgress(this.player, this.player.level(), delayedDestroyPos) * (float)(ticksSpentDestroying + 1);
       int state = (int)(destroyProgress * 10.0F);
       if (state != this.lastSentState) {
@@ -214,11 +223,14 @@ public class ServerPlayerGameMode {
 
                this.isDestroyingBlock = true;
                this.destroyPos = pos.immutable();
+               this.destroyDirection = direction;
                int state = (int)(progress * 10.0F);
                this.level.destroyBlockProgress(this.player.getId(), pos, state);
                this.debugLogging(pos, true, sequence, "actual start of destroying");
                this.lastSentState = state;
             }
+         } else if (action == ServerboundPlayerActionPacket.Action.CHANGE_DESTROY_DIRECTION) {
+            this.destroyDirection = direction;
          } else if (action == ServerboundPlayerActionPacket.Action.STOP_DESTROY_BLOCK) {
             if (pos.equals(this.destroyPos)) {
                int ticksSpentDestroying = this.gameTicks - this.destroyProgressStart;

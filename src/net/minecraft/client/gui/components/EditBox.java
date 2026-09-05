@@ -466,11 +466,11 @@ public class EditBox extends AbstractWidget {
             graphics.requestCursor(this.isEditable() ? CursorTypes.IBEAM : CursorTypes.NOT_ALLOWED);
          }
 
-         if (this.canConsumeInput()) {
-            Minecraft.getInstance().textInputManager().setTextInputArea(cursorX, this.textY, cursorX + 1, this.textY + 9 + 1);
-         }
-
-         if (this.preeditOverlay != null) {
+         if (this.preeditOverlay == null) {
+            if (this.canConsumeInput()) {
+               Minecraft.getInstance().textInputManager().setTextInputArea(cursorX, this.textY, cursorX + 1, this.textY + 9 + 1);
+            }
+         } else {
             this.preeditOverlay.updateInputPosition(cursorX, this.textY);
             graphics.setPreeditOverlay(this.preeditOverlay);
          }

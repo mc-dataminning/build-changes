@@ -14,6 +14,7 @@ import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import org.jspecify.annotations.Nullable;
 
 public class IceBlock extends HalfTransparentBlock {
@@ -61,6 +62,7 @@ public class IceBlock extends HalfTransparentBlock {
       } else {
          level.setBlockAndUpdate(pos, meltsInto());
          level.neighborChanged(pos, meltsInto().getBlock(), null);
+         level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(state));
       }
    }
 }

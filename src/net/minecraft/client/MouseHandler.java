@@ -424,7 +424,7 @@ public class MouseHandler {
             this.mouseGrabbed = true;
             this.xpos = (double)this.minecraft.getWindow().getScreenWidth() / 2.0;
             this.ypos = (double)this.minecraft.getWindow().getScreenHeight() / 2.0;
-            InputConstants.grabMouse(this.minecraft.getWindow());
+            InputConstants.grabMouse(this.minecraft.getWindow(), this.xpos, this.ypos);
             this.minecraft.gui.setScreen(null);
             this.minecraft.missTime = 10000;
             this.ignoreFirstMove = true;

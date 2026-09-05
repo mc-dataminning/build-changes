@@ -26,7 +26,7 @@ public record EnchantmentLevelProvider(LevelBasedValue amount) implements Contex
 
    @Override
    public float getFloatUnsafe(final LootContext context) {
-      int level = context.getParameter(LootContextParams.ENCHANTMENT_LEVEL);
-      return this.amount.calculate(level);
+      Integer level = context.getOptional(LootContextParams.ENCHANTMENT_LEVEL);
+      return this.amount.calculate(level != null ? level : 0);
    }
 }

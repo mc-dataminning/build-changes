@@ -46,83 +46,21 @@ public class BoundingBox {
    }
 
    public BoundingBox(final int minX, final int minY, final int minZ, final int maxX, final int maxY, final int maxZ) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.OutOfMemoryError: Java heap space
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.Exprent.getAllExprents(Exprent.java:156)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateChildExprent(StackVarsProcessor.java:648)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateChildExprent(StackVarsProcessor.java:650)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateExprent(StackVarsProcessor.java:305)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateStatements(StackVarsProcessor.java:189)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:72)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:40)
-      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:224)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: invokespecial java/lang/Object.<init> ()V
-      // 04: aload 0
-      // 05: iload 1
-      // 06: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.minX I
-      // 09: aload 0
-      // 0a: iload 2
-      // 0b: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.minY I
-      // 0e: aload 0
-      // 0f: iload 3
-      // 10: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.minZ I
-      // 13: aload 0
-      // 14: iload 4
-      // 16: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.maxX I
-      // 19: aload 0
-      // 1a: iload 5
-      // 1c: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.maxY I
-      // 1f: aload 0
-      // 20: iload 6
-      // 22: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ I
-      // 25: iload 4
-      // 27: iload 1
-      // 28: if_icmplt 37
-      // 2b: iload 5
-      // 2d: iload 2
-      // 2e: if_icmplt 37
-      // 31: iload 6
-      // 33: iload 3
-      // 34: if_icmpge 7f
-      // 37: aload 0
-      // 38: invokestatic java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;
-      // 3b: invokedynamic makeConcatWithConstants (Ljava/lang/String;)Ljava/lang/String; bsm=java/lang/invoke/StringConcatFactory.makeConcatWithConstants (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite; args=[ "Invalid bounding box data, inverted bounds for: \u0001" ]
-      // 40: invokestatic net/minecraft/util/Util.logAndPauseIfInIde (Ljava/lang/String;)V
-      // 43: aload 0
-      // 44: iload 1
-      // 45: iload 4
-      // 47: invokestatic java/lang/Math.min (II)I
-      // 4a: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.minX I
-      // 4d: aload 0
-      // 4e: iload 2
-      // 4f: iload 5
-      // 51: invokestatic java/lang/Math.min (II)I
-      // 54: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.minY I
-      // 57: aload 0
-      // 58: iload 3
-      // 59: iload 6
-      // 5b: invokestatic java/lang/Math.min (II)I
-      // 5e: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.minZ I
-      // 61: aload 0
-      // 62: iload 1
-      // 63: iload 4
-      // 65: invokestatic java/lang/Math.max (II)I
-      // 68: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.maxX I
-      // 6b: aload 0
-      // 6c: iload 2
-      // 6d: iload 5
-      // 6f: invokestatic java/lang/Math.max (II)I
-      // 72: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.maxY I
-      // 75: aload 0
-      // 76: iload 3
-      // 77: iload 6
-      // 79: invokestatic java/lang/Math.max (II)I
-      // 7c: putfield net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ I
-      // 7f: return
+      this.minX = minX;
+      this.minY = minY;
+      this.minZ = minZ;
+      this.maxX = maxX;
+      this.maxY = maxY;
+      this.maxZ = maxZ;
+      if (maxX < minX || maxY < minY || maxZ < minZ) {
+         Util.logAndPauseIfInIde("Invalid bounding box data, inverted bounds for: " + this);
+         this.minX = Math.min(minX, maxX);
+         this.minY = Math.min(minY, maxY);
+         this.minZ = Math.min(minZ, maxZ);
+         this.maxX = Math.max(minX, maxX);
+         this.maxY = Math.max(minY, maxY);
+         this.maxZ = Math.max(minZ, maxZ);
+      }
    }
 
    public static BoundingBox fromCorners(final Vec3i pos0, final Vec3i pos1) {

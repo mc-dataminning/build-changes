@@ -29,7 +29,7 @@ public record ContextScoreboardNameProvider(LootContext.EntityTarget target) imp
    @Nullable
    @Override
    public ScoreHolder getScoreHolder(final LootContext context) {
-      return context.getOptionalParameter(this.target.contextParam());
+      return context.getOptional(this.target.contextParam());
    }
 
    @Override

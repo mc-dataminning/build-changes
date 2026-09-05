@@ -42,7 +42,7 @@ public record EntityHasScoreCondition(Map<String, IntRangePredicate> scores, Loo
    }
 
    public boolean test(final LootContext context) {
-      Entity entity = context.getOptionalParameter(this.entityTarget.contextParam());
+      Entity entity = context.getOptional(this.entityTarget.contextParam());
       if (entity == null) {
          return false;
       } else {

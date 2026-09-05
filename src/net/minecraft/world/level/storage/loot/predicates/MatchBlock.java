@@ -26,8 +26,8 @@ public record MatchBlock(BlockPredicate predicate) implements LootItemCondition 
    }
 
    public boolean test(final LootContext context) {
-      BlockState blockState = context.getOptionalParameter(LootContextParams.BLOCK_STATE);
-      BlockEntity blockEntity = context.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+      BlockState blockState = context.getOptional(LootContextParams.BLOCK_STATE);
+      BlockEntity blockEntity = context.getOptional(LootContextParams.BLOCK_ENTITY);
       return blockState != null && this.predicate.matchesState(blockState) && this.predicate.matchesBlockEntity(context.getLevel(), blockEntity);
    }
 

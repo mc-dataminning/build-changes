@@ -76,6 +76,14 @@ public class AquaticPlacements {
          BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.WATER)),
          BiomeFilter.biome()
       );
+      BlockPredicateFilter kelpPlacementFilter = BlockPredicateFilter.forPredicate(
+         BlockPredicate.allOf(
+            BlockPredicate.matchesBlocks(Blocks.WATER),
+            BlockPredicate.matchesBlocks(Direction.UP, Blocks.WATER),
+            BlockPredicate.hasSturdyFace(Direction.DOWN, Direction.UP),
+            BlockPredicate.not(BlockPredicate.matchesTag(Direction.DOWN, BlockTags.CANNOT_SUPPORT_KELP))
+         )
+      );
       PlacementUtils.register(
          context,
          KELP_COLD,
@@ -83,13 +91,7 @@ public class AquaticPlacements {
          NoiseBasedCountPlacement.of(120, 80.0, 0.0),
          InSquarePlacement.spread(),
          PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
-         BlockPredicateFilter.forPredicate(
-            BlockPredicate.allOf(
-               BlockPredicate.matchesBlocks(Blocks.WATER),
-               BlockPredicate.matchesBlocks(Direction.UP, Blocks.WATER),
-               BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.CANNOT_SUPPORT_KELP))
-            )
-         ),
+         kelpPlacementFilter,
          BiomeFilter.biome()
       );
       PlacementUtils.register(
@@ -99,13 +101,7 @@ public class AquaticPlacements {
          NoiseBasedCountPlacement.of(80, 80.0, 0.0),
          InSquarePlacement.spread(),
          PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
-         BlockPredicateFilter.forPredicate(
-            BlockPredicate.allOf(
-               BlockPredicate.matchesBlocks(Blocks.WATER),
-               BlockPredicate.matchesBlocks(Direction.UP, Blocks.WATER),
-               BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.CANNOT_SUPPORT_KELP))
-            )
-         ),
+         kelpPlacementFilter,
          BiomeFilter.biome()
       );
       PlacementUtils.register(

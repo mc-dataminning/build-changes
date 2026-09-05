@@ -711,7 +711,6 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          }
 
          MacosUtil.setFullscreenMenuVisibility(this.options.macFullscreenMenuVisibility().get());
-         this.window.show();
          this.resizeGui();
          this.loadCriticalShaders();
          this.telemetryManager = new ClientTelemetryManager(this, this.userApiService, this.user);
@@ -1640,7 +1639,6 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
                if (!this.level.getBlockState(pos).isAir()) {
                   Direction direction = blockHit.getDirection();
                   if (this.gameMode.continueDestroyBlock(pos, direction)) {
-                     this.level.addBreakingBlockEffect(pos, direction);
                      this.player.swing(InteractionHand.MAIN_HAND, swingAnimation, false);
                      this.player.connection.send(ServerboundPunchPacket.INSTANCE);
                   }

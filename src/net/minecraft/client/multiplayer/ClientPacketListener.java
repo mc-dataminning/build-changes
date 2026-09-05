@@ -2297,44 +2297,56 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    @Override
    public void handleParticleEvent(final ClientboundLevelParticlesPacket packet) {
       PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-      if (packet.getCount() == 0) {
-         double xa = (double)(packet.getMaxSpeed() * packet.getXDist());
-         double ya = (double)(packet.getMaxSpeed() * packet.getYDist());
-         double za = (double)(packet.getMaxSpeed() * packet.getZDist());
-
-         try {
-            this.level
-               .addParticle(packet.getParticle(), packet.isOverrideLimiter(), packet.alwaysShow(), packet.getX(), packet.getY(), packet.getZ(), xa, ya, za);
-         } catch (Throwable var17) {
-            LOGGER.warn("Could not spawn particle effect {}", packet.getParticle());
-         }
+      if (packet.count() == 0) {
+         double xa = (double)(packet.xMaxSpeed() * packet.xDist());
+         double ya = (double)(packet.yMaxSpeed() * packet.yDist());
+         double za = (double)(packet.zMaxSpeed() * packet.zDist());
+         this.tryAddParticle(packet, packet.x(), packet.y(), packet.z(), xa, ya, za);
       } else {
-         for (int i = 0; i < packet.getCount(); i++) {
-            double xVarience = this.random.nextGaussian() * (double)packet.getXDist();
-            double yVarience = this.random.nextGaussian() * (double)packet.getYDist();
-            double zVarience = this.random.nextGaussian() * (double)packet.getZDist();
-            double xa = this.random.nextGaussian() * (double)packet.getMaxSpeed();
-            double ya = this.random.nextGaussian() * (double)packet.getMaxSpeed();
-            double za = this.random.nextGaussian() * (double)packet.getMaxSpeed();
+         ClientboundLevelParticlesPacket.RandomizationType randomizationType = packet.randomizationType();
+         if (randomizationType.isAlternative()) {
+            for (int i = 0; i < packet.count(); i++) {
+               double xVariance = this.random.nextDouble() * (double)packet.xDist();
+               double yVariance = this.random.nextDouble() * (double)packet.yDist();
+               double zVariance = this.random.nextDouble() * (double)packet.zDist();
+               double xa = (double)packet.xMaxSpeed();
+               double ya = (double)packet.yMaxSpeed();
+               double za = (double)packet.zMaxSpeed();
+               if (randomizationType == ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE_WITH_SPEED) {
+                  xa *= this.random.nextDouble();
+                  ya *= this.random.nextDouble();
+                  za *= this.random.nextDouble();
+               }
 
-            try {
-               this.level
-                  .addParticle(
-                     packet.getParticle(),
-                     packet.isOverrideLimiter(),
-                     packet.alwaysShow(),
-                     packet.getX() + xVarience,
-                     packet.getY() + yVarience,
-                     packet.getZ() + zVarience,
-                     xa,
-                     ya,
-                     za
-                  );
-            } catch (Throwable var16) {
-               LOGGER.warn("Could not spawn particle effect {}", packet.getParticle());
-               return;
+               if (!this.tryAddParticle(packet, packet.x() + xVariance, packet.y() + yVariance, packet.z() + zVariance, xa, ya, za)) {
+                  return;
+               }
+            }
+         } else {
+            for (int i = 0; i < packet.count(); i++) {
+               double xVariancex = this.random.nextGaussian() * (double)packet.xDist();
+               double yVariancex = this.random.nextGaussian() * (double)packet.yDist();
+               double zVariancex = this.random.nextGaussian() * (double)packet.zDist();
+               double xax = this.random.nextGaussian() * (double)packet.xMaxSpeed();
+               double yax = this.random.nextGaussian() * (double)packet.yMaxSpeed();
+               double zax = this.random.nextGaussian() * (double)packet.zMaxSpeed();
+               if (!this.tryAddParticle(packet, packet.x() + xVariancex, packet.y() + yVariancex, packet.z() + zVariancex, xax, yax, zax)) {
+                  return;
+               }
             }
          }
+      }
+   }
+
+   private boolean tryAddParticle(
+      final ClientboundLevelParticlesPacket packet, final double x, final double y, final double z, final double xa, final double ya, final double za
+   ) {
+      try {
+         this.level.addParticle(packet.particle(), packet.overrideLimiter(), packet.alwaysShow(), x, y, z, xa, ya, za);
+         return true;
+      } catch (Throwable var15) {
+         LOGGER.warn("Could not spawn particle effect {}", packet.particle());
+         return false;
       }
    }
 

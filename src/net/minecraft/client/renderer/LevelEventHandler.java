@@ -428,6 +428,12 @@ public class LevelEventHandler {
             }
             break;
          }
+         case 2019:
+         case 2020:
+            Direction[] directions = Direction.values();
+            int ordinal = Mth.clamp(data, 0, directions.length - 1);
+            this.level.addBreakingBlockEffects(pos, directions[ordinal], eventType == 2020);
+            break;
          case 3000:
             this.level
                .addAlwaysVisibleParticle(

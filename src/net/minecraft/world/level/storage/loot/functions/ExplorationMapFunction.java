@@ -80,7 +80,7 @@ public class ExplorationMapFunction extends LootItemConditionalFunction {
       if (itemStack.isEmpty()) {
          return itemStack;
       } else {
-         Vec3 lootPos = context.getOptionalParameter(LootContextParams.ORIGIN);
+         Vec3 lootPos = context.getOptional(LootContextParams.ORIGIN);
          if (lootPos == null) {
             return itemStack;
          } else {

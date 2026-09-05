@@ -1383,6 +1383,7 @@ public class ServerGamePacketListenerImpl
                this.player.releaseUsingItem();
                return;
             case START_DESTROY_BLOCK:
+            case CHANGE_DESTROY_DIRECTION:
             case ABORT_DESTROY_BLOCK:
             case STOP_DESTROY_BLOCK:
                this.player.gameMode.handleBlockBreakAction(pos, action, packet.getDirection(), this.player.level().getMaxY(), packet.getSequence());

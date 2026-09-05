@@ -91,7 +91,7 @@ public interface LootContextArg<R> {
       @Nullable
       @Override
       default R get(final LootContext context) {
-         T value = context.getOptionalParameter((ContextKey<T>)this.contextParam());
+         T value = context.getOptional((ContextKey<T>)this.contextParam());
          return value != null ? this.get(value) : null;
       }
    }
@@ -103,7 +103,7 @@ public interface LootContextArg<R> {
       @Nullable
       @Override
       default T get(final LootContext context) {
-         return context.getOptionalParameter((ContextKey<T>)this.contextParam());
+         return context.getOptional((ContextKey<T>)this.contextParam());
       }
    }
 }

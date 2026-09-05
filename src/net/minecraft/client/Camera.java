@@ -446,7 +446,7 @@ public class Camera implements TrackedWaypoint.Camera {
       } else {
          FluidState fluidState1 = this.level.getFluidState(this.blockPosition);
          if (fluidState1.is(FluidTags.WATER)
-            && this.position.y < (double)((float)this.blockPosition.getY() + fluidState1.getHeight(this.level, this.blockPosition))) {
+            && this.position.y < (double)((float)this.blockPosition.getY() + fluidState1.getHeightForCamera(this.level, this.blockPosition))) {
             return FogType.WATER;
          } else {
             Camera.NearPlane plane = this.getNearPlane((float)this.minecraft.options.fov().get().intValue());
@@ -456,7 +456,7 @@ public class Camera implements TrackedWaypoint.Camera {
                BlockPos checkPos = BlockPos.containing(offsetPos);
                FluidState fluidState = this.level.getFluidState(checkPos);
                if (fluidState.is(FluidTags.LAVA)) {
-                  if (offsetPos.y <= (double)(fluidState.getHeight(this.level, checkPos) + (float)checkPos.getY())) {
+                  if (offsetPos.y <= (double)(fluidState.getHeightForCamera(this.level, checkPos) + (float)checkPos.getY())) {
                      return FogType.LAVA;
                   }
                } else {

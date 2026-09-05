@@ -80,6 +80,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.raid.Raid;
 import net.minecraft.world.entity.schedule.Activity;
 import net.minecraft.world.food.VillagerFood;
+import net.minecraft.world.inventory.MerchantMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -414,15 +415,25 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
       int reputation = this.getPlayerReputation(player);
       MobEffectInstance heroOfTheVillage = player.getEffect(MobEffects.HERO_OF_THE_VILLAGE);
       double heroModifier = heroOfTheVillage == null ? 0.0 : (double)(0.3F + 0.0625F * (float)heroOfTheVillage.getAmplifier());
+      boolean offersChanged = false;
 
       for (MerchantOffer offer : this.getOffers()) {
          if (reputation != 0) {
             offer.addToSpecialPriceDiff(-Mth.floor((float)reputation * offer.getPriceMultiplier()));
+            offersChanged = true;
          }
 
          if (heroModifier > 0.0) {
             int costReduction = (int)Math.floor(heroModifier * (double)offer.getBaseCostA().getCount());
             offer.addToSpecialPriceDiff(-Math.max(costReduction, 1));
+            offersChanged = true;
+         }
+      }
+
+      if (offersChanged) {
+         Player tradingPlayer = this.getTradingPlayer();
+         if (tradingPlayer != null && tradingPlayer.containerMenu instanceof MerchantMenu menu) {
+            menu.updateSellItem();
          }
       }
    }
@@ -557,8 +568,8 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
 
    @Override
    public void setLastHurtByMob(@Nullable final LivingEntity hurtBy) {
-      if (hurtBy != null && this.level() instanceof ServerLevel) {
-         ((ServerLevel)this.level()).onReputationEvent(ReputationEventType.VILLAGER_HURT, hurtBy, this);
+      if (hurtBy != null && this.level() instanceof ServerLevel serverLevel) {
+         serverLevel.onReputationEvent(ReputationEventType.VILLAGER_HURT, hurtBy, this);
          if (this.isAlive() && hurtBy instanceof Player) {
             this.level().broadcastEntityEvent(this, (byte)13);
          }

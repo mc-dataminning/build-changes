@@ -25,7 +25,7 @@ public class ExplosionCondition implements LootItemCondition {
    }
 
    public boolean test(final LootContext context) {
-      Float explosionRadius = context.getOptionalParameter(LootContextParams.EXPLOSION_RADIUS);
+      Float explosionRadius = context.getOptional(LootContextParams.EXPLOSION_RADIUS);
       if (explosionRadius != null) {
          RandomSource random = context.getRandom();
          float probability = 1.0F / explosionRadius;

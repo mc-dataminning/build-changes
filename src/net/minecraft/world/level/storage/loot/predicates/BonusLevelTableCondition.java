@@ -35,7 +35,7 @@ public record BonusLevelTableCondition(Holder<Enchantment> enchantment, List<Flo
    }
 
    public boolean test(final LootContext context) {
-      ItemInstance tool = context.getOptionalParameter(LootContextParams.TOOL);
+      ItemInstance tool = context.getOptional(LootContextParams.TOOL);
       int level = tool != null ? EnchantmentHelper.getItemEnchantmentLevel(this.enchantment, tool) : 0;
       float chance = this.values.get(Math.min(level, this.values.size() - 1));
       return context.getRandom().nextFloat() < chance;

@@ -70,7 +70,7 @@ public class EnchantedCountIncreaseFunction extends LootItemConditionalFunction 
 
    @Override
    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      Entity killer = context.getOptionalParameter(LootContextParams.ATTACKING_ENTITY);
+      Entity killer = context.getOptional(LootContextParams.ATTACKING_ENTITY);
       if (killer instanceof LivingEntity entity) {
          int level = EnchantmentHelper.getEnchantmentLevel(this.enchantment, entity);
          if (level == 0) {

@@ -274,7 +274,10 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
    }
 
    private boolean canBlockBeReplacedByNetherrackOrMagma(final LevelAccessor level, final BlockPos pos) {
-      BlockState state = level.getBlockState(pos);
+      return this.canBlockBeReplacedByNetherrackOrMagma(level.getBlockState(pos));
+   }
+
+   private boolean canBlockBeReplacedByNetherrackOrMagma(final BlockState state) {
       return !state.is(Blocks.AIR)
          && !state.is(Blocks.OBSIDIAN)
          && !state.is(BlockTags.FEATURES_CANNOT_REPLACE)
@@ -282,10 +285,12 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
    }
 
    private void placeNetherrackOrMagma(final RandomSource random, final LevelAccessor level, final BlockPos pos) {
-      if (!this.properties.cold && random.nextFloat() < 0.07F) {
-         level.setBlockAndUpdate(pos, Blocks.MAGMA_BLOCK.defaultBlockState());
-      } else {
-         level.setBlockAndUpdate(pos, Blocks.NETHERRACK.defaultBlockState());
+      if (this.canBlockBeReplacedByNetherrackOrMagma(level, pos)) {
+         if (!this.properties.cold && random.nextFloat() < 0.07F) {
+            level.setBlockAndUpdate(pos, Blocks.MAGMA_BLOCK.defaultBlockState());
+         } else {
+            level.setBlockAndUpdate(pos, Blocks.NETHERRACK.defaultBlockState());
+         }
       }
    }
 

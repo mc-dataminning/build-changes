@@ -15,41 +15,41 @@ public abstract class BufferStorage {
       }
    }
 
-   public abstract GlBuffer createBuffer(DirectStateAccess dsa, @GpuBuffer.Usage int usage, long size);
+   public abstract GlBuffer createBuffer(GlHeuristics heuristics, DirectStateAccess dsa, @GpuBuffer.Usage int usage, long size);
 
-   public abstract GlBuffer createBuffer(DirectStateAccess dsa, @GpuBuffer.Usage int usage, ByteBuffer data);
+   public abstract GlBuffer createBuffer(GlHeuristics heuristics, DirectStateAccess dsa, @GpuBuffer.Usage int usage, ByteBuffer data);
 
    private static class Immutable extends BufferStorage {
       @Override
-      public GlBuffer createBuffer(final DirectStateAccess dsa, @GpuBuffer.Usage final int usage, final long size) {
+      public GlBuffer createBuffer(final GlHeuristics heuristics, final DirectStateAccess dsa, @GpuBuffer.Usage final int usage, final long size) {
          int buffer = dsa.createBuffer();
          dsa.bufferStorage(buffer, size, usage);
-         return new GlBuffer.Direct(dsa, usage, size, buffer, true);
+         return new GlBuffer.Direct(heuristics, dsa, usage, size, buffer, true);
       }
 
       @Override
-      public GlBuffer createBuffer(final DirectStateAccess dsa, @GpuBuffer.Usage final int usage, final ByteBuffer data) {
+      public GlBuffer createBuffer(final GlHeuristics heuristics, final DirectStateAccess dsa, @GpuBuffer.Usage final int usage, final ByteBuffer data) {
          int buffer = dsa.createBuffer();
          int size = data.remaining();
          dsa.bufferStorage(buffer, data, usage);
-         return new GlBuffer.Direct(dsa, usage, (long)size, buffer, true);
+         return new GlBuffer.Direct(heuristics, dsa, usage, (long)size, buffer, true);
       }
    }
 
    private static class Mutable extends BufferStorage {
       @Override
-      public GlBuffer createBuffer(final DirectStateAccess dsa, @GpuBuffer.Usage final int usage, final long size) {
+      public GlBuffer createBuffer(final GlHeuristics heuristics, final DirectStateAccess dsa, @GpuBuffer.Usage final int usage, final long size) {
          int buffer = dsa.createBuffer();
          dsa.bufferData(buffer, size, usage);
-         return new GlBuffer.Direct(dsa, usage, size, buffer, false);
+         return new GlBuffer.Direct(heuristics, dsa, usage, size, buffer, false);
       }
 
       @Override
-      public GlBuffer createBuffer(final DirectStateAccess dsa, @GpuBuffer.Usage final int usage, final ByteBuffer data) {
+      public GlBuffer createBuffer(final GlHeuristics heuristics, final DirectStateAccess dsa, @GpuBuffer.Usage final int usage, final ByteBuffer data) {
          int buffer = dsa.createBuffer();
          int size = data.remaining();
          dsa.bufferData(buffer, data, usage);
-         return new GlBuffer.Direct(dsa, usage, (long)size, buffer, false);
+         return new GlBuffer.Direct(heuristics, dsa, usage, (long)size, buffer, false);
       }
    }
 }

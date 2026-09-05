@@ -27,7 +27,7 @@ public record BinomialDistributionGenerator(Holder<ContextIntProvider> n, Holder
    @Override
    public int getIntUnsafe(final LootContext context) {
       int n = this.n().value().getIntUnsafe(context);
-      float p = ContextIntProvider.throwIfInvalid(this.p().value().getFloatUnsafe(context));
+      float p = this.p().value().getFloatOrThrow(context);
       RandomSource random = context.getRandom();
       int result = 0;
 

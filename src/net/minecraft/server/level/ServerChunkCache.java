@@ -64,7 +64,6 @@ public class ServerChunkCache extends ChunkSource {
    public final ChunkMap chunkMap;
    private final SavedDataStorage savedDataStorage;
    private final TicketStorage ticketStorage;
-   private long lastInhabitedUpdate;
    private boolean spawnEnemies = true;
    private static final int CACHE_SIZE = 4;
    private final long[] lastChunkPos = new long[4];
@@ -338,15 +337,12 @@ public class ServerChunkCache extends ChunkSource {
    }
 
    private void tickChunks() {
-      long time = this.level.getGameTime();
-      long timeDiff = time - this.lastInhabitedUpdate;
-      this.lastInhabitedUpdate = time;
       if (!this.level.isDebug()) {
          ProfilerFiller profiler = Profiler.get();
          profiler.push("pollingChunks");
          if (this.level.tickRateManager().runsNormally()) {
             profiler.push("tickingChunks");
-            this.tickChunks(profiler, timeDiff);
+            this.tickChunks(profiler);
             profiler.pop();
          }
 
@@ -369,7 +365,7 @@ public class ServerChunkCache extends ChunkSource {
       profiler.pop();
    }
 
-   private void tickChunks(final ProfilerFiller profiler, final long timeDiff) {
+   private void tickChunks(final ProfilerFiller profiler) {
       profiler.push("naturalSpawnCount");
       int chunkCount = this.distanceManager.getNaturalSpawnChunkCount();
       NaturalSpawner.SpawnState spawnCookie = NaturalSpawner.createState(chunkCount, this.level, this::getFullChunk, new LocalMobCapCalculator(this.chunkMap));
@@ -394,7 +390,7 @@ public class ServerChunkCache extends ChunkSource {
          profiler.popPush("tickSpawningChunks");
 
          for (LevelChunk chunk : spawningChunks) {
-            this.tickSpawningChunk(chunk, timeDiff, spawningCategories, spawnCookie);
+            this.tickSpawningChunk(chunk, spawningCategories, spawnCookie);
          }
       } finally {
          spawningChunks.clear();
@@ -410,11 +406,9 @@ public class ServerChunkCache extends ChunkSource {
       profiler.pop();
    }
 
-   private void tickSpawningChunk(
-      final LevelChunk chunk, final long timeDiff, final List<MobCategory> spawningCategories, final NaturalSpawner.SpawnState spawnCookie
-   ) {
+   private void tickSpawningChunk(final LevelChunk chunk, final List<MobCategory> spawningCategories, final NaturalSpawner.SpawnState spawnCookie) {
       ChunkPos chunkPos = chunk.getPos();
-      chunk.incrementInhabitedTime(timeDiff);
+      chunk.incrementInhabitedTime();
       if (this.distanceManager.inEntityTickingRange(chunkPos.pack())) {
          this.level.tickThunder(chunk);
       }

@@ -33,12 +33,4 @@ public interface ContextIntProvider extends Validatable {
          return result;
       }
    }
-
-   static float throwIfInvalid(final float value) throws ArithmeticException {
-      if (!Float.isFinite(value)) {
-         throw new ArithmeticException("Invalid value: " + value);
-      } else {
-         return value;
-      }
-   }
 }

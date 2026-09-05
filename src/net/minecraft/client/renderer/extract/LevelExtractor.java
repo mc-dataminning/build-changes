@@ -76,6 +76,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.apache.commons.lang3.mutable.MutableObject;
 import org.joml.Vector4fc;
 import org.jspecify.annotations.Nullable;
 
@@ -453,22 +454,23 @@ public class LevelExtractor implements ResourceManagerReloadListener {
       }
    }
 
+   @Nullable
    private static BlockState getViewBlockingState(final LocalPlayer player, final Frustum frustum) {
       if (player.noPhysics) {
          return null;
       } else {
          Level level = player.level();
          AABB nearPlaneBB = frustum.getNearPlaneBounds().move(player.getEyePosition());
-         BlockState[] outState = new BlockState[]{null};
+         MutableObject<BlockState> outState = new MutableObject();
          level.findBlocksIn(nearPlaneBB).filterState(state -> state.getRenderShape() != RenderShape.INVISIBLE).forEachUntil((pos, state) -> {
             if (state.isViewBlocking(level, pos, nearPlaneBB)) {
-               outState[0] = state;
+               outState.setValue(state);
                return Continuation.ABORT;
             } else {
                return Continuation.CONTINUE;
             }
          });
-         return outState[0];
+         return (BlockState)outState.get();
       }
    }
 

@@ -54,6 +54,7 @@ class GlDevice implements GpuDeviceBackend {
    protected static boolean USE_GL_ARB_shader_draw_parameters = true;
    private final long initialWindowHandle;
    private final long glContext;
+   private final GlHeuristics heuristics;
    private final GlCommandEncoder encoder;
    @Nullable
    private final GlDebug debugLog;
@@ -136,11 +137,11 @@ class GlDevice implements GpuDeviceBackend {
                   maxSupportedAnisotropy = 1;
                }
 
-               GlHeuristics heuristics = new GlHeuristics(GlStateManager._getString(7937), GlStateManager._getString(7936));
+               this.heuristics = new GlHeuristics(GlStateManager._getString(7937), GlStateManager._getString(7936));
                this.debugLog = GlDebug.enableDebugCallback(debugOptions.logLevel(), debugOptions.synchronousLogs(), enabledExtensions);
                this.debugLabels = GlDebugLabel.create(capabilities, debugOptions.useLabels(), enabledExtensions);
-               this.bufferStorage = BufferStorage.create(capabilities, enabledExtensions, heuristics.couldBeIntelGen7() || heuristics.isNvidia());
-               this.directStateAccess = DirectStateAccess.create(capabilities, enabledExtensions, heuristics);
+               this.bufferStorage = BufferStorage.create(capabilities, enabledExtensions, this.heuristics.couldBeIntelGen7() || this.heuristics.isNvidia());
+               this.directStateAccess = DirectStateAccess.create(capabilities, enabledExtensions, this.heuristics);
                this.vertexArraySource = VertexArray.createSource(capabilities, enabledExtensions);
                GL33C.glEnable(34895);
                GL33C.glEnable(34370);
@@ -164,7 +165,7 @@ class GlDevice implements GpuDeviceBackend {
                   enabledExtensions.add("GL_ARB_base_instance");
                }
 
-               this.deviceInfo = heuristics.createDeviceInfo(capabilities, maxSupportedAnisotropy, enabledExtensions);
+               this.deviceInfo = this.heuristics.createDeviceInfo(capabilities, maxSupportedAnisotropy, enabledExtensions);
                this.encoder = new GlCommandEncoder(this);
                this.recompiler = new GlPipelineRecompiler(this.debugLabels, this.deviceInfo.features().shaderDrawParameters());
             } catch (Throwable var12) {
@@ -174,6 +175,10 @@ class GlDevice implements GpuDeviceBackend {
             }
          }
       }
+   }
+
+   public GlHeuristics heuristics() {
+      return this.heuristics;
    }
 
    public GlDebugLabel debugLabels() {
@@ -274,7 +279,7 @@ class GlDevice implements GpuDeviceBackend {
    @Override
    public GpuBuffer createBuffer(@Nullable final Supplier<String> label, @GpuBuffer.Usage final int usage, final long size) {
       GlStateManager.clearGlErrors();
-      GlBuffer buffer = this.bufferStorage.createBuffer(this.directStateAccess, usage, size);
+      GlBuffer buffer = this.bufferStorage.createBuffer(this.heuristics, this.directStateAccess, usage, size);
       int error = GlStateManager._getError();
       if (error == 1285) {
          throw new GpuOutOfMemoryException("Could not allocate buffer of " + size + " for " + label);
@@ -290,7 +295,7 @@ class GlDevice implements GpuDeviceBackend {
    public GpuBuffer createBuffer(@Nullable final Supplier<String> label, @GpuBuffer.Usage final int usage, final ByteBuffer data) {
       GlStateManager.clearGlErrors();
       long size = (long)data.remaining();
-      GlBuffer buffer = this.bufferStorage.createBuffer(this.directStateAccess, usage, data);
+      GlBuffer buffer = this.bufferStorage.createBuffer(this.heuristics, this.directStateAccess, usage, data);
       int error = GlStateManager._getError();
       if (error == 1285) {
          throw new GpuOutOfMemoryException("Could not allocate buffer of " + size + " for " + label);

@@ -68,6 +68,7 @@ public class ServerboundPlayerActionPacket implements Packet<ServerGamePacketLis
 
    public static enum Action {
       START_DESTROY_BLOCK,
+      CHANGE_DESTROY_DIRECTION,
       ABORT_DESTROY_BLOCK,
       STOP_DESTROY_BLOCK,
       DROP_ALL_ITEMS,

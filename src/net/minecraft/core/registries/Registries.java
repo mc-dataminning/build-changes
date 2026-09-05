@@ -30,6 +30,7 @@ import net.minecraft.server.permissions.Permission;
 import net.minecraft.server.permissions.PermissionCheck;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.stats.StatType;
+import net.minecraft.util.context.ContextKeySet;
 import net.minecraft.util.debug.DebugSubscription;
 import net.minecraft.util.valueproviders.FloatProvider;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -260,6 +261,7 @@ public class Registries {
    public static final ResourceKey<Registry<OutgoingRpcMethod<?, ?>>> OUTGOING_RPC_METHOD = createRegistryKey("outgoing_rpc_methods");
    public static final ResourceKey<Registry<MapCodec<? extends Permission>>> PERMISSION_TYPE = createRegistryKey("permission_type");
    public static final ResourceKey<Registry<MapCodec<? extends PermissionCheck>>> PERMISSION_CHECK_TYPE = createRegistryKey("permission_check_type");
+   public static final ResourceKey<Registry<ContextKeySet>> CONTEXT_KEY_SET = createRegistryKey("context_key_set");
    public static final ResourceKey<Registry<BannerPattern>> BANNER_PATTERN = createRegistryKey("banner_pattern");
    public static final ResourceKey<Registry<Biome>> BIOME = createRegistryKey("worldgen/biome");
    public static final ResourceKey<Registry<BlockStateProvider>> BLOCK_STATE_PROVIDER = createRegistryKey("worldgen/block_state_provider");

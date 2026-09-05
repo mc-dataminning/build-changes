@@ -146,7 +146,7 @@ public class Blender {
          }
       }
 
-      return new Blender.OutputBuffer(minCellX, minCellZ, cellCountX, cellCountZ, alphas, offsets);
+      return new Blender.OutputBuffer(this, minCellX, minCellZ, cellCountX, cellCountZ, alphas, offsets);
    }
 
    protected Blender.BlendingOutput blendOffsetAndFactor(final int blockX, final int blockZ) {
@@ -450,7 +450,7 @@ public class Blender {
       double getDistance(double x, double y, double z);
    }
 
-   public static record OutputBuffer(int minCellX, int minCellZ, int cellCountX, int cellCountZ, float[] alphas, float[] offsets) {
+   public static record OutputBuffer(Blender blender, int minCellX, int minCellZ, int cellCountX, int cellCountZ, float[] alphas, float[] offsets) {
       private static final int NO_VALUE = -1;
 
       public DensitySampler createAlphaSampler() {
@@ -491,12 +491,12 @@ public class Blender {
 
       public float getAlpha(final int blockX, final int blockZ) {
          int index = this.getIndex(blockX, blockZ);
-         return index == -1 ? 1.0F : this.alphas[index];
+         return index == -1 ? this.blender.blendOffsetAndFactor(blockX, blockZ).alpha() : this.alphas[index];
       }
 
       public float getOffset(final int blockX, final int blockZ) {
          int index = this.getIndex(blockX, blockZ);
-         return index == -1 ? 0.0F : this.offsets[index];
+         return index == -1 ? this.blender.blendOffsetAndFactor(blockX, blockZ).blendingOffset() : this.offsets[index];
       }
 
       private int getIndex(final int blockX, final int blockZ) {

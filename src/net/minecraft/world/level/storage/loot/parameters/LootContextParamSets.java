@@ -1,25 +1,41 @@
 package net.minecraft.world.level.storage.loot.parameters;
 
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Consumer;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.context.ContextKey;
 import net.minecraft.util.context.ContextKeySet;
 
 public class LootContextParamSets {
-   private static final BiMap<Identifier, ContextKeySet> REGISTRY = HashBiMap.create();
-   public static final Codec<ContextKeySet> CODEC = Identifier.CODEC
-      .comapFlatMap(
-         location -> Optional.ofNullable((ContextKeySet)REGISTRY.get(location))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + location + "'")),
-         REGISTRY.inverse()::get
-      );
-   public static final ContextKeySet EMPTY = register("empty", builder -> {
+   public static final Codec<ContextKeySet> CODEC = BuiltInRegistries.CONTEXT_KEY_SET.byNameCodec();
+   public static final ContextKeySet EMPTY = register("empty", var0 -> {
    });
+   public static final ContextKeySet ALL_PARAMS = register(
+      "generic",
+      builder -> builder.required(LootContextParams.THIS_ENTITY)
+            .required(LootContextParams.LAST_DAMAGE_PLAYER)
+            .required(LootContextParams.DAMAGE_SOURCE)
+            .required(LootContextParams.ATTACKING_ENTITY)
+            .required(LootContextParams.DIRECT_ATTACKING_ENTITY)
+            .required(LootContextParams.ORIGIN)
+            .required(LootContextParams.BLOCK_STATE)
+            .required(LootContextParams.BLOCK_ENTITY)
+            .required(LootContextParams.TOOL)
+            .required(LootContextParams.EXPLOSION_RADIUS)
+            .required(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)
+            .required(LootContextParams.CONTAINER)
+            .required(LootContextParams.INTERACTING_ENTITY)
+            .required(LootContextParams.TARGET_ENTITY)
+            .required(LootContextParams.ENCHANTMENT_ACTIVE)
+            .required(LootContextParams.ENCHANTMENT_LEVEL)
+   );
    public static final ContextKeySet CHEST = register("chest", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY));
    public static final ContextKeySet COMMAND = register(
       "command", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY)
@@ -91,21 +107,6 @@ public class LootContextParamSets {
    public static final ContextKeySet BLOCK_USE = register(
       "block_use", builder -> builder.required(LootContextParams.THIS_ENTITY).required(LootContextParams.ORIGIN).required(LootContextParams.BLOCK_STATE)
    );
-   public static final ContextKeySet ALL_PARAMS = register(
-      "generic",
-      builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.LAST_DAMAGE_PLAYER)
-            .required(LootContextParams.DAMAGE_SOURCE)
-            .required(LootContextParams.ATTACKING_ENTITY)
-            .required(LootContextParams.DIRECT_ATTACKING_ENTITY)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.BLOCK_STATE)
-            .required(LootContextParams.BLOCK_ENTITY)
-            .required(LootContextParams.TOOL)
-            .required(LootContextParams.EXPLOSION_RADIUS)
-            .required(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)
-            .required(LootContextParams.CONTAINER)
-   );
    public static final ContextKeySet BLOCK = register(
       "block",
       builder -> builder.required(LootContextParams.BLOCK_STATE)
@@ -169,15 +170,30 @@ public class LootContextParamSets {
    );
 
    private static ContextKeySet register(final String name, final Consumer<ContextKeySet.Builder> consumer) {
+      ResourceKey<ContextKeySet> key = ResourceKey.create(Registries.CONTEXT_KEY_SET, Identifier.withDefaultNamespace(name));
+      return register(consumer, key);
+   }
+
+   private static ContextKeySet register(final Consumer<ContextKeySet.Builder> consumer, final ResourceKey<ContextKeySet> key) {
       ContextKeySet.Builder builder = new ContextKeySet.Builder();
       consumer.accept(builder);
-      ContextKeySet result = builder.build();
-      Identifier id = Identifier.withDefaultNamespace(name);
-      ContextKeySet prev = (ContextKeySet)REGISTRY.put(id, result);
-      if (prev != null) {
-         throw new IllegalStateException("Loot table parameter set " + id + " is already registered");
-      } else {
-         return result;
+      return Registry.register(BuiltInRegistries.CONTEXT_KEY_SET, key, builder.build());
+   }
+
+   public static ContextKeySet bootstrap(final Registry<ContextKeySet> registry) {
+      return ALL_PARAMS;
+   }
+
+   public static void validate() {
+      Set<ContextKey<?>> allParams = new HashSet<>();
+      BuiltInRegistries.CONTEXT_KEY_SET.forEach(paramSet -> {
+         if (paramSet != ALL_PARAMS) {
+            allParams.addAll(paramSet.allowed());
+         }
+      });
+      Set<ContextKey<?>> missingFromAllParams = Sets.difference(allParams, ALL_PARAMS.required());
+      if (!missingFromAllParams.isEmpty()) {
+         throw new IllegalStateException("Missing parameters from 'all_params': " + missingFromAllParams);
       }
    }
 }

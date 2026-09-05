@@ -1660,7 +1660,12 @@ public class Options {
          String currentValue = keyMapping.saveString();
          String newValue = access.process("key_" + keyMapping.getName(), currentValue);
          if (!currentValue.equals(newValue)) {
-            keyMapping.setKey(InputConstants.getKey(newValue));
+            try {
+               keyMapping.setKey(InputConstants.getKey(newValue));
+            } catch (IllegalArgumentException var9) {
+               LOGGER.warn("Invalid keyMapping {} = {}, unbinding", new Object[]{keyMapping.getName(), newValue, var9});
+               keyMapping.setKey(InputConstants.UNKNOWN);
+            }
          }
       }
 
