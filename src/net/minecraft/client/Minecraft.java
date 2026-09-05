@@ -19,6 +19,7 @@ import com.mojang.blaze3d.platform.DisplayData;
 import com.mojang.blaze3d.platform.FramerateLimitTracker;
 import com.mojang.blaze3d.platform.IconSet;
 import com.mojang.blaze3d.platform.InputConstants;
+import com.mojang.blaze3d.platform.MacosUtil;
 import com.mojang.blaze3d.platform.MessageBox;
 import com.mojang.blaze3d.platform.MonitorManager;
 import com.mojang.blaze3d.platform.SDLEventHandler;
@@ -551,7 +552,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          this.windowSurface = device.createSurface(this.window.handle(), this.window::isIconified);
          this.sdlEventHandler = new SDLEventHandler(this, this.window);
          this.textInputManager = new TextInputManager(this.window);
-         this.sdlEventHandler.pumpEvents();
+         this.sdlEventHandler.flushInputEvents();
          this.window
             .setWindowCloseCallback(
                new Runnable() {
@@ -706,9 +707,11 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          this.window.setAllowCursorChanges(this.options.allowCursorChanges().get());
          this.window.setQuitShortcuts(this.options.quitShortcuts().get());
          if (InputQuirks.EMULATE_RIGHT_CLICK_WITH_CTRL_KEY) {
-            this.window.setMacCtrlClickEmulatesRightClick(this.options.ctrlClickEmulatesRightClick().get());
+            MacosUtil.setCtrlClickEmulatesRightClick(this.options.ctrlClickEmulatesRightClick().get());
          }
 
+         MacosUtil.setFullscreenMenuVisibility(this.options.macFullscreenMenuVisibility().get());
+         this.window.show();
          this.resizeGui();
          this.loadCriticalShaders();
          this.telemetryManager = new ClientTelemetryManager(this, this.userApiService, this.user);
@@ -748,7 +751,6 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
 
          this.packetProcessor = new PacketProcessor(this.gameThread);
          this.sdlEventHandler.pumpEvents();
-         RenderSystem.pollEvents(this.sdlEventHandler);
          this.framebufferSizeChanged();
          this.renderFrame(false);
          this.telemetryManager.getOutsideSessionSender().send(TelemetryEventType.GRAPHICS_CAPABILITIES, properties -> {
@@ -850,7 +852,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
    }
 
    private void loadCriticalShaders() {
-      this.gameRenderer.preloadUiShader(this.vanillaPackResources.asProvider());
+      GameRenderer.preloadUiShader(this.vanillaPackResources.asResourceManager());
    }
 
    private void rollbackResourcePacks(final Throwable t, @Nullable final GameLoadCookie loadCookie) {
@@ -1451,6 +1453,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          this.gui.screen().resize(this.window.getGuiScaledWidth(), this.window.getGuiScaledHeight());
       }
 
+      this.mouseHandler.resyncMousePosition();
       this.mouseHandler.setIgnoreFirstMove();
    }
 
@@ -1952,7 +1955,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
 
       while (this.options.keyDrop.consumeClick()) {
          if (!this.player.isSpectator()) {
-            this.player.drop(this.hasControlDown());
+            this.gameMode.dropItem(this.player, this.hasControlDown());
          }
       }
 

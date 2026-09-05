@@ -8,8 +8,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.tags.VillagerTradeTags;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class TradeSets {
    public static final ResourceKey<TradeSet> WANDERING_TRADER_BUYING = resourceKey("wandering_trader/buying");
@@ -83,7 +83,7 @@ public class TradeSets {
 
    public static Holder<TradeSet> bootstrap(final BootstrapContext<TradeSet> context) {
       register(context, WANDERING_TRADER_BUYING, VillagerTradeTags.WANDERING_TRADER_BUYING);
-      register(context, WANDERING_TRADER_COMMON, VillagerTradeTags.WANDERING_TRADER_COMMON, ConstantValue.exactly(5.0F));
+      register(context, WANDERING_TRADER_COMMON, VillagerTradeTags.WANDERING_TRADER_COMMON, ContextIntProviders.exactly(5));
       register(context, WANDERING_TRADER_UNCOMMON, VillagerTradeTags.WANDERING_TRADER_UNCOMMON);
       register(context, ARMORER_LEVEL_1, VillagerTradeTags.ARMORER_LEVEL_1);
       register(context, ARMORER_LEVEL_2, VillagerTradeTags.ARMORER_LEVEL_2);
@@ -129,7 +129,7 @@ public class TradeSets {
       register(context, LIBRARIAN_LEVEL_2, VillagerTradeTags.LIBRARIAN_LEVEL_2);
       register(context, LIBRARIAN_LEVEL_3, VillagerTradeTags.LIBRARIAN_LEVEL_3);
       register(context, LIBRARIAN_LEVEL_4, VillagerTradeTags.LIBRARIAN_LEVEL_4);
-      register(context, LIBRARIAN_LEVEL_5, VillagerTradeTags.LIBRARIAN_LEVEL_5, ConstantValue.exactly(3.0F));
+      register(context, LIBRARIAN_LEVEL_5, VillagerTradeTags.LIBRARIAN_LEVEL_5, ContextIntProviders.exactly(3));
       register(context, MASON_LEVEL_1, VillagerTradeTags.MASON_LEVEL_1);
       register(context, MASON_LEVEL_2, VillagerTradeTags.MASON_LEVEL_2);
       register(context, MASON_LEVEL_3, VillagerTradeTags.MASON_LEVEL_3);
@@ -155,14 +155,14 @@ public class TradeSets {
    public static Holder.Reference<TradeSet> register(
       final BootstrapContext<TradeSet> context, final ResourceKey<TradeSet> resourceKey, final TagKey<VillagerTrade> tradeTag
    ) {
-      return register(context, resourceKey, tradeTag, ConstantValue.exactly(2.0F));
+      return register(context, resourceKey, tradeTag, ContextIntProviders.exactly(2));
    }
 
    public static Holder.Reference<TradeSet> register(
       final BootstrapContext<TradeSet> context,
       final ResourceKey<TradeSet> resourceKey,
       final TagKey<VillagerTrade> tradeTag,
-      final Holder<NumberProvider> amount
+      final Holder<ContextIntProvider> amount
    ) {
       return context.register(
          resourceKey,

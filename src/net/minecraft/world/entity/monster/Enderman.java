@@ -304,9 +304,9 @@ public class Enderman extends Monster implements NeutralMob {
 
    @Override
    public boolean canRandomlyTeleportTo(final double x, final double y, final double z) {
-      BlockPos pos = BlockPos.containing(x, y, z);
-      BlockState blockState = this.level().getBlockState(pos);
-      return !blockState.getFluidState().is(FluidTags.WATER);
+      BlockPos posBelow = BlockPos.containing(x, y, z).below();
+      BlockState stateBelow = this.level().getBlockState(posBelow);
+      return !stateBelow.getFluidState().is(FluidTags.WATER);
    }
 
    private void repeatedlyTryToTeleport() {
@@ -395,6 +395,11 @@ public class Enderman extends Monster implements NeutralMob {
       ItemStack potionItemStack = thrownPotion.getItem();
       PotionContents potionContents = potionItemStack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
       return potionContents.is(PotionTags.HURTS_WATER_SENSITIVE_ENTITIES) ? super.hurtServer(level, source, damage) : false;
+   }
+
+   @Override
+   public boolean projectileReceivesSideEffectsOnHit(final boolean wasHurt) {
+      return wasHurt;
    }
 
    public boolean isCreepy() {

@@ -86,7 +86,7 @@ public class MiscOverworldFeatures {
       context.register(
          ICE_PATCH,
          new DiskFeature(
-            BlockStateProvider.simple(Blocks.PACKED_ICE),
+            BlockStateProvider.holderOf(Blocks.PACKED_ICE),
             BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.COARSE_DIRT, Blocks.MYCELIUM, Blocks.SNOW_BLOCK, Blocks.ICE),
             UniformInt.of(2, 3),
             1
@@ -101,8 +101,8 @@ public class MiscOverworldFeatures {
       context.register(
          LAKE_LAVA,
          new LakeFeature(
-            BlockStateProvider.simple(Blocks.LAVA.defaultBlockState()),
-            BlockStateProvider.simple(Blocks.STONE.defaultBlockState()),
+            BlockStateProvider.holderOf(Blocks.LAVA),
+            BlockStateProvider.holderOf(Blocks.STONE),
             BlockPredicate.alwaysTrue(),
             BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE)),
             BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE))
@@ -114,8 +114,8 @@ public class MiscOverworldFeatures {
             HolderSet.direct(
                PlacementUtils.inlinePlaced(
                   new LakeFeature(
-                     BlockStateProvider.simple(Blocks.WATER.defaultBlockState()),
-                     BlockStateProvider.simple(Blocks.SULFUR.defaultBlockState()),
+                     BlockStateProvider.holderOf(Blocks.WATER),
+                     BlockStateProvider.holderOf(Blocks.SULFUR),
                      BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.SULFUR_SPIKE)),
                      BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE)),
                      BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE))
@@ -123,7 +123,7 @@ public class MiscOverworldFeatures {
                ),
                PlacementUtils.inlinePlaced(
                   new SimpleBlockFeature(
-                     BlockStateProvider.simple(Blocks.POTENT_SULFUR.defaultBlockState().setValue(PotentSulfurBlock.STATE, PotentSulfurState.WET))
+                     BlockStateProvider.of(Blocks.POTENT_SULFUR.defaultBlockState().setValue(PotentSulfurBlock.STATE, PotentSulfurState.WET))
                   ),
                   EnvironmentScanPlacement.scanningFor(
                      Direction.DOWN, BlockPredicate.allOf(BlockPredicate.solid(), BlockPredicate.matchesFluids(Direction.UP, Fluids.WATER)), 4
@@ -133,7 +133,7 @@ public class MiscOverworldFeatures {
          )
       );
       BiFunction<Integer, Integer, Holder<PlacedFeature>> tuffCover = (count, spread) -> PlacementUtils.inlinePlaced(
-            new SimpleBlockFeature(BlockStateProvider.simple(Blocks.TUFF)),
+            new SimpleBlockFeature(BlockStateProvider.of(Blocks.TUFF)),
             CountPlacement.of(count),
             OffsetPlacement.ofTriangle(spread, 3),
             EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), 4),
@@ -214,18 +214,22 @@ public class MiscOverworldFeatures {
          )
       );
       context.register(
-         DISK_CLAY, new DiskFeature(BlockStateProvider.simple(Blocks.CLAY), BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.CLAY), UniformInt.of(2, 3), 1)
+         DISK_CLAY, new DiskFeature(BlockStateProvider.holderOf(Blocks.CLAY), BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.CLAY), UniformInt.of(2, 3), 1)
       );
       context.register(
          DISK_GRAVEL,
-         new DiskFeature(BlockStateProvider.simple(Blocks.GRAVEL), BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK), UniformInt.of(2, 5), 2)
+         new DiskFeature(BlockStateProvider.holderOf(Blocks.GRAVEL), BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK), UniformInt.of(2, 5), 2)
       );
       context.register(
          DISK_SAND,
          new DiskFeature(
-            new RuleBasedStateProvider(
-               BlockStateProvider.simple(Blocks.SAND),
-               List.of(new RuleBasedStateProvider.Rule(BlockPredicate.matchesBlocks(Direction.DOWN, Blocks.AIR), BlockStateProvider.simple(Blocks.SANDSTONE)))
+            Holder.direct(
+               new RuleBasedStateProvider(
+                  BlockStateProvider.holderOf(Blocks.SAND),
+                  List.of(
+                     new RuleBasedStateProvider.Rule(BlockPredicate.matchesBlocks(Direction.DOWN, Blocks.AIR), BlockStateProvider.holderOf(Blocks.SANDSTONE))
+                  )
+               )
             ),
             BlockPredicate.matchesBlocks(Blocks.DIRT, Blocks.GRASS_BLOCK),
             UniformInt.of(2, 6),
@@ -236,12 +240,14 @@ public class MiscOverworldFeatures {
       context.register(
          DISK_GRASS,
          new DiskFeature(
-            new RuleBasedStateProvider(
-               BlockStateProvider.simple(Blocks.DIRT),
-               List.of(
-                  new RuleBasedStateProvider.Rule(
-                     BlockPredicate.not(BlockPredicate.anyOf(BlockPredicate.solid(Direction.UP), BlockPredicate.matchesFluids(Direction.UP, Fluids.WATER))),
-                     BlockStateProvider.simple(Blocks.GRASS_BLOCK)
+            Holder.direct(
+               new RuleBasedStateProvider(
+                  BlockStateProvider.holderOf(Blocks.DIRT),
+                  List.of(
+                     new RuleBasedStateProvider.Rule(
+                        BlockPredicate.not(BlockPredicate.anyOf(BlockPredicate.solid(Direction.UP), BlockPredicate.matchesFluids(Direction.UP, Fluids.WATER))),
+                        BlockStateProvider.holderOf(Blocks.GRASS_BLOCK)
+                     )
                   )
                )
             ),

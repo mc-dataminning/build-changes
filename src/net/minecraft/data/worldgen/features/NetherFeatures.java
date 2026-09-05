@@ -88,7 +88,7 @@ public class NetherFeatures {
                new Weighted<>(
                   PlacementUtils.inlinePlaced(
                      new SteppedColumnClusterFeature(
-                        BlockStateProvider.simple(Blocks.BASALT),
+                        BlockStateProvider.holderOf(Blocks.BASALT),
                         BlockPredicate.matchesBlocks(Blocks.BASALT),
                         replacedByBasaltColumns,
                         blocks.getOrThrow(BlockTags.CANNOT_PLACE_BASALT_PILLAR_ON),
@@ -103,7 +103,7 @@ public class NetherFeatures {
                new Weighted<>(
                   PlacementUtils.inlinePlaced(
                      new SteppedColumnClusterFeature(
-                        BlockStateProvider.simple(Blocks.BASALT),
+                        BlockStateProvider.holderOf(Blocks.BASALT),
                         BlockPredicate.matchesBlocks(Blocks.BASALT),
                         replacedByBasaltColumns,
                         blocks.getOrThrow(BlockTags.CANNOT_PLACE_BASALT_PILLAR_ON),
@@ -125,7 +125,7 @@ public class NetherFeatures {
                new Weighted<>(
                   PlacementUtils.inlinePlaced(
                      new SteppedColumnClusterFeature(
-                        BlockStateProvider.simple(Blocks.BASALT),
+                        BlockStateProvider.holderOf(Blocks.BASALT),
                         BlockPredicate.matchesBlocks(Blocks.BASALT),
                         replacedByBasaltColumns,
                         blocks.getOrThrow(BlockTags.CANNOT_PLACE_BASALT_PILLAR_ON),
@@ -140,7 +140,7 @@ public class NetherFeatures {
                new Weighted<>(
                   PlacementUtils.inlinePlaced(
                      new SteppedColumnClusterFeature(
-                        BlockStateProvider.simple(Blocks.BASALT),
+                        BlockStateProvider.holderOf(Blocks.BASALT),
                         BlockPredicate.matchesBlocks(Blocks.BASALT),
                         replacedByBasaltColumns,
                         blocks.getOrThrow(BlockTags.CANNOT_PLACE_BASALT_PILLAR_ON),
@@ -162,7 +162,7 @@ public class NetherFeatures {
       context.register(
          GLOWSTONE_EXTRA,
          new RandomNeighborSpreadFeature(
-            BlockStateProvider.simple(Blocks.GLOWSTONE),
+            BlockStateProvider.holderOf(Blocks.GLOWSTONE),
             HolderSet.direct(blocks.getOrThrow(BlockItemIds.GLOWSTONE.block())),
             BlockPredicate.ONLY_IN_AIR_PREDICATE,
             ConstantInt.of(1500),
@@ -192,7 +192,7 @@ public class NetherFeatures {
          )
       );
       context.register(WARPED_FOREST_VEGETION, warpedVegetation);
-      SimpleBlockFeature netherSprouts = new SimpleBlockFeature(BlockStateProvider.simple(Blocks.NETHER_SPROUTS));
+      SimpleBlockFeature netherSprouts = new SimpleBlockFeature(BlockStateProvider.of(Blocks.NETHER_SPROUTS));
       context.register(NETHER_SPROUTS, netherSprouts);
       Feature crimsonNyliumBonemeal = new OverlayFeature(HolderSet.direct(PlacementUtils.inlinePlaced(crimsonVegetation, netherForestBonemealSpread)));
       Feature warpedNyliumBonemeal = new OverlayFeature(
@@ -234,7 +234,7 @@ public class NetherFeatures {
             HolderSet.direct(
                PlacementUtils.inlinePlaced(
                   new RandomNeighborSpreadFeature(
-                     BlockStateProvider.simple(Blocks.NETHER_WART_BLOCK.defaultBlockState()),
+                     BlockStateProvider.holderOf(Blocks.NETHER_WART_BLOCK),
                      HolderSet.direct(blocks.getOrThrow(BlockItemIds.NETHERRACK.block()), blocks.getOrThrow(BlockItemIds.NETHER_WART_BLOCK.block())),
                      BlockPredicate.ONLY_IN_AIR_PREDICATE,
                      ConstantInt.of(200),
@@ -255,14 +255,14 @@ public class NetherFeatures {
             )
          )
       );
-      context.register(CRIMSON_ROOTS, new SimpleBlockFeature(BlockStateProvider.simple(Blocks.CRIMSON_ROOTS)));
+      context.register(CRIMSON_ROOTS, new SimpleBlockFeature(BlockStateProvider.of(Blocks.CRIMSON_ROOTS)));
       context.register(
          BASALT_PILLAR,
          new OverlayFeature(
             HolderSet.direct(
                PlacementUtils.inlinePlaced(
                   new SingleBlockPillarFeature(
-                     BlockStateProvider.simple(Blocks.BASALT),
+                     BlockStateProvider.holderOf(Blocks.BASALT),
                      BlockPredicate.ONLY_IN_AIR_PREDICATE,
                      Direction.DOWN,
                      1.0F,
@@ -272,8 +272,10 @@ public class NetherFeatures {
                               HolderSet.direct(
                                  PlacementUtils.inlinePlaced(
                                     new ProjectedRandomPatchySquare(
-                                       RuleBasedStateProvider.ifTrueThenProvide(
-                                          BlockPredicate.not(BlockPredicate.matchesTag(Direction.DOWN, BlockTags.AIR)), Blocks.BASALT
+                                       Holder.direct(
+                                          RuleBasedStateProvider.ifTrueThenProvide(
+                                             BlockPredicate.not(BlockPredicate.matchesTag(Direction.DOWN, BlockTags.AIR)), Blocks.BASALT
+                                          )
                                        ),
                                        BlockPredicate.ONLY_IN_AIR_PREDICATE,
                                        ConstantInt.of(3),
@@ -282,22 +284,22 @@ public class NetherFeatures {
                                     OffsetPlacement.of(0, -1, 0)
                                  ),
                                  PlacementUtils.inlinePlaced(
-                                    new SimpleBlockFeature(BlockStateProvider.simple(Blocks.BASALT)),
+                                    new SimpleBlockFeature(BlockStateProvider.of(Blocks.BASALT)),
                                     RarityFilter.onAverageOnceEvery(2),
                                     OffsetPlacement.of(1, 0, 0)
                                  ),
                                  PlacementUtils.inlinePlaced(
-                                    new SimpleBlockFeature(BlockStateProvider.simple(Blocks.BASALT)),
+                                    new SimpleBlockFeature(BlockStateProvider.of(Blocks.BASALT)),
                                     RarityFilter.onAverageOnceEvery(2),
                                     OffsetPlacement.of(-1, 0, 0)
                                  ),
                                  PlacementUtils.inlinePlaced(
-                                    new SimpleBlockFeature(BlockStateProvider.simple(Blocks.BASALT)),
+                                    new SimpleBlockFeature(BlockStateProvider.of(Blocks.BASALT)),
                                     RarityFilter.onAverageOnceEvery(2),
                                     OffsetPlacement.of(0, 0, 1)
                                  ),
                                  PlacementUtils.inlinePlaced(
-                                    new SimpleBlockFeature(BlockStateProvider.simple(Blocks.BASALT)),
+                                    new SimpleBlockFeature(BlockStateProvider.of(Blocks.BASALT)),
                                     RarityFilter.onAverageOnceEvery(2),
                                     OffsetPlacement.of(0, 0, -1)
                                  )
@@ -308,19 +310,19 @@ public class NetherFeatures {
                   )
                ),
                PlacementUtils.inlinePlaced(
-                  new SingleBlockPillarFeature(BlockStateProvider.simple(Blocks.BASALT), BlockPredicate.ONLY_IN_AIR_PREDICATE, Direction.DOWN, 0.9F),
+                  new SingleBlockPillarFeature(BlockStateProvider.holderOf(Blocks.BASALT), BlockPredicate.ONLY_IN_AIR_PREDICATE, Direction.DOWN, 0.9F),
                   OffsetPlacement.of(1, 0, 0)
                ),
                PlacementUtils.inlinePlaced(
-                  new SingleBlockPillarFeature(BlockStateProvider.simple(Blocks.BASALT), BlockPredicate.ONLY_IN_AIR_PREDICATE, Direction.DOWN, 0.9F),
+                  new SingleBlockPillarFeature(BlockStateProvider.holderOf(Blocks.BASALT), BlockPredicate.ONLY_IN_AIR_PREDICATE, Direction.DOWN, 0.9F),
                   OffsetPlacement.of(-1, 0, 0)
                ),
                PlacementUtils.inlinePlaced(
-                  new SingleBlockPillarFeature(BlockStateProvider.simple(Blocks.BASALT), BlockPredicate.ONLY_IN_AIR_PREDICATE, Direction.DOWN, 0.9F),
+                  new SingleBlockPillarFeature(BlockStateProvider.holderOf(Blocks.BASALT), BlockPredicate.ONLY_IN_AIR_PREDICATE, Direction.DOWN, 0.9F),
                   OffsetPlacement.of(0, 0, 1)
                ),
                PlacementUtils.inlinePlaced(
-                  new SingleBlockPillarFeature(BlockStateProvider.simple(Blocks.BASALT), BlockPredicate.ONLY_IN_AIR_PREDICATE, Direction.DOWN, 0.9F),
+                  new SingleBlockPillarFeature(BlockStateProvider.holderOf(Blocks.BASALT), BlockPredicate.ONLY_IN_AIR_PREDICATE, Direction.DOWN, 0.9F),
                   OffsetPlacement.of(0, 0, -1)
                )
             )
@@ -343,8 +345,8 @@ public class NetherFeatures {
       context.register(
          SPRING_NETHER_OPEN, new SpringFeature(Fluids.LAVA.defaultFluidState(), false, 4, 1, HolderSet.direct(Block::builtInRegistryHolder, Blocks.NETHERRACK))
       );
-      context.register(FIRE, new SimpleBlockFeature(BlockStateProvider.simple(Blocks.FIRE)));
-      context.register(SOUL_FIRE, new SimpleBlockFeature(BlockStateProvider.simple(Blocks.SOUL_FIRE)));
+      context.register(FIRE, new SimpleBlockFeature(BlockStateProvider.of(Blocks.FIRE)));
+      context.register(SOUL_FIRE, new SimpleBlockFeature(BlockStateProvider.of(Blocks.SOUL_FIRE)));
    }
 
    private static Feature createVines(final int minHeight, final int maxHeight, final Direction direction, final Block mainBlock, final Block tipBlock) {
@@ -357,9 +359,9 @@ public class NetherFeatures {
       );
       return new BlockColumnFeature(
          List.of(
-            BlockColumnFeature.layer(mainHeight, BlockStateProvider.simple(mainBlock)),
+            BlockColumnFeature.layer(mainHeight, BlockStateProvider.of(mainBlock)),
             BlockColumnFeature.layer(
-               ConstantInt.of(1), new RandomizedIntStateProvider(BlockStateProvider.simple(tipBlock), GrowingPlantHeadBlock.AGE, UniformInt.of(17, 25))
+               ConstantInt.of(1), new RandomizedIntStateProvider(BlockStateProvider.of(tipBlock), GrowingPlantHeadBlock.AGE, UniformInt.of(17, 25))
             )
          ),
          direction,

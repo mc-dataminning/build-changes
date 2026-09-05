@@ -1254,7 +1254,8 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
                this.markHurt();
             }
 
-            if (!source.is(DamageTypeTags.NO_KNOCKBACK)) {
+            boolean fullyBlocked = blocked && damage <= 0.0F;
+            if (!source.is(DamageTypeTags.NO_KNOCKBACK) && !fullyBlocked) {
                this.dealDefaultKnockback(source, damage, blocked);
             }
          }
@@ -1343,7 +1344,10 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
 
                float damageBlocked = blocksAttacks.resolveBlockedDamage(source, damage, angle);
                blocksAttacks.hurtBlockingItem(this.level(), blockingWith, this, this.getUsedItemHand(), damageBlocked);
-               if (damageBlocked > 0.0F && !source.is(DamageTypeTags.IS_PROJECTILE) && source.getDirectEntity() instanceof LivingEntity livingEntity) {
+               if (damageBlocked > 0.0F
+                  && damageBlocked < damage
+                  && !source.is(DamageTypeTags.IS_PROJECTILE)
+                  && source.getDirectEntity() instanceof LivingEntity livingEntity) {
                   this.blockUsingItem(level, livingEntity, source, damage);
                }
 

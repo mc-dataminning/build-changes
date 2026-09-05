@@ -168,8 +168,10 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionTypes;
 import net.minecraft.world.level.storage.loot.providers.nbt.NbtProvider;
 import net.minecraft.world.level.storage.loot.providers.nbt.NbtProviders;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviderTypes;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviderTypes;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviderTypes;
 import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProvider;
 import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProviders;
 import org.slf4j.Logger;
@@ -231,8 +233,11 @@ public class BuiltInRegistries {
    public static final Registry<MapCodec<? extends LootItemCondition>> LOOT_CONDITION_TYPE = registerSimple(
       Registries.LOOT_CONDITION_TYPE, LootItemConditionTypes::bootstrap
    );
-   public static final Registry<MapCodec<? extends NumberProvider>> LOOT_NUMBER_PROVIDER_TYPE = registerSimple(
-      Registries.LOOT_NUMBER_PROVIDER_TYPE, NumberProviderTypes::bootstrap
+   public static final Registry<MapCodec<? extends ContextFloatProvider>> CONTEXT_FLOAT_PROVIDER_TYPE = registerSimple(
+      Registries.CONTEXT_FLOAT_PROVIDER_TYPE, ContextFloatProviderTypes::bootstrap
+   );
+   public static final Registry<MapCodec<? extends ContextIntProvider>> CONTEXT_INT_PROVIDER_TYPE = registerSimple(
+      Registries.CONTEXT_INT_PROVIDER_TYPE, ContextIntProviderTypes::bootstrap
    );
    public static final Registry<MapCodec<? extends NbtProvider>> LOOT_NBT_PROVIDER_TYPE = registerSimple(
       Registries.LOOT_NBT_PROVIDER_TYPE, NbtProviders::bootstrap

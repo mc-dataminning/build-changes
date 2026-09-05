@@ -171,7 +171,7 @@ public abstract class FoliagePlacer {
    ) {
       boolean isPersistent = level.isStateAtPosition(pos, state -> state.getValueOrElse(BlockStateProperties.PERSISTENT, Boolean.valueOf(false)));
       if (!isPersistent && TreeFeature.validTreePos(level, pos)) {
-         BlockState foliageState = tree.foliageProvider().getState(level, random, pos);
+         BlockState foliageState = tree.foliageProvider().value().getState(level, random, pos);
          if (foliageState.hasProperty(BlockStateProperties.WATERLOGGED)) {
             foliageState = foliageState.setValue(
                BlockStateProperties.WATERLOGGED, Boolean.valueOf(level.isFluidAtPosition(pos, fluidState -> fluidState.isSourceOfType(Fluids.WATER)))

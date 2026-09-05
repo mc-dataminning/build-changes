@@ -3,6 +3,7 @@ package net.minecraft.world.level.levelgen;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -12,11 +13,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 public record GeodeBlockSettings(
-   BlockStateProvider fillingProvider,
-   BlockStateProvider innerLayerProvider,
-   BlockStateProvider alternateInnerLayerProvider,
-   BlockStateProvider middleLayerProvider,
-   BlockStateProvider outerLayerProvider,
+   Holder<BlockStateProvider> fillingProvider,
+   Holder<BlockStateProvider> innerLayerProvider,
+   Holder<BlockStateProvider> alternateInnerLayerProvider,
+   Holder<BlockStateProvider> middleLayerProvider,
+   Holder<BlockStateProvider> outerLayerProvider,
    List<BlockState> innerPlacements,
    HolderSet<Block> cannotReplace,
    HolderSet<Block> invalidBlocks

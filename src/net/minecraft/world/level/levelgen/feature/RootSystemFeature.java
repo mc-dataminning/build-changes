@@ -27,12 +27,12 @@ public record RootSystemFeature(
    int maxLevelDeviation,
    int rootRadius,
    HolderSet<Block> rootReplaceable,
-   BlockStateProvider rootStateProvider,
+   Holder<BlockStateProvider> rootStateProvider,
    int rootPlacementAttempts,
    int rootColumnMaxHeight,
    int hangingRootRadius,
    int hangingRootsVerticalSpan,
-   BlockStateProvider hangingRootStateProvider,
+   Holder<BlockStateProvider> hangingRootStateProvider,
    int hangingRootPlacementAttempts,
    int allowedVerticalWaterForTree,
    BlockPredicate allowedTreePosition
@@ -158,7 +158,7 @@ public record RootSystemFeature(
             workingPos, random.nextInt(this.rootRadius) - random.nextInt(this.rootRadius), 0, random.nextInt(this.rootRadius) - random.nextInt(this.rootRadius)
          );
          if (level.getBlockState(workingPos).is(this.rootReplaceable)) {
-            level.setBlock(workingPos, this.rootStateProvider.getState(level, random, workingPos), 2);
+            level.setBlock(workingPos, this.rootStateProvider.value().getState(level, random, workingPos), 2);
          }
 
          workingPos.setX(originX);
@@ -175,7 +175,7 @@ public record RootSystemFeature(
             random.nextInt(this.hangingRootRadius) - random.nextInt(this.hangingRootRadius)
          );
          if (level.isEmptyBlock(workingPos)) {
-            BlockState targetState = this.hangingRootStateProvider.getState(level, random, workingPos);
+            BlockState targetState = this.hangingRootStateProvider.value().getState(level, random, workingPos);
             if (targetState.canSurvive(level, workingPos) && level.getBlockState(workingPos.above()).isFaceSturdy(level, workingPos, Direction.DOWN)) {
                level.setBlock(workingPos, targetState, 2);
             }

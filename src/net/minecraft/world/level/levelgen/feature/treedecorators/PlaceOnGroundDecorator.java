@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Blocks;
@@ -26,9 +27,9 @@ public class PlaceOnGroundDecorator extends TreeDecorator {
    private final int tries;
    private final int radius;
    private final int height;
-   private final BlockStateProvider blockStateProvider;
+   private final Holder<BlockStateProvider> blockStateProvider;
 
-   public PlaceOnGroundDecorator(final int tries, final int radius, final int height, final BlockStateProvider blockStateProvider) {
+   public PlaceOnGroundDecorator(final int tries, final int radius, final int height, final Holder<BlockStateProvider> blockStateProvider) {
       this.tries = tries;
       this.radius = radius;
       this.height = height;
@@ -80,7 +81,7 @@ public class PlaceOnGroundDecorator extends TreeDecorator {
       if (context.level().isStateAtPosition(abovePos, state -> state.isAir() || state.is(Blocks.VINE))
          && context.checkBlock(pos, BlockBehaviour.BlockStateBase::isSolidRender)
          && context.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY() <= abovePos.getY()) {
-         context.setBlock(abovePos, this.blockStateProvider.getState(context.level(), context.random(), abovePos));
+         context.setBlock(abovePos, this.blockStateProvider.value().getState(context.level(), context.random(), abovePos));
       }
    }
 }

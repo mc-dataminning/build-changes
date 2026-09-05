@@ -2,6 +2,7 @@ package net.minecraft.client.gui.screens.options;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.MacosUtil;
 import com.mojang.blaze3d.platform.Monitor;
 import com.mojang.blaze3d.platform.VideoMode;
 import com.mojang.blaze3d.platform.Window;
@@ -46,6 +47,8 @@ public class VideoSettingsScreen extends OptionsSubScreen {
    private final LinearLayout header = LinearLayout.vertical().spacing(2);
    @Nullable
    private StringWidget restartWarning;
+   @Nullable
+   private Monitor fullscreenModeMonitor;
 
    private static OptionInstance<?>[] qualityOptions(final Options options) {
       return new OptionInstance[]{
@@ -69,16 +72,23 @@ public class VideoSettingsScreen extends OptionsSubScreen {
       };
    }
 
-   private static OptionInstance<?>[] displayOptions(final Options options, final boolean supportsExclusiveFullscreen) {
+   private static OptionInstance<?>[] displayOptions(final Options options) {
       List<OptionInstance<?>> result = Lists.newArrayList(
-         new OptionInstance[]{options.framerateLimit(), options.enableVsync(), options.inactivityFpsLimit(), options.guiScale(), options.fullscreen()}
+         new OptionInstance[]{
+            options.framerateLimit(),
+            options.enableVsync(),
+            options.inactivityFpsLimit(),
+            options.guiScale(),
+            options.fullscreen(),
+            options.exclusiveFullscreen(),
+            options.gamma(),
+            options.preferredGraphicsBackend()
+         }
       );
-      if (supportsExclusiveFullscreen) {
-         result.add(options.exclusiveFullscreen());
+      if (MacosUtil.IS_MACOS) {
+         result.add(options.macFullscreenMenuVisibility());
       }
 
-      result.add(options.gamma());
-      result.add(options.preferredGraphicsBackend());
       return result.toArray(OptionInstance[]::new);
    }
 
@@ -98,52 +108,47 @@ public class VideoSettingsScreen extends OptionsSubScreen {
    @Override
    protected void addOptions() {
       Window window = this.minecraft.getWindow();
-      boolean supportsExclusiveFullscreen = window.supportsExclusiveFullscreen();
       this.list.addHeader(DISPLAY_HEADER);
-      if (supportsExclusiveFullscreen) {
-         Monitor monitor = window.findBestMonitor();
-         int initialValue;
-         if (monitor == null) {
-            initialValue = -1;
-         } else {
-            Optional<VideoMode> preferredFullscreenVideoMode = window.getPreferredFullscreenVideoMode();
-            initialValue = preferredFullscreenVideoMode.map(monitor::indexOfMode).orElse(-1);
-         }
-
-         OptionInstance<Integer> exclusiveFullscreenModeOption = new OptionInstance<>(
-            "options.fullscreen.exclusive.mode",
-            OptionInstance.cachedConstantTooltip(EXCLUSIVE_FULLSCREEN_MODE_TOOLTIP),
-            (caption, value) -> {
-               if (monitor == null) {
-                  return Component.translatable("options.fullscreen.unavailable");
-               } else if (value == -1) {
-                  return Options.genericValueLabel(caption, Component.translatable("options.fullscreen.current"));
-               } else {
-                  VideoMode mode = monitor.mode(value);
-                  return Options.genericValueLabel(
-                     caption,
-                     Component.translatable(
-                        "options.fullscreen.entry",
-                        mode.getWidth(),
-                        mode.getHeight(),
-                        mode.refreshRateLabel(),
-                        mode.getRedBits() + mode.getGreenBits() + mode.getBlueBits()
-                     )
-                  );
-               }
-            },
-            new OptionInstance.IntRange(-1, monitor != null ? monitor.modeCount() - 1 : -1),
-            initialValue,
-            value -> {
-               if (monitor != null) {
-                  window.setPreferredFullscreenVideoMode(value == -1 ? Optional.empty() : Optional.of(monitor.mode(value)));
-               }
-            }
-         );
-         this.list.addBig(exclusiveFullscreenModeOption);
+      this.fullscreenModeMonitor = window.findBestMonitor();
+      int initialValue;
+      if (this.fullscreenModeMonitor == null) {
+         initialValue = -1;
+      } else {
+         initialValue = window.getPreferredFullscreenVideoMode().map(this.fullscreenModeMonitor::indexOfMode).orElse(-1);
       }
 
-      this.list.addSmall(displayOptions(this.options, supportsExclusiveFullscreen));
+      OptionInstance<Integer> exclusiveFullscreenModeOption = new OptionInstance<>(
+         "options.fullscreen.exclusive.mode",
+         OptionInstance.cachedConstantTooltip(EXCLUSIVE_FULLSCREEN_MODE_TOOLTIP),
+         (caption, value) -> {
+            if (this.fullscreenModeMonitor == null) {
+               return Component.translatable("options.fullscreen.unavailable");
+            } else if (value == -1) {
+               return Options.genericValueLabel(caption, Component.translatable("options.fullscreen.current"));
+            } else {
+               VideoMode mode = this.fullscreenModeMonitor.mode(value);
+               return Options.genericValueLabel(
+                  caption,
+                  Component.translatable(
+                     "options.fullscreen.entry",
+                     mode.getWidth(),
+                     mode.getHeight(),
+                     mode.refreshRateLabel(),
+                     mode.getRedBits() + mode.getGreenBits() + mode.getBlueBits()
+                  )
+               );
+            }
+         },
+         new OptionInstance.IntRange(-1, this.fullscreenModeMonitor != null ? this.fullscreenModeMonitor.modeCount() - 1 : -1),
+         initialValue,
+         value -> {
+            if (this.fullscreenModeMonitor != null) {
+               window.setPreferredFullscreenVideoMode(value == -1 ? Optional.empty() : Optional.of(this.fullscreenModeMonitor.mode(value)));
+            }
+         }
+      );
+      this.list.addBig(exclusiveFullscreenModeOption);
+      this.list.addSmall(displayOptions(this.options));
       this.list.addHeader(QUALITY_HEADER);
       this.list.addBig(this.options.graphicsPreset());
       this.list.addSmall(qualityOptions(this.options));
@@ -285,6 +290,22 @@ public class VideoSettingsScreen extends OptionsSubScreen {
             CycleButton<Boolean> fullscreenButton = (CycleButton<Boolean>)fullscreenWidget;
             fullscreenButton.setValue(fullscreen);
          }
+      }
+   }
+
+   @Override
+   protected void repositionElements() {
+      super.repositionElements();
+      Monitor monitor = this.minecraft.getWindow().findBestMonitor();
+      if (monitor != this.fullscreenModeMonitor) {
+         if (this.list != null) {
+            this.list.applyUnsavedChanges();
+         }
+
+         this.layout.removeChildren();
+         this.header.removeChildren();
+         this.restartWarning = null;
+         this.rebuildWidgets();
       }
    }
 

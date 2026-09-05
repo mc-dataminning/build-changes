@@ -23,28 +23,28 @@ import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class EnchantWithLevelsFunction extends LootItemConditionalFunction {
    public static final MapCodec<EnchantWithLevelsFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
             .and(
                i.group(
-                  NumberProviders.CODEC.fieldOf("levels").forGetter(f -> f.levels),
+                  ContextIntProviders.CODEC.fieldOf("levels").forGetter(f -> f.levels),
                   RegistryCodecs.holderSet(Registries.ENCHANTMENT).optionalFieldOf("options").forGetter(f -> f.options),
                   Codec.BOOL.optionalFieldOf("include_additional_cost_component", false).forGetter(f -> f.includeAdditionalCostComponent)
                )
             )
             .apply(i, EnchantWithLevelsFunction::new)
    );
-   private final Holder<NumberProvider> levels;
+   private final Holder<ContextIntProvider> levels;
    private final Optional<HolderSet<Enchantment>> options;
    private final boolean includeAdditionalCostComponent;
 
    private EnchantWithLevelsFunction(
       final Optional<Holder<LootItemCondition>> condition,
-      final Holder<NumberProvider> levels,
+      final Holder<ContextIntProvider> levels,
       final Optional<HolderSet<Enchantment>> options,
       final boolean includeAdditionalCostComponent
    ) {
@@ -86,16 +86,16 @@ public class EnchantWithLevelsFunction extends LootItemConditionalFunction {
       return result;
    }
 
-   public static EnchantWithLevelsFunction.Builder enchantWithLevels(final HolderGetter<Enchantment> enchantments, final Holder<NumberProvider> levels) {
+   public static EnchantWithLevelsFunction.Builder enchantWithLevels(final HolderGetter<Enchantment> enchantments, final Holder<ContextIntProvider> levels) {
       return new EnchantWithLevelsFunction.Builder(levels).withOptions(enchantments.getOrThrow(EnchantmentTags.ON_RANDOM_LOOT));
    }
 
    public static class Builder extends LootItemConditionalFunction.Builder<EnchantWithLevelsFunction.Builder> {
-      private final Holder<NumberProvider> levels;
+      private final Holder<ContextIntProvider> levels;
       private Optional<HolderSet<Enchantment>> options = Optional.empty();
       private boolean includeAdditionalCostComponent = false;
 
-      public Builder(final Holder<NumberProvider> levels) {
+      public Builder(final Holder<ContextIntProvider> levels) {
          this.levels = levels;
       }
 

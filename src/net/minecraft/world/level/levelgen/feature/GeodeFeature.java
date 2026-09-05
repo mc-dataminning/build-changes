@@ -143,7 +143,7 @@ public record GeodeFeature(
 
          if (!(distSumShell < outerCrust)) {
             if (distSumShell >= innerAir) {
-               this.safeSetBlock(level, pointInside, this.blockSettings.fillingProvider().getState(level, random, pointInside), canReplace);
+               this.safeSetBlock(level, pointInside, this.blockSettings.fillingProvider().value().getState(level, random, pointInside), canReplace);
             } else {
                double distSumCrack = 0.0;
 
@@ -164,18 +164,20 @@ public record GeodeFeature(
                } else if (distSumShell >= innermostBlockLayer) {
                   boolean useAlternateLayer = (double)random.nextFloat() < this.useAlternateLayer0Chance;
                   if (useAlternateLayer) {
-                     this.safeSetBlock(level, pointInside, this.blockSettings.alternateInnerLayerProvider().getState(level, random, pointInside), canReplace);
+                     this.safeSetBlock(
+                        level, pointInside, this.blockSettings.alternateInnerLayerProvider().value().getState(level, random, pointInside), canReplace
+                     );
                   } else {
-                     this.safeSetBlock(level, pointInside, this.blockSettings.innerLayerProvider().getState(level, random, pointInside), canReplace);
+                     this.safeSetBlock(level, pointInside, this.blockSettings.innerLayerProvider().value().getState(level, random, pointInside), canReplace);
                   }
 
                   if ((!this.placementsRequireLayer0Alternate || useAlternateLayer) && (double)random.nextFloat() < this.usePotentialPlacementsChance) {
                      potentialCrystalPlacements.add(pointInside.immutable());
                   }
                } else if (distSumShell >= innerCrust) {
-                  this.safeSetBlock(level, pointInside, this.blockSettings.middleLayerProvider().getState(level, random, pointInside), canReplace);
+                  this.safeSetBlock(level, pointInside, this.blockSettings.middleLayerProvider().value().getState(level, random, pointInside), canReplace);
                } else if (distSumShell >= outerCrust) {
-                  this.safeSetBlock(level, pointInside, this.blockSettings.outerLayerProvider().getState(level, random, pointInside), canReplace);
+                  this.safeSetBlock(level, pointInside, this.blockSettings.outerLayerProvider().value().getState(level, random, pointInside), canReplace);
                }
             }
          }

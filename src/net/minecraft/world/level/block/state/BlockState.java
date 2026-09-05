@@ -7,9 +7,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.Property;
 
 public class BlockState extends BlockBehaviour.BlockStateBase {
-   private static final Codec<Either<Block, BlockState>> CONSTANT_OR_DISPATCH_CODEC = Codec.either(
-      BuiltInRegistries.BLOCK.byNameCodec(), codec(BuiltInRegistries.BLOCK.byNameCodec(), Block::defaultBlockState, Block::getStateDefinition).stable()
-   );
+   public static final Codec<BlockState> FULL_CODEC = codec(BuiltInRegistries.BLOCK.byNameCodec(), Block::defaultBlockState, Block::getStateDefinition)
+      .stable();
+   private static final Codec<Either<Block, BlockState>> CONSTANT_OR_DISPATCH_CODEC = Codec.either(BuiltInRegistries.BLOCK.byNameCodec(), FULL_CODEC);
    public static final Codec<BlockState> CODEC = CONSTANT_OR_DISPATCH_CODEC.xmap(
       either -> (BlockState)either.map(Block::defaultBlockState, f -> f),
       state -> state == state.getBlock().defaultBlockState() ? Either.left(state.getBlock()) : Either.right(state)

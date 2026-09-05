@@ -112,6 +112,19 @@ public class StructureManager {
       return StructureStart.INVALID_START;
    }
 
+   public StructureStart getStructureAt(final BlockPos blockPos, final HolderSet<Structure> structures) {
+      int sectionX = SectionPos.blockToSectionCoord(blockPos.getX());
+      int sectionZ = SectionPos.blockToSectionCoord(blockPos.getZ());
+
+      for (StructureStart structureStart : this.startsForStructure(sectionX, sectionZ, this.matching(structures::contains))) {
+         if (structureStart.getBoundingBox().isInside(blockPos)) {
+            return structureStart;
+         }
+      }
+
+      return StructureStart.INVALID_START;
+   }
+
    public StructureStart getStructureWithPieceAt(final BlockPos blockPos, final TagKey<Structure> structureTag) {
       return this.getStructureWithPieceAt(blockPos, structure -> structure.is(structureTag));
    }
@@ -121,19 +134,21 @@ public class StructureManager {
    }
 
    public StructureStart getStructureWithPieceAt(final BlockPos blockPos, final Predicate<Holder<Structure>> predicate) {
-      Registry<Structure> structures = this.registryAccess().lookupOrThrow(Registries.STRUCTURE);
       int sectionX = SectionPos.blockToSectionCoord(blockPos.getX());
       int sectionZ = SectionPos.blockToSectionCoord(blockPos.getZ());
 
-      for (StructureStart structureStart : this.startsForStructure(
-         sectionX, sectionZ, s -> structures.get(structures.getId(s)).map(predicate::test).orElse(false)
-      )) {
+      for (StructureStart structureStart : this.startsForStructure(sectionX, sectionZ, this.matching(predicate))) {
          if (this.structureHasPieceAt(blockPos, structureStart)) {
             return structureStart;
          }
       }
 
       return StructureStart.INVALID_START;
+   }
+
+   private Predicate<Structure> matching(final Predicate<Holder<Structure>> predicate) {
+      Registry<Structure> structures = this.registryAccess().lookupOrThrow(Registries.STRUCTURE);
+      return structure -> structures.get(structures.getId(structure)).map(predicate::test).orElse(false);
    }
 
    public StructureStart getStructureWithPieceAt(final int x, final int y, final int z, final Structure structure) {

@@ -21,18 +21,22 @@ import com.mojang.renderpearl.api.commands.RenderPass;
 import com.mojang.renderpearl.api.commands.RenderPassDescriptor;
 import com.mojang.renderpearl.api.device.GpuDevice;
 import com.mojang.renderpearl.api.pipeline.ShaderSource;
+import com.mojang.renderpearl.api.pipeline.ShaderType;
 import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.renderpearl.api.textures.GpuSampler;
 import com.mojang.renderpearl.api.textures.GpuTexture;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import java.io.IOException;
-import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.Set;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -65,7 +69,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.minecraft.server.packs.resources.ResourceProvider;
 import net.minecraft.util.CommonLinks;
 import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
@@ -88,7 +91,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.waypoints.TrackedWaypoint;
-import org.apache.commons.io.IOUtils;
 import org.joml.Matrix4f;
 import org.joml.Matrix4fStack;
 import org.joml.Vector3f;
@@ -251,21 +253,32 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       }
    }
 
-   public void preloadUiShader(final ResourceProvider resourceProvider) {
+   public static void preloadUiShader(final ResourceManager resourceManager) {
       GpuDevice device = RenderSystem.getDevice();
-      ShaderSource shaderSource = (id, type) -> {
-         Identifier location = type != null ? type.idConverter().idToFile(id) : id;
+      final Map<Identifier, ShaderSource.CachedIncludeSource> includes = ShaderManager.listAllIncludes(resourceManager);
+      ShaderSource shaderSource = new ShaderSource() {
+         @Nullable
+         @Override
+         public String getShader(final Identifier id, final ShaderType type) {
+            Identifier location = type.idConverter().idToFile(id);
 
-         try {
-            String t$;
-            try (Reader reader = resourceProvider.getResourceOrThrow(location).openAsReader()) {
-               t$ = IOUtils.toString(reader);
+            try {
+               return resourceManager.getResourceOrThrow(location).readAllAsString();
+            } catch (Exception var5) {
+               GameRenderer.LOGGER.error("Couldn't preload shader {}", location, var5);
+               return null;
             }
+         }
 
-            return t$;
-         } catch (IOException var9) {
-            LOGGER.error("Couldn't preload {} shader {}", new Object[]{type, id, var9});
-            return null;
+         @Nullable
+         @Override
+         public ShaderSource.CachedIncludeSource getInclude(final Identifier id) {
+            return includes.get(id);
+         }
+
+         @Override
+         public void close() {
+            includes.values().forEach(ShaderSource.CachedIncludeSource::close);
          }
       };
       RenderSystem.setFallbackPipelineCache(new PipelineCache(device, shaderSource));
@@ -478,7 +491,7 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
             this.gameRenderState.optionsRenderState.textureFiltering == TextureFilteringMethod.RGSS
          );
       if (this.gameRenderState.shouldRenderLevel) {
-         this.preparePostEffects();
+         this.preparePostEffects(this.gameRenderState.requestedPostEffects);
          this.lightmap.render(this.gameRenderState.lightmapRenderState);
          profiler.push("world");
          this.renderLevel();
@@ -486,6 +499,8 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
          this.minecraft.levelRenderer.blitEntityOutline();
          this.applyPostEffects();
          profiler.pop();
+      } else {
+         this.preparePostEffects(Collections.emptyList());
       }
 
       this.fogRenderer.endFrame();
@@ -502,14 +517,15 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       profiler.pop();
    }
 
-   private void preparePostEffects() {
+   private void preparePostEffects(final List<Identifier> requestedPostEffects) {
+      Set<PostChain> previousPostEffects = new HashSet<>(this.appliedPostEffects);
       this.appliedPostEffects.clear();
       if (this.shouldResetFailedPostEffects) {
          this.failedPostEffects.clear();
          this.shouldResetFailedPostEffects = false;
       }
 
-      for (Identifier postEffect : this.gameRenderState.requestedPostEffects) {
+      for (Identifier postEffect : requestedPostEffects) {
          try {
             ShaderManager shaderManager = this.minecraft.getShaderManager();
             if (!shaderManager.isPostEffectValid(postEffect, LevelTargetBundle.MAIN_TARGETS)) {
@@ -518,12 +534,17 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
                PostChain postChain = shaderManager.getPostChain(postEffect, LevelTargetBundle.MAIN_TARGETS);
                if (postChain != null) {
                   this.appliedPostEffects.add(postChain);
+                  previousPostEffects.remove(postChain);
                }
             }
-         } catch (RuntimeException var5) {
-            LOGGER.warn("Failed to load post effect {}", postEffect, var5);
+         } catch (RuntimeException var7) {
+            LOGGER.warn("Failed to load post effect {}", postEffect, var7);
             this.failedPostEffects.add(postEffect);
          }
+      }
+
+      for (PostChain postEffect : previousPostEffects) {
+         postEffect.closePersistentTargets();
       }
    }
 

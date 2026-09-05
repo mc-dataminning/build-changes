@@ -133,7 +133,13 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
                }
 
                GpuFormat format = (GpuFormat)attribFormats.get(vertexShaderInput.location());
-
+               if (format == null) {
+                  throw new ShaderCompileException(
+                     String.format(
+                        Locale.ROOT, "vertex shader (%s) attrib (%s) does not have a matching vertex buffer element", vertexStageName, vertexShaderInput.name()
+                     )
+                  );
+               }
                int expectedBaseType = switch (format.componentType()) {
                   case UNORM_8, SNORM_8, UNORM_16, SNORM_16, FLOAT_16, FLOAT_32 -> 13;
                   case UINT_8, UINT_16, UINT_32 -> 8;
@@ -464,7 +470,7 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
 
    @Nullable
    private static String loadShaderSource(final Identifier id, final ShaderType type, final ShaderSource shaderSource) {
-      String source = shaderSource.get(id, type);
+      String source = shaderSource.getShader(id, type);
       if (source == null) {
          LOGGER.error("Couldn't find source for {} shader ({})", type, id);
          return null;

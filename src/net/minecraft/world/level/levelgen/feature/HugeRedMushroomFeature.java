@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.HugeMushroomBlock;
@@ -11,8 +12,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
-public record HugeRedMushroomFeature(BlockStateProvider capProvider, BlockStateProvider stemProvider, int foliageRadius, BlockPredicate canPlaceOn)
-   implements AbstractHugeMushroomFeature {
+public record HugeRedMushroomFeature(
+   Holder<BlockStateProvider> capProvider, Holder<BlockStateProvider> stemProvider, int foliageRadius, BlockPredicate canPlaceOn
+) implements AbstractHugeMushroomFeature {
    public static final MapCodec<HugeRedMushroomFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
                BlockStateProvider.CODEC.fieldOf("cap_provider").forGetter(HugeRedMushroomFeature::capProvider),
@@ -46,7 +48,7 @@ public record HugeRedMushroomFeature(BlockStateProvider capProvider, BlockStateP
                boolean zEdge = minZ || maxZ;
                if (dy >= treeHeight || xEdge != zEdge) {
                   blockPos.setWithOffset(origin, dx, dy, dz);
-                  BlockState state = this.capProvider.getState(level, random, origin);
+                  BlockState state = this.capProvider.value().getState(level, random, origin);
                   if (state.hasProperty(HugeMushroomBlock.WEST)
                      && state.hasProperty(HugeMushroomBlock.EAST)
                      && state.hasProperty(HugeMushroomBlock.NORTH)

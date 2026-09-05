@@ -26,8 +26,8 @@ import net.minecraft.world.level.storage.loot.functions.SetItemDamageFunction;
 import net.minecraft.world.level.storage.loot.functions.SetPotionFunction;
 import net.minecraft.world.level.storage.loot.predicates.LocationCheck;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VanillaFishingLoot implements LootTableSubProvider {
    private final LootTableSubProvider.Context output;
@@ -51,16 +51,22 @@ public class VanillaFishingLoot implements LootTableSubProvider {
                   LootPool.lootPool()
                      .add(LootItem.lootTableItem(Blocks.LILY_PAD).setWeight(17))
                      .add(
-                        LootItem.lootTableItem(Items.LEATHER_BOOTS).setWeight(10).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.0F, 0.9F)))
+                        LootItem.lootTableItem(Items.LEATHER_BOOTS)
+                           .setWeight(10)
+                           .apply(SetItemDamageFunction.setDamage(ContextFloatProviders.between(0.0F, 0.9F)))
                      )
                      .add(LootItem.lootTableItem(Items.LEATHER).setWeight(10))
                      .add(LootItem.lootTableItem(Items.BONE).setWeight(10))
                      .add(LootItem.lootTableItem(Items.POTION).setWeight(10).apply(SetPotionFunction.setPotion(Potions.WATER)))
                      .add(LootItem.lootTableItem(Items.STRING).setWeight(5))
-                     .add(LootItem.lootTableItem(Items.FISHING_ROD).setWeight(2).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.0F, 0.9F))))
+                     .add(
+                        LootItem.lootTableItem(Items.FISHING_ROD)
+                           .setWeight(2)
+                           .apply(SetItemDamageFunction.setDamage(ContextFloatProviders.between(0.0F, 0.9F)))
+                     )
                      .add(LootItem.lootTableItem(Items.BOWL).setWeight(10))
                      .add(LootItem.lootTableItem(Items.STICK).setWeight(5))
-                     .add(LootItem.lootTableItem(Items.INK_SAC).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(10.0F))))
+                     .add(LootItem.lootTableItem(Items.INK_SAC).setWeight(1).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(10))))
                      .add(LootItem.lootTableItem(Blocks.TRIPWIRE_HOOK).setWeight(10))
                      .add(LootItem.lootTableItem(Items.ROTTEN_FLESH).setWeight(10))
                      .add(
@@ -91,16 +97,17 @@ public class VanillaFishingLoot implements LootTableSubProvider {
                      .add(LootItem.lootTableItem(Items.SADDLE))
                      .add(
                         LootItem.lootTableItem(Items.BOW)
-                           .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.0F, 0.25F)))
-                           .apply(EnchantWithLevelsFunction.enchantWithLevels(this.enchantments, ConstantValue.exactly(30.0F)))
+                           .apply(SetItemDamageFunction.setDamage(ContextFloatProviders.between(0.0F, 0.25F)))
+                           .apply(EnchantWithLevelsFunction.enchantWithLevels(this.enchantments, ContextIntProviders.exactly(30)))
                      )
                      .add(
                         LootItem.lootTableItem(Items.FISHING_ROD)
-                           .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.0F, 0.25F)))
-                           .apply(EnchantWithLevelsFunction.enchantWithLevels(this.enchantments, ConstantValue.exactly(30.0F)))
+                           .apply(SetItemDamageFunction.setDamage(ContextFloatProviders.between(0.0F, 0.25F)))
+                           .apply(EnchantWithLevelsFunction.enchantWithLevels(this.enchantments, ContextIntProviders.exactly(30)))
                      )
                      .add(
-                        LootItem.lootTableItem(Items.BOOK).apply(EnchantWithLevelsFunction.enchantWithLevels(this.enchantments, ConstantValue.exactly(30.0F)))
+                        LootItem.lootTableItem(Items.BOOK)
+                           .apply(EnchantWithLevelsFunction.enchantWithLevels(this.enchantments, ContextIntProviders.exactly(30)))
                      )
                      .add(LootItem.lootTableItem(Items.NAUTILUS_SHELL))
                )
@@ -111,7 +118,7 @@ public class VanillaFishingLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(NestedLootTable.lootTableReference(junkTable).setWeight(10).setQuality(-2))
                      .add(
                         NestedLootTable.lootTableReference(treasureTable)

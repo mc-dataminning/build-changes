@@ -22,13 +22,12 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ContainerObjectSelectionList;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.components.FocusableTextWidget;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -156,41 +155,31 @@ public abstract class AbstractGameRulesScreen extends Screen {
    }
 
    public class CategoryRuleEntry extends AbstractGameRulesScreen.RuleEntry {
-      private final Component label;
+      private final FocusableTextWidget widget;
 
       public CategoryRuleEntry(final Component label) {
          Objects.requireNonNull(AbstractGameRulesScreen.this);
          super(null);
-         this.label = label;
+         this.widget = FocusableTextWidget.builder(label, AbstractGameRulesScreen.this.minecraft.font)
+            .alwaysShowBorder(false)
+            .backgroundFill(FocusableTextWidget.BackgroundFill.ON_FOCUS)
+            .build();
       }
 
       @Override
       public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-         graphics.centeredText(AbstractGameRulesScreen.this.minecraft.font, this.label, this.getContentXMiddle(), this.getContentY() + 5, -1);
+         this.widget.setPosition(this.getContentXMiddle() - this.widget.getWidth() / 2, this.getContentYMiddle() - this.widget.getHeight() / 2);
+         this.widget.extractRenderState(graphics, mouseX, mouseY, a);
       }
 
       @Override
       public List<? extends GuiEventListener> children() {
-         return ImmutableList.of();
+         return List.of(this.widget);
       }
 
       @Override
       public List<? extends NarratableEntry> narratables() {
-         return ImmutableList.of(new NarratableEntry() {
-            {
-               Objects.requireNonNull(CategoryRuleEntry.this);
-            }
-
-            @Override
-            public NarratableEntry.NarrationPriority narrationPriority() {
-               return NarratableEntry.NarrationPriority.HOVERED;
-            }
-
-            @Override
-            public void updateNarration(final NarrationElementOutput output) {
-               output.add(NarratedElementType.TITLE, CategoryRuleEntry.this.label);
-            }
-         });
+         return List.of(this.widget);
       }
    }
 

@@ -64,7 +64,6 @@ import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
 import net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives;
 import net.minecraft.client.renderer.oit.OitRenderPassProvider;
 import net.minecraft.client.renderer.oit.OitStage;
-import net.minecraft.client.renderer.rendertype.OutputTarget;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.OptionsRenderState;
@@ -207,6 +206,9 @@ public class LevelRenderer implements AutoCloseable {
       int screenWidth = this.gameRenderer.mainRenderTarget().width;
       int screenHeight = this.gameRenderer.mainRenderTarget().height;
       RenderTargetDescriptor extraDepthTargetDescriptor = new RenderTargetDescriptor(
+         screenWidth, screenHeight, null, new RenderTargetDescriptor.TextureProperties(null, GpuFormat.D32_FLOAT)
+      );
+      RenderTargetDescriptor extraDepthTargetDescriptorCleared = new RenderTargetDescriptor(
          screenWidth, screenHeight, null, RenderTargetDescriptor.TextureProperties.DEFAULT_DEPTH
       );
       if (this.gameRenderer.useImprovedTransparency()) {
@@ -214,7 +216,10 @@ public class LevelRenderer implements AutoCloseable {
             screenWidth, screenHeight, new RenderTargetDescriptor.TextureProperties(DEPTH_BOUNDS_CLEAR_COLOR, GpuFormat.RGBA32_FLOAT), null
          );
          this.targets.depthBounds = frame.createInternal("depth_bounds", depthBoundsTargetDescriptor);
-         this.targets.depthBoundsCopy = frame.createInternal("depth_bounds_copy", depthBoundsTargetDescriptor);
+         RenderTargetDescriptor depthBoundsCulledTargetDescriptor = new RenderTargetDescriptor(
+            screenWidth, screenHeight, new RenderTargetDescriptor.TextureProperties(null, GpuFormat.RGBA32_FLOAT), null
+         );
+         this.targets.depthBoundsCulled = frame.createInternal("depth_bounds_culled", depthBoundsCulledTargetDescriptor);
          RenderTargetDescriptor transmittanceTargetDescriptor = new RenderTargetDescriptor(
             screenWidth, screenHeight, new RenderTargetDescriptor.TextureProperties(ZERO_CLEAR_COLOR, GpuFormat.RGBA16_FLOAT), null
          );
@@ -232,7 +237,7 @@ public class LevelRenderer implements AutoCloseable {
       }
 
       if (this.frameHasAlwaysOnTopGizmos() && consistentDepthRequired) {
-         this.targets.alwaysOnTopDepth = frame.createInternal("always_on_top_depth", extraDepthTargetDescriptor);
+         this.targets.alwaysOnTopDepth = frame.createInternal("always_on_top_depth", extraDepthTargetDescriptorCleared);
       }
 
       this.targets.entityOutline = frame.importExternal("entity_outline", this.entityOutlineTarget);
@@ -389,7 +394,7 @@ public class LevelRenderer implements AutoCloseable {
       boolean useImprovedTransparency = this.gameRenderer.useImprovedTransparency();
       if (useImprovedTransparency) {
          this.targets.depthBounds = pass.readsAndWrites(this.targets.depthBounds);
-         this.targets.depthBoundsCopy = pass.readsAndWrites(this.targets.depthBoundsCopy);
+         this.targets.depthBoundsCulled = pass.readsAndWrites(this.targets.depthBoundsCulled);
 
          for (int i = 0; i < OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
             this.targets.transmittance.set(i, pass.readsAndWrites(this.targets.transmittance.get(i)));
@@ -554,21 +559,28 @@ public class LevelRenderer implements AutoCloseable {
       boolean shouldRenderClouds = cloudStatus != CloudStatus.OFF && ARGB.alpha(this.levelRenderState.cloudColor) > 0;
       int renderDistance = this.optionsRenderState.renderDistance * 16;
       CameraRenderState cameraState = this.levelRenderState.cameraRenderState;
-      RenderTarget depthBoundsTarget = OutputTarget.DEPTH_BOUNDS_TARGET.getRenderTarget();
-      RenderTarget accumulateTarget = OutputTarget.ACCUMULATE_TARGET.getRenderTarget();
-      GpuTextureView depthTextureView = this.gameRenderer.mainRenderTarget().getDepthTextureView();
+      GpuTextureView mainDepthTextureView = this.gameRenderer.mainRenderTarget().getDepthTextureView();
       RenderTarget mainTarget = this.targets.main.get();
       if (frameHasWaterMask) {
          this.executeOitWaterMask(featureFrame, mainTarget);
       }
 
-      GpuTextureView depthBoundsTargetView = depthBoundsTarget.getColorTextureView();
-      GpuTextureView accumulateTargetView = accumulateTarget.getColorTextureView();
-      OitRenderPassProvider.Parameters params = new OitRenderPassProvider.Parameters(depthBoundsTargetView, accumulateTargetView, depthTextureView);
+      GpuTextureView depthBoundsTargetView = this.targets.depthBounds.get().getColorTextureView();
+      GpuTextureView depthBoundsCulledTargetView = this.targets.depthBoundsCulled.get().getColorTextureView();
+      GpuTextureView accumulateTargetView = this.targets.accumulate.get().getColorTextureView();
+      GpuTextureView[] transmittanceTargetViews = new GpuTextureView[OIT_TRANSMITTANCE_TARGET_COUNT];
+
+      for (int i = 0; i < OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
+         transmittanceTargetViews[i] = this.targets.transmittance.get(i).get().getColorTextureView();
+      }
+
+      OitRenderPassProvider.Parameters params = new OitRenderPassProvider.Parameters(
+         depthBoundsTargetView, transmittanceTargetViews, accumulateTargetView, mainDepthTextureView
+      );
       OitRenderPassProvider.Parameters cloudParams;
       if (shouldRenderClouds) {
          GpuTextureView cloudDepthTextureView = this.targets.oitCloudDepth.get().getDepthTextureView();
-         cloudParams = new OitRenderPassProvider.Parameters(depthBoundsTargetView, accumulateTargetView, cloudDepthTextureView);
+         cloudParams = new OitRenderPassProvider.Parameters(depthBoundsCulledTargetView, transmittanceTargetViews, accumulateTargetView, cloudDepthTextureView);
       } else {
          cloudParams = null;
       }
@@ -576,7 +588,7 @@ public class LevelRenderer implements AutoCloseable {
       OitRenderPassProvider.Parameters terrainParams;
       if (frameHasWaterMask) {
          GpuTextureView terrainDepthTextureView = this.targets.oitTerrainWithWaterPatchDepth.get().getDepthTextureView();
-         terrainParams = new OitRenderPassProvider.Parameters(depthBoundsTargetView, accumulateTargetView, terrainDepthTextureView);
+         terrainParams = new OitRenderPassProvider.Parameters(depthBoundsTargetView, transmittanceTargetViews, accumulateTargetView, terrainDepthTextureView);
       } else {
          terrainParams = params;
       }
@@ -594,14 +606,12 @@ public class LevelRenderer implements AutoCloseable {
 
          if (stage == OitStage.DEPTH_BOUNDS) {
             this.executeDepthBoundsCull();
+            params.setDepthBoundsTargetView(depthBoundsCulledTargetView);
+            terrainParams.setDepthBoundsTargetView(depthBoundsCulledTargetView);
          }
 
          if (shouldRenderClouds) {
-            if (stage == OitStage.DEPTH_BOUNDS) {
-               this.targets.oitCloudDepth.get().copyDepthFrom(mainTarget);
-            }
-
-            this.cloudRenderer.renderOit(cloudStatus, stage, cloudParams);
+            this.cloudRenderer.renderOit(cloudStatus, stage, mainDepthTextureView, cloudParams);
          }
 
          if (stage == OitStage.DEPTH_BOUNDS && frameHasWaterMask) {
@@ -621,7 +631,7 @@ public class LevelRenderer implements AutoCloseable {
          renderPass.setUniform("Sampler0", accumulateTargetView, nearestSampler);
 
          for (int i = 0; i < OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-            renderPass.setUniform("Coeff" + i, OutputTarget.TRANSMITTANCE_TARGETS[i].getRenderTarget().getColorTextureView(), nearestSampler);
+            renderPass.setUniform("Coeff" + i, this.targets.transmittance.get(i).get().getColorTextureView(), nearestSampler);
          }
 
          renderPass.setUniform("DepthBoundsSampler", depthBoundsTargetView, nearestSampler);
@@ -632,33 +642,38 @@ public class LevelRenderer implements AutoCloseable {
 
    private void executeDepthBoundsCull() {
       GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
-      RenderTarget depthBoundsTarget = this.depthBoundsTarget();
-      RenderTarget depthBoundsCopyTarget = this.depthBoundsCopyTarget();
-      depthBoundsCopyTarget.copyColorFrom(depthBoundsTarget);
+      RenderTarget depthBoundsTarget = this.targets.depthBounds.get();
+      RenderTarget depthBoundsCulledTarget = this.targets.depthBoundsCulled.get();
 
       try (RenderPass renderPass = RenderSystem.getDevice()
             .createCommandEncoder()
             .createRenderPass(
                () -> "OIT cull Depth Bounds",
-               depthBoundsTarget.getColorTextureView(),
+               depthBoundsCulledTarget.getColorTextureView(),
                Optional.empty(),
                this.gameRenderer.mainRenderTarget().getDepthTextureView(),
                OptionalDouble.empty()
             )) {
          RenderSystem.bindDefaultUniforms(renderPass);
-         renderPass.setUniform("DepthBoundsSampler", depthBoundsCopyTarget.getColorTextureView(), nearestSampler);
+         renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.BLIT_DEPTH_BOUNDS));
+         renderPass.setUniform("InSampler", depthBoundsTarget.getColorTextureView(), nearestSampler);
+         renderPass.draw(3, 1, 0, 0);
+         renderPass.setUniform("DepthBoundsSampler", depthBoundsTarget.getColorTextureView(), nearestSampler);
          renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.OIT_DEPTH_BOUNDS_CULL));
          renderPass.draw(3, 1, 0, 0);
       }
    }
 
    private void executeOitWaterMask(final FeatureRenderDispatcher.PreparedFrame featureFrame, final RenderTarget mainTarget) {
+      GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
       RenderTarget terrainTarget = this.targets.oitTerrainWithWaterPatchDepth.get();
-      terrainTarget.copyDepthFrom(mainTarget);
       RenderPassDescriptor descriptor = RenderPassDescriptor.builder(() -> "Water mask").withDepthAttachment(terrainTarget.getDepthTextureView()).build();
 
       try (RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor)) {
          RenderSystem.bindDefaultUniforms(renderPass);
+         renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.BLIT_DEPTH));
+         renderPass.setUniform("InSampler", mainTarget.getDepthTextureView(), nearestSampler);
+         renderPass.draw(3, 1, 0, 0);
          featureFrame.executeWaterMask(renderPass);
       }
    }
@@ -1224,36 +1239,6 @@ public class LevelRenderer implements AutoCloseable {
 
    public BlockEntityRenderDispatcher blockEntityRenderDispatcher() {
       return this.blockEntityRenderDispatcher;
-   }
-
-   @Nullable
-   public RenderTarget entityOutlineTarget() {
-      return this.targets.entityOutline != null ? this.targets.entityOutline.get() : null;
-   }
-
-   @Nullable
-   public RenderTarget terrainDepthTarget() {
-      return this.targets.oitTerrainWithWaterPatchDepth != null ? this.targets.oitTerrainWithWaterPatchDepth.get() : null;
-   }
-
-   @Nullable
-   public RenderTarget depthBoundsTarget() {
-      return this.targets.depthBounds != null ? this.targets.depthBounds.get() : null;
-   }
-
-   @Nullable
-   public RenderTarget depthBoundsCopyTarget() {
-      return this.targets.depthBoundsCopy != null ? this.targets.depthBoundsCopy.get() : null;
-   }
-
-   @Nullable
-   public RenderTarget transmittanceTarget(final int index) {
-      return this.targets.transmittance.get(index).get() != null ? this.targets.transmittance.get(index).get() : null;
-   }
-
-   @Nullable
-   public RenderTarget accumulateTarget() {
-      return this.targets.accumulate != null ? this.targets.accumulate.get() : null;
    }
 
    public CloudRenderer cloudRenderer() {

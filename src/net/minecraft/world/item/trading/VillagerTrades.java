@@ -51,10 +51,7 @@ import net.minecraft.world.level.storage.loot.functions.SetRandomPotionFunction;
 import net.minecraft.world.level.storage.loot.functions.SetStewEffectFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.BinomialDistributionGenerator;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.Sum;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VillagerTrades {
    public static final ResourceKey<VillagerTrade> FARMER_1_WHEAT_EMERALD = resourceKey("farmer/1/wheat_emerald");
@@ -434,12 +431,12 @@ public class VillagerTrades {
          VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SUSPICIOUS_STEW), 12, 15, 0.05F)
             .addModifier(
                new SetStewEffectFunction.Builder()
-                  .withEffect(MobEffects.NIGHT_VISION, ConstantValue.exactly(5.0F))
-                  .withEffect(MobEffects.JUMP_BOOST, ConstantValue.exactly(8.0F))
-                  .withEffect(MobEffects.WEAKNESS, ConstantValue.exactly(7.0F))
-                  .withEffect(MobEffects.BLINDNESS, ConstantValue.exactly(6.0F))
-                  .withEffect(MobEffects.POISON, ConstantValue.exactly(14.0F))
-                  .withEffect(MobEffects.SATURATION, ConstantValue.exactly(7.0F))
+                  .withEffect(MobEffects.NIGHT_VISION, 5)
+                  .withEffect(MobEffects.JUMP_BOOST, 8)
+                  .withEffect(MobEffects.WEAKNESS, 7)
+                  .withEffect(MobEffects.BLINDNESS, 6)
+                  .withEffect(MobEffects.POISON, 14)
+                  .withEffect(MobEffects.SATURATION, 7)
             )
             .build()
       );
@@ -1161,7 +1158,7 @@ public class VillagerTrades {
          VillagerTrade.builder(
                new TradeCost(
                   Items.POTION.builtInRegistryHolder(),
-                  ConstantValue.exactly(1.0F),
+                  ContextIntProviders.exactly(1),
                   DataComponentExactPredicate.expect(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER))
                ),
                new ItemStackTemplate(Items.EMERALD),
@@ -1780,9 +1777,7 @@ public class VillagerTrades {
    }
 
    private static LootItemFunction.Builder addRandomDye() {
-      return SetRandomDyesFunction.withCount(
-         Sum.sum(ConstantValue.exactly(1.0F), Holder.direct(new BinomialDistributionGenerator(ConstantValue.exactly(2.0F), ConstantValue.exactly(0.75F))))
-      );
+      return SetRandomDyesFunction.withCount(ContextIntProviders.add(ContextIntProviders.exactly(1), ContextIntProviders.binomial(2, 0.75F)));
    }
 
    public static List<Holder<LootItemFunction>> enchantedBook(final HolderGetter<Item> items, final HolderSet<Enchantment> options) {
@@ -1813,7 +1808,7 @@ public class VillagerTrades {
                .build()
          );
       return discardItemIfItsNot(
-         new SetEnchantmentsFunction.Builder().withEnchantment(enchantment, ConstantValue.exactly((float)level)), bookWithExactLevelEnchants
+         new SetEnchantmentsFunction.Builder().withEnchantment(enchantment, ContextIntProviders.exactly(level)), bookWithExactLevelEnchants
       );
    }
 
@@ -1829,8 +1824,7 @@ public class VillagerTrades {
                .build()
          );
       return discardItemIfItsNot(
-         new EnchantWithLevelsFunction.Builder(UniformGenerator.between(5.0F, 19.0F)).withOptions(options).includeAdditionalCostComponent(),
-         itemWithAnyEnchants
+         new EnchantWithLevelsFunction.Builder(ContextIntProviders.between(5, 19)).withOptions(options).includeAdditionalCostComponent(), itemWithAnyEnchants
       );
    }
 
@@ -1848,7 +1842,7 @@ public class VillagerTrades {
                .build()
          );
       return discardItemIfItsNot(
-         new SetEnchantmentsFunction.Builder().withEnchantment(enchantment, ConstantValue.exactly((float)level)), itemWithExactLevelEnchants
+         new SetEnchantmentsFunction.Builder().withEnchantment(enchantment, ContextIntProviders.exactly(level)), itemWithExactLevelEnchants
       );
    }
 

@@ -38,7 +38,6 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.StrictJsonParser;
 import net.minecraft.util.Util;
-import org.apache.commons.io.IOUtils;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -47,6 +46,8 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
    public static final int MAX_LOG_LENGTH = 32768;
    public static final String SHADER_PATH = "shaders";
    public static final String SHADER_INCLUDE_PATH = "shaders/include/";
+   public static final String SHADER_INCLUDE_EXTENSION = ".glsl";
+   public static final FileToIdConverter SHADER_INCLUDE_CONVERTER = new FileToIdConverter("shaders/include", ".glsl");
    private static final FileToIdConverter POST_CHAIN_ID_CONVERTER = FileToIdConverter.json("post_effect");
    private final TextureManager textureManager;
    private final Consumer<Exception> recoveryHandler;
@@ -69,7 +70,7 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
    ) {
       ResourceManager manager = currentReload.resourceManager();
       GpuDevice device = RenderSystem.getDevice();
-      return CompletableFuture.<ShaderManager.Configs>supplyAsync(() -> this.loadConfigs(manager), taskExecutor)
+      return CompletableFuture.<ShaderManager.Configs>supplyAsync(() -> loadConfigs(manager), taskExecutor)
          .thenComposeAsync(
             configs -> {
                List<RenderPipeline> requiredPipelines = RenderPipelines.requiredPipelines();
@@ -105,39 +106,49 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       );
    }
 
-   private ShaderManager.Configs loadConfigs(final ResourceManager manager) {
+   private static ShaderManager.Configs loadConfigs(final ResourceManager manager) {
       Builder<ShaderManager.ShaderSourceKey, String> shaderSources = ImmutableMap.builder();
-      Map<Identifier, Resource> files = manager.listResources("shaders", ShaderManager::isShader);
+      Builder<Identifier, ShaderSource.CachedIncludeSource> includeSources = ImmutableMap.builder();
+      Map<Identifier, Resource> files = manager.listResources("shaders", var0 -> true);
 
       for (Entry<Identifier, Resource> entry : files.entrySet()) {
          Identifier location = entry.getKey();
          ShaderType shaderType = ShaderType.byLocation(location);
-         loadShader(location, entry.getValue(), shaderType, files, shaderSources);
+         if (shaderType != null) {
+            loadShader(location, entry.getValue(), shaderType, shaderSources);
+         } else if (SHADER_INCLUDE_CONVERTER.matches(location)) {
+            loadInclude(location, entry.getValue(), includeSources);
+         }
       }
 
       Builder<Identifier, PostChainConfig> postChains = ImmutableMap.builder();
 
-      for (Entry<Identifier, Resource> entry : POST_CHAIN_ID_CONVERTER.listMatchingResources(manager).entrySet()) {
-         loadPostChain(entry.getKey(), entry.getValue(), postChains);
+      for (Entry<Identifier, Resource> entryx : POST_CHAIN_ID_CONVERTER.listMatchingResources(manager).entrySet()) {
+         loadPostChain(entryx.getKey(), entryx.getValue(), postChains);
       }
 
-      return new ShaderManager.Configs(shaderSources.build(), postChains.build());
+      return new ShaderManager.Configs(shaderSources.build(), includeSources.build(), postChains.build());
    }
 
    private static void loadShader(
-      final Identifier location,
-      final Resource resource,
-      @Nullable final ShaderType type,
-      final Map<Identifier, Resource> files,
-      final Builder<ShaderManager.ShaderSourceKey, String> output
+      final Identifier location, final Resource resource, final ShaderType type, final Builder<ShaderManager.ShaderSourceKey, String> output
    ) {
-      Identifier id = type == null ? location : type.idConverter().fileToId(location);
+      try {
+         String contents = resource.readAllAsString();
+         Identifier id = type.idConverter().fileToId(location);
+         output.put(new ShaderManager.ShaderSourceKey(id, type), contents);
+      } catch (IOException var6) {
+         LOGGER.error("Failed to load shader source at {}", location, var6);
+      }
+   }
 
-      try (Reader reader = resource.openAsReader()) {
-         String source = IOUtils.toString(reader);
-         output.put(new ShaderManager.ShaderSourceKey(id, type), source);
-      } catch (IOException var11) {
-         LOGGER.error("Failed to load shader source at {}", location, var11);
+   private static void loadInclude(final Identifier location, final Resource resource, final Builder<Identifier, ShaderSource.CachedIncludeSource> output) {
+      try {
+         String contents = resource.readAllAsString();
+         Identifier id = includeShaderLocationToId(location);
+         output.put(id, ShaderSource.CachedIncludeSource.create(id, contents));
+      } catch (IOException var5) {
+         LOGGER.error("Failed to load shader source at {}", location, var5);
       }
    }
 
@@ -152,8 +163,22 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       }
    }
 
-   private static boolean isShader(final Identifier location) {
-      return ShaderType.byLocation(location) != null || location.getPath().endsWith(".glsl");
+   public static Map<Identifier, ShaderSource.CachedIncludeSource> listAllIncludes(final ResourceManager resourceManager) {
+      Map<Identifier, ShaderSource.CachedIncludeSource> includes = new HashMap<>();
+      SHADER_INCLUDE_CONVERTER.listMatchingResources(resourceManager).forEach((location, resource) -> {
+         try {
+            String contents = resource.readAllAsString();
+            Identifier includeId = includeShaderLocationToId(location);
+            includes.put(includeId, ShaderSource.CachedIncludeSource.create(includeId, contents));
+         } catch (Exception var5) {
+            LOGGER.error("Couldn't read shader file {}", location, var5);
+         }
+      });
+      return includes;
+   }
+
+   private static Identifier includeShaderLocationToId(final Identifier location) {
+      return SHADER_INCLUDE_CONVERTER.fileToId(location).withSuffix(".glsl");
    }
 
    private void apply(final GpuDevice device, final ShaderManager.PendingResults compilations) {
@@ -265,13 +290,26 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       }
    }
 
-   public static record Configs(Map<ShaderManager.ShaderSourceKey, String> shaderSources, Map<Identifier, PostChainConfig> postChains) implements ShaderSource {
-      public static final ShaderManager.Configs EMPTY = new ShaderManager.Configs(Map.of(), Map.of());
+   public static record Configs(
+      Map<ShaderManager.ShaderSourceKey, String> shaderSources,
+      Map<Identifier, ShaderSource.CachedIncludeSource> includeSources,
+      Map<Identifier, PostChainConfig> postChains
+   ) implements ShaderSource {
+      public static final ShaderManager.Configs EMPTY = new ShaderManager.Configs(Map.of(), Map.of(), Map.of());
 
-      @Nullable
       @Override
-      public String get(final Identifier id, @Nullable final ShaderType type) {
+      public String getShader(final Identifier id, final ShaderType type) {
          return this.shaderSources.get(new ShaderManager.ShaderSourceKey(id, type));
+      }
+
+      @Override
+      public ShaderSource.CachedIncludeSource getInclude(final Identifier id) {
+         return this.includeSources.get(id);
+      }
+
+      @Override
+      public void close() {
+         this.includeSources.values().forEach(ShaderSource.CachedIncludeSource::close);
       }
    }
 
@@ -340,7 +378,7 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       }
    }
 
-   private static record ShaderSourceKey(Identifier id, @Nullable ShaderType type) {
+   private static record ShaderSourceKey(Identifier id, ShaderType type) {
       @Override
       public String toString() {
          return this.id + " (" + this.type + ")";

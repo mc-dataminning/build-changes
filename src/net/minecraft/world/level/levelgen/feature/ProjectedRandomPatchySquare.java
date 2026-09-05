@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -15,7 +16,8 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
-public record ProjectedRandomPatchySquare(BlockStateProvider block, BlockPredicate projectThrough, IntProvider size, int maxProjectionHeight) implements Feature {
+public record ProjectedRandomPatchySquare(Holder<BlockStateProvider> block, BlockPredicate projectThrough, IntProvider size, int maxProjectionHeight)
+   implements Feature {
    public static final MapCodec<ProjectedRandomPatchySquare> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
                BlockStateProvider.CODEC.fieldOf("block").forGetter(ProjectedRandomPatchySquare::block),
@@ -52,7 +54,7 @@ public record ProjectedRandomPatchySquare(BlockStateProvider block, BlockPredica
                   }
                }
 
-               BlockState state = this.block.getOptionalState(level, random, basePos);
+               BlockState state = this.block.value().getOptionalState(level, random, basePos);
                if (state != null) {
                   level.setBlock(basePos, state, 2);
                }

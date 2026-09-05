@@ -21,8 +21,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VanillaShearingLoot implements LootTableSubProvider {
    private final LootTableSubProvider.Context output;
@@ -41,9 +40,9 @@ public class VanillaShearingLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(2.0F))
-                     .add(LootItem.lootTableItem(Items.BROWN_MUSHROOM).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
-                     .add(LootItem.lootTableItem(Items.RED_MUSHROOM).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
+                     .setRolls(ContextIntProviders.exactly(2))
+                     .add(LootItem.lootTableItem(Items.BROWN_MUSHROOM).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))
+                     .add(LootItem.lootTableItem(Items.RED_MUSHROOM).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))
                )
          );
       ColorCollection.zipApply(
@@ -51,8 +50,7 @@ public class VanillaShearingLoot implements LootTableSubProvider {
          Blocks.WOOL,
          (dyedSheep, wool) -> this.output
                .accept(
-                  dyedSheep,
-                  LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).add(LootItem.lootTableItem(wool)))
+                  dyedSheep, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.between(1, 3)).add(LootItem.lootTableItem(wool)))
                )
       );
       this.output
@@ -63,12 +61,12 @@ public class VanillaShearingLoot implements LootTableSubProvider {
       Holder.Reference<LootTable> shearRedMooshroom = this.output
          .accept(
             BuiltInLootTables.SHEAR_RED_MOOSHROOM,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(5.0F)).add(LootItem.lootTableItem(Items.RED_MUSHROOM)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(5)).add(LootItem.lootTableItem(Items.RED_MUSHROOM)))
          );
       Holder.Reference<LootTable> sheadBrownMooshroom = this.output
          .accept(
             BuiltInLootTables.SHEAR_BROWN_MOOSHROOM,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(5.0F)).add(LootItem.lootTableItem(Items.BROWN_MUSHROOM)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(5)).add(LootItem.lootTableItem(Items.BROWN_MUSHROOM)))
          );
       this.output
          .accept(
@@ -101,7 +99,7 @@ public class VanillaShearingLoot implements LootTableSubProvider {
       this.output
          .accept(
             BuiltInLootTables.SHEAR_SNOW_GOLEM,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.CARVED_PUMPKIN)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.CARVED_PUMPKIN)))
          );
    }
 }

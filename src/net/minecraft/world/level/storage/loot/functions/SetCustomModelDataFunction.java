@@ -15,19 +15,20 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class SetCustomModelDataFunction extends LootItemConditionalFunction {
-   private static final Codec<Holder<NumberProvider>> COLOR_PROVIDER_CODEC = Codec.withAlternative(
-      NumberProviders.CODEC, ExtraCodecs.RGB_COLOR_CODEC, ConstantValue::exactly
+   private static final Codec<Holder<ContextIntProvider>> COLOR_PROVIDER_CODEC = Codec.withAlternative(
+      ContextIntProviders.CODEC, ExtraCodecs.RGB_COLOR_CODEC, ContextIntProviders::exactly
    );
    public static final MapCodec<SetCustomModelDataFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
             .and(
                i.group(
-                  ListOperation.StandAlone.codec(NumberProviders.CODEC, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter(o -> o.floats),
+                  ListOperation.StandAlone.codec(ContextFloatProviders.CODEC, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter(o -> o.floats),
                   ListOperation.StandAlone.codec(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter(o -> o.flags),
                   ListOperation.StandAlone.codec(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter(o -> o.strings),
                   ListOperation.StandAlone.codec(COLOR_PROVIDER_CODEC, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter(o -> o.colors)
@@ -35,17 +36,17 @@ public class SetCustomModelDataFunction extends LootItemConditionalFunction {
             )
             .apply(i, SetCustomModelDataFunction::new)
    );
-   private final Optional<ListOperation.StandAlone<Holder<NumberProvider>>> floats;
+   private final Optional<ListOperation.StandAlone<Holder<ContextFloatProvider>>> floats;
    private final Optional<ListOperation.StandAlone<Boolean>> flags;
    private final Optional<ListOperation.StandAlone<String>> strings;
-   private final Optional<ListOperation.StandAlone<Holder<NumberProvider>>> colors;
+   private final Optional<ListOperation.StandAlone<Holder<ContextIntProvider>>> colors;
 
    public SetCustomModelDataFunction(
       final Optional<Holder<LootItemCondition>> condition,
-      final Optional<ListOperation.StandAlone<Holder<NumberProvider>>> floats,
+      final Optional<ListOperation.StandAlone<Holder<ContextFloatProvider>>> floats,
       final Optional<ListOperation.StandAlone<Boolean>> flags,
       final Optional<ListOperation.StandAlone<String>> strings,
-      final Optional<ListOperation.StandAlone<Holder<NumberProvider>>> colors
+      final Optional<ListOperation.StandAlone<Holder<ContextIntProvider>>> colors
    ) {
       super(condition);
       this.floats = floats;

@@ -11,7 +11,8 @@ import net.minecraft.world.item.slot.SlotSource;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
 
 public record LootDataType<T extends Validatable>(ResourceKey<Registry<T>> registryKey, LootDataType.ContextGetter<T> contextGetter) {
    public static final LootDataType<LootItemCondition> PREDICATE = new LootDataType<>(
@@ -24,8 +25,11 @@ public record LootDataType<T extends Validatable>(ResourceKey<Registry<T>> regis
       Registries.SLOT_SOURCE, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
    );
    public static final LootDataType<LootTable> TABLE = new LootDataType<>(Registries.LOOT_TABLE, LootTable::getParamSet);
-   public static final LootDataType<NumberProvider> NUMBER_PROVIDER = new LootDataType<>(
-      Registries.NUMBER_PROVIDER, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
+   public static final LootDataType<ContextFloatProvider> FLOAT_PROVIDER = new LootDataType<>(
+      Registries.CONTEXT_FLOAT_PROVIDER, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
+   );
+   public static final LootDataType<ContextIntProvider> INT_PROVIDER = new LootDataType<>(
+      Registries.CONTEXT_INT_PROVIDER, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
    );
 
    public void runValidation(final ValidationContextSource contextSource, final ResourceKey<T> key, final T value) {
@@ -48,7 +52,7 @@ public record LootDataType<T extends Validatable>(ResourceKey<Registry<T>> regis
    }
 
    public static Stream<LootDataType<?>> values() {
-      return Stream.of(PREDICATE, MODIFIER, SLOT_SOURCE, TABLE, NUMBER_PROVIDER);
+      return Stream.of(PREDICATE, MODIFIER, SLOT_SOURCE, TABLE, FLOAT_PROVIDER, INT_PROVIDER);
    }
 
    @FunctionalInterface

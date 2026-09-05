@@ -14,9 +14,7 @@ import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.Sum;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class TradeRebalanceVillagerTrades extends VillagerTrades {
    public static final ResourceKey<VillagerTrade> LIBRARIAN_1_EMERALD_AND_BOOK_DESERT_ENCHANTED_BOOK = resourceKey(
@@ -866,7 +864,7 @@ public class TradeRebalanceVillagerTrades extends VillagerTrades {
       final int level
    ) {
       return VillagerTrade.builder(
-            new TradeCost(Items.EMERALD, Sum.sum(ConstantValue.exactly((float)(3 * level + 2)), UniformGenerator.between(0.0F, (float)(5 + level * 10)))),
+            new TradeCost(Items.EMERALD, ContextIntProviders.add(ContextIntProviders.exactly(3 * level + 2), ContextIntProviders.between(0, 5 + level * 10))),
             new TradeCost(Items.BOOK, 1),
             new ItemStackTemplate(Items.ENCHANTED_BOOK),
             12,

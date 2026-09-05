@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collection;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.IntProviders;
@@ -24,14 +25,14 @@ public class RandomizedIntStateProvider implements BlockStateProvider {
             )
             .apply(i, RandomizedIntStateProvider::new)
    );
-   private final BlockStateProvider source;
+   private final Holder<BlockStateProvider> source;
    private final String propertyName;
    @Nullable
    private IntegerProperty property;
    private final IntProvider values;
 
    public RandomizedIntStateProvider(final BlockStateProvider source, final IntegerProperty property, final IntProvider values) {
-      this.source = source;
+      this.source = Holder.direct(source);
       this.property = property;
       this.propertyName = property.getName();
       this.values = values;
@@ -44,7 +45,7 @@ public class RandomizedIntStateProvider implements BlockStateProvider {
       }
    }
 
-   public RandomizedIntStateProvider(final BlockStateProvider source, final String propertyName, final IntProvider values) {
+   public RandomizedIntStateProvider(final Holder<BlockStateProvider> source, final String propertyName, final IntProvider values) {
       this.source = source;
       this.propertyName = propertyName;
       this.values = values;
@@ -57,7 +58,7 @@ public class RandomizedIntStateProvider implements BlockStateProvider {
 
    @Override
    public BlockState getState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
-      BlockState unmodifiedState = this.source.getState(level, random, pos);
+      BlockState unmodifiedState = this.source.value().getState(level, random, pos);
       if (this.property == null || !unmodifiedState.hasProperty(this.property)) {
          IntegerProperty property = findProperty(unmodifiedState, this.propertyName);
          if (property == null) {

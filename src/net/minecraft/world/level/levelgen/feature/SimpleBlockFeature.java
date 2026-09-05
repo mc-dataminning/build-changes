@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Objects;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.DoublePlantBlock;
@@ -13,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
-public record SimpleBlockFeature(BlockStateProvider toPlace, boolean scheduleTick) implements Feature {
+public record SimpleBlockFeature(Holder<BlockStateProvider> toPlace, boolean scheduleTick) implements Feature {
    public static final MapCodec<SimpleBlockFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
                BlockStateProvider.CODEC.fieldOf("to_place").forGetter(SimpleBlockFeature::toPlace),
@@ -22,8 +23,12 @@ public record SimpleBlockFeature(BlockStateProvider toPlace, boolean scheduleTic
             .apply(i, SimpleBlockFeature::new)
    );
 
-   public SimpleBlockFeature(final BlockStateProvider toPlace) {
+   public SimpleBlockFeature(final Holder<BlockStateProvider> toPlace) {
       this(toPlace, false);
+   }
+
+   public SimpleBlockFeature(final BlockStateProvider toPlace) {
+      this(Holder.direct(toPlace));
    }
 
    @Override
@@ -33,7 +38,7 @@ public record SimpleBlockFeature(BlockStateProvider toPlace, boolean scheduleTic
 
    @Override
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      BlockState stateToPlace = this.toPlace.getOptionalState(level, random, origin);
+      BlockState stateToPlace = this.toPlace.value().getOptionalState(level, random, origin);
       if (stateToPlace == null) {
          return false;
       } else if (!stateToPlace.canSurvive(level, origin)) {

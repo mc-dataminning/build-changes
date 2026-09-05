@@ -4,6 +4,8 @@ import com.mojang.blaze3d.Blaze3D;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.logging.LogUtils;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,6 +28,9 @@ import net.minecraft.util.Util;
 import net.minecraft.world.entity.player.Inventory;
 import org.joml.Vector2i;
 import org.jspecify.annotations.Nullable;
+import org.lwjgl.sdl.SDLMouse;
+import org.lwjgl.sdl.SDLVideo;
+import org.lwjgl.system.MemoryStack;
 import org.slf4j.Logger;
 
 public class MouseHandler {
@@ -41,7 +46,6 @@ public class MouseHandler {
    private MouseHandler.LastClick lastClick;
    @MouseButtonInfo.MouseButton
    protected int lastClickButton;
-   private int fakeRightMouse;
    @Nullable
    private MouseButtonInfo activeButton = null;
    private boolean ignoreFirstMove = true;
@@ -106,7 +110,6 @@ public class MouseHandler {
                      }
                   } catch (Throwable var17) {
                      CrashReport report = CrashReport.forThrowable(var17, "mouseClicked event handler");
-                     screen.fillCrashDetails(report);
                      CrashReportCategory mouseDetails = report.addCategory("Mouse");
                      this.fillMousePositionDetails(mouseDetails, window);
                      mouseDetails.setDetail("Button", event.button());
@@ -119,7 +122,6 @@ public class MouseHandler {
                      }
                   } catch (Throwable var16) {
                      CrashReport report = CrashReport.forThrowable(var16, "mouseReleased event handler");
-                     screen.fillCrashDetails(report);
                      CrashReportCategory mouseDetails = report.addCategory("Mouse");
                      this.fillMousePositionDetails(mouseDetails, window);
                      mouseDetails.setDetail("Button", event.button());
@@ -272,7 +274,6 @@ public class MouseHandler {
                screen.mouseMoved(xm, ym);
             } catch (Throwable var20) {
                CrashReport report = CrashReport.forThrowable(var20, "mouseMoved event handler");
-               screen.fillCrashDetails(report);
                CrashReportCategory mouseDetails = report.addCategory("Mouse");
                this.fillMousePositionDetails(mouseDetails, window);
                throw new ReportedException(report);
@@ -286,7 +287,6 @@ public class MouseHandler {
                   screen.mouseDragged(new MouseButtonEvent(xm, ym, this.activeButton), dx, dy);
                } catch (Throwable var19) {
                   CrashReport report = CrashReport.forThrowable(var19, "mouseDragged event handler");
-                  screen.fillCrashDetails(report);
                   CrashReportCategory mouseDetails = report.addCategory("Mouse");
                   this.fillMousePositionDetails(mouseDetails, window);
                   throw new ReportedException(report);
@@ -372,6 +372,42 @@ public class MouseHandler {
 
    public void setIgnoreFirstMove() {
       this.ignoreFirstMove = true;
+   }
+
+   public void resyncMousePosition() {
+      if (!this.mouseGrabbed) {
+         MemoryStack stack = MemoryStack.stackPush();
+
+         try {
+            FloatBuffer x = stack.mallocFloat(1);
+            FloatBuffer y = stack.mallocFloat(1);
+            IntBuffer windowX = stack.mallocInt(1);
+            IntBuffer windowY = stack.mallocInt(1);
+            SDLMouse.SDL_GetGlobalMouseState(x, y);
+            if (SDLVideo.SDL_GetWindowPosition(this.minecraft.getWindow().handle(), windowX, windowY)) {
+               this.xpos = (double)(x.get(0) - (float)windowX.get(0));
+               this.ypos = (double)(y.get(0) - (float)windowY.get(0));
+            } else {
+               SDLMouse.SDL_GetMouseState(x, y);
+               this.xpos = (double)x.get(0);
+               this.ypos = (double)y.get(0);
+            }
+         } catch (Throwable var7) {
+            if (stack != null) {
+               try {
+                  stack.close();
+               } catch (Throwable var6) {
+                  var7.addSuppressed(var6);
+               }
+            }
+
+            throw var7;
+         }
+
+         if (stack != null) {
+            stack.close();
+         }
+      }
    }
 
    public boolean isMouseGrabbed() {

@@ -73,6 +73,7 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunctions;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
 import net.minecraft.world.level.levelgen.material.condition.MaterialCondition;
 import net.minecraft.world.level.levelgen.material.rule.MaterialRule;
@@ -86,7 +87,8 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.minecraft.world.timeline.Timeline;
 import org.slf4j.Logger;
 
@@ -143,7 +145,8 @@ public class RegistryDataLoader {
       new RegistryDataLoader.RegistryData<>(Registries.VILLAGER_TRADE, VillagerTrade.CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.TRADE_SET, TradeSet.CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.DECORATED_POT_PATTERN, DecoratedPotPattern.CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_TRANSFORMER, BlockTransformer.DIRECT_CODEC)
+      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_TRANSFORMER, BlockTransformer.DIRECT_CODEC),
+      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_STATE_PROVIDER, BlockStateProvider.DIRECT_CODEC)
    );
    public static final List<RegistryDataLoader.RegistryData<?>> DIMENSION_REGISTRIES = List.of(
       new RegistryDataLoader.RegistryData<>(Registries.LEVEL_STEM, LevelStem.CODEC)
@@ -151,7 +154,8 @@ public class RegistryDataLoader {
    public static final List<RegistryDataLoader.RegistryData<?>> RELOADABLE_REGISTRIES = List.of(
       new RegistryDataLoader.RegistryData<>(Registries.LOOT_TABLE, LootTable.DIRECT_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.PREDICATE, LootItemCondition.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.NUMBER_PROVIDER, NumberProviders.DIRECT_CODEC),
+      new RegistryDataLoader.RegistryData<>(Registries.CONTEXT_FLOAT_PROVIDER, ContextFloatProviders.DIRECT_CODEC),
+      new RegistryDataLoader.RegistryData<>(Registries.CONTEXT_INT_PROVIDER, ContextIntProviders.DIRECT_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.ITEM_MODIFIER, LootItemFunctions.TYPED_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.SLOT_SOURCE, SlotSources.TYPED_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.ADVANCEMENT, Advancement.CODEC),
@@ -188,7 +192,8 @@ public class RegistryDataLoader {
       new RegistryDataLoader.RegistryData<>(Registries.WORLD_CLOCK, WorldClock.DIRECT_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.TIMELINE, Timeline.NETWORK_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.DECORATED_POT_PATTERN, DecoratedPotPattern.CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_TRANSFORMER, BlockTransformer.DIRECT_CODEC)
+      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_TRANSFORMER, BlockTransformer.DIRECT_CODEC),
+      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_STATE_PROVIDER, BlockStateProvider.DIRECT_CODEC)
    );
 
    public static CompletableFuture<RegistryAccess.Frozen> load(

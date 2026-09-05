@@ -18,10 +18,8 @@ import net.minecraft.world.level.biome.FixedBiomeSource;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSource;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterLists;
-import net.minecraft.world.level.biome.TheEndBiomeSource;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.DebugLevelSource;
@@ -93,24 +91,102 @@ public class WorldPresets {
       private final LevelStem endStem;
 
       private Bootstrap(final BootstrapContext<WorldPreset> context) {
-         this.context = context;
-         HolderGetter<DimensionType> dimensionTypes = context.lookup(Registries.DIMENSION_TYPE);
-         this.noiseSettings = context.lookup(Registries.NOISE_SETTINGS);
-         this.biomes = context.lookup(Registries.BIOME);
-         this.placedFeatures = context.lookup(Registries.PLACED_FEATURE);
-         this.structureSets = context.lookup(Registries.STRUCTURE_SET);
-         this.multiNoiseBiomeSourceParameterLists = context.lookup(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST);
-         this.overworldDimensionType = dimensionTypes.getOrThrow(BuiltinDimensionTypes.OVERWORLD);
-         this.netherDimensionType = dimensionTypes.getOrThrow(BuiltinDimensionTypes.NETHER);
-         this.endDimensionType = dimensionTypes.getOrThrow(BuiltinDimensionTypes.END);
-         Holder<NoiseGeneratorSettings> netherNoiseSettings = this.noiseSettings.getOrThrow(NoiseGeneratorSettings.NETHER);
-         Holder.Reference<MultiNoiseBiomeSourceParameterList> netherBiomePreset = this.multiNoiseBiomeSourceParameterLists
-            .getOrThrow(MultiNoiseBiomeSourceParameterLists.NETHER);
-         this.netherStem = new LevelStem(
-            this.netherDimensionType, new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromPreset(netherBiomePreset), netherNoiseSettings)
-         );
-         Holder<NoiseGeneratorSettings> endNoiseSettings = this.noiseSettings.getOrThrow(NoiseGeneratorSettings.END);
-         this.endStem = new LevelStem(this.endDimensionType, new NoiseBasedChunkGenerator(TheEndBiomeSource.create(this.biomes), endNoiseSettings));
+         // $VF: Couldn't be decompiled
+         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+         //
+         // Bytecode:
+         // 00: aload 0
+         // 01: invokespecial java/lang/Object.<init> ()V
+         // 04: aload 0
+         // 05: aload 1
+         // 06: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.context Lnet/minecraft/data/worldgen/BootstrapContext;
+         // 09: aload 1
+         // 0a: getstatic net/minecraft/core/registries/Registries.DIMENSION_TYPE Lnet/minecraft/resources/ResourceKey;
+         // 0d: invokeinterface net/minecraft/data/worldgen/BootstrapContext.lookup (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderGetter; 2
+         // 12: astore 2
+         // 13: aload 0
+         // 14: aload 1
+         // 15: getstatic net/minecraft/core/registries/Registries.NOISE_SETTINGS Lnet/minecraft/resources/ResourceKey;
+         // 18: invokeinterface net/minecraft/data/worldgen/BootstrapContext.lookup (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderGetter; 2
+         // 1d: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.noiseSettings Lnet/minecraft/core/HolderGetter;
+         // 20: aload 0
+         // 21: aload 1
+         // 22: getstatic net/minecraft/core/registries/Registries.BIOME Lnet/minecraft/resources/ResourceKey;
+         // 25: invokeinterface net/minecraft/data/worldgen/BootstrapContext.lookup (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderGetter; 2
+         // 2a: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.biomes Lnet/minecraft/core/HolderGetter;
+         // 2d: aload 0
+         // 2e: aload 1
+         // 2f: getstatic net/minecraft/core/registries/Registries.PLACED_FEATURE Lnet/minecraft/resources/ResourceKey;
+         // 32: invokeinterface net/minecraft/data/worldgen/BootstrapContext.lookup (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderGetter; 2
+         // 37: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.placedFeatures Lnet/minecraft/core/HolderGetter;
+         // 3a: aload 0
+         // 3b: aload 1
+         // 3c: getstatic net/minecraft/core/registries/Registries.STRUCTURE_SET Lnet/minecraft/resources/ResourceKey;
+         // 3f: invokeinterface net/minecraft/data/worldgen/BootstrapContext.lookup (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderGetter; 2
+         // 44: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.structureSets Lnet/minecraft/core/HolderGetter;
+         // 47: aload 0
+         // 48: aload 1
+         // 49: getstatic net/minecraft/core/registries/Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST Lnet/minecraft/resources/ResourceKey;
+         // 4c: invokeinterface net/minecraft/data/worldgen/BootstrapContext.lookup (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderGetter; 2
+         // 51: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.multiNoiseBiomeSourceParameterLists Lnet/minecraft/core/HolderGetter;
+         // 54: aload 0
+         // 55: aload 2
+         // 56: getstatic net/minecraft/world/level/dimension/BuiltinDimensionTypes.OVERWORLD Lnet/minecraft/resources/ResourceKey;
+         // 59: invokeinterface net/minecraft/core/HolderGetter.getOrThrow (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference; 2
+         // 5e: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.overworldDimensionType Lnet/minecraft/core/Holder;
+         // 61: aload 0
+         // 62: aload 2
+         // 63: getstatic net/minecraft/world/level/dimension/BuiltinDimensionTypes.NETHER Lnet/minecraft/resources/ResourceKey;
+         // 66: invokeinterface net/minecraft/core/HolderGetter.getOrThrow (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference; 2
+         // 6b: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.netherDimensionType Lnet/minecraft/core/Holder;
+         // 6e: aload 0
+         // 6f: aload 2
+         // 70: getstatic net/minecraft/world/level/dimension/BuiltinDimensionTypes.END Lnet/minecraft/resources/ResourceKey;
+         // 73: invokeinterface net/minecraft/core/HolderGetter.getOrThrow (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference; 2
+         // 78: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.endDimensionType Lnet/minecraft/core/Holder;
+         // 7b: aload 0
+         // 7c: getfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.noiseSettings Lnet/minecraft/core/HolderGetter;
+         // 7f: getstatic net/minecraft/world/level/levelgen/NoiseGeneratorSettings.NETHER Lnet/minecraft/resources/ResourceKey;
+         // 82: invokeinterface net/minecraft/core/HolderGetter.getOrThrow (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference; 2
+         // 87: astore 3
+         // 88: aload 0
+         // 89: getfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.multiNoiseBiomeSourceParameterLists Lnet/minecraft/core/HolderGetter;
+         // 8c: getstatic net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterLists.NETHER Lnet/minecraft/resources/ResourceKey;
+         // 8f: invokeinterface net/minecraft/core/HolderGetter.getOrThrow (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference; 2
+         // 94: astore 4
+         // 96: aload 0
+         // 97: new net/minecraft/world/level/dimension/LevelStem
+         // 9a: dup
+         // 9b: aload 0
+         // 9c: getfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.netherDimensionType Lnet/minecraft/core/Holder;
+         // 9f: new net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+         // a2: dup
+         // a3: aload 4
+         // a5: invokestatic net/minecraft/world/level/biome/MultiNoiseBiomeSource.createFromPreset (Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/MultiNoiseBiomeSource;
+         // a8: aload 3
+         // a9: invokespecial net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.<init> (Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/core/Holder;)V
+         // ac: invokespecial net/minecraft/world/level/dimension/LevelStem.<init> (Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/chunk/ChunkGenerator;)V
+         // af: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.netherStem Lnet/minecraft/world/level/dimension/LevelStem;
+         // b2: aload 0
+         // b3: getfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.noiseSettings Lnet/minecraft/core/HolderGetter;
+         // b6: getstatic net/minecraft/world/level/levelgen/NoiseGeneratorSettings.END Lnet/minecraft/resources/ResourceKey;
+         // b9: invokeinterface net/minecraft/core/HolderGetter.getOrThrow (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference; 2
+         // be: astore 5
+         // c0: aload 0
+         // c1: new net/minecraft/world/level/dimension/LevelStem
+         // c4: dup
+         // c5: aload 0
+         // c6: getfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.endDimensionType Lnet/minecraft/core/Holder;
+         // c9: new net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+         // cc: dup
+         // cd: aload 0
+         // ce: getfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.biomes Lnet/minecraft/core/HolderGetter;
+         // d1: invokestatic net/minecraft/world/level/biome/TheEndBiomeSource.create (Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/TheEndBiomeSource;
+         // d4: aload 5
+         // d6: invokespecial net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.<init> (Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/core/Holder;)V
+         // d9: invokespecial net/minecraft/world/level/dimension/LevelStem.<init> (Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/chunk/ChunkGenerator;)V
+         // dc: putfield net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap.endStem Lnet/minecraft/world/level/dimension/LevelStem;
+         // df: return
       }
 
       private LevelStem makeOverworld(final ChunkGenerator generator) {

@@ -190,7 +190,7 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
          if (x >= this.renderArea.x()
             && y >= this.renderArea.y()
             && x + width <= this.renderArea.x() + this.renderArea.width()
-            && y + height <= this.renderArea.height()) {
+            && y + height <= this.renderArea.y() + this.renderArea.height()) {
             this.backend.enableScissor(x, y, width, height);
          } else {
             throw new IllegalArgumentException(

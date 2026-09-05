@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.IntProviders;
@@ -26,12 +27,16 @@ public record BlockColumnFeature(List<BlockColumnFeature.Layer> layers, Directio
             .apply(i, BlockColumnFeature::new)
    );
 
-   public static BlockColumnFeature.Layer layer(final IntProvider height, final BlockStateProvider state) {
+   public static BlockColumnFeature.Layer layer(final IntProvider height, final Holder<BlockStateProvider> state) {
       return new BlockColumnFeature.Layer(height, state);
    }
 
+   public static BlockColumnFeature.Layer layer(final IntProvider height, final BlockStateProvider state) {
+      return layer(height, Holder.direct(state));
+   }
+
    public static BlockColumnFeature simple(final IntProvider height, final BlockStateProvider state) {
-      return new BlockColumnFeature(List.of(layer(height, state)), Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, false);
+      return new BlockColumnFeature(List.of(layer(height, Holder.direct(state))), Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, false);
    }
 
    @Override
@@ -71,7 +76,7 @@ public record BlockColumnFeature(List<BlockColumnFeature.Layer> layers, Directio
                BlockColumnFeature.Layer layer = this.layers.get(i);
 
                for (int y = 0; y < count; y++) {
-                  level.setBlock(placePos, layer.state().getState(level, random, placePos), 2);
+                  level.setBlock(placePos, layer.state().value().getState(level, random, placePos), 2);
                   placePos.move(this.direction);
                }
             }
@@ -95,7 +100,7 @@ public record BlockColumnFeature(List<BlockColumnFeature.Layer> layers, Directio
       }
    }
 
-   public static record Layer(IntProvider height, BlockStateProvider state) {
+   public static record Layer(IntProvider height, Holder<BlockStateProvider> state) {
       public static final Codec<BlockColumnFeature.Layer> CODEC = RecordCodecBuilder.create(
          i -> i.group(
                   IntProviders.NON_NEGATIVE_CODEC.fieldOf("height").forGetter(BlockColumnFeature.Layer::height),

@@ -7,17 +7,17 @@ import java.util.Optional;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.clock.WorldClock;
-import net.minecraft.world.level.storage.loot.IntRange;
+import net.minecraft.world.level.storage.loot.IntRangePredicate;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 
-public record TimeCheck(Holder<WorldClock> clock, Optional<Long> period, IntRange value) implements LootItemCondition {
+public record TimeCheck(Holder<WorldClock> clock, Optional<Long> period, IntRangePredicate value) implements LootItemCondition {
    public static final MapCodec<TimeCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
                WorldClock.CODEC.fieldOf("clock").forGetter(TimeCheck::clock),
                Codec.LONG.optionalFieldOf("period").forGetter(TimeCheck::period),
-               IntRange.CODEC.fieldOf("value").forGetter(TimeCheck::value)
+               IntRangePredicate.CODEC.fieldOf("value").forGetter(TimeCheck::value)
             )
             .apply(i, TimeCheck::new)
    );
@@ -43,16 +43,16 @@ public record TimeCheck(Holder<WorldClock> clock, Optional<Long> period, IntRang
       return this.value.test(context, (int)time);
    }
 
-   public static TimeCheck.Builder time(final Holder<WorldClock> clock, final IntRange value) {
+   public static TimeCheck.Builder time(final Holder<WorldClock> clock, final IntRangePredicate value) {
       return new TimeCheck.Builder(clock, value);
    }
 
    public static class Builder implements LootItemCondition.Builder {
       private final Holder<WorldClock> clock;
       private Optional<Long> period = Optional.empty();
-      private final IntRange value;
+      private final IntRangePredicate value;
 
-      public Builder(final Holder<WorldClock> clock, final IntRange value) {
+      public Builder(final Holder<WorldClock> clock, final IntRangePredicate value) {
          this.clock = clock;
          this.value = value;
       }

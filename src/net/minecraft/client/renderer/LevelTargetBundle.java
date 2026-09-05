@@ -16,7 +16,7 @@ public class LevelTargetBundle implements PostChain.TargetBundle {
    public ResourceHandle<RenderTarget> main = ResourceHandle.invalid();
    public ResourceHandle<RenderTarget> alwaysOnTopDepth = ResourceHandle.invalid();
    public ResourceHandle<RenderTarget> depthBounds = ResourceHandle.invalid();
-   public ResourceHandle<RenderTarget> depthBoundsCopy = ResourceHandle.invalid();
+   public ResourceHandle<RenderTarget> depthBoundsCulled = ResourceHandle.invalid();
    public final List<ResourceHandle<RenderTarget>> transmittance = new ArrayList<>();
    public ResourceHandle<RenderTarget> accumulate = ResourceHandle.invalid();
    public ResourceHandle<RenderTarget> oitCloudDepth = ResourceHandle.invalid();

@@ -118,13 +118,7 @@ public class Gui {
       }
 
       if (this.screen != null) {
-         try {
-            this.screen.tick();
-         } catch (Throwable var5) {
-            CrashReport report = CrashReport.forThrowable(var5, "Ticking screen");
-            this.screen.fillCrashDetails(report);
-            throw new ReportedException(report);
-         }
+         this.screen.tick();
       }
 
       profiler.pop();
@@ -286,6 +280,7 @@ public class Gui {
          this.minecraft.mouseHandler.grabMouse();
       }
 
+      this.minecraft.mouseHandler.resyncMousePosition();
       this.minecraft.updateTitle();
    }
 
@@ -375,7 +370,7 @@ public class Gui {
    }
 
    public void openChatAndAddText(final ChatComponent.ChatMethod chatMethod, final String text) {
-      this.openChatScreen(ChatComponent.ChatMethod.COMMAND);
+      this.openChatScreen(chatMethod);
       if (this.screen instanceof ChatScreen chatScreen) {
          chatScreen.insertText(text, false);
       }

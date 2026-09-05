@@ -23,7 +23,7 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VanillaChargedCreeperExplosionLoot implements LootTableSubProvider {
    private static final List<VanillaChargedCreeperExplosionLoot.Entry> ENTRIES = List.of(
@@ -49,7 +49,7 @@ public class VanillaChargedCreeperExplosionLoot implements LootTableSubProvider 
          Holder.Reference<LootTable> innerLootTable = this.output
             .accept(
                entry.lootTable,
-               LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(entry.item)))
+               LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(entry.item)))
             );
          LootItemCondition.Builder predicate = LootItemEntityPropertyCondition.hasProperties(
             LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(this.entityTypes, entry.entityType))
@@ -63,7 +63,7 @@ public class VanillaChargedCreeperExplosionLoot implements LootTableSubProvider 
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(AlternativesEntry.alternatives(alternatives.toArray(LootPoolEntryContainer.Builder[]::new)))
                )
          );

@@ -362,10 +362,14 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       if (player != null && !player.getAbilities().mayBuild && !this.canPlaceOnBlockInAdventureMode(new BlockInWorld(context.getLevel(), pos, false))) {
          return InteractionResult.PASS;
       } else {
+         ItemStack stackBeforeUse = this.copy();
          Item usedItem = this.getItem();
          InteractionResult result = usedItem.useOn(context);
          if (player != null && result instanceof InteractionResult.Success success && success.wasItemInteraction()) {
             player.awardStat(Stats.ITEM_USED.get(usedItem));
+            ItemStack transformTo = success.heldItemTransformedTo() == null ? this : success.heldItemTransformedTo();
+            ItemStack resultItemStack = transformTo.applyAfterUseComponentSideEffects(player, stackBeforeUse);
+            return success.heldItemTransformedTo(resultItemStack);
          }
 
          return result;
@@ -380,13 +384,13 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       ItemStack stackBeforeUse = this.copy();
       boolean isInstantlyUsed = this.getUseDuration(player) <= 0;
       InteractionResult result = this.getItem().use(level, player, hand);
-      return (InteractionResult)(isInstantlyUsed && result instanceof InteractionResult.Success success
-         ? success.heldItemTransformedTo(
-            success.heldItemTransformedTo() == null
-               ? this.applyAfterUseComponentSideEffects(player, stackBeforeUse)
-               : success.heldItemTransformedTo().applyAfterUseComponentSideEffects(player, stackBeforeUse)
-         )
-         : result);
+      if (isInstantlyUsed && result instanceof InteractionResult.Success success) {
+         ItemStack transformTo = success.heldItemTransformedTo() == null ? this : success.heldItemTransformedTo();
+         ItemStack resultItemStack = transformTo.applyAfterUseComponentSideEffects(player, stackBeforeUse);
+         return success.heldItemTransformedTo(resultItemStack);
+      } else {
+         return result;
+      }
    }
 
    public ItemStack finishUsingItem(final Level level, final LivingEntity livingEntity) {

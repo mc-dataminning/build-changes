@@ -189,7 +189,7 @@ public class LoadingOverlay extends Overlay {
 
       @Override
       public TextureContents loadContents(final ResourceManager resourceManager) throws IOException {
-         ResourceProvider vanillaProvider = Minecraft.getInstance().getVanillaPackResources().asProvider();
+         ResourceProvider vanillaProvider = Minecraft.getInstance().getVanillaPackResources().asResourceManager();
 
          TextureContents var4;
          try (InputStream resource = vanillaProvider.open(LoadingOverlay.MOJANG_STUDIOS_LOGO_LOCATION)) {

@@ -2,6 +2,7 @@ package net.minecraft.world.level.levelgen.feature.rootplacers;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -11,7 +12,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 public record MangroveRootPlacement(
    HolderSet<Block> canGrowThrough,
    HolderSet<Block> muddyRootsIn,
-   BlockStateProvider muddyRootsProvider,
+   Holder<BlockStateProvider> muddyRootsProvider,
    int maxRootWidth,
    int maxRootLength,
    float randomSkewChance

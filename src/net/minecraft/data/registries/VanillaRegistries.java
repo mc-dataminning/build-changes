@@ -12,6 +12,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.advancements.packs.VanillaAdvancementProvider;
 import net.minecraft.data.loot.packs.VanillaLootTableProvider;
 import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
+import net.minecraft.data.worldgen.BlockStateProviders;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.data.worldgen.DimensionTypes;
 import net.minecraft.data.worldgen.NoiseData;
@@ -70,7 +71,8 @@ import net.minecraft.world.level.levelgen.presets.WorldPresets;
 import net.minecraft.world.level.storage.loot.LootDataType;
 import net.minecraft.world.level.storage.loot.ValidationContextSource;
 import net.minecraft.world.level.storage.loot.predicates.LootPredicates;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.minecraft.world.timeline.Timelines;
 import org.slf4j.Logger;
 
@@ -126,12 +128,14 @@ public class VanillaRegistries {
       .add(Registries.VILLAGER_TRADE, VillagerTrades::bootstrap)
       .add(Registries.TRADE_SET, TradeSets::bootstrap)
       .add(Registries.DECORATED_POT_PATTERN, DecoratedPotPatterns::bootstrap)
-      .add(Registries.BLOCK_TRANSFORMER, BlockTransformers::bootstrap);
+      .add(Registries.BLOCK_TRANSFORMER, BlockTransformers::bootstrap)
+      .add(Registries.BLOCK_STATE_PROVIDER, BlockStateProviders::bootstrap);
    private static final RegistrySetBuilder RELOADABLE_BUILDER = new RegistrySetBuilder()
       .add(Registries.LOOT_TABLE, VanillaLootTableProvider.create())
       .add(Registries.PREDICATE, LootPredicates::bootstrap)
       .add(Registries.ADVANCEMENT, VanillaAdvancementProvider.create())
-      .add(Registries.NUMBER_PROVIDER, NumberProviders::bootstrap)
+      .add(Registries.CONTEXT_INT_PROVIDER, ContextIntProviders::bootstrap)
+      .add(Registries.CONTEXT_FLOAT_PROVIDER, ContextFloatProviders::bootstrap)
       .add(VanillaRecipeProvider.create());
 
    public static void validateThatAllBiomeFeaturesHaveBiomeFilter(final HolderLookup.Provider registries) {

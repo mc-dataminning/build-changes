@@ -14,7 +14,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
+import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
@@ -83,9 +85,12 @@ public class ExplorationMapFunction extends LootItemConditionalFunction {
             return itemStack;
          } else {
             ServerLevel level = context.getLevel();
-            BlockPos nearestMapStructure = level.findNearestMapStructure(
-               this.destination, BlockPos.containing(lootPos), this.searchRadius, this.skipKnownStructures
-            );
+            BlockPos lootBlockPos = BlockPos.containing(lootPos);
+            if (this.skipKnownStructures) {
+               this.claimStructureAt(level, lootBlockPos);
+            }
+
+            BlockPos nearestMapStructure = level.findNearestMapStructure(this.destination, lootBlockPos, this.searchRadius, this.skipKnownStructures);
             if (nearestMapStructure == null) {
                return itemStack;
             } else {
@@ -95,6 +100,14 @@ public class ExplorationMapFunction extends LootItemConditionalFunction {
                return itemStack;
             }
          }
+      }
+   }
+
+   private void claimStructureAt(final ServerLevel level, final BlockPos pos) {
+      StructureManager structureManager = level.structureManager();
+      StructureStart start = structureManager.getStructureAt(pos, this.destination);
+      if (start.isValid() && start.canBeReferenced()) {
+         structureManager.addReference(start);
       }
    }
 

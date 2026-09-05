@@ -5,18 +5,16 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.ResolvableNumber;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt;
 
-public record Compostable(ResolvableNumber layers) {
+public record Compostable(ResolvableInt layers) {
    public static final Codec<Compostable> CODEC = RecordCodecBuilder.create(
-      i -> i.group(ResolvableNumber.CODEC.fieldOf("layers").forGetter(Compostable::layers)).apply(i, Compostable::new)
+      i -> i.group(ResolvableInt.CODEC.fieldOf("layers").forGetter(Compostable::layers)).apply(i, Compostable::new)
    );
-   public static final StreamCodec<ByteBuf, Compostable> STREAM_CODEC = StreamCodec.composite(
-      ResolvableNumber.STREAM_CODEC, Compostable::layers, Compostable::new
-   );
+   public static final StreamCodec<ByteBuf, Compostable> STREAM_CODEC = StreamCodec.composite(ResolvableInt.STREAM_CODEC, Compostable::layers, Compostable::new);
 
-   public Compostable(final ResourceKey<NumberProvider> layers) {
-      this(ResolvableNumber.fromKey(layers));
+   public Compostable(final ResourceKey<ContextIntProvider> layers) {
+      this(ResolvableInt.fromKey(layers));
    }
 }

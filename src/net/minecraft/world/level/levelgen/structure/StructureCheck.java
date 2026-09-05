@@ -3,7 +3,6 @@ package net.minecraft.world.level.levelgen.structure;
 import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
-import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
@@ -86,33 +85,108 @@ public class StructureCheck {
    }
 
    public StructureCheckResult checkStart(final ChunkPos pos, final Structure structure, final StructurePlacement placement, final boolean requireUnreferenced) {
-      long posKey = pos.pack();
-      Object2IntMap<Structure> cachedResult = (Object2IntMap<Structure>)this.loadedChunks.get(posKey);
-      if (cachedResult != null) {
-         return this.checkStructureInfo(cachedResult, structure, requireUnreferenced);
-      } else {
-         if (!this.chunksWithoutStartsInStorage.contains(posKey)) {
-            StructureCheckResult storageCheckResult = this.tryLoadFromStorage(pos, structure, requireUnreferenced);
-            if (storageCheckResult != null) {
-               return storageCheckResult;
-            }
-
-            if (this.chunksWithoutStartsInStorage.size() >= 131072) {
-               this.chunksWithoutStartsInStorage.clear();
-            }
-
-            this.chunksWithoutStartsInStorage.add(posKey);
-         }
-
-         if (!placement.applyAdditionalChunkRestrictions(pos.x(), pos.z(), this.seed)) {
-            return StructureCheckResult.START_NOT_PRESENT;
-         } else {
-            boolean isFeatureChunk = this.featureChecks
-               .computeIfAbsent(structure, k -> new Long2BooleanOpenHashMap())
-               .computeIfAbsent(posKey, k -> this.canCreateStructure(pos, structure));
-            return !isFeatureChunk ? StructureCheckResult.START_NOT_PRESENT : StructureCheckResult.CHUNK_LOAD_NEEDED;
-         }
-      }
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.OutOfMemoryError: Java heap space
+      //   at java.base/java.util.HashMap.resize(HashMap.java:711)
+      //   at java.base/java.util.HashMap.putVal(HashMap.java:670)
+      //   at java.base/java.util.HashMap.put(HashMap.java:619)
+      //   at java.base/java.util.HashSet.add(HashSet.java:230)
+      //   at java.base/java.util.stream.DistinctOps$1$2.accept(DistinctOps.java:173)
+      //   at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+      //   at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+      //   at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+      //   at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+      //   at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+      //   at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:723)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.setEffectivelyFinalVars(StackVarsProcessor.java:1021)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.setEffectivelyFinalVars(StackVarsProcessor.java:1065)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.setEffectivelyFinalVars(StackVarsProcessor.java:932)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.setEffectivelyFinalVars(StackVarsProcessor.java:937)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.setEffectivelyFinalVars(StackVarsProcessor.java:937)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.setEffectivelyFinalVars(StackVarsProcessor.java:937)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.setEffectivelyFinalVars(StackVarsProcessor.java:937)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.setEffectivelyFinalVars(StackVarsProcessor.java:937)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:68)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:40)
+      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:224)
+      //
+      // Bytecode:
+      // 00: aload 1
+      // 01: invokevirtual net/minecraft/world/level/ChunkPos.pack ()J
+      // 04: lstore 5
+      // 06: aload 0
+      // 07: getfield net/minecraft/world/level/levelgen/structure/StructureCheck.loadedChunks Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+      // 0a: lload 5
+      // 0c: invokeinterface it/unimi/dsi/fastutil/longs/Long2ObjectMap.get (J)Ljava/lang/Object; 3
+      // 11: checkcast it/unimi/dsi/fastutil/objects/Object2IntMap
+      // 14: astore 7
+      // 16: aload 7
+      // 18: ifnull 25
+      // 1b: aload 0
+      // 1c: aload 7
+      // 1e: aload 2
+      // 1f: iload 4
+      // 21: invokevirtual net/minecraft/world/level/levelgen/structure/StructureCheck.checkStructureInfo (Lit/unimi/dsi/fastutil/objects/Object2IntMap;Lnet/minecraft/world/level/levelgen/structure/Structure;Z)Lnet/minecraft/world/level/levelgen/structure/StructureCheckResult;
+      // 24: areturn
+      // 25: aload 0
+      // 26: getfield net/minecraft/world/level/levelgen/structure/StructureCheck.chunksWithoutStartsInStorage Lit/unimi/dsi/fastutil/longs/LongSet;
+      // 29: lload 5
+      // 2b: invokeinterface it/unimi/dsi/fastutil/longs/LongSet.contains (J)Z 3
+      // 30: ifne 68
+      // 33: aload 0
+      // 34: aload 1
+      // 35: aload 2
+      // 36: iload 4
+      // 38: invokevirtual net/minecraft/world/level/levelgen/structure/StructureCheck.tryLoadFromStorage (Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/levelgen/structure/Structure;Z)Lnet/minecraft/world/level/levelgen/structure/StructureCheckResult;
+      // 3b: astore 8
+      // 3d: aload 8
+      // 3f: ifnull 45
+      // 42: aload 8
+      // 44: areturn
+      // 45: aload 0
+      // 46: getfield net/minecraft/world/level/levelgen/structure/StructureCheck.chunksWithoutStartsInStorage Lit/unimi/dsi/fastutil/longs/LongSet;
+      // 49: invokeinterface it/unimi/dsi/fastutil/longs/LongSet.size ()I 1
+      // 4e: ldc 131072
+      // 50: if_icmplt 5c
+      // 53: aload 0
+      // 54: getfield net/minecraft/world/level/levelgen/structure/StructureCheck.chunksWithoutStartsInStorage Lit/unimi/dsi/fastutil/longs/LongSet;
+      // 57: invokeinterface it/unimi/dsi/fastutil/longs/LongSet.clear ()V 1
+      // 5c: aload 0
+      // 5d: getfield net/minecraft/world/level/levelgen/structure/StructureCheck.chunksWithoutStartsInStorage Lit/unimi/dsi/fastutil/longs/LongSet;
+      // 60: lload 5
+      // 62: invokeinterface it/unimi/dsi/fastutil/longs/LongSet.add (J)Z 3
+      // 67: pop
+      // 68: aload 3
+      // 69: aload 1
+      // 6a: invokevirtual net/minecraft/world/level/ChunkPos.x ()I
+      // 6d: aload 1
+      // 6e: invokevirtual net/minecraft/world/level/ChunkPos.z ()I
+      // 71: aload 0
+      // 72: getfield net/minecraft/world/level/levelgen/structure/StructureCheck.seed J
+      // 75: invokeinterface net/minecraft/world/level/levelgen/structure/placement/StructurePlacement.applyAdditionalChunkRestrictions (IIJ)Z 5
+      // 7a: ifne 81
+      // 7d: getstatic net/minecraft/world/level/levelgen/structure/StructureCheckResult.START_NOT_PRESENT Lnet/minecraft/world/level/levelgen/structure/StructureCheckResult;
+      // 80: areturn
+      // 81: aload 0
+      // 82: getfield net/minecraft/world/level/levelgen/structure/StructureCheck.featureChecks Ljava/util/Map;
+      // 85: aload 2
+      // 86: invokedynamic apply ()Ljava/util/function/Function; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Ljava/lang/Object;, net/minecraft/world/level/levelgen/structure/StructureCheck.lambda$checkStart$0 (Lnet/minecraft/world/level/levelgen/structure/Structure;)Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;, (Lnet/minecraft/world/level/levelgen/structure/Structure;)Lit/unimi/dsi/fastutil/longs/Long2BooleanMap; ]
+      // 8b: invokeinterface java/util/Map.computeIfAbsent (Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object; 3
+      // 90: checkcast it/unimi/dsi/fastutil/longs/Long2BooleanMap
+      // 93: lload 5
+      // 95: aload 0
+      // 96: aload 1
+      // 97: aload 2
+      // 98: invokedynamic get (Lnet/minecraft/world/level/levelgen/structure/StructureCheck;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/levelgen/structure/Structure;)Lit/unimi/dsi/fastutil/longs/Long2BooleanFunction; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (J)Z, net/minecraft/world/level/levelgen/structure/StructureCheck.lambda$checkStart$1 (Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/levelgen/structure/Structure;J)Z, (J)Z ]
+      // 9d: invokeinterface it/unimi/dsi/fastutil/longs/Long2BooleanMap.computeIfAbsent (JLit/unimi/dsi/fastutil/longs/Long2BooleanFunction;)Z 4
+      // a2: istore 8
+      // a4: iload 8
+      // a6: ifne ad
+      // a9: getstatic net/minecraft/world/level/levelgen/structure/StructureCheckResult.START_NOT_PRESENT Lnet/minecraft/world/level/levelgen/structure/StructureCheckResult;
+      // ac: areturn
+      // ad: getstatic net/minecraft/world/level/levelgen/structure/StructureCheckResult.CHUNK_LOAD_NEEDED Lnet/minecraft/world/level/levelgen/structure/StructureCheckResult;
+      // b0: areturn
    }
 
    private boolean canCreateStructure(final ChunkPos pos, final Structure structure) {

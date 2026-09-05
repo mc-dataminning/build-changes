@@ -129,8 +129,8 @@ public class PoplarFoliagePlacer extends FoliagePlacer {
       final BlockPos pos,
       final Function<BlockState, BlockState> stateModifier
    ) {
-      if (level.isStateAtPosition(pos, state -> state.equals(tree.foliageProvider().getState(level, random, pos)))) {
-         foliageSetter.set(pos, stateModifier.apply(tree.trunkProvider().getState(level, random, pos)));
+      if (level.isStateAtPosition(pos, state -> state.equals(tree.foliageProvider().value().getState(level, random, pos)))) {
+         foliageSetter.set(pos, stateModifier.apply(tree.trunkProvider().value().getState(level, random, pos)));
       }
    }
 

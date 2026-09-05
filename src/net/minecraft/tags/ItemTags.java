@@ -200,6 +200,7 @@ public final class ItemTags {
    public static final TagKey<Item> METAL_NUGGETS = bind("metal_nuggets");
    public static final TagKey<Item> DOUSES_CAMPFIRES = bind("douses_campfires");
    public static final TagKey<Item> BREWING_POTION_INPUTS = bind("brewing_potion_inputs");
+   public static final TagKey<Item> FURNACE_FUEL_BOTTOM_TAKEABLE = bind("furnace_fuel_bottom_takeable");
    public static final TagKey<Item> FOOT_ARMOR_ENCHANTABLE = bind("enchantable/foot_armor");
    public static final TagKey<Item> LEG_ARMOR_ENCHANTABLE = bind("enchantable/leg_armor");
    public static final TagKey<Item> CHEST_ARMOR_ENCHANTABLE = bind("enchantable/chest_armor");

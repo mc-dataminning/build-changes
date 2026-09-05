@@ -96,6 +96,11 @@ public class SDLEventHandler {
    }
 
    public void pumpEvents() {
+      this.flushInputEvents();
+      this.pollEvents();
+   }
+
+   public void flushInputEvents() {
       SDLEvents.SDL_PumpEvents();
       SDLEvents.SDL_FlushEvents(768, 4871);
    }

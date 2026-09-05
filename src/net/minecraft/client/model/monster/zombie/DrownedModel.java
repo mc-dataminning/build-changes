@@ -1,5 +1,6 @@
 package net.minecraft.client.model.monster.zombie;
 
+import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -28,29 +29,21 @@ public class DrownedModel extends ZombieModel<ZombieRenderState> {
       return LayerDefinition.create(mesh, 64, 64);
    }
 
-   public void setupAnim(final ZombieRenderState state) {
-      super.setupAnim(state);
-      if (state.leftArmPose == HumanoidModel.ArmPose.THROW_TRIDENT) {
-         this.leftArm.xRot = this.leftArm.xRot * 0.5F - (float) Math.PI;
-         this.leftArm.yRot = 0.0F;
-      }
+   @Override
+   protected void setupAttackAnimation(final ZombieRenderState state) {
+      super.setupAttackAnimation(state);
+      AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, state.isAggressive, state);
+   }
 
-      if (state.rightArmPose == HumanoidModel.ArmPose.THROW_TRIDENT) {
-         this.rightArm.xRot = this.rightArm.xRot * 0.5F - (float) Math.PI;
-         this.rightArm.yRot = 0.0F;
-      }
-
-      float swimAmount = state.swimAmount;
-      if (swimAmount > 0.0F) {
-         this.rightArm.xRot = Mth.rotLerpRad(swimAmount, this.rightArm.xRot, (float) (-Math.PI * 4.0 / 5.0))
-            + swimAmount * 0.35F * Mth.sin((double)(0.1F * state.ageInTicks));
-         this.leftArm.xRot = Mth.rotLerpRad(swimAmount, this.leftArm.xRot, (float) (-Math.PI * 4.0 / 5.0))
-            - swimAmount * 0.35F * Mth.sin((double)(0.1F * state.ageInTicks));
-         this.rightArm.zRot = Mth.rotLerpRad(swimAmount, this.rightArm.zRot, -0.15F);
-         this.leftArm.zRot = Mth.rotLerpRad(swimAmount, this.leftArm.zRot, 0.15F);
-         this.leftLeg.xRot = this.leftLeg.xRot - swimAmount * 0.55F * Mth.sin((double)(0.1F * state.ageInTicks));
-         this.rightLeg.xRot = this.rightLeg.xRot + swimAmount * 0.55F * Mth.sin((double)(0.1F * state.ageInTicks));
-         this.head.xRot = 0.0F;
-      }
+   protected void setupSwimAnimation(final ZombieRenderState state, final float animationPos, final float swimAmount) {
+      this.rightArm.xRot = Mth.rotLerpRad(swimAmount, this.rightArm.xRot, (float) (-Math.PI * 4.0 / 5.0))
+         + swimAmount * 0.35F * Mth.sin((double)(0.1F * state.ageInTicks));
+      this.leftArm.xRot = Mth.rotLerpRad(swimAmount, this.leftArm.xRot, (float) (-Math.PI * 4.0 / 5.0))
+         - swimAmount * 0.35F * Mth.sin((double)(0.1F * state.ageInTicks));
+      this.rightArm.zRot = Mth.rotLerpRad(swimAmount, this.rightArm.zRot, -0.15F);
+      this.leftArm.zRot = Mth.rotLerpRad(swimAmount, this.leftArm.zRot, 0.15F);
+      this.leftLeg.xRot = this.leftLeg.xRot - swimAmount * 0.55F * Mth.sin((double)(0.1F * state.ageInTicks));
+      this.rightLeg.xRot = this.rightLeg.xRot + swimAmount * 0.55F * Mth.sin((double)(0.1F * state.ageInTicks));
+      this.head.xRot = 0.0F;
    }
 }

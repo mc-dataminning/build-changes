@@ -62,7 +62,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
          for (BlockTransformer.BlockTransformData transformData : this.transforms) {
             Direction clickedFace = context.getClickedFace();
             if (!transformData.disallowedFaces().contains(clickedFace)) {
-               BlockState newBlockState = transformData.blockStateProvider.getOptionalState(level, level.getRandom(), pos);
+               BlockState newBlockState = transformData.blockStateProvider.value().getOptionalState(level, level.getRandom(), pos);
                if (newBlockState != null) {
                   BlockState updatedShape = transformData.updateFromNeighbors ? Block.updateFromNeighbourShapes(newBlockState, level, pos) : newBlockState;
                   Player player = context.getPlayer();
@@ -123,7 +123,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
    }
 
    public static record BlockTransformData(
-      BlockStateProvider blockStateProvider,
+      Holder<BlockStateProvider> blockStateProvider,
       Holder<SoundEvent> sound,
       BlockTransformer.TransformParticle particle,
       List<Direction> disallowedFaces,
@@ -181,8 +181,12 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
          BlockTransformer.BlockTransformData::new
       );
 
-      public static BlockTransformer.BlockTransformData.Builder builder(final BlockStateProvider targetStateProvider) {
+      public static BlockTransformer.BlockTransformData.Builder builder(final Holder<BlockStateProvider> targetStateProvider) {
          return new BlockTransformer.BlockTransformData.Builder(targetStateProvider);
+      }
+
+      public static BlockTransformer.BlockTransformData.Builder builder(final BlockStateProvider targetStateProvider) {
+         return builder(Holder.direct(targetStateProvider));
       }
 
       public static BlockTransformer.BlockTransformData.Builder builder(final BlockPredicate predicate, final Block block) {
@@ -190,7 +194,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
       }
 
       public static class Builder {
-         private final BlockStateProvider targetStateProvider;
+         private final Holder<BlockStateProvider> targetStateProvider;
          private Holder<SoundEvent> sound = BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.EMPTY);
          private BlockTransformer.TransformParticle particle = BlockTransformer.TransformParticle.NONE;
          private List<Direction> disallowedFaces = List.of();
@@ -201,7 +205,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
          private boolean consumeOnUse = true;
          private int itemDamagePerUse = 1;
 
-         private Builder(final BlockStateProvider targetStateProvider) {
+         private Builder(final Holder<BlockStateProvider> targetStateProvider) {
             this.targetStateProvider = targetStateProvider;
          }
 

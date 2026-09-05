@@ -9,17 +9,17 @@ import java.util.Set;
 import java.util.Map.Entry;
 import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.IntRange;
+import net.minecraft.world.level.storage.loot.IntRangePredicate;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.scores.Objective;
 import net.minecraft.world.scores.ReadOnlyScoreInfo;
 import net.minecraft.world.scores.Scoreboard;
 
-public record EntityHasScoreCondition(Map<String, IntRange> scores, LootContext.EntityTarget entityTarget) implements LootItemCondition {
+public record EntityHasScoreCondition(Map<String, IntRangePredicate> scores, LootContext.EntityTarget entityTarget) implements LootItemCondition {
    public static final MapCodec<EntityHasScoreCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.unboundedMap(Codec.STRING, IntRange.CODEC).fieldOf("scores").forGetter(EntityHasScoreCondition::scores),
+               Codec.unboundedMap(Codec.STRING, IntRangePredicate.CODEC).fieldOf("scores").forGetter(EntityHasScoreCondition::scores),
                LootContext.EntityTarget.CODEC.fieldOf("entity").forGetter(EntityHasScoreCondition::entityTarget)
             )
             .apply(i, EntityHasScoreCondition::new)
@@ -48,7 +48,7 @@ public record EntityHasScoreCondition(Map<String, IntRange> scores, LootContext.
       } else {
          Scoreboard scoreboard = context.getLevel().getScoreboard();
 
-         for (Entry<String, IntRange> entry : this.scores.entrySet()) {
+         for (Entry<String, IntRangePredicate> entry : this.scores.entrySet()) {
             if (!this.hasScore(context, entity, scoreboard, entry.getKey(), entry.getValue())) {
                return false;
             }
@@ -58,7 +58,9 @@ public record EntityHasScoreCondition(Map<String, IntRange> scores, LootContext.
       }
    }
 
-   private boolean hasScore(final LootContext context, final Entity entity, final Scoreboard scoreboard, final String objectiveName, final IntRange range) {
+   private boolean hasScore(
+      final LootContext context, final Entity entity, final Scoreboard scoreboard, final String objectiveName, final IntRangePredicate range
+   ) {
       Objective objective = scoreboard.getObjective(objectiveName);
       if (objective == null) {
          return false;
@@ -73,14 +75,14 @@ public record EntityHasScoreCondition(Map<String, IntRange> scores, LootContext.
    }
 
    public static class Builder implements LootItemCondition.Builder {
-      private final com.google.common.collect.ImmutableMap.Builder<String, IntRange> scores = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableMap.Builder<String, IntRangePredicate> scores = ImmutableMap.builder();
       private final LootContext.EntityTarget entityTarget;
 
       public Builder(final LootContext.EntityTarget entityTarget) {
          this.entityTarget = entityTarget;
       }
 
-      public EntityHasScoreCondition.Builder withScore(final String score, final IntRange bounds) {
+      public EntityHasScoreCondition.Builder withScore(final String score, final IntRangePredicate bounds) {
          this.scores.put(score, bounds);
          return this;
       }

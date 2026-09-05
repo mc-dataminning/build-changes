@@ -28,7 +28,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public class VegetationPatchFeature implements Feature {
    public static final MapCodec<VegetationPatchFeature> CODEC = makeCodec(VegetationPatchFeature::new);
    protected final HolderSet<Block> replaceable;
-   protected final BlockStateProvider groundState;
+   protected final Holder<BlockStateProvider> groundState;
    protected final Holder<PlacedFeature> vegetationFeature;
    protected final CaveSurface surface;
    protected final IntProvider depth;
@@ -39,7 +39,7 @@ public class VegetationPatchFeature implements Feature {
    protected final float extraEdgeColumnChance;
 
    protected static <T extends VegetationPatchFeature> MapCodec<T> makeCodec(
-      final Function10<HolderSet<Block>, BlockStateProvider, Holder<PlacedFeature>, CaveSurface, IntProvider, Float, Integer, Float, IntProvider, Float, T> constructor
+      final Function10<HolderSet<Block>, Holder<BlockStateProvider>, Holder<PlacedFeature>, CaveSurface, IntProvider, Float, Integer, Float, IntProvider, Float, T> constructor
    ) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
@@ -60,7 +60,7 @@ public class VegetationPatchFeature implements Feature {
 
    public VegetationPatchFeature(
       final HolderSet<Block> replaceable,
-      final BlockStateProvider groundState,
+      final Holder<BlockStateProvider> groundState,
       final Holder<PlacedFeature> vegetationFeature,
       final CaveSurface surface,
       final IntProvider depth,
@@ -162,7 +162,7 @@ public class VegetationPatchFeature implements Feature {
       final WorldGenLevel level, final Predicate<BlockState> replaceable, final RandomSource random, final BlockPos.MutableBlockPos belowPos, final int depth
    ) {
       for (int i = 0; i < depth; i++) {
-         BlockState stateToPlace = this.groundState.getState(level, random, belowPos);
+         BlockState stateToPlace = this.groundState.value().getState(level, random, belowPos);
          BlockState belowState = level.getBlockState(belowPos);
          if (!stateToPlace.is(belowState.getBlock())) {
             if (!replaceable.test(belowState)) {

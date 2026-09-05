@@ -41,7 +41,8 @@ import net.minecraft.server.commands.ArgProvider;
 import net.minecraft.server.commands.LootContextSources;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
 
 public class DataCommands {
    private static final SimpleCommandExceptionType ERROR_MERGE_UNCHANGED = new SimpleCommandExceptionType(Component.translatable("commands.data.merge.failed"));
@@ -277,23 +278,24 @@ public class DataCommands {
                }
 
                nodeSupplier.accept(
-                  targetPathNode,
-                  manipulator -> LootContextSources.addContextSources(
-                        Commands.literal("compute"),
-                        contextDecorator -> ((RequiredArgumentBuilder)Commands.argument("provider", ResourceOrIdArgument.numberProvider(buildContext))
-                                 .executes(c -> {
-                                    LootContext lootContext = contextDecorator.createContext(c);
-                                    Holder<NumberProvider> provider = ResourceOrIdArgument.getNumberProvider(c, "provider");
-                                    float value = provider.value().getFloat(lootContext);
-                                    return manipulateData(c, targetProvider, manipulator, List.of(FloatTag.valueOf(value)));
-                                 }))
-                              .then(Commands.literal("integer").executes(c -> {
-                                 LootContext lootContext = contextDecorator.createContext(c);
-                                 Holder<NumberProvider> provider = ResourceOrIdArgument.getNumberProvider(c, "provider");
-                                 int value = provider.value().getInt(lootContext);
-                                 return manipulateData(c, targetProvider, manipulator, List.of(IntTag.valueOf(value)));
-                              }))
-                     )
+                  targetPathNode, manipulator -> LootContextSources.addContextSources(Commands.literal("compute"), (contextDecorator, output) -> {
+                        output.accept(
+                           Commands.literal("float").then(Commands.argument("provider", ResourceOrIdArgument.floatProvider(buildContext)).executes(c -> {
+                              LootContext lootContext = contextDecorator.createContext(c);
+                              Holder<ContextFloatProvider> provider = ResourceOrIdArgument.getFloatProvider(c, "provider");
+                              float value = provider.value().getFloat(lootContext);
+                              return manipulateData(c, targetProvider, manipulator, List.of(FloatTag.valueOf(value)));
+                           }))
+                        );
+                        output.accept(
+                           Commands.literal("integer").then(Commands.argument("provider", ResourceOrIdArgument.intProvider(buildContext)).executes(c -> {
+                              LootContext lootContext = contextDecorator.createContext(c);
+                              Holder<ContextIntProvider> provider = ResourceOrIdArgument.getIntProvider(c, "provider");
+                              int value = provider.value().getInt(lootContext);
+                              return manipulateData(c, targetProvider, manipulator, List.of(IntTag.valueOf(value)));
+                           }))
+                        );
+                     })
                );
                nodeSupplier.accept(
                   targetPathNode, manipulator -> Commands.literal("value").then(Commands.argument("value", NbtTagArgument.nbtTag()).executes(c -> {

@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public record SingleBlockPillarFeature(
-   BlockStateProvider block, BlockPredicate canReplace, Direction direction, float chanceToContinue, Optional<Holder<PlacedFeature>> capFeature
+   Holder<BlockStateProvider> block, BlockPredicate canReplace, Direction direction, float chanceToContinue, Optional<Holder<PlacedFeature>> capFeature
 ) implements Feature {
    public static final MapCodec<SingleBlockPillarFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
@@ -28,7 +28,9 @@ public record SingleBlockPillarFeature(
             .apply(i, SingleBlockPillarFeature::new)
    );
 
-   public SingleBlockPillarFeature(final BlockStateProvider block, final BlockPredicate mayReplace, final Direction direction, final float chanceToContinue) {
+   public SingleBlockPillarFeature(
+      final Holder<BlockStateProvider> block, final BlockPredicate mayReplace, final Direction direction, final float chanceToContinue
+   ) {
       this(block, mayReplace, direction, chanceToContinue, Optional.empty());
    }
 
@@ -42,7 +44,7 @@ public record SingleBlockPillarFeature(
       BlockPos.MutableBlockPos pos = origin.mutable();
 
       while (this.canReplace.test(level, pos) && random.nextFloat() < this.chanceToContinue && !level.isOutsideBuildHeight(pos)) {
-         level.setBlock(pos, this.block.getState(level, random, pos), 2);
+         level.setBlock(pos, this.block.value().getState(level, random, pos), 2);
          pos.move(this.direction);
       }
 

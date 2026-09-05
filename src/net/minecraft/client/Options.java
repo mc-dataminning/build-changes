@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.mojang.blaze3d.platform.InputConstants;
+import com.mojang.blaze3d.platform.MacosUtil;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.datafixers.util.Pair;
@@ -497,12 +498,10 @@ public class Options {
    );
    private static final Component CTRL_CLICK_EMULATES_RIGHT_CLICK_TOOLTIP = Component.translatable("options.ctrlClickEmulatesRightClick.tooltip");
    private final OptionInstance<Boolean> ctrlClickEmulatesRightClick = OptionInstance.createBoolean(
-      "options.ctrlClickEmulatesRightClick", OptionInstance.cachedConstantTooltip(CTRL_CLICK_EMULATES_RIGHT_CLICK_TOOLTIP), false, value -> {
-         Window window = Minecraft.getInstance().getWindow();
-         if (window != null) {
-            window.setMacCtrlClickEmulatesRightClick(value);
-         }
-      }
+      "options.ctrlClickEmulatesRightClick",
+      OptionInstance.cachedConstantTooltip(CTRL_CLICK_EMULATES_RIGHT_CLICK_TOOLTIP),
+      false,
+      MacosUtil::setCtrlClickEmulatesRightClick
    );
    public int glDebugVerbosity = 1;
    private final OptionInstance<Boolean> autoJump = OptionInstance.createBoolean("options.autoJump", false);
@@ -598,6 +597,13 @@ public class Options {
       value -> Tooltip.create(value ? TOOLTIP_EXCLUSIVE_FULLSCREEN_ON : TOOLTIP_EXCLUSIVE_FULLSCREEN_OFF),
       false,
       value -> Minecraft.getInstance().getWindow().setExclusiveFullscreen(value)
+   );
+   private static final Component MAC_FULLSCREEN_MENU_VISIBILITY_TOOLTIP = Component.translatable("options.macFullscreenMenuVisibility.tooltip");
+   private final OptionInstance<Boolean> macFullscreenMenuVisibility = OptionInstance.createBoolean(
+      "options.macFullscreenMenuVisibility",
+      OptionInstance.cachedConstantTooltip(MAC_FULLSCREEN_MENU_VISIBILITY_TOOLTIP),
+      false,
+      MacosUtil::setFullscreenMenuVisibility
    );
    private final OptionInstance<Boolean> bobView = OptionInstance.createBoolean("options.viewBobbing", true);
    private static final Component KEY_TOGGLE = Component.translatable("options.key.toggle");
@@ -1373,6 +1379,10 @@ public class Options {
       return this.exclusiveFullscreen;
    }
 
+   public OptionInstance<Boolean> macFullscreenMenuVisibility() {
+      return this.macFullscreenMenuVisibility;
+   }
+
    public OptionInstance<Boolean> bobView() {
       return this.bobView;
    }
@@ -1547,6 +1557,7 @@ public class Options {
       access.process("prioritizeChunkUpdates", this.prioritizeChunkUpdates);
       access.process("fullscreen", this.fullscreen);
       access.process("exclusiveFullscreen", this.exclusiveFullscreen);
+      access.process("macFullscreenMenuVisibility", this.macFullscreenMenuVisibility);
       access.process("gamma", this.gamma);
       access.process("guiScale", this.guiScale);
       access.process("debugGuiScale", this.debugGuiScale);

@@ -61,7 +61,7 @@ public abstract class TrunkPlacer {
    protected static void placeBelowTrunkBlock(
       final WorldGenLevel level, final BiConsumer<BlockPos, BlockState> trunkSetter, final RandomSource random, final BlockPos pos, final TreeFeature tree
    ) {
-      BlockState blockBelowTrunk = tree.belowTrunkProvider().getOptionalState(level, random, pos);
+      BlockState blockBelowTrunk = tree.belowTrunkProvider().value().getOptionalState(level, random, pos);
       if (blockBelowTrunk != null) {
          trunkSetter.accept(pos, blockBelowTrunk);
       }
@@ -82,7 +82,7 @@ public abstract class TrunkPlacer {
       final Function<BlockState, BlockState> stateModifier
    ) {
       if (this.validTreePos(level, pos)) {
-         trunkSetter.accept(pos, stateModifier.apply(tree.trunkProvider().getState(level, random, pos)));
+         trunkSetter.accept(pos, stateModifier.apply(tree.trunkProvider().value().getState(level, random, pos)));
          return true;
       } else {
          return false;

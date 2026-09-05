@@ -276,6 +276,7 @@ import net.minecraft.util.datafix.fixes.TrappedChestBlockEntityFix;
 import net.minecraft.util.datafix.fixes.TrialSpawnerConfigFix;
 import net.minecraft.util.datafix.fixes.TrialSpawnerConfigInRegistryFix;
 import net.minecraft.util.datafix.fixes.TridentAnimationFix;
+import net.minecraft.util.datafix.fixes.UnfilledBuriedTreasureMapFix;
 import net.minecraft.util.datafix.fixes.UnflattenTextComponentFix;
 import net.minecraft.util.datafix.fixes.VariantRenameFix;
 import net.minecraft.util.datafix.fixes.VillagerDataFix;
@@ -1682,6 +1683,8 @@ public class DataFixers {
       fixerUpper.addFixer(new MergeTerrainChunkStatusFix(v5013));
       Schema v5014 = fixerUpper.addSchema(5014, SAME_NAMESPACED);
       fixerUpper.addFixer(new RemoveBlockTransformerComponentFix(v5014));
+      Schema v5016 = fixerUpper.addSchema(5016, SAME_NAMESPACED);
+      fixerUpper.addFixer(new UnfilledBuriedTreasureMapFix(v5016));
    }
 
    private static UnaryOperator<String> createRenamerNoNamespace(final Map<String, String> map) {

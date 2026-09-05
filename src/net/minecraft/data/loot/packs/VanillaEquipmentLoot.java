@@ -22,7 +22,7 @@ import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.functions.SetComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VanillaEquipmentLoot implements LootTableSubProvider {
    private final LootTableSubProvider.Context output;
@@ -47,7 +47,7 @@ public class VanillaEquipmentLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(
                         NestedLootTable.inlineLootTable(this.trialChamberEquipment(Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE, boltTrim).build())
                            .setWeight(4)
@@ -63,23 +63,23 @@ public class VanillaEquipmentLoot implements LootTableSubProvider {
          .accept(
             BuiltInLootTables.EQUIPMENT_TRIAL_CHAMBER_MELEE,
             LootTable.lootTable()
-               .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(NestedLootTable.lootTableReference(equipmentTrialChamblerTable)))
+               .withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(NestedLootTable.lootTableReference(equipmentTrialChamblerTable)))
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.IRON_SWORD).setWeight(4))
                      .add(
                         LootItem.lootTableItem(Items.IRON_SWORD)
                            .apply(
                               new SetEnchantmentsFunction.Builder()
-                                 .withEnchantment(this.enchantments.getOrThrow(Enchantments.SHARPNESS), ConstantValue.exactly(1.0F))
+                                 .withEnchantment(this.enchantments.getOrThrow(Enchantments.SHARPNESS), ContextIntProviders.exactly(1))
                            )
                      )
                      .add(
                         LootItem.lootTableItem(Items.IRON_SWORD)
                            .apply(
                               new SetEnchantmentsFunction.Builder()
-                                 .withEnchantment(this.enchantments.getOrThrow(Enchantments.KNOCKBACK), ConstantValue.exactly(1.0F))
+                                 .withEnchantment(this.enchantments.getOrThrow(Enchantments.KNOCKBACK), ContextIntProviders.exactly(1))
                            )
                      )
                      .add(LootItem.lootTableItem(Items.DIAMOND_SWORD))
@@ -89,23 +89,23 @@ public class VanillaEquipmentLoot implements LootTableSubProvider {
          .accept(
             BuiltInLootTables.EQUIPMENT_TRIAL_CHAMBER_RANGED,
             LootTable.lootTable()
-               .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(NestedLootTable.lootTableReference(equipmentTrialChamblerTable)))
+               .withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(NestedLootTable.lootTableReference(equipmentTrialChamblerTable)))
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.BOW).setWeight(2))
                      .add(
                         LootItem.lootTableItem(Items.BOW)
                            .apply(
                               new SetEnchantmentsFunction.Builder()
-                                 .withEnchantment(this.enchantments.getOrThrow(Enchantments.POWER), ConstantValue.exactly(1.0F))
+                                 .withEnchantment(this.enchantments.getOrThrow(Enchantments.POWER), ContextIntProviders.exactly(1))
                            )
                      )
                      .add(
                         LootItem.lootTableItem(Items.BOW)
                            .apply(
                               new SetEnchantmentsFunction.Builder()
-                                 .withEnchantment(this.enchantments.getOrThrow(Enchantments.PUNCH), ConstantValue.exactly(1.0F))
+                                 .withEnchantment(this.enchantments.getOrThrow(Enchantments.PUNCH), ContextIntProviders.exactly(1))
                            )
                      )
                )
@@ -116,31 +116,31 @@ public class VanillaEquipmentLoot implements LootTableSubProvider {
       return LootTable.lootTable()
          .withPool(
             LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
+               .setRolls(ContextIntProviders.exactly(1))
                .when(LootItemRandomChanceCondition.randomChance(0.5F))
                .add(
                   LootItem.lootTableItem(helmet)
                      .apply(SetComponentsFunction.setComponent(DataComponents.TRIM, trim))
                      .apply(
                         new SetEnchantmentsFunction.Builder()
-                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.PROTECTION), ConstantValue.exactly(4.0F))
-                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.PROJECTILE_PROTECTION), ConstantValue.exactly(4.0F))
-                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.FIRE_PROTECTION), ConstantValue.exactly(4.0F))
+                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.PROTECTION), ContextIntProviders.exactly(4))
+                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.PROJECTILE_PROTECTION), ContextIntProviders.exactly(4))
+                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.FIRE_PROTECTION), ContextIntProviders.exactly(4))
                      )
                )
          )
          .withPool(
             LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
+               .setRolls(ContextIntProviders.exactly(1))
                .when(LootItemRandomChanceCondition.randomChance(0.5F))
                .add(
                   LootItem.lootTableItem(chestplate)
                      .apply(SetComponentsFunction.setComponent(DataComponents.TRIM, trim))
                      .apply(
                         new SetEnchantmentsFunction.Builder()
-                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.PROTECTION), ConstantValue.exactly(4.0F))
-                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.PROJECTILE_PROTECTION), ConstantValue.exactly(4.0F))
-                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.FIRE_PROTECTION), ConstantValue.exactly(4.0F))
+                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.PROTECTION), ContextIntProviders.exactly(4))
+                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.PROJECTILE_PROTECTION), ContextIntProviders.exactly(4))
+                           .withEnchantment(this.enchantments.getOrThrow(Enchantments.FIRE_PROTECTION), ContextIntProviders.exactly(4))
                      )
                )
          );

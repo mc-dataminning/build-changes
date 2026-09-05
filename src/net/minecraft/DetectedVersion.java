@@ -25,7 +25,7 @@ public class DetectedVersion {
 
    public static WorldVersion createBuiltIn(final String id, final String name, final boolean stable) {
       return new WorldVersion.Simple(
-         id, name, new DataVersion(5015, "main"), SharedConstants.getProtocolVersion(), PackFormat.of(97, 0), PackFormat.of(118, 0), new Date(), stable
+         id, name, new DataVersion(5017, "main"), SharedConstants.getProtocolVersion(), PackFormat.of(97, 1), PackFormat.of(119, 0), new Date(), stable
       );
    }
 

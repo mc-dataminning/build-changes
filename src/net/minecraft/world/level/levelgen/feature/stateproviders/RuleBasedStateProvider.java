@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -14,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import org.jspecify.annotations.Nullable;
 
-public record RuleBasedStateProvider(@Nullable BlockStateProvider fallback, List<RuleBasedStateProvider.Rule> rules) implements BlockStateProvider {
+public record RuleBasedStateProvider(@Nullable Holder<BlockStateProvider> fallback, List<RuleBasedStateProvider.Rule> rules) implements BlockStateProvider {
    public static final MapCodec<RuleBasedStateProvider> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
                BlockStateProvider.CODEC.optionalFieldOf("fallback").forGetter(provider -> Optional.ofNullable(provider.fallback)),
@@ -23,16 +24,16 @@ public record RuleBasedStateProvider(@Nullable BlockStateProvider fallback, List
             .apply(i, RuleBasedStateProvider::new)
    );
 
-   private RuleBasedStateProvider(final Optional<BlockStateProvider> fallback, final List<RuleBasedStateProvider.Rule> rules) {
+   private RuleBasedStateProvider(final Optional<Holder<BlockStateProvider>> fallback, final List<RuleBasedStateProvider.Rule> rules) {
       this(fallback.orElse(null), rules);
    }
 
    public static RuleBasedStateProvider ifTrueThenProvide(final BlockPredicate ifTrue, final Block thenProvide) {
-      return ifTrueThenProvide(ifTrue, BlockStateProvider.simple(thenProvide));
+      return ifTrueThenProvide(ifTrue, BlockStateProvider.of(thenProvide));
    }
 
    public static RuleBasedStateProvider ifTrueThenProvide(final BlockPredicate ifTrue, final BlockStateProvider thenProvide) {
-      return new RuleBasedStateProvider((BlockStateProvider)null, List.of(new RuleBasedStateProvider.Rule(ifTrue, thenProvide)));
+      return new RuleBasedStateProvider((Holder<BlockStateProvider>)null, List.of(new RuleBasedStateProvider.Rule(ifTrue, Holder.direct(thenProvide))));
    }
 
    @Override
@@ -51,11 +52,14 @@ public record RuleBasedStateProvider(@Nullable BlockStateProvider fallback, List
    public BlockState getOptionalState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
       for (RuleBasedStateProvider.Rule rule : this.rules) {
          if (rule.ifTrue().test(level, pos)) {
-            return rule.then().getState(level, random, pos);
+            BlockState optionalState = rule.then().value().getOptionalState(level, random, pos);
+            if (optionalState != null) {
+               return optionalState;
+            }
          }
       }
 
-      return this.fallback == null ? null : this.fallback.getState(level, random, pos);
+      return this.fallback == null ? null : this.fallback.value().getOptionalState(level, random, pos);
    }
 
    public static RuleBasedStateProvider.Builder builder() {
@@ -76,26 +80,26 @@ public record RuleBasedStateProvider(@Nullable BlockStateProvider fallback, List
       }
 
       public RuleBasedStateProvider.Builder ifTrueThenProvide(final BlockPredicate ifTrue, final BlockStateProvider thenProvide) {
-         this.rules.add(new RuleBasedStateProvider.Rule(ifTrue, thenProvide));
+         this.rules.add(new RuleBasedStateProvider.Rule(ifTrue, Holder.direct(thenProvide)));
          return this;
       }
 
       public RuleBasedStateProvider.Builder ifTrueThenProvide(final BlockPredicate ifTrue, final Block thenProvide) {
-         this.rules.add(new RuleBasedStateProvider.Rule(ifTrue, BlockStateProvider.simple(thenProvide)));
+         this.rules.add(new RuleBasedStateProvider.Rule(ifTrue, BlockStateProvider.holderOf(thenProvide)));
          return this;
       }
 
       public RuleBasedStateProvider.Builder ifTrueThenProvide(final BlockPredicate ifTrue, final BlockState thenProvide) {
-         this.rules.add(new RuleBasedStateProvider.Rule(ifTrue, BlockStateProvider.simple(thenProvide)));
+         this.rules.add(new RuleBasedStateProvider.Rule(ifTrue, BlockStateProvider.holderOf(thenProvide)));
          return this;
       }
 
       public RuleBasedStateProvider build() {
-         return new RuleBasedStateProvider(this.fallback, this.rules);
+         return new RuleBasedStateProvider(this.fallback == null ? null : Holder.direct(this.fallback), this.rules);
       }
    }
 
-   public static record Rule(BlockPredicate ifTrue, BlockStateProvider then) {
+   public static record Rule(BlockPredicate ifTrue, Holder<BlockStateProvider> then) {
       public static final Codec<RuleBasedStateProvider.Rule> CODEC = RecordCodecBuilder.create(
          i -> i.group(
                   BlockPredicate.CODEC.fieldOf("if_true").forGetter(RuleBasedStateProvider.Rule::ifTrue),

@@ -1183,7 +1183,7 @@ public abstract class Entity
 
    private Vec3 collide(final Vec3 movement) {
       AABB aabb = this.getBoundingBox();
-      List<VoxelShape> entityColliders = this.level().getEntityCollisions(this, aabb.expandTowards(movement));
+      List<VoxelShape> entityColliders = this.level().getEntityCollisions(this, aabb.expandTowards(movement).expandTowards(0.0, (double)this.maxUpStep(), 0.0));
       Vec3 movementStep = movement.lengthSqr() == 0.0 ? movement : collideBoundingBox(this, movement, aabb, this.level(), entityColliders);
       boolean xCollision = movement.x != movementStep.x;
       boolean yCollision = movement.y != movementStep.y;
@@ -3035,6 +3035,10 @@ public abstract class Entity
    }
 
    public boolean killedEntity(final ServerLevel level, final LivingEntity entity, final DamageSource source) {
+      return true;
+   }
+
+   public boolean projectileReceivesSideEffectsOnHit(final boolean wasHurt) {
       return true;
    }
 

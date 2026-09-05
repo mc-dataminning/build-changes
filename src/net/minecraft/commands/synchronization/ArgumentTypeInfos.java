@@ -138,9 +138,15 @@ public class ArgumentTypeInfos {
       );
       register(
          registry,
-         "number_provider",
-         ResourceOrIdArgument.NumberProviderArgument.class,
-         SingletonArgumentInfo.contextAware(ResourceOrIdArgument::numberProvider)
+         "context_float_provider",
+         ResourceOrIdArgument.ContextFloatProviderArgument.class,
+         SingletonArgumentInfo.contextAware(ResourceOrIdArgument::floatProvider)
+      );
+      register(
+         registry,
+         "context_int_provider",
+         ResourceOrIdArgument.ContextIntProviderArgument.class,
+         SingletonArgumentInfo.contextAware(ResourceOrIdArgument::intProvider)
       );
       register(registry, "slot_source", SlotSourceArgument.class, SingletonArgumentInfo.contextAware(SlotSourceArgument::slotSource));
       register(registry, "dialog", ResourceOrIdArgument.DialogArgument.class, SingletonArgumentInfo.contextAware(ResourceOrIdArgument::dialog));

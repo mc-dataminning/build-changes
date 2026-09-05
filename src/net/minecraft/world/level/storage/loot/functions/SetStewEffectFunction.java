@@ -21,8 +21,8 @@ import net.minecraft.world.level.storage.loot.LootContextUser;
 import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class SetStewEffectFunction extends LootItemConditionalFunction {
    private static final Codec<List<SetStewEffectFunction.EffectEntry>> EFFECTS_LIST = SetStewEffectFunction.EffectEntry.CODEC.listOf().validate(entries -> {
@@ -86,9 +86,13 @@ public class SetStewEffectFunction extends LootItemConditionalFunction {
          return this;
       }
 
-      public SetStewEffectFunction.Builder withEffect(final Holder<MobEffect> effect, final Holder<NumberProvider> duration) {
+      public SetStewEffectFunction.Builder withEffect(final Holder<MobEffect> effect, final Holder<ContextIntProvider> duration) {
          this.effects.add(new SetStewEffectFunction.EffectEntry(effect, duration));
          return this;
+      }
+
+      public SetStewEffectFunction.Builder withEffect(final Holder<MobEffect> effect, final int duration) {
+         return this.withEffect(effect, ContextIntProviders.exactly(duration));
       }
 
       @Override
@@ -97,11 +101,11 @@ public class SetStewEffectFunction extends LootItemConditionalFunction {
       }
    }
 
-   private static record EffectEntry(Holder<MobEffect> effect, Holder<NumberProvider> duration) implements LootContextUser {
+   private static record EffectEntry(Holder<MobEffect> effect, Holder<ContextIntProvider> duration) implements LootContextUser {
       public static final Codec<SetStewEffectFunction.EffectEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
                   MobEffect.CODEC.fieldOf("type").forGetter(SetStewEffectFunction.EffectEntry::effect),
-                  NumberProviders.CODEC.fieldOf("duration").forGetter(SetStewEffectFunction.EffectEntry::duration)
+                  ContextIntProviders.CODEC.fieldOf("duration").forGetter(SetStewEffectFunction.EffectEntry::duration)
                )
                .apply(i, SetStewEffectFunction.EffectEntry::new)
       );

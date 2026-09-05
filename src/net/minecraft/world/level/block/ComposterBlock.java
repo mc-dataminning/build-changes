@@ -198,7 +198,7 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
                .create(LootContextParamSets.BLOCK_INTERACT)
          )
          .create(Optional.empty());
-      int layersToAdd = compostable.layers().getInt(lootContext, 0);
+      int layersToAdd = compostable.layers().get(lootContext, 0);
       if (layersToAdd > 0) {
          int newLevel = Mth.clamp(fillLevel + layersToAdd, 0, 7);
          BlockState newState = state.setValue(LEVEL, Integer.valueOf(newLevel));

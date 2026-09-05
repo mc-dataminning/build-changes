@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -22,26 +21,9 @@ import net.minecraft.util.StringRepresentable;
 
 public class DatapackStructureReport implements DataProvider {
    private final PackOutput output;
-   private static final DatapackStructureReport.Entry PSEUDO_REGISTRY = new DatapackStructureReport.Entry(true, false, true);
    private static final DatapackStructureReport.Entry STABLE_DYNAMIC_REGISTRY = new DatapackStructureReport.Entry(true, true, true);
    private static final DatapackStructureReport.Entry UNSTABLE_DYNAMIC_REGISTRY = new DatapackStructureReport.Entry(true, true, false);
    private static final DatapackStructureReport.Entry BUILT_IN_REGISTRY = new DatapackStructureReport.Entry(false, true, true);
-   private static final Map<ResourceKey<? extends Registry<?>>, DatapackStructureReport.Entry> MANUAL_ENTRIES = Map.of(
-      Registries.RECIPE,
-      PSEUDO_REGISTRY,
-      Registries.ADVANCEMENT,
-      PSEUDO_REGISTRY,
-      Registries.LOOT_TABLE,
-      STABLE_DYNAMIC_REGISTRY,
-      Registries.ITEM_MODIFIER,
-      STABLE_DYNAMIC_REGISTRY,
-      Registries.PREDICATE,
-      STABLE_DYNAMIC_REGISTRY,
-      Registries.NUMBER_PROVIDER,
-      STABLE_DYNAMIC_REGISTRY,
-      Registries.SLOT_SOURCE,
-      STABLE_DYNAMIC_REGISTRY
-   );
    private static final Map<String, DatapackStructureReport.CustomPackEntry> NON_REGISTRY_ENTRIES = Map.of(
       "structure",
       new DatapackStructureReport.CustomPackEntry(DatapackStructureReport.Format.STRUCTURE, new DatapackStructureReport.Entry(true, false, true)),
@@ -83,7 +65,7 @@ public class DatapackStructureReport implements DataProvider {
       BuiltInRegistries.REGISTRY.forEach(entry -> this.putIfNotPresent(result, entry.key(), BUILT_IN_REGISTRY));
       RegistryDataLoader.WORLD_REGISTRIES.forEach(entry -> this.putIfNotPresent(result, entry.key(), UNSTABLE_DYNAMIC_REGISTRY));
       RegistryDataLoader.DIMENSION_REGISTRIES.forEach(entry -> this.putIfNotPresent(result, entry.key(), UNSTABLE_DYNAMIC_REGISTRY));
-      MANUAL_ENTRIES.forEach((key, entry) -> this.putIfNotPresent(result, (ResourceKey<? extends Registry<?>>)key, entry));
+      RegistryDataLoader.RELOADABLE_REGISTRIES.forEach(entry -> this.putIfNotPresent(result, entry.key(), STABLE_DYNAMIC_REGISTRY));
       return result;
    }
 

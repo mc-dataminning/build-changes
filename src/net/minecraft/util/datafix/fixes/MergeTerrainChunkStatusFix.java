@@ -72,7 +72,7 @@ public class MergeTerrainChunkStatusFix extends DataFix {
       final OpticFinder<Pair<Either<Biomes, Unit>, Pair<Either<BlockStates, Unit>, Dynamic<?>>>> sectionF,
       final boolean onlyBelowZero
    ) {
-      return chunk.update(DSL.remainderFinder(), remainder -> remainder.remove("Heightmaps"))
+      return chunk.update(DSL.remainderFinder(), remainder -> remainder.remove("Heightmaps").remove("blending_data"))
          .updateTyped(
             sectionsF,
             sections -> sections.update(

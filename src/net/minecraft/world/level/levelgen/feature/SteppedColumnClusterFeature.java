@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -20,7 +21,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import org.jspecify.annotations.Nullable;
 
 public record SteppedColumnClusterFeature(
-   BlockStateProvider block,
+   Holder<BlockStateProvider> block,
    BlockPredicate continueThrough,
    BlockPredicate canReplace,
    HolderSet<Block> cannotPlaceOn,
@@ -96,7 +97,7 @@ public record SteppedColumnClusterFeature(
 
             for (BlockPos.MutableBlockPos cursor = columnPos.mutable(); blocksY >= 0; blocksY--) {
                if (this.canReplace.test(level, cursor)) {
-                  this.setBlock(level, cursor, this.block.getState(level, random, cursor));
+                  this.setBlock(level, cursor, this.block.value().getState(level, random, cursor));
                   cursor.move(Direction.UP);
                   placedAny = true;
                } else {

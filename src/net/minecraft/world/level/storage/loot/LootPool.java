@@ -20,9 +20,10 @@ import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
 import net.minecraft.world.level.storage.loot.predicates.ConditionUserBuilder;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import org.apache.commons.lang3.mutable.MutableInt;
 
 public class LootPool implements Validatable {
@@ -31,23 +32,23 @@ public class LootPool implements Validatable {
                LootPoolEntries.CODEC.listOf().fieldOf("entries").forGetter(p -> p.entries),
                LootItemCondition.CODEC.optionalFieldOf("condition").forGetter(p -> p.condition),
                LootItemFunctions.CODEC.optionalFieldOf("modifier").forGetter(p -> p.modifier),
-               NumberProviders.CODEC.fieldOf("rolls").forGetter(p -> p.rolls),
-               NumberProviders.CODEC.optionalFieldOf("bonus_rolls", ConstantValue.exactly(0.0F)).forGetter(p -> p.bonusRolls)
+               ContextIntProviders.CODEC.fieldOf("rolls").forGetter(p -> p.rolls),
+               ContextFloatProviders.CODEC.optionalFieldOf("bonus_rolls", ContextFloatProviders.exactly(0.0F)).forGetter(p -> p.bonusRolls)
             )
             .apply(i, LootPool::new)
    );
    private final List<LootPoolEntryContainer> entries;
    private final Optional<Holder<LootItemCondition>> condition;
    private final Optional<Holder<LootItemFunction>> modifier;
-   private final Holder<NumberProvider> rolls;
-   private final Holder<NumberProvider> bonusRolls;
+   private final Holder<ContextIntProvider> rolls;
+   private final Holder<ContextFloatProvider> bonusRolls;
 
    private LootPool(
       final List<LootPoolEntryContainer> entries,
       final Optional<Holder<LootItemCondition>> condition,
       final Optional<Holder<LootItemFunction>> modifier,
-      final Holder<NumberProvider> rolls,
-      final Holder<NumberProvider> bonusRolls
+      final Holder<ContextIntProvider> rolls,
+      final Holder<ContextFloatProvider> bonusRolls
    ) {
       this.entries = entries;
       this.condition = condition;
@@ -117,10 +118,10 @@ public class LootPool implements Validatable {
       private final com.google.common.collect.ImmutableList.Builder<LootPoolEntryContainer> entries = ImmutableList.builder();
       private final com.google.common.collect.ImmutableList.Builder<Holder<LootItemCondition>> conditions = ImmutableList.builder();
       private final com.google.common.collect.ImmutableList.Builder<Holder<LootItemFunction>> functions = ImmutableList.builder();
-      private Holder<NumberProvider> rolls = ConstantValue.exactly(1.0F);
-      private Holder<NumberProvider> bonusRolls = ConstantValue.exactly(0.0F);
+      private Holder<ContextIntProvider> rolls = ContextIntProviders.exactly(1);
+      private Holder<ContextFloatProvider> bonusRolls = ContextFloatProviders.exactly(0.0F);
 
-      public LootPool.Builder setRolls(final Holder<NumberProvider> rolls) {
+      public LootPool.Builder setRolls(final Holder<ContextIntProvider> rolls) {
          this.rolls = rolls;
          return this;
       }
@@ -129,7 +130,7 @@ public class LootPool implements Validatable {
          return this;
       }
 
-      public LootPool.Builder setBonusRolls(final Holder<NumberProvider> bonusRolls) {
+      public LootPool.Builder setBonusRolls(final Holder<ContextFloatProvider> bonusRolls) {
          this.bonusRolls = bonusRolls;
          return this;
       }

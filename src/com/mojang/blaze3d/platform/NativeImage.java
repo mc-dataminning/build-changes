@@ -6,6 +6,14 @@ import com.mojang.logging.LogUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.nio.channels.WritableByteChannel;
@@ -19,19 +27,18 @@ import java.util.Set;
 import java.util.function.IntUnaryOperator;
 import net.minecraft.client.gui.font.providers.FreeTypeUtil;
 import net.minecraft.util.ARGB;
-import net.minecraft.util.PngInfo;
 import org.apache.commons.io.IOUtils;
 import org.jspecify.annotations.Nullable;
-import org.lwjgl.stb.STBIWriteCallback;
-import org.lwjgl.stb.STBImage;
+import org.lwjgl.PointerBuffer;
 import org.lwjgl.stb.STBImageResize;
-import org.lwjgl.stb.STBImageWrite;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 import org.lwjgl.util.freetype.FT_Bitmap;
 import org.lwjgl.util.freetype.FT_Face;
 import org.lwjgl.util.freetype.FT_GlyphSlot;
 import org.lwjgl.util.freetype.FreeType;
+import org.lwjgl.util.spng.SPNG;
+import org.lwjgl.util.spng.spng_ihdr;
 import org.slf4j.Logger;
 
 public final class NativeImage implements AutoCloseable {
@@ -43,7 +50,6 @@ public final class NativeImage implements AutoCloseable {
    private final NativeImage.Format format;
    private final int width;
    private final int height;
-   private final boolean useStbFree;
    private long pixels;
    private final long size;
 
@@ -57,7 +63,6 @@ public final class NativeImage implements AutoCloseable {
          this.width = width;
          this.height = height;
          this.size = (long)width * (long)height * (long)format.components();
-         this.useStbFree = false;
          if (zero) {
             this.pixels = MemoryUtil.nmemCalloc(1L, this.size);
          } else {
@@ -73,12 +78,11 @@ public final class NativeImage implements AutoCloseable {
       }
    }
 
-   public NativeImage(final NativeImage.Format format, final int width, final int height, final boolean useStbFree, final long pixels) {
+   public NativeImage(final NativeImage.Format format, final int width, final int height, final long pixels) {
       if (width > 0 && height > 0) {
          this.format = format;
          this.width = width;
          this.height = height;
-         this.useStbFree = useStbFree;
          this.pixels = pixels;
          this.size = (long)width * (long)height * (long)format.components();
       } else {
@@ -88,7 +92,7 @@ public final class NativeImage implements AutoCloseable {
 
    @Override
    public String toString() {
-      return "NativeImage[" + this.format + " " + this.width + "x" + this.height + "@" + this.pixels + (this.useStbFree ? "S" : "N") + "]";
+      return "NativeImage[" + this.format + " " + this.width + "x" + this.height + "@" + this.pixels + "]";
    }
 
    private boolean isOutsideBounds(final int x, final int y) {
@@ -96,26 +100,18 @@ public final class NativeImage implements AutoCloseable {
    }
 
    public static NativeImage read(final InputStream inputStream) throws IOException {
-      return read(NativeImage.Format.RGBA, inputStream);
-   }
-
-   public static NativeImage read(@Nullable final NativeImage.Format format, final InputStream inputStream) throws IOException {
       ByteBuffer file = null;
 
-      NativeImage var3;
+      NativeImage var2;
       try {
          file = TextureUtil.readResource(inputStream);
-         var3 = read(format, file);
+         var2 = read(file);
       } finally {
          MemoryUtil.memFree(file);
          IOUtils.closeQuietly(inputStream);
       }
 
-      return var3;
-   }
-
-   public static NativeImage read(final ByteBuffer bytes) throws IOException {
-      return read(NativeImage.Format.RGBA, bytes);
+      return var2;
    }
 
    public static NativeImage read(final byte[] bytes) throws IOException {
@@ -165,45 +161,69 @@ public final class NativeImage implements AutoCloseable {
       return read(nativeBuffer);
    }
 
-   public static NativeImage read(@Nullable final NativeImage.Format format, final ByteBuffer bytes) throws IOException {
-      if (format != null && !format.supportedByStb()) {
-         throw new UnsupportedOperationException("Don't know how to read format " + format);
-      } else if (MemoryUtil.memAddress(bytes) == 0L) {
+   public static NativeImage read(final ByteBuffer bytes) throws IOException {
+      if (MemoryUtil.memAddress(bytes) == 0L) {
          throw new IllegalArgumentException("Invalid buffer");
       } else {
-         PngInfo.validateHeader(bytes);
-         MemoryStack stack = MemoryStack.stackPush();
+         long context = SPNG.spng_ctx_new(0);
+         if (context == 0L) {
+            throw new IllegalStateException("Failed to create new SPNG context");
+         } else {
+            NativeImage var12;
+            try {
+               MemoryStack stack = MemoryStack.stackPush();
 
-         NativeImage var9;
-         try {
-            IntBuffer w = stack.mallocInt(1);
-            IntBuffer h = stack.mallocInt(1);
-            IntBuffer comp = stack.mallocInt(1);
-            ByteBuffer pixels = STBImage.stbi_load_from_memory(bytes, w, h, comp, format == null ? 0 : format.components);
-            if (pixels == null) {
-               throw new IOException("Could not load image: " + STBImage.stbi_failure_reason());
-            }
-
-            long address = MemoryUtil.memAddress(pixels);
-            MEMORY_POOL.malloc(address, pixels.limit());
-            var9 = new NativeImage(format == null ? NativeImage.Format.getStbFormat(comp.get(0)) : format, w.get(0), h.get(0), true, address);
-         } catch (Throwable var11) {
-            if (stack != null) {
                try {
-                  stack.close();
-               } catch (Throwable var10) {
-                  var11.addSuppressed(var10);
+                  SPNG.spng_set_chunk_limits(context, 1048576L, 1048576L);
+                  checkSpngError("set buffer", SPNG.spng_set_png_buffer(context, bytes));
+                  spng_ihdr header = spng_ihdr.calloc(stack);
+                  checkSpngError("read header", SPNG.spng_get_ihdr(context, header));
+                  int width = header.width();
+                  int height = header.height();
+                  PointerBuffer bufferSizePointer = stack.callocPointer(1);
+                  checkSpngError("calculate size", SPNG.spng_decoded_image_size(context, 1, bufferSizePointer));
+                  int size = Math.toIntExact(bufferSizePointer.get(0));
+                  ByteBuffer pixels = null;
+
+                  try {
+                     pixels = MemoryUtil.memAlloc(size);
+                     checkSpngError("decode image", SPNG.spng_decode_image(context, pixels, 1, 1));
+                     long address = MemoryUtil.memAddress(pixels);
+                     MEMORY_POOL.malloc(address, pixels.limit());
+                     pixels = null;
+                     var12 = new NativeImage(NativeImage.Format.RGBA, width, height, address);
+                  } finally {
+                     if (pixels != null) {
+                        MemoryUtil.memFree(pixels);
+                     }
+                  }
+               } catch (Throwable var25) {
+                  if (stack != null) {
+                     try {
+                        stack.close();
+                     } catch (Throwable var23) {
+                        var25.addSuppressed(var23);
+                     }
+                  }
+
+                  throw var25;
                }
+
+               if (stack != null) {
+                  stack.close();
+               }
+            } finally {
+               SPNG.spng_ctx_free(context);
             }
 
-            throw var11;
+            return var12;
          }
+      }
+   }
 
-         if (stack != null) {
-            stack.close();
-         }
-
-         return var9;
+   private static void checkSpngError(final String operation, final int result) throws IOException {
+      if (result != 0) {
+         throw new IOException("SPNG operation '" + operation + "' failed: " + SPNG.spng_strerror(result) + " (" + result + ")");
       }
    }
 
@@ -216,12 +236,7 @@ public final class NativeImage implements AutoCloseable {
    @Override
    public void close() {
       if (this.pixels != 0L) {
-         if (this.useStbFree) {
-            STBImage.nstbi_image_free(this.pixels);
-         } else {
-            MemoryUtil.nmemFree(this.pixels);
-         }
-
+         MemoryUtil.nmemFree(this.pixels);
          MEMORY_POOL.free(this.pixels);
       }
 
@@ -381,40 +396,49 @@ public final class NativeImage implements AutoCloseable {
    }
 
    public void writeToFile(final Path file) throws IOException {
-      if (!this.format.supportedByStb()) {
-         throw new UnsupportedOperationException("Don't know how to write format " + this.format);
-      } else {
-         this.checkAllocated();
+      this.checkAllocated();
+      long context = SPNG.spng_ctx_new(2);
 
-         try (WritableByteChannel out = Files.newByteChannel(file, OPEN_OPTIONS)) {
-            if (!this.writeToChannel(out)) {
-               throw new IOException("Could not write image to the PNG file \"" + file.toAbsolutePath() + "\": " + STBImage.stbi_failure_reason());
+      try (
+         WritableByteChannel out = Files.newByteChannel(file, OPEN_OPTIONS);
+         Arena arena = Arena.ofConfined();
+      ) {
+         MemoryStack stack = MemoryStack.stackPush();
+
+         try {
+            int width = this.getWidth();
+            int height = Math.min(this.getHeight(), Integer.MAX_VALUE / width / this.format.components());
+            if (height < this.getHeight()) {
+               LOGGER.warn("Dropping image height from {} to {} to fit the size into 32-bit signed int", this.getHeight(), height);
             }
-         }
-      }
-   }
 
-   private boolean writeToChannel(final WritableByteChannel output) throws IOException {
-      NativeImage.WriteCallback writer = new NativeImage.WriteCallback(output);
-
-      boolean var4;
-      try {
-         int height = Math.min(this.getHeight(), Integer.MAX_VALUE / this.getWidth() / this.format.components());
-         if (height < this.getHeight()) {
-            LOGGER.warn("Dropping image height from {} to {} to fit the size into 32-bit signed int", this.getHeight(), height);
-         }
-
-         if (STBImageWrite.nstbi_write_png_to_func(writer.address(), 0L, this.getWidth(), height, this.format.components(), this.pixels, 0) != 0) {
+            NativeImage.WriteCallback writer = new NativeImage.WriteCallback(out);
+            MemorySegment writerUpcall = writer.createUpcall(arena);
+            checkSpngError("set output", SPNG.nspng_set_png_stream(context, writerUpcall.address(), 0L));
+            spng_ihdr header = spng_ihdr.calloc(stack).width(width).height(height).color_type((byte)this.format.pngColorType).bit_depth((byte)8);
+            checkSpngError("set header", SPNG.spng_set_ihdr(context, header));
+            checkSpngError("write image", SPNG.nspng_encode_image(context, this.pixels, this.size, 256, 2));
             writer.throwIfException();
-            return true;
+         } catch (Throwable var24) {
+            if (stack != null) {
+               try {
+                  stack.close();
+               } catch (Throwable var23) {
+                  var24.addSuppressed(var23);
+               }
+            }
+
+            throw var24;
          }
 
-         var4 = false;
+         if (stack != null) {
+            stack.close();
+         }
+      } catch (IOException var27) {
+         throw new IOException("Could not write image to the PNG file \"" + file.toAbsolutePath(), var27);
       } finally {
-         writer.free();
+         SPNG.spng_ctx_free(context);
       }
-
-      return var4;
    }
 
    public void copyFrom(final NativeImage from) {
@@ -543,10 +567,10 @@ public final class NativeImage implements AutoCloseable {
    }
 
    public static enum Format {
-      RGBA(4, true, true, true, false, true, 0, 8, 16, 255, 24, true),
-      RGB(3, true, true, true, false, false, 0, 8, 16, 255, 255, true),
-      LUMINANCE_ALPHA(2, false, false, false, true, true, 255, 255, 255, 0, 8, true),
-      LUMINANCE(1, false, false, false, true, false, 0, 0, 0, 0, 255, true);
+      RGBA(4, true, true, true, false, true, 0, 8, 16, 255, 24, 6),
+      RGB(3, true, true, true, false, false, 0, 8, 16, 255, 255, 2),
+      LUMINANCE_ALPHA(2, false, false, false, true, true, 255, 255, 255, 0, 8, 4),
+      LUMINANCE(1, false, false, false, true, false, 0, 0, 0, 0, 255, 0);
 
       private final int components;
       private final boolean hasRed;
@@ -559,7 +583,7 @@ public final class NativeImage implements AutoCloseable {
       private final int blueOffset;
       private final int luminanceOffset;
       private final int alphaOffset;
-      private final boolean supportedByStb;
+      private final int pngColorType;
 
       private Format(
          final int components,
@@ -573,7 +597,7 @@ public final class NativeImage implements AutoCloseable {
          final int blueOffset,
          final int luminanceOffset,
          final int alphaOffset,
-         final boolean supportedByStb
+         final int pngColorType
       ) {
          this.components = components;
          this.hasRed = hasRed;
@@ -586,7 +610,7 @@ public final class NativeImage implements AutoCloseable {
          this.blueOffset = blueOffset;
          this.luminanceOffset = luminanceOffset;
          this.alphaOffset = alphaOffset;
-         this.supportedByStb = supportedByStb;
+         this.pngColorType = pngColorType;
       }
 
       public int components() {
@@ -664,42 +688,48 @@ public final class NativeImage implements AutoCloseable {
       public int luminanceOrAlphaOffset() {
          return this.hasLuminance ? this.luminanceOffset : this.alphaOffset;
       }
-
-      public boolean supportedByStb() {
-         return this.supportedByStb;
-      }
-
-      private static NativeImage.Format getStbFormat(final int i) {
-         switch (i) {
-            case 1:
-               return LUMINANCE;
-            case 2:
-               return LUMINANCE_ALPHA;
-            case 3:
-               return RGB;
-            case 4:
-            default:
-               return RGBA;
-         }
-      }
    }
 
-   private static class WriteCallback extends STBIWriteCallback {
+   private static class WriteCallback {
+      private static final Linker LINKER = Linker.nativeLinker();
+      private static final FunctionDescriptor CALLBACK_DESC = FunctionDescriptor.of(
+         ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE), ValueLayout.JAVA_LONG
+      );
+      private static final MethodHandle CALLBACK_FN = findCallbackFn();
       private final WritableByteChannel output;
       @Nullable
       private IOException exception;
+
+      private static MethodHandle findCallbackFn() {
+         try {
+            return MethodHandles.lookup()
+               .findVirtual(
+                  NativeImage.WriteCallback.class,
+                  "invoke",
+                  MethodType.methodType(int.class, MemorySegment.class, MemorySegment.class, MemorySegment.class, long.class)
+               );
+         } catch (Exception var1) {
+            throw new IllegalStateException(var1);
+         }
+      }
 
       private WriteCallback(final WritableByteChannel output) {
          this.output = output;
       }
 
-      public void invoke(final long context, final long data, final int size) {
-         ByteBuffer dataBuf = getData(data, size);
+      public MemorySegment createUpcall(final Arena arena) {
+         return LINKER.upcallStub(CALLBACK_FN.bindTo(this), CALLBACK_DESC, arena);
+      }
+
+      public int invoke(final MemorySegment ctx, final MemorySegment user, final MemorySegment dest, final long length) {
+         ByteBuffer dataBuf = dest.reinterpret(length).asByteBuffer();
 
          try {
             this.output.write(dataBuf);
+            return 0;
          } catch (IOException var8) {
             this.exception = var8;
+            return -2;
          }
       }
 

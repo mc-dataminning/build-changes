@@ -37,7 +37,7 @@ import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.storage.loot.IntRange;
+import net.minecraft.world.level.storage.loot.IntLimit;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -57,8 +57,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyC
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VanillaBlockLoot extends BlockLootSubProvider {
    private static final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
@@ -621,11 +620,11 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
       this.add(Blocks.HORN_CORAL_BLOCK, block -> this.createSingleItemTableWithSilkTouch(block, Blocks.DEAD_HORN_CORAL_BLOCK));
       this.add(Blocks.CRIMSON_NYLIUM, block -> this.createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));
       this.add(Blocks.WARPED_NYLIUM, block -> this.createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));
-      this.add(Blocks.BOOKSHELF, block -> this.createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-      this.add(Blocks.CLAY, block -> this.createSingleItemTableWithSilkTouch(block, Items.CLAY_BALL, ConstantValue.exactly(4.0F)));
-      this.add(Blocks.ENDER_CHEST, block -> this.createSingleItemTableWithSilkTouch(block, Blocks.OBSIDIAN, ConstantValue.exactly(8.0F)));
-      this.add(Blocks.SNOW_BLOCK, block -> this.createSingleItemTableWithSilkTouch(block, Items.SNOWBALL, ConstantValue.exactly(4.0F)));
-      this.add(Blocks.CHORUS_PLANT, this.createSingleItemTable(Items.CHORUS_FRUIT, UniformGenerator.between(0.0F, 1.0F)));
+      this.add(Blocks.BOOKSHELF, block -> this.createSingleItemTableWithSilkTouch(block, Items.BOOK, ContextIntProviders.exactly(3)));
+      this.add(Blocks.CLAY, block -> this.createSingleItemTableWithSilkTouch(block, Items.CLAY_BALL, ContextIntProviders.exactly(4)));
+      this.add(Blocks.ENDER_CHEST, block -> this.createSingleItemTableWithSilkTouch(block, Blocks.OBSIDIAN, ContextIntProviders.exactly(8)));
+      this.add(Blocks.SNOW_BLOCK, block -> this.createSingleItemTableWithSilkTouch(block, Items.SNOWBALL, ContextIntProviders.exactly(4)));
+      this.add(Blocks.CHORUS_PLANT, this.createSingleItemTable(Items.CHORUS_FRUIT, ContextIntProviders.between(0, 1)));
       this.dropPottedContents(Blocks.POTTED_OAK_SAPLING);
       this.dropPottedContents(Blocks.POTTED_SPRUCE_SAPLING);
       this.dropPottedContents(Blocks.POTTED_BIRCH_SAPLING);
@@ -746,7 +745,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                this.applyExplosionCondition(
                   Blocks.TNT,
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(
                         LootItem.lootTableItem(Blocks.TNT)
                            .when(
@@ -763,13 +762,13 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
          block -> LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(
                         (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                            block,
                            LootItem.lootTableItem(Items.COCOA_BEANS)
                               .apply(
-                                 SetItemCountFunction.setCount(ConstantValue.exactly(3.0F))
+                                 SetItemCountFunction.setCount(ContextIntProviders.exactly(3))
                                     .when(
                                        MatchBlock.blockMatches(this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(CocoaBlock.AGE, 2))
                                     )
@@ -783,13 +782,13 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
          block -> LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(
                         (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                            block,
                            LootItem.lootTableItem(Items.SHELF_MUSHROOM)
                               .apply(
-                                 SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))
+                                 SetItemCountFunction.setCount(ContextIntProviders.exactly(2))
                                     .when(
                                        MatchBlock.blockMatches(
                                           this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(ShelfMushroomBlock.AGE, 1)
@@ -805,14 +804,14 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
          block -> LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(
                         (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                            Blocks.SEA_PICKLE,
                            LootItem.lootTableItem(block)
                               .apply(
                                  List.of(2, 3, 4),
-                                 count -> SetItemCountFunction.setCount(ConstantValue.exactly((float)count.intValue()))
+                                 count -> SetItemCountFunction.setCount(ContextIntProviders.exactly(count))
                                        .when(
                                           MatchBlock.blockMatches(
                                              this.blocks,
@@ -885,7 +884,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                   this.applyExplosionCondition(
                      block,
                      LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1.0F))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(
                            LootItem.lootTableItem(block)
                               .apply(
@@ -1023,7 +1022,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                            )
                         )
                         .add(LootItem.lootTableItem(Items.SWEET_BERRIES))
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 3)))
                         .apply(ApplyBonusCount.addUniformBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
                   )
                   .withPool(
@@ -1034,7 +1033,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                            )
                         )
                         .add(LootItem.lootTableItem(Items.SWEET_BERRIES))
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2)))
                         .apply(ApplyBonusCount.addUniformBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
                   )
             )
@@ -1061,7 +1060,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                   block,
                   LootItem.lootTableItem(Items.GOLD_NUGGET)
-                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 6.0F)))
+                     .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 6)))
                      .apply(ApplyBonusCount.addOreBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
                )
             )
@@ -1079,7 +1078,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
          block -> this.createShearsDispatchTable(
                block,
                (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
-                  block, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                  block, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
                )
             )
       );
@@ -1106,7 +1105,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
          block -> LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(
                         (LootPoolEntryContainer.Builder<?>)((UniformContainerBase.Builder)this.applyExplosionCondition(block, LootItem.lootTableItem(block)))
                            .when(LootItemEntityPropertyCondition.entityPresent(LootContext.EntityTarget.THIS))
@@ -1122,9 +1121,9 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                   block,
                   LootItem.lootTableItem(Items.GLOWSTONE_DUST)
-                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)))
+                     .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 4)))
                      .apply(ApplyBonusCount.addUniformBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
-                     .apply(LimitCount.limitCount(IntRange.range(1, 4)))
+                     .apply(LimitCount.limitCount(IntLimit.range(1, 4)))
                )
             )
       );
@@ -1135,9 +1134,9 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                   block,
                   LootItem.lootTableItem(Items.MELON_SLICE)
-                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 7.0F)))
+                     .apply(SetItemCountFunction.setCount(ContextIntProviders.between(3, 7)))
                      .apply(ApplyBonusCount.addUniformBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
-                     .apply(LimitCount.limitCount(IntRange.upperBound(9)))
+                     .apply(LimitCount.limitCount(IntLimit.upperBound(9)))
                )
             )
       );
@@ -1150,9 +1149,9 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                   block,
                   LootItem.lootTableItem(Items.PRISMARINE_CRYSTALS)
-                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
+                     .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 3)))
                      .apply(ApplyBonusCount.addUniformBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
-                     .apply(LimitCount.limitCount(IntRange.range(1, 5)))
+                     .apply(LimitCount.limitCount(IntLimit.range(1, 5)))
                )
             )
       );
@@ -1163,9 +1162,9 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                   block,
                   LootItem.lootTableItem(Items.RESIN_CLUMP)
-                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                     .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
                      .apply(ApplyBonusCount.addUniformBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
-                     .apply(LimitCount.limitCount(IntRange.upperBound(9)))
+                     .apply(LimitCount.limitCount(IntLimit.upperBound(9)))
                )
             )
       );
@@ -1176,11 +1175,11 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                   this.applyExplosionDecay(
                      block,
                      LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1.0F))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(
                            LootItem.lootTableItem(Items.NETHER_WART)
                               .apply(
-                                 SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))
+                                 SetItemCountFunction.setCount(ContextIntProviders.between(2, 4))
                                     .when(
                                        MatchBlock.blockMatches(
                                           this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(NetherWartBlock.AGE, 3)
@@ -1217,7 +1216,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                                              StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, layers.intValue())
                                           )
                                        )
-                                       .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float)layers.intValue())))
+                                       .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(layers)))
                               )
                               .when(this.doesNotHaveSilkTouch()),
                            AlternativesEntry.alternatives(
@@ -1225,7 +1224,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                               layers -> layers == 8
                                     ? LootItem.lootTableItem(Blocks.SNOW_BLOCK)
                                     : LootItem.lootTableItem(Blocks.SNOW)
-                                       .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float)layers.intValue())))
+                                       .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(layers)))
                                        .when(
                                           MatchBlock.blockMatches(
                                              this.blocks,
@@ -1255,7 +1254,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
          block -> this.createSilkTouchDispatchTable(
                block,
                (LootPoolEntryContainer.Builder<?>)this.applyExplosionCondition(
-                  block, LootItem.lootTableItem(Items.CHARCOAL).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
+                  block, LootItem.lootTableItem(Items.CHARCOAL).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(2)))
                )
             )
       );
@@ -1266,7 +1265,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                this.applyExplosionCondition(
                   block,
                   LootItem.lootTableItem(Items.GOLD_NUGGET)
-                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F)))
+                     .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 5)))
                      .when(BonusLevelTableCondition.bonusLevelFlatChance(this.enchantments.getOrThrow(Enchantments.FORTUNE), 0.1F, 0.14285715F, 0.25F, 1.0F))
                      .otherwise(LootItem.lootTableItem(block))
                )
@@ -1277,7 +1276,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
          block -> this.createSilkTouchDispatchTable(
                block,
                (LootPoolEntryContainer.Builder<?>)this.applyExplosionCondition(
-                  block, LootItem.lootTableItem(Items.SOUL_SOIL).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                  block, LootItem.lootTableItem(Items.SOUL_SOIL).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                )
             )
       );
@@ -1286,12 +1285,12 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
          block -> this.createSilkTouchDispatchTable(
                block,
                LootItem.lootTableItem(Items.AMETHYST_SHARD)
-                  .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
+                  .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(4)))
                   .apply(ApplyBonusCount.addOreBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
                   .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(this.items, ItemTags.CLUSTER_MAX_HARVESTABLES)))
                   .otherwise(
                      (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
-                        block, LootItem.lootTableItem(Items.AMETHYST_SHARD).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
+                        block, LootItem.lootTableItem(Items.AMETHYST_SHARD).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(2)))
                      )
                   )
             )
@@ -1359,7 +1358,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
       return LootTable.lootTable()
          .withPool(
             LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
+               .setRolls(ContextIntProviders.exactly(1))
                .add(
                   DynamicLoot.dynamicEntry(DecoratedPotBlock.SHERDS_DYNAMIC_DROP_ID)
                      .when(
@@ -1397,11 +1396,11 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
                               ? LootItem.lootTableItem(Items.PITCHER_PLANT)
                                  .when(isAge)
                                  .when(isLowerPart)
-                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                                 .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                               : LootItem.lootTableItem(Items.PITCHER_POD)
                                  .when(isAge)
                                  .when(isLowerPart)
-                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)));
+                                 .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)));
                         }
                      )
                   )
@@ -1415,7 +1414,7 @@ public class VanillaBlockLoot extends BlockLootSubProvider {
             this.applyExplosionCondition(
                block,
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(block)
                         .apply(CopyComponentsFunction.copyComponentsFromBlockEntity(LootContextParams.BLOCK_ENTITY).include(DataComponents.CUSTOM_NAME))

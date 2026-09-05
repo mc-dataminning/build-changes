@@ -44,7 +44,6 @@ import net.minecraft.network.protocol.game.ServerboundContainerClosePacket;
 import net.minecraft.network.protocol.game.ServerboundMovePlayerPacket;
 import net.minecraft.network.protocol.game.ServerboundMoveVehiclePacket;
 import net.minecraft.network.protocol.game.ServerboundPlayerAbilitiesPacket;
-import net.minecraft.network.protocol.game.ServerboundPlayerActionPacket;
 import net.minecraft.network.protocol.game.ServerboundPlayerCommandPacket;
 import net.minecraft.network.protocol.game.ServerboundPlayerInputPacket;
 import net.minecraft.network.protocol.game.ServerboundRecipeBookSeenRecipePacket;
@@ -82,7 +81,6 @@ import net.minecraft.world.entity.vehicle.minecart.MinecartCommandBlock;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.AttackRange;
-import net.minecraft.world.item.component.SwingAnimation;
 import net.minecraft.world.item.component.UseEffects;
 import net.minecraft.world.item.component.WritableBookContent;
 import net.minecraft.world.item.crafting.display.RecipeDisplayId;
@@ -341,15 +339,6 @@ public class LocalPlayer extends AbstractClientPlayer {
             : ServerboundPlayerCommandPacket.Action.STOP_SPRINTING;
          this.connection.send(new ServerboundPlayerCommandPacket(this, action));
          this.wasSprinting = isSprinting;
-      }
-   }
-
-   public void drop(final boolean all) {
-      ServerboundPlayerActionPacket.Action action = all ? ServerboundPlayerActionPacket.Action.DROP_ALL_ITEMS : ServerboundPlayerActionPacket.Action.DROP_ITEM;
-      ItemStack prediction = this.getInventory().removeFromSelected(all);
-      this.connection.send(new ServerboundPlayerActionPacket(action, BlockPos.ZERO, Direction.DOWN));
-      if (!prediction.isEmpty()) {
-         this.swing(InteractionHand.MAIN_HAND, SwingAnimation.DEFAULT, false);
       }
    }
 

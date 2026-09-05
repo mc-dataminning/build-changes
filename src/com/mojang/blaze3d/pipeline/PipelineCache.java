@@ -48,5 +48,6 @@ public class PipelineCache implements AutoCloseable {
    @Override
    public void close() {
       this.clear();
+      this.shaderSource.close();
    }
 }

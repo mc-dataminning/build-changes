@@ -6,7 +6,7 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VanillaEntityInteractLoot implements LootTableSubProvider {
    private final LootTableSubProvider.Context output;
@@ -20,7 +20,7 @@ public class VanillaEntityInteractLoot implements LootTableSubProvider {
       this.output
          .accept(
             BuiltInLootTables.ARMADILLO_BRUSH,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.ARMADILLO_SCUTE)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.ARMADILLO_SCUTE)))
          );
    }
 }

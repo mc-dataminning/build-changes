@@ -82,7 +82,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyC
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.predicates.WeatherCheck;
-import net.minecraft.world.level.storage.loot.providers.number.EnchantmentLevelProvider;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
 import net.minecraft.world.phys.Vec3;
 
 public class Enchantments {
@@ -341,7 +341,7 @@ public class Enchantments {
                   new DamageEntity(LevelBasedValue.constant(1.0F), LevelBasedValue.constant(5.0F), damageTypes.getOrThrow(DamageTypes.THORNS)),
                   new ChangeItemDamage(LevelBasedValue.constant(2.0F))
                ),
-               LootItemRandomChanceCondition.randomChance(EnchantmentLevelProvider.forEnchantmentLevel(LevelBasedValue.perLevel(0.15F)))
+               LootItemRandomChanceCondition.randomChance(ContextFloatProviders.forEnchantmentLevel(LevelBasedValue.perLevel(0.15F)))
             )
       );
       register(
@@ -407,7 +407,7 @@ public class Enchantments {
                         BlockPredicate.unobstructed()
                      )
                   ),
-                  BlockStateProvider.simple(Blocks.FROSTED_ICE),
+                  BlockStateProvider.holderOf(Blocks.FROSTED_ICE),
                   Optional.of(GameEvent.BLOCK_PLACE)
                ),
                AllOfCondition.allOf(
@@ -522,7 +522,7 @@ public class Enchantments {
                EnchantmentEffectComponents.LOCATION_CHANGED,
                new ChangeItemDamage(LevelBasedValue.constant(1.0F)),
                AllOfCondition.allOf(
-                  LootItemRandomChanceCondition.randomChance(EnchantmentLevelProvider.forEnchantmentLevel(LevelBasedValue.constant(0.04F))),
+                  LootItemRandomChanceCondition.randomChance(ContextFloatProviders.forEnchantmentLevel(LevelBasedValue.constant(0.04F))),
                   LootItemEntityPropertyCondition.hasProperties(
                      LootContext.EntityTarget.THIS,
                      EntityPredicate.Builder.entity()

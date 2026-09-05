@@ -236,6 +236,8 @@ public class ServerGamePacketListenerImpl
    private static final int ATTACK_INDICATOR_TOLERANCE_TICKS = 5;
    public static final int CLIENT_LOADED_TIMEOUT_TIME = 60;
    private static final int MIN_SUPPORTED_BLOCKS_RESEND_TICKS = 200;
+   private static final int MAX_DISTANCE_TO_VALID_POSITION = 1;
+   private static final int INVALID_POSITION_CORRECTION_MAX_INTERVAL_TICKS = 20;
    private static final Component CHAT_VALIDATION_FAILED = Component.translatable("multiplayer.disconnect.chat_validation_failed");
    private static final Component INVALID_COMMAND_SIGNATURE = Component.translatable("chat.disabled.invalid_command_signature").withStyle(ChatFormatting.RED);
    public ServerPlayer player;
@@ -283,6 +285,7 @@ public class ServerGamePacketListenerImpl
    private int clientLoadedTimeoutTimer;
    private int lastSupportedBlocksSend;
    private final ServerCommandSuggestionsProvider commandSuggestionsProvider;
+   private int vehiclePositionLastResetAt;
 
    public ServerGamePacketListenerImpl(final MinecraftServer server, final Connection connection, final ServerPlayer player, final CommonListenerCookie cookie) {
       super(server, connection, cookie);
@@ -531,6 +534,14 @@ public class ServerGamePacketListenerImpl
             this.vehicleLastGoodX = vehicle.getX();
             this.vehicleLastGoodY = vehicle.getY();
             this.vehicleLastGoodZ = vehicle.getZ();
+         } else if (vehicle != this.player
+            && vehicle.getControllingPassenger() != this.player
+            && (this.tickCount - this.vehiclePositionLastResetAt > 20 || vehicle.distanceToSqr(movingToPos) > (double)Mth.square(1))) {
+            LOGGER.warn(
+               "{} was expected to be controlling vehicle {} but was not. Resetting vehicle position.", this.player.getPlainTextName(), vehicle.getName()
+            );
+            this.send(ClientboundMoveVehiclePacket.fromEntity(vehicle));
+            this.vehiclePositionLastResetAt = this.tickCount;
          }
       }
    }
@@ -544,7 +555,7 @@ public class ServerGamePacketListenerImpl
    public void handleAcceptTeleportPacket(final ServerboundAcceptTeleportationPacket packet) {
       PacketUtils.ensureRunningOnSameThread(packet, this, this.player.level());
       if (packet.id() == this.awaitingTeleport) {
-         if (this.awaitingPositionFromClient == null) {
+         if (this.awaitingPositionFromClient == null || containsInvalidValues(packet.x(), packet.y(), packet.z(), packet.yRot(), packet.xRot())) {
             this.disconnect(Component.translatable("multiplayer.disconnect.invalid_player_movement"));
             return;
          }
@@ -1087,15 +1098,20 @@ public class ServerGamePacketListenerImpl
             }
 
             if (this.hasClientLoaded()) {
-               float targetYRot = Mth.wrapDegrees(packet.getYRot(this.player.getYRot()));
-               float targetXRot = Mth.wrapDegrees(packet.getXRot(this.player.getXRot()));
+               float requestedYRot = packet.getYRot(this.player.getYRot());
+               float requestedXRot = packet.getXRot(this.player.getXRot());
                if (this.updateAwaitingTeleport()) {
-                  this.player.absSnapRotationTo(targetYRot, targetXRot);
+                  this.player.absSnapRotationTo(Mth.wrapDegrees(requestedYRot), Mth.wrapDegrees(requestedXRot));
                } else {
-                  double targetX = clampHorizontal(packet.getX(this.player.getX()));
-                  double targetY = clampVertical(packet.getY(this.player.getY()));
-                  double targetZ = clampHorizontal(packet.getZ(this.player.getZ()));
-                  this.handlePlayerPositionChange(targetX, targetY, targetZ, targetYRot, targetXRot, packet.isOnGround(), packet.horizontalCollision());
+                  this.handlePlayerPositionChange(
+                     packet.getX(this.player.getX()),
+                     packet.getY(this.player.getY()),
+                     packet.getZ(this.player.getZ()),
+                     requestedYRot,
+                     requestedXRot,
+                     packet.isOnGround(),
+                     packet.horizontalCollision()
+                  );
                }
             }
          }
@@ -1103,14 +1119,19 @@ public class ServerGamePacketListenerImpl
    }
 
    private void handlePlayerPositionChange(
-      final double targetX,
-      final double targetY,
-      final double targetZ,
-      final float targetYRot,
-      final float targetXRot,
+      final double requestedX,
+      final double requestedY,
+      final double requestedZ,
+      final float requestedYRot,
+      final float requestedXRot,
       final boolean isOnGround,
       final boolean horizontalCollision
    ) {
+      double targetX = clampHorizontal(requestedX);
+      double targetY = clampVertical(requestedY);
+      double targetZ = clampHorizontal(requestedZ);
+      float targetYRot = Mth.wrapDegrees(requestedYRot);
+      float targetXRot = Mth.wrapDegrees(requestedXRot);
       if (this.player.isPassenger()) {
          this.player.absSnapTo(this.player.getX(), this.player.getY(), this.player.getZ(), targetYRot, targetXRot);
          this.player.level().getChunkSource().move(this.player);

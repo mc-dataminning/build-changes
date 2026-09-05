@@ -367,16 +367,22 @@ public class MultiPlayerGameMode {
 
          if (!itemStack.isEmpty() && !player.getCooldowns().isOnCooldown(itemStack)) {
             UseOnContext context = new UseOnContext(player, hand, blockHit);
-            InteractionResult success;
+            InteractionResult result;
             if (player.hasInfiniteMaterials()) {
                int count = itemStack.getCount();
-               success = itemStack.useOn(context);
+               result = itemStack.useOn(context);
                itemStack.setCount(count);
             } else {
-               success = itemStack.useOn(context);
+               result = itemStack.useOn(context);
+               if (result instanceof InteractionResult.Success success) {
+                  ItemStack resultItemStack = Objects.requireNonNullElseGet(success.heldItemTransformedTo(), () -> player.getItemInHand(hand));
+                  if (resultItemStack != itemStack) {
+                     player.setItemInHand(hand, resultItemStack);
+                  }
+               }
             }
 
-            return success;
+            return result;
          } else {
             return InteractionResult.PASS;
          }
@@ -582,5 +588,15 @@ public class MultiPlayerGameMode {
 
    public void handleSlotStateChanged(final int slotId, final int containerId, final boolean newState) {
       this.connection.send(new ServerboundContainerSlotStateChangedPacket(slotId, containerId, newState));
+   }
+
+   public void dropItem(final LocalPlayer player, final boolean all) {
+      ServerboundPlayerActionPacket.Action action = all ? ServerboundPlayerActionPacket.Action.DROP_ALL_ITEMS : ServerboundPlayerActionPacket.Action.DROP_ITEM;
+      ItemStack prediction = player.getInventory().removeFromSelected(all);
+      this.ensureHasSentCarriedItem();
+      this.connection.send(new ServerboundPlayerActionPacket(action, BlockPos.ZERO, Direction.DOWN));
+      if (!prediction.isEmpty()) {
+         player.swing(InteractionHand.MAIN_HAND, SwingAnimation.DEFAULT, false);
+      }
    }
 }

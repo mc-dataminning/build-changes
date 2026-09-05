@@ -17,11 +17,14 @@ import java.util.stream.Stream;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtAccounter;
 import net.minecraft.nbt.NbtIo;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.util.FastBufferedInputStream;
 import net.minecraft.util.Util;
+import net.minecraft.util.datafix.DataFixTypes;
+import net.minecraft.util.datafix.DataFixers;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -82,20 +85,29 @@ public class NbtToSnbt implements DataProvider {
    @Nullable
    public static Path convertStructure(final CachedOutput cache, final Path path, final String name, final Path output) {
       try {
-         Path var7;
+         Path var8;
          try (
             InputStream rawInput = Files.newInputStream(path);
             InputStream input = new FastBufferedInputStream(rawInput);
          ) {
             Path resultPath = output.resolve(name + ".snbt");
-            writeSnbt(cache, resultPath, NbtUtils.structureToSnbt(NbtIo.readCompressed(input, NbtAccounter.unlimitedHeap())));
+            CompoundTag structure = NbtIo.readCompressed(input, NbtAccounter.unlimitedHeap());
+            writeSnbt(
+               cache,
+               resultPath,
+               NbtUtils.structureToSnbt(
+                  NbtUtils.addCurrentDataVersion(
+                     DataFixTypes.STRUCTURE.updateToCurrentVersion(DataFixers.getDataFixer(), structure, NbtUtils.getDataVersion(structure))
+                  )
+               )
+            );
             LOGGER.info("Converted {} from NBT to SNBT", name);
-            var7 = resultPath;
+            var8 = resultPath;
          }
 
-         return var7;
-      } catch (IOException var12) {
-         LOGGER.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{name, path, var12});
+         return var8;
+      } catch (IOException var13) {
+         LOGGER.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{name, path, var13});
          return null;
       }
    }

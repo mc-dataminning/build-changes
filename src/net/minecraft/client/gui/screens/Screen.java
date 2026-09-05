@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.NarratorStatus;
@@ -504,11 +502,6 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       this.width = width;
       this.height = height;
       this.repositionElements();
-   }
-
-   public void fillCrashDetails(final CrashReport report) {
-      CrashReportCategory category = report.addCategory("Affected screen", 1);
-      category.setDetail("Screen name", () -> this.getClass().getCanonicalName());
    }
 
    protected boolean isValidCharacterForName(final String currentName, final int newChar, final int cursorPos) {

@@ -8,8 +8,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetStewEffectFunction;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VanillaArchaeologyLoot implements LootTableSubProvider {
    private final LootTableSubProvider.Context output;
@@ -26,7 +25,7 @@ public class VanillaArchaeologyLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.ARMS_UP_POTTERY_SHERD).setWeight(2))
                      .add(LootItem.lootTableItem(Items.BREWER_POTTERY_SHERD).setWeight(2))
                      .add(LootItem.lootTableItem(Items.BRICK))
@@ -36,12 +35,12 @@ public class VanillaArchaeologyLoot implements LootTableSubProvider {
                         LootItem.lootTableItem(Items.SUSPICIOUS_STEW)
                            .apply(
                               SetStewEffectFunction.stewEffect()
-                                 .withEffect(MobEffects.NIGHT_VISION, UniformGenerator.between(7.0F, 10.0F))
-                                 .withEffect(MobEffects.JUMP_BOOST, UniformGenerator.between(7.0F, 10.0F))
-                                 .withEffect(MobEffects.WEAKNESS, UniformGenerator.between(6.0F, 8.0F))
-                                 .withEffect(MobEffects.BLINDNESS, UniformGenerator.between(5.0F, 7.0F))
-                                 .withEffect(MobEffects.POISON, UniformGenerator.between(10.0F, 20.0F))
-                                 .withEffect(MobEffects.SATURATION, UniformGenerator.between(7.0F, 10.0F))
+                                 .withEffect(MobEffects.NIGHT_VISION, ContextIntProviders.between(7, 10))
+                                 .withEffect(MobEffects.JUMP_BOOST, ContextIntProviders.between(7, 10))
+                                 .withEffect(MobEffects.WEAKNESS, ContextIntProviders.between(6, 8))
+                                 .withEffect(MobEffects.BLINDNESS, ContextIntProviders.between(5, 7))
+                                 .withEffect(MobEffects.POISON, ContextIntProviders.between(10, 20))
+                                 .withEffect(MobEffects.SATURATION, ContextIntProviders.between(7, 10))
                            )
                      )
                )
@@ -52,7 +51,7 @@ public class VanillaArchaeologyLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.ARCHER_POTTERY_SHERD))
                      .add(LootItem.lootTableItem(Items.MINER_POTTERY_SHERD))
                      .add(LootItem.lootTableItem(Items.PRIZE_POTTERY_SHERD))
@@ -69,7 +68,7 @@ public class VanillaArchaeologyLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.EMERALD).setWeight(2))
                      .add(LootItem.lootTableItem(Items.WHEAT).setWeight(2))
                      .add(LootItem.lootTableItem(Items.WOODEN_HOE).setWeight(2))
@@ -109,7 +108,7 @@ public class VanillaArchaeologyLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.BURN_POTTERY_SHERD))
                      .add(LootItem.lootTableItem(Items.DANGER_POTTERY_SHERD))
                      .add(LootItem.lootTableItem(Items.FRIEND_POTTERY_SHERD))
@@ -130,7 +129,7 @@ public class VanillaArchaeologyLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.ANGLER_POTTERY_SHERD))
                      .add(LootItem.lootTableItem(Items.SHELTER_POTTERY_SHERD))
                      .add(LootItem.lootTableItem(Items.SNORT_POTTERY_SHERD))
@@ -149,7 +148,7 @@ public class VanillaArchaeologyLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.BLADE_POTTERY_SHERD))
                      .add(LootItem.lootTableItem(Items.EXPLORER_POTTERY_SHERD))
                      .add(LootItem.lootTableItem(Items.MOURNER_POTTERY_SHERD))

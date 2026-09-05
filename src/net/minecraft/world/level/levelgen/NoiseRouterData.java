@@ -447,10 +447,16 @@ public class NoiseRouterData {
       DensityFunction edgeRoundoff = DensityFunctions.clampedMap(distanceFromEdge, 0.0F, 20.0F, -0.2F, 0.0F);
       DensityFunction veininess = whenTogglePositive ? toggle : toggle.negate();
       return DensityFunctions.rangeChoice(
-         baseVeinMask,
-         0.0F,
-         1000000.0F,
-         DensityFunctions.rangeChoice(veininess.sub(0.4F).add(edgeRoundoff), 0.0F, 1000000.0F, DensityFunctions.constant(0.7F), noVein),
+         y,
+         (float)type.minY,
+         (float)type.maxY,
+         DensityFunctions.rangeChoice(
+            baseVeinMask,
+            0.0F,
+            1000000.0F,
+            DensityFunctions.rangeChoice(veininess.sub(0.4F).add(edgeRoundoff), 0.0F, 1000000.0F, DensityFunctions.constant(0.7F), noVein),
+            noVein
+         ),
          noVein
       );
    }

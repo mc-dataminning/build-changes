@@ -71,7 +71,7 @@ public abstract class AbstractCookingRecipe extends SingleItemRecipe {
       );
    }
 
-   public static <T extends AbstractCookingRecipe> MapCodec<T> cookingMapCodec(final AbstractCookingRecipe.Factory<T> factory, final int defaultCookingTime) {
+   public static <T extends AbstractCookingRecipe> MapCodec<T> cookingMapCodec(final AbstractCookingRecipe.Factory<T> factory) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
                   Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
@@ -79,7 +79,7 @@ public abstract class AbstractCookingRecipe extends SingleItemRecipe {
                   Ingredient.CODEC.fieldOf("ingredient").forGetter(SingleItemRecipe::input),
                   ItemStackTemplate.CODEC.fieldOf("result").forGetter(SingleItemRecipe::result),
                   Codec.FLOAT.optionalFieldOf("experience", 0.0F).forGetter(AbstractCookingRecipe::experience),
-                  Codec.INT.optionalFieldOf("cookingtime", defaultCookingTime).forGetter(AbstractCookingRecipe::cookingTime)
+                  Codec.INT.fieldOf("cookingtime").forGetter(AbstractCookingRecipe::cookingTime)
                )
                .apply(i, factory::create)
       );

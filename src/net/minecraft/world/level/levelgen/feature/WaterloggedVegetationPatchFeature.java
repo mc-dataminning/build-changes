@@ -25,7 +25,7 @@ public class WaterloggedVegetationPatchFeature extends VegetationPatchFeature {
 
    public WaterloggedVegetationPatchFeature(
       final HolderSet<Block> replaceable,
-      final BlockStateProvider groundState,
+      final Holder<BlockStateProvider> groundState,
       final Holder<PlacedFeature> vegetationFeature,
       final CaveSurface surface,
       final IntProvider depth,

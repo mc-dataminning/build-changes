@@ -13,16 +13,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class SetRandomDyesFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetRandomDyesFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i).and(NumberProviders.CODEC.fieldOf("number_of_dyes").forGetter(f -> f.numberOfDyes)).apply(i, SetRandomDyesFunction::new)
+      i -> commonFields(i).and(ContextIntProviders.CODEC.fieldOf("number_of_dyes").forGetter(f -> f.numberOfDyes)).apply(i, SetRandomDyesFunction::new)
    );
-   private final Holder<NumberProvider> numberOfDyes;
+   private final Holder<ContextIntProvider> numberOfDyes;
 
-   private SetRandomDyesFunction(final Optional<Holder<LootItemCondition>> condition, final Holder<NumberProvider> numberOfDyes) {
+   private SetRandomDyesFunction(final Optional<Holder<LootItemCondition>> condition, final Holder<ContextIntProvider> numberOfDyes) {
       super(condition);
       this.numberOfDyes = numberOfDyes;
    }
@@ -49,7 +49,7 @@ public class SetRandomDyesFunction extends LootItemConditionalFunction {
       }
    }
 
-   public static LootItemConditionalFunction.Builder<?> withCount(final Holder<NumberProvider> numberOfDyes) {
+   public static LootItemConditionalFunction.Builder<?> withCount(final Holder<ContextIntProvider> numberOfDyes) {
       return simpleBuilder(conditions -> new SetRandomDyesFunction(conditions, numberOfDyes));
    }
 }

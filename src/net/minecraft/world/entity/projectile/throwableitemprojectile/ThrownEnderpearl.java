@@ -119,9 +119,7 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {
                   }
 
                   ServerPlayer newOwner = player.teleport(
-                     new TeleportTransition(
-                        level, teleportPos, Vec3.ZERO, 0.0F, 0.0F, Relative.union(Relative.ROTATION, Relative.DELTA), TeleportTransition.DO_NOTHING
-                     )
+                     new TeleportTransition(level, teleportPos, Vec3.ZERO, 0.0F, 0.0F, Relative.ROTATION, TeleportTransition.DO_NOTHING)
                   );
                   if (newOwner != null) {
                      newOwner.resetFallDistance();
@@ -133,7 +131,7 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {
                }
             } else {
                Entity newOwner = owner.teleport(
-                  new TeleportTransition(level, teleportPos, owner.getDeltaMovement(), owner.getYRot(), owner.getXRot(), TeleportTransition.DO_NOTHING)
+                  new TeleportTransition(level, teleportPos, Vec3.ZERO, owner.getYRot(), owner.getXRot(), TeleportTransition.DO_NOTHING)
                );
                if (newOwner != null) {
                   newOwner.resetFallDistance();

@@ -1,8 +1,5 @@
 package net.minecraft.world.level.levelgen.structure.pieces;
 
-import java.util.Locale;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
@@ -84,7 +81,18 @@ public interface StructurePieceType {
    StructurePiece load(StructurePieceSerializationContext context, CompoundTag tag);
 
    private static StructurePieceType setFullContextPieceId(final StructurePieceType type, final String id) {
-      return Registry.register(BuiltInRegistries.STRUCTURE_PIECE, id.toLowerCase(Locale.ROOT), type);
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 00: getstatic net/minecraft/core/registries/BuiltInRegistries.STRUCTURE_PIECE Lnet/minecraft/core/Registry;
+      // 03: aload 1
+      // 04: getstatic java/util/Locale.ROOT Ljava/util/Locale;
+      // 07: invokevirtual java/lang/String.toLowerCase (Ljava/util/Locale;)Ljava/lang/String;
+      // 0a: aload 0
+      // 0b: invokestatic net/minecraft/core/Registry.register (Lnet/minecraft/core/Registry;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+      // 0e: checkcast net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType
+      // 11: areturn
    }
 
    private static StructurePieceType setPieceId(final StructurePieceType.ContextlessType type, final String id) {

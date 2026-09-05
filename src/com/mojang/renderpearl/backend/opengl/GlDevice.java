@@ -18,6 +18,7 @@ import com.mojang.renderpearl.backend.api.CommandEncoderBackend;
 import com.mojang.renderpearl.backend.api.GpuDeviceBackend;
 import com.mojang.renderpearl.backend.api.GpuSurfaceBackend;
 import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -36,6 +37,7 @@ import org.lwjgl.opengl.GL33C;
 import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.sdl.SDLError;
 import org.lwjgl.sdl.SDLVideo;
+import org.lwjgl.system.MemoryStack;
 import org.slf4j.Logger;
 
 class GlDevice implements GpuDeviceBackend {
@@ -85,6 +87,45 @@ class GlDevice implements GpuDeviceBackend {
             this.makeCurrent(this.initialWindowHandle);
 
             try {
+               MemoryStack stack = MemoryStack.stackPush();
+
+               try {
+                  IntBuffer majorVersion = stack.callocInt(1);
+                  IntBuffer minorVersion = stack.callocInt(1);
+                  SDLVideo.SDL_GL_GetAttribute(17, majorVersion);
+                  SDLVideo.SDL_GL_GetAttribute(18, minorVersion);
+                  if (majorVersion.get(0) < 3 || majorVersion.get(0) == 3 && minorVersion.get(0) < 3) {
+                     throw new BackendCreationException(
+                        "Failed to create OpenGL 3.3 context, got OpenGL " + majorVersion.get(0) + "." + minorVersion.get(0),
+                        BackendCreationException.Reason.OPENGL_MISSING
+                     );
+                  }
+
+                  long secondWindow = backend.createWindow("Minecraft - RenderPearl OpenGL Hidden Test Window", 320, 480, 2147614728L);
+                  if (secondWindow == 0L) {
+                     throw new BackendCreationException(
+                        "Failed to create window for OpenGL after creating context: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"),
+                        BackendCreationException.Reason.OPENGL_MISSING
+                     );
+                  }
+
+                  SDLVideo.SDL_DestroyWindow(secondWindow);
+               } catch (Throwable var11) {
+                  if (stack != null) {
+                     try {
+                        stack.close();
+                     } catch (Throwable var10) {
+                        var11.addSuppressed(var10);
+                     }
+                  }
+
+                  throw var11;
+               }
+
+               if (stack != null) {
+                  stack.close();
+               }
+
                GLCapabilities capabilities = GL.createCapabilities();
                Set<String> enabledExtensions = new HashSet<>();
                int maxSupportedAnisotropy;
@@ -126,10 +167,10 @@ class GlDevice implements GpuDeviceBackend {
                this.deviceInfo = heuristics.createDeviceInfo(capabilities, maxSupportedAnisotropy, enabledExtensions);
                this.encoder = new GlCommandEncoder(this);
                this.recompiler = new GlPipelineRecompiler(this.debugLabels, this.deviceInfo.features().shaderDrawParameters());
-            } catch (Throwable var9) {
+            } catch (Throwable var12) {
                SDLVideo.SDL_GL_DestroyContext(glContext);
                SDLVideo.SDL_DestroyWindow(this.initialWindowHandle);
-               throw var9;
+               throw var12;
             }
          }
       }

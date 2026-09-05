@@ -266,7 +266,9 @@ public class V1460 extends NamespacedSchema {
                "blocks",
                DSL.list(DSL.optionalFields("nbt", References.BLOCK_ENTITY.in(schema))),
                "palette",
-               DSL.list(References.BLOCK_STATE.in(schema))
+               DSL.list(References.BLOCK_STATE.in(schema)),
+               "palettes",
+               DSL.list(DSL.list(References.BLOCK_STATE.in(schema)))
             )
       );
       schema.registerType(false, References.BLOCK_NAME, () -> DSL.constType(namespacedString()));

@@ -359,13 +359,13 @@ public class ServerPlayerGameMode {
             player.openMenu(menuProvider);
             return InteractionResult.CONSUME;
          } else if (state.getBlock() instanceof Portal portal) {
-            if (player.getCamera() != player) {
-               player.setCamera(player);
-            }
-
             ServerLevel serverLevel = player.level();
             TeleportTransition teleportTransition = portal.getPortalDestination(serverLevel, player, pos);
             if (teleportTransition != null) {
+               if (player.getCamera() != player) {
+                  player.setCamera(player);
+               }
+
                player.teleportToPortalDestination(serverLevel, teleportTransition);
             } else {
                player.sendOverlayMessage(Component.translatable("spectator.cannot_teleport").withStyle(ChatFormatting.RED));
@@ -397,20 +397,26 @@ public class ServerPlayerGameMode {
 
          if (!itemStack.isEmpty() && !player.getCooldowns().isOnCooldown(itemStack)) {
             UseOnContext context = new UseOnContext(player, hand, hitResult);
-            InteractionResult success;
+            InteractionResult result;
             if (player.hasInfiniteMaterials()) {
                int count = itemStack.getCount();
-               success = itemStack.useOn(context);
+               result = itemStack.useOn(context);
                itemStack.setCount(count);
             } else {
-               success = itemStack.useOn(context);
+               result = itemStack.useOn(context);
+               if (result instanceof InteractionResult.Success success) {
+                  ItemStack resultItemStack = Objects.requireNonNullElseGet(success.heldItemTransformedTo(), () -> player.getItemInHand(hand));
+                  if (resultItemStack != itemStack) {
+                     player.setItemInHand(hand, resultItemStack);
+                  }
+               }
             }
 
-            if (success.consumesAction()) {
+            if (result.consumesAction()) {
                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(player, pos, usedItemStack);
             }
 
-            return success;
+            return result;
          } else {
             return InteractionResult.PASS;
          }

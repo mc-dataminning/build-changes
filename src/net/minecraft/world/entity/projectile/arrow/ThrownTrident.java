@@ -128,7 +128,8 @@ public class ThrownTrident extends AbstractArrow {
       }
 
       this.dealtDamage = true;
-      if (entity.hurtOrSimulate(damageSource, dmg)) {
+      boolean wasHurt = entity.hurtOrSimulate(damageSource, dmg);
+      if (wasHurt) {
          if (this.level() instanceof ServerLevel serverLevel) {
             EnchantmentHelper.doPostAttackEffectsWithItemSourceOnBreak(
                serverLevel, entity, damageSource, this.getWeaponItem(), weapon -> this.kill(serverLevel)
@@ -139,11 +140,12 @@ public class ThrownTrident extends AbstractArrow {
             this.doKnockback(mob, damageSource);
             this.doPostHurtEffects(mob);
          }
-
-         this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
       }
 
-      this.deflect(ProjectileDeflection.REVERSE, entity, this.owner, false, new Vec3(0.02, 0.2, 0.02));
+      if (entity.projectileReceivesSideEffectsOnHit(wasHurt)) {
+         this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
+         this.deflect(ProjectileDeflection.REVERSE, entity, this.owner, false, new Vec3(0.02, 0.2, 0.02));
+      }
    }
 
    @Override

@@ -12,16 +12,16 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class SetOminousBottleAmplifierFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetOminousBottleAmplifierFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i).and(NumberProviders.CODEC.fieldOf("amplifier").forGetter(f -> f.amplifier)).apply(i, SetOminousBottleAmplifierFunction::new)
+      i -> commonFields(i).and(ContextIntProviders.CODEC.fieldOf("amplifier").forGetter(f -> f.amplifier)).apply(i, SetOminousBottleAmplifierFunction::new)
    );
-   private final Holder<NumberProvider> amplifier;
+   private final Holder<ContextIntProvider> amplifier;
 
-   private SetOminousBottleAmplifierFunction(final Optional<Holder<LootItemCondition>> condition, final Holder<NumberProvider> amplifier) {
+   private SetOminousBottleAmplifierFunction(final Optional<Holder<LootItemCondition>> condition, final Holder<ContextIntProvider> amplifier) {
       super(condition);
       this.amplifier = amplifier;
    }
@@ -44,7 +44,7 @@ public class SetOminousBottleAmplifierFunction extends LootItemConditionalFuncti
       return itemStack;
    }
 
-   public static LootItemConditionalFunction.Builder<?> setAmplifier(final Holder<NumberProvider> amplifier) {
+   public static LootItemConditionalFunction.Builder<?> setAmplifier(final Holder<ContextIntProvider> amplifier) {
       return simpleBuilder(conditions -> new SetOminousBottleAmplifierFunction(conditions, amplifier));
    }
 }

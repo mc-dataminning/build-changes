@@ -38,8 +38,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyC
 import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithEnchantedBonusCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VanillaEntityLoot extends EntityLootSubProvider {
    public VanillaEntityLoot(final LootTableSubProvider.Context output) {
@@ -59,11 +59,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BLAZE_ROD)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
             )
@@ -73,29 +73,29 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ARROW)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BONE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.TIPPED_ARROW)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)).setLimit(1))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)).setLimit(1))
                         .apply(SetPotionFunction.setPotion(Potions.POISON))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
@@ -106,8 +106,8 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.STRING).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(LootItem.lootTableItem(Items.STRING).apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2))))
             )
       );
       this.add(EntityTypes.CAMEL, LootTable.lootTable());
@@ -116,11 +116,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ROTTEN_FLESH)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 3)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -129,20 +129,20 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.STRING)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.SPIDER_EYE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(-1, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
             )
@@ -152,20 +152,20 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.FEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.CHICKEN)
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -174,12 +174,12 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.COD).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())))
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.BONE_MEAL))
                   .when(LootItemRandomChanceCondition.randomChance(0.05F))
             )
@@ -189,11 +189,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.COPPER_INGOT)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -202,21 +202,21 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.LEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BEEF)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -225,11 +225,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.GUNPOWDER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
@@ -247,11 +247,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.COD)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
                   )
             )
@@ -261,11 +261,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.LEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -274,16 +274,16 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ROTTEN_FLESH)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.COPPER_INGOT))
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
                   .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.enchantments, 0.11F, 0.02F))
@@ -296,11 +296,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ENDER_PEARL)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -308,14 +308,14 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
       this.add(
          EntityTypes.EVOKER,
          LootTable.lootTable()
-            .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.TOTEM_OF_UNDYING)))
+            .withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.TOTEM_OF_UNDYING)))
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.EMERALD)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
             )
@@ -325,11 +325,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BREEZE_ROD)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(1.0F, 2.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(1.0F, 2.0F)))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
             )
@@ -341,27 +341,27 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.GHAST_TEAR)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.GUNPOWDER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.MUSIC_DISC_TEARS))
-                  .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                  .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                   .when(
                      DamageSourceCondition.hasDamageSource(
                         this.projectileDamage().direct(EntityPredicate.Builder.entity().of(this.entityTypes, EntityTypes.FIREBALL))
@@ -377,11 +377,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.GLOW_INK_SAC)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -391,32 +391,32 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.PRISMARINE_SHARD)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.COD)
                         .setWeight(2)
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
                   )
                   .add(
                      LootItem.lootTableItem(Items.PRISMARINE_CRYSTALS)
                         .setWeight(2)
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .add(EmptyLootItem.emptyItem())
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      NestedLootTable.lootTableReference(this.lootTables.getOrThrow(BuiltInLootTables.FISHING_FISH))
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
@@ -430,11 +430,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.LEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -443,20 +443,20 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ROTTEN_FLESH)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.RABBIT_FOOT)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                         .when(
                            LootItemEntityPropertyCondition.hasProperties(
                               LootContext.EntityTarget.THIS,
@@ -469,7 +469,7 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.IRON_INGOT))
                   .add(LootItem.lootTableItem(Items.CARROT))
                   .add(LootItem.lootTableItem(Items.POTATO).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())))
@@ -482,8 +482,8 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.SADDLE).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(LootItem.lootTableItem(Items.SADDLE).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))
             )
       );
       this.add(EntityTypes.ILLUSIONER, LootTable.lootTable());
@@ -492,13 +492,13 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Blocks.POPPY).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(LootItem.lootTableItem(Blocks.POPPY).apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2))))
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.IRON_INGOT).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 5.0F))))
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(LootItem.lootTableItem(Items.IRON_INGOT).apply(SetItemCountFunction.setCount(ContextIntProviders.between(3, 5))))
             )
       );
       this.add(
@@ -506,11 +506,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.LEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -519,11 +519,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.MAGMA_CREAM)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(-2.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(-2, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                         .when(this.killedByFrog().invert())
                         .when(
                            LootItemEntityPropertyCondition.hasProperties(
@@ -533,17 +533,17 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
                   )
                   .add(
                      LootItem.lootTableItem(Items.PEARLESCENT_FROGLIGHT)
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                         .when(this.killedByFrogVariant(FrogVariants.WARM))
                   )
                   .add(
                      LootItem.lootTableItem(Items.VERDANT_FROGLIGHT)
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                         .when(this.killedByFrogVariant(FrogVariants.COLD))
                   )
                   .add(
                      LootItem.lootTableItem(Items.OCHRE_FROGLIGHT)
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                         .when(this.killedByFrogVariant(FrogVariants.TEMPERATE))
                   )
             )
@@ -555,11 +555,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.LEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -568,21 +568,21 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.LEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BEEF)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -591,7 +591,7 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.NAUTILUS_SHELL))
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
                   .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.enchantments, 0.05F, 0.01F))
@@ -603,8 +603,8 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Blocks.BAMBOO).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(LootItem.lootTableItem(Blocks.BAMBOO).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))
             )
       );
       this.add(
@@ -612,11 +612,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.FEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -625,11 +625,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.PHANTOM_MEMBRANE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
             )
@@ -639,12 +639,12 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.PORKCHOP)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -653,11 +653,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.OMINOUS_BOTTLE)
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
-                        .apply(SetOminousBottleAmplifierFunction.setAmplifier(UniformGenerator.between(0.0F, 4.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
+                        .apply(SetOminousBottleAmplifierFunction.setAmplifier(ContextIntProviders.between(0, 4)))
                   )
                   .when(
                      LootItemEntityPropertyCondition.hasProperties(
@@ -672,19 +672,19 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.COD)
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
                         .setWeight(3)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .add(
                      LootItem.lootTableItem(Items.SALMON)
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -693,12 +693,12 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.PUFFERFISH).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(LootItem.lootTableItem(Items.PUFFERFISH).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.BONE_MEAL))
                   .when(LootItemRandomChanceCondition.randomChance(0.05F))
             )
@@ -708,26 +708,26 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.RABBIT_HIDE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.RABBIT)
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.RABBIT_FOOT))
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
                   .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.enchantments, 0.1F, 0.03F))
@@ -738,12 +738,12 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.SALMON).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())))
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.BONE_MEAL))
                   .when(LootItemRandomChanceCondition.randomChance(0.05F))
             )
@@ -753,12 +753,12 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.MUTTON)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2)))
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(createSheepDispatchPool(BuiltInLootTables.SHEEP.map(this.lootTables::getOrThrow)))
@@ -773,7 +773,7 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.SHULKER_SHELL))
                   .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.enchantments, 0.5F, 0.0625F))
             )
@@ -784,20 +784,20 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ARROW)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BONE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -806,11 +806,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BONE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -819,14 +819,14 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.SLIME_BALL)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                         .when(this.killedByFrog().invert())
                   )
-                  .add(LootItem.lootTableItem(Items.SLIME_BALL).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))).when(this.killedByFrog()))
+                  .add(LootItem.lootTableItem(Items.SLIME_BALL).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))).when(this.killedByFrog()))
                   .when(
                      LootItemEntityPropertyCondition.hasProperties(
                         LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().cubeMob(CubeMobPredicate.sized(MinMaxBounds.Ints.exactly(1)))
@@ -840,8 +840,8 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.SNOWBALL).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 15.0F))))
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(LootItem.lootTableItem(Items.SNOWBALL).apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 15))))
             )
       );
       this.add(
@@ -849,20 +849,20 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.STRING)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.SPIDER_EYE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(-1, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
             )
@@ -872,11 +872,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.INK_SAC)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -885,29 +885,29 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ARROW)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BONE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.TIPPED_ARROW)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)).setLimit(1))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)).setLimit(1))
                         .apply(SetPotionFunction.setPotion(Potions.SLOWNESS))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
@@ -918,29 +918,29 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ARROW)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BONE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.TIPPED_ARROW)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)).setLimit(1))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)).setLimit(1))
                         .apply(SetPotionFunction.setPotion(Potions.WEAKNESS))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
@@ -951,11 +951,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.STRING)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 5)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -965,11 +965,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.LEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -978,12 +978,12 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.TROPICAL_FISH).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(LootItem.lootTableItem(Items.TROPICAL_FISH).apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.BONE_MEAL))
                   .when(LootItemRandomChanceCondition.randomChance(0.05F))
             )
@@ -993,17 +993,17 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Blocks.SEAGRASS)
                         .setWeight(3)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.BOWL))
                   .when(
                      DamageSourceCondition.hasDamageSource(
@@ -1016,7 +1016,7 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
       this.add(EntityTypes.VILLAGER, LootTable.lootTable());
       this.add(
          EntityTypes.WARDEN,
-         LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.SCULK_CATALYST)))
+         LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.SCULK_CATALYST)))
       );
       this.add(EntityTypes.WANDERING_TRADER, LootTable.lootTable());
       this.add(
@@ -1024,11 +1024,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.EMERALD)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
             )
@@ -1038,46 +1038,46 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(UniformGenerator.between(1.0F, 3.0F))
+                  .setRolls(ContextIntProviders.between(1, 3))
                   .add(
                      LootItem.lootTableItem(Items.GLOWSTONE_DUST)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .add(
                      LootItem.lootTableItem(Items.SUGAR)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .add(
                      LootItem.lootTableItem(Items.SPIDER_EYE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .add(
                      LootItem.lootTableItem(Items.GLASS_BOTTLE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .add(
                      LootItem.lootTableItem(Items.GUNPOWDER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .add(
                      LootItem.lootTableItem(Items.STICK)
                         .setWeight(2)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.REDSTONE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 8.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(4, 8)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -1087,25 +1087,25 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.COAL)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(-1, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.BONE)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Blocks.WITHER_SKELETON_SKULL))
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
                   .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.enchantments, 0.025F, 0.01F))
@@ -1117,11 +1117,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ROTTEN_FLESH)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -1131,20 +1131,20 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ROTTEN_FLESH)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.RED_MUSHROOM)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                         .when(
                            LootItemEntityPropertyCondition.hasProperties(
                               LootContext.EntityTarget.THIS,
@@ -1157,7 +1157,7 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.IRON_INGOT))
                   .add(LootItem.lootTableItem(Items.CARROT))
                   .add(LootItem.lootTableItem(Items.POTATO).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())))
@@ -1183,11 +1183,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ROTTEN_FLESH)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 3)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -1196,11 +1196,11 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ROTTEN_FLESH)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 3)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
             )
@@ -1210,25 +1210,25 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ROTTEN_FLESH)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.GOLD_NUGGET)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.GOLD_INGOT))
                   .when(LootItemKilledByPlayerCondition.killedByPlayer())
                   .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.enchantments, 0.025F, 0.01F))
@@ -1239,21 +1239,21 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.PORKCHOP)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 4)))
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.LEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
       );
@@ -1264,16 +1264,16 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          LootTable.lootTable()
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(
                      LootItem.lootTableItem(Items.ROTTEN_FLESH)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                   )
             )
             .withPool(
                LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
+                  .setRolls(ContextIntProviders.exactly(1))
                   .add(LootItem.lootTableItem(Items.IRON_INGOT))
                   .add(LootItem.lootTableItem(Items.CARROT))
                   .add(LootItem.lootTableItem(Items.POTATO).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())))
@@ -1287,38 +1287,38 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
       return LootTable.lootTable()
          .withPool(
             LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
+               .setRolls(ContextIntProviders.exactly(1))
                .add(
                   LootItem.lootTableItem(Items.PRISMARINE_SHARD)
-                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                     .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                     .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                     .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                )
          )
          .withPool(
             LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
+               .setRolls(ContextIntProviders.exactly(1))
                .add(
                   LootItem.lootTableItem(Items.COD)
                      .setWeight(3)
-                     .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                     .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                      .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
                )
                .add(
                   LootItem.lootTableItem(Items.PRISMARINE_CRYSTALS)
                      .setWeight(2)
-                     .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, UniformGenerator.between(0.0F, 1.0F)))
+                     .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                )
                .add(EmptyLootItem.emptyItem())
          )
          .withPool(
             LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
+               .setRolls(ContextIntProviders.exactly(1))
                .add(LootItem.lootTableItem(Blocks.WET_SPONGE))
                .when(LootItemKilledByPlayerCondition.killedByPlayer())
          )
          .withPool(
             LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
+               .setRolls(ContextIntProviders.exactly(1))
                .add(
                   NestedLootTable.lootTableReference(this.lootTables.getOrThrow(BuiltInLootTables.FISHING_FISH))
                      .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
@@ -1328,7 +1328,7 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
          )
          .withPool(
             LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
+               .setRolls(ContextIntProviders.exactly(1))
                .add(EmptyLootItem.emptyItem().setWeight(4))
                .add(LootItem.lootTableItem(Items.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1))
          );

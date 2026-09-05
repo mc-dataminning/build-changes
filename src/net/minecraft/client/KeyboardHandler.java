@@ -512,7 +512,6 @@ public class KeyboardHandler {
                   }
                } catch (Throwable var17) {
                   CrashReport report = CrashReport.forThrowable(var17, "keyPressed event handler");
-                  screen.fillCrashDetails(report);
                   CrashReportCategory keyDetails = report.addCategory("Key");
                   keyDetails.setDetail("Scancode", event.key());
                   keyDetails.setDetail("Keycode", event.keycode());
@@ -586,7 +585,6 @@ public class KeyboardHandler {
                screen.charTyped(event);
             } catch (Throwable var8) {
                CrashReport report = CrashReport.forThrowable(var8, "charTyped event handler");
-               screen.fillCrashDetails(report);
                CrashReportCategory keyDetails = report.addCategory("Key");
                keyDetails.setDetail("Codepoint", event.codepoint());
                throw new ReportedException(report);
@@ -634,10 +632,6 @@ public class KeyboardHandler {
          element.preeditUpdated(event);
       } catch (Throwable var5) {
          CrashReport report = CrashReport.forThrowable(var5, "IME pre-edit event handler");
-         if (element instanceof Screen screen) {
-            screen.fillCrashDetails(report);
-         }
-
          CrashReportCategory keyDetails = report.addCategory("Event");
          keyDetails.setDetail("Contents", () -> String.valueOf(event));
          throw new ReportedException(report);

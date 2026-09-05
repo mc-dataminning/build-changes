@@ -3,6 +3,7 @@ package net.minecraft.world.attribute;
 import com.google.common.collect.ImmutableBiMap;
 import com.mojang.serialization.Codec;
 import java.util.Map;
+import java.util.function.ToIntFunction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.ToFloatFunction;
@@ -18,12 +19,13 @@ public record AttributeType<Value>(
    LerpFunction<Value> stateChangeLerp,
    LerpFunction<Value> spatialLerp,
    LerpFunction<Value> partialTickLerp,
-   @Nullable ToFloatFunction<Value> toFloat
+   @Nullable ToFloatFunction<Value> toFloat,
+   @Nullable ToIntFunction<Value> toInt
 ) {
    public static <Value> AttributeType<Value> ofInterpolated(
       final Codec<Value> valueCodec, final Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifierLibrary, final LerpFunction<Value> lerp
    ) {
-      return ofInterpolated(valueCodec, modifierLibrary, lerp, lerp, null);
+      return ofInterpolated(valueCodec, modifierLibrary, lerp, lerp, null, null);
    }
 
    public static <Value> AttributeType<Value> ofInterpolated(
@@ -31,9 +33,10 @@ public record AttributeType<Value>(
       final Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifierLibrary,
       final LerpFunction<Value> lerp,
       final LerpFunction<Value> partialTickLerp,
-      @Nullable final ToFloatFunction<Value> toFloat
+      @Nullable final ToFloatFunction<Value> toFloat,
+      @Nullable final ToIntFunction<Value> toInt
    ) {
-      return new AttributeType<>(valueCodec, modifierLibrary, createModifierCodec(modifierLibrary), lerp, lerp, lerp, partialTickLerp, toFloat);
+      return new AttributeType<>(valueCodec, modifierLibrary, createModifierCodec(modifierLibrary), lerp, lerp, lerp, partialTickLerp, toFloat, toInt);
    }
 
    public static <Value> AttributeType<Value> ofNotInterpolated(
@@ -47,6 +50,7 @@ public record AttributeType<Value>(
          LerpFunction.ofStep(0.0F),
          LerpFunction.ofStep(0.5F),
          LerpFunction.ofStep(0.0F),
+         null,
          null
       );
    }
@@ -76,6 +80,14 @@ public record AttributeType<Value>(
          throw new IllegalStateException(value + " cannot be represented as a float");
       } else {
          return this.toFloat.applyAsFloat(value);
+      }
+   }
+
+   public int toInt(final Value value) {
+      if (this.toInt == null) {
+         throw new IllegalStateException(value + " cannot be represented as an integer");
+      } else {
+         return this.toInt.applyAsInt(value);
       }
    }
 

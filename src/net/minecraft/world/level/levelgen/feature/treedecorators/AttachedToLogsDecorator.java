@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
@@ -21,10 +22,10 @@ public class AttachedToLogsDecorator extends TreeDecorator {
             .apply(i, AttachedToLogsDecorator::new)
    );
    private final float probability;
-   private final BlockStateProvider blockProvider;
+   private final Holder<BlockStateProvider> blockProvider;
    private final List<Direction> directions;
 
-   public AttachedToLogsDecorator(final float probability, final BlockStateProvider blockProvider, final List<Direction> directions) {
+   public AttachedToLogsDecorator(final float probability, final Holder<BlockStateProvider> blockProvider, final List<Direction> directions) {
       this.probability = probability;
       this.blockProvider = blockProvider;
       this.directions = directions;
@@ -38,7 +39,7 @@ public class AttachedToLogsDecorator extends TreeDecorator {
          Direction direction = Util.getRandom(this.directions, random);
          BlockPos placementPos = logsPos.relative(direction);
          if (random.nextFloat() <= this.probability && context.isAir(placementPos)) {
-            context.setBlock(placementPos, this.blockProvider.getState(context.level(), random, placementPos));
+            context.setBlock(placementPos, this.blockProvider.value().getState(context.level(), random, placementPos));
          }
       }
    }

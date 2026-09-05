@@ -3,11 +3,8 @@ package net.minecraft.world.level.levelgen.structure;
 import com.mojang.logging.LogUtils;
 import java.util.List;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
@@ -15,7 +12,6 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.structures.OceanMonumentStructure;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -39,33 +35,89 @@ public final class StructureStart {
 
    @Nullable
    public static StructureStart loadStaticStart(final StructurePieceSerializationContext context, final CompoundTag tag, final long seed) {
-      String id = tag.getStringOr("id", "");
-      if ("INVALID".equals(id)) {
-         return INVALID_START;
-      } else {
-         Registry<Structure> structuresRegistry = context.registryAccess().lookupOrThrow(Registries.STRUCTURE);
-         Structure stucture = structuresRegistry.getValue(Identifier.parse(id));
-         if (stucture == null) {
-            LOGGER.error("Unknown stucture id: {}", id);
-            return null;
-         } else {
-            ChunkPos chunkPos = new ChunkPos(tag.getIntOr("ChunkX", 0), tag.getIntOr("ChunkZ", 0));
-            int references = tag.getIntOr("references", 0);
-            ListTag children = tag.getListOrEmpty("Children");
-
-            try {
-               PiecesContainer pieces = PiecesContainer.load(children, context);
-               if (stucture instanceof OceanMonumentStructure) {
-                  pieces = OceanMonumentStructure.regeneratePiecesAfterLoad(chunkPos, seed, pieces);
-               }
-
-               return new StructureStart(stucture, chunkPos, references, pieces);
-            } catch (Exception var11) {
-               LOGGER.error("Failed Start with id {}", id, var11);
-               return null;
-            }
-         }
-      }
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 00: aload 1
+      // 01: ldc "id"
+      // 03: ldc ""
+      // 05: invokevirtual net/minecraft/nbt/CompoundTag.getStringOr (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      // 08: astore 4
+      // 0a: ldc "INVALID"
+      // 0c: aload 4
+      // 0e: invokevirtual java/lang/String.equals (Ljava/lang/Object;)Z
+      // 11: ifeq 18
+      // 14: getstatic net/minecraft/world/level/levelgen/structure/StructureStart.INVALID_START Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+      // 17: areturn
+      // 18: aload 0
+      // 19: invokevirtual net/minecraft/world/level/levelgen/structure/pieces/StructurePieceSerializationContext.registryAccess ()Lnet/minecraft/core/RegistryAccess;
+      // 1c: getstatic net/minecraft/core/registries/Registries.STRUCTURE Lnet/minecraft/resources/ResourceKey;
+      // 1f: invokeinterface net/minecraft/core/RegistryAccess.lookupOrThrow (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry; 2
+      // 24: astore 5
+      // 26: aload 5
+      // 28: aload 4
+      // 2a: invokestatic net/minecraft/resources/Identifier.parse (Ljava/lang/String;)Lnet/minecraft/resources/Identifier;
+      // 2d: invokeinterface net/minecraft/core/Registry.getValue (Lnet/minecraft/resources/Identifier;)Ljava/lang/Object; 2
+      // 32: checkcast net/minecraft/world/level/levelgen/structure/Structure
+      // 35: astore 6
+      // 37: aload 6
+      // 39: ifnonnull 4a
+      // 3c: getstatic net/minecraft/world/level/levelgen/structure/StructureStart.LOGGER Lorg/slf4j/Logger;
+      // 3f: ldc "Unknown stucture id: {}"
+      // 41: aload 4
+      // 43: invokeinterface org/slf4j/Logger.error (Ljava/lang/String;Ljava/lang/Object;)V 3
+      // 48: aconst_null
+      // 49: areturn
+      // 4a: new net/minecraft/world/level/ChunkPos
+      // 4d: dup
+      // 4e: aload 1
+      // 4f: ldc "ChunkX"
+      // 51: bipush 0
+      // 52: invokevirtual net/minecraft/nbt/CompoundTag.getIntOr (Ljava/lang/String;I)I
+      // 55: aload 1
+      // 56: ldc "ChunkZ"
+      // 58: bipush 0
+      // 59: invokevirtual net/minecraft/nbt/CompoundTag.getIntOr (Ljava/lang/String;I)I
+      // 5c: invokespecial net/minecraft/world/level/ChunkPos.<init> (II)V
+      // 5f: astore 7
+      // 61: aload 1
+      // 62: ldc "references"
+      // 64: bipush 0
+      // 65: invokevirtual net/minecraft/nbt/CompoundTag.getIntOr (Ljava/lang/String;I)I
+      // 68: istore 8
+      // 6a: aload 1
+      // 6b: ldc "Children"
+      // 6d: invokevirtual net/minecraft/nbt/CompoundTag.getListOrEmpty (Ljava/lang/String;)Lnet/minecraft/nbt/ListTag;
+      // 70: astore 9
+      // 72: aload 9
+      // 74: aload 0
+      // 75: invokestatic net/minecraft/world/level/levelgen/structure/pieces/PiecesContainer.load (Lnet/minecraft/nbt/ListTag;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceSerializationContext;)Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;
+      // 78: astore 10
+      // 7a: aload 6
+      // 7c: instanceof net/minecraft/world/level/levelgen/structure/structures/OceanMonumentStructure
+      // 7f: ifeq 8c
+      // 82: aload 7
+      // 84: lload 2
+      // 85: aload 10
+      // 87: invokestatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentStructure.regeneratePiecesAfterLoad (Lnet/minecraft/world/level/ChunkPos;JLnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;)Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;
+      // 8a: astore 10
+      // 8c: new net/minecraft/world/level/levelgen/structure/StructureStart
+      // 8f: dup
+      // 90: aload 6
+      // 92: aload 7
+      // 94: iload 8
+      // 96: aload 10
+      // 98: invokespecial net/minecraft/world/level/levelgen/structure/StructureStart.<init> (Lnet/minecraft/world/level/levelgen/structure/Structure;Lnet/minecraft/world/level/ChunkPos;ILnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;)V
+      // 9b: areturn
+      // 9c: astore 10
+      // 9e: getstatic net/minecraft/world/level/levelgen/structure/StructureStart.LOGGER Lorg/slf4j/Logger;
+      // a1: ldc "Failed Start with id {}"
+      // a3: aload 4
+      // a5: aload 10
+      // a7: invokeinterface org/slf4j/Logger.error (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V 4
+      // ac: aconst_null
+      // ad: areturn
    }
 
    public BoundingBox getBoundingBox() {

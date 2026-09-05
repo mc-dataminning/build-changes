@@ -1,6 +1,6 @@
 package net.minecraft.world.level.levelgen.synth;
 
-import net.minecraft.util.Mth;
+import net.minecraft.SharedConstants;
 import net.minecraft.util.RandomSource;
 
 public abstract class GradientNoise implements Noise {
@@ -23,6 +23,7 @@ public abstract class GradientNoise implements Noise {
       new GradientNoise.Gradient(0, -1, -1)
    };
    private static final int ROUND_OFF = 33554432;
+   private static final double HALF_ROUND_OFF = Math.nextDown(1.6777216E7);
    protected final byte[] perms = new byte[256];
    protected final double offsetX;
    protected final double offsetY;
@@ -62,7 +63,11 @@ public abstract class GradientNoise implements Noise {
    }
 
    protected static double wrap(final double x) {
-      return x - (double)Mth.lfloor(x / 3.3554432E7 + 0.5) * 3.3554432E7;
+      if (SharedConstants.DEBUG_ENABLE_FARLANDS) {
+         return x;
+      } else {
+         return x >= -HALF_ROUND_OFF && x < HALF_ROUND_OFF ? x : x - Math.floor(x / 3.3554432E7 + 0.5) * 3.3554432E7;
+      }
    }
 
    protected static record Gradient(int x, int y, int z) {

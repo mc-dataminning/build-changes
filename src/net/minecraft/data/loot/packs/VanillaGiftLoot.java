@@ -20,8 +20,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SetPotionFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 public class VanillaGiftLoot implements LootTableSubProvider {
    private final LootTableSubProvider.Context output;
@@ -40,7 +39,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.RABBIT_HIDE).setWeight(10))
                      .add(LootItem.lootTableItem(Items.RABBIT_FOOT).setWeight(10))
                      .add(LootItem.lootTableItem(Items.CHICKEN).setWeight(10))
@@ -56,7 +55,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.CHAINMAIL_HELMET))
                      .add(LootItem.lootTableItem(Items.CHAINMAIL_CHESTPLATE))
                      .add(LootItem.lootTableItem(Items.CHAINMAIL_LEGGINGS))
@@ -69,7 +68,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.COOKED_RABBIT))
                      .add(LootItem.lootTableItem(Items.COOKED_CHICKEN))
                      .add(LootItem.lootTableItem(Items.COOKED_PORKCHOP))
@@ -82,7 +81,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             BuiltInLootTables.CARTOGRAPHER_GIFT,
             LootTable.lootTable()
                .withPool(
-                  LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.MAP)).add(LootItem.lootTableItem(Items.PAPER))
+                  LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.MAP)).add(LootItem.lootTableItem(Items.PAPER))
                )
          );
       this.output
@@ -91,7 +90,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.REDSTONE))
                      .add(LootItem.lootTableItem(Items.LAPIS_LAZULI))
                )
@@ -102,7 +101,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.BREAD))
                      .add(LootItem.lootTableItem(Items.PUMPKIN_PIE))
                      .add(LootItem.lootTableItem(Items.COOKIE))
@@ -113,7 +112,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             BuiltInLootTables.FISHERMAN_GIFT,
             LootTable.lootTable()
                .withPool(
-                  LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.COD)).add(LootItem.lootTableItem(Items.SALMON))
+                  LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.COD)).add(LootItem.lootTableItem(Items.SALMON))
                )
          );
       this.output
@@ -122,71 +121,71 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.ARROW).setWeight(26))
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.SWIFTNESS))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.SLOWNESS))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.STRENGTH))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.HEALING))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.HARMING))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.LEAPING))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.REGENERATION))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.FIRE_RESISTANCE))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.WATER_BREATHING))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.INVISIBILITY))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.NIGHT_VISION))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.WEAKNESS))
                      )
                      .add(
                         LootItem.lootTableItem(Items.TIPPED_ARROW)
-                           .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                           .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))
                            .apply(SetPotionFunction.setPotion(Potions.POISON))
                      )
                )
@@ -194,22 +193,23 @@ public class VanillaGiftLoot implements LootTableSubProvider {
       this.output
          .accept(
             BuiltInLootTables.LEATHERWORKER_GIFT,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.LEATHER)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.LEATHER)))
          );
       this.output
          .accept(
             BuiltInLootTables.LIBRARIAN_GIFT,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.BOOK)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.BOOK)))
          );
       this.output
          .accept(
             BuiltInLootTables.MASON_GIFT,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.CLAY)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.CLAY)))
          );
       this.output
          .accept(
             BuiltInLootTables.SHEPHERD_GIFT,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).addAll(Items.WOOL.map(LootItem::lootTableItem).asList()))
+            LootTable.lootTable()
+               .withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).addAll(Items.WOOL.map(LootItem::lootTableItem).asList()))
          );
       this.output
          .accept(
@@ -217,7 +217,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.STONE_PICKAXE))
                      .add(LootItem.lootTableItem(Items.STONE_AXE))
                      .add(LootItem.lootTableItem(Items.STONE_HOE))
@@ -230,7 +230,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.STONE_AXE))
                      .add(LootItem.lootTableItem(Items.GOLDEN_AXE))
                      .add(LootItem.lootTableItem(Items.IRON_AXE))
@@ -239,12 +239,12 @@ public class VanillaGiftLoot implements LootTableSubProvider {
       this.output
          .accept(
             BuiltInLootTables.UNEMPLOYED_GIFT,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.WHEAT_SEEDS)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.WHEAT_SEEDS)))
          );
       this.output
          .accept(
             BuiltInLootTables.BABY_VILLAGER_GIFT,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.POPPY)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.POPPY)))
          );
       this.output
          .accept(
@@ -252,7 +252,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.TORCHFLOWER_SEEDS))
                      .add(LootItem.lootTableItem(Items.PITCHER_POD))
                )
@@ -263,7 +263,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(LootItem.lootTableItem(Items.SLIME_BALL).setWeight(1))
                      .add(EmptyLootItem.emptyItem().setWeight(699))
                )
@@ -274,7 +274,7 @@ public class VanillaGiftLoot implements LootTableSubProvider {
             LootTable.lootTable()
                .withPool(
                   LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
+                     .setRolls(ContextIntProviders.exactly(1))
                      .add(
                         AlternativesEntry.alternatives(
                            LootItem.lootTableItem(Items.EGG)
@@ -320,12 +320,12 @@ public class VanillaGiftLoot implements LootTableSubProvider {
       this.output
          .accept(
             BuiltInLootTables.ARMADILLO_SHED,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.ARMADILLO_SCUTE)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.ARMADILLO_SCUTE)))
          );
       this.output
          .accept(
             BuiltInLootTables.TURTLE_GROW,
-            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.TURTLE_SCUTE)))
+            LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.TURTLE_SCUTE)))
          );
    }
 }

@@ -3,6 +3,7 @@ package net.minecraft.world.level.levelgen.feature;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -14,8 +15,8 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 
 @Deprecated
 public record LakeFeature(
-   BlockStateProvider fluid,
-   BlockStateProvider barrier,
+   Holder<BlockStateProvider> fluid,
+   Holder<BlockStateProvider> barrier,
    BlockPredicate canPlaceFeature,
    BlockPredicate canReplaceWithAirOrFluid,
    BlockPredicate canReplaceWithBarrier
@@ -69,7 +70,7 @@ public record LakeFeature(
             }
          }
 
-         BlockState fluid = this.fluid.getState(level, random, origin);
+         BlockState fluid = this.fluid.value().getState(level, random, origin);
 
          for (int xx = 0; xx < 16; xx++) {
             for (int zz = 0; zz < 16; zz++) {
@@ -120,7 +121,7 @@ public record LakeFeature(
             }
          }
 
-         BlockState barrier = this.barrier.getState(level, random, origin);
+         BlockState barrier = this.barrier.value().getState(level, random, origin);
          if (!barrier.isAir()) {
             for (int xx = 0; xx < 16; xx++) {
                for (int zz = 0; zz < 16; zz++) {

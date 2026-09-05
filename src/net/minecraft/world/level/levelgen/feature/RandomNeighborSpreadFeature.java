@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -17,7 +18,12 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 public record RandomNeighborSpreadFeature(
-   BlockStateProvider block, HolderSet<Block> acceptedNeighbors, BlockPredicate canReplace, IntProvider attempts, IntProvider xzOffset, IntProvider yOffset
+   Holder<BlockStateProvider> block,
+   HolderSet<Block> acceptedNeighbors,
+   BlockPredicate canReplace,
+   IntProvider attempts,
+   IntProvider xzOffset,
+   IntProvider yOffset
 ) implements Feature {
    public static final MapCodec<RandomNeighborSpreadFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
@@ -39,7 +45,7 @@ public record RandomNeighborSpreadFeature(
 
    @Override
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      level.setBlock(origin, this.block.getState(level, random, origin), 2);
+      level.setBlock(origin, this.block.value().getState(level, random, origin), 2);
       BlockPos.MutableBlockPos placePos = new BlockPos.MutableBlockPos();
       BlockPos.MutableBlockPos neighborPos = new BlockPos.MutableBlockPos();
       int attempts = this.attempts.sample(random);
@@ -61,7 +67,7 @@ public record RandomNeighborSpreadFeature(
             }
 
             if (neighbours == 1) {
-               level.setBlock(placePos, this.block.getState(level, random, placePos), 2);
+               level.setBlock(placePos, this.block.value().getState(level, random, placePos), 2);
             }
          }
       }

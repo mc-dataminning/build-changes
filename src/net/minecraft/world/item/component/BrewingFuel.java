@@ -5,22 +5,24 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.ResolvableNumber;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ResolvableFloat;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt;
 
-public record BrewingFuel(ResolvableNumber uses, ResolvableNumber speedMultiplier) {
+public record BrewingFuel(ResolvableInt uses, ResolvableFloat speedMultiplier) {
    public static final Codec<BrewingFuel> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ResolvableNumber.CODEC.fieldOf("uses").forGetter(BrewingFuel::uses),
-               ResolvableNumber.CODEC.fieldOf("speed_multiplier").forGetter(BrewingFuel::speedMultiplier)
+               ResolvableInt.CODEC.fieldOf("uses").forGetter(BrewingFuel::uses),
+               ResolvableFloat.CODEC.fieldOf("speed_multiplier").forGetter(BrewingFuel::speedMultiplier)
             )
             .apply(i, BrewingFuel::new)
    );
    public static final StreamCodec<ByteBuf, BrewingFuel> STREAM_CODEC = StreamCodec.composite(
-      ResolvableNumber.STREAM_CODEC, BrewingFuel::uses, ResolvableNumber.STREAM_CODEC, BrewingFuel::speedMultiplier, BrewingFuel::new
+      ResolvableInt.STREAM_CODEC, BrewingFuel::uses, ResolvableFloat.STREAM_CODEC, BrewingFuel::speedMultiplier, BrewingFuel::new
    );
 
-   public BrewingFuel(final ResourceKey<NumberProvider> uses, final ResourceKey<NumberProvider> speedMultiplier) {
-      this(ResolvableNumber.fromKey(uses), ResolvableNumber.fromKey(speedMultiplier));
+   public BrewingFuel(final ResourceKey<ContextIntProvider> uses, final ResourceKey<ContextFloatProvider> speedMultiplier) {
+      this(ResolvableInt.fromKey(uses), ResolvableFloat.fromKey(speedMultiplier));
    }
 }

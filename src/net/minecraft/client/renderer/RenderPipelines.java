@@ -1202,6 +1202,16 @@ public class RenderPipelines {
          .withBindGroupLayout(BindGroupLayouts.CURRENT_SPRITE_NEXT_SPRITE)
          .build()
    );
+   public static final RenderPipeline BLIT_DEPTH_BOUNDS = register(
+      RenderPipeline.builder(GLOBALS_SNIPPET)
+         .withLocation("pipeline/blit_depth_bounds")
+         .withVertexShader("core/screenquad")
+         .withFragmentShader("core/blit_screen")
+         .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
+         .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
+         .withColorTargetState(new ColorTargetState(Optional.empty(), GpuFormat.RGBA32_FLOAT, 15))
+         .build()
+   );
    public static final RenderPipeline OIT_DEPTH_BOUNDS_CULL = register(
       RenderPipeline.builder(OIT_SNIPPET)
          .withVertexShader("core/screenquad")
@@ -1212,6 +1222,27 @@ public class RenderPipelines {
          .withBindGroupLayout(BindGroupLayouts.PROJECTION)
          .withColorTargetState(new ColorTargetState(Optional.empty(), GpuFormat.RGBA32_FLOAT, 15))
          .withDepthStencilState(DepthStencilState.DEFAULT)
+         .build()
+   );
+   public static final RenderPipeline BLIT_DEPTH_DURING_DEPTH_BOUNDS = register(
+      RenderPipeline.builder(GLOBALS_SNIPPET)
+         .withLocation("pipeline/blit_depth_during_depth_bounds")
+         .withVertexShader("core/screenquad")
+         .withFragmentShader("core/blit_depth")
+         .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
+         .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
+         .withDepthStencilState(new DepthStencilState(CompareOp.ALWAYS_PASS, true))
+         .withColorTargetState(new ColorTargetState(Optional.empty(), GpuFormat.RGBA32_FLOAT, 0))
+         .build()
+   );
+   public static final RenderPipeline BLIT_DEPTH = register(
+      RenderPipeline.builder(GLOBALS_SNIPPET)
+         .withLocation("pipeline/blit_depth")
+         .withVertexShader("core/screenquad")
+         .withFragmentShader("core/blit_depth")
+         .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
+         .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
+         .withDepthStencilState(new DepthStencilState(CompareOp.ALWAYS_PASS, true))
          .build()
    );
    public static final RenderPipeline OIT_COMPOSITE = register(

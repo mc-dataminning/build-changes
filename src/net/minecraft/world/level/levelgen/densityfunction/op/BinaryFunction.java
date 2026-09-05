@@ -419,11 +419,34 @@ public record BinaryFunction(BinaryFunction.Type type, DensityFunction left, Den
    public static record ConstSubSampler(float left, DensitySampler right) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
-         this.right.sampleVolume(context, outputBuffer, volume);
-
-         for (int i = 0; i < outputBuffer.size(); i++) {
-            outputBuffer.set(i, this.left - outputBuffer.get(i));
-         }
+         // $VF: Couldn't be decompiled
+         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+         //
+         // Bytecode:
+         // 00: aload 0
+         // 01: getfield net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction$ConstSubSampler.right Lnet/minecraft/world/level/levelgen/densityfunction/DensitySampler;
+         // 04: aload 1
+         // 05: aload 2
+         // 06: aload 3
+         // 07: invokeinterface net/minecraft/world/level/levelgen/densityfunction/DensitySampler.sampleVolume (Lnet/minecraft/world/level/levelgen/densityfunction/SamplerContext;Lnet/minecraft/world/level/levelgen/densityfunction/DensityBuffer;Lnet/minecraft/world/level/levelgen/densityfunction/DensityVolume;)V 4
+         // 0c: bipush 0
+         // 0d: istore 4
+         // 0f: iload 4
+         // 11: aload 2
+         // 12: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.size ()I
+         // 15: if_icmpge 2f
+         // 18: aload 2
+         // 19: iload 4
+         // 1b: aload 0
+         // 1c: getfield net/minecraft/world/level/levelgen/densityfunction/op/BinaryFunction$ConstSubSampler.left F
+         // 1f: aload 2
+         // 20: iload 4
+         // 22: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.get (I)F
+         // 25: fsub
+         // 26: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.set (IF)V
+         // 29: iinc 4 1
+         // 2c: goto 0f
+         // 2f: return
       }
 
       @Override

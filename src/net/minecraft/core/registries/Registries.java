@@ -140,7 +140,8 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.nbt.NbtProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
 import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProvider;
 import net.minecraft.world.timeline.Timeline;
 
@@ -201,7 +202,10 @@ public class Registries {
    public static final ResourceKey<Registry<MapCodec<? extends LootItemCondition>>> LOOT_CONDITION_TYPE = createRegistryKey("loot_condition_type");
    public static final ResourceKey<Registry<MapCodec<? extends LootItemFunction>>> LOOT_FUNCTION_TYPE = createRegistryKey("loot_function_type");
    public static final ResourceKey<Registry<MapCodec<? extends NbtProvider>>> LOOT_NBT_PROVIDER_TYPE = createRegistryKey("loot_nbt_provider_type");
-   public static final ResourceKey<Registry<MapCodec<? extends NumberProvider>>> LOOT_NUMBER_PROVIDER_TYPE = createRegistryKey("loot_number_provider_type");
+   public static final ResourceKey<Registry<MapCodec<? extends ContextFloatProvider>>> CONTEXT_FLOAT_PROVIDER_TYPE = createRegistryKey(
+      "context_float_provider_type"
+   );
+   public static final ResourceKey<Registry<MapCodec<? extends ContextIntProvider>>> CONTEXT_INT_PROVIDER_TYPE = createRegistryKey("context_int_provider_type");
    public static final ResourceKey<Registry<MapCodec<? extends LootPoolEntryContainer>>> LOOT_POOL_ENTRY_TYPE = createRegistryKey("loot_pool_entry_type");
    public static final ResourceKey<Registry<MapCodec<? extends ScoreboardNameProvider>>> LOOT_SCORE_PROVIDER_TYPE = createRegistryKey(
       "loot_score_provider_type"
@@ -258,6 +262,7 @@ public class Registries {
    public static final ResourceKey<Registry<MapCodec<? extends PermissionCheck>>> PERMISSION_CHECK_TYPE = createRegistryKey("permission_check_type");
    public static final ResourceKey<Registry<BannerPattern>> BANNER_PATTERN = createRegistryKey("banner_pattern");
    public static final ResourceKey<Registry<Biome>> BIOME = createRegistryKey("worldgen/biome");
+   public static final ResourceKey<Registry<BlockStateProvider>> BLOCK_STATE_PROVIDER = createRegistryKey("worldgen/block_state_provider");
    public static final ResourceKey<Registry<CatSoundVariant>> CAT_SOUND_VARIANT = createRegistryKey("cat_sound_variant");
    public static final ResourceKey<Registry<CatVariant>> CAT_VARIANT = createRegistryKey("cat_variant");
    public static final ResourceKey<Registry<WorldCarver>> CARVER = createRegistryKey("worldgen/carver");
@@ -315,7 +320,8 @@ public class Registries {
    public static final ResourceKey<Registry<LootItemFunction>> ITEM_MODIFIER = createRegistryKey("item_modifier");
    public static final ResourceKey<Registry<LootItemCondition>> PREDICATE = createRegistryKey("predicate");
    public static final ResourceKey<Registry<SlotSource>> SLOT_SOURCE = createRegistryKey("slot_source");
-   public static final ResourceKey<Registry<NumberProvider>> NUMBER_PROVIDER = createRegistryKey("number_provider");
+   public static final ResourceKey<Registry<ContextFloatProvider>> CONTEXT_FLOAT_PROVIDER = createRegistryKey("context_float_provider");
+   public static final ResourceKey<Registry<ContextIntProvider>> CONTEXT_INT_PROVIDER = createRegistryKey("context_int_provider");
    public static final ResourceKey<Registry<Advancement>> ADVANCEMENT = createRegistryKey("advancement");
    public static final ResourceKey<Registry<Recipe<?>>> RECIPE = createRegistryKey("recipe");
 
